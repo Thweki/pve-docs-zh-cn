@@ -124,10 +124,15 @@ def prepare_html(source: Path, title: str, work: Path) -> tuple[str, dict]:
     # tables intact, and turn only tables containing oversized rows into
     # labelled records. Their original cells and markup remain unabridged.
     converted = 0
+    parameter_tables = 0
     for table in reversed(list(main.xpath('.//table'))):
         if table.getparent() is None:
             continue
         rows = table.xpath('./thead/tr|./tbody/tr|./tfoot/tr|./tr')
+        top_headers = table.xpath('./thead/tr[1]/th')
+        if [text_content(cell).strip() for cell in top_headers] == ['参数', '定义与说明']:
+            table.set('class', (table.get('class', '') + ' pdf-api-parameters').strip())
+            parameter_tables += 1
         data_rows = [r for r in rows if r.xpath('./td')]
         if not data_rows:
             continue
@@ -218,6 +223,7 @@ def prepare_html(source: Path, title: str, work: Path) -> tuple[str, dict]:
         'source_characters_without_whitespace': len(before_text),
         'chapters': len(chapters), 'images': len(images),
         'unique_images': len(set(images)), 'tables_as_paginated_records': converted,
+        'two_column_api_parameter_tables': parameter_tables,
         'source_text_preserved_in_order': True,
         'chapter_targets': chapter_targets,
     }

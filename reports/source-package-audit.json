@@ -1397,8 +1397,8 @@
   },
   "package": {
     "path": "builds/Proxmox-VE-9.2.13-zh-CN-source.zip",
-    "bytes": 58773133,
-    "sha256": "17a665d537bc3a5ebbfe52112ae4e4b38644524178afd4f121f8fe74c3e8d824",
+    "bytes": 58759775,
+    "sha256": "4880ad46ee1969d8a9102fd265e3d7043ef78aed4bca1772eeb3732f3177b94b",
     "file_count": 224,
     "crc_verified": true,
     "manifest_path": "Proxmox-VE-9.2.13-zh-CN-source/SOURCE-PACKAGE-MANIFEST.json"
@@ -1415,23 +1415,23 @@
       {
         "script": "render.py",
         "returncode": 0,
-        "seconds": 3.86,
+        "seconds": 4.26,
         "stdout": "{\"translation_units\": 11508, \"translated_units\": 11508, \"missing_units\": 0, \"guide_pages\": 29, \"manuals\": 29, \"api_operations\": 680, \"pages\": 72}",
         "stderr": ""
       },
       {
         "script": "verify.py",
         "returncode": 0,
-        "seconds": 3.95,
+        "seconds": 4.1,
         "stdout": "{\"passed\": true, \"mode\": \"release\", \"pages\": 72, \"translation_units\": 11508, \"valid_translations\": 11508, \"missing_translations\": 0, \"original_code_blocks\": 1249, \"rendered_original_code_blocks\": 1249, \"tables\": 429, \"hints\": 751, \"image_occurrences\": 164, \"unique_original_assets\": 108, \"local_links_checked\": 6318}",
         "stderr": ""
       }
     ],
-    "seconds": 7.82,
-    "renderer_sha256": "cdd9303f7347e7e72f4ac6c8b12ada5d1a221819144c011e468e6a6d89f9fe30",
+    "seconds": 8.38,
+    "renderer_sha256": "6d6205dde4803e16b791bff8ce192c3e60d90981c60127e7c85e1d65994ad523",
     "verifier_sha256": "2042fcfc3a83e015fcc074d8e5fa6ea154ec2b1f1ff0893a35bd95f459e60903",
     "inputs_sha256": {
-      "scripts/render.py": "cdd9303f7347e7e72f4ac6c8b12ada5d1a221819144c011e468e6a6d89f9fe30",
+      "scripts/render.py": "6d6205dde4803e16b791bff8ce192c3e60d90981c60127e7c85e1d65994ad523",
       "scripts/verify.py": "2042fcfc3a83e015fcc074d8e5fa6ea154ec2b1f1ff0893a35bd95f459e60903",
       "scripts/translate.py": "cd0b9616330bd521f7f63aad3c65809bee9846918922adaa276e2b6b7cfab18c",
       "translations/units.json": "0cddaf73734b646b1773e1649b1486be5a52d2ee83d8936f65fa66d7da75d820",
@@ -1466,6 +1466,7 @@
     "markdown_differences": []
   },
   "archive_verification": {
+    "release": "9.2.13-zh.2",
     "zip_entries": 224,
     "outer_file_hashes_verified": 223,
     "nested_source_hashes_verified": 267,
@@ -1473,7 +1474,9 @@
     "unsafe_or_excluded_entries": 0,
     "source_publication_excluded": true,
     "public_gitbook_url_in_readme": true,
+    "final_v2_export_verification_included": true,
+    "width320_cold_evidence_inputs_verified_against_archive": true,
     "runtime_source_files_unchanged_after_packaging": true,
-    "sha256": "17a665d537bc3a5ebbfe52112ae4e4b38644524178afd4f121f8fe74c3e8d824"
+    "sha256": "4880ad46ee1969d8a9102fd265e3d7043ef78aed4bca1772eeb3732f3177b94b"
   }
 }

@@ -141,6 +141,8 @@ th, td {
   white-space: normal;
 }
 th { background: #e9eff5; font-weight: 700; }
+.pdf-api-parameters th:first-child { width: 24%; }
+.pdf-api-parameters th:last-child { width: 76%; }
 td pre { border: 0; padding: 1mm; font-size: 6.8pt; }
 td > :last-child, th > :last-child { margin-bottom: 0; }
 .pdf-record-table { margin: 3mm 0 5mm; }

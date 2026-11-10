@@ -30,6 +30,7 @@ import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
 from markdown_it import MarkdownIt
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "9.2.13"
@@ -93,8 +94,34 @@ def slug(text: str) -> str:
     return re.sub(r"[^\w\-]+", "-", text.lower(), flags=re.UNICODE).strip("_-") or "section"
 
 
+def strip_frontmatter(text: str) -> str:
+    """Remove only an initial, closed YAML metadata mapping; never execute tags.
+
+    A later horizontal rule, an unclosed header, scalar YAML, and invalid/unsafe
+    YAML remain ordinary document text. The size bound also prevents scanning a
+    whole large API page when an opening horizontal rule is ordinary Markdown.
+    """
+    opening = re.match(r"\A\ufeff?---[ \t]*\r?\n", text)
+    if not opening:
+        return text
+    closing = re.search(r"^(?:---|\.\.\.)[ \t]*\r?$", text[opening.end():opening.end() + 65536], re.MULTILINE)
+    if not closing:
+        return text
+    start = opening.end()
+    try:
+        metadata = yaml.safe_load(text[start:start + closing.start()])
+    except yaml.YAMLError:
+        return text
+    if not isinstance(metadata, dict) or not all(isinstance(key, str) for key in metadata):
+        return text
+    body_start = start + closing.end()
+    if text[body_start:body_start + 1] == "\n":
+        body_start += 1
+    return text[body_start:]
+
+
 def render_markdown(text: str) -> str:
-    return MD.render(text)
+    return MD.render(strip_frontmatter(text))
 
 
 @dataclass
@@ -109,7 +136,7 @@ class Page:
 
 
 def summary_pages(docs: Path) -> list[Page]:
-    summary = BeautifulSoup(MD.render((docs / "SUMMARY.md").read_text()), "html.parser")
+    summary = BeautifulSoup(MD.render(strip_frontmatter((docs / "SUMMARY.md").read_text())), "html.parser")
     result: list[Page] = []
     seen: set[Path] = set()
     for link in summary.select("a[href]"):
@@ -278,7 +305,7 @@ def audit_source_content(pages: list[Page], docs: Path) -> dict:
     stats = {"pages": len(pages), "code_blocks": 0, "images": 0, "tables": 0}
     errors = []
     for page in pages:
-        baseline = BeautifulSoup(baseline_md.render(page.path.read_text()), "html.parser")
+        baseline = BeautifulSoup(baseline_md.render(strip_frontmatter(page.path.read_text())), "html.parser")
         for text in list(baseline.find_all(string=True)):
             if any(parent.name in {"code", "pre"} for parent in text.parents):
                 continue
@@ -505,6 +532,13 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
 
 
 def self_test() -> None:
+    example_body = '# 节点 API\n\n## 标题 <a id="name"></a>\n\n完整正文。\n'
+    header = '---\nlayout:\n  outline:\n    visible: false\n---\n\n'
+    assert render_markdown(header + example_body) == render_markdown(example_body)
+    for ordinary in ('---\n普通正文\n---\n', '---\nlayout: unclosed\n',
+                     '# 正文\n\n---\nlayout: not-at-start\n---\n',
+                     '---\nvalue: !!python/object/apply:os.system ["false"]\n---\n'):
+        assert strip_frontmatter(ordinary) == ordinary
     (ROOT / "builds").mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="export-test-", dir=ROOT / "builds") as temporary:
         base = Path(temporary)

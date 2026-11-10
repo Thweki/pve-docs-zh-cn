@@ -1,6 +1,6 @@
 {
   "version": "9.2.13",
-  "release": "v9.2.13-zh.1",
+  "release": "v9.2.13-zh.2",
   "layout": "Each handbook chapter, reference manual and API resource group includes all subsections on the same page.",
   "translation": {
     "passed": true,
@@ -26,7 +26,7 @@
       "full_text_matches_markdown": true,
       "code_blocks_exact": true,
       "pages": 71,
-      "code_blocks": 4671,
+      "code_blocks": 3216,
       "images": 164,
       "tables": 1043,
       "asset_files_copied_byte_for_byte": 108
@@ -38,7 +38,7 @@
       "internal_links": 6168,
       "images": 164,
       "tables": 1043,
-      "code_blocks": 4671,
+      "code_blocks": 3216,
       "hints": 751
     },
     "epub": {
@@ -48,17 +48,43 @@
       "fonts": 4,
       "internal_links_valid": true,
       "full_text_matches_html": true,
-      "text_characters_without_whitespace": 2155581
+      "text_characters_without_whitespace": 2191748
     }
   },
+  "api_layout": {
+    "metadata_scalar_literals_preserved": 1455,
+    "remaining_generated_json_blocks": 1967,
+    "all_generated_json_structures_preserved": true,
+    "parameter_rows_preserved": 3097,
+    "parameter_rows_with_defaults": 513,
+    "parameter_rows_with_enums": 256,
+    "parameter_table_columns": 2,
+    "headings_anchors_and_details_preserved": true
+  },
+  "public_access": {
+    "authentication_used": false,
+    "gitbook_url": "https://thweki.gitbook.io/pve-docs-zh-cn/",
+    "largest_nodes_page": {
+      "url": "https://thweki.gitbook.io/pve-docs-zh-cn/api/group-2",
+      "status": 200,
+      "bytes": 25037423,
+      "seconds": 38.4,
+      "headings": 1356,
+      "last_operation_present": true,
+      "two_column_parameters": true
+    },
+    "browser_nodes_headings": 1356,
+    "browser_nodes_parameter_tables": 359,
+    "browser_last_nodes_operation_present": true
+  },
   "pdf": {
-    "source_sha256": "f03d992bfc81af1325e796d3160b235a60dc1862aa759651c9a475b3a4f6d704",
-    "source_characters_without_whitespace": 2155581,
+    "source_sha256": "032ac2efa4d5a774172bb8b6214c6d5b43d281f7282480ab92abc8f0e0edf2c2",
+    "source_characters_without_whitespace": 2191748,
     "source_text_preserved_in_order": true,
     "chapters": 71,
     "images": 164,
     "tables_as_paginated_records": 7,
-    "rendered_pages": 2801,
+    "rendered_pages": 1921,
     "printable_area_text_overflow_count": 0,
     "embedded_fonts": [
       "/GFVMWW+Noto-Sans-CJK-SC-Bold",
@@ -66,23 +92,23 @@
       "/OYUPRD+Noto-Sans-Mono-CJK-SC"
     ],
     "unembedded_fonts": [],
-    "pdf_bytes": 21165231
+    "pdf_bytes": 17215219
   },
   "assets": [
     {
       "name": "Proxmox-VE-9.2.13-zh-CN.epub",
-      "bytes": 49120734,
-      "sha256": "4b4d57646eb55d02a5cf459830d842aa66e1d516b39080ada77854016e651ec4"
+      "bytes": 49093023,
+      "sha256": "529ec9a194599be4590c13a80028b822db935a9fcc80096e2b2805e9514afe21"
     },
     {
       "name": "Proxmox-VE-9.2.13-zh-CN.pdf",
-      "bytes": 21165231,
-      "sha256": "da8cc9a91d338218229573bf0692b139992bcdf23dba645989e0ed29873c2f97"
+      "bytes": 17215219,
+      "sha256": "638f8cf5fab710e513284e1c90a324432612b9181684ffef6fb52e57510fe5f0"
     },
     {
       "name": "Proxmox-VE-9.2.13-zh-CN-html.zip",
-      "bytes": 48918786,
-      "sha256": "5b8ab91bff24c0b0b53c184b18606fd2212696c29158369198399497bee33ab4"
+      "bytes": 48900768,
+      "sha256": "703df87539014f1b59f0464c1eeea0e55b212c4c2f85f6094cabbc2dc420489f"
     }
   ],
   "html_archive": {

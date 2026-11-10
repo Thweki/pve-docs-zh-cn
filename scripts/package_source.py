@@ -27,6 +27,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = '9.2.13'
+RELEASE = VERSION + '-zh.2'
 EPOCH = 1794268800  # 2026-11-10 00:00:00 UTC; reproducible archive metadata.
 SNAPSHOT = 'source/upstream-snapshot.tar.gz'
 AUDIT = 'reports/source-package-audit.json'
@@ -318,7 +319,7 @@ def package(root: Path, output: str | None, snapshot: dict) -> dict:
         write_report(root, {'status': 'rejected', 'snapshot': snapshot, 'package_findings': findings})
         raise ValueError('Public source audit rejected input; see ' + AUDIT)
     manifest = {
-        'format': 1, 'upstream_version': VERSION, 'release': VERSION + '-zh.1',
+        'format': 1, 'upstream_version': VERSION, 'release': RELEASE,
         'translations': translations,
         'licenses': licenses,
         'offline_rebuild': ({k: v for k, v in cold_rebuild.items()
