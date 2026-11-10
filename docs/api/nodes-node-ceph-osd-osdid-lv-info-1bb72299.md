@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/osd/{osdid}/lv-info`
 
-Get OSD volume details
+获取 OSD 卷详情
 
 **方法标识：** `osdvolume`
 
@@ -48,9 +48,9 @@ Get OSD volume details
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `osdid` | integer | 是 | — | OSD ID |
-| `type` | string | 否 | "block" | OSD device type；可选值：`block`, `db`, `wal` |
+| `type` | string | 否 | "block" | OSD 设备类型；可选值：`block`, `db`, `wal` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,7 +60,7 @@ Get OSD volume details
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -72,7 +72,7 @@ Get OSD volume details
     },
     "type": {
       "default": "block",
-      "description": "OSD device type",
+      "description": "OSD 设备类型",
       "enum": [
         "block",
         "db",
@@ -93,27 +93,27 @@ Get OSD volume details
 {
   "properties": {
     "creation_time": {
-      "description": "Creation time as reported by `lvs`.",
+      "description": "`lvs` 报告的创建时间。",
       "type": "string"
     },
     "lv_name": {
-      "description": "Name of the logical volume (LV).",
+      "description": "逻辑卷（LV）的名称。",
       "type": "string"
     },
     "lv_path": {
-      "description": "Path to the logical volume (LV).",
+      "description": "逻辑卷（LV）的路径。",
       "type": "string"
     },
     "lv_size": {
-      "description": "Size of the logical volume (LV).",
+      "description": "逻辑卷（LV）的大小。",
       "type": "integer"
     },
     "lv_uuid": {
-      "description": "UUID of the logical volume (LV).",
+      "description": "逻辑卷（LV）的 UUID。",
       "type": "string"
     },
     "vg_name": {
-      "description": "Name of the volume group (VG).",
+      "description": "卷组（VG）的名称。",
       "type": "string"
     }
   },

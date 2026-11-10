@@ -1,24 +1,24 @@
 # 12.14. DHCP <a href="#pvesdn_config_dhcp" id="pvesdn_config_dhcp"></a>
 
-The DHCP plugin in Proxmox VE SDN can be used to automatically deploy a DHCP server for a Zone. It provides DHCP for all Subnets in a Zone that have a DHCP range configured. Currently the only available backend plugin for DHCP is the dnsmasq plugin.
+Proxmox VE SDN 中的 DHCP 插件可用于自动为区域部署 DHCP 服务器。它为区域中所有配置了 DHCP 范围的子网提供 DHCP。目前唯一可用的 DHCP 后端插件是 dnsmasq 插件。
 
-The DHCP plugin works by allocating an IP in the IPAM plugin configured in the Zone when adding a new network interface to a VM/CT. You can find more information on how to configure an IPAM in the [respective section of our documentation](12-pvesdn-config-ipam.md).
+DHCP 插件的工作方式是：向虚拟机/容器添加新网络接口时，在区域中配置的 IPAM 插件中分配 IP。有关如何配置 IPAM 的更多信息，请参阅 [文档中的相应章节](12-pvesdn-config-ipam.md)。
 
-When the VM starts, a mapping for the MAC address and IP gets created in the DHCP plugin of the zone. When the network interfaces is removed or the VM/CT are destroyed, then the entry in the IPAM and the DHCP server are deleted as well.
-
-{% hint style="info" %}
-Some features (adding/editing/removing IP mappings) are currently only available when using the [PVE IPAM plugin](12-pvesdn-config-ipam.md#pvesdn_ipam_plugin_pveipam).
-{% endhint %}
-
-## 12.14.1. Configuration <a href="#_configuration_14" id="_configuration_14"></a>
-
-You can enable automatic DHCP for a zone in the Web UI via the Zones panel and enabling DHCP in the advanced options of a zone.
+虚拟机启动时，会在该区域的 DHCP 插件中创建 MAC 地址与 IP 的映射。移除网络接口或销毁虚拟机/容器时，也会删除 IPAM 和 DHCP 服务器中的条目。
 
 {% hint style="info" %}
-Currently only Simple Zones have support for automatic DHCP
+某些功能（添加/编辑/移除 IP 映射）目前仅在使用 [PVE IPAM 插件](12-pvesdn-config-ipam.md#pvesdn_ipam_plugin_pveipam) 时可用。
 {% endhint %}
 
-After automatic DHCP has been enabled for a Zone, DHCP Ranges need to be configured for the subnets in a Zone. In order to that, go to the Vnets panel and select the Subnet for which you want to configure DHCP ranges. In the edit dialogue you can configure DHCP ranges in the respective Tab. Alternatively you can set DHCP ranges for a Subnet via the following CLI command:
+## 12.14.1. 配置 <a href="#configuration_14" id="configuration_14"></a>
+
+可以在 Web UI 中通过区域面板，并在区域的高级选项中启用 DHCP，来为区域启用自动 DHCP。
+
+{% hint style="info" %}
+目前仅 Simple 区域支持自动 DHCP
+{% endhint %}
+
+为区域启用自动 DHCP 后，需要为区域中的子网配置 DHCP 范围。为此，进入 VNet 面板并选择要配置 DHCP 范围的子网。在编辑对话框的相应选项卡中，可以配置 DHCP 范围。也可以通过以下 CLI 命令为子网设置 DHCP 范围：
 
 ```text
 pvesh set /cluster/sdn/vnets/<vnet>/subnets/<subnet>
@@ -26,51 +26,51 @@ pvesh set /cluster/sdn/vnets/<vnet>/subnets/<subnet>
  -dhcp-range start-address=10.0.2.100,end-address=10.0.2.200
 ```
 
-You also need to have a gateway configured for the subnet \- otherwise automatic DHCP will not work.
+还需要为子网配置网关，否则自动 DHCP 将无法工作。
 
-The DHCP plugin will then allocate IPs in the IPAM only in the configured ranges.
+DHCP 插件随后仅在配置的范围内通过 IPAM 分配 IP。
 
-Do not forget to follow the installation steps for the [dnsmasq DHCP plugin](03-pvesdn-installation.md#pvesdn_install_dhcp_ipam) as well.
+不要忘记同时按照 [dnsmasq DHCP 插件](03-pvesdn-installation.md#pvesdn_install_dhcp_ipam) 的安装步骤操作。
 
-## 12.14.2. Plugins <a href="#_plugins" id="_plugins"></a>
+## 12.14.2. 插件 <a href="#plugins" id="plugins"></a>
 
-### Dnsmasq Plugin <a href="#_dnsmasq_plugin" id="_dnsmasq_plugin"></a>
+### Dnsmasq 插件 <a href="#dnsmasq_plugin" id="dnsmasq_plugin"></a>
 
-Currently this is the only DHCP plugin and therefore the plugin that gets used when you enable DHCP for a zone.
+目前这是唯一的 DHCP 插件，因此在为区域启用 DHCP 时会使用此插件。
 
-**Installation**
+**安装**
 
-For installation see the [DHCP IPAM](03-pvesdn-installation.md#pvesdn_install_dhcp_ipam) section.
+有关安装，请参阅 [DHCP IPAM](03-pvesdn-installation.md#pvesdn_install_dhcp_ipam) 一节。
 
-**Configuration**
+**配置**
 
-The plugin will create a new systemd service for each zone that dnsmasq gets deployed to. The name for the service is `dnsmasq@<zone>`. The lifecycle of this service is managed by the DHCP plugin.
+该插件会为部署 dnsmasq 的每个区域创建一个新的 systemd 服务。服务名称为 `dnsmasq@<zone>`。此服务的生命周期由 DHCP 插件管理。
 
-The plugin automatically generates the following configuration files in the folder `/etc/dnsmasq.d/<zone>`:
+该插件会在文件夹 `/etc/dnsmasq.d/<zone>` 中自动生成以下配置文件：
 
 **`00-default.conf`**
 
-This contains the default global configuration for a dnsmasq instance.
+其中包含 dnsmasq 实例的默认全局配置。
 
 **`10-<zone>-<subnet_cidr>.conf`**
 
-This file configures specific options for a subnet, such as the DNS server that should get configured via DHCP.
+此文件配置子网的特定选项，例如应通过 DHCP 配置的 DNS 服务器。
 
 **`10-<zone>-<subnet_cidr>.ranges.conf`**
 
-This file configures the DHCP ranges for the dnsmasq instance.
+此文件配置 dnsmasq 实例的 DHCP 范围。
 
 **`ethers`**
 
-This file contains the MAC-address and IP mappings from the IPAM plugin. In order to override those mappings, please use the respective IPAM plugin rather than editing this file, as it will get overwritten by the dnsmasq plugin.
+此文件包含 IPAM 插件提供的 MAC 地址和 IP 映射。要覆盖这些映射，请使用相应的 IPAM 插件，不要编辑此文件，因为它会被 dnsmasq 插件覆盖。
 
-You must not edit any of the above files, since they are managed by the DHCP plugin. In order to customize the dnsmasq configuration you can create additional files (e.g. `90-custom.conf`) in the configuration folder \- they will not get changed by the dnsmasq DHCP plugin.
+不得编辑以上任何文件，因为它们由 DHCP 插件管理。要自定义 dnsmasq 配置，可以在配置文件夹中创建其他文件（例如 `90-custom.conf`），dnsmasq DHCP 插件不会修改这些文件。
 
-Configuration files are read in order, so you can control the order of the configuration directives by naming your custom configuration files appropriately.
+配置文件按顺序读取，因此可以通过适当命名自定义配置文件来控制配置指令的顺序。
 
-DHCP leases are stored in the file `/var/lib/misc/dnsmasq.<zone>.leases`.
+DHCP 租约存储在文件 `/var/lib/misc/dnsmasq.<zone>.leases` 中。
 
-When using the PVE IPAM plugin, you can update, create and delete DHCP leases. For more information please consult the documentation of [the PVE IPAM plugin](12-pvesdn-config-ipam.md#pvesdn_ipam_plugin_pveipam). Changing DHCP leases is currently not supported for the other IPAM plugins.
+使用 PVE IPAM 插件时，可以更新、创建和删除 DHCP 租约。更多信息请查阅 [PVE IPAM 插件](12-pvesdn-config-ipam.md#pvesdn_ipam_plugin_pveipam) 文档。其他 IPAM 插件目前不支持更改 DHCP 租约。
 
 ---
 

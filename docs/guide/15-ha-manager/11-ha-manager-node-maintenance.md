@@ -1,13 +1,13 @@
-# 15.11. Node Maintenance <a href="#ha_manager_node_maintenance" id="ha_manager_node_maintenance"></a>
+# 15.11. 节点维护 <a href="#ha_manager_node_maintenance" id="ha_manager_node_maintenance"></a>
 
 有时需要对节点进行维护，例如更换硬件或只是安装新的内核映像。使用 HA 堆栈时也同样如此。
 
 HA 堆栈主要可在以下两类维护中为你提供支持：
 
-- for general shutdowns or reboots, the behavior can be configured, see [Shutdown Policy](#ha_manager_shutdown_policy).
+- 对于常规关闭或重启，可以配置其行为，参见 [关闭策略](#ha_manager_shutdown_policy)。
 - 对于不需要关机或重启的维护，或者不希望维护模式在仅重启一次后就自动关闭的情况，可以启用手动维护模式。
 
-## 15.11.1. Maintenance Mode <a href="#_maintenance_mode" id="_maintenance_mode"></a>
+## 15.11.1. 维护模式 <a href="#maintenance_mode" id="maintenance_mode"></a>
 
 可以使用手动维护模式将节点标记为不可用于 HA 操作，从而促使所有由 HA 管理的服务迁移到其他节点。
 
@@ -41,7 +41,7 @@ HA 堆栈主要可在以下两类维护中为你提供支持：
 
 如果停用维护模式，启用维护模式时位于该节点上的所有服务都将移回。
 
-## 15.11.2. Shutdown Policy <a href="#ha_manager_shutdown_policy" id="ha_manager_shutdown_policy"></a>
+## 15.11.2. 关闭策略 <a href="#ha_manager_shutdown_policy" id="ha_manager_shutdown_policy"></a>
 
 下面介绍节点关机的不同 HA 策略。目前，由于向后兼容性，*Conditional* 是默认策略。一些用户可能会发现 *Migrate* 的行为更符合预期。
 
@@ -51,7 +51,7 @@ HA 堆栈主要可在以下两类维护中为你提供支持：
 ha: shutdown_policy=<value>
 ```
 
-### Migrate <a href="#_migrate" id="_migrate"></a>
+### Migrate <a href="#migrate" id="migrate"></a>
 
 当本地资源管理器（LRM）收到关机请求且启用此策略后，它会将自身标记为对当前 HA 管理器不可用。这会触发当前位于此节点上的所有 HA 服务迁移。LRM 会尝试延迟关机过程，直到所有正在运行的服务都迁走。但这要求正在运行的服务**能够**迁移到另一个节点。换言之，服务不得绑定到本地，例如使用硬件直通。再比如，严格的节点亲和性规则会告知 HA 管理器，该服务不能在选定节点集之外运行。如果所有这些节点都不可用，关机将一直挂起，直到手动干预。当已关机的节点重新上线后，先前迁走的服务将移回，除非在此期间已手动迁移。
 
@@ -61,15 +61,15 @@ ha: shutdown_policy=<value>
 
 如果在正在维护的节点上启动（先前已停止的）服务，则需要隔离该节点，以确保服务能够迁移到另一个可用节点并在其上启动。
 
-### Failover <a href="#_failover" id="_failover"></a>
+### Failover <a href="#failover" id="failover"></a>
 
 此模式可确保所有服务均会停止，但如果当前节点未能很快恢复在线，这些服务也会得到恢复。在进行集群规模的维护时，此模式可能很有用：如果同时关闭过多节点，可能无法对 VM 进行在线迁移，但你仍希望确保 HA 服务尽快恢复并重新启动。
 
-### Freeze <a href="#_freeze" id="_freeze"></a>
+### Freeze <a href="#freeze" id="freeze"></a>
 
 此模式可确保所有服务均停止并冻结，因此在当前节点重新上线之前，它们不会得到恢复。
 
-### Conditional <a href="#_conditional" id="_conditional"></a>
+### Conditional <a href="#conditional" id="conditional"></a>
 
 *Conditional* 关机策略会自动检测请求的是关机还是重启，并相应地更改行为。
 
@@ -85,9 +85,9 @@ ha: shutdown_policy=<value>
 
 节点的重启通过 *reboot* 命令发起。通常在安装新内核后执行此操作。请注意，这与“关机”不同，因为节点会立即重新启动。
 
-The LRM tells the CRM that it wants to restart, and waits until the CRM puts all resources into the `freeze` state (same mechanism is used for [Package Updates](10-ha-manager-package-updates.md)). This prevents those resources from being moved to other nodes. Instead, the CRM starts the resources after the reboot on the same node.
+LRM 告知 CRM 自己希望重启，并等待 CRM 将所有资源置于 `freeze` 状态（[软件包更新](10-ha-manager-package-updates.md) 使用相同机制）。这可防止这些资源被移到其他节点。相反，CRM 会在重启后在同一节点上启动资源。
 
-### 手动移动资源 <a href="#_manual_resource_movement" id="_manual_resource_movement"></a>
+### 手动移动资源 <a href="#manual_resource_movement" id="manual_resource_movement"></a>
 
 最后同样重要的是，您还可以在关闭或重启节点之前，手动将资源移动到其他节点。其优势在于您拥有完全的控制权，并且可以决定是否使用在线迁移。
 

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/lxc/{vmid}/status/stop`
 
-Stop the container. This will abruptly stop all processes running in the container.
+停止容器。此操作将突然停止容器中运行的所有进程。
 
 **方法标识：** `vm_stop`
 
@@ -46,10 +46,10 @@ Stop the container. This will abruptly stop all processes running in the contain
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `overrule-shutdown` | boolean | 否 | 0 | Try to abort active 'vzshutdown' tasks before stopping. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `overrule-shutdown` | boolean | 否 | 0 | 停止前尝试中止活动的 'vzshutdown' 任务。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,26 +59,26 @@ Stop the container. This will abruptly stop all processes running in the contain
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "overrule-shutdown": {
       "default": 0,
-      "description": "Try to abort active 'vzshutdown' tasks before stopping.",
+      "description": "停止前尝试中止活动的 'vzshutdown' 任务。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

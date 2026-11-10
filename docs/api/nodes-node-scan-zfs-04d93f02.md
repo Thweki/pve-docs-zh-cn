@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/zfs`
 
-Scan zfs pool list on local node.
+扫描本地节点的 zfs 池列表。
 
 **方法标识：** `zfsscan`
 
@@ -46,7 +46,7 @@ Scan zfs pool list on local node.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Scan zfs pool list on local node.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,7 +74,7 @@ Scan zfs pool list on local node.
   "items": {
     "properties": {
       "pool": {
-        "description": "ZFS pool name.",
+        "description": "ZFS 池名称。",
         "type": "string"
       }
     },

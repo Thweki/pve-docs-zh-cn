@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/vnets/{vnet}/subnets/{subnet}`
 
-Delete sdn subnet object configuration.
+删除 SDN 子网对象配置。
 
 **方法标识：** `delete`
 
@@ -14,7 +14,7 @@ Delete sdn subnet object configuration.
 
 ```json
 {
-  "description": "Require 'SDN.Allocate' permission on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
 }
 ```
@@ -35,9 +35,9 @@ Delete sdn subnet object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `subnet` | string | 是 | — | The SDN subnet object identifier. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -47,19 +47,19 @@ Delete sdn subnet object configuration.
   "additionalProperties": 0,
   "properties": {
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "subnet": {
-      "description": "The SDN subnet object identifier.",
+      "description": "SDN 子网对象标识符。",
       "format": "pve-sdn-subnet-id",
       "type": "string",
       "typetext": "<string>"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -81,7 +81,7 @@ Delete sdn subnet object configuration.
 
 ## GET `/cluster/sdn/vnets/{vnet}/subnets/{subnet}`
 
-Read sdn subnet configuration.
+读取 SDN 子网配置。
 
 **方法标识：** `read`
 
@@ -89,7 +89,7 @@ Read sdn subnet configuration.
 
 ```json
 {
-  "description": "Require 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限",
   "user": "all"
 }
 ```
@@ -104,10 +104,10 @@ Read sdn subnet configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
-| `subnet` | string | 是 | — | The SDN subnet object identifier. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -117,25 +117,25 @@ Read sdn subnet configuration.
   "additionalProperties": 0,
   "properties": {
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "subnet": {
-      "description": "The SDN subnet object identifier.",
+      "description": "SDN 子网对象标识符。",
       "format": "pve-sdn-subnet-id",
       "type": "string",
       "typetext": "<string>"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -157,7 +157,7 @@ Read sdn subnet configuration.
 
 ## PUT `/cluster/sdn/vnets/{vnet}/subnets/{subnet}`
 
-Update sdn subnet object configuration.
+更新 SDN 子网对象配置。
 
 **方法标识：** `update`
 
@@ -165,7 +165,7 @@ Update sdn subnet object configuration.
 
 ```json
 {
-  "description": "Require 'SDN.Allocate' permission on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
 }
 ```
@@ -186,16 +186,16 @@ Update sdn subnet object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `dhcp-dns-server` | string | 否 | — | IP address for the DNS server |
-| `dhcp-range` | array | 否 | — | A list of DHCP ranges for this subnet |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `dnszoneprefix` | string | 否 | — | dns domain zone prefix  ex: 'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
-| `gateway` | string | 否 | — | Subnet Gateway: Will be assign on vnet for layer3 zones |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `snat` | boolean | 否 | — | enable masquerade for this subnet if pve-firewall |
-| `subnet` | string | 是 | — | The SDN subnet object identifier. |
-| `vnet` | string | 否 | — | associated vnet |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `dhcp-dns-server` | string | 否 | — | DNS 服务器的 IP 地址 |
+| `dhcp-range` | array | 否 | — | 此子网的 DHCP 地址范围列表 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dnszoneprefix` | string | 否 | — | DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
+| `gateway` | string | 否 | — | 子网网关：对于 layer3 区域，将分配在 vnet 上 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `snat` | boolean | 否 | — | 使用 pve-firewall 时为此子网启用地址伪装 |
+| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
+| `vnet` | string | 否 | — | 关联的 vnet |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -205,7 +205,7 @@ Update sdn subnet object configuration.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -213,14 +213,14 @@ Update sdn subnet object configuration.
       "typetext": "<string>"
     },
     "dhcp-dns-server": {
-      "description": "IP address for the DNS server",
+      "description": "DNS 服务器的 IP 地址",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dhcp-range": {
-      "description": "A list of DHCP ranges for this subnet",
+      "description": "此子网的 DHCP 地址范围列表",
       "items": {
         "format": "pve-sdn-dhcp-range",
         "type": "string"
@@ -230,46 +230,46 @@ Update sdn subnet object configuration.
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dnszoneprefix": {
-      "description": "dns domain zone prefix  ex: 'adm' -> <hostname>.adm.mydomain.com",
+      "description": "DNS 域区域前缀  例如：'adm' -> <hostname>.adm.mydomain.com",
       "format": "dns-name",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "gateway": {
-      "description": "Subnet Gateway: Will be assign on vnet for layer3 zones",
+      "description": "子网网关：对于 layer3 区域，将分配在 vnet 上",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "snat": {
-      "description": "enable masquerade for this subnet if pve-firewall",
+      "description": "使用 pve-firewall 时为此子网启用地址伪装",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "subnet": {
-      "description": "The SDN subnet object identifier.",
+      "description": "SDN 子网对象标识符。",
       "format": "pve-sdn-subnet-id",
       "type": "string",
       "typetext": "<string>"
     },
     "vnet": {
-      "description": "associated vnet",
+      "description": "关联的 vnet",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

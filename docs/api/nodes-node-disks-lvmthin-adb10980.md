@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/lvmthin`
 
-List LVM thinpools
+列出 LVM 精简池
 
 **方法标识：** `index`
 
@@ -46,7 +46,7 @@ List LVM thinpools
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List LVM thinpools
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,27 +74,27 @@ List LVM thinpools
   "items": {
     "properties": {
       "lv": {
-        "description": "The name of the thinpool.",
+        "description": "精简池名称。",
         "type": "string"
       },
       "lv_size": {
-        "description": "The size of the thinpool in bytes.",
+        "description": "精简池大小，单位为字节。",
         "type": "integer"
       },
       "metadata_size": {
-        "description": "The size of the metadata lv in bytes.",
+        "description": "元数据逻辑卷大小，单位为字节。",
         "type": "integer"
       },
       "metadata_used": {
-        "description": "The used bytes of the metadata lv.",
+        "description": "元数据逻辑卷已用字节数。",
         "type": "integer"
       },
       "used": {
-        "description": "The used bytes of the thinpool.",
+        "description": "精简池已用字节数。",
         "type": "integer"
       },
       "vg": {
-        "description": "The associated volume group.",
+        "description": "关联的卷组。",
         "type": "string"
       }
     },
@@ -106,7 +106,7 @@ List LVM thinpools
 
 ## POST `/nodes/{node}/disks/lvmthin`
 
-Create an LVM thinpool
+创建 LVM 精简池
 
 **方法标识：** `create`
 
@@ -121,7 +121,7 @@ Create an LVM thinpool
       "Sys.Modify"
     ]
   ],
-  "description": "Requires additionally 'Datastore.Allocate' on /storage when setting 'add_storage'"
+  "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"
 }
 ```
 
@@ -147,10 +147,10 @@ Create an LVM thinpool
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | Configure storage using the thinpool. |
-| `device` | string | 是 | — | The block device you want to create the thinpool on. |
-| `name` | string | 是 | — | The storage identifier. |
-| `node` | string | 是 | — | The cluster node name. |
+| `add_storage` | boolean | 否 | 0 | 使用精简池配置存储。 |
+| `device` | string | 是 | — | 要在其上创建精简池的块设备。 |
+| `name` | string | 是 | — | 存储标识符。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -161,25 +161,25 @@ Create an LVM thinpool
   "properties": {
     "add_storage": {
       "default": 0,
-      "description": "Configure storage using the thinpool.",
+      "description": "使用精简池配置存储。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "device": {
-      "description": "The block device you want to create the thinpool on.",
+      "description": "要在其上创建精简池的块设备。",
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

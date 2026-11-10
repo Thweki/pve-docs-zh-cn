@@ -6,7 +6,7 @@
 
 ## GET `/access/acl`
 
-Get Access Control List (ACLs).
+获取访问控制列表（ACL）。
 
 **方法标识：** `read_acl`
 
@@ -14,7 +14,7 @@ Get Access Control List (ACLs).
 
 ```json
 {
-  "description": "The returned list is restricted to objects where you have rights to modify permissions.",
+  "description": "返回列表仅限于您有权修改其权限的对象。",
   "user": "all"
 }
 ```
@@ -37,12 +37,12 @@ Get Access Control List (ACLs).
     "additionalProperties": 0,
     "properties": {
       "path": {
-        "description": "Access control path",
+        "description": "访问控制路径",
         "type": "string"
       },
       "propagate": {
         "default": 1,
-        "description": "Allow to propagate (inherit) permissions.",
+        "description": "允许传播（继承）权限。",
         "optional": 1,
         "type": "boolean"
       },
@@ -69,7 +69,7 @@ Get Access Control List (ACLs).
 
 ## PUT `/access/acl`
 
-Update Access Control List (add or remove permissions).
+更新访问控制列表（添加或移除权限）。
 
 **方法标识：** `update_acl`
 
@@ -100,13 +100,13 @@ Update Access Control List (add or remove permissions).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | boolean | 否 | — | Remove permissions (instead of adding it). |
-| `groups` | string | 否 | — | List of groups. |
-| `path` | string | 是 | — | Access control path |
-| `propagate` | boolean | 否 | 1 | Allow to propagate (inherit) permissions. |
-| `roles` | string | 是 | — | List of roles. |
-| `tokens` | string | 否 | — | List of API tokens. |
-| `users` | string | 否 | — | List of users. |
+| `delete` | boolean | 否 | — | 移除权限（而非添加）。 |
+| `groups` | string | 否 | — | 组列表。 |
+| `path` | string | 是 | — | 访问控制路径 |
+| `propagate` | boolean | 否 | 1 | 允许传播（继承）权限。 |
+| `roles` | string | 是 | — | 角色列表。 |
+| `tokens` | string | 否 | — | API 令牌列表。 |
+| `users` | string | 否 | — | 用户列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -116,45 +116,45 @@ Update Access Control List (add or remove permissions).
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "Remove permissions (instead of adding it).",
+      "description": "移除权限（而非添加）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "groups": {
-      "description": "List of groups.",
+      "description": "组列表。",
       "format": "pve-groupid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "path": {
-      "description": "Access control path",
+      "description": "访问控制路径",
       "type": "string",
       "typetext": "<string>"
     },
     "propagate": {
       "default": 1,
-      "description": "Allow to propagate (inherit) permissions.",
+      "description": "允许传播（继承）权限。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "roles": {
-      "description": "List of roles.",
+      "description": "角色列表。",
       "format": "pve-roleid-list",
       "type": "string",
       "typetext": "<string>"
     },
     "tokens": {
-      "description": "List of API tokens.",
+      "description": "API 令牌列表。",
       "format": "pve-tokenid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "users": {
-      "description": "List of users.",
+      "description": "用户列表。",
       "format": "pve-userid-list",
       "optional": 1,
       "type": "string",

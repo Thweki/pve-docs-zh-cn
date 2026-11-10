@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/qemu/{vmid}`
 
-Destroy the VM and  all used/owned volumes. Removes any VM specific permissions and firewall rules
+销毁虚拟机及  所有使用/拥有的卷。移除虚拟机专属的所有权限和防火墙规则
 
 **方法标识：** `destroy_vm`
 
@@ -46,11 +46,11 @@ Destroy the VM and  all used/owned volumes. Removes any VM specific permissions 
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `destroy-unreferenced-disks` | boolean | 否 | 0 | If set, destroy additionally all disks not referenced in the config but with a matching VMID from all enabled storages. |
-| `node` | string | 是 | — | The cluster node name. |
-| `purge` | boolean | 否 | — | Remove VMID from configurations, like backup &amp; replication jobs and HA. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `destroy-unreferenced-disks` | boolean | 否 | 0 | 如果设置，还将销毁所有已启用存储中未在配置中引用但 VMID 匹配的磁盘。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `purge` | boolean | 否 | — | 从备份、复制作业及 HA 等配置中移除 VMID。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,31 +61,31 @@ Destroy the VM and  all used/owned volumes. Removes any VM specific permissions 
   "properties": {
     "destroy-unreferenced-disks": {
       "default": 0,
-      "description": "If set, destroy additionally all disks not referenced in the config but with a matching VMID from all enabled storages.",
+      "description": "如果设置，还将销毁所有已启用存储中未在配置中引用但 VMID 匹配的磁盘。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "purge": {
-      "description": "Remove VMID from configurations, like backup & replication jobs and HA.",
+      "description": "从备份、复制作业及 HA 等配置中移除 VMID。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -108,7 +108,7 @@ Destroy the VM and  all used/owned volumes. Removes any VM specific permissions 
 
 ## GET `/nodes/{node}/qemu/{vmid}`
 
-Directory index
+目录索引
 
 **方法标识：** `vmdiridx`
 
@@ -136,8 +136,8 @@ Directory index
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -147,13 +147,13 @@ Directory index
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

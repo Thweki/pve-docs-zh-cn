@@ -6,7 +6,7 @@
 
 ## GET `/cluster/config/apiversion`
 
-Return the version of the cluster join API available on this node.
+返回此节点上可用的集群加入 API 版本。
 
 **方法标识：** `join_api_version`
 
@@ -38,7 +38,7 @@ Return the version of the cluster join API available on this node.
 
 ```json
 {
-  "description": "Cluster Join API version, currently 1",
+  "description": "集群加入 API 版本，目前为 1",
   "minimum": 0,
   "type": "integer"
 }

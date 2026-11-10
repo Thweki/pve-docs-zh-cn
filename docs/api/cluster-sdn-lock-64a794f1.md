@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/lock`
 
-Release global lock for SDN configuration
+释放 SDN 配置的全局锁
 
 **方法标识：** `release_lock`
 
@@ -40,8 +40,8 @@ Release global lock for SDN configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | if true, allow releasing lock without providing the token |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `force` | boolean | 否 | 0 | 如果为 true，则允许在未提供令牌的情况下释放锁 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Release global lock for SDN configuration
   "properties": {
     "force": {
       "default": 0,
-      "description": "if true, allow releasing lock without providing the token",
+      "description": "如果为 true，则允许在未提供令牌的情况下释放锁",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -79,7 +79,7 @@ Release global lock for SDN configuration
 
 ## POST `/cluster/sdn/lock`
 
-Acquire global lock for SDN configuration
+获取 SDN 配置的全局锁
 
 **方法标识：** `lock`
 
@@ -113,7 +113,7 @@ Acquire global lock for SDN configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `allow-pending` | boolean | 否 | 0 | if true, allow acquiring lock even though there are pending changes |
+| `allow-pending` | boolean | 否 | 0 | 如果为 true，则即使有待应用的更改，也允许获取锁 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -124,7 +124,7 @@ Acquire global lock for SDN configuration
   "properties": {
     "allow-pending": {
       "default": 0,
-      "description": "if true, allow acquiring lock even though there are pending changes",
+      "description": "如果为 true，则即使有待应用的更改，也允许获取锁",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

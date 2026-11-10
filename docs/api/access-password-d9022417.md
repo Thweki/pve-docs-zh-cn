@@ -6,7 +6,7 @@
 
 ## PUT `/access/password`
 
-Change user password.
+更改用户密码。
 
 **方法标识：** `change_password`
 
@@ -34,7 +34,7 @@ Change user password.
       ]
     ]
   ],
-  "description": "Each user is allowed to change their own password. A user can change the password of another user if they have 'Realm.AllocateUser' (on the realm of user <userid>) and 'User.Modify' permission on /access/groups/<group> on a group where user <userid> is member of. For the PAM realm, a password change does not take  effect cluster-wide, but only applies to the local node."
+  "description": "每个用户都可以更改自己的密码。如果用户具有 'Realm.AllocateUser' 权限（作用于用户 <userid> 所属认证域），且对用户 <userid> 所属的某组的 /access/groups/<group> 具有 'User.Modify' 权限，则可以更改该用户的密码。对于 PAM 认证域，密码更改不会在  整个集群生效，仅适用于本地节点。"
 }
 ```
 
@@ -54,9 +54,9 @@ Change user password.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `confirmation-password` | string | 否 | — | The current password of the user performing the change. |
-| `password` | string | 是 | — | The new password. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `confirmation-password` | string | 否 | — | 执行更改的用户的当前密码。 |
+| `password` | string | 是 | — | 新密码。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -66,7 +66,7 @@ Change user password.
   "additionalProperties": 0,
   "properties": {
     "confirmation-password": {
-      "description": "The current password of the user performing the change.",
+      "description": "执行更改的用户的当前密码。",
       "maxLength": 64,
       "minLength": 5,
       "optional": 1,
@@ -74,14 +74,14 @@ Change user password.
       "typetext": "<string>"
     },
     "password": {
-      "description": "The new password.",
+      "description": "新密码。",
       "maxLength": 64,
       "minLength": 8,
       "type": "string",
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",

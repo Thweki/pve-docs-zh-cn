@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/firewall/log`
 
-Read firewall log
+读取防火墙日志
 
 **方法标识：** `log`
 
@@ -47,11 +47,11 @@ Read firewall log
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | The cluster node name. |
-| `since` | integer | 否 | — | Display log since this UNIX epoch. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `since` | integer | 否 | — | 显示从此 UNIX 时间戳开始的日志。 |
 | `start` | integer | 否 | — |  |
-| `until` | integer | 否 | — | Display log until this UNIX epoch. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `until` | integer | 否 | — | 显示截至此 UNIX 时间戳的日志。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -67,13 +67,13 @@ Read firewall log
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "since": {
-      "description": "Display log since this UNIX epoch.",
+      "description": "显示从此 UNIX 时间戳开始的日志。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -86,14 +86,14 @@ Read firewall log
       "typetext": "<integer> (0 - N)"
     },
     "until": {
-      "description": "Display log until this UNIX epoch.",
+      "description": "显示截至此 UNIX 时间戳的日志。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -113,11 +113,11 @@ Read firewall log
   "items": {
     "properties": {
       "n": {
-        "description": "Line number",
+        "description": "行号",
         "type": "integer"
       },
       "t": {
-        "description": "Line text",
+        "description": "行文本",
         "type": "string"
       }
     },

@@ -1,12 +1,12 @@
 # 12.13. DNS <a href="#pvesdn_config_dns" id="pvesdn_config_dns"></a>
 
-The DNS plugin in Proxmox VE SDN is used to define a DNS API server for registration of your hostname and IP address. A DNS configuration is associated with one or more zones, to provide DNS registration for all the subnet IPs configured for a zone.
+Proxmox VE SDN 中的 DNS 插件用于定义 DNS API 服务器，以注册主机名和 IP 地址。DNS 配置关联一个或多个区域，为某个区域配置的所有子网 IP 提供 DNS 注册。
 
-## 12.13.1. PowerDNS Plugin <a href="#pvesdn_dns_plugin_powerdns" id="pvesdn_dns_plugin_powerdns"></a>
+## 12.13.1. PowerDNS 插件 <a href="#pvesdn_dns_plugin_powerdns" id="pvesdn_dns_plugin_powerdns"></a>
 
 [https://doc.powerdns.com/authoritative/http-api/index.html](https://doc.powerdns.com/authoritative/http-api/index.html)
 
-You need to enable the web server and the API in your PowerDNS config:
+需要在 PowerDNS 配置中启用 Web 服务器和 API：
 
 ```text
 api=yes
@@ -15,19 +15,19 @@ webserver=yes
 webserver-port=8081
 ```
 
-The PowerDNS configuration options are:
+PowerDNS 配置选项为：
 
 **url**
 
-The REST API endpoint: [http://yourpowerdnserver.domain.com:8081/api/v1/servers/localhost](http://yourpowerdnserver.domain.com:8081/api/v1/servers/localhost)
+REST API 端点：[http://yourpowerdnserver.domain.com:8081/api/v1/servers/localhost](http://yourpowerdnserver.domain.com:8081/api/v1/servers/localhost)
 
 **key**
 
-An API access key
+API 访问密钥
 
 **ttl**
 
-The default TTL for records
+记录的默认 TTL
 
 ---
 

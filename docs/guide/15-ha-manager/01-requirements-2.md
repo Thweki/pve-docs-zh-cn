@@ -1,4 +1,4 @@
-# 15.1. Requirements <a href="#_requirements_2" id="_requirements_2"></a>
+# 15.1. 要求 <a href="#requirements_2" id="requirements_2"></a>
 
 在开始使用 HA 之前，您必须满足以下要求：
 

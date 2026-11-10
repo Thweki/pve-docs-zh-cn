@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/remote_migrate`
 
-Migrate virtual machine to a remote cluster. Creates a new migration task. EXPERIMENTAL feature!
+将虚拟机迁移到远程集群。创建新的迁移任务。实验性功能！
 
 **方法标识：** `remote_migrate_vm`
 
@@ -46,15 +46,15 @@ Migrate virtual machine to a remote cluster. Creates a new migration task. EXPER
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `delete` | boolean | 否 | 0 | Delete the original VM and related data after successful migration. By default the original VM is kept on the source cluster in a stopped state. |
-| `node` | string | 是 | — | The cluster node name. |
-| `online` | boolean | 否 | — | Use online/live migration if VM is running. Ignored if VM is stopped. |
-| `target-bridge` | string | 是 | — | Mapping from source to target bridges. Providing only a single bridge ID maps all source bridges to that bridge. Providing the special value '1' will map each source bridge to itself. |
-| `target-endpoint` | string | 是 | — | Remote target endpoint |
-| `target-storage` | string | 是 | — | Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself. |
-| `target-vmid` | integer | 否 | — | The (unique) ID of the VM. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | boolean | 否 | 0 | 成功迁移后删除原始虚拟机及相关数据。默认将原始虚拟机以停止状态保留在源集群中。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `online` | boolean | 否 | — | 如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
+| `target-bridge` | string | 是 | — | 从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。 |
+| `target-endpoint` | string | 是 | — | 远程目标端点 |
+| `target-storage` | string | 是 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -65,7 +65,7 @@ Migrate virtual machine to a remote cluster. Creates a new migration task. EXPER
   "properties": {
     "bwlimit": {
       "default": "migrate limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "integer",
@@ -73,44 +73,44 @@ Migrate virtual machine to a remote cluster. Creates a new migration task. EXPER
     },
     "delete": {
       "default": 0,
-      "description": "Delete the original VM and related data after successful migration. By default the original VM is kept on the source cluster in a stopped state.",
+      "description": "成功迁移后删除原始虚拟机及相关数据。默认将原始虚拟机以停止状态保留在源集群中。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "online": {
-      "description": "Use online/live migration if VM is running. Ignored if VM is stopped.",
+      "description": "如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "target-bridge": {
-      "description": "Mapping from source to target bridges. Providing only a single bridge ID maps all source bridges to that bridge. Providing the special value '1' will map each source bridge to itself.",
+      "description": "从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。",
       "format": "bridge-pair-list",
       "type": "string",
       "typetext": "<string>"
     },
     "target-endpoint": {
-      "description": "Remote target endpoint",
+      "description": "远程目标端点",
       "format": "proxmox-remote",
       "type": "string",
       "typetext": "apitoken=<PVEAPIToken=user@realm!token=SECRET> ,host=<ADDRESS> [,fingerprint=<FINGERPRINT>] [,port=<PORT>]"
     },
     "target-storage": {
-      "description": "Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself.",
+      "description": "从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。",
       "format": "storage-pair-list",
       "optional": 0,
       "type": "string",
       "typetext": "<string>"
     },
     "target-vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -119,7 +119,7 @@ Migrate virtual machine to a remote cluster. Creates a new migration task. EXPER
       "typetext": "<integer> (100 - 999999999)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -136,7 +136,7 @@ Migrate virtual machine to a remote cluster. Creates a new migration task. EXPER
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

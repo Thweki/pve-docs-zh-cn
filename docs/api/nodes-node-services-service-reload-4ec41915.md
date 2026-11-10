@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/services/{service}/reload`
 
-Reload service. Falls back to restart if service cannot be reloaded.
+重新加载服务。如果服务无法重新加载，则回退到重启。
 
 **方法标识：** `service_reload`
 
@@ -46,8 +46,8 @@ Reload service. Falls back to restart if service cannot be reloaded.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `service` | string | 是 | — | Service ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Reload service. Falls back to restart if service cannot be reloaded.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "service": {
-      "description": "Service ID",
+      "description": "服务 ID",
       "enum": [
         "chrony",
         "corosync",

@@ -6,7 +6,7 @@
 
 ## GET `/access/permissions`
 
-Retrieve effective permissions of given user/token.
+获取给定用户/令牌的有效权限。
 
 **方法标识：** `permissions`
 
@@ -14,7 +14,7 @@ Retrieve effective permissions of given user/token.
 
 ```json
 {
-  "description": "Each user/token is allowed to dump their own permissions (or that of owned tokens). A user can dump the permissions of another user or their tokens if they have 'Sys.Audit' permission on /access.",
+  "description": "每个用户/令牌都可以导出自己的权限（或所拥有令牌的权限）。如果用户对 /access. 具有 'Sys.Audit' 权限，则可以导出其他用户或其令牌的权限",
   "user": "all"
 }
 ```
@@ -29,8 +29,8 @@ Retrieve effective permissions of given user/token.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `path` | string | 否 | — | Only dump this specific path, not the whole tree. |
-| `userid` | string | 否 | — | User ID or full API token ID |
+| `path` | string | 否 | — | 仅导出此特定路径，而非整棵树。 |
+| `userid` | string | 否 | — | 用户 ID 或完整 API 令牌 ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -40,13 +40,13 @@ Retrieve effective permissions of given user/token.
   "additionalProperties": 0,
   "properties": {
     "path": {
-      "description": "Only dump this specific path, not the whole tree.",
+      "description": "仅导出此特定路径，而非整棵树。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "userid": {
-      "description": "User ID or full API token ID",
+      "description": "用户 ID 或完整 API 令牌 ID",
       "optional": 1,
       "pattern": "(?^:^(?^:[^\\s:/]+)\\@(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)(?:!(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+))?$)",
       "type": "string"
@@ -61,7 +61,7 @@ Retrieve effective permissions of given user/token.
 
 ```json
 {
-  "description": "Map of \"path\" => (Map of \"privilege\" => \"propagate boolean\").",
+  "description": "\"path\" =>（\"privilege\" => \"propagate boolean\" 的映射）的映射。",
   "type": "object"
 }
 ```

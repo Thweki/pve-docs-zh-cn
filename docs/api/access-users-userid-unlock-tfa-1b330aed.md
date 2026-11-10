@@ -6,7 +6,7 @@
 
 ## PUT `/access/users/{userid}/unlock-tfa`
 
-Unlock a user's TFA authentication.
+解除用户 TFA 身份验证锁定。
 
 **方法标识：** `unlock_tfa`
 
@@ -39,7 +39,7 @@ Unlock a user's TFA authentication.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -49,7 +49,7 @@ Unlock a user's TFA authentication.
   "additionalProperties": 0,
   "properties": {
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",

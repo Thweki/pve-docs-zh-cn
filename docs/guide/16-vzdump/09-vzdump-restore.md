@@ -1,65 +1,65 @@
-# 16.9. Restore <a href="#vzdump_restore" id="vzdump_restore"></a>
+# 16.9. 恢复 <a href="#vzdump_restore" id="vzdump_restore"></a>
 
-A backup archive can be restored through the Proxmox VE web GUI or through the following CLI tools:
+可以通过 Proxmox VE Web GUI 或以下 CLI 工具恢复备份归档：
 
 **`pct restore`**
 
-Container restore utility
+容器恢复实用程序
 
 **`qmrestore`**
 
-Virtual Machine restore utility
+虚拟机恢复实用程序
 
-For details see the corresponding manual pages.
+详情参见相应手册页。
 
-## 16.9.1. Bandwidth Limit <a href="#_bandwidth_limit" id="_bandwidth_limit"></a>
+## 16.9.1. 带宽限制 <a href="#bandwidth_limit" id="bandwidth_limit"></a>
 
-Restoring one or more big backups may need a lot of resources, especially storage bandwidth for both reading from the backup storage and writing to the target storage. This can negatively affect other virtual guests as access to storage can get congested.
+恢复一个或多个大型备份可能需要大量资源，尤其是从备份存储读取和向目标存储写入所需的存储带宽。这可能对其他虚拟客户机产生负面影响，因为存储访问可能拥塞。
 
-To avoid this you can set bandwidth limits for a backup job. Proxmox VE implements two kinds of limits for restoring and archive:
+为避免这种情况，可以为备份作业设置带宽限制。Proxmox VE 为归档恢复实现两种限制：
 
-- per-restore limit: denotes the maximal amount of bandwidth for reading from a backup archive
-- per-storage write limit: denotes the maximal amount of bandwidth used for writing to a specific storage
+- 单次恢复限制：表示读取备份归档的最大带宽
+- 单个存储写入限制：表示写入特定存储所用的最大带宽
 
-The read limit indirectly affects the write limit, as we cannot write more than we read. A smaller per-job limit will overwrite a bigger per-storage limit. A bigger per-job limit will only overwrite the per-storage limit if you have ‘Data.Allocate’ permissions on the affected storage.
+读取限制会间接影响写入限制，因为写入量不能超过读取量。较小的单作业限制会覆盖较大的单存储限制。较大的单作业限制只有在您对受影响存储具有“Data.Allocate”权限时才会覆盖单存储限制。
 
-You can use the ‘--bwlimit \<integer\>\` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing \`10240’ will limit the read speed of the backup to 10 MiB/s, ensuring that the rest of the possible storage bandwidth is available for the already running virtual guests, and thus the backup does not impact their operations.
+可以使用“--bwlimit \<integer\>\` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing \`10240”将备份读取速度限制为 10 MiB/s，确保其余可用存储带宽留给已经运行的虚拟客户机，从而使备份不影响其运行。
 
 {% hint style="info" %}
-You can use ‘0\` for the `bwlimit` parameter to disable all limits for a specific restore job. This can be helpful if you need to restore a very important virtual guest as fast as possible. (Needs \`Data.Allocate’ permissions on storage)
+可以将“0”用于 `bwlimit` 参数，以禁用特定恢复作业的所有限制。如果需要尽快恢复非常重要的虚拟客户机，这可能很有帮助。（需要存储上的“Data.Allocate”权限）
 {% endhint %}
 
-Most times your storage’s generally available bandwidth stays the same over time, thus we implemented the possibility to set a default bandwidth limit per configured storage, this can be done with:
+通常，存储的总体可用带宽随时间保持不变，因此我们实现了为每个已配置存储设置默认带宽限制的功能，可通过以下方式完成：
 
 ```text
 # pvesm set STORAGEID --bwlimit restore=KIBs
 ```
 
-## 16.9.2. Live-Restore <a href="#_live_restore" id="_live_restore"></a>
+## 16.9.2. 在线恢复 <a href="#live_restore" id="live_restore"></a>
 
-Restoring a large backup can take a long time, in which a guest is still unavailable. For VM backups stored on a Proxmox Backup Server, this wait time can be mitigated using the live-restore option.
+恢复大型备份可能需要很长时间，在此期间客户机仍不可用。对于存储在 Proxmox Backup Server 上的虚拟机备份，可以使用在线恢复选项缩短此等待时间。
 
-Enabling live-restore via either the checkbox in the GUI or the `--live-restore` argument of `qmrestore` causes the VM to start as soon as the restore begins. Data is copied in the background, prioritizing chunks that the VM is actively accessing.
+通过 GUI 中的复选框或 `--live-restore` 参数（属于 `qmrestore`）启用在线恢复后，虚拟机会在恢复开始时立即启动。数据在后台复制，优先处理虚拟机正在访问的数据块。
 
-Note that this comes with two caveats:
+请注意，这有两点需要留意：
 
-- During live-restore, the VM will operate with limited disk read speeds, as data has to be loaded from the backup server (once loaded, it is immediately available on the destination storage however, so accessing data twice only incurs the penalty the first time). Write speeds are largely unaffected.
-- If the live-restore fails for any reason, the VM will be left in an undefined state \- that is, not all data might have been copied from the backup, and it is *most likely* not possible to keep any data that was written during the failed restore operation.
+- 在线恢复期间，虚拟机的磁盘读取速度会受限，因为必须从备份服务器加载数据（不过一旦加载，数据就会立即在目标存储上可用，因此访问同一数据两次时，只有第一次会产生额外开销）。写入速度基本不受影响。
+- 如果在线恢复因任何原因失败，虚拟机将处于未定义状态，也就是说，可能并非所有数据都已从备份复制，而且 *很可能* 无法保留失败的恢复操作期间写入的任何数据。
 
-This mode of operation is especially useful for large VMs, where only a small amount of data is required for initial operation, e.g. web servers \- once the OS and necessary services have been started, the VM is operational, while the background task continues copying seldom used data.
+这种运行模式特别适合大型虚拟机，其初始运行只需要少量数据，例如 Web 服务器：操作系统和必要服务启动后，虚拟机即可运行，而后台任务继续复制很少使用的数据。
 
-## 16.9.3. Single File Restore <a href="#_single_file_restore" id="_single_file_restore"></a>
+## 16.9.3. 单文件恢复 <a href="#single_file_restore" id="single_file_restore"></a>
 
-The *File Restore* button in the *Backups* tab of the storage GUI can be used to open a file browser directly on the data contained in a backup. This feature is only available for backups on a Proxmox Backup Server.
+*文件恢复* 按钮位于存储 GUI 的 *备份* 选项卡中，可用于直接针对备份中包含的数据打开文件浏览器。此功能仅适用于 Proxmox Backup Server 上的备份。
 
-For containers, the first layer of the file tree shows all included *pxar* archives, which can be opened and browsed freely. For VMs, the first layer shows contained drive images, which can be opened to reveal a list of supported storage technologies found on the drive. In the most basic case, this will be an entry called *part*, representing a partition table, which contains entries for each partition found on the drive. Note that for VMs, not all data might be accessible (unsupported guest file systems, storage technologies, etc…).
+对于容器，文件树的第一层显示所有包含的 *pxar* 归档，可自由打开和浏览。对于虚拟机，第一层显示包含的驱动器镜像，打开后会显示驱动器上发现的受支持存储技术列表。在最基本的情况下，会有一个名为 *part* 的条目，表示分区表，其中包含驱动器上发现的每个分区的条目。请注意，对于虚拟机，可能并非所有数据都可访问（不支持的客户机文件系统、存储技术等）。
 
-Files and directories can be downloaded using the *Download* button, the latter being compressed into a zip archive on the fly.
+可以使用 *下载* 按钮下载文件和目录，目录会即时压缩为 zip 归档。
 
-To enable secure access to VM images, which might contain untrusted data, a temporary VM (not visible as a guest) is started. This does not mean that data downloaded from such an archive is inherently safe, but it avoids exposing the hypervisor system to danger. The VM will stop itself after a timeout. This entire process happens transparently from a user’s point of view.
+为安全访问可能包含不受信任数据的虚拟机镜像，会启动一台临时虚拟机（不会显示为客户机）。这并不意味着从此类归档下载的数据本身是安全的，但可避免虚拟化管理程序系统面临危险。该虚拟机会在超时后自行停止。从用户角度看，整个过程是透明的。
 
 {% hint style="info" %}
-For troubleshooting purposes, each temporary VM instance generates a log file in `/var/log/proxmox-backup/file-restore/`. The log file might contain additional information in case an attempt to restore individual files or accessing file systems contained in a backup archive fails.
+为便于故障排查，每个临时虚拟机实例都会在 `/var/log/proxmox-backup/file-restore/` 中生成日志文件。如果尝试恢复单个文件或访问备份归档中的文件系统失败，日志文件可能包含更多信息。
 {% endhint %}
 
 ---

@@ -1,44 +1,28 @@
-# 22.12. **pveam** \- Proxmox VE Appliance Manager <a href="#_strong_pveam_strong_proxmox_ve_appliance_manager" id="_strong_pveam_strong_proxmox_ve_appliance_manager"></a>
+# 22.12. **pveam** \- Proxmox VE 设备模板管理器 <a href="#strong_pveam_strong_proxmox_ve_appliance_manager" id="strong_pveam_strong_proxmox_ve_appliance_manager"></a>
 
-<a id="cli_pveam"></a>
+## **pveam** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveam" id="cli_pveam"></a>
 
+## **pveam available** `[OPTIONS]` <a href="#cli_pveam_available" id="cli_pveam_available"></a>
 
-
-**pveam** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pveam_available"></a>
-
-
-
-**pveam available** `[OPTIONS]`
-
-List available templates.
+列出可用模板。
 
 **`--section` `<mail | system | turnkeylinux>`**
 
-Restrict list to specified section.
+将列表限制为指定部分。
 
-<a id="cli_pveam_download"></a>
+## **pveam download** `<storage> <template>` <a href="#cli_pveam_download" id="cli_pveam_download"></a>
 
-
-
-**pveam download** `<storage> <template>`
-
-Download appliance templates.
+下载设备模板。
 
 **`<storage>`: `<storage ID>`**
 
-The storage where the template will be stored
+用于保存模板的存储
 
 **`<template>`: `<string>`**
 
-The template which will downloaded
+要下载的模板
 
-<a id="cli_pveam_help"></a>
-
-
-
-**pveam help** `[OPTIONS]`
+## **pveam help** `[OPTIONS]` <a href="#cli_pveam_help" id="cli_pveam_help"></a>
 
 获取指定命令的帮助。
 
@@ -50,37 +34,25 @@ The template which will downloaded
 
 详细输出格式。
 
-<a id="cli_pveam_list"></a>
+## **pveam list** `<storage>` <a href="#cli_pveam_list" id="cli_pveam_list"></a>
 
-
-
-**pveam list** `<storage>`
-
-Get list of all templates on storage
+获取存储上的所有模板列表
 
 **`<storage>`: `<storage ID>`**
 
-Only list templates on specified storage
+仅列出指定存储上的模板
 
-<a id="cli_pveam_remove"></a>
+## **pveam remove** `<template_path>` <a href="#cli_pveam_remove" id="cli_pveam_remove"></a>
 
-
-
-**pveam remove** `<template_path>`
-
-Remove a template.
+移除模板。
 
 **`<template_path>`: `<string>`**
 
-The template to remove.
+要移除的模板。
 
-<a id="cli_pveam_update"></a>
+## **pveam update** <a href="#cli_pveam_update" id="cli_pveam_update"></a>
 
-
-
-**pveam update**
-
-Update Container Template Database.
+更新容器模板数据库。
 
 ---
 

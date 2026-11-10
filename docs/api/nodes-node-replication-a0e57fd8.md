@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/replication`
 
-List status of all replication jobs on this node.
+列出此节点上所有复制任务的状态。
 
 **方法标识：** `status`
 
@@ -14,7 +14,7 @@ List status of all replication jobs on this node.
 
 ```json
 {
-  "description": "Requires the VM.Audit permission on /vms/<vmid>.",
+  "description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ List status of all replication jobs on this node.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `guest` | integer | 否 | — | Only list replication jobs for this guest. |
-| `node` | string | 是 | — | The cluster node name. |
+| `guest` | integer | 否 | — | 仅列出此客户机的复制作业。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,7 +52,7 @@ List status of all replication jobs on this node.
   "additionalProperties": 0,
   "properties": {
     "guest": {
-      "description": "Only list replication jobs for this guest.",
+      "description": "仅列出此客户机的复制作业。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -61,7 +61,7 @@ List status of all replication jobs on this node.
       "typetext": "<integer> (100 - 999999999)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

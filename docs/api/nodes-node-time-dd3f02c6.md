@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/time`
 
-Read server time and time zone settings.
+读取服务器时间和时区设置。
 
 **方法标识：** `time`
 
@@ -40,7 +40,7 @@ Read server time and time zone settings.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Read server time and time zone settings.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -68,19 +68,19 @@ Read server time and time zone settings.
   "additionalProperties": 0,
   "properties": {
     "localtime": {
-      "description": "Seconds since 1970-01-01 00:00:00 (local time)",
+      "description": "自 1970-01-01 00:00:00（本地时间）起的秒数",
       "minimum": 1297163644,
       "renderer": "timestamp_gmt",
       "type": "integer"
     },
     "time": {
-      "description": "Seconds since 1970-01-01 00:00:00 UTC.",
+      "description": "自 1970-01-01 00:00:00 UTC 起的秒数。",
       "minimum": 1297163644,
       "renderer": "timestamp",
       "type": "integer"
     },
     "timezone": {
-      "description": "Time zone",
+      "description": "时区",
       "type": "string"
     }
   },
@@ -90,7 +90,7 @@ Read server time and time zone settings.
 
 ## PUT `/nodes/{node}/time`
 
-Set time zone.
+设置时区。
 
 **方法标识：** `set_timezone`
 
@@ -130,8 +130,8 @@ Set time zone.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `timezone` | string | 是 | — | Time zone. The file '/usr/share/zoneinfo/zone.tab' contains the list of valid names. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `timezone` | string | 是 | — | 时区。文件 '/usr/share/zoneinfo/zone.tab' 包含有效名称列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -141,13 +141,13 @@ Set time zone.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "timezone": {
-      "description": "Time zone. The file '/usr/share/zoneinfo/zone.tab' contains the list of valid names.",
+      "description": "时区。文件 '/usr/share/zoneinfo/zone.tab' 包含有效名称列表。",
       "type": "string",
       "typetext": "<string>"
     }

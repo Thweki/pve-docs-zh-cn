@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/stopall`
 
-Stop all VMs and Containers.
+停止所有虚拟机和容器。
 
 **方法标识：** `stopall`
 
@@ -14,7 +14,7 @@ Stop all VMs and Containers.
 
 ```json
 {
-  "description": "The 'VM.PowerMgmt' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter.",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
 }
 ```
@@ -41,11 +41,11 @@ Stop all VMs and Containers.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force-stop` | boolean | 否 | 1 | Force a hard-stop after the timeout. |
-| `max-workers` | integer | 否 | — | Defines the maximum number of tasks running concurrently. If  not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used. |
-| `node` | string | 是 | — | The cluster node name. |
-| `timeout` | integer | 否 | 180 | Timeout for each guest shutdown task. Depending on `force-stop`, the shutdown gets then simply aborted or a hard-stop is forced. |
-| `vms` | string | 否 | — | Only consider Guests with these IDs. |
+| `force-stop` | boolean | 否 | 1 | 超时后强制硬停止。 |
+| `max-workers` | integer | 否 | — | 定义并发运行的最大任务数。如果  未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `timeout` | integer | 否 | 180 | 每个客户机关机任务的超时时间。根据 `force-stop` 的设置，超时后仅中止关机或强制硬停止。 |
+| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,13 +56,13 @@ Stop all VMs and Containers.
   "properties": {
     "force-stop": {
       "default": 1,
-      "description": "Force a hard-stop after the timeout.",
+      "description": "超时后强制硬停止。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "max-workers": {
-      "description": "Defines the maximum number of tasks running concurrently. If  not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used.",
+      "description": "定义并发运行的最大任务数。如果  未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -70,14 +70,14 @@ Stop all VMs and Containers.
       "typetext": "<integer> (1 - 64)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "timeout": {
       "default": 180,
-      "description": "Timeout for each guest shutdown task. Depending on `force-stop`, the shutdown gets then simply aborted or a hard-stop is forced.",
+      "description": "每个客户机关机任务的超时时间。根据 `force-stop` 的设置，超时后仅中止关机或强制硬停止。",
       "maximum": 7200,
       "minimum": 0,
       "optional": 1,
@@ -85,7 +85,7 @@ Stop all VMs and Containers.
       "typetext": "<integer> (0 - 7200)"
     },
     "vms": {
-      "description": "Only consider Guests with these IDs.",
+      "description": "仅考虑具有这些 ID 的客户机。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",

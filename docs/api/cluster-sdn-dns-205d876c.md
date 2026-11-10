@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/dns`
 
-SDN dns index.
+SDN DNS 索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ SDN dns index.
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/dns/<dns>'",
+  "description": "仅列出您对 '/sdn/dns/<dns>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ SDN dns index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | Only list sdn dns of specific type；可选值：`powerdns` |
+| `type` | string | 否 | — | 仅列出特定类型的 SDN DNS；可选值：`powerdns` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ SDN dns index.
   "additionalProperties": 0,
   "properties": {
     "type": {
-      "description": "Only list sdn dns of specific type",
+      "description": "仅列出特定类型的 SDN DNS",
       "enum": [
         "powerdns"
       ],
@@ -79,7 +79,7 @@ SDN dns index.
 
 ## POST `/cluster/sdn/dns`
 
-Create a new sdn dns object.
+创建新的 SDN DNS 对象。
 
 **方法标识：** `create`
 
@@ -113,14 +113,14 @@ Create a new sdn dns object.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `dns` | string | 是 | — | The SDN dns object identifier. |
-| `fingerprint` | string | 否 | — | Certificate SHA 256 fingerprint. |
+| `dns` | string | 是 | — | SDN DNS 对象标识符。 |
+| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
 | `key` | string | 是 | — |  |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 | `reversemaskv6` | integer | 否 | — |  |
 | `reversev6mask` | integer | 否 | — |  |
 | `ttl` | integer | 否 | — |  |
-| `type` | string | 是 | — | Plugin type.；可选值：`powerdns` |
+| `type` | string | 是 | — | 插件类型。；可选值：`powerdns` |
 | `url` | string | 是 | — |  |
 
 <details>
@@ -131,13 +131,13 @@ Create a new sdn dns object.
   "additionalProperties": 0,
   "properties": {
     "dns": {
-      "description": "The SDN dns object identifier.",
+      "description": "SDN DNS 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "fingerprint": {
-      "description": "Certificate SHA 256 fingerprint.",
+      "description": "证书 SHA 256 指纹。",
       "optional": 1,
       "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
       "type": "string"
@@ -148,7 +148,7 @@ Create a new sdn dns object.
       "typetext": "<string>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -169,7 +169,7 @@ Create a new sdn dns object.
       "typetext": "<integer>"
     },
     "type": {
-      "description": "Plugin type.",
+      "description": "插件类型。",
       "enum": [
         "powerdns"
       ],

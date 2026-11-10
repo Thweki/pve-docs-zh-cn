@@ -1,6 +1,6 @@
 # Proxmox VE 中文文档
 
-基于 <https://pve.proxmox.com/pve-docs/> 的非官方简体中文译本，目标版本为 **9.2.13**。GitBook 内容位于 `docs/`，保留原始图片、代码、表格、提示框和标题锚点。
+基于 <https://pve.proxmox.com/pve-docs/> 的非官方简体中文译本，目标版本为 **9.2.13**。GitBook 内容位于 `docs/`，保留原始图片、代码、表格、提示框和章节引用关系。
 
 ## 内容范围
 
@@ -17,6 +17,7 @@
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 # 初次使用，保存官方索引、完整管理手册和 API JS 到 source/ 对应目录。
+mkdir -p source/html source/api source/prepared source/raw-assets work docs/assets reports
 curl -fsSL https://pve.proxmox.com/pve-docs/ -o source/html/index.html
 curl -fsSL https://pve.proxmox.com/pve-docs/pve-admin-guide.html -o source/html/pve-admin-guide.html
 curl -fsSL https://pve.proxmox.com/pve-docs/api-viewer/apidoc.js -o source/api/apidoc.js
@@ -27,6 +28,8 @@ curl -fsSL https://pve.proxmox.com/pve-docs/api-viewer/apidoc.js -o source/api/a
 ```
 
 翻译步骤调用本机已登录的 Kimi Code CLI，不读取、保存或输出登录凭据。每个有效译文单元会立即缓存于忽略跟踪的 `work/translations.jsonl`。恢复时只处理缺失或校验失败的单元。
+
+本次译本在 Kimi 达到窗口用量上限后，经发布者授权由 Codex 子代理接力完成。辅助翻译批次可通过 `scripts/merge_agent_outputs.py` 合并；只有通过相同完整性校验的译文才会进入缓存。
 
 `render.py` 默认拒绝生成含有未译内容的发布版本。`--allow-partial` 仅用于排版预览。发布前应检查 `reports/` 的完整性报告与 GitBook 的实际渲染。
 

@@ -1,4 +1,4 @@
-# 15.9. Error Recovery <a href="#ha_manager_error_recovery" id="ha_manager_error_recovery"></a>
+# 15.9. 错误恢复 <a href="#ha_manager_error_recovery" id="ha_manager_error_recovery"></a>
 
 如果在所有尝试之后仍无法恢复服务状态，服务将被置于错误状态。在此状态下，HA 堆栈将不再对该服务执行任何操作。唯一的退出方法是禁用该服务：
 

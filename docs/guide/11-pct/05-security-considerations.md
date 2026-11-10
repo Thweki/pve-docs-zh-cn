@@ -1,10 +1,10 @@
-# 11.5. Security Considerations <a href="#_security_considerations" id="_security_considerations"></a>
+# 11.5. 安全注意事项 <a href="#security_considerations" id="security_considerations"></a>
 
 容器使用宿主机系统的内核。这会为恶意用户暴露攻击面。一般来说，完整的虚拟机可以提供更好的隔离性。如果向未知或不受信任的人员提供容器，应考虑这一点。
 
 为了减少攻击面，LXC 使用了 AppArmor、CGroups 和内核命名空间等许多安全功能。
 
-## 11.5.1. AppArmor <a href="#_apparmor" id="_apparmor"></a>
+## 11.5.1. AppArmor <a href="#apparmor" id="apparmor"></a>
 
 AppArmor 配置文件用于限制对可能危险的操作的访问。某些系统调用（即 `mount`）会被禁止执行。
 
@@ -26,7 +26,7 @@ lxc.apparmor.profile = unconfined
 请注意，不建议在生产环境中这样做。
 {% endhint %}
 
-## 11.5.2. Control Groups (*cgroup*) <a href="#pct_cgroup" id="pct_cgroup"></a>
+## 11.5.2. 控制组（*cgroup*） <a href="#pct_cgroup" id="pct_cgroup"></a>
 
 *cgroup* 是一种内核机制，用于按层次组织进程并分配系统资源。
 
@@ -40,7 +40,7 @@ lxc.apparmor.profile = unconfined
 
 另一个重要区别是 *devices* 控制器的配置方式完全不同。因此，纯 *cgroupv2* 环境目前不支持文件系统配额。
 
-*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2* [\[1\]](#note-d942b21b-1), as do containers not using *systemd* as init system [\[2\]](#note-d942b21b-2).
+容器操作系统需要支持 *cgroupv2*，才能在纯 *cgroupv2* 环境中运行。运行 *systemd* 231 或更新版本的容器支持 *cgroupv2* [\[1\]](#note-d942b21b-1)，不使用 *systemd* 作为 init 系统的容器也支持 [\[2\]](#note-d942b21b-2)。
 
 {% hint style="info" %}
 CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *systemd* 版本太旧，无法在 *cgroupv2* 环境中运行。您可以：
@@ -58,17 +58,17 @@ CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *system
 systemd.unified_cgroup_hierarchy=0
 ```
 
-See [this section](../03-system-administration/13-sysboot.md#sysboot_edit_kernel_cmdline) on editing the kernel boot command line on where to add the parameter.
+有关应在何处添加该参数，请参阅介绍如何编辑内核启动命令行的 [本节](../03-system-administration/13-sysboot.md#sysboot_edit_kernel_cmdline)。
 
 ## 注释
 
 ### 注释 1 <a href="#note-d942b21b-1" id="note-d942b21b-1"></a>
 
-this includes all newest major versions of container templates shipped by Proxmox VE
+这包括 Proxmox VE 提供的所有容器模板的最新主要版本
 
 ### 注释 2 <a href="#note-d942b21b-2" id="note-d942b21b-2"></a>
 
-for example Alpine Linux
+例如 Alpine Linux
 
 ---
 

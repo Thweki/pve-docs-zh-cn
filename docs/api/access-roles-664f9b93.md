@@ -6,7 +6,7 @@
 
 ## GET `/access/roles`
 
-Role index.
+角色索引。
 
 **方法标识：** `index`
 
@@ -63,7 +63,7 @@ Role index.
 
 ## POST `/access/roles`
 
-Create new role.
+创建新角色。
 
 **方法标识：** `create_role`
 

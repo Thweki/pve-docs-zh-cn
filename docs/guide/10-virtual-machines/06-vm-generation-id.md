@@ -1,4 +1,4 @@
-# 10.6. VM 生成 ID <a href="#_vm_generation_id" id="_vm_generation_id"></a>
+# 10.6. VM 生成 ID <a href="#vm_generation_id" id="vm_generation_id"></a>
 
 Proxmox VE 支持虚拟机的虚拟机生成 ID (*vmgenid*) [\[1\]](#note-bccd999c-1)。客户机操作系统可用它来检测任何导致时间偏移的事件，例如恢复备份或回滚快照。
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/migrate`
 
-Get preconditions for migration.
+获取迁移前提条件。
 
 **方法标识：** `migrate_vm_precondition`
 
@@ -46,9 +46,9 @@ Get preconditions for migration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `target` | string | 否 | — | Target node. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `target` | string | 否 | — | 目标节点。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,20 +58,20 @@ Get preconditions for migration.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -90,34 +90,34 @@ Get preconditions for migration.
 {
   "properties": {
     "allowed-nodes": {
-      "description": "List of nodes allowed for migration.",
+      "description": "允许迁移到的节点列表。",
       "items": {
-        "description": "An allowed node",
+        "description": "允许的节点",
         "type": "string"
       },
       "optional": 1,
       "type": "array"
     },
     "dependent-ha-resources": {
-      "description": "HA resources, which will be migrated to the same target node as the VM, because these are in positive affinity with the VM.",
+      "description": "由于与虚拟机具有正向亲和性，而将迁移到同一目标节点的 HA 资源。",
       "items": {
-        "description": "The '<ty>:<id>' resource IDs of a HA resource with a positive affinity rule to this CT.",
+        "description": "与此容器具有正向亲和性规则的 HA 资源的 '<ty>:<id>' 资源 ID。",
         "type": "string"
       },
       "optional": 1,
       "type": "array"
     },
     "not-allowed-nodes": {
-      "description": "List of not allowed nodes with additional information.",
+      "description": "不允许迁移到的节点列表及附加信息。",
       "optional": 1,
       "properties": {
         "blocking-ha-resources": {
-          "description": "HA resources, which are blocking the container from being migrated to the node.",
+          "description": "阻止容器迁移到该节点的 HA 资源。",
           "items": {
-            "description": "A blocking HA resource",
+            "description": "阻塞迁移的 HA 资源",
             "properties": {
               "cause": {
-                "description": "The reason why the HA resource is blocking the migration.",
+                "description": "此 HA 资源阻塞迁移的原因。",
                 "enum": [
                   "node-affinity",
                   "resource-affinity"
@@ -125,7 +125,7 @@ Get preconditions for migration.
                 "type": "string"
               },
               "sid": {
-                "description": "The blocking HA resource id",
+                "description": "阻塞迁移的 HA 资源 ID",
                 "type": "string"
               }
             },
@@ -138,7 +138,7 @@ Get preconditions for migration.
       "type": "object"
     },
     "running": {
-      "description": "Determines if the container is running.",
+      "description": "确定容器是否正在运行。",
       "type": "boolean"
     }
   },
@@ -188,14 +188,14 @@ Get preconditions for migration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | number | 否 | "migrate limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `node` | string | 是 | — | The cluster node name. |
-| `online` | boolean | 否 | — | Use online/live migration. |
-| `restart` | boolean | 否 | — | Use restart migration |
-| `target` | string | 是 | — | Target node. |
-| `target-storage` | string | 否 | — | Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself. |
-| `timeout` | integer | 否 | 180 | Timeout in seconds for shutdown for restart migration |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `bwlimit` | number | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `online` | boolean | 否 | — | 使用在线迁移。 |
+| `restart` | boolean | 否 | — | 使用重启迁移 |
+| `target` | string | 是 | — | 目标节点。 |
+| `target-storage` | string | 否 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `timeout` | integer | 否 | 180 | 重启迁移的关闭超时时间，单位为秒 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -206,38 +206,38 @@ Get preconditions for migration.
   "properties": {
     "bwlimit": {
       "default": "migrate limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "number",
       "typetext": "<number> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "online": {
-      "description": "Use online/live migration.",
+      "description": "使用在线迁移。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "restart": {
-      "description": "Use restart migration",
+      "description": "使用重启迁移",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "target-storage": {
-      "description": "Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself.",
+      "description": "从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。",
       "format": "storage-pair-list",
       "optional": 1,
       "type": "string",
@@ -245,13 +245,13 @@ Get preconditions for migration.
     },
     "timeout": {
       "default": 180,
-      "description": "Timeout in seconds for shutdown for restart migration",
+      "description": "重启迁移的关闭超时时间，单位为秒",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -268,7 +268,7 @@ Get preconditions for migration.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

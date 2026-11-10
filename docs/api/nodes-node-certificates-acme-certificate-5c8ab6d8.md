@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/certificates/acme/certificate`
 
-Revoke existing certificate from CA.
+向 CA 吊销现有证书。
 
 **方法标识：** `revoke_certificate`
 
@@ -46,7 +46,7 @@ Revoke existing certificate from CA.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Revoke existing certificate from CA.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,7 +77,7 @@ Revoke existing certificate from CA.
 
 ## POST `/nodes/{node}/certificates/acme/certificate`
 
-Order a new certificate from ACME-compatible CA.
+从兼容 ACME 的 CA 申请新证书。
 
 **方法标识：** `new_certificate`
 
@@ -117,8 +117,8 @@ Order a new certificate from ACME-compatible CA.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | Overwrite existing custom certificate. |
-| `node` | string | 是 | — | The cluster node name. |
+| `force` | boolean | 否 | 0 | 覆盖现有自定义证书。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -129,13 +129,13 @@ Order a new certificate from ACME-compatible CA.
   "properties": {
     "force": {
       "default": 0,
-      "description": "Overwrite existing custom certificate.",
+      "description": "覆盖现有自定义证书。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -156,7 +156,7 @@ Order a new certificate from ACME-compatible CA.
 
 ## PUT `/nodes/{node}/certificates/acme/certificate`
 
-Renew existing certificate from CA.
+从 CA 续订现有证书。
 
 **方法标识：** `renew_certificate`
 
@@ -196,8 +196,8 @@ Renew existing certificate from CA.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | Force renewal even if expiry is more than 30 days away. |
-| `node` | string | 是 | — | The cluster node name. |
+| `force` | boolean | 否 | 0 | 即使距到期时间超过 30 天也强制续期。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -208,13 +208,13 @@ Renew existing certificate from CA.
   "properties": {
     "force": {
       "default": 0,
-      "description": "Force renewal even if expiry is more than 30 days away.",
+      "description": "即使距到期时间超过 30 天也强制续期。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

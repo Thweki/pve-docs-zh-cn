@@ -10,7 +10,7 @@
 
 Proxmox VE 会生成一个 ISO 镜像，用于将 Cloud-Init 数据传递给 VM。为此，所有 Cloud-Init VM 都需要分配一个 CD-ROM 驱动器。通常还应添加串行控制台并将其用作显示设备。许多 Cloud-Init 镜像依赖于此配置，这也是 OpenStack 的要求。不过，其他镜像可能无法使用此配置。如果使用串行控制台不起作用，请切换回默认显示配置。
 
-## 10.8.1. 准备 Cloud-Init 模板 <a href="#_preparing_cloud_init_templates" id="_preparing_cloud_init_templates"></a>
+## 10.8.1. 准备 Cloud-Init 模板 <a href="#preparing_cloud_init_templates" id="preparing_cloud_init_templates"></a>
 
 第一步是准备你的 VM。基本上，你可以使用任何 VM。只需 **在要准备的 VM 内部** 安装 Cloud-Init 软件包。在基于 Debian/Ubuntu 的系统上，操作非常简单：
 
@@ -67,7 +67,7 @@ qm set 9000 --serial0 socket --vga serial0
 qm template 9000
 ```
 
-## 10.8.2. 部署 Cloud-Init 模板 <a href="#_deploying_cloud_init_templates" id="_deploying_cloud_init_templates"></a>
+## 10.8.2. 部署 Cloud-Init 模板 <a href="#deploying_cloud_init_templates" id="deploying_cloud_init_templates"></a>
 
 [![screenshot/gui-cloudinit-config.png](../../assets/screenshot-gui-cloudinit-config-png-19f801d9de33.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cloudinit-config.png)
 
@@ -86,7 +86,7 @@ qm set 123 --ipconfig0 ip=10.0.10.123/24,gw=10.0.10.1
 
 你也可以只使用一条命令来配置所有 Cloud-Init 选项。上面的示例只是为了缩短行长度，才将命令拆分开来。另外，请确保根据你的具体环境调整 IP 设置。
 
-## 10.8.3. 自定义 Cloud-Init 配置 <a href="#_custom_cloud_init_configuration" id="_custom_cloud_init_configuration"></a>
+## 10.8.3. 自定义 Cloud-Init 配置 <a href="#custom_cloud_init_configuration" id="custom_cloud_init_configuration"></a>
 
 Cloud-Init 集成还允许使用自定义配置文件，而不是自动生成的配置。这可以通过命令行中的 `cicustom` 选项实现：
 
@@ -110,7 +110,7 @@ qm cloudinit dump 9000 user
 
 `network` 和 `meta` 也有相同的命令。
 
-## 10.8.4. Windows 上的 Cloud-Init <a href="#_cloud_init_on_windows" id="_cloud_init_on_windows"></a>
+## 10.8.4. Windows 上的 Cloud-Init <a href="#cloud_init_on_windows" id="cloud_init_on_windows"></a>
 
 Windows 上有一个名为 [cloudbase-init](https://cloudbase.it/) 的 Cloud-Init 重新实现版本。Cloudbase-Init 并不具备 Cloud-Init 的所有功能，而且某些功能与 Cloud-Init 有所不同。
 
@@ -118,7 +118,7 @@ Cloudbase-Init 要求将 `ostype` 设置为任意 Windows 版本，并将 `cityp
 
 没有可免费使用的现成 Windows 云镜像。使用 Cloudbase-Init 需要手动安装和配置 Windows 客户机。
 
-## 10.8.5. 准备 Cloudbase-Init 模板 <a href="#_preparing_cloudbase_init_templates" id="_preparing_cloudbase_init_templates"></a>
+## 10.8.5. 准备 Cloudbase-Init 模板 <a href="#preparing_cloudbase_init_templates" id="preparing_cloudbase_init_templates"></a>
 
 第一步是在虚拟机中安装 Windows。在客户机中下载并安装 Cloudbase-Init。可能有必要安装 Beta 版本。不要在安装结束时运行 Sysprep，而应首先配置 Cloudbase-Init。
 
@@ -160,7 +160,7 @@ qm set 123 --sshkey ~/.ssh/id_rsa.pub
 
 所有设置完成后，启动克隆的客户机。首次启动时将无法登录，并且会因主机名已更改而自动重启。重启后，新密码应已设置，登录也应可正常使用。
 
-## 10.8.6. Cloudbase-Init 和 Sysprep <a href="#_cloudbase_init_and_sysprep" id="_cloudbase_init_and_sysprep"></a>
+## 10.8.6. Cloudbase-Init 和 Sysprep <a href="#cloudbase_init_and_sysprep" id="cloudbase_init_and_sysprep"></a>
 
 Sysprep 是一项用于重置 Windows 配置并提供 `new` 系统的功能。它可以与 Cloudbase-Init 结合使用，以创建一个干净的模板。
 
@@ -207,7 +207,7 @@ Cloudbase-Init 分 2 个步骤运行：首先使用 `-unattend.conf` 执行 Sysp
 
 完成上述步骤后，虚拟机应因 Sysprep 而处于关机状态。现在，您可以将其转换为模板、克隆它并根据需要进行配置。
 
-## 10.8.7. Cloud-Init 特定选项 <a href="#_cloud_init_specific_options" id="_cloud_init_specific_options"></a>
+## 10.8.7. Cloud-Init 特定选项 <a href="#cloud_init_specific_options" id="cloud_init_specific_options"></a>
 
 **`cicustom`: `[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]`**
 

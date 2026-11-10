@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/prefix-lists/{id}/entries`
 
-List Prefix List Entries
+列出前缀列表条目
 
 **方法标识：** `get_prefix_list_entries`
 
@@ -34,7 +34,7 @@ List Prefix List Entries
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | The SDN prefix list identifier |
+| `id` | string | 是 | — | SDN 前缀列表标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -43,7 +43,7 @@ List Prefix List Entries
 {
   "properties": {
     "id": {
-      "description": "The SDN prefix list identifier",
+      "description": "SDN 前缀列表标识符",
       "format": "pve-sdn-prefix-list-id",
       "type": "string",
       "typetext": "<string>"
@@ -74,7 +74,7 @@ List Prefix List Entries
 
 ## POST `/cluster/sdn/prefix-lists/{id}/entries`
 
-Create Prefix List Entry
+创建前缀列表条目
 
 **方法标识：** `create_prefix_list_entry`
 
@@ -110,9 +110,9 @@ Create Prefix List Entry
 | --- | --- | --- | --- | --- |
 | `action` | string | 是 | — | ；可选值：`permit`, `deny` |
 | `ge` | integer | 否 | — |  |
-| `id` | string | 是 | — | The SDN prefix list identifier |
+| `id` | string | 是 | — | SDN 前缀列表标识符 |
 | `le` | integer | 否 | — |  |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 | `prefix` | string | 是 | — |  |
 | `seq` | integer | 否 | — |  |
 
@@ -138,7 +138,7 @@ Create Prefix List Entry
       "typetext": "<integer> (0 - 128)"
     },
     "id": {
-      "description": "The SDN prefix list identifier",
+      "description": "SDN 前缀列表标识符",
       "format": "pve-sdn-prefix-list-id",
       "type": "string",
       "typetext": "<string>"
@@ -151,7 +151,7 @@ Create Prefix List Entry
       "typetext": "<integer> (0 - 128)"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

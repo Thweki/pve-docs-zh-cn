@@ -6,11 +6,11 @@ PCI(e) 直通是一种让虚拟机控制宿主机 PCI 设备的机制。与使�
 
 请注意，虽然 i440fx 和 q35 机器都支持 PCI 直通，但 PCIe 直通仅适用于 q35 机器。这并不意味着作为 PCI 设备直通的 PCIe 设备只能以 PCI 速度运行。以 PCIe 方式直通设备只是为客户机设置一个标志，告知它该设备是 PCIe 设备，而不是“速度非常快的传统 PCI 设备”。某些客户机应用程序会从中受益。
 
-## 10.9.1. 一般要求 <a href="#_general_requirements" id="_general_requirements"></a>
+## 10.9.1. 一般要求 <a href="#general_requirements" id="general_requirements"></a>
 
 由于直通是在真实硬件上执行的，因此需要满足一些要求。下面简要介绍这些要求；有关特定设备的更多信息，请参阅 [PCI 直通示例](https://pve.proxmox.com/wiki/PCI_Passthrough)。
 
-### 硬件 <a href="#_hardware_3" id="_hardware_3"></a>
+### 硬件 <a href="#hardware_3" id="hardware_3"></a>
 
 您的硬件需要支持 `IOMMU`（**I**/**O** **M**emory **M**anagement **U**nit）中断重映射，其中包括 CPU 和主板。
 
@@ -20,7 +20,7 @@ PCI(e) 直通是一种让虚拟机控制宿主机 PCI 设备的机制。与使�
 
 请咨询您的硬件供应商，以确认您的特定配置在 Linux 下是否支持此功能。
 
-### 确定 PCI 卡地址 <a href="#_determining_pci_card_address" id="_determining_pci_card_address"></a>
+### 确定 PCI 卡地址 <a href="#determining_pci_card_address" id="determining_pci_card_address"></a>
 
 最简单的方法是在虚拟机的硬件选项卡中使用 GUI 添加类型为“Host PCI”的设备。或者，您也可以使用命令行。
 
@@ -30,7 +30,7 @@ PCI(e) 直通是一种让虚拟机控制宿主机 PCI 设备的机制。与使�
  lspci
 ```
 
-### 配置 <a href="#_configuration_12" id="_configuration_12"></a>
+### 配置 <a href="#configuration_12" id="configuration_12"></a>
 
 确认硬件支持直通后，您需要进行一些配置来启用 PCI(e) 直通。
 
@@ -121,7 +121,7 @@ PCI(e) 直通是一种让虚拟机控制宿主机 PCI 设备的机制。与使�
 {% hint style="info" %}
 **不安全的中断**
 
-For some platforms, it may be necessary to allow unsafe interrupts. To do so, add the following line to a file ending in `.conf` under **/etc/modprobe.d/**:
+对于某些平台，可能需要允许不安全中断。为此，在以 `.conf` 结尾的文件中添加以下行，文件位于 **/etc/modprobe.d/** 下：
 
 ```text
  options vfio_iommu_type1 allow_unsafe_interrupts=1
@@ -130,7 +130,7 @@ For some platforms, it may be necessary to allow unsafe interrupts. To do so, ad
 请注意，此选项可能会导致系统不稳定。
 {% endhint %}
 
-### GPU 直通注意事项 <a href="#_gpu_passthrough_notes" id="_gpu_passthrough_notes"></a>
+### GPU 直通注意事项 <a href="#gpu_passthrough_notes" id="gpu_passthrough_notes"></a>
 
 无法通过 Proxmox VE Web 界面上的 NoVNC 或 SPICE 显示 GPU 的帧缓冲区。
 
@@ -138,11 +138,11 @@ For some platforms, it may be necessary to allow unsafe interrupts. To do so, ad
 
 如果只想将 GPU 用作硬件加速器（例如供使用 OpenCL 或 CUDA 的程序使用），则无需这样做。
 
-## 10.9.2. 宿主机设备直通 <a href="#_host_device_passthrough" id="_host_device_passthrough"></a>
+## 10.9.2. 宿主机设备直通 <a href="#host_device_passthrough" id="host_device_passthrough"></a>
 
 PCI(e) 直通最常用的方式是直通整张 PCI(e) 卡，例如 GPU 或网卡。
 
-### 宿主机配置 <a href="#_host_configuration" id="_host_configuration"></a>
+### 宿主机配置 <a href="#host_configuration" id="host_configuration"></a>
 
 Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如果此方法无效，可以采取以下两种措施：
 
@@ -192,7 +192,7 @@ Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如�
   echo "blacklist <some-module>" >> /etc/modprobe.d/blacklist.conf
   ```
 
-对于这两种方法，都需要[更新 `initramfs`](#qm_pci_passthrough_update_initramfs)，然后重新启动。
+对于这两种方法，都需要[更新 `initramfs`](#configuration_12)，然后重新启动。
 
 如果这样仍然无效，可能需要设置软依赖，以便在加载 GPU 模块之前加载 *vfio-pci*。可以使用 *softdep* 标志来实现，更多信息另请参阅 *modprobe.d* 的手册页。
 
@@ -281,7 +281,7 @@ Kernel driver in use: vfio-pci
 # qm set VMID -hostpci0 02:00,device-id=0x10f6,sub-vendor-id=0x0000
 ```
 
-## 10.9.3. SR-IOV <a href="#_sr_iov" id="_sr_iov"></a>
+## 10.9.3. SR-IOV <a href="#sr_iov" id="sr_iov"></a>
 
 直通 PCI(e) 设备的另一种方式是使用设备的硬件虚拟化功能（如果可用）。
 
@@ -295,7 +295,7 @@ Kernel driver in use: vfio-pci
 
 目前，最常见的用例是支持 SR-IOV 的 NIC（**N**etwork **I**nterface **C**ard），每个物理端口可以提供多个 VF。这使虚拟机内部能够使用校验和卸载等功能，从而减少（宿主机）CPU 开销。
 
-### 宿主机配置 <a href="#_host_configuration_2" id="_host_configuration_2"></a>
+### 宿主机配置 <a href="#host_configuration_2" id="host_configuration_2"></a>
 
 通常，在设备上启用虚拟功能有两种方法。
 
@@ -316,17 +316,17 @@ Kernel driver in use: vfio-pci
 
   要使此更改持久化，可以使用 ‘sysfsutils\` Debian 软件包。安装后，可以通过 **/etc/sysfs.conf** 或 \`FILE.conf’ 对其进行配置，后者位于 **/etc/sysfs.d/**。
 
-### 虚拟机配置 <a href="#_vm_configuration" id="_vm_configuration"></a>
+### 虚拟机配置 <a href="#vm_configuration" id="vm_configuration"></a>
 
 创建 VF 后，使用 `lspci` 输出它们时，应该会将它们显示为单独的 PCI(e) 设备。获取其 ID，并像直通 [普通 PCI(e) 设备](#qm_pci_passthrough_vm_config) 一样直通它们。
 
-## 10.9.4. 中介设备（vGPU、GVT-g） <a href="#_mediated_devices_vgpu_gvt_g" id="_mediated_devices_vgpu_gvt_g"></a>
+## 10.9.4. 中介设备（vGPU、GVT-g） <a href="#mediated_devices_vgpu_gvt_g" id="mediated_devices_vgpu_gvt_g"></a>
 
 中介设备是另一种将物理硬件的功能和性能复用于虚拟化硬件的方法。它们最常见于虚拟化 GPU 部署，例如 Intel 的 GVT-g，以及 NVIDIA 在其 GRID 技术中使用的 vGPU。
 
 通过这种方式，物理卡可以创建虚拟卡，类似于 SR-IOV。不同之处在于，中介设备不会在宿主机上显示为 PCI(e) 设备，因此仅适用于虚拟机。
 
-### 宿主机配置 <a href="#_host_configuration_3" id="_host_configuration_3"></a>
+### 宿主机配置 <a href="#host_configuration_3" id="host_configuration_3"></a>
 
 通常，卡的驱动程序必须支持该功能，否则将无法工作。因此，有关兼容的驱动程序及其配置方法，请咨询供应商。
 
@@ -338,9 +338,9 @@ Intel 的 GVT-g 驱动程序已集成到内核中，应可与第 5、第 6 和�
  i915.enable_gvt=1
 ```
 
-之后，记得[更新 `initramfs`](#qm_pci_passthrough_update_initramfs)，并重新启动宿主机。
+之后，记得[更新 `initramfs`](#configuration_12)，并重新启动宿主机。
 
-### 虚拟机配置 <a href="#_vm_configuration_2" id="_vm_configuration_2"></a>
+### 虚拟机配置 <a href="#vm_configuration_2" id="vm_configuration_2"></a>
 
 要使用中介设备，只需指定 `mdev` 属性，该属性位于 `hostpciX` 虚拟机配置选项中。
 
@@ -364,7 +364,7 @@ Intel 的 GVT-g 驱动程序已集成到内核中，应可与第 5、第 6 和�
 
 设置后，Proxmox VE 会在虚拟机启动时自动创建此类设备，并在虚拟机停止时再次清理它。
 
-## 10.9.5. 在集群中使用 <a href="#_use_in_clusters" id="_use_in_clusters"></a>
+## 10.9.5. 在集群中使用 <a href="#use_in_clusters" id="use_in_clusters"></a>
 
 还可以在集群级别映射设备，以便设备能够正确用于高可用性、检测硬件更改，并允许非 root 用户配置设备。有关详细信息，请参阅[资源映射](12-resource-mapping.md)。
 
@@ -374,7 +374,7 @@ vIOMMU 是在虚拟机内模拟硬件 IOMMU，为虚拟化 I/O 设备提供更�
 
 目前有两种 vIOMMU 实现：Intel 和 VirtIO。
 
-### Intel vIOMMU <a href="#_intel_viommu" id="_intel_viommu"></a>
+### Intel vIOMMU <a href="#intel_viommu" id="intel_viommu"></a>
 
 Intel vIOMMU 对虚拟机的特定要求：
 
@@ -389,7 +389,7 @@ Intel vIOMMU 对虚拟机的特定要求：
 
 [VT-d 的 QEMU 文档](https://wiki.qemu.org/Features/VT-d)
 
-### VirtIO vIOMMU <a href="#_virtio_viommu" id="_virtio_viommu"></a>
+### VirtIO vIOMMU <a href="#virtio_viommu" id="virtio_viommu"></a>
 
 这种 vIOMMU 实现较新，限制不如 Intel vIOMMU 多，但目前在生产环境中使用较少，文档也较少。
 

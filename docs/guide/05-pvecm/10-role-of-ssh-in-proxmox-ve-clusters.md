@@ -1,4 +1,4 @@
-# 5.10. SSH 在 Proxmox VE 集群中的作用 <a href="#_role_of_ssh_in_proxmox_ve_clusters" id="_role_of_ssh_in_proxmox_ve_clusters"></a>
+# 5.10. SSH 在 Proxmox VE 集群中的作用 <a href="#role_of_ssh_in_proxmox_ve_clusters" id="role_of_ssh_in_proxmox_ve_clusters"></a>
 
 Proxmox VE 将 SSH 隧道用于多种功能。
 
@@ -10,7 +10,7 @@ Proxmox VE 将 SSH 隧道用于多种功能。
   迁移期间，会在源节点和目标节点之间建立一条或多条 SSH 隧道，用于交换迁移信息以及传输内存和磁盘内容。
 - 存储复制
 
-## 5.10.1. SSH 设置 <a href="#_ssh_setup" id="_ssh_setup"></a>
+## 5.10.1. SSH 设置 <a href="#ssh_setup" id="ssh_setup"></a>
 
 在 Proxmox VE 系统上，会对 SSH 配置/设置进行以下更改：
 
@@ -22,7 +22,7 @@ Proxmox VE 将 SSH 隧道用于多种功能。
 较早的系统还可能将 `/etc/ssh/ssh_known_hosts` 设置为指向 `/etc/pve/priv/known_hosts` 的符号链接，其中包含所有节点主机密钥的合并版本。此机制已在 `pve-cluster <<INSERT VERSION>>` 中被显式主机密钥固定取代；如果该符号链接仍然存在，可以通过运行 `pvecm updatecerts --unmerge-known-hosts` 将其解除配置。
 {% endhint %}
 
-## 5.10.2. 自动执行 `.bashrc` 及类似文件带来的隐患 <a href="#_pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings" id="_pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings"></a>
+## 5.10.2. 自动执行 `.bashrc` 及类似文件带来的隐患 <a href="#pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings" id="pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings"></a>
 
 如果您有自定义的 `.bashrc`，或由所配置 shell 在登录时执行的其他类似文件，那么一旦会话成功建立，`ssh` 就会自动运行该文件。这可能会导致一些意外行为，因为在上述任何操作中，这些命令都可能以 root 权限执行。这可能产生有问题的副作用！
 

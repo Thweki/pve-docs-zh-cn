@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ha/status/current`
 
-Get HA manager status.
+获取 HA 管理器状态。
 
 **方法标识：** `status`
 
@@ -41,7 +41,7 @@ Get HA manager status.
   "items": {
     "properties": {
       "armed-state": {
-        "description": "For type 'fencing'. Whether HA is armed, on standby, disarming or disarmed.",
+        "description": "用于 'fencing' 类型。HA 是已启用、待机、正在解除还是已解除。",
         "enum": [
           "armed",
           "standby",
@@ -53,51 +53,51 @@ Get HA manager status.
       },
       "auto-rebalance": {
         "default": 1,
-        "description": "HA resource may be migrated during automatic rebalancing.",
+        "description": "HA 资源可以在自动重新均衡期间迁移。",
         "optional": 1,
         "type": "boolean"
       },
       "crm_state": {
-        "description": "For type 'service'. Service state as seen by the CRM.",
+        "description": "用于 'service' 类型。CRM 所见的服务状态。",
         "optional": 1,
         "type": "string"
       },
       "failback": {
         "default": 1,
-        "description": "The HA resource is automatically migrated to the node with the highest priority according to their node affinity rule, if a node with a higher priority than the current node comes online.",
+        "description": "如果优先级高于当前节点的节点上线，则根据节点亲和性规则，将 HA 资源自动迁移到优先级最高的节点。",
         "optional": 1,
         "type": "boolean"
       },
       "id": {
-        "description": "Status entry ID (quorum, master, lrm:<node>, service:<sid>).",
+        "description": "状态条目 ID（quorum、master、lrm:<node>、service:<sid>）。",
         "type": "string"
       },
       "max_relocate": {
-        "description": "For type 'service'.",
+        "description": "用于 'service' 类型。",
         "optional": 1,
         "type": "integer"
       },
       "max_restart": {
-        "description": "For type 'service'.",
+        "description": "用于 'service' 类型。",
         "optional": 1,
         "type": "integer"
       },
       "node": {
-        "description": "Node associated to status entry.",
+        "description": "与状态条目关联的节点。",
         "type": "string"
       },
       "quorate": {
-        "description": "For type 'quorum'. Whether the cluster is quorate or not.",
+        "description": "用于 'quorum' 类型。集群是否达到仲裁。",
         "optional": 1,
         "type": "boolean"
       },
       "request_state": {
-        "description": "For type 'service'. Requested service state.",
+        "description": "用于 'service' 类型。请求的服务状态。",
         "optional": 1,
         "type": "string"
       },
       "resource_mode": {
-        "description": "For type 'fencing'. How resources are handled while disarmed.",
+        "description": "用于 'fencing' 类型。解除后如何处理资源。",
         "enum": [
           "freeze",
           "ignore"
@@ -106,26 +106,26 @@ Get HA manager status.
         "type": "string"
       },
       "sid": {
-        "description": "For type 'service'. Service ID.",
+        "description": "用于 'service' 类型。服务 ID。",
         "optional": 1,
         "type": "string"
       },
       "state": {
-        "description": "For type 'service'. Verbose service state.",
+        "description": "用于 'service' 类型。详细服务状态。",
         "optional": 1,
         "type": "string"
       },
       "status": {
-        "description": "Status of the entry (value depends on type).",
+        "description": "条目状态（值取决于类型）。",
         "type": "string"
       },
       "timestamp": {
-        "description": "For type 'lrm','master'. Timestamp of the status information.",
+        "description": "用于 'lrm'、'master' 类型。状态信息的时间戳。",
         "optional": 1,
         "type": "integer"
       },
       "type": {
-        "description": "Type of status entry.",
+        "description": "状态条目类型。",
         "enum": [
           "quorum",
           "master",

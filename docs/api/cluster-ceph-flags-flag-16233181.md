@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph/flags/{flag}`
 
-Get the status of a specific ceph flag.
+获取特定 ceph 标志的状态。
 
 **方法标识：** `get_flag`
 
@@ -40,7 +40,7 @@ Get the status of a specific ceph flag.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `flag` | string | 是 | — | The name of the flag name to get.；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
+| `flag` | string | 是 | — | 要获取的标志名称。；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Get the status of a specific ceph flag.
   "additionalProperties": 0,
   "properties": {
     "flag": {
-      "description": "The name of the flag name to get.",
+      "description": "要获取的标志名称。",
       "enum": [
         "nobackfill",
         "nodeep-scrub",
@@ -82,7 +82,7 @@ Get the status of a specific ceph flag.
 
 ## PUT `/cluster/ceph/flags/{flag}`
 
-Set or clear (unset) a specific Ceph flag. Runs synchronously (unlike the bulk PUT /cluster/ceph/flags endpoint, which forks a worker task).
+设置或清除（取消设置）特定 Ceph 标志。同步运行（不同于会派生工作任务的批量 PUT /cluster/ceph/flags 端点）。
 
 **方法标识：** `update_flag`
 
@@ -116,8 +116,8 @@ Set or clear (unset) a specific Ceph flag. Runs synchronously (unlike the bulk P
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `flag` | string | 是 | — | The ceph flag to update；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
-| `value` | boolean | 是 | — | The new value of the flag |
+| `flag` | string | 是 | — | 要更新的 ceph 标志；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
+| `value` | boolean | 是 | — | 标志的新值 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -127,7 +127,7 @@ Set or clear (unset) a specific Ceph flag. Runs synchronously (unlike the bulk P
   "additionalProperties": 0,
   "properties": {
     "flag": {
-      "description": "The ceph flag to update",
+      "description": "要更新的 ceph 标志",
       "enum": [
         "nobackfill",
         "nodeep-scrub",
@@ -144,7 +144,7 @@ Set or clear (unset) a specific Ceph flag. Runs synchronously (unlike the bulk P
       "type": "string"
     },
     "value": {
-      "description": "The new value of the flag",
+      "description": "标志的新值",
       "type": "boolean",
       "typetext": "<boolean>"
     }

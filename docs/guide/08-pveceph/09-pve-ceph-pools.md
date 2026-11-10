@@ -4,7 +4,7 @@
 
 池是用于存储对象的逻辑组。它包含一组对象，称为 **P**lacement **G**roups（`PG`，`pg_num`）。
 
-## 8.9.1. 创建和编辑池 <a href="#_create_and_edit_pools" id="_create_and_edit_pools"></a>
+## 8.9.1. 创建和编辑池 <a href="#create_and_edit_pools" id="create_and_edit_pools"></a>
 
 您可以通过命令行或任何 Proxmox VE 宿主机的 Web 界面，在 **Ceph → Pools** 下创建和编辑池。
 
@@ -14,9 +14,9 @@
 **不要将 min\_size 设置为 1**。对于 min\_size 为 1 的副本池，当对象只有 1 个副本时仍允许对其执行 I/O，这可能导致数据丢失、PG 不完整或无法找到对象。
 {% endhint %}
 
-建议您启用 PG-Autoscaler，或根据您的部署计算 PG 数量。您可以在线找到相关公式和 PG 计算器 [\[1\]](#note-91ded4b9-1)。从 Ceph Nautilus 起，您可以在完成设置后更改 PG [\[placement\_groups\]](#_footnote_placement_groups) 的数量。
+建议您启用 PG-Autoscaler，或根据您的部署计算 PG 数量。您可以在线找到相关公式和 PG 计算器 [\[1\]](#note-91ded4b9-1)。从 Ceph Nautilus 起，您可以在完成设置后更改 PG [\[placement\_groups\]](#footnote_placement_groups) 的数量。
 
-PG 自动缩放器 [\[autoscaler\]](#_footnote_autoscaler) 可以在后台自动调整池的 PG 数量。设置 `Target Size` 或 `Target Ratio` 高级参数有助于 PG-Autoscaler 做出更好的决策。
+PG 自动缩放器 [\[autoscaler\]](#footnote_autoscaler) 可以在后台自动调整池的 PG 数量。设置 `Target Size` 或 `Target Ratio` 高级参数有助于 PG-Autoscaler 做出更好的决策。
 
 **通过 CLI 创建池的示例**
 
@@ -28,7 +28,7 @@ pveceph pool create <pool-name> --add_storages
 如果您还想自动为池定义存储，请在 Web 界面中保持选中“Add as Storage”复选框，或在创建池时使用命令行选项 *--add\_storages*。
 {% endhint %}
 
-### 池选项 <a href="#_pool_options" id="_pool_options"></a>
+### 池选项 <a href="#pool_options" id="pool_options"></a>
 
 [![screenshot/gui-ceph-pool-create.png](../../assets/screenshot-gui-ceph-pool-create-png-020d880342d1.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-pool-create.png)
 
@@ -45,7 +45,7 @@ pveceph pool create <pool-name> --add_storages
 **PG 自动缩放模式**
 
 池的自动 PG 缩放模式   
-[\[自动缩放器\]](#_footnote_autoscaler)  
+[\[自动缩放器\]](#footnote_autoscaler)  
 。如果设置为 `warn`，当池的 PG 数量不是最佳值时，会生成警告消息。默认值：`warn`。
 
 **添加为存储**
@@ -65,7 +65,7 @@ pveceph pool create <pool-name> --add_storages
 **PG 数量**
 
 池在初始时应具有的归置组   
-[\[placement\_groups\]](#_footnote_placement_groups)  
+[\[placement\_groups\]](#footnote_placement_groups)  
  数量。默认值：`128`。
 
 **目标比例**
@@ -90,11 +90,11 @@ pveceph pool create <pool-name> --add_storages
 
 编码块数量 `m` 决定了在不丢失任何数据的情况下可以容忍丢失多少个 OSD。存储的对象总数为 `k + m`。
 
-### 创建 EC 池 <a href="#_creating_ec_pools" id="_creating_ec_pools"></a>
+### 创建 EC 池 <a href="#creating_ec_pools" id="creating_ec_pools"></a>
 
 可以使用 `pveceph` 命令行工具创建纠删码（EC）池。规划 EC 池时，必须考虑其工作方式与副本池不同这一事实。
 
-The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2` [\[5\]](#note-91ded4b9-5).
+EC 池的默认 `min_size` 取决于 `m` 参数。如果 `m = 1`，则 EC 池的 `min_size` 为 `k`。`min_size` 将为 `k + 1`，如果 `m > 1`。Ceph 文档建议采用保守的 `min_size` 值 `k + 2` [\[5\]](#note-91ded4b9-5)。
 
 如果可用 OSD 少于 `min_size` 个，则对该池的所有 I/O 都将被阻塞，直到再次有足够的 OSD 可用。
 
@@ -126,7 +126,7 @@ pveceph pool create <pool-name> --erasure-coding k=2,m=1
 pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
 ```
 
-### FastEC（`allow_ec_optimizations`） <a href="#_fastec_span_class_monospaced_allow_ec_optimizations_span" id="_fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
+### FastEC（`allow_ec_optimizations`） <a href="#fastec_span_class_monospaced_allow_ec_optimizations_span" id="fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
 
 Ceph Tentacle 引入了一种名为 FastEC 的新纠删码 I/O 路径，可通过 `allow_ec_optimizations` 标志按池启用。FastEC 为 EC 池增加了部分读取和部分写入功能，显著提升了小块随机 I/O 的性能，而这是虚拟机磁盘 I/O 的主要访问模式。上游建议将其用于由 RBD 和 CephFS 支持的存储 [\[7\]](#note-91ded4b9-7)。
 
@@ -209,7 +209,7 @@ ceph osd dump | grep require_osd_release
 `allow_ec_optimizations` 是一个单向开关。在池上启用后，Ceph 监视器会拒绝再次清除该标志，因此回滚需要清空并重新创建池。请仅在测试池上验证 FastEC 适用于您的工作负载后再启用它。
 {% endhint %}
 
-#### 在池上启用 FastEC <a href="#_enabling_fastec_on_a_pool" id="_enabling_fastec_on_a_pool"></a>
+#### 在池上启用 FastEC <a href="#enabling_fastec_on_a_pool" id="enabling_fastec_on_a_pool"></a>
 
 FastEC 通过 `ceph` 命令行按池启用。它既可以设置在新池上，也可以设置在现有（已有数据）的池上。不会发生数据迁移或重新编码，仅会更改池元数据。
 
@@ -232,7 +232,7 @@ ceph osd pool get <pool-name>-data allow_ec_optimizations
 - **主分片重新选举。**FastEC 将数据分片 1 到 k-1 标记为非主分片，因此主分片原本位于这些分片之一的 PG 将重新进行对等协商。这是正常的对等协商事件，并会导致每个受影响的 PG 出现短暂的 I/O 暂停。
 - **Scrub 交互。**重新进行对等协商会取消受影响 PG 上正在进行的 Scrub。对等协商完成后，需要重新对这些 PG 执行 Scrub。
 
-### 将 EC 池添加为存储 <a href="#_adding_ec_pools_as_storage" id="_adding_ec_pools_as_storage"></a>
+### 将 EC 池添加为存储 <a href="#adding_ec_pools_as_storage" id="adding_ec_pools_as_storage"></a>
 
 您可以将现有的 EC 池作为存储添加到 Proxmox VE。其操作方式与添加 `RBD` 池相同，但需要额外的 `data-pool` 选项。
 
@@ -244,7 +244,7 @@ pvesm add rbd <storage-name> --pool <replicated-pool> --data-pool <ec-pool>
 对于不受本地 Proxmox VE 集群管理的任何外部 Ceph 集群，请不要忘记添加 `keyring` 和 `monhost` 选项。
 {% endhint %}
 
-## 8.9.3. 销毁池 <a href="#_destroy_pools" id="_destroy_pools"></a>
+## 8.9.3. 销毁池 <a href="#destroy_pools" id="destroy_pools"></a>
 
 要通过 GUI 销毁池，请在树状视图中选择一个节点，然后转到 **Ceph → Pools** 面板。选择要销毁的池，然后点击 **Destroy** 按钮。要确认销毁该池，您需要输入池名称。
 
@@ -258,7 +258,7 @@ pveceph pool destroy <name>
 池删除会在后台运行，并且可能需要一些时间。在此过程中，您会注意到集群中的数据使用量逐渐减少。
 {% endhint %}
 
-## 8.9.4. PG 自动缩放器 <a href="#_pg_autoscaler" id="_pg_autoscaler"></a>
+## 8.9.4. PG 自动缩放器 <a href="#pg_autoscaler" id="pg_autoscaler"></a>
 
 PG 自动缩放器使集群能够考虑每个池中存储的（预期）数据量，并自动选择合适的 pg\_num 值。该功能自 Ceph Nautilus 起可用。
 
@@ -305,11 +305,11 @@ ceph mgr module enable pg_autoscaler
 
 PG 计算器 [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)
 
-### 注释 placement\_groups <a href="#_footnote_placement_groups" id="_footnote_placement_groups"></a>
+### 注释 placement\_groups <a href="#footnote_placement_groups" id="footnote_placement_groups"></a>
 
 归置组 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)
 
-### 注释 autoscaler <a href="#_footnote_autoscaler" id="_footnote_autoscaler"></a>
+### 注释 autoscaler <a href="#footnote_autoscaler" id="footnote_autoscaler"></a>
 
 自动缩放 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)
 
@@ -319,7 +319,7 @@ Ceph 池操作 [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https
 
 ### 注释 5 <a href="#note-91ded4b9-5" id="note-91ded4b9-5"></a>
 
-Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)
+Ceph 纠删码池恢复 [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)
 
 ### 注释 6 <a href="#note-91ded4b9-6" id="note-91ded4b9-6"></a>
 

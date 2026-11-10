@@ -12,7 +12,7 @@ iSCSI 是一种广泛用于连接存储服务器的技术。几乎所有存储�
 
 可以使用 `iscsiadm` 工具执行底层 iSCSI 管理任务。
 
-## 7.12.1. 配置 <a href="#_configuration_8" id="_configuration_8"></a>
+## 7.12.1. 配置 <a href="#configuration_8" id="configuration_8"></a>
 
 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 iSCSI 特定属性：
 
@@ -37,11 +37,11 @@ iscsi: mynas
 如果要在 iSCSI 之上使用 LVM，设置 `content none` 是合理的。这样就无法直接使用 iSCSI LUN 创建 VM。
 {% endhint %}
 
-## 7.12.2. 文件命名约定 <a href="#_file_naming_conventions_5" id="_file_naming_conventions_5"></a>
+## 7.12.2. 文件命名约定 <a href="#file_naming_conventions_5" id="file_naming_conventions_5"></a>
 
 iSCSI 协议未定义用于分配或删除数据的接口。相反，这些操作需要在目标端完成，并且因厂商而异。目标端只是将它们导出为带编号的 LUN。因此，Proxmox VE 的 iSCSI 卷名称仅编码 Linux 内核所看到的 LUN 的一些信息。
 
-## 7.12.3. 存储功能 <a href="#_storage_features_8" id="_storage_features_8"></a>
+## 7.12.3. 存储功能 <a href="#storage_features_8" id="storage_features_8"></a>
 
 iSCSI 是块级存储，不提供管理接口。因此，通常最好导出一个大型 LUN，并在该 LUN 之上配置 LVM。然后，就可以使用 LVM 插件管理该 iSCSI LUN 上的存储。
 
@@ -72,7 +72,7 @@ iSCSI 是块级存储，不提供管理接口。因此，通常最好导出一�
 </tbody>
 </table>
 
-## 7.12.4. 示例 <a href="#_examples_8" id="_examples_8"></a>
+## 7.12.4. 示例 <a href="#examples_8" id="examples_8"></a>
 
 可以使用以下命令扫描远程 iSCSI 门户并获取可能的目标端列表：
 

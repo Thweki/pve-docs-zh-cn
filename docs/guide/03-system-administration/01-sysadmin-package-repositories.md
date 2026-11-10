@@ -4,7 +4,7 @@
 
 Proxmox VE 每天自动检查软件包更新。`root@pam` 用户会通过电子邮件收到有关可用更新的通知。在 GUI 中，可以使用 *Changelog* 按钮查看所选更新的更多详情。
 
-## 3.1.1. Proxmox VE 中的软件仓库 <a href="#_repositories_in_proxmox_ve" id="_repositories_in_proxmox_ve"></a>
+## 3.1.1. Proxmox VE 中的软件仓库 <a href="#repositories_in_proxmox_ve" id="repositories_in_proxmox_ve"></a>
 
 软件仓库是软件包的集合，可用于安装新软件，也对获取新更新非常重要。
 
@@ -14,7 +14,7 @@ Proxmox VE 每天自动检查软件包更新。`root@pam` 用户会通过电子�
 
 APT 软件仓库的旧式单行格式定义在文件 `/etc/apt/sources.list` 中，现代 deb822 多行格式定义在 `.sources` 文件中，这些文件位于 `/etc/apt/sources.list.d/`；详情请参阅[软件仓库格式](#sysadmin_apt_repo_formats)。
 
-### 软件仓库管理 <a href="#_repository_management" id="_repository_management"></a>
+### 软件仓库管理 <a href="#repository_management" id="repository_management"></a>
 
 [![screenshot/gui-node-repositories.png](../../assets/screenshot-gui-node-repositories-png-994a4b8cedfd.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-repositories.png)
 
@@ -39,11 +39,11 @@ modernize-sources` 命令自动迁移大多数软件仓库。
 
 在多行格式 `repo.sources` 文件中，每个条目由多行键值对组成。一个文件可以通过用空行分隔各组来包含多个条目。这是现代格式。
 
-### 可用的软件仓库 <a href="#_available_repositories" id="_available_repositories"></a>
+### 可用的软件仓库 <a href="#available_repositories" id="available_repositories"></a>
 
 除了需要基础 Debian 软件仓库外，Proxmox VE 还提供三个不同的软件包仓库。
 
-## 3.1.2. Debian 基础软件仓库 <a href="#_debian_base_repositories" id="_debian_base_repositories"></a>
+## 3.1.2. Debian 基础软件仓库 <a href="#debian_base_repositories" id="debian_base_repositories"></a>
 
 **文件 `/etc/apt/sources.list.d/debian.sources`**
 
@@ -159,13 +159,9 @@ Ceph 相关软件包通过预配置的 Ceph 企业版软件仓库保持最新。
 
 **未运行 HCI，但使用外部 Ceph 集群**
 
-要安装用于连接 Ceph 的较新软件包，请应用可用的系统更新，选择下面列出的软件仓库和 Ceph 版本，通过 *[Repository](#_repository_management)* 面板将其添加到您的节点，应用新可用的系统更新，通过运行 `ceph --version` 验证结果，并禁用旧的 Ceph 软件仓库。
+要安装用于连接 Ceph 的较新软件包，请应用可用的系统更新，选择下面列出的软件仓库和 Ceph 版本，通过 *[Repository](#repository_management)* 面板将其添加到您的节点，应用新可用的系统更新，通过运行 `ceph --version` 验证结果，并禁用旧的 Ceph 软件仓库。
 
-<a id="ceph_release_table"></a>
-
-
-
-**Proxmox VE 9 中可用的 Ceph 版本**
+### Proxmox VE 9 中可用的 Ceph 版本 <a href="#ceph_release_table" id="ceph_release_table"></a>
 
 要阅读适用于您 Proxmox VE 版本的最新版管理指南，请确保已安装所有系统更新，并已重新加载此页面。
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/version`
 
-API version details
+API 版本详情
 
 **方法标识：** `version`
 
@@ -34,7 +34,7 @@ API version details
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -44,7 +44,7 @@ API version details
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -61,15 +61,15 @@ API version details
 {
   "properties": {
     "release": {
-      "description": "The current installed Proxmox VE Release",
+      "description": "当前安装的 Proxmox VE 发行版",
       "type": "string"
     },
     "repoid": {
-      "description": "The short git commit hash ID from which this version was build",
+      "description": "构建此版本所用的简短 git 提交哈希 ID",
       "type": "string"
     },
     "version": {
-      "description": "The current installed pve-manager package version",
+      "description": "当前安装的 pve-manager 软件包版本",
       "type": "string"
     }
   },

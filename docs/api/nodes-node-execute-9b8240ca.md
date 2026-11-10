@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/execute`
 
-Execute multiple commands in order, root only.
+按顺序执行多个命令，仅限 root。
 
 **方法标识：** `execute`
 
@@ -32,8 +32,8 @@ Execute multiple commands in order, root only.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `commands` | string | 是 | — | JSON encoded array of commands, where each command is an object with the following properties:<br>  args:      &lt;object&gt;<br>	     A set of parameter names and their values.<br><br>  method:    (GET\|POST\|PUT\|DELETE)<br>	     A method related to the API endpoint (GET, POST etc.).<br><br>  path:      &lt;string&gt;<br>	     A relative path to an API endpoint on this node.<br><br> |
-| `node` | string | 是 | — | The cluster node name. |
+| `commands` | string | 是 | — | JSON 编码的命令数组，其中每条命令都是具有以下属性的对象：<br>  args:      &lt;object&gt;<br>	     参数名称及其值的集合。<br><br>  method:    (GET\|POST\|PUT\|DELETE)<br>	     与 API 端点相关的方法（GET、POST 等）。<br><br>  path:      &lt;string&gt;<br>	     此节点上 API 端点的相对路径。<br><br> |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -43,14 +43,14 @@ Execute multiple commands in order, root only.
   "additionalProperties": 0,
   "properties": {
     "commands": {
-      "description": "JSON encoded array of commands.",
+      "description": "JSON 编码的命令数组。",
       "format": "pve-command-batch",
       "type": "string",
       "typetext": "<string>",
-      "verbose_description": "JSON encoded array of commands, where each command is an object with the following properties:\n  args:      <object>\n\t     A set of parameter names and their values.\n\n  method:    (GET|POST|PUT|DELETE)\n\t     A method related to the API endpoint (GET, POST etc.).\n\n  path:      <string>\n\t     A relative path to an API endpoint on this node.\n\n"
+      "verbose_description": "JSON 编码的命令数组，其中每条命令都是具有以下属性的对象：\n  args:      <object>\n\t     参数名称及其值的集合。\n\n  method:    (GET|POST|PUT|DELETE)\n\t     与 API 端点相关的方法（GET、POST 等）。\n\n  path:      <string>\n\t     此节点上 API 端点的相对路径。\n\n"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

@@ -8,7 +8,7 @@
 
 如果从其他虚拟机监控程序将 VM 导入 Proxmox VE，建议先熟悉 [Proxmox VE 的概念](https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE#Concepts)。
 
-## 10.7.1. 导入向导 <a href="#_import_wizard" id="_import_wizard"></a>
+## 10.7.1. 导入向导 <a href="#import_wizard" id="import_wizard"></a>
 
 [![screenshot/gui-import-wizard-general.png](../../assets/screenshot-gui-import-wizard-general-png-988ac134e0fc.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-import-wizard-general.png)
 
@@ -32,7 +32,7 @@ ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用
 
 有关分步指南以及如何让虚拟客户机适应新虚拟机监控程序的提示，请参阅我们的 [迁移到 Proxmox VE 的 wiki 文章](https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE#Migration)。
 
-### OVA/OVF 导入 <a href="#_ova_ovf_import" id="_ova_ovf_import"></a>
+### OVA/OVF 导入 <a href="#ova_ovf_import" id="ova_ovf_import"></a>
 
 要导入 OVA/OVF 文件，首先需要一个启用了 *import* 内容类型的基于文件的存储。该存储上会有一个 *import* 文件夹，你可以将 OVA 文件，或 OVF 文件及其对应镜像以扁平目录结构放入其中。或者，也可以使用 Web UI 直接上传或下载 OVA 文件。然后，可以在 Web UI 中选择这些文件，并使用导入向导导入客户机。
 
@@ -42,7 +42,7 @@ ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用
 由于 OVA/OVF 文件的结构和内容并不总是得到良好维护或明确定义，因此可能需要手动调整某些客户机设置。例如，OVA/OVF 文件中几乎从不定义 SCSI 控制器类型，但使用 OVMF（UEFI）时默认配置无法启动，因此在遇到这些情况时，应选择 *Virtio SCSI* 或 *VMware PVSCSI*。
 {% endhint %}
 
-## 10.7.2. 通过 CLI 导入 OVF/OVA <a href="#_import_ovf_ova_through_cli" id="_import_ovf_ova_through_cli"></a>
+## 10.7.2. 通过 CLI 导入 OVF/OVA <a href="#import_ovf_ova_through_cli" id="import_ovf_ova_through_cli"></a>
 
 从其他虚拟机监控程序导出的 VM 通常采用一个或多个磁盘镜像的形式，并带有一个描述 VM 设置（RAM、核心数量）的配置文件。  
  如果磁盘来自 VMware 或 VirtualBox，磁盘镜像可以采用 vmdk 格式；如果磁盘来自 KVM 虚拟机监控程序，则可以采用 qcow2 格式。VM 导出最常用的配置格式是 OVF 标准，但在实践中，由于许多设置并未在该标准本身中实现，而且虚拟机监控程序会通过非标准扩展导出补充信息，因此互操作性受到限制。
@@ -53,19 +53,19 @@ ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用
 
 GNU/Linux 和其他自由 Unix 通常可以顺利导入。请注意，由于上述问题，我们无法保证在所有情况下都能成功导入或导出 Windows VM。
 
-### Windows OVF 导入的分步示例 <a href="#_step_by_step_example_of_a_windows_ovf_import" id="_step_by_step_example_of_a_windows_ovf_import"></a>
+### Windows OVF 导入的分步示例 <a href="#step_by_step_example_of_a_windows_ovf_import" id="step_by_step_example_of_a_windows_ovf_import"></a>
 
 Microsoft 提供 [虚拟机下载](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)，以便开始 Windows 开发。我们将使用其中一个虚拟机来演示 OVF 导入功能。
 
-#### 下载虚拟机 zip 文件 <a href="#_download_the_virtual_machine_zip" id="_download_the_virtual_machine_zip"></a>
+#### 下载虚拟机 zip 文件 <a href="#download_the_virtual_machine_zip" id="download_the_virtual_machine_zip"></a>
 
 了解用户协议后，选择适用于 VMware 平台的 *Windows 10 Enterprise (Evaluation \- Build)*，并下载 zip 文件。
 
-#### 从 zip 文件中解压磁盘镜像 <a href="#_extract_the_disk_image_from_the_zip" id="_extract_the_disk_image_from_the_zip"></a>
+#### 从 zip 文件中解压磁盘镜像 <a href="#extract_the_disk_image_from_the_zip" id="extract_the_disk_image_from_the_zip"></a>
 
 使用 `unzip` 实用程序或你选择的任何归档工具解压 zip 文件，并通过 ssh/scp 将 ovf 和 vmdk 文件复制到你的 Proxmox VE 宿主机。
 
-#### 导入虚拟机 <a href="#_import_the_virtual_machine" id="_import_the_virtual_machine"></a>
+#### 导入虚拟机 <a href="#import_the_virtual_machine" id="import_the_virtual_machine"></a>
 
 这将创建一个新的虚拟机，使用从 OVF 清单中读取的核心数、内存和 VM 名称，并将磁盘导入到 `local-lvm` 存储。你需要手动配置网络。
 
@@ -75,7 +75,7 @@ Microsoft 提供 [虚拟机下载](https://developer.microsoft.com/en-us/windows
 
 现在可以启动 VM 了。
 
-#### 向虚拟机添加外部磁盘镜像 <a href="#_adding_an_external_disk_image_to_a_virtual_machine" id="_adding_an_external_disk_image_to_a_virtual_machine"></a>
+#### 向虚拟机添加外部磁盘镜像 <a href="#adding_an_external_disk_image_to_a_virtual_machine" id="adding_an_external_disk_image_to_a_virtual_machine"></a>
 
 你还可以向 VM 添加现有磁盘镜像，无论它来自其他虚拟机监控程序，还是由你自己创建。
 

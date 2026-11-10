@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/tasks/{upid}`
 
-Stop a task.
+停止任务。
 
 **方法标识：** `stop_task`
 
@@ -14,7 +14,7 @@ Stop a task.
 
 ```json
 {
-  "description": "The user needs 'Sys.Modify' permissions on '/nodes/<node>' if they aren't the owner of the task.",
+  "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Modify' 权限。",
   "user": "all"
 }
 ```
@@ -41,7 +41,7 @@ Stop a task.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `upid` | string | 是 | — |  |
 
 <details>
@@ -52,7 +52,7 @@ Stop a task.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -99,7 +99,7 @@ Stop a task.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `upid` | string | 是 | — |  |
 
 <details>
@@ -110,7 +110,7 @@ Stop a task.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

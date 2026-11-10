@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/hardware/pci/{pci-id-or-mapping}/mdev`
 
-List mediated device types for given PCI device.
+列出给定 PCI 设备的中介设备类型。
 
 **方法标识：** `mdevscan`
 
@@ -49,8 +49,8 @@ List mediated device types for given PCI device.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `pci-id-or-mapping` | string | 是 | — | The PCI ID or mapping to list the mdev types for. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pci-id-or-mapping` | string | 是 | — | 要列出其 mdev 类型的 PCI ID 或映射。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,13 +60,13 @@ List mediated device types for given PCI device.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pci-id-or-mapping": {
-      "description": "The PCI ID or mapping to list the mdev types for.",
+      "description": "要列出其 mdev 类型的 PCI ID 或映射。",
       "pattern": "(?:(?:[0-9a-fA-F]{4}:)?[0-9a-fA-F]{2}:[0-9a-fA-F]{2}\\.[0-9a-fA-F])|([a-zA-Z][a-zA-Z0-9_-]+)",
       "type": "string"
     }
@@ -83,20 +83,20 @@ List mediated device types for given PCI device.
   "items": {
     "properties": {
       "available": {
-        "description": "The number of still available instances of this type.",
+        "description": "此类型仍可用的实例数量。",
         "type": "integer"
       },
       "description": {
-        "description": "Additional description of the type.",
+        "description": "类型的附加描述。",
         "type": "string"
       },
       "name": {
-        "description": "A human readable name for the type.",
+        "description": "类型的人类可读名称。",
         "optional": 1,
         "type": "string"
       },
       "type": {
-        "description": "The name of the mdev type.",
+        "description": "mdev 类型名称。",
         "type": "string"
       }
     },

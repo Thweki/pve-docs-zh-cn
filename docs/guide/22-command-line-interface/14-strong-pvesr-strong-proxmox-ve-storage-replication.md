@@ -1,22 +1,14 @@
-# 22.14. **pvesr** \- Proxmox VE Storage Replication <a href="#_strong_pvesr_strong_proxmox_ve_storage_replication" id="_strong_pvesr_strong_proxmox_ve_storage_replication"></a>
+# 22.14. **pvesr** \- Proxmox VE 存储复制 <a href="#strong_pvesr_strong_proxmox_ve_storage_replication" id="strong_pvesr_strong_proxmox_ve_storage_replication"></a>
 
-<a id="cli_pvesr"></a>
+## **pvesr** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesr" id="cli_pvesr"></a>
 
+## **pvesr create-local-job** `<id> <target>` `[OPTIONS]` <a href="#cli_pvesr_create-local-job" id="cli_pvesr_create-local-job"></a>
 
-
-**pvesr** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvesr_create-local-job"></a>
-
-
-
-**pvesr create-local-job** `<id> <target>` `[OPTIONS]`
-
-Create a new replication job
+创建新的复制任务
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
 **`<target>`: `<string>`**
 
@@ -28,93 +20,73 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 **`--disable` `<boolean>`**
 
-Flag to disable/deactivate the entry.
+用于禁用/停用条目的标志。
 
 **`--rate` `<number> (1 - N)`**
 
-Rate limit in mbps (megabytes per second) as floating point number.
+以 mbps（兆字节每秒）为单位的浮点数速率限制。
 
 **`--remove_job` `<full | local>`**
 
-Mark the replication job for removal. The job will remove all local replication snapshots. When set to *full*, it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.
+将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 *full*，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
 
-**`--schedule` `<string>` (*default \=* `*/15`)**
+**`--schedule` `<string>` （*默认值 \=* `*/15`）**
 
-Storage replication schedule. The format is a subset of `systemd` calendar events.
+存储复制计划。其格式是 `systemd` 日历事件的一个子集。
 
 **`--source` `<string>`**
 
-For internal use, to detect if the guest was stolen.
+供内部使用，用于检测客户机是否被接管。
 
-<a id="cli_pvesr_delete"></a>
+## **pvesr delete** `<id>` `[OPTIONS]` <a href="#cli_pvesr_delete" id="cli_pvesr_delete"></a>
 
-
-
-**pvesr delete** `<id>` `[OPTIONS]`
-
-Mark replication job for removal.
+将复制任务标记为待移除。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Will remove the jobconfig entry, but will not cleanup.
+将移除 jobconfig 条目，但不执行清理。
 
-**`--keep` `<boolean>` (*default \=* `0`)**
+**`--keep` `<boolean>` （*默认值 \=* `0`）**
 
-Keep replicated data at target (do not remove).
+保留目标上的复制数据（不移除）。
 
-<a id="cli_pvesr_disable"></a>
+## **pvesr disable** `<id>` <a href="#cli_pvesr_disable" id="cli_pvesr_disable"></a>
 
-
-
-**pvesr disable** `<id>`
-
-Disable a replication job.
+禁用复制任务。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
-<a id="cli_pvesr_enable"></a>
+## **pvesr enable** `<id>` <a href="#cli_pvesr_enable" id="cli_pvesr_enable"></a>
 
-
-
-**pvesr enable** `<id>`
-
-Enable a replication job.
+启用复制任务。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
-<a id="cli_pvesr_finalize-local-job"></a>
+## **pvesr finalize-local-job** `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_finalize-local-job" id="cli_pvesr_finalize-local-job"></a>
 
-
-
-**pvesr finalize-local-job** `<id> [<extra-args>]` `[OPTIONS]`
-
-Finalize a replication job. This removes all replications snapshots with timestamps different than \<last\_sync\>.
+完成复制任务的收尾工作。这会移除时间戳与 \<last\_sync\> 不同的所有复制快照。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
 **`<extra-args>`: `<array>`**
 
-The list of volume IDs to consider.
+要考虑的卷 ID 列表。
 
 **`--last_sync` `<integer> (0 - N)`**
 
-Time (UNIX epoch) of last successful sync. If not specified, all replication snapshots gets removed.
+上次成功同步的时间（UNIX 纪元时间）。如果未指定，则移除所有复制快照。
 
-<a id="cli_pvesr_help"></a>
-
-
-
-**pvesr help** `[OPTIONS]`
+## **pvesr help** `[OPTIONS]` <a href="#cli_pvesr_help" id="cli_pvesr_help"></a>
 
 获取指定命令的帮助。
 
@@ -126,37 +98,29 @@ Time (UNIX epoch) of last successful sync. If not specified, all replication sna
 
 详细输出格式。
 
-<a id="cli_pvesr_list"></a>
+## **pvesr list** <a href="#cli_pvesr_list" id="cli_pvesr_list"></a>
 
+列出复制任务。
 
+## **pvesr prepare-local-job** `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_prepare-local-job" id="cli_pvesr_prepare-local-job"></a>
 
-**pvesr list**
-
-List replication jobs.
-
-<a id="cli_pvesr_prepare-local-job"></a>
-
-
-
-**pvesr prepare-local-job** `<id> [<extra-args>]` `[OPTIONS]`
-
-Prepare for starting a replication job. This is called on the target node before replication starts. This call is for internal use, and return a JSON object on stdout. The method first test if VM \<vmid\> reside on the local node. If so, stop immediately. After that the method scans all volume IDs for snapshots, and removes all replications snapshots with timestamps different than \<last\_sync\>. It also removes any unused volumes. Returns a hash with boolean markers for all volumes with existing replication snapshots.
+准备启动复制任务。在复制开始之前，在目标节点上调用。此调用供内部使用，并在 stdout 上返回 JSON 对象。此方法首先检查虚拟机 \<vmid\> 是否位于本地节点上。如果是，则立即停止。随后此方法扫描所有卷 ID，查找快照，并移除时间戳与 \<last\_sync\> 不同的所有复制快照。它也会移除任何未使用的卷。返回一个哈希，对所有存在复制快照的卷提供布尔标记。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
 **`<extra-args>`: `<array>`**
 
-The list of volume IDs to consider.
+要考虑的卷 ID 列表。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Allow to remove all existion volumes (empty volume list).
+允许移除所有现有卷（卷列表为空）。
 
 **`--last_sync` `<integer> (0 - N)`**
 
-Time (UNIX epoch) of last successful sync. If not specified, all replication snapshots get removed.
+上次成功同步的时间（UNIX 纪元时间）。如果未指定，则移除所有复制快照。
 
 **`--parent_snapname` `<string>`**
 
@@ -164,59 +128,43 @@ Time (UNIX epoch) of last successful sync. If not specified, all replication sna
 
 **`--scan` `<string>`**
 
-List of storage IDs to scan for stale volumes.
+要扫描陈旧卷的存储 ID 列表。
 
-<a id="cli_pvesr_read"></a>
+## **pvesr read** `<id>` <a href="#cli_pvesr_read" id="cli_pvesr_read"></a>
 
-
-
-**pvesr read** `<id>`
-
-Read replication job configuration.
+读取复制任务配置。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
-<a id="cli_pvesr_run"></a>
+## **pvesr run** `[OPTIONS]` <a href="#cli_pvesr_run" id="cli_pvesr_run"></a>
 
-
-
-**pvesr run** `[OPTIONS]`
-
-This method is called by the systemd-timer and executes all (or a specific) sync jobs.
+此方法由 systemd-timer 调用，并执行所有同步任务或指定同步任务。
 
 **`--id` `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
-**`--mail` `<boolean>` (*default \=* `0`)**
+**`--mail` `<boolean>` （*默认值 \=* `0`）**
 
-Send an email notification in case of a failure.
+发生故障时发送电子邮件通知。
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-Print more verbose logs to stdout.
+向 stdout 打印更详细的日志。
 
-<a id="cli_pvesr_schedule-now"></a>
+## **pvesr schedule-now** `<id>` <a href="#cli_pvesr_schedule-now" id="cli_pvesr_schedule-now"></a>
 
-
-
-**pvesr schedule-now** `<id>`
-
-Schedule replication job to start as soon as possible.
+安排复制任务尽快启动。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
-<a id="cli_pvesr_set-state"></a>
+## **pvesr set-state** `<vmid> <state>` <a href="#cli_pvesr_set-state" id="cli_pvesr_set-state"></a>
 
-
-
-**pvesr set-state** `<vmid> <state>`
-
-Set the job replication state on migration. This call is for internal use. It will accept the job state as ja JSON obj.
+在迁移时设置任务复制状态。此调用供内部使用。它接受 JSON 对象形式的任务状态。
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
@@ -224,31 +172,23 @@ VM 的唯一 ID。
 
 **`<state>`: `<string>`**
 
-Job state as JSON decoded string.
+作为 JSON 解码后字符串的任务状态。
 
-<a id="cli_pvesr_status"></a>
+## **pvesr status** `[OPTIONS]` <a href="#cli_pvesr_status" id="cli_pvesr_status"></a>
 
-
-
-**pvesr status** `[OPTIONS]`
-
-List status of all replication jobs on this node.
+列出此节点上所有复制任务的状态。
 
 **`--guest` `<integer> (100 - 999999999)`**
 
-Only list replication jobs for this guest.
+仅列出此客户机的复制任务。
 
-<a id="cli_pvesr_update"></a>
+## **pvesr update** `<id>` `[OPTIONS]` <a href="#cli_pvesr_update" id="cli_pvesr_update"></a>
 
-
-
-**pvesr update** `<id>` `[OPTIONS]`
-
-Update replication job configuration.
+更新复制任务配置。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
 
 **`--comment` `<string>`**
 
@@ -264,23 +204,23 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 **`--disable` `<boolean>`**
 
-Flag to disable/deactivate the entry.
+用于禁用/停用条目的标志。
 
 **`--rate` `<number> (1 - N)`**
 
-Rate limit in mbps (megabytes per second) as floating point number.
+以 mbps（兆字节每秒）为单位的浮点数速率限制。
 
 **`--remove_job` `<full | local>`**
 
-Mark the replication job for removal. The job will remove all local replication snapshots. When set to *full*, it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.
+将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 *full*，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
 
-**`--schedule` `<string>` (*default \=* `*/15`)**
+**`--schedule` `<string>` （*默认值 \=* `*/15`）**
 
-Storage replication schedule. The format is a subset of `systemd` calendar events.
+存储复制计划。其格式是 `systemd` 日历事件的一个子集。
 
 **`--source` `<string>`**
 
-For internal use, to detect if the guest was stolen.
+供内部使用，用于检测客户机是否被接管。
 
 ---
 

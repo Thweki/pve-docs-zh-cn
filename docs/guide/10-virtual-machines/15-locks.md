@@ -1,13 +1,13 @@
-# 10.15. Locks <a href="#_locks" id="_locks"></a>
+# 10.15. 锁 <a href="#locks" id="locks"></a>
 
-Online migrations, snapshots and backups (`vzdump`) set a lock to prevent incompatible concurrent actions on the affected VMs. Sometimes you need to remove such a lock manually (for example after a power failure).
+在线迁移、快照和备份（`vzdump`）会设置锁，以防止在受影响的虚拟机上同时执行不兼容的操作。有时需要手动移除此类锁（例如断电后）。
 
 ```text
 # qm unlock <vmid>
 ```
 
 {% hint style="danger" %}
-Only do that if you are sure the action which set the lock is no longer running.
+只有在确定设置该锁的操作已停止运行时，才执行此操作。
 {% endhint %}
 
 ---

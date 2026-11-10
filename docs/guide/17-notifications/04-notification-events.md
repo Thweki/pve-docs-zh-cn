@@ -1,4 +1,4 @@
-# 17.4. Notification Events <a href="#notification_events" id="notification_events"></a>
+# 17.4. 通知事件 <a href="#notification_events" id="notification_events"></a>
 
 <table>
 
@@ -7,45 +7,45 @@
 
 <thead>
 <tr>
-<th>Event</th>
+<th>事件</th>
 <th> <code>type</code> </th>
-<th>Severity</th>
-<th>Metadata fields (in addition to <code>type</code>)</th>
+<th>严重性</th>
+<th>元数据字段（除 <code>type</code> 之外）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>System updates available</p></td>
+<td><p>有可用的系统更新</p></td>
 <td><p><code>package-updates</code></p></td>
 <td><p><code>info</code></p></td>
 <td><p><code>hostname</code></p></td>
 </tr>
 <tr>
-<td><p>Cluster node fenced</p></td>
+<td><p>集群节点被隔离</p></td>
 <td><p><code>fencing</code></p></td>
 <td><p><code>error</code></p></td>
 <td><p><code>hostname</code></p></td>
 </tr>
 <tr>
-<td><p>Storage replication job failed</p></td>
+<td><p>存储复制任务失败</p></td>
 <td><p><code>replication</code></p></td>
 <td><p><code>error</code></p></td>
 <td><p><code>hostname</code>, <code>job-id</code></p></td>
 </tr>
 <tr>
-<td><p>Backup succeeded</p></td>
+<td><p>备份成功</p></td>
 <td><p><code>vzdump</code></p></td>
 <td><p><code>info</code></p></td>
-<td><p><code>hostname</code>, <code>job-id</code> (only for backup jobs)</p></td>
+<td><p><code>hostname</code>、<code>job-id</code>（仅适用于备份任务）</p></td>
 </tr>
 <tr>
-<td><p>Backup failed</p></td>
+<td><p>备份失败</p></td>
 <td><p><code>vzdump</code></p></td>
 <td><p><code>error</code></p></td>
-<td><p><code>hostname</code>, <code>job-id</code> (only for backup jobs)</p></td>
+<td><p><code>hostname</code>、<code>job-id</code>（仅适用于备份任务）</p></td>
 </tr>
 <tr>
-<td><p>Mail for root</p></td>
+<td><p>发给 root 的邮件</p></td>
 <td><p><code>system-mail</code></p></td>
 <td><p><code>unknown</code></p></td>
 <td><p><code>hostname</code></p></td>
@@ -58,28 +58,28 @@
 
 <thead>
 <tr>
-<th>Field name</th>
+<th>字段名</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p><code>type</code></p></td>
-<td><p>Type of the notification</p></td>
+<td><p>通知类型</p></td>
 </tr>
 <tr>
 <td><p><code>hostname</code></p></td>
-<td><p>Hostname, without domain (e.g. <code>pve1</code>)</p></td>
+<td><p>不含域名的主机名（例如 <code>pve1</code>）</p></td>
 </tr>
 <tr>
 <td><p><code>job-id</code></p></td>
-<td><p>Job ID</p></td>
+<td><p>任务 ID</p></td>
 </tr>
 </tbody>
 </table>
 
 {% hint style="info" %}
-Backup job notifications only have `job-id` set if the backup job was executed automatically based on its schedule, but not if it was triggered manually by the *Run now* button in the UI.
+备份任务通知仅在备份任务按计划自动执行时才会设置 `job-id`；如果通过界面中的*立即运行*按钮手动触发，则不会设置。
 {% endhint %}
 
 ---

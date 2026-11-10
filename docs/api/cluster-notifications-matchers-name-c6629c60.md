@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/notifications/matchers/{name}`
 
-Remove matcher
+移除匹配器
 
 **方法标识：** `delete_matcher`
 
@@ -70,7 +70,7 @@ Remove matcher
 
 ## GET `/cluster/notifications/matchers/{name}`
 
-Return a specific matcher
+返回指定的匹配器
 
 **方法标识：** `get_matcher`
 
@@ -140,29 +140,29 @@ Return a specific matcher
 {
   "properties": {
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this matcher",
+      "description": "禁用此匹配器",
       "optional": 1,
       "type": "boolean"
     },
     "invert-match": {
-      "description": "Invert match of the whole matcher",
+      "description": "反转整个匹配器的匹配结果",
       "optional": 1,
       "type": "boolean"
     },
     "match-calendar": {
-      "description": "Match notification timestamp",
+      "description": "匹配通知时间戳",
       "items": {
         "type": "string"
       },
@@ -170,7 +170,7 @@ Return a specific matcher
       "type": "array"
     },
     "match-field": {
-      "description": "Metadata fields to match (regex or exact match). Must be in the form (regex|exact):<field>=<value>",
+      "description": "要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex|exact):<field>=<value>",
       "items": {
         "type": "string"
       },
@@ -178,7 +178,7 @@ Return a specific matcher
       "type": "array"
     },
     "match-severity": {
-      "description": "Notification severities to match",
+      "description": "要匹配的通知严重性",
       "items": {
         "type": "string"
       },
@@ -187,7 +187,7 @@ Return a specific matcher
     },
     "mode": {
       "default": "all",
-      "description": "Choose between 'all' and 'any' for when multiple properties are specified",
+      "description": "指定多个属性时，在 'all' 和 'any' 之间选择",
       "enum": [
         "all",
         "any"
@@ -196,12 +196,12 @@ Return a specific matcher
       "type": "string"
     },
     "name": {
-      "description": "Name of the matcher.",
+      "description": "匹配器名称。",
       "format": "pve-configid",
       "type": "string"
     },
     "target": {
-      "description": "Targets to notify on match",
+      "description": "匹配时要通知的目标",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -216,7 +216,7 @@ Return a specific matcher
 
 ## PUT `/cluster/notifications/matchers/{name}`
 
-Update existing matcher
+更新现有匹配器
 
 **方法标识：** `update_matcher`
 
@@ -250,17 +250,17 @@ Update existing matcher
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Comment |
-| `delete` | array | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | 0 | Disable this matcher |
-| `invert-match` | boolean | 否 | — | Invert match of the whole matcher |
-| `match-calendar` | array | 否 | — | Match notification timestamp |
-| `match-field` | array | 否 | — | Metadata fields to match (regex or exact match). Must be in the form (regex\|exact):&lt;field&gt;=&lt;value&gt; |
-| `match-severity` | array | 否 | — | Notification severities to match |
-| `mode` | string | 否 | "all" | Choose between 'all' and 'any' for when multiple properties are specified；可选值：`all`, `any` |
-| `name` | string | 是 | — | Name of the matcher. |
-| `target` | array | 否 | — | Targets to notify on match |
+| `comment` | string | 否 | — | 注释 |
+| `delete` | array | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | 0 | 禁用此匹配器 |
+| `invert-match` | boolean | 否 | — | 反转整个匹配器的匹配结果 |
+| `match-calendar` | array | 否 | — | 匹配通知时间戳 |
+| `match-field` | array | 否 | — | 要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex\|exact):&lt;field&gt;=&lt;value&gt; |
+| `match-severity` | array | 否 | — | 要匹配的通知严重性 |
+| `mode` | string | 否 | "all" | 指定多个属性时，在 'all' 和 'any' 之间选择；可选值：`all`, `any` |
+| `name` | string | 是 | — | 匹配器名称。 |
+| `target` | array | 否 | — | 匹配时要通知的目标 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -270,13 +270,13 @@ Update existing matcher
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -286,7 +286,7 @@ Update existing matcher
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -294,19 +294,19 @@ Update existing matcher
     },
     "disable": {
       "default": 0,
-      "description": "Disable this matcher",
+      "description": "禁用此匹配器",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "invert-match": {
-      "description": "Invert match of the whole matcher",
+      "description": "反转整个匹配器的匹配结果",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "match-calendar": {
-      "description": "Match notification timestamp",
+      "description": "匹配通知时间戳",
       "items": {
         "type": "string"
       },
@@ -315,7 +315,7 @@ Update existing matcher
       "typetext": "<array>"
     },
     "match-field": {
-      "description": "Metadata fields to match (regex or exact match). Must be in the form (regex|exact):<field>=<value>",
+      "description": "要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex|exact):<field>=<value>",
       "items": {
         "type": "string"
       },
@@ -324,7 +324,7 @@ Update existing matcher
       "typetext": "<array>"
     },
     "match-severity": {
-      "description": "Notification severities to match",
+      "description": "要匹配的通知严重性",
       "items": {
         "type": "string"
       },
@@ -334,7 +334,7 @@ Update existing matcher
     },
     "mode": {
       "default": "all",
-      "description": "Choose between 'all' and 'any' for when multiple properties are specified",
+      "description": "指定多个属性时，在 'all' 和 'any' 之间选择",
       "enum": [
         "all",
         "any"
@@ -343,13 +343,13 @@ Update existing matcher
       "type": "string"
     },
     "name": {
-      "description": "Name of the matcher.",
+      "description": "匹配器名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "target": {
-      "description": "Targets to notify on match",
+      "description": "匹配时要通知的目标",
       "items": {
         "format": "pve-configid",
         "type": "string"

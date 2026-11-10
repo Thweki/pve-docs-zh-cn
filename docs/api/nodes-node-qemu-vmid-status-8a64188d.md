@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/status`
 
-Directory index
+目录索引
 
 **方法标识：** `vmcmdidx`
 
@@ -34,8 +34,8 @@ Directory index
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@ Directory index
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

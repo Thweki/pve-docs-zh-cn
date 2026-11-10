@@ -6,7 +6,7 @@
 
 ## GET `/cluster/firewall/macros`
 
-List available macros
+列出可用宏
 
 **方法标识：** `get_macros`
 
@@ -35,11 +35,11 @@ List available macros
   "items": {
     "properties": {
       "descr": {
-        "description": "More verbose description (if available).",
+        "description": "更详细的描述（如有）。",
         "type": "string"
       },
       "macro": {
-        "description": "Macro name.",
+        "description": "宏名称。",
         "type": "string"
       }
     },

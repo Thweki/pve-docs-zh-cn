@@ -1,12 +1,12 @@
-# 16.2. Backup File Names <a href="#_backup_file_names" id="_backup_file_names"></a>
+# 16.2. 备份文件名 <a href="#backup_file_names" id="backup_file_names"></a>
 
-Newer versions of vzdump encode the guest type and the backup time into the filename, for example
+较新版本的 vzdump 将客户机类型和备份时间编码到文件名中，例如
 
 ```text
 vzdump-lxc-105-2009_10_09-11_04_43.tar
 ```
 
-That way it is possible to store several backup in the same directory. You can limit the number of backups that are kept with various retention options, see the [Backup Retention](06-vzdump-retention.md) section below.
+这样就可以在同一目录中存储多个备份。可以使用各种保留选项限制保留的备份数量，参见下文 [备份保留](06-vzdump-retention.md) 一节。
 
 ---
 

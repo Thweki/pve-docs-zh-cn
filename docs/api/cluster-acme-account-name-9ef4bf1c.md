@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/acme/account/{name}`
 
-Deactivate existing ACME account at CA.
+在 CA 处停用现有 ACME 账户。
 
 **方法标识：** `deactivate_account`
 
@@ -26,7 +26,7 @@ Deactivate existing ACME account at CA.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 否 | "default" | ACME account config file name. |
+| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -37,7 +37,7 @@ Deactivate existing ACME account at CA.
   "properties": {
     "name": {
       "default": "default",
-      "description": "ACME account config file name.",
+      "description": "ACME 账户配置文件名。",
       "format": "pve-configid",
       "format_description": "name",
       "optional": 1,
@@ -60,7 +60,7 @@ Deactivate existing ACME account at CA.
 
 ## GET `/cluster/acme/account/{name}`
 
-Return existing ACME account information.
+返回现有 ACME 账户信息。
 
 **方法标识：** `get_account`
 
@@ -80,7 +80,7 @@ Return existing ACME account information.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 否 | "default" | ACME account config file name. |
+| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -91,7 +91,7 @@ Return existing ACME account information.
   "properties": {
     "name": {
       "default": "default",
-      "description": "ACME account config file name.",
+      "description": "ACME 账户配置文件名。",
       "format": "pve-configid",
       "format_description": "name",
       "optional": 1,
@@ -116,7 +116,7 @@ Return existing ACME account information.
       "type": "object"
     },
     "directory": {
-      "description": "URL of ACME CA directory endpoint.",
+      "description": "ACME CA 目录端点的 URL。",
       "optional": 1,
       "pattern": "^https?://.*",
       "type": "string"
@@ -136,7 +136,7 @@ Return existing ACME account information.
 
 ## PUT `/cluster/acme/account/{name}`
 
-Update existing ACME account information with CA. Note: not specifying any new account information triggers a refresh.
+向 CA 更新现有 ACME 账户信息。注意：不指定任何新账户信息会触发刷新。
 
 **方法标识：** `update_account`
 
@@ -156,8 +156,8 @@ Update existing ACME account information with CA. Note: not specifying any new a
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `contact` | string | 否 | — | Contact email addresses. |
-| `name` | string | 否 | "default" | ACME account config file name. |
+| `contact` | string | 否 | — | 联系电子邮件地址。 |
+| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -167,7 +167,7 @@ Update existing ACME account information with CA. Note: not specifying any new a
   "additionalProperties": 0,
   "properties": {
     "contact": {
-      "description": "Contact email addresses.",
+      "description": "联系电子邮件地址。",
       "format": "email-list",
       "optional": 1,
       "type": "string",
@@ -175,7 +175,7 @@ Update existing ACME account information with CA. Note: not specifying any new a
     },
     "name": {
       "default": "default",
-      "description": "ACME account config file name.",
+      "description": "ACME 账户配置文件名。",
       "format": "pve-configid",
       "format_description": "name",
       "optional": 1,

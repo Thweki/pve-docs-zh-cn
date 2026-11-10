@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/firewall/aliases/{name}`
 
-Remove IP or Network alias.
+移除 IP 或网络别名。
 
 **方法标识：** `remove_alias`
 
@@ -40,8 +40,8 @@ Remove IP or Network alias.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | Alias name. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | 别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,14 +51,14 @@ Remove IP or Network alias.
   "additionalProperties": 0,
   "properties": {
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "Alias name.",
+      "description": "别名名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -80,7 +80,7 @@ Remove IP or Network alias.
 
 ## GET `/cluster/firewall/aliases/{name}`
 
-Read alias.
+读取别名。
 
 **方法标识：** `read_alias`
 
@@ -108,7 +108,7 @@ Read alias.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Alias name. |
+| `name` | string | 是 | — | 别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -118,7 +118,7 @@ Read alias.
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "Alias name.",
+      "description": "别名名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -140,7 +140,7 @@ Read alias.
 
 ## PUT `/cluster/firewall/aliases/{name}`
 
-Update IP or Network alias.
+更新 IP 或网络别名。
 
 **方法标识：** `update_alias`
 
@@ -174,11 +174,11 @@ Update IP or Network alias.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | Alias name. |
-| `rename` | string | 否 | — | Rename an existing alias. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | 别名名称。 |
+| `rename` | string | 否 | — | 重命名现有别名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -188,7 +188,7 @@ Update IP or Network alias.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDR",
       "type": "string",
       "typetext": "<string>"
@@ -200,21 +200,21 @@ Update IP or Network alias.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "Alias name.",
+      "description": "别名名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "rename": {
-      "description": "Rename an existing alias.",
+      "description": "重命名现有别名。",
       "maxLength": 64,
       "minLength": 2,
       "optional": 1,

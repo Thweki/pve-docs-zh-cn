@@ -1,10 +1,10 @@
-# 27\. Appendix F: Firewall Macro Definitions <a href="#_firewall_macro_definitions" id="_firewall_macro_definitions"></a>
+# 27\. 附录 F：防火墙宏定义 <a href="#firewall_macro_definitions" id="firewall_macro_definitions"></a>
 
 <table>
 <tr>
 <td><em>Amanda</em> <br/></td>
 <td>
-<p>Amanda Backup</p>
+<p>Amanda 备份</p>
 </td>
 </tr>
 </table>
@@ -42,7 +42,7 @@
 <tr>
 <td><em>Auth</em> <br/></td>
 <td>
-<p>Auth (identd) traffic</p>
+<p>Auth（identd）流量</p>
 </td>
 </tr>
 </table>
@@ -74,7 +74,7 @@
 <tr>
 <td><em>BGP</em> <br/></td>
 <td>
-<p>Border Gateway Protocol traffic</p>
+<p>边界网关协议流量</p>
 </td>
 </tr>
 </table>
@@ -106,7 +106,7 @@
 <tr>
 <td><em>BitTorrent</em> <br/></td>
 <td>
-<p>BitTorrent traffic for BitTorrent 3.1 and earlier</p>
+<p>BitTorrent 3.1 及更早版本的 BitTorrent 流量</p>
 </td>
 </tr>
 </table>
@@ -144,7 +144,7 @@
 <tr>
 <td><em>BitTorrent32</em> <br/></td>
 <td>
-<p>BitTorrent traffic for BitTorrent 3.2 and later</p>
+<p>BitTorrent 3.2 及更高版本的 BitTorrent 流量</p>
 </td>
 </tr>
 </table>
@@ -182,7 +182,7 @@
 <tr>
 <td><em>CVS</em> <br/></td>
 <td>
-<p>Concurrent Versions System pserver traffic</p>
+<p>并发版本系统 pserver 流量</p>
 </td>
 </tr>
 </table>
@@ -214,7 +214,7 @@
 <tr>
 <td><em>Ceph</em> <br/></td>
 <td>
-<p>Ceph Storage Cluster traffic (Ceph Monitors, OSD &amp; MDS Daemons)</p>
+<p>Ceph 存储集群流量（Ceph 监视器、OSD 和 MDS 守护进程）</p>
 </td>
 </tr>
 </table>
@@ -258,7 +258,7 @@
 <tr>
 <td><em>Citrix</em> <br/></td>
 <td>
-<p>Citrix/ICA traffic (ICA, ICA Browser, CGP)</p>
+<p>Citrix/ICA 流量（ICA、ICA Browser、CGP）</p>
 </td>
 </tr>
 </table>
@@ -302,7 +302,7 @@
 <tr>
 <td><em>DAAP</em> <br/></td>
 <td>
-<p>Digital Audio Access Protocol traffic (iTunes, Rythmbox daemons)</p>
+<p>数字音频访问协议流量（iTunes、Rythmbox 守护进程）</p>
 </td>
 </tr>
 </table>
@@ -340,7 +340,7 @@
 <tr>
 <td><em>DCC</em> <br/></td>
 <td>
-<p>Distributed Checksum Clearinghouse spam filtering mechanism</p>
+<p>分布式校验和交换中心垃圾邮件过滤机制</p>
 </td>
 </tr>
 </table>
@@ -372,7 +372,7 @@
 <tr>
 <td><em>DHCPfwd</em> <br/></td>
 <td>
-<p>Forwarded DHCP traffic</p>
+<p>转发的 DHCP 流量</p>
 </td>
 </tr>
 </table>
@@ -404,7 +404,7 @@
 <tr>
 <td><em>DHCPv6</em> <br/></td>
 <td>
-<p>DHCPv6 traffic</p>
+<p>DHCPv6 流量</p>
 </td>
 </tr>
 </table>
@@ -436,7 +436,7 @@
 <tr>
 <td><em>DNS</em> <br/></td>
 <td>
-<p>Domain Name System traffic (upd and tcp)</p>
+<p>域名系统流量（upd 和 tcp）</p>
 </td>
 </tr>
 </table>
@@ -474,7 +474,7 @@
 <tr>
 <td><em>Distcc</em> <br/></td>
 <td>
-<p>Distributed Compiler service</p>
+<p>分布式编译器服务</p>
 </td>
 </tr>
 </table>
@@ -506,7 +506,7 @@
 <tr>
 <td><em>FTP</em> <br/></td>
 <td>
-<p>File Transfer Protocol</p>
+<p>文件传输协议</p>
 </td>
 </tr>
 </table>
@@ -538,7 +538,7 @@
 <tr>
 <td><em>Finger</em> <br/></td>
 <td>
-<p>Finger protocol (RFC 742)</p>
+<p>Finger 协议（RFC 742）</p>
 </td>
 </tr>
 </table>
@@ -570,7 +570,7 @@
 <tr>
 <td><em>GNUnet</em> <br/></td>
 <td>
-<p>GNUnet secure peer-to-peer networking traffic</p>
+<p>GNUnet 安全点对点网络流量</p>
 </td>
 </tr>
 </table>
@@ -620,7 +620,7 @@
 <tr>
 <td><em>GRE</em> <br/></td>
 <td>
-<p>Generic Routing Encapsulation tunneling protocol</p>
+<p>通用路由封装隧道协议</p>
 </td>
 </tr>
 </table>
@@ -652,7 +652,7 @@
 <tr>
 <td><em>Git</em> <br/></td>
 <td>
-<p>Git distributed revision control traffic</p>
+<p>Git 分布式版本控制流量</p>
 </td>
 </tr>
 </table>
@@ -684,7 +684,7 @@
 <tr>
 <td><em>HKP</em> <br/></td>
 <td>
-<p>OpenPGP HTTP key server protocol traffic</p>
+<p>OpenPGP HTTP 密钥服务器协议流量</p>
 </td>
 </tr>
 </table>
@@ -716,7 +716,7 @@
 <tr>
 <td><em>HTTP</em> <br/></td>
 <td>
-<p>Hypertext Transfer Protocol (WWW)</p>
+<p>超文本传输协议（WWW）</p>
 </td>
 </tr>
 </table>
@@ -748,7 +748,7 @@
 <tr>
 <td><em>HTTPS</em> <br/></td>
 <td>
-<p>Hypertext Transfer Protocol (WWW) over SSL</p>
+<p>通过 SSL 传输的超文本传输协议（WWW）</p>
 </td>
 </tr>
 </table>
@@ -780,7 +780,7 @@
 <tr>
 <td><em>ICPV2</em> <br/></td>
 <td>
-<p>Internet Cache Protocol V2 (Squid) traffic</p>
+<p>互联网缓存协议 V2（Squid）流量</p>
 </td>
 </tr>
 </table>
@@ -812,7 +812,7 @@
 <tr>
 <td><em>ICQ</em> <br/></td>
 <td>
-<p>AOL Instant Messenger traffic</p>
+<p>AOL Instant Messenger 流量</p>
 </td>
 </tr>
 </table>
@@ -844,7 +844,7 @@
 <tr>
 <td><em>IMAP</em> <br/></td>
 <td>
-<p>Internet Message Access Protocol</p>
+<p>互联网消息访问协议</p>
 </td>
 </tr>
 </table>
@@ -876,7 +876,7 @@
 <tr>
 <td><em>IMAPS</em> <br/></td>
 <td>
-<p>Internet Message Access Protocol over SSL</p>
+<p>通过 SSL 传输的互联网消息访问协议</p>
 </td>
 </tr>
 </table>
@@ -908,7 +908,7 @@
 <tr>
 <td><em>IPIP</em> <br/></td>
 <td>
-<p>IPIP capsulation traffic</p>
+<p>IPIP 封装流量</p>
 </td>
 </tr>
 </table>
@@ -940,7 +940,7 @@
 <tr>
 <td><em>IPsec</em> <br/></td>
 <td>
-<p>IPsec traffic</p>
+<p>IPsec 流量</p>
 </td>
 </tr>
 </table>
@@ -978,7 +978,7 @@
 <tr>
 <td><em>IPsecah</em> <br/></td>
 <td>
-<p>IPsec authentication (AH) traffic</p>
+<p>IPsec 认证（AH）流量</p>
 </td>
 </tr>
 </table>
@@ -1016,7 +1016,7 @@
 <tr>
 <td><em>IPsecnat</em> <br/></td>
 <td>
-<p>IPsec traffic and Nat-Traversal</p>
+<p>IPsec 流量和 Nat-Traversal</p>
 </td>
 </tr>
 </table>
@@ -1060,7 +1060,7 @@
 <tr>
 <td><em>IRC</em> <br/></td>
 <td>
-<p>Internet Relay Chat traffic</p>
+<p>互联网中继聊天流量</p>
 </td>
 </tr>
 </table>
@@ -1092,7 +1092,7 @@
 <tr>
 <td><em>Jetdirect</em> <br/></td>
 <td>
-<p>HP Jetdirect printing</p>
+<p>HP Jetdirect 打印</p>
 </td>
 </tr>
 </table>
@@ -1124,7 +1124,7 @@
 <tr>
 <td><em>L2TP</em> <br/></td>
 <td>
-<p>Layer 2 Tunneling Protocol traffic</p>
+<p>第 2 层隧道协议流量</p>
 </td>
 </tr>
 </table>
@@ -1156,7 +1156,7 @@
 <tr>
 <td><em>LDAP</em> <br/></td>
 <td>
-<p>Lightweight Directory Access Protocol traffic</p>
+<p>轻量级目录访问协议流量</p>
 </td>
 </tr>
 </table>
@@ -1188,7 +1188,7 @@
 <tr>
 <td><em>LDAPS</em> <br/></td>
 <td>
-<p>Secure Lightweight Directory Access Protocol traffic</p>
+<p>安全轻量级目录访问协议流量</p>
 </td>
 </tr>
 </table>
@@ -1220,7 +1220,7 @@
 <tr>
 <td><em>MDNS</em> <br/></td>
 <td>
-<p>Multicast DNS</p>
+<p>多播 DNS</p>
 </td>
 </tr>
 </table>
@@ -1252,7 +1252,7 @@
 <tr>
 <td><em>MSNP</em> <br/></td>
 <td>
-<p>Microsoft Notification Protocol</p>
+<p>Microsoft 通知协议</p>
 </td>
 </tr>
 </table>
@@ -1316,7 +1316,7 @@
 <tr>
 <td><em>Mail</em> <br/></td>
 <td>
-<p>Mail traffic (SMTP, SMTPS, Submission)</p>
+<p>邮件流量（SMTP、SMTPS、Submission）</p>
 </td>
 </tr>
 </table>
@@ -1360,7 +1360,7 @@
 <tr>
 <td><em>Munin</em> <br/></td>
 <td>
-<p>Munin networked resource monitoring traffic</p>
+<p>Munin 网络资源监控流量</p>
 </td>
 </tr>
 </table>
@@ -1392,7 +1392,7 @@
 <tr>
 <td><em>MySQL</em> <br/></td>
 <td>
-<p>MySQL server</p>
+<p>MySQL 服务器</p>
 </td>
 </tr>
 </table>
@@ -1424,7 +1424,7 @@
 <tr>
 <td><em>NNTP</em> <br/></td>
 <td>
-<p>NNTP traffic (Usenet).</p>
+<p>NNTP 流量（Usenet）。</p>
 </td>
 </tr>
 </table>
@@ -1456,7 +1456,7 @@
 <tr>
 <td><em>NNTPS</em> <br/></td>
 <td>
-<p>Encrypted NNTP traffic (Usenet)</p>
+<p>加密的 NNTP 流量（Usenet）</p>
 </td>
 </tr>
 </table>
@@ -1488,7 +1488,7 @@
 <tr>
 <td><em>NTP</em> <br/></td>
 <td>
-<p>Network Time Protocol (ntpd)</p>
+<p>网络时间协议（ntpd）</p>
 </td>
 </tr>
 </table>
@@ -1520,7 +1520,7 @@
 <tr>
 <td><em>NeighborDiscovery</em> <br/></td>
 <td>
-<p>IPv6 neighbor solicitation, neighbor and router advertisement</p>
+<p>IPv6 邻居请求、邻居通告和路由器通告</p>
 </td>
 </tr>
 </table>
@@ -1570,7 +1570,7 @@
 <tr>
 <td><em>OSPF</em> <br/></td>
 <td>
-<p>OSPF multicast traffic</p>
+<p>OSPF 多播流量</p>
 </td>
 </tr>
 </table>
@@ -1602,7 +1602,7 @@
 <tr>
 <td><em>OpenVPN</em> <br/></td>
 <td>
-<p>OpenVPN traffic</p>
+<p>OpenVPN 流量</p>
 </td>
 </tr>
 </table>
@@ -1672,7 +1672,7 @@
 <tr>
 <td><em>PMG</em> <br/></td>
 <td>
-<p>Proxmox Mail Gateway web interface</p>
+<p>Proxmox Mail Gateway Web 界面</p>
 </td>
 </tr>
 </table>
@@ -1704,7 +1704,7 @@
 <tr>
 <td><em>POP3</em> <br/></td>
 <td>
-<p>POP3 traffic</p>
+<p>POP3 流量</p>
 </td>
 </tr>
 </table>
@@ -1736,7 +1736,7 @@
 <tr>
 <td><em>POP3S</em> <br/></td>
 <td>
-<p>Encrypted POP3 traffic</p>
+<p>加密的 POP3 流量</p>
 </td>
 </tr>
 </table>
@@ -1768,7 +1768,7 @@
 <tr>
 <td><em>PPtP</em> <br/></td>
 <td>
-<p>Point-to-Point Tunneling Protocol</p>
+<p>点对点隧道协议</p>
 </td>
 </tr>
 </table>
@@ -1806,7 +1806,7 @@
 <tr>
 <td><em>Ping</em> <br/></td>
 <td>
-<p>ICMP echo request</p>
+<p>ICMP 回显请求</p>
 </td>
 </tr>
 </table>
@@ -1838,7 +1838,7 @@
 <tr>
 <td><em>PostgreSQL</em> <br/></td>
 <td>
-<p>PostgreSQL server</p>
+<p>PostgreSQL 服务器</p>
 </td>
 </tr>
 </table>
@@ -1870,7 +1870,7 @@
 <tr>
 <td><em>Printer</em> <br/></td>
 <td>
-<p>Line Printer protocol printing</p>
+<p>行式打印机协议打印</p>
 </td>
 </tr>
 </table>
@@ -1902,7 +1902,7 @@
 <tr>
 <td><em>RDP</em> <br/></td>
 <td>
-<p>Microsoft Remote Desktop Protocol traffic</p>
+<p>Microsoft 远程桌面协议流量</p>
 </td>
 </tr>
 </table>
@@ -1934,7 +1934,7 @@
 <tr>
 <td><em>RIP</em> <br/></td>
 <td>
-<p>Routing Information Protocol (bidirectional)</p>
+<p>路由信息协议（双向）</p>
 </td>
 </tr>
 </table>
@@ -1966,7 +1966,7 @@
 <tr>
 <td><em>RNDC</em> <br/></td>
 <td>
-<p>BIND remote management protocol</p>
+<p>BIND 远程管理协议</p>
 </td>
 </tr>
 </table>
@@ -1998,7 +1998,7 @@
 <tr>
 <td><em>Razor</em> <br/></td>
 <td>
-<p>Razor Antispam System</p>
+<p>Razor 反垃圾邮件系统</p>
 </td>
 </tr>
 </table>
@@ -2030,7 +2030,7 @@
 <tr>
 <td><em>Rdate</em> <br/></td>
 <td>
-<p>Remote time retrieval (rdate)</p>
+<p>远程时间获取（rdate）</p>
 </td>
 </tr>
 </table>
@@ -2062,7 +2062,7 @@
 <tr>
 <td><em>Rsync</em> <br/></td>
 <td>
-<p>Rsync server</p>
+<p>Rsync 服务器</p>
 </td>
 </tr>
 </table>
@@ -2094,7 +2094,7 @@
 <tr>
 <td><em>SANE</em> <br/></td>
 <td>
-<p>SANE network scanning</p>
+<p>SANE 网络扫描</p>
 </td>
 </tr>
 </table>
@@ -2126,7 +2126,7 @@
 <tr>
 <td><em>SMB</em> <br/></td>
 <td>
-<p>Microsoft SMB traffic</p>
+<p>Microsoft SMB 流量</p>
 </td>
 </tr>
 </table>
@@ -2176,7 +2176,7 @@
 <tr>
 <td><em>SMBswat</em> <br/></td>
 <td>
-<p>Samba Web Administration Tool</p>
+<p>Samba Web 管理工具</p>
 </td>
 </tr>
 </table>
@@ -2208,7 +2208,7 @@
 <tr>
 <td><em>SMTP</em> <br/></td>
 <td>
-<p>Simple Mail Transfer Protocol</p>
+<p>简单邮件传输协议</p>
 </td>
 </tr>
 </table>
@@ -2240,7 +2240,7 @@
 <tr>
 <td><em>SMTPS</em> <br/></td>
 <td>
-<p>Encrypted Simple Mail Transfer Protocol</p>
+<p>加密的简单邮件传输协议</p>
 </td>
 </tr>
 </table>
@@ -2272,7 +2272,7 @@
 <tr>
 <td><em>SNMP</em> <br/></td>
 <td>
-<p>Simple Network Management Protocol</p>
+<p>简单网络管理协议</p>
 </td>
 </tr>
 </table>
@@ -2310,7 +2310,7 @@
 <tr>
 <td><em>SPAMD</em> <br/></td>
 <td>
-<p>Spam Assassin SPAMD traffic</p>
+<p>Spam Assassin SPAMD 流量</p>
 </td>
 </tr>
 </table>
@@ -2342,7 +2342,7 @@
 <tr>
 <td><em>SPICEproxy</em> <br/></td>
 <td>
-<p>Proxmox VE SPICE display proxy traffic</p>
+<p>Proxmox VE SPICE 显示代理流量</p>
 </td>
 </tr>
 </table>
@@ -2374,7 +2374,7 @@
 <tr>
 <td><em>SSH</em> <br/></td>
 <td>
-<p>Secure shell traffic</p>
+<p>安全 Shell 流量</p>
 </td>
 </tr>
 </table>
@@ -2406,7 +2406,7 @@
 <tr>
 <td><em>SVN</em> <br/></td>
 <td>
-<p>Subversion server (svnserve)</p>
+<p>Subversion 服务器（svnserve）</p>
 </td>
 </tr>
 </table>
@@ -2438,7 +2438,7 @@
 <tr>
 <td><em>SixXS</em> <br/></td>
 <td>
-<p>SixXS IPv6 Deployment and Tunnel Broker</p>
+<p>SixXS IPv6 部署和隧道代理</p>
 </td>
 </tr>
 </table>
@@ -2488,7 +2488,7 @@
 <tr>
 <td><em>Squid</em> <br/></td>
 <td>
-<p>Squid web proxy traffic</p>
+<p>Squid Web 代理流量</p>
 </td>
 </tr>
 </table>
@@ -2520,7 +2520,7 @@
 <tr>
 <td><em>Submission</em> <br/></td>
 <td>
-<p>Mail message submission traffic</p>
+<p>邮件消息提交流量</p>
 </td>
 </tr>
 </table>
@@ -2552,7 +2552,7 @@
 <tr>
 <td><em>Syslog</em> <br/></td>
 <td>
-<p>Syslog protocol (RFC 5424) traffic</p>
+<p>Syslog 协议（RFC 5424）流量</p>
 </td>
 </tr>
 </table>
@@ -2590,7 +2590,7 @@
 <tr>
 <td><em>TFTP</em> <br/></td>
 <td>
-<p>Trivial File Transfer Protocol traffic</p>
+<p>简单文件传输协议流量</p>
 </td>
 </tr>
 </table>
@@ -2622,7 +2622,7 @@
 <tr>
 <td><em>Telnet</em> <br/></td>
 <td>
-<p>Telnet traffic</p>
+<p>Telnet 流量</p>
 </td>
 </tr>
 </table>
@@ -2654,7 +2654,7 @@
 <tr>
 <td><em>Telnets</em> <br/></td>
 <td>
-<p>Telnet over SSL</p>
+<p>通过 SSL 传输的 Telnet</p>
 </td>
 </tr>
 </table>
@@ -2686,7 +2686,7 @@
 <tr>
 <td><em>Time</em> <br/></td>
 <td>
-<p>RFC 868 Time protocol</p>
+<p>RFC 868 时间协议</p>
 </td>
 </tr>
 </table>
@@ -2718,7 +2718,7 @@
 <tr>
 <td><em>Trcrt</em> <br/></td>
 <td>
-<p>Traceroute (for up to 30 hops) traffic</p>
+<p>Traceroute（最多 30 跳）流量</p>
 </td>
 </tr>
 </table>
@@ -2756,7 +2756,7 @@
 <tr>
 <td><em>VNC</em> <br/></td>
 <td>
-<p>VNC traffic for VNC display’s 0 - 99</p>
+<p>VNC 显示器 0 - 99 的 VNC 流量</p>
 </td>
 </tr>
 </table>
@@ -2788,7 +2788,7 @@
 <tr>
 <td><em>VNCL</em> <br/></td>
 <td>
-<p>VNC traffic from Vncservers to Vncviewers in listen mode</p>
+<p>从 Vncservers 到处于监听模式的 Vncviewers 的 VNC 流量</p>
 </td>
 </tr>
 </table>
@@ -2820,7 +2820,7 @@
 <tr>
 <td><em>Web</em> <br/></td>
 <td>
-<p>WWW traffic (HTTP and HTTPS)</p>
+<p>WWW 流量（HTTP 和 HTTPS）</p>
 </td>
 </tr>
 </table>
@@ -2858,7 +2858,7 @@
 <tr>
 <td><em>Webcache</em> <br/></td>
 <td>
-<p>Web Cache/Proxy traffic (port 8080)</p>
+<p>Web 缓存/代理流量（端口 8080）</p>
 </td>
 </tr>
 </table>
@@ -2890,7 +2890,7 @@
 <tr>
 <td><em>Webmin</em> <br/></td>
 <td>
-<p>Webmin traffic</p>
+<p>Webmin 流量</p>
 </td>
 </tr>
 </table>
@@ -2922,7 +2922,7 @@
 <tr>
 <td><em>Whois</em> <br/></td>
 <td>
-<p>Whois (nicname, RFC 3912) traffic</p>
+<p>Whois（nicname，RFC 3912）流量</p>
 </td>
 </tr>
 </table>

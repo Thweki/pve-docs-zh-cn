@@ -1,8 +1,8 @@
-# 28.1. Markdown Basics <a href="#markdown_basics" id="markdown_basics"></a>
+# 28.1. Markdown 基础 <a href="#markdown_basics" id="markdown_basics"></a>
 
-Note that we only describe the basics here, please search the web for more extensive resources, for example on [https://www.markdownguide.org/](https://www.markdownguide.org/)
+请注意，这里仅介绍基础知识，更全面的资料请在网上搜索，例如 [https://www.markdownguide.org/](https://www.markdownguide.org/)
 
-## 28.1.1. Headings <a href="#_headings" id="_headings"></a>
+## 28.1.1. 标题 <a href="#headings" id="headings"></a>
 
 ```text
 # This is a Heading h1
@@ -10,33 +10,33 @@ Note that we only describe the basics here, please search the web for more exten
 ##### This is a Heading h5
 ```
 
-## 28.1.2. Emphasis <a href="#_emphasis" id="_emphasis"></a>
+## 28.1.2. 强调 <a href="#emphasis" id="emphasis"></a>
 
-Use `*text*` or `_text_` for emphasis.
+使用 `*text*` 或 `_text_` 表示强调。
 
-Use `**text**` or `__text__` for bold, heavy-weight text.
+使用 `**text**` 或 `__text__` 表示加粗、粗体文本。
 
-Combinations are also possible, for example:
+也可以组合使用，例如：
 
 ```text
 _You **can** combine them_
 ```
 
-## 28.1.3. Links <a href="#_links" id="_links"></a>
+## 28.1.3. 链接 <a href="#links" id="links"></a>
 
-You can use automatic detection of links, for example, `https://forum.proxmox.com/` would transform it into a clickable link.
+可以使用自动链接检测，例如，`https://forum.proxmox.com/` 会被转换为可点击的链接。
 
-You can also control the link text, for example:
+也可以控制链接文本，例如：
 
 ```text
 Now, [the part in brackets will be the link text](https://forum.proxmox.com/).
 ```
 
-## 28.1.4. Lists <a href="#_lists" id="_lists"></a>
+## 28.1.4. 列表 <a href="#lists" id="lists"></a>
 
-### Unordered Lists <a href="#_unordered_lists" id="_unordered_lists"></a>
+### 无序列表 <a href="#unordered_lists" id="unordered_lists"></a>
 
-Use `*` or `-` for unordered lists, for example:
+使用 `*` 或 `-` 表示无序列表，例如：
 
 ```text
 * Item 1
@@ -45,9 +45,9 @@ Use `*` or `-` for unordered lists, for example:
 * Item 2b
 ```
 
-Adding an indentation can be used to created nested lists.
+添加缩进可用于创建嵌套列表。
 
-### Ordered Lists <a href="#_ordered_lists" id="_ordered_lists"></a>
+### 有序列表 <a href="#ordered_lists" id="ordered_lists"></a>
 
 ```text
 1. Item 1
@@ -58,12 +58,12 @@ Adding an indentation can be used to created nested lists.
 ```
 
 {% hint style="info" %}
-The integer of ordered lists does not need to be correct, they will be numbered automatically.
+有序列表的整数无需正确，它们会自动编号。
 {% endhint %}
 
-### Task Lists <a href="#_task_lists" id="_task_lists"></a>
+### 任务列表 <a href="#task_lists" id="task_lists"></a>
 
-Task list use a empty box `[ ]` for unfinished tasks and a box with an `X` for finished tasks.
+任务列表使用空框 `[ ]` 表示未完成任务，使用带有 `X` 的框表示已完成任务。
 
 例如：
 
@@ -74,9 +74,9 @@ Task list use a empty box `[ ]` for unfinished tasks and a box with an `X` for f
 - [ ] So is this one
 ```
 
-## 28.1.5. Tables <a href="#_tables" id="_tables"></a>
+## 28.1.5. 表格 <a href="#tables" id="tables"></a>
 
-Tables use the pipe symbol `|` to separate columns, and `-` to separate the table header from the table body, in that separation one can also set the text alignment, making one column left-, center-, or right-aligned.
+表格使用竖线符号 `|` 分隔列，使用 `-` 分隔表头与表格正文；还可以在该分隔行中设置文本对齐方式，使某列左对齐、居中或右对齐。
 
 ```text
 | Left columns  | Right columns |  Some  | More | Cols.| Centering Works Too
@@ -88,11 +88,11 @@ Tables use the pipe symbol `|` to separate columns, and `-` to separate the tabl
 | left rab      | right rab     | And    | Last | Here | The End            |
 ```
 
-Note that you do not need to align the columns nicely with white space, but that makes editing tables easier.
+请注意，不需要使用空白字符将列整齐对齐，但这样做会让表格编辑更方便。
 
-## 28.1.6. Block Quotes <a href="#_block_quotes" id="_block_quotes"></a>
+## 28.1.6. 块引用 <a href="#block_quotes" id="block_quotes"></a>
 
-You can enter block quotes by prefixing a line with `>`, similar as in plain-text emails.
+可以通过在行首添加 `>` 输入块引用，类似于纯文本电子邮件中的用法。
 
 ```text
 > Markdown is a lightweight markup language with plain-text-formatting syntax,
@@ -102,21 +102,21 @@ You can enter block quotes by prefixing a line with `>`, similar as in plain-tex
 >> and to create rich text using a plain text editor.
 ```
 
-## 28.1.7. Code and Snippets <a href="#_code_and_snippets" id="_code_and_snippets"></a>
+## 28.1.7. 代码和代码片段 <a href="#code_and_snippets" id="code_and_snippets"></a>
 
-You can use backticks to avoid processing for a few word or paragraphs. That is useful for avoiding that a code or configuration hunk gets mistakenly interpreted as markdown.
+可以使用反引号使几个词或几个段落不被处理。这有助于避免代码或配置片段被错误地解释为 Markdown。
 
-### Inline code <a href="#_inline_code" id="_inline_code"></a>
+### 行内代码 <a href="#inline_code" id="inline_code"></a>
 
-Surrounding part of a line with single backticks allows to write code inline, for examples:
+使用单个反引号包围一行中的某个部分，可以编写行内代码，例如：
 
 ```text
 This hosts IP address is `10.0.0.1`.
 ```
 
-### Whole blocks of code <a href="#_whole_blocks_of_code" id="_whole_blocks_of_code"></a>
+### 完整代码块 <a href="#whole_blocks_of_code" id="whole_blocks_of_code"></a>
 
-For code blocks spanning several lines you can use triple-backticks to start and end such a block, for example:
+对于跨越多行的代码块，可以使用三个反引号作为代码块的起始和结束，例如：
 
 ````text
 ```

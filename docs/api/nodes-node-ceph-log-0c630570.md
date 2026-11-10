@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/log`
 
-Read ceph log
+读取 ceph 日志
 
 **方法标识：** `log`
 
@@ -46,9 +46,9 @@ Read ceph log
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — | Maximum number of log lines to return. Defaults to the dump_logfile limit (typically 50) when omitted. |
-| `node` | string | 是 | — | The cluster node name. |
-| `start` | integer | 否 | — | Offset of the first log line to return (0-based). |
+| `limit` | integer | 否 | — | 返回日志行的最大数量。省略时默认为 dump_logfile 的限制（通常为 50）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `start` | integer | 否 | — | 返回的首个日志行的偏移量（从 0 开始）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,20 +58,20 @@ Read ceph log
   "additionalProperties": 0,
   "properties": {
     "limit": {
-      "description": "Maximum number of log lines to return. Defaults to the dump_logfile limit (typically 50) when omitted.",
+      "description": "返回日志行的最大数量。省略时默认为 dump_logfile 的限制（通常为 50）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "start": {
-      "description": "Offset of the first log line to return (0-based).",
+      "description": "返回的首个日志行的偏移量（从 0 开始）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -90,11 +90,11 @@ Read ceph log
   "items": {
     "properties": {
       "n": {
-        "description": "Log-file line number (1-based).",
+        "description": "日志文件行号（从 1 开始）。",
         "type": "integer"
       },
       "t": {
-        "description": "Log line text.",
+        "description": "日志行文本。",
         "type": "string"
       }
     },

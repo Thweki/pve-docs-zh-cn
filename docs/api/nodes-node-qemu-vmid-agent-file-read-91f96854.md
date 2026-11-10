@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/agent/file-read`
 
-Reads the given file via guest agent. Is limited to 16777216 bytes.
+通过客户机代理读取给定文件。限制为 16777216 字节。
 
 **方法标识：** `file-read`
 
@@ -49,12 +49,12 @@ Reads the given file via guest agent. Is limited to 16777216 bytes.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `count` | integer | 否 | "16777216" | Number of bytes to read. |
-| `decode` | boolean | 否 | 1 | Data received from the QEMU Guest-Agent is base64 encoded. If this is set to true, the data is decoded. Otherwise the content is forwarded with base64 encoding. Defaults to true. |
-| `file` | string | 是 | — | The path to the file |
-| `node` | string | 是 | — | The cluster node name. |
-| `offset` | integer | 否 | 0 | Offset to start reading at |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `count` | integer | 否 | "16777216" | 要读取的字节数。 |
+| `decode` | boolean | 否 | 1 | 从 QEMU Guest-Agent 接收的数据采用 base64 编码。如果设为 true，则解码数据。否则以 base64 编码转发内容。默认为 true。 |
+| `file` | string | 是 | — | 文件路径 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `offset` | integer | 否 | 0 | 开始读取的偏移量 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -65,7 +65,7 @@ Reads the given file via guest agent. Is limited to 16777216 bytes.
   "properties": {
     "count": {
       "default": "16777216",
-      "description": "Number of bytes to read.",
+      "description": "要读取的字节数。",
       "maximum": "16777216",
       "minimum": 1,
       "optional": 1,
@@ -74,32 +74,32 @@ Reads the given file via guest agent. Is limited to 16777216 bytes.
     },
     "decode": {
       "default": 1,
-      "description": "Data received from the QEMU Guest-Agent is base64 encoded. If this is set to true, the data is decoded. Otherwise the content is forwarded with base64 encoding. Defaults to true.",
+      "description": "从 QEMU Guest-Agent 接收的数据采用 base64 编码。如果设为 true，则解码数据。否则以 base64 编码转发内容。默认为 true。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "file": {
-      "description": "The path to the file",
+      "description": "文件路径",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "offset": {
       "default": 0,
-      "description": "Offset to start reading at",
+      "description": "开始读取的偏移量",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -116,14 +116,14 @@ Reads the given file via guest agent. Is limited to 16777216 bytes.
 
 ```json
 {
-  "description": "Returns an object with a `content` property.",
+  "description": "返回带有 `content` 属性的对象。",
   "properties": {
     "content": {
-      "description": "The content of the file, maximum 16777216",
+      "description": "文件内容，最大 16777216",
       "type": "string"
     },
     "truncated": {
-      "description": "If set to 1, the read did not reach the end of the file.",
+      "description": "如果设为 1，表示读取未到达文件末尾。",
       "optional": 1,
       "type": "boolean"
     }

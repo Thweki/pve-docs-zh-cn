@@ -6,7 +6,7 @@
 
 ## POST `/access/openid/login`
 
-Verify OpenID authorization code and create a ticket.
+验证 OpenID 授权码并创建票据。
 
 **方法标识：** `login`
 
@@ -34,9 +34,9 @@ Verify OpenID authorization code and create a ticket.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `code` | string | 是 | — | OpenId authorization code. |
-| `redirect-url` | string | 是 | — | Redirection Url. The client should set this to the used server url (location.origin). |
-| `state` | string | 是 | — | OpenId state. |
+| `code` | string | 是 | — | OpenID 授权码。 |
+| `redirect-url` | string | 是 | — | 重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
+| `state` | string | 是 | — | OpenID 状态。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -46,19 +46,19 @@ Verify OpenID authorization code and create a ticket.
   "additionalProperties": 0,
   "properties": {
     "code": {
-      "description": "OpenId authorization code.",
+      "description": "OpenID 授权码。",
       "maxLength": 4096,
       "type": "string",
       "typetext": "<string>"
     },
     "redirect-url": {
-      "description": "Redirection Url. The client should set this to the used server url (location.origin).",
+      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。",
       "maxLength": 255,
       "type": "string",
       "typetext": "<string>"
     },
     "state": {
-      "description": "OpenId state.",
+      "description": "OpenID 状态。",
       "maxLength": 1024,
       "type": "string",
       "typetext": "<string>"

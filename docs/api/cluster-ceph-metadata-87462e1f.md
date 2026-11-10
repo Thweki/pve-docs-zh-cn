@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph/metadata`
 
-Get ceph metadata.
+获取 ceph 元数据。
 
 **方法标识：** `metadata`
 
@@ -43,7 +43,7 @@ Get ceph metadata.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `scope` | string | 否 | "all" | Which metadata facet to return: 'all' enriches the per-daemon metadata with the PVE-side service state (presence of unit, data directory), 'versions' collects only per-node Ceph binary version data.；可选值：`all`, `versions` |
+| `scope` | string | 否 | "all" | 要返回的元数据类别：'all' 在每个守护进程的元数据中加入 PVE 端的服务状态（单元、数据目录是否存在）；'versions' 仅收集各节点的 Ceph 二进制程序版本数据。；可选值：`all`, `versions` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,7 +54,7 @@ Get ceph metadata.
   "properties": {
     "scope": {
       "default": "all",
-      "description": "Which metadata facet to return: 'all' enriches the per-daemon metadata with the PVE-side service state (presence of unit, data directory), 'versions' collects only per-node Ceph binary version data.",
+      "description": "要返回的元数据类别：'all' 在每个守护进程的元数据中加入 PVE 端的服务状态（单元、数据目录是否存在）；'versions' 仅收集各节点的 Ceph 二进制程序版本数据。",
       "enum": [
         "all",
         "versions"
@@ -72,141 +72,141 @@ Get ceph metadata.
 
 ```json
 {
-  "description": "Items for each type of service containing objects for each instance.",
+  "description": "每种服务类型的条目，包含各实例的对象。",
   "properties": {
     "mds": {
       "additionalProperties": {
         "additionalProperties": 1,
-        "description": "Useful properties are listed, but not the full list.",
+        "description": "列出了一些有用的属性，并非完整列表。",
         "properties": {
           "addr": {
-            "description": "Bind addresses and ports.",
+            "description": "绑定地址和端口。",
             "optional": 1,
             "type": "string"
           },
           "ceph_release": {
-            "description": "Ceph release codename currently used.",
+            "description": "当前使用的 Ceph 发行版代号。",
             "type": "string"
           },
           "ceph_version": {
-            "description": "Version info currently used by the service.",
+            "description": "服务当前使用的版本信息。",
             "type": "string"
           },
           "ceph_version_short": {
-            "description": "Short version (numerical) info currently used by the service.",
+            "description": "服务当前使用的简短版本（数字）信息。",
             "type": "string"
           },
           "hostname": {
-            "description": "Hostname on which the service is running.",
+            "description": "运行此服务的主机名。",
             "type": "string"
           },
           "mem_swap_kb": {
-            "description": "Memory of the service currently in swap.",
+            "description": "此服务当前位于交换空间中的内存。",
             "type": "integer"
           },
           "mem_total_kb": {
-            "description": "Memory consumption of the service.",
+            "description": "此服务的内存用量。",
             "type": "integer"
           },
           "name": {
-            "description": "Name of the service instance.",
+            "description": "服务实例名称。",
             "optional": 1,
             "type": "string"
           }
         },
         "type": "object"
       },
-      "description": "Metadata servers configured in the cluster and their properties, keyed by '<name>@<host>'.",
+      "description": "集群中配置的元数据服务器及其属性，以 '<name>@<host>' 为键。",
       "type": "object"
     },
     "mgr": {
       "additionalProperties": {
         "additionalProperties": 1,
-        "description": "Useful properties are listed, but not the full list.",
+        "description": "列出了一些有用的属性，并非完整列表。",
         "properties": {
           "addr": {
-            "description": "Bind address.",
+            "description": "绑定地址。",
             "optional": 1,
             "type": "string"
           },
           "ceph_release": {
-            "description": "Ceph release codename currently used.",
+            "description": "当前使用的 Ceph 发行版代号。",
             "type": "string"
           },
           "ceph_version": {
-            "description": "Version info currently used by the service.",
+            "description": "服务当前使用的版本信息。",
             "type": "string"
           },
           "ceph_version_short": {
-            "description": "Short version (numerical) info currently used by the service.",
+            "description": "服务当前使用的简短版本（数字）信息。",
             "type": "string"
           },
           "hostname": {
-            "description": "Hostname on which the service is running.",
+            "description": "运行此服务的主机名。",
             "type": "string"
           },
           "mem_swap_kb": {
-            "description": "Memory of the service currently in swap.",
+            "description": "此服务当前位于交换空间中的内存。",
             "type": "integer"
           },
           "mem_total_kb": {
-            "description": "Memory consumption of the service.",
+            "description": "此服务的内存用量。",
             "type": "integer"
           },
           "name": {
-            "description": "Name of the service instance.",
+            "description": "服务实例名称。",
             "optional": 1,
             "type": "string"
           }
         },
         "type": "object"
       },
-      "description": "Managers configured in the cluster and their properties, keyed by '<name>@<host>'.",
+      "description": "集群中配置的管理器及其属性，以 '<name>@<host>' 为键。",
       "type": "object"
     },
     "mon": {
       "additionalProperties": {
         "additionalProperties": 1,
-        "description": "Useful properties are listed, but not the full list.",
+        "description": "列出了一些有用的属性，并非完整列表。",
         "properties": {
           "addrs": {
-            "description": "Bind addresses and ports.",
+            "description": "绑定地址和端口。",
             "optional": 1,
             "type": "string"
           },
           "ceph_release": {
-            "description": "Ceph release codename currently used.",
+            "description": "当前使用的 Ceph 发行版代号。",
             "type": "string"
           },
           "ceph_version": {
-            "description": "Version info currently used by the service.",
+            "description": "服务当前使用的版本信息。",
             "type": "string"
           },
           "ceph_version_short": {
-            "description": "Short version (numerical) info currently used by the service.",
+            "description": "服务当前使用的简短版本（数字）信息。",
             "type": "string"
           },
           "hostname": {
-            "description": "Hostname on which the service is running.",
+            "description": "运行此服务的主机名。",
             "type": "string"
           },
           "mem_swap_kb": {
-            "description": "Memory of the service currently in swap.",
+            "description": "此服务当前位于交换空间中的内存。",
             "type": "integer"
           },
           "mem_total_kb": {
-            "description": "Memory consumption of the service.",
+            "description": "此服务的内存用量。",
             "type": "integer"
           },
           "name": {
-            "description": "Name of the service instance.",
+            "description": "服务实例名称。",
             "optional": 1,
             "type": "string"
           }
         },
         "type": "object"
       },
-      "description": "Monitors configured in the cluster and their properties, keyed by '<name>@<host>'.",
+      "description": "集群中配置的监视器及其属性，以 '<name>@<host>' 为键。",
       "type": "object"
     },
     "node": {
@@ -214,22 +214,22 @@ Get ceph metadata.
         "additionalProperties": 1,
         "properties": {
           "buildcommit": {
-            "description": "GIT commit used for the build.",
+            "description": "构建所用的 GIT 提交。",
             "type": "string"
           },
           "version": {
-            "description": "Version info.",
+            "description": "版本信息。",
             "properties": {
               "parts": {
-                "description": "Major, minor and patch version numbers.",
+                "description": "主版本号、次版本号和补丁版本号。",
                 "items": {
-                  "description": "Version-component string.",
+                  "description": "版本组成部分字符串。",
                   "type": "string"
                 },
                 "type": "array"
               },
               "str": {
-                "description": "Version as single string.",
+                "description": "以单个字符串表示的版本。",
                 "type": "string"
               }
             },
@@ -238,71 +238,71 @@ Get ceph metadata.
         },
         "type": "object"
       },
-      "description": "Ceph version installed on the nodes, keyed by node name.",
+      "description": "节点上安装的 Ceph 版本，以节点名称为键。",
       "type": "object"
     },
     "osd": {
-      "description": "OSDs configured in the cluster and their properties.",
+      "description": "集群中配置的 OSD 及其属性。",
       "items": {
-        "description": "Useful properties are listed, but not the full list.",
+        "description": "列出了一些有用的属性，并非完整列表。",
         "properties": {
           "back_addr": {
-            "description": "Bind addresses and ports for backend inter OSD traffic.",
+            "description": "OSD 之间后端流量的绑定地址和端口。",
             "type": "string"
           },
           "ceph_release": {
-            "description": "Ceph release codename currently used.",
+            "description": "当前使用的 Ceph 发行版代号。",
             "type": "string"
           },
           "ceph_version": {
-            "description": "Version info currently used by the service.",
+            "description": "服务当前使用的版本信息。",
             "type": "string"
           },
           "ceph_version_short": {
-            "description": "Short version (numerical) info currently used by the service.",
+            "description": "服务当前使用的简短版本（数字）信息。",
             "type": "string"
           },
           "device_ids": {
-            "description": "Comma-joined list of device identifiers (e.g. 'sdb=<serial>,sdc=<serial>').",
+            "description": "以逗号连接的设备标识符列表（例如 'sdb=<serial>,sdc=<serial>'）。",
             "optional": 1,
             "type": "string"
           },
           "device_paths": {
-            "description": "Comma-joined list of /dev/disk/by-path entries for the underlying devices.",
+            "description": "底层设备的 /dev/disk/by-path 条目列表，以逗号连接。",
             "optional": 1,
             "type": "string"
           },
           "devices": {
-            "description": "Comma-joined list of underlying device names (e.g. 'sdb,sdc').",
+            "description": "以逗号连接的底层设备名称列表（例如 'sdb,sdc'）。",
             "optional": 1,
             "type": "string"
           },
           "front_addr": {
-            "description": "Bind addresses and ports for frontend traffic to OSDs.",
+            "description": "到 OSD 的前端流量的绑定地址和端口。",
             "type": "string"
           },
           "hostname": {
-            "description": "Hostname on which the service is running.",
+            "description": "运行此服务的主机名。",
             "type": "string"
           },
           "id": {
-            "description": "OSD ID.",
+            "description": "OSD ID。",
             "type": "integer"
           },
           "mem_swap_kb": {
-            "description": "Memory of the service currently in swap.",
+            "description": "此服务当前位于交换空间中的内存。",
             "type": "integer"
           },
           "mem_total_kb": {
-            "description": "Memory consumption of the service.",
+            "description": "此服务的内存用量。",
             "type": "integer"
           },
           "osd_data": {
-            "description": "Path to the OSD data directory.",
+            "description": "OSD 数据目录的路径。",
             "type": "string"
           },
           "osd_objectstore": {
-            "description": "OSD objectstore type.",
+            "description": "OSD 对象存储类型。",
             "type": "string"
           }
         },

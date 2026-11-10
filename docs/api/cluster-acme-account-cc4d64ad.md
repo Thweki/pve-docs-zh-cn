@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme/account`
 
-ACMEAccount index.
+ACMEAccount 索引。
 
 **方法标识：** `account_index`
 
@@ -54,7 +54,7 @@ ACMEAccount index.
 
 ## POST `/cluster/acme/account`
 
-Register a new ACME account with CA.
+向 CA 注册新的 ACME 账户。
 
 **方法标识：** `register_account`
 
@@ -74,12 +74,12 @@ Register a new ACME account with CA.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `contact` | string | 是 | — | Contact email addresses. |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | URL of ACME CA directory endpoint. |
-| `eab-hmac-key` | string | 否 | — | HMAC key for External Account Binding. |
-| `eab-kid` | string | 否 | — | Key Identifier for External Account Binding. |
-| `name` | string | 否 | "default" | ACME account config file name. |
-| `tos_url` | string | 否 | — | URL of CA TermsOfService - setting this indicates agreement. |
+| `contact` | string | 是 | — | 联系电子邮件地址。 |
+| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
+| `eab-hmac-key` | string | 否 | — | 外部账户绑定的 HMAC 密钥。 |
+| `eab-kid` | string | 否 | — | 外部账户绑定的密钥标识符。 |
+| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
+| `tos_url` | string | 否 | — | CA 服务条款的 URL——设置此项表示同意条款。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -89,27 +89,27 @@ Register a new ACME account with CA.
   "additionalProperties": 0,
   "properties": {
     "contact": {
-      "description": "Contact email addresses.",
+      "description": "联系电子邮件地址。",
       "format": "email-list",
       "type": "string",
       "typetext": "<string>"
     },
     "directory": {
       "default": "https://acme-v02.api.letsencrypt.org/directory",
-      "description": "URL of ACME CA directory endpoint.",
+      "description": "ACME CA 目录端点的 URL。",
       "optional": 1,
       "pattern": "^https?://.*",
       "type": "string"
     },
     "eab-hmac-key": {
-      "description": "HMAC key for External Account Binding.",
+      "description": "外部账户绑定的 HMAC 密钥。",
       "optional": 1,
       "requires": "eab-kid",
       "type": "string",
       "typetext": "<string>"
     },
     "eab-kid": {
-      "description": "Key Identifier for External Account Binding.",
+      "description": "外部账户绑定的密钥标识符。",
       "optional": 1,
       "requires": "eab-hmac-key",
       "type": "string",
@@ -117,7 +117,7 @@ Register a new ACME account with CA.
     },
     "name": {
       "default": "default",
-      "description": "ACME account config file name.",
+      "description": "ACME 账户配置文件名。",
       "format": "pve-configid",
       "format_description": "name",
       "optional": 1,
@@ -125,7 +125,7 @@ Register a new ACME account with CA.
       "typetext": "<name>"
     },
     "tos_url": {
-      "description": "URL of CA TermsOfService - setting this indicates agreement.",
+      "description": "CA 服务条款的 URL——设置此项表示同意条款。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

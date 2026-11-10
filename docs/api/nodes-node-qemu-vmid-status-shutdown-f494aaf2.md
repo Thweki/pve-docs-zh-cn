@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/status/shutdown`
 
-Shutdown virtual machine. This is similar to pressing the power button on a physical machine. This will send an ACPI event for the guest OS, which should then proceed to a clean shutdown.
+关闭虚拟机。这类似于按下物理机的电源按钮。此操作会向客户机操作系统发送 ACPI 事件，客户机随后应正常关机。
 
 **方法标识：** `vm_shutdown`
 
@@ -46,12 +46,12 @@ Shutdown virtual machine. This is similar to pressing the power button on a phys
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `forceStop` | boolean | 否 | 0 | Make sure the VM stops. |
-| `keepActive` | boolean | 否 | 0 | Do not deactivate storage volumes. |
-| `node` | string | 是 | — | The cluster node name. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `timeout` | integer | 否 | — | Wait maximal timeout seconds. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `forceStop` | boolean | 否 | 0 | 确保虚拟机停止。 |
+| `keepActive` | boolean | 否 | 0 | 不停用存储卷。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `timeout` | integer | 否 | — | 最多等待 timeout 秒。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -62,39 +62,39 @@ Shutdown virtual machine. This is similar to pressing the power button on a phys
   "properties": {
     "forceStop": {
       "default": 0,
-      "description": "Make sure the VM stops.",
+      "description": "确保虚拟机停止。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "keepActive": {
       "default": 0,
-      "description": "Do not deactivate storage volumes.",
+      "description": "不停用存储卷。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "timeout": {
-      "description": "Wait maximal timeout seconds.",
+      "description": "最多等待 timeout 秒。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

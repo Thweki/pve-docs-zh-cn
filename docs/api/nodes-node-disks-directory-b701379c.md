@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/directory`
 
-PVE Managed Directory storages.
+PVE 管理的目录存储。
 
 **方法标识：** `index`
 
@@ -46,7 +46,7 @@ PVE Managed Directory storages.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ PVE Managed Directory storages.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,23 +74,23 @@ PVE Managed Directory storages.
   "items": {
     "properties": {
       "device": {
-        "description": "The mounted device.",
+        "description": "已挂载的设备。",
         "type": "string"
       },
       "options": {
-        "description": "The mount options.",
+        "description": "挂载选项。",
         "type": "string"
       },
       "path": {
-        "description": "The mount path.",
+        "description": "挂载路径。",
         "type": "string"
       },
       "type": {
-        "description": "The filesystem type.",
+        "description": "文件系统类型。",
         "type": "string"
       },
       "unitfile": {
-        "description": "The path of the mount unit.",
+        "description": "挂载单元路径。",
         "type": "string"
       }
     },
@@ -102,7 +102,7 @@ PVE Managed Directory storages.
 
 ## POST `/nodes/{node}/disks/directory`
 
-Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
+在未使用的磁盘上创建文件系统。将挂载在 '/mnt/pve/NAME' 下。
 
 **方法标识：** `create`
 
@@ -117,7 +117,7 @@ Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
       "Sys.Modify"
     ]
   ],
-  "description": "Requires additionally 'Datastore.Allocate' on /storage when setting 'add_storage'"
+  "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"
 }
 ```
 
@@ -143,11 +143,11 @@ Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | Configure storage using the directory. |
-| `device` | string | 是 | — | The block device you want to create the filesystem on. |
-| `filesystem` | string | 否 | "ext4" | The desired filesystem.；可选值：`ext4`, `xfs` |
-| `name` | string | 是 | — | The storage identifier. |
-| `node` | string | 是 | — | The cluster node name. |
+| `add_storage` | boolean | 否 | 0 | 使用目录配置存储。 |
+| `device` | string | 是 | — | 要在其上创建文件系统的块设备。 |
+| `filesystem` | string | 否 | "ext4" | 所需的文件系统。；可选值：`ext4`, `xfs` |
+| `name` | string | 是 | — | 存储标识符。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -158,19 +158,19 @@ Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
   "properties": {
     "add_storage": {
       "default": 0,
-      "description": "Configure storage using the directory.",
+      "description": "使用目录配置存储。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "device": {
-      "description": "The block device you want to create the filesystem on.",
+      "description": "要在其上创建文件系统的块设备。",
       "type": "string",
       "typetext": "<string>"
     },
     "filesystem": {
       "default": "ext4",
-      "description": "The desired filesystem.",
+      "description": "所需的文件系统。",
       "enum": [
         "ext4",
         "xfs"
@@ -179,14 +179,14 @@ Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
       "type": "string"
     },
     "name": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

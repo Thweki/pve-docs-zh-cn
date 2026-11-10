@@ -6,7 +6,7 @@
 
 ## GET `/cluster/qemu/cpu-flags`
 
-List of available CPU flags. Currently only implemented for x86_64, returns an empty list for aarch64.
+可用 CPU 标志列表。目前仅针对 x86_64 实现，对于 aarch64 返回空列表。
 
 **方法标识：** `index`
 
@@ -48,8 +48,8 @@ List of available CPU flags. Currently only implemented for x86_64, returns an e
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `accel` | string | 否 | "kvm" | Acceleration type to check node compatibility for.；可选值：`kvm`, `tcg` |
-| `arch` | string | 否 | — | Virtual processor architecture. Defaults to the host architecture.；可选值：`x86_64`, `aarch64` |
+| `accel` | string | 否 | "kvm" | 要检查节点兼容性的加速类型。；可选值：`kvm`, `tcg` |
+| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,7 +60,7 @@ List of available CPU flags. Currently only implemented for x86_64, returns an e
   "properties": {
     "accel": {
       "default": "kvm",
-      "description": "Acceleration type to check node compatibility for.",
+      "description": "要检查节点兼容性的加速类型。",
       "enum": [
         "kvm",
         "tcg"
@@ -69,7 +69,7 @@ List of available CPU flags. Currently only implemented for x86_64, returns an e
       "type": "string"
     },
     "arch": {
-      "description": "Virtual processor architecture. Defaults to the host architecture.",
+      "description": "虚拟处理器架构。默认为宿主机架构。",
       "enum": [
         "x86_64",
         "aarch64"
@@ -90,18 +90,18 @@ List of available CPU flags. Currently only implemented for x86_64, returns an e
   "items": {
     "properties": {
       "description": {
-        "description": "Description of the CPU flag.",
+        "description": "CPU 标志描述。",
         "optional": 1,
         "type": "string"
       },
       "name": {
-        "description": "Name of the CPU flag.",
+        "description": "CPU 标志名称。",
         "type": "string"
       },
       "supported-on": {
-        "description": "List of nodes supporting the flag with the selected acceleration type (\"accel\").",
+        "description": "使用所选加速类型（“accel”）时支持此标志的节点列表。",
         "items": {
-          "description": "The cluster node name.",
+          "description": "集群节点名称。",
           "format": "pve-node",
           "type": "string"
         },

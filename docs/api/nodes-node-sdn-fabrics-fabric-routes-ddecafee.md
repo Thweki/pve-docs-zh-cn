@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/fabrics/{fabric}/routes`
 
-Get all routes for a fabric.
+获取 fabric 的所有路由。
 
 **方法标识：** `routes`
 
@@ -46,8 +46,8 @@ Get all routes for a fabric.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | Identifier for SDN fabrics |
-| `node` | string | 是 | — | The cluster node name. |
+| `fabric` | string | 是 | — | SDN fabric 的标识符 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,7 +57,7 @@ Get all routes for a fabric.
   "additionalProperties": 0,
   "properties": {
     "fabric": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -65,7 +65,7 @@ Get all routes for a fabric.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,13 +83,13 @@ Get all routes for a fabric.
   "items": {
     "properties": {
       "route": {
-        "description": "The CIDR block for this routing table entry.",
+        "description": "此路由表条目的 CIDR 块。",
         "type": "string"
       },
       "via": {
-        "description": "A list of nexthops for that route.",
+        "description": "此路由的下一跳列表。",
         "items": {
-          "description": "The IP address of the nexthop.",
+          "description": "下一跳的 IP 地址。",
           "type": "string"
         },
         "type": "array"

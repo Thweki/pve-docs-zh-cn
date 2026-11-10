@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage/{storage}/status`
 
-Read storage status.
+读取存储状态。
 
 **方法标识：** `read_status`
 
@@ -49,8 +49,8 @@ Read storage status.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,13 +60,13 @@ Read storage status.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
@@ -84,43 +84,43 @@ Read storage status.
 {
   "properties": {
     "active": {
-      "description": "Set when storage is accessible.",
+      "description": "存储可访问时设置。",
       "optional": 1,
       "type": "boolean"
     },
     "avail": {
-      "description": "Available storage space in bytes.",
+      "description": "可用存储空间，单位为字节。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "content": {
-      "description": "Allowed storage content types.",
+      "description": "允许的存储内容类型。",
       "format": "pve-storage-content-list",
       "type": "string"
     },
     "enabled": {
-      "description": "Set when storage is enabled (not disabled).",
+      "description": "存储已启用（未禁用）时设置。",
       "optional": 1,
       "type": "boolean"
     },
     "shared": {
-      "description": "Shared flag from storage configuration.",
+      "description": "存储配置中的 shared 标志。",
       "optional": 1,
       "type": "boolean"
     },
     "total": {
-      "description": "Total storage space in bytes.",
+      "description": "总存储空间，单位为字节。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "type": {
-      "description": "Storage type.",
+      "description": "存储类型。",
       "type": "string"
     },
     "used": {
-      "description": "Used storage space in bytes.",
+      "description": "已用存储空间，单位为字节。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"

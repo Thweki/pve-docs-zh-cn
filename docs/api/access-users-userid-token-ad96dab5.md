@@ -6,7 +6,7 @@
 
 ## GET `/access/users/{userid}/token`
 
-Get user API tokens.
+获取用户 API 令牌。
 
 **方法标识：** `token_index`
 
@@ -40,7 +40,7 @@ Get user API tokens.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Get user API tokens.
   "additionalProperties": 0,
   "properties": {
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -74,19 +74,19 @@ Get user API tokens.
       },
       "expire": {
         "default": "same as user",
-        "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+        "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
         "minimum": 0,
         "optional": 1,
         "type": "integer"
       },
       "privsep": {
         "default": 1,
-        "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+        "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
         "optional": 1,
         "type": "boolean"
       },
       "tokenid": {
-        "description": "User-specific token identifier.",
+        "description": "用户特定的令牌标识符。",
         "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
         "type": "string"
       }

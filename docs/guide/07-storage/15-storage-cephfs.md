@@ -64,7 +64,7 @@ cephfs: cephfs-external
 {% endhint %}
 
 如果使用默认启用的 `cephx` 身份验证，请提供一个专用身份的密钥，该身份仅具有此存储所需的权限。按照 Ceph 用户管理中的说明获取或创建该身份。  
-[\[cephusermgmt\]](14-ceph-rados-block-devices.md#_footnote_cephusermgmt)  
+[\[cephusermgmt\]](14-ceph-rados-block-devices.md#footnote_cephusermgmt)  
  以下示例使用 `client.pve-cephfs`；不要将 `client.admin` 用于存储客户端。
 
 通过 SSH 将密钥本身导出到一个 Proxmox VE 节点：
@@ -88,7 +88,7 @@ cephfs: cephfs-external
 
 如果外部集群轮换此身份，请在重新挂载存储之前替换已存储的密钥。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
-## 7.15.3. 存储功能 <a href="#_storage_features_11" id="_storage_features_11"></a>
+## 7.15.3. 存储功能 <a href="#storage_features_11" id="storage_features_11"></a>
 
 `cephfs` 后端是一个基于 Ceph 集群、符合 POSIX 标准的文件系统。
 

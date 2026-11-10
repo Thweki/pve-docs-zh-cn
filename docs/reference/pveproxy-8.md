@@ -1,22 +1,14 @@
 # pveproxy(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pveproxy \- PVE API Proxy Daemon
+pveproxy \- PVE API 代理守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pveproxy"></a>
+### **pveproxy** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveproxy" id="cli_pveproxy"></a>
 
-
-
-**pveproxy** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pveproxy_help"></a>
-
-
-
-**pveproxy help** `[OPTIONS]`
+### **pveproxy help** `[OPTIONS]` <a href="#cli_pveproxy_help" id="cli_pveproxy_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,51 +20,35 @@ pveproxy \- PVE API Proxy Daemon
 
 详细输出格式。
 
-<a id="cli_pveproxy_restart"></a>
+### **pveproxy restart** <a href="#cli_pveproxy_restart" id="cli_pveproxy_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+### **pveproxy start** `[OPTIONS]` <a href="#cli_pveproxy_start" id="cli_pveproxy_start"></a>
 
-**pveproxy restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pveproxy_start"></a>
-
-
-
-**pveproxy start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pveproxy_status"></a>
+### **pveproxy status** <a href="#cli_pveproxy_status" id="cli_pveproxy_status"></a>
 
+获取守护进程状态。
 
+### **pveproxy stop** <a href="#cli_pveproxy_stop" id="cli_pveproxy_stop"></a>
 
-**pveproxy status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pveproxy_stop"></a>
+此守护进程通过 HTTPS 在 TCP 端口 8006 上提供完整的 Proxmox VE API。它以用户 `www-data` 身份运行，权限非常有限。需要更多权限的操作会转发到本地 `pvedaemon`。
 
+发往其他节点的请求会自动转发到相应节点。这意味着只需连接到一个 Proxmox VE 节点，就可以管理整个集群。
 
+## 基于宿主机的访问控制 <a href="#pveproxy_host_acls" id="pveproxy_host_acls"></a>
 
-**pveproxy stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This daemon exposes the whole Proxmox VE API on TCP port 8006 using HTTPS. It runs as user `www-data` and has very limited permissions. Operation requiring more permissions are forwarded to the local `pvedaemon`.
-
-Requests targeted for other nodes are automatically forwarded to those nodes. This means that you can manage your whole cluster by connecting to a single Proxmox VE node.
-
-## Host based Access Control <a href="#pveproxy_host_acls" id="pveproxy_host_acls"></a>
-
-It is possible to configure “apache2”-like access control lists. Values are read from file `/etc/default/pveproxy`. For example:
+可以配置类似“apache2”的访问控制列表。各项值从文件 `/etc/default/pveproxy` 读取。例如：
 
 ```text
 ALLOW_FROM="10.0.0.1-10.0.0.5,192.168.0.0/22"
@@ -80,9 +56,9 @@ DENY_FROM="all"
 POLICY="allow"
 ```
 
-IP addresses can be specified using any syntax understood by `Net::IP`. The name `all` is an alias for `0/0` and `::/0` (meaning all IPv4 and IPv6 addresses).
+可以使用 `Net::IP` 能理解的任意语法指定 IP 地址。名称 `all` 是 `0/0` 和 `::/0` 的别名（表示所有 IPv4 和 IPv6 地址）。
 
-The default policy is `allow`.
+默认策略为 `allow`。
 
 <table>
 
@@ -90,191 +66,191 @@ The default policy is `allow`.
 
 <thead>
 <tr>
-<th>Match</th>
+<th>匹配</th>
 <th>POLICY=deny</th>
 <th>POLICY=allow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>Match Allow only</p></td>
+<td><p>仅匹配 Allow</p></td>
 <td><p>allow</p></td>
 <td><p>allow</p></td>
 </tr>
 <tr>
-<td><p>Match Deny only</p></td>
+<td><p>仅匹配 Deny</p></td>
 <td><p>deny</p></td>
 <td><p>deny</p></td>
 </tr>
 <tr>
-<td><p>No match</p></td>
+<td><p>无匹配</p></td>
 <td><p>deny</p></td>
 <td><p>allow</p></td>
 </tr>
 <tr>
-<td><p>Match Both Allow &amp; Deny</p></td>
+<td><p>同时匹配 Allow 和 Deny</p></td>
 <td><p>deny</p></td>
 <td><p>allow</p></td>
 </tr>
 </tbody>
 </table>
 
-## Listening IP Address <a href="#pveproxy_listening_address" id="pveproxy_listening_address"></a>
+## 监听 IP 地址 <a href="#pveproxy_listening_address" id="pveproxy_listening_address"></a>
 
-By default the `pveproxy` and `spiceproxy` daemons listen on the wildcard address and accept connections from both IPv4 and IPv6 clients.
+默认情况下，`pveproxy` 和 `spiceproxy` 守护进程监听通配地址，并接受来自 IPv4 和 IPv6 客户端的连接。
 
-By setting `LISTEN_IP` in `/etc/default/pveproxy` you can control to which IP address the `pveproxy` and `spiceproxy` daemons bind. The IP-address needs to be configured on the system.
+通过设置 `LISTEN_IP`（位于 `/etc/default/pveproxy` 中），可以控制 `pveproxy` 和 `spiceproxy` 守护进程绑定到哪个 IP 地址。该 IP 地址需要在系统上配置。
 
-Setting the `sysctl` `net.ipv6.bindv6only` to the non-default `1` will cause the daemons to only accept connection from IPv6 clients, while usually also causing lots of other issues. If you set this configuration we recommend to either remove the `sysctl` setting, or set the `LISTEN_IP` to `0.0.0.0` (which will only allow IPv4 clients).
+将 `sysctl` 的 `net.ipv6.bindv6only` 设置为非默认的 `1`，会导致守护进程仅接受 IPv6 客户端的连接，通常还会引发许多其他问题。如果设置此配置，建议移除 `sysctl` 设置，或将 `LISTEN_IP` 设置为 `0.0.0.0`（这将仅允许 IPv4 客户端）。
 
-`LISTEN_IP` can be used to only to restricting the socket to an internal interface and thus have less exposure to the public internet, for example:
+`LISTEN_IP` 可用于将套接字限制在内部接口，从而减少对公共互联网的暴露，例如：
 
 ```text
 LISTEN_IP="192.0.2.1"
 ```
 
-Similarly, you can also set an IPv6 address:
+同样，也可以设置 IPv6 地址：
 
 ```text
 LISTEN_IP="2001:db8:85a3::1"
 ```
 
-Note that if you want to specify a link-local IPv6 address, you need to provide the interface name itself. For example:
+请注意，如果要指定链路本地 IPv6 地址，需要提供接口名称本身。例如：
 
 ```text
 LISTEN_IP="fe80::c463:8cff:feb9:6a4e%vmbr0"
 ```
 
 {% hint style="warning" %}
-The nodes in a cluster need access to `pveproxy` for communication, possibly on different sub-nets. It is **not recommended** to set `LISTEN_IP` on clustered systems.
+集群中的节点需要访问 `pveproxy` 进行通信，可能跨越不同子网。**不建议**在集群系统上设置 `LISTEN_IP`。
 {% endhint %}
 
-To apply the change you need to either reboot your node or fully restart the `pveproxy` and `spiceproxy` service:
+要应用更改，需要重启节点，或完全重启 `pveproxy` 和 `spiceproxy` 服务：
 
 ```text
 systemctl restart pveproxy.service spiceproxy.service
 ```
 
 {% hint style="info" %}
-Unlike `reload`, a `restart` of the pveproxy service can interrupt some long-running worker processes, for example a running console or shell from a virtual guest. So, please use a maintenance window to bring this change in effect.
+与 `reload` 不同，对 pveproxy 服务执行 `restart` 可能会中断一些长时间运行的工作进程，例如虚拟客户机中正在运行的控制台或 Shell。因此，请在维护窗口内使此更改生效。
 {% endhint %}
 
-## SSL Cipher Suite <a href="#_ssl_cipher_suite" id="_ssl_cipher_suite"></a>
+## SSL 密码套件 <a href="#ssl_cipher_suite" id="ssl_cipher_suite"></a>
 
-You can define the cipher list in `/etc/default/pveproxy` via the `CIPHERS` (TLS ⇐ 1.2) and `CIPHERSUITES` (TLS \>\= 1.3) keys. For example
+可以在 `/etc/default/pveproxy` 中，通过 `CIPHERS`（TLS ⇐ 1.2）和 `CIPHERSUITES`（TLS \>\= 1.3）键定义密码套件列表。例如
 
 ```text
 CIPHERS="ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
 CIPHERSUITES="TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256"
 ```
 
-Above is the default. See the ciphers(1) man page from the openssl package for a list of all available options.
+以上为默认值。所有可用选项的列表请参阅 openssl 软件包中的 ciphers(1) 手册页。
 
-Additionally, you can set the client to choose the cipher used in `/etc/default/pveproxy` (default is the first cipher in the list available to both client and `pveproxy`):
+此外，可以在 `/etc/default/pveproxy` 中设置由客户端选择使用的密码套件（默认是客户端与 `pveproxy` 均支持的列表中首个密码套件）：
 
 ```text
 HONOR_CIPHER_ORDER=0
 ```
 
-## Supported TLS versions <a href="#_supported_tls_versions" id="_supported_tls_versions"></a>
+## 支持的 TLS 版本 <a href="#supported_tls_versions" id="supported_tls_versions"></a>
 
-The insecure SSL versions 2 and 3 are unconditionally disabled for pveproxy. TLS versions below 1.1 are disabled by default on recent OpenSSL versions, which is honored by `pveproxy` (see `/etc/ssl/openssl.cnf`).
+pveproxy 无条件禁用不安全的 SSL 版本 2 和 3。近期 OpenSSL 版本默认禁用低于 1.1 的 TLS 版本，`pveproxy` 也遵循此设置（参见 `/etc/ssl/openssl.cnf`）。
 
-To disable TLS version 1.2 or 1.3, set the following in `/etc/default/pveproxy`:
+要禁用 TLS 版本 1.2 或 1.3，请在 `/etc/default/pveproxy` 中设置以下内容：
 
 ```text
 DISABLE_TLS_1_2=1
 ```
 
-or, respectively:
+或分别设置为：
 
 ```text
 DISABLE_TLS_1_3=1
 ```
 
 {% hint style="info" %}
-Unless there is a specific reason to do so, it is not recommended to manually adjust the supported TLS versions.
+除非有具体原因，否则不建议手动调整支持的 TLS 版本。
 {% endhint %}
 
-## Diffie-Hellman Parameters <a href="#_diffie_hellman_parameters" id="_diffie_hellman_parameters"></a>
+## Diffie-Hellman 参数 <a href="#diffie_hellman_parameters" id="diffie_hellman_parameters"></a>
 
-You can define the used Diffie-Hellman parameters in `/etc/default/pveproxy` by setting `DHPARAMS` to the path of a file containing DH parameters in PEM format, for example
+可以在 `/etc/default/pveproxy` 中定义使用的 Diffie-Hellman 参数，方法是将 `DHPARAMS` 设置为包含 PEM 格式 DH 参数的文件路径，例如
 
 ```text
 DHPARAMS="/path/to/dhparams.pem"
 ```
 
-If this option is not set, the built-in `skip2048` parameters will be used.
+如果未设置此选项，则使用内置的 `skip2048` 参数。
 
 {% hint style="info" %}
-DH parameters are only used if a cipher suite utilizing the DH key exchange algorithm is negotiated.
+只有协商选用采用 DH 密钥交换算法的密码套件时，才会使用 DH 参数。
 {% endhint %}
 
-## Alternative HTTPS certificate <a href="#pveproxy_custom_tls_cert" id="pveproxy_custom_tls_cert"></a>
+## 替代 HTTPS 证书 <a href="#pveproxy_custom_tls_cert" id="pveproxy_custom_tls_cert"></a>
 
-You can change the certificate used to an external one or to one obtained via ACME.
+可以将所用证书改为外部证书或通过 ACME 获取的证书。
 
-pveproxy uses `/etc/pve/local/pveproxy-ssl.pem` and `/etc/pve/local/pveproxy-ssl.key`, if present, and falls back to `/etc/pve/local/pve-ssl.pem` and `/etc/pve/local/pve-ssl.key`. The private key may not use a passphrase.
+如果存在，pveproxy 使用 `/etc/pve/local/pveproxy-ssl.pem` 和 `/etc/pve/local/pveproxy-ssl.key`，否则回退到 `/etc/pve/local/pve-ssl.pem` 和 `/etc/pve/local/pve-ssl.key`。私钥不得使用口令。
 
-It is possible to override the location of the certificate private key `/etc/pve/local/pveproxy-ssl.key` by setting `TLS_KEY_FILE` in `/etc/default/pveproxy`, for example:
+可以覆盖证书私钥 `/etc/pve/local/pveproxy-ssl.key` 的位置，方法是设置 `TLS_KEY_FILE`，该设置位于 `/etc/default/pveproxy` 中，例如：
 
 ```text
 TLS_KEY_FILE="/secrets/pveproxy.key"
 ```
 
 {% hint style="info" %}
-The included ACME integration does not honor this setting.
+内置的 ACME 集成不遵循此设置。
 {% endhint %}
 
-See the Host System Administration chapter of the documentation for details.
+详情请参阅文档的宿主机系统管理章节。
 
-## Response Compression <a href="#pveproxy_response_compression" id="pveproxy_response_compression"></a>
+## 响应压缩 <a href="#pveproxy_response_compression" id="pveproxy_response_compression"></a>
 
-By default `pveproxy` uses gzip HTTP-level compression for compressible content, if the client supports it. This can be disabled in `/etc/default/pveproxy`:
+默认情况下，如果客户端支持，`pveproxy` 会对可压缩内容使用 gzip HTTP 层压缩。可以在 `/etc/default/pveproxy` 中禁用：
 
 ```text
 COMPRESSION=0
 ```
 
 {% hint style="info" %}
-Disabling compression mitigates BREACH-class side-channel attacks against authenticated session cookies, at the cost of slightly more bandwidth used by the web interface. Most deployments do not need to change the default; consider it on hosts where the web interface is exposed across networks you do not fully control.
+禁用压缩可缓解针对已认证会话 Cookie 的 BREACH 类侧信道攻击，代价是 Web 界面的带宽用量略有增加。大多数部署无需更改默认值；对于 Web 界面需要跨越不完全受您控制的网络进行访问的宿主机，可以考虑此设置。
 {% endhint %}
 
-## Real Client IP Logging <a href="#pveproxy_real_ip" id="pveproxy_real_ip"></a>
+## 真实客户端 IP 日志记录 <a href="#pveproxy_real_ip" id="pveproxy_real_ip"></a>
 
-By default, `pveproxy` logs the IP address of the client that sent the request. In cases where a proxy server is in front of `pveproxy`, it may be desirable to log the IP of the client making the request instead of the proxy IP.
+默认情况下，`pveproxy` 记录发送请求的客户端 IP 地址。如果在 `pveproxy` 前方部署了代理服务器，可能希望记录发出请求的客户端 IP，而不是代理的 IP。
 
-To enable processing of a HTTP header set by the proxy for logging purposes, set `PROXY_REAL_IP_HEADER` to the name of the header to retrieve the client IP from. For example:
+要启用对代理设置的 HTTP 标头的处理以用于日志记录，请将 `PROXY_REAL_IP_HEADER` 设置为用于获取客户端 IP 的标头名称。例如：
 
 ```text
 PROXY_REAL_IP_HEADER="X-Forwarded-For"
 ```
 
-Any invalid values passed in this header will be ignored.
+此标头中传入的任何无效值都会被忽略。
 
-The default behavior is log the value in this header on all incoming requests. To define a list of proxy servers that should be trusted to set the above HTTP header, set `PROXY_REAL_IP_ALLOW_FROM`, for example:
+默认行为是对所有传入请求记录此标头中的值。要定义可信任的代理服务器列表，允许这些服务器设置上述 HTTP 标头，请设置 `PROXY_REAL_IP_ALLOW_FROM`，例如：
 
 ```text
 PROXY_REAL_IP_ALLOW_FROM="192.168.0.2"
 ```
 
-The `PROXY_REAL_IP_ALLOW_FROM` setting also supports values similar to the `ALLOW_FROM` and `DENY_FROM` settings.
+`PROXY_REAL_IP_ALLOW_FROM` 设置也支持与 `ALLOW_FROM` 和 `DENY_FROM` 设置类似的值。
 
-IP addresses can be specified using any syntax understood by `Net::IP`. The name `all` is an alias for `0/0` and `::/0` (meaning all IPv4 and IPv6 addresses).
+可以使用 `Net::IP` 能理解的任意语法指定 IP 地址。名称 `all` 是 `0/0` 和 `::/0` 的别名（表示所有 IPv4 和 IPv6 地址）。
 
-## Number of Workers <a href="#pveproxy_max_workers" id="pveproxy_max_workers"></a>
+## 工作进程数量 <a href="#pveproxy_max_workers" id="pveproxy_max_workers"></a>
 
-`pveproxy` delegates handling of incoming requests to worker processes. By default, `pveproxy` spawns 3 worker processes, which is sufficient for most workloads. For automation-heavy workloads that issue a huge volume of API requests and that experience slow request handling or timeouts, the number of worker processes can be increased by setting `MAX_WORKERS` in `/etc/default/pveproxy`, for example:
+`pveproxy` 将传入请求交给工作进程处理。默认情况下，`pveproxy` 启动 3 个工作进程，这对大多数工作负载已经足够。对于发出大量 API 请求并遇到请求处理缓慢或超时的高度自动化工作负载，可以设置 `MAX_WORKERS` 来增加工作进程数量，此设置位于 `/etc/default/pveproxy` 中，例如：
 
 ```text
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
+请注意，增加工作进程数量可能会提高 CPU 使用率。工作进程数量必须大于 0 且小于 128。
 
-The same setting exists for [pvedaemon](pvedaemon-8.md#pvedaemon_max_workers).
+[pvedaemon](pvedaemon-8.md#pvedaemon_max_workers) 也有相同的设置。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

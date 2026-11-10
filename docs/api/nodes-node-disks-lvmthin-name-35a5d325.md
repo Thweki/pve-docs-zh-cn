@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/disks/lvmthin/{name}`
 
-Remove an LVM thin pool.
+移除 LVM 精简池。
 
 **方法标识：** `delete`
 
@@ -21,7 +21,7 @@ Remove an LVM thin pool.
       "Sys.Modify"
     ]
   ],
-  "description": "Requires additionally 'Datastore.Allocate' on /storage when setting 'cleanup-config'"
+  "description": "设置 'cleanup-config' 时，还需要对 /storage 具有 'Datastore.Allocate' 权限"
 }
 ```
 
@@ -47,11 +47,11 @@ Remove an LVM thin pool.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cleanup-config` | boolean | 否 | 0 | Marks associated storage(s) as not available on this node anymore or removes them from the configuration (if configured for this node only). |
-| `cleanup-disks` | boolean | 否 | 0 | Also wipe disks so they can be repurposed afterwards. |
-| `name` | string | 是 | — | The storage identifier. |
-| `node` | string | 是 | — | The cluster node name. |
-| `volume-group` | string | 是 | — | The storage identifier. |
+| `cleanup-config` | boolean | 否 | 0 | 将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
+| `cleanup-disks` | boolean | 否 | 0 | 同时擦除磁盘，以便后续改作他用。 |
+| `name` | string | 是 | — | 存储标识符。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `volume-group` | string | 是 | — | 存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -62,33 +62,33 @@ Remove an LVM thin pool.
   "properties": {
     "cleanup-config": {
       "default": 0,
-      "description": "Marks associated storage(s) as not available on this node anymore or removes them from the configuration (if configured for this node only).",
+      "description": "将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "cleanup-disks": {
       "default": 0,
-      "description": "Also wipe disks so they can be repurposed afterwards.",
+      "description": "同时擦除磁盘，以便后续改作他用。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "volume-group": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",

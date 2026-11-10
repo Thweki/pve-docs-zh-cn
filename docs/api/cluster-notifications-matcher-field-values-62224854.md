@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/matcher-field-values`
 
-Returns known notification metadata fields and their known values
+返回已知的通知元数据字段及其已知值
 
 **方法标识：** `get_matcher_field_values`
 
@@ -57,16 +57,16 @@ Returns known notification metadata fields and their known values
   "items": {
     "properties": {
       "comment": {
-        "description": "Additional comment for this value.",
+        "description": "此值的额外注释。",
         "optional": 1,
         "type": "string"
       },
       "field": {
-        "description": "Field this value belongs to.",
+        "description": "此值所属的字段。",
         "type": "string"
       },
       "value": {
-        "description": "Notification metadata value known by the system.",
+        "description": "系统已知的通知元数据值。",
         "type": "string"
       }
     },

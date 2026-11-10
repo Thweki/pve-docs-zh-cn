@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/interfaces`
 
-Get IP addresses of the specified container interface.
+获取指定容器接口的 IP 地址。
 
 **方法标识：** `ip`
 
@@ -46,8 +46,8 @@ Get IP addresses of the specified container interface.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Get IP addresses of the specified container interface.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -83,41 +83,41 @@ Get IP addresses of the specified container interface.
   "items": {
     "properties": {
       "hardware-address": {
-        "description": "The MAC address of the interface",
+        "description": "接口的 MAC 地址",
         "optional": 0,
         "type": "string"
       },
       "hwaddr": {
-        "description": "The MAC address of the interface",
+        "description": "接口的 MAC 地址",
         "optional": 0,
         "type": "string"
       },
       "inet": {
-        "description": "The IPv4 address of the interface",
+        "description": "接口的 IPv4 地址",
         "optional": 1,
         "type": "string"
       },
       "inet6": {
-        "description": "The IPv6 address of the interface",
+        "description": "接口的 IPv6 地址",
         "optional": 1,
         "type": "string"
       },
       "ip-addresses": {
-        "description": "The addresses of the interface",
+        "description": "接口的地址",
         "items": {
           "properties": {
             "ip-address": {
-              "description": "IP-Address",
+              "description": "IP 地址",
               "optional": 1,
               "type": "string"
             },
             "ip-address-type": {
-              "description": "IP-Family",
+              "description": "IP 地址族",
               "optional": 1,
               "type": "string"
             },
             "prefix": {
-              "description": "IP-Prefix",
+              "description": "IP 前缀",
               "optional": 1,
               "type": "integer"
             }
@@ -128,7 +128,7 @@ Get IP addresses of the specified container interface.
         "type": "array"
       },
       "name": {
-        "description": "The name of the interface",
+        "description": "接口名称",
         "optional": 0,
         "type": "string"
       }

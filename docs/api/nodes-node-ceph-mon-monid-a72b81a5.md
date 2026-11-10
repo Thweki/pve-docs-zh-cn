@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/ceph/mon/{monid}`
 
-Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does not destroy any Manager on the same node; use /nodes/{node}/ceph/mgr/{id} for that.
+销毁 Ceph 监视器。拒绝移除集群的最后一个监视器。不会销毁同一节点上的任何管理器；如需销毁，请使用 /nodes/{node}/ceph/mgr/{id}。
 
 **方法标识：** `destroymon`
 
@@ -46,8 +46,8 @@ Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does 
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `monid` | string | 是 | — | Monitor ID |
-| `node` | string | 是 | — | The cluster node name. |
+| `monid` | string | 是 | — | 监视器 ID |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,12 +57,12 @@ Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does 
   "additionalProperties": 0,
   "properties": {
     "monid": {
-      "description": "Monitor ID",
+      "description": "监视器 ID",
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,7 +83,7 @@ Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does 
 
 ## POST `/nodes/{node}/ceph/mon/{monid}`
 
-Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
+创建 Ceph 监视器。对于首个监视器，还会自动创建管理器。
 
 **方法标识：** `createmon`
 
@@ -123,9 +123,9 @@ Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `mon-address` | string | 否 | — | Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph. |
-| `monid` | string | 否 | "nodename" | The ID for the monitor, when omitted the same as the nodename. |
-| `node` | string | 是 | — | The cluster node name. |
+| `mon-address` | string | 否 | — | 覆盖自动检测到的监视器 IP 地址。必须位于 Ceph 的公共网络中。 |
+| `monid` | string | 否 | "nodename" | 监视器的 ID，省略时与节点名称相同。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -135,7 +135,7 @@ Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
   "additionalProperties": 0,
   "properties": {
     "mon-address": {
-      "description": "Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph.",
+      "description": "覆盖自动检测到的监视器 IP 地址。必须位于 Ceph 的公共网络中。",
       "format": "ip-list",
       "optional": 1,
       "type": "string",
@@ -143,14 +143,14 @@ Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
     },
     "monid": {
       "default": "nodename",
-      "description": "The ID for the monitor, when omitted the same as the nodename.",
+      "description": "监视器的 ID，省略时与节点名称相同。",
       "maxLength": 200,
       "optional": 1,
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

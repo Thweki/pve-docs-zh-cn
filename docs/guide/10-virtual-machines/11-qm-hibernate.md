@@ -8,11 +8,7 @@
 
 这意味着当前内存内容将保存到磁盘，并且虚拟机会停止。下次启动时，将加载内存内容，虚拟机可以从中断处继续运行。
 
-<a id="qm_vmstatestorage"></a>
-
-
-
-**状态存储选择**
+## 状态存储选择 <a href="#qm_vmstatestorage" id="qm_vmstatestorage"></a>
 
 如果未指定内存的目标存储，将自动选择以下第一项：
 

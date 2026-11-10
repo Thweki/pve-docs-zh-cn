@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/clone`
 
-Create a copy of virtual machine/template.
+创建虚拟机/模板的副本。
 
 **方法标识：** `clone_vm`
 
@@ -43,7 +43,7 @@ Create a copy of virtual machine/template.
       ]
     ]
   ],
-  "description": "You need 'VM.Clone' permissions on /vms/{vmid}, and 'VM.Allocate' permissions on /vms/{newid} (or on the VM pool /pool/{pool}). You also need 'Datastore.AllocateSpace' on any used storage and 'SDN.Use' on any used bridge/vnet"
+  "description": "需要对 /vms/{vmid} 具有 'VM.Clone' 权限，以及对 /vms/{newid}（或虚拟机资源池 /pool/{pool}）具有 'VM.Allocate' 权限。还需要对任何使用的存储具有 'Datastore.AllocateSpace' 权限，以及对任何使用的网桥/vnet 具有 'SDN.Use' 权限"
 }
 ```
 
@@ -69,18 +69,18 @@ Create a copy of virtual machine/template.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "clone limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `description` | string | 否 | — | Description for the new VM. |
-| `format` | string | 否 | — | Target disk format. Only valid for full clone. If the target storage does not support the format, the storage's default format is used instead.；可选值：`raw`, `qcow2`, `vmdk` |
-| `full` | boolean | 否 | — | Create a full copy of all disks. This is always done when you clone a normal VM. For VM templates, we try to create a linked clone by default. |
-| `name` | string | 否 | — | Set a name for the new VM. |
-| `newid` | integer | 是 | — | VMID for the clone. |
-| `node` | string | 是 | — | The cluster node name. |
-| `pool` | string | 否 | — | Add the new VM to the specified pool. |
-| `snapname` | string | 否 | — | The name of the snapshot. |
-| `storage` | string | 否 | — | Target storage for full clone. |
-| `target` | string | 否 | — | Target node. Only allowed if the original VM is on shared storage. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `bwlimit` | integer | 否 | "clone limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `description` | string | 否 | — | 新虚拟机的描述。 |
+| `format` | string | 否 | — | 目标磁盘格式。仅适用于完整克隆。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
+| `full` | boolean | 否 | — | 创建所有磁盘的完整副本。克隆普通虚拟机时始终执行完整复制。对于虚拟机模板，默认尝试创建链接克隆。 |
+| `name` | string | 否 | — | 为新虚拟机设置名称。 |
+| `newid` | integer | 是 | — | 克隆的 VMID。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pool` | string | 否 | — | 将新虚拟机添加到指定资源池。 |
+| `snapname` | string | 否 | — | 快照名称。 |
+| `storage` | string | 否 | — | 完整克隆的目标存储。 |
+| `target` | string | 否 | — | 目标节点。仅当原始虚拟机位于共享存储上时允许。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -91,20 +91,20 @@ Create a copy of virtual machine/template.
   "properties": {
     "bwlimit": {
       "default": "clone limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "description": {
-      "description": "Description for the new VM.",
+      "description": "新虚拟机的描述。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "format": {
-      "description": "Target disk format. Only valid for full clone. If the target storage does not support the format, the storage's default format is used instead.",
+      "description": "目标磁盘格式。仅适用于完整克隆。如果目标存储不支持该格式，则改用存储的默认格式。",
       "enum": [
         "raw",
         "qcow2",
@@ -114,20 +114,20 @@ Create a copy of virtual machine/template.
       "type": "string"
     },
     "full": {
-      "description": "Create a full copy of all disks. This is always done when you clone a normal VM. For VM templates, we try to create a linked clone by default.",
+      "description": "创建所有磁盘的完整副本。克隆普通虚拟机时始终执行完整复制。对于虚拟机模板，默认尝试创建链接克隆。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
-      "description": "Set a name for the new VM.",
+      "description": "为新虚拟机设置名称。",
       "format": "dns-name",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "newid": {
-      "description": "VMID for the clone.",
+      "description": "克隆的 VMID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -135,20 +135,20 @@ Create a copy of virtual machine/template.
       "typetext": "<integer> (100 - 999999999)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pool": {
-      "description": "Add the new VM to the specified pool.",
+      "description": "将新虚拟机添加到指定资源池。",
       "format": "pve-poolid",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "optional": 1,
@@ -156,7 +156,7 @@ Create a copy of virtual machine/template.
       "typetext": "<string>"
     },
     "storage": {
-      "description": "Target storage for full clone.",
+      "description": "完整克隆的目标存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -164,14 +164,14 @@ Create a copy of virtual machine/template.
       "typetext": "<storage ID>"
     },
     "target": {
-      "description": "Target node. Only allowed if the original VM is on shared storage.",
+      "description": "目标节点。仅当原始虚拟机位于共享存储上时允许。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

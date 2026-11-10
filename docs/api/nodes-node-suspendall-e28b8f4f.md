@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/suspendall`
 
-Suspend all VMs.
+挂起所有虚拟机。
 
 **方法标识：** `suspendall`
 
@@ -14,7 +14,7 @@ Suspend all VMs.
 
 ```json
 {
-  "description": "The 'VM.PowerMgmt' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter. Additionally, you need 'VM.Config.Disk' on the '/vms/{vmid}' path and 'Datastore.AllocateSpace' for the configured state-storage(s)",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。另外，还需要对 '/vms/{vmid}' 路径具有 'VM.Config.Disk' 权限，以及对已配置的状态存储具有 'Datastore.AllocateSpace' 权限",
   "user": "all"
 }
 ```
@@ -41,9 +41,9 @@ Suspend all VMs.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | — | Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'<br>                    .' CPU threads, clamped to a maximum of 8, are used. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vms` | string | 否 | — | Only consider Guests with these IDs. |
+| `max-workers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用的 '<br>                    .' CPU 线程数，最大限制为 8。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,7 +53,7 @@ Suspend all VMs.
   "additionalProperties": 0,
   "properties": {
     "max-workers": {
-      "description": "Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'\n                    .' CPU threads, clamped to a maximum of 8, are used.",
+      "description": "并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用的 '\n                    .' CPU 线程数，最大限制为 8。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -61,13 +61,13 @@ Suspend all VMs.
       "typetext": "<integer> (1 - 64)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vms": {
-      "description": "Only consider Guests with these IDs.",
+      "description": "仅考虑具有这些 ID 的客户机。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",

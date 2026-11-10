@@ -1,4 +1,4 @@
-# 6.1. POSIX 兼容性 <a href="#_posix_compatibility" id="_posix_compatibility"></a>
+# 6.1. POSIX 兼容性 <a href="#posix_compatibility" id="posix_compatibility"></a>
 
 该文件系统基于 FUSE，因此其行为类似于 POSIX。但有些功能并未实现，因为我们不需要它们：
 

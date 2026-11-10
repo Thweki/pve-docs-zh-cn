@@ -37,7 +37,7 @@ Proxmox VE 允许使用不同的固件和机器类型启动虚拟机，即[SeaBI
 Intel 440FX 和 Q35 芯片组专用于 x86 客户机。在 arm64 宿主机上，虚拟机使用`virt`机器类型，该类型模拟一种通用的、基于 UEFI 的 ARM 机器。
 {% endhint %}
 
-#### 机器版本 <a href="#_machine_version" id="_machine_version"></a>
+#### 机器版本 <a href="#machine_version" id="machine_version"></a>
 
 每种机器类型在 QEMU 中都有版本，并且给定的 QEMU 二进制文件支持多种机器版本。新版本可能带来对新功能的支持、修复或一般性改进。但是，它们也会更改虚拟硬件的属性。为避免从客户机角度来看发生突然变化，并确保虚拟机状态、在线迁移和包含 RAM 的快照的兼容性，新的 QEMU 实例将继续使用相同的机器版本。
 
@@ -51,7 +51,7 @@ Intel 440FX 和 Q35 芯片组专用于 x86 客户机。在 arm64 宿主机上，
 
 如果 Proxmox VE 需要更改硬件布局或默认选项，则会递增修订版本，并将其用于新创建的客户机，或在始终使用最新机器版本的虚拟机重启时使用。
 
-#### QEMU 机器版本弃用 <a href="#_qemu_machine_version_deprecation" id="_qemu_machine_version_deprecation"></a>
+#### QEMU 机器版本弃用 <a href="#qemu_machine_version_deprecation" id="qemu_machine_version_deprecation"></a>
 
 从 QEMU 10.1 开始，机器版本在上游 QEMU 中保留 6 年后会被移除。Proxmox VE 大约每 2 年发布一个主要版本，因此一个 Proxmox VE 主要版本将支持来自大约前两个 Proxmox VE 主要版本的机器版本。
 
@@ -98,9 +98,9 @@ QEMU 可以模拟多种存储控制器：
 
 ### Trim/Discard <a href="#qm_hard_disk_discard" id="qm_hard_disk_discard"></a>
 
-If your storage supports *thin provisioning* (see the storage chapter in the Proxmox VE guide), you can activate the **Discard** option on a drive. With **Discard** set and a *TRIM*-enabled guest OS [\[2\]](#note-0fea3830-2), when the VM’s filesystem marks blocks as unused after deleting files, the controller will relay this information to the storage, which will then shrink the disk image accordingly. For the guest to be able to issue *TRIM* commands, you must enable the **Discard** option on the drive. Some guest operating systems may also require the **SSD Emulation** flag to be set. Note that **Discard** on **VirtIO Block** drives is only supported on guests using Linux Kernel 5.0 or higher.
+如果存储支持 *精简置备*（参见 Proxmox VE 指南的存储章节），可以在驱动器上启用 **Discard** 选项。设置 **Discard** 并使用支持 *TRIM* 的客户机操作系统 [\[2\]](#note-0fea3830-2) 后，当虚拟机文件系统在删除文件后将块标记为未使用时，控制器会将此信息转发给存储，存储随后相应缩小磁盘镜像。要让客户机能够发出 *TRIM* 命令，必须在驱动器上启用 **Discard** 选项。某些客户机操作系统可能还需要设置 **SSD 模拟** 标志。请注意，**Discard** 在 **VirtIO Block** 驱动器上仅支持使用 Linux 内核 5.0 或更高版本的客户机。
 
-If you would like a drive to be presented to the guest as a solid-state drive rather than a rotational hard disk, you can set the **SSD emulation** option on that drive. There is no requirement that the underlying storage actually be backed by SSDs; this feature can be used with physical media of any type. Note that **SSD emulation** is not supported on **VirtIO Block** drives.
+如果希望向客户机呈现的驱动器是固态硬盘而非旋转硬盘，可以在该驱动器上设置 **SSD 模拟** 选项。并不要求底层存储实际由 SSD 支撑；此功能可用于任意类型的物理介质。请注意，**SSD 模拟** 不受 **VirtIO Block** 驱动器支持。
 
 ### IO Thread <a href="#qm_hard_disk_iothread" id="qm_hard_disk_iothread"></a>
 
@@ -153,7 +153,7 @@ If you would like a drive to be presented to the guest as a solid-state drive ra
 
 **affinity** 通过 `taskset` CLI 工具设置。它接受宿主机 CPU 编号（参见 `lscpu`），采用 `List Format`，该格式见 `man cpuset`。这个 ASCII 十进制列表既可以包含数字，也可以包含数字范围。例如，**affinity** `0-1,8-11`（展开后为 `0, 1, 8, 9, 10, 11`）将允许 VM 仅在这六个特定的宿主机核心上运行。
 
-### CPU 类型 <a href="#_cpu_type" id="_cpu_type"></a>
+### CPU 类型 <a href="#cpu_type" id="cpu_type"></a>
 
 QEMU 可以模拟多种不同的 **CPU 类型**，从 486 到最新的 Xeon 处理器。每一代新处理器都会增加新功能，例如硬件辅助 3D 渲染、随机数生成、内存保护等。此外，当前一代处理器还可以通过 [微代码更新](../03-system-administration/03-chapter-firmware-updates.md) 进行升级，以修复缺陷或安全问题。
 
@@ -181,7 +181,7 @@ Intel 和 AMD 宿主机 CPU 之间的在线迁移不保证能够正常工作。
 
 另请参阅 [QEMU 中定义的 AMD 和 Intel CPU 类型列表](../26-qemu-vcpu-list/01-chapter-qm-vcpu-list.md)。
 
-### QEMU CPU 类型 <a href="#_qemu_cpu_types" id="_qemu_cpu_types"></a>
+### QEMU CPU 类型 <a href="#qemu_cpu_types" id="qemu_cpu_types"></a>
 
 QEMU 还提供与 Intel 和 AMD 宿主机 CPU 均兼容的虚拟 CPU 类型。
 
@@ -203,7 +203,7 @@ QEMU 还提供与 Intel 和 AMD 宿主机 CPU 均兼容的虚拟 CPU 类型。
 - *x86-64-v3*：兼容 Intel CPU \>\= Haswell、AMD CPU \>\= EPYC。与 *x86-64-v2-AES* 相比，新增的 CPU 标志：*\+avx*、*\+avx2*、*\+bmi1*、*\+bmi2*、*\+f16c*、*\+fma*、*\+movbe*、*\+xsave*。
 - *x86-64-v4*：兼容 Intel CPU \>\= Skylake、AMD CPU \>\= EPYC v4 Genoa。与 *x86-64-v3* 相比，新增的 CPU 标志：*\+avx512f*、*\+avx512bw*、*\+avx512cd*、*\+avx512dq*、*\+avx512vl*。
 
-### 自定义 CPU 类型 <a href="#_custom_cpu_types" id="_custom_cpu_types"></a>
+### 自定义 CPU 类型 <a href="#custom_cpu_types" id="custom_cpu_types"></a>
 
 可以定义自定义 CPU 类型，配置其基础模型、厂商、物理地址位数以及各标志的开关，然后像内置类型一样将其分配给 VM。在 VM 配置中，自定义类型以 `custom-<name>` 的形式引用。
 
@@ -234,7 +234,7 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 
 还有一个社区脚本可用于检测宿主机是否仍存在漏洞。[\[4\]](#note-0fea3830-4)
 
-### Intel 处理器 <a href="#_intel_processors" id="_intel_processors"></a>
+### Intel 处理器 <a href="#intel_processors" id="intel_processors"></a>
 
 - *pcid*
 
@@ -254,7 +254,7 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 
   需要此标志来启用 Spectre V4（CVE-2018-3639）修复。默认不包含在任何 Intel CPU 模型中。对于所有 Intel CPU 模型，都必须显式启用。需要更新宿主机 CPU 微代码（intel-microcode \>\= 20180703）。
 
-### AMD 处理器 <a href="#_amd_processors" id="_amd_processors"></a>
+### AMD 处理器 <a href="#amd_processors" id="amd_processors"></a>
 
 - *ibpb*
 
@@ -274,15 +274,15 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 一些 CPU 默认设置和属性专门针对近期 Intel 硬件上的 Windows 客户机进行了调整：
 
 - 对于 Windows 11 机器类型，默认禁用 `cet-ibt` 和 `cet-ss`（控制流强制技术：间接分支跟踪和影子栈），因为目前它们会导致启用了基于虚拟化的安全性的 Windows 客户机无法启动。对于明确依赖这些标志的工作负载，可以通过 `Processor` 标志编辑器按 VM 重新启用它们。
-- The QEMU `level` CPU property is exposed so it can be set per VM (or in a custom CPU model) without resorting to custom `args`. Setting `level=30` is a known workaround for Hyper-V boot failures of Windows guests on recent Intel hosts when the CPU type is `host` or `max`. The property only applies for x86\_64 vCPUs; it is silently ignored on other architectures.
+- QEMU 的 `level` CPU 属性已公开，可按虚拟机（或在自定义 CPU 型号中）设置，无需使用自定义 `args`。设置 `level=30` 是解决较新 Intel 宿主机上 Windows 客户机 Hyper-V 启动失败的已知方法，此时 CPU 类型为 `host` 或 `max`。该属性仅适用于 x86\_64 vCPU；在其他架构上会被静默忽略。
 
-### NUMA <a href="#_numa" id="_numa"></a>
+### NUMA <a href="#numa" id="numa"></a>
 
 您还可以选择在虚拟机中模拟 **NUMA** [\[6\]](#note-0fea3830-6) 架构。NUMA 架构的基本原理是，内存不再是可供所有核心使用的全局内存池，而是分布在靠近各个插槽的本地内存组中。这可以带来速度提升，因为内存总线不再是瓶颈。如果您的系统采用 NUMA 架构 [\[7\]](#note-0fea3830-7)，我们建议启用此选项，因为这将允许在宿主机系统上合理分配虚拟机资源。在虚拟机中热插拔核心或 RAM 也需要此选项。
 
 如果使用 NUMA 选项，建议将插槽数设置为宿主机系统的节点数。
 
-### vCPU 热插拔 <a href="#_vcpu_hot_plug" id="_vcpu_hot_plug"></a>
+### vCPU 热插拔 <a href="#vcpu_hot_plug" id="vcpu_hot_plug"></a>
 
 现代操作系统引入了在运行中的系统中热插拔 CPU 的能力，并在一定程度上支持热拔除 CPU。虚拟化使我们能够避免真实硬件在此类场景中可能造成的许多（物理）问题。不过，这仍是一项相当新且复杂的功能，因此应仅在绝对必要时使用。大多数功能都可以通过其他经过充分测试且不那么复杂的功能来实现，请参阅 [资源限制](#qm_cpu_resource_limits)。
 
@@ -296,7 +296,7 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 SUBSYSTEM=="cpu", ACTION=="add", TEST=="online", ATTR{online}=="0", ATTR{online}="1"
 ```
 
-Save this under /etc/udev/rules.d/ as a file ending in `.rules`.
+将其保存在 /etc/udev/rules.d/ 下，以 `.rules` 结尾的文件中。
 
 注意：CPU 热移除取决于机器类型，并且需要客户机配合。删除命令并不保证 CPU 移除会实际发生；通常，它只是通过目标相关机制（例如 x86/amd64 上的 ACPI）转发给客户机操作系统的请求。
 
@@ -318,11 +318,7 @@ balloon: 0
 
 在配置中。
 
-<a id="qm_ballooning"></a>
-
-
-
-**自动内存分配**
+### 自动内存分配 <a href="#qm_ballooning" id="qm_ballooning"></a>
 
 当最小内存的设置低于内存时，Proxmox VE 会确保虚拟机始终可以使用您指定的最小内存量；如果宿主机的 RAM 使用率低于某个目标百分比，则会动态地向客户机添加内存，直至达到指定的最大内存。目标百分比默认为 80%，可以[在节点选项中](../03-system-administration/11-proxmox-node-management.md#ballooning-target)进行配置。
 
@@ -513,7 +509,7 @@ QEMU 可以虚拟化几种类型的 VGA 硬件。例如：
 
 要使用剪贴板功能，必须先安装 SPICE 客户机工具。在基于 Debian 的发行版上，可以通过安装 `spice-vdagent` 来实现。对于其他操作系统，请在官方软件仓库中搜索，或参阅：[https://www.spice-space.org/download.html](https://www.spice-space.org/download.html)
 
-Once you have installed the spice guest tools, you can use the VNC clipboard function (e.g. in the noVNC console panel). However, if you’re using SPICE, virtio or virgl, you’ll need to choose which clipboard to use. This is because the default **SPICE** clipboard will be replaced by the **VNC** clipboard, if `clipboard` is set to `vnc`.
+安装 spice 客户机工具后，即可使用 VNC 剪贴板功能（例如在 noVNC 控制台面板中）。不过，如果使用 SPICE、virtio 或 virgl，需要选择使用哪种剪贴板。这是因为默认的 **SPICE** 剪贴板将被 **VNC** 剪贴板替换，条件是 `clipboard` 设为 `vnc`。
 
 {% hint style="info" %}
 为了启用 VNC 剪贴板，QEMU 会被配置为使用 qemu-vdagent 设备。QEMU 10.1 版本增加了对该设备在线迁移的支持。运行在低于 10.1 的 QEMU 或机器版本上且已启用 VNC 剪贴板的 VM 无法在线迁移。
@@ -683,7 +679,7 @@ qm set <vmid> -rng0 source=<source>[,max_bytes=X,period=Y]
 - `/dev/random`：阻塞内核池（不推荐，可能导致宿主机系统出现熵不足）
 - `/dev/hwrng`：用于直通连接到宿主机的硬件 RNG（如果有多个可用，将使用在 `/sys/devices/virtual/misc/hw_random/rng_current` 中选择的那个）
 
-A limit can be specified via the `max_bytes` and `period` parameters, they are read as `max_bytes` per `period` in milliseconds. However, it does not represent a linear relationship: 1024B/1000ms would mean that up to 1 KiB of data becomes available on a 1 second timer, not that 1 KiB is streamed to the guest over the course of one second. Reducing the `period` can thus be used to inject entropy into the guest at a faster rate.
+可以通过 `max_bytes` 和 `period` 参数指定限制，其含义为 `max_bytes` / `period` 毫秒。不过，这并非线性关系：1024B/1000ms 表示在 1 秒定时器触发时最多有 1 KiB 数据可用，而非在一秒内持续向客户机传输 1 KiB。因此可以减小 `period`，以更高速率向客户机注入熵。
 
 默认情况下，限制设置为每 1000 ms 1024 字节（1 KiB/s）。建议始终使用限制器，以避免客户机占用过多宿主机资源。如果需要，可将 *0* 用作 `max_bytes` 的值，以禁用所有限制。
 
@@ -703,7 +699,7 @@ apt install virtiofsd
 
 有一篇[指南](https://github.com/virtio-win/kvm-guest-drivers-windows/wiki/Virtiofs:-Shared-file-system)介绍如何在 Windows VM 中使用 virtiofs。
 
-### 已知限制 <a href="#_known_limitations" id="_known_limitations"></a>
+### 已知限制 <a href="#known_limitations" id="known_limitations"></a>
 
 - 如果 virtiofsd 崩溃，其挂载点将在 VM 中一直处于无响应状态，直到 VM 完全停止。
 - virtiofsd 无响应可能会导致 VM 中的挂载卡住，类似于无法访问 NFS 的情况。
@@ -711,7 +707,7 @@ apt install virtiofsd
 - 在线迁移、快照和休眠等内存相关功能在 virtiofs 设备上不可用。
 - Windows 无法理解 virtiofs 上下文中的 ACL。因此，不要向 Windows VM 暴露 ACL，否则 virtiofs 设备将在 VM 内不可见。
 
-### 为共享目录添加映射 <a href="#_add_mapping_for_shared_directories" id="_add_mapping_for_shared_directories"></a>
+### 为共享目录添加映射 <a href="#add_mapping_for_shared_directories" id="add_mapping_for_shared_directories"></a>
 
 要为共享目录添加映射，可以直接通过 API 使用 `pvesh`，具体方法见[资源映射](12-resource-mapping.md)一节：
 
@@ -721,7 +717,7 @@ pvesh create /cluster/mapping/dir --id dir1 \
     --map node=node2,path=/path/to/share2 \
 ```
 
-### 将 virtiofs 添加到 VM <a href="#_add_virtiofs_to_a_vm" id="_add_virtiofs_to_a_vm"></a>
+### 将 virtiofs 添加到 VM <a href="#add_virtiofs_to_a_vm" id="add_virtiofs_to_a_vm"></a>
 
 要使用 virtiofs 共享目录，请将参数 `virtiofs<N>`（N 可以是 0 到 9 之间的任意值）添加到 VM 配置中，并使用已在资源映射中配置的目录 ID（dirid）。此外，可以根据需求将 `cache` 选项设置为 `always`、`never`、`metadata` 或 `auto`（默认值：`auto`）。有关不同缓存模式行为的信息，请参阅[此处的“缓存模式”一节](https://lwn.net/Articles/774495/)。
 
@@ -812,7 +808,7 @@ QEMU Guest Agent 是一项在 VM 内运行的服务，它在宿主机与客户�
 - 在客户机中安装代理并确保其正在运行
 - 在 Proxmox VE 中启用通过代理进行的通信
 
-### 安装客户机代理 <a href="#_install_guest_agent" id="_install_guest_agent"></a>
+### 安装客户机代理 <a href="#install_guest_agent" id="install_guest_agent"></a>
 
 大多数 Linux 发行版都提供客户机代理。该软件包通常名为 `qemu-guest-agent`。
 
@@ -860,7 +856,7 @@ Linux 上的 ext4 有一个注意事项，因为它使用内存中的优化来�
    禁用此选项可能会导致备份中的文件系统不一致。因此，首选方法是调整客户机中的 QEMU Guest Agent 配置。
    {% endhint %}
 
-### 故障排除 <a href="#_troubleshooting_2" id="_troubleshooting_2"></a>
+### 故障排除 <a href="#troubleshooting_2" id="troubleshooting_2"></a>
 
 **VM 无法关机**
 
@@ -882,11 +878,11 @@ qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 要使用这些功能，必须将虚拟机的 [**显示**](#qm_display) 设置为 SPICE (qxl)。
 {% endhint %}
 
-### 文件夹共享 <a href="#_folder_sharing" id="_folder_sharing"></a>
+### 文件夹共享 <a href="#folder_sharing" id="folder_sharing"></a>
 
 与客户机共享本地文件夹。需要在客户机中安装 `spice-webdavd` 守护进程。它通过位于 [http://localhost:9843](http://localhost:9843) 的本地 WebDAV 服务器提供共享文件夹。
 
-For Windows guests the installer for the *Spice WebDAV daemon* can be downloaded from the [official SPICE website](https://www.spice-space.org/download.html#windows-binaries).
+对于 Windows 客户机，*Spice WebDAV 守护进程* 的安装程序可从 [SPICE 官方网站](https://www.spice-space.org/download.html#windows-binaries) 下载。
 
 大多数 Linux 发行版都有一个名为 `spice-webdavd` 的可安装软件包。
 
@@ -900,7 +896,7 @@ For Windows guests the installer for the *Spice WebDAV daemon* can be downloaded
 实验性功能！目前此功能无法可靠工作。
 {% endhint %}
 
-### 视频流 <a href="#_video_streaming" id="_video_streaming"></a>
+### 视频流 <a href="#video_streaming" id="video_streaming"></a>
 
 快速刷新的区域会被编码为视频流。有两个选项：
 
@@ -909,7 +905,7 @@ For Windows guests the installer for the *Spice WebDAV daemon* can be downloaded
 
 无法就是否应启用视频流以及应选择哪个选项给出一般性建议。实际效果可能因具体情况而异。
 
-### 故障排除 <a href="#_troubleshooting_3" id="_troubleshooting_3"></a>
+### 故障排除 <a href="#troubleshooting_3" id="troubleshooting_3"></a>
 
 **共享文件夹未显示**
 
@@ -927,7 +923,7 @@ For Windows guests the installer for the *Spice WebDAV daemon* can be downloaded
 
 ### 注释 2 <a href="#note-0fea3830-2" id="note-0fea3830-2"></a>
 
-TRIM, UNMAP, and discard [https://en.wikipedia.org/wiki/Trim\_%28computing%29](https://en.wikipedia.org/wiki/Trim_%28computing%29)
+TRIM、UNMAP 和 discard [https://en.wikipedia.org/wiki/Trim\_%28computing%29](https://en.wikipedia.org/wiki/Trim_%28computing%29)
 
 ### 注释 3 <a href="#note-0fea3830-3" id="note-0fea3830-3"></a>
 

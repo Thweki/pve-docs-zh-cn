@@ -46,11 +46,11 @@ Proxmox VE 随附自己的 `fwupd` 软件包版本，以使用 Proxmox 签名密
 
 微码更新旨在修复已发现的安全漏洞和其他严重的 CPU 缺陷。虽然 CPU 性能可能会受到影响，但与未打补丁、需要内核自身采取缓解措施的微码相比，打补丁后的微码通常仍具有更高的性能。根据 CPU 类型，除非明知故犯地让 CPU 在不安全状态下运行，否则可能无法再达到存在缺陷的出厂状态下的性能水平。
 
-要概览当前 CPU 漏洞及其缓解措施，请运行 `lscpu`。只有当 Proxmox VE 宿主机处于 [最新状态](02-system-software-updates.md)、其版本未处于 [生命周期结束](../20-frequently-asked-questions-2/README.md#faq-support-table) 状态，并且自上次内核更新以来至少重启过一次时，才会显示当前已知的实际漏洞。
+要概览当前 CPU 漏洞及其缓解措施，请运行 `lscpu`。只有当 Proxmox VE 宿主机处于 [最新状态](02-system-software-updates.md)、其版本未处于 [生命周期结束](../20-frequently-asked-questions-2/README.md) 状态，并且自上次内核更新以来至少重启过一次时，才会显示当前已知的实际漏洞。
 
 除了通过 [持久化](#sysadmin_firmware_persistent) BIOS/UEFI 更新来更新微码的推荐方法外，还有一种通过 **操作系统早期微码更新** 的独立方法。它使用方便，在主板供应商不再提供 BIOS/UEFI 更新时也特别有帮助。无论使用哪种方法，应用微码更新都始终需要重启。
 
-### 设置操作系统早期微码更新 <a href="#_set_up_early_os_microcode_updates" id="_set_up_early_os_microcode_updates"></a>
+### 设置操作系统早期微码更新 <a href="#set_up_early_os_microcode_updates" id="set_up_early_os_microcode_updates"></a>
 
 要配置由 Linux 内核在启动早期应用的微码更新，您需要：
 
@@ -64,7 +64,7 @@ Proxmox VE 随附自己的 `fwupd` 软件包版本，以使用 Proxmox 签名密
 
 今后的任何微码更新也需要重启才能加载。
 
-### 微码版本 <a href="#_microcode_version" id="_microcode_version"></a>
+### 微码版本 <a href="#microcode_version" id="microcode_version"></a>
 
 要获取当前运行的微码修订版本，以便进行比较或调试：
 

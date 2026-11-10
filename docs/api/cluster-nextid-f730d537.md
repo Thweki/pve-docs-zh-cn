@@ -6,7 +6,7 @@
 
 ## GET `/cluster/nextid`
 
-Get next free VMID. Pass a VMID to assert that its free (at time of check).
+获取下一个空闲 VMID。传入 VMID 可确认其是否空闲（以检查时为准）。
 
 **方法标识：** `nextid`
 
@@ -28,7 +28,7 @@ Get next free VMID. Pass a VMID to assert that its free (at time of check).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `vmid` | integer | 否 | — | The (unique) ID of the VM. |
+| `vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -38,7 +38,7 @@ Get next free VMID. Pass a VMID to assert that its free (at time of check).
   "additionalProperties": 0,
   "properties": {
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -56,7 +56,7 @@ Get next free VMID. Pass a VMID to assert that its free (at time of check).
 
 ```json
 {
-  "description": "The next free VMID.",
+  "description": "下一个空闲 VMID。",
   "type": "integer"
 }
 ```

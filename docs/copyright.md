@@ -1,6 +1,6 @@
 # 版权与翻译说明
 
-本书是 **Proxmox VE Administration Guide — 非官方中文译本**，由本项目维护者使用 AI 辅助翻译和编排，于 2026 年 11 月 10 日制作。原始文档作者和发布者为 **Proxmox Server Solutions GmbH**；本译本由本项目维护者发布。Proxmox 官方未审核或认可本译文。
+本书是 **Proxmox VE Administration Guide — 非官方中文译本**，由 **Thweki 的 pve-docs-zh-cn 项目**使用 AI 辅助翻译和编排，于 2026 年 11 月 10 日制作。原始文档作者和发布者为 **Proxmox Server Solutions GmbH**；本译本由 **Thweki** 发布。Proxmox 官方未审核或认可本译文。
 
 ## 原始版权与许可声明
 

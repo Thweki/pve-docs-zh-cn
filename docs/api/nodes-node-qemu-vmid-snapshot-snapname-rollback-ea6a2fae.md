@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/snapshot/{snapname}/rollback`
 
-Rollback VM state to specified snapshot.
+将虚拟机状态回滚到指定快照。
 
 **方法标识：** `rollback`
 
@@ -49,10 +49,10 @@ Rollback VM state to specified snapshot.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 是 | — | The name of the snapshot. |
-| `start` | boolean | 否 | 0 | Whether the VM should get started after rolling back successfully. (Note: VMs will be automatically started if the snapshot includes RAM.) |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 是 | — | 快照名称。 |
+| `start` | boolean | 否 | 0 | 成功回滚后是否应启动虚拟机。（注意：如果快照包含 RAM，虚拟机会自动启动。） |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -62,13 +62,13 @@ Rollback VM state to specified snapshot.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "type": "string",
@@ -76,13 +76,13 @@ Rollback VM state to specified snapshot.
     },
     "start": {
       "default": 0,
-      "description": "Whether the VM should get started after rolling back successfully. (Note: VMs will be automatically started if the snapshot includes RAM.)",
+      "description": "成功回滚后是否应启动虚拟机。（注意：如果快照包含 RAM，虚拟机会自动启动。）",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -99,7 +99,7 @@ Rollback VM state to specified snapshot.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

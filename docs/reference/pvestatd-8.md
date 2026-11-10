@@ -1,22 +1,14 @@
 # pvestatd(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvestatd \- PVE Status Daemon
+pvestatd \- PVE 状态守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvestatd"></a>
+### **pvestatd** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvestatd" id="cli_pvestatd"></a>
 
-
-
-**pvestatd** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvestatd_help"></a>
-
-
-
-**pvestatd help** `[OPTIONS]`
+### **pvestatd help** `[OPTIONS]` <a href="#cli_pvestatd_help" id="cli_pvestatd_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,47 +20,31 @@ pvestatd \- PVE Status Daemon
 
 详细输出格式。
 
-<a id="cli_pvestatd_restart"></a>
+### **pvestatd restart** <a href="#cli_pvestatd_restart" id="cli_pvestatd_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+### **pvestatd start** `[OPTIONS]` <a href="#cli_pvestatd_start" id="cli_pvestatd_start"></a>
 
-**pvestatd restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvestatd_start"></a>
-
-
-
-**pvestatd start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvestatd_status"></a>
+### **pvestatd status** <a href="#cli_pvestatd_status" id="cli_pvestatd_status"></a>
 
+获取守护进程状态。
 
+### **pvestatd stop** <a href="#cli_pvestatd_stop" id="cli_pvestatd_stop"></a>
 
-**pvestatd status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pvestatd_stop"></a>
+此守护进程定期查询虚拟机、存储和容器的状态。结果发送给集群中的所有节点。
 
-
-
-**pvestatd stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This daemon queries the status of VMs, storages and containers at regular intervals. The result is sent to all nodes in the cluster.
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

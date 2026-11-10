@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/agent`
 
-QEMU Guest Agent command index.
+QEMU Guest Agent 命令索引。
 
 **方法标识：** `index`
 
@@ -34,8 +34,8 @@ QEMU Guest Agent command index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@ QEMU Guest Agent command index.
   "additionalProperties": 1,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -68,7 +68,7 @@ QEMU Guest Agent command index.
 
 ```json
 {
-  "description": "Returns the list of QEMU Guest Agent commands",
+  "description": "返回 QEMU Guest Agent 命令列表",
   "items": {
     "properties": {},
     "type": "object"
@@ -85,7 +85,7 @@ QEMU Guest Agent command index.
 
 ## POST `/nodes/{node}/qemu/{vmid}/agent`
 
-Execute QEMU Guest Agent commands.
+执行 QEMU 客户机代理命令。
 
 **方法标识：** `agent`
 
@@ -128,9 +128,9 @@ Execute QEMU Guest Agent commands.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `command` | string | 是 | — | The QGA command.；可选值：`fsfreeze-freeze`, `fsfreeze-status`, `fsfreeze-thaw`, `fstrim`, `get-fsinfo`, `get-host-name`, `get-memory-block-info`, `get-memory-blocks`, `get-osinfo`, `get-time`, `get-timezone`, `get-users`, `get-vcpus`, `info`, `network-get-interfaces`, `ping`, `shutdown`, `suspend-disk`, `suspend-hybrid`, `suspend-ram` |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `command` | string | 是 | — | QGA 命令。；可选值：`fsfreeze-freeze`, `fsfreeze-status`, `fsfreeze-thaw`, `fstrim`, `get-fsinfo`, `get-host-name`, `get-memory-block-info`, `get-memory-blocks`, `get-osinfo`, `get-time`, `get-timezone`, `get-users`, `get-vcpus`, `info`, `network-get-interfaces`, `ping`, `shutdown`, `suspend-disk`, `suspend-hybrid`, `suspend-ram` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -140,7 +140,7 @@ Execute QEMU Guest Agent commands.
   "additionalProperties": 0,
   "properties": {
     "command": {
-      "description": "The QGA command.",
+      "description": "QGA 命令。",
       "enum": [
         "fsfreeze-freeze",
         "fsfreeze-status",
@@ -166,13 +166,13 @@ Execute QEMU Guest Agent commands.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -189,7 +189,7 @@ Execute QEMU Guest Agent commands.
 
 ```json
 {
-  "description": "Returns an object with a single `result` property.",
+  "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
 }
 ```

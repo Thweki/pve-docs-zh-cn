@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/lxc/{vmid}/vncproxy`
 
-Creates a TCP VNC proxy connections.
+创建 TCP VNC 代理连接。
 
 **方法标识：** `vncproxy`
 
@@ -40,11 +40,11 @@ Creates a TCP VNC proxy connections.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `height` | integer | 否 | — | sets the height of the console in pixels. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
-| `websocket` | boolean | 否 | — | use websocket instead of standard VNC. |
-| `width` | integer | 否 | — | sets the width of the console in pixels. |
+| `height` | integer | 否 | — | 设置控制台高度，单位为像素。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| `websocket` | boolean | 否 | — | 使用 websocket 代替标准 VNC。 |
+| `width` | integer | 否 | — | 设置控制台宽度，单位为像素。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,7 +54,7 @@ Creates a TCP VNC proxy connections.
   "additionalProperties": 0,
   "properties": {
     "height": {
-      "description": "sets the height of the console in pixels.",
+      "description": "设置控制台高度，单位为像素。",
       "maximum": 2160,
       "minimum": 16,
       "optional": 1,
@@ -62,13 +62,13 @@ Creates a TCP VNC proxy connections.
       "typetext": "<integer> (16 - 2160)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -76,13 +76,13 @@ Creates a TCP VNC proxy connections.
       "typetext": "<integer> (100 - 999999999)"
     },
     "websocket": {
-      "description": "use websocket instead of standard VNC.",
+      "description": "使用 websocket 代替标准 VNC。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "width": {
-      "description": "sets the width of the console in pixels.",
+      "description": "设置控制台宽度，单位为像素。",
       "maximum": 4096,
       "minimum": 16,
       "optional": 1,
@@ -105,7 +105,7 @@ Creates a TCP VNC proxy connections.
       "type": "string"
     },
     "password": {
-      "description": "Password used for authentication within the VNC protocol. Consists of printable ASCII characters ('!' .. '~').",
+      "description": "VNC 协议中用于身份验证的密码。由可打印 ASCII 字符（'!' .. '~'）组成。",
       "optional": 1,
       "type": "string"
     },

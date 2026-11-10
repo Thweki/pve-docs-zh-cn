@@ -1,12 +1,12 @@
-# 17.8. Overriding Notification Templates <a href="#_overriding_notification_templates" id="_overriding_notification_templates"></a>
+# 17.8. 覆盖通知模板 <a href="#overriding_notification_templates" id="overriding_notification_templates"></a>
 
-Proxmox VE uses Handlebars templates to render notifications. The original templates provided by Proxmox VE are stored in `/usr/share/pve-manager/templates/default/`.
+Proxmox VE 使用 Handlebars 模板渲染通知。Proxmox VE 提供的原始模板保存在 `/usr/share/pve-manager/templates/default/`。
 
-Notification templates can be overridden by providing a custom template file in the override directory at `/etc/pve/notification-templates/default/`. When rendering a notification of a given type, Proxmox VE will first attempt to load a template from the override directory. If this one does not exist or fails to render, the original template will be used.
+可以在 `/etc/pve/notification-templates/default/` 覆盖目录中提供自定义模板文件，以覆盖通知模板。渲染指定类型的通知时，Proxmox VE 会先尝试从覆盖目录加载模板。如果模板不存在或渲染失败，则使用原始模板。
 
-The template files follow the naming convention of `<type>-<body|subject>.<html|txt>.hbs`. For instance, the file `vzdump-body.html.hbs` contains the template for rendering the HTML version for backup notifications, while `package-updates-subject.txt.hbs` is used to render the subject line of notifications for available package updates.
+模板文件遵循 `<type>-<body|subject>.<html|txt>.hbs` 命名约定。例如，文件 `vzdump-body.html.hbs` 包含用于渲染 HTML 版备份通知的模板，而 `package-updates-subject.txt.hbs` 用于渲染可用软件包更新通知的主题行。
 
-Email-based notification targets, such as `sendmail` and `smtp`, always send multi-part messages with an HTML and a plain text part. As a result, both the `<type>-body.html.hbs` as well as the `<type>-body.txt.hbs` template will be used when rendering the email message. All other notification target types only use the `<type>-body.txt.hbs` template.
+基于电子邮件的通知目标（例如 `sendmail` 和 `smtp`）始终发送包含 HTML 部分和纯文本部分的多部分消息。因此，在渲染邮件消息时，`<type>-body.html.hbs` 和 `<type>-body.txt.hbs` 模板都会使用。所有其他通知目标类型只使用 `<type>-body.txt.hbs` 模板。
 
 ---
 

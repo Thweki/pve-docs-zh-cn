@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/iscsi`
 
-Scan remote iSCSI server.
+扫描远程 iSCSI 服务器。
 
 **方法标识：** `iscsiscan`
 
@@ -46,8 +46,8 @@ Scan remote iSCSI server.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `portal` | string | 是 | — | The iSCSI portal (IP or DNS name with optional port). |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `portal` | string | 是 | — | iSCSI 门户（IP 或 DNS 名称，可带端口）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Scan remote iSCSI server.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "portal": {
-      "description": "The iSCSI portal (IP or DNS name with optional port).",
+      "description": "iSCSI 门户（IP 或 DNS 名称，可带端口）。",
       "format": "pve-storage-portal-dns",
       "type": "string",
       "typetext": "<string>"
@@ -81,11 +81,11 @@ Scan remote iSCSI server.
   "items": {
     "properties": {
       "portal": {
-        "description": "The iSCSI portal name.",
+        "description": "iSCSI 门户名称。",
         "type": "string"
       },
       "target": {
-        "description": "The iSCSI target name.",
+        "description": "iSCSI 目标名称。",
         "type": "string"
       }
     },

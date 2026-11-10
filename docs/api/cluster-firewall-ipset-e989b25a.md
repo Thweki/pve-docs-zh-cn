@@ -6,7 +6,7 @@
 
 ## GET `/cluster/firewall/ipset`
 
-List IPSets
+列出 IPSet
 
 **方法标识：** `ipset_index`
 
@@ -45,13 +45,13 @@ List IPSets
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 0,
         "type": "string"
       },
       "name": {
-        "description": "IP set name.",
+        "description": "IP 集合名称。",
         "maxLength": 64,
         "minLength": 2,
         "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -72,7 +72,7 @@ List IPSets
 
 ## POST `/cluster/firewall/ipset`
 
-Create new IPSet
+创建新 IPSet
 
 **方法标识：** `create_ipset`
 
@@ -107,9 +107,9 @@ Create new IPSet
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
-| `rename` | string | 否 | — | Rename an existing IPSet. You can set 'rename' to the same value as 'name' to update the 'comment' of an existing IPSet. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
+| `rename` | string | 否 | — | 重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -125,21 +125,21 @@ Create new IPSet
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "rename": {
-      "description": "Rename an existing IPSet. You can set 'rename' to the same value as 'name' to update the 'comment' of an existing IPSet.",
+      "description": "重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。",
       "maxLength": 64,
       "minLength": 2,
       "optional": 1,

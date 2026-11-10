@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/config/nodes/{node}`
 
-Removes a node from the cluster configuration.
+从集群配置中移除节点。
 
 **方法标识：** `delnode`
 
@@ -26,7 +26,7 @@ Removes a node from the cluster configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -36,7 +36,7 @@ Removes a node from the cluster configuration.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -57,7 +57,7 @@ Removes a node from the cluster configuration.
 
 ## POST `/cluster/config/nodes/{node}`
 
-Adds a node to the cluster configuration. This call is for internal use.
+将节点添加到集群配置。此调用供内部使用。
 
 **方法标识：** `addnode`
 
@@ -77,13 +77,13 @@ Adds a node to the cluster configuration. This call is for internal use.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `apiversion` | integer | 否 | — | The JOIN_API_VERSION of the new node. |
-| `force` | boolean | 否 | — | Do not throw error if node already exists. |
-| `link[n]` | string | 否 | — | Address and priority information of a single corosync link. (up to 8 links supported; link0..link7) |
-| `new_node_ip` | string | 否 | — | IP Address of node to add. Used as fallback if no links are given. |
-| `node` | string | 是 | — | The cluster node name. |
-| `nodeid` | integer | 否 | — | Node id for this node. |
-| `votes` | integer | 否 | — | Number of votes for this node |
+| `apiversion` | integer | 否 | — | 新节点的 JOIN_API_VERSION。 |
+| `force` | boolean | 否 | — | 如果节点已存在，则不抛出错误。 |
+| `link[n]` | string | 否 | — | 单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
+| `new_node_ip` | string | 否 | — | 要添加节点的 IP 地址。未提供链路时用作回退值。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `nodeid` | integer | 否 | — | 此节点的节点 ID。 |
+| `votes` | integer | 否 | — | 此节点的票数 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -93,30 +93,30 @@ Adds a node to the cluster configuration. This call is for internal use.
   "additionalProperties": 0,
   "properties": {
     "apiversion": {
-      "description": "The JOIN_API_VERSION of the new node.",
+      "description": "新节点的 JOIN_API_VERSION。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "force": {
-      "description": "Do not throw error if node already exists.",
+      "description": "如果节点已存在，则不抛出错误。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "link[n]": {
-      "description": "Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)",
+      "description": "单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7）",
       "format": {
         "address": {
           "default_key": 1,
-          "description": "Hostname (or IP) of this corosync link address.",
+          "description": "此 corosync 链路地址的主机名（或 IP）。",
           "format": "address",
           "format_description": "IP",
           "type": "string"
         },
         "priority": {
           "default": 0,
-          "description": "The priority for the link when knet is used in 'passive' mode (default). Lower value means higher priority. Only valid for cluster create, ignored on node add.",
+          "description": "knet 在 'passive' 模式（默认）下使用时的链路优先级。值越小，优先级越高。仅对创建集群有效，添加节点时忽略。",
           "maximum": 255,
           "minimum": 0,
           "optional": 1,
@@ -128,27 +128,27 @@ Adds a node to the cluster configuration. This call is for internal use.
       "typetext": "[address=]<IP> [,priority=<integer>]"
     },
     "new_node_ip": {
-      "description": "IP Address of node to add. Used as fallback if no links are given.",
+      "description": "要添加节点的 IP 地址。未提供链路时用作回退值。",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "nodeid": {
-      "description": "Node id for this node.",
+      "description": "此节点的节点 ID。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - N)"
     },
     "votes": {
-      "description": "Number of votes for this node",
+      "description": "此节点的票数",
       "minimum": 0,
       "optional": 1,
       "type": "integer",

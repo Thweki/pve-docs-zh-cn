@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/firewall/ipset/{name}/{cidr}`
 
-Remove IP or Network from IPSet.
+从 IPSet 中移除 IP 或网络。
 
 **方法标识：** `remove_ip`
 
@@ -40,9 +40,9 @@ Remove IP or Network from IPSet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,20 +52,20 @@ Remove IP or Network from IPSet.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -87,7 +87,7 @@ Remove IP or Network from IPSet.
 
 ## GET `/cluster/firewall/ipset/{name}/{cidr}`
 
-Read IP or Network settings from IPSet.
+从 IPSet 读取 IP 或网络设置。
 
 **方法标识：** `read_ip`
 
@@ -121,8 +121,8 @@ Read IP or Network settings from IPSet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
-| `name` | string | 是 | — | IP set name. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
+| `name` | string | 是 | — | IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -132,13 +132,13 @@ Read IP or Network settings from IPSet.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -160,7 +160,7 @@ Read IP or Network settings from IPSet.
 
 ## PUT `/cluster/firewall/ipset/{name}/{cidr}`
 
-Update IP or Network settings
+更新 IP 或网络设置
 
 **方法标识：** `update_ip`
 
@@ -194,10 +194,10 @@ Update IP or Network settings
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
 | `nomatch` | boolean | 否 | — |  |
 
 <details>
@@ -208,7 +208,7 @@ Update IP or Network settings
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
@@ -220,14 +220,14 @@ Update IP or Network settings
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/aplinfo`
 
-Get list of appliances.
+获取设备模板列表。
 
 **方法标识：** `aplinfo`
 
@@ -34,7 +34,7 @@ Get list of appliances.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -44,7 +44,7 @@ Get list of appliances.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -69,7 +69,7 @@ Get list of appliances.
 
 ## POST `/nodes/{node}/aplinfo`
 
-Download appliance templates.
+下载设备模板。
 
 **方法标识：** `apl_download`
 
@@ -109,9 +109,9 @@ Download appliance templates.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage where the template will be stored |
-| `template` | string | 是 | — | The template which will downloaded |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 用于保存模板的存储 |
+| `template` | string | 是 | — | 要下载的模板 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -121,20 +121,20 @@ Download appliance templates.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage where the template will be stored",
+      "description": "用于保存模板的存储",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "template": {
-      "description": "The template which will downloaded",
+      "description": "要下载的模板",
       "maxLength": 255,
       "type": "string",
       "typetext": "<string>"

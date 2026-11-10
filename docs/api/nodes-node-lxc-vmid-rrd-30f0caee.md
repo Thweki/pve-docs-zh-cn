@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/rrd`
 
-Read VM RRD statistics (returns PNG)
+读取虚拟机 RRD 统计信息（返回 PNG）
 
 **方法标识：** `rrd`
 
@@ -40,11 +40,11 @@ Read VM RRD statistics (returns PNG)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | The RRD consolidation function；可选值：`AVERAGE`, `MAX` |
-| `ds` | string | 是 | — | The list of datasources you want to display. |
-| `node` | string | 是 | — | The cluster node name. |
-| `timeframe` | string | 是 | — | Specify the time frame you are interested in.；可选值：`hour`, `day`, `week`, `month`, `year` |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `ds` | string | 是 | — | 要显示的数据源列表。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,7 +54,7 @@ Read VM RRD statistics (returns PNG)
   "additionalProperties": 0,
   "properties": {
     "cf": {
-      "description": "The RRD consolidation function",
+      "description": "RRD 合并函数",
       "enum": [
         "AVERAGE",
         "MAX"
@@ -63,19 +63,19 @@ Read VM RRD statistics (returns PNG)
       "type": "string"
     },
     "ds": {
-      "description": "The list of datasources you want to display.",
+      "description": "要显示的数据源列表。",
       "format": "pve-configid-list",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "timeframe": {
-      "description": "Specify the time frame you are interested in.",
+      "description": "指定您关注的时间范围。",
       "enum": [
         "hour",
         "day",
@@ -86,7 +86,7 @@ Read VM RRD statistics (returns PNG)
       "type": "string"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

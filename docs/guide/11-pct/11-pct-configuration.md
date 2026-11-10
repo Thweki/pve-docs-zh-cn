@@ -1,4 +1,4 @@
-# 11.11. Configuration <a href="#pct_configuration" id="pct_configuration"></a>
+# 11.11. 配置 <a href="#pct_configuration" id="pct_configuration"></a>
 
 `/etc/pve/lxc/<CTID>.conf` 文件存储容器配置，其中 `<CTID>` 是给定容器的数字 ID。与存储在 `/etc/pve/` 中的所有其他文件一样，这些文件会自动复制到所有其他集群节点。
 
@@ -24,7 +24,7 @@ rootfs: local:107/vm-107-disk-1.raw,size=7G
 
 如果某项更改无法热插拔，则会被登记为待处理更改（在 GUI 中以红色显示）。只有重启容器后，这些更改才会应用。
 
-## 11.11.1. File Format <a href="#_file_format_2" id="_file_format_2"></a>
+## 11.11.1. 文件格式 <a href="#file_format_2" id="file_format_2"></a>
 
 容器配置文件使用简单的以冒号分隔的键/值格式。每行的格式如下：
 
@@ -49,7 +49,7 @@ lxc.init_cmd = /sbin/my_own_init
 
 这些设置会直接传递给 LXC 底层工具。
 
-## 11.11.2. Snapshots <a href="#pct_snapshots" id="pct_snapshots"></a>
+## 11.11.2. 快照 <a href="#pct_snapshots" id="pct_snapshots"></a>
 
 创建快照时，`pct` 会将快照时的配置存储在同一配置文件中单独的快照部分。例如，创建名为“testsnapshot”的快照后，配置文件将如下所示：
 
@@ -70,7 +70,7 @@ snaptime: 1457170803
 
 有一些与快照相关的属性，例如 `parent` 和 `snaptime`。`parent` 属性用于存储快照之间的父/子关系。`snaptime` 是快照创建时间戳（Unix 纪元）。
 
-## 11.11.3. Options <a href="#pct_options" id="pct_options"></a>
+## 11.11.3. 选项 <a href="#pct_options" id="pct_options"></a>
 
 **`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*默认 \=* `amd64`)**
 

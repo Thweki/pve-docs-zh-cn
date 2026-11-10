@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/apt/update`
 
-List available updates.
+列出可用更新。
 
 **方法标识：** `list_updates`
 
@@ -46,7 +46,7 @@ List available updates.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List available updates.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,7 +74,7 @@ List available updates.
   "items": {
     "properties": {
       "Arch": {
-        "description": "Package Architecture.",
+        "description": "软件包架构。",
         "enum": [
           "armhf",
           "arm64",
@@ -87,41 +87,41 @@ List available updates.
         "type": "string"
       },
       "Description": {
-        "description": "Package description.",
+        "description": "软件包描述。",
         "type": "string"
       },
       "NotifyStatus": {
-        "description": "Version for which PVE has already sent an update notification for.",
+        "description": "PVE 已为其发送更新通知的版本。",
         "optional": 1,
         "type": "string"
       },
       "OldVersion": {
-        "description": "Old version currently installed.",
+        "description": "当前已安装的旧版本。",
         "optional": 1,
         "type": "string"
       },
       "Origin": {
-        "description": "Package origin, e.g., 'Proxmox' or 'Debian'.",
+        "description": "软件包来源，例如 'Proxmox' 或 'Debian'。",
         "type": "string"
       },
       "Package": {
-        "description": "Package name.",
+        "description": "软件包名称。",
         "type": "string"
       },
       "Priority": {
-        "description": "Package priority.",
+        "description": "软件包优先级。",
         "type": "string"
       },
       "Section": {
-        "description": "Package section.",
+        "description": "软件包分类。",
         "type": "string"
       },
       "Title": {
-        "description": "Package title.",
+        "description": "软件包标题。",
         "type": "string"
       },
       "Version": {
-        "description": "New version to be updated to.",
+        "description": "要更新到的新版本。",
         "type": "string"
       }
     },
@@ -133,7 +133,7 @@ List available updates.
 
 ## POST `/nodes/{node}/apt/update`
 
-This is used to resynchronize the package index files from their sources (apt-get update).
+用于从源重新同步软件包索引文件（apt-get update）。
 
 **方法标识：** `update_database`
 
@@ -173,9 +173,9 @@ This is used to resynchronize the package index files from their sources (apt-ge
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `notify` | boolean | 否 | 0 | Send notification about new packages. |
-| `quiet` | boolean | 否 | 0 | Only produces output suitable for logging, omitting progress indicators. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `notify` | boolean | 否 | 0 | 发送新软件包通知。 |
+| `quiet` | boolean | 否 | 0 | 仅生成适合日志记录的输出，省略进度指示器。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -185,21 +185,21 @@ This is used to resynchronize the package index files from their sources (apt-ge
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "notify": {
       "default": 0,
-      "description": "Send notification about new packages.",
+      "description": "发送新软件包通知。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "quiet": {
       "default": 0,
-      "description": "Only produces output suitable for logging, omitting progress indicators.",
+      "description": "仅生成适合日志记录的输出，省略进度指示器。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

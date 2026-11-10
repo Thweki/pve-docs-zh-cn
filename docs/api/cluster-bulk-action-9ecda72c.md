@@ -6,7 +6,7 @@
 
 ## GET `/cluster/bulk-action`
 
-List resource types.
+列出资源类型。
 
 **方法标识：** `index`
 

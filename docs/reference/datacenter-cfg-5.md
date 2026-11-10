@@ -4,15 +4,15 @@
 
 datacenter.cfg \- Proxmox VE 数据中心配置
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
 `/etc/pve/datacenter.cfg`
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 文件 `/etc/pve/datacenter.cfg` 是 Proxmox VE 的配置文件。它包含所有节点使用的集群范围默认值。
 
-## 文件格式 <a href="#_file_format" id="_file_format"></a>
+## 文件格式 <a href="#file_format" id="file_format"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -22,7 +22,7 @@ OPTION: value
 
 文件中的空白行会被忽略，以 `#` 字符开头的行会被视为注释，同样会被忽略。
 
-## 选项 <a href="#_options" id="_options"></a>
+## 选项 <a href="#options" id="options"></a>
 
 **`bwlimit`: `[clone=<LIMIT>] [,default=<LIMIT>] [,migration=<LIMIT>] [,move=<LIMIT>] [,restore=<LIMIT>]`**
 
@@ -234,7 +234,7 @@ VNC 服务器的默认键盘布局。
 
 **`registered-tags`: `<tag>[;<tag>...]`**
 
-A list of tags that require a `Sys.Modify` on */* to set and delete. Tags set here that are also in *user-tag-access* also require `Sys.Modify`.
+设置和删除时需要具有 `Sys.Modify`（位于 */* 上）的标签列表。此处设置且也位于 *user-tag-access* 中的标签还需要 `Sys.Modify`。
 
 **`replication`: `[type=]<secure|insecure> [,network=<CIDR>]`**
 
@@ -317,7 +317,7 @@ webauthn 配置
 
 依赖方名称。任意文本标识符。更改此项**可能**会破坏现有凭据。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

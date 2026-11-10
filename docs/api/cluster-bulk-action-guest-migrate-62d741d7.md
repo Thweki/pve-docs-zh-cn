@@ -6,7 +6,7 @@
 
 ## POST `/cluster/bulk-action/guest/migrate`
 
-Bulk migrate all guests on the cluster.
+批量迁移集群中的所有客户机。
 
 **方法标识：** `migrate`
 
@@ -14,7 +14,7 @@ Bulk migrate all guests on the cluster.
 
 ```json
 {
-  "description": "The 'VM.Migrate' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter.",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。",
   "user": "all"
 }
 ```
@@ -35,12 +35,12 @@ Bulk migrate all guests on the cluster.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | 1 | Defines the maximum number of tasks running concurrently. |
-| `maxworkers` | integer | 否 | 1 | Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead. |
-| `online` | boolean | 否 | — | Enable live migration for VMs and restart migration for CTs. |
-| `target` | string | 是 | — | Target node. |
-| `vms` | array | 否 | — | Only consider guests from this list of VMIDs. |
-| `with-local-disks` | boolean | 否 | — | Enable live storage migration for local disk |
+| `max-workers` | integer | 否 | 1 | 定义并发运行的最大任务数。 |
+| `maxworkers` | integer | 否 | 1 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `online` | boolean | 否 | — | 为虚拟机启用在线迁移，为容器启用重启迁移。 |
+| `target` | string | 是 | — | 目标节点。 |
+| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
+| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,7 +51,7 @@ Bulk migrate all guests on the cluster.
   "properties": {
     "max-workers": {
       "default": 1,
-      "description": "Defines the maximum number of tasks running concurrently.",
+      "description": "定义并发运行的最大任务数。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -60,7 +60,7 @@ Bulk migrate all guests on the cluster.
     },
     "maxworkers": {
       "default": 1,
-      "description": "Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.",
+      "description": "定义并发运行的最大任务数。已弃用，请改用 'max-workers'。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -68,21 +68,21 @@ Bulk migrate all guests on the cluster.
       "typetext": "<integer> (1 - 64)"
     },
     "online": {
-      "description": "Enable live migration for VMs and restart migration for CTs.",
+      "description": "为虚拟机启用在线迁移，为容器启用重启迁移。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vms": {
-      "description": "Only consider guests from this list of VMIDs.",
+      "description": "仅考虑此 VMID 列表中的客户机。",
       "items": {
-        "description": "The (unique) ID of the VM.",
+        "description": "虚拟机的（唯一）ID。",
         "format": "pve-vmid",
         "maximum": 999999999,
         "minimum": 100,
@@ -93,7 +93,7 @@ Bulk migrate all guests on the cluster.
       "typetext": "<array>"
     },
     "with-local-disks": {
-      "description": "Enable live storage migration for local disk",
+      "description": "为本地磁盘启用在线存储迁移",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -108,7 +108,7 @@ Bulk migrate all guests on the cluster.
 
 ```json
 {
-  "description": "UPID of the worker",
+  "description": "工作任务的 UPID",
   "type": "string"
 }
 ```

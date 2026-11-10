@@ -1,54 +1,54 @@
 # 12.12. IPAM <a href="#pvesdn_config_ipam" id="pvesdn_config_ipam"></a>
 
-IP Address Management (IPAM) tools manage the IP addresses of clients on the network. SDN in Proxmox VE uses IPAM for example to find free IP addresses for new guests.
+IP 地址管理（IPAM）工具管理网络上客户端的 IP 地址。Proxmox VE 中的 SDN 使用 IPAM，例如为新客户机查找空闲 IP 地址。
 
-A single IPAM instance can be associated with one or more zones.
+单个 IPAM 实例可关联一个或多个区域。
 
-## 12.12.1. PVE IPAM Plugin <a href="#pvesdn_ipam_plugin_pveipam" id="pvesdn_ipam_plugin_pveipam"></a>
+## 12.12.1. PVE IPAM 插件 <a href="#pvesdn_ipam_plugin_pveipam" id="pvesdn_ipam_plugin_pveipam"></a>
 
-The default built-in IPAM for your Proxmox VE cluster.
+Proxmox VE 集群的默认内置 IPAM。
 
-You can inspect the current status of the PVE IPAM Plugin via the IPAM panel in the SDN section of the datacenter configuration. This UI can be used to create, update and delete IP mappings. This is particularly convenient in conjunction with the [DHCP feature](14-pvesdn-config-dhcp.md).
+可以通过数据中心配置的 SDN 部分中的 IPAM 面板查看 PVE IPAM 插件的当前状态。此 UI 可用于创建、更新和删除 IP 映射。与 [DHCP 功能](14-pvesdn-config-dhcp.md) 结合使用时尤其方便。
 
-If you are using DHCP, you can use the IPAM panel to create or edit leases for specific VMs, which enables you to change the IPs allocated via DHCP. When editing an IP of a VM that is using DHCP you must make sure to force the guest to acquire a new DHCP leases. This can usually be done by reloading the network stack of the guest or rebooting it.
+如果使用 DHCP，可以通过 IPAM 面板为特定虚拟机创建或编辑租约，从而更改通过 DHCP 分配的 IP。编辑使用 DHCP 的虚拟机的 IP 时，必须确保强制客户机获取新的 DHCP 租约。通常可以通过重新加载客户机的网络协议栈或重启客户机来实现。
 
-## 12.12.2. NetBox IPAM Plugin <a href="#pvesdn_ipam_plugin_netbox" id="pvesdn_ipam_plugin_netbox"></a>
+## 12.12.2. NetBox IPAM 插件 <a href="#pvesdn_ipam_plugin_netbox" id="pvesdn_ipam_plugin_netbox"></a>
 
-[NetBox](https://github.com/netbox-community/netbox) is an open-source IP Address Management (IPAM) and datacenter infrastructure management (DCIM) tool.
+[NetBox](https://github.com/netbox-community/netbox) 是开源的 IP 地址管理（IPAM）和数据中心基础设施管理（DCIM）工具。
 
-To integrate NetBox with Proxmox VE SDN, create an API token in NetBox as described here: [https://docs.netbox.dev/en/stable/integrations/rest-api/#tokens](https://docs.netbox.dev/en/stable/integrations/rest-api/#tokens)
+要将 NetBox 与 Proxmox VE SDN 集成，请按照此处说明在 NetBox 中创建 API 令牌：[https://docs.netbox.dev/en/stable/integrations/rest-api/#tokens](https://docs.netbox.dev/en/stable/integrations/rest-api/#tokens)
 
-The NetBox configuration properties are:
-
-**URL**
-
-The NetBox REST API endpoint: `http://yournetbox.domain.com/api`
-
-**Token**
-
-An API access token
-
-**Fingerprint**
-
-The SHA-256 fingerprint of the NetBox API. Can be retrieved with `openssl x509 -in /etc/ssl/certs/netbox.crt -noout -fingerprint -sha256` when using the default certificate.
-
-## 12.12.3. phpIPAM Plugin <a href="#pvesdn_ipam_plugin_phpipam" id="pvesdn_ipam_plugin_phpipam"></a>
-
-In [phpIPAM](https://phpipam.net/) you need to create an "application" and add an API token with admin privileges to the application.
-
-The phpIPAM configuration properties are:
+NetBox 配置属性为：
 
 **URL**
 
-The REST-API endpoint: `http://phpipam.domain.com/api/<appname>/`
+NetBox REST API 端点：`http://yournetbox.domain.com/api`
 
-**Token**
+**令牌**
 
-An API access token
+API 访问令牌
 
-**Section**
+**指纹**
 
-An integer ID. Sections are a group of subnets in phpIPAM. Default installations use `sectionid=1` for customers.
+NetBox API 的 SHA-256 指纹。使用默认证书时可通过 `openssl x509 -in /etc/ssl/certs/netbox.crt -noout -fingerprint -sha256` 获取。
+
+## 12.12.3. phpIPAM 插件 <a href="#pvesdn_ipam_plugin_phpipam" id="pvesdn_ipam_plugin_phpipam"></a>
+
+在 [phpIPAM](https://phpipam.net/) 中，需要创建一个“应用程序”，并向该应用程序添加具有管理员权限的 API 令牌。
+
+phpIPAM 配置属性为：
+
+**URL**
+
+REST-API 端点：`http://phpipam.domain.com/api/<appname>/`
+
+**令牌**
+
+API 访问令牌
+
+**分区**
+
+整数 ID。在 phpIPAM 中，分区是一组子网。默认安装为客户使用 `sectionid=1`。
 
 ---
 

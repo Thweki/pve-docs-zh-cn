@@ -28,7 +28,7 @@ Proxmox VE 内部的 QEMU 以 root 进程运行，因为访问块设备和 PCI �
 - [10.12. 资源映射](12-resource-mapping.md)
 - [10.13. 使用 qm 管理虚拟机](13-managing-virtual-machines-with-span-class-monospaced-qm-span.md)
 - [10.14. 配置](14-qm-configuration.md)
-- [10.15. Locks](15-locks.md)
+- [10.15. 锁](15-locks.md)
 
 ---
 

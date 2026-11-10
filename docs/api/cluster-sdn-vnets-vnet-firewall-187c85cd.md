@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/vnets/{vnet}/firewall`
 
-Directory index.
+目录索引。
 
 **方法标识：** `index`
 
@@ -20,7 +20,7 @@ Directory index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30,7 +30,7 @@ Directory index.
   "additionalProperties": 0,
   "properties": {
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",

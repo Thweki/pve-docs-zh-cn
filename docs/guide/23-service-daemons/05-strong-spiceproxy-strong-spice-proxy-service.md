@@ -1,16 +1,8 @@
-# 23.5. **spiceproxy** \- SPICE Proxy Service <a href="#_strong_spiceproxy_strong_spice_proxy_service" id="_strong_spiceproxy_strong_spice_proxy_service"></a>
+# 23.5. **spiceproxy** \- SPICE 代理服务 <a href="#strong_spiceproxy_strong_spice_proxy_service" id="strong_spiceproxy_strong_spice_proxy_service"></a>
 
-<a id="cli_spiceproxy"></a>
+## **spiceproxy** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_spiceproxy" id="cli_spiceproxy"></a>
 
-
-
-**spiceproxy** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_spiceproxy_help"></a>
-
-
-
-**spiceproxy help** `[OPTIONS]`
+## **spiceproxy help** `[OPTIONS]` <a href="#cli_spiceproxy_help" id="cli_spiceproxy_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,41 +14,25 @@
 
 详细输出格式。
 
-<a id="cli_spiceproxy_restart"></a>
+## **spiceproxy restart** <a href="#cli_spiceproxy_restart" id="cli_spiceproxy_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+## **spiceproxy start** `[OPTIONS]` <a href="#cli_spiceproxy_start" id="cli_spiceproxy_start"></a>
 
-**spiceproxy restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_spiceproxy_start"></a>
-
-
-
-**spiceproxy start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_spiceproxy_status"></a>
+## **spiceproxy status** <a href="#cli_spiceproxy_status" id="cli_spiceproxy_status"></a>
 
+获取守护进程状态。
 
+## **spiceproxy stop** <a href="#cli_spiceproxy_stop" id="cli_spiceproxy_stop"></a>
 
-**spiceproxy status**
-
-Get daemon status.
-
-<a id="cli_spiceproxy_stop"></a>
-
-
-
-**spiceproxy stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

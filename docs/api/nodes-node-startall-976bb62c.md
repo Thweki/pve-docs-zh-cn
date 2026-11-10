@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/startall`
 
-Start all VMs and containers located on this node (by default only those with onboot=1).
+启动此节点上的所有虚拟机和容器（默认仅启动 onboot=1 的客户机）。
 
 **方法标识：** `startall`
 
@@ -14,7 +14,7 @@ Start all VMs and containers located on this node (by default only those with on
 
 ```json
 {
-  "description": "The 'VM.PowerMgmt' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter.",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
 }
 ```
@@ -41,10 +41,10 @@ Start all VMs and containers located on this node (by default only those with on
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | "off" | Issue start command even if virtual guest have 'onboot' not set or set to off. |
-| `max-workers` | integer | 否 | — | Defines the maximum number of tasks running concurrently. If not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vms` | string | 否 | — | Only consider guests from this comma separated list of VMIDs. |
+| `force` | boolean | 否 | "off" | 即使虚拟客户机未设置 'onboot' 或将其设为关闭，也发出启动命令。 |
+| `max-workers` | integer | 否 | — | 定义并发运行的最大任务数。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vms` | string | 否 | — | 仅考虑此逗号分隔的 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -55,13 +55,13 @@ Start all VMs and containers located on this node (by default only those with on
   "properties": {
     "force": {
       "default": "off",
-      "description": "Issue start command even if virtual guest have 'onboot' not set or set to off.",
+      "description": "即使虚拟客户机未设置 'onboot' 或将其设为关闭，也发出启动命令。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "max-workers": {
-      "description": "Defines the maximum number of tasks running concurrently. If not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used.",
+      "description": "定义并发运行的最大任务数。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -69,13 +69,13 @@ Start all VMs and containers located on this node (by default only those with on
       "typetext": "<integer> (1 - 64)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vms": {
-      "description": "Only consider guests from this comma separated list of VMIDs.",
+      "description": "仅考虑此逗号分隔的 VMID 列表中的客户机。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",

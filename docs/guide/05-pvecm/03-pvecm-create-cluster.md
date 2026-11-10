@@ -32,7 +32,7 @@
  hp1# pvecm status
 ```
 
-## 5.3.3. 同一网络中的多个集群 <a href="#_multiple_clusters_in_the_same_network" id="_multiple_clusters_in_the_same_network"></a>
+## 5.3.3. 同一网络中的多个集群 <a href="#multiple_clusters_in_the_same_network" id="multiple_clusters_in_the_same_network"></a>
 
 可以在同一物理或逻辑网络中创建多个集群。在这种情况下，每个集群必须具有唯一名称，以避免集群通信栈中可能发生的冲突。此外，这还能使集群清晰可辨，从而有助于避免人为混淆。
 

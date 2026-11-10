@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/hardware/pci`
 
-List local PCI devices.
+列出本地 PCI 设备。
 
 **方法标识：** `pci_scan`
 
@@ -49,9 +49,9 @@ List local PCI devices.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `pci-class-blacklist` | string | 否 | "05;06;0b" | A list of blacklisted PCI classes, which will not be returned. Following are filtered by default: Memory Controller (05), Bridge (06) and Processor (0b). |
-| `verbose` | boolean | 否 | 1 | If disabled, does only print the PCI IDs. Otherwise, additional information like vendor and device will be returned. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pci-class-blacklist` | string | 否 | "05;06;0b" | PCI 类别黑名单列表，所列类别不会返回。默认过滤以下类别：内存控制器（05）、桥（06）和处理器（0b）。 |
+| `verbose` | boolean | 否 | 1 | 如果禁用，则仅输出 PCI ID。否则还会返回供应商、设备等附加信息。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,14 +61,14 @@ List local PCI devices.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pci-class-blacklist": {
       "default": "05;06;0b",
-      "description": "A list of blacklisted PCI classes, which will not be returned. Following are filtered by default: Memory Controller (05), Bridge (06) and Processor (0b).",
+      "description": "PCI 类别黑名单列表，所列类别不会返回。默认过滤以下类别：内存控制器（05）、桥（06）和处理器（0b）。",
       "format": "string-list",
       "optional": 1,
       "type": "string",
@@ -76,7 +76,7 @@ List local PCI devices.
     },
     "verbose": {
       "default": 1,
-      "description": "If disabled, does only print the PCI IDs. Otherwise, additional information like vendor and device will be returned.",
+      "description": "如果禁用，则仅输出 PCI ID。否则还会返回供应商、设备等附加信息。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -94,11 +94,11 @@ List local PCI devices.
   "items": {
     "properties": {
       "class": {
-        "description": "The PCI Class of the device.",
+        "description": "设备的 PCI 类别。",
         "type": "string"
       },
       "device": {
-        "description": "The Device ID.",
+        "description": "设备 ID。",
         "type": "string"
       },
       "device_name": {
@@ -106,20 +106,20 @@ List local PCI devices.
         "type": "string"
       },
       "id": {
-        "description": "The PCI ID.",
+        "description": "PCI ID。",
         "type": "string"
       },
       "iommugroup": {
-        "description": "The IOMMU group in which the device is in. If no IOMMU group is detected, it is set to -1.",
+        "description": "设备所在的 IOMMU 组。如果未检测到 IOMMU 组，则设为 -1。",
         "type": "integer"
       },
       "mdev": {
-        "description": "If set, marks that the device is capable of creating mediated devices.",
+        "description": "如果设置，表示设备能够创建中介设备。",
         "optional": 1,
         "type": "boolean"
       },
       "subsystem_device": {
-        "description": "The Subsystem Device ID.",
+        "description": "子系统设备 ID。",
         "optional": 1,
         "type": "string"
       },
@@ -128,7 +128,7 @@ List local PCI devices.
         "type": "string"
       },
       "subsystem_vendor": {
-        "description": "The Subsystem Vendor ID.",
+        "description": "子系统供应商 ID。",
         "optional": 1,
         "type": "string"
       },
@@ -137,7 +137,7 @@ List local PCI devices.
         "type": "string"
       },
       "vendor": {
-        "description": "The Vendor ID.",
+        "description": "供应商 ID。",
         "type": "string"
       },
       "vendor_name": {

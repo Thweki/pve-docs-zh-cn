@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/jobs/realm-sync/{id}`
 
-Delete realm-sync job definition.
+删除 realm-sync 作业定义。
 
 **方法标识：** `delete_job`
 
@@ -70,7 +70,7 @@ Delete realm-sync job definition.
 
 ## GET `/cluster/jobs/realm-sync/{id}`
 
-Read realm-sync job definition.
+读取 realm-sync 作业定义。
 
 **方法标识：** `read_job`
 
@@ -128,7 +128,7 @@ Read realm-sync job definition.
 
 ## POST `/cluster/jobs/realm-sync/{id}`
 
-Create new realm-sync job.
+创建新的 realm-sync 作业。
 
 **方法标识：** `create_job`
 
@@ -153,7 +153,7 @@ Create new realm-sync job.
       ]
     ]
   ],
-  "description": "'Realm.AllocateUser' on '/access/realm/<realm>' and 'User.Modify' permissions to '/access/groups/'."
+  "description": "需要对 '/access/realm/<realm>' 的 'Realm.AllocateUser' 权限以及对 '/access/groups/' 的 'User.Modify' 权限。"
 }
 ```
 
@@ -173,14 +173,14 @@ Create new realm-sync job.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Description for the Job. |
-| `enable-new` | boolean | 否 | "1" | Enable newly synced users immediately. |
-| `enabled` | boolean | 否 | 1 | Determines if the job is enabled. |
-| `id` | string | 是 | — | The ID of the job. |
-| `realm` | string | 否 | — | Authentication domain ID |
-| `remove-vanished` | string | 否 | "none" | A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default). |
-| `schedule` | string | 是 | — | Backup schedule. The format is a subset of `systemd` calendar events. |
-| `scope` | string | 否 | — | Select what to sync.；可选值：`users`, `groups`, `both` |
+| `comment` | string | 否 | — | 作业描述。 |
+| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
+| `enabled` | boolean | 否 | 1 | 确定是否启用作业。 |
+| `id` | string | 是 | — | 作业 ID。 |
+| `realm` | string | 否 | — | 认证域 ID |
+| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `schedule` | string | 是 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
+| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -190,7 +190,7 @@ Create new realm-sync job.
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Description for the Job.",
+      "description": "作业描述。",
       "maxLength": 512,
       "optional": 1,
       "type": "string",
@@ -198,27 +198,27 @@ Create new realm-sync job.
     },
     "enable-new": {
       "default": "1",
-      "description": "Enable newly synced users immediately.",
+      "description": "立即启用新同步的用户。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "enabled": {
       "default": 1,
-      "description": "Determines if the job is enabled.",
+      "description": "确定是否启用作业。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "The ID of the job.",
+      "description": "作业 ID。",
       "format": "pve-configid",
       "maxLength": 64,
       "type": "string",
       "typetext": "<string>"
     },
     "realm": {
-      "description": "Authentication domain ID",
+      "description": "认证域 ID",
       "format": "pve-realm",
       "maxLength": 32,
       "optional": 1,
@@ -227,21 +227,21 @@ Create new realm-sync job.
     },
     "remove-vanished": {
       "default": "none",
-      "description": "A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default).",
+      "description": "以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。",
       "optional": 1,
       "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none",
       "type": "string",
       "typetext": "([acl];[properties];[entry])|none"
     },
     "schedule": {
-      "description": "Backup schedule. The format is a subset of `systemd` calendar events.",
+      "description": "备份计划。格式是 `systemd` 日历事件的子集。",
       "format": "pve-calendar-event",
       "maxLength": 128,
       "type": "string",
       "typetext": "<string>"
     },
     "scope": {
-      "description": "Select what to sync.",
+      "description": "选择要同步的内容。",
       "enum": [
         "users",
         "groups",
@@ -267,7 +267,7 @@ Create new realm-sync job.
 
 ## PUT `/cluster/jobs/realm-sync/{id}`
 
-Update realm-sync job definition.
+更新 realm-sync 作业定义。
 
 **方法标识：** `update_job`
 
@@ -292,7 +292,7 @@ Update realm-sync job definition.
       ]
     ]
   ],
-  "description": "'Realm.AllocateUser' on '/access/realm/<realm>' and 'User.Modify' permissions to '/access/groups/'."
+  "description": "需要对 '/access/realm/<realm>' 的 'Realm.AllocateUser' 权限以及对 '/access/groups/' 的 'User.Modify' 权限。"
 }
 ```
 
@@ -312,14 +312,14 @@ Update realm-sync job definition.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Description for the Job. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `enable-new` | boolean | 否 | "1" | Enable newly synced users immediately. |
-| `enabled` | boolean | 否 | 1 | Determines if the job is enabled. |
-| `id` | string | 是 | — | The ID of the job. |
-| `remove-vanished` | string | 否 | "none" | A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default). |
-| `schedule` | string | 是 | — | Backup schedule. The format is a subset of `systemd` calendar events. |
-| `scope` | string | 否 | — | Select what to sync.；可选值：`users`, `groups`, `both` |
+| `comment` | string | 否 | — | 作业描述。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
+| `enabled` | boolean | 否 | 1 | 确定是否启用作业。 |
+| `id` | string | 是 | — | 作业 ID。 |
+| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `schedule` | string | 是 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
+| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -329,14 +329,14 @@ Update realm-sync job definition.
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Description for the Job.",
+      "description": "作业描述。",
       "maxLength": 512,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -345,20 +345,20 @@ Update realm-sync job definition.
     },
     "enable-new": {
       "default": "1",
-      "description": "Enable newly synced users immediately.",
+      "description": "立即启用新同步的用户。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "enabled": {
       "default": 1,
-      "description": "Determines if the job is enabled.",
+      "description": "确定是否启用作业。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "The ID of the job.",
+      "description": "作业 ID。",
       "format": "pve-configid",
       "maxLength": 64,
       "type": "string",
@@ -366,21 +366,21 @@ Update realm-sync job definition.
     },
     "remove-vanished": {
       "default": "none",
-      "description": "A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default).",
+      "description": "以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。",
       "optional": 1,
       "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none",
       "type": "string",
       "typetext": "([acl];[properties];[entry])|none"
     },
     "schedule": {
-      "description": "Backup schedule. The format is a subset of `systemd` calendar events.",
+      "description": "备份计划。格式是 `systemd` 日历事件的子集。",
       "format": "pve-calendar-event",
       "maxLength": 128,
       "type": "string",
       "typetext": "<string>"
     },
     "scope": {
-      "description": "Select what to sync.",
+      "description": "选择要同步的内容。",
       "enum": [
         "users",
         "groups",

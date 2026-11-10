@@ -61,7 +61,7 @@ rbd: ceph-external
 如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
 {% endhint %}
 
-如果使用默认启用的 `cephx` 身份验证，请提供来自外部 Ceph 集群的密钥环。按照 Ceph 用户管理中的说明，获取或创建一个仅具有此存储所需权限的专用身份。[\[cephusermgmt\]](#_footnote_cephusermgmt) 以下示例使用 `client.pve-rbd`；不要将 `client.admin` 复制到存储客户端。
+如果使用默认启用的 `cephx` 身份验证，请提供来自外部 Ceph 集群的密钥环。按照 Ceph 用户管理中的说明，获取或创建一个仅具有此存储所需权限的专用身份。[\[cephusermgmt\]](#footnote_cephusermgmt) 以下示例使用 `client.pve-rbd`；不要将 `client.admin` 复制到存储客户端。
 
 将密钥环复制到一个 Proxmox VE 节点：
 
@@ -89,7 +89,7 @@ rbd: ceph-external
 
 如果外部集群轮换此身份，请在刷新其使用者之前替换已存储的密钥环。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
-## 7.14.3. Ceph 客户端配置（可选） <a href="#_ceph_client_configuration_optional" id="_ceph_client_configuration_optional"></a>
+## 7.14.3. Ceph 客户端配置（可选） <a href="#ceph_client_configuration_optional" id="ceph_client_configuration_optional"></a>
 
 连接外部 Ceph 存储时，并不总能在外部集群的配置数据库中设置客户端特定选项。您可以在 Ceph 密钥环旁添加一个 `ceph.conf`，以更改该存储的 Ceph 客户端配置。
 
@@ -105,7 +105,7 @@ ceph.conf 必须与存储同名。
 请勿轻易更改这些设置。Proxmox VE 会将 \<STORAGE\_ID\>.conf 与存储配置合并。
 {% endhint %}
 
-## 7.14.4. 存储功能 <a href="#_storage_features_10" id="_storage_features_10"></a>
+## 7.14.4. 存储功能 <a href="#storage_features_10" id="storage_features_10"></a>
 
 `rbd` 后端是块级存储，实现了完整的快照和克隆功能。
 
@@ -138,7 +138,7 @@ ceph.conf 必须与存储同名。
 
 ## 注释
 
-### 注释 cephusermgmt <a href="#_footnote_cephusermgmt" id="_footnote_cephusermgmt"></a>
+### 注释 cephusermgmt <a href="#footnote_cephusermgmt" id="footnote_cephusermgmt"></a>
 
 [Ceph 用户管理](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)
 

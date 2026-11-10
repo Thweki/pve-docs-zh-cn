@@ -1,6 +1,6 @@
 # 3.12. 证书管理 <a href="#sysadmin_certificate_management" id="sysadmin_certificate_management"></a>
 
-## 3.12.1. 集群内部通信证书 <a href="#_certificates_for_intra_cluster_communication" id="_certificates_for_intra_cluster_communication"></a>
+## 3.12.1. 集群内部通信证书 <a href="#certificates_for_intra_cluster_communication" id="certificates_for_intra_cluster_communication"></a>
 
 每个 Proxmox VE 集群默认都会创建自己的（自签名）证书颁发机构（CA），并为每个节点生成一个由上述 CA 签名的证书。这些证书用于与集群的 `pveproxy` 服务进行加密通信，以及在使用 SPICE 时用于 Shell/Console 功能。
 
@@ -72,7 +72,7 @@ Proxmox VE 开箱即支持这两种挑战类型，可以在 Web 界面的 `Datac
 
 ACME 插件配置存储在 `/etc/pve/priv/acme/plugins.cfg` 中。插件对集群中的所有节点均可用。
 
-### 节点域名 <a href="#_node_domains" id="_node_domains"></a>
+### 节点域名 <a href="#node_domains" id="node_domains"></a>
 
 每个域名都是节点特定的。可以在 `Node -> Certificates` 下添加新域名条目或管理现有域名条目，也可以使用 `pvenode config` 命令。
 
@@ -117,11 +117,11 @@ Proxmox VE 复用了为 `acme.sh` [\[1\]](#note-72f8bd77-1) 项目开发的 DNS 
 
 由于 DNS 提供商和 API 端点众多，Proxmox VE 会自动为某些提供商生成凭据表单。对于其他提供商，您会看到一个较大的文本区域，只需将所有凭据 `KEY`\=`VALUE` 对复制到其中即可。
 
-### 通过 CNAME 别名进行 DNS 验证 <a href="#_dns_validation_through_cname_alias" id="_dns_validation_through_cname_alias"></a>
+### 通过 CNAME 别名进行 DNS 验证 <a href="#dns_validation_through_cname_alias" id="dns_validation_through_cname_alias"></a>
 
-A special `alias` mode can be used to handle the validation on a different domain/DNS server, in case your primary/real DNS does not support provisioning via an API. Manually set up a permanent `CNAME` record for `_acme-challenge.domain1.example` pointing to `_acme-challenge.domain2.example` and set the `alias` property on the corresponding `acmedomainX` key in the Proxmox VE node configuration file to `domain2.example` to allow the DNS server of `domain2.example` to validate all challenges for `domain1.example`.
+如果主要/实际 DNS 不支持通过 API 置备，可使用特殊的 `alias` 模式在其他域/DNS 服务器上处理验证。手动设置永久 `CNAME` 记录，将 `_acme-challenge.domain1.example` 指向 `_acme-challenge.domain2.example`，并将 `alias` 属性（位于 Proxmox VE 节点配置文件中相应的 `acmedomainX` 键上）设为 `domain2.example`，以允许 `domain2.example` 的 DNS 服务器验证 `domain1.example` 的所有质询。
 
-### 插件组合 <a href="#_combination_of_plugins" id="_combination_of_plugins"></a>
+### 插件组合 <a href="#combination_of_plugins" id="combination_of_plugins"></a>
 
 如果节点可通过多个具有不同要求或 DNS 置备能力的域名访问，则可以组合 `http-01` 和 `dns-01` 验证。通过为每个域名指定不同的插件实例，也可以混用来自多个提供商或实例的 DNS API。
 
@@ -137,9 +137,9 @@ A special `alias` mode can be used to handle the validation on a different domai
 如果使用颁发短期证书的自定义目录，建议禁用 `pve-daily-update.timer` 单元的随机延迟，以避免重启后错过证书续期。
 {% endhint %}
 
-## 3.12.8. `pvenode` 的 ACME 示例 <a href="#_acme_examples_with_span_class_monospaced_pvenode_span" id="_acme_examples_with_span_class_monospaced_pvenode_span"></a>
+## 3.12.8. `pvenode` 的 ACME 示例 <a href="#acme_examples_with_span_class_monospaced_pvenode_span" id="acme_examples_with_span_class_monospaced_pvenode_span"></a>
 
-### 示例：使用 Let’s Encrypt 证书的 `pvenode` 调用示例 <a href="#_example_sample_span_class_monospaced_pvenode_span_invocation_for_using_let_8217_s_encrypt_certificates" id="_example_sample_span_class_monospaced_pvenode_span_invocation_for_using_let_8217_s_encrypt_certificates"></a>
+### 示例：使用 Let’s Encrypt 证书的 `pvenode` 调用示例 <a href="#example_sample_span_class_monospaced_pvenode_span_invocation_for_using_let_8217_s_encrypt_certificates" id="example_sample_span_class_monospaced_pvenode_span_invocation_for_using_let_8217_s_encrypt_certificates"></a>
 
 ```text
 root@proxmox:~# pvenode acme account register default mail@example.invalid
@@ -168,7 +168,7 @@ Restarting pveproxy
 Task OK
 ```
 
-### 示例：设置 OVH API 以验证域名 <a href="#_example_setting_up_the_ovh_api_for_validating_a_domain" id="_example_setting_up_the_ovh_api_for_validating_a_domain"></a>
+### 示例：设置 OVH API 以验证域名 <a href="#example_setting_up_the_ovh_api_for_validating_a_domain" id="example_setting_up_the_ovh_api_for_validating_a_domain"></a>
 
 {% hint style="info" %}
 无论使用哪种插件，账户注册步骤都相同，此处不再重复。
@@ -269,7 +269,7 @@ Task OK
 
 不支持更改账户的 ACME 目录，但由于 Proxmox VE 支持多个账户，您可以直接创建一个新账户，并将生产（受信任的）ACME 目录作为端点。您也可以停用暂存账户，然后重新创建它。
 
-**Example: Changing the `default` ACME account from `staging` to directory using `pvenode`**
+**示例：将 `default` ACME 账户从 `staging` 更改为 directory，使用 `pvenode`**
 
 ```text
 root@proxmox:~# pvenode acme account deactivate default

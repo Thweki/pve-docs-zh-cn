@@ -1,4 +1,4 @@
-# 5.15. 客户机迁移 <a href="#_guest_migration" id="_guest_migration"></a>
+# 5.15. 客户机迁移 <a href="#guest_migration" id="guest_migration"></a>
 
 将虚拟客户机迁移到其他节点是集群中一项有用的功能。可以通过一些设置来控制此类迁移的行为。可以通过配置文件 `datacenter.cfg` 完成此操作，也可以通过 API 或命令行参数针对特定迁移进行设置。
 
@@ -8,7 +8,7 @@
 
 有关容器迁移的详细信息，请参阅 [容器迁移一章](../11-pct/10-pct-migration.md)。
 
-## 5.15.1. 迁移类型 <a href="#_migration_type" id="_migration_type"></a>
+## 5.15.1. 迁移类型 <a href="#migration_type" id="migration_type"></a>
 
 迁移类型定义迁移数据应通过加密（`secure`）通道还是未加密（`insecure`）通道发送。将迁移类型设置为 `insecure` 意味着虚拟客户机的 RAM 内容也将以未加密方式传输，这可能导致客户机内部的关键数据（例如密码或加密密钥）泄露。
 
@@ -28,7 +28,7 @@
 
 迁移网络使用 CIDR 表示法进行设置。这样做的优点是您不必为每个节点设置单独的 IP 地址。Proxmox VE 可以根据以 CIDR 形式指定的网络，确定目标节点上的实际地址。要启用此功能，所指定的网络必须确保每个节点在相应网络中恰好有一个 IP。
 
-### 示例 <a href="#_example" id="_example"></a>
+### 示例 <a href="#example" id="example"></a>
 
 假设我们有一个三节点部署，使用三个独立的网络。一个用于与互联网进行公共通信，一个用于集群通信，还有一个速度非常快的网络，我们希望将其用作迁移专用网络。
 

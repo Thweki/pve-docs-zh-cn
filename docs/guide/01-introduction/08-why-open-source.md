@@ -1,4 +1,4 @@
-# 1.8. 为何选择开源 <a href="#_why_open_source" id="_why_open_source"></a>
+# 1.8. 为何选择开源 <a href="#why_open_source" id="why_open_source"></a>
 
 Proxmox VE 使用 Linux 内核，并基于 Debian GNU/Linux 发行版。Proxmox VE 的源代码依据[GNU Affero 通用公共许可证第 3 版](https://www.gnu.org/licenses/agpl-3.0.html)发布。这意味着您可以随时自由查看源代码，或亲自为项目做出贡献。
 

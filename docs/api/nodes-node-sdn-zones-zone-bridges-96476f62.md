@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/zones/{zone}/bridges`
 
-Get a list of all bridges (vnets) that are part of a zone, as well as the ports that are members of that bridge.
+获取属于某区域的所有网桥（vnet）以及各网桥成员端口的列表。
 
 **方法标识：** `bridges`
 
@@ -46,8 +46,8 @@ Get a list of all bridges (vnets) that are part of a zone, as well as the ports 
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `zone` | string | 是 | — | zone name or "localnetwork" |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `zone` | string | 是 | — | 区域名称或 "localnetwork" |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Get a list of all bridges (vnets) that are part of a zone, as well as the ports 
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "zone": {
-      "description": "zone name or \"localnetwork\"",
+      "description": "区域名称或 \"localnetwork\"",
       "type": "string",
       "typetext": "<string>"
     }
@@ -78,42 +78,42 @@ Get a list of all bridges (vnets) that are part of a zone, as well as the ports 
 ```json
 {
   "items": {
-    "description": "List of bridges contained in the SDN zone.",
+    "description": "SDN 区域中包含的网桥列表。",
     "properties": {
       "name": {
-        "description": "Name of the bridge.",
+        "description": "网桥名称。",
         "type": "string"
       },
       "ports": {
-        "description": "All ports that are members of the bridge",
+        "description": "属于网桥成员的所有端口",
         "items": {
-          "description": "Information about bridge ports.",
+          "description": "有关网桥端口的信息。",
           "properties": {
             "index": {
-              "description": "The index of the guests network device that this interface belongs to.",
+              "description": "此接口所属的客户机网络设备的索引。",
               "optional": 1,
               "type": "string"
             },
             "name": {
-              "description": "The name of the bridge port.",
+              "description": "网桥端口名称。",
               "type": "string"
             },
             "primary_vlan": {
-              "description": "The primary VLAN configured for the port of this bridge (= PVID). Only for VLAN-aware bridges.",
+              "description": "为此网桥端口配置的主 VLAN（= PVID）。仅适用于支持 VLAN 感知的网桥。",
               "optional": 1,
               "type": "number"
             },
             "vlans": {
-              "description": "A list of VLANs and VLAN ranges that are allowed for this bridge port in addition to the primary VLAN. Only for VLAN-aware bridges.",
+              "description": "除了主 VLAN 之外，此网桥端口允许的 VLAN 和 VLAN 范围列表。仅适用于支持 VLAN 感知的网桥。",
               "items": {
-                "description": "A single VLAN (123) or a VLAN range (234-435).",
+                "description": "单个 VLAN（123）或 VLAN 范围（234-435）。",
                 "type": "string"
               },
               "optional": 1,
               "type": "array"
             },
             "vmid": {
-              "description": "The ID of the guest that this interface belongs to.",
+              "description": "此接口所属的客户机 ID。",
               "optional": 1,
               "type": "number"
             }
@@ -123,7 +123,7 @@ Get a list of all bridges (vnets) that are part of a zone, as well as the ports 
         "type": "array"
       },
       "vlan_filtering": {
-        "description": "Whether VLAN filtering is enabled for this bridge (= VLAN-aware).",
+        "description": "此网桥是否启用了 VLAN 过滤（= VLAN 感知）。",
         "type": "string"
       }
     },

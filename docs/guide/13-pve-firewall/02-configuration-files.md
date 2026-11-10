@@ -1,80 +1,80 @@
-# 13.2. Configuration Files <a href="#_configuration_files" id="_configuration_files"></a>
+# 13.2. 配置文件 <a href="#configuration_files" id="configuration_files"></a>
 
-All firewall related configuration is stored on the proxmox cluster file system. So those files are automatically distributed to all cluster nodes, and the `pve-firewall` service updates the underlying `iptables` rules automatically on changes.
+所有与防火墙相关的配置都存储在 proxmox 集群文件系统中。因此这些文件会自动分发到所有集群节点，更改时 `pve-firewall` 服务会自动更新底层 `iptables` 规则。
 
-You can configure anything using the GUI (i.e. **Datacenter** → **Firewall**, or on a **Node** → **Firewall**), or you can edit the configuration files directly using your preferred editor.
+可以使用 GUI 配置所有内容（例如 **数据中心** → **防火墙**，或 **节点** → **防火墙**），也可以使用惯用编辑器直接编辑配置文件。
 
-Firewall configuration files contain sections of key-value pairs. Lines beginning with a `#` and blank lines are considered comments. Sections start with a header line containing the section name enclosed in `[` and `]`.
+防火墙配置文件包含由键值对组成的节。以 `#` 开头的行和空行被视为注释。节以标题行开始，其中节名称用 `[` 和 `]` 括起。
 
-## 13.2.1. Cluster Wide Setup <a href="#pve_firewall_cluster_wide_setup" id="pve_firewall_cluster_wide_setup"></a>
+## 13.2.1. 集群范围的设置 <a href="#pve_firewall_cluster_wide_setup" id="pve_firewall_cluster_wide_setup"></a>
 
-The cluster-wide firewall configuration is stored at:
+集群范围的防火墙配置存储在：
 
 ```text
 /etc/pve/firewall/cluster.fw
 ```
 
-The configuration can contain the following sections:
+配置可包含以下节：
 
 **`[OPTIONS]`**
 
-This is used to set cluster-wide firewall options.
+用于设置集群范围的防火墙选项。
 
-**`ebtables`: `<boolean>` (*default \=* `1`)**
+**`ebtables`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable ebtables rules cluster wide.
+在整个集群中启用 ebtables 规则。
 
-**`enable`: `<integer> (0 - N)` (*default \=* `0`)**
+**`enable`：`<integer> (0 - N)`（*默认值 \=* `0`）**
 
-Enable or disable the firewall cluster wide.
+在整个集群中启用或禁用防火墙。
 
 **`log_ratelimit`: `[enable=]<1|0> [,burst=<integer>] [,rate=<rate>]`**
 
-Log ratelimiting settings
+日志速率限制设置
 
-**`burst`\=`<integer> (0 - N)` (*default \=* `5`)**
+**`burst`\=`<integer> (0 - N)`（*默认值 \=* `5`）**
 
-Initial burst of packages which will always get logged before the rate is applied
+应用速率限制之前始终记录的初始突发数据包数量
 
-**`enable`\=`<boolean>` (*default \=* `1`)**
+**`enable`\=`<boolean>`（*默认值 \=* `1`）**
 
-Enable or disable log rate limiting
+启用或禁用日志速率限制
 
-**`rate`\=`<rate>` (*default \=* `1/second`)**
+**`rate`\=`<rate>`（*默认值 \=* `1/second`）**
 
-Frequency with which the burst bucket gets refilled
+突发令牌桶的补充频率
 
 **`policy_forward`: `<ACCEPT | DROP>`**
 
-Forward policy.
+转发策略。
 
 **`policy_in`: `<ACCEPT | DROP | REJECT>`**
 
-Input policy.
+传入策略。
 
 **`policy_out`: `<ACCEPT | DROP | REJECT>`**
 
-Output policy.
+传出策略。
 
 **`[RULES]`**
 
-This sections contains cluster-wide firewall rules for all nodes.
+本节包含适用于所有节点的集群范围防火墙规则。
 
 **`[IPSET <name>]`**
 
-Cluster wide IP set definitions.
+集群范围的 IP 集合定义。
 
 **`[GROUP <name>]`**
 
-Cluster wide security group definitions.
+集群范围的安全组定义。
 
 **`[ALIASES]`**
 
-Cluster wide Alias definitions.
+集群范围的别名定义。
 
-### Enabling the Firewall <a href="#_enabling_the_firewall" id="_enabling_the_firewall"></a>
+### 启用防火墙 <a href="#enabling_the_firewall" id="enabling_the_firewall"></a>
 
-The firewall is completely disabled by default, so you need to set the enable option here:
+默认情况下防火墙完全禁用，因此需要在此设置 enable 选项：
 
 ```text
 [OPTIONS]
@@ -83,198 +83,198 @@ enable: 1
 ```
 
 {% hint style="warning" %}
-If you enable the firewall, traffic to all hosts will be blocked by default \- with some exceptions for traffic coming from the local network to the WebUI, SSH and other important services. A full list of the default firewall rules can be found at xref:pve\_firewall\_default\_rules.
+启用防火墙后，默认会阻止发往所有宿主机的流量，但对从本地网络发往 WebUI、SSH 和其他重要服务的流量有一些例外。默认防火墙规则的完整列表参见 xref:pve\_firewall\_default\_rules。
 {% endhint %}
 
-Should you have other services running which communicate over the network, you will have to allow them seperately. For some common services there are `macros` available.
+如果还运行了其他通过网络通信的服务，需要单独允许这些服务。某些常见服务已有可用的 `macros`。
 
-If you want to administrate your Proxmox VE hosts from remote, you need to create rules to allow traffic from those remote IPs to the web GUI (port 8006). You may also want to allow ssh (port 22), and maybe SPICE (port 3128).
+如果希望远程管理 Proxmox VE 宿主机，需要创建规则，允许从这些远程 IP 发往 Web GUI（端口 8006）的流量。您可能还希望允许 ssh（端口 22），以及 SPICE（端口 3128）。
 
 {% hint style="success" %}
-Please open a SSH connection to one of your Proxmox VE hosts before enabling the firewall. That way you still have access to the host if something goes wrong .
+启用防火墙之前，请先与其中一台 Proxmox VE 宿主机建立 SSH 连接。这样，即使出现问题，仍可访问宿主机。
 {% endhint %}
 
-To simplify that task, you can instead create an IPSet called “management”, and add all remote IPs there. This creates all required firewall rules to access the GUI from remote.
+为简化此任务，可以改为创建名为“management”的 IPSet，并将所有远程 IP 添加到其中。这将创建从远程访问 GUI 所需的所有防火墙规则。
 
-## 13.2.2. Host Specific Configuration <a href="#pve_firewall_host_specific_configuration" id="pve_firewall_host_specific_configuration"></a>
+## 13.2.2. 宿主机特定配置 <a href="#pve_firewall_host_specific_configuration" id="pve_firewall_host_specific_configuration"></a>
 
-Host related configuration is read from:
+宿主机相关配置从以下位置读取：
 
 ```text
 /etc/pve/nodes/<nodename>/host.fw
 ```
 
-This is useful if you want to overwrite rules from `cluster.fw` config. You can also increase log verbosity, and set netfilter related options. The configuration can contain the following sections:
+如果希望覆盖 `cluster.fw` 配置中的规则，此功能很有用。还可以增加日志详细程度，并设置 netfilter 相关选项。配置可包含以下节：
 
 **`[OPTIONS]`**
 
-This is used to set host related firewall options.
+用于设置宿主机相关的防火墙选项。
 
-**`enable`: `<boolean>` (*default \=* `1`)**
+**`enable`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable host firewall rules.
+启用宿主机防火墙规则。
 
 **`log_level_forward`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for forwarded traffic.
+转发流量的日志级别。
 
 **`log_level_in`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for incoming traffic.
+传入流量的日志级别。
 
 **`log_level_out`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for outgoing traffic.
+传出流量的日志级别。
 
-**`log_nf_conntrack`: `<boolean>` (*default \=* `0`)**
+**`log_nf_conntrack`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable logging of conntrack information.
+启用 conntrack 信息日志记录。
 
-**`ndp`: `<boolean>` (*default \=* `1`)**
+**`ndp`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable NDP (Neighbor Discovery Protocol).
+启用 NDP（邻居发现协议）。
 
-**`nf_conntrack_allow_invalid`: `<boolean>` (*default \=* `0`)**
+**`nf_conntrack_allow_invalid`：`<boolean>`（*默认值 \=* `0`）**
 
-Allow invalid packets on connection tracking.
+在连接跟踪中允许无效数据包。
 
-**`nf_conntrack_helpers`: `<string>` (*default \=* \`\`)**
+**`nf_conntrack_helpers`：`<string>`（*默认值 \=* \`\`）**
 
-Enable conntrack helpers for specific protocols. Supported protocols: amanda, ftp, irc, netbios-ns, pptp, sane, sip, snmp, tftp
+为特定协议启用 conntrack 辅助模块。支持的协议：amanda、ftp、irc、netbios-ns、pptp、sane、sip、snmp、tftp
 
-**`nf_conntrack_max`: `<integer> (32768 - N)` (*default \=* `262144`)**
+**`nf_conntrack_max`：`<integer> (32768 - N)`（*默认值 \=* `262144`）**
 
-Maximum number of tracked connections.
+跟踪连接的最大数量。
 
-**`nf_conntrack_tcp_timeout_established`: `<integer> (7875 - N)` (*default \=* `432000`)**
+**`nf_conntrack_tcp_timeout_established`：`<integer> (7875 - N)`（*默认值 \=* `432000`）**
 
-Conntrack established timeout.
+Conntrack 已建立连接的超时。
 
-**`nf_conntrack_tcp_timeout_syn_recv`: `<integer> (30 - 60)` (*default \=* `60`)**
+**`nf_conntrack_tcp_timeout_syn_recv`：`<integer> (30 - 60)`（*默认值 \=* `60`）**
 
-Conntrack syn recv timeout.
+Conntrack syn recv 超时。
 
-**`nftables`: `<boolean>` (*default \=* `0`)**
+**`nftables`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable nftables based firewall (tech preview)
+启用基于 nftables 的防火墙（技术预览）
 
 **`nosmurfs`: `<boolean>`**
 
-Enable SMURFS filter.
+启用 SMURFS 过滤器。
 
-**`protection_synflood`: `<boolean>` (*default \=* `0`)**
+**`protection_synflood`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable synflood protection
+启用 SYN 洪泛防护
 
-**`protection_synflood_burst`: `<integer>` (*default \=* `1000`)**
+**`protection_synflood_burst`：`<integer>`（*默认值 \=* `1000`）**
 
-Synflood protection rate burst by ip src.
+按源 IP 设置 SYN 洪泛防护的突发速率。
 
-**`protection_synflood_rate`: `<integer>` (*default \=* `200`)**
+**`protection_synflood_rate`：`<integer>`（*默认值 \=* `200`）**
 
-Synflood protection rate syn/sec by ip src.
+按源 IP 设置 SYN 洪泛防护速率，单位为 syn/sec。
 
 **`smurf_log_level`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for SMURFS filter.
+SMURFS 过滤器的日志级别。
 
 **`tcp_flags_log_level`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for illegal tcp flags filter.
+非法 TCP 标志过滤器的日志级别。
 
-**`tcpflags`: `<boolean>` (*default \=* `0`)**
+**`tcpflags`：`<boolean>`（*默认值 \=* `0`）**
 
-Filter illegal combinations of TCP flags.
+过滤非法的 TCP 标志组合。
 
 **`[RULES]`**
 
-This sections contains host specific firewall rules.
+本节包含宿主机特定的防火墙规则。
 
-## 13.2.3. VM/Container Configuration <a href="#pve_firewall_vm_container_configuration" id="pve_firewall_vm_container_configuration"></a>
+## 13.2.3. 虚拟机/容器配置 <a href="#pve_firewall_vm_container_configuration" id="pve_firewall_vm_container_configuration"></a>
 
-VM firewall configuration is read from:
+虚拟机防火墙配置从以下位置读取：
 
 ```text
 /etc/pve/firewall/<VMID>.fw
 ```
 
-and contains the following data:
+并包含以下数据：
 
 **`[OPTIONS]`**
 
-This is used to set VM/Container related firewall options.
+用于设置虚拟机/容器相关的防火墙选项。
 
-**`dhcp`: `<boolean>` (*default \=* `0`)**
+**`dhcp`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable DHCP.
+启用 DHCP。
 
-**`enable`: `<boolean>` (*default \=* `0`)**
+**`enable`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable/disable firewall rules.
+启用/禁用防火墙规则。
 
 **`ipfilter`: `<boolean>`**
 
-Enable default IP filters. This is equivalent to adding an empty ipfilter-net\<id\> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface’s MAC address. For containers the configured IP addresses will be implicitly added.
+启用默认 IP 过滤器。这等同于为每个接口添加一个空的 ipfilter-net\<id\> ipset。此类 ipset 隐含合理的默认限制，例如将 IPv6 链路本地地址限制为从接口 MAC 地址推导的地址。对于容器，将隐式添加已配置的 IP 地址。
 
 **`log_level_in`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for incoming traffic.
+传入流量的日志级别。
 
 **`log_level_out`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for outgoing traffic.
+传出流量的日志级别。
 
-**`macfilter`: `<boolean>` (*default \=* `1`)**
+**`macfilter`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable/disable MAC address filter.
+启用/禁用 MAC 地址过滤器。
 
-**`ndp`: `<boolean>` (*default \=* `1`)**
+**`ndp`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable NDP (Neighbor Discovery Protocol).
+启用 NDP（邻居发现协议）。
 
 **`policy_in`: `<ACCEPT | DROP | REJECT>`**
 
-Input policy.
+传入策略。
 
 **`policy_out`: `<ACCEPT | DROP | REJECT>`**
 
-Output policy.
+传出策略。
 
 **`radv`: `<boolean>`**
 
-Allow sending Router Advertisement.
+允许发送路由器通告。
 
 **`[RULES]`**
 
-This sections contains VM/Container firewall rules.
+本节包含虚拟机/容器防火墙规则。
 
 **`[IPSET <name>]`**
 
-IP set definitions.
+IP 集合定义。
 
 **`[ALIASES]`**
 
-IP Alias definitions.
+IP 别名定义。
 
-### Enabling the Firewall for VMs and Containers <a href="#_enabling_the_firewall_for_vms_and_containers" id="_enabling_the_firewall_for_vms_and_containers"></a>
+### 为虚拟机和容器启用防火墙 <a href="#enabling_the_firewall_for_vms_and_containers" id="enabling_the_firewall_for_vms_and_containers"></a>
 
-Each virtual network device has its own firewall enable flag. So you can selectively enable the firewall for each interface. This is required in addition to the general firewall `enable` option.
+每个虚拟网络设备都有自己的防火墙启用标志。因此可以选择性地为每个接口启用防火墙。除全局防火墙 `enable` 选项外，还必须启用此标志。
 
-## 13.2.4. VNet Configuration <a href="#pve_firewall_vnet_configuration" id="pve_firewall_vnet_configuration"></a>
+## 13.2.4. VNet 配置 <a href="#pve_firewall_vnet_configuration" id="pve_firewall_vnet_configuration"></a>
 
-VNet related configuration is read from:
+VNet 相关配置从以下位置读取：
 
 ```text
 /etc/pve/sdn/firewall/<vnet_name>.fw
 ```
 
-This can be used for setting firewall configuration globally on a VNet level, without having to set firewall rules for each VM inside the VNet separately. It can only contain rules for the `FORWARD` direction, since there is no notion of incoming or outgoing traffic. This affects all traffic travelling from one bridge port to another, including the host interface.
+这可用于在 VNet 级别全局设置防火墙配置，无需为 VNet 内每台虚拟机单独设置防火墙规则。由于没有传入或传出流量的概念，因此只能包含 `FORWARD` 方向的规则。这会影响从一个网桥端口到另一个端口的所有流量，包括宿主机接口。
 
 {% hint style="warning" %}
-This feature is currently only available for the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md)
+此功能目前仅适用于新的 [基于 nftables 的 proxmox-firewall](13-pve-firewall-nft.md)
 {% endhint %}
 
-Since traffic passing the `FORWARD` chain is bi-directional, you need to create rules for both directions if you want traffic to pass both ways. For instance if HTTP traffic for a specific host should be allowed, you would need to create the following rules:
+由于经过 `FORWARD` 链的流量是双向的，如果希望流量双向通过，就需要为两个方向创建规则。例如，如果应允许特定宿主机的 HTTP 流量，则需要创建以下规则：
 
 ```text
 FORWARD ACCEPT -dest 10.0.0.1 -dport 80
@@ -283,23 +283,23 @@ FORWARD ACCEPT -source 10.0.0.1 -sport 80
 
 **`[OPTIONS]`**
 
-This is used to set VNet related firewall options.
+用于设置 VNet 相关的防火墙选项。
 
-**`enable`: `<boolean>` (*default \=* `0`)**
+**`enable`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable/disable firewall rules.
+启用/禁用防火墙规则。
 
 **`log_level_forward`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for forwarded traffic.
+转发流量的日志级别。
 
 **`policy_forward`: `<ACCEPT | DROP>`**
 
-Forward policy.
+转发策略。
 
 **`[RULES]`**
 
-This section contains VNet specific firewall rules.
+本节包含 VNet 特定的防火墙规则。
 
 ---
 

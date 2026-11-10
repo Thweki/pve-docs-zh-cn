@@ -4,19 +4,11 @@
 
 pct \- 用于管理 Proxmox VE 上 Linux 容器（LXC）的工具
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pct"></a>
+### **pct** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pct" id="cli_pct"></a>
 
-
-
-**pct** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pct_clone"></a>
-
-
-
-**pct clone** `<vmid> <newid>` `[OPTIONS]`
+### **pct clone** `<vmid> <newid>` `[OPTIONS]` <a href="#cli_pct_clone" id="cli_pct_clone"></a>
 
 创建容器克隆/副本
 
@@ -60,11 +52,7 @@ VM 的唯一 ID。
 
 目标节点。仅当原始 VM 位于共享存储上时才允许。
 
-<a id="cli_pct_config"></a>
-
-
-
-**pct config** `<vmid>` `[OPTIONS]`
+### **pct config** `<vmid>` `[OPTIONS]` <a href="#cli_pct_config" id="cli_pct_config"></a>
 
 获取容器配置。
 
@@ -80,11 +68,7 @@ VM 的唯一 ID。
 
 从指定快照获取配置值。
 
-<a id="cli_pct_console"></a>
-
-
-
-**pct console** `<vmid>` `[OPTIONS]`
+### **pct console** `<vmid>` `[OPTIONS]` <a href="#cli_pct_console" id="cli_pct_console"></a>
 
 为指定容器启动控制台。
 
@@ -96,19 +80,11 @@ VM 的唯一 ID。
 
 转义序列前缀。例如，要将 \<Ctrl\+b q\> 用作转义序列，请传递 *^b*。
 
-<a id="cli_pct_cpusets"></a>
-
-
-
-**pct cpusets**
+### **pct cpusets** <a href="#cli_pct_cpusets" id="cli_pct_cpusets"></a>
 
 打印已分配的 CPU 集合列表。
 
-<a id="cli_pct_create"></a>
-
-
-
-**pct create** `<vmid> <ostemplate>` `[OPTIONS]`
+### **pct create** `<vmid> <ostemplate>` `[OPTIONS]` <a href="#cli_pct_create" id="cli_pct_create"></a>
 
 创建或恢复容器。
 
@@ -300,11 +276,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_delsnapshot"></a>
-
-
-
-**pct delsnapshot** `<vmid> <snapname>` `[OPTIONS]`
+### **pct delsnapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_delsnapshot" id="cli_pct_delsnapshot"></a>
 
 删除 LXC 快照。
 
@@ -320,11 +292,7 @@ VM 的唯一 ID。
 
 即使删除磁盘快照失败，也从配置文件中移除。
 
-<a id="cli_pct_destroy"></a>
-
-
-
-**pct destroy** `<vmid>` `[OPTIONS]`
+### **pct destroy** `<vmid>` `[OPTIONS]` <a href="#cli_pct_destroy" id="cli_pct_destroy"></a>
 
 销毁容器（同时删除所有相关文件）。
 
@@ -344,11 +312,7 @@ VM 的唯一 ID。
 
 从所有相关配置中移除容器。例如，备份任务、复制任务或 HA。相关 ACL 和防火墙条目**始终**会被移除。
 
-<a id="cli_pct_df"></a>
-
-
-
-**pct df** `<vmid>`
+### **pct df** `<vmid>` <a href="#cli_pct_df" id="cli_pct_df"></a>
 
 获取容器当前的磁盘使用情况。
 
@@ -356,11 +320,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_enter"></a>
-
-
-
-**pct enter** `<vmid>` `[OPTIONS]`
+### **pct enter** `<vmid>` `[OPTIONS]` <a href="#cli_pct_enter" id="cli_pct_enter"></a>
 
 为指定的容器启动 shell。
 
@@ -372,11 +332,7 @@ VM 的唯一 ID。
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
-<a id="cli_pct_exec"></a>
-
-
-
-**pct exec** `<vmid> [<extra-args>]` `[OPTIONS]`
+### **pct exec** `<vmid> [<extra-args>]` `[OPTIONS]` <a href="#cli_pct_exec" id="cli_pct_exec"></a>
 
 在指定的容器内启动命令。
 
@@ -392,11 +348,7 @@ VM 的唯一 ID。
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
-<a id="cli_pct_fsck"></a>
-
-
-
-**pct fsck** `<vmid>` `[OPTIONS]`
+### **pct fsck** `<vmid>` `[OPTIONS]` <a href="#cli_pct_fsck" id="cli_pct_fsck"></a>
 
 对容器卷运行文件系统检查（fsck）。
 
@@ -412,11 +364,7 @@ VM 的唯一 ID。
 
 即使文件系统看起来干净，也强制检查
 
-<a id="cli_pct_fstrim"></a>
-
-
-
-**pct fstrim** `<vmid>` `[OPTIONS]`
+### **pct fstrim** `<vmid>` `[OPTIONS]` <a href="#cli_pct_fstrim" id="cli_pct_fstrim"></a>
 
 对选定的容器及其挂载点运行 fstrim，绑定挂载点或只读挂载点除外。
 
@@ -428,11 +376,7 @@ VM 的唯一 ID。
 
 跳过所有挂载点，仅对容器根目录执行 fstrim。
 
-<a id="cli_pct_help"></a>
-
-
-
-**pct help** `[OPTIONS]`
+### **pct help** `[OPTIONS]` <a href="#cli_pct_help" id="cli_pct_help"></a>
 
 获取指定命令的帮助。
 
@@ -444,19 +388,11 @@ VM 的唯一 ID。
 
 详细输出格式。
 
-<a id="cli_pct_list"></a>
-
-
-
-**pct list**
+### **pct list** <a href="#cli_pct_list" id="cli_pct_list"></a>
 
 LXC 容器索引（按节点）。
 
-<a id="cli_pct_listsnapshot"></a>
-
-
-
-**pct listsnapshot** `<vmid>`
+### **pct listsnapshot** `<vmid>` <a href="#cli_pct_listsnapshot" id="cli_pct_listsnapshot"></a>
 
 列出所有快照。
 
@@ -464,11 +400,7 @@ LXC 容器索引（按节点）。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_migrate"></a>
-
-
-
-**pct migrate** `<vmid> <target>` `[OPTIONS]`
+### **pct migrate** `<vmid> <target>` `[OPTIONS]` <a href="#cli_pct_migrate" id="cli_pct_migrate"></a>
 
 将容器迁移到另一个节点。创建新的迁移任务。
 
@@ -500,11 +432,7 @@ VM 的唯一 ID。
 
 重启迁移时等待关机的超时时间（秒）
 
-<a id="cli_pct_mount"></a>
-
-
-
-**pct mount** `<vmid>`
+### **pct mount** `<vmid>` <a href="#cli_pct_mount" id="cli_pct_mount"></a>
 
 将容器的文件系统挂载到宿主机。这会锁定容器，仅用于紧急维护，因为除了启动和停止之外，它将阻止对容器执行其他操作。
 
@@ -512,11 +440,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_move-volume"></a>
-
-
-
-**pct move-volume** `<vmid> <volume> [<storage>] [<target-vmid>] [<target-volume>]` `[OPTIONS]`
+### **pct move-volume** `<vmid> <volume> [<storage>] [<target-vmid>] [<target-volume>]` `[OPTIONS]` <a href="#cli_pct_move-volume" id="cli_pct_move-volume"></a>
 
 将 rootfs-/mp-volume 移动到其他存储或其他容器。
 
@@ -556,19 +480,11 @@ VM 的唯一 ID。
 
 如果目标容器的当前配置文件具有不同的 SHA1 摘要，则阻止更改。这可用于防止并发修改。
 
-<a id="cli_pct_move_volume"></a>
-
-
-
-**pct move\_volume**
+### **pct move\_volume** <a href="#cli_pct_move_volume" id="cli_pct_move_volume"></a>
 
 *pct move-volume* 的别名。
 
-<a id="cli_pct_pending"></a>
-
-
-
-**pct pending** `<vmid>`
+### **pct pending** `<vmid>` <a href="#cli_pct_pending" id="cli_pct_pending"></a>
 
 获取容器配置，包括待处理的更改。
 
@@ -576,11 +492,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_pull"></a>
-
-
-
-**pct pull** `<vmid> <path> <destination>` `[OPTIONS]`
+### **pct pull** `<vmid> <path> <destination>` `[OPTIONS]` <a href="#cli_pct_pull" id="cli_pct_pull"></a>
 
 将文件从容器复制到本地系统。
 
@@ -608,11 +520,7 @@ VM 的唯一 ID。
 
 属主用户名或 ID。
 
-<a id="cli_pct_push"></a>
-
-
-
-**pct push** `<vmid> <file> <destination>` `[OPTIONS]`
+### **pct push** `<vmid> <file> <destination>` `[OPTIONS]` <a href="#cli_pct_push" id="cli_pct_push"></a>
 
 将本地文件复制到容器。
 
@@ -640,11 +548,7 @@ VM 的唯一 ID。
 
 属主用户名或 ID。使用名称时，该名称必须存在于容器内。
 
-<a id="cli_pct_reboot"></a>
-
-
-
-**pct reboot** `<vmid>` `[OPTIONS]`
+### **pct reboot** `<vmid>` `[OPTIONS]` <a href="#cli_pct_reboot" id="cli_pct_reboot"></a>
 
 通过关机并重新启动来重启容器。应用待处理的更改。
 
@@ -656,11 +560,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒以完成关机。
 
-<a id="cli_pct_remote-migrate"></a>
-
-
-
-**pct remote-migrate** `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]`
+### **pct remote-migrate** `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]` <a href="#cli_pct_remote-migrate" id="cli_pct_remote-migrate"></a>
 
 将容器迁移到远程集群。创建新的迁移任务。实验性功能！
 
@@ -704,11 +604,7 @@ VM 的唯一 ID。
 
 重启迁移时等待关机的超时时间（秒）
 
-<a id="cli_pct_rescan"></a>
-
-
-
-**pct rescan** `[OPTIONS]`
+### **pct rescan** `[OPTIONS]` <a href="#cli_pct_rescan" id="cli_pct_rescan"></a>
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
@@ -720,11 +616,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_resize"></a>
-
-
-
-**pct resize** `<vmid> <disk> <size>` `[OPTIONS]`
+### **pct resize** `<vmid> <disk> <size>` `[OPTIONS]` <a href="#cli_pct_resize" id="cli_pct_resize"></a>
 
 调整容器挂载点的大小。
 
@@ -744,11 +636,7 @@ VM 的唯一 ID。
 
 如果当前配置文件的 SHA1 摘要不同，则阻止更改。这可用于防止并发修改。
 
-<a id="cli_pct_restore"></a>
-
-
-
-**pct restore** `<vmid> <ostemplate>` `[OPTIONS]`
+### **pct restore** `<vmid> <ostemplate>` `[OPTIONS]` <a href="#cli_pct_restore" id="cli_pct_restore"></a>
 
 创建或恢复容器。
 
@@ -936,11 +824,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_resume"></a>
-
-
-
-**pct resume** `<vmid>`
+### **pct resume** `<vmid>` <a href="#cli_pct_resume" id="cli_pct_resume"></a>
 
 恢复容器运行。
 
@@ -948,11 +832,7 @@ CPU 使用限制。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_rollback"></a>
-
-
-
-**pct rollback** `<vmid> <snapname>` `[OPTIONS]`
+### **pct rollback** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_rollback" id="cli_pct_rollback"></a>
 
 将 LXC 状态回滚到指定快照。
 
@@ -968,11 +848,7 @@ VM 的唯一 ID。
 
 成功回滚后是否应启动容器
 
-<a id="cli_pct_set"></a>
-
-
-
-**pct set** `<vmid>` `[OPTIONS]`
+### **pct set** `<vmid>` `[OPTIONS]` <a href="#cli_pct_set" id="cli_pct_set"></a>
 
 设置容器选项。
 
@@ -1124,11 +1000,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_shutdown"></a>
-
-
-
-**pct shutdown** `<vmid>` `[OPTIONS]`
+### **pct shutdown** `<vmid>` `[OPTIONS]` <a href="#cli_pct_shutdown" id="cli_pct_shutdown"></a>
 
 关闭容器。这会触发容器正常关机，详情请参阅 lxc-stop(1)。
 
@@ -1144,11 +1016,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒。
 
-<a id="cli_pct_snapshot"></a>
-
-
-
-**pct snapshot** `<vmid> <snapname>` `[OPTIONS]`
+### **pct snapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_snapshot" id="cli_pct_snapshot"></a>
 
 为容器创建快照。
 
@@ -1164,11 +1032,7 @@ VM 的唯一 ID。
 
 文本描述或注释。
 
-<a id="cli_pct_start"></a>
-
-
-
-**pct start** `<vmid>` `[OPTIONS]`
+### **pct start** `<vmid>` `[OPTIONS]` <a href="#cli_pct_start" id="cli_pct_start"></a>
 
 启动容器。
 
@@ -1184,11 +1048,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-<a id="cli_pct_status"></a>
-
-
-
-**pct status** `<vmid>` `[OPTIONS]`
+### **pct status** `<vmid>` `[OPTIONS]` <a href="#cli_pct_status" id="cli_pct_status"></a>
 
 显示 CT 状态。
 
@@ -1200,11 +1060,7 @@ VM 的唯一 ID。
 
 详细输出格式
 
-<a id="cli_pct_stop"></a>
-
-
-
-**pct stop** `<vmid>` `[OPTIONS]`
+### **pct stop** `<vmid>` `[OPTIONS]` <a href="#cli_pct_stop" id="cli_pct_stop"></a>
 
 停止容器。这将突然终止容器中运行的所有进程。
 
@@ -1220,11 +1076,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-<a id="cli_pct_suspend"></a>
-
-
-
-**pct suspend** `<vmid>`
+### **pct suspend** `<vmid>` <a href="#cli_pct_suspend" id="cli_pct_suspend"></a>
 
 挂起容器。此功能处于实验阶段。
 
@@ -1232,11 +1084,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_template"></a>
-
-
-
-**pct template** `<vmid>`
+### **pct template** `<vmid>` <a href="#cli_pct_template" id="cli_pct_template"></a>
 
 创建模板。
 
@@ -1244,11 +1092,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_unlock"></a>
-
-
-
-**pct unlock** `<vmid>`
+### **pct unlock** `<vmid>` <a href="#cli_pct_unlock" id="cli_pct_unlock"></a>
 
 解锁 VM。
 
@@ -1256,11 +1100,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_unmount"></a>
-
-
-
-**pct unmount** `<vmid>`
+### **pct unmount** `<vmid>` <a href="#cli_pct_unmount" id="cli_pct_unmount"></a>
 
 卸载容器的文件系统。
 
@@ -1268,7 +1108,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 容器是完全虚拟机（VM）的轻量级替代方案。它们使用所运行宿主机系统的内核，而不是模拟完整的操作系统（OS）。这意味着容器可以直接访问宿主机系统上的资源。
 
@@ -1289,7 +1129,7 @@ Proxmox VE 使用 [Linux Containers (LXC)](https://linuxcontainers.org/lxc/intro
 
 尽管直接运行轻量级“应用容器”相比完整 VM 具有显著优势，但对于要求最大隔离性和在线迁移能力的用例，将容器嵌套在 Proxmox QEMU VM 内仍是推荐做法。
 
-## 技术概述 <a href="#_technology_overview" id="_technology_overview"></a>
+## 技术概述 <a href="#technology_overview" id="technology_overview"></a>
 
 - LXC（[https://linuxcontainers.org/](https://linuxcontainers.org/)）
 - 集成到 Proxmox VE 图形化 Web 用户界面（GUI）中
@@ -1309,7 +1149,7 @@ Proxmox VE 使用 [Linux Containers (LXC)](https://linuxcontainers.org/lxc/intro
 
 以下发行版的模板可通过我们的仓库获取。您可以使用 [pveam](#pct_container_images) 工具或图形用户界面下载它们。
 
-### Alpine Linux <a href="#_alpine_linux" id="_alpine_linux"></a>
+### Alpine Linux <a href="#alpine_linux" id="alpine_linux"></a>
 
 Alpine Linux 是一个注重安全的轻量级 Linux 发行版，基于 musl libc 和 busybox。
 
@@ -1319,7 +1159,7 @@ Alpine Linux 是一个注重安全的轻量级 Linux 发行版，基于 musl lib
 
 [https://alpinelinux.org/releases/](https://alpinelinux.org/releases/)
 
-### Arch Linux <a href="#_arch_linux" id="_arch_linux"></a>
+### Arch Linux <a href="#arch_linux" id="arch_linux"></a>
 
 Arch Linux 是一个轻量级且灵活的 Linux® 发行版，力求保持简单。
 
@@ -1329,9 +1169,9 @@ Arch Linux 采用滚动发布模式，更多详细信息请参阅其 wiki：
 
 [https://wiki.archlinux.org/title/Arch\_Linux](https://wiki.archlinux.org/title/Arch_Linux)
 
-### CentOS, Almalinux, Rocky Linux <a href="#_centos_almalinux_rocky_linux" id="_centos_almalinux_rocky_linux"></a>
+### CentOS, Almalinux, Rocky Linux <a href="#centos_almalinux_rocky_linux" id="centos_almalinux_rocky_linux"></a>
 
-#### CentOS / CentOS Stream <a href="#_centos_centos_stream" id="_centos_centos_stream"></a>
+#### CentOS / CentOS Stream <a href="#centos_centos_stream" id="centos_centos_stream"></a>
 
 CentOS Linux 发行版是一个稳定、可预测、可管理且可重现的平台，源自 Red Hat Enterprise Linux（RHEL）的源代码
 
@@ -1341,7 +1181,7 @@ CentOS Linux 发行版是一个稳定、可预测、可管理且可重现的平�
 
 [https://en.wikipedia.org/wiki/CentOS#End-of-support\_schedule](https://en.wikipedia.org/wiki/CentOS#End-of-support_schedule)
 
-#### Almalinux <a href="#_almalinux" id="_almalinux"></a>
+#### Almalinux <a href="#almalinux" id="almalinux"></a>
 
 一个开源、由社区拥有和治理、永久免费的企业级 Linux 发行版，专注于长期稳定性，提供稳健的生产级平台。AlmaLinux OS 与 RHEL® 和 CentOS Stream 之前的 CentOS 保持 1:1 二进制兼容。
 
@@ -1351,7 +1191,7 @@ CentOS Linux 发行版是一个稳定、可预测、可管理且可重现的平�
 
 [https://en.wikipedia.org/wiki/AlmaLinux#Releases](https://en.wikipedia.org/wiki/AlmaLinux#Releases)
 
-#### Rocky Linux <a href="#_rocky_linux" id="_rocky_linux"></a>
+#### Rocky Linux <a href="#rocky_linux" id="rocky_linux"></a>
 
 Rocky Linux 是一个社区企业级操作系统，旨在在其下游合作伙伴转变方向后，仍与美国顶级企业 Linux 发行版保持 100% 的逐缺陷兼容。
 
@@ -1361,7 +1201,7 @@ Rocky Linux 是一个社区企业级操作系统，旨在在其下游合作伙�
 
 [https://en.wikipedia.org/wiki/Rocky\_Linux#Releases](https://en.wikipedia.org/wiki/Rocky_Linux#Releases)
 
-### Debian <a href="#_debian" id="_debian"></a>
+### Debian <a href="#debian" id="debian"></a>
 
 Debian 是一个自由操作系统，由 Debian 项目开发和维护。它是一个自由的 Linux 发行版，包含数千款应用程序，可满足用户的需求。
 
@@ -1371,7 +1211,7 @@ Debian 是一个自由操作系统，由 Debian 项目开发和维护。它是�
 
 [https://www.debian.org/releases/stable/releasenotes](https://www.debian.org/releases/stable/releasenotes)
 
-### Devuan <a href="#_devuan" id="_devuan"></a>
+### Devuan <a href="#devuan" id="devuan"></a>
 
 Devuan GNU\+Linux 是 Debian 的一个分支，不使用 systemd，使用户能够通过避免不必要的纠缠并确保初始化系统自由，重新掌控自己的系统。
 
@@ -1381,7 +1221,7 @@ Devuan GNU\+Linux 是 Debian 的一个分支，不使用 systemd，使用户能�
 
 [https://www.devuan.org/os/releases](https://www.devuan.org/os/releases)
 
-### Fedora <a href="#_fedora" id="_fedora"></a>
+### Fedora <a href="#fedora" id="fedora"></a>
 
 Fedora 为硬件、云和容器创造了一个创新、自由且开源的平台，使软件开发人员和社区成员能够为其用户构建量身定制的解决方案。
 
@@ -1391,7 +1231,7 @@ Fedora 为硬件、云和容器创造了一个创新、自由且开源的平台�
 
 [https://fedoraproject.org/wiki/Releases](https://fedoraproject.org/wiki/Releases)
 
-### Gentoo <a href="#_gentoo" id="_gentoo"></a>
+### Gentoo <a href="#gentoo" id="gentoo"></a>
 
 一个高度灵活、基于源代码的 Linux 发行版。
 
@@ -1399,7 +1239,7 @@ Fedora 为硬件、云和容器创造了一个创新、自由且开源的平台�
 
 Gentoo 采用滚动发布模式。
 
-### OpenSUSE <a href="#_opensuse" id="_opensuse"></a>
+### OpenSUSE <a href="#opensuse" id="opensuse"></a>
 
 系统管理员、开发人员和桌面用户的首选。
 
@@ -1409,7 +1249,7 @@ Gentoo 采用滚动发布模式。
 
 [https://get.opensuse.org/leap/](https://get.opensuse.org/leap/)
 
-### Ubuntu <a href="#_ubuntu" id="_ubuntu"></a>
+### Ubuntu <a href="#ubuntu" id="ubuntu"></a>
 
 Ubuntu 是面向企业服务器、桌面、云和 IoT 的现代化 Linux 开源操作系统。
 
@@ -1423,7 +1263,7 @@ Ubuntu 是面向企业服务器、桌面、云和 IoT 的现代化 Linux 开源�
 
 容器镜像有时也称为“模板”或“应用设备”，是包含运行容器所需一切的 `tar` 归档文件。Proxmox VE 可以使用两种主要类型的镜像：用于创建完整虚拟环境的 **System Container Templates**，以及基于 OCI 标准、用于运行特定应用的 **Application Container Images**。
 
-### System Container Templates <a href="#_system_container_templates" id="_system_container_templates"></a>
+### System Container Templates <a href="#system_container_templates" id="system_container_templates"></a>
 
 Proxmox VE 本身为 [most common Linux distributions](#pct_supported_distributions) 提供了多种基础模板。可以使用 GUI 或 `pveam`（Proxmox VE Appliance Manager 的缩写）命令行实用程序下载它们。此外，还可以下载 [TurnKey Linux](https://www.turnkeylinux.org/) 容器模板。
 
@@ -1494,13 +1334,13 @@ local:vztmpl/debian-10.0-standard_10.0-1_amd64.tar.gz  219.95MB
 # pveam remove local:vztmpl/debian-10.0-standard_10.0-1_amd64.tar.gz
 ```
 
-### Open Container Initiative (OCI) Images <a href="#_open_container_initiative_oci_images" id="_open_container_initiative_oci_images"></a>
+### Open Container Initiative (OCI) Images <a href="#open_container_initiative_oci_images" id="open_container_initiative_oci_images"></a>
 
 Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用容器。请注意，目前在 Proxmox VE 中运行应用容器仍被视为技术预览。
 
 从 OCI 镜像创建的容器仍使用现有的 LXC 框架。
 
-### Obtaining OCI Images <a href="#_obtaining_oci_images" id="_obtaining_oci_images"></a>
+### Obtaining OCI Images <a href="#obtaining_oci_images" id="obtaining_oci_images"></a>
 
 在 Web 界面中，可以手动上传 OCI 镜像，也可以通过存储的容器模板视图中的 **Pull from OCI registry** 按钮从镜像仓库拉取镜像。
 
@@ -1523,7 +1363,7 @@ Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用�
 - **Unprivileged container**：此选项允许您在创建时选择要创建特权容器还是非特权容器。
 - **Nesting**：暴露 procfs 和 sysfs 以允许嵌套容器。请注意，systemd 也使用此功能来隔离服务。
 
-#### 非特权容器 <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
+#### 非特权容器 <a href="#unprivileged_containers" id="unprivileged_containers"></a>
 
 非特权容器使用一种称为用户命名空间的新内核功能。容器内的 root UID 0 会映射到容器外的非特权用户。这意味着，这些容器中的大多数安全问题（容器逃逸、资源滥用等）将影响某个随机的非特权用户，并且属于通用内核安全漏洞，而不是 LXC 问题。LXC 团队认为，非特权容器在设计上就是安全的。
 
@@ -1533,7 +1373,7 @@ Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用�
 如果容器使用 systemd 作为 init 系统，请注意，容器内运行的 systemd 版本应等于或高于 220。
 {% endhint %}
 
-#### 特权容器 <a href="#_privileged_containers" id="_privileged_containers"></a>
+#### 特权容器 <a href="#privileged_containers" id="privileged_containers"></a>
 
 容器中的安全性通过使用强制访问控制 *AppArmor* 限制、*seccomp* 过滤器和 Linux 内核命名空间来实现。LXC 团队认为这种容器不安全，并且不会将新的容器逃逸漏洞视为值得分配 CVE 并快速修复的安全问题。因此，特权容器只应在受信任的环境中使用。
 
@@ -1701,7 +1541,7 @@ rootfs/mps 的额外挂载选项。
 rootfs: thin1:base-100-disk-1,size=8G
 ```
 
-#### 存储支持的挂载点 <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
+#### 存储支持的挂载点 <a href="#storage_backed_mount_points" id="storage_backed_mount_points"></a>
 
 存储支持的挂载点由 Proxmox VE 存储子系统管理，并有三种不同形式：
 
@@ -1719,7 +1559,7 @@ pct set 100 -mp0 thin1:10,mp=/path/in/container
 
 将在存储 `thin1` 上分配一个 10GB 的卷，用分配的卷 ID 替换卷 ID 占位符 `10`，并在容器中的 `/path/in/container` 处设置挂载点
 
-#### 绑定挂载点 <a href="#_bind_mount_points" id="_bind_mount_points"></a>
+#### 绑定挂载点 <a href="#bind_mount_points" id="bind_mount_points"></a>
 
 绑定挂载允许您在容器内访问 Proxmox VE 宿主机上的任意目录。一些潜在的用例包括：
 
@@ -1757,7 +1597,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 
 以达到相同的结果。
 
-#### 设备挂载点 <a href="#_device_mount_points" id="_device_mount_points"></a>
+#### 设备挂载点 <a href="#device_mount_points" id="device_mount_points"></a>
 
 设备挂载点允许将宿主机的块设备直接挂载到容器中。与绑定挂载类似，设备挂载不受 Proxmox VE 存储子系统管理，但 `quota` 和 `acl` 选项会生效。
 
@@ -1861,7 +1701,7 @@ CIDR 格式的 IPv6 地址。
 
 如果需要在宿主机启动与第一个容器启动之间设置延迟，请参阅“Proxmox VE 节点管理”一节。
 
-### 钩子脚本 <a href="#_hookscripts" id="_hookscripts"></a>
+### 钩子脚本 <a href="#hookscripts" id="hookscripts"></a>
 
 您可以通过配置属性 `hookscript` 为 CT 添加钩子脚本。
 
@@ -1871,13 +1711,13 @@ CIDR 格式的 IPv6 地址。
 
 它将在客户机生命周期的各个阶段被调用。有关示例和文档，请参阅 `/usr/share/pve-docs/examples/guest-example-hookscript.pl` 下的示例脚本。
 
-## 安全注意事项 <a href="#_security_considerations" id="_security_considerations"></a>
+## 安全注意事项 <a href="#security_considerations" id="security_considerations"></a>
 
 容器使用宿主机系统的内核。这会为恶意用户暴露攻击面。一般来说，完整的虚拟机可以提供更好的隔离性。如果向未知或不受信任的人员提供容器，应考虑这一点。
 
 为了减少攻击面，LXC 使用了 AppArmor、CGroups 和内核命名空间等许多安全功能。
 
-### AppArmor <a href="#_apparmor" id="_apparmor"></a>
+### AppArmor <a href="#apparmor" id="apparmor"></a>
 
 AppArmor 配置文件用于限制对可能危险的操作的访问。某些系统调用（即 `mount`）会被禁止执行。
 
@@ -1913,7 +1753,7 @@ lxc.apparmor.profile = unconfined
 
 另一个重要区别是 *devices* 控制器的配置方式完全不同。因此，纯 *cgroupv2* 环境目前不支持文件系统配额。
 
-*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2* [\[1\]](#note-265637e0-1), as do containers not using *systemd* as init system [\[2\]](#note-265637e0-2).
+容器操作系统需要支持 *cgroupv2*，才能在纯 *cgroupv2* 环境中运行。运行 *systemd* 231 或更新版本的容器支持 *cgroupv2* [\[1\]](#note-265637e0-1)，不使用 *systemd* 作为 init 系统的容器也支持 [\[2\]](#note-265637e0-2)。
 
 {% hint style="info" %}
 CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *systemd* 版本太旧，无法在 *cgroupv2* 环境中运行。您可以：
@@ -1933,7 +1773,7 @@ systemd.unified_cgroup_hierarchy=0
 
 有关应在何处添加该参数，请参阅编辑内核启动命令行一节。
 
-## 客户机操作系统配置 <a href="#_guest_operating_system_configuration" id="_guest_operating_system_configuration"></a>
+## 客户机操作系统配置 <a href="#guest_operating_system_configuration" id="guest_operating_system_configuration"></a>
 
 Proxmox VE 会尝试检测容器中的 Linux 发行版，并修改一些文件。以下是容器启动时所执行操作的简要列表：
 
@@ -2031,7 +1871,7 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 
 此外，可以使用*绑定挂载*直接挂载本地设备或本地目录。这使容器内几乎可以零开销地访问本地资源。绑定挂载可以作为在容器之间共享数据的一种简便方式。
 
-### FUSE 挂载 <a href="#_fuse_mounts" id="_fuse_mounts"></a>
+### FUSE 挂载 <a href="#fuse_mounts" id="fuse_mounts"></a>
 
 {% hint style="warning" %}
 由于 Linux 内核的 freezer 子系统存在已知问题，强烈建议不要在容器内使用 FUSE 挂载，因为在挂起或快照模式备份时需要冻结容器。
@@ -2039,7 +1879,7 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 
 如果无法用其他挂载机制或存储技术替代 FUSE 挂载，可以在 Proxmox 宿主机上建立 FUSE 挂载，并使用绑定挂载点使其在容器内可访问。
 
-### 在容器内使用配额 <a href="#_using_quotas_inside_containers" id="_using_quotas_inside_containers"></a>
+### 在容器内使用配额 <a href="#using_quotas_inside_containers" id="using_quotas_inside_containers"></a>
 
 配额允许在容器内为每个用户可使用的磁盘空间量设置限制。
 
@@ -2066,11 +1906,11 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 您需要为每个挂载点运行上述命令，并传入挂载点的路径，而不是只传入 `/`。
 {% endhint %}
 
-### 在容器内使用 ACL <a href="#_using_acls_inside_containers" id="_using_acls_inside_containers"></a>
+### 在容器内使用 ACL <a href="#using_acls_inside_containers" id="using_acls_inside_containers"></a>
 
 标准 Posix **访问****控制****列表**在容器内也可用。ACL 允许您设置比传统的用户/组/其他用户模型更细致的文件所有权。
 
-### 容器挂载点备份 <a href="#_backup_of_container_mount_points" id="_backup_of_container_mount_points"></a>
+### 容器挂载点备份 <a href="#backup_of_container_mount_points" id="backup_of_container_mount_points"></a>
 
 要在备份中包含挂载点，请在容器配置中为其启用 `backup` 选项。对于现有挂载点 `mp0`
 
@@ -2090,20 +1930,20 @@ mp0: guests:subvol-100-disk-1,mp=/root/files,size=8G,backup=1
 
 要禁用挂载点备份，请按上述方式添加 `backup=0`，或在 GUI 中取消选中**备份**复选框。
 
-### 容器挂载点复制 <a href="#_replication_of_containers_mount_points" id="_replication_of_containers_mount_points"></a>
+### 容器挂载点复制 <a href="#replication_of_containers_mount_points" id="replication_of_containers_mount_points"></a>
 
 默认情况下，复制根磁盘时也会复制其他挂载点。如果希望 Proxmox VE 存储复制机制跳过某个挂载点，可以为该挂载点设置**跳过复制**选项。自 Proxmox VE 5.0 起，复制需要类型为 `zfspool` 的存储。当容器已配置复制时，如果要将挂载点添加到其他类型的存储，则必须为该挂载点启用**跳过复制**。
 
-## 备份与恢复 <a href="#_backup_and_restore" id="_backup_and_restore"></a>
+## 备份与恢复 <a href="#backup_and_restore" id="backup_and_restore"></a>
 
-### 容器备份 <a href="#_container_backup" id="_container_backup"></a>
+### 容器备份 <a href="#container_backup" id="container_backup"></a>
 
 可以使用 `vzdump` 工具进行容器备份。有关详细信息，请参阅 `vzdump` 手册页。
 
-### 恢复容器备份 <a href="#_restoring_container_backups" id="_restoring_container_backups"></a>
+### 恢复容器备份 <a href="#restoring_container_backups" id="restoring_container_backups"></a>
 
-Restoring container backups made with `vzdump` is possible using the `pct
-restore` command. By default, `pct restore` will attempt to restore as much of the backed up container configuration as possible. It is possible to override the backed up configuration by manually setting container options on the command line (see the `pct` manual page for details).
+通过 `vzdump` 创建的容器备份可以使用 `pct
+restore` 命令恢复。默认情况下，`pct restore` 会尽可能恢复备份的容器配置。可以通过在命令行中手动设置容器选项来覆盖备份的配置（详情参见 `pct` 手册页）。
 
 {% hint style="info" %}
 `pvesm extractconfig` 可用于查看 vzdump 归档中包含的已备份配置。
@@ -2111,7 +1951,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 有两种基本恢复模式，它们的区别仅在于对挂载点的处理方式：
 
-#### “简单”恢复模式 <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
+#### “简单”恢复模式 <a href="#8220_simple_8221_restore_mode" id="8220_simple_8221_restore_mode"></a>
 
 如果既未明确设置 `rootfs` 参数，也未明确设置任何可选的 `mpX` 参数，则将通过以下步骤从备份的配置文件中恢复挂载点配置：
 
@@ -2126,7 +1966,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 Web 界面中的容器恢复操作也使用这种简单模式。
 
-#### “高级”恢复模式 <a href="#_8220_advanced_8221_restore_mode" id="_8220_advanced_8221_restore_mode"></a>
+#### “高级”恢复模式 <a href="#8220_advanced_8221_restore_mode" id="8220_advanced_8221_restore_mode"></a>
 
 通过设置 `rootfs` 参数（以及可选的任意 `mpX` 参数组合），`pct restore` 命令会自动切换到高级模式。该高级模式会完全忽略备份归档中包含的 `rootfs` 和 `mpX` 配置选项，而仅使用显式作为参数提供的选项。
 
@@ -2136,11 +1976,11 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 - 根据新的挂载点方案重新分配已备份的文件
 - 恢复到设备和/或绑定挂载点（仅限 root 用户）
 
-## 使用 `pct` 管理容器 <a href="#_managing_containers_with_span_class_monospaced_pct_span" id="_managing_containers_with_span_class_monospaced_pct_span"></a>
+## 使用 `pct` 管理容器 <a href="#managing_containers_with_span_class_monospaced_pct_span" id="managing_containers_with_span_class_monospaced_pct_span"></a>
 
 “Proxmox Container Toolkit”（`pct`）是用于管理 Proxmox VE 容器的命令行工具。它可用于创建或销毁容器，以及控制容器的运行（启动、停止、重启、迁移等）。它还可用于设置容器配置文件中的参数，例如网络配置或内存限制。
 
-### CLI 使用示例 <a href="#_cli_usage_examples" id="_cli_usage_examples"></a>
+### CLI 使用示例 <a href="#cli_usage_examples" id="cli_usage_examples"></a>
 
 基于 Debian 模板创建容器（前提是你已通过 Web 界面下载该模板）
 
@@ -2206,7 +2046,7 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 #  pct move-volume 100 mp0 --target-vmid 200 --target-volume mp1
 ```
 
-### 获取调试日志 <a href="#_obtaining_debugging_logs" id="_obtaining_debugging_logs"></a>
+### 获取调试日志 <a href="#obtaining_debugging_logs" id="obtaining_debugging_logs"></a>
 
 如果 `pct start` 无法启动特定容器，可以通过传递 `--debug` 标志来收集调试输出（将 `CTID` 替换为容器的 CTID），这可能会有所帮助：
 
@@ -2240,7 +2080,7 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 
 由于技术限制，正在运行的容器无法进行在线迁移。你可以执行重启迁移，即关闭容器，将其移动，然后在目标节点上重新启动。由于容器非常轻量，这通常只会造成几百毫秒的停机时间。
 
-A restart migration can be done through the web interface or by using the `--restart` flag with the `pct migrate` command.
+可以通过 Web 界面，或使用 `--restart` 标志配合 `pct migrate` 命令执行重启迁移。
 
 重启迁移会关闭容器，并在指定的超时时间（默认为 180 秒）后强制终止它。随后会像离线迁移一样迁移容器，完成后在目标节点上启动容器。
 
@@ -2270,7 +2110,7 @@ rootfs: local:107/vm-107-disk-1.raw,size=7G
 
 如果某项更改无法热插拔，则会被登记为待处理更改（在 GUI 中以红色显示）。只有重启容器后，这些更改才会应用。
 
-### 文件格式 <a href="#_file_format" id="_file_format"></a>
+### 文件格式 <a href="#file_format" id="file_format"></a>
 
 容器配置文件使用简单的以冒号分隔的键/值格式。每行的格式如下：
 
@@ -2686,7 +2526,7 @@ rootfs/mps 的额外挂载选项。
 
 当前未使用的卷。
 
-## 锁 <a href="#_locks" id="_locks"></a>
+## 锁 <a href="#locks" id="locks"></a>
 
 容器迁移、快照和备份（`vzdump`）会设置锁，以防止在受影响的容器上并发执行不兼容的操作。有时你需要手动删除此类锁（例如，断电后）。
 
@@ -2698,13 +2538,13 @@ rootfs/mps 的额外挂载选项。
 只有确定设置该锁的操作已不再运行时，才能这样做。
 {% endhint %}
 
-## 文件 <a href="#_files" id="_files"></a>
+## 文件 <a href="#files" id="files"></a>
 
 **`/etc/pve/lxc/<CTID>.conf`**
 
 容器 *\<CTID\>* 的配置文件。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -2724,11 +2564,11 @@ rootfs/mps 的额外挂载选项。
 
 ### 注释 1 <a href="#note-265637e0-1" id="note-265637e0-1"></a>
 
-this includes all newest major versions of container templates shipped by Proxmox VE
+这包括 Proxmox VE 提供的所有容器模板的最新主要版本
 
 ### 注释 2 <a href="#note-265637e0-2" id="note-265637e0-2"></a>
 
-for example Alpine Linux
+例如 Alpine Linux
 
 ### 注释 3 <a href="#note-265637e0-3" id="note-265637e0-3"></a>
 

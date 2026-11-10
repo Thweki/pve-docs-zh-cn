@@ -1,14 +1,14 @@
 # pct.conf(5)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
 pct.conf \- Proxmox VE 容器配置
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
 `/etc/pve/lxc/<CTID>.conf`
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 `/etc/pve/lxc/<CTID>.conf` 文件存储容器配置，其中 `CTID` 是给定容器的数字 ID。
 
@@ -16,7 +16,7 @@ pct.conf \- Proxmox VE 容器配置
 ID \< 100 保留供内部使用。
 {% endhint %}
 
-## 文件格式 <a href="#_file_format" id="_file_format"></a>
+## 文件格式 <a href="#file_format" id="file_format"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -42,7 +42,7 @@ lxc.init_cmd = /sbin/my_own_init
 
 这些设置会直接传递给 LXC 底层工具。
 
-## 选项 <a href="#_options" id="_options"></a>
+## 选项 <a href="#options" id="options"></a>
 
 **`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*默认 \=* `amd64`)**
 
@@ -412,7 +412,7 @@ rootfs/mps 的额外挂载选项。
 
 当前未使用的卷。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

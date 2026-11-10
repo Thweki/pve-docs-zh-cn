@@ -1,8 +1,8 @@
-# 17.6. Permissions <a href="#_permissions_3" id="_permissions_3"></a>
+# 17.6. 权限 <a href="#permissions_3" id="permissions_3"></a>
 
-To modify/view the configuration for notification targets, the `Mapping.Modify/Mapping.Audit` permissions are required for the `/mapping/notifications` ACL node.
+要修改/查看通知目标的配置，需要拥有 `Mapping.Modify/Mapping.Audit` 权限，权限路径为 `/mapping/notifications` ACL 节点。
 
-Testing a target requires `Mapping.Use`, `Mapping.Audit` or `Mapping.Modify` permissions on `/mapping/notifications`
+测试目标需要拥有 `Mapping.Use`、`Mapping.Audit` 或 `Mapping.Modify` 权限，权限路径为 `/mapping/notifications`
 
 ---
 

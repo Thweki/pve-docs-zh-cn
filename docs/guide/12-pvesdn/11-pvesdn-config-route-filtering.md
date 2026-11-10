@@ -1,87 +1,87 @@
-# 12.11. Prefix Lists and Route Maps <a href="#pvesdn_config_route_filtering" id="pvesdn_config_route_filtering"></a>
+# 12.11. 前缀列表与路由映射 <a href="#pvesdn_config_route_filtering" id="pvesdn_config_route_filtering"></a>
 
-Prefix lists and route maps let you control which routes are exchanged between the Proxmox VE nodes and their BGP, EVPN, OSPF, or OpenFabric peers, and modify attributes of those routes on the way in or out. The two work together: a prefix list classifies routes by their destination CIDR, while a route map chains match conditions and actions into an ordered policy.
+前缀列表和路由映射允许控制 Proxmox VE 节点与其 BGP、EVPN、OSPF 或 OpenFabric 对等方之间交换哪些路由，并在路由传入或传出时修改其属性。两者协同工作：前缀列表按目标 CIDR 对路由分类，而路由映射将匹配条件和操作串联成有序策略。
 
-If you have used `ip prefix-list` and `route-map` on FRR, Cisco IOS, or Juniper before, the Proxmox VE entities behave the same way. The Proxmox VE layer manages the configuration as cluster-wide entities under `/etc/pve/sdn/` and translates them to FRR `prefix-list` and `route-map` stanzas when applying the SDN configuration. The merged FRR configuration ends up in `/etc/frr/frr.conf` on each node; any node-local additions in `/etc/frr/frr.conf.local` are appended on top.
+如果您以前在 FRR、Cisco IOS 或 Juniper 上使用过 `ip prefix-list` 和 `route-map`，Proxmox VE 中的实体行为与之相同。Proxmox VE 层在 `/etc/pve/sdn/` 下将配置作为集群范围的实体管理，并在应用 SDN 配置时将其转换为 FRR 的 `prefix-list` 和 `route-map` 段。合并后的 FRR 配置最终位于每个节点的 `/etc/frr/frr.conf`；`/etc/frr/frr.conf.local` 中任何节点本地的附加内容都会追加其上。
 
-Like the rest of the SDN configuration, edits go to a pending state first and become active only after you apply changes in the main `SDN` panel.
+与其他 SDN 配置一样，编辑首先进入待处理状态，仅在主 `SDN` 面板应用更改后才会生效。
 
-## 12.11.1. Prefix Lists <a href="#pvesdn_config_prefix_lists" id="pvesdn_config_prefix_lists"></a>
+## 12.11.1. 前缀列表 <a href="#pvesdn_config_prefix_lists" id="pvesdn_config_prefix_lists"></a>
 
-A prefix list is an ordered, named list of entries that each match a single destination CIDR (or a range of prefix lengths within that CIDR) and either `permit` or `deny` it. FRR evaluates entries in order of their sequence number and stops at the first match; if no entry matches, the prefix list denies implicitly, same as plain FRR.
+前缀列表是有名称的有序条目列表，每个条目匹配单个目标 CIDR（或该 CIDR 内的一组前缀长度），并对其执行 `permit` 或 `deny`。FRR 按序号顺序评估条目，在首次匹配时停止；如果没有条目匹配，前缀列表会隐式拒绝，与原生 FRR 相同。
 
-Prefix lists are managed under `Datacenter -> SDN -> Prefix Lists`. Each list has a name and contains one or more entries with the following properties:
+前缀列表在 `Datacenter -> SDN -> Prefix Lists` 下管理。每个列表具有名称，并包含一个或多个带有以下属性的条目：
 
-**Sequence Nr.**
+**序号**
 
-Order in which the entry is evaluated within the list. Must be unique per list and at least `1`. If left empty on creation, Proxmox VE auto-assigns the next free sequence number using the convention `max + 5`, leaving room for later insertions.
+条目在列表中的评估顺序。在每个列表中必须唯一，且至少为 `1`。如果创建时留空，Proxmox VE 会按 `max + 5` 的惯例自动分配下一个可用序号，为以后插入条目留出空间。
 
-**Action**
+**操作**
 
-Either `permit` or `deny`. There is an implicit `deny` at the end of each list.
+`permit` 或 `deny`。每个列表末尾都有一个隐式的 `deny`。
 
-**Prefix**
+**前缀**
 
-Destination network in CIDR notation, for example `192.0.2.0/24` or `2001:db8::/32`. The prefix `0.0.0.0/0` (and `::/0`) is allowed and matches the default route.
+CIDR 表示的目标网络，例如 `192.0.2.0/24` 或 `2001:db8::/32`。允许使用前缀 `0.0.0.0/0`（以及 `::/0`），它们匹配默认路由。
 
-**Prefix \>\= (`ge`)**
+**前缀 \>\=（`ge`）**
 
-Optional minimum prefix length. If set, the entry matches any subnet of `prefix` whose length is at least `ge`.
+可选的最小前缀长度。如果设置，条目将匹配 `prefix` 的任意子网，其长度至少为 `ge`。
 
-**Prefix ⇐ (`le`)**
+**前缀 ⇐（`le`）**
 
-Optional maximum prefix length. If set, the entry matches any subnet of `prefix` whose length is at most `le`.
+可选的最大前缀长度。如果设置，条目将匹配 `prefix` 的任意子网，其长度最多为 `le`。
 
-Without `le` or `ge` an entry matches the prefix exactly. With both set, it matches any subnet within the given length range. For example `10.0.0.0/8 ge 16 le 24` matches every /16 to /24 subnet inside `10.0.0.0/8`. This is the standard FRR/Cisco semantics. Additional validation enforced by Proxmox VE: `ge` must not exceed `le`, neither may be smaller than the prefix’s own length, and both must stay within the address family bound (/32 for IPv4, /128 for IPv6).
-
-{% hint style="info" %}
-The names `only_default`, `only_default_v6`, and `loopbacks_ips` are reserved. The BGP and EVPN controllers generate these automatically and they cannot be used as user-defined prefix list names.
-{% endhint %}
-
-## 12.11.2. Route Maps <a href="#pvesdn_config_route_maps" id="pvesdn_config_route_maps"></a>
-
-A route map is an ordered list of entries that match incoming or outgoing routes against criteria, optionally modify attributes such as the metric or local preference, and either `permit` (forward the route, possibly modified) or `deny` (drop the route). FRR evaluates entries in order; the first match controls the action. Every route map implicitly has an otherwise empty `deny` as its last entry, denying all routes that did not match an entry explicitly.
-
-Route maps are managed under `Datacenter -> SDN -> Route Maps`. Each entry has the following properties:
-
-**Order**
-
-Order in which the entry is evaluated, between `0` and `65535`. Mandatory and must be unique within a route map. Leaving gaps between orders, for example assigning entries `10`, `20`, `30`, leaves room for later insertions without renumbering.
-
-**Action**
-
-Either `permit` or `deny`. `permit` lets the route pass (after any `set` actions); `deny` drops it.
-
-**Match**
-
-One or more match conditions. Available keys are: `route-type`, `vni`, `ip-address-prefix-list`, `ip6-address-prefix-list`, `ip-next-hop-prefix-list`, `ip6-next-hop-prefix-list`, `ip-next-hop-address`, `ip6-next-hop-address`, `metric`, `local-preference`, `peer`, and `tag`. The four `*-prefix-list` keys reference a prefix list by name. `tag` matches a 32-bit route tag attribute, the same value that the `tag` set action assigns; this lets one entry mark routes with a tag and a later entry (in the same or another map) act on them. All match conditions of an entry must be true for it to apply.
-
-**Set**
-
-One or more attributes to set when the entry matches. Available keys are `ip-next-hop`, `ip-next-hop-peer-address`, `ip-next-hop-unchanged`, `ip6-next-hop`, `ip6-next-hop-peer-address`, `ip6-next-hop-prefer-global`, `local-preference`, `tag`, `weight`, `metric`, and `src`. The `metric` value supports `N`, `+N`, `-N` (adjust), `rtt`, `+rtt`, `-rtt`, `igp`, and `aigp`. The `tag` value accepts an integer or the literal `untagged`.
-
-**Exit Action**
-
-Controls how evaluation continues after a match. Leave empty for the default behavior (terminate on match). `on-match-next` proceeds with the immediately following entry. `on-match-goto <order>` jumps to the first entry whose order is greater than or equal to the given value. `continue <order>` jumps to the entry with exactly that order. All three correspond to the FRR `on-match` / `continue` directives.
-
-**Call**
-
-Optionally call another route map at the end of this entry’s processing. This corresponds to the FRR `call` directive.
+如果没有 `le` 或 `ge`，条目将精确匹配该前缀。如果两者均设置，则匹配给定长度范围内的任意子网。例如，`10.0.0.0/8 ge 16 le 24` 匹配每个 /16 至 /24 的子网，位于 `10.0.0.0/8` 内。这是标准的 FRR/Cisco 语义。Proxmox VE 还强制进行以下验证：`ge` 不得超过 `le`，两者都不能小于前缀自身的长度，且必须在地址族范围内（IPv4 为 /32，IPv6 为 /128）。
 
 {% hint style="info" %}
-A route map referenced by a controller cannot be deleted while it is still in use. Delete the reference from the controller first. The names `MAP_VTEP_IN`, `MAP_VTEP_OUT`, `correct_src`, and any name starting with `pve_` are reserved for internally generated route maps.
+名称 `only_default`、`only_default_v6` 和 `loopbacks_ips` 为保留名称。BGP 和 EVPN 控制器会自动生成这些名称，不能将其用作用户定义的前缀列表名称。
 {% endhint %}
 
-## 12.11.3. Where Prefix Lists and Route Maps Are Used <a href="#pvesdn_config_route_filtering_usage" id="pvesdn_config_route_filtering_usage"></a>
+## 12.11.2. 路由映射 <a href="#pvesdn_config_route_maps" id="pvesdn_config_route_maps"></a>
 
-The BGP and EVPN [controllers](09-pvesdn-config-controllers.md) each take an `incoming` and an `outgoing` route map. Incoming maps run against routes received from a peer before installing them; outgoing maps run against routes before announcing them. Both fields are optional and selected from the route maps configured in the SDN.
+路由映射是有序的条目列表，将传入或传出路由与条件匹配，可选择修改度量值或本地优先级等属性，然后执行 `permit`（转发路由，可能已被修改）或 `deny`（丢弃路由）。FRR 按顺序评估条目；第一个匹配决定操作。每个路由映射都隐含以一个除此之外为空的 `deny` 作为最后条目，拒绝所有未显式匹配条目的路由。
 
-The OSPF and OpenFabric [fabrics](10-pvesdn-config-fabrics.md) take a `Route
-Filter` option that references a prefix list. When set, only routes whose destinations pass the prefix list are installed in the kernel routing table. Without an explicit filter, the fabric generates a default filter from the fabric’s own `IPv4 Prefix` and `IPv6 Prefix` CIDRs (an FRR `access-list` permitting those networks); configure a route filter when you need a different policy, for example to allow a default route learned from a border node.
+路由映射在 `Datacenter -> SDN -> Route Maps` 下管理。每个条目具有以下属性：
 
-## 12.11.4. Examples <a href="#pvesdn_config_route_filtering_examples" id="pvesdn_config_route_filtering_examples"></a>
+**顺序**
 
-Allow only the IPv4 default route, for example as a route filter on a node that should learn just an upstream default:
+条目的评估顺序，介于 `0` 和 `65535` 之间。必填且在路由映射中必须唯一。在顺序之间留出空隙，例如为条目分配 `10`、`20`、`30`，可为以后插入条目留出空间，而无需重新编号。
+
+**操作**
+
+`permit` 或 `deny`。`permit` 让路由通过（执行所有 `set` 操作后）；`deny` 丢弃路由。
+
+**匹配**
+
+一个或多个匹配条件。可用键为：`route-type`、`vni`、`ip-address-prefix-list`、`ip6-address-prefix-list`、`ip-next-hop-prefix-list`、`ip6-next-hop-prefix-list`、`ip-next-hop-address`、`ip6-next-hop-address`、`metric`、`local-preference`、`peer` 和 `tag`。四个 `*-prefix-list` 键通过名称引用前缀列表。`tag` 匹配 32 位路由标签属性，其值与 `tag` 设置操作分配的值相同；这样，一个条目可用标签标记路由，后续条目（位于同一或其他映射中）可对其执行操作。条目的所有匹配条件都必须为真，该条目才适用。
+
+**设置**
+
+条目匹配时要设置的一个或多个属性。可用键为 `ip-next-hop`、`ip-next-hop-peer-address`、`ip-next-hop-unchanged`、`ip6-next-hop`、`ip6-next-hop-peer-address`、`ip6-next-hop-prefer-global`、`local-preference`、`tag`、`weight`、`metric` 和 `src`。`metric` 值支持 `N`、`+N`、`-N`（调整）、`rtt`、`+rtt`、`-rtt`、`igp` 和 `aigp`。`tag` 值接受整数或字面值 `untagged`。
+
+**退出操作**
+
+控制匹配后如何继续评估。留空则使用默认行为（匹配时终止）。`on-match-next` 继续执行紧接着的下一条目。`on-match-goto <order>` 跳转到顺序大于或等于给定值的第一个条目。`continue <order>` 跳转到顺序恰好为该值的条目。三者均对应 FRR 的 `on-match` / `continue` 指令。
+
+**调用**
+
+可选择在此条目处理结束时调用另一个路由映射。这对应 FRR 的 `call` 指令。
+
+{% hint style="info" %}
+控制器引用的路由映射在仍被使用时不能删除。请先从控制器中删除引用。名称 `MAP_VTEP_IN`、`MAP_VTEP_OUT`、`correct_src` 以及任何以 `pve_` 开头的名称均保留给内部生成的路由映射使用。
+{% endhint %}
+
+## 12.11.3. 前缀列表和路由映射的使用位置 <a href="#pvesdn_config_route_filtering_usage" id="pvesdn_config_route_filtering_usage"></a>
+
+BGP 和 EVPN [控制器](09-pvesdn-config-controllers.md) 各接受一个 `incoming` 和一个 `outgoing` 路由映射。传入映射在安装从对等方收到的路由之前对其执行；传出映射在通告路由之前对其执行。两个字段均可选，并从 SDN 中配置的路由映射中选择。
+
+OSPF 和 OpenFabric [网络结构](10-pvesdn-config-fabrics.md) 接受一个引用前缀列表的 `Route
+Filter` 选项。设置后，只有目标通过前缀列表的路由才会安装到内核路由表中。如果未显式指定过滤器，网络结构会根据自身的 `IPv4 Prefix` 和 `IPv6 Prefix` CIDR 生成默认过滤器（一个允许这些网络的 FRR `access-list`）；需要不同策略时，请配置路由过滤器，例如允许从边界节点学习到的默认路由。
+
+## 12.11.4. 示例 <a href="#pvesdn_config_route_filtering_examples" id="pvesdn_config_route_filtering_examples"></a>
+
+仅允许 IPv4 默认路由，例如作为仅应学习上游默认路由的节点上的路由过滤器：
 
 ```text
 # /etc/pve/sdn/prefix-lists.cfg
@@ -90,7 +90,7 @@ prefix-list: default-only
  entries action=permit,prefix=0.0.0.0/0,seq=10
 ```
 
-Allow every subnet between /16 and /24 inside `10.0.0.0/8`, and deny anything else within the `10.0.0.0/8` block:
+允许介于 /16 和 /24 之间、位于 `10.0.0.0/8` 内的所有子网，并拒绝 `10.0.0.0/8` 块内的其他所有内容：
 
 ```text
 prefix-list: internal-subnets
@@ -98,7 +98,7 @@ prefix-list: internal-subnets
  entries action=deny,prefix=10.0.0.0/8,le=32,seq=20
 ```
 
-Outgoing BGP policy that lowers `local-preference` to 50 on routes matched by the `internal-subnets` prefix list, and otherwise leaves routes untouched. Each route map entry is its own section, with the order encoded as a suffix on the section ID:
+传出 BGP 策略：将 `local-preference` 降低到 50，针对由 `internal-subnets` 前缀列表匹配的路由，其他路由保持不变。每个路由映射条目各自占一节，顺序以节 ID 后缀编码：
 
 ```text
 # /etc/pve/sdn/route-maps.cfg
@@ -112,90 +112,90 @@ route-map-entry: bgp-out_20
  action permit
 ```
 
-The trailing `permit` entry with no match is the FRR pattern for "allow everything else"; without it the implicit deny at the end of the route map would drop all unmatched routes.
+末尾没有匹配条件的 `permit` 条目是 FRR 中“允许其他所有内容”的模式；如果没有它，路由映射末尾的隐式拒绝将丢弃所有不匹配的路由。
 
 ## 12.11.5. BGP <a href="#pvesdn_bgp" id="pvesdn_bgp"></a>
 
-BGP (Border Gateway Protocol) can be used as an eBGP unnumbered fabric. Each node has its own Autonomous System Number (ASN) and peers with its neighbors over physical interfaces without requiring IP addresses on the fabric links.
+BGP（边界网关协议）可用作 eBGP 无编号网络结构。每个节点都有自己的自治系统编号（ASN），并通过物理接口与相邻节点建立对等关系，无需为网络结构链路分配 IP 地址。
 
-Configuration options:
+配置选项：
 
-### On the Fabric <a href="#pvesdn_bgp_fabric" id="pvesdn_bgp_fabric"></a>
+### 网络结构上的选项 <a href="#pvesdn_bgp_fabric" id="pvesdn_bgp_fabric"></a>
 
-**IPv4 Prefix**
+**IPv4 前缀**
 
-IPv4 CIDR network range (e.g., 192.0.2.0/24) used to verify that all node IPv4 addresses (BGP router-IDs) are contained within this prefix.
+IPv4 CIDR 网络范围（例如 192.0.2.0/24），用于验证所有节点 IPv4 地址（BGP router-ID）都包含于此前缀中。
 
-**IPv6 Prefix**
+**IPv6 前缀**
 
-IPv6 CIDR network range (e.g., 2001:db8::/64) used to verify that all node IPv6 addresses in the fabric are contained within this prefix.
+IPv6 CIDR 网络范围（例如 2001:db8::/64），用于验证网络结构中的所有节点 IPv6 地址都包含于此前缀中。
 
 **BFD**
 
-Enable Bidirectional Forwarding Detection on all peering sessions in this fabric. BFD provides fast failure detection for links between nodes.
+为此网络结构中的所有对等会话启用双向转发检测。BFD 为节点之间的链路提供快速故障检测。
 
-**Route Filter**
+**路由过滤器**
 
-A prefix list applied to the fabric peer-group’s inbound direction. When set, this prefix list replaces the implicit "must be within the fabric prefix" filter. Useful to widen the accepted range (e.g. accept additional non-fabric prefixes redistributed via the fabric) or to use a more expressive match. References a prefix list defined under SDN.
+应用于网络结构对等组入站方向的前缀列表。设置后，此前缀列表会替换隐式的“必须位于网络结构前缀内”过滤器。可用于扩大接受范围（例如接受通过网络结构重分发的其他非网络结构前缀），或使用表达能力更强的匹配。引用 SDN 下定义的前缀列表。
 
-**Incoming Route Map**
+**传入路由映射**
 
-A route map chained from the fabric peer-group’s implicit inbound filter via FRR’s `call` action. Only prefixes that have already passed the implicit prefix check (or the Route Filter override) reach this route map. Useful to transform or further narrow accepted routes (e.g. adjust community or local-preference), but cannot widen the accepted set. Use Route Filter to override the implicit filter. References a route map defined under SDN.
+通过 FRR 的 `call` 操作从网络结构对等组的隐式入站过滤器链接的路由映射。只有已通过隐式前缀检查（或路由过滤器覆盖）的前缀才会到达此路由映射。可用于转换或进一步缩小所接受的路由范围（例如调整 community 或 local-preference），但不能扩大接受集合。使用路由过滤器覆盖隐式过滤器。引用 SDN 下定义的路由映射。
 
-**Outgoing Route Map**
+**传出路由映射**
 
-A route map applied to the fabric peer-group’s outbound direction. Used to transform or filter what is announced to fabric neighbors. References a route map defined under SDN.
+应用于网络结构对等组出站方向的路由映射。用于转换或过滤通告给网络结构邻居的内容。引用 SDN 下定义的路由映射。
 
-**Redistribute**
+**重分发**
 
-Which other-protocol routes the BGP router on each node should redistribute into the fabric. Supported sources are `connected`, `kernel`, `static`, and `ospf`. An optional per-source route map can be attached to shape the redistributed routes before they are announced.
+每个节点上的 BGP 路由器应将哪些其他协议的路由重分发到网络结构中。支持的来源为 `connected`、`kernel`、`static` 和 `ospf`。可为每个来源附加可选的路由映射，在通告前调整重分发的路由。
 
 {% hint style="info" %}
-At least one of IPv4 Prefix or IPv6 Prefix must be configured.
+必须至少配置 IPv4 前缀或 IPv6 前缀之一。
 {% endhint %}
 
-### On the Node <a href="#pvesdn_bgp_node" id="pvesdn_bgp_node"></a>
+### 节点上的选项 <a href="#pvesdn_bgp_node" id="pvesdn_bgp_node"></a>
 
-Options that are available on every node that is part of a fabric:
+属于网络结构的每个节点上都可用的选项：
 
-**Node**
+**节点**
 
-Select the node which will be added to the fabric. Only nodes that are currently in the cluster will be shown.
+选择要添加到网络结构的节点。仅显示当前在集群中的节点。
 
 **ASN**
 
-BGP Autonomous System Number for this node. It is recommended to use private ASN numbers (64512-65534 for 16-bit, 4200000000-4294967294 for 32-bit).
+此节点的 BGP 自治系统编号。建议使用私有 ASN 编号（16 位为 64512-65534，32 位为 4200000000-4294967294）。
 
 **IPv4**
 
-A unique IPv4 address for this node, also used as the BGP router-id. Required when the fabric has an IPv4 prefix configured; each node in the same fabric must have a different address.
+此节点的唯一 IPv4 地址，也用作 BGP router-id。当网络结构配置了 IPv4 前缀时必填；同一网络结构中的每个节点必须具有不同的地址。
 
 **IPv6**
 
-IPv6 address for this node. If only an IPv6 address is configured (without an IPv4 address), the BGP router-id is derived from it via a FNV-1a hash.
+此节点的 IPv6 地址。如果仅配置 IPv6 地址（不配置 IPv4 地址），BGP router-id 会通过 FNV-1a 哈希从中推导。
 
-**Interfaces**
+**接口**
 
-Specify the interfaces used to establish peering connections with other BGP nodes. These interfaces run BGP unnumbered (no IP address assignment needed). When a node IP is configured, a dummy "loopback" interface is automatically created with that IP.
+指定用于与其他 BGP 节点建立对等连接的接口。这些接口运行无编号 BGP（无需分配 IP 地址）。配置节点 IP 后，会自动创建具有该 IP 的 dummy“回环”接口。
 
 {% hint style="info" %}
-Unlike OSPF and OpenFabric, BGP unnumbered interfaces do not need IP addresses. Peering is established using IPv6 link-local addresses automatically.
+与 OSPF 和 OpenFabric 不同，无编号 BGP 接口不需要 IP 地址。对等关系通过 IPv6 链路本地地址自动建立。
 {% endhint %}
 
 {% hint style="info" %}
-In an eBGP unnumbered fabric, directly peering nodes must have different ASNs for BGP sessions to establish.
+在 eBGP 无编号网络结构中，直接建立对等关系的节点必须具有不同的 ASN，BGP 会话才能建立。
 {% endhint %}
 
-### Using BGP Fabrics with EVPN <a href="#pvesdn_bgp_evpn" id="pvesdn_bgp_evpn"></a>
+### 将 BGP 网络结构与 EVPN 结合使用 <a href="#pvesdn_bgp_evpn" id="pvesdn_bgp_evpn"></a>
 
-When configuring an EVPN controller, a BGP fabric can be selected as the underlay instead of manually specifying peer addresses. The default configuration runs the EVPN overlay (VTEP) sessions as iBGP, using the EVPN controller’s ASN for the router process. The per-node fabric ASN is automatically applied via `local-as` on the underlay neighbor group.
+配置 EVPN 控制器时，可以选择 BGP 网络结构作为底层网络，而无需手动指定对等方地址。默认配置将 EVPN 覆盖网络（VTEP）会话作为 iBGP 运行，并为路由进程使用 EVPN 控制器的 ASN。每个节点的网络结构 ASN 通过 `local-as` 自动应用于底层邻居组。
 
-This means the EVPN controller ASN and the per-node fabric ASNs should be different. For example, with three nodes using ASNs 65001, 65002, and 65003 for the underlay, the EVPN controller could use ASN 65000 for the overlay.
+这意味着 EVPN 控制器 ASN 和各节点网络结构 ASN 应不同。例如，三个节点的底层网络分别使用 ASN 65001、65002 和 65003 时，EVPN 控制器可为覆盖网络使用 ASN 65000。
 
-Alternatively, setting BGP Mode to "external" on the EVPN controller runs the VTEP sessions as eBGP. The per-node fabric ASN is then used as the local ASN for the VTEP peer-group as well, so the VTEPs naturally peer with each other under different ASNs without needing a separate overlay ASN. The EVPN controller ASN is still used for auto-derived route-target values to keep them consistent across the fabric.
+或者，在 EVPN 控制器上将 BGP 模式设为“external”，使 VTEP 会话作为 eBGP 运行。此时，每个节点的网络结构 ASN 也会用作 VTEP 对等组的本地 ASN，因此 VTEP 会自然地在不同 ASN 下相互建立对等关系，无需单独的覆盖网络 ASN。EVPN 控制器 ASN 仍用于自动推导的 route-target 值，以使其在整个网络结构中保持一致。
 
 {% hint style="info" %}
-Using a BGP fabric for an EVPN underlay requires each node to have an IPv4 address, since EVPN uses it as the VTEP address.
+将 BGP 网络结构用作 EVPN 底层网络时，要求每个节点都有 IPv4 地址，因为 EVPN 会将其用作 VTEP 地址。
 {% endhint %}
 
 ---

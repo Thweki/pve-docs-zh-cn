@@ -1,4 +1,4 @@
-# 8.1. 简介 <a href="#_introduction" id="_introduction"></a>
+# 8.1. 简介 <a href="#introduction" id="introduction"></a>
 
 [![screenshot/gui-ceph-status-dashboard.png](../../assets/screenshot-gui-ceph-status-dashboard-png-35c265732db2.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-status-dashboard.png)
 

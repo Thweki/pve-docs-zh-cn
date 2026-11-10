@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/rules`
 
-List ceph rules.
+列出 ceph 规则。
 
 **方法标识：** `rules`
 
@@ -49,7 +49,7 @@ List ceph rules.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ List ceph rules.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,7 +77,7 @@ List ceph rules.
   "items": {
     "properties": {
       "name": {
-        "description": "Name of the CRUSH rule.",
+        "description": "CRUSH 规则名称。",
         "type": "string"
       }
     },

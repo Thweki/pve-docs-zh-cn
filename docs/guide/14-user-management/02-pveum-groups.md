@@ -1,6 +1,6 @@
-# 14.2. Groups <a href="#pveum_groups" id="pveum_groups"></a>
+# 14.2. 组 <a href="#pveum_groups" id="pveum_groups"></a>
 
-Each user can be a member of several groups. Groups are the preferred way to organize access permissions. You should always grant permissions to groups instead of individual users. That way you will get a much more maintainable access control list.
+每个用户可以属于多个组。组是组织访问权限的首选方式。应始终将权限授予组，而非单个用户。这样可得到更易于维护的访问控制列表。
 
 ---
 

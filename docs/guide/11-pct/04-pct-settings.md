@@ -1,6 +1,6 @@
-# 11.4. Container Settings <a href="#pct_settings" id="pct_settings"></a>
+# 11.4. 容器设置 <a href="#pct_settings" id="pct_settings"></a>
 
-## 11.4.1. General Settings <a href="#pct_general" id="pct_general"></a>
+## 11.4.1. 常规设置 <a href="#pct_general" id="pct_general"></a>
 
 [![screenshot/gui-create-ct-general.png](../../assets/screenshot-gui-create-ct-general-png-12aca10f1f54.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-general.png)
 
@@ -15,7 +15,7 @@
 - **Unprivileged container**：此选项允许您在创建时选择要创建特权容器还是非特权容器。
 - **Nesting**：暴露 procfs 和 sysfs 以允许嵌套容器。请注意，systemd 也使用此功能来隔离服务。
 
-### 非特权容器 <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
+### 非特权容器 <a href="#unprivileged_containers" id="unprivileged_containers"></a>
 
 非特权容器使用一种称为用户命名空间的新内核功能。容器内的 root UID 0 会映射到容器外的非特权用户。这意味着，这些容器中的大多数安全问题（容器逃逸、资源滥用等）将影响某个随机的非特权用户，并且属于通用内核安全漏洞，而不是 LXC 问题。LXC 团队认为，非特权容器在设计上就是安全的。
 
@@ -25,7 +25,7 @@
 如果容器使用 systemd 作为 init 系统，请注意，容器内运行的 systemd 版本应等于或高于 220。
 {% endhint %}
 
-### 特权容器 <a href="#_privileged_containers" id="_privileged_containers"></a>
+### 特权容器 <a href="#privileged_containers" id="privileged_containers"></a>
 
 容器中的安全性通过使用强制访问控制 *AppArmor* 限制、*seccomp* 过滤器和 Linux 内核命名空间来实现。LXC 团队认为这种容器不安全，并且不会将新的容器逃逸漏洞视为值得分配 CVE 并快速修复的安全问题。因此，特权容器只应在受信任的环境中使用。
 
@@ -72,7 +72,7 @@ cpulimit: 0.5</pre>
 </tr>
 </table>
 
-## 11.4.3. Memory <a href="#pct_memory" id="pct_memory"></a>
+## 11.4.3. 内存 <a href="#pct_memory" id="pct_memory"></a>
 
 [![screenshot/gui-create-ct-memory.png](../../assets/screenshot-gui-create-ct-memory-png-c79b942688af.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-memory.png)
 
@@ -99,7 +99,7 @@ cpulimit: 0.5</pre>
 </tr>
 </table>
 
-## 11.4.4. Mount Points <a href="#pct_mount_points" id="pct_mount_points"></a>
+## 11.4.4. 挂载点 <a href="#pct_mount_points" id="pct_mount_points"></a>
 
 [![screenshot/gui-create-ct-root-disk.png](../../assets/screenshot-gui-create-ct-root-disk-png-02418851db73.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-root-disk.png)
 
@@ -193,7 +193,7 @@ rootfs/mps 的额外挂载选项。
 rootfs: thin1:base-100-disk-1,size=8G
 ```
 
-### 存储支持的挂载点 <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
+### 存储支持的挂载点 <a href="#storage_backed_mount_points" id="storage_backed_mount_points"></a>
 
 存储支持的挂载点由 Proxmox VE 存储子系统管理，并有三种不同形式：
 
@@ -211,7 +211,7 @@ pct set 100 -mp0 thin1:10,mp=/path/in/container
 
 将在存储 `thin1` 上分配一个 10GB 的卷，用分配的卷 ID 替换卷 ID 占位符 `10`，并在容器中的 `/path/in/container` 处设置挂载点
 
-### 绑定挂载点 <a href="#_bind_mount_points" id="_bind_mount_points"></a>
+### 绑定挂载点 <a href="#bind_mount_points" id="bind_mount_points"></a>
 
 绑定挂载允许您在容器内访问 Proxmox VE 宿主机上的任意目录。一些潜在的用例包括：
 
@@ -249,7 +249,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 
 以达到相同的结果。
 
-### 设备挂载点 <a href="#_device_mount_points" id="_device_mount_points"></a>
+### 设备挂载点 <a href="#device_mount_points" id="device_mount_points"></a>
 
 设备挂载点允许将宿主机的块设备直接挂载到容器中。与绑定挂载类似，设备挂载不受 Proxmox VE 存储子系统管理，但 `quota` 和 `acl` 选项会生效。
 
@@ -261,7 +261,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 使用 `vzdump` 时，不会备份设备挂载点的内容。
 {% endhint %}
 
-## 11.4.5. Network <a href="#pct_container_network" id="pct_container_network"></a>
+## 11.4.5. 网络 <a href="#pct_container_network" id="pct_container_network"></a>
 
 [![screenshot/gui-create-ct-network.png](../../assets/screenshot-gui-create-ct-network-png-0b934631b465.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-network.png)
 
@@ -331,7 +331,7 @@ CIDR 格式的 IPv6 地址。
 
 网络接口类型。
 
-## 11.4.6. Automatic Start and Shutdown of Containers <a href="#pct_startup_and_shutdown" id="pct_startup_and_shutdown"></a>
+## 11.4.6. 容器的自动启动和关闭 <a href="#pct_startup_and_shutdown" id="pct_startup_and_shutdown"></a>
 
 要在宿主机系统启动时自动启动容器，请选择 *启动时启动* 选项，该选项位于 Web 界面的容器 *选项* 面板中，也可以运行以下命令：
 
@@ -351,9 +351,9 @@ CIDR 格式的 IPv6 地址。
 
 请注意，未设置启动/关闭顺序参数的容器将始终在设置了该参数的容器之后启动，并且此参数仅对宿主机上本地运行的机器之间有意义，在整个集群范围内没有意义。
 
-If you require a delay between the host boot and the booting of the first container, see the section on [Proxmox VE Node Management](../03-system-administration/11-proxmox-node-management.md#first_guest_boot_delay).
+如果需要在宿主机启动与第一个容器启动之间设置延迟，请参阅 [Proxmox VE 节点管理](../03-system-administration/11-proxmox-node-management.md#first_guest_boot_delay) 一节。
 
-## 11.4.7. Hookscripts <a href="#_hookscripts_2" id="_hookscripts_2"></a>
+## 11.4.7. 钩子脚本 <a href="#hookscripts_2" id="hookscripts_2"></a>
 
 您可以通过配置属性 `hookscript` 为 CT 添加钩子脚本。
 

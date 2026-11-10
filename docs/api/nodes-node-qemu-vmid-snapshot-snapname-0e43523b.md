@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/qemu/{vmid}/snapshot/{snapname}`
 
-Delete a VM snapshot.
+删除虚拟机快照。
 
 **方法标识：** `delsnapshot`
 
@@ -46,10 +46,10 @@ Delete a VM snapshot.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | For removal from config file, even if removing disk snapshots fails. |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 是 | — | The name of the snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `force` | boolean | 否 | — | 即使移除磁盘快照失败，也从配置文件中移除。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 是 | — | 快照名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,26 +59,26 @@ Delete a VM snapshot.
   "additionalProperties": 0,
   "properties": {
     "force": {
-      "description": "For removal from config file, even if removing disk snapshots fails.",
+      "description": "即使移除磁盘快照失败，也从配置文件中移除。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -95,7 +95,7 @@ Delete a VM snapshot.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```
@@ -124,9 +124,9 @@ Delete a VM snapshot.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 是 | — | The name of the snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 是 | — | 快照名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -136,20 +136,20 @@ Delete a VM snapshot.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

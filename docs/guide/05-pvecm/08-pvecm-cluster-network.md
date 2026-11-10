@@ -22,7 +22,7 @@ Corosync 在 3.0 版之前使用组播（该版本随 Proxmox VE 6.0 引入）�
 
 ## 5.8.2. 在绑定接口上运行 Corosync <a href="#pvecm_corosync_over_bonds" id="pvecm_corosync_over_bonds"></a>
 
-### 建议 <a href="#_recommendations" id="_recommendations"></a>
+### 建议 <a href="#recommendations" id="recommendations"></a>
 
 我们建议为主要 Corosync 链路至少使用一个专用物理 NIC，请参阅[要求](01-pvecm-cluster-requirements.md)。[绑定](../03-system-administration/04-sysadmin-network-configuration.md#sysadmin_network_bond)可用作附加链路，以提高冗余性。**每当将绑定用于 Corosync 流量时**，都适用以下注意事项：
 
@@ -30,7 +30,7 @@ Corosync 在 3.0 版之前使用组播（该版本随 Proxmox VE 6.0 引入）�
 - 我们**不建议**将绑定模式 **balance-rr**、**balance-xor**、**balance-tlb** 或 **balance-alb** 用于 Corosync 流量。已知它们在某些故障场景中会引发问题，详情请见下文。
 - **IEEE 802.3ad (LACP)**：如果将 LACP 绑定用于 corosync 流量，我们强烈建议设置 `bond-lacp-rate fast`，并且 **Proxmox VE** 节点和**交换机**两端都要设置！使用默认设置 `bond-lacp-rate slow` 时，已知此模式在某些故障场景中会引发问题，详情请见下文。
 
-### 背景 <a href="#_background" id="_background"></a>
+### 背景 <a href="#background" id="background"></a>
 
 在某些故障场景中，使用 [绑定](../03-system-administration/04-sysadmin-network-configuration.md#sysadmin_network_bond) 作为 Corosync 链路可能会引发问题。考虑这样一种故障场景：绑定中的一个接口发生故障并停止传输数据包，但其链路状态仍为 up，并且没有其他可用的 Corosync 链路。在这种情况下，某些绑定模式可能导致非对称连接状态，使集群节点只能与不同的其他节点子集通信。受影响的是提供负载均衡的绑定模式，因为这些模式可能仍会尝试通过故障接口发送一部分数据包。在非对称连接的情况下，Corosync 可能无法在集群中形成稳定的仲裁。如果这种状态持续存在且启用了 HA，即使绑定没有任何问题的节点也可能自我隔离。在最坏的情况下，整个集群都可能自我隔离。
 
@@ -38,17 +38,17 @@ Corosync 在 3.0 版之前使用组播（该版本随 Proxmox VE 6.0 引入）�
 
 在上述故障场景中，绑定模式 **balance-rr**、**balance-xor**、**balance\_tlb** 或 **balance-alb** 可能导致非对称连接，如果启用了 HA，这可能会导致意外隔离。
 
-Bond mode **IEEE 802.3ad (LACP)** can cause asymmetric connectivity in the failure scenario above, but it can recover from this state, as each side of the bond (Proxmox VE node and switch) can stop using a bonded interface if it has not received three LACPDUs in a row on it. However, with default settings, LACPDUs are only sent every 30 seconds, yielding a failover time of 90 seconds. This is too long, as nodes with HA resources will fence themselves already after roughly one minute without a stable quorum. If LACP bonds are used for corosync traffic, we recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! Setting this option on one side requests the other side to send an LACPDU every second. Setting this option on both sides can reduce the failover time in the scenario above to 3 seconds and thus prevent fencing.
+绑定模式 **IEEE 802.3ad (LACP)** 在上述故障场景中可能导致非对称连接，但能从此状态恢复，因为绑定的两端（Proxmox VE 节点和交换机）在绑定接口连续未收到三个 LACPDU 时，都可以停止使用该接口。不过，默认设置下每 30 秒才发送一次 LACPDU，导致故障切换时间达到 90 秒。此时间过长，因为带有 HA 资源的节点在约一分钟没有稳定仲裁后就会自行隔离。如果使用 LACP 绑定传输 corosync 流量，建议设置 `bond-lacp-rate fast`，且在 **Proxmox VE** 节点和 **交换机** 上都设置！在一端设置此选项会要求另一端每秒发送一个 LACPDU。两端都设置此选项可将上述场景中的故障切换时间缩短为 3 秒，从而避免隔离。
 
-## 5.8.3. 独立集群网络 <a href="#_separate_cluster_network" id="_separate_cluster_network"></a>
+## 5.8.3. 独立集群网络 <a href="#separate_cluster_network" id="separate_cluster_network"></a>
 
 创建集群时不指定任何参数，corosync 集群网络通常会与 Web 界面和虚拟机的网络共用。根据您的设置，甚至存储流量也可能通过同一网络发送。建议更改这种情况，因为 corosync 是对时间要求严格的实时应用程序。
 
-### 设置新网络 <a href="#_setting_up_a_new_network" id="_setting_up_a_new_network"></a>
+### 设置新网络 <a href="#setting_up_a_new_network" id="setting_up_a_new_network"></a>
 
 首先，您必须设置一个新的网络接口。该接口应位于物理上独立的网络中。请确保您的网络符合[集群网络要求](#pvecm_cluster_network_requirements)。
 
-### 在创建集群时分离 <a href="#_separate_on_cluster_creation" id="_separate_on_cluster_creation"></a>
+### 在创建集群时分离 <a href="#separate_on_cluster_creation" id="separate_on_cluster_creation"></a>
 
 这可以通过 *linkX* 参数实现，该参数属于用于创建新集群的 *pvecm create* 命令。
 

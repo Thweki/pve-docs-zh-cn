@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/apt/repositories`
 
-Get APT repository information.
+获取 APT 仓库信息。
 
 **方法标识：** `repositories`
 
@@ -40,7 +40,7 @@ Get APT repository information.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Get APT repository information.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -65,22 +65,22 @@ Get APT repository information.
 
 ```json
 {
-  "description": "Result from parsing the APT repository files in /etc/apt/.",
+  "description": "解析 /etc/apt/. 中 APT 仓库文件的结果",
   "properties": {
     "digest": {
-      "description": "Common digest of all files.",
+      "description": "所有文件的共同摘要。",
       "type": "string"
     },
     "errors": {
-      "description": "List of problematic repository files.",
+      "description": "存在问题的仓库文件列表。",
       "items": {
         "properties": {
           "error": {
-            "description": "The error message",
+            "description": "错误消息",
             "type": "string"
           },
           "path": {
-            "description": "Path to the problematic file.",
+            "description": "存在问题的文件路径。",
             "type": "string"
           }
         },
@@ -89,18 +89,18 @@ Get APT repository information.
       "type": "array"
     },
     "files": {
-      "description": "List of parsed repository files.",
+      "description": "已解析的仓库文件列表。",
       "items": {
         "properties": {
           "digest": {
-            "description": "Digest of the file as bytes.",
+            "description": "文件摘要，以字节形式表示。",
             "items": {
               "type": "integer"
             },
             "type": "array"
           },
           "file-type": {
-            "description": "Format of the file.",
+            "description": "文件格式。",
             "enum": [
               "list",
               "sources"
@@ -108,20 +108,20 @@ Get APT repository information.
             "type": "string"
           },
           "path": {
-            "description": "Path to the problematic file.",
+            "description": "存在问题的文件路径。",
             "type": "string"
           },
           "repositories": {
-            "description": "The parsed repositories.",
+            "description": "已解析的仓库。",
             "items": {
               "properties": {
                 "Comment": {
-                  "description": "Associated comment",
+                  "description": "关联注释",
                   "optional": 1,
                   "type": "string"
                 },
                 "Components": {
-                  "description": "List of repository components",
+                  "description": "仓库组件列表",
                   "items": {
                     "type": "string"
                   },
@@ -129,11 +129,11 @@ Get APT repository information.
                   "type": "array"
                 },
                 "Enabled": {
-                  "description": "Whether the repository is enabled or not",
+                  "description": "仓库是否已启用",
                   "type": "boolean"
                 },
                 "FileType": {
-                  "description": "Format of the defining file.",
+                  "description": "定义文件的格式。",
                   "enum": [
                     "list",
                     "sources"
@@ -141,7 +141,7 @@ Get APT repository information.
                   "type": "string"
                 },
                 "Options": {
-                  "description": "Additional options",
+                  "description": "附加选项",
                   "items": {
                     "properties": {
                       "Key": {
@@ -160,14 +160,14 @@ Get APT repository information.
                   "type": "array"
                 },
                 "Suites": {
-                  "description": "List of package distribuitions",
+                  "description": "软件包发行版列表",
                   "items": {
                     "type": "string"
                   },
                   "type": "array"
                 },
                 "Types": {
-                  "description": "List of package types.",
+                  "description": "软件包类型列表。",
                   "items": {
                     "enum": [
                       "deb",
@@ -178,7 +178,7 @@ Get APT repository information.
                   "type": "array"
                 },
                 "URIs": {
-                  "description": "List of repository URIs.",
+                  "description": "仓库 URI 列表。",
                   "items": {
                     "type": "string"
                   },
@@ -195,27 +195,27 @@ Get APT repository information.
       "type": "array"
     },
     "infos": {
-      "description": "Additional information/warnings for APT repositories.",
+      "description": "APT 仓库的附加信息/警告。",
       "items": {
         "properties": {
           "index": {
-            "description": "Index of the associated repository within the file.",
+            "description": "关联仓库在文件内的索引。",
             "type": "string"
           },
           "kind": {
-            "description": "Kind of the information (e.g. warning).",
+            "description": "信息种类（例如警告）。",
             "type": "string"
           },
           "message": {
-            "description": "Information message.",
+            "description": "信息消息。",
             "type": "string"
           },
           "path": {
-            "description": "Path to the associated file.",
+            "description": "关联文件的路径。",
             "type": "string"
           },
           "property": {
-            "description": "Property from which the info originates.",
+            "description": "信息来源的属性。",
             "optional": 1,
             "type": "string"
           }
@@ -225,19 +225,19 @@ Get APT repository information.
       "type": "array"
     },
     "standard-repos": {
-      "description": "List of standard repositories and their configuration status",
+      "description": "标准仓库及其配置状态列表",
       "items": {
         "properties": {
           "handle": {
-            "description": "Handle to identify the repository.",
+            "description": "用于标识仓库的句柄。",
             "type": "string"
           },
           "name": {
-            "description": "Full name of the repository.",
+            "description": "仓库完整名称。",
             "type": "string"
           },
           "status": {
-            "description": "Indicating enabled/disabled status, if the repository is configured.",
+            "description": "如果仓库已配置，表示启用/禁用状态。",
             "optional": 1,
             "type": "boolean"
           }
@@ -253,7 +253,7 @@ Get APT repository information.
 
 ## POST `/nodes/{node}/apt/repositories`
 
-Change the properties of a repository. Currently only allows enabling/disabling.
+更改仓库属性。目前仅允许启用/禁用。
 
 **方法标识：** `change_repository`
 
@@ -293,11 +293,11 @@ Change the properties of a repository. Currently only allows enabling/disabling.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | Digest to detect modifications. |
-| `enabled` | boolean | 否 | — | Whether the repository should be enabled or not. |
-| `index` | integer | 是 | — | Index within the file (starting from 0). |
-| `node` | string | 是 | — | The cluster node name. |
-| `path` | string | 是 | — | Path to the containing file. |
+| `digest` | string | 否 | — | 用于检测修改的摘要。 |
+| `enabled` | boolean | 否 | — | 是否应启用仓库。 |
+| `index` | integer | 是 | — | 文件内的索引（从 0 开始）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `path` | string | 是 | — | 所在文件的路径。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -307,31 +307,31 @@ Change the properties of a repository. Currently only allows enabling/disabling.
   "additionalProperties": 0,
   "properties": {
     "digest": {
-      "description": "Digest to detect modifications.",
+      "description": "用于检测修改的摘要。",
       "maxLength": 80,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "enabled": {
-      "description": "Whether the repository should be enabled or not.",
+      "description": "是否应启用仓库。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "index": {
-      "description": "Index within the file (starting from 0).",
+      "description": "文件内的索引（从 0 开始）。",
       "type": "integer",
       "typetext": "<integer>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "path": {
-      "description": "Path to the containing file.",
+      "description": "所在文件的路径。",
       "type": "string",
       "typetext": "<string>"
     }
@@ -351,7 +351,7 @@ Change the properties of a repository. Currently only allows enabling/disabling.
 
 ## PUT `/nodes/{node}/apt/repositories`
 
-Add a standard repository to the configuration
+将标准仓库添加到配置
 
 **方法标识：** `add_repository`
 
@@ -391,9 +391,9 @@ Add a standard repository to the configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | Digest to detect modifications. |
-| `handle` | string | 是 | — | Handle that identifies a repository. |
-| `node` | string | 是 | — | The cluster node name. |
+| `digest` | string | 否 | — | 用于检测修改的摘要。 |
+| `handle` | string | 是 | — | 标识仓库的句柄。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -403,19 +403,19 @@ Add a standard repository to the configuration
   "additionalProperties": 0,
   "properties": {
     "digest": {
-      "description": "Digest to detect modifications.",
+      "description": "用于检测修改的摘要。",
       "maxLength": 80,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "handle": {
-      "description": "Handle that identifies a repository.",
+      "description": "标识仓库的句柄。",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

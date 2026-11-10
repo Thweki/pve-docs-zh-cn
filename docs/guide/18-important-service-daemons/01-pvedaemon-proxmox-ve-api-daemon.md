@@ -1,22 +1,22 @@
-# 18.1. pvedaemon \- Proxmox VE API Daemon <a href="#_pvedaemon_proxmox_ve_api_daemon" id="_pvedaemon_proxmox_ve_api_daemon"></a>
+# 18.1. pvedaemon \- Proxmox VE API 守护进程 <a href="#pvedaemon_proxmox_ve_api_daemon" id="pvedaemon_proxmox_ve_api_daemon"></a>
 
-This daemon exposes the whole Proxmox VE API on `127.0.0.1:85`. It runs as `root` and has permission to do all privileged operations.
+此守护进程在 `127.0.0.1:85` 上提供完整的 Proxmox VE API。它以 `root` 身份运行，并具有执行所有特权操作的权限。
 
 {% hint style="info" %}
-The daemon listens to a local address only, so you cannot access it from outside. The `pveproxy` daemon exposes the API to the outside world.
+此守护进程仅监听本地地址，因此无法从外部访问。`pveproxy` 守护进程将 API 对外提供。
 {% endhint %}
 
-## 18.1.1. Number of Workers <a href="#pvedaemon_max_workers" id="pvedaemon_max_workers"></a>
+## 18.1.1. 工作进程数量 <a href="#pvedaemon_max_workers" id="pvedaemon_max_workers"></a>
 
-`pvedaemon` delegates handling of incoming requests to worker processes. By default, `pvedaemon` spawns 3 worker processes, which is sufficient for most workloads. For automation-heavy workloads that issue a huge volume of API requests and that experience slow request handling or timeouts, the number of worker processes can be increased by setting `MAX_WORKERS` in `/etc/default/pvedaemon`, for example:
+`pvedaemon` 将传入请求交给工作进程处理。默认情况下，`pvedaemon` 启动 3 个工作进程，这对大多数工作负载已经足够。对于发出大量 API 请求并遇到请求处理缓慢或超时的高度自动化工作负载，可以设置 `MAX_WORKERS` 来增加工作进程数量，此设置位于 `/etc/default/pvedaemon` 中，例如：
 
 ```text
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
+请注意，增加工作进程数量可能会提高 CPU 使用率。工作进程数量必须大于 0 且小于 128。
 
-The same setting exists for [pveproxy](02-pveproxy-proxmox-ve-api-proxy-daemon.md#pveproxy_max_workers).
+[pveproxy](02-pveproxy-proxmox-ve-api-proxy-daemon.md#pveproxy_max_workers) 也有相同的设置。
 
 ---
 

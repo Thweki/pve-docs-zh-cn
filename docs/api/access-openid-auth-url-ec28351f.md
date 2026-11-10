@@ -6,7 +6,7 @@
 
 ## POST `/access/openid/auth-url`
 
-Get the OpenId Authorization Url for the specified realm.
+获取指定认证域的 OpenID 授权 URL。
 
 **方法标识：** `auth_url`
 
@@ -34,8 +34,8 @@ Get the OpenId Authorization Url for the specified realm.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `realm` | string | 是 | — | Authentication domain ID |
-| `redirect-url` | string | 是 | — | Redirection Url. The client should set this to the used server url (location.origin). |
+| `realm` | string | 是 | — | 认证域 ID |
+| `redirect-url` | string | 是 | — | 重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,14 +45,14 @@ Get the OpenId Authorization Url for the specified realm.
   "additionalProperties": 0,
   "properties": {
     "realm": {
-      "description": "Authentication domain ID",
+      "description": "认证域 ID",
       "format": "pve-realm",
       "maxLength": 32,
       "type": "string",
       "typetext": "<string>"
     },
     "redirect-url": {
-      "description": "Redirection Url. The client should set this to the used server url (location.origin).",
+      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。",
       "maxLength": 255,
       "type": "string",
       "typetext": "<string>"
@@ -67,7 +67,7 @@ Get the OpenId Authorization Url for the specified realm.
 
 ```json
 {
-  "description": "Redirection URL.",
+  "description": "重定向 URL。",
   "type": "string"
 }
 ```

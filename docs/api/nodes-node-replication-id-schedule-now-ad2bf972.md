@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/replication/{id}/schedule_now`
 
-Schedule replication job to start as soon as possible.
+安排复制任务尽快启动。
 
 **方法标识：** `schedule_now`
 
@@ -14,7 +14,7 @@ Schedule replication job to start as soon as possible.
 
 ```json
 {
-  "description": "Requires the VM.Replicate permission on /vms/<vmid>.",
+  "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ Schedule replication job to start as soon as possible.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
-| `node` | string | 是 | — | The cluster node name. |
+| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Schedule replication job to start as soon as possible.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

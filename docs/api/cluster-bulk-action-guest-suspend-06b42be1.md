@@ -6,7 +6,7 @@
 
 ## POST `/cluster/bulk-action/guest/suspend`
 
-Bulk suspend all guests on the cluster.
+批量挂起集群中的所有客户机。
 
 **方法标识：** `suspend`
 
@@ -14,7 +14,7 @@ Bulk suspend all guests on the cluster.
 
 ```json
 {
-  "description": "The 'VM.PowerMgmt' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter. Additionally, you need 'VM.Config.Disk' on the '/vms/{vmid}' path and 'Datastore.AllocateSpace' for the configured state-storage(s)",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。另外，还需要对 '/vms/{vmid}' 路径具有 'VM.Config.Disk' 权限，以及对已配置的状态存储具有 'Datastore.AllocateSpace' 权限",
   "user": "all"
 }
 ```
@@ -35,11 +35,11 @@ Bulk suspend all guests on the cluster.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | 4 | Defines the maximum number of tasks running concurrently. |
-| `maxworkers` | integer | 否 | 4 | Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead. |
-| `statestorage` | string | 否 | — | The storage for the VM state. |
-| `to-disk` | boolean | 否 | 0 | If set, suspends the guests to disk. Will be resumed on next start. |
-| `vms` | array | 否 | — | Only consider guests from this list of VMIDs. |
+| `max-workers` | integer | 否 | 4 | 定义并发运行的最大任务数。 |
+| `maxworkers` | integer | 否 | 4 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `statestorage` | string | 否 | — | 存放虚拟机状态的存储。 |
+| `to-disk` | boolean | 否 | 0 | 如果设置，则将客户机挂起到磁盘。下次启动时将恢复。 |
+| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Bulk suspend all guests on the cluster.
   "properties": {
     "max-workers": {
       "default": 4,
-      "description": "Defines the maximum number of tasks running concurrently.",
+      "description": "定义并发运行的最大任务数。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -59,7 +59,7 @@ Bulk suspend all guests on the cluster.
     },
     "maxworkers": {
       "default": 4,
-      "description": "Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.",
+      "description": "定义并发运行的最大任务数。已弃用，请改用 'max-workers'。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -67,7 +67,7 @@ Bulk suspend all guests on the cluster.
       "typetext": "<integer> (1 - 64)"
     },
     "statestorage": {
-      "description": "The storage for the VM state.",
+      "description": "存放虚拟机状态的存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -77,15 +77,15 @@ Bulk suspend all guests on the cluster.
     },
     "to-disk": {
       "default": 0,
-      "description": "If set, suspends the guests to disk. Will be resumed on next start.",
+      "description": "如果设置，则将客户机挂起到磁盘。下次启动时将恢复。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vms": {
-      "description": "Only consider guests from this list of VMIDs.",
+      "description": "仅考虑此 VMID 列表中的客户机。",
       "items": {
-        "description": "The (unique) ID of the VM.",
+        "description": "虚拟机的（唯一）ID。",
         "format": "pve-vmid",
         "maximum": 999999999,
         "minimum": 100,
@@ -105,7 +105,7 @@ Bulk suspend all guests on the cluster.
 
 ```json
 {
-  "description": "UPID of the worker",
+  "description": "工作任务的 UPID",
   "type": "string"
 }
 ```

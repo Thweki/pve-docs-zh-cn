@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/targets`
 
-Returns a list of all entities that can be used as notification targets.
+返回所有可用作通知目标的实体列表。
 
 **方法标识：** `get_all_targets`
 
@@ -64,23 +64,23 @@ Returns a list of all entities that can be used as notification targets.
   "items": {
     "properties": {
       "comment": {
-        "description": "Comment",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "disable": {
         "default": 0,
-        "description": "Show if this target is disabled",
+        "description": "显示此目标是否已禁用",
         "optional": 1,
         "type": "boolean"
       },
       "name": {
-        "description": "Name of the target.",
+        "description": "目标名称。",
         "format": "pve-configid",
         "type": "string"
       },
       "origin": {
-        "description": "Show if this entry was created by a user or was built-in",
+        "description": "显示此条目是用户创建还是内置",
         "enum": [
           "user-created",
           "builtin",
@@ -89,7 +89,7 @@ Returns a list of all entities that can be used as notification targets.
         "type": "string"
       },
       "type": {
-        "description": "Type of the target.",
+        "description": "目标类型。",
         "enum": [
           "sendmail",
           "gotify",

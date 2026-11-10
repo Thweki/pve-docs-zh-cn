@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/cfg/value`
 
-Get configured values from either ceph.conf or the mon config DB. Underscores in section and key names are normalised to hyphens in the response, regardless of how they're written in the source.
+从 ceph.conf 或 mon 配置数据库获取配置值。响应中的配置节和键名中的下划线统一转换为连字符，无论其在源中如何书写。
 
 **方法标识：** `value`
 
@@ -46,8 +46,8 @@ Get configured values from either ceph.conf or the mon config DB. Underscores in
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `config-keys` | string | 是 | — | List of &lt;section&gt;:&lt;config key&gt; items separated by semicolon, comma or space. |
-| `node` | string | 是 | — | The cluster node name. |
+| `config-keys` | string | 是 | — | 以分号、逗号或空格分隔的 &lt;section&gt;:&lt;config key&gt; 项目列表。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,14 +57,14 @@ Get configured values from either ceph.conf or the mon config DB. Underscores in
   "additionalProperties": 0,
   "properties": {
     "config-keys": {
-      "description": "List of <section>:<config key> items separated by semicolon, comma or space.",
+      "description": "以分号、逗号或空格分隔的 <section>:<config key> 项目列表。",
       "maxLength": 4096,
       "pattern": "(?^:^(?:(?^i:[0-9a-z\\-_\\.]+:[0-9a-zA-Z\\-_]+))(?:[;, ](?^i:[0-9a-z\\-_\\.]+:[0-9a-zA-Z\\-_]+))*$)",
       "type": "string",
       "typetext": "<section>:<config key>[;|,| <section>:<config key>]"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -79,7 +79,7 @@ Get configured values from either ceph.conf or the mon config DB. Underscores in
 
 ```json
 {
-  "description": "Two-level map of {section} -> {key} -> value. Underscores in section and key names are normalised to hyphens.",
+  "description": "{section} -> {key} -> value 的两级映射。配置节和键名中的下划线统一转换为连字符。",
   "type": "object"
 }
 ```

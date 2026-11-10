@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/firewall/aliases`
 
-List aliases
+列出别名
 
 **方法标识：** `get_aliases`
 
@@ -34,8 +34,8 @@ List aliases
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@ List aliases
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -78,7 +78,7 @@ List aliases
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 0,
         "type": "string"
@@ -101,7 +101,7 @@ List aliases
 
 ## POST `/nodes/{node}/lxc/{vmid}/firewall/aliases`
 
-Create IP or Network Alias.
+创建 IP 或网络别名。
 
 **方法标识：** `create_alias`
 
@@ -135,11 +135,11 @@ Create IP or Network Alias.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | Alias name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `name` | string | 是 | — | 别名名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -149,7 +149,7 @@ Create IP or Network Alias.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDR",
       "type": "string",
       "typetext": "<string>"
@@ -161,20 +161,20 @@ Create IP or Network Alias.
       "typetext": "<string>"
     },
     "name": {
-      "description": "Alias name.",
+      "description": "别名名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

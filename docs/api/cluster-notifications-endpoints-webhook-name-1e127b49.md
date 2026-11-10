@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/notifications/endpoints/webhook/{name}`
 
-Remove webhook endpoint
+移除 webhook 端点
 
 **方法标识：** `delete_webhook_endpoint`
 
@@ -70,7 +70,7 @@ Remove webhook endpoint
 
 ## GET `/cluster/notifications/endpoints/webhook/{name}`
 
-Return a specific webhook endpoint
+返回指定的 webhook 端点
 
 **方法标识：** `get_webhook_endpoint`
 
@@ -114,7 +114,7 @@ Return a specific webhook endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Name of the endpoint. |
+| `name` | string | 是 | — | 端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -124,7 +124,7 @@ Return a specific webhook endpoint
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "Name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -141,29 +141,29 @@ Return a specific webhook endpoint
 {
   "properties": {
     "body": {
-      "description": "HTTP body, base64 encoded",
+      "description": "HTTP 正文，采用 base64 编码",
       "optional": 1,
       "type": "string"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean"
     },
     "header": {
-      "description": "HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的 HTTP 标头。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -171,7 +171,7 @@ Return a specific webhook endpoint
       "type": "array"
     },
     "method": {
-      "description": "HTTP method",
+      "description": "HTTP 方法",
       "enum": [
         "post",
         "put",
@@ -180,12 +180,12 @@ Return a specific webhook endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string"
     },
     "secret": {
-      "description": "Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的秘密信息。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -193,7 +193,7 @@ Return a specific webhook endpoint
       "type": "array"
     },
     "url": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "type": "string"
     }
   },
@@ -203,7 +203,7 @@ Return a specific webhook endpoint
 
 ## PUT `/cluster/notifications/endpoints/webhook/{name}`
 
-Update existing webhook endpoint
+更新现有 webhook 端点
 
 **方法标识：** `update_webhook_endpoint`
 
@@ -258,16 +258,16 @@ Update existing webhook endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `body` | string | 否 | — | HTTP body, base64 encoded |
-| `comment` | string | 否 | — | Comment |
-| `delete` | array | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `method` | string | 否 | — | HTTP method；可选值：`post`, `put`, `get` |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `url` | string | 否 | — | Server URL |
+| `body` | string | 否 | — | HTTP 正文，采用 base64 编码 |
+| `comment` | string | 否 | — | 注释 |
+| `delete` | array | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `header` | array | 否 | — | 要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `method` | string | 否 | — | HTTP 方法；可选值：`post`, `put`, `get` |
+| `name` | string | 是 | — | 端点名称。 |
+| `secret` | array | 否 | — | 要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `url` | string | 否 | — | 服务器 URL |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -277,19 +277,19 @@ Update existing webhook endpoint
   "additionalProperties": 0,
   "properties": {
     "body": {
-      "description": "HTTP body, base64 encoded",
+      "description": "HTTP 正文，采用 base64 编码",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -299,7 +299,7 @@ Update existing webhook endpoint
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -307,13 +307,13 @@ Update existing webhook endpoint
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "header": {
-      "description": "HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的 HTTP 标头。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -322,7 +322,7 @@ Update existing webhook endpoint
       "typetext": "<array>"
     },
     "method": {
-      "description": "HTTP method",
+      "description": "HTTP 方法",
       "enum": [
         "post",
         "put",
@@ -332,13 +332,13 @@ Update existing webhook endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "secret": {
-      "description": "Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的秘密信息。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -347,7 +347,7 @@ Update existing webhook endpoint
       "typetext": "<array>"
     },
     "url": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

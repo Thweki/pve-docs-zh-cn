@@ -1,16 +1,8 @@
-# 22.17. **ha-manager** \- Proxmox VE HA Manager <a href="#_strong_ha_manager_strong_proxmox_ve_ha_manager" id="_strong_ha_manager_strong_proxmox_ve_ha_manager"></a>
+# 22.17. **ha-manager** \- Proxmox VE HA 管理器 <a href="#strong_ha_manager_strong_proxmox_ve_ha_manager" id="strong_ha_manager_strong_proxmox_ve_ha_manager"></a>
 
-<a id="cli_ha-manager"></a>
+## **ha-manager** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_ha-manager" id="cli_ha-manager"></a>
 
-
-
-**ha-manager** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_ha-manager_add"></a>
-
-
-
-**ha-manager add** `<sid>` `[OPTIONS]`
+## **ha-manager add** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_add" id="cli_ha-manager_add"></a>
 
 创建新的 HA 资源。
 
@@ -50,11 +42,7 @@ HA 组标识符。
 
 资源类型。
 
-<a id="cli_ha-manager_config"></a>
-
-
-
-**ha-manager config** `[OPTIONS]`
+## **ha-manager config** `[OPTIONS]` <a href="#cli_ha-manager_config" id="cli_ha-manager_config"></a>
 
 列出 HA 资源。
 
@@ -62,19 +50,11 @@ HA 组标识符。
 
 仅列出特定类型的资源
 
-<a id="cli_ha-manager_crm-command_arm-ha"></a>
-
-
-
-**ha-manager crm-command arm-ha**
+## **ha-manager crm-command arm-ha** <a href="#cli_ha-manager_crm-command_arm-ha" id="cli_ha-manager_crm-command_arm-ha"></a>
 
 请求在 HA 堆栈解除布防后重新布防。
 
-<a id="cli_ha-manager_crm-command_disarm-ha"></a>
-
-
-
-**ha-manager crm-command disarm-ha** `<resource-mode>`
+## **ha-manager crm-command disarm-ha** `<resource-mode>` <a href="#cli_ha-manager_crm-command_disarm-ha" id="cli_ha-manager_crm-command_disarm-ha"></a>
 
 请求解除 HA 堆栈的布防，并释放整个集群范围内的所有看门狗。
 
@@ -82,11 +62,7 @@ HA 组标识符。
 
 控制解除布防期间如何处理 HA 管理的资源。资源的当前状态不受影响。*freeze*：不应用新命令和状态更改。*ignore*：从 HA 跟踪中移除资源，并可将其当作非 HA 管理的资源进行管理。
 
-<a id="cli_ha-manager_crm-command_migrate"></a>
-
-
-
-**ha-manager crm-command migrate** `<sid> <node>`
+## **ha-manager crm-command migrate** `<sid> <node>` <a href="#cli_ha-manager_crm-command_migrate" id="cli_ha-manager_crm-command_migrate"></a>
 
 请求将资源在线迁移到另一个节点。
 
@@ -98,11 +74,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 目标节点。
 
-<a id="cli_ha-manager_crm-command_node-maintenance_disable"></a>
-
-
-
-**ha-manager crm-command node-maintenance disable** `<node>`
+## **ha-manager crm-command node-maintenance disable** `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_disable" id="cli_ha-manager_crm-command_node-maintenance_disable"></a>
 
 更改 node-maintenance 请求状态。
 
@@ -110,11 +82,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 集群节点名称。
 
-<a id="cli_ha-manager_crm-command_node-maintenance_enable"></a>
-
-
-
-**ha-manager crm-command node-maintenance enable** `<node>`
+## **ha-manager crm-command node-maintenance enable** `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_enable" id="cli_ha-manager_crm-command_node-maintenance_enable"></a>
 
 更改 node-maintenance 请求状态。
 
@@ -122,11 +90,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 集群节点名称。
 
-<a id="cli_ha-manager_crm-command_relocate"></a>
-
-
-
-**ha-manager crm-command relocate** `<sid> <node>`
+## **ha-manager crm-command relocate** `<sid> <node>` <a href="#cli_ha-manager_crm-command_relocate" id="cli_ha-manager_crm-command_relocate"></a>
 
 请求将资源重定位到另一个节点。这会停止旧节点上的服务，并在目标节点上重新启动该服务。
 
@@ -138,11 +102,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 目标节点。
 
-<a id="cli_ha-manager_crm-command_stop"></a>
-
-
-
-**ha-manager crm-command stop** `<sid> <timeout>`
+## **ha-manager crm-command stop** `<sid> <timeout>` <a href="#cli_ha-manager_crm-command_stop" id="cli_ha-manager_crm-command_stop"></a>
 
 请求停止服务。
 
@@ -154,11 +114,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 超时时间（秒）。如果设置为 0，将执行强制停止。
 
-<a id="cli_ha-manager_groupadd"></a>
-
-
-
-**ha-manager groupadd** `<group> --nodes <string>` `[OPTIONS]`
+## **ha-manager groupadd** `<group> --nodes <string>` `[OPTIONS]` <a href="#cli_ha-manager_groupadd" id="cli_ha-manager_groupadd"></a>
 
 创建新的 HA 组。（已弃用，建议使用 HA 规则）
 
@@ -186,19 +142,11 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 组类型。
 
-<a id="cli_ha-manager_groupconfig"></a>
-
-
-
-**ha-manager groupconfig**
+## **ha-manager groupconfig** <a href="#cli_ha-manager_groupconfig" id="cli_ha-manager_groupconfig"></a>
 
 获取 HA 组。（已弃用，建议使用 HA 规则）
 
-<a id="cli_ha-manager_groupremove"></a>
-
-
-
-**ha-manager groupremove** `<group>`
+## **ha-manager groupremove** `<group>` <a href="#cli_ha-manager_groupremove" id="cli_ha-manager_groupremove"></a>
 
 删除 HA 组配置。（已弃用，建议使用 HA 规则）
 
@@ -206,11 +154,7 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 HA 组标识符。
 
-<a id="cli_ha-manager_groupset"></a>
-
-
-
-**ha-manager groupset** `<group>` `[OPTIONS]`
+## **ha-manager groupset** `<group>` `[OPTIONS]` <a href="#cli_ha-manager_groupset" id="cli_ha-manager_groupset"></a>
 
 更新 HA 组配置。（已弃用，建议使用 HA 规则）
 
@@ -242,11 +186,7 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
-<a id="cli_ha-manager_help"></a>
-
-
-
-**ha-manager help** `[OPTIONS]`
+## **ha-manager help** `[OPTIONS]` <a href="#cli_ha-manager_help" id="cli_ha-manager_help"></a>
 
 获取指定命令的帮助。
 
@@ -258,27 +198,15 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 详细输出格式。
 
-<a id="cli_ha-manager_migrate"></a>
-
-
-
-**ha-manager migrate**
+## **ha-manager migrate** <a href="#cli_ha-manager_migrate" id="cli_ha-manager_migrate"></a>
 
 *ha-manager crm-command migrate* 的别名。
 
-<a id="cli_ha-manager_relocate"></a>
-
-
-
-**ha-manager relocate**
+## **ha-manager relocate** <a href="#cli_ha-manager_relocate" id="cli_ha-manager_relocate"></a>
 
 *ha-manager crm-command relocate* 的别名。
 
-<a id="cli_ha-manager_remove"></a>
-
-
-
-**ha-manager remove** `<sid>` `[OPTIONS]`
+## **ha-manager remove** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_remove" id="cli_ha-manager_remove"></a>
 
 删除资源配置。
 
@@ -290,11 +218,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则
 
-<a id="cli_ha-manager_rules_add"></a>
-
-
-
-**ha-manager rules add** `<type> <rule>` `[OPTIONS]`
+## **ha-manager rules add** `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_add" id="cli_ha-manager_rules_add"></a>
 
 创建 HA 规则。
 
@@ -352,11 +276,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-<a id="cli_ha-manager_rules_config"></a>
-
-
-
-**ha-manager rules config** `[OPTIONS]` `[FORMAT_OPTIONS]`
+## **ha-manager rules config** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_config" id="cli_ha-manager_rules_config"></a>
 
 获取 HA 规则。
 
@@ -368,11 +288,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 将返回的列表限制为指定的规则类型。
 
-<a id="cli_ha-manager_rules_list"></a>
-
-
-
-**ha-manager rules list** `[OPTIONS]` `[FORMAT_OPTIONS]`
+## **ha-manager rules list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_list" id="cli_ha-manager_rules_list"></a>
 
 获取 HA 规则。
 
@@ -384,11 +300,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 将返回的列表限制为指定的规则类型。
 
-<a id="cli_ha-manager_rules_remove"></a>
-
-
-
-**ha-manager rules remove** `<rule>`
+## **ha-manager rules remove** `<rule>` <a href="#cli_ha-manager_rules_remove" id="cli_ha-manager_rules_remove"></a>
 
 删除 HA 规则。
 
@@ -396,11 +308,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 HA 规则标识符。
 
-<a id="cli_ha-manager_rules_set"></a>
-
-
-
-**ha-manager rules set** `<type> <rule>` `[OPTIONS]`
+## **ha-manager rules set** `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_set" id="cli_ha-manager_rules_set"></a>
 
 更新 HA 规则。
 
@@ -466,11 +374,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-<a id="cli_ha-manager_set"></a>
-
-
-
-**ha-manager set** `<sid>` `[OPTIONS]`
+## **ha-manager set** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_set" id="cli_ha-manager_set"></a>
 
 更新资源配置。
 
@@ -514,11 +418,7 @@ HA 组标识符。
 
 请求的资源状态。
 
-<a id="cli_ha-manager_status"></a>
-
-
-
-**ha-manager status** `[OPTIONS]`
+## **ha-manager status** `[OPTIONS]` <a href="#cli_ha-manager_status" id="cli_ha-manager_status"></a>
 
 显示 HA 管理器状态。
 

@@ -1,8 +1,8 @@
-# 18.5. pvescheduler \- Proxmox VE Scheduler Daemon <a href="#_pvescheduler_proxmox_ve_scheduler_daemon" id="_pvescheduler_proxmox_ve_scheduler_daemon"></a>
+# 18.5. pvescheduler \- Proxmox VE 调度守护进程 <a href="#pvescheduler_proxmox_ve_scheduler_daemon" id="pvescheduler_proxmox_ve_scheduler_daemon"></a>
 
-This daemon is responsible for starting jobs according to the schedule, such as replication and vzdump jobs.
+此守护进程负责根据计划启动任务，例如复制任务和 vzdump 任务。
 
-For vzdump jobs, it gets its configuration from the file `/etc/pve/jobs.cfg`
+对于 vzdump 任务，它从文件 `/etc/pve/jobs.cfg` 获取配置
 
 ---
 

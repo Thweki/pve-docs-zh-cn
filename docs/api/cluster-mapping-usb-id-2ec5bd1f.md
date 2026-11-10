@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/mapping/usb/{id}`
 
-Remove Hardware Mapping.
+移除硬件映射。
 
 **方法标识：** `delete`
 
@@ -70,7 +70,7 @@ Remove Hardware Mapping.
 
 ## GET `/cluster/mapping/usb/{id}`
 
-Get USB Mapping.
+获取 USB 映射。
 
 **方法标识：** `get`
 
@@ -151,7 +151,7 @@ Get USB Mapping.
 
 ## PUT `/cluster/mapping/usb/{id}`
 
-Update a hardware mapping.
+更新硬件映射。
 
 **方法标识：** `update`
 
@@ -185,11 +185,11 @@ Update a hardware mapping.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `description` | string | 否 | — | Description of the logical USB device. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `id` | string | 是 | — | The ID of the logical USB mapping. |
-| `map` | array | 是 | — | A list of maps for the cluster nodes. |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `description` | string | 否 | — | 逻辑 USB 设备的描述。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `id` | string | 是 | — | 逻辑 USB 映射的 ID。 |
+| `map` | array | 是 | — | 集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -199,7 +199,7 @@ Update a hardware mapping.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -207,47 +207,47 @@ Update a hardware mapping.
       "typetext": "<string>"
     },
     "description": {
-      "description": "Description of the logical USB device.",
+      "description": "逻辑 USB 设备的描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "id": {
-      "description": "The ID of the logical USB mapping.",
+      "description": "逻辑 USB 映射的 ID。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "map": {
-      "description": "A list of maps for the cluster nodes.",
+      "description": "集群节点的映射列表。",
       "items": {
         "format": {
           "description": {
-            "description": "Description of the node specific device.",
+            "description": "节点特定设备的描述。",
             "maxLength": 4096,
             "optional": 1,
             "type": "string"
           },
           "id": {
-            "description": "The vendor and device ID that is expected. If a USB path is given, it is only used for detecting hardware changes",
+            "description": "预期的供应商和设备 ID。如果给定 USB 路径，则此项仅用于检测硬件变化",
             "pattern": "(?^:^[0-9A-Fa-f]{4}:[0-9A-Fa-f]{4}$)",
             "type": "string"
           },
           "node": {
-            "description": "The cluster node name.",
+            "description": "集群节点名称。",
             "format": "pve-node",
             "type": "string"
           },
           "path": {
-            "description": "The path to the usb device.",
+            "description": "USB 设备路径。",
             "optional": 1,
             "pattern": "(?^:^(\\d+)\\-(\\d+(\\.\\d+)*)$)",
             "type": "string"

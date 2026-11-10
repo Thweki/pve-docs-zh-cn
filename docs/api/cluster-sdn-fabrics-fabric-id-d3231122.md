@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/fabrics/fabric/{id}`
 
-Add a fabric
+添加 fabric
 
 **方法标识：** `delete_fabric`
 
@@ -40,7 +40,7 @@ Add a fabric
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Identifier for SDN fabrics |
+| `id` | string | 是 | — | SDN fabric 的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -49,7 +49,7 @@ Add a fabric
 {
   "properties": {
     "id": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -72,7 +72,7 @@ Add a fabric
 
 ## GET `/cluster/sdn/fabrics/fabric/{id}`
 
-Update a fabric
+更新 fabric
 
 **方法标识：** `get_fabric`
 
@@ -103,7 +103,7 @@ Update a fabric
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Identifier for SDN fabrics |
+| `id` | string | 是 | — | SDN fabric 的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -112,7 +112,7 @@ Update a fabric
 {
   "properties": {
     "id": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -131,7 +131,7 @@ Update a fabric
 {
   "properties": {
     "area": {
-      "description": "OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.",
+      "description": "OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。",
       "instance-types": [
         "ospf"
       ],
@@ -140,7 +140,7 @@ Update a fabric
       "type-property": "protocol"
     },
     "csnp_interval": {
-      "description": "The csnp_interval property for Openfabric",
+      "description": "Openfabric 的 csnp_interval 属性",
       "instance-types": [
         "openfabric"
       ],
@@ -151,13 +151,13 @@ Update a fabric
       "type-property": "protocol"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "hello_interval": {
-      "description": "The hello_interval property for Openfabric",
+      "description": "Openfabric 的 hello_interval 属性",
       "instance-types": [
         "openfabric"
       ],
@@ -168,7 +168,7 @@ Update a fabric
       "type-property": "protocol"
     },
     "id": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -176,24 +176,24 @@ Update a fabric
       "type": "string"
     },
     "ip6_prefix": {
-      "description": "The IP prefix for Node IPs",
+      "description": "节点 IP 的 IP 前缀",
       "format": "CIDR",
       "optional": 1,
       "type": "string"
     },
     "ip_prefix": {
-      "description": "The IP prefix for Node IPs",
+      "description": "节点 IP 的 IP 前缀",
       "format": "CIDR",
       "optional": 1,
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string"
     },
     "persistent_keepalive": {
-      "description": "A seconds interval, between 1 and 65535 inclusive, of how often to send an authenticated empty packet to the peer for the purpose of keeping a stateful firewall or NAT mapping valid persistently. For example, if the interface very rarely sends traffic, but it might at anytime receive traffic from another node, and it is behind NAT, the interface might benefit from having a persistent keepalive interval of 25 seconds. If unset or set to 0, it is turned off",
+      "description": "发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用",
       "instance-types": [
         "wireguard"
       ],
@@ -204,7 +204,7 @@ Update a fabric
       "type-property": "protocol"
     },
     "protocol": {
-      "description": "Type of configuration entry in an SDN Fabric section config",
+      "description": "SDN Fabric 配置节中配置条目的类型",
       "enum": [
         "openfabric",
         "ospf",
@@ -222,13 +222,13 @@ Update a fabric
           "items": {
             "format": {
               "route-map": {
-                "description": "Route map to filter or transform redistributed routes from this source.",
+                "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                 "format": "pve-sdn-route-map-id",
                 "optional": 1,
                 "type": "string"
               },
               "source": {
-                "description": "The protocol from which to redistribute routes from.",
+                "description": "要从中重分发路由的协议。",
                 "enum": [
                   "bgp",
                   "connected",
@@ -250,13 +250,13 @@ Update a fabric
           "items": {
             "format": {
               "route-map": {
-                "description": "Route map to filter or transform redistributed routes from this source.",
+                "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                 "format": "pve-sdn-route-map-id",
                 "optional": 1,
                 "type": "string"
               },
               "source": {
-                "description": "The protocol from which to redistribute routes from.",
+                "description": "要从中重分发路由的协议。",
                 "enum": [
                   "connected",
                   "kernel",
@@ -276,7 +276,7 @@ Update a fabric
       "type-property": "protocol"
     },
     "route_filter": {
-      "description": "A prefix list that should be used for filtering routes that are to be installed into the kernel routing table",
+      "description": "用于过滤将安装到内核路由表中的路由的前缀列表",
       "format": "pve-sdn-prefix-list-id",
       "instance-types": [
         "ospf",
@@ -293,7 +293,7 @@ Update a fabric
 
 ## PUT `/cluster/sdn/fabrics/fabric/{id}`
 
-Update a fabric
+更新 fabric
 
 **方法标识：** `update_fabric`
 
@@ -327,19 +327,19 @@ Update a fabric
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `area` | string | 否 | — | OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust. |
-| `csnp_interval` | number | 否 | — | The csnp_interval property for Openfabric |
+| `area` | string | 否 | — | OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。 |
+| `csnp_interval` | number | 否 | — | Openfabric 的 csnp_interval 属性 |
 | `delete` | array | 是 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `hello_interval` | number | 否 | — | The hello_interval property for Openfabric |
-| `id` | string | 是 | — | Identifier for SDN fabrics |
-| `ip6_prefix` | string | 否 | — | The IP prefix for Node IPs |
-| `ip_prefix` | string | 否 | — | The IP prefix for Node IPs |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `persistent_keepalive` | number | 否 | — | A seconds interval, between 1 and 65535 inclusive, of how often to send an authenticated empty packet to the peer for the purpose of keeping a stateful firewall or NAT mapping valid persistently. For example, if the interface very rarely sends traffic, but it might at anytime receive traffic from another node, and it is behind NAT, the interface might benefit from having a persistent keepalive interval of 25 seconds. If unset or set to 0, it is turned off |
-| `protocol` | string | 是 | — | Type of configuration entry in an SDN Fabric section config；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `hello_interval` | number | 否 | — | Openfabric 的 hello_interval 属性 |
+| `id` | string | 是 | — | SDN fabric 的标识符 |
+| `ip6_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
+| `ip_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `persistent_keepalive` | number | 否 | — | 发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用 |
+| `protocol` | string | 是 | — | SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
 | `redistribute` | array | 是 | — |  |
-| `route_filter` | string | 否 | — | A prefix list that should be used for filtering routes that are to be installed into the kernel routing table |
+| `route_filter` | string | 否 | — | 用于过滤将安装到内核路由表中的路由的前缀列表 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -348,7 +348,7 @@ Update a fabric
 {
   "properties": {
     "area": {
-      "description": "OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.",
+      "description": "OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。",
       "instance-types": [
         "ospf"
       ],
@@ -358,7 +358,7 @@ Update a fabric
       "typetext": "<string>"
     },
     "csnp_interval": {
-      "description": "The csnp_interval property for Openfabric",
+      "description": "Openfabric 的 csnp_interval 属性",
       "instance-types": [
         "openfabric"
       ],
@@ -440,14 +440,14 @@ Update a fabric
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "hello_interval": {
-      "description": "The hello_interval property for Openfabric",
+      "description": "Openfabric 的 hello_interval 属性",
       "instance-types": [
         "openfabric"
       ],
@@ -459,7 +459,7 @@ Update a fabric
       "typetext": "<number> (1 - 600)"
     },
     "id": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -467,27 +467,27 @@ Update a fabric
       "type": "string"
     },
     "ip6_prefix": {
-      "description": "The IP prefix for Node IPs",
+      "description": "节点 IP 的 IP 前缀",
       "format": "CIDR",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ip_prefix": {
-      "description": "The IP prefix for Node IPs",
+      "description": "节点 IP 的 IP 前缀",
       "format": "CIDR",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "persistent_keepalive": {
-      "description": "A seconds interval, between 1 and 65535 inclusive, of how often to send an authenticated empty packet to the peer for the purpose of keeping a stateful firewall or NAT mapping valid persistently. For example, if the interface very rarely sends traffic, but it might at anytime receive traffic from another node, and it is behind NAT, the interface might benefit from having a persistent keepalive interval of 25 seconds. If unset or set to 0, it is turned off",
+      "description": "发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用",
       "instance-types": [
         "wireguard"
       ],
@@ -499,7 +499,7 @@ Update a fabric
       "typetext": "<number> (0 - 65535)"
     },
     "protocol": {
-      "description": "Type of configuration entry in an SDN Fabric section config",
+      "description": "SDN Fabric 配置节中配置条目的类型",
       "enum": [
         "openfabric",
         "ospf",
@@ -517,13 +517,13 @@ Update a fabric
           "items": {
             "format": {
               "route-map": {
-                "description": "Route map to filter or transform redistributed routes from this source.",
+                "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                 "format": "pve-sdn-route-map-id",
                 "optional": 1,
                 "type": "string"
               },
               "source": {
-                "description": "The protocol from which to redistribute routes from.",
+                "description": "要从中重分发路由的协议。",
                 "enum": [
                   "bgp",
                   "connected",
@@ -545,13 +545,13 @@ Update a fabric
           "items": {
             "format": {
               "route-map": {
-                "description": "Route map to filter or transform redistributed routes from this source.",
+                "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                 "format": "pve-sdn-route-map-id",
                 "optional": 1,
                 "type": "string"
               },
               "source": {
-                "description": "The protocol from which to redistribute routes from.",
+                "description": "要从中重分发路由的协议。",
                 "enum": [
                   "connected",
                   "kernel",
@@ -572,7 +572,7 @@ Update a fabric
       "typetext": "<array>"
     },
     "route_filter": {
-      "description": "A prefix list that should be used for filtering routes that are to be installed into the kernel routing table",
+      "description": "用于过滤将安装到内核路由表中的路由的前缀列表",
       "format": "pve-sdn-prefix-list-id",
       "instance-types": [
         "ospf",

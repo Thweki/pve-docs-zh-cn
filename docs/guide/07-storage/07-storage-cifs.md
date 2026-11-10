@@ -4,7 +4,7 @@
 
 CIFS 后端扩展了目录后端，因此无需手动设置 CIFS 挂载。可以通过 Proxmox VE API 或 Web 界面直接添加此类存储，并享有我们后端的所有优势，例如服务器心跳检查或便捷地选择导出的共享。
 
-## 7.7.1. 配置 <a href="#_configuration_4" id="_configuration_4"></a>
+## 7.7.1. 配置 <a href="#configuration_4" id="configuration_4"></a>
 
 该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，还提供以下 CIFS 特有属性：
 
@@ -66,7 +66,7 @@ cifs: backup
         subdir /data
 ```
 
-## 7.7.2. 存储功能 <a href="#_storage_features_3" id="_storage_features_3"></a>
+## 7.7.2. 存储功能 <a href="#storage_features_3" id="storage_features_3"></a>
 
 CIFS 在存储级别不支持快照。但如果仍希望使用快照和克隆功能，可以使用 `qcow2` 后备文件。
 
@@ -97,7 +97,7 @@ CIFS 在存储级别不支持快照。但如果仍希望使用快照和克隆功
 </tbody>
 </table>
 
-## 7.7.3. 示例 <a href="#_examples_4" id="_examples_4"></a>
+## 7.7.3. 示例 <a href="#examples_4" id="examples_4"></a>
 
 可以通过以下命令获取已导出的 CIFS 共享列表：
 

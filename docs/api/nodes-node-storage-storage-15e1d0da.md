@@ -37,8 +37,8 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -48,13 +48,13 @@
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",

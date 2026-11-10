@@ -6,7 +6,7 @@
 
 ## DELETE `/access/roles/{roleid}`
 
-Delete role.
+删除角色。
 
 **方法标识：** `delete_role`
 
@@ -70,7 +70,7 @@ Delete role.
 
 ## GET `/access/roles/{roleid}`
 
-Get role configuration.
+获取角色配置。
 
 **方法标识：** `read_role`
 
@@ -313,7 +313,7 @@ Get role configuration.
 
 ## PUT `/access/roles/{roleid}`
 
-Update an existing role.
+更新现有角色。
 
 **方法标识：** `update_role`
 

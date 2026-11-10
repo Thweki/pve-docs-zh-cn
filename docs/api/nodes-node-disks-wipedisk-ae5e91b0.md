@@ -6,7 +6,7 @@
 
 ## PUT `/nodes/{node}/disks/wipedisk`
 
-Wipe a disk or partition.
+擦除磁盘或分区。
 
 **方法标识：** `wipe_disk`
 
@@ -32,8 +32,8 @@ Wipe a disk or partition.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | Block device name |
-| `node` | string | 是 | — | The cluster node name. |
+| `disk` | string | 是 | — | 块设备名称 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -43,12 +43,12 @@ Wipe a disk or partition.
   "additionalProperties": 0,
   "properties": {
     "disk": {
-      "description": "Block device name",
+      "description": "块设备名称",
       "pattern": "^/dev/[a-zA-Z0-9\\/]+$",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

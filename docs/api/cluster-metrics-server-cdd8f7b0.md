@@ -6,7 +6,7 @@
 
 ## GET `/cluster/metrics/server`
 
-List configured metric servers.
+列出已配置的指标服务器。
 
 **方法标识：** `server_index`
 
@@ -41,23 +41,23 @@ List configured metric servers.
   "items": {
     "properties": {
       "disable": {
-        "description": "Flag to disable the plugin.",
+        "description": "用于禁用插件的标志。",
         "type": "boolean"
       },
       "id": {
-        "description": "The ID of the entry.",
+        "description": "条目的 ID。",
         "type": "string"
       },
       "port": {
-        "description": "Server network port",
+        "description": "服务器网络端口",
         "type": "integer"
       },
       "server": {
-        "description": "Server dns name or IP address",
+        "description": "服务器 DNS 名称或 IP 地址",
         "type": "string"
       },
       "type": {
-        "description": "Plugin type.",
+        "description": "插件类型。",
         "type": "string"
       }
     },

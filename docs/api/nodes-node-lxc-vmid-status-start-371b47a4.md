@@ -46,10 +46,10 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `debug` | boolean | 否 | 0 | If set, enables very verbose debug log-level on start. |
-| `node` | string | 是 | — | The cluster node name. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `debug` | boolean | 否 | 0 | 如果设置，则在启动时启用非常详细的 debug 日志级别。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,25 +60,25 @@
   "properties": {
     "debug": {
       "default": 0,
-      "description": "If set, enables very verbose debug log-level on start.",
+      "description": "如果设置，则在启动时启用非常详细的 debug 日志级别。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

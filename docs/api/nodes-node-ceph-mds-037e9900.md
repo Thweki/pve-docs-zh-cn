@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/mds`
 
-MDS directory index.
+MDS 目录索引。
 
 **方法标识：** `index`
 
@@ -49,7 +49,7 @@ MDS directory index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ MDS directory index.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,56 +77,56 @@ MDS directory index.
   "items": {
     "properties": {
       "addr": {
-        "description": "Address as advertised by the MDS; Ceph-formatted (typically 'IP:PORT/NONCE').",
+        "description": "MDS 通告的地址；采用 Ceph 格式（通常为 'IP:PORT/NONCE'）。",
         "optional": 1,
         "type": "string"
       },
       "ceph_version": {
-        "description": "Full Ceph version string of the MDS daemon.",
+        "description": "MDS 守护进程的完整 Ceph 版本字符串。",
         "optional": 1,
         "type": "string"
       },
       "ceph_version_short": {
-        "description": "Short Ceph version string of the MDS daemon (e.g. '19.2.0').",
+        "description": "MDS 守护进程的简短 Ceph 版本字符串（例如 '19.2.0'）。",
         "optional": 1,
         "type": "string"
       },
       "direxists": {
-        "description": "Set when the MDS's data directory exists on this node.",
+        "description": "此节点上存在 MDS 数据目录时设置。",
         "optional": 1,
         "type": "boolean"
       },
       "fs_name": {
-        "description": "Name of the CephFS this MDS is bound to; absent or null for standby MDSes not currently serving a rank.",
+        "description": "此 MDS 绑定的 CephFS 名称；对于当前未负责任何 rank 的备用 MDS，不存在或为 null。",
         "optional": 1,
         "type": "string"
       },
       "host": {
-        "description": "Host the MDS runs on.",
+        "description": "运行 MDS 的宿主机。",
         "optional": 1,
         "type": "string"
       },
       "name": {
-        "description": "The name (ID) for the MDS.",
+        "description": "MDS 的名称（ID）。",
         "type": "string"
       },
       "rank": {
-        "description": "MDS rank within the file system; -1 for standby MDSes not currently bound to a rank.",
+        "description": "MDS 在文件系统中的 rank；对于当前未绑定到 rank 的备用 MDS，为 -1。",
         "optional": 1,
         "type": "integer"
       },
       "service": {
-        "description": "Set if a ceph-mds@<id> systemd unit is enabled on the hosting node; absent otherwise.",
+        "description": "如果运行所在节点启用了 ceph-mds@<id> systemd 单元，则设置；否则不存在此项。",
         "optional": 1,
         "type": "boolean"
       },
       "standby_replay": {
-        "description": "If true, the standby MDS is polling the active MDS for faster recovery (hot standby).",
+        "description": "如果为 true，则备用 MDS 正在轮询活动 MDS 以加快恢复（热备）。",
         "optional": 1,
         "type": "boolean"
       },
       "state": {
-        "description": "MDS state: Ceph-reported run state (e.g. 'up:active', 'up:standby', 'up:standby-replay') for daemons known to the cluster; 'stopped' or 'unknown' for configured daemons not visible to the cluster.",
+        "description": "MDS 状态：对于集群已知的守护进程，为 Ceph 报告的运行状态（例如 'up:active'、'up:standby'、'up:standby-replay'）；对于已配置但集群不可见的守护进程，为 'stopped' 或 'unknown'。",
         "type": "string"
       }
     },

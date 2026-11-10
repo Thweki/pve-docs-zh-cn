@@ -6,7 +6,7 @@
 
 ## GET `/cluster/jobs`
 
-Index for jobs related endpoints.
+作业相关端点的索引。
 
 **方法标识：** `index`
 
@@ -32,11 +32,11 @@ Index for jobs related endpoints.
 
 ```json
 {
-  "description": "Directory index.",
+  "description": "目录索引。",
   "items": {
     "properties": {
       "subdir": {
-        "description": "API sub-directory endpoint",
+        "description": "API 子目录端点",
         "type": "string"
       }
     },

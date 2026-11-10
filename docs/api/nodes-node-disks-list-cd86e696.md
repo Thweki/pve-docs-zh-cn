@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/list`
 
-List local disks.
+列出本地磁盘。
 
 **方法标识：** `list`
 
@@ -56,10 +56,10 @@ List local disks.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `include-partitions` | boolean | 否 | 0 | Also include partitions. |
-| `node` | string | 是 | — | The cluster node name. |
-| `skipsmart` | boolean | 否 | 0 | Skip smart checks. |
-| `type` | string | 否 | — | Only list specific types of disks.；可选值：`unused`, `journal_disks` |
+| `include-partitions` | boolean | 否 | 0 | 同时包含分区。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `skipsmart` | boolean | 否 | 0 | 跳过 SMART 检查。 |
+| `type` | string | 否 | — | 仅列出指定类型的磁盘。；可选值：`unused`, `journal_disks` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -70,26 +70,26 @@ List local disks.
   "properties": {
     "include-partitions": {
       "default": 0,
-      "description": "Also include partitions.",
+      "description": "同时包含分区。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "skipsmart": {
       "default": 0,
-      "description": "Skip smart checks.",
+      "description": "跳过 SMART 检查。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "type": {
-      "description": "Only list specific types of disks.",
+      "description": "仅列出指定类型的磁盘。",
       "enum": [
         "unused",
         "journal_disks"
@@ -110,7 +110,7 @@ List local disks.
   "items": {
     "properties": {
       "devpath": {
-        "description": "The device path",
+        "description": "设备路径",
         "type": "string"
       },
       "gpt": {
@@ -137,7 +137,7 @@ List local disks.
         "type": "array"
       },
       "parent": {
-        "description": "For partitions only. The device path of the disk the partition resides on.",
+        "description": "仅适用于分区。分区所在磁盘的设备路径。",
         "optional": 1,
         "type": "string"
       },

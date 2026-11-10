@@ -1,11 +1,11 @@
-# 15\. High Availability <a href="#chapter_ha_manager" id="chapter_ha_manager"></a>
+# 15\. 高可用性 <a href="#chapter_ha_manager" id="chapter_ha_manager"></a>
 
 我们的现代社会高度依赖计算机通过网络提供的信息。移动设备加剧了这种依赖，因为人们可以随时随地访问网络。如果您提供此类服务，那么确保它们在绝大多数时间内可用就非常重要。
 
 我们可以从数学上将可用性定义为 (A)（在给定时间间隔内服务能够被使用的总时间）与 (B)（该时间间隔的长度）之比。通常以给定年份内正常运行时间的百分比表示。
 
 <table>
-<caption>Table 17. Availability - Downtime per Year</caption>
+<caption>表 17. 可用性 - 每年停机时间</caption>
 
 
 <thead>
@@ -78,19 +78,19 @@ Proxmox VE `ha-manager`的工作方式就像一位“自动化”管理员。首
 
 ## 本章内容
 
-- [15.1. Requirements](01-requirements-2.md)
-- [15.2. Resources](02-ha-manager-resources.md)
-- [15.3. Management Tasks](03-management-tasks.md)
-- [15.4. How It Works](04-how-it-works-2.md)
-- [15.5. HA Simulator](05-ha-simulator.md)
-- [15.6. Configuration](06-configuration-15.md)
-- [15.7. Fencing](07-ha-manager-fencing.md)
-- [15.8. Start Failure Policy](08-ha-manager-start-failure-policy.md)
-- [15.9. Error Recovery](09-ha-manager-error-recovery.md)
-- [15.10. Package Updates](10-ha-manager-package-updates.md)
-- [15.11. Node Maintenance](11-ha-manager-node-maintenance.md)
-- [15.12. Disarming HA for Cluster Maintenance](12-ha-manager-disarm.md)
-- [15.13. Cluster Resource Scheduling](13-ha-manager-crs.md)
+- [15.1. 要求](01-requirements-2.md)
+- [15.2. 资源](02-ha-manager-resources.md)
+- [15.3. 管理任务](03-management-tasks.md)
+- [15.4. 工作原理](04-how-it-works-2.md)
+- [15.5. HA 模拟器](05-ha-simulator.md)
+- [15.6. 配置](06-configuration-15.md)
+- [15.7. 隔离](07-ha-manager-fencing.md)
+- [15.8. 启动失败策略](08-ha-manager-start-failure-policy.md)
+- [15.9. 错误恢复](09-ha-manager-error-recovery.md)
+- [15.10. 软件包更新](10-ha-manager-package-updates.md)
+- [15.11. 节点维护](11-ha-manager-node-maintenance.md)
+- [15.12. 为集群维护解除 HA 防护](12-ha-manager-disarm.md)
+- [15.13. 集群资源调度](13-ha-manager-crs.md)
 
 ---
 

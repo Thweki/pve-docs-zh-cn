@@ -1,16 +1,8 @@
-# 23.8. **pve-ha-lrm** \- Local Resource Manager Daemon <a href="#_strong_pve_ha_lrm_strong_local_resource_manager_daemon" id="_strong_pve_ha_lrm_strong_local_resource_manager_daemon"></a>
+# 23.8. **pve-ha-lrm** \- 本地资源管理器守护进程 <a href="#strong_pve_ha_lrm_strong_local_resource_manager_daemon" id="strong_pve_ha_lrm_strong_local_resource_manager_daemon"></a>
 
-<a id="cli_pve-ha-lrm"></a>
+## **pve-ha-lrm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-ha-lrm" id="cli_pve-ha-lrm"></a>
 
-
-
-**pve-ha-lrm** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pve-ha-lrm_help"></a>
-
-
-
-**pve-ha-lrm help** `[OPTIONS]`
+## **pve-ha-lrm help** `[OPTIONS]` <a href="#cli_pve-ha-lrm_help" id="cli_pve-ha-lrm_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,33 +14,21 @@
 
 详细输出格式。
 
-<a id="cli_pve-ha-lrm_start"></a>
+## **pve-ha-lrm start** `[OPTIONS]` <a href="#cli_pve-ha-lrm_start" id="cli_pve-ha-lrm_start"></a>
 
-
-
-**pve-ha-lrm start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pve-ha-lrm_status"></a>
+## **pve-ha-lrm status** <a href="#cli_pve-ha-lrm_status" id="cli_pve-ha-lrm_status"></a>
 
+获取守护进程状态。
 
+## **pve-ha-lrm stop** <a href="#cli_pve-ha-lrm_stop" id="cli_pve-ha-lrm_stop"></a>
 
-**pve-ha-lrm status**
-
-Get daemon status.
-
-<a id="cli_pve-ha-lrm_stop"></a>
-
-
-
-**pve-ha-lrm stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/tasks/{upid}/log`
 
-Read task log.
+读取任务日志。
 
 **方法标识：** `read_task_log`
 
@@ -14,7 +14,7 @@ Read task log.
 
 ```json
 {
-  "description": "The user needs 'Sys.Audit' permissions on '/nodes/<node>' if they aren't the owner of the task.",
+  "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。",
   "user": "all"
 }
 ```
@@ -41,11 +41,11 @@ Read task log.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `download` | boolean | 否 | — | Whether the tasklog file should be downloaded. This parameter can't be used in conjunction with other parameters |
-| `limit` | integer | 否 | 50 | The number of lines to read from the tasklog. |
-| `node` | string | 是 | — | The cluster node name. |
-| `start` | integer | 否 | 0 | Start at this line when reading the tasklog |
-| `upid` | string | 是 | — | The task's unique ID. |
+| `download` | boolean | 否 | — | 是否下载任务日志文件。此参数不能与其他参数一起使用 |
+| `limit` | integer | 否 | 50 | 从任务日志读取的行数。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `start` | integer | 否 | 0 | 读取任务日志时从此行开始 |
+| `upid` | string | 是 | — | 任务的唯一 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -55,35 +55,35 @@ Read task log.
   "additionalProperties": 0,
   "properties": {
     "download": {
-      "description": "Whether the tasklog file should be downloaded. This parameter can't be used in conjunction with other parameters",
+      "description": "是否下载任务日志文件。此参数不能与其他参数一起使用",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "limit": {
       "default": 50,
-      "description": "The number of lines to read from the tasklog.",
+      "description": "从任务日志读取的行数。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "start": {
       "default": 0,
-      "description": "Start at this line when reading the tasklog",
+      "description": "读取任务日志时从此行开始",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "upid": {
-      "description": "The task's unique ID.",
+      "description": "任务的唯一 ID。",
       "type": "string",
       "typetext": "<string>"
     }
@@ -100,11 +100,11 @@ Read task log.
   "items": {
     "properties": {
       "n": {
-        "description": "Line number",
+        "description": "行号",
         "type": "integer"
       },
       "t": {
-        "description": "Line text",
+        "description": "行文本",
         "type": "string"
       }
     },

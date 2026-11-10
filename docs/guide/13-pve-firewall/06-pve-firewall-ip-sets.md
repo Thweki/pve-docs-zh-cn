@@ -1,18 +1,18 @@
-# 13.6. IP Sets <a href="#pve_firewall_ip_sets" id="pve_firewall_ip_sets"></a>
+# 13.6. IP 集合 <a href="#pve_firewall_ip_sets" id="pve_firewall_ip_sets"></a>
 
-IP sets can be used to define groups of networks and hosts. You can refer to them with ‘\+name\` in the firewall rules’ `source` and `dest` properties.
+IP 集合可用于定义网络和宿主机组。可以在防火墙规则的 `source` 和 `dest` 属性中使用“\+name”引用它们。
 
-The following example allows HTTP traffic from the `management` IP set.
+以下示例允许来自 `management` IP 集合的 HTTP 流量。
 
 ```text
 IN HTTP(ACCEPT) -source +management
 ```
 
-## 13.6.1. Standard IP set `management` <a href="#_standard_ip_set_span_class_monospaced_management_span" id="_standard_ip_set_span_class_monospaced_management_span"></a>
+## 13.6.1. 标准 IP 集合 `management` <a href="#standard_ip_set_span_class_monospaced_management_span" id="standard_ip_set_span_class_monospaced_management_span"></a>
 
-This IP set applies only to host firewalls (not VM firewalls). Those IPs are allowed to do normal management tasks (Proxmox VE GUI, VNC, SPICE, SSH).
+此 IP 集合仅适用于宿主机防火墙（不适用于虚拟机防火墙）。允许这些 IP 执行常规管理任务（Proxmox VE GUI、VNC、SPICE、SSH）。
 
-The local cluster network is automatically added to this IP set (alias `cluster_network`), to enable inter-host cluster communication. (multicast,ssh,…)
+本地集群网络会自动添加到此 IP 集合（别名 `cluster_network`），以启用宿主机之间的集群通信。（组播、ssh 等）
 
 ```text
 # /etc/pve/firewall/cluster.fw
@@ -22,9 +22,9 @@ The local cluster network is automatically added to this IP set (alias `cluster_
 192.168.2.10/24
 ```
 
-## 13.6.2. Standard IP set `blacklist` <a href="#_standard_ip_set_span_class_monospaced_blacklist_span" id="_standard_ip_set_span_class_monospaced_blacklist_span"></a>
+## 13.6.2. 标准 IP 集合 `blacklist` <a href="#standard_ip_set_span_class_monospaced_blacklist_span" id="standard_ip_set_span_class_monospaced_blacklist_span"></a>
 
-Traffic from these IPs is dropped by every host’s and VM’s firewall.
+来自这些 IP 的流量会被每台宿主机和虚拟机的防火墙丢弃。
 
 ```text
 # /etc/pve/firewall/cluster.fw
@@ -34,13 +34,13 @@ Traffic from these IPs is dropped by every host’s and VM’s firewall.
 213.87.123.0/24
 ```
 
-## 13.6.3. Standard IP set `ipfilter-net*` <a href="#pve_firewall_ipfilter_section" id="pve_firewall_ipfilter_section"></a>
+## 13.6.3. 标准 IP 集合 `ipfilter-net*` <a href="#pve_firewall_ipfilter_section" id="pve_firewall_ipfilter_section"></a>
 
-These filters belong to a VM’s network interface and are mainly used to prevent IP spoofing. If such a set exists for an interface then any outgoing traffic with a source IP not matching its interface’s corresponding ipfilter set will be dropped.
+这些过滤器属于虚拟机的网络接口，主要用于防止 IP 欺骗。如果某接口存在此类集合，则任何源 IP 不匹配其接口对应 ipfilter 集合的传出流量都会被丢弃。
 
-For containers with configured IP addresses these sets, if they exist (or are activated via the general `IP Filter` option in the VM’s firewall’s **options** tab), implicitly contain the associated IP addresses.
+对于已配置 IP 地址的容器，如果这些集合存在（或通过全局 `IP Filter` 选项，在虚拟机防火墙的 **选项** 选项卡中激活），则会隐式包含关联的 IP 地址。
 
-For both virtual machines and containers they also implicitly contain the standard MAC-derived IPv6 link-local address in order to allow the neighbor discovery protocol to work.
+对于虚拟机和容器，它们还会隐式包含由 MAC 推导的标准 IPv6 链路本地地址，以便邻居发现协议能够工作。
 
 ```text
 /etc/pve/firewall/<VMID>.fw

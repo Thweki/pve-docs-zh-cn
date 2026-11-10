@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/certificates/info`
 
-Get information about node's certificates.
+获取节点证书的信息。
 
 **方法标识：** `info`
 
@@ -34,7 +34,7 @@ Get information about node's certificates.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -44,7 +44,7 @@ Get information about node's certificates.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -66,46 +66,46 @@ Get information about node's certificates.
         "type": "string"
       },
       "fingerprint": {
-        "description": "Certificate SHA 256 fingerprint.",
+        "description": "证书 SHA 256 指纹。",
         "optional": 1,
         "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
         "type": "string"
       },
       "issuer": {
-        "description": "Certificate issuer name.",
+        "description": "证书颁发者名称。",
         "optional": 1,
         "type": "string"
       },
       "notafter": {
-        "description": "Certificate's notAfter timestamp (UNIX epoch).",
+        "description": "证书的 notAfter 时间戳（UNIX 纪元）。",
         "optional": 1,
         "renderer": "timestamp",
         "type": "integer"
       },
       "notbefore": {
-        "description": "Certificate's notBefore timestamp (UNIX epoch).",
+        "description": "证书的 notBefore 时间戳（UNIX 纪元）。",
         "optional": 1,
         "renderer": "timestamp",
         "type": "integer"
       },
       "pem": {
-        "description": "Certificate in PEM format",
+        "description": "PEM 格式的证书",
         "format": "pem-certificate",
         "optional": 1,
         "type": "string"
       },
       "public-key-bits": {
-        "description": "Certificate's public key size",
+        "description": "证书公钥大小",
         "optional": 1,
         "type": "integer"
       },
       "public-key-type": {
-        "description": "Certificate's public key algorithm",
+        "description": "证书公钥算法",
         "optional": 1,
         "type": "string"
       },
       "san": {
-        "description": "List of Certificate's SubjectAlternativeName entries.",
+        "description": "证书 SubjectAlternativeName 条目列表。",
         "items": {
           "type": "string"
         },
@@ -114,7 +114,7 @@ Get information about node's certificates.
         "type": "array"
       },
       "subject": {
-        "description": "Certificate subject name.",
+        "description": "证书主体名称。",
         "optional": 1,
         "type": "string"
       }

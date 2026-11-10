@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/vnets/{vnet}/mac-vrf`
 
-Get the MAC VRF for a VNet in an EVPN zone.
+获取 EVPN 区域中某 VNet 的 MAC VRF。
 
 **方法标识：** `mac-vrf`
 
@@ -14,7 +14,7 @@ Get the MAC VRF for a VNet in an EVPN zone.
 
 ```json
 {
-  "description": "Require 'SDN.Audit' permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 权限",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ Get the MAC VRF for a VNet in an EVPN zone.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Get the MAC VRF for a VNet in an EVPN zone.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -74,21 +74,21 @@ Get the MAC VRF for a VNet in an EVPN zone.
 
 ```json
 {
-  "description": "All routes from the MAC VRF that this node self-originates or has learned via BGP.",
+  "description": "此节点自行发起或通过 BGP 学习到的 MAC VRF 中的所有路由。",
   "items": {
     "properties": {
       "ip": {
-        "description": "The IP address of the MAC VRF entry.",
+        "description": "MAC VRF 条目的 IP 地址。",
         "format": "ip",
         "type": "string"
       },
       "mac": {
-        "description": "The MAC address of the MAC VRF entry.",
+        "description": "MAC VRF 条目的 MAC 地址。",
         "format": "mac-addr",
         "type": "string"
       },
       "nexthop": {
-        "description": "The IP address of the nexthop.",
+        "description": "下一跳的 IP 地址。",
         "format": "ip",
         "type": "string"
       }

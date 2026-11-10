@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/firewall/options`
 
-Get VM firewall options.
+获取虚拟机防火墙选项。
 
 **方法标识：** `get_options`
 
@@ -40,8 +40,8 @@ Get VM firewall options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ Get VM firewall options.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -77,23 +77,23 @@ Get VM firewall options.
   "properties": {
     "dhcp": {
       "default": 0,
-      "description": "Enable DHCP.",
+      "description": "启用 DHCP。",
       "optional": 1,
       "type": "boolean"
     },
     "enable": {
       "default": 0,
-      "description": "Enable/disable firewall rules.",
+      "description": "启用/禁用防火墙规则。",
       "optional": 1,
       "type": "boolean"
     },
     "ipfilter": {
-      "description": "Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface's MAC address. For containers the configured IP addresses will be implicitly added.",
+      "description": "启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net<id> IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。",
       "optional": 1,
       "type": "boolean"
     },
     "log_level_in": {
-      "description": "Log level for incoming traffic.",
+      "description": "传入流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -109,7 +109,7 @@ Get VM firewall options.
       "type": "string"
     },
     "log_level_out": {
-      "description": "Log level for outgoing traffic.",
+      "description": "传出流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -126,18 +126,18 @@ Get VM firewall options.
     },
     "macfilter": {
       "default": 1,
-      "description": "Enable/disable MAC address filter.",
+      "description": "启用/禁用 MAC 地址过滤器。",
       "optional": 1,
       "type": "boolean"
     },
     "ndp": {
       "default": 1,
-      "description": "Enable NDP (Neighbor Discovery Protocol).",
+      "description": "启用 NDP（邻居发现协议）。",
       "optional": 1,
       "type": "boolean"
     },
     "policy_in": {
-      "description": "Input policy.",
+      "description": "输入策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -147,7 +147,7 @@ Get VM firewall options.
       "type": "string"
     },
     "policy_out": {
-      "description": "Output policy.",
+      "description": "输出策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -157,7 +157,7 @@ Get VM firewall options.
       "type": "string"
     },
     "radv": {
-      "description": "Allow sending Router Advertisement.",
+      "description": "允许发送路由器通告。",
       "optional": 1,
       "type": "boolean"
     }
@@ -168,7 +168,7 @@ Get VM firewall options.
 
 ## PUT `/nodes/{node}/qemu/{vmid}/firewall/options`
 
-Set Firewall options.
+设置防火墙选项。
 
 **方法标识：** `set_options`
 
@@ -208,20 +208,20 @@ Set Firewall options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `dhcp` | boolean | 否 | 0 | Enable DHCP. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `enable` | boolean | 否 | 0 | Enable/disable firewall rules. |
-| `ipfilter` | boolean | 否 | — | Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface's MAC address. For containers the configured IP addresses will be implicitly added. |
-| `log_level_in` | string | 否 | — | Log level for incoming traffic.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_level_out` | string | 否 | — | Log level for outgoing traffic.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macfilter` | boolean | 否 | 1 | Enable/disable MAC address filter. |
-| `ndp` | boolean | 否 | 1 | Enable NDP (Neighbor Discovery Protocol). |
-| `node` | string | 是 | — | The cluster node name. |
-| `policy_in` | string | 否 | — | Input policy.；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `policy_out` | string | 否 | — | Output policy.；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `radv` | boolean | 否 | — | Allow sending Router Advertisement. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `dhcp` | boolean | 否 | 0 | 启用 DHCP。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | boolean | 否 | 0 | 启用/禁用防火墙规则。 |
+| `ipfilter` | boolean | 否 | — | 启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net&lt;id&gt; IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。 |
+| `log_level_in` | string | 否 | — | 传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_level_out` | string | 否 | — | 传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macfilter` | boolean | 否 | 1 | 启用/禁用 MAC 地址过滤器。 |
+| `ndp` | boolean | 否 | 1 | 启用 NDP（邻居发现协议）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `policy_in` | string | 否 | — | 输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `policy_out` | string | 否 | — | 输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `radv` | boolean | 否 | — | 允许发送路由器通告。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -231,7 +231,7 @@ Set Firewall options.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
@@ -239,13 +239,13 @@ Set Firewall options.
     },
     "dhcp": {
       "default": 0,
-      "description": "Enable DHCP.",
+      "description": "启用 DHCP。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -253,19 +253,19 @@ Set Firewall options.
     },
     "enable": {
       "default": 0,
-      "description": "Enable/disable firewall rules.",
+      "description": "启用/禁用防火墙规则。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ipfilter": {
-      "description": "Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface's MAC address. For containers the configured IP addresses will be implicitly added.",
+      "description": "启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net<id> IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "log_level_in": {
-      "description": "Log level for incoming traffic.",
+      "description": "传入流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -281,7 +281,7 @@ Set Firewall options.
       "type": "string"
     },
     "log_level_out": {
-      "description": "Log level for outgoing traffic.",
+      "description": "传出流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -298,26 +298,26 @@ Set Firewall options.
     },
     "macfilter": {
       "default": 1,
-      "description": "Enable/disable MAC address filter.",
+      "description": "启用/禁用 MAC 地址过滤器。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ndp": {
       "default": 1,
-      "description": "Enable NDP (Neighbor Discovery Protocol).",
+      "description": "启用 NDP（邻居发现协议）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "policy_in": {
-      "description": "Input policy.",
+      "description": "输入策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -327,7 +327,7 @@ Set Firewall options.
       "type": "string"
     },
     "policy_out": {
-      "description": "Output policy.",
+      "description": "输出策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -337,13 +337,13 @@ Set Firewall options.
       "type": "string"
     },
     "radv": {
-      "description": "Allow sending Router Advertisement.",
+      "description": "允许发送路由器通告。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme/challenge-schema`
 
-Get schema of ACME challenge types.
+获取 ACME 质询类型的模式。
 
 **方法标识：** `challengeschema`
 
@@ -39,7 +39,7 @@ Get schema of ACME challenge types.
         "type": "string"
       },
       "name": {
-        "description": "Human readable name, falls back to id",
+        "description": "人类可读的名称，缺省时使用 id",
         "type": "string"
       },
       "schema": {

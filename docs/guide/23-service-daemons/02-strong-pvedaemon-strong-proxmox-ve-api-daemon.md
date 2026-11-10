@@ -1,16 +1,8 @@
-# 23.2. **pvedaemon** \- Proxmox VE API Daemon <a href="#_strong_pvedaemon_strong_proxmox_ve_api_daemon" id="_strong_pvedaemon_strong_proxmox_ve_api_daemon"></a>
+# 23.2. **pvedaemon** \- Proxmox VE API 守护进程 <a href="#strong_pvedaemon_strong_proxmox_ve_api_daemon" id="strong_pvedaemon_strong_proxmox_ve_api_daemon"></a>
 
-<a id="cli_pvedaemon"></a>
+## **pvedaemon** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvedaemon" id="cli_pvedaemon"></a>
 
-
-
-**pvedaemon** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvedaemon_help"></a>
-
-
-
-**pvedaemon help** `[OPTIONS]`
+## **pvedaemon help** `[OPTIONS]` <a href="#cli_pvedaemon_help" id="cli_pvedaemon_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,41 +14,25 @@
 
 详细输出格式。
 
-<a id="cli_pvedaemon_restart"></a>
+## **pvedaemon restart** <a href="#cli_pvedaemon_restart" id="cli_pvedaemon_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+## **pvedaemon start** `[OPTIONS]` <a href="#cli_pvedaemon_start" id="cli_pvedaemon_start"></a>
 
-**pvedaemon restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvedaemon_start"></a>
-
-
-
-**pvedaemon start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvedaemon_status"></a>
+## **pvedaemon status** <a href="#cli_pvedaemon_status" id="cli_pvedaemon_status"></a>
 
+获取守护进程状态。
 
+## **pvedaemon stop** <a href="#cli_pvedaemon_stop" id="cli_pvedaemon_stop"></a>
 
-**pvedaemon status**
-
-Get daemon status.
-
-<a id="cli_pvedaemon_stop"></a>
-
-
-
-**pvedaemon stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

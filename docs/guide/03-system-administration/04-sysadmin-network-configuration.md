@@ -10,11 +10,11 @@ Proxmox VE 使用 Linux 网络协议栈。这为在 Proxmox VE 节点上设置�
 如果不确定，不建议使用传统的 Debian 工具 `ifup` 和 `ifdown`，因为它们存在一些隐患，例如在 `ifdown vmbrX` 时中断所有客户机流量，但之后在同一网桥上执行 `ifup` 时却不会重新连接这些客户机。
 {% endhint %}
 
-## 3.4.1. 应用网络更改 <a href="#_apply_network_changes" id="_apply_network_changes"></a>
+## 3.4.1. 应用网络更改 <a href="#apply_network_changes" id="apply_network_changes"></a>
 
 Proxmox VE 不会将更改直接写入 `/etc/network/interfaces`。相反，我们会写入一个名为 `/etc/network/interfaces.new` 的临时文件，这样您可以一次进行多项相关更改。这还允许您在应用之前确保更改正确，因为错误的网络配置可能会导致节点无法访问。
 
-### 使用 ifupdown2 实时重新加载网络 <a href="#_live_reload_network_with_ifupdown2" id="_live_reload_network_with_ifupdown2"></a>
+### 使用 ifupdown2 实时重新加载网络 <a href="#live_reload_network_with_ifupdown2" id="live_reload_network_with_ifupdown2"></a>
 
 使用推荐的 *ifupdown2* 软件包（自 Proxmox VE 7.0 起新安装的默认软件包），无需重启即可应用网络配置更改。如果通过图形用户界面更改网络配置，可以单击 *应用配置* 按钮。这会将更改从暂存的 `interfaces.new` 文件移至 `/etc/network/interfaces` 并实时应用。
 
@@ -25,11 +25,11 @@ Proxmox VE 不会将更改直接写入 `/etc/network/interfaces`。相反，我�
 ifupdown2`
 {% endhint %}
 
-### 重启节点以应用 <a href="#_reboot_node_to_apply" id="_reboot_node_to_apply"></a>
+### 重启节点以应用 <a href="#reboot_node_to_apply" id="reboot_node_to_apply"></a>
 
-Another way to apply a new network configuration is to reboot the node. In that case the systemd service `pvenetcommit` will activate the staging `interfaces.new` file before the `networking` service will apply that configuration.
+应用新网络配置的另一种方法是重启节点。此时 systemd 服务 `pvenetcommit` 会激活暂存的 `interfaces.new` 文件，然后 `networking` 服务会应用该配置。
 
-## 3.4.2. 命名约定 <a href="#_naming_conventions" id="_naming_conventions"></a>
+## 3.4.2. 命名约定 <a href="#naming_conventions" id="naming_conventions"></a>
 
 我们目前对设备名称采用以下命名约定：
 
@@ -77,7 +77,7 @@ net.naming-scheme=v252
 
 ### 覆盖网络设备名称 <a href="#network_override_device_names" id="network_override_device_names"></a>
 
-#### 使用 pve-network-interface-pinning 工具 <a href="#_using_the_pve_network_interface_pinning_tool" id="_using_the_pve_network_interface_pinning_tool"></a>
+#### 使用 pve-network-interface-pinning 工具 <a href="#using_the_pve_network_interface_pinning_tool" id="using_the_pve_network_interface_pinning_tool"></a>
 
 Proxmox VE 提供了一个用于自动生成 .link 文件的工具，以覆盖网络设备名称。它还会自动替换以下文件中出现的旧接口名称：
 
@@ -124,7 +124,7 @@ pve-network-interface-pinning generate --interface enp1s0 --target-name if42
 
 要应用 `pve-network-interface-pinning` 对网络配置所做的更改，需要重启节点。
 
-#### 手动创建 .Link 文件 <a href="#_manually_creating_link_files" id="_manually_creating_link_files"></a>
+#### 手动创建 .Link 文件 <a href="#manually_creating_link_files" id="manually_creating_link_files"></a>
 
 您可以使用自定义的[systemd.link 文件](https://manpages.debian.org/stable/udev/systemd.link.5.en.html)，手动为特定网络设备分配名称。这会覆盖根据最新网络设备命名方案本应分配的名称。这样，您可以避免因内核更新、驱动程序更新或较新版本的命名方案而导致的命名更改。
 
@@ -161,25 +161,25 @@ Name=enwan0
 
 有关 link 文件的更多信息，请参阅[systemd.link(5) 手册页](https://manpages.debian.org/stable/udev/systemd.link.5.en.html)。
 
-## 3.4.3. 选择网络配置 <a href="#_choosing_a_network_configuration" id="_choosing_a_network_configuration"></a>
+## 3.4.3. 选择网络配置 <a href="#choosing_a_network_configuration" id="choosing_a_network_configuration"></a>
 
 根据您当前的网络组织方式和资源，您可以选择桥接、路由或伪装网络设置。
 
-### 位于私有 LAN 中的 Proxmox VE 服务器，使用外部网关访问互联网 <a href="#_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet" id="_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet"></a>
+### 位于私有 LAN 中的 Proxmox VE 服务器，使用外部网关访问互联网 <a href="#proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet" id="proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet"></a>
 
 在这种情况下，**桥接**模型最合理，这也是新安装 Proxmox VE 时的默认模式。每个客户机系统都将有一个连接到 Proxmox VE 网桥的虚拟接口。其效果类似于将客户机网卡直接连接到 LAN 上的新交换机，而 Proxmox VE 宿主机充当交换机的角色。
 
-### 托管服务提供商处的 Proxmox VE 服务器，具有供客户机使用的公有 IP 地址范围 <a href="#_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests" id="_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests"></a>
+### 托管服务提供商处的 Proxmox VE 服务器，具有供客户机使用的公有 IP 地址范围 <a href="#proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests" id="proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests"></a>
 
 对于这种设置，您可以使用**桥接**或**路由**模型，具体取决于您的提供商允许的方式。
 
-### 托管服务提供商处的 Proxmox VE 服务器，仅有一个公有 IP 地址 <a href="#_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address" id="_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address"></a>
+### 托管服务提供商处的 Proxmox VE 服务器，仅有一个公有 IP 地址 <a href="#proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address" id="proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address"></a>
 
 在这种情况下，让客户机系统获得出站网络访问的唯一方法是使用**伪装**。对于到客户机的入站网络访问，您需要配置**端口转发**。
 
 为了获得更大的灵活性，您可以配置 VLAN（IEEE 802.1q）和网络绑定（也称为“链路聚合”）。这样可以构建复杂而灵活的虚拟网络。
 
-## 3.4.4. 使用网桥的默认配置 <a href="#_default_configuration_using_a_bridge" id="_default_configuration_using_a_bridge"></a>
+## 3.4.4. 使用网桥的默认配置 <a href="#default_configuration_using_a_bridge" id="default_configuration_using_a_bridge"></a>
 
 [![default-network-setup-bridge.svg](../../assets/default-network-setup-bridge-svg-a8f40ccd7839.svg)](https://pve.proxmox.com/pve-docs/images/default-network-setup-bridge.svg)
 
@@ -379,7 +379,7 @@ iface vmbr0 inet static
 
 每个 VLAN 网络都由一个通常称为 *标签* 的编号标识。然后对网络数据包进行 *标记*，以标识它们属于哪个虚拟网络。
 
-### 客户机网络的 VLAN <a href="#_vlan_for_guest_networks" id="_vlan_for_guest_networks"></a>
+### 客户机网络的 VLAN <a href="#vlan_for_guest_networks" id="vlan_for_guest_networks"></a>
 
 Proxmox VE 开箱即用地支持此配置。您可以在创建 VM 时指定 VLAN 标签。VLAN 标签是客户机网络配置的一部分。网络层支持不同的 VLAN 实现模式，具体取决于网桥配置：
 
@@ -388,7 +388,7 @@ Proxmox VE 开箱即用地支持此配置。您可以在创建 VM 时指定 VLAN
 - **Open vSwitch VLAN：**此模式使用 OVS VLAN 功能。
 - **客户机配置的 VLAN：**VLAN 在客户机内部分配。在这种情况下，配置完全在客户机内部完成，无法从外部进行干预。其好处是可以在单个虚拟 NIC 上使用多个 VLAN。
 
-### 宿主机上的 VLAN <a href="#_vlan_on_the_host" id="_vlan_on_the_host"></a>
+### 宿主机上的 VLAN <a href="#vlan_on_the_host" id="vlan_on_the_host"></a>
 
 为允许宿主机与隔离网络通信，可以将 VLAN 标签应用于任何网络设备（NIC、Bond、Bridge）。通常，应在自身与物理 NIC 之间抽象层最少的接口上配置 VLAN。
 
@@ -478,7 +478,7 @@ iface vmbr0 inet manual
         bridge-fd 0
 ```
 
-## 3.4.9. 在节点上禁用 IPv6 <a href="#_disabling_ipv6_on_the_node" id="_disabling_ipv6_on_the_node"></a>
+## 3.4.9. 在节点上禁用 IPv6 <a href="#disabling_ipv6_on_the_node" id="disabling_ipv6_on_the_node"></a>
 
 无论是否部署 IPv6，Proxmox VE 都能在所有环境中正常工作。我们建议将所有设置保留为提供的默认值。
 
@@ -491,7 +491,7 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 此方法比在 [内核命令行](https://www.kernel.org/doc/Documentation/networking/ipv6.rst) 上禁用 IPv6 模块加载更为可取。
 
-## 3.4.10. 在网桥上禁用 MAC 学习 <a href="#_disabling_mac_learning_on_a_bridge" id="_disabling_mac_learning_on_a_bridge"></a>
+## 3.4.10. 在网桥上禁用 MAC 学习 <a href="#disabling_mac_learning_on_a_bridge" id="disabling_mac_learning_on_a_bridge"></a>
 
 默认情况下，网桥上会启用 MAC 学习，以确保虚拟客户机及其网络的使用体验顺畅。
 

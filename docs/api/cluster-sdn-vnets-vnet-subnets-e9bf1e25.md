@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/vnets/{vnet}/subnets`
 
-SDN subnets index.
+SDN 子网索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ SDN subnets index.
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
 }
 ```
@@ -29,9 +29,9 @@ SDN subnets index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -41,19 +41,19 @@ SDN subnets index.
   "additionalProperties": 0,
   "properties": {
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -85,7 +85,7 @@ SDN subnets index.
 
 ## POST `/cluster/sdn/vnets/{vnet}/subnets`
 
-Create a new sdn subnet object.
+创建新的 SDN 子网对象。
 
 **方法标识：** `create`
 
@@ -93,7 +93,7 @@ Create a new sdn subnet object.
 
 ```json
 {
-  "description": "Require 'SDN.Allocate' permission on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
 }
 ```
@@ -114,15 +114,15 @@ Create a new sdn subnet object.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `dhcp-dns-server` | string | 否 | — | IP address for the DNS server |
-| `dhcp-range` | array | 否 | — | A list of DHCP ranges for this subnet |
-| `dnszoneprefix` | string | 否 | — | dns domain zone prefix  ex: 'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
-| `gateway` | string | 否 | — | Subnet Gateway: Will be assign on vnet for layer3 zones |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `snat` | boolean | 否 | — | enable masquerade for this subnet if pve-firewall |
-| `subnet` | string | 是 | — | The SDN subnet object identifier. |
+| `dhcp-dns-server` | string | 否 | — | DNS 服务器的 IP 地址 |
+| `dhcp-range` | array | 否 | — | 此子网的 DHCP 地址范围列表 |
+| `dnszoneprefix` | string | 否 | — | DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
+| `gateway` | string | 否 | — | 子网网关：对于 layer3 区域，将分配在 vnet 上 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `snat` | boolean | 否 | — | 使用 pve-firewall 时为此子网启用地址伪装 |
+| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
 | `type` | string | 是 | — | ；可选值：`subnet` |
-| `vnet` | string | 是 | — | associated vnet |
+| `vnet` | string | 是 | — | 关联的 vnet |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -132,14 +132,14 @@ Create a new sdn subnet object.
   "additionalProperties": 0,
   "properties": {
     "dhcp-dns-server": {
-      "description": "IP address for the DNS server",
+      "description": "DNS 服务器的 IP 地址",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dhcp-range": {
-      "description": "A list of DHCP ranges for this subnet",
+      "description": "此子网的 DHCP 地址范围列表",
       "items": {
         "format": "pve-sdn-dhcp-range",
         "type": "string"
@@ -149,33 +149,33 @@ Create a new sdn subnet object.
       "typetext": "<array>"
     },
     "dnszoneprefix": {
-      "description": "dns domain zone prefix  ex: 'adm' -> <hostname>.adm.mydomain.com",
+      "description": "DNS 域区域前缀  例如：'adm' -> <hostname>.adm.mydomain.com",
       "format": "dns-name",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "gateway": {
-      "description": "Subnet Gateway: Will be assign on vnet for layer3 zones",
+      "description": "子网网关：对于 layer3 区域，将分配在 vnet 上",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "snat": {
-      "description": "enable masquerade for this subnet if pve-firewall",
+      "description": "使用 pve-firewall 时为此子网启用地址伪装",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "subnet": {
-      "description": "The SDN subnet object identifier.",
+      "description": "SDN 子网对象标识符。",
       "format": "pve-sdn-subnet-id",
       "type": "string",
       "typetext": "<string>"
@@ -187,7 +187,7 @@ Create a new sdn subnet object.
       "type": "string"
     },
     "vnet": {
-      "description": "associated vnet",
+      "description": "关联的 vnet",
       "optional": 0,
       "type": "string",
       "typetext": "<string>"

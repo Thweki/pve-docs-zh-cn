@@ -1,24 +1,12 @@
-# 23.1. **pve-firewall** \- Proxmox VE Firewall Daemon <a href="#_strong_pve_firewall_strong_proxmox_ve_firewall_daemon" id="_strong_pve_firewall_strong_proxmox_ve_firewall_daemon"></a>
+# 23.1. **pve-firewall** \- Proxmox VE 防火墙守护进程 <a href="#strong_pve_firewall_strong_proxmox_ve_firewall_daemon" id="strong_pve_firewall_strong_proxmox_ve_firewall_daemon"></a>
 
-<a id="cli_pve-firewall"></a>
+## **pve-firewall** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-firewall" id="cli_pve-firewall"></a>
 
+## **pve-firewall compile** <a href="#cli_pve-firewall_compile" id="cli_pve-firewall_compile"></a>
 
+编译并打印防火墙规则。这对测试很有用。
 
-**pve-firewall** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pve-firewall_compile"></a>
-
-
-
-**pve-firewall compile**
-
-Compile and print firewall rules. This is useful for testing.
-
-<a id="cli_pve-firewall_help"></a>
-
-
-
-**pve-firewall help** `[OPTIONS]`
+## **pve-firewall help** `[OPTIONS]` <a href="#cli_pve-firewall_help" id="cli_pve-firewall_help"></a>
 
 获取指定命令的帮助。
 
@@ -30,89 +18,65 @@ Compile and print firewall rules. This is useful for testing.
 
 详细输出格式。
 
-<a id="cli_pve-firewall_localnet"></a>
+## **pve-firewall localnet** <a href="#cli_pve-firewall_localnet" id="cli_pve-firewall_localnet"></a>
 
+打印本地网络信息。
 
+## **pve-firewall restart** <a href="#cli_pve-firewall_restart" id="cli_pve-firewall_restart"></a>
 
-**pve-firewall localnet**
+重启 Proxmox VE 防火墙服务。
 
-Print information about local network.
+## **pve-firewall simulate** `[OPTIONS]` <a href="#cli_pve-firewall_simulate" id="cli_pve-firewall_simulate"></a>
 
-<a id="cli_pve-firewall_restart"></a>
-
-
-
-**pve-firewall restart**
-
-Restart the Proxmox VE firewall service.
-
-<a id="cli_pve-firewall_simulate"></a>
-
-
-
-**pve-firewall simulate** `[OPTIONS]`
-
-Simulate firewall rules. This does not simulates the kernel *routing* table, but simply assumes that routing from source zone to destination zone is possible.
+模拟防火墙规则。此操作不模拟内核*路由*表，而是简单假定可以从源区域路由到目标区域。
 
 **`--dest` `<string>`**
 
-Destination IP address.
+目标 IP 地址。
 
 **`--dport` `<integer>`**
 
-Destination port.
+目标端口。
 
-**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `outside`)**
+**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （*默认值 \=* `outside`）**
 
-Source zone.
+源区域。
 
-**`--protocol` `(tcp|udp)` (*default \=* `tcp`)**
+**`--protocol` `(tcp|udp)` （*默认值 \=* `tcp`）**
 
-Protocol.
+协议。
 
 **`--source` `<string>`**
 
-Source IP address.
+源 IP 地址。
 
 **`--sport` `<integer>`**
 
-Source port.
+源端口。
 
-**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `host`)**
+**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （*默认值 \=* `host`）**
 
-Destination zone.
+目标区域。
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-Verbose output.
+详细输出。
 
-<a id="cli_pve-firewall_start"></a>
+## **pve-firewall start** `[OPTIONS]` <a href="#cli_pve-firewall_start" id="cli_pve-firewall_start"></a>
 
-
-
-**pve-firewall start** `[OPTIONS]`
-
-Start the Proxmox VE firewall service.
+启动 Proxmox VE 防火墙服务。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pve-firewall_status"></a>
+## **pve-firewall status** <a href="#cli_pve-firewall_status" id="cli_pve-firewall_status"></a>
 
+获取防火墙状态。
 
+## **pve-firewall stop** <a href="#cli_pve-firewall_stop" id="cli_pve-firewall_stop"></a>
 
-**pve-firewall status**
-
-Get firewall status.
-
-<a id="cli_pve-firewall_stop"></a>
-
-
-
-**pve-firewall stop**
-
-Stop the Proxmox VE firewall service. Note, stopping actively removes all Proxmox VE related iptable rules rendering the host potentially unprotected.
+停止 Proxmox VE 防火墙服务。注意，停止操作会主动移除所有与 Proxmox VE 相关的 iptable 规则，可能使宿主机失去保护。
 
 ---
 

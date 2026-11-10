@@ -133,7 +133,7 @@ Proxmox VE 也可以安装在 ZFS 上。由于 ZFS 提供多种软件 RAID 级�
 
 如果安装仍无法正常工作，请参阅[如何获取帮助一章](../01-introduction/10-getting-help.md)。
 
-## 2.3.1. 安装后访问管理界面 <a href="#_accessing_the_management_interface_post_installation" id="_accessing_the_management_interface_post_installation"></a>
+## 2.3.1. 安装后访问管理界面 <a href="#accessing_the_management_interface_post_installation" id="accessing_the_management_interface_post_installation"></a>
 
 [![screenshot/gui-login-window.png](../../assets/screenshot-gui-login-window-png-9cd1c28376f9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-login-window.png)
 
@@ -175,7 +175,7 @@ Proxmox VE 也可以安装在 ZFS 上。由于 ZFS 提供多种软件 RAID 级�
 其中 `datasize` 不能大于 `maxvz`。
 
 {% hint style="info" %}
-In case of LVM thin, the `data` pool will only be created if `datasize` is bigger than 4GB.
+对于 LVM thin，`data` 池仅在 `datasize` 大于 4GB 时创建。
 {% endhint %}
 
 {% hint style="info" %}
@@ -196,7 +196,7 @@ LVM 要求 VG 中有可用空间才能创建快照（lvmthin 快照不需要）�
 
 **`ashift`**
 
-定义所创建池的 `ashift` 值。`ashift` 至少需要根据底层磁盘或任何可能加入池的磁盘（例如用于更换故障磁盘的磁盘）的扇区大小进行设置（2 的 `ashift` 次幂即为扇区大小）。
+定义所创建池的 `ashift` 值。`ashift` 的设置必须确保所表示的扇区大小（即 2 的 `ashift` 次幂）不小于底层磁盘或任何可能加入池的磁盘（例如用于更换故障磁盘的磁盘）的扇区大小。
 
 **`compress`**
 
@@ -231,7 +231,7 @@ mkswapfile` 命令创建交换文件。
 
 定义要使用的硬盘总大小。这有助于在硬盘上保留可用空间，以便进一步分区（例如创建交换分区）。
 
-## 2.3.5. ZFS 性能提示 <a href="#_zfs_performance_tips" id="_zfs_performance_tips"></a>
+## 2.3.5. ZFS 性能提示 <a href="#zfs_performance_tips" id="zfs_performance_tips"></a>
 
 ZFS 在配备大量内存时性能最佳。如果打算使用 ZFS，请确保为其提供足够的 RAM。一个较好的计算方法是 4GB 加上每 TB 原始磁盘空间 1GB RAM。
 

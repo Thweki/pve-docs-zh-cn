@@ -1,4 +1,4 @@
-# 8.3. 健康 Ceph 集群的建议 <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
+# 8.3. 健康 Ceph 集群的建议 <a href="#recommendations_for_a_healthy_ceph_cluster" id="recommendations_for_a_healthy_ceph_cluster"></a>
 
 要构建超融合 Proxmox \+ Ceph 集群，部署时必须至少使用三台（最好完全相同的）服务器。
 
@@ -8,11 +8,7 @@
 以下建议应被视为选择硬件的粗略指南。因此，根据您的具体需求进行调整仍然至关重要。您应测试自己的部署，并持续监控其健康状况和性能。
 {% endhint %}
 
-<a id="pve_ceph_recommendation_cpu"></a>
-
-
-
-**CPU**
+## CPU <a href="#pve_ceph_recommendation_cpu" id="pve_ceph_recommendation_cpu"></a>
 
 Ceph 服务可分为两类：
 
@@ -31,11 +27,7 @@ Ceph 服务可分为两类：
 
 请注意，OSD 的 CPU 使用率主要取决于磁盘性能。磁盘可能达到的 IOPS（**IO** **O**perations per **S**econd）越高，OSD 服务可使用的 CPU 资源就越多。对于现代企业级 SSD 磁盘，例如能够持续维持超过 100’000 的高 IOPS 负载且具有亚毫秒延迟的 NVMe，每个 OSD 可以使用多个 CPU 线程；对于性能非常高的磁盘，每个由 NVMe 支持的 OSD 很可能会使用四到六个 CPU 线程。
 
-<a id="pve_ceph_recommendation_memory"></a>
-
-
-
-**内存**
+## 内存 <a href="#pve_ceph_recommendation_memory" id="pve_ceph_recommendation_memory"></a>
 
 尤其是在超融合部署中，需要仔细规划并监控内存消耗。除了虚拟机和容器的预计内存使用量外，您还必须确保为 Ceph 留出足够的内存，以提供出色且稳定的性能。
 
@@ -47,11 +39,7 @@ Ceph 服务可分为两类：
 总内存消耗主要由 OSD 守护进程的数量决定。但是，在关键操作期间，所有 Ceph 服务都可能需要额外内存。
 {% endhint %}
 
-<a id="pve_ceph_recommendation_network"></a>
-
-
-
-**网络**
+## 网络 <a href="#pve_ceph_recommendation_network" id="pve_ceph_recommendation_network"></a>
 
 我们建议至少使用 10 Gbps 或更高带宽的网络，专用于 Ceph 流量。如果没有可用的 10\+ Gbps 交换机，对于三到五个节点的集群，网状网络部署 [\[1\]](#note-c8a7a90b-1) 也是一种选择。
 
@@ -69,11 +57,7 @@ Ceph 服务可分为两类：
 
 如果启用了防火墙，您必须开放 Ceph 使用的端口，最简单的方法是使用防火墙 `macro`。
 
-<a id="pve_ceph_recommendation_disk"></a>
-
-
-
-**磁盘**
+## 磁盘 <a href="#pve_ceph_recommendation_disk" id="pve_ceph_recommendation_disk"></a>
 
 规划 Ceph 集群规模时，必须考虑恢复时间。尤其是对于小型集群，恢复可能耗时很长。建议在小型部署中使用 SSD 而非 HDD，以缩短恢复时间，并最大程度降低恢复期间发生后续故障事件的可能性。
 
@@ -83,11 +67,7 @@ Ceph 服务可分为两类：
 
 您还需要平衡 OSD 数量和单个 OSD 容量。更大的容量可以提高存储密度，但也意味着单个 OSD 发生故障时，Ceph 必须一次性恢复更多数据。
 
-<a id="pve_ceph_recommendation_raid"></a>
-
-
-
-**避免使用 RAID**
+## 避免使用 RAID <a href="#pve_ceph_recommendation_raid" id="pve_ceph_recommendation_raid"></a>
 
 由于 Ceph 自行处理数据对象冗余以及对磁盘（OSD）的多次并行写入，使用 RAID 控制器通常不会提升性能或可用性。相反，Ceph 旨在自行管理整块磁盘，中间不需要任何抽象层。RAID 控制器并非针对 Ceph 工作负载而设计，可能会使情况复杂化，有时甚至降低性能，因为其写入和缓存算法可能会干扰 Ceph 的相应算法。
 

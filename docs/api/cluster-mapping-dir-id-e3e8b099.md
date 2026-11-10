@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/mapping/dir/{id}`
 
-Remove directory mapping.
+移除目录映射。
 
 **方法标识：** `delete`
 
@@ -70,7 +70,7 @@ Remove directory mapping.
 
 ## GET `/cluster/mapping/dir/{id}`
 
-Get directory mapping.
+获取目录映射。
 
 **方法标识：** `get`
 
@@ -151,7 +151,7 @@ Get directory mapping.
 
 ## PUT `/cluster/mapping/dir/{id}`
 
-Update a directory mapping.
+更新目录映射。
 
 **方法标识：** `update`
 
@@ -185,11 +185,11 @@ Update a directory mapping.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `description` | string | 否 | — | Description of the directory mapping |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `id` | string | 是 | — | The ID of the directory mapping |
-| `map` | array | 否 | — | A list of maps for the cluster nodes. |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `description` | string | 否 | — | 目录映射的描述 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `id` | string | 是 | — | 目录映射的 ID |
+| `map` | array | 否 | — | 集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -199,7 +199,7 @@ Update a directory mapping.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -207,36 +207,36 @@ Update a directory mapping.
       "typetext": "<string>"
     },
     "description": {
-      "description": "Description of the directory mapping",
+      "description": "目录映射的描述",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "id": {
-      "description": "The ID of the directory mapping",
+      "description": "目录映射的 ID",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "map": {
-      "description": "A list of maps for the cluster nodes.",
+      "description": "集群节点的映射列表。",
       "items": {
         "format": {
           "node": {
-            "description": "The cluster node name.",
+            "description": "集群节点名称。",
             "format": "pve-node",
             "type": "string"
           },
           "path": {
-            "description": "Absolute directory path that should be shared with the guest.",
+            "description": "应与客户机共享的目录的绝对路径。",
             "format": "pve-storage-path-in-property-string",
             "type": "string"
           }

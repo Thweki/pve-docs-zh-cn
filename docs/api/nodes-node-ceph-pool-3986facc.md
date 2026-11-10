@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/pool`
 
-List all pools and their settings (which are settable by the POST/PUT endpoints).
+列出所有池及其设置（可通过 POST/PUT 端点设置的项目）。
 
 **方法标识：** `lspools`
 
@@ -49,7 +49,7 @@ List all pools and their settings (which are settable by the POST/PUT endpoints)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ List all pools and their settings (which are settable by the POST/PUT endpoints)
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,104 +77,104 @@ List all pools and their settings (which are settable by the POST/PUT endpoints)
   "items": {
     "properties": {
       "application_metadata": {
-        "description": "Application tags attached to the pool (mapping of application name to its metadata object).",
+        "description": "附加到池的应用标签（应用名称到其元数据对象的映射）。",
         "optional": 1,
-        "title": "Associated Applications",
+        "title": "关联的应用",
         "type": "object"
       },
       "autoscale_status": {
-        "description": "Raw pg_autoscaler status object for this pool; shape varies between Ceph releases.",
+        "description": "此池的原始 pg_autoscaler 状态对象；结构随 Ceph 发行版而变化。",
         "optional": 1,
-        "title": "Autoscale Status",
+        "title": "自动扩缩状态",
         "type": "object"
       },
       "bytes_used": {
-        "description": "Bytes currently used in the pool; absent if no usage statistics are reported.",
+        "description": "池当前使用的字节数；未报告用量统计信息时不存在此项。",
         "optional": 1,
         "renderer": "bytes",
-        "title": "Used",
+        "title": "已用",
         "type": "integer"
       },
       "crush_rule": {
-        "description": "Numeric id of the CRUSH rule used by this pool.",
-        "title": "Crush Rule",
+        "description": "此池使用的 CRUSH 规则的数字 ID。",
+        "title": "CRUSH 规则",
         "type": "integer"
       },
       "crush_rule_name": {
-        "description": "Human-readable name of the CRUSH rule used by this pool; absent if the rule id is not in the current CRUSH map.",
+        "description": "此池使用的 CRUSH 规则的人类可读名称；规则 ID 不在当前 CRUSH 映射中时不存在此项。",
         "optional": 1,
-        "title": "Crush Rule Name",
+        "title": "CRUSH 规则名称",
         "type": "string"
       },
       "min_size": {
-        "description": "Minimum number of replicas required to accept writes.",
-        "title": "Min Size",
+        "description": "接受写入所需的最小副本数。",
+        "title": "最小大小",
         "type": "integer"
       },
       "percent_used": {
-        "description": "Percentage of pool capacity currently used; absent if no usage statistics are reported.",
+        "description": "池容量当前使用的百分比；未报告用量统计信息时不存在此项。",
         "optional": 1,
-        "title": "%-Used",
+        "title": "已用百分比",
         "type": "number"
       },
       "pg_autoscale_mode": {
-        "description": "Placement-group autoscaler mode ('on', 'warn' or 'off').",
+        "description": "归置组自动扩缩器模式（'on'、'warn' 或 'off'）。",
         "optional": 1,
-        "title": "PG Autoscale Mode",
+        "title": "PG 自动扩缩模式",
         "type": "string"
       },
       "pg_num": {
-        "description": "Current placement-group count.",
-        "title": "PG Num",
+        "description": "当前归置组数量。",
+        "title": "PG 数量",
         "type": "integer"
       },
       "pg_num_final": {
-        "description": "Optimal placement-group count computed by pg_autoscaler.",
+        "description": "pg_autoscaler 计算的最佳归置组数量。",
         "optional": 1,
-        "title": "Optimal PG Num",
+        "title": "最佳 PG 数量",
         "type": "integer"
       },
       "pg_num_min": {
-        "description": "Minimum placement-group count the pg_autoscaler may choose.",
+        "description": "pg_autoscaler 可选择的最小归置组数量。",
         "optional": 1,
-        "title": "min. PG Num",
+        "title": "最小 PG 数量",
         "type": "integer"
       },
       "pool": {
-        "description": "Numeric pool id assigned by Ceph.",
+        "description": "Ceph 分配的数字池 ID。",
         "title": "ID",
         "type": "integer"
       },
       "pool_name": {
-        "description": "Operator-visible name of the pool.",
-        "title": "Name",
+        "description": "操作人员可见的池名称。",
+        "title": "名称",
         "type": "string"
       },
       "size": {
-        "description": "Replication factor (target number of object replicas).",
-        "title": "Size",
+        "description": "复制因子（对象副本的目标数量）。",
+        "title": "大小",
         "type": "integer"
       },
       "target_size": {
-        "description": "Operator-supplied target size in bytes; hints the pg_autoscaler.",
+        "description": "操作人员提供的目标字节大小；为 pg_autoscaler 提供提示。",
         "optional": 1,
-        "title": "PG Autoscale Target Size",
+        "title": "PG 自动扩缩目标大小",
         "type": "integer"
       },
       "target_size_ratio": {
-        "description": "Operator-supplied target ratio of total pool capacity; hints the pg_autoscaler.",
+        "description": "操作人员提供的占池总容量的目标比例；为 pg_autoscaler 提供提示。",
         "optional": 1,
-        "title": "PG Autoscale Target Ratio",
+        "title": "PG 自动扩缩目标比例",
         "type": "number"
       },
       "type": {
-        "description": "Pool type: 'replicated' for n-way replication, 'erasure' for an erasure-coded pool, 'unknown' for types PVE does not yet map.",
+        "description": "池类型：'replicated' 表示 n 路复制，'erasure' 表示纠删码池，'unknown' 表示 PVE 尚未映射的类型。",
         "enum": [
           "replicated",
           "erasure",
           "unknown"
         ],
-        "title": "Type",
+        "title": "类型",
         "type": "string"
       }
     },
@@ -192,7 +192,7 @@ List all pools and their settings (which are settable by the POST/PUT endpoints)
 
 ## POST `/nodes/{node}/ceph/pool`
 
-Create Ceph pool
+创建 Ceph 池
 
 **方法标识：** `createpool`
 
@@ -232,19 +232,19 @@ Create Ceph pool
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add_storages` | boolean | 否 | 0 | Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage). |
-| `application` | string | 否 | "rbd" | The application of the pool.；可选值：`rbd`, `cephfs`, `rgw` |
-| `crush_rule` | string | 否 | — | The rule to use for mapping object placement in the cluster. |
-| `erasure-coding` | string | 否 | — | Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options 'size', 'min_size' and 'crush_rule' parameters will be applied to the metadata pool. |
-| `min_size` | integer | 否 | 2 | Minimum number of replicas per object |
-| `name` | string | 是 | — | The name of the pool. It must be unique. |
-| `node` | string | 是 | — | The cluster node name. |
-| `pg_autoscale_mode` | string | 否 | "warn" | The automatic PG scaling mode of the pool.；可选值：`on`, `off`, `warn` |
-| `pg_num` | integer | 否 | 128 | Number of placement groups. |
-| `pg_num_min` | integer | 否 | — | Minimal number of placement groups. |
-| `size` | integer | 否 | 3 | Number of replicas per object |
-| `target_size` | string | 否 | — | The estimated target size of the pool for the PG autoscaler. |
-| `target_size_ratio` | number | 否 | — | The estimated target ratio of the pool for the PG autoscaler. |
+| `add_storages` | boolean | 否 | 0 | 使用新池配置虚拟机和容器存储。复制池默认为 false，纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。 |
+| `application` | string | 否 | "rbd" | 池的应用。；可选值：`rbd`, `cephfs`, `rgw` |
+| `crush_rule` | string | 否 | — | 用于映射集群中对象放置位置的规则。 |
+| `erasure-coding` | string | 否 | — | 为 RBD 创建纠删码池，并附带用于存储元数据的复制池。使用 EC 时，常用 ceph 选项 'size'、'min_size' 和 'crush_rule' 参数将应用于元数据池。 |
+| `min_size` | integer | 否 | 2 | 每个对象的最小副本数 |
+| `name` | string | 是 | — | 池名称。必须唯一。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pg_autoscale_mode` | string | 否 | "warn" | 池的自动 PG 扩缩模式。；可选值：`on`, `off`, `warn` |
+| `pg_num` | integer | 否 | 128 | 归置组数量。 |
+| `pg_num_min` | integer | 否 | — | 最小归置组数量。 |
+| `size` | integer | 否 | 3 | 每个对象的副本数 |
+| `target_size` | string | 否 | — | PG 自动扩缩器使用的池预估目标大小。 |
+| `target_size_ratio` | number | 否 | — | PG 自动扩缩器使用的池预估目标比例。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -255,58 +255,58 @@ Create Ceph pool
   "properties": {
     "add_storages": {
       "default": 0,
-      "description": "Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage).",
+      "description": "使用新池配置虚拟机和容器存储。复制池默认为 false，纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "application": {
       "default": "rbd",
-      "description": "The application of the pool.",
+      "description": "池的应用。",
       "enum": [
         "rbd",
         "cephfs",
         "rgw"
       ],
       "optional": 1,
-      "title": "Application",
+      "title": "应用",
       "type": "string"
     },
     "crush_rule": {
-      "description": "The rule to use for mapping object placement in the cluster.",
+      "description": "用于映射集群中对象放置位置的规则。",
       "optional": 1,
-      "title": "Crush Rule Name",
+      "title": "CRUSH 规则名称",
       "type": "string",
       "typetext": "<string>"
     },
     "erasure-coding": {
-      "description": "Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options 'size', 'min_size' and 'crush_rule' parameters will be applied to the metadata pool.",
+      "description": "为 RBD 创建纠删码池，并附带用于存储元数据的复制池。使用 EC 时，常用 ceph 选项 'size'、'min_size' 和 'crush_rule' 参数将应用于元数据池。",
       "format": {
         "device-class": {
-          "description": "CRUSH device class. Will create an erasure coded pool plus a replicated pool for metadata.",
+          "description": "CRUSH 设备类别。将创建纠删码池及用于元数据的复制池。",
           "format_description": "class",
           "optional": 1,
           "type": "string"
         },
         "failure-domain": {
           "default": "host",
-          "description": "CRUSH failure domain. Default is 'host'. Will create an erasure coded pool plus a replicated pool for metadata.",
+          "description": "CRUSH 故障域。默认为 'host'。将创建纠删码池及用于元数据的复制池。",
           "format_description": "domain",
           "optional": 1,
           "type": "string"
         },
         "k": {
-          "description": "Number of data chunks. Will create an erasure coded pool plus a replicated pool for metadata.",
+          "description": "数据块数量。将创建纠删码池及用于元数据的复制池。",
           "minimum": 2,
           "type": "integer"
         },
         "m": {
-          "description": "Number of coding chunks. Will create an erasure coded pool plus a replicated pool for metadata.",
+          "description": "编码块数量。将创建纠删码池及用于元数据的复制池。",
           "minimum": 1,
           "type": "integer"
         },
         "profile": {
-          "description": "Override the erasure code (EC) profile to use. Will create an erasure coded pool plus a replicated pool for metadata.",
+          "description": "覆盖要使用的纠删码（EC）配置文件。将创建纠删码池及用于元数据的复制池。",
           "format_description": "profile",
           "optional": 1,
           "type": "string"
@@ -318,77 +318,77 @@ Create Ceph pool
     },
     "min_size": {
       "default": 2,
-      "description": "Minimum number of replicas per object",
+      "description": "每个对象的最小副本数",
       "maximum": 7,
       "minimum": 1,
       "optional": 1,
-      "title": "Min Size",
+      "title": "最小大小",
       "type": "integer",
       "typetext": "<integer> (1 - 7)"
     },
     "name": {
-      "description": "The name of the pool. It must be unique.",
+      "description": "池名称。必须唯一。",
       "pattern": "(?^:^[^:/\\s]+$)",
-      "title": "Name",
+      "title": "名称",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pg_autoscale_mode": {
       "default": "warn",
-      "description": "The automatic PG scaling mode of the pool.",
+      "description": "池的自动 PG 扩缩模式。",
       "enum": [
         "on",
         "off",
         "warn"
       ],
       "optional": 1,
-      "title": "PG Autoscale Mode",
+      "title": "PG 自动扩缩模式",
       "type": "string"
     },
     "pg_num": {
       "default": 128,
-      "description": "Number of placement groups.",
+      "description": "归置组数量。",
       "maximum": 32768,
       "minimum": 1,
       "optional": 1,
-      "title": "PG Num",
+      "title": "PG 数量",
       "type": "integer",
       "typetext": "<integer> (1 - 32768)"
     },
     "pg_num_min": {
-      "description": "Minimal number of placement groups.",
+      "description": "最小归置组数量。",
       "maximum": 32768,
       "optional": 1,
-      "title": "min. PG Num",
+      "title": "最小 PG 数量",
       "type": "integer",
       "typetext": "<integer> (-N - 32768)"
     },
     "size": {
       "default": 3,
-      "description": "Number of replicas per object",
+      "description": "每个对象的副本数",
       "maximum": 7,
       "minimum": 1,
       "optional": 1,
-      "title": "Size",
+      "title": "大小",
       "type": "integer",
       "typetext": "<integer> (1 - 7)"
     },
     "target_size": {
-      "description": "The estimated target size of the pool for the PG autoscaler.",
+      "description": "PG 自动扩缩器使用的池预估目标大小。",
       "optional": 1,
       "pattern": "^(\\d+(\\.\\d+)?)([KMGT])?$",
-      "title": "PG Autoscale Target Size",
+      "title": "PG 自动扩缩目标大小",
       "type": "string"
     },
     "target_size_ratio": {
-      "description": "The estimated target ratio of the pool for the PG autoscaler.",
+      "description": "PG 自动扩缩器使用的池预估目标比例。",
       "optional": 1,
-      "title": "PG Autoscale Target Ratio",
+      "title": "PG 自动扩缩目标比例",
       "type": "number",
       "typetext": "<number>"
     }

@@ -1,4 +1,4 @@
-# 11\. Proxmox Container Toolkit <a href="#chapter_pct" id="chapter_pct"></a>
+# 11\. Proxmox 容器工具包 <a href="#chapter_pct" id="chapter_pct"></a>
 
 容器是完全虚拟机（VM）的轻量级替代方案。它们使用所运行宿主机系统的内核，而不是模拟完整的操作系统（OS）。这意味着容器可以直接访问宿主机系统上的资源。
 
@@ -21,18 +21,18 @@ Proxmox VE 使用 [Linux Containers (LXC)](https://linuxcontainers.org/lxc/intro
 
 ## 本章内容
 
-- [11.1. Technology Overview](01-technology-overview.md)
-- [11.2. Supported Distributions](02-pct-supported-distributions.md)
-- [11.3. Container Images](03-pct-container-images.md)
-- [11.4. Container Settings](04-pct-settings.md)
-- [11.5. Security Considerations](05-security-considerations.md)
-- [11.6. Guest Operating System Configuration](06-guest-operating-system-configuration.md)
-- [11.7. Container Storage](07-pct-container-storage.md)
-- [11.8. Backup and Restore](08-backup-and-restore.md)
-- [11.9. Managing Containers with pct](09-managing-containers-with-span-class-monospaced-pct-span.md)
-- [11.10. Migration](10-pct-migration.md)
-- [11.11. Configuration](11-pct-configuration.md)
-- [11.12. Locks](12-locks-2.md)
+- [11.1. 技术概述](01-technology-overview.md)
+- [11.2. 支持的发行版](02-pct-supported-distributions.md)
+- [11.3. 容器镜像](03-pct-container-images.md)
+- [11.4. 容器设置](04-pct-settings.md)
+- [11.5. 安全注意事项](05-security-considerations.md)
+- [11.6. 客户机操作系统配置](06-guest-operating-system-configuration.md)
+- [11.7. 容器存储](07-pct-container-storage.md)
+- [11.8. 备份与恢复](08-backup-and-restore.md)
+- [11.9. 使用 pct 管理容器](09-managing-containers-with-span-class-monospaced-pct-span.md)
+- [11.10. 迁移](10-pct-migration.md)
+- [11.11. 配置](11-pct-configuration.md)
+- [11.12. 锁](12-locks-2.md)
 
 ---
 

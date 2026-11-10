@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/route-maps/entries`
 
-Lists all route map entries.
+列出所有路由映射条目。
 
 **方法标识：** `list_route_map_entries`
 
@@ -14,7 +14,7 @@ Lists all route map entries.
 
 ```json
 {
-  "description": "Only returns route map entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions.",
+  "description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射条目。",
   "user": "all"
 }
 ```
@@ -29,8 +29,8 @@ Lists all route map entries.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,13 +39,13 @@ Lists all route map entries.
 {
   "properties": {
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -63,7 +63,7 @@ Lists all route map entries.
   "items": {
     "properties": {
       "action": {
-        "description": "Matching policy of a route map entry.",
+        "description": "路由映射条目的匹配策略。",
         "enum": [
           "permit",
           "deny"
@@ -72,13 +72,13 @@ Lists all route map entries.
         "type": "string"
       },
       "call": {
-        "description": "The SDN route map identifier",
+        "description": "SDN 路由映射标识符",
         "format": "pve-sdn-route-map-id",
         "optional": 1,
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 1,
         "type": "string"
@@ -94,7 +94,7 @@ Lists all route map entries.
             "type": "string"
           },
           "value": {
-            "description": "The index of this route map entry",
+            "description": "此路由映射条目的索引",
             "maximum": 65535,
             "minimum": 0,
             "optional": 1,
@@ -125,7 +125,7 @@ Lists all route map entries.
               "type": "string"
             },
             "value": {
-              "description": "Value that the field <key> should be matched on.",
+              "description": "字段 <key> 应匹配的值。",
               "format_description": "<key-dependent>",
               "optional": 1,
               "type": "string"
@@ -137,13 +137,13 @@ Lists all route map entries.
         "type": "array"
       },
       "order": {
-        "description": "The index of this route map entry",
+        "description": "此路由映射条目的索引",
         "maximum": 65535,
         "minimum": 0,
         "type": "integer"
       },
       "route-map-id": {
-        "description": "The SDN route map identifier",
+        "description": "SDN 路由映射标识符",
         "format": "pve-sdn-route-map-id",
         "type": "string"
       },
@@ -167,7 +167,7 @@ Lists all route map entries.
               "type": "string"
             },
             "value": {
-              "description": "Value that the field <key> should be set to.",
+              "description": "字段 <key> 应设置的值。",
               "format_description": "<key-dependent>",
               "optional": 1,
               "type": "string"
@@ -193,7 +193,7 @@ Lists all route map entries.
 
 ## POST `/cluster/sdn/route-maps/entries`
 
-Create Route Map entry
+创建路由映射条目
 
 **方法标识：** `create_route_map_entry`
 
@@ -227,14 +227,14 @@ Create Route Map entry
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | Matching policy of a route map entry.；可选值：`permit`, `deny` |
-| `call` | string | 否 | — | The SDN route map identifier |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
+| `action` | string | 是 | — | 路由映射条目的匹配策略。；可选值：`permit`, `deny` |
+| `call` | string | 否 | — | SDN 路由映射标识符 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
 | `exit-action` | string | 否 | — |  |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 | `match` | array | 否 | — |  |
-| `order` | integer | 是 | — | The index of this route map entry |
-| `route-map-id` | string | 是 | — | The SDN route map identifier |
+| `order` | integer | 是 | — | 此路由映射条目的索引 |
+| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
 | `set` | array | 否 | — |  |
 
 <details>
@@ -244,7 +244,7 @@ Create Route Map entry
 {
   "properties": {
     "action": {
-      "description": "Matching policy of a route map entry.",
+      "description": "路由映射条目的匹配策略。",
       "enum": [
         "permit",
         "deny"
@@ -253,14 +253,14 @@ Create Route Map entry
       "type": "string"
     },
     "call": {
-      "description": "The SDN route map identifier",
+      "description": "SDN 路由映射标识符",
       "format": "pve-sdn-route-map-id",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -277,7 +277,7 @@ Create Route Map entry
           "type": "string"
         },
         "value": {
-          "description": "The index of this route map entry",
+          "description": "此路由映射条目的索引",
           "maximum": 65535,
           "minimum": 0,
           "optional": 1,
@@ -289,7 +289,7 @@ Create Route Map entry
       "typetext": "key=<on-match-goto|on-match-next|continue> [,value=<integer>]"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -315,7 +315,7 @@ Create Route Map entry
             "type": "string"
           },
           "value": {
-            "description": "Value that the field <key> should be matched on.",
+            "description": "字段 <key> 应匹配的值。",
             "format_description": "<key-dependent>",
             "optional": 1,
             "type": "string"
@@ -328,14 +328,14 @@ Create Route Map entry
       "typetext": "<array>"
     },
     "order": {
-      "description": "The index of this route map entry",
+      "description": "此路由映射条目的索引",
       "maximum": 65535,
       "minimum": 0,
       "type": "integer",
       "typetext": "<integer> (0 - 65535)"
     },
     "route-map-id": {
-      "description": "The SDN route map identifier",
+      "description": "SDN 路由映射标识符",
       "format": "pve-sdn-route-map-id",
       "type": "string",
       "typetext": "<string>"
@@ -360,7 +360,7 @@ Create Route Map entry
             "type": "string"
           },
           "value": {
-            "description": "Value that the field <key> should be set to.",
+            "description": "字段 <key> 应设置的值。",
             "format_description": "<key-dependent>",
             "optional": 1,
             "type": "string"

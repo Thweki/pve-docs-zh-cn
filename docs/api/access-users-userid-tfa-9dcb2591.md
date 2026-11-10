@@ -6,7 +6,7 @@
 
 ## GET `/access/users/{userid}/tfa`
 
-Get user TFA types (Personal and Realm).
+获取用户 TFA 类型（个人及认证域）。
 
 **方法标识：** `read_user_tfa_type`
 
@@ -47,8 +47,8 @@ Get user TFA types (Personal and Realm).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `multiple` | boolean | 否 | 0 | Request all entries as an array. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `multiple` | boolean | 否 | 0 | 将所有条目作为数组请求。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,13 +59,13 @@ Get user TFA types (Personal and Realm).
   "properties": {
     "multiple": {
       "default": 0,
-      "description": "Request all entries as an array.",
+      "description": "将所有条目作为数组请求。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -84,7 +84,7 @@ Get user TFA types (Personal and Realm).
   "additionalProperties": 0,
   "properties": {
     "realm": {
-      "description": "The type of TFA the users realm has set, if any.",
+      "description": "用户所属认证域设置的 TFA 类型（如有）。",
       "enum": [
         "oath",
         "yubico"
@@ -93,9 +93,9 @@ Get user TFA types (Personal and Realm).
       "type": "string"
     },
     "types": {
-      "description": "Array of the user configured TFA types, if any. Only available if 'multiple' was not passed.",
+      "description": "用户配置的 TFA 类型数组（如有）。仅在未传入 'multiple' 时可用。",
       "items": {
-        "description": "A TFA type.",
+        "description": "TFA 类型。",
         "enum": [
           "totp",
           "u2f",
@@ -109,7 +109,7 @@ Get user TFA types (Personal and Realm).
       "type": "array"
     },
     "user": {
-      "description": "The type of TFA the user has set, if any. Only set if 'multiple' was not passed.",
+      "description": "用户设置的 TFA 类型（如有）。仅在未传入 'multiple' 时设置。",
       "enum": [
         "oath",
         "u2f"

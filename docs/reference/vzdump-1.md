@@ -2,314 +2,306 @@
 
 ## 名称 <a href="#chapter_vzdump" id="chapter_vzdump"></a>
 
-vzdump \- Backup Utility for VMs and Containers
+vzdump \- 虚拟机和容器备份工具
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_vzdump_help"></a>
+### **vzdump** `help` <a href="#cli_vzdump_help" id="cli_vzdump_help"></a>
 
+### **vzdump** `{<vmid>}` `[OPTIONS]` <a href="#cli_vzdump" id="cli_vzdump"></a>
 
-
-**vzdump** `help`
-
-<a id="cli_vzdump"></a>
-
-
-
-**vzdump** `{<vmid>}` `[OPTIONS]`
-
-Create backup.
+创建备份。
 
 **`<vmid>`: `<string>`**
 
-The ID of the guest system you want to backup.
+要备份的客户机系统 ID。
 
-**`--all` `<boolean>` (*default \=* `0`)**
+**`--all` `<boolean>` （*默认值 \=* `0`）**
 
-Backup all known guest systems on this host.
+备份此宿主机上所有已知的客户机系统。
 
-**`--bwlimit` `<integer> (0 - N)` (*default \=* `0`)**
+**`--bwlimit` `<integer> (0 - N)` （*默认值 \=* `0`）**
 
-Limit I/O bandwidth (in KiB/s).
+限制 I/O 带宽（KiB/s）。
 
-**`--compress` `<0 | 1 | gzip | lzo | zstd>` (*default \=* `0`)**
+**`--compress` `<0 | 1 | gzip | lzo | zstd>` （*默认值 \=* `0`）**
 
-Compress dump file.
+压缩转储文件。
 
 **`--dumpdir` `<string>`**
 
-Store resulting files to specified directory.
+将生成的文件存储到指定目录。
 
 **`--exclude` `<string>`**
 
-Exclude specified guest systems (assumes --all)
+排除指定客户机系统（假定为 --all）
 
 **`--exclude-path` `<array>`**
 
-Exclude certain files/directories (shell globs). Paths starting with */* are anchored to the container’s root, other paths match relative to each subdirectory.
+排除某些文件/目录（shell 通配模式）。以 */* 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
 
 **`--fleecing` `[[enabled=]<1|0>] [,storage=<storage ID>]`**
 
-Options for backup fleecing (VM only).
+备份 fleecing 的选项（仅限虚拟机）。
 
-**`--ionice` `<integer> (0 - 8)` (*default \=* `7`)**
+**`--ionice` `<integer> (0 - 8)` （*默认值 \=* `7`）**
 
-Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.
+使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，这仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用尽力而为优先级及指定值。
 
 **`--job-id` `\S+`**
 
-The ID of the backup job. If set, the *backup-job* metadata field of the backup notification will be set to this value. Only [root@pam](mailto:root@pam) can set this parameter.
+备份任务的 ID。如果设置，备份通知的 *backup-job* 元数据字段将设置为此值。只有 [root@pam](mailto:root@pam) 可以设置此参数。
 
-**`--lockwait` `<integer> (0 - N)` (*default \=* `180`)**
+**`--lockwait` `<integer> (0 - N)` （*默认值 \=* `180`）**
 
-Maximal time to wait for the global lock (minutes).
+等待全局锁的最长时间（分钟）。
 
-**`--mailnotification` `<always | failure>` (*default \=* `always`)**
+**`--mailnotification` `<always | failure>` （*默认值 \=* `always`）**
 
-Deprecated: use notification targets/matchers instead. Specify when to send a notification mail
+已弃用：请改用通知目标/匹配器。指定何时发送通知邮件
 
 **`--mailto` `<string>`**
 
-Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.
+已弃用：请改用通知目标/匹配器。应接收电子邮件通知的电子邮件地址或用户的逗号分隔列表。
 
-**`--mode` `<snapshot | stop | suspend>` (*default \=* `snapshot`)**
+**`--mode` `<snapshot | stop | suspend>` （*默认值 \=* `snapshot`）**
 
-Backup mode.
+备份模式。
 
 **`--node` `<string>`**
 
-Only run if executed on this node.
+仅在此节点上执行时运行。
 
 **`--notes-template` `<string>`**
 
-Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {\\{\\cluster}}, {\\{\\guestname}}, {\\{\\node}}, and {\\{\\vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as *\\n* and *\\\\* respectively.
+用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 *\\n* 和 *\\\\*。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`--notification-mode` `<auto | legacy-sendmail | notification-system>` (*default \=* `auto`)**
+**`--notification-mode` `<auto | legacy-sendmail | notification-system>` （*默认值 \=* `auto`）**
 
-Determine which notification system to use. If set to *legacy-sendmail*, vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the *sendmail* command. If set to *notification-system*, a notification will be sent via PVE’s notification system, and the mailto and mailnotification will be ignored. If set to *auto* (default setting), an email will be sent if mailto is set, and the notification system will be used if not.
+确定要使用的通知系统。如果设为 *legacy-sendmail*，vzdump 会考虑 mailto/mailnotification 参数，并通过 *sendmail* 命令向指定地址发送电子邮件。如果设为 *notification-system*，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 *auto*（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
 
 **`--pbs-change-detection-mode` `<data | legacy | metadata>`**
 
-PBS mode used to detect file changes and switch encoding format for container backups.
+用于检测文件更改并切换容器备份编码格式的 PBS 模式。
 
 **`--performance` `[max-workers=<integer>] [,pbs-entries-max=<integer>]`**
 
-Other performance-related settings.
+其他性能相关设置。
 
-**`--pigz` `<integer>` (*default \=* `0`)**
+**`--pigz` `<integer>` （*默认值 \=* `0`）**
 
-Use pigz instead of gzip when N\>0. N\=1 uses half of cores, N\>1 uses N as thread count.
+N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为线程数。
 
 **`--pool` `<string>`**
 
-Backup all known guest systems included in the specified pool.
+备份指定池中包含的所有已知客户机系统。
 
 **`--protected` `<boolean>`**
 
-If true, mark backup(s) as protected.
+如果为 true，将备份标记为受保护。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` (*default \=* `keep-all=1`)**
+**`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` （*默认值 \=* `keep-all=1`）**
 
-Use these retention options instead of those from the storage configuration.
+使用这些保留选项，替代存储配置中的保留选项。
 
-**`--quiet` `<boolean>` (*default \=* `0`)**
+**`--quiet` `<boolean>` （*默认值 \=* `0`）**
 
-Be quiet.
+静默运行。
 
-**`--remove` `<boolean>` (*default \=* `1`)**
+**`--remove` `<boolean>` （*默认值 \=* `1`）**
 
-Prune older backups according to *prune-backups*.
+根据 *prune-backups* 清理较旧的备份。
 
 **`--script` `<string>`**
 
-Use specified hook script.
+使用指定的钩子脚本。
 
-**`--stdexcludes` `<boolean>` (*default \=* `1`)**
+**`--stdexcludes` `<boolean>` （*默认值 \=* `1`）**
 
-Exclude temporary files and logs.
+排除临时文件和日志。
 
 **`--stdout` `<boolean>`**
 
-Write tar to stdout, not to a file.
+将 tar 写入 stdout，而不是文件。
 
-**`--stop` `<boolean>` (*default \=* `0`)**
+**`--stop` `<boolean>` （*默认值 \=* `0`）**
 
-Stop running backup jobs on this host.
+停止此宿主机上正在运行的备份任务。
 
-**`--stopwait` `<integer> (0 - N)` (*default \=* `10`)**
+**`--stopwait` `<integer> (0 - N)` （*默认值 \=* `10`）**
 
-Maximal time to wait until a guest system is stopped (minutes).
+等待客户机系统停止的最长时间（分钟）。
 
 **`--storage` `<storage ID>`**
 
-Store resulting file to this storage.
+将生成的文件保存到此存储。
 
 **`--tmpdir` `<string>`**
 
-Store temporary files to specified directory.
+将临时文件保存到指定目录。
 
-**`--zstd` `<integer>` (*default \=* `1`)**
+**`--zstd` `<integer>` （*默认值 \=* `1`）**
 
-Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
+Zstd 线程数。N\=0 使用可用核心的一半；如果 N 设置为大于 0 的值，则使用 N 作为线程数。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-Backups are a requirement for any sensible IT deployment, and Proxmox VE provides a fully integrated solution, using the capabilities of each storage and each guest system type. This allows the system administrator to fine tune via the `mode` option between consistency of the backups and downtime of the guest system.
+任何合理的 IT 部署都需要备份，Proxmox VE 利用各存储和各客户机系统类型的能力，提供完全集成的解决方案。这允许系统管理员通过 `mode` 选项在备份一致性与客户机系统停机时间之间进行微调。
 
-Proxmox VE backups are always full backups \- containing the VM/CT configuration and all data. Backups can be started via the GUI or via the `vzdump` command-line tool.
+Proxmox VE 备份始终是完整备份，包含虚拟机/容器配置和全部数据。可通过 GUI 或 `vzdump` 命令行工具启动备份。
 
-**Backup Storage**
+**备份存储**
 
-Before a backup can run, a backup storage must be defined. Refer to the [storage documentation](pvesm-1.md#chapter_storage) on how to add a storage. It can either be a Proxmox Backup Server storage, where backups are stored as de-duplicated chunks and metadata, or a file-level storage, where backups are stored as regular files. Using Proxmox Backup Server on a dedicated host is recommended, because of its advanced features. Using an NFS server is a good alternative. In both cases, you might want to save those backups later to a tape drive, for off-site archiving.
+运行备份之前，必须定义备份存储。如何添加存储，请参阅[存储文档](pvesm-1.md#chapter_storage)。它可以是 Proxmox Backup Server 存储，备份以去重数据块和元数据的形式保存；也可以是文件级存储，备份以普通文件形式保存。由于 Proxmox Backup Server 具有高级功能，建议在专用宿主机上使用它。使用 NFS 服务器也是很好的替代方案。无论哪种情况，您可能都希望稍后将这些备份保存到磁带机，以进行异地归档。
 
-**Scheduled Backup**
+**计划备份**
 
-Backup jobs can be scheduled so that they are executed automatically on specific days and times, for selectable nodes and guest systems. See the [Backup Jobs](#vzdump_jobs) section for more.
+可以为选定的节点和客户机系统安排备份任务，使其在指定日期和时间自动执行。更多内容请参阅[备份任务](#vzdump_jobs)章节。
 
-## Backup Modes <a href="#_backup_modes" id="_backup_modes"></a>
+## 备份模式 <a href="#backup_modes" id="backup_modes"></a>
 
-There are several ways to provide consistency (option `mode`), depending on the guest type.
+根据客户机类型，有多种方式提供一致性（选项 `mode`）。
 
-**Backup modes for VMs:**
+**虚拟机的备份模式：**
 
-**`stop` mode**
+**`stop` 模式**
 
-This mode provides the highest consistency of the backup, at the cost of a short downtime in the VM operation. It works by executing an orderly shutdown of the VM, and then runs a background QEMU process to backup the VM data. After the backup is started, the VM goes to full operation mode if it was previously running. Consistency is guaranteed by using the live backup feature.
+此模式以虚拟机短暂停机为代价，提供最高的备份一致性。其工作方式是先有序关闭虚拟机，然后运行后台 QEMU 进程备份虚拟机数据。备份开始后，如果虚拟机此前正在运行，将恢复全面运行模式。一致性通过在线备份功能保证。
 
-**`suspend` mode**
+**`suspend` 模式**
 
-This mode is provided for compatibility reason, and suspends the VM before calling the `snapshot` mode. Since suspending the VM results in a longer downtime and does not necessarily improve the data consistency, the use of the `snapshot` mode is recommended instead.
+此模式出于兼容性原因提供，在调用 `snapshot` 模式之前暂停虚拟机。由于暂停虚拟机会造成更长的停机时间，并且不一定提高数据一致性，建议改用 `snapshot` 模式。
 
-**`snapshot` mode**
+**`snapshot` 模式**
 
-This mode provides the lowest operation downtime, at the cost of a small inconsistency risk. It works by performing a Proxmox VE live backup, in which data blocks are copied while the VM is running. If the guest agent is enabled (`agent: 1`) and running, it calls `guest-fsfreeze-freeze` and `guest-fsfreeze-thaw` to improve consistency.
-
-{% hint style="info" %}
-On Windows guests it is necessary to configure the guest agent if another backup software is used within the guest. See [Freeze \& Thaw](qm-1.md#qm_qga_fsfreeze) in the guest agent section for more details.
-{% endhint %}
-
-A technical overview of the Proxmox VE live backup for QemuServer can be found online [here](https://git.proxmox.com/?p=pve-qemu.git;a=blob_plain;f=backup.txt).
+此模式以少量不一致风险为代价，提供最短的运行停机时间。其工作方式是执行 Proxmox VE 在线备份，在虚拟机运行时复制数据块。如果启用客户机代理（`agent: 1`）且其正在运行，会调用 `guest-fsfreeze-freeze` 和 `guest-fsfreeze-thaw` 以提高一致性。
 
 {% hint style="info" %}
-Proxmox VE live backup provides snapshot-like semantics on any storage type. It does not require that the underlying storage supports snapshots. Also please note that since the backups are done via a background QEMU process, a stopped VM will appear as running for a short amount of time while the VM disks are being read by QEMU. However the VM itself is not booted, only its disk(s) are read.
+如果在 Windows 客户机内使用其他备份软件，则必须配置客户机代理。详情请参阅客户机代理章节中的[冻结与解冻](qm-1.md#qm_qga_fsfreeze)。
 {% endhint %}
 
-**Backup modes for Containers:**
-
-**`stop` mode**
-
-Stop the container for the duration of the backup. This potentially results in a very long downtime.
-
-**`suspend` mode**
-
-This mode uses rsync to copy the container data to a temporary location (see option `--tmpdir`). Then the container is suspended and a second rsync copies changed files. After that, the container is started (resumed) again. This results in minimal downtime, but needs additional space to hold the container copy.
-
-When the container is on a local file system and the target storage of the backup is an NFS/CIFS server, you should set `--tmpdir` to reside on a local file system too, as this will result in a many fold performance improvement. Use of a local `tmpdir` is also required if you want to backup a local container using ACLs in suspend mode if the backup storage is an NFS server.
-
-**`snapshot` mode**
-
-This mode uses the snapshotting facilities of the underlying storage. First, the container will be suspended to ensure data consistency. A temporary snapshot of the container’s volumes will be made and the snapshot content will be archived in a tar file. Finally, the temporary snapshot is deleted again.
+有关用于 QemuServer 的 Proxmox VE 在线备份的技术概述，可在线查阅 [此处](https://git.proxmox.com/?p=pve-qemu.git;a=blob_plain;f=backup.txt)。
 
 {% hint style="info" %}
-`snapshot` mode requires that all backed up volumes are on a storage that supports snapshots. Using the `backup=no` mount point option individual volumes can be excluded from the backup (and thus this requirement).
+Proxmox VE 在线备份在任意存储类型上提供类似快照的语义，不要求底层存储支持快照。另请注意，由于备份通过后台 QEMU 进程完成，因此当 QEMU 读取虚拟机磁盘时，已停止的虚拟机会短暂显示为正在运行。不过，虚拟机本身并未启动，只是读取其磁盘。
+{% endhint %}
+
+**容器的备份模式：**
+
+**`stop` 模式**
+
+在整个备份期间停止容器。这可能导致非常长的停机时间。
+
+**`suspend` 模式**
+
+此模式使用 rsync 将容器数据复制到临时位置（参见选项 `--tmpdir`）。然后暂停容器，再执行一次 rsync 复制已更改的文件。之后，再次启动（恢复）容器。这可使停机时间最短，但需要额外空间来保存容器副本。
+
+当容器位于本地文件系统，而备份目标存储是 NFS/CIFS 服务器时，还应将 `--tmpdir` 设为位于本地文件系统，这会使性能提高数倍。如果备份存储为 NFS 服务器，并且要在 suspend 模式下备份使用 ACL 的本地容器，也必须使用本地 `tmpdir`。
+
+**`snapshot` 模式**
+
+此模式使用底层存储的快照功能。首先暂停容器，以确保数据一致性。随后为容器卷创建临时快照，并将快照内容归档到 tar 文件中。最后再次删除临时快照。
+
+{% hint style="info" %}
+`snapshot` 模式要求所有备份的卷都位于支持快照的存储上。使用 `backup=no` 挂载点选项，可以将单独的卷排除在备份之外（因而也不受此要求限制）。
 {% endhint %}
 
 {% hint style="info" %}
-By default additional mount points besides the Root Disk mount point are not included in backups. For volume mount points you can set the **Backup** option to include the mount point in the backup. Device and bind mounts are never backed up as their content is managed outside the Proxmox VE storage library.
+默认情况下，除根磁盘挂载点外，其他挂载点不包含在备份中。对于卷挂载点，可以设置 **备份** 选项，将挂载点包含在备份中。设备挂载和绑定挂载从不备份，因为其内容由 Proxmox VE 存储库之外管理。
 {% endhint %}
 
-### VM Backup Fleecing <a href="#_vm_backup_fleecing" id="_vm_backup_fleecing"></a>
+### 虚拟机备份 Fleecing <a href="#vm_backup_fleecing" id="vm_backup_fleecing"></a>
 
-When a backup for a VM is started, QEMU will install a "copy-before-write" filter in its block layer. This filter ensures that upon new guest writes, old data still needed for the backup is sent to the backup target first. The guest write blocks until this operation is finished so guest IO to not-yet-backed-up sectors will be limited by the speed of the backup target.
+启动虚拟机备份时，QEMU 会在其块层安装“写前复制”过滤器。此过滤器确保当客户机发生新写入时，会先将备份仍需要的旧数据发送到备份目标。客户机写入会阻塞到此操作完成，因此客户机对尚未备份扇区的 IO 会受备份目标速度限制。
 
-With backup fleecing, such old data is cached in a fleecing image rather than sent directly to the backup target. This can help guest IO performance and even prevent hangs in certain scenarios, at the cost of requiring more storage space.
+使用备份 fleecing 时，这些旧数据会缓存在 fleecing 镜像中，而非直接发送到备份目标。这有助于提高客户机 IO 性能，甚至可在某些场景中避免挂起，代价是需要更多存储空间。
 
-To manually start a backup of VM `123` with fleecing images created on the storage `local-lvm`, run
+要手动启动虚拟机 `123` 的备份，并在存储 `local-lvm` 上创建 fleecing 镜像，请运行
 
 ```text
 vzdump 123 --fleecing enabled=1,storage=local-lvm
 ```
 
-As always, you can set the option for specific backup jobs, or as a node-wide fallback via the [configuration options](#vzdump_configuration). In the UI, fleecing can be configured in the *Advanced* tab when editing a backup job.
+与往常一样，可以为特定备份任务设置此选项，也可以通过[配置选项](#vzdump_configuration)将其设为节点范围的回退值。在界面中，编辑备份任务时可在*高级*选项卡配置 fleecing。
 
-The fleecing storage should be a fast local storage, with thin provisioning and discard support. Examples are LVM-thin, RBD, ZFS with `sparse 1` in the storage configuration, many file-based storages. Ideally, the fleecing storage is a dedicated storage, so it running full will not affect other guests and just fail the backup. Parts of the fleecing image that have been backed up will be discarded to try and keep the space usage low.
+fleecing 存储应是快速本地存储，支持精简置备和 discard。例如 LVM-thin、RBD、在存储配置中设置了 `sparse 1` 的 ZFS，以及许多基于文件的存储。理想情况下，fleecing 存储应为专用存储，这样即使空间耗尽，也不会影响其他客户机，只会使备份失败。fleecing 镜像中已完成备份的部分会被丢弃，以尽量保持较低的空间用量。
 
-For file-based storages that do not support discard (for example, NFS before version 4.2), you should set `preallocation off` in the storage configuration. In combination with `qcow2` (used automatically as the format for the fleecing image when the storage supports it), this has the advantage that already allocated parts of the image can be re-used later, which can still help save quite a bit of space.
+对于不支持 discard 的基于文件的存储（例如 4.2 之前版本的 NFS），应在存储配置中设置 `preallocation off`。与 `qcow2`（存储支持时，自动用作 fleecing 镜像格式）结合使用时，其优点是镜像中已分配的部分以后可以复用，仍可节省相当多的空间。
 
 {% hint style="warning" %}
-On a storage that’s not thinly provisioned, for example, LVM or ZFS without the `sparse` option, the full size of the original disk needs to be reserved for the fleecing image up-front. On a thinly provisioned storage, the fleecing image can grow to the same size as the original image only if the guest re-writes a whole disk while the backup is busy with another disk.
+在未使用精简置备的存储上，例如 LVM 或没有 `sparse` 选项的 ZFS，需要提前为 fleecing 镜像预留原始磁盘的全部大小。在精简置备存储上，只有当备份正在处理另一块磁盘、而客户机重写了整块磁盘时，fleecing 镜像才可能增长到与原始镜像相同的大小。
 {% endhint %}
 
-### CT Change Detection Mode <a href="#_ct_change_detection_mode" id="_ct_change_detection_mode"></a>
+### 容器更改检测模式 <a href="#ct_change_detection_mode" id="ct_change_detection_mode"></a>
 
-Setting the change detection mode defines the encoding format for the pxar archives and how changed, and unchanged files are handled for container backups with Proxmox Backup Server as the target.
+设置变更检测模式会定义 pxar 归档的编码格式，以及以 Proxmox Backup Server 为目标备份容器时，如何处理已更改和未更改的文件。
 
-The change detection mode option can be configured for individual backup jobs in the *Advanced* tab while editing a job. Further, this option can be set as node-wide fallback via the [configuration options](#vzdump_configuration).
+编辑任务时，可以在*高级*选项卡中为单个备份任务配置更改检测模式选项。此外，还可以通过[配置选项](#vzdump_configuration)将此选项设为节点范围的回退值。
 
-There are 3 change detection modes available:
+有 3 种可用的变更检测模式：
 
 <table>
 
 
 <thead>
 <tr>
-<th>Mode</th>
+<th>模式</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>Default</p></td>
-<td><p>Read and encode all files into a single archive, using the pxar format version 1.</p></td>
+<td><p>读取所有文件并编码到单个归档中，使用 pxar 格式版本 1。</p></td>
 </tr>
 <tr>
 <td><p>Data</p></td>
-<td><p>Read and encode all files, but split data and metadata into separate streams, using the pxar format version 2.</p></td>
+<td><p>读取并编码所有文件，但将数据和元数据拆分为独立流，使用 pxar 格式版本 2。</p></td>
 </tr>
 <tr>
 <td><p>Metadata</p></td>
-<td><p>Split streams and use archive format version 2 like <code>Data</code>, but use the metadata archive of the previous snapshot (if one exists) to detect unchanged files, and reuse their data chunks without reading file contents from disk, whenever possible.</p></td>
+<td><p>像 <code>Data</code> 一样拆分流并使用归档格式版本 2，但使用上一个快照的元数据归档（如果存在）检测未更改的文件，并尽可能复用其数据块，而无需从磁盘读取文件内容。</p></td>
 </tr>
 </tbody>
 </table>
 
-To perform a backup using the change detecation mode `metadata` you can run
+要使用变更检测模式 `metadata` 执行备份，可以运行
 
 ```text
 vzdump 123 --storage pbs-storage --pbs-change-detection-mode metadata
 ```
 
 {% hint style="info" %}
-Backups of VMs or to storage backends other than Proxmox Backup Server are not affected by this setting.
+虚拟机备份或备份到 Proxmox Backup Server 以外的存储后端不受此设置影响。
 {% endhint %}
 
-## Backup File Names <a href="#_backup_file_names" id="_backup_file_names"></a>
+## 备份文件名 <a href="#backup_file_names" id="backup_file_names"></a>
 
-Newer versions of vzdump encode the guest type and the backup time into the filename, for example
+较新版本的 vzdump 将客户机类型和备份时间编码到文件名中，例如
 
 ```text
 vzdump-lxc-105-2009_10_09-11_04_43.tar
 ```
 
-That way it is possible to store several backup in the same directory. You can limit the number of backups that are kept with various retention options, see the [Backup Retention](#vzdump_retention) section below.
+这样就可以在同一目录中保存多个备份。可以通过各种保留选项限制保留的备份数量，请参阅下方的[备份保留](#vzdump_retention)章节。
 
-## Backup File Compression <a href="#_backup_file_compression" id="_backup_file_compression"></a>
+## 备份文件压缩 <a href="#backup_file_compression" id="backup_file_compression"></a>
 
-The backup file can be compressed with one of the following algorithms: `lzo` [\[1\]](#note-6c818b60-1), `gzip` [\[2\]](#note-6c818b60-2) or `zstd` [\[3\]](#note-6c818b60-3).
+备份文件可以使用以下算法之一压缩：`lzo` [\[1\]](#note-6c818b60-1)、`gzip` [\[2\]](#note-6c818b60-2) 或 `zstd` [\[3\]](#note-6c818b60-3)。
 
-Currently, Zstandard (zstd) is the fastest of these three algorithms. Multi-threading is another advantage of zstd over lzo and gzip. Lzo and gzip are more widely used and often installed by default.
+目前，Zstandard（zstd）是这三种算法中最快的。多线程是 zstd 相对于 lzo 和 gzip 的另一个优势。Lzo 和 gzip 使用更广泛，并且通常默认安装。
 
-You can install pigz [\[4\]](#note-6c818b60-4) as a drop-in replacement for gzip to provide better performance due to multi-threading. For pigz \& zstd, the amount of threads/cores can be adjusted. See the [configuration options](#vzdump_configuration) below.
+可以安装 pigz [\[4\]](#note-6c818b60-4)，直接替代 gzip，通过多线程提供更好的性能。对于 pigz 和 zstd，可以调整线程/核心数量。请参阅下方的[配置选项](#vzdump_configuration)。
 
-The extension of the backup file name can usually be used to determine which compression algorithm has been used to create the backup.
+通常可以通过备份文件名的扩展名确定创建备份时使用了哪种压缩算法。
 
 <table>
 
@@ -317,375 +309,375 @@ The extension of the backup file name can usually be used to determine which com
 <tbody>
 <tr>
 <td><p>.zst</p></td>
-<td><p>Zstandard (zstd) compression</p></td>
+<td><p>Zstandard（zstd）压缩</p></td>
 </tr>
 <tr>
-<td><p>.gz or .tgz</p></td>
-<td><p>gzip compression</p></td>
+<td><p>.gz 或 .tgz</p></td>
+<td><p>gzip 压缩</p></td>
 </tr>
 <tr>
 <td><p>.lzo</p></td>
-<td><p>lzo compression</p></td>
+<td><p>lzo 压缩</p></td>
 </tr>
 </tbody>
 </table>
 
-If the backup file name doesn’t end with one of the above file extensions, then it was not compressed by vzdump.
+如果备份文件名不是以上任何文件扩展名结尾，则未由 vzdump 压缩。
 
-## Backup Encryption <a href="#_backup_encryption" id="_backup_encryption"></a>
+## 备份加密 <a href="#backup_encryption" id="backup_encryption"></a>
 
-For Proxmox Backup Server storages, you can optionally set up client-side encryption of backups, see [the corresponding section.](pvesm-1.md#storage_pbs_encryption)
+对于 Proxmox Backup Server 存储，可以选择设置备份的客户端加密，参见[相应章节。](pvesm-1.md#storage_pbs_encryption)
 
-## Backup Jobs <a href="#vzdump_jobs" id="vzdump_jobs"></a>
+## 备份任务 <a href="#vzdump_jobs" id="vzdump_jobs"></a>
 
 [![screenshot/gui-cluster-backup-overview.png](../assets/screenshot-gui-cluster-backup-overview-png-18af9966fffc.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-overview.png)
 
-Besides triggering a backup manually, you can also setup periodic jobs that backup all, or a selection of virtual guest to a storage. You can manage the jobs in the UI under *Datacenter* → *Backup* or via the `/cluster/backup` API endpoint. Both will generate job entries in `/etc/pve/jobs.cfg`, which are parsed and executed by the `pvescheduler` daemon.
+除手动触发备份外，还可以设置定期作业，将全部或选定的虚拟客户机备份到存储。可以在 UI 的 *数据中心* → *备份* 下管理作业，或通过 `/cluster/backup` API 端点管理。两者都会在 `/etc/pve/jobs.cfg` 中生成作业条目，由 `pvescheduler` 守护进程解析并执行。
 
 [![screenshot/gui-cluster-backup-edit-01-general.png](../assets/screenshot-gui-cluster-backup-edit-01-general-png-fa4abeeaaef7.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-01-general.png)
 
-A job is either configured for all cluster nodes or a specific node, and is executed according to a given schedule. The format for the schedule is very similar to `systemd` calendar events, see the calendar events section for details. The *Schedule* field in the UI can be freely edited, and it contains several examples that can be used as a starting point in its drop-down list.
+任务可以配置为针对所有集群节点或某个特定节点，并按给定计划执行。计划格式与 `systemd` 日历事件非常相似，详情请参阅日历事件章节。界面中的*计划*字段可以自由编辑，其下拉列表包含多个可作为起点的示例。
 
-You can configure job-specific [retention options](#vzdump_retention) overriding those from the storage or node configuration, as well as a [template for notes](#vzdump_notes) for additional information to be saved together with the backup.
+可以配置任务特定的[保留选项](#vzdump_retention)，覆盖存储或节点配置中的选项；也可以配置[备注模板](#vzdump_notes)，将额外信息随备份一起保存。
 
-Since scheduled backups miss their execution when the host was offline or the pvescheduler was disabled during the scheduled time, it is possible to configure the behaviour for catching up. By enabling the `Repeat missed` option (in the *Advanced* tab in the UI, `repeat-missed` in the config), you can tell the scheduler that it should run missed jobs as soon as possible.
+当宿主机在计划时间离线或 pvescheduler 被禁用时，计划备份会错过执行，因此可以配置补执行行为。启用 `Repeat missed` 选项（位于 UI 的 *高级* 选项卡，配置中为 `repeat-missed`），即可告知调度器应尽快运行错过的作业。
 
 [![screenshot/gui-cluster-backup-edit-04-advanced.png](../assets/screenshot-gui-cluster-backup-edit-04-advanced-png-d0a22edf1c07.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-04-advanced.png)
 
-There are a few settings for tuning backup performance (some of which are exposed in the *Advanced* tab in the UI). The most notable is `bwlimit` for limiting IO bandwidth. The amount of threads used for the compressor can be controlled with the `pigz` (replacing `gzip`), respectively, `zstd` setting. Furthermore, there are `ionice` (when the BFQ scheduler is used) and, as part of the `performance` setting, `max-workers` (affects VM backups only) and `pbs-entries-max` (affects container backups only). See the [configuration options](#vzdump_configuration) for details.
+有一些设置可以调优备份性能（其中部分位于界面的*高级*选项卡中）。最值得注意的是用于限制 I/O 带宽的 `bwlimit`。压缩器使用的线程数可以分别通过 `pigz`（替代 `gzip`）和 `zstd` 设置控制。此外，还有 `ionice`（使用 BFQ 调度器时），以及作为 `performance` 设置一部分的 `max-workers`（仅影响虚拟机备份）和 `pbs-entries-max`（仅影响容器备份）。详情请参阅[配置选项](#vzdump_configuration)。
 
-## Backup Retention <a href="#vzdump_retention" id="vzdump_retention"></a>
+## 备份保留 <a href="#vzdump_retention" id="vzdump_retention"></a>
 
-With the `prune-backups` option you can specify which backups you want to keep in a flexible manner.
+通过 `prune-backups` 选项，可以灵活指定要保留哪些备份。
 
 [![screenshot/gui-cluster-backup-edit-02-retention.png](../assets/screenshot-gui-cluster-backup-edit-02-retention-png-53ef529cdcbb.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-02-retention.png)
 
-The following retention options are available:
+可用的保留选项如下：
 
 **`keep-all <boolean>`**
 
-Keep all backups. If this is `true`, no other options can be set.
+保留所有备份。如果此项为 `true`，则不能设置其他选项。
 
 **`keep-last <N>`**
 
-Keep the last `<N>` backups.
+保留最后 `<N>` 个备份。
 
 **`keep-hourly <N>`**
 
-Keep backups for the last `<N>` hours. If there is more than one backup for a single hour, only the latest is kept.
+保留最近 `<N>` 小时的备份。如果同一小时有多个备份，只保留最新的。
 
 **`keep-daily <N>`**
 
-Keep backups for the last `<N>` days. If there is more than one backup for a single day, only the latest is kept.
+保留最近 `<N>` 天的备份。如果同一天有多个备份，只保留最新的。
 
 **`keep-weekly <N>`**
 
-Keep backups for the last `<N>` weeks. If there is more than one backup for a single week, only the latest is kept.
+保留最近 `<N>` 周的备份。如果同一周有多个备份，只保留最新的。
 
 {% hint style="info" %}
-Weeks start on Monday and end on Sunday. The software uses the `ISO week date`-system and handles weeks at the end of the year correctly.
+一周从星期一开始，到星期日结束。软件使用 `ISO week date` 系统，并正确处理年末的周数。
 {% endhint %}
 
 **`keep-monthly <N>`**
 
-Keep backups for the last `<N>` months. If there is more than one backup for a single month, only the latest is kept.
+保留最近 `<N>` 个月的备份。如果同一个月有多个备份，只保留最新的。
 
 **`keep-yearly <N>`**
 
-Keep backups for the last `<N>` years. If there is more than one backup for a single year, only the latest is kept.
+保留最近 `<N>` 年的备份。如果同一年有多个备份，只保留最新的。
 
-The retention options are processed in the order given above. Each option only covers backups within its time period. The next option does not take care of already covered backups. It will only consider older backups.
+保留选项按上述顺序处理。每个选项仅涵盖其时间段内的备份。下一个选项不处理已涵盖的备份，只考虑更早的备份。
 
-Specify the retention options you want to use as a comma-separated list, for example:
+以逗号分隔的列表指定要使用的保留选项，例如：
 
 ```text
 # vzdump 777 --prune-backups keep-last=3,keep-daily=13,keep-yearly=9
 ```
 
-While you can pass `prune-backups` directly to `vzdump`, it is often more sensible to configure the setting on the storage level, which can be done via the web interface.
+虽然可以将 `prune-backups` 直接传递给 `vzdump`，但通常在存储级别配置此设置更合理，可通过 Web 界面完成。
 
-### Prune Simulator <a href="#_prune_simulator" id="_prune_simulator"></a>
+### 清理模拟器 <a href="#prune_simulator" id="prune_simulator"></a>
 
-You can use the [prune simulator of the Proxmox Backup Server documentation](https://pbs.proxmox.com/docs/prune-simulator) to explore the effect of different retention options with various backup schedules.
+可以使用 [Proxmox Backup Server 文档中的清理模拟器](https://pbs.proxmox.com/docs/prune-simulator)，探索不同保留选项对各种备份计划的影响。
 
-### Retention Settings Example <a href="#_retention_settings_example" id="_retention_settings_example"></a>
+### 保留设置示例 <a href="#retention_settings_example" id="retention_settings_example"></a>
 
-The backup frequency and retention of old backups may depend on how often data changes, and how important an older state may be, in a specific work load. When backups act as a company’s document archive, there may also be legal requirements for how long backups must be kept.
+备份频率和旧备份的保留可能取决于特定工作负载中数据更改的频繁程度，以及较早状态的重要程度。当备份充当公司的文档归档时，还可能存在关于备份保存期限的法律要求。
 
-For this example, we assume that you are doing daily backups, have a retention period of 10 years, and the period between backups stored gradually grows.
+在此示例中，假设您每天进行备份，保留期为 10 年，且保存的备份之间的间隔逐渐增长。
 
-`keep-last=3` \- even if only daily backups are taken, an admin may want to create an extra one just before or after a big upgrade. Setting keep-last ensures this.
+`keep-last=3` \- 即使只进行每日备份，管理员也可能希望在重大升级之前或之后创建额外备份。设置 keep-last 可确保这一点。
 
-`keep-hourly` is not set \- for daily backups this is not relevant. You cover extra manual backups already, with keep-last.
+未设置 `keep-hourly` \- 对于每日备份，这无关紧要。keep-last 已涵盖额外的手动备份。
 
-`keep-daily=13` \- together with keep-last, which covers at least one day, this ensures that you have at least two weeks of backups.
+`keep-daily=13` \- 与至少涵盖一天的 keep-last 一起使用，确保至少拥有两周的备份。
 
-`keep-weekly=8` \- ensures that you have at least two full months of weekly backups.
+`keep-weekly=8` \- 确保至少拥有两个完整月的每周备份。
 
-`keep-monthly=11` \- together with the previous keep settings, this ensures that you have at least a year of monthly backups.
+`keep-monthly=11` \- 与前面的保留设置一起使用，确保至少拥有一年的每月备份。
 
-`keep-yearly=9` \- this is for the long term archive. As you covered the current year with the previous options, you would set this to nine for the remaining ones, giving you a total of at least 10 years of coverage.
+`keep-yearly=9` \- 用于长期归档。由于前面的选项已涵盖当前年份，应将此项设为九以保留其余年份，从而总共至少覆盖 10 年。
 
-We recommend that you use a higher retention period than is minimally required by your environment; you can always reduce it if you find it is unnecessarily high, but you cannot recreate backups once they have been removed.
+建议使用长于环境最低要求的保留期；如果发现不必要地过长，可以随时缩短，但一旦备份被移除，就无法重新创建。
 
-## Backup Protection <a href="#vzdump_protection" id="vzdump_protection"></a>
+## 备份保护 <a href="#vzdump_protection" id="vzdump_protection"></a>
 
-You can mark a backup as `protected` to prevent its removal. Attempting to remove a protected backup via Proxmox VE’s UI, CLI or API will fail. However, this is enforced by Proxmox VE and not the file-system, that means that a manual removal of a backup file itself is still possible for anyone with write access to the underlying backup storage.
+可以将备份标记为 `protected`，以防止将其移除。尝试通过 Proxmox VE 的 UI、CLI 或 API 移除受保护备份会失败。不过，此保护由 Proxmox VE 而非文件系统强制实施，这意味着任何对底层备份存储具有写入权限的人仍可手动移除备份文件本身。
 
 {% hint style="info" %}
-Protected backups are ignored by pruning and do not count towards the retention settings.
+受保护备份会被清理操作忽略，也不计入保留设置。
 {% endhint %}
 
-For filesystem-based storages, the protection is implemented via a sentinel file `<backup-name>.protected`. For Proxmox Backup Server, it is handled on the server side (available since Proxmox Backup Server version 2.1).
+对于基于文件系统的存储，通过哨兵文件 `<backup-name>.protected` 实现保护。对于 Proxmox Backup Server，由服务器端处理（自 Proxmox Backup Server 2.1 版本起提供）。
 
-Use the storage option `max-protected-backups` to control how many protected backups per guest are allowed on the storage. Use `-1` for unlimited. The default is unlimited for users with `Datastore.Allocate` privilege and `5` for other users.
+使用存储选项 `max-protected-backups` 控制存储上每个客户机允许的受保护备份数量。使用 `-1` 表示无限制。具有 `Datastore.Allocate` 权限的用户默认无限制，其他用户默认为 `5`。
 
-## Backup Notes <a href="#vzdump_notes" id="vzdump_notes"></a>
+## 备份备注 <a href="#vzdump_notes" id="vzdump_notes"></a>
 
-You can add notes to backups using the *Edit Notes* button in the UI or via the storage content API.
+可以使用 UI 中的 *编辑备注* 按钮，或通过存储内容 API 为备份添加备注。
 
 [![screenshot/gui-cluster-backup-edit-03-template.png](../assets/screenshot-gui-cluster-backup-edit-03-template-png-bf2a2cf7a400.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-03-template.png)
 
-It is also possible to specify a template for generating notes dynamically for a backup job and for manual backup. The template string can contain variables, surrounded by two curly braces, which will be replaced by the corresponding value when the backup is executed.
+还可以指定模板，为备份作业和手动备份动态生成备注。模板字符串可包含由两个花括号包围的变量，在执行备份时会替换为相应值。
 
 目前支持：
 
-- `{{cluster}}` the cluster name, if any
-- `{{guestname}}` the virtual guest’s assigned name
-- `{{node}}` the host name of the node the backup is being created
-- `{{vmid}}` the numerical VMID of the guest
+- `{{cluster}}` 集群名称（如果存在）
+- `{{guestname}}` 虚拟客户机分配的名称
+- `{{node}}` 创建备份所在节点的主机名
+- `{{vmid}}` 客户机的数字 VMID
 
-When specified via API or CLI, it needs to be a single line, where newline and backslash need to be escaped as literal `\n` and `\\` respectively.
+通过 API 或 CLI 指定时，必须为单行，其中换行和反斜杠分别需要转义为字面值 `\n` 和 `\\`。
 
-## Restore <a href="#vzdump_restore" id="vzdump_restore"></a>
+## 恢复 <a href="#vzdump_restore" id="vzdump_restore"></a>
 
-A backup archive can be restored through the Proxmox VE web GUI or through the following CLI tools:
+可以通过 Proxmox VE Web GUI 或以下 CLI 工具恢复备份归档：
 
 **`pct restore`**
 
-Container restore utility
+容器恢复实用程序
 
 **`qmrestore`**
 
-Virtual Machine restore utility
+虚拟机恢复实用程序
 
-For details see the corresponding manual pages.
+详情参见相应手册页。
 
-### Bandwidth Limit <a href="#_bandwidth_limit" id="_bandwidth_limit"></a>
+### 带宽限制 <a href="#bandwidth_limit" id="bandwidth_limit"></a>
 
-Restoring one or more big backups may need a lot of resources, especially storage bandwidth for both reading from the backup storage and writing to the target storage. This can negatively affect other virtual guests as access to storage can get congested.
+恢复一个或多个大型备份可能需要大量资源，尤其是从备份存储读取和向目标存储写入所需的存储带宽。这可能对其他虚拟客户机产生负面影响，因为存储访问可能拥塞。
 
-To avoid this you can set bandwidth limits for a backup job. Proxmox VE implements two kinds of limits for restoring and archive:
+为避免这种情况，可以为备份作业设置带宽限制。Proxmox VE 为归档恢复实现两种限制：
 
-- per-restore limit: denotes the maximal amount of bandwidth for reading from a backup archive
-- per-storage write limit: denotes the maximal amount of bandwidth used for writing to a specific storage
+- 单次恢复限制：表示读取备份归档的最大带宽
+- 单个存储写入限制：表示写入特定存储所用的最大带宽
 
-The read limit indirectly affects the write limit, as we cannot write more than we read. A smaller per-job limit will overwrite a bigger per-storage limit. A bigger per-job limit will only overwrite the per-storage limit if you have ‘Data.Allocate’ permissions on the affected storage.
+读取限制会间接影响写入限制，因为写入量不能超过读取量。较小的单作业限制会覆盖较大的单存储限制。较大的单作业限制只有在您对受影响存储具有“Data.Allocate”权限时才会覆盖单存储限制。
 
-You can use the ‘--bwlimit \<integer\>\` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing \`10240’ will limit the read speed of the backup to 10 MiB/s, ensuring that the rest of the possible storage bandwidth is available for the already running virtual guests, and thus the backup does not impact their operations.
+可以使用“--bwlimit \<integer\>\` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing \`10240”将备份读取速度限制为 10 MiB/s，确保其余可用存储带宽留给已经运行的虚拟客户机，从而使备份不影响其运行。
 
 {% hint style="info" %}
-You can use ‘0\` for the `bwlimit` parameter to disable all limits for a specific restore job. This can be helpful if you need to restore a very important virtual guest as fast as possible. (Needs \`Data.Allocate’ permissions on storage)
+可以将“0”用于 `bwlimit` 参数，以禁用特定恢复作业的所有限制。如果需要尽快恢复非常重要的虚拟客户机，这可能很有帮助。（需要存储上的“Data.Allocate”权限）
 {% endhint %}
 
-Most times your storage’s generally available bandwidth stays the same over time, thus we implemented the possibility to set a default bandwidth limit per configured storage, this can be done with:
+通常，存储的总体可用带宽随时间保持不变，因此我们实现了为每个已配置存储设置默认带宽限制的功能，可通过以下方式完成：
 
 ```text
 # pvesm set STORAGEID --bwlimit restore=KIBs
 ```
 
-### Live-Restore <a href="#_live_restore" id="_live_restore"></a>
+### 在线恢复 <a href="#live_restore" id="live_restore"></a>
 
-Restoring a large backup can take a long time, in which a guest is still unavailable. For VM backups stored on a Proxmox Backup Server, this wait time can be mitigated using the live-restore option.
+恢复大型备份可能需要很长时间，在此期间客户机仍不可用。对于存储在 Proxmox Backup Server 上的虚拟机备份，可以使用在线恢复选项缩短此等待时间。
 
-Enabling live-restore via either the checkbox in the GUI or the `--live-restore` argument of `qmrestore` causes the VM to start as soon as the restore begins. Data is copied in the background, prioritizing chunks that the VM is actively accessing.
+通过 GUI 中的复选框或 `--live-restore` 参数（属于 `qmrestore`）启用在线恢复后，虚拟机会在恢复开始时立即启动。数据在后台复制，优先处理虚拟机正在访问的数据块。
 
-Note that this comes with two caveats:
+请注意，这有两点需要留意：
 
-- During live-restore, the VM will operate with limited disk read speeds, as data has to be loaded from the backup server (once loaded, it is immediately available on the destination storage however, so accessing data twice only incurs the penalty the first time). Write speeds are largely unaffected.
-- If the live-restore fails for any reason, the VM will be left in an undefined state \- that is, not all data might have been copied from the backup, and it is *most likely* not possible to keep any data that was written during the failed restore operation.
+- 在线恢复期间，虚拟机的磁盘读取速度会受限，因为必须从备份服务器加载数据（不过一旦加载，数据就会立即在目标存储上可用，因此访问同一数据两次时，只有第一次会产生额外开销）。写入速度基本不受影响。
+- 如果在线恢复因任何原因失败，虚拟机将处于未定义状态，也就是说，可能并非所有数据都已从备份复制，而且 *很可能* 无法保留失败的恢复操作期间写入的任何数据。
 
-This mode of operation is especially useful for large VMs, where only a small amount of data is required for initial operation, e.g. web servers \- once the OS and necessary services have been started, the VM is operational, while the background task continues copying seldom used data.
+这种运行模式特别适合大型虚拟机，其初始运行只需要少量数据，例如 Web 服务器：操作系统和必要服务启动后，虚拟机即可运行，而后台任务继续复制很少使用的数据。
 
-### Single File Restore <a href="#_single_file_restore" id="_single_file_restore"></a>
+### 单文件恢复 <a href="#single_file_restore" id="single_file_restore"></a>
 
-The *File Restore* button in the *Backups* tab of the storage GUI can be used to open a file browser directly on the data contained in a backup. This feature is only available for backups on a Proxmox Backup Server.
+*文件恢复* 按钮位于存储 GUI 的 *备份* 选项卡中，可用于直接针对备份中包含的数据打开文件浏览器。此功能仅适用于 Proxmox Backup Server 上的备份。
 
-For containers, the first layer of the file tree shows all included *pxar* archives, which can be opened and browsed freely. For VMs, the first layer shows contained drive images, which can be opened to reveal a list of supported storage technologies found on the drive. In the most basic case, this will be an entry called *part*, representing a partition table, which contains entries for each partition found on the drive. Note that for VMs, not all data might be accessible (unsupported guest file systems, storage technologies, etc…).
+对于容器，文件树的第一层显示所有包含的 *pxar* 归档，可自由打开和浏览。对于虚拟机，第一层显示包含的驱动器镜像，打开后会显示驱动器上发现的受支持存储技术列表。在最基本的情况下，会有一个名为 *part* 的条目，表示分区表，其中包含驱动器上发现的每个分区的条目。请注意，对于虚拟机，可能并非所有数据都可访问（不支持的客户机文件系统、存储技术等）。
 
-Files and directories can be downloaded using the *Download* button, the latter being compressed into a zip archive on the fly.
+可以使用 *下载* 按钮下载文件和目录，目录会即时压缩为 zip 归档。
 
-To enable secure access to VM images, which might contain untrusted data, a temporary VM (not visible as a guest) is started. This does not mean that data downloaded from such an archive is inherently safe, but it avoids exposing the hypervisor system to danger. The VM will stop itself after a timeout. This entire process happens transparently from a user’s point of view.
+为安全访问可能包含不受信任数据的虚拟机镜像，会启动一台临时虚拟机（不会显示为客户机）。这并不意味着从此类归档下载的数据本身是安全的，但可避免虚拟化管理程序系统面临危险。该虚拟机会在超时后自行停止。从用户角度看，整个过程是透明的。
 
 {% hint style="info" %}
-For troubleshooting purposes, each temporary VM instance generates a log file in `/var/log/proxmox-backup/file-restore/`. The log file might contain additional information in case an attempt to restore individual files or accessing file systems contained in a backup archive fails.
+为便于故障排查，每个临时虚拟机实例都会在 `/var/log/proxmox-backup/file-restore/` 中生成日志文件。如果尝试恢复单个文件或访问备份归档中的文件系统失败，日志文件可能包含更多信息。
 {% endhint %}
 
 ## 配置 <a href="#vzdump_configuration" id="vzdump_configuration"></a>
 
-Global configuration is stored in `/etc/vzdump.conf`. The file uses a simple colon separated key/value format. Each line has the following format:
+全局配置存储在 `/etc/vzdump.conf` 中。此文件使用简单的冒号分隔键/值格式。每行格式如下：
 
 ```text
 OPTION: value
 ```
 
-Blank lines in the file are ignored, and lines starting with a `#` character are treated as comments and are also ignored. Values from this file are used as default, and can be overwritten on the command line.
+文件中的空行被忽略，以 `#` 字符开头的行视为注释，也被忽略。此文件中的值用作默认值，可在命令行中覆盖。
 
-We currently support the following options:
+目前支持以下选项：
 
-**`bwlimit`: `<integer> (0 - N)` (*default \=* `0`)**
+**`bwlimit`：`<integer> (0 - N)`（*默认值 \=* `0`）**
 
-Limit I/O bandwidth (in KiB/s).
+限制 I/O 带宽（KiB/s）。
 
-**`compress`: `<0 | 1 | gzip | lzo | zstd>` (*default \=* `0`)**
+**`compress`：`<0 | 1 | gzip | lzo | zstd>`（*默认值 \=* `0`）**
 
-Compress dump file.
+压缩转储文件。
 
 **`dumpdir`: `<string>`**
 
-Store resulting files to specified directory.
+将生成的文件存储到指定目录。
 
 **`exclude-path`: `<array>`**
 
-Exclude certain files/directories (shell globs). Paths starting with */* are anchored to the container’s root, other paths match relative to each subdirectory.
+排除某些文件/目录（shell 通配模式）。以 */* 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
 
 **`fleecing`: `[[enabled=]<1|0>] [,storage=<storage ID>]`**
 
-Options for backup fleecing (VM only).
+备份 fleecing 的选项（仅限虚拟机）。
 
 **`enabled`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable backup fleecing. Cache backup data from blocks where new guest writes happen on specified storage instead of copying them directly to the backup target. This can help guest IO performance and even prevent hangs, at the cost of requiring more storage space.
+启用备份 fleecing。当客户机发生新的块写入时，将这些块的备份数据缓存在指定存储上，而非直接复制到备份目标。这有助于提高客户机 IO 性能，甚至避免挂起，代价是需要更多存储空间。
 
 **`storage`\=`<storage ID>`**
 
-Use this storage to storage fleecing images. For efficient space usage, it’s best to use a local storage that supports discard and either thin provisioning or sparse files.
+使用此存储保存 fleecing 镜像。为高效利用空间，最好使用支持 discard 且支持精简置备或稀疏文件的本地存储。
 
-**`ionice`: `<integer> (0 - 8)` (*default \=* `7`)**
+**`ionice`：`<integer> (0 - 8)`（*默认值 \=* `7`）**
 
-Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.
+使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，这仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用尽力而为优先级及指定值。
 
-**`lockwait`: `<integer> (0 - N)` (*default \=* `180`)**
+**`lockwait`：`<integer> (0 - N)`（*默认值 \=* `180`）**
 
-Maximal time to wait for the global lock (minutes).
+等待全局锁的最长时间（分钟）。
 
-**`mailnotification`: `<always | failure>` (*default \=* `always`)**
+**`mailnotification`：`<always | failure>`（*默认值 \=* `always`）**
 
-Deprecated: use notification targets/matchers instead. Specify when to send a notification mail
+已弃用：请改用通知目标/匹配器。指定何时发送通知邮件
 
 **`mailto`: `<string>`**
 
-Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.
+已弃用：请改用通知目标/匹配器。应接收电子邮件通知的电子邮件地址或用户的逗号分隔列表。
 
-**`mode`: `<snapshot | stop | suspend>` (*default \=* `snapshot`)**
+**`mode`：`<snapshot | stop | suspend>`（*默认值 \=* `snapshot`）**
 
-Backup mode.
+备份模式。
 
 **`notes-template`: `<string>`**
 
-Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {\\{\\cluster}}, {\\{\\guestname}}, {\\{\\node}}, and {\\{\\vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as *\\n* and *\\\\* respectively.
+用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 *\\n* 和 *\\\\*。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`notification-mode`: `<auto | legacy-sendmail | notification-system>` (*default \=* `auto`)**
+**`notification-mode`：`<auto | legacy-sendmail | notification-system>`（*默认值 \=* `auto`）**
 
-Determine which notification system to use. If set to *legacy-sendmail*, vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the *sendmail* command. If set to *notification-system*, a notification will be sent via PVE’s notification system, and the mailto and mailnotification will be ignored. If set to *auto* (default setting), an email will be sent if mailto is set, and the notification system will be used if not.
+确定要使用的通知系统。如果设为 *legacy-sendmail*，vzdump 会考虑 mailto/mailnotification 参数，并通过 *sendmail* 命令向指定地址发送电子邮件。如果设为 *notification-system*，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 *auto*（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
 
 **`pbs-change-detection-mode`: `<data | legacy | metadata>`**
 
-PBS mode used to detect file changes and switch encoding format for container backups.
+用于检测文件更改并切换容器备份编码格式的 PBS 模式。
 
 **`performance`: `[max-workers=<integer>] [,pbs-entries-max=<integer>]`**
 
-Other performance-related settings.
+其他性能相关设置。
 
-**`max-workers`\=`<integer> (1 - 256)` (*default \=* `16`)**
+**`max-workers`\=`<integer> (1 - 256)`（*默认值 \=* `16`）**
 
-Applies to VMs. Allow up to this many IO workers at the same time.
+适用于虚拟机。允许同时最多运行此数量的 IO 工作线程。
 
-**`pbs-entries-max`\=`<integer> (1 - N)` (*default \=* `1048576`)**
+**`pbs-entries-max`\=`<integer> (1 - N)`（*默认值 \=* `1048576`）**
 
-Applies to container backups sent to PBS. Limits the number of entries allowed in memory at a given time to avoid unintended OOM situations. Increase it to enable backups of containers with a large amount of files.
+适用于发送到 PBS 的容器备份。限制任一时刻内存中允许的条目数量，以避免意外的 OOM 情况。增大此值可备份包含大量文件的容器。
 
-**`pigz`: `<integer>` (*default \=* `0`)**
+**`pigz`：`<integer>`（*默认值 \=* `0`）**
 
-Use pigz instead of gzip when N\>0. N\=1 uses half of cores, N\>1 uses N as thread count.
+N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为线程数。
 
 **`pool`: `<string>`**
 
-Backup all known guest systems included in the specified pool.
+备份指定池中包含的所有已知客户机系统。
 
 **`protected`: `<boolean>`**
 
-If true, mark backup(s) as protected.
+如果为 true，将备份标记为受保护。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`prune-backups`: `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` (*default \=* `keep-all=1`)**
+**`prune-backups`：`[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`（*默认值 \=* `keep-all=1`）**
 
-Use these retention options instead of those from the storage configuration.
+使用这些保留选项，替代存储配置中的保留选项。
 
 **`keep-all`\=`<boolean>`**
 
-Keep all backups. Conflicts with the other options when true.
+保留所有备份。为 true 时与其他选项冲突。
 
 **`keep-daily`\=`<N>`**
 
-Keep backups for the last \<N\> different days. If there is morethan one backup for a single day, only the latest one is kept.
+保留最近 \<N\> 个不同日期的备份。如果同一天有多个备份，只保留最新的。
 
 **`keep-hourly`\=`<N>`**
 
-Keep backups for the last \<N\> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
+保留最近 \<N\> 个不同小时的备份。如果同一小时有多个备份，只保留最新的。
 
 **`keep-last`\=`<N>`**
 
-Keep the last \<N\> backups.
+保留最后 \<N\> 个备份。
 
 **`keep-monthly`\=`<N>`**
 
-Keep backups for the last \<N\> different months. If there is morethan one backup for a single month, only the latest one is kept.
+保留最近 \<N\> 个不同月份的备份。如果同一个月有多个备份，只保留最新的。
 
 **`keep-weekly`\=`<N>`**
 
-Keep backups for the last \<N\> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
+保留最近 \<N\> 个不同周的备份。如果同一周有多个备份，则只保留最新的备份。
 
 **`keep-yearly`\=`<N>`**
 
-Keep backups for the last \<N\> different years. If there is morethan one backup for a single year, only the latest one is kept.
+保留最近 \<N\> 个不同年份的备份。如果同一年有多个备份，则只保留最新的备份。
 
-**`remove`: `<boolean>` (*default \=* `1`)**
+**`remove`：`<boolean>`（*默认值 \=* `1`）**
 
-Prune older backups according to *prune-backups*.
+根据 *prune-backups* 清理较旧的备份。
 
 **`script`: `<string>`**
 
-Use specified hook script.
+使用指定的钩子脚本。
 
-**`stdexcludes`: `<boolean>` (*default \=* `1`)**
+**`stdexcludes`：`<boolean>`（*默认值 \=* `1`）**
 
-Exclude temporary files and logs.
+排除临时文件和日志。
 
-**`stopwait`: `<integer> (0 - N)` (*default \=* `10`)**
+**`stopwait`：`<integer> (0 - N)`（*默认值 \=* `10`）**
 
-Maximal time to wait until a guest system is stopped (minutes).
+等待客户机系统停止的最长时间（分钟）。
 
 **`storage`: `<storage ID>`**
 
-Store resulting file to this storage.
+将生成的文件保存到此存储。
 
 **`tmpdir`: `<string>`**
 
-Store temporary files to specified directory.
+将临时文件保存到指定目录。
 
-**`zstd`: `<integer>` (*default \=* `1`)**
+**`zstd`：`<integer>`（*默认值 \=* `1`）**
 
-Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
+Zstd 线程数。N\=0 使用可用核心的一半；如果 N 设置为大于 0 的值，则使用 N 作为线程数。
 
-**Example `vzdump.conf` Configuration**
+**`vzdump.conf` 配置示例**
 
 ```text
 tmpdir: /mnt/fast_local_disk
@@ -694,17 +686,17 @@ mode: snapshot
 bwlimit: 10000
 ```
 
-## Hook Scripts <a href="#_hook_scripts" id="_hook_scripts"></a>
+## 钩子脚本 <a href="#hook_scripts" id="hook_scripts"></a>
 
-You can specify a hook script with option `--script`. This script is called at various phases of the backup process, with parameters accordingly set. You can find an example in the documentation directory (`vzdump-hook-script.pl`).
+可以使用选项 `--script` 指定钩子脚本。此脚本会在备份过程的各个阶段被调用，并设置相应参数。文档目录（`vzdump-hook-script.pl`）中提供了一个示例。
 
-## File Exclusions <a href="#_file_exclusions" id="_file_exclusions"></a>
+## 文件排除 <a href="#file_exclusions" id="file_exclusions"></a>
 
 {% hint style="info" %}
-this option is only available for container backups.
+此选项仅适用于容器备份。
 {% endhint %}
 
-`vzdump` skips the following files by default (disable with the option `--stdexcludes 0`)
+`vzdump` 默认跳过以下文件（使用选项 `--stdexcludes 0` 禁用）
 
 ```text
 /tmp/?*
@@ -712,85 +704,85 @@ this option is only available for container backups.
 /var/run/?*pid
 ```
 
-You can also manually specify (additional) exclude paths, for example:
+也可以手动指定（额外的）排除路径，例如：
 
 ```text
 # vzdump 777 --exclude-path /tmp/ --exclude-path '/var/foo*'
 ```
 
-excludes the directory `/tmp/` and any file or directory named `/var/foo`, `/var/foobar`, and so on.
+排除目录 `/tmp/` 以及名为 `/var/foo`、`/var/foobar` 等的任何文件或目录。
 
 {% hint style="warning" %}
-For backups to Proxmox Backup Server (PBS) and `suspend` mode backups, patterns with a trailing slash will match directories, but not files. On the other hand, for non-PBS `snapshot` mode and `stop` mode backups, patterns with a trailing slash currently do not match at all, because the `tar` command does not support that.
+对于备份到 Proxmox Backup Server（PBS）的备份和 `suspend` 模式备份，以斜杠结尾的模式会匹配目录，但不匹配文件。另一方面，对于非 PBS 的 `snapshot` 模式和 `stop` 模式备份，以斜杠结尾的模式目前完全不会匹配，因为 `tar` 命令不支持这种模式。
 {% endhint %}
 
-Paths that do not start with a `/` are not anchored to the container’s root, but will match relative to any subdirectory. For example:
+不以 `/` 开头的路径不会锚定到容器的根目录，而是相对于任意子目录进行匹配。例如：
 
 ```text
 # vzdump 777 --exclude-path bar
 ```
 
-excludes any file or directory named `/bar`, `/var/bar`, `/var/foo/bar`, and so on, but not `/bar2`.
+排除名为 `/bar`、`/var/bar`、`/var/foo/bar` 等的任何文件或目录，但不排除 `/bar2`。
 
-Configuration files are also stored inside the backup archive (in `./etc/vzdump/`) and will be correctly restored.
+配置文件也保存在备份归档中（位于 `./etc/vzdump/`），并会得到正确恢复。
 
-## Examples <a href="#_examples" id="_examples"></a>
+## 示例 <a href="#examples" id="examples"></a>
 
-Simply dump guest 777 \- no snapshot, just archive the guest private area and configuration files to the default dump directory (usually `/var/lib/vz/dump/`).
+仅转储客户机 777：不创建快照，只将客户机的私有区域和配置文件归档到默认转储目录（通常为 `/var/lib/vz/dump/`）。
 
 ```text
 # vzdump 777
 ```
 
-Use rsync and suspend/resume to create a snapshot (minimal downtime).
+使用 rsync 和挂起/恢复创建快照（停机时间最短）。
 
 ```text
 # vzdump 777 --mode suspend
 ```
 
-Backup all guest systems and send notification mails to root and admin. Due to `mailto` being set and `notification-mode` being set to `auto` by default, the notification mails are sent via the system’s `sendmail` command instead of the notification system.
+备份所有客户机系统，并向 root 和 admin 发送通知邮件。由于设置了 `mailto`，且 `notification-mode` 默认设置为 `auto`，通知邮件通过系统的 `sendmail` 命令发送，而不是通过通知系统发送。
 
 ```text
 # vzdump --all --mode suspend --mailto root --mailto admin
 ```
 
-Use snapshot mode (no downtime) and non-default dump directory.
+使用快照模式（无需停机）和非默认的转储目录。
 
 ```text
 # vzdump 777 --dumpdir /mnt/backup --mode snapshot
 ```
 
-Backup more than one guest (selectively)
+备份多个客户机（选择性备份）
 
 ```text
 # vzdump 101 102 103 --mailto root
 ```
 
-Backup all guests excluding 101 and 102
+备份除 101 和 102 以外的所有客户机
 
 ```text
 # vzdump --mode suspend --exclude 101,102
 ```
 
-Restore a container to a new CT 600
+将容器恢复为新的 CT 600
 
 ```text
 # pct restore 600 /mnt/backup/vzdump-lxc-777.tar
 ```
 
-Restore a QemuServer VM to VM 601
+将 QemuServer 虚拟机恢复为 VM 601
 
 ```text
 # qmrestore /mnt/backup/vzdump-qemu-888.vma 601
 ```
 
-Clone an existing container 101 to a new container 300 with a 4GB root file system, using pipes
+使用管道将现有容器 101 克隆为具有 4GB 根文件系统的新容器 300
 
 ```text
 # vzdump 101 --stdout | pct restore --rootfs 4 300 -
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -810,19 +802,19 @@ Clone an existing container 101 to a new container 300 with a 4GB root file syst
 
 ### 注释 1 <a href="#note-6c818b60-1" id="note-6c818b60-1"></a>
 
-Lempel–Ziv–Oberhumer a lossless data compression algorithm [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)
+Lempel–Ziv–Oberhumer，无损数据压缩算法 [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)
 
 ### 注释 2 <a href="#note-6c818b60-2" id="note-6c818b60-2"></a>
 
-gzip \- based on the DEFLATE algorithm [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)
+gzip \- 基于 DEFLATE 算法 [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)
 
 ### 注释 3 <a href="#note-6c818b60-3" id="note-6c818b60-3"></a>
 
-Zstandard a lossless data compression algorithm [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)
+Zstandard，无损数据压缩算法 [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)
 
 ### 注释 4 <a href="#note-6c818b60-4" id="note-6c818b60-4"></a>
 
-pigz \- parallel implementation of gzip [https://zlib.net/pigz/](https://zlib.net/pigz/)
+pigz \- gzip 的并行实现 [https://zlib.net/pigz/](https://zlib.net/pigz/)
 
 ---
 

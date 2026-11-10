@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/lvm`
 
-List local LVM volume groups.
+列出本地 LVM 卷组。
 
 **方法标识：** `lvmscan`
 
@@ -46,7 +46,7 @@ List local LVM volume groups.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List local LVM volume groups.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,7 +74,7 @@ List local LVM volume groups.
   "items": {
     "properties": {
       "vg": {
-        "description": "The LVM logical volume group name.",
+        "description": "LVM 逻辑卷组名称。",
         "type": "string"
       }
     },

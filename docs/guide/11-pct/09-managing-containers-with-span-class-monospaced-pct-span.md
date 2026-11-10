@@ -1,8 +1,8 @@
-# 11.9. Managing Containers with `pct` <a href="#_managing_containers_with_span_class_monospaced_pct_span" id="_managing_containers_with_span_class_monospaced_pct_span"></a>
+# 11.9. 使用 `pct` 管理容器 <a href="#managing_containers_with_span_class_monospaced_pct_span" id="managing_containers_with_span_class_monospaced_pct_span"></a>
 
 “Proxmox Container Toolkit”（`pct`）是用于管理 Proxmox VE 容器的命令行工具。它可用于创建或销毁容器，以及控制容器的运行（启动、停止、重启、迁移等）。它还可用于设置容器配置文件中的参数，例如网络配置或内存限制。
 
-## 11.9.1. CLI Usage Examples <a href="#_cli_usage_examples_2" id="_cli_usage_examples_2"></a>
+## 11.9.1. CLI 用法示例 <a href="#cli_usage_examples_2" id="cli_usage_examples_2"></a>
 
 基于 Debian 模板创建容器（前提是你已通过 Web 界面下载该模板）
 
@@ -68,7 +68,7 @@
 #  pct move-volume 100 mp0 --target-vmid 200 --target-volume mp1
 ```
 
-## 11.9.2. Obtaining Debugging Logs <a href="#_obtaining_debugging_logs" id="_obtaining_debugging_logs"></a>
+## 11.9.2. 获取调试日志 <a href="#obtaining_debugging_logs" id="obtaining_debugging_logs"></a>
 
 如果 `pct start` 无法启动特定容器，可以通过传递 `--debug` 标志来收集调试输出（将 `CTID` 替换为容器的 CTID），这可能会有所帮助：
 

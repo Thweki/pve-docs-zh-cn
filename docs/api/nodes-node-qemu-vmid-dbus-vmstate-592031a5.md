@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/dbus-vmstate`
 
-Control the dbus-vmstate helper for a given running VM.
+控制给定运行中虚拟机的 dbus-vmstate 辅助程序。
 
 **方法标识：** `dbus_vmstate`
 
@@ -40,9 +40,9 @@ Control the dbus-vmstate helper for a given running VM.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | Action to perform on the DBus VMState helper.；可选值：`start`, `stop` |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `action` | string | 是 | — | 对 DBus VMState 辅助程序执行的操作。；可选值：`start`, `stop` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,7 +52,7 @@ Control the dbus-vmstate helper for a given running VM.
   "additionalProperties": 0,
   "properties": {
     "action": {
-      "description": "Action to perform on the DBus VMState helper.",
+      "description": "对 DBus VMState 辅助程序执行的操作。",
       "enum": [
         "start",
         "stop"
@@ -61,13 +61,13 @@ Control the dbus-vmstate helper for a given running VM.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

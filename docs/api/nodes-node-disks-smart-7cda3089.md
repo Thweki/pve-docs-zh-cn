@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/smart`
 
-Get SMART Health of a disk.
+获取磁盘的 SMART 健康状态。
 
 **方法标识：** `smart`
 
@@ -46,9 +46,9 @@ Get SMART Health of a disk.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | Block device name |
-| `healthonly` | boolean | 否 | — | If true returns only the health status |
-| `node` | string | 是 | — | The cluster node name. |
+| `disk` | string | 是 | — | 块设备名称 |
+| `healthonly` | boolean | 否 | — | 如果为 true，则仅返回健康状态 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,18 +58,18 @@ Get SMART Health of a disk.
   "additionalProperties": 0,
   "properties": {
     "disk": {
-      "description": "Block device name",
+      "description": "块设备名称",
       "pattern": "^/dev/[a-zA-Z0-9\\/]+$",
       "type": "string"
     },
     "healthonly": {
-      "description": "If true returns only the health status",
+      "description": "如果为 true，则仅返回健康状态",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

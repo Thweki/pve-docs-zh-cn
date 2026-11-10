@@ -6,7 +6,7 @@
 
 ## GET `/cluster`
 
-Cluster index.
+集群索引。
 
 **方法标识：** `index`
 

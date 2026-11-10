@@ -1,50 +1,34 @@
 # pveam(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pveam \- Proxmox VE Appliance Manager
+pveam \- Proxmox VE 设备模板管理器
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pveam"></a>
+### **pveam** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveam" id="cli_pveam"></a>
 
+### **pveam available** `[OPTIONS]` <a href="#cli_pveam_available" id="cli_pveam_available"></a>
 
-
-**pveam** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pveam_available"></a>
-
-
-
-**pveam available** `[OPTIONS]`
-
-List available templates.
+列出可用模板。
 
 **`--section` `<mail | system | turnkeylinux>`**
 
-Restrict list to specified section.
+将列表限制为指定部分。
 
-<a id="cli_pveam_download"></a>
+### **pveam download** `<storage> <template>` <a href="#cli_pveam_download" id="cli_pveam_download"></a>
 
-
-
-**pveam download** `<storage> <template>`
-
-Download appliance templates.
+下载设备模板。
 
 **`<storage>`: `<storage ID>`**
 
-The storage where the template will be stored
+用于保存模板的存储
 
 **`<template>`: `<string>`**
 
-The template which will downloaded
+要下载的模板
 
-<a id="cli_pveam_help"></a>
-
-
-
-**pveam help** `[OPTIONS]`
+### **pveam help** `[OPTIONS]` <a href="#cli_pveam_help" id="cli_pveam_help"></a>
 
 获取指定命令的帮助。
 
@@ -56,43 +40,31 @@ The template which will downloaded
 
 详细输出格式。
 
-<a id="cli_pveam_list"></a>
+### **pveam list** `<storage>` <a href="#cli_pveam_list" id="cli_pveam_list"></a>
 
-
-
-**pveam list** `<storage>`
-
-Get list of all templates on storage
+获取存储上的所有模板列表
 
 **`<storage>`: `<storage ID>`**
 
-Only list templates on specified storage
+仅列出指定存储上的模板
 
-<a id="cli_pveam_remove"></a>
+### **pveam remove** `<template_path>` <a href="#cli_pveam_remove" id="cli_pveam_remove"></a>
 
-
-
-**pveam remove** `<template_path>`
-
-Remove a template.
+移除模板。
 
 **`<template_path>`: `<string>`**
 
-The template to remove.
+要移除的模板。
 
-<a id="cli_pveam_update"></a>
+### **pveam update** <a href="#cli_pveam_update" id="cli_pveam_update"></a>
 
+更新容器模板数据库。
 
+## 描述 <a href="#description" id="description"></a>
 
-**pveam update**
+管理容器镜像的命令行工具。使用示例请参阅 `man pct`。
 
-Update Container Template Database.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-Command line tool to manage container images. See `man pct` for usage examples.
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

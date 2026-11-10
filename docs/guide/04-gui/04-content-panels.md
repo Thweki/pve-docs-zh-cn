@@ -1,8 +1,8 @@
-# 4.4. 内容面板 <a href="#_content_panels" id="_content_panels"></a>
+# 4.4. 内容面板 <a href="#content_panels" id="content_panels"></a>
 
 当你从资源树中选择一个项目时，相应对象会在内容面板中显示配置和状态信息。以下各节简要介绍此功能。更多详细信息，请参阅参考文档中的相应章节。
 
-## 4.4.1. 数据中心 <a href="#_datacenter" id="_datacenter"></a>
+## 4.4.1. 数据中心 <a href="#datacenter" id="datacenter"></a>
 
 [![screenshot/gui-datacenter-search.png](../../assets/screenshot-gui-datacenter-search-png-0d4035c472d2.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-search.png)
 
@@ -23,7 +23,7 @@
 - **通知：** 配置 Proxmox VE 的通知行为和通知目标。
 - **支持：** 显示有关你的支持订阅的信息。
 
-## 4.4.2. 节点 <a href="#_nodes" id="_nodes"></a>
+## 4.4.2. 节点 <a href="#nodes" id="nodes"></a>
 
 [![screenshot/gui-node-summary.png](../../assets/screenshot-gui-node-summary-png-fa9649a32134.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-summary.png)
 
@@ -44,7 +44,7 @@
 - **任务历史：** 查看以往任务的列表。
 - **订阅：** 上传订阅密钥，并生成供支持案例使用的系统报告。
 
-## 4.4.3. 客户机 <a href="#_guests" id="_guests"></a>
+## 4.4.3. 客户机 <a href="#guests" id="guests"></a>
 
 [![screenshot/gui-qemu-summary.png](../../assets/screenshot-gui-qemu-summary-png-58b9f19bf02c.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-qemu-summary.png)
 
@@ -58,7 +58,7 @@
 
 可用的接口如下。
 
-- **Summary:** provides a brief overview of the VM’s activity and a `Notes` field for [Markdown syntax](../28-markdown-primer/01-markdown-basics.md) comments.
+- **概要：** 简要概述虚拟机的活动，并提供 `Notes` 字段，用于 [Markdown 语法](../28-markdown-primer/01-markdown-basics.md) 注释。
 - **控制台：** 访问虚拟机/容器的交互式控制台。
 - **(KVM) 硬件：** 定义 KVM 虚拟机可用的硬件。
 - **(LXC) 资源：** 定义 LXC 可用的系统资源。
@@ -73,7 +73,7 @@
 - **防火墙：** 在虚拟机级别配置防火墙。
 - **权限：** 管理所选客户机的权限。
 
-## 4.4.4. 存储 <a href="#_storage" id="_storage"></a>
+## 4.4.4. 存储 <a href="#storage" id="storage"></a>
 
 [![screenshot/gui-storage-summary-local.png](../../assets/screenshot-gui-storage-summary-local-png-bed0feb5e875.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-storage-summary-local.png)
 
@@ -85,7 +85,7 @@
 - **内容：** 存储所保存的每种内容类型各有一个菜单项，例如备份、ISO 镜像、CT 模板。
 - **权限：** 管理存储的权限。
 
-## 4.4.5. 池 <a href="#_pools" id="_pools"></a>
+## 4.4.5. 池 <a href="#pools" id="pools"></a>
 
 [![screenshot/gui-pool-summary-development.png](../../assets/screenshot-gui-pool-summary-development-png-00f1481ce5db.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-pool-summary-development.png)
 

@@ -1,14 +1,14 @@
-# 24.1. General <a href="#configuration_files" id="configuration_files"></a>
+# 24.1. 常规 <a href="#configuration_files" id="configuration_files"></a>
 
-Most configuration files in Proxmox VE reside on the [shared cluster file system](../06-pmxcfs/README.md) mounted at `/etc/pve`. There are exceptions, like the node-specific configuration file for backups in `/etc/vzdump.conf`.
+Proxmox VE 中的大多数配置文件位于[共享集群文件系统](../06-pmxcfs/README.md)中，该文件系统挂载在 `/etc/pve`。也存在例外，例如 `/etc/vzdump.conf` 中节点特定的备份配置文件。
 
-Usually, the properties in a configuration file are derived from the JSON Schema that is also used for the associated API endpoints.
+通常，配置文件中的属性派生自 JSON Schema，相关 API 端点也使用同一模式。
 
-## 24.1.1. Casing of Property Names <a href="#configuration_files_casing" id="configuration_files_casing"></a>
+## 24.1.1. 属性名称的大小写 <a href="#configuration_files_casing" id="configuration_files_casing"></a>
 
-Historically, longer properties (and sub-properties) often used `snake_case`, or were written as one word. This can likely be attributed to the Proxmox VE stack being developed mostly in the programming language Perl, where access to properties using `kebab-case` requires additional quotes, as well as less style enforcement during early development, so different developers used different conventions.
+历史上，较长的属性（及子属性）通常使用 `snake_case`，或连写为一个单词。这很可能是因为 Proxmox VE 软件栈主要使用 Perl 编程语言开发，在 Perl 中访问使用 `kebab-case` 的属性时需要额外的引号；同时，早期开发时对风格的约束较少，因此不同开发者使用不同的约定。
 
-For new properties, `kebab-case` is the preferred way and it is planned to introduce aliases for existing `snake_case` properties, and in the long term, switch over to `kebab-case` for the API, CLI and in-use configuration files while maintaining backwards-compatibility when restoring a configuration.
+对于新属性，首选方式为 `kebab-case`，并计划为现有的 `snake_case` 属性引入别名。从长远来看，计划将 API、CLI 和使用中的配置文件切换为 `kebab-case`，同时在恢复配置时保持向后兼容。
 
 ---
 

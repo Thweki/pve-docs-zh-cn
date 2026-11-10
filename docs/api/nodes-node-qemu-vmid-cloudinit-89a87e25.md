@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/cloudinit`
 
-Get the cloudinit configuration with both current and pending values.
+获取同时包含当前值和待应用值的 cloudinit 配置。
 
 **方法标识：** `cloudinit_pending`
 
@@ -40,8 +40,8 @@ Get the cloudinit configuration with both current and pending values.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ Get the cloudinit configuration with both current and pending values.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -77,23 +77,23 @@ Get the cloudinit configuration with both current and pending values.
   "items": {
     "properties": {
       "delete": {
-        "description": "Indicates a pending delete request if present and not 0.",
+        "description": "存在且不为 0 时表示有待处理的删除请求。",
         "maximum": 1,
         "minimum": 0,
         "optional": 1,
         "type": "integer"
       },
       "key": {
-        "description": "Configuration option name.",
+        "description": "配置选项名称。",
         "type": "string"
       },
       "pending": {
-        "description": "The new pending value.",
+        "description": "新的待应用值。",
         "optional": 1,
         "type": "string"
       },
       "value": {
-        "description": "Value as it was used to generate the current cloudinit image.",
+        "description": "用于生成当前 cloudinit 镜像时所用的值。",
         "optional": 1,
         "type": "string"
       }
@@ -106,7 +106,7 @@ Get the cloudinit configuration with both current and pending values.
 
 ## PUT `/nodes/{node}/qemu/{vmid}/cloudinit`
 
-Regenerate and change cloudinit config drive.
+重新生成并更改 cloudinit 配置驱动器。
 
 **方法标识：** `cloudinit_update`
 
@@ -146,8 +146,8 @@ Regenerate and change cloudinit config drive.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -157,13 +157,13 @@ Regenerate and change cloudinit config drive.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

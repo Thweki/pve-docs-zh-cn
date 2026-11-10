@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/zones/{zone}`
 
-Directory index for SDN zone status.
+SDN 区域状态的目录索引。
 
 **方法标识：** `diridx`
 
@@ -34,8 +34,8 @@ Directory index for SDN zone status.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `zone` | string | 是 | — | The SDN zone object identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `zone` | string | 是 | — | SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@ Directory index for SDN zone status.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "zone": {
-      "description": "The SDN zone object identifier.",
+      "description": "SDN 区域对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",

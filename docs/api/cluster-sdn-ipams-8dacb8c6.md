@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/ipams`
 
-SDN ipams index.
+SDN ipam 索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ SDN ipams index.
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/ipams/<ipam>'",
+  "description": "仅列出您对 '/sdn/ipams/<ipam>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ SDN ipams index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | Only list sdn ipams of specific type；可选值：`netbox`, `phpipam`, `pve` |
+| `type` | string | 否 | — | 仅列出特定类型的 SDN ipam；可选值：`netbox`, `phpipam`, `pve` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ SDN ipams index.
   "additionalProperties": 0,
   "properties": {
     "type": {
-      "description": "Only list sdn ipams of specific type",
+      "description": "仅列出特定类型的 SDN ipam",
       "enum": [
         "netbox",
         "phpipam",
@@ -81,7 +81,7 @@ SDN ipams index.
 
 ## POST `/cluster/sdn/ipams`
 
-Create a new sdn ipam object.
+创建新的 SDN ipam 对象。
 
 **方法标识：** `create`
 
@@ -115,12 +115,12 @@ Create a new sdn ipam object.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `fingerprint` | string | 否 | — | Certificate SHA 256 fingerprint. |
-| `ipam` | string | 是 | — | The SDN ipam object identifier. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
+| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 | `section` | integer | 否 | — |  |
 | `token` | string | 否 | — |  |
-| `type` | string | 是 | — | Plugin type.；可选值：`netbox`, `phpipam`, `pve` |
+| `type` | string | 是 | — | 插件类型。；可选值：`netbox`, `phpipam`, `pve` |
 | `url` | string | 否 | — |  |
 
 <details>
@@ -131,19 +131,19 @@ Create a new sdn ipam object.
   "additionalProperties": 0,
   "properties": {
     "fingerprint": {
-      "description": "Certificate SHA 256 fingerprint.",
+      "description": "证书 SHA 256 指纹。",
       "optional": 1,
       "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
       "type": "string"
     },
     "ipam": {
-      "description": "The SDN ipam object identifier.",
+      "description": "SDN ipam 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -159,7 +159,7 @@ Create a new sdn ipam object.
       "typetext": "<string>"
     },
     "type": {
-      "description": "Plugin type.",
+      "description": "插件类型。",
       "enum": [
         "netbox",
         "phpipam",

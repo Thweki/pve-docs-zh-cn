@@ -6,7 +6,7 @@
 
 ## GET `/cluster/resources`
 
-Resources index (cluster wide).
+资源索引（整个集群）。
 
 **方法标识：** `resources`
 
@@ -28,7 +28,7 @@ Resources index (cluster wide).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | Resource type.；可选值：`vm`, `storage`, `node`, `sdn` |
+| `type` | string | 否 | — | 资源类型。；可选值：`vm`, `storage`, `node`, `sdn` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -38,7 +38,7 @@ Resources index (cluster wide).
   "additionalProperties": 0,
   "properties": {
     "type": {
-      "description": "Resource type.",
+      "description": "资源类型。",
       "enum": [
         "vm",
         "storage",
@@ -61,50 +61,50 @@ Resources index (cluster wide).
   "items": {
     "properties": {
       "cgroup-mode": {
-        "description": "The cgroup mode the node operates under (for type 'node').",
+        "description": "节点运行所用的 cgroup 模式（用于 'node' 类型）。",
         "optional": 1,
         "type": "integer"
       },
       "content": {
-        "description": "Allowed storage content types (for type 'storage').",
+        "description": "允许的存储内容类型（用于 'storage' 类型）。",
         "format": "pve-storage-content-list",
         "optional": 1,
         "type": "string"
       },
       "cpu": {
-        "description": "CPU utilization (for types 'node', 'qemu' and 'lxc').",
+        "description": "CPU 使用率（用于 'node'、'qemu' 和 'lxc' 类型）。",
         "minimum": 0,
         "optional": 1,
         "renderer": "fraction_as_percentage",
         "type": "number"
       },
       "disk": {
-        "description": "Used disk space in bytes (for type 'storage'), used root image space for VMs (for types 'qemu' and 'lxc').",
+        "description": "已用磁盘空间，单位为字节（用于 'storage' 类型）；虚拟机已用根镜像空间（用于 'qemu' 和 'lxc' 类型）。",
         "minimum": 0,
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "diskread": {
-        "description": "The number of bytes the guest read from its block devices since the guest was started. This info is not available for all storage types. (for types 'qemu' and 'lxc')",
+        "description": "自客户机启动以来从其块设备读取的字节数。并非所有存储类型都提供此信息。（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "diskwrite": {
-        "description": "The number of bytes the guest wrote to its block devices since the guest was started. This info is not available for all storage types. (for types 'qemu' and 'lxc')",
+        "description": "自客户机启动以来写入其块设备的字节数。并非所有存储类型都提供此信息。（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "hastate": {
-        "description": "HA service status (for HA managed VMs).",
+        "description": "HA 服务状态（用于 HA 管理的虚拟机）。",
         "optional": 1,
         "type": "string"
       },
       "host-arch": {
         "default": "x86_64",
-        "description": "The node's CPU architecture. (for type 'node').",
+        "description": "节点的 CPU 架构。（用于 'node' 类型）。",
         "enum": [
           "x86_64",
           "aarch64"
@@ -113,76 +113,76 @@ Resources index (cluster wide).
         "type": "string"
       },
       "id": {
-        "description": "Resource id.",
+        "description": "资源 ID。",
         "type": "string"
       },
       "level": {
-        "description": "Support level (for type 'node').",
+        "description": "支持级别（用于 'node' 类型）。",
         "optional": 1,
         "type": "string"
       },
       "lock": {
-        "description": "The guest's current config lock (for types 'qemu' and 'lxc')",
+        "description": "客户机当前的配置锁（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "type": "string"
       },
       "maxcpu": {
-        "description": "Number of available CPUs (for types 'node', 'qemu' and 'lxc').",
+        "description": "可用 CPU 数量（用于 'node'、'qemu' 和 'lxc' 类型）。",
         "minimum": 0,
         "optional": 1,
         "type": "number"
       },
       "maxdisk": {
-        "description": "Storage size in bytes (for type 'storage'), root image size for VMs (for types 'qemu' and 'lxc').",
+        "description": "存储大小，单位为字节（用于 'storage' 类型）；虚拟机根镜像大小（用于 'qemu' 和 'lxc' 类型）。",
         "minimum": 0,
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "maxmem": {
-        "description": "Number of available memory in bytes (for types 'node', 'qemu' and 'lxc').",
+        "description": "可用内存字节数（用于 'node'、'qemu' 和 'lxc' 类型）。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "mem": {
-        "description": "Used memory in bytes (for types 'node', 'qemu' and 'lxc').",
+        "description": "已用内存字节数（用于 'node'、'qemu' 和 'lxc' 类型）。",
         "minimum": 0,
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "memhost": {
-        "description": "Used memory in bytes from the point of view of the host (for types 'qemu').",
+        "description": "从宿主机角度看到的已用内存字节数（用于 'qemu' 类型）。",
         "minimum": 0,
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "name": {
-        "description": "Name of the resource.",
+        "description": "资源名称。",
         "optional": 1,
         "type": "string"
       },
       "netin": {
-        "description": "The amount of traffic in bytes that was sent to the guest over the network since it was started. (for types 'qemu' and 'lxc')",
+        "description": "自客户机启动以来通过网络向其发送的流量字节数。（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "netout": {
-        "description": "The amount of traffic in bytes that was sent from the guest over the network since it was started. (for types 'qemu' and 'lxc')",
+        "description": "自客户机启动以来通过网络从其发送的流量字节数。（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "network": {
-        "description": "The name of a Network entity (for type 'network').",
+        "description": "网络实体名称（用于 'network' 类型）。",
         "optional": 1,
         "type": "string"
       },
       "network-type": {
-        "description": "The type of network resource (for type 'network').",
+        "description": "网络资源类型（用于 'network' 类型）。",
         "enum": [
           "fabric",
           "zone"
@@ -191,61 +191,61 @@ Resources index (cluster wide).
         "type": "string"
       },
       "node": {
-        "description": "The cluster node name (for types 'node', 'storage', 'qemu', and 'lxc').",
+        "description": "集群节点名称（用于 'node'、'storage'、'qemu' 和 'lxc' 类型）。",
         "format": "pve-node",
         "optional": 1,
         "type": "string"
       },
       "plugintype": {
-        "description": "More specific type, if available.",
+        "description": "更具体的类型（如有）。",
         "optional": 1,
         "type": "string"
       },
       "pool": {
-        "description": "The pool name (for types 'pool', 'qemu' and 'lxc').",
+        "description": "资源池名称（用于 'pool'、'qemu' 和 'lxc' 类型）。",
         "optional": 1,
         "type": "string"
       },
       "protocol": {
-        "description": "The protocol of a fabric (for type 'network', network-type 'fabric').",
+        "description": "fabric 协议（用于 'network' 类型、'fabric' 网络类型）。",
         "optional": 1,
         "type": "string"
       },
       "sdn": {
-        "description": "The name of an SDN entity (for type 'sdn')",
+        "description": "SDN 实体名称（用于 'sdn' 类型）",
         "optional": 1,
         "type": "string"
       },
       "shared": {
-        "description": "Determines whether the storage is shared",
+        "description": "确定存储是否共享",
         "optional": 1,
         "type": "boolean"
       },
       "status": {
-        "description": "Resource type dependent status.",
+        "description": "取决于资源类型的状态。",
         "optional": 1,
         "type": "string"
       },
       "storage": {
-        "description": "The storage identifier (for type 'storage').",
+        "description": "存储标识符（用于 'storage' 类型）。",
         "format": "pve-storage-id",
         "format_description": "storage ID",
         "optional": 1,
         "type": "string"
       },
       "tags": {
-        "description": "The guest's tags (for types 'qemu' and 'lxc')",
+        "description": "客户机的标签（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "type": "string"
       },
       "template": {
         "default": 0,
-        "description": "Determines if the guest is a template. (for types 'qemu' and 'lxc')",
+        "description": "确定客户机是否为模板。（用于 'qemu' 和 'lxc' 类型）",
         "optional": 1,
         "type": "boolean"
       },
       "type": {
-        "description": "Resource type.",
+        "description": "资源类型。",
         "enum": [
           "node",
           "storage",
@@ -259,13 +259,13 @@ Resources index (cluster wide).
         "type": "string"
       },
       "uptime": {
-        "description": "Uptime of node or virtual guest in seconds (for types 'node', 'qemu' and 'lxc').",
+        "description": "节点或虚拟客户机的运行时间，单位为秒（用于 'node'、'qemu' 和 'lxc' 类型）。",
         "optional": 1,
         "renderer": "duration",
         "type": "integer"
       },
       "vmid": {
-        "description": "The numerical vmid (for types 'qemu' and 'lxc').",
+        "description": "数值形式的 vmid（用于 'qemu' 和 'lxc' 类型）。",
         "format": "pve-vmid",
         "maximum": 999999999,
         "minimum": 100,
@@ -273,7 +273,7 @@ Resources index (cluster wide).
         "type": "integer"
       },
       "zone-type": {
-        "description": "The type of an SDN zone (for type 'sdn').",
+        "description": "SDN 区域类型（用于 'sdn' 类型）。",
         "optional": 1,
         "type": "string"
       }

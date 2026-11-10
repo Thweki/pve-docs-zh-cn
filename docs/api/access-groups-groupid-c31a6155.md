@@ -6,7 +6,7 @@
 
 ## DELETE `/access/groups/{groupid}`
 
-Delete group.
+删除组。
 
 **方法标识：** `delete_group`
 
@@ -70,7 +70,7 @@ Delete group.
 
 ## GET `/access/groups/{groupid}`
 
-Get group configuration.
+获取组配置。
 
 **方法标识：** `read_group`
 
@@ -133,7 +133,7 @@ Get group configuration.
     },
     "members": {
       "items": {
-        "description": "Full User ID, in the `name@realm` format.",
+        "description": "完整用户 ID，采用 `name@realm` 格式。",
         "format": "pve-userid",
         "maxLength": 64,
         "type": "string"
@@ -147,7 +147,7 @@ Get group configuration.
 
 ## PUT `/access/groups/{groupid}`
 
-Update group data.
+更新组数据。
 
 **方法标识：** `update_group`
 

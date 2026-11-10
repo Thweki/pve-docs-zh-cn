@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/disks/initgpt`
 
-Initialize Disk with GPT
+使用 GPT 初始化磁盘
 
 **方法标识：** `initgpt`
 
@@ -46,9 +46,9 @@ Initialize Disk with GPT
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | Block device name |
-| `node` | string | 是 | — | The cluster node name. |
-| `uuid` | string | 否 | — | UUID for the GPT table |
+| `disk` | string | 是 | — | 块设备名称 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `uuid` | string | 否 | — | GPT 表的 UUID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,18 +58,18 @@ Initialize Disk with GPT
   "additionalProperties": 0,
   "properties": {
     "disk": {
-      "description": "Block device name",
+      "description": "块设备名称",
       "pattern": "^/dev/[a-zA-Z0-9\\/]+$",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "uuid": {
-      "description": "UUID for the GPT table",
+      "description": "GPT 表的 UUID",
       "maxLength": 36,
       "optional": 1,
       "pattern": "[a-fA-F0-9\\-]+",

@@ -1,208 +1,152 @@
 # pvenode(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvenode \- Proxmox VE Node Management
+pvenode \- Proxmox VE 节点管理
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvenode"></a>
+### **pvenode** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvenode" id="cli_pvenode"></a>
 
+### **pvenode acme account deactivate** `[<name>]` <a href="#cli_pvenode_acme_account_deactivate" id="cli_pvenode_acme_account_deactivate"></a>
 
+在 CA 处停用现有 ACME 账户。
 
-**pvenode** `<COMMAND> [ARGS] [OPTIONS]`
+**`<name>`: `<name>` （*默认值 \=* `default`）**
 
-<a id="cli_pvenode_acme_account_deactivate"></a>
+ACME 账户配置文件名。
 
+### **pvenode acme account info** `[<name>]` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_acme_account_info" id="cli_pvenode_acme_account_info"></a>
 
+返回现有 ACME 账户信息。
 
-**pvenode acme account deactivate** `[<name>]`
+**`<name>`: `<name>` （*默认值 \=* `default`）**
 
-Deactivate existing ACME account at CA.
+ACME 账户配置文件名。
 
-**`<name>`: `<name>` (*default \=* `default`)**
+### **pvenode acme account list** <a href="#cli_pvenode_acme_account_list" id="cli_pvenode_acme_account_list"></a>
 
-ACME account config file name.
+ACMEAccount 索引。
 
-<a id="cli_pvenode_acme_account_info"></a>
+### **pvenode acme account register** `[<name>] {<contact>}` `[OPTIONS]` <a href="#cli_pvenode_acme_account_register" id="cli_pvenode_acme_account_register"></a>
 
+在兼容的 CA 上注册新的 ACME 账户。
 
+**`<name>`: `<name>` （*默认值 \=* `default`）**
 
-**pvenode acme account info** `[<name>]` `[FORMAT_OPTIONS]`
-
-Return existing ACME account information.
-
-**`<name>`: `<name>` (*default \=* `default`)**
-
-ACME account config file name.
-
-<a id="cli_pvenode_acme_account_list"></a>
-
-
-
-**pvenode acme account list**
-
-ACMEAccount index.
-
-<a id="cli_pvenode_acme_account_register"></a>
-
-
-
-**pvenode acme account register** `[<name>] {<contact>}` `[OPTIONS]`
-
-Register a new ACME account with a compatible CA.
-
-**`<name>`: `<name>` (*default \=* `default`)**
-
-ACME account config file name.
+ACME 账户配置文件名。
 
 **`<contact>`: `<string>`**
 
-Contact email addresses.
+联系电子邮件地址。
 
 **`--directory` `^https?://.*`**
 
-URL of ACME CA directory endpoint.
+ACME CA 目录端点的 URL。
 
-<a id="cli_pvenode_acme_account_update"></a>
+### **pvenode acme account update** `[<name>]` `[OPTIONS]` <a href="#cli_pvenode_acme_account_update" id="cli_pvenode_acme_account_update"></a>
 
+向 CA 更新现有 ACME 账户信息。注意：不指定任何新账户信息将触发刷新。
 
+**`<name>`: `<name>` （*默认值 \=* `default`）**
 
-**pvenode acme account update** `[<name>]` `[OPTIONS]`
-
-Update existing ACME account information with CA. Note: not specifying any new account information triggers a refresh.
-
-**`<name>`: `<name>` (*default \=* `default`)**
-
-ACME account config file name.
+ACME 账户配置文件名。
 
 **`--contact` `<string>`**
 
-Contact email addresses.
+联系电子邮件地址。
 
-<a id="cli_pvenode_acme_cert_order"></a>
+### **pvenode acme cert order** `[OPTIONS]` <a href="#cli_pvenode_acme_cert_order" id="cli_pvenode_acme_cert_order"></a>
 
-
-
-**pvenode acme cert order** `[OPTIONS]`
-
-Order a new certificate from ACME-compatible CA.
+从兼容 ACME 的 CA 申请新证书。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Overwrite existing custom certificate.
+覆盖现有的自定义证书。
 
-<a id="cli_pvenode_acme_cert_renew"></a>
+### **pvenode acme cert renew** `[OPTIONS]` <a href="#cli_pvenode_acme_cert_renew" id="cli_pvenode_acme_cert_renew"></a>
 
-
-
-**pvenode acme cert renew** `[OPTIONS]`
-
-Renew existing certificate from CA.
+从 CA 续订现有证书。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Force renewal even if expiry is more than 30 days away.
+即使距离到期还有 30 天以上，也强制续订。
 
-<a id="cli_pvenode_acme_cert_revoke"></a>
+### **pvenode acme cert revoke** <a href="#cli_pvenode_acme_cert_revoke" id="cli_pvenode_acme_cert_revoke"></a>
 
+向 CA 吊销现有证书。
 
+### **pvenode acme plugin add** `<type> <id>` `[OPTIONS]` <a href="#cli_pvenode_acme_plugin_add" id="cli_pvenode_acme_plugin_add"></a>
 
-**pvenode acme cert revoke**
-
-Revoke existing certificate from CA.
-
-<a id="cli_pvenode_acme_plugin_add"></a>
-
-
-
-**pvenode acme plugin add** `<type> <id>` `[OPTIONS]`
-
-Add ACME plugin configuration.
+添加 ACME 插件配置。
 
 **`<type>`: `<dns | standalone>`**
 
-ACME challenge type.
+ACME 质询类型。
 
 **`<id>`: `<string>`**
 
-ACME Plugin ID name
+ACME 插件 ID 名称
 
 **`--api` `<1984hosting | acmedns | acmeproxy | active24 | ad | ali | alviy | anx | artfiles | arvan | aurora | autodns | aws | azion | azure | beget | bookmyname | bunny | cf | clouddns | cloudns | cn | conoha | constellix | cpanel | curanet | cyon | da | ddnss | desec | df | dgon | dnsexit | dnshome | dnsimple | dnsservices | doapi | domeneshop | dp | dpi | dreamhost | duckdns | durabledns | dyn | dynu | dynv6 | easydns | edgecenter | edgedns | euserv | exoscale | fornex | freedns | freemyip | gandi_livedns | gcloud | gcore | gd | geoscaling | googledomains | he | he_ddns | hetzner | hetznercloud | hexonet | hostingde | huaweicloud | infoblox | infomaniak | internetbs | inwx | ionos | ionos_cloud | ipv64 | ispconfig | jd | joker | kappernet | kas | kinghost | knot | la | leaseweb | lexicon | limacity | linode | linode_v4 | loopia | lua | maradns | me | miab | mijnhost | misaka | myapi | mydevil | mydnsjp | mythic_beasts | namecheap | namecom | namesilo | nanelo | nederhost | neodigit | netcup | netlify | nic | njalla | nm | nsd | nsone | nsupdate | nw | oci | omglol | one | online | openprovider | openprovider_rest | openstack | opnsense | ovh | pdns | pleskxml | pointhq | porkbun | rackcorp | rackspace | rage4 | rcode0 | regru | scaleway | schlundtech | selectel | selfhost | servercow | simply | spaceship | technitium | tele3 | tencent | timeweb | transip | udr | ultra | unoeuro | variomedia | veesp | vercel | vscale | vultr | websupport | west_cn | world4you | yandex360 | yc | zilore | zone | zoneedit | zonomi>`**
 
-API plugin name
+API 插件名称
 
 **`--data` `File with one key-value pair per line, will be base64url encode for storage in plugin config.`**
 
-DNS plugin data. (base64 encoded)
+DNS 插件数据。（base64 编码）
 
 **`--disable` `<boolean>`**
 
-Flag to disable the config.
+用于禁用配置的标志。
 
 **`--nodes` `<string>`**
 
-List of cluster node names.
+集群节点名称列表。
 
-**`--validation-delay` `<integer> (0 - 172800)` (*default \=* `30`)**
+**`--validation-delay` `<integer> (0 - 172800)` （*默认值 \=* `30`）**
 
-Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.
+请求验证前额外等待的延迟，单位为秒。用于应对 DNS 记录 TTL 较长的情况。
 
-<a id="cli_pvenode_acme_plugin_config"></a>
+### **pvenode acme plugin config** `<id>` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_acme_plugin_config" id="cli_pvenode_acme_plugin_config"></a>
 
-
-
-**pvenode acme plugin config** `<id>` `[FORMAT_OPTIONS]`
-
-Get ACME plugin configuration.
+获取 ACME 插件配置。
 
 **`<id>`: `<string>`**
 
-Unique identifier for ACME plugin instance.
+ACME 插件实例的唯一标识符。
 
-<a id="cli_pvenode_acme_plugin_list"></a>
+### **pvenode acme plugin list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_acme_plugin_list" id="cli_pvenode_acme_plugin_list"></a>
 
-
-
-**pvenode acme plugin list** `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-ACME plugin index.
+ACME 插件索引。
 
 **`--type` `<dns | standalone>`**
 
-Only list ACME plugins of a specific type
+仅列出指定类型的 ACME 插件
 
-<a id="cli_pvenode_acme_plugin_remove"></a>
+### **pvenode acme plugin remove** `<id>` <a href="#cli_pvenode_acme_plugin_remove" id="cli_pvenode_acme_plugin_remove"></a>
 
-
-
-**pvenode acme plugin remove** `<id>`
-
-Delete ACME plugin configuration.
+删除 ACME 插件配置。
 
 **`<id>`: `<string>`**
 
-Unique identifier for ACME plugin instance.
+ACME 插件实例的唯一标识符。
 
-<a id="cli_pvenode_acme_plugin_set"></a>
+### **pvenode acme plugin set** `<id>` `[OPTIONS]` <a href="#cli_pvenode_acme_plugin_set" id="cli_pvenode_acme_plugin_set"></a>
 
-
-
-**pvenode acme plugin set** `<id>` `[OPTIONS]`
-
-Update ACME plugin configuration.
+更新 ACME 插件配置。
 
 **`<id>`: `<string>`**
 
-ACME Plugin ID name
+ACME 插件 ID 名称
 
 **`--api` `<1984hosting | acmedns | acmeproxy | active24 | ad | ali | alviy | anx | artfiles | arvan | aurora | autodns | aws | azion | azure | beget | bookmyname | bunny | cf | clouddns | cloudns | cn | conoha | constellix | cpanel | curanet | cyon | da | ddnss | desec | df | dgon | dnsexit | dnshome | dnsimple | dnsservices | doapi | domeneshop | dp | dpi | dreamhost | duckdns | durabledns | dyn | dynu | dynv6 | easydns | edgecenter | edgedns | euserv | exoscale | fornex | freedns | freemyip | gandi_livedns | gcloud | gcore | gd | geoscaling | googledomains | he | he_ddns | hetzner | hetznercloud | hexonet | hostingde | huaweicloud | infoblox | infomaniak | internetbs | inwx | ionos | ionos_cloud | ipv64 | ispconfig | jd | joker | kappernet | kas | kinghost | knot | la | leaseweb | lexicon | limacity | linode | linode_v4 | loopia | lua | maradns | me | miab | mijnhost | misaka | myapi | mydevil | mydnsjp | mythic_beasts | namecheap | namecom | namesilo | nanelo | nederhost | neodigit | netcup | netlify | nic | njalla | nm | nsd | nsone | nsupdate | nw | oci | omglol | one | online | openprovider | openprovider_rest | openstack | opnsense | ovh | pdns | pleskxml | pointhq | porkbun | rackcorp | rackspace | rage4 | rcode0 | regru | scaleway | schlundtech | selectel | selfhost | servercow | simply | spaceship | technitium | tele3 | tencent | timeweb | transip | udr | ultra | unoeuro | variomedia | veesp | vercel | vscale | vultr | websupport | west_cn | world4you | yandex360 | yc | zilore | zone | zoneedit | zonomi>`**
 
-API plugin name
+API 插件名称
 
 **`--data` `File with one key-value pair per line, will be base64url encode for storage in plugin config.`**
 
-DNS plugin data. (base64 encoded)
+DNS 插件数据。（base64 编码）
 
 **`--delete` `<string>`**
 
@@ -214,91 +158,71 @@ DNS plugin data. (base64 encoded)
 
 **`--disable` `<boolean>`**
 
-Flag to disable the config.
+用于禁用配置的标志。
 
 **`--nodes` `<string>`**
 
-List of cluster node names.
+集群节点名称列表。
 
-**`--validation-delay` `<integer> (0 - 172800)` (*default \=* `30`)**
+**`--validation-delay` `<integer> (0 - 172800)` （*默认值 \=* `30`）**
 
-Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.
+请求验证前额外等待的延迟，单位为秒。用于应对 DNS 记录 TTL 较长的情况。
 
-<a id="cli_pvenode_cert_delete"></a>
+### **pvenode cert delete** `[<restart>]` <a href="#cli_pvenode_cert_delete" id="cli_pvenode_cert_delete"></a>
 
+删除自定义证书链和密钥。
 
+**`<restart>`: `<boolean>` （*默认值 \=* `0`）**
 
-**pvenode cert delete** `[<restart>]`
+重启 pveproxy。
 
-DELETE custom certificate chain and key.
+### **pvenode cert info** `[FORMAT_OPTIONS]` <a href="#cli_pvenode_cert_info" id="cli_pvenode_cert_info"></a>
 
-**`<restart>`: `<boolean>` (*default \=* `0`)**
+获取有关节点证书的信息。
 
-Restart pveproxy.
+### **pvenode cert set** `<certificates> [<key>]` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_cert_set" id="cli_pvenode_cert_set"></a>
 
-<a id="cli_pvenode_cert_info"></a>
-
-
-
-**pvenode cert info** `[FORMAT_OPTIONS]`
-
-Get information about node’s certificates.
-
-<a id="cli_pvenode_cert_set"></a>
-
-
-
-**pvenode cert set** `<certificates> [<key>]` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Upload or update custom certificate chain and key.
+上传或更新自定义证书链和密钥。
 
 **`<certificates>`: `<string>`**
 
-PEM encoded certificate (chain).
+PEM 编码的证书（链）。
 
 **`<key>`: `<string>`**
 
-PEM encoded private key.
+PEM 编码的私钥。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Overwrite existing custom or ACME certificate files.
+覆盖现有自定义证书文件或 ACME 证书文件。
 
-**`--restart` `<boolean>` (*default \=* `0`)**
+**`--restart` `<boolean>` （*默认值 \=* `0`）**
 
-Restart pveproxy.
+重启 pveproxy。
 
-<a id="cli_pvenode_config_get"></a>
+### **pvenode config get** `[OPTIONS]` <a href="#cli_pvenode_config_get" id="cli_pvenode_config_get"></a>
 
+获取节点配置选项。
 
+**`--property` `<acme | acmedomain0 | acmedomain1 | acmedomain2 | acmedomain3 | acmedomain4 | acmedomain5 | ballooning-target | description | location | startall-onboot-delay | wakeonlan>` （*默认值 \=* `all`）**
 
-**pvenode config get** `[OPTIONS]`
+仅返回节点配置中的指定属性。
 
-Get node configuration options.
+### **pvenode config set** `[OPTIONS]` <a href="#cli_pvenode_config_set" id="cli_pvenode_config_set"></a>
 
-**`--property` `<acme | acmedomain0 | acmedomain1 | acmedomain2 | acmedomain3 | acmedomain4 | acmedomain5 | ballooning-target | description | location | startall-onboot-delay | wakeonlan>` (*default \=* `all`)**
-
-Return only a specific property from the node configuration.
-
-<a id="cli_pvenode_config_set"></a>
-
-
-
-**pvenode config set** `[OPTIONS]`
-
-Set node configuration options.
+设置节点配置选项。
 
 **`--acme` `[account=<name>] [,domains=<domain[;domain;...]>]`**
 
-Node specific ACME settings.
+节点特定的 ACME 设置。
 
 **`--acmedomain[n]` `[domain=]<domain> [,alias=<domain>] [,plugin=<name of the plugin configuration>]`**
 
-ACME domain and validation plugin
+ACME 域和验证插件
 
-**`--ballooning-target` `<integer> (0 - 100)` (*default \=* `80`)**
+**`--ballooning-target` `<integer> (0 - 100)` （*默认值 \=* `80`）**
 
-RAM usage target for ballooning (in percent of total memory)
+内存气球的 RAM 使用率目标（占总内存的百分比）
 
 **`--delete` `<string>`**
 
@@ -306,7 +230,7 @@ RAM usage target for ballooning (in percent of total memory)
 
 **`--description` `<string>`**
 
-Description for the Node. Shown in the web-interface node notes panel. This is saved as comment inside the configuration file.
+节点描述。显示在 Web 界面的节点备注面板中。以注释形式保存在配置文件内。
 
 **`--digest` `<string>`**
 
@@ -314,21 +238,17 @@ Description for the Node. Shown in the web-interface node notes panel. This is s
 
 **`--location` `latitude=<number> ,longitude=<number> [,name=<name>]`**
 
-The location of the node. Overrides the default from the datacenter config.
+节点的位置。覆盖数据中心配置中的默认值。
 
-**`--startall-onboot-delay` `<integer> (0 - 300)` (*default \=* `0`)**
+**`--startall-onboot-delay` `<integer> (0 - 300)` （*默认值 \=* `0`）**
 
-Initial delay in seconds, before starting all the Virtual Guests with on-boot enabled.
+启动所有已启用开机启动的虚拟客户机之前的初始延迟，单位为秒。
 
 **`--wakeonlan` `[mac=]<MAC address> [,bind-interface=<bind interface>] [,broadcast-address=<IPv4 broadcast address>]`**
 
-Node specific wake on LAN settings.
+节点特定的网络唤醒设置。
 
-<a id="cli_pvenode_help"></a>
-
-
-
-**pvenode help** `[OPTIONS]`
+### **pvenode help** `[OPTIONS]` <a href="#cli_pvenode_help" id="cli_pvenode_help"></a>
 
 获取指定命令的帮助。
 
@@ -340,13 +260,9 @@ Node specific wake on LAN settings.
 
 详细输出格式。
 
-<a id="cli_pvenode_migrateall"></a>
+### **pvenode migrateall** `<target>` `[OPTIONS]` <a href="#cli_pvenode_migrateall" id="cli_pvenode_migrateall"></a>
 
-
-
-**pvenode migrateall** `<target>` `[OPTIONS]`
-
-Migrate all VMs and Containers.
+迁移所有虚拟机和容器。
 
 **`<target>`: `<string>`**
 
@@ -354,202 +270,178 @@ Migrate all VMs and Containers.
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Maximal number of parallel migration job. If not set, uses’max\_workers' from datacenter.cfg. One of both must be set!
+并行迁移任务的最大数量。如果未设置，则使用 max\_workers，其值来自 datacenter.cfg。两者必须至少设置一个！
 
 **`--maxworkers` `<integer> (1 - 64)`**
 
-Maximal number of parallel migration job. If not set, uses’max\_workers' from datacenter.cfg. One of both must be set!Deprecated, use *max-workers* instead.
+并行迁移任务的最大数量。如果未设置，则使用 max\_workers，其值来自 datacenter.cfg。两者必须至少设置一个！已弃用，请改用 *max-workers*。
 
 **`--vms` `<string>`**
 
-Only consider Guests with these IDs.
+仅考虑具有这些 ID 的客户机。
 
 **`--with-local-disks` `<boolean>`**
 
-Enable live storage migration for local disk
+对本地磁盘启用在线存储迁移
 
-<a id="cli_pvenode_startall"></a>
+### **pvenode startall** `[OPTIONS]` <a href="#cli_pvenode_startall" id="cli_pvenode_startall"></a>
 
+启动此节点上的所有虚拟机和容器（默认只启动设置了 onboot\=1 的客户机）。
 
+**`--force` `<boolean>` （*默认值 \=* `off`）**
 
-**pvenode startall** `[OPTIONS]`
-
-Start all VMs and containers located on this node (by default only those with onboot\=1).
-
-**`--force` `<boolean>` (*default \=* `off`)**
-
-Issue start command even if virtual guest have *onboot* not set or set to off.
+即使虚拟客户机未设置 *onboot* 或将其设置为 off，也发出启动命令。
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Defines the maximum number of tasks running concurrently. If not set, uses *max\_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
+定义同时运行任务的最大数量。如果未设置，则使用 *max\_workers*，其值来自 datacenter.cfg；如果该值也未设置，则使用可用 CPU 线程数，但最多为 8。
 
 **`--vms` `<string>`**
 
-Only consider guests from this comma separated list of VMIDs.
+仅考虑此逗号分隔的 VMID 列表中的客户机。
 
-<a id="cli_pvenode_stopall"></a>
+### **pvenode stopall** `[OPTIONS]` <a href="#cli_pvenode_stopall" id="cli_pvenode_stopall"></a>
 
+停止所有虚拟机和容器。
 
+**`--force-stop` `<boolean>` （*默认值 \=* `1`）**
 
-**pvenode stopall** `[OPTIONS]`
-
-Stop all VMs and Containers.
-
-**`--force-stop` `<boolean>` (*default \=* `1`)**
-
-Force a hard-stop after the timeout.
+超时后强制停止。
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Defines the maximum number of tasks running concurrently. If not set, uses *max\_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
+定义同时运行任务的最大数量。如果未设置，则使用 *max\_workers*，其值来自 datacenter.cfg；如果该值也未设置，则使用可用 CPU 线程数，但最多为 8。
 
-**`--timeout` `<integer> (0 - 7200)` (*default \=* `180`)**
+**`--timeout` `<integer> (0 - 7200)` （*默认值 \=* `180`）**
 
-Timeout for each guest shutdown task. Depending on `force-stop`, the shutdown gets then simply aborted or a hard-stop is forced.
+每个客户机关机任务的超时时间。随后根据 `force-stop` 的设置，直接中止关机或强制停止。
 
 **`--vms` `<string>`**
 
-Only consider Guests with these IDs.
+仅考虑具有这些 ID 的客户机。
 
-<a id="cli_pvenode_task_list"></a>
+### **pvenode task list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_task_list" id="cli_pvenode_task_list"></a>
 
+读取某个节点的任务列表（已完成任务）。
 
+**`--errors` `<boolean>` （*默认值 \=* `0`）**
 
-**pvenode task list** `[OPTIONS]` `[FORMAT_OPTIONS]`
+仅列出状态为 ERROR 的任务。
 
-Read task list for one node (finished tasks).
+**`--limit` `<integer> (0 - N)` （*默认值 \=* `50`）**
 
-**`--errors` `<boolean>` (*default \=* `0`)**
-
-Only list tasks with a status of ERROR.
-
-**`--limit` `<integer> (0 - N)` (*default \=* `50`)**
-
-Only list this number of tasks.
+仅列出此数量的任务。
 
 **`--since` `<integer>`**
 
-Only list tasks since this UNIX epoch.
+仅列出此 UNIX 纪元时间之后的任务。
 
-**`--source` `<active | all | archive>` (*default \=* `archive`)**
+**`--source` `<active | all | archive>` （*默认值 \=* `archive`）**
 
-List archived, active or all tasks.
+列出已归档、活动或全部任务。
 
-**`--start` `<integer> (0 - N)` (*default \=* `0`)**
+**`--start` `<integer> (0 - N)` （*默认值 \=* `0`）**
 
-List tasks beginning from this offset.
+从此偏移量开始列出任务。
 
 **`--statusfilter` `<string>`**
 
-List of Task States that should be returned.
+应返回的任务状态列表。
 
 **`--typefilter` `<string>`**
 
-Only list tasks of this type (e.g., vzstart, vzdump).
+仅列出此类型的任务（例如 vzstart、vzdump）。
 
 **`--until` `<integer>`**
 
-Only list tasks until this UNIX epoch.
+仅列出此 UNIX 纪元时间之前的任务。
 
 **`--userfilter` `<string>`**
 
-Only list tasks from this user.
+仅列出此用户的任务。
 
 **`--vmid` `<integer> (100 - 999999999)`**
 
-Only list tasks for this VM.
+仅列出此虚拟机的任务。
 
-<a id="cli_pvenode_task_log"></a>
+### **pvenode task log** `<upid>` `[OPTIONS]` <a href="#cli_pvenode_task_log" id="cli_pvenode_task_log"></a>
 
-
-
-**pvenode task log** `<upid>` `[OPTIONS]`
-
-Read task log.
+读取任务日志。
 
 **`<upid>`: `<string>`**
 
-The task’s unique ID.
+任务的唯一 ID。
 
 **`--download` `<boolean>`**
 
-Whether the tasklog file should be downloaded. This parameter can’t be used in conjunction with other parameters
+是否应下载任务日志文件。此参数不能与其他参数同时使用
 
-**`--start` `<integer> (0 - N)` (*default \=* `0`)**
+**`--start` `<integer> (0 - N)` （*默认值 \=* `0`）**
 
-Start at this line when reading the tasklog
+读取任务日志时从此行开始
 
-<a id="cli_pvenode_task_status"></a>
+### **pvenode task status** `<upid>` `[FORMAT_OPTIONS]` <a href="#cli_pvenode_task_status" id="cli_pvenode_task_status"></a>
 
-
-
-**pvenode task status** `<upid>` `[FORMAT_OPTIONS]`
-
-Read task status.
+读取任务状态。
 
 **`<upid>`: `<string>`**
 
-The task’s unique ID.
+任务的唯一 ID。
 
-<a id="cli_pvenode_wakeonlan"></a>
+### **pvenode wakeonlan** `<node>` <a href="#cli_pvenode_wakeonlan" id="cli_pvenode_wakeonlan"></a>
 
-
-
-**pvenode wakeonlan** `<node>`
-
-Try to wake a node via *wake on LAN* network packet.
+尝试通过*网络唤醒*数据包唤醒节点。
 
 **`<node>`: `<string>`**
 
-target node for wake on LAN packet
+网络唤醒数据包的目标节点
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 Proxmox VE 节点管理工具（`pvenode`）允许你控制节点特定的设置和资源。
 
 目前，`pvenode` 允许你设置节点描述、对节点上的客户机执行各种批量操作、查看节点的任务历史记录，以及管理节点的 SSL 证书；这些证书由 `pveproxy` 用于 API 和 Web GUI。
 
-## FORMAT\_OPTIONS <a href="#_format_options" id="_format_options"></a>
+## FORMAT\_OPTIONS <a href="#format_options" id="format_options"></a>
 
-It is possible to specify the output format using the `--output-format` parameter. The default format *text* uses ASCII-art to draw nice borders around tables. It additionally transforms some values into human-readable text, for example:
+可以使用 `--output-format` 参数指定输出格式。默认格式 *text* 使用 ASCII 字符画为表格绘制美观的边框。此外，还会将某些值转换为易于阅读的文本，例如：
 
-- Unix epoch is displayed as ISO 8601 date string.
-- Durations are displayed as week/day/hour/minute/second count, i.e `1d 5h`.
-- Byte sizes value include units (`B`, `KiB`, `MiB`, `GiB`, `TiB`, `PiB`).
-- Fractions are display as percentage, i.e. 1.0 is displayed as 100%.
+- Unix 纪元时间显示为 ISO 8601 日期字符串。
+- 时长显示为周/天/小时/分钟/秒的数量，即 `1d 5h`。
+- 字节大小值包含单位（`B`、`KiB`、`MiB`、`GiB`、`TiB`、`PiB`）。
+- 小数显示为百分比，即 1.0 显示为 100%。
 
-You can also completely suppress output using option `--quiet`.
+还可以使用选项 `--quiet` 完全禁止输出。
 
-**`--human-readable` `<boolean>` (*default \=* `1`)**
+**`--human-readable` `<boolean>`（*默认值 \=* `1`）**
 
-Call output rendering functions to produce human readable text.
+调用输出渲染函数，生成易于阅读的文本。
 
-**`--noborder` `<boolean>` (*default \=* `0`)**
+**`--noborder` `<boolean>`（*默认值 \=* `0`）**
 
-Do not draw borders (for *text* format).
+不绘制边框（适用于 *text* 格式）。
 
-**`--noheader` `<boolean>` (*default \=* `0`)**
+**`--noheader` `<boolean>`（*默认值 \=* `0`）**
 
-Do not show column headers (for *text* format).
+不显示列标题（适用于 *text* 格式）。
 
-**`--output-format` `<json | json-pretty | text | yaml>` (*default \=* `text`)**
+**`--output-format` `<json | json-pretty | text | yaml>`（*默认值 \=* `text`）**
 
-Output format.
+输出格式。
 
 **`--quiet` `<boolean>`**
 
-Suppress printing results.
+禁止打印结果。
 
-### Examples <a href="#_examples" id="_examples"></a>
+### 示例 <a href="#examples" id="examples"></a>
 
-**Install an externally provided certificate**
+**安装外部提供的证书**
 
 `pvenode cert set certificate.crt certificate.key -force`
 
-Both files need to be PEM encoded. `certificate.key` contains the private key and `certificate.crt` contains the whole certificate chain.
+两个文件都必须采用 PEM 编码。`certificate.key` 包含私钥，`certificate.crt` 包含完整证书链。
 
-**Setup ACME account and order a certificate for the local node.**
+**设置 ACME 账户，并为本地节点申请证书。**
 
 ```text
 pvenode acme account register default mail@example.invalid
@@ -558,7 +450,7 @@ pvenode acme cert order
 systemctl restart pveproxy
 ```
 
-### Wake-on-LAN <a href="#_wake_on_lan" id="_wake_on_lan"></a>
+### 网络唤醒 <a href="#wake_on_lan" id="wake_on_lan"></a>
 
 Wake-on-LAN（WoL）允许你通过发送魔术包来唤醒网络中处于睡眠状态的计算机。至少有一个 NIC 必须支持此功能，并且需要在计算机的固件（BIOS/UEFI）配置中启用相应选项。选项名称可能从*启用 Wake-on-Lan*到*通过 PCIE 设备开机*不等；如果不确定，请查阅主板厂商手册。可以运行以下命令，使用 `ethtool` 检查 `<interface>` 的 WoL 配置：
 
@@ -572,7 +464,7 @@ ethtool <interface> | grep Wake-on
 pvenode wakeonlan <node>
 ```
 
-This broadcasts the WoL magic packet on UDP port 9, containing the MAC address of `<node>` obtained from the `wakeonlan` property. The node-specific `wakeonlan` property can be set using the following command:
+这会在 UDP 端口 9 上广播 WoL 魔术包，其中包含 `<node>` 的 MAC 地址，该地址从 `wakeonlan` 属性获取。可以使用以下命令设置节点特定的 `wakeonlan` 属性：
 
 ```text
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX
@@ -590,7 +482,7 @@ pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,bind-interface=<iface-name>
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,broadcast-address=<broadcast-address>
 ```
 
-### Task History <a href="#_task_history" id="_task_history"></a>
+### 任务历史 <a href="#task_history" id="task_history"></a>
 
 排查服务器问题（例如备份作业失败）时，查看先前运行任务的日志通常会很有帮助。在 Proxmox VE 中，可以通过 `pvenode task` 命令访问节点的任务历史记录。
 
@@ -606,9 +498,9 @@ pvenode task list --errors --vmid 100
 pvenode task log UPID:pve1:00010D94:001CA6EA:6124E1B9:vzdump:100:root@pam:
 ```
 
-### Bulk Guest Power Management <a href="#_bulk_guest_power_management" id="_bulk_guest_power_management"></a>
+### 客户机批量电源管理 <a href="#bulk_guest_power_management" id="bulk_guest_power_management"></a>
 
-In case you have many VMs/containers, starting and stopping guests can be carried out in bulk operations with the `startall` and `stopall` subcommands of `pvenode`. By default, `pvenode startall` will only start VMs/containers which have been set to automatically start on boot (see [Automatic Start and Shutdown of Virtual Machines](qm-1.md#qm_startup_and_shutdown)), however, you can override this behavior with the `--force` flag. Both commands also have a `--vms` option, which limits the stopped/started guests to the specified VMIDs.
+如果有许多虚拟机/容器，可以通过 `startall` 和 `stopall` 子命令批量启动和停止客户机，这些子命令属于 `pvenode`。默认情况下，`pvenode startall` 只启动已设置为开机自动启动的虚拟机/容器（参见[虚拟机的自动启动和关闭](qm-1.md#qm_startup_and_shutdown)），但可以使用 `--force` 标志覆盖此行为。两个命令也都有 `--vms` 选项，将停止/启动的客户机限制为指定的 VMID。
 
 例如，要启动 VM *100*、*101* 和 *102*，无论它们是否设置了 `onboot`，都可以使用：
 
@@ -626,9 +518,9 @@ pvenode stopall
 stopall 命令首先尝试执行正常关闭，然后等待，直到所有客户机均成功关闭，或可覆盖的超时时间（默认为 3 分钟）到期。此后，如果 force-stop 参数未显式设置为 0（false），则所有仍在运行的虚拟客户机都会被强制停止。
 {% endhint %}
 
-### First Guest Boot Delay <a href="#first_guest_boot_delay" id="first_guest_boot_delay"></a>
+### 首个客户机启动延迟 <a href="#first_guest_boot_delay" id="first_guest_boot_delay"></a>
 
-In case your VMs/containers rely on slow-to-start external resources, for example an NFS server, you can also set a per-node delay between the time Proxmox VE boots and the time the first VM/container that is configured to autostart boots (see [Automatic Start and Shutdown of Virtual Machines](qm-1.md#qm_startup_and_shutdown)).
+如果虚拟机/容器依赖启动缓慢的外部资源，例如 NFS 服务器，还可以按节点设置从 Proxmox VE 启动到首个配置为自动启动的虚拟机/容器启动之间的延迟（参见[虚拟机的自动启动和关闭](qm-1.md#qm_startup_and_shutdown)）。
 
 可通过以下设置实现（其中 `10` 表示以秒为单位的延迟）：
 
@@ -636,7 +528,7 @@ In case your VMs/containers rely on slow-to-start external resources, for exampl
 pvenode config set --startall-onboot-delay 10
 ```
 
-### Bulk Guest Migration <a href="#_bulk_guest_migration" id="_bulk_guest_migration"></a>
+### 客户机批量迁移 <a href="#bulk_guest_migration" id="bulk_guest_migration"></a>
 
 如果升级时需要将所有客户机从一个节点迁移到另一个节点，`pvenode` 还提供用于批量迁移的 `migrateall` 子命令。默认情况下，此命令会将系统上的每个客户机迁移到目标节点，但也可以设置为仅迁移一组客户机。
 
@@ -646,15 +538,15 @@ pvenode config set --startall-onboot-delay 10
 pvenode migrateall pve2 --vms 100,101,102 --with-local-disks
 ```
 
-### RAM Usage Target for Ballooning <a href="#ballooning-target" id="ballooning-target"></a>
+### 内存气球的 RAM 使用率目标 <a href="#ballooning-target" id="ballooning-target"></a>
 
-The target percentage for [automatic memory allocation](qm-1.md#qm_ballooning) defaults to 80%. You can customize this target per node by setting the `ballooning-target` property. For example, to target 90% host memory usage instead:
+[自动内存分配](qm-1.md#qm_ballooning)的目标百分比默认为 80%。可以通过设置 `ballooning-target` 属性，为每个节点自定义此目标。例如，要改为以 90% 的宿主机内存使用率为目标：
 
 ```text
 pvenode config set --ballooning-target 90
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

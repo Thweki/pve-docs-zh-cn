@@ -1,32 +1,16 @@
-# 22.4. **pvesubscription** \- Proxmox VE Subscription Manager <a href="#_strong_pvesubscription_strong_proxmox_ve_subscription_manager" id="_strong_pvesubscription_strong_proxmox_ve_subscription_manager"></a>
+# 22.4. **pvesubscription** \- Proxmox VE 订阅管理器 <a href="#strong_pvesubscription_strong_proxmox_ve_subscription_manager" id="strong_pvesubscription_strong_proxmox_ve_subscription_manager"></a>
 
-<a id="cli_pvesubscription"></a>
+## **pvesubscription** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesubscription" id="cli_pvesubscription"></a>
 
+## **pvesubscription delete** <a href="#cli_pvesubscription_delete" id="cli_pvesubscription_delete"></a>
 
+删除此节点的订阅密钥。
 
-**pvesubscription** `<COMMAND> [ARGS] [OPTIONS]`
+## **pvesubscription get** <a href="#cli_pvesubscription_get" id="cli_pvesubscription_get"></a>
 
-<a id="cli_pvesubscription_delete"></a>
+读取订阅信息。
 
-
-
-**pvesubscription delete**
-
-Delete subscription key of this node.
-
-<a id="cli_pvesubscription_get"></a>
-
-
-
-**pvesubscription get**
-
-Read subscription info.
-
-<a id="cli_pvesubscription_help"></a>
-
-
-
-**pvesubscription help** `[OPTIONS]`
+## **pvesubscription help** `[OPTIONS]` <a href="#cli_pvesubscription_help" id="cli_pvesubscription_help"></a>
 
 获取指定命令的帮助。
 
@@ -38,41 +22,29 @@ Read subscription info.
 
 详细输出格式。
 
-<a id="cli_pvesubscription_set"></a>
+## **pvesubscription set** `<key>` <a href="#cli_pvesubscription_set" id="cli_pvesubscription_set"></a>
 
-
-
-**pvesubscription set** `<key>`
-
-Set subscription key.
+设置订阅密钥。
 
 **`<key>`: `\s*pve([1248])([cbsp])-(arm-)?[0-9a-f]{10}\s*`**
 
-Proxmox VE subscription key
+Proxmox VE 订阅密钥
 
-<a id="cli_pvesubscription_set-offline-key"></a>
+## **pvesubscription set-offline-key** `<data>` <a href="#cli_pvesubscription_set-offline-key" id="cli_pvesubscription_set-offline-key"></a>
 
-
-
-**pvesubscription set-offline-key** `<data>`
-
-Internal use only! To set an offline key, use the package proxmox-offline-mirror-helper instead.
+仅供内部使用！要设置离线密钥，请改用 proxmox-offline-mirror-helper 软件包。
 
 **`<data>`: `<string>`**
 
-A signed subscription info blob
+已签名的订阅信息数据块
 
-<a id="cli_pvesubscription_update"></a>
+## **pvesubscription update** `[OPTIONS]` <a href="#cli_pvesubscription_update" id="cli_pvesubscription_update"></a>
 
-
-
-**pvesubscription update** `[OPTIONS]`
-
-Update subscription info.
+更新订阅信息。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Always connect to server, even if local cache is still valid.
+始终连接服务器，即使本地缓存仍有效。
 
 ---
 

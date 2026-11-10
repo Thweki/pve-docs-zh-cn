@@ -11,7 +11,7 @@ lvcreate -L 100G -n data pve
 lvconvert --type thin-pool pve/data
 ```
 
-## 7.11.1. 配置 <a href="#_configuration_7" id="_configuration_7"></a>
+## 7.11.1. 配置 <a href="#configuration_7" id="configuration_7"></a>
 
 LVM thin 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 LVM 特定属性：
 
@@ -32,7 +32,7 @@ lvmthin: local-lvm
         content rootdir,images
 ```
 
-## 7.11.2. 文件命名约定 <a href="#_file_naming_conventions_4" id="_file_naming_conventions_4"></a>
+## 7.11.2. 文件命名约定 <a href="#file_naming_conventions_4" id="file_naming_conventions_4"></a>
 
 该后端基本上使用与 ZFS 池后端相同的命名约定。
 
@@ -40,7 +40,7 @@ lvmthin: local-lvm
 vm-<VMID>-<NAME>      // normal VM images
 ```
 
-## 7.11.3. 存储功能 <a href="#_storage_features_7" id="_storage_features_7"></a>
+## 7.11.3. 存储功能 <a href="#storage_features_7" id="storage_features_7"></a>
 
 LVM thin 是块存储，但能高效地全面支持快照和克隆。新卷会自动用零初始化。
 
@@ -73,7 +73,7 @@ LVM thin 是块存储，但能高效地全面支持快照和克隆。新卷会�
 </tbody>
 </table>
 
-## 7.11.4. 示例 <a href="#_examples_7" id="_examples_7"></a>
+## 7.11.4. 示例 <a href="#examples_7" id="examples_7"></a>
 
 可以使用以下命令获取卷组 `pve` 上可用的 LVM thin 池列表：
 

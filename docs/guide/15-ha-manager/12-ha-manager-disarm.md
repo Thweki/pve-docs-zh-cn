@@ -1,4 +1,4 @@
-# 15.12. Disarming HA for Cluster Maintenance <a href="#ha_manager_disarm" id="ha_manager_disarm"></a>
+# 15.12. 为集群维护解除 HA 防护 <a href="#ha_manager_disarm" id="ha_manager_disarm"></a>
 
 某些集群维护任务（例如重新配置网络或集群通信栈 corosync）可能导致暂时失去仲裁或出现网络分区。正常情况下，HA 会将其解释为节点故障并触发自我隔离，从而不必要地中断服务。
 
@@ -46,7 +46,7 @@
 # ha-manager status
 ```
 
-The fencing status line shows the current state of the fencing mechanism (see [Fencing Status](07-ha-manager-fencing.md#ha_manager_fencing_status)), including the CRM and LRM watchdog states.
+隔离状态行显示隔离机制的当前状态（参见 [隔离状态](07-ha-manager-fencing.md#ha_manager_fencing_status)），包括 CRM 和 LRM 的看门狗状态。
 
 **解除防护过程**
 

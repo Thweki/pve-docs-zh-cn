@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage/{storage}/rrddata`
 
-Read storage RRD statistics.
+读取存储 RRD 统计信息。
 
 **方法标识：** `rrddata`
 
@@ -49,10 +49,10 @@ Read storage RRD statistics.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | The RRD consolidation function；可选值：`AVERAGE`, `MAX` |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `timeframe` | string | 是 | — | Specify the time frame you are interested in.；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -62,7 +62,7 @@ Read storage RRD statistics.
   "additionalProperties": 0,
   "properties": {
     "cf": {
-      "description": "The RRD consolidation function",
+      "description": "RRD 合并函数",
       "enum": [
         "AVERAGE",
         "MAX"
@@ -71,20 +71,20 @@ Read storage RRD statistics.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "timeframe": {
-      "description": "Specify the time frame you are interested in.",
+      "description": "指定您关注的时间范围。",
       "enum": [
         "hour",
         "day",

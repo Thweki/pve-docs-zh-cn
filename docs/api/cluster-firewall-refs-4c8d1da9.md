@@ -6,7 +6,7 @@
 
 ## GET `/cluster/firewall/refs`
 
-Lists possible IPSet/Alias reference which are allowed in source/dest properties.
+列出源地址/目标地址属性中允许使用的 IPSet/别名引用。
 
 **方法标识：** `refs`
 
@@ -34,7 +34,7 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | Only list references of specified type.；可选值：`alias`, `ipset` |
+| `type` | string | 否 | — | 仅列出指定类型的引用。；可选值：`alias`, `ipset` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -44,7 +44,7 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
   "additionalProperties": 0,
   "properties": {
     "type": {
-      "description": "Only list references of specified type.",
+      "description": "仅列出指定类型的引用。",
       "enum": [
         "alias",
         "ipset"
@@ -65,24 +65,24 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
   "items": {
     "properties": {
       "comment": {
-        "description": "Optional comment or description.",
+        "description": "可选注释或描述。",
         "optional": 1,
         "type": "string"
       },
       "name": {
-        "description": "The name of the alias or ipset.",
+        "description": "别名或 ipset 的名称。",
         "type": "string"
       },
       "ref": {
-        "description": "The reference string used in firewall rules.",
+        "description": "防火墙规则中使用的引用字符串。",
         "type": "string"
       },
       "scope": {
-        "description": "The scope of the reference (e.g., SDN).",
+        "description": "引用的作用域（例如 SDN）。",
         "type": "string"
       },
       "type": {
-        "description": "The type of reference (alias or ipset).",
+        "description": "引用类型（alias 或 ipset）。",
         "enum": [
           "alias",
           "ipset"

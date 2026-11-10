@@ -1,13 +1,13 @@
-# 13.5. IP Aliases <a href="#pve_firewall_ip_aliases" id="pve_firewall_ip_aliases"></a>
+# 13.5. IP 别名 <a href="#pve_firewall_ip_aliases" id="pve_firewall_ip_aliases"></a>
 
-IP Aliases allow you to associate IP addresses of networks with a name. You can then refer to those names:
+IP 别名允许将网络的 IP 地址与名称关联。随后可以在以下位置引用这些名称：
 
-- inside IP set definitions
-- in `source` and `dest` properties of firewall rules
+- 在 IP 集合定义中
+- 在防火墙规则的 `source` 和 `dest` 属性中
 
-## 13.5.1. Standard IP Alias `local_network` <a href="#_standard_ip_alias_span_class_monospaced_local_network_span" id="_standard_ip_alias_span_class_monospaced_local_network_span"></a>
+## 13.5.1. 标准 IP 别名 `local_network` <a href="#standard_ip_alias_span_class_monospaced_local_network_span" id="standard_ip_alias_span_class_monospaced_local_network_span"></a>
 
-This alias is automatically defined. Please use the following command to see assigned values:
+此别名自动定义。请使用以下命令查看分配的值：
 
 ```text
 # pve-firewall localnet
@@ -17,9 +17,9 @@ network auto detect: 192.168.0.0/20
 using detected local_network: 192.168.0.0/20
 ```
 
-The firewall automatically sets up rules to allow everything needed for cluster communication (corosync, API, SSH) using this alias.
+防火墙会使用此别名自动设置规则，允许集群通信所需的全部流量（corosync、API、SSH）。
 
-The user can overwrite these values in the `cluster.fw` alias section. If you use a single host on a public network, it is better to explicitly assign the local IP address
+用户可以在 `cluster.fw` 别名节中覆盖这些值。如果在公共网络上使用单台宿主机，最好显式指定本地 IP 地址
 
 ```text
 #  /etc/pve/firewall/cluster.fw

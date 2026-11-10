@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/vncwebsocket`
 
-Opens a websocket for VNC traffic.
+为 VNC 流量打开 websocket。
 
 **方法标识：** `vncwebsocket`
 
@@ -21,7 +21,7 @@ Opens a websocket for VNC traffic.
       "Sys.Console"
     ]
   ],
-  "description": "You also need to pass a valid ticket (vncticket)."
+  "description": "还需要传入有效票据（vncticket）。"
 }
 ```
 
@@ -35,9 +35,9 @@ Opens a websocket for VNC traffic.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `port` | integer | 是 | — | Port number returned by previous 'vncshell' call. |
-| `vncticket` | string | 是 | — | Ticket from previous call to 'vncshell'. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `port` | integer | 是 | — | 上次 'vncshell' 调用返回的端口号。 |
+| `vncticket` | string | 是 | — | 上次 'vncshell' 调用的票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -47,20 +47,20 @@ Opens a websocket for VNC traffic.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "Port number returned by previous 'vncshell' call.",
+      "description": "上次 'vncshell' 调用返回的端口号。",
       "maximum": 5999,
       "minimum": 5900,
       "type": "integer",
       "typetext": "<integer> (5900 - 5999)"
     },
     "vncticket": {
-      "description": "Ticket from previous call to 'vncshell'.",
+      "description": "上次 'vncshell' 调用的票据。",
       "maxLength": 512,
       "type": "string",
       "typetext": "<string>"

@@ -6,7 +6,7 @@
 
 ## GET `/access`
 
-Directory index.
+目录索引。
 
 **方法标识：** `index`
 

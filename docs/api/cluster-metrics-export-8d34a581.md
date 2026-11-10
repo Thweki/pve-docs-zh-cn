@@ -6,7 +6,7 @@
 
 ## GET `/cluster/metrics/export`
 
-Retrieve metrics of the cluster.
+获取集群指标。
 
 **方法标识：** `export`
 
@@ -34,10 +34,10 @@ Retrieve metrics of the cluster.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `history` | boolean | 否 | 0 | Also return historic values. Returns full available metric history unless `start-time` is also set |
-| `local-only` | boolean | 否 | 0 | Only return metrics for the current node instead of the whole cluster |
-| `node-list` | string | 否 | — | Only return metrics from nodes passed as comma-separated list |
-| `start-time` | integer | 否 | 0 | Only include metrics with a timestamp &gt; start-time. |
+| `history` | boolean | 否 | 0 | 还返回历史值。除非同时设置 `start-time`，否则返回所有可用的指标历史记录 |
+| `local-only` | boolean | 否 | 0 | 仅返回当前节点的指标，而不是整个集群的指标 |
+| `node-list` | string | 否 | — | 仅返回以逗号分隔列表传入的节点的指标 |
+| `start-time` | integer | 否 | 0 | 仅包含时间戳 &gt; start-time 的指标。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -48,27 +48,27 @@ Retrieve metrics of the cluster.
   "properties": {
     "history": {
       "default": 0,
-      "description": "Also return historic values. Returns full available metric history unless `start-time` is also set",
+      "description": "还返回历史值。除非同时设置 `start-time`，否则返回所有可用的指标历史记录",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "local-only": {
       "default": 0,
-      "description": "Only return metrics for the current node instead of the whole cluster",
+      "description": "仅返回当前节点的指标，而不是整个集群的指标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node-list": {
-      "description": "Only return metrics from nodes passed as comma-separated list",
+      "description": "仅返回以逗号分隔列表传入的节点的指标",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "start-time": {
       "default": 0,
-      "description": "Only include metrics with a timestamp > start-time.",
+      "description": "仅包含时间戳 > start-time 的指标。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
@@ -86,24 +86,24 @@ Retrieve metrics of the cluster.
   "additionalProperties": 0,
   "properties": {
     "data": {
-      "description": "Array of system metrics. Metrics are sorted by their timestamp.",
+      "description": "系统指标数组。指标按时间戳排序。",
       "items": {
         "additionalProperties": 0,
         "properties": {
           "id": {
-            "description": "Unique identifier for this metric object, for instance 'node/<nodename>' or 'qemu/<vmid>'.",
+            "description": "此指标对象的唯一标识符，例如 'node/<nodename>' 或 'qemu/<vmid>'。",
             "type": "string"
           },
           "metric": {
-            "description": "Name of the metric.",
+            "description": "指标名称。",
             "type": "string"
           },
           "timestamp": {
-            "description": "Time at which this metric was observed",
+            "description": "观测到此指标的时间",
             "type": "integer"
           },
           "type": {
-            "description": "Type of the metric.",
+            "description": "指标类型。",
             "enum": [
               "gauge",
               "counter",
@@ -112,7 +112,7 @@ Retrieve metrics of the cluster.
             "type": "string"
           },
           "value": {
-            "description": "Metric value.",
+            "description": "指标值。",
             "type": "number"
           }
         },

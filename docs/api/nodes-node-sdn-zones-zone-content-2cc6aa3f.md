@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/zones/{zone}/content`
 
-List zone content.
+列出区域内容。
 
 **方法标识：** `index`
 
@@ -46,8 +46,8 @@ List zone content.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `zone` | string | 是 | — | The SDN zone object identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `zone` | string | 是 | — | SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ List zone content.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "zone": {
-      "description": "The SDN zone object identifier.",
+      "description": "SDN 区域对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -82,17 +82,17 @@ List zone content.
   "items": {
     "properties": {
       "status": {
-        "description": "Status.",
+        "description": "状态。",
         "optional": 1,
         "type": "string"
       },
       "statusmsg": {
-        "description": "Status details",
+        "description": "状态详情",
         "optional": 1,
         "type": "string"
       },
       "vnet": {
-        "description": "Vnet identifier.",
+        "description": "Vnet 标识符。",
         "type": "string"
       }
     },

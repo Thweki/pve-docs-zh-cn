@@ -34,8 +34,8 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `resource` | string | 否 | — | Limit the returned list to rules affecting the specified resource. |
-| `type` | string | 否 | — | Limit the returned list to the specified rule type.；可选值：`node-affinity`, `resource-affinity` |
+| `resource` | string | 否 | — | 将返回列表限制为影响指定资源的规则。 |
+| `type` | string | 否 | — | 将返回列表限制为指定规则类型。；可选值：`node-affinity`, `resource-affinity` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@
   "additionalProperties": 0,
   "properties": {
     "resource": {
-      "description": "Limit the returned list to rules affecting the specified resource.",
+      "description": "将返回列表限制为影响指定资源的规则。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Limit the returned list to the specified rule type.",
+      "description": "将返回列表限制为指定规则类型。",
       "enum": [
         "node-affinity",
         "resource-affinity"

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/ceph/osd/{osdid}/scrub`
 
-Instruct the OSD to scrub.
+指示 OSD 执行清理检查。
 
 **方法标识：** `scrub`
 
@@ -46,8 +46,8 @@ Instruct the OSD to scrub.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `deep` | boolean | 否 | 0 | If set, instructs a deep scrub instead of a normal one. |
-| `node` | string | 是 | — | The cluster node name. |
+| `deep` | boolean | 否 | 0 | 如果设置，则指示执行深度清理检查，而非普通清理检查。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `osdid` | integer | 是 | — | OSD ID |
 
 <details>
@@ -59,13 +59,13 @@ Instruct the OSD to scrub.
   "properties": {
     "deep": {
       "default": 0,
-      "description": "If set, instructs a deep scrub instead of a normal one.",
+      "description": "如果设置，则指示执行深度清理检查，而非普通清理检查。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

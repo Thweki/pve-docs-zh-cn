@@ -1,9 +1,9 @@
-# 17.7. Notification Mode <a href="#notification_mode" id="notification_mode"></a>
+# 17.7. 通知模式 <a href="#notification_mode" id="notification_mode"></a>
 
-Backup jobs allow to choose between two modes for sending backup related notifications. This is controlled by the `notification-mode` option in the [backup job configuration](../16-vzdump/10-vzdump-configuration.md).
+备份任务允许在两种模式之间选择，用于发送备份相关通知。这由 `notification-mode` 选项控制，该选项位于[备份任务配置](../16-vzdump/10-vzdump-configuration.md)中。
 
-- Send notifications based on the global notification settings (`notification-system`).
-- Send notification emails via the system’s `sendmail` command to the email address configured in the backup job (`legacy-sendmail`). This mode also allows to select whether the email should be sent always or only on failure of the backup. Any targets or matchers from the global notification settings are ignored. This mode is equivalent to the notification behavior for Proxmox VE versions before 8.1. This mode might be removed in a later release of Proxmox VE.
+- 根据全局通知设置发送通知（`notification-system`）。
+- 通过系统的 `sendmail` 命令，将通知邮件发送到备份任务中配置的电子邮件地址（`legacy-sendmail`）。此模式还允许选择始终发送邮件，或仅在备份失败时发送。全局通知设置中的所有目标或匹配器均会被忽略。此模式等同于 Proxmox VE 8.1 之前版本的通知行为。此模式可能在 Proxmox VE 的后续版本中移除。
 
 ---
 

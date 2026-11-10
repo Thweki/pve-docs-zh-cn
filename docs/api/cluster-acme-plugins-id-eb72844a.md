@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/acme/plugins/{id}`
 
-Delete ACME plugin configuration.
+删除 ACME 插件配置。
 
 **方法标识：** `delete_plugin`
 
@@ -40,7 +40,7 @@ Delete ACME plugin configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Unique identifier for ACME plugin instance. |
+| `id` | string | 是 | — | ACME 插件实例的唯一标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Delete ACME plugin configuration.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "Unique identifier for ACME plugin instance.",
+      "description": "ACME 插件实例的唯一标识符。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -71,7 +71,7 @@ Delete ACME plugin configuration.
 
 ## GET `/cluster/acme/plugins/{id}`
 
-Get ACME plugin configuration.
+获取 ACME 插件配置。
 
 **方法标识：** `get_plugin_config`
 
@@ -105,7 +105,7 @@ Get ACME plugin configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Unique identifier for ACME plugin instance. |
+| `id` | string | 是 | — | ACME 插件实例的唯一标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -115,7 +115,7 @@ Get ACME plugin configuration.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "Unique identifier for ACME plugin instance.",
+      "description": "ACME 插件实例的唯一标识符。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -132,7 +132,7 @@ Get ACME plugin configuration.
 {
   "properties": {
     "api": {
-      "description": "API plugin name",
+      "description": "API 插件名称",
       "enum": [
         "1984hosting",
         "acmedns",
@@ -299,34 +299,34 @@ Get ACME plugin configuration.
       "type": "string"
     },
     "data": {
-      "description": "DNS plugin data. (base64 encoded)",
+      "description": "DNS 插件数据。（base64 编码）",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
-      "description": "Flag to disable the config.",
+      "description": "用于禁用此配置的标志。",
       "optional": 1,
       "type": "boolean"
     },
     "nodes": {
-      "description": "List of cluster node names.",
+      "description": "集群节点名称列表。",
       "format": "pve-node-list",
       "optional": 1,
       "type": "string"
     },
     "plugin": {
-      "description": "Unique identifier for ACME plugin instance.",
+      "description": "ACME 插件实例的唯一标识符。",
       "format": "pve-configid",
       "type": "string"
     },
     "type": {
-      "description": "ACME challenge type.",
+      "description": "ACME 质询类型。",
       "enum": [
         "dns",
         "standalone"
@@ -335,7 +335,7 @@ Get ACME plugin configuration.
     },
     "validation-delay": {
       "default": 30,
-      "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.",
+      "description": "请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。",
       "maximum": 172800,
       "minimum": 0,
       "optional": 1,
@@ -348,7 +348,7 @@ Get ACME plugin configuration.
 
 ## PUT `/cluster/acme/plugins/{id}`
 
-Update ACME plugin configuration.
+更新 ACME 插件配置。
 
 **方法标识：** `update_plugin`
 
@@ -382,14 +382,14 @@ Update ACME plugin configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `api` | string | 否 | — | API plugin name；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
-| `data` | string | 否 | — | DNS plugin data. (base64 encoded) |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | — | Flag to disable the config. |
-| `id` | string | 是 | — | ACME Plugin ID name |
-| `nodes` | string | 否 | — | List of cluster node names. |
-| `validation-delay` | integer | 否 | 30 | Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records. |
+| `api` | string | 否 | — | API 插件名称；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
+| `data` | string | 否 | — | DNS 插件数据。（base64 编码） |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | — | 用于禁用此配置的标志。 |
+| `id` | string | 是 | — | ACME 插件 ID 名称 |
+| `nodes` | string | 否 | — | 集群节点名称列表。 |
+| `validation-delay` | integer | 否 | 30 | 请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -399,7 +399,7 @@ Update ACME plugin configuration.
   "additionalProperties": 0,
   "properties": {
     "api": {
-      "description": "API plugin name",
+      "description": "API 插件名称",
       "enum": [
         "1984hosting",
         "acmedns",
@@ -566,13 +566,13 @@ Update ACME plugin configuration.
       "type": "string"
     },
     "data": {
-      "description": "DNS plugin data. (base64 encoded)",
+      "description": "DNS 插件数据。（base64 编码）",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -580,26 +580,26 @@ Update ACME plugin configuration.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
-      "description": "Flag to disable the config.",
+      "description": "用于禁用此配置的标志。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "ACME Plugin ID name",
+      "description": "ACME 插件 ID 名称",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "nodes": {
-      "description": "List of cluster node names.",
+      "description": "集群节点名称列表。",
       "format": "pve-node-list",
       "optional": 1,
       "type": "string",
@@ -607,7 +607,7 @@ Update ACME plugin configuration.
     },
     "validation-delay": {
       "default": 30,
-      "description": "Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.",
+      "description": "请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。",
       "maximum": 172800,
       "minimum": 0,
       "optional": 1,

@@ -1,135 +1,135 @@
-# 12.9. Controllers <a href="#pvesdn_config_controllers" id="pvesdn_config_controllers"></a>
+# 12.9. 控制器 <a href="#pvesdn_config_controllers" id="pvesdn_config_controllers"></a>
 
-Some zones implement a separated control and data plane that require an external controller to manage the VNet’s control plane.
+某些区域实现了分离的控制平面和数据平面，需要外部控制器管理 VNet 的控制平面。
 
-Currently, only the `EVPN` zone requires an external controller.
+目前，仅 `EVPN` 区域需要外部控制器。
 
-## 12.9.1. EVPN Controller <a href="#pvesdn_controller_plugin_evpn" id="pvesdn_controller_plugin_evpn"></a>
+## 12.9.1. EVPN 控制器 <a href="#pvesdn_controller_plugin_evpn" id="pvesdn_controller_plugin_evpn"></a>
 
-The `EVPN`, zone requires an external controller to manage the control plane. The EVPN controller plugin configures the Free Range Routing (frr) router.
+`EVPN` 区域需要外部控制器管理控制平面。EVPN 控制器插件配置 Free Range Routing（frr）路由器。
 
-To enable the EVPN controller, you need to enable FRR on every node, see [install FRRouting](03-pvesdn-installation.md#pvesdn_install_frrouting).
+要启用 EVPN 控制器，需要在每个节点上启用 FRR，参见 [安装 FRRouting](03-pvesdn-installation.md#pvesdn_install_frrouting)。
 
-EVPN controller configuration options:
+EVPN 控制器配置选项：
 
-**ASN \#**
+**ASN 编号**
 
-A unique BGP ASN number. It’s highly recommended to use a private ASN number (64512 – 65534, 4200000000 – 4294967294), as otherwise you could end up breaking global routing by mistake. Every EVPN controller configured on a node must have the same ASN configured.
+唯一的 BGP ASN 编号。强烈建议使用私有 ASN 编号（64512 – 65534、4200000000 – 4294967294），否则可能意外破坏全局路由。在同一节点上配置的每个 EVPN 控制器必须配置相同的 ASN。
 
-**SDN Fabric**
+**SDN 网络结构**
 
-A [Fabric](10-pvesdn-config-fabrics.md) that contains all the nodes part of the EVPN zone. Will be used as the underlay network.
+包含 EVPN 区域中所有节点的 [网络结构](10-pvesdn-config-fabrics.md)。将用作底层网络。
 
-**Peers**
+**对等方**
 
-An IP list of all nodes that are part of the EVPN zone. (could also be external nodes or route reflector servers)
+属于 EVPN 区域的所有节点的 IP 列表。（也可以是外部节点或路由反射器服务器）
 
-**Nodes**
+**节点**
 
-A list of nodes where this controller should be active. This can be used to configure EVPN peering sessions on specific nodes only.
+应激活此控制器的节点列表。可用于仅在特定节点上配置 EVPN 对等会话。
 
-**Peer Group Name**
+**对等组名称**
 
-EVPN controllers use the peer group name *VTEP* by default. When defining multiple EVPN controllers, each additional controller needs to specify a custom peer group name to be used in the FRR configuration.
+EVPN 控制器默认使用对等组名称 *VTEP*。定义多个 EVPN 控制器时，每个额外的控制器都需要指定用于 FRR 配置的自定义对等组名称。
 
-**BGP Mode**
+**BGP 模式**
 
-Allows configuring the type of BGP session manually. The *auto* mode preserves the old behavior of the SDN stack: EVPN controllers were iBGP, unless there was a BGP controller configured. In that case the EVPN controller re-used the BGP session from the BGP controller. With this option, the type of BGP session can be overridden manually \- allowing for explicitly configuring the type of BGP session that should be established with the EVPN controller.
+允许手动配置 BGP 会话类型。*auto* 模式保留 SDN 协议栈的旧行为：除非配置了 BGP 控制器，否则 EVPN 控制器使用 iBGP。如果配置了 BGP 控制器，EVPN 控制器将复用 BGP 控制器的 BGP 会话。通过此选项，可以手动覆盖 BGP 会话类型，从而显式配置应与 EVPN 控制器建立的 BGP 会话类型。
 
 **ebgp-multihop**
 
-Increase the number of hops to reach peers, in case they are not directly connected or they use loopback. (only for BGP Mode *external*).
+如果对等方不直接连接或使用回环，增加到达对等方的跳数。（仅适用于 BGP 模式 *external*）。
 
-### ASN <a href="#_asn" id="_asn"></a>
+### ASN <a href="#asn" id="asn"></a>
 
-Every router can be member of exactly one Autonomous System, so any iBGP sessions on a given node (irregardless of address family) need to have the same ASN configured. Any configuration that has two iBGP sessions with different ASNs is rejected and an error thrown, since it is by definition not possible to have two iBGP sessions with different ASNs on the same BGP instance, as one instance can only have one local ASN.
+每个路由器只能属于一个自治系统，因此给定节点上的所有 iBGP 会话（无论地址族如何）都需要配置相同的 ASN。任何包含两个不同 ASN 的 iBGP 会话的配置都会被拒绝并引发错误，因为按定义，同一个 BGP 实例不可能具有两个 ASN 不同的 iBGP 会话，一个实例只能具有一个本地 ASN。
 
-The local ASN of the FRR instance is auto-derived based on the settings in the SDN controllers:
+FRR 实例的本地 ASN 根据 SDN 控制器中的设置自动推导：
 
-If only a BGP or EVPN controller exists (but not both), then the respective ASN from the controller is used.
+如果仅存在 BGP 或 EVPN 控制器（但并非两者都存在），则使用相应控制器的 ASN。
 
-For backwards-compatibility reasons, the SDN stack checks if there are any EVPN controllers in auto mode. If a BGP controller exists, then the ASN from the BGP controller will be used in any case.
+出于向后兼容的考虑，SDN 协议栈会检查是否存在处于 auto 模式的 EVPN 控制器。如果存在 BGP 控制器，则无论如何都将使用 BGP 控制器的 ASN。
 
-Otherwise, if an EVPN controller is configured, then the ASN from the EVPN controller is used \- otherwise the ASN from the BGP controller.
+否则，如果配置了 EVPN 控制器，则使用 EVPN 控制器的 ASN；否则使用 BGP 控制器的 ASN。
 
-The SDN stack utilizes the local-as directive together with the `no-prepend
-replace-as` option in the FRR configuration for handling multiple ASN numbers in the configuration. This is the case when the BGP and EVPN controller have different ASNs configured and auto mode is disabled.
+SDN 协议栈在 FRR 配置中将 local-as 指令与 `no-prepend
+replace-as` 选项结合使用，以处理配置中的多个 ASN 编号。当 BGP 和 EVPN 控制器配置了不同的 ASN 且禁用了 auto 模式时，就属于此情况。
 
-### VTEP IP auto-generation <a href="#_vtep_ip_auto_generation" id="_vtep_ip_auto_generation"></a>
+### VTEP IP 自动生成 <a href="#vtep_ip_auto_generation" id="vtep_ip_auto_generation"></a>
 
-The VTEP IPs for the VXLAN devices of a zone will be auto-derived based on the (primary) controller defined in the EVPN zone:
+区域的 VXLAN 设备的 VTEP IP 会根据 EVPN 区域中定义的（主）控制器自动推导：
 
-If a BGP or IS-IS controller with a loopback interface is used, then the IP from the loopback interface will be used as VTEP IP.
+如果使用带有回环接口的 BGP 或 IS-IS 控制器，则将回环接口的 IP 用作 VTEP IP。
 
-If the peer list of the controller contains an IP that is locally configured on the node, then this IP will be used as VTEP IP.
+如果控制器的对等方列表包含节点本地配置的 IP，则将此 IP 用作 VTEP IP。
 
-Otherwise, the EVPN controller will check the route in the default routing table for the first peer IP and use the source IP address specified in the routing table as VTEP IP. This can cause issues if the route gets announced dynamically e.g. via a fabric. In that case it is necessary for the kernel routing table to contain the required entry when applying the configuration for the EVPN controller.
+否则，EVPN 控制器会检查默认路由表中到第一个对等方 IP 的路由，并将路由表中指定的源 IP 地址用作 VTEP IP。如果路由通过网络结构等方式动态通告，可能会导致问题。在这种情况下，应用 EVPN 控制器配置时，内核路由表必须包含所需条目。
 
-## 12.9.2. BGP Controller <a href="#pvesdn_controller_plugin_BGP" id="pvesdn_controller_plugin_BGP"></a>
+## 12.9.2. BGP 控制器 <a href="#pvesdn_controller_plugin_bgp" id="pvesdn_controller_plugin_bgp"></a>
 
-The BGP controller is not used directly by a zone. You can use it to configure FRR to manage BGP peers.
+区域不直接使用 BGP 控制器。可以使用它配置 FRR 来管理 BGP 对等方。
 
-For BGP-EVPN, it can be used to define a different ASN by node, so doing EBGP. It can also be used to export EVPN routes to an external BGP peer.
+对于 BGP-EVPN，可用它为每个节点定义不同的 ASN，从而实现 EBGP。也可用它向外部 BGP 对等方导出 EVPN 路由。
 
 {% hint style="info" %}
-By default, for a simple full mesh EVPN, you don’t need to define a BGP controller.
+默认情况下，简单的全网状 EVPN 不需要定义 BGP 控制器。
 {% endhint %}
 
-BGP controller configuration options:
+BGP 控制器配置选项：
 
-**Node**
+**节点**
 
-The node of this BGP controller
+此 BGP 控制器所在的节点
 
-**ASN \#**
+**ASN 编号**
 
-A unique BGP ASN number. It’s highly recommended to use a private ASN number in the range (64512 \- 65534\) or (4200000000 \- 4294967294), as otherwise you could break global routing by mistake.
+唯一的 BGP ASN 编号。强烈建议使用范围为（64512 \- 65534）或（4200000000 \- 4294967294）的私有 ASN 编号，否则可能意外破坏全局路由。
 
-**Peer**
+**对等方**
 
-A list of peer IP addresses you want to communicate with using the underlying BGP network.
+希望通过底层 BGP 网络与之通信的对等方 IP 地址列表。
 
 **EBGP**
 
-If your peer’s remote-AS is different, this enables EBGP.
+如果对等方的 remote-AS 不同，此选项将启用 EBGP。
 
-**Loopback Interface**
+**回环接口**
 
-Use a loopback or dummy interface as the source of the EVPN network (for multipath).
+将回环或 dummy 接口用作 EVPN 网络的源（用于多路径）。
 
 **ebgp-multihop**
 
-Increase the number of hops to reach peers, in case they are not directly connected or they use loopback.
+如果对等方不直接连接或使用回环，增加到达对等方的跳数。
 
 **bgp-multipath-as-path-relax**
 
-Allow ECMP if your peers have different ASN.
+如果对等方具有不同的 ASN，允许 ECMP。
 
-## 12.9.3. ISIS Controller <a href="#pvesdn_controller_plugin_ISIS" id="pvesdn_controller_plugin_ISIS"></a>
+## 12.9.3. ISIS 控制器 <a href="#pvesdn_controller_plugin_isis" id="pvesdn_controller_plugin_isis"></a>
 
-The ISIS controller is not used directly by a zone. You can use it to configure FRR to export EVPN routes to an ISIS domain.
+区域不直接使用 ISIS 控制器。可以使用它配置 FRR，将 EVPN 路由导出到 ISIS 域。
 
-ISIS controller configuration options:
+ISIS 控制器配置选项：
 
-**Node**
+**节点**
 
-The node of this ISIS controller.
+此 ISIS 控制器所在的节点。
 
-**Domain**
+**域**
 
-A unique ISIS domain.
+唯一的 ISIS 域。
 
-**Network Entity Title**
+**网络实体名称**
 
-A Unique ISIS network address that identifies this node.
+标识此节点的唯一 ISIS 网络地址。
 
-**Interfaces**
+**接口**
 
-A list of physical interface(s) used by ISIS.
+ISIS 使用的物理接口列表。
 
-**Loopback**
+**回环**
 
-Use a loopback or dummy interface as the source of the EVPN network (for multipath).
+将回环或 dummy 接口用作 EVPN 网络的源（用于多路径）。
 
 ---
 

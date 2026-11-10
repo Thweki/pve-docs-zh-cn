@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/storage/{storage}/download-url`
 
-Download templates, ISO images, OVAs and VM images by using an URL.
+通过 URL 下载模板、ISO 镜像、OVA 和虚拟机镜像。
 
 **方法标识：** `download_url`
 
@@ -42,7 +42,7 @@ Download templates, ISO images, OVAs and VM images by using an URL.
       ]
     ]
   ],
-  "description": "Requires allocation access on the storage and as this allows one to probe the (local!) host network indirectly it also requires one of Sys.Modify on / (for backwards compatibility) or the newer Sys.AccessNetwork privilege on the node."
+  "description": "需要对存储具有分配访问权限；由于此操作允许间接探测宿主机的本地网络，因此还需要对 / 具有 Sys.Modify 权限（为向后兼容），或对节点具有较新的 Sys.AccessNetwork 权限。"
 }
 ```
 
@@ -68,15 +68,15 @@ Download templates, ISO images, OVAs and VM images by using an URL.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `checksum` | string | 否 | — | The expected checksum of the file. |
-| `checksum-algorithm` | string | 否 | — | The algorithm to calculate the checksum of the file.；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
-| `compression` | string | 否 | — | Decompress the downloaded file using the specified compression algorithm. |
-| `content` | string | 是 | — | Content type.；可选值：`iso`, `vztmpl`, `import` |
-| `filename` | string | 是 | — | The name of the file to create. Caution: This will be normalized! |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `url` | string | 是 | — | The URL to download the file from. |
-| `verify-certificates` | boolean | 否 | 1 | If false, no SSL/TLS certificates will be verified. |
+| `checksum` | string | 否 | — | 文件的预期校验和。 |
+| `checksum-algorithm` | string | 否 | — | 计算文件校验和的算法。；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
+| `compression` | string | 否 | — | 使用指定压缩算法解压下载的文件。 |
+| `content` | string | 是 | — | 内容类型。；可选值：`iso`, `vztmpl`, `import` |
+| `filename` | string | 是 | — | 要创建的文件名称。注意：此名称将被规范化！ |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `url` | string | 是 | — | 下载文件的 URL。 |
+| `verify-certificates` | boolean | 否 | 1 | 如果为 false，则不验证任何 SSL/TLS 证书。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -86,14 +86,14 @@ Download templates, ISO images, OVAs and VM images by using an URL.
   "additionalProperties": 0,
   "properties": {
     "checksum": {
-      "description": "The expected checksum of the file.",
+      "description": "文件的预期校验和。",
       "optional": 1,
       "requires": "checksum-algorithm",
       "type": "string",
       "typetext": "<string>"
     },
     "checksum-algorithm": {
-      "description": "The algorithm to calculate the checksum of the file.",
+      "description": "计算文件校验和的算法。",
       "enum": [
         "md5",
         "sha1",
@@ -107,14 +107,14 @@ Download templates, ISO images, OVAs and VM images by using an URL.
       "type": "string"
     },
     "compression": {
-      "description": "Decompress the downloaded file using the specified compression algorithm.",
+      "description": "使用指定压缩算法解压下载的文件。",
       "enum": null,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "content": {
-      "description": "Content type.",
+      "description": "内容类型。",
       "enum": [
         "iso",
         "vztmpl",
@@ -124,32 +124,32 @@ Download templates, ISO images, OVAs and VM images by using an URL.
       "type": "string"
     },
     "filename": {
-      "description": "The name of the file to create. Caution: This will be normalized!",
+      "description": "要创建的文件名称。注意：此名称将被规范化！",
       "maxLength": 255,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "url": {
-      "description": "The URL to download the file from.",
+      "description": "下载文件的 URL。",
       "pattern": "https?://.*",
       "type": "string"
     },
     "verify-certificates": {
       "default": 1,
-      "description": "If false, no SSL/TLS certificates will be verified.",
+      "description": "如果为 false，则不验证任何 SSL/TLS 证书。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

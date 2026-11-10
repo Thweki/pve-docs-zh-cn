@@ -1,8 +1,8 @@
-# 13.3. Firewall Rules <a href="#_firewall_rules" id="_firewall_rules"></a>
+# 13.3. 防火墙规则 <a href="#firewall_rules" id="firewall_rules"></a>
 
-Firewall rules consists of a direction (`IN`, `OUT` or `FORWARD`) and an action (`ACCEPT`, `DENY`, `REJECT`). You can also specify a macro name. Macros contain predefined sets of rules and options. Rules can be disabled by prefixing them with `|`.
+防火墙规则由方向（`IN`、`OUT` 或 `FORWARD`）和操作（`ACCEPT`、`DENY`、`REJECT`）组成。也可以指定宏名称。宏包含预定义的规则和选项集合。可以在规则前添加 `|` 来禁用规则。
 
-**Firewall rules syntax**
+**防火墙规则语法**
 
 ```text
 [RULES]
@@ -13,41 +13,41 @@ DIRECTION ACTION [OPTIONS]
 DIRECTION MACRO(ACTION) [OPTIONS] # use predefined macro
 ```
 
-The following options can be used to refine rule matches.
+以下选项可用于细化规则匹配。
 
 **`--dest` `<string>`**
 
-Restrict packet destination address. This can refer to a single IP address, an IP set (*\+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
+限制数据包目标地址。可以引用单个 IP 地址、IP 集合（*\+ipsetname*）或 IP 别名定义。也可以指定地址范围，例如 *20.34.101.207-201.3.9.99*，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
 
 **`--dport` `<string>`**
 
-Restrict TCP/UDP destination port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\\d\+:\\d\+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
+限制 TCP/UDP 目标端口。可以使用服务名称或普通数字（0-65535），如 */etc/services* 中所定义。端口范围可以使用 *\\d\+:\\d\+* 指定，例如 *80:85*，也可以使用逗号分隔的列表匹配多个端口或范围。
 
 **`--icmp-type` `<string>`**
 
-Specify icmp-type. Only valid if proto equals *icmp* or *icmpv6*/*ipv6-icmp*.
+指定 icmp-type。仅当 proto 等于 *icmp* 或 *icmpv6*/*ipv6-icmp* 时有效。
 
 **`--iface` `<string>`**
 
-Network interface name. You have to use network configuration key names for VMs and containers (*net\\d\+*). Host related rules can use arbitrary strings.
+网络接口名称。对于虚拟机和容器，必须使用网络配置键名称（*net\\d\+*）。宿主机相关规则可以使用任意字符串。
 
 **`--log` `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
-Log level for firewall rule.
+防火墙规则的日志级别。
 
 **`--proto` `<string>`**
 
-IP protocol. You can use protocol names (*tcp*/*udp*) or simple numbers, as defined in */etc/protocols*.
+IP 协议。可以使用协议名称（*tcp*/*udp*）或普通数字，如 */etc/protocols* 中所定义。
 
 **`--source` `<string>`**
 
-Restrict packet source address. This can refer to a single IP address, an IP set (*\+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
+限制数据包源地址。可以引用单个 IP 地址、IP 集合（*\+ipsetname*）或 IP 别名定义。也可以指定地址范围，例如 *20.34.101.207-201.3.9.99*，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
 
 **`--sport` `<string>`**
 
-Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\\d\+:\\d\+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
+限制 TCP/UDP 源端口。可以使用服务名称或普通数字（0-65535），如 */etc/services* 中所定义。端口范围可以使用 *\\d\+:\\d\+* 指定，例如 *80:85*，也可以使用逗号分隔的列表匹配多个端口或范围。
 
-Here are some examples:
+以下是一些示例：
 
 ```text
 [RULES]

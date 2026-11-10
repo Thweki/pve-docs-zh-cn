@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/storage/{storage}/content/{volume}`
 
-Delete volume
+删除卷
 
 **方法标识：** `delete`
 
@@ -14,7 +14,7 @@ Delete volume
 
 ```json
 {
-  "description": "You need 'Datastore.Allocate' privilege on the storage (or 'Datastore.AllocateSpace' for backup volumes if you have VM.Backup privilege on the VM).",
+  "description": "需要对存储具有 'Datastore.Allocate' 权限（如果对虚拟机具有 VM.Backup 权限，则对备份卷具有 'Datastore.AllocateSpace' 即可）。",
   "user": "all"
 }
 ```
@@ -41,10 +41,10 @@ Delete volume
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delay` | integer | 否 | — | Time to wait for the task to finish. We return 'null' if the task finish within that time. |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | The storage identifier. |
-| `volume` | string | 是 | — | Volume identifier |
+| `delay` | integer | 否 | — | 等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 存储标识符。 |
+| `volume` | string | 是 | — | 卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,7 +54,7 @@ Delete volume
   "additionalProperties": 0,
   "properties": {
     "delay": {
-      "description": "Time to wait for the task to finish. We return 'null' if the task finish within that time.",
+      "description": "等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。",
       "maximum": 30,
       "minimum": 1,
       "optional": 1,
@@ -62,13 +62,13 @@ Delete volume
       "typetext": "<integer> (1 - 30)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -76,7 +76,7 @@ Delete volume
       "typetext": "<storage ID>"
     },
     "volume": {
-      "description": "Volume identifier",
+      "description": "卷标识符",
       "type": "string",
       "typetext": "<string>"
     }
@@ -97,7 +97,7 @@ Delete volume
 
 ## GET `/nodes/{node}/storage/{storage}/content/{volume}`
 
-Get volume attributes
+获取卷属性
 
 **方法标识：** `info`
 
@@ -105,7 +105,7 @@ Get volume attributes
 
 ```json
 {
-  "description": "You need read access for the volume.",
+  "description": "需要具有卷的读取访问权限。",
   "user": "all"
 }
 ```
@@ -132,9 +132,9 @@ Get volume attributes
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | The storage identifier. |
-| `volume` | string | 是 | — | Volume identifier |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 存储标识符。 |
+| `volume` | string | 是 | — | 卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -144,13 +144,13 @@ Get volume attributes
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -158,7 +158,7 @@ Get volume attributes
       "typetext": "<storage ID>"
     },
     "volume": {
-      "description": "Volume identifier",
+      "description": "卷标识符",
       "type": "string",
       "typetext": "<string>"
     }
@@ -174,30 +174,30 @@ Get volume attributes
 {
   "properties": {
     "format": {
-      "description": "Format identifier ('raw', 'qcow2', 'subvol', 'iso', 'tgz' ...)",
+      "description": "格式标识符（'raw'、'qcow2'、'subvol'、'iso'、'tgz' 等）",
       "type": "string"
     },
     "notes": {
-      "description": "Optional notes.",
+      "description": "可选备注。",
       "optional": 1,
       "type": "string"
     },
     "path": {
-      "description": "The Path",
+      "description": "路径",
       "type": "string"
     },
     "protected": {
-      "description": "Protection status. Currently only supported for backups.",
+      "description": "保护状态。目前仅支持备份。",
       "optional": 1,
       "type": "boolean"
     },
     "size": {
-      "description": "Volume size in bytes.",
+      "description": "卷大小，单位为字节。",
       "renderer": "bytes",
       "type": "integer"
     },
     "used": {
-      "description": "Used space. Please note that most storage plugins do not report anything useful here.",
+      "description": "已用空间。请注意，大多数存储插件在此处不会报告有用的信息。",
       "renderer": "bytes",
       "type": "integer"
     }
@@ -208,7 +208,7 @@ Get volume attributes
 
 ## POST `/nodes/{node}/storage/{storage}/content/{volume}`
 
-Copy a volume. This is experimental code - do not use.
+复制卷。此代码为实验性——请勿使用。
 
 **方法标识：** `copy`
 
@@ -234,11 +234,11 @@ Copy a volume. This is experimental code - do not use.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | The storage identifier. |
-| `target` | string | 是 | — | Target volume identifier |
-| `target_node` | string | 否 | — | Target node. Default is local node. |
-| `volume` | string | 是 | — | Source volume identifier |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 存储标识符。 |
+| `target` | string | 是 | — | 目标卷标识符 |
+| `target_node` | string | 否 | — | 目标节点。默认为本地节点。 |
+| `volume` | string | 是 | — | 源卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -248,13 +248,13 @@ Copy a volume. This is experimental code - do not use.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -262,19 +262,19 @@ Copy a volume. This is experimental code - do not use.
       "typetext": "<storage ID>"
     },
     "target": {
-      "description": "Target volume identifier",
+      "description": "目标卷标识符",
       "type": "string",
       "typetext": "<string>"
     },
     "target_node": {
-      "description": "Target node. Default is local node.",
+      "description": "目标节点。默认为本地节点。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "volume": {
-      "description": "Source volume identifier",
+      "description": "源卷标识符",
       "type": "string",
       "typetext": "<string>"
     }
@@ -294,7 +294,7 @@ Copy a volume. This is experimental code - do not use.
 
 ## PUT `/nodes/{node}/storage/{storage}/content/{volume}`
 
-Update volume attributes
+更新卷属性
 
 **方法标识：** `updateattributes`
 
@@ -302,7 +302,7 @@ Update volume attributes
 
 ```json
 {
-  "description": "You need read access for the volume.",
+  "description": "需要具有卷的读取访问权限。",
   "user": "all"
 }
 ```
@@ -329,11 +329,11 @@ Update volume attributes
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `notes` | string | 否 | — | The new notes. |
-| `protected` | boolean | 否 | — | Protection status. Currently only supported for backups. |
-| `storage` | string | 否 | — | The storage identifier. |
-| `volume` | string | 是 | — | Volume identifier |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `notes` | string | 否 | — | 新备注。 |
+| `protected` | boolean | 否 | — | 保护状态。目前仅支持备份。 |
+| `storage` | string | 否 | — | 存储标识符。 |
+| `volume` | string | 是 | — | 卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -343,25 +343,25 @@ Update volume attributes
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "notes": {
-      "description": "The new notes.",
+      "description": "新备注。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "protected": {
-      "description": "Protection status. Currently only supported for backups.",
+      "description": "保护状态。目前仅支持备份。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -369,7 +369,7 @@ Update volume attributes
       "typetext": "<storage ID>"
     },
     "volume": {
-      "description": "Volume identifier",
+      "description": "卷标识符",
       "type": "string",
       "typetext": "<string>"
     }

@@ -1,4 +1,4 @@
-# 10.10. 钩子脚本 <a href="#_hookscripts" id="_hookscripts"></a>
+# 10.10. 钩子脚本 <a href="#hookscripts" id="hookscripts"></a>
 
 可以通过配置属性 `hookscript` 为虚拟机添加钩子脚本。
 

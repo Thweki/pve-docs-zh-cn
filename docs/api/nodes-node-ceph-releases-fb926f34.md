@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/releases`
 
-List all known Ceph releases, marking which ones can be installed on this node.
+列出所有已知的 Ceph 发行版，并标记哪些可安装到此节点。
 
 **方法标识：** `releases`
 
@@ -43,7 +43,7 @@ List all known Ceph releases, marking which ones can be installed on this node.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,7 +53,7 @@ List all known Ceph releases, marking which ones can be installed on this node.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -71,23 +71,23 @@ List all known Ceph releases, marking which ones can be installed on this node.
   "items": {
     "properties": {
       "available": {
-        "description": "Whether this release can be installed on this node, that is, it has packages for the node's architecture and current Proxmox VE release.",
+        "description": "此发行版是否可安装到此节点，即是否提供适用于节点架构和当前 Proxmox VE 发行版的软件包。",
         "type": "boolean"
       },
       "is-default": {
-        "description": "Whether this is the release recommended for new installations.",
+        "description": "此发行版是否为新安装推荐的版本。",
         "type": "boolean"
       },
       "release": {
-        "description": "The Ceph release code name, for example 'squid'.",
+        "description": "Ceph 发行版代号，例如 'squid'。",
         "type": "string"
       },
       "unsupported": {
-        "description": "Whether this release is not (yet) supported for production use.",
+        "description": "此发行版是否尚不支持用于生产环境。",
         "type": "boolean"
       },
       "version": {
-        "description": "The Ceph release major version, for example '19.2'.",
+        "description": "Ceph 发行版主版本，例如 '19.2'。",
         "type": "string"
       }
     },

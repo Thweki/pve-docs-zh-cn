@@ -1,13 +1,13 @@
-# 13.12. Ports used by Proxmox VE <a href="#_ports_used_by_proxmox_ve" id="_ports_used_by_proxmox_ve"></a>
+# 13.12. Proxmox VE 使用的端口 <a href="#ports_used_by_proxmox_ve" id="ports_used_by_proxmox_ve"></a>
 
-- Web interface: 8006 (TCP, HTTP/1.1 over TLS)
-- VNC Web console: 5900-5999 (TCP, WebSocket)
-- SPICE proxy: 3128 (TCP)
-- sshd (used for cluster actions): 22 (TCP)
-- rpcbind: 111 (UDP)
-- sendmail: 25 (TCP, outgoing)
-- corosync cluster traffic: 5405-5412 UDP
-- live migration (VM memory and local-disk data): 60000-60050 (TCP)
+- Web 界面：8006（TCP，基于 TLS 的 HTTP/1.1）
+- VNC Web 控制台：5900-5999（TCP，WebSocket）
+- SPICE 代理：3128（TCP）
+- sshd（用于集群操作）：22（TCP）
+- rpcbind：111（UDP）
+- sendmail：25（TCP，传出）
+- corosync 集群流量：5405-5412 UDP
+- 在线迁移（虚拟机内存和本地磁盘数据）：60000-60050（TCP）
 
 ---
 

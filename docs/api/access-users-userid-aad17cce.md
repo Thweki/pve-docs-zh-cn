@@ -6,7 +6,7 @@
 
 ## DELETE `/access/users/{userid}`
 
-Delete user.
+删除用户。
 
 **方法标识：** `delete_user`
 
@@ -46,7 +46,7 @@ Delete user.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Delete user.
   "additionalProperties": 0,
   "properties": {
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -78,7 +78,7 @@ Delete user.
 
 ## GET `/access/users/{userid}`
 
-Get user configuration.
+获取用户配置。
 
 **方法标识：** `read_user`
 
@@ -106,7 +106,7 @@ Get user configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -116,7 +116,7 @@ Get user configuration.
   "additionalProperties": 0,
   "properties": {
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -147,12 +147,12 @@ Get user configuration.
     },
     "enable": {
       "default": 1,
-      "description": "Enable the account (default). You can set this to '0' to disable the account",
+      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
       "optional": 1,
       "type": "boolean"
     },
     "expire": {
-      "description": "Account expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
@@ -171,7 +171,7 @@ Get user configuration.
       "type": "array"
     },
     "keys": {
-      "description": "Keys for two factor auth (yubico).",
+      "description": "双因素身份验证密钥（yubico）。",
       "optional": 1,
       "pattern": "[0-9a-zA-Z!=]{0,4096}",
       "type": "string"
@@ -190,14 +190,14 @@ Get user configuration.
           },
           "expire": {
             "default": "same as user",
-            "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+            "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
             "minimum": 0,
             "optional": 1,
             "type": "integer"
           },
           "privsep": {
             "default": 1,
-            "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+            "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
             "optional": 1,
             "type": "boolean"
           }
@@ -214,7 +214,7 @@ Get user configuration.
 
 ## PUT `/access/users/{userid}`
 
-Update user configuration.
+更新用户配置。
 
 **方法标识：** `update_user`
 
@@ -252,13 +252,13 @@ Update user configuration.
 | `append` | boolean | 否 | — |  |
 | `comment` | string | 否 | — |  |
 | `email` | string | 否 | — |  |
-| `enable` | boolean | 否 | 1 | Enable the account (default). You can set this to '0' to disable the account |
-| `expire` | integer | 否 | — | Account expiration date (seconds since epoch). '0' means no expiration date. |
+| `enable` | boolean | 否 | 1 | 启用账户（默认）。可设为 '0' 以禁用账户 |
+| `expire` | integer | 否 | — | 账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
 | `firstname` | string | 否 | — |  |
 | `groups` | string | 否 | — |  |
-| `keys` | string | 否 | — | Keys for two factor auth (yubico). |
+| `keys` | string | 否 | — | 双因素身份验证密钥（yubico）。 |
 | `lastname` | string | 否 | — |  |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -288,13 +288,13 @@ Update user configuration.
     },
     "enable": {
       "default": 1,
-      "description": "Enable the account (default). You can set this to '0' to disable the account",
+      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "expire": {
-      "description": "Account expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -313,7 +313,7 @@ Update user configuration.
       "typetext": "<string>"
     },
     "keys": {
-      "description": "Keys for two factor auth (yubico).",
+      "description": "双因素身份验证密钥（yubico）。",
       "optional": 1,
       "pattern": "[0-9a-zA-Z!=]{0,4096}",
       "type": "string"
@@ -325,7 +325,7 @@ Update user configuration.
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",

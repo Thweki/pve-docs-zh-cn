@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/status/current`
 
-Get virtual machine status.
+获取虚拟机状态。
 
 **方法标识：** `vm_status`
 
@@ -46,8 +46,8 @@ Get virtual machine status.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Get virtual machine status.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -82,12 +82,12 @@ Get virtual machine status.
 {
   "properties": {
     "agent": {
-      "description": "QEMU Guest Agent is enabled in config.",
+      "description": "配置中已启用 QEMU Guest Agent。",
       "optional": 1,
       "type": "boolean"
     },
     "clipboard": {
-      "description": "Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added.",
+      "description": "启用特定剪贴板。未设置时，将根据显示类型添加 SPICE 剪贴板。",
       "enum": [
         "vnc"
       ],
@@ -95,139 +95,139 @@ Get virtual machine status.
       "type": "string"
     },
     "cpu": {
-      "description": "Current CPU usage.",
+      "description": "当前 CPU 使用率。",
       "optional": 1,
       "type": "number"
     },
     "cpus": {
-      "description": "Maximum usable CPUs.",
+      "description": "最大可用 CPU 数量。",
       "optional": 1,
       "type": "number"
     },
     "diskread": {
-      "description": "The amount of bytes the guest read from it's block devices since the guest was started. (Note: This info is not available for all storage types.)",
+      "description": "自客户机启动以来从其块设备读取的字节数。（注意：并非所有存储类型都提供此信息。）",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "diskwrite": {
-      "description": "The amount of bytes the guest wrote from it's block devices since the guest was started. (Note: This info is not available for all storage types.)",
+      "description": "自客户机启动以来写入其块设备的字节数。（注意：并非所有存储类型都提供此信息。）",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "ha": {
-      "description": "HA manager service status.",
+      "description": "HA 管理器服务状态。",
       "type": "object"
     },
     "lock": {
-      "description": "The current config lock, if any.",
+      "description": "当前的配置锁（如有）。",
       "optional": 1,
       "type": "string"
     },
     "maxdisk": {
-      "description": "Root disk size in bytes.",
+      "description": "根磁盘大小，单位为字节。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "maxmem": {
-      "description": "Maximum memory in bytes.",
+      "description": "最大内存，单位为字节。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "mem": {
-      "description": "Currently used memory in bytes. Does not take into account kernel same-page merging (KSM). Uses information from ballooning when available.",
+      "description": "当前已用内存，单位为字节。不考虑内核同页合并（KSM）。如果 ballooning 信息可用，则使用该信息。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "memhost": {
-      "description": "Current memory usage on the host. Does not take into account kernel same-page merging (KSM).",
+      "description": "宿主机上的当前内存用量。不考虑内核同页合并（KSM）。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "name": {
-      "description": "VM (host)name.",
+      "description": "虚拟机的（主机）名称。",
       "optional": 1,
       "type": "string"
     },
     "netin": {
-      "description": "The amount of traffic in bytes that was sent to the guest over the network since it was started.",
+      "description": "自客户机启动以来通过网络向其发送的流量字节数。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "netout": {
-      "description": "The amount of traffic in bytes that was sent from the guest over the network since it was started.",
+      "description": "自客户机启动以来通过网络从其发送的流量字节数。",
       "optional": 1,
       "renderer": "bytes",
       "type": "integer"
     },
     "pid": {
-      "description": "PID of the QEMU process, if the VM is running.",
+      "description": "QEMU 进程的 PID（如果虚拟机正在运行）。",
       "optional": 1,
       "type": "integer"
     },
     "pressurecpufull": {
-      "description": "CPU Full pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的 CPU Full 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "pressurecpusome": {
-      "description": "CPU Some pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的 CPU Some 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "pressureiofull": {
-      "description": "IO Full pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的 IO Full 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "pressureiosome": {
-      "description": "IO Some pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的 IO Some 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "pressurememoryfull": {
-      "description": "Memory Full pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的内存 Full 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "pressurememorysome": {
-      "description": "Memory Some pressure stall average over the last 10 seconds.",
+      "description": "过去 10 秒的内存 Some 压力停滞平均值。",
       "optional": 1,
       "type": "number"
     },
     "qmpstatus": {
-      "description": "VM run state from the 'query-status' QMP monitor command.",
+      "description": "'query-status' QMP 监视器命令报告的虚拟机运行状态。",
       "optional": 1,
       "type": "string"
     },
     "running-machine": {
-      "description": "The currently running machine type (if running).",
+      "description": "当前运行的机器类型（如果正在运行）。",
       "optional": 1,
       "type": "string"
     },
     "running-qemu": {
-      "description": "The QEMU version the VM is currently using (if running).",
+      "description": "虚拟机当前使用的 QEMU 版本（如果正在运行）。",
       "optional": 1,
       "type": "string"
     },
     "serial": {
-      "description": "Guest has serial device configured.",
+      "description": "客户机配置了串行设备。",
       "optional": 1,
       "type": "boolean"
     },
     "spice": {
-      "description": "QEMU VGA configuration supports spice.",
+      "description": "QEMU VGA 配置支持 spice。",
       "optional": 1,
       "type": "boolean"
     },
     "status": {
-      "description": "QEMU process status.",
+      "description": "QEMU 进程状态。",
       "enum": [
         "stopped",
         "running"
@@ -235,24 +235,24 @@ Get virtual machine status.
       "type": "string"
     },
     "tags": {
-      "description": "The current configured tags, if any",
+      "description": "当前配置的标签（如有）",
       "optional": 1,
       "type": "string"
     },
     "template": {
       "default": 0,
-      "description": "Determines if the guest is a template.",
+      "description": "确定客户机是否为模板。",
       "optional": 1,
       "type": "boolean"
     },
     "uptime": {
-      "description": "Uptime in seconds.",
+      "description": "运行时间，单位为秒。",
       "optional": 1,
       "renderer": "duration",
       "type": "integer"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

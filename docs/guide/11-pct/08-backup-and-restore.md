@@ -1,13 +1,13 @@
-# 11.8. Backup and Restore <a href="#_backup_and_restore" id="_backup_and_restore"></a>
+# 11.8. 备份与恢复 <a href="#backup_and_restore" id="backup_and_restore"></a>
 
-## 11.8.1. Container Backup <a href="#_container_backup" id="_container_backup"></a>
+## 11.8.1. 容器备份 <a href="#container_backup" id="container_backup"></a>
 
 可以使用 `vzdump` 工具进行容器备份。有关详细信息，请参阅 `vzdump` 手册页。
 
-## 11.8.2. Restoring Container Backups <a href="#_restoring_container_backups" id="_restoring_container_backups"></a>
+## 11.8.2. 恢复容器备份 <a href="#restoring_container_backups" id="restoring_container_backups"></a>
 
-Restoring container backups made with `vzdump` is possible using the `pct
-restore` command. By default, `pct restore` will attempt to restore as much of the backed up container configuration as possible. It is possible to override the backed up configuration by manually setting container options on the command line (see the `pct` manual page for details).
+通过 `vzdump` 创建的容器备份可以使用 `pct
+restore` 命令恢复。默认情况下，`pct restore` 会尽可能恢复备份的容器配置。可以通过在命令行中手动设置容器选项来覆盖备份的配置（详情参见 `pct` 手册页）。
 
 {% hint style="info" %}
 `pvesm extractconfig` 可用于查看 vzdump 归档中包含的已备份配置。
@@ -15,7 +15,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 有两种基本恢复模式，它们的区别仅在于对挂载点的处理方式：
 
-### “简单”恢复模式 <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
+### “简单”恢复模式 <a href="#8220_simple_8221_restore_mode" id="8220_simple_8221_restore_mode"></a>
 
 如果既未明确设置 `rootfs` 参数，也未明确设置任何可选的 `mpX` 参数，则将通过以下步骤从备份的配置文件中恢复挂载点配置：
 
@@ -30,7 +30,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 Web 界面中的容器恢复操作也使用这种简单模式。
 
-### “高级”恢复模式 <a href="#_8220_advanced_8221_restore_mode" id="_8220_advanced_8221_restore_mode"></a>
+### “高级”恢复模式 <a href="#8220_advanced_8221_restore_mode" id="8220_advanced_8221_restore_mode"></a>
 
 通过设置 `rootfs` 参数（以及可选的任意 `mpX` 参数组合），`pct restore` 命令会自动切换到高级模式。该高级模式会完全忽略备份归档中包含的 `rootfs` 和 `mpX` 配置选项，而仅使用显式作为参数提供的选项。
 

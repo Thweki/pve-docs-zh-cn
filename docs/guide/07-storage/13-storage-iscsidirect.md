@@ -6,7 +6,7 @@
 
 需要注意的是，这不涉及任何内核驱动程序，因此可以将其视为一种性能优化。但缺点是，无法在此类 iSCSI LUN 之上使用 LVM。因此，需要在存储服务器端管理所有空间分配。
 
-## 7.13.1. 配置 <a href="#_configuration_9" id="_configuration_9"></a>
+## 7.13.1. 配置 <a href="#configuration_9" id="configuration_9"></a>
 
 用户模式 iSCSI 后端使用与 Open-iSCSI 后端相同的配置选项。
 
@@ -18,7 +18,7 @@ iscsidirect: faststore
      target iqn.2006-01.openfiler.com:tsn.dcb5aaaddd
 ```
 
-## 7.13.2. 存储功能 <a href="#_storage_features_9" id="_storage_features_9"></a>
+## 7.13.2. 存储功能 <a href="#storage_features_9" id="storage_features_9"></a>
 
 {% hint style="info" %}
 此后端仅适用于 VM。容器无法使用此驱动程序。

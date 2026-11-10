@@ -1,8 +1,8 @@
-# 9.3. 错误处理 <a href="#_error_handling" id="_error_handling"></a>
+# 9.3. 错误处理 <a href="#error_handling" id="error_handling"></a>
 
 如果复制作业遇到问题，它会进入错误状态。在此状态下，配置的复制间隔会暂时暂停。系统会每隔 30 分钟重试失败的复制。一旦成功，原来的计划就会重新激活。
 
-## 9.3.1. 可能的问题 <a href="#_possible_issues" id="_possible_issues"></a>
+## 9.3.1. 可能的问题 <a href="#possible_issues" id="possible_issues"></a>
 
 以下列出了一些最常见的问题。根据您的部署情况，可能还有其他原因。
 
@@ -14,11 +14,11 @@
 您始终可以使用复制日志来找出问题的原因。
 {% endhint %}
 
-## 9.3.2. 发生错误时迁移客户机 <a href="#_migrating_a_guest_in_case_of_error" id="_migrating_a_guest_in_case_of_error"></a>
+## 9.3.2. 发生错误时迁移客户机 <a href="#migrating_a_guest_in_case_of_error" id="migrating_a_guest_in_case_of_error"></a>
 
 发生严重错误时，虚拟客户机可能会卡在故障节点上。此时需要手动将其重新迁移到正常工作的节点。
 
-## 9.3.3. 示例 <a href="#_example_2" id="_example_2"></a>
+## 9.3.3. 示例 <a href="#example_2" id="example_2"></a>
 
 假设您有两个客户机（VM 100 和 CT 200）运行在节点 A 上，并复制到节点 B。节点 A 发生故障且无法重新上线。现在，您必须手动将客户机迁移到节点 B。
 

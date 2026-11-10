@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/endpoints/webhook`
 
-Returns a list of all webhook endpoints
+返回所有 webhook 端点的列表
 
 **方法标识：** `get_webhook_endpoints`
 
@@ -47,23 +47,23 @@ Returns a list of all webhook endpoints
   "items": {
     "properties": {
       "body": {
-        "description": "HTTP body, base64 encoded",
+        "description": "HTTP 正文，采用 base64 编码",
         "optional": 1,
         "type": "string"
       },
       "comment": {
-        "description": "Comment",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "disable": {
         "default": 0,
-        "description": "Disable this target",
+        "description": "禁用此目标",
         "optional": 1,
         "type": "boolean"
       },
       "header": {
-        "description": "HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+        "description": "要设置的 HTTP 标头。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
         "items": {
           "type": "string"
         },
@@ -71,7 +71,7 @@ Returns a list of all webhook endpoints
         "type": "array"
       },
       "method": {
-        "description": "HTTP method",
+        "description": "HTTP 方法",
         "enum": [
           "post",
           "put",
@@ -80,12 +80,12 @@ Returns a list of all webhook endpoints
         "type": "string"
       },
       "name": {
-        "description": "The name of the endpoint.",
+        "description": "端点名称。",
         "format": "pve-configid",
         "type": "string"
       },
       "origin": {
-        "description": "Show if this entry was created by a user or was built-in",
+        "description": "显示此条目是用户创建还是内置",
         "enum": [
           "user-created",
           "builtin",
@@ -94,7 +94,7 @@ Returns a list of all webhook endpoints
         "type": "string"
       },
       "secret": {
-        "description": "Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+        "description": "要设置的秘密信息。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
         "items": {
           "type": "string"
         },
@@ -102,7 +102,7 @@ Returns a list of all webhook endpoints
         "type": "array"
       },
       "url": {
-        "description": "Server URL",
+        "description": "服务器 URL",
         "type": "string"
       }
     },
@@ -120,7 +120,7 @@ Returns a list of all webhook endpoints
 
 ## POST `/cluster/notifications/endpoints/webhook`
 
-Create a new webhook endpoint
+创建新的 webhook 端点
 
 **方法标识：** `create_webhook_endpoint`
 
@@ -175,14 +175,14 @@ Create a new webhook endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `body` | string | 否 | — | HTTP body, base64 encoded |
-| `comment` | string | 否 | — | Comment |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `method` | string | 是 | — | HTTP method；可选值：`post`, `put`, `get` |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `url` | string | 是 | — | Server URL |
+| `body` | string | 否 | — | HTTP 正文，采用 base64 编码 |
+| `comment` | string | 否 | — | 注释 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `header` | array | 否 | — | 要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `method` | string | 是 | — | HTTP 方法；可选值：`post`, `put`, `get` |
+| `name` | string | 是 | — | 端点名称。 |
+| `secret` | array | 否 | — | 要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `url` | string | 是 | — | 服务器 URL |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -192,26 +192,26 @@ Create a new webhook endpoint
   "additionalProperties": 0,
   "properties": {
     "body": {
-      "description": "HTTP body, base64 encoded",
+      "description": "HTTP 正文，采用 base64 编码",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "header": {
-      "description": "HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的 HTTP 标头。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -220,7 +220,7 @@ Create a new webhook endpoint
       "typetext": "<array>"
     },
     "method": {
-      "description": "HTTP method",
+      "description": "HTTP 方法",
       "enum": [
         "post",
         "put",
@@ -229,13 +229,13 @@ Create a new webhook endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "secret": {
-      "description": "Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value>",
+      "description": "要设置的秘密信息。必须采用属性字符串格式：name=<name>,value=<base64 of value>",
       "items": {
         "type": "string"
       },
@@ -244,7 +244,7 @@ Create a new webhook endpoint
       "typetext": "<array>"
     },
     "url": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "type": "string",
       "typetext": "<string>"
     }

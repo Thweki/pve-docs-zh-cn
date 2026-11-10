@@ -4,7 +4,7 @@
 
 Proxmox VE 基于 [Debian GNU/Linux](https://www.debian.org/)，并通过额外的软件仓库提供 Proxmox VE 相关软件包。这意味着可以使用全系列的 Debian 软件包，包括安全更新和错误修复。Proxmox VE 提供自己基于 Ubuntu 内核的 Linux 内核。该内核启用了所有必要的虚拟化和容器功能，并包含 [ZFS](https://zfsonlinux.org) 和若干额外的硬件驱动程序。
 
-对于以下各节未涉及的其他主题，请参阅 Debian 文档。[Debian Administrator's Handbook](https://debian-handbook.info/get) 可在线获取，其中全面介绍了 Debian 操作系统（见 [\[Hertzog13\]](../21-bibliography/README.md#Hertzog13)）。
+对于以下各节未涉及的其他主题，请参阅 Debian 文档。[Debian Administrator's Handbook](https://debian-handbook.info/get) 可在线获取，其中全面介绍了 Debian 操作系统（见 [\[Hertzog13\]](../21-bibliography/README.md#hertzog13)）。
 
 ## 本章内容
 

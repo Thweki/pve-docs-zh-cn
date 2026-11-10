@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph/flags`
 
-get the status of all ceph flags
+获取所有 ceph 标志的状态
 
 **方法标识：** `get_all_flags`
 
@@ -48,11 +48,11 @@ get the status of all ceph flags
     "additionalProperties": 1,
     "properties": {
       "description": {
-        "description": "Flag description.",
+        "description": "标志描述。",
         "type": "string"
       },
       "name": {
-        "description": "Flag name.",
+        "description": "标志名称。",
         "enum": [
           "nobackfill",
           "nodeep-scrub",
@@ -69,7 +69,7 @@ get the status of all ceph flags
         "type": "string"
       },
       "value": {
-        "description": "Flag value.",
+        "description": "标志值。",
         "type": "boolean"
       }
     },
@@ -87,7 +87,7 @@ get the status of all ceph flags
 
 ## PUT `/cluster/ceph/flags`
 
-Set/Unset multiple Ceph flags at once. Each flag is a top-level optional boolean: passing true sets the flag, false unsets it, omitting it leaves the current state untouched. Runs as a worker task; returns a UPID to follow.
+一次设置/取消设置多个 Ceph 标志。每个标志都是顶层可选布尔值：传入 true 设置标志，false 取消设置，省略则保留当前状态。以工作任务运行；返回可用于跟踪的 UPID。
 
 **方法标识：** `set_flags`
 
@@ -121,17 +121,17 @@ Set/Unset multiple Ceph flags at once. Each flag is a top-level optional boolean
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `nobackfill` | boolean | 否 | — | Backfilling of PGs is suspended. |
-| `nodeep-scrub` | boolean | 否 | — | Deep Scrubbing is disabled. |
-| `nodown` | boolean | 否 | — | OSD failure reports are being ignored, such that the monitors will not mark OSDs down. |
-| `noin` | boolean | 否 | — | OSDs that were previously marked out will not be marked back in when they start. |
-| `noout` | boolean | 否 | — | OSDs will not automatically be marked out after the configured interval. |
-| `norebalance` | boolean | 否 | — | Rebalancing of PGs is suspended. |
-| `norecover` | boolean | 否 | — | Recovery of PGs is suspended. |
-| `noscrub` | boolean | 否 | — | Scrubbing is disabled. |
-| `notieragent` | boolean | 否 | — | Cache tiering activity is suspended. |
-| `noup` | boolean | 否 | — | OSDs are not allowed to start. |
-| `pause` | boolean | 否 | — | Pauses read and writes. |
+| `nobackfill` | boolean | 否 | — | 暂停 PG 回填。 |
+| `nodeep-scrub` | boolean | 否 | — | 禁用深度清理检查。 |
+| `nodown` | boolean | 否 | — | 忽略 OSD 故障报告，因此监视器不会将 OSD 标记为 down。 |
+| `noin` | boolean | 否 | — | 先前标记为 out 的 OSD 在启动时不会重新标记为 in。 |
+| `noout` | boolean | 否 | — | OSD 不会在配置的时间间隔后自动标记为 out。 |
+| `norebalance` | boolean | 否 | — | 暂停 PG 重新均衡。 |
+| `norecover` | boolean | 否 | — | 暂停 PG 恢复。 |
+| `noscrub` | boolean | 否 | — | 禁用清理检查。 |
+| `notieragent` | boolean | 否 | — | 暂停缓存分层活动。 |
+| `noup` | boolean | 否 | — | 不允许 OSD 启动。 |
+| `pause` | boolean | 否 | — | 暂停读写。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -141,67 +141,67 @@ Set/Unset multiple Ceph flags at once. Each flag is a top-level optional boolean
   "additionalProperties": 0,
   "properties": {
     "nobackfill": {
-      "description": "Backfilling of PGs is suspended.",
+      "description": "暂停 PG 回填。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "nodeep-scrub": {
-      "description": "Deep Scrubbing is disabled.",
+      "description": "禁用深度清理检查。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "nodown": {
-      "description": "OSD failure reports are being ignored, such that the monitors will not mark OSDs down.",
+      "description": "忽略 OSD 故障报告，因此监视器不会将 OSD 标记为 down。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "noin": {
-      "description": "OSDs that were previously marked out will not be marked back in when they start.",
+      "description": "先前标记为 out 的 OSD 在启动时不会重新标记为 in。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "noout": {
-      "description": "OSDs will not automatically be marked out after the configured interval.",
+      "description": "OSD 不会在配置的时间间隔后自动标记为 out。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "norebalance": {
-      "description": "Rebalancing of PGs is suspended.",
+      "description": "暂停 PG 重新均衡。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "norecover": {
-      "description": "Recovery of PGs is suspended.",
+      "description": "暂停 PG 恢复。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "noscrub": {
-      "description": "Scrubbing is disabled.",
+      "description": "禁用清理检查。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "notieragent": {
-      "description": "Cache tiering activity is suspended.",
+      "description": "暂停缓存分层活动。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "noup": {
-      "description": "OSDs are not allowed to start.",
+      "description": "不允许 OSD 启动。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "pause": {
-      "description": "Pauses read and writes.",
+      "description": "暂停读写。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

@@ -6,7 +6,7 @@
 
 ## DELETE `/access/users/{userid}/token/{tokenid}`
 
-Remove API token for a specific user.
+移除特定用户的 API 令牌。
 
 **方法标识：** `remove_token`
 
@@ -46,8 +46,8 @@ Remove API token for a specific user.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `tokenid` | string | 是 | — | User-specific token identifier. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,12 +57,12 @@ Remove API token for a specific user.
   "additionalProperties": 0,
   "properties": {
     "tokenid": {
-      "description": "User-specific token identifier.",
+      "description": "用户特定的令牌标识符。",
       "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
       "type": "string"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -84,7 +84,7 @@ Remove API token for a specific user.
 
 ## GET `/access/users/{userid}/token/{tokenid}`
 
-Get specific API token information.
+获取特定 API 令牌信息。
 
 **方法标识：** `read_token`
 
@@ -118,8 +118,8 @@ Get specific API token information.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `tokenid` | string | 是 | — | User-specific token identifier. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -129,12 +129,12 @@ Get specific API token information.
   "additionalProperties": 0,
   "properties": {
     "tokenid": {
-      "description": "User-specific token identifier.",
+      "description": "用户特定的令牌标识符。",
       "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
       "type": "string"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -157,14 +157,14 @@ Get specific API token information.
     },
     "expire": {
       "default": "same as user",
-      "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "privsep": {
       "default": 1,
-      "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
       "optional": 1,
       "type": "boolean"
     }
@@ -175,7 +175,7 @@ Get specific API token information.
 
 ## POST `/access/users/{userid}/token/{tokenid}`
 
-Generate a new API token for a specific user. NOTE: returns API token value, which needs to be stored as it cannot be retrieved afterwards!
+为特定用户生成新的 API 令牌。注意：返回 API 令牌值，必须保存，因为之后无法再次获取！
 
 **方法标识：** `generate_token`
 
@@ -216,10 +216,10 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — |  |
-| `expire` | integer | 否 | "same as user" | API token expiration date (seconds since epoch). '0' means no expiration date. |
-| `privsep` | boolean | 否 | 1 | Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user. |
-| `tokenid` | string | 是 | — | User-specific token identifier. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `expire` | integer | 否 | "same as user" | API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `privsep` | boolean | 否 | 1 | 使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
+| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -235,7 +235,7 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
     },
     "expire": {
       "default": "same as user",
-      "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -243,18 +243,18 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
     },
     "privsep": {
       "default": 1,
-      "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "tokenid": {
-      "description": "User-specific token identifier.",
+      "description": "用户特定的令牌标识符。",
       "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
       "type": "string"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -273,7 +273,7 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
   "additionalProperties": 0,
   "properties": {
     "full-tokenid": {
-      "description": "The full token id.",
+      "description": "完整令牌 ID。",
       "format_description": "<userid>!<tokenid>",
       "type": "string"
     },
@@ -285,14 +285,14 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
         },
         "expire": {
           "default": "same as user",
-          "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+          "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
         },
         "privsep": {
           "default": 1,
-          "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+          "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
           "optional": 1,
           "type": "boolean"
         }
@@ -300,7 +300,7 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
       "type": "object"
     },
     "value": {
-      "description": "API token value used for authentication.",
+      "description": "用于身份验证的 API 令牌值。",
       "type": "string"
     }
   },
@@ -310,7 +310,7 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
 
 ## PUT `/access/users/{userid}/token/{tokenid}`
 
-Update API token for a specific user. NOTE: when 'regenerate' is set, the returned token value needs to be stored as it cannot be retrieved afterwards!
+更新特定用户的 API 令牌。注意：设置 'regenerate' 时，必须保存返回的令牌值，因为之后无法再次获取！
 
 **方法标识：** `update_token_info`
 
@@ -351,12 +351,12 @@ Update API token for a specific user. NOTE: when 'regenerate' is set, the return
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — |  |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `expire` | integer | 否 | "same as user" | API token expiration date (seconds since epoch). '0' means no expiration date. |
-| `privsep` | boolean | 否 | 1 | Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user. |
-| `regenerate` | boolean | 否 | 0 | Regenerate the token's secret value. All users of the previous secret will lose access after this operation. |
-| `tokenid` | string | 是 | — | User-specific token identifier. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `expire` | integer | 否 | "same as user" | API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `privsep` | boolean | 否 | 1 | 使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
+| `regenerate` | boolean | 否 | 0 | 重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。 |
+| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -371,7 +371,7 @@ Update API token for a specific user. NOTE: when 'regenerate' is set, the return
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
@@ -379,7 +379,7 @@ Update API token for a specific user. NOTE: when 'regenerate' is set, the return
     },
     "expire": {
       "default": "same as user",
-      "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -387,25 +387,25 @@ Update API token for a specific user. NOTE: when 'regenerate' is set, the return
     },
     "privsep": {
       "default": 1,
-      "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "regenerate": {
       "default": 0,
-      "description": "Regenerate the token's secret value. All users of the previous secret will lose access after this operation.",
+      "description": "重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "tokenid": {
-      "description": "User-specific token identifier.",
+      "description": "用户特定的令牌标识符。",
       "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
       "type": "string"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -428,25 +428,25 @@ Update API token for a specific user. NOTE: when 'regenerate' is set, the return
     },
     "expire": {
       "default": "same as user",
-      "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "full-tokenid": {
-      "description": "The full token id. Only set when 'regenerate' was set.",
+      "description": "完整令牌 ID。仅在设置了 'regenerate' 时设置。",
       "format_description": "<userid>!<tokenid>",
       "optional": 1,
       "type": "string"
     },
     "privsep": {
       "default": 1,
-      "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
       "optional": 1,
       "type": "boolean"
     },
     "value": {
-      "description": "API token value used for authentication. Only set when 'regenerate' was set.",
+      "description": "用于身份验证的 API 令牌值。仅在设置了 'regenerate' 时设置。",
       "optional": 1,
       "type": "string"
     }

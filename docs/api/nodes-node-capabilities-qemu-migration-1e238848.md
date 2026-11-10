@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/capabilities/qemu/migration`
 
-Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Audit' permission on '/nodes/&lt;node&gt;'.
+获取节点特有的 QEMU 迁移能力。需要对 '/nodes/&lt;node&gt;' 具有 'Sys.Audit' 权限。
 
 **方法标识：** `capabilities`
 
@@ -40,7 +40,7 @@ Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Aud
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Aud
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -68,7 +68,7 @@ Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Aud
   "additionalProperties": 0,
   "properties": {
     "has-dbus-vmstate": {
-      "description": "Whether the host supports live-migrating additional VM state via the dbus-vmstate helper.",
+      "description": "宿主机是否支持通过 dbus-vmstate 辅助程序在线迁移附加虚拟机状态。",
       "type": "boolean"
     }
   },

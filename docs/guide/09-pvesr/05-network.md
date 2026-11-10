@@ -1,9 +1,9 @@
-# 9.5. 网络 <a href="#_network" id="_network"></a>
+# 9.5. 网络 <a href="#network" id="network"></a>
 
 默认情况下，复制流量与客户机迁移流量使用同一网络。如果未设置迁移网络，则复制流量会转而默认使用管理网络。
 
-To use a different network for the replication traffic, configure the `Replication Network` in the web interface under `Datacenter -> Options ->
-Replication Settings` or set the `replication` property in the `datacenter.cfg` file:
+要为复制流量使用不同的网络，请配置 `Replication Network`（在 Web 界面的 `Datacenter -> Options ->
+Replication Settings` 下），或设置 `replication` 属性（位于 `datacenter.cfg` 文件中）：
 
 ```text
 # use dedicated replication network

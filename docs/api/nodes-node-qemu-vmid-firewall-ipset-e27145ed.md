@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/firewall/ipset`
 
-List IPSets
+列出 IPSet
 
 **方法标识：** `ipset_index`
 
@@ -34,8 +34,8 @@ List IPSets
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,13 +45,13 @@ List IPSets
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -75,13 +75,13 @@ List IPSets
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 0,
         "type": "string"
       },
       "name": {
-        "description": "IP set name.",
+        "description": "IP 集合名称。",
         "maxLength": 64,
         "minLength": 2,
         "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -102,7 +102,7 @@ List IPSets
 
 ## POST `/nodes/{node}/qemu/{vmid}/firewall/ipset`
 
-Create new IPSet
+创建新 IPSet
 
 **方法标识：** `create_ipset`
 
@@ -137,11 +137,11 @@ Create new IPSet
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `rename` | string | 否 | — | Rename an existing IPSet. You can set 'rename' to the same value as 'name' to update the 'comment' of an existing IPSet. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `rename` | string | 否 | — | 重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -157,27 +157,27 @@ Create new IPSet
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "rename": {
-      "description": "Rename an existing IPSet. You can set 'rename' to the same value as 'name' to update the 'comment' of an existing IPSet.",
+      "description": "重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。",
       "maxLength": 64,
       "minLength": 2,
       "optional": 1,
@@ -185,7 +185,7 @@ Create new IPSet
       "type": "string"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

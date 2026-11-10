@@ -6,7 +6,7 @@
 
 ## POST `/cluster/bulk-action/guest/shutdown`
 
-Bulk shutdown all guests on the cluster.
+批量关闭集群中的所有客户机。
 
 **方法标识：** `shutdown`
 
@@ -14,7 +14,7 @@ Bulk shutdown all guests on the cluster.
 
 ```json
 {
-  "description": "The 'VM.PowerMgmt' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter.",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
 }
 ```
@@ -35,11 +35,11 @@ Bulk shutdown all guests on the cluster.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force-stop` | boolean | 否 | 1 | Makes sure the Guest stops after the timeout. |
-| `max-workers` | integer | 否 | 4 | Defines the maximum number of tasks running concurrently. |
-| `maxworkers` | integer | 否 | 4 | Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead. |
-| `timeout` | integer | 否 | 180 | Default shutdown timeout in seconds if none is configured for the guest. |
-| `vms` | array | 否 | — | Only consider guests from this list of VMIDs. |
+| `force-stop` | boolean | 否 | 1 | 确保客户机在超时后停止。 |
+| `max-workers` | integer | 否 | 4 | 定义并发运行的最大任务数。 |
+| `maxworkers` | integer | 否 | 4 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `timeout` | integer | 否 | 180 | 客户机未配置时使用的默认关机超时时间，单位为秒。 |
+| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,14 +50,14 @@ Bulk shutdown all guests on the cluster.
   "properties": {
     "force-stop": {
       "default": 1,
-      "description": "Makes sure the Guest stops after the timeout.",
+      "description": "确保客户机在超时后停止。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "max-workers": {
       "default": 4,
-      "description": "Defines the maximum number of tasks running concurrently.",
+      "description": "定义并发运行的最大任务数。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -66,7 +66,7 @@ Bulk shutdown all guests on the cluster.
     },
     "maxworkers": {
       "default": 4,
-      "description": "Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.",
+      "description": "定义并发运行的最大任务数。已弃用，请改用 'max-workers'。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -75,15 +75,15 @@ Bulk shutdown all guests on the cluster.
     },
     "timeout": {
       "default": 180,
-      "description": "Default shutdown timeout in seconds if none is configured for the guest.",
+      "description": "客户机未配置时使用的默认关机超时时间，单位为秒。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "vms": {
-      "description": "Only consider guests from this list of VMIDs.",
+      "description": "仅考虑此 VMID 列表中的客户机。",
       "items": {
-        "description": "The (unique) ID of the VM.",
+        "description": "虚拟机的（唯一）ID。",
         "format": "pve-vmid",
         "maximum": 999999999,
         "minimum": 100,
@@ -103,7 +103,7 @@ Bulk shutdown all guests on the cluster.
 
 ```json
 {
-  "description": "UPID of the worker",
+  "description": "工作任务的 UPID",
   "type": "string"
 }
 ```

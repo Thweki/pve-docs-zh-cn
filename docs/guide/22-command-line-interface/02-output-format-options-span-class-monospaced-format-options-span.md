@@ -1,33 +1,33 @@
-# 22.2. Output format options `[FORMAT_OPTIONS]` <a href="#_output_format_options_span_class_monospaced_format_options_span" id="_output_format_options_span_class_monospaced_format_options_span"></a>
+# 22.2. 输出格式选项 `[FORMAT_OPTIONS]` <a href="#output_format_options_span_class_monospaced_format_options_span" id="output_format_options_span_class_monospaced_format_options_span"></a>
 
-It is possible to specify the output format using the `--output-format` parameter. The default format *text* uses ASCII-art to draw nice borders around tables. It additionally transforms some values into human-readable text, for example:
+可以使用 `--output-format` 参数指定输出格式。默认格式 *text* 使用 ASCII 字符画为表格绘制美观的边框。此外，还会将某些值转换为易于阅读的文本，例如：
 
-- Unix epoch is displayed as ISO 8601 date string.
-- Durations are displayed as week/day/hour/minute/second count, i.e `1d 5h`.
-- Byte sizes value include units (`B`, `KiB`, `MiB`, `GiB`, `TiB`, `PiB`).
-- Fractions are display as percentage, i.e. 1.0 is displayed as 100%.
+- Unix 纪元时间显示为 ISO 8601 日期字符串。
+- 时长显示为周/天/小时/分钟/秒的数量，即 `1d 5h`。
+- 字节大小值包含单位（`B`、`KiB`、`MiB`、`GiB`、`TiB`、`PiB`）。
+- 小数显示为百分比，即 1.0 显示为 100%。
 
-You can also completely suppress output using option `--quiet`.
+还可以使用选项 `--quiet` 完全禁止输出。
 
-**`--human-readable` `<boolean>` (*default \=* `1`)**
+**`--human-readable` `<boolean>`（*默认值 \=* `1`）**
 
-Call output rendering functions to produce human readable text.
+调用输出渲染函数，生成易于阅读的文本。
 
-**`--noborder` `<boolean>` (*default \=* `0`)**
+**`--noborder` `<boolean>`（*默认值 \=* `0`）**
 
-Do not draw borders (for *text* format).
+不绘制边框（适用于 *text* 格式）。
 
-**`--noheader` `<boolean>` (*default \=* `0`)**
+**`--noheader` `<boolean>`（*默认值 \=* `0`）**
 
-Do not show column headers (for *text* format).
+不显示列标题（适用于 *text* 格式）。
 
-**`--output-format` `<json | json-pretty | text | yaml>` (*default \=* `text`)**
+**`--output-format` `<json | json-pretty | text | yaml>`（*默认值 \=* `text`）**
 
-Output format.
+输出格式。
 
 **`--quiet` `<boolean>`**
 
-Suppress printing results.
+禁止打印结果。
 
 ---
 

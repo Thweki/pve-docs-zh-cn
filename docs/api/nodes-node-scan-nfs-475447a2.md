@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/nfs`
 
-Scan remote NFS server.
+扫描远程 NFS 服务器。
 
 **方法标识：** `nfsscan`
 
@@ -46,8 +46,8 @@ Scan remote NFS server.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `server` | string | 是 | — | The server address (name or IP). |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Scan remote NFS server.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "server": {
-      "description": "The server address (name or IP).",
+      "description": "服务器地址（名称或 IP）。",
       "format": "pve-storage-server",
       "type": "string",
       "typetext": "<string>"
@@ -81,11 +81,11 @@ Scan remote NFS server.
   "items": {
     "properties": {
       "options": {
-        "description": "NFS export options.",
+        "description": "NFS 导出选项。",
         "type": "string"
       },
       "path": {
-        "description": "The exported path.",
+        "description": "导出的路径。",
         "type": "string"
       }
     },

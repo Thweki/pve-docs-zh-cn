@@ -6,7 +6,7 @@
 
 ## GET `/access/tfa/{userid}`
 
-List TFA configurations of users.
+列出用户的 TFA 配置。
 
 **方法标识：** `list_user_tfa`
 
@@ -47,7 +47,7 @@ List TFA configurations of users.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,7 +57,7 @@ List TFA configurations of users.
   "additionalProperties": 0,
   "properties": {
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -73,30 +73,30 @@ List TFA configurations of users.
 
 ```json
 {
-  "description": "A list of the user's TFA entries.",
+  "description": "用户的 TFA 条目列表。",
   "items": {
-    "description": "TFA Entry.",
+    "description": "TFA 条目。",
     "properties": {
       "created": {
-        "description": "Creation time of this entry as unix epoch.",
+        "description": "此条目的创建时间，以 UNIX 纪元时间表示。",
         "type": "integer"
       },
       "description": {
-        "description": "User chosen description for this entry.",
+        "description": "用户为此条目选择的描述。",
         "type": "string"
       },
       "enable": {
         "default": 1,
-        "description": "Whether this TFA entry is currently enabled.",
+        "description": "此 TFA 条目当前是否已启用。",
         "optional": 1,
         "type": "boolean"
       },
       "id": {
-        "description": "The id used to reference this entry.",
+        "description": "用于引用此条目的 ID。",
         "type": "string"
       },
       "type": {
-        "description": "TFA Entry Type.",
+        "description": "TFA 条目类型。",
         "enum": [
           "totp",
           "u2f",
@@ -121,7 +121,7 @@ List TFA configurations of users.
 
 ## POST `/access/tfa/{userid}`
 
-Add a TFA entry for a user.
+为用户添加 TFA 条目。
 
 **方法标识：** `add_tfa_entry`
 
@@ -161,13 +161,13 @@ Add a TFA entry for a user.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `challenge` | string | 否 | — | When responding to a u2f challenge: the original challenge string |
-| `description` | string | 否 | — | A description to distinguish multiple entries from one another |
-| `password` | string | 否 | — | The current password of the user performing the change. |
-| `totp` | string | 否 | — | A totp URI. |
-| `type` | string | 是 | — | TFA Entry Type.；可选值：`totp`, `u2f`, `webauthn`, `recovery`, `yubico` |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
-| `value` | string | 否 | — | The current value for the provided totp URI, or a Webauthn/U2F challenge response |
+| `challenge` | string | 否 | — | 响应 U2F 质询时：原始质询字符串 |
+| `description` | string | 否 | — | 用于区分多个条目的描述 |
+| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
+| `totp` | string | 否 | — | TOTP URI。 |
+| `type` | string | 是 | — | TFA 条目类型。；可选值：`totp`, `u2f`, `webauthn`, `recovery`, `yubico` |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| `value` | string | 否 | — | 提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -177,20 +177,20 @@ Add a TFA entry for a user.
   "additionalProperties": 0,
   "properties": {
     "challenge": {
-      "description": "When responding to a u2f challenge: the original challenge string",
+      "description": "响应 U2F 质询时：原始质询字符串",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "description": {
-      "description": "A description to distinguish multiple entries from one another",
+      "description": "用于区分多个条目的描述",
       "maxLength": 255,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "The current password of the user performing the change.",
+      "description": "执行更改的用户的当前密码。",
       "maxLength": 64,
       "minLength": 5,
       "optional": 1,
@@ -198,13 +198,13 @@ Add a TFA entry for a user.
       "typetext": "<string>"
     },
     "totp": {
-      "description": "A totp URI.",
+      "description": "TOTP URI。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "TFA Entry Type.",
+      "description": "TFA 条目类型。",
       "enum": [
         "totp",
         "u2f",
@@ -215,14 +215,14 @@ Add a TFA entry for a user.
       "type": "string"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
       "typetext": "<string>"
     },
     "value": {
-      "description": "The current value for the provided totp URI, or a Webauthn/U2F challenge response",
+      "description": "提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -239,18 +239,18 @@ Add a TFA entry for a user.
 {
   "properties": {
     "challenge": {
-      "description": "When adding u2f entries, this contains a challenge the user must respond to in order to finish the registration.",
+      "description": "添加 U2F 条目时，此项包含用户必须响应以完成注册的质询。",
       "optional": 1,
       "type": "string"
     },
     "id": {
-      "description": "The id of a newly added TFA entry.",
+      "description": "新添加的 TFA 条目的 ID。",
       "type": "string"
     },
     "recovery": {
-      "description": "When adding recovery codes, this contains the list of codes to be displayed to the user",
+      "description": "添加恢复码时，此项包含要向用户显示的恢复码列表",
       "items": {
-        "description": "A recovery entry.",
+        "description": "恢复条目。",
         "type": "string"
       },
       "optional": 1,

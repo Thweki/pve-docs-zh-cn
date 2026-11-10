@@ -6,7 +6,7 @@
 
 ## GET `/access/users`
 
-User index.
+用户索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ User index.
 
 ```json
 {
-  "description": "The returned list is restricted to users where you have 'User.Modify' or 'Sys.Audit' permissions on '/access/groups' or on a group the user belongs too. But it always includes the current (authenticated) user.",
+  "description": "返回列表仅限于您对 '/access/groups' 或用户所属的组具有 'User.Modify' 或 'Sys.Audit' 权限的用户。但始终包含当前（已通过身份验证的）用户。",
   "user": "all"
 }
 ```
@@ -35,8 +35,8 @@ User index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `enabled` | boolean | 否 | — | Optional filter for enable property. |
-| `full` | boolean | 否 | 0 | Include group and token information. |
+| `enabled` | boolean | 否 | — | enable 属性的可选过滤条件。 |
+| `full` | boolean | 否 | 0 | 包含组和令牌信息。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -46,14 +46,14 @@ User index.
   "additionalProperties": 0,
   "properties": {
     "enabled": {
-      "description": "Optional filter for enable property.",
+      "description": "enable 属性的可选过滤条件。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "full": {
       "default": 0,
-      "description": "Include group and token information.",
+      "description": "包含组和令牌信息。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -83,12 +83,12 @@ User index.
       },
       "enable": {
         "default": 1,
-        "description": "Enable the account (default). You can set this to '0' to disable the account",
+        "description": "启用账户（默认）。可设为 '0' 以禁用账户",
         "optional": 1,
         "type": "boolean"
       },
       "expire": {
-        "description": "Account expiration date (seconds since epoch). '0' means no expiration date.",
+        "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
         "minimum": 0,
         "optional": 1,
         "type": "integer"
@@ -104,7 +104,7 @@ User index.
         "type": "string"
       },
       "keys": {
-        "description": "Keys for two factor auth (yubico).",
+        "description": "双因素身份验证密钥（yubico）。",
         "optional": 1,
         "pattern": "[0-9a-zA-Z!=]{0,4096}",
         "type": "string"
@@ -115,13 +115,13 @@ User index.
         "type": "string"
       },
       "realm-type": {
-        "description": "The type of the users realm",
+        "description": "用户所属认证域的类型",
         "format": "pve-realm",
         "optional": 1,
         "type": "string"
       },
       "tfa-locked-until": {
-        "description": "Contains a timestamp until when a user is locked out of 2nd factors.",
+        "description": "包含用户第二因素锁定截止时间的时间戳。",
         "optional": 1,
         "type": "integer"
       },
@@ -134,19 +134,19 @@ User index.
             },
             "expire": {
               "default": "same as user",
-              "description": "API token expiration date (seconds since epoch). '0' means no expiration date.",
+              "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
               "minimum": 0,
               "optional": 1,
               "type": "integer"
             },
             "privsep": {
               "default": 1,
-              "description": "Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.",
+              "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
               "optional": 1,
               "type": "boolean"
             },
             "tokenid": {
-              "description": "User-specific token identifier.",
+              "description": "用户特定的令牌标识符。",
               "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
               "type": "string"
             }
@@ -157,12 +157,12 @@ User index.
         "type": "array"
       },
       "totp-locked": {
-        "description": "True if the user is currently locked out of TOTP factors.",
+        "description": "如果用户当前被锁定而无法使用 TOTP 因素，则为 true。",
         "optional": 1,
         "type": "boolean"
       },
       "userid": {
-        "description": "Full User ID, in the `name@realm` format.",
+        "description": "完整用户 ID，采用 `name@realm` 格式。",
         "format": "pve-userid",
         "maxLength": 64,
         "type": "string"
@@ -182,7 +182,7 @@ User index.
 
 ## POST `/access/users`
 
-Create new user.
+创建新用户。
 
 **方法标识：** `create_user`
 
@@ -205,7 +205,7 @@ Create new user.
       "create"
     ]
   ],
-  "description": "You need 'Realm.AllocateUser' on '/access/realm/<realm>' on the realm of user <userid>, and 'User.Modify' permissions to '/access/groups/<group>' for any group specified (or 'User.Modify' on '/access/groups' if you pass no groups."
+  "description": "需要对用户 <userid> 所属认证域的 '/access/realm/<realm>' 具有 'Realm.AllocateUser' 权限，并且对任何指定组的 '/access/groups/<group>' 具有 'User.Modify' 权限（如果未传入任何组，则需要对 '/access/groups' 具有 'User.Modify' 权限。"
 }
 ```
 
@@ -227,14 +227,14 @@ Create new user.
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — |  |
 | `email` | string | 否 | — |  |
-| `enable` | boolean | 否 | 1 | Enable the account (default). You can set this to '0' to disable the account |
-| `expire` | integer | 否 | — | Account expiration date (seconds since epoch). '0' means no expiration date. |
+| `enable` | boolean | 否 | 1 | 启用账户（默认）。可设为 '0' 以禁用账户 |
+| `expire` | integer | 否 | — | 账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
 | `firstname` | string | 否 | — |  |
 | `groups` | string | 否 | — |  |
-| `keys` | string | 否 | — | Keys for two factor auth (yubico). |
+| `keys` | string | 否 | — | 双因素身份验证密钥（yubico）。 |
 | `lastname` | string | 否 | — |  |
-| `password` | string | 否 | — | Initial password. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `password` | string | 否 | — | 初始密码。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -258,13 +258,13 @@ Create new user.
     },
     "enable": {
       "default": 1,
-      "description": "Enable the account (default). You can set this to '0' to disable the account",
+      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "expire": {
-      "description": "Account expiration date (seconds since epoch). '0' means no expiration date.",
+      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -283,7 +283,7 @@ Create new user.
       "typetext": "<string>"
     },
     "keys": {
-      "description": "Keys for two factor auth (yubico).",
+      "description": "双因素身份验证密钥（yubico）。",
       "optional": 1,
       "pattern": "[0-9a-zA-Z!=]{0,4096}",
       "type": "string"
@@ -295,7 +295,7 @@ Create new user.
       "typetext": "<string>"
     },
     "password": {
-      "description": "Initial password.",
+      "description": "初始密码。",
       "maxLength": 64,
       "minLength": 8,
       "optional": 1,
@@ -303,7 +303,7 @@ Create new user.
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",

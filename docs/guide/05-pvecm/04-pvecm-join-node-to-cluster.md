@@ -4,7 +4,7 @@
 加入集群时，`/etc/pve` 中的所有现有配置都会被覆盖。特别是，加入的节点不能包含任何客户机，否则客户机 ID 可能会冲突，并且该节点将继承集群的存储配置。作为变通方法，要加入包含现有客户机的节点，可以为每个客户机创建备份（使用 `vzdump`），并在加入后以不同的 ID 恢复。如果节点的存储布局不同，则需要重新添加该节点的存储，并调整每个存储的节点限制，以反映该存储实际在哪些节点上可用。
 {% endhint %}
 
-## 5.4.1. 通过 GUI 将节点加入集群 <a href="#_join_node_to_cluster_via_gui" id="_join_node_to_cluster_via_gui"></a>
+## 5.4.1. 通过 GUI 将节点加入集群 <a href="#join_node_to_cluster_via_gui" id="join_node_to_cluster_via_gui"></a>
 
 [![screenshot/gui-cluster-join-information.png](../../assets/screenshot-gui-cluster-join-information-png-9984deb0957b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-join-information.png)
 
@@ -22,7 +22,7 @@
 
 现在，您的节点应显示在 *数据中心 → 集群* 下。
 
-## 5.4.2. 通过命令行将节点加入集群 <a href="#_join_node_to_cluster_via_command_line" id="_join_node_to_cluster_via_command_line"></a>
+## 5.4.2. 通过命令行将节点加入集群 <a href="#join_node_to_cluster_via_command_line" id="join_node_to_cluster_via_command_line"></a>
 
 通过 `ssh` 登录要加入现有集群的节点。
 

@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/firewall/ipset/{name}`
 
-Delete IPSet
+删除 IPSet
 
 **方法标识：** `delete_ipset`
 
@@ -40,8 +40,8 @@ Delete IPSet
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | Delete all members of the IPSet, if there are any. |
-| `name` | string | 是 | — | IP set name. |
+| `force` | boolean | 否 | — | 删除 IPSet 中的所有成员（如有）。 |
+| `name` | string | 是 | — | IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ Delete IPSet
   "additionalProperties": 0,
   "properties": {
     "force": {
-      "description": "Delete all members of the IPSet, if there are any.",
+      "description": "删除 IPSet 中的所有成员（如有）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -79,7 +79,7 @@ Delete IPSet
 
 ## GET `/cluster/firewall/ipset/{name}`
 
-List IPSet content
+列出 IPSet 内容
 
 **方法标识：** `get_ipset`
 
@@ -107,7 +107,7 @@ List IPSet content
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | IP set name. |
+| `name` | string | 是 | — | IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -117,7 +117,7 @@ List IPSet content
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
@@ -143,7 +143,7 @@ List IPSet content
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 0,
         "type": "string"
@@ -167,7 +167,7 @@ List IPSet content
 
 ## POST `/cluster/firewall/ipset/{name}`
 
-Add IP or Network to IPSet.
+将 IP 或网络添加到 IPSet。
 
 **方法标识：** `create_ip`
 
@@ -201,9 +201,9 @@ Add IP or Network to IPSet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | IP set name. |
+| `name` | string | 是 | — | IP 集合名称。 |
 | `nomatch` | boolean | 否 | — |  |
 
 <details>
@@ -214,7 +214,7 @@ Add IP or Network to IPSet.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
@@ -226,7 +226,7 @@ Add IP or Network to IPSet.
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",

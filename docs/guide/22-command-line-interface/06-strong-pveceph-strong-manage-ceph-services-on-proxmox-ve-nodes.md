@@ -1,128 +1,76 @@
-# 22.6. **pveceph** \- Manage CEPH Services on Proxmox VE Nodes <a href="#_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes" id="_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes"></a>
+# 22.6. **pveceph** \- 管理 Proxmox VE 节点上的 CEPH 服务 <a href="#strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes" id="strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes"></a>
 
-<a id="cli_pveceph"></a>
+## **pveceph** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveceph" id="cli_pveceph"></a>
 
+## **pveceph auth status** `[FORMAT_OPTIONS]` <a href="#cli_pveceph_auth_status" id="cli_pveceph_auth_status"></a>
 
+显示 cephx 密钥密码算法和 aes256k 迁移先决条件。
 
-**pveceph** `<COMMAND> [ARGS] [OPTIONS]`
+## **pveceph createmgr** <a href="#cli_pveceph_createmgr" id="cli_pveceph_createmgr"></a>
 
-<a id="cli_pveceph_auth_status"></a>
+*pveceph mgr create* 的别名。
 
+## **pveceph createmon** <a href="#cli_pveceph_createmon" id="cli_pveceph_createmon"></a>
 
+*pveceph mon create* 的别名。
 
-**pveceph auth status** `[FORMAT_OPTIONS]`
+## **pveceph createosd** <a href="#cli_pveceph_createosd" id="cli_pveceph_createosd"></a>
 
-Show cephx key ciphers and aes256k migration prerequisites.
+*pveceph osd create* 的别名。
 
-<a id="cli_pveceph_createmgr"></a>
+## **pveceph createpool** <a href="#cli_pveceph_createpool" id="cli_pveceph_createpool"></a>
 
+*pveceph pool create* 的别名。
 
+## **pveceph destroymgr** <a href="#cli_pveceph_destroymgr" id="cli_pveceph_destroymgr"></a>
 
-**pveceph createmgr**
+*pveceph mgr destroy* 的别名。
 
-An alias for *pveceph mgr create*.
+## **pveceph destroymon** <a href="#cli_pveceph_destroymon" id="cli_pveceph_destroymon"></a>
 
-<a id="cli_pveceph_createmon"></a>
+*pveceph mon destroy* 的别名。
 
+## **pveceph destroyosd** <a href="#cli_pveceph_destroyosd" id="cli_pveceph_destroyosd"></a>
 
+*pveceph osd destroy* 的别名。
 
-**pveceph createmon**
+## **pveceph destroypool** <a href="#cli_pveceph_destroypool" id="cli_pveceph_destroypool"></a>
 
-An alias for *pveceph mon create*.
+*pveceph pool destroy* 的别名。
 
-<a id="cli_pveceph_createosd"></a>
+## **pveceph fs create** `[OPTIONS]` <a href="#cli_pveceph_fs_create" id="cli_pveceph_fs_create"></a>
 
+创建 Ceph 文件系统
 
+**`--add-storage` `<boolean>` （*默认值 \=* `0`）**
 
-**pveceph createosd**
+将创建的 CephFS 配置为此集群的存储。
 
-An alias for *pveceph osd create*.
+**`--name` `(?^:^[^:/\s]+$)` （*默认值 \=* `cephfs`）**
 
-<a id="cli_pveceph_createpool"></a>
+ceph 文件系统名称。
 
+**`--pg_num` `<integer> (8 - 32768)` （*默认值 \=* `128`）**
 
+后端数据池的放置组数量。元数据池将使用此数量的四分之一。
 
-**pveceph createpool**
+## **pveceph fs destroy** `<name>` `[OPTIONS]` <a href="#cli_pveceph_fs_destroy" id="cli_pveceph_fs_destroy"></a>
 
-An alias for *pveceph pool create*.
-
-<a id="cli_pveceph_destroymgr"></a>
-
-
-
-**pveceph destroymgr**
-
-An alias for *pveceph mgr destroy*.
-
-<a id="cli_pveceph_destroymon"></a>
-
-
-
-**pveceph destroymon**
-
-An alias for *pveceph mon destroy*.
-
-<a id="cli_pveceph_destroyosd"></a>
-
-
-
-**pveceph destroyosd**
-
-An alias for *pveceph osd destroy*.
-
-<a id="cli_pveceph_destroypool"></a>
-
-
-
-**pveceph destroypool**
-
-An alias for *pveceph pool destroy*.
-
-<a id="cli_pveceph_fs_create"></a>
-
-
-
-**pveceph fs create** `[OPTIONS]`
-
-Create a Ceph filesystem
-
-**`--add-storage` `<boolean>` (*default \=* `0`)**
-
-Configure the created CephFS as storage for this cluster.
-
-**`--name` `(?^:^[^:/\s]+$)` (*default \=* `cephfs`)**
-
-The ceph filesystem name.
-
-**`--pg_num` `<integer> (8 - 32768)` (*default \=* `128`)**
-
-Number of placement groups for the backing data pool. The metadata pool will use a quarter of this.
-
-<a id="cli_pveceph_fs_destroy"></a>
-
-
-
-**pveceph fs destroy** `<name>` `[OPTIONS]`
-
-Destroy a Ceph filesystem. Refuses if any PVE storage entry of type *cephfs* still references the filesystem and is not disabled. Optionally also removes the storage entries and/or the underlying metadata and data pools.
+销毁 Ceph 文件系统。如果任何类型为 *cephfs* 的 PVE 存储条目仍引用该文件系统且未禁用，则拒绝操作。还可以选择移除存储条目和/或底层元数据池及数据池。
 
 **`<name>`: `<string>`**
 
-The Ceph filesystem name.
+Ceph 文件系统名称。
 
-**`--remove-pools` `<boolean>` (*default \=* `0`)**
+**`--remove-pools` `<boolean>` （*默认值 \=* `0`）**
 
-Remove the metadata and data pools used by this filesystem.
+移除此文件系统使用的元数据池和数据池。
 
-**`--remove-storages` `<boolean>` (*default \=* `0`)**
+**`--remove-storages` `<boolean>` （*默认值 \=* `0`）**
 
-Remove pveceph-managed storages configured for this filesystem.
+移除为此文件系统配置的、由 pveceph 管理的存储。
 
-<a id="cli_pveceph_help"></a>
-
-
-
-**pveceph help** `[OPTIONS]`
+## **pveceph help** `[OPTIONS]` <a href="#cli_pveceph_help" id="cli_pveceph_help"></a>
 
 获取指定命令的帮助。
 
@@ -134,435 +82,351 @@ Remove pveceph-managed storages configured for this filesystem.
 
 详细输出格式。
 
-<a id="cli_pveceph_init"></a>
+## **pveceph init** `[OPTIONS]` <a href="#cli_pveceph_init" id="cli_pveceph_init"></a>
 
-
-
-**pveceph init** `[OPTIONS]`
-
-Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a \[global\] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
+创建初始的 Ceph 默认配置并设置符号链接。重复调用具有幂等性：如果 ceph.conf 中已存在 \[global\] 部分，则保留现有的 fsid / auth / pool 默认值，并静默忽略大多数参数。
 
 **`--cluster-network` `<string>`**
 
-Declare a separate cluster network, OSDs will route heartbeat, object replication and recovery traffic over it
+声明单独的集群网络，OSD 将通过此网络传输心跳、对象复制和恢复流量
 
 {% hint style="info" %}
-Requires option(s): `network`
+需要选项：`network`
 {% endhint %}
 
-**`--disable_cephx` `<boolean>` (*default \=* `0`)**
+**`--disable_cephx` `<boolean>` （*默认值 \=* `0`）**
 
-Disable cephx authentication.
+禁用 cephx 认证。
 
 {% hint style="warning" %}
-cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!
+cephx 是防止中间人攻击的安全功能。只有在网络为私有网络时才考虑禁用 cephx！
 {% endhint %}
 
-**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
+**`--min_size` `<integer> (1 - 7)` （*默认值 \=* `2`）**
 
-Minimum number of available replicas per object to allow I/O
+允许 I/O 所需的每个对象的最少可用副本数量
 
 **`--network` `<string>`**
 
-Use specific network for all ceph related traffic
+对所有 ceph 相关流量使用指定网络
 
-**`--pg_bits` `<integer> (6 - 14)` (*default \=* `6`)**
+**`--pg_bits` `<integer> (6 - 14)` （*默认值 \=* `6`）**
 
-Placement group bits, used to specify the default number of placement groups.
+放置组位数，用于指定默认放置组数量。
 
-Depreacted. This setting was deprecated in recent Ceph versions.
+已弃用。近期 Ceph 版本中已弃用此设置。
 
-**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
+**`--size` `<integer> (1 - 7)` （*默认值 \=* `3`）**
 
-Targeted number of replicas per object
+每个对象的目标副本数量
 
-<a id="cli_pveceph_install"></a>
+## **pveceph install** `[OPTIONS]` <a href="#cli_pveceph_install" id="cli_pveceph_install"></a>
 
+安装 ceph 相关软件包。
 
+**`--allow-experimental` `<boolean>` （*默认值 \=* `0`）**
 
-**pveceph install** `[OPTIONS]`
+允许实验性版本。请谨慎使用！
 
-Install ceph related packages.
+**`--repository` `<enterprise | manual | no-subscription | test>` （*默认值 \=* `enterprise`）**
 
-**`--allow-experimental` `<boolean>` (*default \=* `0`)**
+使用的 Ceph 仓库。*manual* 选项不会配置任何仓库。如果宿主机无法访问公共仓库，例如使用 Proxmox Offline Mirror 时，请使用此选项。开始安装之前，需要手动配置包含相应版本 Ceph 软件包的仓库！
 
-Allow experimental versions. Use with care!
+**`--version` `<squid | tentacle>` （*默认值 \=* `tentacle`）**
 
-**`--repository` `<enterprise | manual | no-subscription | test>` (*default \=* `enterprise`)**
+要安装的 Ceph 版本。
 
-Ceph repository to use. The *manual* option will not configure any repositories. Use it if the host cannot access the public repositories, for example if Proxmox Offline Mirror is used. A repository that contains the Ceph packages for the version needs to be manually configured before starting the installation!
+## **pveceph lspools** <a href="#cli_pveceph_lspools" id="cli_pveceph_lspools"></a>
 
-**`--version` `<squid | tentacle>` (*default \=* `tentacle`)**
+*pveceph pool ls* 的别名。
 
-Ceph version to install.
+## **pveceph mds create** `[OPTIONS]` <a href="#cli_pveceph_mds_create" id="cli_pveceph_mds_create"></a>
 
-<a id="cli_pveceph_lspools"></a>
+创建 Ceph 元数据服务器（MDS）
 
+**`--hotstandby` `<boolean>` （*默认值 \=* `0`）**
 
+确定 ceph-mds 守护进程是否应轮询并重放活动 MDS 的日志。这可以在 MDS 故障时更快地切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。
 
-**pveceph lspools**
+**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-An alias for *pveceph pool ls*.
+mds 的 ID，省略时与节点名称相同
 
-<a id="cli_pveceph_mds_create"></a>
+## **pveceph mds destroy** `<name>` <a href="#cli_pveceph_mds_destroy" id="cli_pveceph_mds_destroy"></a>
 
-
-
-**pveceph mds create** `[OPTIONS]`
-
-Create Ceph Metadata Server (MDS)
-
-**`--hotstandby` `<boolean>` (*default \=* `0`)**
-
-Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1.
-
-**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
-
-The ID for the mds, when omitted the same as the nodename
-
-<a id="cli_pveceph_mds_destroy"></a>
-
-
-
-**pveceph mds destroy** `<name>`
-
-Destroy Ceph Metadata Server
+销毁 Ceph 元数据服务器
 
 **`<name>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-The name (ID) of the mds
+mds 的名称（ID）
 
-<a id="cli_pveceph_mgr_create"></a>
+## **pveceph mgr create** `[OPTIONS]` <a href="#cli_pveceph_mgr_create" id="cli_pveceph_mgr_create"></a>
 
+创建 Ceph 管理器
 
+**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-**pveceph mgr create** `[OPTIONS]`
+管理器的 ID，省略时与节点名称相同。
 
-Create Ceph Manager
+## **pveceph mgr destroy** `<id>` <a href="#cli_pveceph_mgr_destroy" id="cli_pveceph_mgr_destroy"></a>
 
-**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
-
-The ID for the manager, when omitted the same as the nodename.
-
-<a id="cli_pveceph_mgr_destroy"></a>
-
-
-
-**pveceph mgr destroy** `<id>`
-
-Destroy Ceph Manager.
+销毁 Ceph 管理器。
 
 **`<id>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-The ID of the manager
+管理器的 ID
 
-<a id="cli_pveceph_mon_create"></a>
+## **pveceph mon create** `[OPTIONS]` <a href="#cli_pveceph_mon_create" id="cli_pveceph_mon_create"></a>
 
-
-
-**pveceph mon create** `[OPTIONS]`
-
-Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
+创建 Ceph 监视器。对于首个监视器，还会自动创建管理器。
 
 **`--mon-address` `<string>`**
 
-Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph.
+覆盖自动检测的监视器 IP 地址。必须位于 Ceph 的公共网络中。
 
-**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
+**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-The ID for the monitor, when omitted the same as the nodename.
+监视器的 ID，省略时与节点名称相同。
 
-<a id="cli_pveceph_mon_destroy"></a>
+## **pveceph mon destroy** `<monid>` <a href="#cli_pveceph_mon_destroy" id="cli_pveceph_mon_destroy"></a>
 
-
-
-**pveceph mon destroy** `<monid>`
-
-Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does not destroy any Manager on the same node; use
+销毁 Ceph 监视器。拒绝移除集群中的最后一个监视器。不会销毁同一节点上的任何管理器；请使用
 
 **`<monid>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-Monitor ID
+监视器 ID
 
-<a id="cli_pveceph_osd_create"></a>
+## **pveceph osd create** `<dev>` `[OPTIONS]` <a href="#cli_pveceph_osd_create" id="cli_pveceph_osd_create"></a>
 
-
-
-**pveceph osd create** `<dev>` `[OPTIONS]`
-
-Create OSD
+创建 OSD
 
 **`<dev>`: `<string>`**
 
-Block device name.
+块设备名称。
 
 **`--crush-device-class` `<string>`**
 
-Set the device class of the OSD in crush.
+设置 OSD 在 crush 中的设备类别。
 
 **`--db_dev` `<string>`**
 
-Block device name for block.db.
+block.db 的块设备名称。
 
 **`--db_dev_size` `<number> (1 - N)`**
 
-Size in GiB for block.db.
+block.db 的大小，单位为 GiB。
 
 {% hint style="info" %}
-Requires option(s): `db_dev`
+需要选项：`db_dev`
 {% endhint %}
 
-**`--encrypted` `<boolean>` (*default \=* `0`)**
+**`--encrypted` `<boolean>` （*默认值 \=* `0`）**
 
-Enables encryption of the OSD.
+启用 OSD 加密。
 
 **`--osds-per-device` `<integer> (1 - N)`**
 
-OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db\_dev* and *wal\_dev*.
+每个物理设备上的 OSD 服务数量。仅对高速 NVMe 设备有用，可更好地利用其性能。与 *db\_dev* 和 *wal\_dev* 互斥。
 
 **`--wal_dev` `<string>`**
 
-Block device name for block.wal.
+block.wal 的块设备名称。
 
 **`--wal_dev_size` `<number> (0.5 - N)`**
 
-Size in GiB for block.wal.
+block.wal 的大小，单位为 GiB。
 
 {% hint style="info" %}
-Requires option(s): `wal_dev`
+需要选项：`wal_dev`
 {% endhint %}
 
-<a id="cli_pveceph_osd_destroy"></a>
+## **pveceph osd destroy** `<osdid>` `[OPTIONS]` <a href="#cli_pveceph_osd_destroy" id="cli_pveceph_osd_destroy"></a>
 
-
-
-**pveceph osd destroy** `<osdid>` `[OPTIONS]`
-
-Destroy OSD
+销毁 OSD
 
 **`<osdid>`: `<integer>`**
 
 OSD ID
 
-**`--cleanup` `<boolean>` (*default \=* `0`)**
+**`--cleanup` `<boolean>` （*默认值 \=* `0`）**
 
-If set, also destroy the underlying logical volumes via *ceph-volume lvm zap --destroy*, remove the volume group’s physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection.
+如果设置，还会通过 *ceph-volume lvm zap --destroy* 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的任何 journal/block.db/block.wal 分区。如果不设置此标志，LV 和分区将保持原样，以供检查。
 
-<a id="cli_pveceph_osd_details"></a>
+## **pveceph osd details** `<osdid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveceph_osd_details" id="cli_pveceph_osd_details"></a>
 
-
-
-**pveceph osd details** `<osdid>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Get OSD details.
+获取 OSD 详细信息。
 
 **`<osdid>`: `<string>`**
 
-ID of the OSD
+OSD 的 ID
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-Print verbose information, same as json-pretty output format.
+打印详细信息，与 json-pretty 输出格式相同。
 
-<a id="cli_pveceph_pool_create"></a>
+## **pveceph pool create** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_create" id="cli_pveceph_pool_create"></a>
 
-
-
-**pveceph pool create** `<name>` `[OPTIONS]`
-
-Create Ceph pool
+创建 Ceph 池
 
 **`<name>`: `(?^:^[^:/\s]+$)`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
-**`--add_storages` `<boolean>` (*default \=* `0`)**
+**`--add_storages` `<boolean>` （*默认值 \=* `0`）**
 
-Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage).
+使用新池配置虚拟机和容器存储。对于复制池默认为 false，对于纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。
 
-**`--application` `<cephfs | rbd | rgw>` (*default \=* `rbd`)**
+**`--application` `<cephfs | rbd | rgw>` （*默认值 \=* `rbd`）**
 
-The application of the pool.
+池的应用。
 
 **`--crush_rule` `<string>`**
 
-The rule to use for mapping object placement in the cluster.
+用于映射集群中对象放置位置的规则。
 
 **`--erasure-coding` `k=<integer> ,m=<integer> [,device-class=<class>] [,failure-domain=<domain>] [,profile=<profile>]`**
 
-Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min\_size* and *crush\_rule* parameters will be applied to the metadata pool.
+为 RBD 创建纠删码池，同时创建用于元数据存储的配套复制池。使用 EC 时，常见 ceph 选项 *size*、*min\_size* 和 *crush\_rule* 参数将应用于元数据池。
 
-**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
+**`--min_size` `<integer> (1 - 7)` （*默认值 \=* `2`）**
 
-Minimum number of replicas per object
+每个对象的最少副本数量
 
-**`--pg_autoscale_mode` `<off | on | warn>` (*default \=* `warn`)**
+**`--pg_autoscale_mode` `<off | on | warn>` （*默认值 \=* `warn`）**
 
-The automatic PG scaling mode of the pool.
+池的自动 PG 扩缩模式。
 
-**`--pg_num` `<integer> (1 - 32768)` (*default \=* `128`)**
+**`--pg_num` `<integer> (1 - 32768)` （*默认值 \=* `128`）**
 
-Number of placement groups.
+放置组数量。
 
 **`--pg_num_min` `<integer> (-N - 32768)`**
 
-Minimal number of placement groups.
+放置组的最少数量。
 
-**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
+**`--size` `<integer> (1 - 7)` （*默认值 \=* `3`）**
 
-Number of replicas per object
+每个对象的副本数量
 
 **`--target_size` `^(\d+(\.\d+)?)([KMGT])?$`**
 
-The estimated target size of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标大小。
 
 **`--target_size_ratio` `<number>`**
 
-The estimated target ratio of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标比例。
 
-<a id="cli_pveceph_pool_destroy"></a>
+## **pveceph pool destroy** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_destroy" id="cli_pveceph_pool_destroy"></a>
 
-
-
-**pveceph pool destroy** `<name>` `[OPTIONS]`
-
-Destroy pool
+销毁池
 
 **`<name>`: `<string>`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-If true, destroys pool even if in use
+如果为 true，即使池正在使用也将其销毁
 
-**`--remove_ecprofile` `<boolean>` (*default \=* `1`)**
+**`--remove_ecprofile` `<boolean>` （*默认值 \=* `1`）**
 
-Remove the erasure code profile. Defaults to true, if applicable.
+移除纠删码配置文件。在适用情况下默认为 true。
 
-**`--remove_storages` `<boolean>` (*default \=* `0`)**
+**`--remove_storages` `<boolean>` （*默认值 \=* `0`）**
 
-Remove all pveceph-managed storages configured for this pool
+移除为此池配置的、由 pveceph 管理的所有存储
 
-<a id="cli_pveceph_pool_get"></a>
+## **pveceph pool get** `<name>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveceph_pool_get" id="cli_pveceph_pool_get"></a>
 
-
-
-**pveceph pool get** `<name>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Show the current pool status.
+显示池的当前状态。
 
 **`<name>`: `<string>`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-If enabled, will display additional data(eg. statistics).
+如果启用，将显示额外数据（例如统计信息）。
 
-<a id="cli_pveceph_pool_ls"></a>
+## **pveceph pool ls** `[FORMAT_OPTIONS]` <a href="#cli_pveceph_pool_ls" id="cli_pveceph_pool_ls"></a>
 
+列出所有池及其设置（可通过 POST/PUT 端点设置的选项）。
 
+## **pveceph pool set** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_set" id="cli_pveceph_pool_set"></a>
 
-**pveceph pool ls** `[FORMAT_OPTIONS]`
-
-List all pools and their settings (which are settable by the POST/PUT endpoints).
-
-<a id="cli_pveceph_pool_set"></a>
-
-
-
-**pveceph pool set** `<name>` `[OPTIONS]`
-
-Change POOL settings
+更改 POOL 设置
 
 **`<name>`: `(?^:^[^:/\s]+$)`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--application` `<cephfs | rbd | rgw>`**
 
-The application of the pool.
+池的应用。
 
 **`--crush_rule` `<string>`**
 
-The rule to use for mapping object placement in the cluster.
+用于映射集群中对象放置位置的规则。
 
 **`--min_size` `<integer> (1 - 7)`**
 
-Minimum number of replicas per object
+每个对象的最少副本数量
 
 **`--pg_autoscale_mode` `<off | on | warn>`**
 
-The automatic PG scaling mode of the pool.
+池的自动 PG 扩缩模式。
 
 **`--pg_num` `<integer> (1 - 32768)`**
 
-Number of placement groups.
+放置组数量。
 
 **`--pg_num_min` `<integer> (-N - 32768)`**
 
-Minimal number of placement groups.
+放置组的最少数量。
 
 **`--size` `<integer> (1 - 7)`**
 
-Number of replicas per object
+每个对象的副本数量
 
 **`--target_size` `^(\d+(\.\d+)?)([KMGT])?$`**
 
-The estimated target size of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标大小。
 
 **`--target_size_ratio` `<number>`**
 
-The estimated target ratio of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标比例。
 
-<a id="cli_pveceph_purge"></a>
+## **pveceph purge** `[OPTIONS]` <a href="#cli_pveceph_purge" id="cli_pveceph_purge"></a>
 
-
-
-**pveceph purge** `[OPTIONS]`
-
-Destroy ceph related data and configuration files.
+销毁 ceph 相关数据和配置文件。
 
 **`--crash` `<boolean>`**
 
-Additionally purge Ceph crash logs, /var/lib/ceph/crash.
+同时清除 Ceph 崩溃日志，/var/lib/ceph/crash.
 
 **`--logs` `<boolean>`**
 
-Additionally purge Ceph logs, /var/log/ceph.
+同时清除 Ceph 日志，/var/log/ceph.
 
-<a id="cli_pveceph_start"></a>
+## **pveceph start** `[OPTIONS]` <a href="#cli_pveceph_start" id="cli_pveceph_start"></a>
 
+启动 ceph 服务。
 
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` （*默认值 \=* `ceph.target`）**
 
-**pveceph start** `[OPTIONS]`
+Ceph 服务名称。
 
-Start ceph services.
+## **pveceph status** <a href="#cli_pveceph_status" id="cli_pveceph_status"></a>
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
+获取 Ceph 状态。
 
-Ceph service name.
+## **pveceph stop** `[OPTIONS]` <a href="#cli_pveceph_stop" id="cli_pveceph_stop"></a>
 
-<a id="cli_pveceph_status"></a>
+停止 ceph 服务。
 
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` （*默认值 \=* `ceph.target`）**
 
-
-**pveceph status**
-
-Get Ceph Status.
-
-<a id="cli_pveceph_stop"></a>
-
-
-
-**pveceph stop** `[OPTIONS]`
-
-Stop ceph services.
-
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
-
-Ceph service name.
+Ceph 服务名称。
 
 ---
 

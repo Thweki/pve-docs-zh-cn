@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/vnets`
 
-SDN vnets index.
+SDN vnet 索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ SDN vnets index.
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
 }
 ```
@@ -29,8 +29,8 @@ SDN vnets index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -40,13 +40,13 @@ SDN vnets index.
   "additionalProperties": 0,
   "properties": {
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -64,52 +64,52 @@ SDN vnets index.
   "items": {
     "properties": {
       "alias": {
-        "description": "Alias name of the VNet.",
+        "description": "VNet 的别名。",
         "maxLength": 256,
         "optional": 1,
         "pattern": "(?^i:[\\(\\)-_.\\w\\d\\s]{0,256})",
         "type": "string"
       },
       "digest": {
-        "description": "Digest of the VNet section.",
+        "description": "VNet 配置节的摘要。",
         "optional": 1,
         "type": "string"
       },
       "isolate-ports": {
-        "description": "If true, sets the isolated property for all interfaces on the bridge of this VNet.",
+        "description": "如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。",
         "optional": 1,
         "type": "boolean"
       },
       "pending": {
-        "description": "Changes that have not yet been applied to the running configuration.",
+        "description": "尚未应用到运行配置的更改。",
         "optional": 1,
         "properties": {
           "alias": {
-            "description": "Alias name of the VNet.",
+            "description": "VNet 的别名。",
             "maxLength": 256,
             "optional": 1,
             "pattern": "(?^i:[\\(\\)-_.\\w\\d\\s]{0,256})",
             "type": "string"
           },
           "isolate-ports": {
-            "description": "If true, sets the isolated property for all interfaces on the bridge of this VNet.",
+            "description": "如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。",
             "optional": 1,
             "type": "boolean"
           },
           "tag": {
-            "description": "VLAN Tag (for VLAN or QinQ zones) or VXLAN VNI (for VXLAN or EVPN zones).",
+            "description": "VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。",
             "maximum": 16777215,
             "minimum": 1,
             "optional": 1,
             "type": "integer"
           },
           "vlanaware": {
-            "description": "Allow VLANs to pass through this VNet.",
+            "description": "允许 VLAN 穿过此 VNet。",
             "optional": 1,
             "type": "boolean"
           },
           "zone": {
-            "description": "Name of the zone this VNet belongs to.",
+            "description": "此 VNet 所属区域的名称。",
             "optional": 1,
             "type": "string"
           }
@@ -117,7 +117,7 @@ SDN vnets index.
         "type": "object"
       },
       "state": {
-        "description": "State of the SDN configuration object.",
+        "description": "SDN 配置对象的状态。",
         "enum": [
           "new",
           "changed",
@@ -127,14 +127,14 @@ SDN vnets index.
         "type": "string"
       },
       "tag": {
-        "description": "VLAN Tag (for VLAN or QinQ zones) or VXLAN VNI (for VXLAN or EVPN zones).",
+        "description": "VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。",
         "maximum": 16777215,
         "minimum": 1,
         "optional": 1,
         "type": "integer"
       },
       "type": {
-        "description": "Type of the VNet.",
+        "description": "VNet 的类型。",
         "enum": [
           "vnet"
         ],
@@ -142,17 +142,17 @@ SDN vnets index.
         "type": "string"
       },
       "vlanaware": {
-        "description": "Allow VLANs to pass through this VNet.",
+        "description": "允许 VLAN 穿过此 VNet。",
         "optional": 1,
         "type": "boolean"
       },
       "vnet": {
-        "description": "Name of the VNet.",
+        "description": "VNet 的名称。",
         "optional": 0,
         "type": "string"
       },
       "zone": {
-        "description": "Name of the zone this VNet belongs to.",
+        "description": "此 VNet 所属区域的名称。",
         "optional": 1,
         "type": "string"
       }
@@ -171,7 +171,7 @@ SDN vnets index.
 
 ## POST `/cluster/sdn/vnets`
 
-Create a new sdn vnet object.
+创建新的 SDN vnet 对象。
 
 **方法标识：** `create`
 
@@ -205,14 +205,14 @@ Create a new sdn vnet object.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `alias` | string | 否 | — | Alias name of the VNet. |
-| `isolate-ports` | boolean | 否 | — | If true, sets the isolated property for all interfaces on the bridge of this VNet. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `tag` | integer | 否 | — | VLAN Tag (for VLAN or QinQ zones) or VXLAN VNI (for VXLAN or EVPN zones). |
-| `type` | string | 否 | — | Type of the VNet.；可选值：`vnet` |
-| `vlanaware` | boolean | 否 | — | Allow VLANs to pass through this vnet. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
-| `zone` | string | 是 | — | Name of the zone this VNet belongs to. |
+| `alias` | string | 否 | — | VNet 的别名。 |
+| `isolate-ports` | boolean | 否 | — | 如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `tag` | integer | 否 | — | VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。 |
+| `type` | string | 否 | — | VNet 的类型。；可选值：`vnet` |
+| `vlanaware` | boolean | 否 | — | 允许 VLAN 穿过此 vnet。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| `zone` | string | 是 | — | 此 VNet 所属区域的名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -222,26 +222,26 @@ Create a new sdn vnet object.
   "additionalProperties": 0,
   "properties": {
     "alias": {
-      "description": "Alias name of the VNet.",
+      "description": "VNet 的别名。",
       "maxLength": 256,
       "optional": 1,
       "pattern": "(?^i:[\\(\\)-_.\\w\\d\\s]{0,256})",
       "type": "string"
     },
     "isolate-ports": {
-      "description": "If true, sets the isolated property for all interfaces on the bridge of this VNet.",
+      "description": "如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "tag": {
-      "description": "VLAN Tag (for VLAN or QinQ zones) or VXLAN VNI (for VXLAN or EVPN zones).",
+      "description": "VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。",
       "maximum": 16777215,
       "minimum": 1,
       "optional": 1,
@@ -249,7 +249,7 @@ Create a new sdn vnet object.
       "typetext": "<integer> (1 - 16777215)"
     },
     "type": {
-      "description": "Type of the VNet.",
+      "description": "VNet 的类型。",
       "enum": [
         "vnet"
       ],
@@ -257,20 +257,20 @@ Create a new sdn vnet object.
       "type": "string"
     },
     "vlanaware": {
-      "description": "Allow VLANs to pass through this vnet.",
+      "description": "允许 VLAN 穿过此 vnet。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "zone": {
-      "description": "Name of the zone this VNet belongs to.",
+      "description": "此 VNet 所属区域的名称。",
       "optional": 0,
       "type": "string",
       "typetext": "<string>"

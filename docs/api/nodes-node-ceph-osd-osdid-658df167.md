@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/ceph/osd/{osdid}`
 
-Destroy OSD
+销毁 OSD
 
 **方法标识：** `destroyosd`
 
@@ -32,8 +32,8 @@ Destroy OSD
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cleanup` | boolean | 否 | 0 | If set, also destroy the underlying logical volumes via 'ceph-volume lvm zap --destroy', remove the volume group's physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection. |
-| `node` | string | 是 | — | The cluster node name. |
+| `cleanup` | boolean | 否 | 0 | 如果设置，还将通过 'ceph-volume lvm zap --destroy' 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的所有 journal/block.db/block.wal 分区。未设置此标志时，保留逻辑卷和分区以供检查。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `osdid` | integer | 是 | — | OSD ID |
 
 <details>
@@ -45,13 +45,13 @@ Destroy OSD
   "properties": {
     "cleanup": {
       "default": 0,
-      "description": "If set, also destroy the underlying logical volumes via 'ceph-volume lvm zap --destroy', remove the volume group's physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection.",
+      "description": "如果设置，还将通过 'ceph-volume lvm zap --destroy' 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的所有 journal/block.db/block.wal 分区。未设置此标志时，保留逻辑卷和分区以供检查。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,7 +77,7 @@ Destroy OSD
 
 ## GET `/nodes/{node}/ceph/osd/{osdid}`
 
-OSD index.
+OSD 索引。
 
 **方法标识：** `osdindex`
 
@@ -99,7 +99,7 @@ OSD index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `osdid` | integer | 是 | — | OSD ID |
 
 <details>
@@ -110,7 +110,7 @@ OSD index.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

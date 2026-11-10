@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/wakeonlan`
 
-Try to wake a node via 'wake on LAN' network packet.
+尝试通过“局域网唤醒”网络数据包唤醒节点。
 
 **方法标识：** `wakeonlan`
 
@@ -40,7 +40,7 @@ Try to wake a node via 'wake on LAN' network packet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | target node for wake on LAN packet |
+| `node` | string | 是 | — | 局域网唤醒数据包的目标节点 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Try to wake a node via 'wake on LAN' network packet.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "target node for wake on LAN packet",
+      "description": "局域网唤醒数据包的目标节点",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -65,7 +65,7 @@ Try to wake a node via 'wake on LAN' network packet.
 
 ```json
 {
-  "description": "MAC address used to assemble the WoL magic packet.",
+  "description": "用于构造 WoL 魔术包的 MAC 地址。",
   "format": "mac-addr",
   "type": "string"
 }

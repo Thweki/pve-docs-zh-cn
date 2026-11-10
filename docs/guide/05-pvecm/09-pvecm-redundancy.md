@@ -22,13 +22,13 @@ Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/u
 
 由于除非所有更高优先级的链路都发生故障，否则较低优先级的链路不会承载流量，因此，将用于其他任务（虚拟机、存储等）的网络指定为低优先级链路是一种有用的策略。在最坏的情况下，延迟较高或较为拥塞的连接可能也比完全没有连接要好。
 
-## 5.9.1. 向现有集群添加冗余链路 <a href="#_adding_redundant_links_to_an_existing_cluster" id="_adding_redundant_links_to_an_existing_cluster"></a>
+## 5.9.1. 向现有集群添加冗余链路 <a href="#adding_redundant_links_to_an_existing_cluster" id="adding_redundant_links_to_an_existing_cluster"></a>
 
 要向运行中的配置添加新链路，首先请查看如何[编辑 corosync.conf 文件](12-corosync-configuration.md#pvecm_edit_corosync_conf)。
 
 然后，将新的 *ringX\_addr* 添加到 `nodelist` 小节中的每个节点。确保所有添加该条目的节点都使用相同的 *X*，并且该编号在每个节点内都是唯一的。
 
-Lastly, add a new *interface*, as shown below, to your `totem` section, replacing *X* with the link number chosen above.
+最后，按下图添加新的 *interface* 至 `totem` 节，将 *X* 替换为上面选择的链路编号。
 
 假设您添加了一条编号为 1 的链路，新配置文件可能如下所示：
 

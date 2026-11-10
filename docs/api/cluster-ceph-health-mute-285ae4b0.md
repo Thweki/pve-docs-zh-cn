@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph/health-mute`
 
-Get the currently muted Ceph health checks.
+获取当前已静默的 Ceph 健康检查。
 
 **方法标识：** `health_mute_index`
 
@@ -50,20 +50,20 @@ Get the currently muted Ceph health checks.
   "items": {
     "properties": {
       "code": {
-        "description": "The muted health check.",
+        "description": "已静默的健康检查。",
         "type": "string"
       },
       "sticky": {
-        "description": "Whether the mute survives the check getting worse.",
+        "description": "检查情况恶化后是否仍保持静默。",
         "type": "boolean"
       },
       "summary": {
-        "description": "What the check reports.",
+        "description": "检查报告的内容。",
         "optional": 1,
         "type": "string"
       },
       "ttl": {
-        "description": "When the mute expires. Absent if it does not.",
+        "description": "静默到期时间。若不会到期则不存在此项。",
         "optional": 1,
         "type": "string"
       }

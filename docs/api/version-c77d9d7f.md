@@ -6,7 +6,7 @@
 
 ## GET `/version`
 
-API version details, including some parts of the global datacenter config.
+API 版本详情，包括部分全局数据中心配置。
 
 **方法标识：** `version`
 
@@ -34,7 +34,7 @@ API version details, including some parts of the global datacenter config.
 {
   "properties": {
     "console": {
-      "description": "The default console viewer to use.",
+      "description": "默认使用的控制台查看器。",
       "enum": [
         "applet",
         "vv",
@@ -45,16 +45,16 @@ API version details, including some parts of the global datacenter config.
       "type": "string"
     },
     "release": {
-      "description": "The current Proxmox VE point release in `x.y` format.",
+      "description": "当前 Proxmox VE 小版本，采用 `x.y` 格式。",
       "type": "string"
     },
     "repoid": {
-      "description": "The short git revision from which this version was build.",
+      "description": "构建此版本所用的简短 git 修订号。",
       "pattern": "[0-9a-fA-F]{8,64}",
       "type": "string"
     },
     "version": {
-      "description": "The full pve-manager package version of this node.",
+      "description": "此节点的完整 pve-manager 软件包版本。",
       "type": "string"
     }
   },

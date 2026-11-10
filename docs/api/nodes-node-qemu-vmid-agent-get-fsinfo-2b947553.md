@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/agent/get-fsinfo`
 
-Execute get-fsinfo.
+执行 get-fsinfo。
 
 **方法标识：** `get-fsinfo`
 
@@ -49,8 +49,8 @@ Execute get-fsinfo.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,13 +60,13 @@ Execute get-fsinfo.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -83,7 +83,7 @@ Execute get-fsinfo.
 
 ```json
 {
-  "description": "Returns an object with a single `result` property.",
+  "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
 }
 ```

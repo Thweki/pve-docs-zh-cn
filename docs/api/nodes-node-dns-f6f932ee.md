@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/dns`
 
-Read DNS settings.
+读取 DNS 设置。
 
 **方法标识：** `dns`
 
@@ -40,7 +40,7 @@ Read DNS settings.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Read DNS settings.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -68,22 +68,22 @@ Read DNS settings.
   "additionalProperties": 0,
   "properties": {
     "dns1": {
-      "description": "First name server IP address.",
+      "description": "第一个名称服务器 IP 地址。",
       "optional": 1,
       "type": "string"
     },
     "dns2": {
-      "description": "Second name server IP address.",
+      "description": "第二个名称服务器 IP 地址。",
       "optional": 1,
       "type": "string"
     },
     "dns3": {
-      "description": "Third name server IP address.",
+      "description": "第三个名称服务器 IP 地址。",
       "optional": 1,
       "type": "string"
     },
     "search": {
-      "description": "Search domain for host-name lookup.",
+      "description": "主机名查找的搜索域。",
       "optional": 1,
       "type": "string"
     }
@@ -94,7 +94,7 @@ Read DNS settings.
 
 ## PUT `/nodes/{node}/dns`
 
-Write DNS settings.
+写入 DNS 设置。
 
 **方法标识：** `update_dns`
 
@@ -134,11 +134,11 @@ Write DNS settings.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `dns1` | string | 否 | — | First name server IP address. |
-| `dns2` | string | 否 | — | Second name server IP address. |
-| `dns3` | string | 否 | — | Third name server IP address. |
-| `node` | string | 是 | — | The cluster node name. |
-| `search` | string | 是 | — | Search domain for host-name lookup. |
+| `dns1` | string | 否 | — | 第一个名称服务器 IP 地址。 |
+| `dns2` | string | 否 | — | 第二个名称服务器 IP 地址。 |
+| `dns3` | string | 否 | — | 第三个名称服务器 IP 地址。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `search` | string | 是 | — | 主机名查找的搜索域。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -148,34 +148,34 @@ Write DNS settings.
   "additionalProperties": 0,
   "properties": {
     "dns1": {
-      "description": "First name server IP address.",
+      "description": "第一个名称服务器 IP 地址。",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dns2": {
-      "description": "Second name server IP address.",
+      "description": "第二个名称服务器 IP 地址。",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dns3": {
-      "description": "Third name server IP address.",
+      "description": "第三个名称服务器 IP 地址。",
       "format": "ip",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "search": {
-      "description": "Search domain for host-name lookup.",
+      "description": "主机名查找的搜索域。",
       "type": "string",
       "typetext": "<string>"
     }

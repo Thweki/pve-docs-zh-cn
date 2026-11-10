@@ -1,16 +1,8 @@
-# 23.3. **pveproxy** \- Proxmox VE API Proxy Daemon <a href="#_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon" id="_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon"></a>
+# 23.3. **pveproxy** \- Proxmox VE API 代理守护进程 <a href="#strong_pveproxy_strong_proxmox_ve_api_proxy_daemon" id="strong_pveproxy_strong_proxmox_ve_api_proxy_daemon"></a>
 
-<a id="cli_pveproxy"></a>
+## **pveproxy** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveproxy" id="cli_pveproxy"></a>
 
-
-
-**pveproxy** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pveproxy_help"></a>
-
-
-
-**pveproxy help** `[OPTIONS]`
+## **pveproxy help** `[OPTIONS]` <a href="#cli_pveproxy_help" id="cli_pveproxy_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,41 +14,25 @@
 
 详细输出格式。
 
-<a id="cli_pveproxy_restart"></a>
+## **pveproxy restart** <a href="#cli_pveproxy_restart" id="cli_pveproxy_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+## **pveproxy start** `[OPTIONS]` <a href="#cli_pveproxy_start" id="cli_pveproxy_start"></a>
 
-**pveproxy restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pveproxy_start"></a>
-
-
-
-**pveproxy start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pveproxy_status"></a>
+## **pveproxy status** <a href="#cli_pveproxy_status" id="cli_pveproxy_status"></a>
 
+获取守护进程状态。
 
+## **pveproxy stop** <a href="#cli_pveproxy_stop" id="cli_pveproxy_stop"></a>
 
-**pveproxy status**
-
-Get daemon status.
-
-<a id="cli_pveproxy_stop"></a>
-
-
-
-**pveproxy stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

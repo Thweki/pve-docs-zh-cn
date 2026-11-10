@@ -1,4 +1,4 @@
-# 5.2. 准备节点 <a href="#_preparing_nodes" id="_preparing_nodes"></a>
+# 5.2. 准备节点 <a href="#preparing_nodes" id="preparing_nodes"></a>
 
 首先，在所有节点上安装 Proxmox VE。确保每个节点在安装时都使用最终的主机名和 IP 配置。创建集群后，无法更改主机名和 IP。
 

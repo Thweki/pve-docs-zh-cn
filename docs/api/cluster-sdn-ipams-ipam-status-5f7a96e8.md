@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/ipams/{ipam}/status`
 
-List PVE IPAM Entries
+列出 PVE IPAM 条目
 
 **方法标识：** `ipamindex`
 
@@ -14,7 +14,7 @@ List PVE IPAM Entries
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
 }
 ```
@@ -35,7 +35,7 @@ List PVE IPAM Entries
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | The SDN ipam object identifier. |
+| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,7 +45,7 @@ List PVE IPAM Entries
   "additionalProperties": 0,
   "properties": {
     "ipam": {
-      "description": "The SDN ipam object identifier.",
+      "description": "SDN ipam 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"

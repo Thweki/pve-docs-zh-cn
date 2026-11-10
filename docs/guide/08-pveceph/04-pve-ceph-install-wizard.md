@@ -1,6 +1,6 @@
 # 8.4. Ceph 初始安装与配置 <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
 
-## 8.4.1. 使用基于 Web 的向导 <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
+## 8.4.1. 使用基于 Web 的向导 <a href="#using_the_web_based_wizard" id="using_the_web_based_wizard"></a>
 
 [![screenshot/gui-node-ceph-install.png](../../assets/screenshot-gui-node-ceph-install-png-146fee5f8339.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install.png)
 
@@ -49,9 +49,9 @@
 pveceph install
 ```
 
-This sets up an `apt` package repository in `/etc/apt/sources.list.d/ceph.sources` and installs the required software.
+这会设置 `apt` 软件包仓库（位于 `/etc/apt/sources.list.d/ceph.sources`），并安装所需的软件。
 
-## 8.4.3. 通过 CLI 进行 Ceph 初始配置 <a href="#_initial_ceph_configuration_via_cli" id="_initial_ceph_configuration_via_cli"></a>
+## 8.4.3. 通过 CLI 进行 Ceph 初始配置 <a href="#initial_ceph_configuration_via_cli" id="initial_ceph_configuration_via_cli"></a>
 
 使用 Proxmox VE Ceph 安装向导（推荐），或在其中一个节点上运行以下命令：
 

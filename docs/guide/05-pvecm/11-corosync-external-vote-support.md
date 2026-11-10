@@ -1,4 +1,4 @@
-# 5.11. Corosync 外部投票支持 <a href="#_corosync_external_vote_support" id="_corosync_external_vote_support"></a>
+# 5.11. Corosync 外部投票支持 <a href="#corosync_external_vote_support" id="corosync_external_vote_support"></a>
 
 本节介绍在 Proxmox VE 集群中部署外部投票器的一种方法。配置后，集群可以承受更多节点故障，同时不破坏集群通信的安全属性。
 
@@ -9,7 +9,7 @@
 
 因此，即使在较小的部署中（例如 2\+1 个节点），也可以实现更高的可用性。
 
-## 5.11.1. QDevice 技术概述 <a href="#_qdevice_technical_overview" id="_qdevice_technical_overview"></a>
+## 5.11.1. QDevice 技术概述 <a href="#qdevice_technical_overview" id="qdevice_technical_overview"></a>
 
 Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进程。它根据在外部运行的第三方仲裁器的决定，为集群的仲裁子系统提供配置数量的选票。其主要用途是使集群能够承受比标准仲裁规则所允许的更多的节点故障。这是安全的，因为外部设备可以看到所有节点，因此可以只选择一组节点并将选票投给该组。只有在该组节点获得第三方选票后能够（再次）达到仲裁时，才会这样做。
 
@@ -21,7 +21,7 @@ Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进�
 与 corosync 本身不同，QDevice 通过 TCP/IP 连接到集群。该守护进程也可以在集群的 LAN 之外运行，并且不受 corosync 的低延迟要求限制。
 {% endhint %}
 
-## 5.11.2. 支持的配置 <a href="#_supported_setups" id="_supported_setups"></a>
+## 5.11.2. 支持的配置 <a href="#supported_setups" id="supported_setups"></a>
 
 对于节点数为偶数的集群，我们支持使用 QDevice；如果双节点集群需要提供更高的可用性，我们也建议使用 QDevice。对于节点数为奇数的集群，我们目前不鼓励使用 QDevice。原因在于 QDevice 为每种集群类型提供的票数不同。节点数为偶数的集群会获得额外的一票，这只会提高可用性，因为如果 QDevice 本身发生故障，您的处境与完全没有 QDevice 时相同。
 
@@ -32,7 +32,7 @@ Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进�
 
 如果您了解这些缺点和影响，可以自行决定是否要在节点数为奇数的集群配置中使用该技术。
 
-## 5.11.3. QDevice-Net 设置 <a href="#_qdevice_net_setup" id="_qdevice_net_setup"></a>
+## 5.11.3. QDevice-Net 设置 <a href="#qdevice_net_setup" id="qdevice_net_setup"></a>
 
 我们建议以非特权用户身份运行任何为 corosync-qdevice 提供投票的守护进程。Proxmox VE 和 Debian 提供的软件包已按此方式配置。守护进程与集群之间的流量必须加密，以确保 QDevice 安全地集成到 Proxmox VE 中。
 
@@ -98,21 +98,21 @@ Membership information
 如果您的 QDevice 被列为 `Not Alive`（在上面的输出中为 `NA`），请确保可以通过 TCP/IP 访问外部服务器的端口 `5403`（qnetd 服务器的默认端口）！
 {% endhint %}
 
-## 5.11.4. 常见问题 <a href="#_frequently_asked_questions" id="_frequently_asked_questions"></a>
+## 5.11.4. 常见问题 <a href="#frequently_asked_questions" id="frequently_asked_questions"></a>
 
-### 打破平局 <a href="#_tie_breaking" id="_tie_breaking"></a>
+### 打破平局 <a href="#tie_breaking" id="tie_breaking"></a>
 
 在出现平局时，如果两个大小相同的集群分区彼此不可见，但都能看到 QDevice，则 QDevice 会选择节点 ID 最低的分区，并向其提供一票。可以使用配置选项 `tie_breaker` 调整此行为（更多信息请参阅 `man corosync-qdevice`），并且需要在所有节点上重启 `corosync-qdevice.service`。
 
-### 可能的负面影响 <a href="#_possible_negative_implications" id="_possible_negative_implications"></a>
+### 可能的负面影响 <a href="#possible_negative_implications" id="possible_negative_implications"></a>
 
 对于节点数为偶数的集群，使用 QDevice 不会产生负面影响。如果它无法正常工作，则与完全没有 QDevice 相同。
 
-### 设置 QDevice 后添加/删除节点 <a href="#_adding_deleting_nodes_after_qdevice_setup" id="_adding_deleting_nodes_after_qdevice_setup"></a>
+### 设置 QDevice 后添加/删除节点 <a href="#adding_deleting_nodes_after_qdevice_setup" id="adding_deleting_nodes_after_qdevice_setup"></a>
 
 如果您想在配置了 QDevice 的集群中添加新节点或删除现有节点，需要先移除 QDevice。之后，您可以正常添加或删除节点。一旦集群再次具有偶数个节点，您就可以按照前面的说明重新设置 QDevice。
 
-### 移除 QDevice <a href="#_removing_the_qdevice" id="_removing_the_qdevice"></a>
+### 移除 QDevice <a href="#removing_the_qdevice" id="removing_the_qdevice"></a>
 
 如果您使用官方 `pvecm` 工具添加了 QDevice，可以通过运行以下命令将其移除：
 

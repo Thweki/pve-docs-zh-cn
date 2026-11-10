@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/cloudinit/dump`
 
-Get automatically generated cloudinit config.
+获取自动生成的 cloudinit 配置。
 
 **方法标识：** `cloudinit_generated_config_dump`
 
@@ -40,9 +40,9 @@ Get automatically generated cloudinit config.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `type` | string | 是 | — | Config type.；可选值：`user`, `network`, `meta` |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `type` | string | 是 | — | 配置类型。；可选值：`user`, `network`, `meta` |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Get automatically generated cloudinit config.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Config type.",
+      "description": "配置类型。",
       "enum": [
         "user",
         "network",
@@ -67,7 +67,7 @@ Get automatically generated cloudinit config.
       "type": "string"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

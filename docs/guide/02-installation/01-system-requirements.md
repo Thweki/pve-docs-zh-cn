@@ -1,4 +1,4 @@
-# 2.1. 系统要求 <a href="#_system_requirements" id="_system_requirements"></a>
+# 2.1. 系统要求 <a href="#system_requirements" id="system_requirements"></a>
 
 在生产环境运行 Proxmox VE 时，我们建议使用高质量的服务器硬件。为了进一步降低宿主机故障造成的影响，您可以在集群中运行 Proxmox VE，并使用高可用性（HA）虚拟机和容器。
 
@@ -49,7 +49,7 @@ arm64 宿主机必须通过 UEFI 启动，并通过 ACPI（高级配置和电源
 - 在线迁移只能在相同架构的节点之间进行，因为运行中客户机的 CPU 状态无法跨架构传输。
 - 无论是虚拟机还是容器，客户机都只能在与该客户机架构匹配的节点上运行。离线迁移、备份和恢复或共享存储可以将客户机的数据移动到不同架构的节点，但客户机仍需针对该架构重新安装或重新配置后才能启动。
 
-## 2.1.4. 简单性能概览 <a href="#_simple_performance_overview" id="_simple_performance_overview"></a>
+## 2.1.4. 简单性能概览 <a href="#simple_performance_overview" id="simple_performance_overview"></a>
 
 要概览已安装 Proxmox VE 系统的 CPU 和硬盘性能，请运行随附的 `pveperf` 工具。
 
@@ -57,7 +57,7 @@ arm64 宿主机必须通过 UEFI 启动，并通过 ACPI（高级配置和电源
 这只是一个非常快速且笼统的基准测试。建议进行更详细的测试，尤其是针对系统 I/O 性能的测试。
 {% endhint %}
 
-## 2.1.5. 访问 Web 界面支持的浏览器 <a href="#_supported_web_browsers_for_accessing_the_web_interface" id="_supported_web_browsers_for_accessing_the_web_interface"></a>
+## 2.1.5. 访问 Web 界面支持的浏览器 <a href="#supported_web_browsers_for_accessing_the_web_interface" id="supported_web_browsers_for_accessing_the_web_interface"></a>
 
 要访问基于 Web 的用户界面，我们建议使用以下浏览器之一：
 

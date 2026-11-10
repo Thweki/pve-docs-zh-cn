@@ -1,28 +1,28 @@
-# 17.2. Notification Targets <a href="#notification_targets" id="notification_targets"></a>
+# 17.2. 通知目标 <a href="#notification_targets" id="notification_targets"></a>
 
-Proxmox VE offers multiple types of notification targets.
+Proxmox VE 提供多种类型的通知目标。
 
 ## 17.2.1. Sendmail <a href="#notification_targets_sendmail" id="notification_targets_sendmail"></a>
 
 [![screenshot/gui-datacenter-notification-sendmail.png](../../assets/screenshot-gui-datacenter-notification-sendmail-png-17b7e706eb02.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-notification-sendmail.png)
 
-The sendmail binary is a program commonly found on Unix-like operating systems that handles the sending of email messages. It is a command-line utility that allows users and applications to send emails directly from the command line or from within scripts.
+sendmail 二进制程序是类 Unix 操作系统上常见的程序，负责发送电子邮件。它是一个命令行实用程序，允许用户和应用程序直接从命令行或脚本中发送电子邮件。
 
-The sendmail notification target uses the `sendmail` binary to send emails to a list of configured users or email addresses. If a user is selected as a recipient, the email address configured in user’s settings will be used. For the `root@pam` user, this is the email address entered during installation. A user’s email address can be configured in `Datacenter → Permissions → Users`. If a user has no associated email address, no email will be sent.
+sendmail 通知目标使用 `sendmail` 二进制程序，向配置的用户或电子邮件地址列表发送邮件。如果选择用户作为收件人，将使用该用户设置中配置的电子邮件地址。对于 `root@pam` 用户，这是安装期间输入的电子邮件地址。可以在 `Datacenter → Permissions → Users` 中配置用户的电子邮件地址。如果用户没有关联的电子邮件地址，则不会发送邮件。
 
 {% hint style="info" %}
-In standard Proxmox VE installations, the `sendmail` binary is provided by Postfix. It may be necessary to configure Postfix so that it can deliver mails correctly \- for example by setting an external mail relay (smart host). In case of failed delivery, check the system logs for messages logged by the Postfix daemon.
+在标准 Proxmox VE 安装中，`sendmail` 二进制程序由 Postfix 提供。可能需要配置 Postfix 才能正确投递邮件，例如设置外部邮件中继（智能主机）。如果投递失败，请查看系统日志中 Postfix 守护进程记录的消息。
 {% endhint %}
 
-The configuration for Sendmail target plugins has the following options:
+Sendmail 目标插件的配置包含以下选项：
 
-- `mailto`: E-Mail address to which the notification shall be sent to. Can be set multiple times to accommodate multiple recipients.
-- `mailto-user`: Users to which emails shall be sent to. The user’s email address will be looked up in `users.cfg`. Can be set multiple times to accommodate multiple recipients.
-- `author`: Sets the author of the E-Mail. Defaults to `Proxmox VE`.
-- `from-address`: Sets the from address of the E-Mail. If the parameter is not set, the plugin will fall back to the `email_from` setting from `datacenter.cfg`. If that is also not set, the plugin will default to `root@$hostname`, where `$hostname` is the hostname of the node. The `From` header in the email will be set to `$author <$from-address>`.
-- `comment`: Comment for this target
+- `mailto`：接收通知的电子邮件地址。可以多次设置，以指定多个收件人。
+- `mailto-user`：接收电子邮件的用户。将从 `users.cfg` 中查找用户的电子邮件地址。可以多次设置，以指定多个收件人。
+- `author`：设置电子邮件的作者。默认为 `Proxmox VE`。
+- `from-address`：设置电子邮件的发件地址。如果未设置此参数，插件将回退到 `email_from` 设置，该设置来自 `datacenter.cfg`。如果该设置也未设置，插件将默认使用 `root@$hostname`，其中 `$hostname` 为节点的主机名。邮件中的 `From` 标头将设置为 `$author <$from-address>`。
+- `comment`：此目标的注释
 
-Example configuration (`/etc/pve/notifications.cfg`):
+配置示例（`/etc/pve/notifications.cfg`）：
 
 ```text
 sendmail: example
@@ -37,26 +37,26 @@ sendmail: example
 
 [![screenshot/gui-datacenter-notification-smtp.png](../../assets/screenshot-gui-datacenter-notification-smtp-png-97310312d2e2.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-notification-smtp.png)
 
-SMTP notification targets can send emails directly to an SMTP mail relay. This target does not use the system’s MTA to deliver emails. Similar to sendmail targets, if a user is selected as a recipient, the user’s configured email address will be used.
+SMTP 通知目标可以直接向 SMTP 邮件中继发送电子邮件。此目标不使用系统的 MTA 投递邮件。与 sendmail 目标类似，如果选择用户作为收件人，则使用该用户配置的电子邮件地址。
 
 {% hint style="info" %}
-Unlike sendmail targets, SMTP targets do not have any queuing/retry mechanism in case of a failed mail delivery.
+与 sendmail 目标不同，SMTP 目标在邮件投递失败时没有任何排队/重试机制。
 {% endhint %}
 
-The configuration for SMTP target plugins has the following options:
+SMTP 目标插件的配置包含以下选项：
 
-- `mailto`: E-Mail address to which the notification shall be sent to. Can be set multiple times to accommodate multiple recipients.
-- `mailto-user`: Users to which emails shall be sent to. The user’s email address will be looked up in `users.cfg`. Can be set multiple times to accommodate multiple recipients.
-- `author`: Sets the author of the E-Mail. Defaults to `Proxmox VE`.
-- `from-address`: Sets the From-address of the email. SMTP relays might require that this address is owned by the user in order to avoid spoofing. The `From` header in the email will be set to `$author <$from-address>`.
-- `username`: Username to use during authentication. If no username is set, no authentication will be performed. The PLAIN and LOGIN authentication methods are supported.
-- `password`: Password to use when authenticating.
-- `mode`: Sets the encryption mode (`insecure`, `starttls` or `tls`). Defaults to `tls`.
-- `server`: Address/IP of the SMTP relay.
-- `port`: The port to connect to. If not set, the used port defaults to 25 (`insecure`), 465 (`tls`) or 587 (`starttls`), depending on the value of `mode`.
-- `comment`: Comment for this target
+- `mailto`：接收通知的电子邮件地址。可以多次设置，以指定多个收件人。
+- `mailto-user`：接收电子邮件的用户。将从 `users.cfg` 中查找用户的电子邮件地址。可以多次设置，以指定多个收件人。
+- `author`：设置电子邮件的作者。默认为 `Proxmox VE`。
+- `from-address`：设置电子邮件的发件地址。为防止伪造，SMTP 中继可能要求此地址属于该用户。邮件中的 `From` 标头将设置为 `$author <$from-address>`。
+- `username`：认证时使用的用户名。如果未设置用户名，则不进行认证。支持 PLAIN 和 LOGIN 认证方式。
+- `password`：认证时使用的密码。
+- `mode`：设置加密模式（`insecure`、`starttls` 或 `tls`）。默认为 `tls`。
+- `server`：SMTP 中继的地址/IP。
+- `port`：要连接的端口。如果未设置，使用的端口默认为 25（`insecure`）、465（`tls`）或 587（`starttls`），具体取决于 `mode` 的值。
+- `comment`：此目标的注释
 
-Example configuration (`/etc/pve/notifications.cfg`):
+配置示例（`/etc/pve/notifications.cfg`）：
 
 ```text
 smtp: example
@@ -69,7 +69,7 @@ smtp: example
         mode starttls
 ```
 
-The matching entry in `/etc/pve/priv/notifications.cfg`, containing the password:
+`/etc/pve/priv/notifications.cfg` 中包含密码的对应条目：
 
 ```text
 smtp: example
@@ -80,19 +80,19 @@ smtp: example
 
 [![screenshot/gui-datacenter-notification-gotify.png](../../assets/screenshot-gui-datacenter-notification-gotify-png-1b8ec9289482.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-notification-gotify.png)
 
-[Gotify](http://gotify.net) is an open-source self-hosted notification server that allows you to send and receive push notifications to various devices and applications. It provides a simple API and web interface, making it easy to integrate with different platforms and services.
+[Gotify](http://gotify.net) 是一个开源的自托管通知服务器，可用于向各种设备和应用程序发送及接收推送通知。它提供简单的 API 和 Web 界面，便于与不同平台和服务集成。
 
-The configuration for Gotify target plugins has the following options:
+Gotify 目标插件的配置包含以下选项：
 
-- `server`: The base URL of the Gotify server, e.g. `http://<ip>:8888`
-- `token`: The authentication token. Tokens can be generated within the Gotify web interface.
-- `comment`: Comment for this target
+- `server`：Gotify 服务器的基本 URL，例如 `http://<ip>:8888`
+- `token`：认证令牌。可以在 Gotify Web 界面中生成令牌。
+- `comment`：此目标的注释
 
 {% hint style="info" %}
-The Gotify target plugin will respect the HTTP proxy settings from the [datacenter configuration](../24-configuration-files-2/02-datacenter-configuration-file.md)
+Gotify 目标插件会遵循[数据中心配置](../24-configuration-files-2/02-datacenter-configuration-file.md)中的 HTTP 代理设置
 {% endhint %}
 
-Example configuration (`/etc/pve/notifications.cfg`):
+配置示例（`/etc/pve/notifications.cfg`）：
 
 ```text
 gotify: example
@@ -100,7 +100,7 @@ gotify: example
         comment Send to multiple users/addresses
 ```
 
-The matching entry in `/etc/pve/priv/notifications.cfg`, containing the secret token:
+`/etc/pve/priv/notifications.cfg` 中包含秘密令牌的对应条目：
 
 ```text
 gotify: example
@@ -109,42 +109,42 @@ gotify: example
 
 ## 17.2.4. Webhook <a href="#notification_targets_webhook" id="notification_targets_webhook"></a>
 
-Webhook notification targets perform HTTP requests to a configurable URL.
+Webhook 通知目标向可配置的 URL 发出 HTTP 请求。
 
-The following configuration options are available:
+可用的配置选项如下：
 
-- `url`: The URL to which to perform the HTTP requests. Supports templating to inject message contents, metadata and secrets.
-- `method`: HTTP Method to use (POST/PUT/GET)
-- `header`: Array of HTTP headers that should be set for the request. Supports templating to inject message contents, metadata and secrets.
-- `body`: HTTP body that should be sent. Supports templating to inject message contents, metadata and secrets.
-- `secret`: Array of secret key-value pairs. These will be stored in a protected configuration file only readable by root. Secrets can be accessed in body/header/URL templates via the `secrets` namespace.
-- `comment`: Comment for this target.
+- `url`：执行 HTTP 请求的目标 URL。支持使用模板注入消息内容、元数据和秘密信息。
+- `method`：使用的 HTTP 方法（POST/PUT/GET）
+- `header`：为请求设置的 HTTP 标头数组。支持使用模板注入消息内容、元数据和秘密信息。
+- `body`：要发送的 HTTP 正文。支持使用模板注入消息内容、元数据和秘密信息。
+- `secret`：秘密键值对数组。这些内容将保存在只有 root 可以读取的受保护配置文件中。可以通过 `secrets` 命名空间在正文/标头/URL 模板中访问秘密信息。
+- `comment`：此目标的注释。
 
-For configuration options that support templating, the [Handlebars](https://handlebarsjs.com/) syntax can be used to access the following properties:
+对于支持模板的配置选项，可以使用 [Handlebars](https://handlebarsjs.com/) 语法访问以下属性：
 
-- `{{ title }}`: The rendered notification title
-- `{{ message }}`: The rendered notification body
-- `{{ severity }}`: The severity of the notification (`info`, `notice`, `warning`, `error`, `unknown`)
-- `{{ timestamp }}`: The notification’s timestamp as a UNIX epoch (in seconds).
-- `{{ fields.<name> }}`: Sub-namespace for any metadata fields of the notification. For instance, `fields.type` contains the notification type \- for all available fields refer to [Notification Events](04-notification-events.md).
-- `{{ secrets.<name> }}`: Sub-namespace for secrets. For instance, a secret named `token` is accessible via `secrets.token`.
+- `{{ title }}`：渲染后的通知标题
+- `{{ message }}`：渲染后的通知正文
+- `{{ severity }}`：通知的严重性（`info`、`notice`、`warning`、`error`、`unknown`）
+- `{{ timestamp }}`：以 UNIX 纪元时间表示的通知时间戳（秒）。
+- `{{ fields.<name> }}`：通知各个元数据字段的子命名空间。例如，`fields.type` 包含通知类型；所有可用字段请参阅[通知事件](04-notification-events.md)。
+- `{{ secrets.<name> }}`：秘密信息的子命名空间。例如，名为 `token` 的秘密信息可以通过 `secrets.token` 访问。
 
-For convenience, the following helpers are available:
+为方便使用，提供以下辅助函数：
 
-- `{{ url-encode <value/property> }}`: URL-encode a property/literal.
-- `{{ escape <value/property> }}`: Escape any control characters that cannot be safely represented as a JSON string.
-- `{{ json <value/property> }}`: Render a value as JSON. This can be useful to pass a whole sub-namespace (e.g. `fields`) as a part of a JSON payload (e.g. `{{ json fields }}`).
+- `{{ url-encode <value/property> }}`：对属性/字面量进行 URL 编码。
+- `{{ escape <value/property> }}`：转义无法安全地表示为 JSON 字符串的控制字符。
+- `{{ json <value/property> }}`：将值渲染为 JSON。这适合将整个子命名空间（例如 `fields`）作为 JSON 载荷的一部分（例如 `{{ json fields }}`）传递。
 
-### Examples <a href="#_examples_11" id="_examples_11"></a>
+### 示例 <a href="#examples_11" id="examples_11"></a>
 
-#### `ntfy.sh` <a href="#_span_class_monospaced_ntfy_sh_span" id="_span_class_monospaced_ntfy_sh_span"></a>
+#### `ntfy.sh` <a href="#span_class_monospaced_ntfy_sh_span" id="span_class_monospaced_ntfy_sh_span"></a>
 
-- Method: `POST`
-- URL: `https://ntfy.sh/{{ secrets.channel }}`
-- Headers:
+- 方法：`POST`
+- URL：`https://ntfy.sh/{{ secrets.channel }}`
+- 标头：
 
   - `Markdown`: `Yes`
-- Body:
+- 正文：
 
 ````text
 ```
@@ -152,18 +152,18 @@ For convenience, the following helpers are available:
 ```
 ````
 
-- Secrets:
+- 秘密信息：
 
   - `channel`: `<your ntfy.sh channel>`
 
-#### Discord <a href="#_discord" id="_discord"></a>
+#### Discord <a href="#discord" id="discord"></a>
 
-- Method: `POST`
-- URL: `https://discord.com/api/webhooks/{{ secrets.token }}`
-- Headers:
+- 方法：`POST`
+- URL：`https://discord.com/api/webhooks/{{ secrets.token }}`
+- 标头：
 
   - `Content-Type`: `application/json`
-- Body:
+- 正文：
 
 ````text
 {
@@ -171,18 +171,18 @@ For convenience, the following helpers are available:
 }
 ````
 
-- Secrets:
+- 秘密信息：
 
   - `token`: `<token>`
 
-#### Slack <a href="#_slack" id="_slack"></a>
+#### Slack <a href="#slack" id="slack"></a>
 
-- Method: `POST`
-- URL: `https://hooks.slack.com/services/{{ secrets.token }}`
-- Headers:
+- 方法：`POST`
+- URL：`https://hooks.slack.com/services/{{ secrets.token }}`
+- 标头：
 
   - `Content-Type`: `application/json`
-- Body:
+- 正文：
 
 ````text
 {
@@ -191,7 +191,7 @@ For convenience, the following helpers are available:
 }
 ````
 
-- Secrets:
+- 秘密信息：
 
   - `token`: `<token>`
 

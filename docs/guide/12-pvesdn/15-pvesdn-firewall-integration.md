@@ -1,32 +1,32 @@
-# 12.15. Firewall Integration <a href="#pvesdn_firewall_integration" id="pvesdn_firewall_integration"></a>
+# 12.15. 防火墙集成 <a href="#pvesdn_firewall_integration" id="pvesdn_firewall_integration"></a>
 
-SDN integrates with the Proxmox VE firewall by automatically generating IPSets which can then be referenced in the source / destination fields of firewall rules. This happens automatically for VNets and IPAM entries.
+SDN 通过自动生成 IPSet 与 Proxmox VE 防火墙集成，这些 IPSet 随后可在防火墙规则的源/目标字段中引用。VNet 和 IPAM 条目会自动执行此操作。
 
-## 12.15.1. VNets and Subnets <a href="#_vnets_and_subnets" id="_vnets_and_subnets"></a>
+## 12.15.1. VNet 与子网 <a href="#vnets_and_subnets" id="vnets_and_subnets"></a>
 
-The firewall automatically generates the following IPSets in the SDN scope for every VNet:
+防火墙会为每个 VNet 在 SDN 作用域中自动生成以下 IPSet：
 
 **`vnet-all`**
 
-Contains the CIDRs of all subnets in a VNet
+包含 VNet 中所有子网的 CIDR
 
 **`vnet-gateway`**
 
-Contains the IPs of the gateways of all subnets in a VNet
+包含 VNet 中所有子网网关的 IP
 
 **`vnet-no-gateway`**
 
-Contains the CIDRs of all subnets in a VNet, but excludes the gateways
+包含 VNet 中所有子网的 CIDR，但不包括网关
 
 **`vnet-dhcp`**
 
-Contains all DHCP ranges configured in the subnets in a VNet
+包含 VNet 中子网配置的所有 DHCP 范围
 
-When making changes to your configuration, the IPSets update automatically, so you do not have to update your firewall rules when changing the configuration of your Subnets.
+更改配置时，IPSet 会自动更新，因此更改子网配置时无需更新防火墙规则。
 
-### Simple Zone Example <a href="#_simple_zone_example" id="_simple_zone_example"></a>
+### Simple 区域示例 <a href="#simple_zone_example" id="simple_zone_example"></a>
 
-Assuming the configuration below for a VNet and its contained subnets:
+假设 VNet 及其包含的子网配置如下：
 
 ```text
 # /etc/pve/sdn/vnets.cfg
@@ -47,11 +47,11 @@ subnet: simple-2001:db8::-64
         gateway 2001:db8::1
 ```
 
-In this example we configured an IPv4 subnet in the VNet `vnet0`, with *192.0.2.0/24* as its IP Range, *192.0.2.1* as the gateway and the DHCP range is *192.0.2.100* \- *192.0.2.199*.
+在此示例中，我们在 VNet `vnet0` 中配置了 IPv4 子网，IP 范围为 *192.0.2.0/24*，网关为 *192.0.2.1*，DHCP 范围为 *192.0.2.100* \- *192.0.2.199*。
 
-Additionally we configured an IPv6 subnet with *2001:db8::/64* as the IP range, *2001:db8::1* as the gateway and a DHCP range of *2001:db8::1000* \- *2001:db8::1999*.
+此外，我们还配置了 IPv6 子网，IP 范围为 *2001:db8::/64*，网关为 *2001:db8::1*，DHCP 范围为 *2001:db8::1000* \- *2001:db8::1999*。
 
-The respective auto-generated IPsets for vnet0 would then contain the following elements:
+vnet0 对应的自动生成 IPSet 将包含以下元素：
 
 **`vnet0-all`**
 
@@ -75,14 +75,14 @@ The respective auto-generated IPsets for vnet0 would then contain the following 
 - *192.0.2.100 \- 192.0.2.199*
 - *2001:db8::1000 \- 2001:db8::1999*
 
-## 12.15.2. IPAM <a href="#_ipam" id="_ipam"></a>
+## 12.15.2. IPAM <a href="#ipam" id="ipam"></a>
 
-If you are using the built-in PVE IPAM, then the firewall automatically generates an IPset for every guest that has entries in the IPAM. The respective IPset for a guest with ID 100 would be `guest-ipam-100`. It contains all IP addresses from all IPAM entries. So if guest 100 is member of multiple VNets, then the IPset would contain the IPs from **all** VNets.
+如果使用内置的 PVE IPAM，防火墙会为 IPAM 中有条目的每个客户机自动生成一个 IPSet。ID 为 100 的客户机对应的 IPSet 为 `guest-ipam-100`。其中包含所有 IPAM 条目的所有 IP 地址。因此，如果客户机 100 属于多个 VNet，则 IPSet 将包含 **所有** VNet 中的 IP。
 
-When entries get added / updated / deleted, then the respective IPSets will be updated accordingly.
+添加/更新/删除条目时，相应的 IPSet 也会同步更新。
 
 {% hint style="warning" %}
-When removing all entries for a guest and there are firewall rules still referencing the auto-generated IPSet then the firewall will fail to update the ruleset, since it references a non-existing IPSet.
+如果移除了某客户机的所有条目，但仍有防火墙规则引用自动生成的 IPSet，则防火墙将无法更新规则集，因为它引用了不存在的 IPSet。
 {% endhint %}
 
 ---

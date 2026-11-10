@@ -1,54 +1,42 @@
-# 22.13. **pvecm** \- Proxmox VE Cluster Manager <a href="#_strong_pvecm_strong_proxmox_ve_cluster_manager" id="_strong_pvecm_strong_proxmox_ve_cluster_manager"></a>
+# 22.13. **pvecm** \- Proxmox VE 集群管理器 <a href="#strong_pvecm_strong_proxmox_ve_cluster_manager" id="strong_pvecm_strong_proxmox_ve_cluster_manager"></a>
 
-<a id="cli_pvecm"></a>
+## **pvecm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvecm" id="cli_pvecm"></a>
 
+## **pvecm add** `<hostname>` `[OPTIONS]` <a href="#cli_pvecm_add" id="cli_pvecm_add"></a>
 
-
-**pvecm** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvecm_add"></a>
-
-
-
-**pvecm add** `<hostname>` `[OPTIONS]`
-
-Adds the current node to an existing cluster.
+将当前节点加入现有集群。
 
 **`<hostname>`: `<string>`**
 
-Hostname (or IP) of an existing cluster member.
+现有集群成员的主机名（或 IP）。
 
 **`--fingerprint` `([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}`**
 
-Certificate SHA 256 fingerprint.
+证书 SHA 256 指纹。
 
 **`--force` `<boolean>`**
 
-Do not throw error if node already exists.
+如果节点已存在，则不抛出错误。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
 **`--use_ssh` `<boolean>`**
 
-Always use SSH to join, even if peer may do it over API.
+始终使用 SSH 加入，即使对端可以通过 API 完成。
 
 **`--votes` `<integer> (0 - N)`**
 
-Number of votes for this node
+此节点的票数
 
-<a id="cli_pvecm_addnode"></a>
+## **pvecm addnode** `<node>` `[OPTIONS]` <a href="#cli_pvecm_addnode" id="cli_pvecm_addnode"></a>
 
-
-
-**pvecm addnode** `<node>` `[OPTIONS]`
-
-Adds a node to the cluster configuration. This call is for internal use.
+将节点添加到集群配置。此调用供内部使用。
 
 **`<node>`: `<string>`**
 
@@ -56,93 +44,73 @@ Adds a node to the cluster configuration. This call is for internal use.
 
 **`--apiversion` `<integer>`**
 
-The JOIN\_API\_VERSION of the new node.
+新节点的 JOIN\_API\_VERSION。
 
 **`--force` `<boolean>`**
 
-Do not throw error if node already exists.
+如果节点已存在，则不抛出错误。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--new_node_ip` `<string>`**
 
-IP Address of node to add. Used as fallback if no links are given.
+要添加节点的 IP 地址。未提供链路时用作回退值。
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
 **`--votes` `<integer> (0 - N)`**
 
-Number of votes for this node
+此节点的票数
 
-<a id="cli_pvecm_apiver"></a>
+## **pvecm apiver** <a href="#cli_pvecm_apiver" id="cli_pvecm_apiver"></a>
 
+返回此节点上可用的集群加入 API 版本。
 
+## **pvecm create** `<clustername>` `[OPTIONS]` <a href="#cli_pvecm_create" id="cli_pvecm_create"></a>
 
-**pvecm apiver**
-
-Return the version of the cluster join API available on this node.
-
-<a id="cli_pvecm_create"></a>
-
-
-
-**pvecm create** `<clustername>` `[OPTIONS]`
-
-Generate new cluster configuration. If no links given, default to local IP address as link0.
+生成新的集群配置。如果未提供链路，则默认将本地 IP 地址用作 link0。
 
 **`<clustername>`: `<string>`**
 
-The name of the cluster.
+集群名称。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
-**`--token-coefficient` `<integer> (0 - N)` (*default \=* `125`)**
+**`--token-coefficient` `<integer> (0 - N)` （*默认值 \=* `125`）**
 
-Coefficient used to determine Corosync’s token timeout. See the corosync.conf(5) manual for more details.
+用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。
 
 **`--votes` `<integer> (1 - N)`**
 
-Number of votes for this node.
+此节点的票数。
 
-<a id="cli_pvecm_delnode"></a>
+## **pvecm delnode** `<node>` <a href="#cli_pvecm_delnode" id="cli_pvecm_delnode"></a>
 
-
-
-**pvecm delnode** `<node>`
-
-Removes a node from the cluster configuration.
+从集群配置中移除节点。
 
 **`<node>`: `<string>`**
 
 集群节点名称。
 
-<a id="cli_pvecm_expected"></a>
+## **pvecm expected** `<expected>` <a href="#cli_pvecm_expected" id="cli_pvecm_expected"></a>
 
-
-
-**pvecm expected** `<expected>`
-
-Tells corosync a new value of expected votes.
+告知 corosync 新的预期票数值。
 
 **`<expected>`: `<integer> (1 - N)`**
 
-Expected votes
+预期票数
 
-<a id="cli_pvecm_help"></a>
-
-
-
-**pvecm help** `[OPTIONS]`
+## **pvecm help** `[OPTIONS]` <a href="#cli_pvecm_help" id="cli_pvecm_help"></a>
 
 获取指定命令的帮助。
 
@@ -154,105 +122,77 @@ Expected votes
 
 详细输出格式。
 
-<a id="cli_pvecm_keygen"></a>
+## **pvecm keygen** `<filename>` <a href="#cli_pvecm_keygen" id="cli_pvecm_keygen"></a>
 
-
-
-**pvecm keygen** `<filename>`
-
-Generate new cryptographic key for corosync.
+为 corosync 生成新的加密密钥。
 
 **`<filename>`: `<string>`**
 
-Output file name
+输出文件名
 
-<a id="cli_pvecm_mtunnel"></a>
+## **pvecm mtunnel** `[<extra-args>]` `[OPTIONS]` <a href="#cli_pvecm_mtunnel" id="cli_pvecm_mtunnel"></a>
 
-
-
-**pvecm mtunnel** `[<extra-args>]` `[OPTIONS]`
-
-Used by VM/CT migration \- do not use manually.
+由虚拟机/容器迁移使用，请勿手动使用。
 
 **`<extra-args>`: `<array>`**
 
 以数组形式提供的额外参数
 
-**`--get_migration_ip` `<boolean>` (*default \=* `0`)**
+**`--get_migration_ip` `<boolean>` （*默认值 \=* `0`）**
 
-return the migration IP, if configured
+如果配置了迁移 IP，则返回该 IP
 
 **`--migration_network` `<string>`**
 
-the migration network used to detect the local migration IP
+用于检测本地迁移 IP 的迁移网络
 
 **`--run-command` `<boolean>`**
 
-Run a command with a tcp socket as standard input. The IP address and port are printed via this command’s stdandard output first, each on a separate line.
+运行命令，并使用 tcp 套接字作为标准输入。首先通过此命令的标准输出打印 IP 地址和端口，各占一行。
 
-<a id="cli_pvecm_nodes"></a>
+## **pvecm nodes** <a href="#cli_pvecm_nodes" id="cli_pvecm_nodes"></a>
 
+显示本地所见的集群节点。
 
+## **pvecm qdevice remove** <a href="#cli_pvecm_qdevice_remove" id="cli_pvecm_qdevice_remove"></a>
 
-**pvecm nodes**
+移除已配置的 QDevice
 
-Displays the local view of the cluster nodes.
+## **pvecm qdevice setup** `<address>` `[OPTIONS]` <a href="#cli_pvecm_qdevice_setup" id="cli_pvecm_qdevice_setup"></a>
 
-<a id="cli_pvecm_qdevice_remove"></a>
-
-
-
-**pvecm qdevice remove**
-
-Remove a configured QDevice
-
-<a id="cli_pvecm_qdevice_setup"></a>
-
-
-
-**pvecm qdevice setup** `<address>` `[OPTIONS]`
-
-Setup the use of a QDevice
+设置 QDevice 的使用
 
 **`<address>`: `<string>`**
 
-Specifies the network address of an external corosync QDevice
+指定外部 corosync QDevice 的网络地址
 
 **`--force` `<boolean>`**
 
-Do not throw error on possible dangerous operations.
+遇到可能危险的操作时不抛出错误。
 
 **`--network` `<string>`**
 
-The network which should be used to connect to the external qdevice
+应使用哪个网络连接外部 qdevice
 
-<a id="cli_pvecm_status"></a>
+## **pvecm status** <a href="#cli_pvecm_status" id="cli_pvecm_status"></a>
 
+显示本地所见的集群状态。
 
+## **pvecm updatecerts** `[OPTIONS]` <a href="#cli_pvecm_updatecerts" id="cli_pvecm_updatecerts"></a>
 
-**pvecm status**
-
-Displays the local view of the cluster status.
-
-<a id="cli_pvecm_updatecerts"></a>
-
-
-
-**pvecm updatecerts** `[OPTIONS]`
-
-Update node certificates (and generate all needed files/directories).
+更新节点证书（并生成所有所需文件/目录）。
 
 **`--force` `<boolean>`**
 
-Force generation of new SSL certificate.
+强制生成新的 SSL 证书。
 
 **`--silent` `<boolean>`**
 
-Ignore errors (i.e. when cluster has no quorum).
+忽略错误（例如集群没有仲裁时）。
 
-**`--unmerge-known-hosts` `<boolean>` (*default \=* `0`)**
+**`--unmerge-known-hosts` `<boolean>` （*默认值 \=* `0`）**
 
-Unmerge legacy SSH known hosts.
+取消合并旧版 SSH 已知主机记录。
 
 ---
 

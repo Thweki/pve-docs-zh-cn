@@ -1,4 +1,4 @@
-# 15.2. Resources <a href="#ha_manager_resources" id="ha_manager_resources"></a>
+# 15.2. 资源 <a href="#ha_manager_resources" id="ha_manager_resources"></a>
 
 HA 管理器的主要管理单元称为 HA 资源（或“HA 服务”）。目前，HA 资源可以是虚拟机（VM）或 Linux 容器（CT）。
 
@@ -11,7 +11,7 @@ HA 资源只能在其所有依赖项均可用的节点上运行。默认情况�
 - 仅使用所有集群节点上都存在的网络接口
 - 仅使用所有集群节点上都存在的设备直通
 
-If any of these dependencies is only available on a subset of nodes, restrict the HA resource to that subset with a strict [node affinity rule](06-configuration-15.md#ha_manager_node_affinity_rules). The HA Manager then limits placement, recovery, and migration to the rule’s nodes.
+如果这些依赖中有任何一项仅在部分节点上可用，请通过严格的 [节点亲和性规则](06-configuration-15.md#ha_manager_node_affinity_rules) 将 HA 资源限制在该节点子集内。HA 管理器随后会将放置、恢复和迁移限制在规则的节点内。
 
 ---
 

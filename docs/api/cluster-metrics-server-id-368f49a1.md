@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/metrics/server/{id}`
 
-Remove Metric server.
+移除指标服务器。
 
 **方法标识：** `delete`
 
@@ -70,7 +70,7 @@ Remove Metric server.
 
 ## GET `/cluster/metrics/server/{id}`
 
-Read metric server configuration.
+读取指标服务器配置。
 
 **方法标识：** `read`
 
@@ -128,7 +128,7 @@ Read metric server configuration.
 
 ## POST `/cluster/metrics/server/{id}`
 
-Create a new external metric server config
+创建新的外部指标服务器配置
 
 **方法标识：** `create`
 
@@ -162,30 +162,30 @@ Create a new external metric server config
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '&lt;host&gt;:&lt;port&gt;/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
-| `bucket` | string | 否 | — | The InfluxDB bucket/db. Only necessary when using the http v2 api. |
-| `disable` | boolean | 否 | — | Flag to disable the plugin. |
-| `id` | string | 是 | — | The ID of the entry. |
+| `api-path-prefix` | string | 否 | — | 插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
+| `bucket` | string | 否 | — | InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
+| `disable` | boolean | 否 | — | 用于禁用插件的标志。 |
+| `id` | string | 是 | — | 条目的 ID。 |
 | `influxdbproto` | string | 否 | "udp" | ；可选值：`udp`, `http`, `https` |
-| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size in bytes. Requests are batched up to this size. |
-| `mtu` | integer | 否 | 1500 | MTU for metrics transmission over UDP |
-| `organization` | string | 否 | — | The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api. |
-| `otel-compression` | string | 否 | "gzip" | Compression algorithm for requests；可选值：`none`, `gzip` |
-| `otel-headers` | string | 否 | — | Custom HTTP headers (JSON format, base64 encoded) |
-| `otel-max-body-size` | integer | 否 | 10000000 | Maximum request body size in bytes |
-| `otel-path` | string | 否 | "/v1/metrics" | OTLP endpoint path |
-| `otel-protocol` | string | 否 | "https" | HTTP protocol；可选值：`http`, `https` |
-| `otel-resource-attributes` | string | 否 | — | Additional resource attributes as JSON, base64 encoded |
-| `otel-timeout` | integer | 否 | 5 | HTTP request timeout in seconds |
-| `otel-verify-ssl` | boolean | 否 | 1 | Verify SSL certificates |
-| `path` | string | 否 | — | root graphite path (ex: proxmox.mycluster.mykey) |
-| `port` | integer | 是 | — | server network port |
-| `proto` | string | 否 | — | Protocol to send graphite data. TCP or UDP (default)；可选值：`udp`, `tcp` |
-| `server` | string | 是 | — | server dns name or IP address |
-| `timeout` | integer | 否 | 1 | graphite TCP socket timeout (default=1) |
-| `token` | string | 否 | — | The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use 'user:password' instead. |
-| `type` | string | 是 | — | Plugin type.；可选值：`graphite`, `influxdb`, `opentelemetry` |
-| `verify-certificate` | boolean | 否 | 1 | Set to 0 to disable certificate verification for https endpoints. |
+| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
+| `mtu` | integer | 否 | 1500 | 通过 UDP 传输指标的 MTU |
+| `organization` | string | 否 | — | InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
+| `otel-compression` | string | 否 | "gzip" | 请求的压缩算法；可选值：`none`, `gzip` |
+| `otel-headers` | string | 否 | — | 自定义 HTTP 标头（JSON 格式，base64 编码） |
+| `otel-max-body-size` | integer | 否 | 10000000 | 最大请求正文大小，单位为字节 |
+| `otel-path` | string | 否 | "/v1/metrics" | OTLP 端点路径 |
+| `otel-protocol` | string | 否 | "https" | HTTP 协议；可选值：`http`, `https` |
+| `otel-resource-attributes` | string | 否 | — | JSON 形式的额外资源属性，采用 base64 编码 |
+| `otel-timeout` | integer | 否 | 5 | HTTP 请求超时时间，单位为秒 |
+| `otel-verify-ssl` | boolean | 否 | 1 | 验证 SSL 证书 |
+| `path` | string | 否 | — | graphite 根路径（例如：proxmox.mycluster.mykey） |
+| `port` | integer | 是 | — | 服务器网络端口 |
+| `proto` | string | 否 | — | 发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
+| `server` | string | 是 | — | 服务器 DNS 名称或 IP 地址 |
+| `timeout` | integer | 否 | 1 | graphite TCP 套接字超时时间（默认值=1） |
+| `token` | string | 否 | — | InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
+| `type` | string | 是 | — | 插件类型。；可选值：`graphite`, `influxdb`, `opentelemetry` |
+| `verify-certificate` | boolean | 否 | 1 | 设置为 0 可禁用 https 端点的证书验证。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -195,25 +195,25 @@ Create a new external metric server config
   "additionalProperties": 0,
   "properties": {
     "api-path-prefix": {
-      "description": "An API path prefix inserted between '<host>:<port>/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy.",
+      "description": "插入在 '<host>:<port>/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bucket": {
-      "description": "The InfluxDB bucket/db. Only necessary when using the http v2 api.",
+      "description": "InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
-      "description": "Flag to disable the plugin.",
+      "description": "用于禁用插件的标志。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "The ID of the entry.",
+      "description": "条目的 ID。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -230,7 +230,7 @@ Create a new external metric server config
     },
     "max-body-size": {
       "default": 25000000,
-      "description": "InfluxDB max-body-size in bytes. Requests are batched up to this size.",
+      "description": "InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
@@ -238,7 +238,7 @@ Create a new external metric server config
     },
     "mtu": {
       "default": 1500,
-      "description": "MTU for metrics transmission over UDP",
+      "description": "通过 UDP 传输指标的 MTU",
       "maximum": 65536,
       "minimum": 512,
       "optional": 1,
@@ -246,14 +246,14 @@ Create a new external metric server config
       "typetext": "<integer> (512 - 65536)"
     },
     "organization": {
-      "description": "The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.",
+      "description": "InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "otel-compression": {
       "default": "gzip",
-      "description": "Compression algorithm for requests",
+      "description": "请求的压缩算法",
       "enum": [
         "none",
         "gzip"
@@ -262,7 +262,7 @@ Create a new external metric server config
       "type": "string"
     },
     "otel-headers": {
-      "description": "Custom HTTP headers (JSON format, base64 encoded)",
+      "description": "自定义 HTTP 标头（JSON 格式，base64 编码）",
       "maxLength": 1024,
       "optional": 1,
       "type": "string",
@@ -270,7 +270,7 @@ Create a new external metric server config
     },
     "otel-max-body-size": {
       "default": 10000000,
-      "description": "Maximum request body size in bytes",
+      "description": "最大请求正文大小，单位为字节",
       "minimum": 1024,
       "optional": 1,
       "type": "integer",
@@ -278,14 +278,14 @@ Create a new external metric server config
     },
     "otel-path": {
       "default": "/v1/metrics",
-      "description": "OTLP endpoint path",
+      "description": "OTLP 端点路径",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "otel-protocol": {
       "default": "https",
-      "description": "HTTP protocol",
+      "description": "HTTP 协议",
       "enum": [
         "http",
         "https"
@@ -294,7 +294,7 @@ Create a new external metric server config
       "type": "string"
     },
     "otel-resource-attributes": {
-      "description": "Additional resource attributes as JSON, base64 encoded",
+      "description": "JSON 形式的额外资源属性，采用 base64 编码",
       "maxLength": 1024,
       "optional": 1,
       "type": "string",
@@ -302,7 +302,7 @@ Create a new external metric server config
     },
     "otel-timeout": {
       "default": 5,
-      "description": "HTTP request timeout in seconds",
+      "description": "HTTP 请求超时时间，单位为秒",
       "maximum": 10,
       "minimum": 1,
       "optional": 1,
@@ -311,27 +311,27 @@ Create a new external metric server config
     },
     "otel-verify-ssl": {
       "default": 1,
-      "description": "Verify SSL certificates",
+      "description": "验证 SSL 证书",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "path": {
-      "description": "root graphite path (ex: proxmox.mycluster.mykey)",
+      "description": "graphite 根路径（例如：proxmox.mycluster.mykey）",
       "format": "graphite-path",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "server network port",
+      "description": "服务器网络端口",
       "maximum": 65536,
       "minimum": 1,
       "type": "integer",
       "typetext": "<integer> (1 - 65536)"
     },
     "proto": {
-      "description": "Protocol to send graphite data. TCP or UDP (default)",
+      "description": "发送 graphite 数据的协议。TCP 或 UDP（默认）",
       "enum": [
         "udp",
         "tcp"
@@ -340,27 +340,27 @@ Create a new external metric server config
       "type": "string"
     },
     "server": {
-      "description": "server dns name or IP address",
+      "description": "服务器 DNS 名称或 IP 地址",
       "format": "address",
       "type": "string",
       "typetext": "<string>"
     },
     "timeout": {
       "default": 1,
-      "description": "graphite TCP socket timeout (default=1)",
+      "description": "graphite TCP 套接字超时时间（默认值=1）",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "token": {
-      "description": "The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use 'user:password' instead.",
+      "description": "InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Plugin type.",
+      "description": "插件类型。",
       "enum": [
         "graphite",
         "influxdb",
@@ -371,7 +371,7 @@ Create a new external metric server config
     },
     "verify-certificate": {
       "default": 1,
-      "description": "Set to 0 to disable certificate verification for https endpoints.",
+      "description": "设置为 0 可禁用 https 端点的证书验证。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -393,7 +393,7 @@ Create a new external metric server config
 
 ## PUT `/cluster/metrics/server/{id}`
 
-Update metric server configuration.
+更新指标服务器配置。
 
 **方法标识：** `update`
 
@@ -427,31 +427,31 @@ Update metric server configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '&lt;host&gt;:&lt;port&gt;/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
-| `bucket` | string | 否 | — | The InfluxDB bucket/db. Only necessary when using the http v2 api. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | — | Flag to disable the plugin. |
-| `id` | string | 是 | — | The ID of the entry. |
+| `api-path-prefix` | string | 否 | — | 插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
+| `bucket` | string | 否 | — | InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | — | 用于禁用插件的标志。 |
+| `id` | string | 是 | — | 条目的 ID。 |
 | `influxdbproto` | string | 否 | "udp" | ；可选值：`udp`, `http`, `https` |
-| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size in bytes. Requests are batched up to this size. |
-| `mtu` | integer | 否 | 1500 | MTU for metrics transmission over UDP |
-| `organization` | string | 否 | — | The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api. |
-| `otel-compression` | string | 否 | "gzip" | Compression algorithm for requests；可选值：`none`, `gzip` |
-| `otel-headers` | string | 否 | — | Custom HTTP headers (JSON format, base64 encoded) |
-| `otel-max-body-size` | integer | 否 | 10000000 | Maximum request body size in bytes |
-| `otel-path` | string | 否 | "/v1/metrics" | OTLP endpoint path |
-| `otel-protocol` | string | 否 | "https" | HTTP protocol；可选值：`http`, `https` |
-| `otel-resource-attributes` | string | 否 | — | Additional resource attributes as JSON, base64 encoded |
-| `otel-timeout` | integer | 否 | 5 | HTTP request timeout in seconds |
-| `otel-verify-ssl` | boolean | 否 | 1 | Verify SSL certificates |
-| `path` | string | 否 | — | root graphite path (ex: proxmox.mycluster.mykey) |
-| `port` | integer | 是 | — | server network port |
-| `proto` | string | 否 | — | Protocol to send graphite data. TCP or UDP (default)；可选值：`udp`, `tcp` |
-| `server` | string | 是 | — | server dns name or IP address |
-| `timeout` | integer | 否 | 1 | graphite TCP socket timeout (default=1) |
-| `token` | string | 否 | — | The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use 'user:password' instead. |
-| `verify-certificate` | boolean | 否 | 1 | Set to 0 to disable certificate verification for https endpoints. |
+| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
+| `mtu` | integer | 否 | 1500 | 通过 UDP 传输指标的 MTU |
+| `organization` | string | 否 | — | InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
+| `otel-compression` | string | 否 | "gzip" | 请求的压缩算法；可选值：`none`, `gzip` |
+| `otel-headers` | string | 否 | — | 自定义 HTTP 标头（JSON 格式，base64 编码） |
+| `otel-max-body-size` | integer | 否 | 10000000 | 最大请求正文大小，单位为字节 |
+| `otel-path` | string | 否 | "/v1/metrics" | OTLP 端点路径 |
+| `otel-protocol` | string | 否 | "https" | HTTP 协议；可选值：`http`, `https` |
+| `otel-resource-attributes` | string | 否 | — | JSON 形式的额外资源属性，采用 base64 编码 |
+| `otel-timeout` | integer | 否 | 5 | HTTP 请求超时时间，单位为秒 |
+| `otel-verify-ssl` | boolean | 否 | 1 | 验证 SSL 证书 |
+| `path` | string | 否 | — | graphite 根路径（例如：proxmox.mycluster.mykey） |
+| `port` | integer | 是 | — | 服务器网络端口 |
+| `proto` | string | 否 | — | 发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
+| `server` | string | 是 | — | 服务器 DNS 名称或 IP 地址 |
+| `timeout` | integer | 否 | 1 | graphite TCP 套接字超时时间（默认值=1） |
+| `token` | string | 否 | — | InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
+| `verify-certificate` | boolean | 否 | 1 | 设置为 0 可禁用 https 端点的证书验证。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -461,19 +461,19 @@ Update metric server configuration.
   "additionalProperties": 0,
   "properties": {
     "api-path-prefix": {
-      "description": "An API path prefix inserted between '<host>:<port>/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy.",
+      "description": "插入在 '<host>:<port>/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bucket": {
-      "description": "The InfluxDB bucket/db. Only necessary when using the http v2 api.",
+      "description": "InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -481,20 +481,20 @@ Update metric server configuration.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
-      "description": "Flag to disable the plugin.",
+      "description": "用于禁用插件的标志。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "The ID of the entry.",
+      "description": "条目的 ID。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -511,7 +511,7 @@ Update metric server configuration.
     },
     "max-body-size": {
       "default": 25000000,
-      "description": "InfluxDB max-body-size in bytes. Requests are batched up to this size.",
+      "description": "InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
@@ -519,7 +519,7 @@ Update metric server configuration.
     },
     "mtu": {
       "default": 1500,
-      "description": "MTU for metrics transmission over UDP",
+      "description": "通过 UDP 传输指标的 MTU",
       "maximum": 65536,
       "minimum": 512,
       "optional": 1,
@@ -527,14 +527,14 @@ Update metric server configuration.
       "typetext": "<integer> (512 - 65536)"
     },
     "organization": {
-      "description": "The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.",
+      "description": "InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "otel-compression": {
       "default": "gzip",
-      "description": "Compression algorithm for requests",
+      "description": "请求的压缩算法",
       "enum": [
         "none",
         "gzip"
@@ -543,7 +543,7 @@ Update metric server configuration.
       "type": "string"
     },
     "otel-headers": {
-      "description": "Custom HTTP headers (JSON format, base64 encoded)",
+      "description": "自定义 HTTP 标头（JSON 格式，base64 编码）",
       "maxLength": 1024,
       "optional": 1,
       "type": "string",
@@ -551,7 +551,7 @@ Update metric server configuration.
     },
     "otel-max-body-size": {
       "default": 10000000,
-      "description": "Maximum request body size in bytes",
+      "description": "最大请求正文大小，单位为字节",
       "minimum": 1024,
       "optional": 1,
       "type": "integer",
@@ -559,14 +559,14 @@ Update metric server configuration.
     },
     "otel-path": {
       "default": "/v1/metrics",
-      "description": "OTLP endpoint path",
+      "description": "OTLP 端点路径",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "otel-protocol": {
       "default": "https",
-      "description": "HTTP protocol",
+      "description": "HTTP 协议",
       "enum": [
         "http",
         "https"
@@ -575,7 +575,7 @@ Update metric server configuration.
       "type": "string"
     },
     "otel-resource-attributes": {
-      "description": "Additional resource attributes as JSON, base64 encoded",
+      "description": "JSON 形式的额外资源属性，采用 base64 编码",
       "maxLength": 1024,
       "optional": 1,
       "type": "string",
@@ -583,7 +583,7 @@ Update metric server configuration.
     },
     "otel-timeout": {
       "default": 5,
-      "description": "HTTP request timeout in seconds",
+      "description": "HTTP 请求超时时间，单位为秒",
       "maximum": 10,
       "minimum": 1,
       "optional": 1,
@@ -592,27 +592,27 @@ Update metric server configuration.
     },
     "otel-verify-ssl": {
       "default": 1,
-      "description": "Verify SSL certificates",
+      "description": "验证 SSL 证书",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "path": {
-      "description": "root graphite path (ex: proxmox.mycluster.mykey)",
+      "description": "graphite 根路径（例如：proxmox.mycluster.mykey）",
       "format": "graphite-path",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "server network port",
+      "description": "服务器网络端口",
       "maximum": 65536,
       "minimum": 1,
       "type": "integer",
       "typetext": "<integer> (1 - 65536)"
     },
     "proto": {
-      "description": "Protocol to send graphite data. TCP or UDP (default)",
+      "description": "发送 graphite 数据的协议。TCP 或 UDP（默认）",
       "enum": [
         "udp",
         "tcp"
@@ -621,28 +621,28 @@ Update metric server configuration.
       "type": "string"
     },
     "server": {
-      "description": "server dns name or IP address",
+      "description": "服务器 DNS 名称或 IP 地址",
       "format": "address",
       "type": "string",
       "typetext": "<string>"
     },
     "timeout": {
       "default": 1,
-      "description": "graphite TCP socket timeout (default=1)",
+      "description": "graphite TCP 套接字超时时间（默认值=1）",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "token": {
-      "description": "The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use 'user:password' instead.",
+      "description": "InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "verify-certificate": {
       "default": 1,
-      "description": "Set to 0 to disable certificate verification for https endpoints.",
+      "description": "设置为 0 可禁用 https 端点的证书验证。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/network`
 
-Revert network configuration changes.
+撤销网络配置更改。
 
 **方法标识：** `revert_network_changes`
 
@@ -46,7 +46,7 @@ Revert network configuration changes.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Revert network configuration changes.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,7 +77,7 @@ Revert network configuration changes.
 
 ## GET `/nodes/{node}/network`
 
-List available networks
+列出可用网络
 
 **方法标识：** `index`
 
@@ -105,8 +105,8 @@ List available networks
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `type` | string | 否 | — | Only list specific interface types.；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `any_bridge`, `any_local_bridge`, `include_sdn` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `type` | string | 否 | — | 仅列出指定接口类型。；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `any_bridge`, `any_local_bridge`, `include_sdn` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -116,13 +116,13 @@ List available networks
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Only list specific interface types.",
+      "description": "仅列出指定接口类型。",
       "enum": [
         "bridge",
         "bond",
@@ -155,37 +155,37 @@ List available networks
   "items": {
     "properties": {
       "active": {
-        "description": "Set to true if the interface is active.",
+        "description": "如果接口处于活动状态，则设为 true。",
         "optional": 1,
         "type": "boolean"
       },
       "address": {
-        "description": "IP address.",
+        "description": "IP 地址。",
         "format": "ipv4",
         "optional": 1,
         "requires": "netmask",
         "type": "string"
       },
       "address6": {
-        "description": "IP address.",
+        "description": "IP 地址。",
         "format": "ipv6",
         "optional": 1,
         "requires": "netmask6",
         "type": "string"
       },
       "autostart": {
-        "description": "Automatically start interface on boot.",
+        "description": "启动时自动启用接口。",
         "optional": 1,
         "type": "boolean"
       },
       "bond-primary": {
-        "description": "Specify the primary interface for active-backup bond.",
+        "description": "为 active-backup 绑定指定主接口。",
         "format": "pve-iface",
         "optional": 1,
         "type": "string"
       },
       "bond_mode": {
-        "description": "Bonding mode.",
+        "description": "绑定模式。",
         "enum": [
           "balance-rr",
           "active-backup",
@@ -202,7 +202,7 @@ List available networks
         "type": "string"
       },
       "bond_xmit_hash_policy": {
-        "description": "Selects the transmit hash policy to use for slave selection in balance-xor and 802.3ad modes.",
+        "description": "选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。",
         "enum": [
           "layer2",
           "layer2+3",
@@ -212,78 +212,78 @@ List available networks
         "type": "string"
       },
       "bridge-access": {
-        "description": "The bridge port access VLAN.",
+        "description": "网桥端口的接入 VLAN。",
         "optional": 1,
         "type": "integer"
       },
       "bridge-arp-nd-suppress": {
-        "description": "Bridge port ARP/ND suppress flag.",
+        "description": "网桥端口 ARP/ND 抑制标志。",
         "optional": 1,
         "type": "boolean"
       },
       "bridge-learning": {
-        "description": "Bridge port learning flag.",
+        "description": "网桥端口学习标志。",
         "optional": 1,
         "type": "boolean"
       },
       "bridge-multicast-flood": {
-        "description": "Bridge port multicast flood flag.",
+        "description": "网桥端口组播泛洪标志。",
         "optional": 1,
         "type": "boolean"
       },
       "bridge-unicast-flood": {
-        "description": "Bridge port unicast flood flag.",
+        "description": "网桥端口单播泛洪标志。",
         "optional": 1,
         "type": "boolean"
       },
       "bridge_ports": {
-        "description": "Specify the interfaces you want to add to your bridge.",
+        "description": "指定要加入网桥的接口。",
         "format": "pve-iface-list",
         "optional": 1,
         "type": "string"
       },
       "bridge_vids": {
-        "description": "Specify the allowed VLANs. For example: '2 4 100-200'. Only used if the bridge is VLAN aware.",
+        "description": "指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。",
         "format": "pve-vlan-id-or-range-list",
         "optional": 1,
         "type": "string"
       },
       "bridge_vlan_aware": {
-        "description": "Enable bridge vlan support.",
+        "description": "启用网桥 VLAN 支持。",
         "optional": 1,
         "type": "boolean"
       },
       "cidr": {
-        "description": "IPv4 CIDR.",
+        "description": "IPv4 CIDR。",
         "format": "CIDRv4",
         "optional": 1,
         "type": "string"
       },
       "cidr6": {
-        "description": "IPv6 CIDR.",
+        "description": "IPv6 CIDR。",
         "format": "CIDRv6",
         "optional": 1,
         "type": "string"
       },
       "comments": {
-        "description": "Comments",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "comments6": {
-        "description": "Comments",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "exists": {
-        "description": "Set to true if the interface physically exists.",
+        "description": "如果接口物理存在，则设为 true。",
         "optional": 1,
         "type": "boolean"
       },
       "families": {
-        "description": "The network families.",
+        "description": "网络地址族。",
         "items": {
-          "description": "A network family.",
+          "description": "网络地址族。",
           "enum": [
             "inet",
             "inet6"
@@ -294,31 +294,31 @@ List available networks
         "type": "array"
       },
       "gateway": {
-        "description": "Default gateway address.",
+        "description": "默认网关地址。",
         "format": "ipv4",
         "optional": 1,
         "type": "string"
       },
       "gateway6": {
-        "description": "Default ipv6 gateway address.",
+        "description": "默认 IPv6 网关地址。",
         "format": "ipv6",
         "optional": 1,
         "type": "string"
       },
       "iface": {
-        "description": "Network interface name.",
+        "description": "网络接口名称。",
         "format": "pve-iface",
         "maxLength": 20,
         "minLength": 2,
         "type": "string"
       },
       "link-type": {
-        "description": "The link type.",
+        "description": "链路类型。",
         "optional": 1,
         "type": "string"
       },
       "method": {
-        "description": "The network configuration method for IPv4.",
+        "description": "IPv4 网络配置方法。",
         "enum": [
           "loopback",
           "dhcp",
@@ -330,7 +330,7 @@ List available networks
         "type": "string"
       },
       "method6": {
-        "description": "The network configuration method for IPv6.",
+        "description": "IPv6 网络配置方法。",
         "enum": [
           "loopback",
           "dhcp",
@@ -342,21 +342,21 @@ List available networks
         "type": "string"
       },
       "mtu": {
-        "description": "MTU.",
+        "description": "MTU。",
         "maximum": 65520,
         "minimum": 1280,
         "optional": 1,
         "type": "integer"
       },
       "netmask": {
-        "description": "Network mask.",
+        "description": "网络掩码。",
         "format": "ipv4mask",
         "optional": 1,
         "requires": "address",
         "type": "string"
       },
       "netmask6": {
-        "description": "Network mask.",
+        "description": "网络掩码。",
         "maximum": 128,
         "minimum": 0,
         "optional": 1,
@@ -364,67 +364,67 @@ List available networks
         "type": "integer"
       },
       "options": {
-        "description": "A list of additional interface options for IPv4.",
+        "description": "IPv4 附加接口选项列表。",
         "items": {
-          "description": "An interface property.",
+          "description": "接口属性。",
           "type": "string"
         },
         "optional": 1,
         "type": "array"
       },
       "options6": {
-        "description": "A list of additional interface options for IPv6.",
+        "description": "IPv6 附加接口选项列表。",
         "items": {
-          "description": "An interface property.",
+          "description": "接口属性。",
           "type": "string"
         },
         "optional": 1,
         "type": "array"
       },
       "ovs_bonds": {
-        "description": "Specify the interfaces used by the bonding device.",
+        "description": "指定绑定设备使用的接口。",
         "format": "pve-iface-list",
         "optional": 1,
         "type": "string"
       },
       "ovs_bridge": {
-        "description": "The OVS bridge associated with a OVS port. This is required when you create an OVS port.",
+        "description": "与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。",
         "format": "pve-iface",
         "optional": 1,
         "type": "string"
       },
       "ovs_options": {
-        "description": "OVS interface options.",
+        "description": "OVS 接口选项。",
         "maxLength": 1024,
         "optional": 1,
         "type": "string"
       },
       "ovs_ports": {
-        "description": "Specify the interfaces you want to add to your bridge.",
+        "description": "指定要加入网桥的接口。",
         "format": "pve-iface-list",
         "optional": 1,
         "type": "string"
       },
       "ovs_tag": {
-        "description": "Specify a VLan tag (used by OVSPort, OVSIntPort, OVSBond)",
+        "description": "指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond）",
         "maximum": 4094,
         "minimum": 1,
         "optional": 1,
         "type": "integer"
       },
       "priority": {
-        "description": "The order of the interface.",
+        "description": "接口顺序。",
         "optional": 1,
         "type": "integer"
       },
       "slaves": {
-        "description": "Specify the interfaces used by the bonding device.",
+        "description": "指定绑定设备使用的接口。",
         "format": "pve-iface-list",
         "optional": 1,
         "type": "string"
       },
       "type": {
-        "description": "Network interface type",
+        "description": "网络接口类型",
         "enum": [
           "bridge",
           "bond",
@@ -442,19 +442,19 @@ List available networks
         "type": "string"
       },
       "uplink-id": {
-        "description": "The uplink ID.",
+        "description": "上行链路 ID。",
         "optional": 1,
         "type": "string"
       },
       "vlan-id": {
-        "description": "vlan-id for a custom named vlan interface (ifupdown2 only).",
+        "description": "自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。",
         "maximum": 4094,
         "minimum": 1,
         "optional": 1,
         "type": "integer"
       },
       "vlan-protocol": {
-        "description": "The VLAN protocol.",
+        "description": "VLAN 协议。",
         "enum": [
           "802.1ad",
           "802.1q"
@@ -463,28 +463,28 @@ List available networks
         "type": "string"
       },
       "vlan-raw-device": {
-        "description": "Specify the raw interface for the vlan interface.",
+        "description": "指定 VLAN 接口的原始接口。",
         "format": "pve-iface",
         "optional": 1,
         "type": "string"
       },
       "vxlan-id": {
-        "description": "The VXLAN ID.",
+        "description": "VXLAN ID。",
         "optional": 1,
         "type": "integer"
       },
       "vxlan-local-tunnelip": {
-        "description": "The VXLAN local tunnel IP.",
+        "description": "VXLAN 本地隧道 IP。",
         "optional": 1,
         "type": "string"
       },
       "vxlan-physdev": {
-        "description": "The physical device for the VXLAN tunnel.",
+        "description": "VXLAN 隧道的物理设备。",
         "optional": 1,
         "type": "string"
       },
       "vxlan-svcnodeip": {
-        "description": "The VXLAN SVC node IP.",
+        "description": "VXLAN SVC 节点 IP。",
         "optional": 1,
         "type": "string"
       }
@@ -503,7 +503,7 @@ List available networks
 
 ## POST `/nodes/{node}/network`
 
-Create network device configuration
+创建网络设备配置
 
 **方法标识：** `create_network`
 
@@ -543,35 +543,35 @@ Create network device configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `address` | string | 否 | — | IP address. |
-| `address6` | string | 否 | — | IP address. |
-| `autostart` | boolean | 否 | — | Automatically start interface on boot. |
-| `bond-primary` | string | 否 | — | Specify the primary interface for active-backup bond. |
-| `bond_mode` | string | 否 | — | Bonding mode.；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
-| `bond_xmit_hash_policy` | string | 否 | — | Selects the transmit hash policy to use for slave selection in balance-xor and 802.3ad modes.；可选值：`layer2`, `layer2+3`, `layer3+4` |
-| `bridge_ports` | string | 否 | — | Specify the interfaces you want to add to your bridge. |
-| `bridge_vids` | string | 否 | — | Specify the allowed VLANs. For example: '2 4 100-200'. Only used if the bridge is VLAN aware. |
-| `bridge_vlan_aware` | boolean | 否 | — | Enable bridge vlan support. |
-| `cidr` | string | 否 | — | IPv4 CIDR. |
-| `cidr6` | string | 否 | — | IPv6 CIDR. |
-| `comments` | string | 否 | — | Comments |
-| `comments6` | string | 否 | — | Comments |
-| `gateway` | string | 否 | — | Default gateway address. |
-| `gateway6` | string | 否 | — | Default ipv6 gateway address. |
-| `iface` | string | 是 | — | Network interface name. |
-| `mtu` | integer | 否 | — | MTU. |
-| `netmask` | string | 否 | — | Network mask. |
-| `netmask6` | integer | 否 | — | Network mask. |
-| `node` | string | 是 | — | The cluster node name. |
-| `ovs_bonds` | string | 否 | — | Specify the interfaces used by the bonding device. |
-| `ovs_bridge` | string | 否 | — | The OVS bridge associated with a OVS port. This is required when you create an OVS port. |
-| `ovs_options` | string | 否 | — | OVS interface options. |
-| `ovs_ports` | string | 否 | — | Specify the interfaces you want to add to your bridge. |
-| `ovs_tag` | integer | 否 | — | Specify a VLan tag (used by OVSPort, OVSIntPort, OVSBond) |
-| `slaves` | string | 否 | — | Specify the interfaces used by the bonding device. |
-| `type` | string | 是 | — | Network interface type；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
-| `vlan-id` | integer | 否 | — | vlan-id for a custom named vlan interface (ifupdown2 only). |
-| `vlan-raw-device` | string | 否 | — | Specify the raw interface for the vlan interface. |
+| `address` | string | 否 | — | IP 地址。 |
+| `address6` | string | 否 | — | IP 地址。 |
+| `autostart` | boolean | 否 | — | 启动时自动启用接口。 |
+| `bond-primary` | string | 否 | — | 为 active-backup 绑定指定主接口。 |
+| `bond_mode` | string | 否 | — | 绑定模式。；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
+| `bond_xmit_hash_policy` | string | 否 | — | 选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。；可选值：`layer2`, `layer2+3`, `layer3+4` |
+| `bridge_ports` | string | 否 | — | 指定要加入网桥的接口。 |
+| `bridge_vids` | string | 否 | — | 指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。 |
+| `bridge_vlan_aware` | boolean | 否 | — | 启用网桥 VLAN 支持。 |
+| `cidr` | string | 否 | — | IPv4 CIDR。 |
+| `cidr6` | string | 否 | — | IPv6 CIDR。 |
+| `comments` | string | 否 | — | 注释 |
+| `comments6` | string | 否 | — | 注释 |
+| `gateway` | string | 否 | — | 默认网关地址。 |
+| `gateway6` | string | 否 | — | 默认 IPv6 网关地址。 |
+| `iface` | string | 是 | — | 网络接口名称。 |
+| `mtu` | integer | 否 | — | MTU。 |
+| `netmask` | string | 否 | — | 网络掩码。 |
+| `netmask6` | integer | 否 | — | 网络掩码。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `ovs_bonds` | string | 否 | — | 指定绑定设备使用的接口。 |
+| `ovs_bridge` | string | 否 | — | 与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。 |
+| `ovs_options` | string | 否 | — | OVS 接口选项。 |
+| `ovs_ports` | string | 否 | — | 指定要加入网桥的接口。 |
+| `ovs_tag` | integer | 否 | — | 指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond） |
+| `slaves` | string | 否 | — | 指定绑定设备使用的接口。 |
+| `type` | string | 是 | — | 网络接口类型；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
+| `vlan-id` | integer | 否 | — | 自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。 |
+| `vlan-raw-device` | string | 否 | — | 指定 VLAN 接口的原始接口。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -581,7 +581,7 @@ Create network device configuration
   "additionalProperties": 0,
   "properties": {
     "address": {
-      "description": "IP address.",
+      "description": "IP 地址。",
       "format": "ipv4",
       "optional": 1,
       "requires": "netmask",
@@ -589,7 +589,7 @@ Create network device configuration
       "typetext": "<string>"
     },
     "address6": {
-      "description": "IP address.",
+      "description": "IP 地址。",
       "format": "ipv6",
       "optional": 1,
       "requires": "netmask6",
@@ -597,20 +597,20 @@ Create network device configuration
       "typetext": "<string>"
     },
     "autostart": {
-      "description": "Automatically start interface on boot.",
+      "description": "启动时自动启用接口。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "bond-primary": {
-      "description": "Specify the primary interface for active-backup bond.",
+      "description": "为 active-backup 绑定指定主接口。",
       "format": "pve-iface",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bond_mode": {
-      "description": "Bonding mode.",
+      "description": "绑定模式。",
       "enum": [
         "balance-rr",
         "active-backup",
@@ -627,7 +627,7 @@ Create network device configuration
       "type": "string"
     },
     "bond_xmit_hash_policy": {
-      "description": "Selects the transmit hash policy to use for slave selection in balance-xor and 802.3ad modes.",
+      "description": "选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。",
       "enum": [
         "layer2",
         "layer2+3",
@@ -637,67 +637,67 @@ Create network device configuration
       "type": "string"
     },
     "bridge_ports": {
-      "description": "Specify the interfaces you want to add to your bridge.",
+      "description": "指定要加入网桥的接口。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bridge_vids": {
-      "description": "Specify the allowed VLANs. For example: '2 4 100-200'. Only used if the bridge is VLAN aware.",
+      "description": "指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。",
       "format": "pve-vlan-id-or-range-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bridge_vlan_aware": {
-      "description": "Enable bridge vlan support.",
+      "description": "启用网桥 VLAN 支持。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "cidr": {
-      "description": "IPv4 CIDR.",
+      "description": "IPv4 CIDR。",
       "format": "CIDRv4",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "cidr6": {
-      "description": "IPv6 CIDR.",
+      "description": "IPv6 CIDR。",
       "format": "CIDRv6",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comments": {
-      "description": "Comments",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comments6": {
-      "description": "Comments",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "gateway": {
-      "description": "Default gateway address.",
+      "description": "默认网关地址。",
       "format": "ipv4",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "gateway6": {
-      "description": "Default ipv6 gateway address.",
+      "description": "默认 IPv6 网关地址。",
       "format": "ipv6",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "iface": {
-      "description": "Network interface name.",
+      "description": "网络接口名称。",
       "format": "pve-iface",
       "maxLength": 20,
       "minLength": 2,
@@ -705,7 +705,7 @@ Create network device configuration
       "typetext": "<string>"
     },
     "mtu": {
-      "description": "MTU.",
+      "description": "MTU。",
       "maximum": 65520,
       "minimum": 1280,
       "optional": 1,
@@ -713,7 +713,7 @@ Create network device configuration
       "typetext": "<integer> (1280 - 65520)"
     },
     "netmask": {
-      "description": "Network mask.",
+      "description": "网络掩码。",
       "format": "ipv4mask",
       "optional": 1,
       "requires": "address",
@@ -721,7 +721,7 @@ Create network device configuration
       "typetext": "<string>"
     },
     "netmask6": {
-      "description": "Network mask.",
+      "description": "网络掩码。",
       "maximum": 128,
       "minimum": 0,
       "optional": 1,
@@ -730,41 +730,41 @@ Create network device configuration
       "typetext": "<integer> (0 - 128)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "ovs_bonds": {
-      "description": "Specify the interfaces used by the bonding device.",
+      "description": "指定绑定设备使用的接口。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ovs_bridge": {
-      "description": "The OVS bridge associated with a OVS port. This is required when you create an OVS port.",
+      "description": "与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。",
       "format": "pve-iface",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ovs_options": {
-      "description": "OVS interface options.",
+      "description": "OVS 接口选项。",
       "maxLength": 1024,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ovs_ports": {
-      "description": "Specify the interfaces you want to add to your bridge.",
+      "description": "指定要加入网桥的接口。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ovs_tag": {
-      "description": "Specify a VLan tag (used by OVSPort, OVSIntPort, OVSBond)",
+      "description": "指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond）",
       "maximum": 4094,
       "minimum": 1,
       "optional": 1,
@@ -772,14 +772,14 @@ Create network device configuration
       "typetext": "<integer> (1 - 4094)"
     },
     "slaves": {
-      "description": "Specify the interfaces used by the bonding device.",
+      "description": "指定绑定设备使用的接口。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Network interface type",
+      "description": "网络接口类型",
       "enum": [
         "bridge",
         "bond",
@@ -797,7 +797,7 @@ Create network device configuration
       "type": "string"
     },
     "vlan-id": {
-      "description": "vlan-id for a custom named vlan interface (ifupdown2 only).",
+      "description": "自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。",
       "maximum": 4094,
       "minimum": 1,
       "optional": 1,
@@ -805,7 +805,7 @@ Create network device configuration
       "typetext": "<integer> (1 - 4094)"
     },
     "vlan-raw-device": {
-      "description": "Specify the raw interface for the vlan interface.",
+      "description": "指定 VLAN 接口的原始接口。",
       "format": "pve-iface",
       "optional": 1,
       "type": "string",
@@ -827,7 +827,7 @@ Create network device configuration
 
 ## PUT `/nodes/{node}/network`
 
-Reload network configuration
+重新加载网络配置
 
 **方法标识：** `reload_network_config`
 
@@ -867,8 +867,8 @@ Reload network configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `regenerate-frr` | boolean | 否 | 0 | Whether FRR config generation should get skipped or not. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `regenerate-frr` | boolean | 否 | 0 | 是否应跳过 FRR 配置生成。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -878,14 +878,14 @@ Reload network configuration
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "regenerate-frr": {
       "default": 0,
-      "description": "Whether FRR config generation should get skipped or not.",
+      "description": "是否应跳过 FRR 配置生成。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

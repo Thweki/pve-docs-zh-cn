@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/ceph/mds/{name}`
 
-Destroy Ceph Metadata Server
+销毁 Ceph 元数据服务器
 
 **方法标识：** `destroymds`
 
@@ -46,8 +46,8 @@ Destroy Ceph Metadata Server
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | The name (ID) of the mds |
-| `node` | string | 是 | — | The cluster node name. |
+| `name` | string | 是 | — | MDS 的名称（ID） |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,12 +57,12 @@ Destroy Ceph Metadata Server
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "The name (ID) of the mds",
+      "description": "MDS 的名称（ID）",
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,7 +83,7 @@ Destroy Ceph Metadata Server
 
 ## POST `/nodes/{node}/ceph/mds/{name}`
 
-Create Ceph Metadata Server (MDS)
+创建 Ceph 元数据服务器（MDS）
 
 **方法标识：** `createmds`
 
@@ -123,9 +123,9 @@ Create Ceph Metadata Server (MDS)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `hotstandby` | boolean | 否 | 0 | Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1. |
-| `name` | string | 否 | "nodename" | The ID for the mds, when omitted the same as the nodename |
-| `node` | string | 是 | — | The cluster node name. |
+| `hotstandby` | boolean | 否 | 0 | 确定 ceph-mds 守护进程是否轮询并重放活动 MDS 的日志。可在 MDS 故障时更快切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。 |
+| `name` | string | 否 | "nodename" | MDS 的 ID，省略时与节点名称相同 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -136,21 +136,21 @@ Create Ceph Metadata Server (MDS)
   "properties": {
     "hotstandby": {
       "default": 0,
-      "description": "Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1.",
+      "description": "确定 ceph-mds 守护进程是否轮询并重放活动 MDS 的日志。可在 MDS 故障时更快切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
       "default": "nodename",
-      "description": "The ID for the mds, when omitted the same as the nodename",
+      "description": "MDS 的 ID，省略时与节点名称相同",
       "maxLength": 200,
       "optional": 1,
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

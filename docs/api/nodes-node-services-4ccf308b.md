@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/services`
 
-Service list.
+服务列表。
 
 **方法标识：** `index`
 
@@ -46,7 +46,7 @@ Service list.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Service list.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -74,7 +74,7 @@ Service list.
   "items": {
     "properties": {
       "active-state": {
-        "description": "Current state of the service process (systemd ActiveState).",
+        "description": "服务进程的当前状态（systemd ActiveState）。",
         "enum": [
           "active",
           "inactive",
@@ -89,19 +89,19 @@ Service list.
         "type": "string"
       },
       "desc": {
-        "description": "Description of the service.",
+        "description": "服务描述。",
         "type": "string"
       },
       "name": {
-        "description": "Short identifier for the service (e.g., \"pveproxy\").",
+        "description": "服务的简短标识符（例如 \"pveproxy\"）。",
         "type": "string"
       },
       "service": {
-        "description": "Systemd unit name (e.g., pveproxy).",
+        "description": "Systemd 单元名称（例如 pveproxy）。",
         "type": "string"
       },
       "state": {
-        "description": "Execution status of the service (systemd SubState).",
+        "description": "服务执行状态（systemd SubState）。",
         "enum": [
           "dead",
           "condition",
@@ -134,7 +134,7 @@ Service list.
         "type": "string"
       },
       "unit-state": {
-        "description": "Whether the service is enabled (systemd UnitFileState).",
+        "description": "服务是否已启用（systemd UnitFileState）。",
         "enum": [
           "enabled",
           "enabled-runtime",

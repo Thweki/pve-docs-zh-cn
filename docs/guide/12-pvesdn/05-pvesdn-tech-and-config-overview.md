@@ -1,12 +1,12 @@
-# 12.5. Technology \& Configuration <a href="#pvesdn_tech_and_config_overview" id="pvesdn_tech_and_config_overview"></a>
+# 12.5. 技术与配置 <a href="#pvesdn_tech_and_config_overview" id="pvesdn_tech_and_config_overview"></a>
 
-The Proxmox VE Software-Defined Network implementation uses standard Linux networking as much as possible. The reason for this is that modern Linux networking provides almost all needs for a feature full SDN implementation and avoids adding external dependencies and reduces the overall amount of components that can break.
+Proxmox VE 软件定义网络实现尽可能使用标准 Linux 网络功能。这是因为现代 Linux 网络功能几乎能够满足功能完整的 SDN 实现的全部需求，同时避免添加外部依赖，并减少可能发生故障的组件总数。
 
-The Proxmox VE SDN configurations are located in `/etc/pve/sdn`, which is shared with all other cluster nodes through the Proxmox VE [configuration file system](../06-pmxcfs/README.md). Those configurations get translated to the respective configuration formats of the tools that manage the underlying network stack (for example `ifupdown2` or `frr`).
+Proxmox VE SDN 配置位于 `/etc/pve/sdn`，通过 Proxmox VE [配置文件系统](../06-pmxcfs/README.md) 与所有其他集群节点共享。这些配置会转换为管理底层网络协议栈的工具（例如 `ifupdown2` 或 `frr`）各自所需的配置格式。
 
-New changes are not immediately applied but recorded as pending first. You can then apply a set of different changes all at once in the main *SDN* overview panel on the web interface. This system allows to roll-out various changes as single atomic one.
+新更改不会立即应用，而是先记录为待处理状态。然后可以在 Web 界面的主 *SDN* 概览面板中一次性应用一组不同的更改。此系统允许将多项更改作为单个原子更改推出。
 
-The SDN tracks the rolled-out state through the *.running-config* and *.version* files located in */etc/pve/sdn*.
+SDN 通过 *.running-config* 和 *.version* 文件跟踪已推出的状态，这些文件位于 */etc/pve/sdn*。
 
 ---
 

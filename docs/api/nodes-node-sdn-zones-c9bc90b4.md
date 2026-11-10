@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/zones`
 
-Get status for all zones.
+获取所有区域的状态。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ Get status for all zones.
 
 ```json
 {
-  "description": "Only list entries where you have 'SDN.Audit'",
+  "description": "仅列出您具有 'SDN.Audit' 权限的条目",
   "user": "all"
 }
 ```
@@ -41,7 +41,7 @@ Get status for all zones.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,7 +51,7 @@ Get status for all zones.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -69,7 +69,7 @@ Get status for all zones.
   "items": {
     "properties": {
       "status": {
-        "description": "Status of zone",
+        "description": "区域状态",
         "enum": [
           "available",
           "pending",
@@ -78,7 +78,7 @@ Get status for all zones.
         "type": "string"
       },
       "zone": {
-        "description": "The SDN zone object identifier.",
+        "description": "SDN 区域对象标识符。",
         "maxLength": 8,
         "minLength": 2,
         "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",

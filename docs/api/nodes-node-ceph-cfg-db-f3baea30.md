@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/cfg/db`
 
-Get the Ceph configuration database.
+获取 Ceph 配置数据库。
 
 **方法标识：** `db`
 
@@ -49,7 +49,7 @@ Get the Ceph configuration database.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Get the Ceph configuration database.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -78,11 +78,11 @@ Get the Ceph configuration database.
     "additionalProperties": 1,
     "properties": {
       "can_update_at_runtime": {
-        "description": "Set if the value can be changed at runtime without restarting the affected daemons. Emitted as the integer 1/0 to match the existing PVE wire convention.",
+        "description": "如果可在运行时更改该值而不重启受影响的守护进程，则设置此项。以整数 1/0 输出，以符合现有 PVE 传输约定。",
         "type": "boolean"
       },
       "level": {
-        "description": "Config level the entry is exposed at: 'basic' for operator-visible settings, 'advanced' for tuning parameters, 'dev' for developer-only knobs.",
+        "description": "条目公开的配置级别：'basic' 为操作人员可见的设置，'advanced' 为调优参数，'dev' 为仅供开发人员使用的选项。",
         "enum": [
           "basic",
           "advanced",
@@ -91,19 +91,19 @@ Get the Ceph configuration database.
         "type": "string"
       },
       "mask": {
-        "description": "Match expression restricting the entry's scope; empty when the entry has no mask. Examples: 'host:foo', 'class:ssd'.",
+        "description": "限制条目作用域的匹配表达式；条目没有掩码时为空。例如：'host:foo'、'class:ssd'。",
         "type": "string"
       },
       "name": {
-        "description": "Config key name.",
+        "description": "配置键名。",
         "type": "string"
       },
       "section": {
-        "description": "Ceph config section the entry applies to: 'global', a daemon type ('mon', 'osd', 'mgr', 'mds', 'client'), or a specific daemon (e.g. 'osd.0', 'mon.<name>').",
+        "description": "条目适用的 Ceph 配置节：'global'、守护进程类型（'mon'、'osd'、'mgr'、'mds'、'client'），或特定守护进程（例如 'osd.0'、'mon.<name>'）。",
         "type": "string"
       },
       "value": {
-        "description": "Configured value for the key (always serialised as a string by Ceph, regardless of the option's underlying type).",
+        "description": "键的配置值（无论选项的底层类型为何，Ceph 始终将其序列化为字符串）。",
         "type": "string"
       }
     },

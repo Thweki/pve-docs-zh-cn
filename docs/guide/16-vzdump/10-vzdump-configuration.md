@@ -1,168 +1,168 @@
-# 16.10. Configuration <a href="#vzdump_configuration" id="vzdump_configuration"></a>
+# 16.10. 配置 <a href="#vzdump_configuration" id="vzdump_configuration"></a>
 
-Global configuration is stored in `/etc/vzdump.conf`. The file uses a simple colon separated key/value format. Each line has the following format:
+全局配置存储在 `/etc/vzdump.conf` 中。此文件使用简单的冒号分隔键/值格式。每行格式如下：
 
 ```text
 OPTION: value
 ```
 
-Blank lines in the file are ignored, and lines starting with a `#` character are treated as comments and are also ignored. Values from this file are used as default, and can be overwritten on the command line.
+文件中的空行被忽略，以 `#` 字符开头的行视为注释，也被忽略。此文件中的值用作默认值，可在命令行中覆盖。
 
-We currently support the following options:
+目前支持以下选项：
 
-**`bwlimit`: `<integer> (0 - N)` (*default \=* `0`)**
+**`bwlimit`：`<integer> (0 - N)`（*默认值 \=* `0`）**
 
-Limit I/O bandwidth (in KiB/s).
+限制 I/O 带宽（KiB/s）。
 
-**`compress`: `<0 | 1 | gzip | lzo | zstd>` (*default \=* `0`)**
+**`compress`：`<0 | 1 | gzip | lzo | zstd>`（*默认值 \=* `0`）**
 
-Compress dump file.
+压缩转储文件。
 
 **`dumpdir`: `<string>`**
 
-Store resulting files to specified directory.
+将生成的文件存储到指定目录。
 
 **`exclude-path`: `<array>`**
 
-Exclude certain files/directories (shell globs). Paths starting with */* are anchored to the container’s root, other paths match relative to each subdirectory.
+排除某些文件/目录（shell 通配模式）。以 */* 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
 
 **`fleecing`: `[[enabled=]<1|0>] [,storage=<storage ID>]`**
 
-Options for backup fleecing (VM only).
+备份 fleecing 的选项（仅限虚拟机）。
 
 **`enabled`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable backup fleecing. Cache backup data from blocks where new guest writes happen on specified storage instead of copying them directly to the backup target. This can help guest IO performance and even prevent hangs, at the cost of requiring more storage space.
+启用备份 fleecing。当客户机发生新的块写入时，将这些块的备份数据缓存在指定存储上，而非直接复制到备份目标。这有助于提高客户机 IO 性能，甚至避免挂起，代价是需要更多存储空间。
 
 **`storage`\=`<storage ID>`**
 
-Use this storage to storage fleecing images. For efficient space usage, it’s best to use a local storage that supports discard and either thin provisioning or sparse files.
+使用此存储保存 fleecing 镜像。为高效利用空间，最好使用支持 discard 且支持精简置备或稀疏文件的本地存储。
 
-**`ionice`: `<integer> (0 - 8)` (*default \=* `7`)**
+**`ionice`：`<integer> (0 - 8)`（*默认值 \=* `7`）**
 
-Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.
+使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，这仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用尽力而为优先级及指定值。
 
-**`lockwait`: `<integer> (0 - N)` (*default \=* `180`)**
+**`lockwait`：`<integer> (0 - N)`（*默认值 \=* `180`）**
 
-Maximal time to wait for the global lock (minutes).
+等待全局锁的最长时间（分钟）。
 
-**`mailnotification`: `<always | failure>` (*default \=* `always`)**
+**`mailnotification`：`<always | failure>`（*默认值 \=* `always`）**
 
-Deprecated: use notification targets/matchers instead. Specify when to send a notification mail
+已弃用：请改用通知目标/匹配器。指定何时发送通知邮件
 
 **`mailto`: `<string>`**
 
-Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.
+已弃用：请改用通知目标/匹配器。应接收电子邮件通知的电子邮件地址或用户的逗号分隔列表。
 
-**`mode`: `<snapshot | stop | suspend>` (*default \=* `snapshot`)**
+**`mode`：`<snapshot | stop | suspend>`（*默认值 \=* `snapshot`）**
 
-Backup mode.
+备份模式。
 
 **`notes-template`: `<string>`**
 
-Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {\\{\\cluster}}, {\\{\\guestname}}, {\\{\\node}}, and {\\{\\vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as *\\n* and *\\\\* respectively.
+用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 *\\n* 和 *\\\\*。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`notification-mode`: `<auto | legacy-sendmail | notification-system>` (*default \=* `auto`)**
+**`notification-mode`：`<auto | legacy-sendmail | notification-system>`（*默认值 \=* `auto`）**
 
-Determine which notification system to use. If set to *legacy-sendmail*, vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the *sendmail* command. If set to *notification-system*, a notification will be sent via PVE’s notification system, and the mailto and mailnotification will be ignored. If set to *auto* (default setting), an email will be sent if mailto is set, and the notification system will be used if not.
+确定要使用的通知系统。如果设为 *legacy-sendmail*，vzdump 会考虑 mailto/mailnotification 参数，并通过 *sendmail* 命令向指定地址发送电子邮件。如果设为 *notification-system*，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 *auto*（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
 
 **`pbs-change-detection-mode`: `<data | legacy | metadata>`**
 
-PBS mode used to detect file changes and switch encoding format for container backups.
+用于检测文件更改并切换容器备份编码格式的 PBS 模式。
 
 **`performance`: `[max-workers=<integer>] [,pbs-entries-max=<integer>]`**
 
-Other performance-related settings.
+其他性能相关设置。
 
-**`max-workers`\=`<integer> (1 - 256)` (*default \=* `16`)**
+**`max-workers`\=`<integer> (1 - 256)`（*默认值 \=* `16`）**
 
-Applies to VMs. Allow up to this many IO workers at the same time.
+适用于虚拟机。允许同时最多运行此数量的 IO 工作线程。
 
-**`pbs-entries-max`\=`<integer> (1 - N)` (*default \=* `1048576`)**
+**`pbs-entries-max`\=`<integer> (1 - N)`（*默认值 \=* `1048576`）**
 
-Applies to container backups sent to PBS. Limits the number of entries allowed in memory at a given time to avoid unintended OOM situations. Increase it to enable backups of containers with a large amount of files.
+适用于发送到 PBS 的容器备份。限制任一时刻内存中允许的条目数量，以避免意外的 OOM 情况。增大此值可备份包含大量文件的容器。
 
-**`pigz`: `<integer>` (*default \=* `0`)**
+**`pigz`：`<integer>`（*默认值 \=* `0`）**
 
-Use pigz instead of gzip when N\>0. N\=1 uses half of cores, N\>1 uses N as thread count.
+N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为线程数。
 
 **`pool`: `<string>`**
 
-Backup all known guest systems included in the specified pool.
+备份指定池中包含的所有已知客户机系统。
 
 **`protected`: `<boolean>`**
 
-If true, mark backup(s) as protected.
+如果为 true，将备份标记为受保护。
 
 {% hint style="info" %}
-Requires option(s): `storage`
+需要选项：`storage`
 {% endhint %}
 
-**`prune-backups`: `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` (*default \=* `keep-all=1`)**
+**`prune-backups`：`[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`（*默认值 \=* `keep-all=1`）**
 
-Use these retention options instead of those from the storage configuration.
+使用这些保留选项，替代存储配置中的保留选项。
 
 **`keep-all`\=`<boolean>`**
 
-Keep all backups. Conflicts with the other options when true.
+保留所有备份。为 true 时与其他选项冲突。
 
 **`keep-daily`\=`<N>`**
 
-Keep backups for the last \<N\> different days. If there is morethan one backup for a single day, only the latest one is kept.
+保留最近 \<N\> 个不同日期的备份。如果同一天有多个备份，只保留最新的。
 
 **`keep-hourly`\=`<N>`**
 
-Keep backups for the last \<N\> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
+保留最近 \<N\> 个不同小时的备份。如果同一小时有多个备份，只保留最新的。
 
 **`keep-last`\=`<N>`**
 
-Keep the last \<N\> backups.
+保留最后 \<N\> 个备份。
 
 **`keep-monthly`\=`<N>`**
 
-Keep backups for the last \<N\> different months. If there is morethan one backup for a single month, only the latest one is kept.
+保留最近 \<N\> 个不同月份的备份。如果同一个月有多个备份，只保留最新的。
 
 **`keep-weekly`\=`<N>`**
 
-Keep backups for the last \<N\> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
+保留最近 \<N\> 个不同周的备份。如果同一周有多个备份，则只保留最新的备份。
 
 **`keep-yearly`\=`<N>`**
 
-Keep backups for the last \<N\> different years. If there is morethan one backup for a single year, only the latest one is kept.
+保留最近 \<N\> 个不同年份的备份。如果同一年有多个备份，则只保留最新的备份。
 
-**`remove`: `<boolean>` (*default \=* `1`)**
+**`remove`：`<boolean>`（*默认值 \=* `1`）**
 
-Prune older backups according to *prune-backups*.
+根据 *prune-backups* 清理较旧的备份。
 
 **`script`: `<string>`**
 
-Use specified hook script.
+使用指定的钩子脚本。
 
-**`stdexcludes`: `<boolean>` (*default \=* `1`)**
+**`stdexcludes`：`<boolean>`（*默认值 \=* `1`）**
 
-Exclude temporary files and logs.
+排除临时文件和日志。
 
-**`stopwait`: `<integer> (0 - N)` (*default \=* `10`)**
+**`stopwait`：`<integer> (0 - N)`（*默认值 \=* `10`）**
 
-Maximal time to wait until a guest system is stopped (minutes).
+等待客户机系统停止的最长时间（分钟）。
 
 **`storage`: `<storage ID>`**
 
-Store resulting file to this storage.
+将生成的文件保存到此存储。
 
 **`tmpdir`: `<string>`**
 
-Store temporary files to specified directory.
+将临时文件保存到指定目录。
 
-**`zstd`: `<integer>` (*default \=* `1`)**
+**`zstd`：`<integer>`（*默认值 \=* `1`）**
 
-Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
+Zstd 线程数。N\=0 使用可用核心的一半；如果 N 设置为大于 0 的值，则使用 N 作为线程数。
 
-**Example `vzdump.conf` Configuration**
+**`vzdump.conf` 配置示例**
 
 ```text
 tmpdir: /mnt/fast_local_disk

@@ -2,133 +2,81 @@
 
 ## 名称 <a href="#chapter_pveceph" id="chapter_pveceph"></a>
 
-pveceph \- Manage Ceph Services on Proxmox VE Nodes
+pveceph \- 管理 Proxmox VE 节点上的 Ceph 服务
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pveceph"></a>
+### **pveceph** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveceph" id="cli_pveceph"></a>
 
+### **pveceph auth status** `[FORMAT_OPTIONS]` <a href="#cli_pveceph_auth_status" id="cli_pveceph_auth_status"></a>
 
+显示 cephx 密钥密码算法和 aes256k 迁移先决条件。
 
-**pveceph** `<COMMAND> [ARGS] [OPTIONS]`
+### **pveceph createmgr** <a href="#cli_pveceph_createmgr" id="cli_pveceph_createmgr"></a>
 
-<a id="cli_pveceph_auth_status"></a>
+*pveceph mgr create* 的别名。
 
+### **pveceph createmon** <a href="#cli_pveceph_createmon" id="cli_pveceph_createmon"></a>
 
+*pveceph mon create* 的别名。
 
-**pveceph auth status** `[FORMAT_OPTIONS]`
+### **pveceph createosd** <a href="#cli_pveceph_createosd" id="cli_pveceph_createosd"></a>
 
-Show cephx key ciphers and aes256k migration prerequisites.
+*pveceph osd create* 的别名。
 
-<a id="cli_pveceph_createmgr"></a>
+### **pveceph createpool** <a href="#cli_pveceph_createpool" id="cli_pveceph_createpool"></a>
 
+*pveceph pool create* 的别名。
 
+### **pveceph destroymgr** <a href="#cli_pveceph_destroymgr" id="cli_pveceph_destroymgr"></a>
 
-**pveceph createmgr**
+*pveceph mgr destroy* 的别名。
 
-An alias for *pveceph mgr create*.
+### **pveceph destroymon** <a href="#cli_pveceph_destroymon" id="cli_pveceph_destroymon"></a>
 
-<a id="cli_pveceph_createmon"></a>
+*pveceph mon destroy* 的别名。
 
+### **pveceph destroyosd** <a href="#cli_pveceph_destroyosd" id="cli_pveceph_destroyosd"></a>
 
+*pveceph osd destroy* 的别名。
 
-**pveceph createmon**
+### **pveceph destroypool** <a href="#cli_pveceph_destroypool" id="cli_pveceph_destroypool"></a>
 
-An alias for *pveceph mon create*.
+*pveceph pool destroy* 的别名。
 
-<a id="cli_pveceph_createosd"></a>
+### **pveceph fs create** `[OPTIONS]` <a href="#cli_pveceph_fs_create" id="cli_pveceph_fs_create"></a>
 
+创建 Ceph 文件系统
 
+**`--add-storage` `<boolean>` （*默认值 \=* `0`）**
 
-**pveceph createosd**
+将创建的 CephFS 配置为此集群的存储。
 
-An alias for *pveceph osd create*.
+**`--name` `(?^:^[^:/\s]+$)` （*默认值 \=* `cephfs`）**
 
-<a id="cli_pveceph_createpool"></a>
+ceph 文件系统名称。
 
+**`--pg_num` `<integer> (8 - 32768)` （*默认值 \=* `128`）**
 
+后端数据池的放置组数量。元数据池将使用此数量的四分之一。
 
-**pveceph createpool**
+### **pveceph fs destroy** `<name>` `[OPTIONS]` <a href="#cli_pveceph_fs_destroy" id="cli_pveceph_fs_destroy"></a>
 
-An alias for *pveceph pool create*.
-
-<a id="cli_pveceph_destroymgr"></a>
-
-
-
-**pveceph destroymgr**
-
-An alias for *pveceph mgr destroy*.
-
-<a id="cli_pveceph_destroymon"></a>
-
-
-
-**pveceph destroymon**
-
-An alias for *pveceph mon destroy*.
-
-<a id="cli_pveceph_destroyosd"></a>
-
-
-
-**pveceph destroyosd**
-
-An alias for *pveceph osd destroy*.
-
-<a id="cli_pveceph_destroypool"></a>
-
-
-
-**pveceph destroypool**
-
-An alias for *pveceph pool destroy*.
-
-<a id="cli_pveceph_fs_create"></a>
-
-
-
-**pveceph fs create** `[OPTIONS]`
-
-Create a Ceph filesystem
-
-**`--add-storage` `<boolean>` (*default \=* `0`)**
-
-Configure the created CephFS as storage for this cluster.
-
-**`--name` `(?^:^[^:/\s]+$)` (*default \=* `cephfs`)**
-
-The ceph filesystem name.
-
-**`--pg_num` `<integer> (8 - 32768)` (*default \=* `128`)**
-
-Number of placement groups for the backing data pool. The metadata pool will use a quarter of this.
-
-<a id="cli_pveceph_fs_destroy"></a>
-
-
-
-**pveceph fs destroy** `<name>` `[OPTIONS]`
-
-Destroy a Ceph filesystem. Refuses if any PVE storage entry of type *cephfs* still references the filesystem and is not disabled. Optionally also removes the storage entries and/or the underlying metadata and data pools.
+销毁 Ceph 文件系统。如果任何类型为 *cephfs* 的 PVE 存储条目仍引用该文件系统且未禁用，则拒绝操作。还可以选择移除存储条目和/或底层元数据池及数据池。
 
 **`<name>`: `<string>`**
 
-The Ceph filesystem name.
+Ceph 文件系统名称。
 
-**`--remove-pools` `<boolean>` (*default \=* `0`)**
+**`--remove-pools` `<boolean>` （*默认值 \=* `0`）**
 
-Remove the metadata and data pools used by this filesystem.
+移除此文件系统使用的元数据池和数据池。
 
-**`--remove-storages` `<boolean>` (*default \=* `0`)**
+**`--remove-storages` `<boolean>` （*默认值 \=* `0`）**
 
-Remove pveceph-managed storages configured for this filesystem.
+移除为此文件系统配置的、由 pveceph 管理的存储。
 
-<a id="cli_pveceph_help"></a>
-
-
-
-**pveceph help** `[OPTIONS]`
+### **pveceph help** `[OPTIONS]` <a href="#cli_pveceph_help" id="cli_pveceph_help"></a>
 
 获取指定命令的帮助。
 
@@ -140,437 +88,353 @@ Remove pveceph-managed storages configured for this filesystem.
 
 详细输出格式。
 
-<a id="cli_pveceph_init"></a>
+### **pveceph init** `[OPTIONS]` <a href="#cli_pveceph_init" id="cli_pveceph_init"></a>
 
-
-
-**pveceph init** `[OPTIONS]`
-
-Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a \[global\] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
+创建初始的 Ceph 默认配置并设置符号链接。重复调用具有幂等性：如果 ceph.conf 中已存在 \[global\] 部分，则保留现有的 fsid / auth / pool 默认值，并静默忽略大多数参数。
 
 **`--cluster-network` `<string>`**
 
-Declare a separate cluster network, OSDs will route heartbeat, object replication and recovery traffic over it
+声明单独的集群网络，OSD 将通过此网络传输心跳、对象复制和恢复流量
 
 {% hint style="info" %}
-Requires option(s): `network`
+需要选项：`network`
 {% endhint %}
 
-**`--disable_cephx` `<boolean>` (*default \=* `0`)**
+**`--disable_cephx` `<boolean>` （*默认值 \=* `0`）**
 
-Disable cephx authentication.
+禁用 cephx 认证。
 
 {% hint style="warning" %}
-cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!
+cephx 是防止中间人攻击的安全功能。只有在网络为私有网络时才考虑禁用 cephx！
 {% endhint %}
 
-**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
+**`--min_size` `<integer> (1 - 7)` （*默认值 \=* `2`）**
 
-Minimum number of available replicas per object to allow I/O
+允许 I/O 所需的每个对象的最少可用副本数量
 
 **`--network` `<string>`**
 
-Use specific network for all ceph related traffic
+对所有 ceph 相关流量使用指定网络
 
-**`--pg_bits` `<integer> (6 - 14)` (*default \=* `6`)**
+**`--pg_bits` `<integer> (6 - 14)` （*默认值 \=* `6`）**
 
-Placement group bits, used to specify the default number of placement groups.
+放置组位数，用于指定默认放置组数量。
 
-Depreacted. This setting was deprecated in recent Ceph versions.
+已弃用。近期 Ceph 版本中已弃用此设置。
 
-**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
+**`--size` `<integer> (1 - 7)` （*默认值 \=* `3`）**
 
-Targeted number of replicas per object
+每个对象的目标副本数量
 
-<a id="cli_pveceph_install"></a>
+### **pveceph install** `[OPTIONS]` <a href="#cli_pveceph_install" id="cli_pveceph_install"></a>
 
+安装 ceph 相关软件包。
 
+**`--allow-experimental` `<boolean>` （*默认值 \=* `0`）**
 
-**pveceph install** `[OPTIONS]`
+允许实验性版本。请谨慎使用！
 
-Install ceph related packages.
+**`--repository` `<enterprise | manual | no-subscription | test>` （*默认值 \=* `enterprise`）**
 
-**`--allow-experimental` `<boolean>` (*default \=* `0`)**
+使用的 Ceph 仓库。*manual* 选项不会配置任何仓库。如果宿主机无法访问公共仓库，例如使用 Proxmox Offline Mirror 时，请使用此选项。开始安装之前，需要手动配置包含相应版本 Ceph 软件包的仓库！
 
-Allow experimental versions. Use with care!
+**`--version` `<squid | tentacle>` （*默认值 \=* `tentacle`）**
 
-**`--repository` `<enterprise | manual | no-subscription | test>` (*default \=* `enterprise`)**
+要安装的 Ceph 版本。
 
-Ceph repository to use. The *manual* option will not configure any repositories. Use it if the host cannot access the public repositories, for example if Proxmox Offline Mirror is used. A repository that contains the Ceph packages for the version needs to be manually configured before starting the installation!
+### **pveceph lspools** <a href="#cli_pveceph_lspools" id="cli_pveceph_lspools"></a>
 
-**`--version` `<squid | tentacle>` (*default \=* `tentacle`)**
+*pveceph pool ls* 的别名。
 
-Ceph version to install.
+### **pveceph mds create** `[OPTIONS]` <a href="#cli_pveceph_mds_create" id="cli_pveceph_mds_create"></a>
 
-<a id="cli_pveceph_lspools"></a>
+创建 Ceph 元数据服务器（MDS）
 
+**`--hotstandby` `<boolean>` （*默认值 \=* `0`）**
 
+确定 ceph-mds 守护进程是否应轮询并重放活动 MDS 的日志。这可以在 MDS 故障时更快地切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。
 
-**pveceph lspools**
+**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-An alias for *pveceph pool ls*.
+mds 的 ID，省略时与节点名称相同
 
-<a id="cli_pveceph_mds_create"></a>
+### **pveceph mds destroy** `<name>` <a href="#cli_pveceph_mds_destroy" id="cli_pveceph_mds_destroy"></a>
 
-
-
-**pveceph mds create** `[OPTIONS]`
-
-Create Ceph Metadata Server (MDS)
-
-**`--hotstandby` `<boolean>` (*default \=* `0`)**
-
-Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1.
-
-**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
-
-The ID for the mds, when omitted the same as the nodename
-
-<a id="cli_pveceph_mds_destroy"></a>
-
-
-
-**pveceph mds destroy** `<name>`
-
-Destroy Ceph Metadata Server
+销毁 Ceph 元数据服务器
 
 **`<name>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-The name (ID) of the mds
+mds 的名称（ID）
 
-<a id="cli_pveceph_mgr_create"></a>
+### **pveceph mgr create** `[OPTIONS]` <a href="#cli_pveceph_mgr_create" id="cli_pveceph_mgr_create"></a>
 
+创建 Ceph 管理器
 
+**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-**pveceph mgr create** `[OPTIONS]`
+管理器的 ID，省略时与节点名称相同。
 
-Create Ceph Manager
+### **pveceph mgr destroy** `<id>` <a href="#cli_pveceph_mgr_destroy" id="cli_pveceph_mgr_destroy"></a>
 
-**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
-
-The ID for the manager, when omitted the same as the nodename.
-
-<a id="cli_pveceph_mgr_destroy"></a>
-
-
-
-**pveceph mgr destroy** `<id>`
-
-Destroy Ceph Manager.
+销毁 Ceph 管理器。
 
 **`<id>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-The ID of the manager
+管理器的 ID
 
-<a id="cli_pveceph_mon_create"></a>
+### **pveceph mon create** `[OPTIONS]` <a href="#cli_pveceph_mon_create" id="cli_pveceph_mon_create"></a>
 
-
-
-**pveceph mon create** `[OPTIONS]`
-
-Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
+创建 Ceph 监视器。对于首个监视器，还会自动创建管理器。
 
 **`--mon-address` `<string>`**
 
-Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph.
+覆盖自动检测的监视器 IP 地址。必须位于 Ceph 的公共网络中。
 
-**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
+**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` （*默认值 \=* `nodename`）**
 
-The ID for the monitor, when omitted the same as the nodename.
+监视器的 ID，省略时与节点名称相同。
 
-<a id="cli_pveceph_mon_destroy"></a>
+### **pveceph mon destroy** `<monid>` <a href="#cli_pveceph_mon_destroy" id="cli_pveceph_mon_destroy"></a>
 
-
-
-**pveceph mon destroy** `<monid>`
-
-Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does not destroy any Manager on the same node; use
+销毁 Ceph 监视器。拒绝移除集群中的最后一个监视器。不会销毁同一节点上的任何管理器；请使用
 
 **`<monid>`: `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?`**
 
-Monitor ID
+监视器 ID
 
-<a id="cli_pveceph_osd_create"></a>
+### **pveceph osd create** `<dev>` `[OPTIONS]` <a href="#cli_pveceph_osd_create" id="cli_pveceph_osd_create"></a>
 
-
-
-**pveceph osd create** `<dev>` `[OPTIONS]`
-
-Create OSD
+创建 OSD
 
 **`<dev>`: `<string>`**
 
-Block device name.
+块设备名称。
 
 **`--crush-device-class` `<string>`**
 
-Set the device class of the OSD in crush.
+设置 OSD 在 crush 中的设备类别。
 
 **`--db_dev` `<string>`**
 
-Block device name for block.db.
+block.db 的块设备名称。
 
 **`--db_dev_size` `<number> (1 - N)`**
 
-Size in GiB for block.db.
+block.db 的大小，单位为 GiB。
 
 {% hint style="info" %}
-Requires option(s): `db_dev`
+需要选项：`db_dev`
 {% endhint %}
 
-**`--encrypted` `<boolean>` (*default \=* `0`)**
+**`--encrypted` `<boolean>` （*默认值 \=* `0`）**
 
-Enables encryption of the OSD.
+启用 OSD 加密。
 
 **`--osds-per-device` `<integer> (1 - N)`**
 
-OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db\_dev* and *wal\_dev*.
+每个物理设备上的 OSD 服务数量。仅对高速 NVMe 设备有用，可更好地利用其性能。与 *db\_dev* 和 *wal\_dev* 互斥。
 
 **`--wal_dev` `<string>`**
 
-Block device name for block.wal.
+block.wal 的块设备名称。
 
 **`--wal_dev_size` `<number> (0.5 - N)`**
 
-Size in GiB for block.wal.
+block.wal 的大小，单位为 GiB。
 
 {% hint style="info" %}
-Requires option(s): `wal_dev`
+需要选项：`wal_dev`
 {% endhint %}
 
-<a id="cli_pveceph_osd_destroy"></a>
+### **pveceph osd destroy** `<osdid>` `[OPTIONS]` <a href="#cli_pveceph_osd_destroy" id="cli_pveceph_osd_destroy"></a>
 
-
-
-**pveceph osd destroy** `<osdid>` `[OPTIONS]`
-
-Destroy OSD
+销毁 OSD
 
 **`<osdid>`: `<integer>`**
 
 OSD ID
 
-**`--cleanup` `<boolean>` (*default \=* `0`)**
+**`--cleanup` `<boolean>` （*默认值 \=* `0`）**
 
-If set, also destroy the underlying logical volumes via *ceph-volume lvm zap --destroy*, remove the volume group’s physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection.
+如果设置，还会通过 *ceph-volume lvm zap --destroy* 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的任何 journal/block.db/block.wal 分区。如果不设置此标志，LV 和分区将保持原样，以供检查。
 
-<a id="cli_pveceph_osd_details"></a>
+### **pveceph osd details** `<osdid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveceph_osd_details" id="cli_pveceph_osd_details"></a>
 
-
-
-**pveceph osd details** `<osdid>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Get OSD details.
+获取 OSD 详细信息。
 
 **`<osdid>`: `<string>`**
 
-ID of the OSD
+OSD 的 ID
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-Print verbose information, same as json-pretty output format.
+打印详细信息，与 json-pretty 输出格式相同。
 
-<a id="cli_pveceph_pool_create"></a>
+### **pveceph pool create** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_create" id="cli_pveceph_pool_create"></a>
 
-
-
-**pveceph pool create** `<name>` `[OPTIONS]`
-
-Create Ceph pool
+创建 Ceph 池
 
 **`<name>`: `(?^:^[^:/\s]+$)`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
-**`--add_storages` `<boolean>` (*default \=* `0`)**
+**`--add_storages` `<boolean>` （*默认值 \=* `0`）**
 
-Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage).
+使用新池配置虚拟机和容器存储。对于复制池默认为 false，对于纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。
 
-**`--application` `<cephfs | rbd | rgw>` (*default \=* `rbd`)**
+**`--application` `<cephfs | rbd | rgw>` （*默认值 \=* `rbd`）**
 
-The application of the pool.
+池的应用。
 
 **`--crush_rule` `<string>`**
 
-The rule to use for mapping object placement in the cluster.
+用于映射集群中对象放置位置的规则。
 
 **`--erasure-coding` `k=<integer> ,m=<integer> [,device-class=<class>] [,failure-domain=<domain>] [,profile=<profile>]`**
 
-Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min\_size* and *crush\_rule* parameters will be applied to the metadata pool.
+为 RBD 创建纠删码池，同时创建用于元数据存储的配套复制池。使用 EC 时，常见 ceph 选项 *size*、*min\_size* 和 *crush\_rule* 参数将应用于元数据池。
 
-**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
+**`--min_size` `<integer> (1 - 7)` （*默认值 \=* `2`）**
 
-Minimum number of replicas per object
+每个对象的最少副本数量
 
-**`--pg_autoscale_mode` `<off | on | warn>` (*default \=* `warn`)**
+**`--pg_autoscale_mode` `<off | on | warn>` （*默认值 \=* `warn`）**
 
-The automatic PG scaling mode of the pool.
+池的自动 PG 扩缩模式。
 
-**`--pg_num` `<integer> (1 - 32768)` (*default \=* `128`)**
+**`--pg_num` `<integer> (1 - 32768)` （*默认值 \=* `128`）**
 
-Number of placement groups.
+放置组数量。
 
 **`--pg_num_min` `<integer> (-N - 32768)`**
 
-Minimal number of placement groups.
+放置组的最少数量。
 
-**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
+**`--size` `<integer> (1 - 7)` （*默认值 \=* `3`）**
 
-Number of replicas per object
+每个对象的副本数量
 
 **`--target_size` `^(\d+(\.\d+)?)([KMGT])?$`**
 
-The estimated target size of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标大小。
 
 **`--target_size_ratio` `<number>`**
 
-The estimated target ratio of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标比例。
 
-<a id="cli_pveceph_pool_destroy"></a>
+### **pveceph pool destroy** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_destroy" id="cli_pveceph_pool_destroy"></a>
 
-
-
-**pveceph pool destroy** `<name>` `[OPTIONS]`
-
-Destroy pool
+销毁池
 
 **`<name>`: `<string>`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-If true, destroys pool even if in use
+如果为 true，即使池正在使用也将其销毁
 
-**`--remove_ecprofile` `<boolean>` (*default \=* `1`)**
+**`--remove_ecprofile` `<boolean>` （*默认值 \=* `1`）**
 
-Remove the erasure code profile. Defaults to true, if applicable.
+移除纠删码配置文件。在适用情况下默认为 true。
 
-**`--remove_storages` `<boolean>` (*default \=* `0`)**
+**`--remove_storages` `<boolean>` （*默认值 \=* `0`）**
 
-Remove all pveceph-managed storages configured for this pool
+移除为此池配置的、由 pveceph 管理的所有存储
 
-<a id="cli_pveceph_pool_get"></a>
+### **pveceph pool get** `<name>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveceph_pool_get" id="cli_pveceph_pool_get"></a>
 
-
-
-**pveceph pool get** `<name>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Show the current pool status.
+显示池的当前状态。
 
 **`<name>`: `<string>`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
-If enabled, will display additional data(eg. statistics).
+如果启用，将显示额外数据（例如统计信息）。
 
-<a id="cli_pveceph_pool_ls"></a>
+### **pveceph pool ls** `[FORMAT_OPTIONS]` <a href="#cli_pveceph_pool_ls" id="cli_pveceph_pool_ls"></a>
 
+列出所有池及其设置（可通过 POST/PUT 端点设置的选项）。
 
+### **pveceph pool set** `<name>` `[OPTIONS]` <a href="#cli_pveceph_pool_set" id="cli_pveceph_pool_set"></a>
 
-**pveceph pool ls** `[FORMAT_OPTIONS]`
-
-List all pools and their settings (which are settable by the POST/PUT endpoints).
-
-<a id="cli_pveceph_pool_set"></a>
-
-
-
-**pveceph pool set** `<name>` `[OPTIONS]`
-
-Change POOL settings
+更改 POOL 设置
 
 **`<name>`: `(?^:^[^:/\s]+$)`**
 
-The name of the pool. It must be unique.
+池的名称。必须唯一。
 
 **`--application` `<cephfs | rbd | rgw>`**
 
-The application of the pool.
+池的应用。
 
 **`--crush_rule` `<string>`**
 
-The rule to use for mapping object placement in the cluster.
+用于映射集群中对象放置位置的规则。
 
 **`--min_size` `<integer> (1 - 7)`**
 
-Minimum number of replicas per object
+每个对象的最少副本数量
 
 **`--pg_autoscale_mode` `<off | on | warn>`**
 
-The automatic PG scaling mode of the pool.
+池的自动 PG 扩缩模式。
 
 **`--pg_num` `<integer> (1 - 32768)`**
 
-Number of placement groups.
+放置组数量。
 
 **`--pg_num_min` `<integer> (-N - 32768)`**
 
-Minimal number of placement groups.
+放置组的最少数量。
 
 **`--size` `<integer> (1 - 7)`**
 
-Number of replicas per object
+每个对象的副本数量
 
 **`--target_size` `^(\d+(\.\d+)?)([KMGT])?$`**
 
-The estimated target size of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标大小。
 
 **`--target_size_ratio` `<number>`**
 
-The estimated target ratio of the pool for the PG autoscaler.
+用于 PG 自动扩缩器的池预计目标比例。
 
-<a id="cli_pveceph_purge"></a>
+### **pveceph purge** `[OPTIONS]` <a href="#cli_pveceph_purge" id="cli_pveceph_purge"></a>
 
-
-
-**pveceph purge** `[OPTIONS]`
-
-Destroy ceph related data and configuration files.
+销毁 ceph 相关数据和配置文件。
 
 **`--crash` `<boolean>`**
 
-Additionally purge Ceph crash logs, /var/lib/ceph/crash.
+同时清除 Ceph 崩溃日志，/var/lib/ceph/crash.
 
 **`--logs` `<boolean>`**
 
-Additionally purge Ceph logs, /var/log/ceph.
+同时清除 Ceph 日志，/var/log/ceph.
 
-<a id="cli_pveceph_start"></a>
+### **pveceph start** `[OPTIONS]` <a href="#cli_pveceph_start" id="cli_pveceph_start"></a>
 
+启动 ceph 服务。
 
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` （*默认值 \=* `ceph.target`）**
 
-**pveceph start** `[OPTIONS]`
+Ceph 服务名称。
 
-Start ceph services.
+### **pveceph status** <a href="#cli_pveceph_status" id="cli_pveceph_status"></a>
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
+获取 Ceph 状态。
 
-Ceph service name.
+### **pveceph stop** `[OPTIONS]` <a href="#cli_pveceph_stop" id="cli_pveceph_stop"></a>
 
-<a id="cli_pveceph_status"></a>
+停止 ceph 服务。
 
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` （*默认值 \=* `ceph.target`）**
 
+Ceph 服务名称。
 
-**pveceph status**
-
-Get Ceph Status.
-
-<a id="cli_pveceph_stop"></a>
-
-
-
-**pveceph stop** `[OPTIONS]`
-
-Stop ceph services.
-
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
-
-Ceph service name.
-
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 [![screenshot/gui-ceph-status-dashboard.png](../assets/screenshot-gui-ceph-status-dashboard-png-35c265732db2.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-status-dashboard.png)
 
@@ -592,11 +456,11 @@ Ceph 是一种分布式对象存储和文件系统，旨在提供卓越的性能
 - 无需硬件 RAID 控制器
 - 开源
 
-For small to medium-sized deployments, it is possible to install a Ceph server for using RADOS Block Devices (RBD) or CephFS directly on your Proxmox VE cluster nodes (see [Ceph RADOS Block Devices (RBD)](pvesm-1.md#ceph_rados_block_devices)). Recent hardware has a lot of CPU power and RAM, so running storage services and virtual guests on the same node is possible.
+对于中小型部署，可以直接在 Proxmox VE 集群节点上安装 Ceph 服务器，以使用 RADOS 块设备（RBD）或 CephFS（参见 [Ceph RADOS 块设备（RBD）](pvesm-1.md#ceph_rados_block_devices)）。现代硬件具有充足的 CPU 算力和 RAM，因此可以在同一节点上运行存储服务和虚拟客户机。
 
 为简化管理，Proxmox VE 提供原生集成功能，可在 Proxmox VE 节点上安装和管理 [Ceph](http://ceph.com) 服务，您可以使用内置 Web 界面，也可以使用 *pveceph* 命令行工具。
 
-## Terminology <a href="#_terminology" id="_terminology"></a>
+## 术语 <a href="#terminology" id="terminology"></a>
 
 **Ceph 由多个守护进程组成，用作 RBD 存储时需要：**
 
@@ -609,7 +473,7 @@ For small to medium-sized deployments, it is possible to install a Ceph server f
 我们强烈建议您熟悉 Ceph [\[1\]](#note-5be4abcb-1)、其架构 [\[2\]](#note-5be4abcb-2) 和术语 [\[3\]](#note-5be4abcb-3)。
 {% endhint %}
 
-## Recommendations for a Healthy Ceph Cluster <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
+## 保持 Ceph 集群健康的建议 <a href="#recommendations_for_a_healthy_ceph_cluster" id="recommendations_for_a_healthy_ceph_cluster"></a>
 
 要构建超融合 Proxmox \+ Ceph 集群，部署时必须至少使用三台（最好完全相同的）服务器。
 
@@ -619,11 +483,7 @@ For small to medium-sized deployments, it is possible to install a Ceph server f
 以下建议应被视为选择硬件的粗略指南。因此，根据您的具体需求进行调整仍然至关重要。您应测试自己的部署，并持续监控其健康状况和性能。
 {% endhint %}
 
-<a id="pve_ceph_recommendation_cpu"></a>
-
-
-
-**CPU**
+### CPU <a href="#pve_ceph_recommendation_cpu" id="pve_ceph_recommendation_cpu"></a>
 
 Ceph 服务可分为两类：
 
@@ -642,27 +502,19 @@ Ceph 服务可分为两类：
 
 请注意，OSD 的 CPU 使用率主要取决于磁盘性能。磁盘可能达到的 IOPS（**IO** **O**perations per **S**econd）越高，OSD 服务可使用的 CPU 资源就越多。对于现代企业级 SSD 磁盘，例如能够持续维持超过 100’000 的高 IOPS 负载且具有亚毫秒延迟的 NVMe，每个 OSD 可以使用多个 CPU 线程；对于性能非常高的磁盘，每个由 NVMe 支持的 OSD 很可能会使用四到六个 CPU 线程。
 
-<a id="pve_ceph_recommendation_memory"></a>
-
-
-
-**内存**
+### 内存 <a href="#pve_ceph_recommendation_memory" id="pve_ceph_recommendation_memory"></a>
 
 尤其是在超融合部署中，需要仔细规划并监控内存消耗。除了虚拟机和容器的预计内存使用量外，您还必须确保为 Ceph 留出足够的内存，以提供出色且稳定的性能。
 
 虽然正常情况下内存使用量可能较少，但在恢复、重新平衡或回填等关键操作期间，内存消耗会增加。这意味着您应避免在常规运行时就耗尽所有可用内存，而应留出一些余量，以应对服务中断。
 
-The current recommendation is to [configure](#pve_ceph_configuration) OSDs with at least **8 GiB of memory** for good performance. The OSD daemon requires 4 GiB by default.
+当前建议为 OSD [配置](#pve_ceph_configuration)至少 **8 GiB 内存**，以获得良好的性能。OSD 守护进程默认需要 4 GiB。
 
 {% hint style="info" %}
 总内存消耗主要由 OSD 守护进程的数量决定。但是，在关键操作期间，所有 Ceph 服务都可能需要额外内存。
 {% endhint %}
 
-<a id="pve_ceph_recommendation_network"></a>
-
-
-
-**网络**
+### 网络 <a href="#pve_ceph_recommendation_network" id="pve_ceph_recommendation_network"></a>
 
 我们建议至少使用 10 Gbps 或更高带宽的网络，专用于 Ceph 流量。如果没有可用的 10\+ Gbps 交换机，对于三到五个节点的集群，网状网络部署 [\[4\]](#note-5be4abcb-4) 也是一种选择。
 
@@ -680,25 +532,17 @@ The current recommendation is to [configure](#pve_ceph_configuration) OSDs with 
 
 如果启用了防火墙，您必须开放 Ceph 使用的端口，最简单的方法是使用防火墙 `macro`。
 
-<a id="pve_ceph_recommendation_disk"></a>
-
-
-
-**磁盘**
+### 磁盘 <a href="#pve_ceph_recommendation_disk" id="pve_ceph_recommendation_disk"></a>
 
 规划 Ceph 集群规模时，必须考虑恢复时间。尤其是对于小型集群，恢复可能耗时很长。建议在小型部署中使用 SSD 而非 HDD，以缩短恢复时间，并最大程度降低恢复期间发生后续故障事件的可能性。
 
-In general, SSDs will provide more IOPS than spinning disks. With this in mind, in addition to the higher cost, it may make sense to implement a [class based](#pve_ceph_device_classes) separation of pools. Another way to speed up OSDs is to use a faster disk as a journal or DB/**W**rite-**A**head-**L**og device, see [creating Ceph OSDs](#pve_ceph_osds). If a faster disk is used for multiple OSDs, a proper balance between OSD and WAL / DB (or journal) disk must be selected, otherwise the faster disk becomes the bottleneck for all linked OSDs.
+通常，SSD 提供的 IOPS 多于机械磁盘。考虑到这一点以及更高的成本，按[设备类别](#pve_ceph_device_classes)分离池可能是合理的。另一种加速 OSD 的方法是将更快的磁盘用作日志或 DB/**W**rite-**A**head-**L**og（预写日志）设备，参见[创建 Ceph OSD](#pve_ceph_osds)。如果多个 OSD 使用同一个更快的磁盘，则必须在 OSD 和 WAL / DB（或日志）磁盘之间选择适当的平衡，否则更快的磁盘会成为所有关联 OSD 的瓶颈。
 
 除磁盘类型外，各节点使用大小一致且数量均匀分布的磁盘时，Ceph 的性能最佳。例如，每个节点配备 4 x 500 GB 磁盘，优于混合配置一块 1 TB 磁盘和三块 250 GB 磁盘。
 
 您还需要平衡 OSD 数量和单个 OSD 容量。更大的容量可以提高存储密度，但也意味着单个 OSD 发生故障时，Ceph 必须一次性恢复更多数据。
 
-<a id="pve_ceph_recommendation_raid"></a>
-
-
-
-**避免使用 RAID**
+### 避免使用 RAID <a href="#pve_ceph_recommendation_raid" id="pve_ceph_recommendation_raid"></a>
 
 由于 Ceph 自行处理数据对象冗余以及对磁盘（OSD）的多次并行写入，使用 RAID 控制器通常不会提升性能或可用性。相反，Ceph 旨在自行管理整块磁盘，中间不需要任何抽象层。RAID 控制器并非针对 Ceph 工作负载而设计，可能会使情况复杂化，有时甚至降低性能，因为其写入和缓存算法可能会干扰 Ceph 的相应算法。
 
@@ -706,9 +550,9 @@ In general, SSDs will provide more IOPS than spinning disks. With this in mind, 
 避免使用 RAID 控制器，改用主机总线适配器（HBA）。
 {% endhint %}
 
-## Initial Ceph Installation \& Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
+## Ceph 初始安装与配置 <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
 
-### Using the Web-based Wizard <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
+### 使用 Web 向导 <a href="#using_the_web_based_wizard" id="using_the_web_based_wizard"></a>
 
 [![screenshot/gui-node-ceph-install.png](../assets/screenshot-gui-node-ceph-install-png-146fee5f8339.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install.png)
 
@@ -722,7 +566,7 @@ In general, SSDs will provide more IOPS than spinning disks. With this in mind, 
 
 [![screenshot/gui-node-ceph-install-wizard-step0.png](../assets/screenshot-gui-node-ceph-install-wizard-step0-png-41f18d5b8097.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install-wizard-step0.png)
 
-After finishing the installation step, you will need to create a configuration. This step is only needed once per cluster, as this configuration is distributed automatically to all remaining cluster members through Proxmox VE’s clustered [configuration file system (pmxcfs)](pmxcfs-8.md#chapter_pmxcfs).
+完成安装步骤后，需要创建配置。每个集群只需执行此步骤一次，因为此配置会通过 Proxmox VE 的集群[配置文件系统（pmxcfs）](pmxcfs-8.md#chapter_pmxcfs)自动分发到其余所有集群成员。
 
 配置步骤包括以下设置：
 
@@ -732,9 +576,9 @@ After finishing the installation step, you will need to create a configuration. 
 
 - **公共网络：** 此网络将用于公共存储通信（例如，使用以 Ceph RBD 为后端的磁盘的虚拟机或 CephFS 挂载），以及不同 Ceph 服务之间的通信。此设置为必填项。  
    强烈建议将 Ceph 流量与 Proxmox VE 集群通信（corosync）以及虚拟客户机可能使用的前端（公共）网络分开。否则，Ceph 的高带宽 IO 流量可能会干扰其他依赖低延迟的服务。
-- **Cluster Network:** Specify to separate the [OSD](#pve_ceph_osds) replication and heartbeat traffic as well. This setting is optional.   
-   Using a physically separated network is recommended, as it will relieve the Ceph public and the virtual guests network, while also providing a significant Ceph performance improvements.   
-   The Ceph cluster network can be configured and moved to another physically separated network at a later time.
+- **集群网络：**指定此项还可分离 [OSD](#pve_ceph_osds) 复制和心跳流量。此设置是可选的。  
+   建议使用物理隔离的网络，因为这会减轻 Ceph 公共网络和虚拟客户机网络的负担，同时显著提升 Ceph 性能。  
+   Ceph 集群网络也可以稍后配置并迁移到另一个物理隔离的网络。
 
 [![screenshot/gui-node-ceph-install-wizard-step2.png](../assets/screenshot-gui-node-ceph-install-wizard-step2-png-8fdd1bc317bd.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install-wizard-step2.png)
 
@@ -745,11 +589,11 @@ After finishing the installation step, you will need to create a configuration. 
 
 此外，您需要选择第一个监视器节点。此步骤为必需步骤。
 
-That’s it. You should now see a success page as the last step, with further instructions on how to proceed. Your system is now ready to start using Ceph. To get started, you will need to create some additional [monitors](#pve_ceph_monitors), [OSDs](#pve_ceph_osds) and at least one [pool](#pve_ceph_pools).
+至此完成。最后一步现在应显示成功页面，并进一步说明接下来如何操作。系统现已准备好开始使用 Ceph。要开始使用，需要额外创建一些[监视器](#pve_ceph_monitors)、[OSD](#pve_ceph_osds) 以及至少一个[池](#pve_ceph_pools)。
 
-The rest of this chapter will guide you through getting the most out of your Proxmox VE based Ceph setup. This includes the aforementioned tips and more, such as [CephFS](#pveceph_fs), which is a helpful addition to your new Ceph cluster.
+本章其余部分将指导您充分利用基于 Proxmox VE 的 Ceph 配置。这包括上述提示及更多内容，例如 [CephFS](#pveceph_fs)，它是新 Ceph 集群的实用补充。
 
-### CLI Installation of Ceph Packages <a href="#pve_ceph_install" id="pve_ceph_install"></a>
+### 通过 CLI 安装 Ceph 软件包 <a href="#pve_ceph_install" id="pve_ceph_install"></a>
 
 除了使用 Web 界面中推荐的 Proxmox VE Ceph 安装向导外，您还可以在每个节点上使用以下 CLI 命令：
 
@@ -757,9 +601,9 @@ The rest of this chapter will guide you through getting the most out of your Pro
 pveceph install
 ```
 
-This sets up an `apt` package repository in `/etc/apt/sources.list.d/ceph.sources` and installs the required software.
+这会设置 `apt` 软件包仓库（位于 `/etc/apt/sources.list.d/ceph.sources`），并安装所需的软件。
 
-### Initial Ceph configuration via CLI <a href="#_initial_ceph_configuration_via_cli" id="_initial_ceph_configuration_via_cli"></a>
+### 通过 CLI 进行 Ceph 初始配置 <a href="#initial_ceph_configuration_via_cli" id="initial_ceph_configuration_via_cli"></a>
 
 使用 Proxmox VE Ceph 安装向导（推荐），或在其中一个节点上运行以下命令：
 
@@ -767,15 +611,15 @@ This sets up an `apt` package repository in `/etc/apt/sources.list.d/ceph.source
 pveceph init --network 10.10.10.0/24
 ```
 
-This creates an initial configuration at `/etc/pve/ceph.conf` with a dedicated network for Ceph. This file is automatically distributed to all Proxmox VE nodes, using [pmxcfs](pmxcfs-8.md#chapter_pmxcfs). The command also creates a symbolic link at `/etc/ceph/ceph.conf`, which points to that file. Thus, you can simply run Ceph commands without the need to specify a configuration file.
+这会在 `/etc/pve/ceph.conf` 创建初始配置，并为 Ceph 设置专用网络。此文件通过 [pmxcfs](pmxcfs-8.md#chapter_pmxcfs) 自动分发到所有 Proxmox VE 节点。此命令还会在 `/etc/ceph/ceph.conf` 创建一个指向该文件的符号链接。因此，可以直接运行 Ceph 命令，无需指定配置文件。
 
-## Ceph Monitor <a href="#pve_ceph_monitors" id="pve_ceph_monitors"></a>
+## Ceph 监视器 <a href="#pve_ceph_monitors" id="pve_ceph_monitors"></a>
 
 [![screenshot/gui-ceph-monitor.png](../assets/screenshot-gui-ceph-monitor-png-5183f95d9815.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-monitor.png)
 
 Ceph 监视器（MON）[\[5\]](#note-5be4abcb-5) 维护集群映射的主副本。为实现高可用性，您至少需要 3 个监视器。如果您使用了安装向导，则已经安装了一个监视器。只要您的集群规模属于中小型，就不需要超过 3 个监视器。只有真正大型的集群才需要更多监视器。
 
-### Create Monitors <a href="#pveceph_create_mon" id="pveceph_create_mon"></a>
+### 创建监视器 <a href="#pveceph_create_mon" id="pveceph_create_mon"></a>
 
 在要放置监视器的每个节点上（建议三个监视器），通过 GUI 中的 *Ceph → Monitor* 选项卡创建一个监视器，或运行：
 
@@ -783,7 +627,7 @@ Ceph 监视器（MON）[\[5\]](#note-5be4abcb-5) 维护集群映射的主副本�
 pveceph mon create
 ```
 
-### Destroy Monitors <a href="#pveceph_destroy_mon" id="pveceph_destroy_mon"></a>
+### 销毁监视器 <a href="#pveceph_destroy_mon" id="pveceph_destroy_mon"></a>
 
 要通过 GUI 移除 Ceph 监视器，请先在树视图中选择一个节点，然后转到 **Ceph → Monitor** 面板。选择 MON，然后单击 **Destroy** 按钮。
 
@@ -797,11 +641,11 @@ pveceph mon destroy
 仲裁至少需要三个监视器。
 {% endhint %}
 
-## Ceph Manager <a href="#pve_ceph_manager" id="pve_ceph_manager"></a>
+## Ceph 管理器 <a href="#pve_ceph_manager" id="pve_ceph_manager"></a>
 
 Manager 守护进程与监视器一同运行。它提供用于监控集群的接口。自 Ceph luminous 发布以来，至少需要一个 ceph-mgr [\[6\]](#note-5be4abcb-6) 守护进程。
 
-### Create Manager <a href="#pveceph_create_mgr" id="pveceph_create_mgr"></a>
+### 创建管理器 <a href="#pveceph_create_mgr" id="pveceph_create_mgr"></a>
 
 可以安装多个管理器，但在任何给定时间只有一个管理器处于活动状态。
 
@@ -813,7 +657,7 @@ pveceph mgr create
 建议将 Ceph 管理器安装在监视器节点上。为实现高可用性，请安装多个管理器。
 {% endhint %}
 
-### Destroy Manager <a href="#pveceph_destroy_mgr" id="pveceph_destroy_mgr"></a>
+### 销毁管理器 <a href="#pveceph_destroy_mgr" id="pveceph_destroy_mgr"></a>
 
 要通过 GUI 移除 Ceph 管理器，请先在树视图中选择一个节点，然后转到 **Ceph → Monitor** 面板。选择 Manager，然后单击 **Destroy** 按钮。
 
@@ -827,13 +671,13 @@ pveceph mgr destroy
 虽然管理器不是硬性依赖，但它对 Ceph 集群至关重要，因为它负责 PG 自动缩放、设备运行状况监控、遥测等重要功能。
 {% endhint %}
 
-## Ceph OSDs <a href="#pve_ceph_osds" id="pve_ceph_osds"></a>
+## Ceph OSD <a href="#pve_ceph_osds" id="pve_ceph_osds"></a>
 
 [![screenshot/gui-ceph-osd-status.png](../assets/screenshot-gui-ceph-osd-status-png-eb5fb509c420.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-osd-status.png)
 
 Ceph 对象存储守护进程（**O**bject **S**torage **D**aemons）通过网络为 Ceph 存储对象。建议每块物理磁盘使用一个 OSD。
 
-### Create OSDs <a href="#pve_ceph_osd_create" id="pve_ceph_osd_create"></a>
+### 创建 OSD <a href="#pve_ceph_osd_create" id="pve_ceph_osd_create"></a>
 
 您可以通过 Proxmox VE Web 界面或 CLI 使用 `pveceph` 创建 OSD。例如：
 
@@ -893,9 +737,9 @@ DB 存储 BlueStore 的内部元数据，WAL 是 BlueStore 的内部日志或预
 ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
 ```
 
-### Destroy OSDs <a href="#pve_ceph_osd_destroy" id="pve_ceph_osd_destroy"></a>
+### 销毁 OSD <a href="#pve_ceph_osd_destroy" id="pve_ceph_osd_destroy"></a>
 
-If you experience problems with an OSD or its disk, try to [troubleshoot](#pve_ceph_mon_and_ts) them first to decide if a [replacement](#pve_ceph_osd_replace) is needed.
+如果 OSD 或其磁盘出现问题，请先尝试[排查问题](#pve_ceph_mon_and_ts)，以确定是否需要[更换](#pve_ceph_osd_replace)。
 
 要销毁 OSD，请转到 *\<Node\> → Ceph → OSD* 面板，或在 OSD 所在节点上使用上述 CLI 命令。
 
@@ -934,7 +778,7 @@ If you experience problems with an OSD or its disk, try to [troubleshoot](#pve_c
    pveceph osd destroy <id> [--cleanup]
    ```
 
-## Ceph Configuration <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
+## Ceph 配置 <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
 
 Ceph 守护进程和客户端从一个或多个配置源 [\[8\]](#note-5be4abcb-8) 获取其配置。在 Proxmox VE 中，使用一个最小的 ceph.conf 文件来保存引导设置。大多数配置保存在由 MON 服务维护的中央配置数据库中。
 
@@ -973,13 +817,13 @@ ceph config set osd osd_memory_target 8G
 如果某个选项存在于本地配置文件中，MON DB 中的配置将被忽略，因为其优先级较低。
 {% endhint %}
 
-## Ceph Pools <a href="#pve_ceph_pools" id="pve_ceph_pools"></a>
+## Ceph 池 <a href="#pve_ceph_pools" id="pve_ceph_pools"></a>
 
 [![screenshot/gui-ceph-pools.png](../assets/screenshot-gui-ceph-pools-png-4290e2ffb7bf.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-pools.png)
 
 池是用于存储对象的逻辑组。它包含一组对象，称为 **P**lacement **G**roups（`PG`，`pg_num`）。
 
-### Create and Edit Pools <a href="#_create_and_edit_pools" id="_create_and_edit_pools"></a>
+### 创建和编辑池 <a href="#create_and_edit_pools" id="create_and_edit_pools"></a>
 
 您可以通过命令行或任何 Proxmox VE 宿主机的 Web 界面，在 **Ceph → Pools** 下创建和编辑池。
 
@@ -989,9 +833,9 @@ ceph config set osd osd_memory_target 8G
 **不要将 min\_size 设置为 1**。对于 min\_size 为 1 的副本池，当对象只有 1 个副本时仍允许对其执行 I/O，这可能导致数据丢失、PG 不完整或无法找到对象。
 {% endhint %}
 
-建议您启用 PG-Autoscaler，或根据您的部署计算 PG 数量。您可以在线找到相关公式和 PG 计算器 [\[10\]](#note-5be4abcb-10)。从 Ceph Nautilus 起，您可以在完成设置后更改 PG [\[placement\_groups\]](#_footnote_placement_groups) 的数量。
+建议您启用 PG-Autoscaler，或根据您的部署计算 PG 数量。您可以在线找到相关公式和 PG 计算器 [\[10\]](#note-5be4abcb-10)。从 Ceph Nautilus 起，您可以在完成设置后更改 PG [\[placement\_groups\]](#footnote_placement_groups) 的数量。
 
-PG 自动缩放器 [\[autoscaler\]](#_footnote_autoscaler) 可以在后台自动调整池的 PG 数量。设置 `Target Size` 或 `Target Ratio` 高级参数有助于 PG-Autoscaler 做出更好的决策。
+PG 自动缩放器 [\[autoscaler\]](#footnote_autoscaler) 可以在后台自动调整池的 PG 数量。设置 `Target Size` 或 `Target Ratio` 高级参数有助于 PG-Autoscaler 做出更好的决策。
 
 **通过 CLI 创建池的示例**
 
@@ -1003,7 +847,7 @@ pveceph pool create <pool-name> --add_storages
 如果您还想自动为池定义存储，请在 Web 界面中保持选中“Add as Storage”复选框，或在创建池时使用命令行选项 *--add\_storages*。
 {% endhint %}
 
-#### 池选项 <a href="#_pool_options" id="_pool_options"></a>
+#### 池选项 <a href="#pool_options" id="pool_options"></a>
 
 [![screenshot/gui-ceph-pool-create.png](../assets/screenshot-gui-ceph-pool-create-png-020d880342d1.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-pool-create.png)
 
@@ -1020,7 +864,7 @@ pveceph pool create <pool-name> --add_storages
 **PG 自动缩放模式**
 
 池的自动 PG 缩放模式   
-[\[自动缩放器\]](#_footnote_autoscaler)  
+[\[自动缩放器\]](#footnote_autoscaler)  
 。如果设置为 `warn`，当池的 PG 数量不是最佳值时，会生成警告消息。默认值：`warn`。
 
 **添加为存储**
@@ -1035,12 +879,12 @@ pveceph pool create <pool-name> --add_storages
 
 **CRUSH 规则**
 
-The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH \& device classes](#pve_ceph_device_classes) for information on device-based rules.
+用于映射集群中对象放置位置的规则。这些规则定义数据如何放置在集群中。关于基于设备的规则，请参阅 [Ceph CRUSH 与设备类别](#pve_ceph_device_classes)。
 
 **PG 数量**
 
 池在初始时应具有的归置组   
-[\[placement\_groups\]](#_footnote_placement_groups)  
+[\[placement\_groups\]](#footnote_placement_groups)  
  数量。默认值：`128`。
 
 **目标比例**
@@ -1057,7 +901,7 @@ The rule to use for mapping object placement in the cluster. These rules define 
 
 有关 Ceph 池处理的更多信息，请参阅 Ceph 池操作 [\[13\]](#note-5be4abcb-13)手册。
 
-### Erasure Coded Pools <a href="#pve_ceph_ec_pools" id="pve_ceph_ec_pools"></a>
+### 纠删码池 <a href="#pve_ceph_ec_pools" id="pve_ceph_ec_pools"></a>
 
 纠删码（EC）是一种“前向纠错”编码，可在发生一定量的数据丢失时恢复数据。与副本池相比，纠删码池可以提供更多可用空间，但代价是性能下降。
 
@@ -1065,11 +909,11 @@ The rule to use for mapping object placement in the cluster. These rules define 
 
 编码块数量 `m` 决定了在不丢失任何数据的情况下可以容忍丢失多少个 OSD。存储的对象总数为 `k + m`。
 
-#### 创建 EC 池 <a href="#_creating_ec_pools" id="_creating_ec_pools"></a>
+#### 创建 EC 池 <a href="#creating_ec_pools" id="creating_ec_pools"></a>
 
 可以使用 `pveceph` 命令行工具创建纠删码（EC）池。规划 EC 池时，必须考虑其工作方式与副本池不同这一事实。
 
-The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2` [\[14\]](#note-5be4abcb-14).
+EC 池的默认 `min_size` 取决于 `m` 参数。如果 `m = 1`，则 EC 池的 `min_size` 为 `k`。`min_size` 将为 `k + 1`，如果 `m > 1`。Ceph 文档建议采用保守的 `min_size` 值 `k + 2` [\[14\]](#note-5be4abcb-14)。
 
 如果可用 OSD 少于 `min_size` 个，则对该池的所有 I/O 都将被阻塞，直到再次有足够的 OSD 可用。
 
@@ -1101,7 +945,7 @@ pveceph pool create <pool-name> --erasure-coding k=2,m=1
 pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
 ```
 
-#### FastEC（`allow_ec_optimizations`） <a href="#_fastec_span_class_monospaced_allow_ec_optimizations_span" id="_fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
+#### FastEC（`allow_ec_optimizations`） <a href="#fastec_span_class_monospaced_allow_ec_optimizations_span" id="fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
 
 Ceph Tentacle 引入了一种名为 FastEC 的新纠删码 I/O 路径，可通过 `allow_ec_optimizations` 标志按池启用。FastEC 为 EC 池增加了部分读取和部分写入功能，显著提升了小块随机 I/O 的性能，而这是虚拟机磁盘 I/O 的主要访问模式。上游建议将其用于由 RBD 和 CephFS 支持的存储 [\[16\]](#note-5be4abcb-16)。
 
@@ -1184,7 +1028,7 @@ ceph osd dump | grep require_osd_release
 `allow_ec_optimizations` 是一个单向开关。在池上启用后，Ceph 监视器会拒绝再次清除该标志，因此回滚需要清空并重新创建池。请仅在测试池上验证 FastEC 适用于您的工作负载后再启用它。
 {% endhint %}
 
-##### 在池上启用 FastEC <a href="#_enabling_fastec_on_a_pool" id="_enabling_fastec_on_a_pool"></a>
+##### 在池上启用 FastEC <a href="#enabling_fastec_on_a_pool" id="enabling_fastec_on_a_pool"></a>
 
 FastEC 通过 `ceph` 命令行按池启用。它既可以设置在新池上，也可以设置在现有（已有数据）的池上。不会发生数据迁移或重新编码，仅会更改池元数据。
 
@@ -1207,7 +1051,7 @@ ceph osd pool get <pool-name>-data allow_ec_optimizations
 - **主分片重新选举。**FastEC 将数据分片 1 到 k-1 标记为非主分片，因此主分片原本位于这些分片之一的 PG 将重新进行对等协商。这是正常的对等协商事件，并会导致每个受影响的 PG 出现短暂的 I/O 暂停。
 - **Scrub 交互。**重新进行对等协商会取消受影响 PG 上正在进行的 Scrub。对等协商完成后，需要重新对这些 PG 执行 Scrub。
 
-#### 将 EC 池添加为存储 <a href="#_adding_ec_pools_as_storage" id="_adding_ec_pools_as_storage"></a>
+#### 将 EC 池添加为存储 <a href="#adding_ec_pools_as_storage" id="adding_ec_pools_as_storage"></a>
 
 您可以将现有的 EC 池作为存储添加到 Proxmox VE。其操作方式与添加 `RBD` 池相同，但需要额外的 `data-pool` 选项。
 
@@ -1219,7 +1063,7 @@ pvesm add rbd <storage-name> --pool <replicated-pool> --data-pool <ec-pool>
 对于不受本地 Proxmox VE 集群管理的任何外部 Ceph 集群，请不要忘记添加 `keyring` 和 `monhost` 选项。
 {% endhint %}
 
-### Destroy Pools <a href="#_destroy_pools" id="_destroy_pools"></a>
+### 销毁池 <a href="#destroy_pools" id="destroy_pools"></a>
 
 要通过 GUI 销毁池，请在树状视图中选择一个节点，然后转到 **Ceph → Pools** 面板。选择要销毁的池，然后点击 **Destroy** 按钮。要确认销毁该池，您需要输入池名称。
 
@@ -1233,7 +1077,7 @@ pveceph pool destroy <name>
 池删除会在后台运行，并且可能需要一些时间。在此过程中，您会注意到集群中的数据使用量逐渐减少。
 {% endhint %}
 
-### PG Autoscaler <a href="#_pg_autoscaler" id="_pg_autoscaler"></a>
+### PG 自动扩缩器 <a href="#pg_autoscaler" id="pg_autoscaler"></a>
 
 PG 自动缩放器使集群能够考虑每个池中存储的（预期）数据量，并自动选择合适的 pg\_num 值。该功能自 Ceph Nautilus 起可用。
 
@@ -1274,7 +1118,7 @@ ceph mgr module enable pg_autoscaler
 
 您可以在 Ceph 博客中找到对 PG 自动缩放器更深入的介绍——[Nautilus 新功能：PG 合并和自动调优](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/)。
 
-## Ceph CRUSH \& Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
+## Ceph CRUSH 与设备类别 <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
 
 [![screenshot/gui-ceph-config.png](../assets/screenshot-gui-ceph-config-png-b4544eca3b00.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-config.png)
 
@@ -1359,7 +1203,7 @@ ceph osd pool set <pool-name> crush_rule <rule-name>
 使用 PG 自动缩放器时，集群中的所有池都必须使用相同类型的 CRUSH 规则，要么全部指定设备类别，要么全部不指定。否则，自动缩放器将跳过受影响的池，其 `pg_num` 也不会得到调整。
 {% endhint %}
 
-## Cephx Authentication <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
+## Cephx 认证 <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
 
 Cephx [\[19\]](#note-5be4abcb-19)用于保护对 Ceph 集群的访问。
 
@@ -1396,13 +1240,13 @@ Cephx [\[19\]](#note-5be4abcb-19)用于保护对 Ceph 集群的访问。
 
 运行中的客户端通常仅在启动时读取其用户密钥。更新已保存的密钥或密钥环文件并不会更新该进程。现有票据和连接也可能在一段时间内继续可用。因此，密钥轮换必须考虑正在运行以及暂时断开连接的客户端。
 
-### Keyring Locations <a href="#pveceph_keyrings" id="pveceph_keyrings"></a>
+### 密钥环位置 <a href="#pveceph_keyrings" id="pveceph_keyrings"></a>
 
-The authoritative `client.admin` keyring in a Proxmox VE Ceph cluster is `/etc/pve/priv/ceph.client.admin.keyring`, not the copy in `/etc/ceph`. The [Proxmox cluster file system (pmxcfs)](pmxcfs-8.md#chapter_pmxcfs) synchronizes it to every node. Credentials for managed Ceph storages are below `/etc/pve/priv/ceph/`.
+Proxmox VE Ceph 集群中具有权威性的 `client.admin` 密钥环为 `/etc/pve/priv/ceph.client.admin.keyring`，而不是 `/etc/ceph` 中的副本。[Proxmox 集群文件系统（pmxcfs）](pmxcfs-8.md#chapter_pmxcfs) 将其同步到每个节点。受管理的 Ceph 存储凭据位于 `/etc/pve/priv/ceph/` 下。
 
 `/var/lib/ceph` 下方的密钥环属于一个 Ceph 服务，并且仅位于其所在节点本地。`/etc/pve/priv/ceph.mon.keyring` 同时包含共享的 `mon.` 密钥和 `client.admin`。请始终将更新合并到此文件中，而不是覆盖该文件。`pveceph mon create` 在初始化监视器时会使用其 `mon.` 条目。
 
-### Encrypted OSD Lockbox Keys <a href="#pveceph_cephx_lockbox" id="pveceph_cephx_lockbox"></a>
+### 加密 OSD 的 lockbox 密钥 <a href="#pveceph_cephx_lockbox" id="pveceph_cephx_lockbox"></a>
 
 每个加密 OSD 都使用一个名为 `client.osd-lockbox.<UUID>` 的专用 Ceph 用户。其身份验证密钥称为锁箱密钥。它不是磁盘加密密钥本身：它使 OSD 能够从 Ceph 检索该密钥，并在启动时解锁其存储。Ceph 和 OSD 的块设备中必须包含相匹配的锁箱密钥副本。
 
@@ -1410,11 +1254,11 @@ The authoritative `client.admin` keyring in a Proxmox VE Ceph cluster is `/etc/p
 切勿仅使用 `ceph auth` 轮换锁箱密钥。请使用迁移辅助工具，它会验证 OSD 身份并同时更新两份副本。
 {% endhint %}
 
-## Ceph Client <a href="#_ceph_client" id="_ceph_client"></a>
+## Ceph 客户端 <a href="#ceph_client" id="ceph_client"></a>
 
 [![screenshot/gui-ceph-log.png](../assets/screenshot-gui-ceph-log-png-45dce0bd0f84.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-log.png)
 
-Add an [RBD storage](pvesm-1.md#ceph_rados_block_devices) in the web interface to use a Ceph pool for virtual machine and container disks. For an external cluster, follow the [authentication instructions](pvesm-1.md#storage_rbd_auth) to configure a dedicated Ceph user and its keyring.
+在 Web 界面中添加 [RBD 存储](pvesm-1.md#ceph_rados_block_devices)，以使用 Ceph 池保存虚拟机和容器磁盘。对于外部集群，请遵循[认证说明](pvesm-1.md#storage_rbd_auth)，配置专用的 Ceph 用户及其密钥环。
 
 ## CephFS <a href="#pveceph_fs" id="pveceph_fs"></a>
 
@@ -1422,9 +1266,9 @@ Ceph 还提供一种文件系统，它运行在与 RADOS 块设备相同的对�
 
 [![screenshot/gui-node-ceph-cephfs-panel.png](../assets/screenshot-gui-node-ceph-cephfs-panel-png-51eb3988f01e.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-cephfs-panel.png)
 
-Proxmox VE supports both creating a hyper-converged CephFS and using an existing [CephFS as storage](pvesm-1.md#storage_cephfs) to save backups, ISO files, and container templates.
+Proxmox VE 既支持创建超融合 CephFS，也支持将现有 [CephFS 用作存储](pvesm-1.md#storage_cephfs)，以保存备份、ISO 文件和容器模板。
 
-### Metadata Server (MDS) <a href="#pveceph_fs_mds" id="pveceph_fs_mds"></a>
+### 元数据服务器（MDS） <a href="#pveceph_fs_mds" id="pveceph_fs_mds"></a>
 
 CephFS 需要至少配置并运行一个元数据服务器才能正常工作。您可以通过 Proxmox VE Web GUI 的 `Node
 -> CephFS` 面板创建 MDS，也可以使用以下命令从命令行创建：
@@ -1449,16 +1293,16 @@ mds standby replay = true
 
 自 Luminous（12.2.x）起，您可以同时运行多个活动元数据服务器，但通常只有在并行运行大量客户端时才有用。否则，`MDS` 很少会成为系统瓶颈。如果要进行此设置，请参阅 Ceph 文档。[\[20\]](#note-5be4abcb-20)
 
-### Create CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
+### 创建 CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
 
 借助 Proxmox VE 对 CephFS 的集成，您可以轻松通过 Web 界面、CLI 或外部 API 接口创建 CephFS。要实现这一点，需要满足一些先决条件：
 
 **成功设置 CephFS 的先决条件：**
 
-- [Install Ceph packages](#pve_ceph_install) \- if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
-- [Setup Monitors](#pve_ceph_monitors)
-- [Setup your OSDs](#pve_ceph_monitors)
-- [Setup at least one MDS](#pveceph_fs_mds)
+- [安装 Ceph 软件包](#pve_ceph_install) \- 如果此操作是在较早之前完成的，可能需要在已更新的系统上重新执行，以确保所有 CephFS 相关软件包都已安装。
+- [设置监视器](#pve_ceph_monitors)
+- [设置 OSD](#pve_ceph_monitors)
+- [设置至少一个 MDS](#pveceph_fs_mds)
 
 完成上述步骤后，您只需通过 Web GUI 的 `Node -> CephFS` 面板或命令行工具 `pveceph` 即可创建 CephFS，例如：
 
@@ -1466,11 +1310,11 @@ mds standby replay = true
 pveceph fs create --pg_num 128 --add-storage
 ```
 
-This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
-[\[placement\_groups\]](#_footnote_placement_groups)  
-. Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
+这会创建一个名为 *cephfs* 的 CephFS，使用名为 *cephfs\_data* 的数据池，该池具有 *128* 个放置组；同时使用名为 *cephfs\_metadata* 的元数据池，其放置组数量为数据池的四分之一（`32`）。请查看[由 Proxmox VE 管理的 Ceph 池章节](#pve_ceph_pools)或访问 Ceph 文档，以获取关于适合您配置的放置组数量（`pg_num`）的更多信息   
+[\[placement\_groups\]](#footnote_placement_groups)  
+。此外，*--add-storage* 参数会在成功创建 CephFS 后，将其添加到 Proxmox VE 存储配置。
 
-### Destroy CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
+### 销毁 CephFS <a href="#destroy_cephfs" id="destroy_cephfs"></a>
 
 {% hint style="warning" %}
 销毁 CephFS 将使其中的所有数据无法使用。此操作无法撤销！
@@ -1513,31 +1357,31 @@ This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_d
 
 完成这些步骤后，CephFS 应该已被完全移除；如果您还有其他 CephFS 实例，可以重新启动已停止的元数据服务器，让它们充当备用服务器。
 
-## Ceph Maintenance <a href="#_ceph_maintenance" id="_ceph_maintenance"></a>
+## Ceph 维护 <a href="#ceph_maintenance" id="ceph_maintenance"></a>
 
-### Replace OSDs <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
+### 更换 OSD <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
 
-With the following steps you can replace the disk of an OSD, which is one of the most common maintenance tasks in Ceph. If there is a problem with an OSD while its disk still seems to be healthy, read the [troubleshooting](#pve_ceph_mon_and_ts) section first.
+通过以下步骤，可以更换 OSD 的磁盘，这是 Ceph 中最常见的维护任务之一。如果 OSD 出现问题，但其磁盘看起来仍然健康，请先阅读[故障排查](#pve_ceph_mon_and_ts)章节。
 
-1. If the disk failed, get a [recommended](#pve_ceph_recommendation_disk) replacement disk of the same type and size.
-2. [Destroy](#pve_ceph_osd_destroy) the OSD in question.
+1. 如果磁盘发生故障，请获取一个[推荐](#pve_ceph_recommendation_disk)的、类型和大小相同的替换磁盘。
+2. [销毁](#pve_ceph_osd_destroy)相关 OSD。
 3. 从服务器上卸下旧磁盘并安装新磁盘。
-4. [Create](#pve_ceph_osd_create) the OSD again.
+4. 重新[创建](#pve_ceph_osd_create) OSD。
 5. 自动重新平衡后，集群状态应恢复为 `HEALTH_OK`。对于仍列出的任何崩溃记录，可以运行以下命令予以确认：
 
 ```text
 ceph crash archive-all
 ```
 
-### Trim/Discard <a href="#_trim_discard" id="_trim_discard"></a>
+### Trim/Discard <a href="#trim_discard" id="trim_discard"></a>
 
-It is good practice to run *fstrim* (discard) regularly on VMs and containers. This releases data blocks that the filesystem isn’t using anymore. It reduces data usage and resource load. Most modern operating systems issue such discard commands to their disks regularly. You only need to ensure that the Virtual Machines enable the [disk discard option](qm-1.md#qm_hard_disk_discard).
+定期在虚拟机和容器上运行 *fstrim*（discard）是良好实践。这会释放文件系统不再使用的数据块，减少数据用量和资源负载。大多数现代操作系统会定期向其磁盘发出此类 discard 命令。您只需确保虚拟机启用了[磁盘 discard 选项](qm-1.md#qm_hard_disk_discard)。
 
-### Scrub \& Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
+### 清理与深度清理 <a href="#pveceph_scrub" id="pveceph_scrub"></a>
 
 Ceph 通过对归置组进行 *擦洗* 来确保数据完整性。Ceph 会检查 PG 中每个对象的健康状况。擦洗分为两种形式：每天进行的低成本元数据检查和每周进行的深度数据检查。每周深度擦洗会读取对象并使用校验和来确保数据完整性。如果正在运行的擦洗干扰业务（性能）需求，您可以调整执行擦洗 [\[21\]](#note-5be4abcb-21) 的时间。
 
-### Mute a Health Check <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
+### 将健康检查静默 <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
 
 将健康检查静音后，它仍然可见，但会被排除在总体健康状态之外，从而更容易发现新问题。Ceph 会继续评估该检查。请设置一个持续时间，以便被暂缓的警告自动恢复，例如两周后：
 
@@ -1553,11 +1397,11 @@ ceph health mute <CHECK> 2w
 静音并不能解决该状况。在静音持续期间，即表示您接受其风险。
 {% endhint %}
 
-### Migrate Cephx Keys from `aes` to `aes256k` <a href="#pveceph_cephx_migration" id="pveceph_cephx_migration"></a>
+### 将 Cephx 密钥从 `aes` 迁移到 `aes256k` <a href="#pveceph_cephx_migration" id="pveceph_cephx_migration"></a>
 
-This section explains how to migrate the cluster-owned keys and the keys of compatible Ceph users from `aes` to `aes256k`. For an explanation of Ceph users, tickets, and key storage, see [Cephx Authentication](#pveceph_cephx_how_it_works).
+本节介绍如何将集群持有的密钥以及兼容 Ceph 用户的密钥从 `aes` 迁移到 `aes256k`。关于 Ceph 用户、票据和密钥存储的说明，请参阅 [Cephx 认证](#pveceph_cephx_how_it_works)。
 
-#### 为什么会出现这些健康检查 <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
+#### 为什么会出现这些健康检查 <a href="#why_the_health_checks_appear" id="why_the_health_checks_appear"></a>
 
 Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法的密钥和临时访问凭据新增了健康检查。因此，即使集群在升级前运行时没有警告，这些检查也可能在升级后立即出现。较旧的方法受 [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156) 影响。有关背景信息，请参阅上游发布公告 [\[22\]](#note-5be4abcb-22)。
 
@@ -1573,11 +1417,11 @@ Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法
 
 - 将 `pve-manager` 升级到 9.2.19 或更新版本，并在每个节点上安装最新的 Ceph 软件包。分阶段客户端密钥轮换要求每个监视器上都安装 Ceph 19.2.6-pve3、20.2.4-pve3 或更新版本。
 - 然后完成所有 Ceph 服务的滚动重启。
-- Resolve health warnings and errors not listed in [Health Check Reference](#pveceph_cephx_health_check_reference). Ensure every node is reachable over SSH.
+- 解决[健康检查参考](#pveceph_cephx_health_check_reference)中未列出的健康警告和错误。确保每个节点都可通过 SSH 访问。
 - 仅以 `root` 身份在一个节点上运行辅助工具。在其运行期间，不要启动另一次迁移或滚动重启，也不要使用其他工具更改 Ceph 密钥。辅助工具的锁不会阻止直接执行 Ceph 身份验证命令。
-- If Cephx is disabled on this cluster, follow [Clusters with Cephx Disabled](#pveceph_cephx_disabled) instead.
+- 如果此集群禁用了 Cephx，请改为遵循[禁用 Cephx 的集群](#pveceph_cephx_disabled)章节。
 
-##### 1\. 迁移集群拥有的密钥 <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
+##### 1\. 迁移集群拥有的密钥 <a href="#1_migrate_the_cluster_owned_keys" id="1_migrate_the_cluster_owned_keys"></a>
 
 在默认试运行模式下检查集群拥有的密钥迁移计划：
 
@@ -1591,17 +1435,13 @@ Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys --rotate-cluster-keys --apply
 ```
 
-The helper rotates the manager, metadata server, OSD, monitor, bootstrap, crash, and [encrypted OSD lockbox keys](#pveceph_cephx_lockbox). It restarts services one at a time when needed, including monitors. Storage-user keys and `client.admin` stay unchanged, existing tickets remain valid, and the old cipher stays enabled.
+此辅助程序轮换管理器、元数据服务器、OSD、监视器、引导、崩溃以及[加密 OSD 的 lockbox 密钥](#pveceph_cephx_lockbox)。需要时，它会逐个重启服务，包括监视器。存储用户密钥和 `client.admin` 保持不变，现有票据继续有效，旧密码算法保持启用。
 
 Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的轮换密钥过期期间，有关轮换服务密钥的警告可能会持续几个小时。继续迁移之前，无需等待此警告清除。
 
 ##### 2\. 迁移兼容 Ceph 用户的密钥 <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
-<a id="pveceph_cipher_support"></a>
-
-
-
-**检查兼容性**
+###### 检查兼容性 <a href="#pveceph_cipher_support" id="pveceph_cipher_support"></a>
 
 多个工作负载可以共享一个 Ceph 用户。仅当所有客户端（包括已断开连接的客户端和外部客户端）都支持 `aes256k` 时，才迁移其密钥。更新后的 Proxmox VE 软件包中的 Ceph 程序支持该功能；内核客户端要求 **正在运行** 的内核版本为 7.0 或更新。
 
@@ -1648,17 +1488,13 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 
 在某个密钥处于暂存状态期间，不要添加或降级监视器，也不要使用其他工具更改该用户的密钥。其 `AUTH_INSECURE_CLIENT_KEY_TYPE` 警告会一直保留，直到确认操作将新密钥设为当前密钥并使旧密钥失效。
 
-<a id="pveceph_cephx_refresh_clients"></a>
-
-
-
-**刷新客户端**
+###### 刷新客户端 <a href="#pveceph_cephx_refresh_clients" id="pveceph_cephx_refresh_clients"></a>
 
 - 在 Web 界面中在线迁移受影响的虚拟机，或者将其停止后再启动。仅重启客户机是不够的。
 - 停止并重新启动受影响的容器和其他 RBD 客户端。
 - 在确认之前，让 Ceph 存储上的备份、恢复、磁盘导入和克隆操作完成；这些操作可能会一直保留其开始时使用的密钥。
 - 辅助程序会刷新空闲的 CephFS 挂载，而不会处理繁忙或无响应的挂载。待这些挂载不再被使用后，使用 `--apply` 重新运行辅助程序，以重试尚未完成的挂载。如果您的虚拟机挂载了来自 CephFS 挂载的 ISO，您可能需要卸载这些 ISO，或者将受影响的虚拟机迁移到其他节点，才能刷新该节点上的 CephFS 挂载。
-- For clients outside Proxmox VE, distribute the staged credential from the [managed key files](#pveceph_cephx_external_copies), then restart or remount those clients.
+- 对于 Proxmox VE 外部的客户端，请从[受管理的密钥文件](#pveceph_cephx_external_copies)分发暂存凭据，然后重启或重新挂载这些客户端。
 
 辅助程序会报告可能仍持有旧密钥的会话。客户端提示涵盖整个宿主机，并非会话归属信息或完整的工作负载清单。没有所属进程的套接字会单独列出。请自行检查已断开连接的客户端和外部密钥副本。
 
@@ -1677,7 +1513,7 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 检查已断开连接的客户端和外部副本后，运行试运行所打印的确切命令。当所有轮换都已就绪且没有密钥需要旧加密算法时，它将打印选项 `--apply --confirm-all-clients-refreshed
 --restrict-ciphers`。
 
-If any client remains incompatible, keep its key unchanged and the old cipher enabled rather than restricting it. You can [mute the remaining warnings](#pveceph_mute_health_check) while waiting for those clients to upgrade.
+如果任何客户端仍不兼容，请保持其密钥不变并保持旧密码算法启用，而不要限制它。在等待这些客户端升级期间，可以[将剩余警告静默](#pveceph_mute_health_check)。
 
 使用 `pveceph auth status` 查看当前和待处理的密钥加密算法，因为 `ceph auth ls` 不会列出待处理的密钥。
 
@@ -1685,7 +1521,7 @@ If any client remains incompatible, keep its key unchanged and the old cipher en
 `/etc/pve/priv/cephx-key-migration.json` 会记录进度，并包含保密的旧密钥。请妥善保护它，并一直保留到迁移完成且每个客户端都已刷新。过早删除它会丢失恢复迁移所需的记录。
 {% endhint %}
 
-#### 其他迁移详情 <a href="#_additional_migration_details" id="_additional_migration_details"></a>
+#### 其他迁移详情 <a href="#additional_migration_details" id="additional_migration_details"></a>
 
 ##### 健康检查参考 <a href="#pveceph_cephx_health_check_reference" id="pveceph_cephx_health_check_reference"></a>
 
@@ -1752,7 +1588,7 @@ Ceph 会根据存储的密钥和加密算法设置评估这些健康检查，即
 
 当首选加密算法仍为 `aes` 时，不要手动限制允许的加密算法或禁止创建使用旧加密算法的密钥，否则创建密钥会失败。
 
-Before you enable Cephx again, unmute these checks and make sure that every monitor, Ceph service, and client still has a key file matching the authentication database. Restart the monitors first, then all other Ceph services, and restart or remount the clients. Then run the migration as described in [Migration Steps](#pveceph_cephx_migration_helper).
+重新启用 Cephx 之前，请取消这些检查的静默，并确保每个监视器、Ceph 服务和客户端仍具有与认证数据库匹配的密钥文件。先重启监视器，再重启所有其他 Ceph 服务，然后重启或重新挂载客户端。接着按照[迁移步骤](#pveceph_cephx_migration_helper)中的说明运行迁移。
 
 ##### 暂存密钥与确认 <a href="#pveceph_cephx_staged_keys" id="pveceph_cephx_staged_keys"></a>
 
@@ -1784,13 +1620,13 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 2. 将所有客户端刷新回该密钥，包括已断开连接的客户端和外部密钥副本。辅助程序会像正向迁移期间一样重试托管的 CephFS 挂载。
 3. 使用 `--confirm-abort-clients-refreshed <USER> --apply` 运行辅助程序以停用暂存密钥。如果监视器会话收集不完整、某个可见会话使用了暂存密钥、其密钥未知，或者某个存储密钥副本仍保存着暂存密钥，辅助程序会拒绝执行。
 
-##### 紧急加密算法覆盖 <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
+##### 紧急加密算法覆盖 <a href="#emergency_cipher_override" id="emergency_cipher_override"></a>
 
 监视器通常使用 MonMap 中存储的 `auth_allowed_ciphers` 列表来决定允许哪些密钥加密算法通过身份验证。本地启动选项 `mon_auth_emergency_allowed_ciphers` 会为某个监视器替换该列表。在错误的限制导致管理员无法访问后，它可以临时允许现有管理密钥所使用的加密算法 [\[23\]](#note-5be4abcb-23)。
 
 配置此覆盖后，Ceph 会触发 `AUTH_EMERGENCY_CIPHERS_SET`。辅助程序会拒绝最终限制，因为更改 MonMap 不会生效。请仅使用此覆盖来恢复访问，然后修复正常配置，将其从 `/etc/pve/ceph.conf` 中移除，并在最后一次试运行之前重启每个监视器。
 
-##### 中断的运行与手动回退 <a href="#_interrupted_runs_and_manual_fallback" id="_interrupted_runs_and_manual_fallback"></a>
+##### 中断的运行与手动回退 <a href="#interrupted_runs_and_manual_fallback" id="interrupted_runs_and_manual_fallback"></a>
 
 发生中断后，待受影响的节点可以访问时，运行不带选项的辅助程序。未完成的密钥更新可以在其守护进程停止期间恢复。请保持日志不变，并遵循打印出的后续步骤，而不要开始手动轮换。请检查受影响的节点和服务日志，而不要假定已停止守护进程的密钥需要修复。
 
@@ -1803,7 +1639,7 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 
 只有在具备涵盖上述每一项的完整且经过测试的恢复计划时，才能使用手动密钥轮换或加密算法限制命令。
 
-### Shutdown Proxmox VE \+ Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
+### 关闭 Proxmox VE \+ Ceph HCI 集群 <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
 
 要关闭整个 Proxmox VE \+ Ceph 集群，请先停止所有 Ceph 客户端。这些客户端主要是虚拟机和容器。如果您有其他可能访问 Ceph FS 或已安装的 RADOS GW 的客户端，也请停止它们。通过 Proxmox VE 工具关机时，高可用性客户机会将其状态切换为 *stopped*。
 
@@ -1829,7 +1665,7 @@ ceph osd unset noout
 
 现在可以启动客户机了。高可用性客户机开机时，会将其状态更改为 *started*。
 
-### Network Changes <a href="#pveceph_network_change" id="pveceph_network_change"></a>
+### 网络更改 <a href="#pveceph_network_change" id="pveceph_network_change"></a>
 
 如果**可以同时配置旧网络和新网络**，则可以在 HCI 部署中更改 Ceph 使用的网络，而不会造成任何停机。
 
@@ -1989,7 +1825,7 @@ ss -tulpn | grep ceph-osd
 
 一旦 Ceph 集群恢复完全健康状态（*HEALTH\_OK*），且 OSD 正在新网络上监听，就继续在下一台宿主机上重启 OSD。
 
-## Ceph Monitoring and Troubleshooting <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
+## Ceph 监控与故障排查 <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
 
 从一开始就持续监控 Ceph 部署的健康状况非常重要，可以使用 Ceph 工具，也可以通过 Proxmox VE [API](../api/README.md) 访问状态。
 
@@ -2007,17 +1843,13 @@ watch ceph --status
 ceph --watch
 ```
 
-### Troubleshooting <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
+### 故障排查 <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
 
 本节包含常用的故障排除信息。更多信息可在 Ceph 官方网站的“故障排除”下找到 [\[25\]](#note-5be4abcb-25)。
 
-<a id="pve_ceph_ts_logs"></a>
+#### 受影响节点上的相关日志 <a href="#pve_ceph_ts_logs" id="pve_ceph_ts_logs"></a>
 
-
-
-**受影响节点上的相关日志**
-
-- Disk Health Monitoring
+- 磁盘健康监控
 - *系统 → 系统日志*，或通过 CLI，例如查看最近 2 天的日志：
 
   ```text
@@ -2040,25 +1872,17 @@ ceph crash archive-all
 
 要获得更详细的视图，每个 Ceph 服务在 `/var/log/ceph/` 下都有一个日志文件。如果需要更详细的信息，可以调整日志级别 [\[26\]](#note-5be4abcb-26)。
 
-<a id="pve_ceph_ts_causes"></a>
+#### Ceph 问题的常见原因 <a href="#pve_ceph_ts_causes" id="pve_ceph_ts_causes"></a>
 
-
-
-**Ceph 问题的常见原因**
-
-- Network problems like congestion, a faulty switch, a shut down interface or a blocking firewall. Check whether all Proxmox VE nodes are reliably reachable on the [corosync cluster network](pvecm-1.md#pvecm_cluster_network) and on the [Ceph public and cluster network](#pve_ceph_install_wizard).
+- 网络问题，例如拥塞、交换机故障、接口关闭或防火墙阻断。检查是否能够通过 [corosync 集群网络](pvecm-1.md#pvecm_cluster_network)以及 [Ceph 公共网络和集群网络](#pve_ceph_install_wizard)可靠地访问所有 Proxmox VE 节点。
 - 磁盘或连接部件存在以下情况：
 
   - 有缺陷
   - 安装不牢固
-  - lacking I/O performance under higher load (e.g. when using HDDs, consumer hardware or [inadvisable RAID controllers](#pve_ceph_recommendation_raid))
-- Not fulfilling the [recommendations](#_recommendations_for_a_healthy_ceph_cluster) for a healthy Ceph cluster.
+  - 较高负载下 I/O 性能不足（例如使用 HDD、消费级硬件或[不建议使用的 RAID 控制器](#pve_ceph_recommendation_raid)时）
+- 未满足保持 Ceph 集群健康的[建议](#recommendations_for_a_healthy_ceph_cluster)。
 
-<a id="pve_ceph_ts_problems"></a>
-
-
-
-**常见 Ceph 问题**
+#### 常见 Ceph 问题 <a href="#pve_ceph_ts_problems" id="pve_ceph_ts_problems"></a>
 
 ****
 
@@ -2070,9 +1894,9 @@ ceph crash archive-all
 ceph-volume lvm activate --all
 ```
 
-To activate a failed OSD, it may be necessary to [safely reboot](ha-manager-1.md#ha_manager_node_maintenance) the respective node or, as a last resort, to [recreate or replace](#pve_ceph_osd_replace) the OSD.
+要激活故障 OSD，可能需要[安全重启](ha-manager-1.md#ha_manager_node_maintenance)相应节点，或者作为最后手段，[重新创建或更换](#pve_ceph_osd_replace) OSD。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -2130,11 +1954,11 @@ Ceph MON DB 命令 [https://docs.ceph.com/en/latest/rados/configuration/ceph-con
 
 PG 计算器 [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)
 
-### 注释 placement\_groups <a href="#_footnote_placement_groups" id="_footnote_placement_groups"></a>
+### 注释 placement\_groups <a href="#footnote_placement_groups" id="footnote_placement_groups"></a>
 
 归置组 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)
 
-### 注释 autoscaler <a href="#_footnote_autoscaler" id="_footnote_autoscaler"></a>
+### 注释 autoscaler <a href="#footnote_autoscaler" id="footnote_autoscaler"></a>
 
 自动缩放 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)
 
@@ -2144,7 +1968,7 @@ Ceph 池操作 [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https
 
 ### 注释 14 <a href="#note-5be4abcb-14" id="note-5be4abcb-14"></a>
 
-Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)
+Ceph 纠删码池恢复 [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)
 
 ### 注释 15 <a href="#note-5be4abcb-15" id="note-5be4abcb-15"></a>
 

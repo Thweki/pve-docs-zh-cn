@@ -6,7 +6,7 @@
 
 ## GET `/cluster/metrics`
 
-Metrics index.
+指标索引。
 
 **方法标识：** `index`
 

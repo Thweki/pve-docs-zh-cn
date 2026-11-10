@@ -1,12 +1,12 @@
-# 13.11. Notes on IPv6 <a href="#_notes_on_ipv6" id="_notes_on_ipv6"></a>
+# 13.11. 关于 IPv6 的说明 <a href="#notes_on_ipv6" id="notes_on_ipv6"></a>
 
-The firewall contains a few IPv6 specific options. One thing to note is that IPv6 does not use the ARP protocol anymore, and instead uses NDP (Neighbor Discovery Protocol) which works on IP level and thus needs IP addresses to succeed. For this purpose link-local addresses derived from the interface’s MAC address are used. By default the `NDP` option is enabled on both host and VM level to allow neighbor discovery (NDP) packets to be sent and received.
+防火墙包含一些 IPv6 特定选项。需要注意，IPv6 不再使用 ARP 协议，而是使用 NDP（邻居发现协议）。NDP 在 IP 层工作，因此需要 IP 地址才能成功。为此，使用从接口 MAC 地址推导的链路本地地址。默认情况下，在宿主机和虚拟机级别均启用 `NDP` 选项，以允许发送和接收邻居发现（NDP）数据包。
 
-Beside neighbor discovery NDP is also used for a couple of other things, like auto-configuration and advertising routers.
+除邻居发现外，NDP 还用于其他一些功能，例如自动配置和通告路由器。
 
-By default VMs are allowed to send out router solicitation messages (to query for a router), and to receive router advertisement packets. This allows them to use stateless auto configuration. On the other hand VMs cannot advertise themselves as routers unless the “Allow Router Advertisement” (`radv: 1`) option is set.
+默认允许虚拟机发送路由器请求消息（以查询路由器）并接收路由器通告数据包。这允许它们使用无状态自动配置。另一方面，除非设置“允许路由器通告”（`radv: 1`）选项，否则虚拟机不能将自身通告为路由器。
 
-As for the link local addresses required for NDP, there’s also an “IP Filter” (`ipfilter: 1`) option which can be enabled which has the same effect as adding an `ipfilter-net*` ipset for each of the VM’s network interfaces containing the corresponding link local addresses. (See the [Standard IP set `ipfilter-net*`](06-pve-firewall-ip-sets.md#pve_firewall_ipfilter_section) section for details.)
+对于 NDP 所需的链路本地地址，还可以启用“IP 过滤器”（`ipfilter: 1`）选项，其效果等同于为虚拟机的每个网络接口添加一个 `ipfilter-net*` ipset，其中包含相应的链路本地地址。（详情参见 [标准 IP 集合 `ipfilter-net*`](06-pve-firewall-ip-sets.md#pve_firewall_ipfilter_section) 一节。）
 
 ---
 

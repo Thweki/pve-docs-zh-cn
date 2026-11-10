@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage/{storage}/import-metadata`
 
-Get the base parameters for creating a guest which imports data from a foreign importable guest, like an ESXi VM
+获取创建客户机的基本参数，该客户机从外部可导入客户机（例如 ESXi 虚拟机）导入数据
 
 **方法标识：** `get_import_metadata`
 
@@ -14,7 +14,7 @@ Get the base parameters for creating a guest which imports data from a foreign i
 
 ```json
 {
-  "description": "You need read access for the volume.",
+  "description": "需要具有卷的读取访问权限。",
   "user": "all"
 }
 ```
@@ -41,9 +41,9 @@ Get the base parameters for creating a guest which imports data from a foreign i
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `volume` | string | 是 | — | Volume identifier for the guest archive/entry. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `volume` | string | 是 | — | 客户机归档/条目的卷标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,20 +53,20 @@ Get the base parameters for creating a guest which imports data from a foreign i
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "volume": {
-      "description": "Volume identifier for the guest archive/entry.",
+      "description": "客户机归档/条目的卷标识符。",
       "type": "string",
       "typetext": "<string>"
     }
@@ -81,51 +81,51 @@ Get the base parameters for creating a guest which imports data from a foreign i
 ```json
 {
   "additionalProperties": 0,
-  "description": "Information about how to import a guest.",
+  "description": "有关如何导入客户机的信息。",
   "properties": {
     "create-args": {
       "additionalProperties": 1,
-      "description": "Parameters which can be used in a call to create a VM or container.",
+      "description": "可用于创建虚拟机或容器调用的参数。",
       "type": "object"
     },
     "disks": {
       "additionalProperties": 1,
-      "description": "Recognised disk volumes as `$bus$id` => `$storeid:$path` map.",
+      "description": "识别的磁盘卷，形式为 `$bus$id` => `$storeid:$path` 映射。",
       "optional": 1,
       "type": "object"
     },
     "net": {
       "additionalProperties": 1,
-      "description": "Recognised network interfaces as `net$id` => { ...params } object.",
+      "description": "识别的网络接口，形式为 `net$id` => { ...params } 对象。",
       "optional": 1,
       "type": "object"
     },
     "source": {
-      "description": "The type of the import-source of this guest volume.",
+      "description": "此客户机卷的导入源类型。",
       "enum": [
         "esxi"
       ],
       "type": "string"
     },
     "type": {
-      "description": "The type of guest this is going to produce.",
+      "description": "将生成的客户机类型。",
       "enum": [
         "vm"
       ],
       "type": "string"
     },
     "warnings": {
-      "description": "List of known issues that can affect the import of a guest. Note that lack of warning does not imply that there cannot be any problems.",
+      "description": "可能影响客户机导入的已知问题列表。注意，没有警告并不表示不会出现问题。",
       "items": {
         "additionalProperties": 1,
         "properties": {
           "key": {
-            "description": "Related subject (config) key of warning.",
+            "description": "警告相关主题的（配置）键。",
             "optional": 1,
             "type": "string"
           },
           "type": {
-            "description": "What this warning is about.",
+            "description": "此警告的内容。",
             "enum": [
               "cdrom-image-ignored",
               "efi-state-lost",
@@ -138,7 +138,7 @@ Get the base parameters for creating a guest which imports data from a foreign i
             "type": "string"
           },
           "value": {
-            "description": "Related subject (config) value of warning.",
+            "description": "警告相关主题的（配置）值。",
             "optional": 1,
             "type": "string"
           }

@@ -40,7 +40,7 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `resource-mode` | string | 是 | — | Controls how HA managed resources are handled while disarmed. The current state of resources is not affected. 'freeze': new commands and state changes are not applied. 'ignore': resources are removed from HA tracking and can be managed as if they were not HA managed.；可选值：`freeze`, `ignore` |
+| `resource-mode` | string | 是 | — | 控制解除后如何处理 HA 管理的资源。资源的当前状态不受影响。'freeze'：不应用新命令和状态更改。'ignore'：将资源移出 HA 跟踪，此后可按未受 HA 管理的资源进行管理。；可选值：`freeze`, `ignore` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@
   "additionalProperties": 0,
   "properties": {
     "resource-mode": {
-      "description": "Controls how HA managed resources are handled while disarmed. The current state of resources is not affected. 'freeze': new commands and state changes are not applied. 'ignore': resources are removed from HA tracking and can be managed as if they were not HA managed.",
+      "description": "控制解除后如何处理 HA 管理的资源。资源的当前状态不受影响。'freeze'：不应用新命令和状态更改。'ignore'：将资源移出 HA 跟踪，此后可按未受 HA 管理的资源进行管理。",
       "enum": [
         "freeze",
         "ignore"

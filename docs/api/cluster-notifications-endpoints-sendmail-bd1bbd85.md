@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/endpoints/sendmail`
 
-Returns a list of all sendmail endpoints
+返回所有 sendmail 端点的列表
 
 **方法标识：** `get_sendmail_endpoints`
 
@@ -57,28 +57,28 @@ Returns a list of all sendmail endpoints
   "items": {
     "properties": {
       "author": {
-        "description": "Author of the mail",
+        "description": "邮件作者",
         "optional": 1,
         "type": "string"
       },
       "comment": {
-        "description": "Comment",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "disable": {
         "default": 0,
-        "description": "Disable this target",
+        "description": "禁用此目标",
         "optional": 1,
         "type": "boolean"
       },
       "from-address": {
-        "description": "`From` address for the mail",
+        "description": "邮件的 `From` 地址",
         "optional": 1,
         "type": "string"
       },
       "mailto": {
-        "description": "List of email recipients",
+        "description": "电子邮件收件人列表",
         "items": {
           "format": "email-or-username",
           "type": "string"
@@ -87,7 +87,7 @@ Returns a list of all sendmail endpoints
         "type": "array"
       },
       "mailto-user": {
-        "description": "List of users",
+        "description": "用户列表",
         "items": {
           "format": "pve-userid",
           "type": "string"
@@ -96,12 +96,12 @@ Returns a list of all sendmail endpoints
         "type": "array"
       },
       "name": {
-        "description": "The name of the endpoint.",
+        "description": "端点名称。",
         "format": "pve-configid",
         "type": "string"
       },
       "origin": {
-        "description": "Show if this entry was created by a user or was built-in",
+        "description": "显示此条目是用户创建还是内置",
         "enum": [
           "user-created",
           "builtin",
@@ -124,7 +124,7 @@ Returns a list of all sendmail endpoints
 
 ## POST `/cluster/notifications/endpoints/sendmail`
 
-Create a new sendmail endpoint
+创建新的 sendmail 端点
 
 **方法标识：** `create_sendmail_endpoint`
 
@@ -179,13 +179,13 @@ Create a new sendmail endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | Author of the mail |
-| `comment` | string | 否 | — | Comment |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `from-address` | string | 否 | — | `From` address for the mail |
-| `mailto` | array | 否 | — | List of email recipients |
-| `mailto-user` | array | 否 | — | List of users |
-| `name` | string | 是 | — | The name of the endpoint. |
+| `author` | string | 否 | — | 邮件作者 |
+| `comment` | string | 否 | — | 注释 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
+| `mailto` | array | 否 | — | 电子邮件收件人列表 |
+| `mailto-user` | array | 否 | — | 用户列表 |
+| `name` | string | 是 | — | 端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -195,32 +195,32 @@ Create a new sendmail endpoint
   "additionalProperties": 0,
   "properties": {
     "author": {
-      "description": "Author of the mail",
+      "description": "邮件作者",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -230,7 +230,7 @@ Create a new sendmail endpoint
       "typetext": "<array>"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -240,7 +240,7 @@ Create a new sendmail endpoint
       "typetext": "<array>"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"

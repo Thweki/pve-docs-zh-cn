@@ -1,16 +1,16 @@
 # qmeventd(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-qmeventd \- PVE QEMU Eventd Daemon
+qmeventd \- PVE QEMU Eventd 守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
 **qmeventd** `[-f]` `[-v]` `PATH`
 
 **`-v`**
 
-Turn on verbose messages
+启用详细消息
 
 **`-f`**
 
@@ -18,9 +18,9 @@ Turn on verbose messages
 
 **`PATH`**
 
-The path to listen on
+监听的路径
 
-This service is usually started and managed using systemd toolset. The service is called *qmeventd*.
+此服务通常使用 systemd 工具集启动和管理。服务名为 *qmeventd*。
 
 ```text
 systemctl start qmeventd
@@ -34,11 +34,11 @@ systemctl stop qmeventd
 systemctl status qmeventd
 ```
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-`qmeventd` is a daemon that listens on PATH for incoming connections from a qemu qmp socket, and waits for SHUTDOWN events. When a client then disconnects, it executes `/usr/sbin/qm cleanup`. This makes it easy to clean up leftover tap devices, vgpus, etc.
+`qmeventd` 是一个守护进程，在 PATH 上监听来自 qemu qmp 套接字的传入连接，并等待 SHUTDOWN 事件。随后当客户端断开连接时，它会执行 `/usr/sbin/qm cleanup`。这使清理残留的 tap 设备、vgpu 等变得容易。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

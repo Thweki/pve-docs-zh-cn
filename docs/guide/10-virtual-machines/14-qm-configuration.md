@@ -23,7 +23,7 @@ virtio0: local:vm-100-disk-1,size=32G
 
 因此，通常最好使用 `qm` 命令来生成和修改这些文件，或者完全使用 GUI 完成操作。我们的工具集足够智能，可以立即将大多数更改应用到正在运行的 VM。此功能称为“热插拔”，在这种情况下无需重启 VM。
 
-## 10.14.1. 文件格式 <a href="#_file_format" id="_file_format"></a>
+## 10.14.1. 文件格式 <a href="#file_format" id="file_format"></a>
 
 VM 配置文件使用简单的冒号分隔键/值格式。每行格式如下：
 
@@ -619,85 +619,85 @@ CIDR 格式的 IPv6 地址。
 
 文件大小，单位为 MB。
 
-**`keephugepages`: `<boolean>` (*default \=* `0`)**
+**`keephugepages`：`<boolean>`（*默认值 \=* `0`）**
 
-Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.
+与大页配合使用。如果启用，虚拟机关机后不会删除大页，可供后续启动使用。
 
 **`keyboard`: `<da | de | de-ch | en-gb | en-us | es | fi | fr | fr-be | fr-ca | fr-ch | hu | is | it | ja | lt | mk | nl | no | pl | pt | pt-br | sl | sv | tr>`**
 
-Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.
+VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系统内部处理通常更合适。
 
-**`kvm`: `<boolean>` (*default \=* `1`)**
+**`kvm`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable/disable KVM hardware virtualization.
+启用/禁用 KVM 硬件虚拟化。
 
 **`localtime`: `<boolean>`**
 
-Set the real time clock (RTC) to local time. This is enabled by default if the `ostype` indicates a Microsoft Windows OS.
+将实时时钟（RTC）设为本地时间。如果 `ostype` 表明是 Microsoft Windows 操作系统，则默认启用。
 
 **`lock`: `<backup | clone | create | migrate | rollback | snapshot | snapshot-delete | suspended | suspending>`**
 
-Lock/unlock the VM.
+锁定/解锁虚拟机。
 
 **`machine`: `[[type=]<machine type>] [,aw-bits=<number>] [,enable-s3=<1|0>] [,enable-s4=<1|0>] [,viommu=<intel|virtio>]`**
 
-Specify the QEMU machine.
+指定 QEMU 机型。
 
 **`aw-bits`\=`<number> (32 - 64)`**
 
-Specifies the vIOMMU address space bit width.
+指定 vIOMMU 地址空间的位宽。
 
-Intel vIOMMU supports a bit width of either 39 or 48 bits and VirtIO vIOMMU supports any bit width between 32 and 64 bits.
+Intel vIOMMU 支持 39 或 48 位的位宽，VirtIO vIOMMU 支持 32 至 64 位之间的任意位宽。
 
 **`enable-s3`\=`<boolean>`**
 
-Enables S3 power state. Defaults to false beginning with machine types 9.2\+pve1, true before.
+启用 S3 电源状态。从机型 9.2\+pve1 开始默认为 false，之前为 true。
 
 **`enable-s4`\=`<boolean>`**
 
-Enables S4 power state. Defaults to false beginning with machine types 9.2\+pve1, true before.
+启用 S4 电源状态。从机型 9.2\+pve1 开始默认为 false，之前为 true。
 
 **`type`\=`<machine type>`**
 
-Specifies the QEMU machine type.
+指定 QEMU 机型。
 
 **`viommu`\=`<intel | virtio>`**
 
-Enable and set guest vIOMMU variant (Intel vIOMMU needs q35 to be set as machine type).
+启用并设置客户机 vIOMMU 变体（Intel vIOMMU 需要将机型设为 q35）。
 
 **`memory`: `[current=]<integer>`**
 
-Memory properties.
+内存属性。
 
-**`current`\=`<integer> (16 - N)` (*default \=* `512`)**
+**`current`\=`<integer> (16 - N)`（*默认值 \=* `512`）**
 
-Current amount of online RAM for the VM in MiB. This is the maximum available memory when you use the balloon device.
+虚拟机当前在线 RAM 容量，单位为 MiB。使用气球设备时，这是最大可用内存。
 
-**`migrate_downtime`: `<number> (0 - N)` (*default \=* `0.1`)**
+**`migrate_downtime`：`<number> (0 - N)`（*默认值 \=* `0.1`）**
 
-Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU).
+设置迁移可容忍的最长停机时间（秒）。如果迁移在最后阶段因需要传输过多新写脏的 RAM 而无法收敛，将自动逐步增加此限制，直至迁移能够收敛。上限为 2000 秒（QEMU 中的最大值）。
 
-**`migrate_speed`: `<integer> (0 - N)` (*default \=* `0`)**
+**`migrate_speed`：`<integer> (0 - N)`（*默认值 \=* `0`）**
 
-Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
+设置迁移的最大速度（MB/s）。值为 0 表示不限制。
 
 **`name`: `<string>`**
 
-Set a name for the VM. Only used on the configuration web interface.
+设置虚拟机名称。仅用于配置 Web 界面。
 
 **`nameserver`: `<string>`**
 
-cloud-init: Sets DNS server IP address for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.
+cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 都未设置，创建时将自动采用宿主机的设置。
 
 **`net[n]`: `[model=]<enum> [,bridge=<bridge>] [,firewall=<1|0>] [,host-tunnel=<1|0>] [,link_down=<1|0>] [,macaddr=<XX:XX:XX:XX:XX:XX>] [,mtu=<integer>] [,queues=<integer>] [,rate=<number>] [,tag=<integer>] [,trunks=<vlanid[;vlanid...]>] [,<model>=<macaddr>]`**
 
-Specify network devices.
+指定网络设备。
 
 **`bridge`\=`<bridge>`**
 
-Bridge to attach the network device to. The Proxmox VE standard bridge is called *vmbr0*.
+网络设备要连接的网桥。Proxmox VE 的标准网桥名为 *vmbr0*。
 
-If you do not specify a bridge, we create a kvm user (NATed) network device, which provides DHCP and DNS services. The following addresses are used:
+如果未指定网桥，将创建提供 DHCP 和 DNS 服务的 kvm 用户网络设备（使用 NAT）。使用以下地址：
 
 ```text
 10.0.2.2   Gateway
@@ -705,15 +705,15 @@ If you do not specify a bridge, we create a kvm user (NATed) network device, whi
 10.0.2.4   SMB Server
 ```
 
-The DHCP server assign addresses to the guest starting from 10.0.2.15.
+DHCP 服务器从 10.0.2.15 开始向客户机分配地址。
 
 **`firewall`\=`<boolean>`**
 
-Whether this interface should be protected by the firewall.
+是否使用防火墙保护此接口。
 
 **`host-tunnel`\=`<boolean>`**
 
-Enable host GSO over UDP tunnel offload (VirtIO only). Requires QEMU \> 10.2 and guest and host kernel support. Disabled by default starting with machine version 11.0\+pve1 to work around an issue with the virtio-net driver in guest kernels. With machine versions 10.2 and 11.0, this is enabled by default.
+启用宿主机 UDP 隧道 GSO 卸载（仅限 VirtIO）。需要 QEMU \> 10.2 及客户机和宿主机内核支持。从机型版本 11.0\+pve1 开始默认禁用，以规避客户机内核中 virtio-net 驱动的问题。机型版本 10.2 和 11.0 默认启用此功能。
 
 **`link_down`\=`<boolean>`**
 
@@ -725,65 +725,65 @@ I/G（Individual/Group，个体/组）位未设置的常见 MAC 地址。
 
 **`model`\=`<e1000 | e1000-82540em | e1000-82544gc | e1000-82545em | e1000e | i82551 | i82557b | i82559er | ne2k_isa | ne2k_pci | pcnet | rtl8139 | virtio | vmxnet3>`**
 
-Network Card Model. The *virtio* model provides the best performance with very low CPU overhead. If your guest does not support this driver, it is usually best to use *e1000*.
+网卡型号。*virtio* 型号以极低的 CPU 开销提供最佳性能。如果客户机不支持此驱动，通常最好使用 *e1000*。
 
 **`mtu`\=`<integer> (1 - 65520)`**
 
-Force MTU of network device (VirtIO only). Setting to *1* or empty will use the bridge MTU
+强制设置网络设备的 MTU（仅限 VirtIO）。设为 *1* 或留空将使用网桥的 MTU
 
 **`queues`\=`<integer> (0 - 64)`**
 
-Number of packet queues to be used on the device.
+设备使用的数据包队列数量。
 
 **`rate`\=`<number> (0 - N)`**
 
-Rate limit in mbps (megabytes per second) as floating point number.
+以 mbps（兆字节每秒）为单位的浮点数速率限制。
 
 **`tag`\=`<integer> (1 - 4094)`**
 
-VLAN tag to apply to packets on this interface.
+要应用于此接口数据包的 VLAN 标签。
 
 **`trunks`\=`<vlanid[;vlanid...]>`**
 
-VLAN trunks to pass through this interface.
+允许通过此接口的 VLAN 中继。
 
-**`numa`: `<boolean>` (*default \=* `0`)**
+**`numa`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable/disable NUMA.
+启用/禁用 NUMA。
 
 **`numa[n]`: `cpus=<id[-id];...> [,hostnodes=<id[-id];...>] [,memory=<number>] [,policy=<preferred|bind|interleave>]`**
 
-NUMA topology.
+NUMA 拓扑。
 
 **`cpus`\=`<id[-id];...>`**
 
-CPUs accessing this NUMA node.
+访问此 NUMA 节点的 CPU。
 
 **`hostnodes`\=`<id[-id];...>`**
 
-Host NUMA nodes to use.
+要使用的宿主机 NUMA 节点。
 
 **`memory`\=`<number>`**
 
-Amount of memory this NUMA node provides.
+此 NUMA 节点提供的内存容量。
 
 **`policy`\=`<bind | interleave | preferred>`**
 
-NUMA allocation policy.
+NUMA 分配策略。
 
 **`onboot`: `<boolean>` (*默认 \=* `0`)**
 
-Specifies whether a VM will be started during system bootup.
+指定是否在系统启动时启动虚拟机。
 
-**`ostype`: `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default \=* `other`)**
+**`ostype`：`<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>`（*默认值 \=* `other`）**
 
-Specify guest operating system. This is used to enable special optimization/features for specific operating systems:
+指定客户机操作系统。用于为特定操作系统启用特殊优化/功能：
 
 <table>
 <tr>
 <td>other <br/></td>
 <td>
-<p>unspecified OS</p>
+<p>未指定的操作系统</p>
 </td>
 </tr>
 <tr>
@@ -855,7 +855,7 @@ l24
 <br/>
 </td>
 <td>
-<p>Linux 2.4 Kernel</p>
+<p>Linux 2.4 内核</p>
 </td>
 </tr>
 <tr>
@@ -864,23 +864,23 @@ l26
 <br/>
 </td>
 <td>
-<p>Linux 2.6 - 7.X Kernel</p>
+<p>Linux 2.6 - 7.X 内核</p>
 </td>
 </tr>
 <tr>
 <td>solaris <br/></td>
 <td>
-<p>Solaris/OpenSolaris/OpenIndiania kernel</p>
+<p>Solaris/OpenSolaris/OpenIndiania 内核</p>
 </td>
 </tr>
 </table>
 
 **`parallel[n]`: `/dev/parport\d+|/dev/usb/lp\d+`**
 
-Map host parallel devices (n is 0 to 2).
+映射宿主机并口设备（n 为 0 到 2）。
 
 {% hint style="info" %}
-This option allows direct access to host hardware. So it is no longer possible to migrate such machines \- use with special care.
+此选项允许直接访问宿主机硬件。因此此类虚拟机将无法迁移，请格外谨慎使用。
 {% endhint %}
 
 {% hint style="danger" %}
@@ -889,31 +889,31 @@ This option allows direct access to host hardware. So it is no longer possible t
 
 **`protection`: `<boolean>` (*默认 \=* `0`)**
 
-Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
+设置虚拟机的保护标志。这将禁用删除虚拟机和删除磁盘操作。
 
-**`reboot`: `<boolean>` (*default \=* `1`)**
+**`reboot`：`<boolean>`（*默认值 \=* `1`）**
 
-Allow reboot. If set to *0* the VM exit on reboot.
+允许重启。如果设为 *0*，虚拟机将在重启时退出。
 
 **`rng0`: `[source=]</dev/urandom|/dev/random|/dev/hwrng> [,max_bytes=<integer>] [,period=<integer>]`**
 
-Configure a VirtIO-based Random Number Generator.
+配置基于 VirtIO 的随机数生成器。
 
-**`max_bytes`\=`<integer>` (*default \=* `1024`)**
+**`max_bytes`\=`<integer>`（*默认值 \=* `1024`）**
 
-Maximum bytes of entropy allowed to get injected into the guest every *period* milliseconds. Use `0` to disable limiting (potentially dangerous!).
+每 *period* 毫秒允许注入客户机的最大熵字节数。使用 `0` 禁用限制（可能存在危险！）。
 
-**`period`\=`<integer>` (*default \=* `1000`)**
+**`period`\=`<integer>`（*默认值 \=* `1000`）**
 
-Every *period* milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another *max\_bytes* of entropy.
+每隔 *period* 毫秒重置熵注入配额，允许客户机再获取 *max\_bytes* 的熵。
 
 **`source`\=`</dev/hwrng | /dev/random | /dev/urandom>`**
 
-The file on the host to gather entropy from. Using urandom does **not** decrease security in any meaningful way, as it’s still seeded from real entropy, and the bytes provided will most likely be mixed with real entropy on the guest as well. */dev/hwrng* can be used to pass through a hardware RNG from the host.
+宿主机上用于收集熵的文件。使用 urandom **不会** 对安全性造成实质性降低，因为它仍以真实熵作为种子，并且所提供的字节很可能也会在客户机上与真实熵混合。*/dev/hwrng* 可用于直通宿主机上的硬件 RNG。
 
 **`sata[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SATA hard disk or CD-ROM (n is 0 to 5).
+将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。
 
 **`aio`\=`<io_uring | native | threads>`**
 
@@ -1073,7 +1073,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`scsi[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SCSI hard disk or CD-ROM (n is 0 to 30).
+将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。
 
 **`aio`\=`<io_uring | native | threads>`**
 
@@ -1165,7 +1165,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`iothread`\=`<boolean>`**
 
-Whether to use iothreads for this drive
+是否为此驱动器使用 iothreads
 
 **`mbps`\=`<mbps>`**
 
@@ -1197,11 +1197,11 @@ Whether to use iothreads for this drive
 
 **`product`\=`<product>`**
 
-The drive’s product name, up to 16 bytes long.
+驱动器的产品名称，最长为 16 字节。
 
 **`queues`\=`<integer> (2 - N)`**
 
-Number of queues.
+队列数量。
 
 **`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
@@ -1213,14 +1213,14 @@ Number of queues.
 
 **`ro`\=`<boolean>`**
 
-Whether the drive is read-only.
+驱动器是否为只读。
 
-**`scsiblock`\=`<boolean>` (*default \=* `0`)**
+**`scsiblock`\=`<boolean>`（*默认值 \=* `0`）**
 
-whether to use scsi-block for full passthrough of host block device
+是否使用 scsi-block 完整直通宿主机块设备
 
 {% hint style="warning" %}
-can lead to I/O errors in combination with low memory or high memory fragmentation on host
+当宿主机内存不足或内存碎片严重时，可能导致 I/O 错误
 {% endhint %}
 
 **`serial`\=`<serial>`**
@@ -1249,7 +1249,7 @@ can lead to I/O errors in combination with low memory or high memory fragmentati
 
 **`vendor`\=`<vendor>`**
 
-The drive’s vendor name, up to 8 bytes long.
+驱动器的厂商名称，最长为 8 字节。
 
 **`werror`\=`<enospc | ignore | report | stop>`**
 
@@ -1259,109 +1259,109 @@ The drive’s vendor name, up to 8 bytes long.
 
 驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
 
-**`scsihw`: `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default \=* `lsi`)**
+**`scsihw`：`<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>`（*默认值 \=* `lsi`）**
 
-SCSI controller model
+SCSI 控制器型号
 
 **`searchdomain`: `<string>`**
 
-cloud-init: Sets DNS search domains for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.
+cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 都未设置，创建时将自动采用宿主机的设置。
 
 **`serial[n]`: `(/dev/[^,]+|socket)`**
 
-Create a serial device inside the VM (n is 0 to 3), and pass through a host serial device (i.e. /dev/ttyS0), or create a unix socket on the host side (use *qm terminal* to open a terminal connection).
+在虚拟机内部创建串口设备（n 为 0 到 3），并直通宿主机串口设备（即 /dev/ttyS0），或在宿主机端创建 unix 套接字（使用 *qm terminal* 打开终端连接）。
 
 {% hint style="info" %}
-If you pass through a host serial device, it is no longer possible to migrate such machines \- use with special care.
+如果直通宿主机串口设备，此类虚拟机将无法迁移，请格外谨慎使用。
 {% endhint %}
 
 {% hint style="danger" %}
 实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
-**`shares`: `<integer> (0 - 50000)` (*default \=* `1000`)**
+**`shares`：`<integer> (0 - 50000)`（*默认值 \=* `1000`）**
 
-Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.
+自动气球调整的内存份额。数值越大，该虚拟机获得的内存越多。该数值相对于所有其他运行中虚拟机的权重。使用零可禁用自动气球调整。自动气球调整由 pvestatd 完成。
 
 **`smbios1`: `[base64=<1|0>] [,family=<Base64 encoded string>] [,manufacturer=<Base64 encoded string>] [,product=<Base64 encoded string>] [,serial=<Base64 encoded string>] [,sku=<Base64 encoded string>] [,uuid=<UUID>] [,version=<Base64 encoded string>]`**
 
-Specify SMBIOS type 1 fields.
+指定 SMBIOS 类型 1 的字段。
 
 **`base64`\=`<boolean>`**
 
-Flag to indicate that the SMBIOS values are base64 encoded
+表示 SMBIOS 值采用 base64 编码的标志
 
 **`family`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 family string.
+设置 SMBIOS1 系列字符串。
 
 **`manufacturer`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 manufacturer.
+设置 SMBIOS1 制造商。
 
 **`product`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 product ID.
+设置 SMBIOS1 产品 ID。
 
 **`serial`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 serial number.
+设置 SMBIOS1 序列号。
 
 **`sku`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 SKU string.
+设置 SMBIOS1 SKU 字符串。
 
 **`uuid`\=`<UUID>`**
 
-Set SMBIOS1 UUID.
+设置 SMBIOS1 UUID。
 
 **`version`\=`<Base64 encoded string>`**
 
-Set SMBIOS1 version.
+设置 SMBIOS1 版本。
 
-**`smp`: `<integer> (1 - N)` (*default \=* `1`)**
+**`smp`：`<integer> (1 - N)`（*默认值 \=* `1`）**
 
-The number of CPUs. Please use option -sockets instead.
+CPU 数量。请改用 -sockets 选项。
 
-**`sockets`: `<integer> (1 - N)` (*default \=* `1`)**
+**`sockets`：`<integer> (1 - N)`（*默认值 \=* `1`）**
 
-The number of CPU sockets.
+CPU 插槽数量。
 
 **`spice_enhancements`: `[foldersharing=<1|0>] [,videostreaming=<off|all|filter>]`**
 
-Configure additional enhancements for SPICE.
+配置 SPICE 的额外增强功能。
 
-**`foldersharing`\=`<boolean>` (*default \=* `0`)**
+**`foldersharing`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable folder sharing via SPICE. Needs Spice-WebDAV daemon installed in the VM.
+通过 SPICE 启用文件夹共享。需要在虚拟机中安装 Spice-WebDAV 守护进程。
 
-**`videostreaming`\=`<all | filter | off>` (*default \=* `off`)**
+**`videostreaming`\=`<all | filter | off>`（*默认值 \=* `off`）**
 
-Enable video streaming. Uses compression for detected video streams.
+启用视频流传输。对检测到的视频流使用压缩。
 
 **`sshkeys`: `<string>`**
 
-cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
+cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`startdate`: `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default \=* `now`)**
+**`startdate`：`(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)`（*默认值 \=* `now`）**
 
-Set the initial date of the real time clock. Valid format for date are:'now' or *2006-06-17T16:01:21* or *2006-06-17*.
+设置实时时钟的初始日期。有效的日期格式为：'now'、*2006-06-17T16:01:21* 或 *2006-06-17*。
 
 **`startup`: \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`tablet`: `<boolean>` (*default \=* `1`)**
+**`tablet`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable/disable the USB tablet device. This device is usually needed to allow absolute mouse positioning with VNC. Else the mouse runs out of sync with normal VNC clients. If you’re running lots of console-only guests on one host, you may consider disabling this to save some context switches. This is turned off by default if you use spice (`qm set <vmid> --vga qxl`).
+启用/禁用 USB 平板设备。通常需要此设备来实现 VNC 的绝对鼠标定位，否则鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行许多仅使用控制台的客户机，可以考虑禁用此选项，以减少一些上下文切换。如果使用 spice（`qm set <vmid> --vga qxl`），默认关闭此选项。
 
 **`tags`: `<string>`**
 
-Tags of the VM. This is only meta information.
+虚拟机的标签。这只是元信息。
 
-**`tdf`: `<boolean>` (*default \=* `0`)**
+**`tdf`：`<boolean>`（*默认值 \=* `0`）**
 
-Enable/disable time drift fix.
+启用/禁用时间漂移修正。
 
 **`template`: `<boolean>` (*默认 \=* `0`)**
 
@@ -1369,7 +1369,7 @@ Enable/disable time drift fix.
 
 **`tpmstate0`: `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-Configure a Disk for storing TPM state. The format is fixed to *raw*.
+配置用于存储 TPM 状态的磁盘。格式固定为 *raw*。
 
 **`file`\=`<volume>`**
 
@@ -1377,15 +1377,15 @@ Configure a Disk for storing TPM state. The format is fixed to *raw*.
 
 **`format`\=`<qcow2 | raw | vmdk>`**
 
-Format of the image.
+镜像的格式。
 
 **`size`\=`<DiskSize>`**
 
 磁盘大小。这仅供参考，不会产生任何影响。
 
-**`version`\=`<v1.2 | v2.0>` (*default \=* `v1.2`)**
+**`version`\=`<v1.2 | v2.0>`（*默认值 \=* `v1.2`）**
 
-The TPM interface version. v2.0 is newer and should be preferred. Note that this cannot be changed later on.
+TPM 接口版本。v2.0 较新，应优先使用。请注意，此值之后无法更改。
 
 **`unused[n]`: `[file=]<volume>`**
 
@@ -1397,11 +1397,11 @@ The TPM interface version. v2.0 is newer and should be preferred. Note that this
 
 **`usb[n]`: `[[host=]<HOSTUSBDEVICE|spice>] [,mapping=<mapping-id>] [,usb3=<1|0>]`**
 
-Configure an USB device (n is 0 to 4, for machine version \>\= 7.1 and ostype l26 or windows \> 7, n can be up to 14).
+配置 USB 设备（n 为 0 到 4；对于机型版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的情况，n 最大可为 14）。
 
 **`host`\=`<HOSTUSBDEVICE|spice>`**
 
-The Host USB device or port or the value *spice*. HOSTUSBDEVICE syntax is:
+宿主机 USB 设备、端口或值 *spice*。HOSTUSBDEVICE 语法为：
 
 ```text
 'bus-port(.port)*' (decimal numbers) or
@@ -1409,13 +1409,13 @@ The Host USB device or port or the value *spice*. HOSTUSBDEVICE syntax is:
 'spice'
 ```
 
-You can use the *lsusb -t* command to list existing usb devices.
+可以使用 *lsusb -t* 命令列出现有 USB 设备。
 
 {% hint style="info" %}
-This option allows direct access to host hardware. So it is no longer possible to migrate such machines \- use with special care.
+此选项允许直接访问宿主机硬件。因此此类虚拟机将无法迁移，请格外谨慎使用。
 {% endhint %}
 
-The value *spice* can be used to add a usb redirection devices for spice.
+值 *spice* 可用于为 spice 添加 USB 重定向设备。
 
 必须设置此项或 *mapping* 键。
 
@@ -1423,33 +1423,33 @@ The value *spice* can be used to add a usb redirection devices for spice.
 
 集群范围映射的 ID。必须设置此项或默认键 *host*。
 
-**`usb3`\=`<boolean>` (*default \=* `0`)**
+**`usb3`\=`<boolean>`（*默认值 \=* `0`）**
 
-Specifies whether if given host option is a USB3 device or port. For modern guests (machine version \>\= 7.1 and ostype l26 and windows \> 7), this flag is irrelevant (all devices are plugged into a xhci controller).
+指定所给 host 选项是否为 USB3 设备或端口。对于较新的客户机（机型版本 \>\= 7.1 且 ostype 为 l26 和 windows \> 7），此标志无关紧要（所有设备均连接到 xhci 控制器）。
 
-**`vcpus`: `<integer> (1 - N)` (*default \=* `0`)**
+**`vcpus`：`<integer> (1 - N)`（*默认值 \=* `0`）**
 
-Number of hotplugged vcpus.
+热插拔的 vcpu 数量。
 
 **`vga`: `[[type=]<enum>] [,clipboard=<vnc>] [,memory=<integer>]`**
 
-Configure the VGA Hardware. If you want to use high resolution modes (\>\= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is *std* for all OS types besides some Windows versions (XP and older) which use *cirrus*. The *qxl* option enables the SPICE display server. For win\* OS you can select how many independent displays you want, Linux guests can add displays them self. You can also run without any graphic card, using a serial device as terminal.
+配置 VGA 硬件。如果要使用高分辨率模式（\>\= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 开始，默认 VGA 显示类型为 *std*，适用于除某些 Windows 版本（XP 及更早版本）外的所有操作系统类型，这些 Windows 版本使用 *cirrus*。*qxl* 选项启用 SPICE 显示服务器。对于 win\* 操作系统，可以选择所需的独立显示器数量；Linux 客户机可以自行添加显示器。也可以不使用任何显卡，而使用串口设备作为终端运行。
 
 **`clipboard`\=`<vnc>`**
 
-Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Live migration with a VNC clipboard is not possible with QEMU machine version \< 10.1.
+启用指定剪贴板。如果未设置，将根据显示类型添加 SPICE 剪贴板。QEMU 机型版本 \< 10.1 时，无法使用 VNC 剪贴板进行在线迁移。
 
 **`memory`\=`<integer> (4 - 512)`**
 
-Sets the VGA memory (in MiB). Has no effect with serial display.
+设置 VGA 内存（MiB）。对串口显示无效。
 
-**`type`\=`<cirrus | none | qxl | qxl2 | qxl3 | qxl4 | serial0 | serial1 | serial2 | serial3 | std | virtio | virtio-gl | vmware>` (*default \=* `std`)**
+**`type`\=`<cirrus | none | qxl | qxl2 | qxl3 | qxl4 | serial0 | serial1 | serial2 | serial3 | std | virtio | virtio-gl | vmware>`（*默认值 \=* `std`）**
 
-Select the VGA type. Using type *cirrus* is not recommended.
+选择 VGA 类型。不建议使用 *cirrus* 类型。
 
 **`virtio[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-Use volume as VIRTIO hard disk (n is 0 to 15).
+将卷用作 VIRTIO 硬盘（n 为 0 到 15）。
 
 **`aio`\=`<io_uring | native | threads>`**
 
@@ -1541,7 +1541,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`iothread`\=`<boolean>`**
 
-Whether to use iothreads for this drive
+是否为此驱动器使用 iothreads
 
 **`mbps`\=`<mbps>`**
 
@@ -1581,7 +1581,7 @@ Whether to use iothreads for this drive
 
 **`ro`\=`<boolean>`**
 
-Whether the drive is read-only.
+驱动器是否为只读。
 
 **`serial`\=`<serial>`**
 
@@ -1609,47 +1609,47 @@ Whether the drive is read-only.
 
 **`virtiofs[n]`: `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
-Configuration for sharing a directory between host and guest using Virtio-fs.
+使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。
 
-**`cache`\=`<always | auto | metadata | never>` (*default \=* `auto`)**
+**`cache`\=`<always | auto | metadata | never>`（*默认值 \=* `auto`）**
 
-The caching policy the file system should use (auto, always, metadata, never).
+文件系统应使用的缓存策略（auto、always、metadata、never）。
 
-**`direct-io`\=`<boolean>` (*default \=* `0`)**
+**`direct-io`\=`<boolean>`（*默认值 \=* `0`）**
 
-Honor the O\_DIRECT flag passed down by guest applications.
+遵循客户机应用程序传递的 O\_DIRECT 标志。
 
 **`dirid`\=`<mapping-id>`**
 
-Mapping identifier of the directory mapping to be shared with the guest. Also used as a mount tag inside the VM.
+要与客户机共享的目录映射的映射标识符。也用作虚拟机内部的挂载标签。
 
-**`expose-acl`\=`<boolean>` (*default \=* `0`)**
+**`expose-acl`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable support for POSIX ACLs (enabled ACL implies xattr) for this mount.
+为此挂载启用 POSIX ACL 支持（启用 ACL 会隐含启用 xattr）。
 
-**`expose-xattr`\=`<boolean>` (*default \=* `0`)**
+**`expose-xattr`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable support for extended attributes for this mount.
+为此挂载启用扩展属性支持。
 
-**`vmgenid`: `<UUID>` (*default \=* `1 (autogenerated)`)**
+**`vmgenid`：`<UUID>`（*默认值 \=* `1 (autogenerated)`）**
 
-The VM generation ID (vmgenid) device exposes a 128-bit integer value identifier to the guest OS. This allows to notify the guest operating system when the virtual machine is executed with a different configuration (e.g. snapshot execution or creation from a template). The guest operating system notices the change, and is then able to react as appropriate by marking its copies of distributed databases as dirty, re-initializing its random number generator, etc. Note that auto-creation only works when done through API/CLI create or update methods, but not when manually editing the config file.
+虚拟机代次 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数值标识符。当虚拟机以不同配置执行时（例如执行快照或从模板创建），可借此通知客户机操作系统。客户机操作系统会注意到更改，随后可作出适当反应，例如将其分布式数据库副本标记为脏、重新初始化随机数生成器等。请注意，自动创建仅在通过 API/CLI 创建或更新方法执行时有效，手动编辑配置文件时无效。
 
 **`vmstatestorage`: `<storage ID>`**
 
-Default storage for VM state volumes/files.
+虚拟机状态卷/文件的默认存储。
 
 **`watchdog`: `[[model=]<i6300esb|ib700>] [,action=<enum>]`**
 
-Create a virtual hardware watchdog device. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified)
+创建虚拟硬件看门狗设备。启用后（通过客户机操作），客户机内部的代理必须定期轮询看门狗，否则看门狗会重置客户机（或执行所指定的相应操作）
 
 **`action`\=`<debug | none | pause | poweroff | reset | shutdown>`**
 
-The action to perform if after activation the guest fails to poll the watchdog in time.
+激活后，如果客户机未能及时轮询看门狗，要执行的操作。
 
-**`model`\=`<i6300esb | ib700>` (*default \=* `i6300esb`)**
+**`model`\=`<i6300esb | ib700>`（*默认值 \=* `i6300esb`）**
 
-Watchdog type to emulate.
+要模拟的看门狗类型。
 
 ---
 

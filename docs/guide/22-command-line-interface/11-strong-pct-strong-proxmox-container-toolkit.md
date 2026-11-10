@@ -1,16 +1,8 @@
-# 22.11. **pct** \- Proxmox Container Toolkit <a href="#_strong_pct_strong_proxmox_container_toolkit" id="_strong_pct_strong_proxmox_container_toolkit"></a>
+# 22.11. **pct** \- Proxmox 容器工具包 <a href="#strong_pct_strong_proxmox_container_toolkit" id="strong_pct_strong_proxmox_container_toolkit"></a>
 
-<a id="cli_pct"></a>
+## **pct** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pct" id="cli_pct"></a>
 
-
-
-**pct** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pct_clone"></a>
-
-
-
-**pct clone** `<vmid> <newid>` `[OPTIONS]`
+## **pct clone** `<vmid> <newid>` `[OPTIONS]` <a href="#cli_pct_clone" id="cli_pct_clone"></a>
 
 创建容器克隆/副本
 
@@ -54,11 +46,7 @@ VM 的唯一 ID。
 
 目标节点。仅当原始 VM 位于共享存储上时才允许。
 
-<a id="cli_pct_config"></a>
-
-
-
-**pct config** `<vmid>` `[OPTIONS]`
+## **pct config** `<vmid>` `[OPTIONS]` <a href="#cli_pct_config" id="cli_pct_config"></a>
 
 获取容器配置。
 
@@ -74,11 +62,7 @@ VM 的唯一 ID。
 
 从指定快照获取配置值。
 
-<a id="cli_pct_console"></a>
-
-
-
-**pct console** `<vmid>` `[OPTIONS]`
+## **pct console** `<vmid>` `[OPTIONS]` <a href="#cli_pct_console" id="cli_pct_console"></a>
 
 为指定容器启动控制台。
 
@@ -90,19 +74,11 @@ VM 的唯一 ID。
 
 转义序列前缀。例如，要将 \<Ctrl\+b q\> 用作转义序列，请传递 *^b*。
 
-<a id="cli_pct_cpusets"></a>
-
-
-
-**pct cpusets**
+## **pct cpusets** <a href="#cli_pct_cpusets" id="cli_pct_cpusets"></a>
 
 打印已分配的 CPU 集合列表。
 
-<a id="cli_pct_create"></a>
-
-
-
-**pct create** `<vmid> <ostemplate>` `[OPTIONS]`
+## **pct create** `<vmid> <ostemplate>` `[OPTIONS]` <a href="#cli_pct_create" id="cli_pct_create"></a>
 
 创建或恢复容器。
 
@@ -294,11 +270,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_delsnapshot"></a>
-
-
-
-**pct delsnapshot** `<vmid> <snapname>` `[OPTIONS]`
+## **pct delsnapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_delsnapshot" id="cli_pct_delsnapshot"></a>
 
 删除 LXC 快照。
 
@@ -314,11 +286,7 @@ VM 的唯一 ID。
 
 即使删除磁盘快照失败，也从配置文件中移除。
 
-<a id="cli_pct_destroy"></a>
-
-
-
-**pct destroy** `<vmid>` `[OPTIONS]`
+## **pct destroy** `<vmid>` `[OPTIONS]` <a href="#cli_pct_destroy" id="cli_pct_destroy"></a>
 
 销毁容器（同时删除所有相关文件）。
 
@@ -338,11 +306,7 @@ VM 的唯一 ID。
 
 从所有相关配置中移除容器。例如，备份任务、复制任务或 HA。相关 ACL 和防火墙条目**始终**会被移除。
 
-<a id="cli_pct_df"></a>
-
-
-
-**pct df** `<vmid>`
+## **pct df** `<vmid>` <a href="#cli_pct_df" id="cli_pct_df"></a>
 
 获取容器当前的磁盘使用情况。
 
@@ -350,11 +314,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_enter"></a>
-
-
-
-**pct enter** `<vmid>` `[OPTIONS]`
+## **pct enter** `<vmid>` `[OPTIONS]` <a href="#cli_pct_enter" id="cli_pct_enter"></a>
 
 为指定的容器启动 shell。
 
@@ -366,11 +326,7 @@ VM 的唯一 ID。
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
-<a id="cli_pct_exec"></a>
-
-
-
-**pct exec** `<vmid> [<extra-args>]` `[OPTIONS]`
+## **pct exec** `<vmid> [<extra-args>]` `[OPTIONS]` <a href="#cli_pct_exec" id="cli_pct_exec"></a>
 
 在指定的容器内启动命令。
 
@@ -386,11 +342,7 @@ VM 的唯一 ID。
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
-<a id="cli_pct_fsck"></a>
-
-
-
-**pct fsck** `<vmid>` `[OPTIONS]`
+## **pct fsck** `<vmid>` `[OPTIONS]` <a href="#cli_pct_fsck" id="cli_pct_fsck"></a>
 
 对容器卷运行文件系统检查（fsck）。
 
@@ -406,11 +358,7 @@ VM 的唯一 ID。
 
 即使文件系统看起来干净，也强制检查
 
-<a id="cli_pct_fstrim"></a>
-
-
-
-**pct fstrim** `<vmid>` `[OPTIONS]`
+## **pct fstrim** `<vmid>` `[OPTIONS]` <a href="#cli_pct_fstrim" id="cli_pct_fstrim"></a>
 
 对选定的容器及其挂载点运行 fstrim，绑定挂载点或只读挂载点除外。
 
@@ -422,11 +370,7 @@ VM 的唯一 ID。
 
 跳过所有挂载点，仅对容器根目录执行 fstrim。
 
-<a id="cli_pct_help"></a>
-
-
-
-**pct help** `[OPTIONS]`
+## **pct help** `[OPTIONS]` <a href="#cli_pct_help" id="cli_pct_help"></a>
 
 获取指定命令的帮助。
 
@@ -438,19 +382,11 @@ VM 的唯一 ID。
 
 详细输出格式。
 
-<a id="cli_pct_list"></a>
-
-
-
-**pct list**
+## **pct list** <a href="#cli_pct_list" id="cli_pct_list"></a>
 
 LXC 容器索引（按节点）。
 
-<a id="cli_pct_listsnapshot"></a>
-
-
-
-**pct listsnapshot** `<vmid>`
+## **pct listsnapshot** `<vmid>` <a href="#cli_pct_listsnapshot" id="cli_pct_listsnapshot"></a>
 
 列出所有快照。
 
@@ -458,11 +394,7 @@ LXC 容器索引（按节点）。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_migrate"></a>
-
-
-
-**pct migrate** `<vmid> <target>` `[OPTIONS]`
+## **pct migrate** `<vmid> <target>` `[OPTIONS]` <a href="#cli_pct_migrate" id="cli_pct_migrate"></a>
 
 将容器迁移到另一个节点。创建新的迁移任务。
 
@@ -494,11 +426,7 @@ VM 的唯一 ID。
 
 重启迁移时等待关机的超时时间（秒）
 
-<a id="cli_pct_mount"></a>
-
-
-
-**pct mount** `<vmid>`
+## **pct mount** `<vmid>` <a href="#cli_pct_mount" id="cli_pct_mount"></a>
 
 将容器的文件系统挂载到宿主机。这会锁定容器，仅用于紧急维护，因为除了启动和停止之外，它将阻止对容器执行其他操作。
 
@@ -506,11 +434,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_move-volume"></a>
-
-
-
-**pct move-volume** `<vmid> <volume> [<storage>] [<target-vmid>] [<target-volume>]` `[OPTIONS]`
+## **pct move-volume** `<vmid> <volume> [<storage>] [<target-vmid>] [<target-volume>]` `[OPTIONS]` <a href="#cli_pct_move-volume" id="cli_pct_move-volume"></a>
 
 将 rootfs-/mp-volume 移动到其他存储或其他容器。
 
@@ -550,19 +474,11 @@ VM 的唯一 ID。
 
 如果目标容器的当前配置文件具有不同的 SHA1 摘要，则阻止更改。这可用于防止并发修改。
 
-<a id="cli_pct_move_volume"></a>
-
-
-
-**pct move\_volume**
+## **pct move\_volume** <a href="#cli_pct_move_volume" id="cli_pct_move_volume"></a>
 
 *pct move-volume* 的别名。
 
-<a id="cli_pct_pending"></a>
-
-
-
-**pct pending** `<vmid>`
+## **pct pending** `<vmid>` <a href="#cli_pct_pending" id="cli_pct_pending"></a>
 
 获取容器配置，包括待处理的更改。
 
@@ -570,11 +486,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_pull"></a>
-
-
-
-**pct pull** `<vmid> <path> <destination>` `[OPTIONS]`
+## **pct pull** `<vmid> <path> <destination>` `[OPTIONS]` <a href="#cli_pct_pull" id="cli_pct_pull"></a>
 
 将文件从容器复制到本地系统。
 
@@ -602,11 +514,7 @@ VM 的唯一 ID。
 
 属主用户名或 ID。
 
-<a id="cli_pct_push"></a>
-
-
-
-**pct push** `<vmid> <file> <destination>` `[OPTIONS]`
+## **pct push** `<vmid> <file> <destination>` `[OPTIONS]` <a href="#cli_pct_push" id="cli_pct_push"></a>
 
 将本地文件复制到容器。
 
@@ -634,11 +542,7 @@ VM 的唯一 ID。
 
 属主用户名或 ID。使用名称时，该名称必须存在于容器内。
 
-<a id="cli_pct_reboot"></a>
-
-
-
-**pct reboot** `<vmid>` `[OPTIONS]`
+## **pct reboot** `<vmid>` `[OPTIONS]` <a href="#cli_pct_reboot" id="cli_pct_reboot"></a>
 
 通过关机并重新启动来重启容器。应用待处理的更改。
 
@@ -650,11 +554,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒以完成关机。
 
-<a id="cli_pct_remote-migrate"></a>
-
-
-
-**pct remote-migrate** `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]`
+## **pct remote-migrate** `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]` <a href="#cli_pct_remote-migrate" id="cli_pct_remote-migrate"></a>
 
 将容器迁移到远程集群。创建新的迁移任务。实验性功能！
 
@@ -698,11 +598,7 @@ VM 的唯一 ID。
 
 重启迁移时等待关机的超时时间（秒）
 
-<a id="cli_pct_rescan"></a>
-
-
-
-**pct rescan** `[OPTIONS]`
+## **pct rescan** `[OPTIONS]` <a href="#cli_pct_rescan" id="cli_pct_rescan"></a>
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
@@ -714,11 +610,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_resize"></a>
-
-
-
-**pct resize** `<vmid> <disk> <size>` `[OPTIONS]`
+## **pct resize** `<vmid> <disk> <size>` `[OPTIONS]` <a href="#cli_pct_resize" id="cli_pct_resize"></a>
 
 调整容器挂载点的大小。
 
@@ -738,11 +630,7 @@ VM 的唯一 ID。
 
 如果当前配置文件的 SHA1 摘要不同，则阻止更改。这可用于防止并发修改。
 
-<a id="cli_pct_restore"></a>
-
-
-
-**pct restore** `<vmid> <ostemplate>` `[OPTIONS]`
+## **pct restore** `<vmid> <ostemplate>` `[OPTIONS]` <a href="#cli_pct_restore" id="cli_pct_restore"></a>
 
 创建或恢复容器。
 
@@ -930,11 +818,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_resume"></a>
-
-
-
-**pct resume** `<vmid>`
+## **pct resume** `<vmid>` <a href="#cli_pct_resume" id="cli_pct_resume"></a>
 
 恢复容器运行。
 
@@ -942,11 +826,7 @@ CPU 使用限制。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_rollback"></a>
-
-
-
-**pct rollback** `<vmid> <snapname>` `[OPTIONS]`
+## **pct rollback** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_rollback" id="cli_pct_rollback"></a>
 
 将 LXC 状态回滚到指定快照。
 
@@ -962,11 +842,7 @@ VM 的唯一 ID。
 
 成功回滚后是否应启动容器
 
-<a id="cli_pct_set"></a>
-
-
-
-**pct set** `<vmid>` `[OPTIONS]`
+## **pct set** `<vmid>` `[OPTIONS]` <a href="#cli_pct_set" id="cli_pct_set"></a>
 
 设置容器选项。
 
@@ -1118,11 +994,7 @@ CPU 使用限制。
 
 对未使用卷的引用。这供内部使用，不应手动修改。
 
-<a id="cli_pct_shutdown"></a>
-
-
-
-**pct shutdown** `<vmid>` `[OPTIONS]`
+## **pct shutdown** `<vmid>` `[OPTIONS]` <a href="#cli_pct_shutdown" id="cli_pct_shutdown"></a>
 
 关闭容器。这会触发容器正常关机，详情请参阅 lxc-stop(1)。
 
@@ -1138,11 +1010,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒。
 
-<a id="cli_pct_snapshot"></a>
-
-
-
-**pct snapshot** `<vmid> <snapname>` `[OPTIONS]`
+## **pct snapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_pct_snapshot" id="cli_pct_snapshot"></a>
 
 为容器创建快照。
 
@@ -1158,11 +1026,7 @@ VM 的唯一 ID。
 
 文本描述或注释。
 
-<a id="cli_pct_start"></a>
-
-
-
-**pct start** `<vmid>` `[OPTIONS]`
+## **pct start** `<vmid>` `[OPTIONS]` <a href="#cli_pct_start" id="cli_pct_start"></a>
 
 启动容器。
 
@@ -1178,11 +1042,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-<a id="cli_pct_status"></a>
-
-
-
-**pct status** `<vmid>` `[OPTIONS]`
+## **pct status** `<vmid>` `[OPTIONS]` <a href="#cli_pct_status" id="cli_pct_status"></a>
 
 显示 CT 状态。
 
@@ -1194,11 +1054,7 @@ VM 的唯一 ID。
 
 详细输出格式
 
-<a id="cli_pct_stop"></a>
-
-
-
-**pct stop** `<vmid>` `[OPTIONS]`
+## **pct stop** `<vmid>` `[OPTIONS]` <a href="#cli_pct_stop" id="cli_pct_stop"></a>
 
 停止容器。这将突然终止容器中运行的所有进程。
 
@@ -1214,11 +1070,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-<a id="cli_pct_suspend"></a>
-
-
-
-**pct suspend** `<vmid>`
+## **pct suspend** `<vmid>` <a href="#cli_pct_suspend" id="cli_pct_suspend"></a>
 
 挂起容器。此功能处于实验阶段。
 
@@ -1226,11 +1078,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_template"></a>
-
-
-
-**pct template** `<vmid>`
+## **pct template** `<vmid>` <a href="#cli_pct_template" id="cli_pct_template"></a>
 
 创建模板。
 
@@ -1238,11 +1086,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_unlock"></a>
-
-
-
-**pct unlock** `<vmid>`
+## **pct unlock** `<vmid>` <a href="#cli_pct_unlock" id="cli_pct_unlock"></a>
 
 解锁 VM。
 
@@ -1250,11 +1094,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-<a id="cli_pct_unmount"></a>
-
-
-
-**pct unmount** `<vmid>`
+## **pct unmount** `<vmid>` <a href="#cli_pct_unmount" id="cli_pct_unmount"></a>
 
 卸载容器的文件系统。
 

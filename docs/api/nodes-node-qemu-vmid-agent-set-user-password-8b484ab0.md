@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/agent/set-user-password`
 
-Sets the password for the given user to the given password
+将给定用户的密码设置为给定密码
 
 **方法标识：** `set-user-password`
 
@@ -46,11 +46,11 @@ Sets the password for the given user to the given password
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `crypted` | boolean | 否 | 0 | set to 1 if the password has already been passed through crypt() |
-| `node` | string | 是 | — | The cluster node name. |
-| `password` | string | 是 | — | The new password. |
-| `username` | string | 是 | — | The user to set the password for. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `crypted` | boolean | 否 | 0 | 如果密码已经过 crypt() 处理，则设为 1 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `password` | string | 是 | — | 新密码。 |
+| `username` | string | 是 | — | 要设置密码的用户。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,31 +61,31 @@ Sets the password for the given user to the given password
   "properties": {
     "crypted": {
       "default": 0,
-      "description": "set to 1 if the password has already been passed through crypt()",
+      "description": "如果密码已经过 crypt() 处理，则设为 1",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "The new password.",
+      "description": "新密码。",
       "maxLength": 1024,
       "minLength": 5,
       "type": "string",
       "typetext": "<string>"
     },
     "username": {
-      "description": "The user to set the password for.",
+      "description": "要设置密码的用户。",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -102,7 +102,7 @@ Sets the password for the given user to the given password
 
 ```json
 {
-  "description": "Returns an object with a single `result` property.",
+  "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
 }
 ```

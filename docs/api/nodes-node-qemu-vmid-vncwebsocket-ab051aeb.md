@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/vncwebsocket`
 
-Opens a websocket for VNC traffic.
+为 VNC 流量打开 websocket。
 
 **方法标识：** `vncwebsocket`
 
@@ -21,7 +21,7 @@ Opens a websocket for VNC traffic.
       "VM.Console"
     ]
   ],
-  "description": "You also need to pass a valid ticket (vncticket)."
+  "description": "还需要传入有效票据（vncticket）。"
 }
 ```
 
@@ -35,10 +35,10 @@ Opens a websocket for VNC traffic.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `port` | integer | 是 | — | Port number returned by previous vncproxy call. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
-| `vncticket` | string | 是 | — | Ticket from previous call to vncproxy. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `port` | integer | 是 | — | 上次 vncproxy 调用返回的端口号。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| `vncticket` | string | 是 | — | 上次 vncproxy 调用的票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -48,20 +48,20 @@ Opens a websocket for VNC traffic.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "Port number returned by previous vncproxy call.",
+      "description": "上次 vncproxy 调用返回的端口号。",
       "maximum": 5999,
       "minimum": 5900,
       "type": "integer",
       "typetext": "<integer> (5900 - 5999)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -69,7 +69,7 @@ Opens a websocket for VNC traffic.
       "typetext": "<integer> (100 - 999999999)"
     },
     "vncticket": {
-      "description": "Ticket from previous call to vncproxy.",
+      "description": "上次 vncproxy 调用的票据。",
       "maxLength": 512,
       "type": "string",
       "typetext": "<string>"

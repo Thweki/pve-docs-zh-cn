@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/zones/{zone}/ip-vrf`
 
-Get the IP VRF of an EVPN zone.
+获取 EVPN 区域的 IP VRF。
 
 **方法标识：** `ip-vrf`
 
@@ -46,8 +46,8 @@ Get the IP VRF of an EVPN zone.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `zone` | string | 是 | — | Name of an EVPN zone. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `zone` | string | 是 | — | EVPN 区域名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Get the IP VRF of an EVPN zone.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "zone": {
-      "description": "Name of an EVPN zone.",
+      "description": "EVPN 区域名称。",
       "type": "string",
       "typetext": "<string>"
     }
@@ -77,28 +77,28 @@ Get the IP VRF of an EVPN zone.
 
 ```json
 {
-  "description": "All entries in the VRF table of zone {zone} of the node.This does not include /32 routes for guests on this host,since they are handled via the respective vnet bridge directly.",
+  "description": "节点上区域 {zone} 的 VRF 表中的所有条目。不包括此宿主机上客户机的 /32 路由，因为这些路由通过相应的 vnet 网桥直接处理。",
   "items": {
     "properties": {
       "ip": {
-        "description": "The CIDR of the route table entry.",
+        "description": "路由表条目的 CIDR。",
         "format": "CIDR",
         "type": "string"
       },
       "metric": {
-        "description": "This route's metric.",
+        "description": "此路由的度量值。",
         "type": "integer"
       },
       "nexthops": {
-        "description": "A list of nexthops for the route table entry.",
+        "description": "路由表条目的下一跳列表。",
         "items": {
-          "description": "the interface name or ip address of the next hop",
+          "description": "下一跳的接口名称或 IP 地址",
           "type": "string"
         },
         "type": "array"
       },
       "protocol": {
-        "description": "The protocol where this route was learned from (e.g. BGP).",
+        "description": "学习到此路由所用的协议（例如 BGP）。",
         "type": "string"
       }
     },

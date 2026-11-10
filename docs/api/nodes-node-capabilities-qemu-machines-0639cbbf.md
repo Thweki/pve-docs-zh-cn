@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/capabilities/qemu/machines`
 
-Get available QEMU/KVM machine types.
+获取可用 QEMU/KVM 机器类型。
 
 **方法标识：** `types`
 
@@ -34,8 +34,8 @@ Get available QEMU/KVM machine types.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `arch` | string | 否 | — | Virtual processor architecture. Defaults to the host architecture.；可选值：`x86_64`, `aarch64` |
-| `node` | string | 是 | — | The cluster node name. |
+| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,7 +45,7 @@ Get available QEMU/KVM machine types.
   "additionalProperties": 0,
   "properties": {
     "arch": {
-      "description": "Virtual processor architecture. Defaults to the host architecture.",
+      "description": "虚拟处理器架构。默认为宿主机架构。",
       "enum": [
         "x86_64",
         "aarch64"
@@ -54,7 +54,7 @@ Get available QEMU/KVM machine types.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -73,16 +73,16 @@ Get available QEMU/KVM machine types.
     "additionalProperties": 1,
     "properties": {
       "changes": {
-        "description": "Notable changes of a version, currently only set for +pveX versions.",
+        "description": "某版本的重要更改，当前仅为 +pveX 版本设置。",
         "optional": 1,
         "type": "string"
       },
       "id": {
-        "description": "Full name of machine type and version.",
+        "description": "机器类型和版本的完整名称。",
         "type": "string"
       },
       "type": {
-        "description": "The machine type.",
+        "description": "机器类型。",
         "enum": [
           "q35",
           "i440fx"
@@ -90,7 +90,7 @@ Get available QEMU/KVM machine types.
         "type": "string"
       },
       "version": {
-        "description": "The machine version.",
+        "description": "机器版本。",
         "type": "string"
       }
     },

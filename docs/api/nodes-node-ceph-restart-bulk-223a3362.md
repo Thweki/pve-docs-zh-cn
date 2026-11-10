@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/ceph/restart-bulk`
 
-Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after Ceph reports the previous one is back up and the next one is safe to stop. For non-OSD Ceph daemons, use the cluster-wide endpoint at /cluster/ceph/restart-bulk. The 'noout' flag is applied only to the OSDs targeted by this run, so unrelated OSDs on other nodes that fail during the restart window still get out-marked normally. Aborting the resulting task (for example via 'pvesh task stop') triggers a SIGTERM handler that unsets the per-OSD 'noout' if this endpoint set it. Per-daemon progress is checkpointed in Ceph's config-key store ('pve/ceph-bulk-restart/node/&lt;node&gt;'), so an aborted run can be resumed by re-issuing this endpoint with 'resume=1'.
+滚动重启此节点上的所有 Ceph OSD。只有 Ceph 报告上一个 OSD 已恢复运行且下一个可安全停止后，才重启相应 OSD。对于非 OSD 的 Ceph 守护进程，请使用集群级端点 /cluster/ceph/restart-bulk.。'noout' 标志仅应用于本次运行针对的 OSD，因此其他节点上不相关的 OSD 即使在重启期间发生故障，仍会正常标记为 out。中止生成的任务（例如通过 'pvesh task stop'）会触发 SIGTERM 处理程序，如果此端点设置了各 OSD 的 'noout'，则将其取消。各守护进程的进度检查点保存在 Ceph 的 config-key 存储（'pve/ceph-bulk-restart/node/&lt;node&gt;'）中，因此可使用 'resume=1' 重新调用此端点来恢复中止的运行。
 
 **方法标识：** `restart_bulk`
 
@@ -46,14 +46,14 @@ Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after 
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `dry-run` | boolean | 否 | 0 | Log the plan (which OSDs would be restarted, in what order) without actually doing anything. |
-| `force` | boolean | 否 | 0 | Proceed past a HEALTH_WARN with non-benign checks like PG_DEGRADED, SLOW_OPS, or MON_DOWN. A blocking HEALTH_ERR is fatal regardless of this flag. Checks that ceph reports as muted, and checks known to be harmless for a rolling restart, never block and are named in the task log. The cluster-wide OSD map flags are only ever evaluated for an OSD restart, since they govern nothing a mon, mgr or mds restart touches. The operator is responsible for confirming the cluster is stable enough to absorb a rolling restart. |
-| `node` | string | 是 | — | The cluster node name. |
-| `only-outdated` | boolean | 否 | 0 | Restart only OSDs whose running version differs from the locally-installed ceph-osd binary. Useful for post-upgrade rolling restarts that should touch only daemons that need it. Refuses if the local binary version cannot be determined. Ignored on resume (the saved plan is used as-is). |
-| `resume` | boolean | 否 | 0 | Resume an aborted bulk-restart from the checkpoint stored in Ceph's config-key store. The plan and noout decision from the prior run are honored; 'set-noout' is ignored. When false (default), the endpoint refuses to start if a checkpoint exists for this node, to avoid silently overwriting in-progress work. |
-| `service-type` | string | 是 | — | Ceph daemon type to restart. Only OSDs can be rolling-restarted on a per-node basis.；可选值：`osd` |
-| `set-noout` | boolean | 否 | 1 | Set the 'noout' flag on each OSD targeted by this run for the duration of the rolling restart, and unset it on completion. Per-OSD rather than cluster-wide so that unrelated OSDs failing on other nodes still trigger backfill normally. |
-| `timeout` | integer | 否 | 600 | Per-OSD timeout (in seconds). Bounds both the wait for a restarted OSD to come back up and the wait for recovery to quiesce enough that Ceph reports the next OSD safe to stop. Default sized for busy clusters where multi-TB OSDs with many PGs can need several minutes to clear peering after a restart; bump higher for very large or heavily-loaded OSDs. |
+| `dry-run` | boolean | 否 | 0 | 记录计划（将重启哪些 OSD 及其顺序），但不执行实际操作。 |
+| `force` | boolean | 否 | 0 | 对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `only-outdated` | boolean | 否 | 0 | 只重启运行版本与本地安装的 ceph-osd 二进制程序不同的 OSD。适用于升级后仅针对需要重启的守护进程执行滚动重启。如果无法确定本地二进制版本，则拒绝操作。恢复执行时忽略此选项（原样使用保存的计划）。 |
+| `resume` | boolean | 否 | 0 | 从 Ceph config-key 存储中的检查点恢复已中止的批量重启。沿用上次运行的计划和 noout 决定；忽略 'set-noout'。为 false（默认值）时，如果此节点存在检查点，端点将拒绝启动，避免静默覆盖正在进行的工作。 |
+| `service-type` | string | 是 | — | 要重启的 Ceph 守护进程类型。只有 OSD 可按节点滚动重启。；可选值：`osd` |
+| `set-noout` | boolean | 否 | 1 | 在滚动重启期间，为本次运行针对的每个 OSD 设置 'noout' 标志，并在完成时取消设置。采用每个 OSD 而非集群范围的设置，使其他节点上不相关 OSD 的故障仍能正常触发回填。 |
+| `timeout` | integer | 否 | 600 | 每个 OSD 的超时时间（秒）。同时限制等待重启的 OSD 恢复上线的时间，以及等待恢复活动足够平静、使 Ceph 报告下一个 OSD 可安全停止的时间。默认值适用于繁忙集群，其中包含大量 PG 的多 TB OSD 在重启后可能需要数分钟才能完成对等互联；对于非常大或负载很高的 OSD，请增大此值。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -64,40 +64,40 @@ Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after 
   "properties": {
     "dry-run": {
       "default": 0,
-      "description": "Log the plan (which OSDs would be restarted, in what order) without actually doing anything.",
+      "description": "记录计划（将重启哪些 OSD 及其顺序），但不执行实际操作。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "force": {
       "default": 0,
-      "description": "Proceed past a HEALTH_WARN with non-benign checks like PG_DEGRADED, SLOW_OPS, or MON_DOWN. A blocking HEALTH_ERR is fatal regardless of this flag. Checks that ceph reports as muted, and checks known to be harmless for a rolling restart, never block and are named in the task log. The cluster-wide OSD map flags are only ever evaluated for an OSD restart, since they govern nothing a mon, mgr or mds restart touches. The operator is responsible for confirming the cluster is stable enough to absorb a rolling restart.",
+      "description": "对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "only-outdated": {
       "default": 0,
-      "description": "Restart only OSDs whose running version differs from the locally-installed ceph-osd binary. Useful for post-upgrade rolling restarts that should touch only daemons that need it. Refuses if the local binary version cannot be determined. Ignored on resume (the saved plan is used as-is).",
+      "description": "只重启运行版本与本地安装的 ceph-osd 二进制程序不同的 OSD。适用于升级后仅针对需要重启的守护进程执行滚动重启。如果无法确定本地二进制版本，则拒绝操作。恢复执行时忽略此选项（原样使用保存的计划）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "resume": {
       "default": 0,
-      "description": "Resume an aborted bulk-restart from the checkpoint stored in Ceph's config-key store. The plan and noout decision from the prior run are honored; 'set-noout' is ignored. When false (default), the endpoint refuses to start if a checkpoint exists for this node, to avoid silently overwriting in-progress work.",
+      "description": "从 Ceph config-key 存储中的检查点恢复已中止的批量重启。沿用上次运行的计划和 noout 决定；忽略 'set-noout'。为 false（默认值）时，如果此节点存在检查点，端点将拒绝启动，避免静默覆盖正在进行的工作。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "service-type": {
-      "description": "Ceph daemon type to restart. Only OSDs can be rolling-restarted on a per-node basis.",
+      "description": "要重启的 Ceph 守护进程类型。只有 OSD 可按节点滚动重启。",
       "enum": [
         "osd"
       ],
@@ -105,14 +105,14 @@ Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after 
     },
     "set-noout": {
       "default": 1,
-      "description": "Set the 'noout' flag on each OSD targeted by this run for the duration of the rolling restart, and unset it on completion. Per-OSD rather than cluster-wide so that unrelated OSDs failing on other nodes still trigger backfill normally.",
+      "description": "在滚动重启期间，为本次运行针对的每个 OSD 设置 'noout' 标志，并在完成时取消设置。采用每个 OSD 而非集群范围的设置，使其他节点上不相关 OSD 的故障仍能正常触发回填。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "timeout": {
       "default": 600,
-      "description": "Per-OSD timeout (in seconds). Bounds both the wait for a restarted OSD to come back up and the wait for recovery to quiesce enough that Ceph reports the next OSD safe to stop. Default sized for busy clusters where multi-TB OSDs with many PGs can need several minutes to clear peering after a restart; bump higher for very large or heavily-loaded OSDs.",
+      "description": "每个 OSD 的超时时间（秒）。同时限制等待重启的 OSD 恢复上线的时间，以及等待恢复活动足够平静、使 Ceph 报告下一个 OSD 可安全停止的时间。默认值适用于繁忙集群，其中包含大量 PG 的多 TB OSD 在重启后可能需要数分钟才能完成对等互联；对于非常大或负载很高的 OSD，请增大此值。",
       "maximum": 1800,
       "minimum": 30,
       "optional": 1,

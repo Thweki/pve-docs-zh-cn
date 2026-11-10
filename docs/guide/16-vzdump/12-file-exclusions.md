@@ -1,10 +1,10 @@
-# 16.12. File Exclusions <a href="#_file_exclusions" id="_file_exclusions"></a>
+# 16.12. 文件排除 <a href="#file_exclusions" id="file_exclusions"></a>
 
 {% hint style="info" %}
-this option is only available for container backups.
+此选项仅适用于容器备份。
 {% endhint %}
 
-`vzdump` skips the following files by default (disable with the option `--stdexcludes 0`)
+`vzdump` 默认跳过以下文件（使用选项 `--stdexcludes 0` 禁用）
 
 ```text
 /tmp/?*
@@ -12,27 +12,27 @@ this option is only available for container backups.
 /var/run/?*pid
 ```
 
-You can also manually specify (additional) exclude paths, for example:
+也可以手动指定（额外的）排除路径，例如：
 
 ```text
 # vzdump 777 --exclude-path /tmp/ --exclude-path '/var/foo*'
 ```
 
-excludes the directory `/tmp/` and any file or directory named `/var/foo`, `/var/foobar`, and so on.
+排除目录 `/tmp/` 以及名为 `/var/foo`、`/var/foobar` 等的任何文件或目录。
 
 {% hint style="warning" %}
-For backups to Proxmox Backup Server (PBS) and `suspend` mode backups, patterns with a trailing slash will match directories, but not files. On the other hand, for non-PBS `snapshot` mode and `stop` mode backups, patterns with a trailing slash currently do not match at all, because the `tar` command does not support that.
+对于备份到 Proxmox Backup Server（PBS）的备份和 `suspend` 模式备份，以斜杠结尾的模式会匹配目录，但不匹配文件。另一方面，对于非 PBS 的 `snapshot` 模式和 `stop` 模式备份，以斜杠结尾的模式目前完全不会匹配，因为 `tar` 命令不支持这种模式。
 {% endhint %}
 
-Paths that do not start with a `/` are not anchored to the container’s root, but will match relative to any subdirectory. For example:
+不以 `/` 开头的路径不会锚定到容器的根目录，而是相对于任意子目录进行匹配。例如：
 
 ```text
 # vzdump 777 --exclude-path bar
 ```
 
-excludes any file or directory named `/bar`, `/var/bar`, `/var/foo/bar`, and so on, but not `/bar2`.
+排除名为 `/bar`、`/var/bar`、`/var/foo/bar` 等的任何文件或目录，但不排除 `/bar2`。
 
-Configuration files are also stored inside the backup archive (in `./etc/vzdump/`) and will be correctly restored.
+配置文件也保存在备份归档中（位于 `./etc/vzdump/`），并会得到正确恢复。
 
 ---
 

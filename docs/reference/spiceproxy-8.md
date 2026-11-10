@@ -1,22 +1,14 @@
 # spiceproxy(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-spiceproxy \- SPICE Proxy Service
+spiceproxy \- SPICE 代理服务
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_spiceproxy"></a>
+### **spiceproxy** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_spiceproxy" id="cli_spiceproxy"></a>
 
-
-
-**spiceproxy** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_spiceproxy_help"></a>
-
-
-
-**spiceproxy help** `[OPTIONS]`
+### **spiceproxy help** `[OPTIONS]` <a href="#cli_spiceproxy_help" id="cli_spiceproxy_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,53 +20,37 @@ spiceproxy \- SPICE Proxy Service
 
 详细输出格式。
 
-<a id="cli_spiceproxy_restart"></a>
+### **spiceproxy restart** <a href="#cli_spiceproxy_restart" id="cli_spiceproxy_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+### **spiceproxy start** `[OPTIONS]` <a href="#cli_spiceproxy_start" id="cli_spiceproxy_start"></a>
 
-**spiceproxy restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_spiceproxy_start"></a>
-
-
-
-**spiceproxy start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_spiceproxy_status"></a>
+### **spiceproxy status** <a href="#cli_spiceproxy_status" id="cli_spiceproxy_status"></a>
 
+获取守护进程状态。
 
+### **spiceproxy stop** <a href="#cli_spiceproxy_stop" id="cli_spiceproxy_stop"></a>
 
-**spiceproxy status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_spiceproxy_stop"></a>
+[SPICE](http://www.spice-space.org)（独立计算环境简单协议）是一种开放的远程计算解决方案，为客户端提供对远程显示器和设备（例如键盘、鼠标、音频）的访问。主要用途是远程访问虚拟机和容器。
 
+此守护进程监听 TCP 端口 3128，并实现 HTTP 代理，将 SPICE 客户端的 *CONNECT* 请求转发到正确的 Proxmox VE 虚拟机。它以用户 `www-data` 身份运行，权限非常有限。
 
+## 基于宿主机的访问控制 <a href="#host_based_access_control" id="host_based_access_control"></a>
 
-**spiceproxy stop**
+可以配置类似“apache2”的访问控制列表。各项值从文件 `/etc/default/pveproxy` 读取。详情参阅 `pveproxy` 文档。
 
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-[SPICE](http://www.spice-space.org) (the Simple Protocol for Independent Computing Environments) is an open remote computing solution, providing client access to remote displays and devices (e.g. keyboard, mouse, audio). The main use case is to get remote access to virtual machines and container.
-
-This daemon listens on TCP port 3128, and implements an HTTP proxy to forward *CONNECT* request from the SPICE client to the correct Proxmox VE VM. It runs as user `www-data` and has very limited permissions.
-
-## Host based Access Control <a href="#_host_based_access_control" id="_host_based_access_control"></a>
-
-It is possible to configure "apache2" like access control lists. Values are read from file `/etc/default/pveproxy`. See `pveproxy` documentation for details.
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

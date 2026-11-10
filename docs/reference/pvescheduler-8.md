@@ -1,22 +1,14 @@
 # pvescheduler(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvescheduler \- PVE Scheduler Daemon
+pvescheduler \- PVE 调度守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvescheduler"></a>
+### **pvescheduler** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvescheduler" id="cli_pvescheduler"></a>
 
-
-
-**pvescheduler** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvescheduler_help"></a>
-
-
-
-**pvescheduler help** `[OPTIONS]`
+### **pvescheduler help** `[OPTIONS]` <a href="#cli_pvescheduler_help" id="cli_pvescheduler_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,49 +20,33 @@ pvescheduler \- PVE Scheduler Daemon
 
 详细输出格式。
 
-<a id="cli_pvescheduler_restart"></a>
+### **pvescheduler restart** <a href="#cli_pvescheduler_restart" id="cli_pvescheduler_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+### **pvescheduler start** `[OPTIONS]` <a href="#cli_pvescheduler_start" id="cli_pvescheduler_start"></a>
 
-**pvescheduler restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvescheduler_start"></a>
-
-
-
-**pvescheduler start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvescheduler_status"></a>
+### **pvescheduler status** <a href="#cli_pvescheduler_status" id="cli_pvescheduler_status"></a>
 
+获取守护进程状态。
 
+### **pvescheduler stop** <a href="#cli_pvescheduler_stop" id="cli_pvescheduler_stop"></a>
 
-**pvescheduler status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pvescheduler_stop"></a>
+此守护进程负责根据计划启动任务，例如复制任务和 vzdump 任务。
 
+对于 vzdump 任务，它从文件 `/etc/pve/jobs.cfg` 获取配置
 
-
-**pvescheduler stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This daemon is responsible for starting jobs according to the schedule, such as replication and vzdump jobs.
-
-For vzdump jobs, it gets its configuration from the file `/etc/pve/jobs.cfg`
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

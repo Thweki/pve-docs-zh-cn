@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu`
 
-Virtual machine index (per node).
+虚拟机索引（每个节点）。
 
 **方法标识：** `vmlist`
 
@@ -14,7 +14,7 @@ Virtual machine index (per node).
 
 ```json
 {
-  "description": "Only list VMs where you have VM.Audit permissions on /vms/<vmid>.",
+  "description": "仅列出您对 /vms/<vmid> 具有 VM.Audit 权限的虚拟机。",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ Virtual machine index (per node).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `full` | boolean | 否 | — | Determine the full status of active VMs. |
-| `node` | string | 是 | — | The cluster node name. |
+| `full` | boolean | 否 | — | 确定活动虚拟机的完整状态。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Virtual machine index (per node).
   "additionalProperties": 0,
   "properties": {
     "full": {
-      "description": "Determine the full status of active VMs.",
+      "description": "确定活动虚拟机的完整状态。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -76,130 +76,130 @@ Virtual machine index (per node).
   "items": {
     "properties": {
       "cpu": {
-        "description": "Current CPU usage.",
+        "description": "当前 CPU 使用率。",
         "optional": 1,
         "type": "number"
       },
       "cpus": {
-        "description": "Maximum usable CPUs.",
+        "description": "最大可用 CPU 数量。",
         "optional": 1,
         "type": "number"
       },
       "diskread": {
-        "description": "The amount of bytes the guest read from it's block devices since the guest was started. (Note: This info is not available for all storage types.)",
+        "description": "自客户机启动以来从其块设备读取的字节数。（注意：并非所有存储类型都提供此信息。）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "diskwrite": {
-        "description": "The amount of bytes the guest wrote from it's block devices since the guest was started. (Note: This info is not available for all storage types.)",
+        "description": "自客户机启动以来写入其块设备的字节数。（注意：并非所有存储类型都提供此信息。）",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "lock": {
-        "description": "The current config lock, if any.",
+        "description": "当前的配置锁（如有）。",
         "optional": 1,
         "type": "string"
       },
       "maxdisk": {
-        "description": "Root disk size in bytes.",
+        "description": "根磁盘大小，单位为字节。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "maxmem": {
-        "description": "Maximum memory in bytes.",
+        "description": "最大内存，单位为字节。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "mem": {
-        "description": "Currently used memory in bytes. Does not take into account kernel same-page merging (KSM). Uses information from ballooning when available.",
+        "description": "当前已用内存，单位为字节。不考虑内核同页合并（KSM）。如果 ballooning 信息可用，则使用该信息。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "memhost": {
-        "description": "Current memory usage on the host. Does not take into account kernel same-page merging (KSM).",
+        "description": "宿主机上的当前内存用量。不考虑内核同页合并（KSM）。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "name": {
-        "description": "VM (host)name.",
+        "description": "虚拟机的（主机）名称。",
         "optional": 1,
         "type": "string"
       },
       "netin": {
-        "description": "The amount of traffic in bytes that was sent to the guest over the network since it was started.",
+        "description": "自客户机启动以来通过网络向其发送的流量字节数。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "netout": {
-        "description": "The amount of traffic in bytes that was sent from the guest over the network since it was started.",
+        "description": "自客户机启动以来通过网络从其发送的流量字节数。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "pid": {
-        "description": "PID of the QEMU process, if the VM is running.",
+        "description": "QEMU 进程的 PID（如果虚拟机正在运行）。",
         "optional": 1,
         "type": "integer"
       },
       "pressurecpufull": {
-        "description": "CPU Full pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的 CPU Full 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "pressurecpusome": {
-        "description": "CPU Some pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的 CPU Some 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "pressureiofull": {
-        "description": "IO Full pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的 IO Full 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "pressureiosome": {
-        "description": "IO Some pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的 IO Some 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "pressurememoryfull": {
-        "description": "Memory Full pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的内存 Full 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "pressurememorysome": {
-        "description": "Memory Some pressure stall average over the last 10 seconds.",
+        "description": "过去 10 秒的内存 Some 压力停滞平均值。",
         "optional": 1,
         "type": "number"
       },
       "qmpstatus": {
-        "description": "VM run state from the 'query-status' QMP monitor command.",
+        "description": "'query-status' QMP 监视器命令报告的虚拟机运行状态。",
         "optional": 1,
         "type": "string"
       },
       "running-machine": {
-        "description": "The currently running machine type (if running).",
+        "description": "当前运行的机器类型（如果正在运行）。",
         "optional": 1,
         "type": "string"
       },
       "running-qemu": {
-        "description": "The QEMU version the VM is currently using (if running).",
+        "description": "虚拟机当前使用的 QEMU 版本（如果正在运行）。",
         "optional": 1,
         "type": "string"
       },
       "serial": {
-        "description": "Guest has serial device configured.",
+        "description": "客户机配置了串行设备。",
         "optional": 1,
         "type": "boolean"
       },
       "status": {
-        "description": "QEMU process status.",
+        "description": "QEMU 进程状态。",
         "enum": [
           "stopped",
           "running"
@@ -207,24 +207,24 @@ Virtual machine index (per node).
         "type": "string"
       },
       "tags": {
-        "description": "The current configured tags, if any",
+        "description": "当前配置的标签（如有）",
         "optional": 1,
         "type": "string"
       },
       "template": {
         "default": 0,
-        "description": "Determines if the guest is a template.",
+        "description": "确定客户机是否为模板。",
         "optional": 1,
         "type": "boolean"
       },
       "uptime": {
-        "description": "Uptime in seconds.",
+        "description": "运行时间，单位为秒。",
         "optional": 1,
         "renderer": "duration",
         "type": "integer"
       },
       "vmid": {
-        "description": "The (unique) ID of the VM.",
+        "description": "虚拟机的（唯一）ID。",
         "format": "pve-vmid",
         "maximum": 999999999,
         "minimum": 100,
@@ -245,7 +245,7 @@ Virtual machine index (per node).
 
 ## POST `/nodes/{node}/qemu`
 
-Create or restore a virtual machine.
+创建或恢复虚拟机。
 
 **方法标识：** `create_vm`
 
@@ -253,7 +253,7 @@ Create or restore a virtual machine.
 
 ```json
 {
-  "description": "You need 'VM.Allocate' permissions on /vms/{vmid} or on the VM pool /pool/{pool}. For restore (option 'archive'), it is enough if the user has 'VM.Backup' permission and the VM already exists. If you create disks you need 'Datastore.AllocateSpace' on any used storage.If you use a bridge/vlan, you need 'SDN.Use' on any used bridge/vlan.",
+  "description": "需要对 /vms/{vmid} 或虚拟机资源池 /pool/{pool}. 具有 'VM.Allocate' 权限。对于还原（'archive' 选项），如果虚拟机已经存在，则用户仅需具有 'VM.Backup' 权限。如果创建磁盘，需要对所有使用的存储具有 'Datastore.AllocateSpace' 权限。如果使用网桥/VLAN，需要对所有使用的网桥/VLAN 具有 'SDN.Use' 权限。",
   "user": "all"
 }
 ```
@@ -280,99 +280,99 @@ Create or restore a virtual machine.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `acpi` | boolean | 否 | 1 | Enable/disable ACPI. |
-| `affinity` | string | 否 | — | List of host cores used to execute guest processes, for example: 0,5,8-11 |
-| `agent` | string | 否 | — | Enable/disable communication with the QEMU Guest Agent and its properties. |
-| `allow-ksm` | boolean | 否 | 1 | Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging). |
-| `amd-sev` | string | 否 | — | Secure Encrypted Virtualization (SEV) features by AMD CPUs |
-| `arch` | string | 否 | — | Virtual processor architecture. Defaults to the host architecture.；可选值：`x86_64`, `aarch64` |
-| `archive` | string | 否 | — | The backup archive. Either the file system path to a .tar or .vma file (use '-' to pipe data from stdin) or a proxmox storage backup volume identifier. |
-| `args` | string | 否 | — | Arbitrary arguments passed to kvm, for example:<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>NOTE: this option is for experts only.<br> |
-| `audio0` | string | 否 | — | Configure a audio device, useful in combination with QXL/Spice. |
-| `autostart` | boolean | 否 | 0 | Automatic restart after crash (currently ignored). |
-| `balloon` | integer | 否 | — | Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero. |
-| `bios` | string | 否 | "seabios" | Select BIOS implementation.；可选值：`seabios`, `ovmf` |
-| `boot` | string | 否 | — | Specify guest boot order. Use the 'order=' sub-property as usage with no key or 'legacy=' is deprecated. |
-| `bootdisk` | string | 否 | — | Enable booting from specified disk. Deprecated: Use 'boot: order=foo;bar' instead. |
-| `bwlimit` | integer | 否 | "restore limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `cdrom` | string | 否 | — | This is an alias for option -ide2 |
-| `cicustom` | string | 否 | — | cloud-init: Specify custom files to replace the automatically generated ones at start. |
-| `cipassword` | string | 否 | — | cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords. |
-| `citype` | string | 否 | — | Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.；可选值：`configdrive2`, `nocloud`, `opennebula` |
-| `ciupgrade` | boolean | 否 | 1 | cloud-init: do an automatic package upgrade after the first boot. |
-| `ciuser` | string | 否 | — | cloud-init: User name to change ssh keys and password for instead of the image's configured default user. |
-| `cores` | integer | 否 | 1 | The number of cores per socket. |
-| `cpu` | string | 否 | — | Emulated CPU type. |
-| `cpulimit` | number | 否 | 0 | Limit of CPU usage.<br><br>NOTE: If the computer has 2 CPUs, it has total of '2' CPU time. Value '0' indicates no CPU limit. |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. |
-| `description` | string | 否 | — | Description for the VM. Shown in the web-interface VM's summary. This is saved as comment inside the configuration file. |
-| `efidisk0` | string | 否 | — | Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `force` | boolean | 否 | — | Allow to overwrite existing VM. |
-| `freeze` | boolean | 否 | — | Freeze CPU at startup (use 'c' monitor command to start execution). |
-| `ha-managed` | boolean | 否 | 0 | Add the VM as a HA resource after it was created. |
-| `hookscript` | string | 否 | — | Script that will be executed during various steps in the vms lifetime. |
-| `hostpci[n]` | string | 否 | — | Map host PCI devices into guest.<br><br>NOTE: This option allows direct access to host hardware. So it is no longer<br>possible to migrate such machines - use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
-| `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version &gt;= 7.1 and ostype l26 or windows &gt; 7. |
-| `hugepages` | string | 否 | — | Enables hugepages memory.<br><br>Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.；可选值：`any`, `2`, `1024` |
-| `ide[n]` | string | 否 | — | Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `import-working-storage` | string | 否 | — | A file-based storage with 'images' content-type enabled, which is used as an intermediary extraction storage during import. Defaults to the source storage. |
-| `intel-tdx` | string | 否 | — | Trusted Domain Extension (TDX) features by Intel CPUs |
-| `ipconfig[n]` | string | 否 | — | cloud-init: Specify IP addresses and gateways for the corresponding interface.<br><br>IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.<br><br>The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit<br>gateway should be provided.<br>For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires<br>cloud-init 19.4 or newer.<br><br>If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using<br>dhcp on IPv4.<br> |
-| `ivshmem` | string | 否 | — | Inter-VM shared memory. Useful for direct communication between VMs, or to the host. |
-| `keephugepages` | boolean | 否 | 0 | Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts. |
-| `keyboard` | string | 否 | null | Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `kvm` | boolean | 否 | 1 | Enable/disable KVM hardware virtualization. |
-| `live-restore` | boolean | 否 | — | Start the VM immediately while importing or restoring in the background. |
-| `localtime` | boolean | 否 | — | Set the real time clock (RTC) to local time. This is enabled by default if the `ostype` indicates a Microsoft Windows OS. |
-| `lock` | string | 否 | — | Lock/unlock the VM.；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
-| `machine` | string | 否 | — | Specify the QEMU machine. |
-| `memory` | string | 否 | — | Memory properties. |
-| `migrate_downtime` | number | 否 | 0.1 | Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU). |
-| `migrate_speed` | integer | 否 | 0 | Set maximum speed (in MB/s) for migrations. Value 0 is no limit. |
-| `name` | string | 否 | — | Set a name for the VM. Only used on the configuration web interface. |
-| `nameserver` | string | 否 | — | cloud-init: Sets DNS server IP address for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set. |
-| `net[n]` | string | 否 | — | Specify network devices. |
-| `node` | string | 是 | — | The cluster node name. |
-| `numa` | boolean | 否 | 0 | Enable/disable NUMA. |
-| `numa[n]` | string | 否 | — | NUMA topology. |
-| `onboot` | boolean | 否 | 0 | Specifies whether a VM will be started during system bootup. |
-| `ostype` | string | 否 | "other" | Specify guest operating system. This is used to enable special<br>optimization/features for specific operating systems:<br><br>[horizontal]<br>other;; unspecified OS<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 Kernel<br>l26;; Linux 2.6 - 7.X Kernel<br>solaris;; Solaris/OpenSolaris/OpenIndiania kernel<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
-| `parallel[n]` | string | 否 | — | Map host parallel devices (n is 0 to 2).<br><br>NOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such<br>machines - use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
-| `pool` | string | 否 | — | Add the VM to the specified pool. |
-| `protection` | boolean | 否 | 0 | Sets the protection flag of the VM. This will disable the remove VM and remove disk operations. |
-| `reboot` | boolean | 否 | 1 | Allow reboot. If set to '0' the VM exit on reboot. |
-| `rng0` | string | 否 | — | Configure a VirtIO-based Random Number Generator. |
-| `sata[n]` | string | 否 | — | Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `scsi[n]` | string | 否 | — | Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `scsihw` | string | 否 | "lsi" | SCSI controller model；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
-| `searchdomain` | string | 否 | — | cloud-init: Sets DNS search domains for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set. |
-| `serial[n]` | string | 否 | — | Create a serial device inside the VM (n is 0 to 3), and pass through a<br>host serial device (i.e. /dev/ttyS0), or create a unix socket on the<br>host side (use 'qm terminal' to open a terminal connection).<br><br>NOTE: If you pass through a host serial device, it is no longer possible to migrate such machines -<br>use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
-| `shares` | integer | 否 | 1000 | Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd. |
-| `smbios1` | string | 否 | — | Specify SMBIOS type 1 fields. |
-| `smp` | integer | 否 | 1 | The number of CPUs. Please use option -sockets instead. |
-| `sockets` | integer | 否 | 1 | The number of CPU sockets. |
-| `spice_enhancements` | string | 否 | — | Configure additional enhancements for SPICE. |
-| `sshkeys` | string | 否 | — | cloud-init: Setup public SSH keys (one key per line, OpenSSH format). |
-| `start` | boolean | 否 | 0 | Start VM after it was created successfully. |
-| `startdate` | string | 否 | "now" | Set the initial date of the real time clock. Valid format for date are:'now' or '2006-06-17T16:01:21' or '2006-06-17'. |
-| `startup` | string | 否 | — | Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped. |
-| `storage` | string | 否 | — | Default storage. |
-| `tablet` | boolean | 否 | 1 | Enable/disable the USB tablet device. This device is usually needed to allow absolute mouse positioning with VNC. Else the mouse runs out of sync with normal VNC clients. If you're running lots of console-only guests on one host, you may consider disabling this to save some context switches. This is turned off by default if you use spice (`qm set &lt;vmid&gt; --vga qxl`). |
-| `tags` | string | 否 | — | Tags of the VM. This is only meta information. |
-| `tdf` | boolean | 否 | 0 | Enable/disable time drift fix. |
-| `template` | boolean | 否 | 0 | Enable/disable Template. |
-| `tpmstate0` | string | 否 | — | Configure a Disk for storing TPM state. The format is fixed to 'raw'. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `unique` | boolean | 否 | — | Assign a unique random ethernet address. |
-| `unused[n]` | string | 否 | — | Reference to unused volumes. This is used internally, and should not be modified manually. |
-| `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version &gt;= 7.1 and ostype l26 or windows &gt; 7, n can be up to 14). |
-| `vcpus` | integer | 否 | 0 | Number of hotplugged vcpus. |
-| `vga` | string | 否 | — | Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is 'std' for all OS types besides some Windows versions (XP and older) which use 'cirrus'. The 'qxl' option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays them self.<br>You can also run without any graphic card, using a serial device as terminal. |
-| `virtio[n]` | string | 否 | — | Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
-| `virtiofs[n]` | string | 否 | — | Configuration for sharing a directory between host and guest using Virtio-fs. |
-| `vmgenid` | string | 否 | "1 (autogenerated)" | The VM generation ID (vmgenid) device exposes a 128-bit integer value identifier to the guest OS. This allows to notify the guest operating system when the virtual machine is executed with a different configuration (e.g. snapshot execution or creation from a template). The guest operating system notices the change, and is then able to react as appropriate by marking its copies of distributed databases as dirty, re-initializing its random number generator, etc.<br>Note that auto-creation only works when done through API/CLI create or update methods, but not when manually editing the config file. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
-| `vmstatestorage` | string | 否 | — | Default storage for VM state volumes/files. |
-| `watchdog` | string | 否 | — | Create a virtual hardware watchdog device. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified) |
+| `acpi` | boolean | 否 | 1 | 启用/禁用 ACPI。 |
+| `affinity` | string | 否 | — | 用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
+| `agent` | string | 否 | — | 启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
+| `allow-ksm` | boolean | 否 | 1 | 允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
+| `amd-sev` | string | 否 | — | AMD CPU 的安全加密虚拟化（SEV）功能 |
+| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `archive` | string | 否 | — | 备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 '-' 从 stdin 管道输入数据），或 Proxmox 存储备份卷标识符。 |
+| `args` | string | 否 | — | 传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
+| `audio0` | string | 否 | — | 配置音频设备，与 QXL/Spice 配合使用很有用。 |
+| `autostart` | boolean | 否 | 0 | 崩溃后自动重启（当前忽略）。 |
+| `balloon` | integer | 否 | — | 虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
+| `bios` | string | 否 | "seabios" | 选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
+| `boot` | string | 否 | — | 指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
+| `bootdisk` | string | 否 | — | 允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
+| `bwlimit` | integer | 否 | "restore limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `cdrom` | string | 否 | — | 这是 -ide2 选项的别名 |
+| `cicustom` | string | 否 | — | cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
+| `cipassword` | string | 否 | — | cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
+| `citype` | string | 否 | — | 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
+| `ciupgrade` | boolean | 否 | 1 | cloud-init：在首次启动后自动升级软件包。 |
+| `ciuser` | string | 否 | — | cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
+| `cores` | integer | 否 | 1 | 每个插槽的核心数。 |
+| `cpu` | string | 否 | — | 模拟的 CPU 类型。 |
+| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
+| `description` | string | 否 | — | 虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
+| `efidisk0` | string | 否 | — | 配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `force` | boolean | 否 | — | 允许覆盖现有虚拟机。 |
+| `freeze` | boolean | 否 | — | 启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
+| `ha-managed` | boolean | 否 | 0 | 创建后将虚拟机添加为 HA 资源。 |
+| `hookscript` | string | 否 | — | 在虚拟机生命周期各个阶段执行的脚本。 |
+| `hostpci[n]` | string | 否 | — | 将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `hotplug` | string | 否 | "network,disk,usb" | 选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
+| `hugepages` | string | 否 | — | 启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
+| `ide[n]` | string | 否 | — | 将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `import-working-storage` | string | 否 | — | 启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。 |
+| `intel-tdx` | string | 否 | — | Intel CPU 的可信域扩展（TDX）功能 |
+| `ipconfig[n]` | string | 否 | — | cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
+| `ivshmem` | string | 否 | — | 虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
+| `keephugepages` | boolean | 否 | 0 | 与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
+| `keyboard` | string | 否 | null | VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `kvm` | boolean | 否 | 1 | 启用/禁用 KVM 硬件虚拟化。 |
+| `live-restore` | boolean | 否 | — | 立即启动虚拟机，同时在后台导入或还原。 |
+| `localtime` | boolean | 否 | — | 将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
+| `lock` | string | 否 | — | 锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
+| `machine` | string | 否 | — | 指定 QEMU 机器。 |
+| `memory` | string | 否 | — | 内存属性。 |
+| `migrate_downtime` | number | 否 | 0.1 | 设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
+| `migrate_speed` | integer | 否 | 0 | 设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
+| `name` | string | 否 | — | 为虚拟机设置名称。仅在配置 Web 界面中使用。 |
+| `nameserver` | string | 否 | — | cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `net[n]` | string | 否 | — | 指定网络设备。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `numa` | boolean | 否 | 0 | 启用/禁用 NUMA。 |
+| `numa[n]` | string | 否 | — | NUMA 拓扑。 |
+| `onboot` | boolean | 否 | 0 | 指定虚拟机是否在系统启动时启动。 |
+| `ostype` | string | 否 | "other" | 指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
+| `parallel[n]` | string | 否 | — | 映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `pool` | string | 否 | — | 将虚拟机添加到指定资源池。 |
+| `protection` | boolean | 否 | 0 | 设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
+| `reboot` | boolean | 否 | 1 | 允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
+| `rng0` | string | 否 | — | 配置基于 VirtIO 的随机数生成器。 |
+| `sata[n]` | string | 否 | — | 将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsi[n]` | string | 否 | — | 将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsihw` | string | 否 | "lsi" | SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
+| `searchdomain` | string | 否 | — | cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `serial[n]` | string | 否 | — | 在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `shares` | integer | 否 | 1000 | 自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
+| `smbios1` | string | 否 | — | 指定 SMBIOS type 1 字段。 |
+| `smp` | integer | 否 | 1 | CPU 数量。请改用 -sockets 选项。 |
+| `sockets` | integer | 否 | 1 | CPU 插槽数量。 |
+| `spice_enhancements` | string | 否 | — | 配置 SPICE 的附加增强功能。 |
+| `sshkeys` | string | 否 | — | cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
+| `start` | boolean | 否 | 0 | 成功创建后启动虚拟机。 |
+| `startdate` | string | 否 | "now" | 设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
+| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `storage` | string | 否 | — | 默认存储。 |
+| `tablet` | boolean | 否 | 1 | 启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
+| `tags` | string | 否 | — | 虚拟机标签。此项仅为元信息。 |
+| `tdf` | boolean | 否 | 0 | 启用/禁用时间漂移修正。 |
+| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
+| `tpmstate0` | string | 否 | — | 配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `unique` | boolean | 否 | — | 分配唯一的随机以太网地址。 |
+| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `usb[n]` | string | 否 | — | 配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
+| `vcpus` | integer | 否 | 0 | 热插拔的 vcpu 数量。 |
+| `vga` | string | 否 | — | 配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
+| `virtio[n]` | string | 否 | — | 将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `virtiofs[n]` | string | 否 | — | 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
+| `vmgenid` | string | 否 | "1 (autogenerated)" | 虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| `vmstatestorage` | string | 否 | — | 虚拟机状态卷/文件的默认存储。 |
+| `watchdog` | string | 否 | — | 创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -383,40 +383,40 @@ Create or restore a virtual machine.
   "properties": {
     "acpi": {
       "default": 1,
-      "description": "Enable/disable ACPI.",
+      "description": "启用/禁用 ACPI。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "affinity": {
-      "description": "List of host cores used to execute guest processes, for example: 0,5,8-11",
+      "description": "用于执行客户机进程的宿主机核心列表，例如：0,5,8-11",
       "format": "pve-cpuset",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "agent": {
-      "description": "Enable/disable communication with the QEMU Guest Agent and its properties.",
+      "description": "启用/禁用与 QEMU Guest Agent 的通信及其属性。",
       "format": {
         "enabled": {
           "default": 0,
           "default_key": 1,
-          "description": "Enable/disable communication with a QEMU Guest Agent (QGA) running in the VM.",
+          "description": "启用/禁用与虚拟机中运行的 QEMU Guest Agent（QGA）的通信。",
           "type": "boolean"
         },
         "freeze-fs": {
           "default": 1,
-          "description": "Freeze guest filesystems through QGA for consistent disk state on operations such as snapshots, backups, replications and clones.",
+          "description": "通过 QGA 冻结客户机文件系统，以便在快照、备份、复制和克隆等操作中保持磁盘状态一致。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Whether to issue the guest-fsfreeze-freeze and guest-fsfreeze-thaw QEMU guest agent commands. Backups in snapshot mode, clones, snapshots without RAM, importing disks from a running guest, and replications normally issue a guest-fsfreeze-freeze and a respective thaw command when the QEMU Guest agent option is enabled in the guest's configuration and the agent is running inside of the guest.\n\nThe deprecated 'freeze-fs-on-backup' setting is treated as an alias for this setting."
+          "verbose_description": "是否发出 guest-fsfreeze-freeze 和 guest-fsfreeze-thaw QEMU 客户机代理命令。在客户机配置中启用 QEMU Guest Agent 选项且代理在客户机内运行时，snapshot 模式备份、克隆、不含 RAM 的快照、从运行中的客户机导入磁盘以及复制操作，通常会发出 guest-fsfreeze-freeze 命令及相应的解冻命令。\n\n已弃用的 'freeze-fs-on-backup' 设置将作为此设置的别名处理。"
         },
         "freeze-fs-on-backup": {
           "alias": "freeze-fs"
         },
         "fstrim_cloned_disks": {
           "default": 0,
-          "description": "Run fstrim after moving a disk or migrating the VM.",
+          "description": "移动磁盘或迁移虚拟机后运行 fstrim。",
           "optional": 1,
           "type": "boolean"
         },
@@ -425,7 +425,7 @@ Create or restore a virtual machine.
         },
         "type": {
           "default": "virtio",
-          "description": "Select the agent type",
+          "description": "选择代理类型",
           "enum": [
             "virtio",
             "isa"
@@ -440,20 +440,20 @@ Create or restore a virtual machine.
     },
     "allow-ksm": {
       "default": 1,
-      "description": "Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).",
+      "description": "允许通过 KSM（内核同页合并）合并此客户机的内存页。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "amd-sev": {
-      "description": "Secure Encrypted Virtualization (SEV) features by AMD CPUs",
+      "description": "AMD CPU 的安全加密虚拟化（SEV）功能",
       "format": "pve-qemu-sev-fmt",
       "optional": 1,
       "type": "string",
       "typetext": "[type=]<sev-type> [,allow-smt=<1|0>] [,kernel-hashes=<1|0>] [,no-debug=<1|0>] [,no-key-sharing=<1|0>]"
     },
     "arch": {
-      "description": "Virtual processor architecture. Defaults to the host architecture.",
+      "description": "虚拟处理器架构。默认为宿主机架构。",
       "enum": [
         "x86_64",
         "aarch64"
@@ -462,24 +462,24 @@ Create or restore a virtual machine.
       "type": "string"
     },
     "archive": {
-      "description": "The backup archive. Either the file system path to a .tar or .vma file (use '-' to pipe data from stdin) or a proxmox storage backup volume identifier.",
+      "description": "备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 '-' 从 stdin 管道输入数据），或 Proxmox 存储备份卷标识符。",
       "maxLength": 255,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "args": {
-      "description": "Arbitrary arguments passed to kvm.",
+      "description": "传递给 kvm 的任意参数。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>",
-      "verbose_description": "Arbitrary arguments passed to kvm, for example:\n\nargs: -no-reboot -smbios 'type=0,vendor=FOO'\n\nNOTE: this option is for experts only.\n"
+      "verbose_description": "传递给 kvm 的任意参数，例如：\n\nargs: -no-reboot -smbios 'type=0,vendor=FOO'\n\n注意：此选项仅供专家使用。\n"
     },
     "audio0": {
-      "description": "Configure a audio device, useful in combination with QXL/Spice.",
+      "description": "配置音频设备，与 QXL/Spice 配合使用很有用。",
       "format": {
         "device": {
-          "description": "Configure an audio device.",
+          "description": "配置音频设备。",
           "enum": [
             "ich9-intel-hda",
             "intel-hda",
@@ -489,7 +489,7 @@ Create or restore a virtual machine.
         },
         "driver": {
           "default": "spice",
-          "description": "Driver backend for the audio device.",
+          "description": "音频设备的驱动后端。",
           "enum": [
             "spice",
             "none"
@@ -504,13 +504,13 @@ Create or restore a virtual machine.
     },
     "autostart": {
       "default": 0,
-      "description": "Automatic restart after crash (currently ignored).",
+      "description": "崩溃后自动重启（当前忽略）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "balloon": {
-      "description": "Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.",
+      "description": "虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -518,7 +518,7 @@ Create or restore a virtual machine.
     },
     "bios": {
       "default": "seabios",
-      "description": "Select BIOS implementation.",
+      "description": "选择 BIOS 实现。",
       "enum": [
         "seabios",
         "ovmf"
@@ -527,14 +527,14 @@ Create or restore a virtual machine.
       "type": "string"
     },
     "boot": {
-      "description": "Specify guest boot order. Use the 'order=' sub-property as usage with no key or 'legacy=' is deprecated.",
+      "description": "指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。",
       "format": "pve-qm-boot",
       "optional": 1,
       "type": "string",
       "typetext": "[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]"
     },
     "bootdisk": {
-      "description": "Enable booting from specified disk. Deprecated: Use 'boot: order=foo;bar' instead.",
+      "description": "允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。",
       "format": "pve-qm-bootdisk",
       "optional": 1,
       "pattern": "(ide|sata|scsi|virtio)\\d+",
@@ -542,34 +542,34 @@ Create or restore a virtual machine.
     },
     "bwlimit": {
       "default": "restore limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "cdrom": {
-      "description": "This is an alias for option -ide2",
+      "description": "这是 -ide2 选项的别名",
       "format": "pve-qm-ide",
       "optional": 1,
       "type": "string",
       "typetext": "<volume>"
     },
     "cicustom": {
-      "description": "cloud-init: Specify custom files to replace the automatically generated ones at start.",
+      "description": "cloud-init：指定自定义文件，以替换启动时自动生成的文件。",
       "format": "pve-qm-cicustom",
       "optional": 1,
       "type": "string",
       "typetext": "[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]"
     },
     "cipassword": {
-      "description": "cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.",
+      "description": "cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "citype": {
-      "description": "Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.",
+      "description": "指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。",
       "enum": [
         "configdrive2",
         "nocloud",
@@ -580,27 +580,27 @@ Create or restore a virtual machine.
     },
     "ciupgrade": {
       "default": 1,
-      "description": "cloud-init: do an automatic package upgrade after the first boot.",
+      "description": "cloud-init：在首次启动后自动升级软件包。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ciuser": {
-      "description": "cloud-init: User name to change ssh keys and password for instead of the image's configured default user.",
+      "description": "cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "cores": {
       "default": 1,
-      "description": "The number of cores per socket.",
+      "description": "每个插槽的核心数。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - N)"
     },
     "cpu": {
-      "description": "Emulated CPU type.",
+      "description": "模拟的 CPU 类型。",
       "format": "pve-vm-cpu-conf",
       "optional": 1,
       "type": "string",
@@ -608,37 +608,37 @@ Create or restore a virtual machine.
     },
     "cpulimit": {
       "default": 0,
-      "description": "Limit of CPU usage.",
+      "description": "CPU 使用量限制。",
       "maximum": 128,
       "minimum": 0,
       "optional": 1,
       "type": "number",
       "typetext": "<number> (0 - 128)",
-      "verbose_description": "Limit of CPU usage.\n\nNOTE: If the computer has 2 CPUs, it has total of '2' CPU time. Value '0' indicates no CPU limit."
+      "verbose_description": "CPU 使用量限制。\n\n注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。"
     },
     "cpuunits": {
       "default": "cgroup v1: 1024, cgroup v2: 100",
-      "description": "CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.",
+      "description": "虚拟机的 CPU 权重，在 cgroup v2 中会限制到 [1, 10000] 范围内。",
       "maximum": 262144,
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - 262144)",
-      "verbose_description": "CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs."
+      "verbose_description": "虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。"
     },
     "description": {
-      "description": "Description for the VM. Shown in the web-interface VM's summary. This is saved as comment inside the configuration file.",
+      "description": "虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。",
       "maxLength": 8192,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "efidisk0": {
-      "description": "Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "efitype": {
           "default": "2m",
-          "description": "Size and type of the OVMF EFI vars. '4m' is newer and recommended, and required for Secure Boot. For backwards compatibility, '2m' is used if not otherwise specified. Ignored for VMs with arch=aarch64 (ARM).",
+          "description": "OVMF EFI 变量的大小和类型。'4m' 较新且推荐使用，也是 Secure Boot 所必需的。为向后兼容，未另行指定时使用 '2m'。对于 arch=aarch64（ARM）的虚拟机，此项被忽略。",
           "enum": [
             "2m",
             "4m"
@@ -648,13 +648,13 @@ Create or restore a virtual machine.
         },
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "The drive's backing file's data format.",
+          "description": "驱动器底层文件的数据格式。",
           "enum": [
             "raw",
             "qcow",
@@ -667,7 +667,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
@@ -675,7 +675,7 @@ Create or restore a virtual machine.
         },
         "ms-cert": {
           "default": "2011",
-          "description": "Informational marker indicating the version of the latest Microsoft UEFI certificates that have been enrolled by Proxmox VE. The value '2023k' means that the 'Microsoft UEFI CA 2023', the 'Windows UEFI CA 2023' and the 'Microsoft Corporation KEK 2K CA 2023' certificates are included. The values '2023' and '2023w' are deprecated and for compatibility only.",
+          "description": "信息性标记，指示 Proxmox VE 已注册的最新 Microsoft UEFI 证书版本。值 '2023k' 表示包含 'Microsoft UEFI CA 2023'、'Windows UEFI CA 2023' 和 'Microsoft Corporation KEK 2K CA 2023' 证书。值 '2023' 和 '2023w' 已弃用，仅用于兼容性。",
           "enum": [
             "2011",
             "2023",
@@ -687,12 +687,12 @@ Create or restore a virtual machine.
         },
         "pre-enrolled-keys": {
           "default": 0,
-          "description": "Use am EFI vars template with distribution-specific and Microsoft Standard keys enrolled, if used with 'efitype=4m'. Note that this will enable Secure Boot by default, though it can still be turned off from within the VM.",
+          "description": "与 'efitype=4m' 一同使用时，采用已注册发行版专用密钥和 Microsoft Standard 密钥的 EFI 变量模板。注意，这会默认启用 Secure Boot，但仍可在虚拟机内关闭。",
           "optional": 1,
           "type": "boolean"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -707,50 +707,50 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]"
     },
     "force": {
-      "description": "Allow to overwrite existing VM.",
+      "description": "允许覆盖现有虚拟机。",
       "optional": 1,
       "requires": "archive",
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "freeze": {
-      "description": "Freeze CPU at startup (use 'c' monitor command to start execution).",
+      "description": "启动时冻结 CPU（使用监视器命令 'c' 开始执行）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ha-managed": {
       "default": 0,
-      "description": "Add the VM as a HA resource after it was created.",
+      "description": "创建后将虚拟机添加为 HA 资源。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "hookscript": {
-      "description": "Script that will be executed during various steps in the vms lifetime.",
+      "description": "在虚拟机生命周期各个阶段执行的脚本。",
       "format": "pve-volume-id",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "hostpci[n]": {
-      "description": "Map host PCI devices into guest.",
+      "description": "将宿主机 PCI 设备映射到客户机。",
       "format": "pve-qm-hostpci",
       "optional": 1,
       "type": "string",
       "typetext": "[[host=]<HOSTPCIID[;HOSTPCIID2...]>] [,device-id=<hex id>] [,driver=<vfio|keep>] [,legacy-igd=<1|0>] [,mapping=<mapping-id>] [,mdev=<string>] [,pcie=<1|0>] [,rombar=<1|0>] [,romfile=<string>] [,sub-device-id=<hex id>] [,sub-vendor-id=<hex id>] [,vendor-id=<hex id>] [,x-vga=<1|0>]",
-      "verbose_description": "Map host PCI devices into guest.\n\nNOTE: This option allows direct access to host hardware. So it is no longer\npossible to migrate such machines - use with special care.\n\nCAUTION: Experimental! User reported problems with this option.\n"
+      "verbose_description": "将宿主机 PCI 设备映射到客户机。\n\n注意：此选项允许直接访问宿主机硬件。因此将不再\n能够迁移此类虚拟机——请格外谨慎。\n\n警告：实验性功能！有用户报告此选项存在问题。\n"
     },
     "hotplug": {
       "default": "network,disk,usb",
-      "description": "Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7.",
+      "description": "选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 >= 7.1 且 ostype 为 l26 或 windows > 7 的客户机。",
       "format": "pve-hotplug-features",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "hugepages": {
-      "description": "Enables hugepages memory.\n\nSets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.",
+      "description": "启用大页内存。\n\n设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。",
       "enum": [
         "any",
         "2",
@@ -760,10 +760,10 @@ Create or restore a virtual machine.
       "type": "string"
     },
     "ide[n]": {
-      "description": "Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "aio": {
-          "description": "AIO type to use.",
+          "description": "使用的 AIO 类型。",
           "enum": [
             "native",
             "threads",
@@ -773,25 +773,25 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "backup": {
-          "description": "Whether the drive should be included when making backups.",
+          "description": "备份时是否包含此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "bps": {
-          "description": "Maximum r/w speed in bytes per second.",
+          "description": "最大读/写速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
         },
         "bps_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_rd": {
-          "description": "Maximum read speed in bytes per second.",
+          "description": "最大读取速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -800,14 +800,14 @@ Create or restore a virtual machine.
           "alias": "bps_rd_max_length"
         },
         "bps_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_wr": {
-          "description": "Maximum write speed in bytes per second.",
+          "description": "最大写入速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -816,14 +816,14 @@ Create or restore a virtual machine.
           "alias": "bps_wr_max_length"
         },
         "bps_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "cache": {
-          "description": "The drive's cache mode",
+          "description": "驱动器的缓存模式",
           "enum": [
             "none",
             "writethrough",
@@ -835,12 +835,12 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "detect_zeroes": {
-          "description": "Controls whether to detect and try to optimize writes of zeroes.",
+          "description": "控制是否检测并尝试优化零值写入。",
           "optional": 1,
           "type": "boolean"
         },
         "discard": {
-          "description": "Controls whether to pass discard/trim requests to the underlying storage.",
+          "description": "控制是否将 discard/trim 请求传递到底层存储。",
           "enum": [
             "ignore",
             "on"
@@ -850,13 +850,13 @@ Create or restore a virtual machine.
         },
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "The drive's backing file's data format.",
+          "description": "驱动器底层文件的数据格式。",
           "enum": [
             "raw",
             "qcow",
@@ -869,33 +869,33 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
           "type": "string"
         },
         "iops": {
-          "description": "Maximum r/w I/O in operations per second.",
+          "description": "最大读/写 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max": {
-          "description": "Maximum unthrottled r/w I/O pool in operations per second.",
+          "description": "最大不限速读/写 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_rd": {
-          "description": "Maximum read I/O in operations per second.",
+          "description": "最大读取 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -904,20 +904,20 @@ Create or restore a virtual machine.
           "alias": "iops_rd_max_length"
         },
         "iops_rd_max": {
-          "description": "Maximum unthrottled read I/O pool in operations per second.",
+          "description": "最大不限速读取 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_wr": {
-          "description": "Maximum write I/O in operations per second.",
+          "description": "最大写入 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -926,57 +926,57 @@ Create or restore a virtual machine.
           "alias": "iops_wr_max_length"
         },
         "iops_wr_max": {
-          "description": "Maximum unthrottled write I/O pool in operations per second.",
+          "description": "最大不限速写入 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "mbps": {
-          "description": "Maximum r/w speed in megabytes per second.",
+          "description": "最大读/写速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_max": {
-          "description": "Maximum unthrottled r/w pool in megabytes per second.",
+          "description": "最大不限速读/写池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd": {
-          "description": "Maximum read speed in megabytes per second.",
+          "description": "最大读取速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd_max": {
-          "description": "Maximum unthrottled read pool in megabytes per second.",
+          "description": "最大不限速读取池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr": {
-          "description": "Maximum write speed in megabytes per second.",
+          "description": "最大写入速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr_max": {
-          "description": "Maximum unthrottled write pool in megabytes per second.",
+          "description": "最大不限速写入池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "media": {
           "default": "disk",
-          "description": "The drive's media type.",
+          "description": "驱动器的介质类型。",
           "enum": [
             "cdrom",
             "disk"
@@ -985,7 +985,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "model": {
-          "description": "The drive's reported model name, url-encoded, up to 40 bytes long.",
+          "description": "驱动器报告的型号名称，采用 URL 编码，最长 40 字节。",
           "format": "urlencoded",
           "format_description": "model",
           "maxLength": 120,
@@ -994,12 +994,12 @@ Create or restore a virtual machine.
         },
         "replicate": {
           "default": 1,
-          "description": "Whether the drive should considered for replication jobs.",
+          "description": "是否在复制任务中考虑此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "rerror": {
-          "description": "Read error action.",
+          "description": "读取错误时的操作。",
           "enum": [
             "ignore",
             "report",
@@ -1009,7 +1009,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "serial": {
-          "description": "The drive's reported serial number, url-encoded, up to 20 bytes long.",
+          "description": "驱动器报告的序列号，采用 URL 编码，最长 20 字节。",
           "format": "urlencoded",
           "format_description": "serial",
           "maxLength": 60,
@@ -1018,25 +1018,25 @@ Create or restore a virtual machine.
         },
         "shared": {
           "default": 0,
-          "description": "Mark this locally-managed volume as available on all nodes",
+          "description": "将此本地管理的卷标记为在所有节点上可用",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this locally-managed volume as available on all nodes.\n\nWARNING: This option does not share the volume automatically, it assumes it is shared already!"
+          "verbose_description": "将此本地管理的卷标记为在所有节点上可用。\n\n警告：此选项不会自动共享该卷，而是假定它已共享！"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
           "type": "string"
         },
         "snapshot": {
-          "description": "Controls qemu's snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.",
+          "description": "控制 qemu 的快照模式功能。如果启用，对磁盘的更改将是临时的，并会在虚拟机关闭时丢弃。",
           "optional": 1,
           "type": "boolean"
         },
         "ssd": {
-          "description": "Whether to expose this drive as an SSD, rather than a rotational hard disk.",
+          "description": "是否将此驱动器呈现为 SSD，而非旋转式硬盘。",
           "optional": 1,
           "type": "boolean"
         },
@@ -1044,7 +1044,7 @@ Create or restore a virtual machine.
           "alias": "file"
         },
         "werror": {
-          "description": "Write error action.",
+          "description": "写入错误时的操作。",
           "enum": [
             "enospc",
             "ignore",
@@ -1055,7 +1055,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "wwn": {
-          "description": "The drive's worldwide name, encoded as 16 bytes hex string, prefixed by '0x'.",
+          "description": "驱动器的全球名称，编码为带 '0x' 前缀的 16 字节十六进制字符串。",
           "format_description": "wwn",
           "optional": 1,
           "pattern": "(?^:^(0x)[0-9a-fA-F]{16})",
@@ -1067,7 +1067,7 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]"
     },
     "import-working-storage": {
-      "description": "A file-based storage with 'images' content-type enabled, which is used as an intermediary extraction storage during import. Defaults to the source storage.",
+      "description": "启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -1075,31 +1075,31 @@ Create or restore a virtual machine.
       "typetext": "<storage ID>"
     },
     "intel-tdx": {
-      "description": "Trusted Domain Extension (TDX) features by Intel CPUs",
+      "description": "Intel CPU 的可信域扩展（TDX）功能",
       "format": "pve-qemu-tdx-fmt",
       "optional": 1,
       "type": "string",
       "typetext": "[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]"
     },
     "ipconfig[n]": {
-      "description": "cloud-init: Specify IP addresses and gateways for the corresponding interface.\n\nIP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.\n\nThe special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit\ngateway should be provided.\nFor IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires\ncloud-init 19.4 or newer.\n\nIf cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using\ndhcp on IPv4.\n",
+      "description": "cloud-init：为相应接口指定 IP 地址和网关。\n\nIP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。\n\nIP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式\n提供网关。\n对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要\ncloud-init 19.4 或更新版本。\n\n如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在\nIPv4 上使用 DHCP。\n",
       "format": "pve-qm-ipconfig",
       "optional": 1,
       "type": "string",
       "typetext": "[gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,ip=<IPv4Format/CIDR>] [,ip6=<IPv6Format/CIDR>]"
     },
     "ivshmem": {
-      "description": "Inter-VM shared memory. Useful for direct communication between VMs, or to the host.",
+      "description": "虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。",
       "format": {
         "name": {
-          "description": "The name of the file. Will be prefixed with 'pve-shm-'. Default is the VMID. Will be deleted when the VM is stopped.",
+          "description": "文件名。将添加 'pve-shm-' 前缀。默认为 VMID。虚拟机停止时将删除此文件。",
           "format_description": "string",
           "optional": 1,
           "pattern": "[a-zA-Z0-9\\-]+",
           "type": "string"
         },
         "size": {
-          "description": "The size of the file in MB.",
+          "description": "文件大小，单位为 MB。",
           "minimum": 1,
           "type": "integer"
         }
@@ -1110,14 +1110,14 @@ Create or restore a virtual machine.
     },
     "keephugepages": {
       "default": 0,
-      "description": "Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.",
+      "description": "与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "keyboard": {
       "default": null,
-      "description": "Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.",
+      "description": "VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。",
       "enum": [
         "de",
         "de-ch",
@@ -1150,25 +1150,25 @@ Create or restore a virtual machine.
     },
     "kvm": {
       "default": 1,
-      "description": "Enable/disable KVM hardware virtualization.",
+      "description": "启用/禁用 KVM 硬件虚拟化。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "live-restore": {
-      "description": "Start the VM immediately while importing or restoring in the background.",
+      "description": "立即启动虚拟机，同时在后台导入或还原。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "localtime": {
-      "description": "Set the real time clock (RTC) to local time. This is enabled by default if the `ostype` indicates a Microsoft Windows OS.",
+      "description": "将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "lock": {
-      "description": "Lock/unlock the VM.",
+      "description": "锁定/解锁虚拟机。",
       "enum": [
         "backup",
         "clone",
@@ -1184,29 +1184,29 @@ Create or restore a virtual machine.
       "type": "string"
     },
     "machine": {
-      "description": "Specify the QEMU machine.",
+      "description": "指定 QEMU 机器。",
       "format": {
         "aw-bits": {
-          "description": "Specifies the vIOMMU address space bit width.",
+          "description": "指定 vIOMMU 地址空间的位宽。",
           "maximum": 64,
           "minimum": 32,
           "optional": 1,
           "type": "number",
-          "verbose_description": "Specifies the vIOMMU address space bit width.\n\nIntel vIOMMU supports a bit width of either 39 or 48 bits and VirtIO vIOMMU supports any bit width between 32 and 64 bits."
+          "verbose_description": "指定 vIOMMU 地址空间的位宽。\n\nIntel vIOMMU 支持 39 或 48 位，VirtIO vIOMMU 支持 32 到 64 位之间的任意位宽。"
         },
         "enable-s3": {
-          "description": "Enables S3 power state. Defaults to false beginning with machine types 9.2+pve1, true before.",
+          "description": "启用 S3 电源状态。从机器类型 9.2+pve1 起默认为 false，此前为 true。",
           "optional": 1,
           "type": "boolean"
         },
         "enable-s4": {
-          "description": "Enables S4 power state. Defaults to false beginning with machine types 9.2+pve1, true before.",
+          "description": "启用 S4 电源状态。从机器类型 9.2+pve1 起默认为 false，此前为 true。",
           "optional": 1,
           "type": "boolean"
         },
         "type": {
           "default_key": 1,
-          "description": "Specifies the QEMU machine type.",
+          "description": "指定 QEMU 机器类型。",
           "format_description": "machine type",
           "maxLength": 40,
           "optional": 1,
@@ -1214,7 +1214,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "viommu": {
-          "description": "Enable and set guest vIOMMU variant (Intel vIOMMU needs q35 to be set as machine type).",
+          "description": "启用并设置客户机 vIOMMU 变体（Intel vIOMMU 需要将机器类型设为 q35）。",
           "enum": [
             "intel",
             "virtio"
@@ -1228,12 +1228,12 @@ Create or restore a virtual machine.
       "typetext": "[[type=]<machine type>] [,aw-bits=<number>] [,enable-s3=<1|0>] [,enable-s4=<1|0>] [,viommu=<intel|virtio>]"
     },
     "memory": {
-      "description": "Memory properties.",
+      "description": "内存属性。",
       "format": {
         "current": {
           "default": 512,
           "default_key": 1,
-          "description": "Current amount of online RAM for the VM in MiB. This is the maximum available memory when you use the balloon device.",
+          "description": "虚拟机当前在线 RAM 容量，单位为 MiB。使用 balloon 设备时，这是最大可用内存。",
           "minimum": 16,
           "type": "integer"
         }
@@ -1244,7 +1244,7 @@ Create or restore a virtual machine.
     },
     "migrate_downtime": {
       "default": 0.1,
-      "description": "Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU).",
+      "description": "设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。",
       "minimum": 0,
       "optional": 1,
       "type": "number",
@@ -1252,31 +1252,31 @@ Create or restore a virtual machine.
     },
     "migrate_speed": {
       "default": 0,
-      "description": "Set maximum speed (in MB/s) for migrations. Value 0 is no limit.",
+      "description": "设置迁移的最大速度（MB/s）。值 0 表示不限制。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "name": {
-      "description": "Set a name for the VM. Only used on the configuration web interface.",
+      "description": "为虚拟机设置名称。仅在配置 Web 界面中使用。",
       "format": "dns-name",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "nameserver": {
-      "description": "cloud-init: Sets DNS server IP address for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.",
+      "description": "cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。",
       "format": "address-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "net[n]": {
-      "description": "Specify network devices.",
+      "description": "指定网络设备。",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2   Gateway\n 10.0.2.3   DNS Server\n 10.0.2.4   SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
+          "description": "网络设备要连接的网桥。Proxmox VE 的标准网桥\n名为 'vmbr0'。\n\n如果未指定网桥，将创建一个 kvm 用户模式（NAT）网络\n设备，提供 DHCP 和 DNS 服务。使用以下地址\n：\n\n 10.0.2.2   网关\n 10.0.2.3   DNS 服务器\n 10.0.2.4   SMB 服务器\n\nDHCP 服务器从 10.0.2.15 开始向客户机分配地址。\n",
           "format": "pve-bridge-id",
           "format_description": "bridge",
           "optional": 1,
@@ -1303,15 +1303,15 @@ Create or restore a virtual machine.
           "keyAlias": "model"
         },
         "firewall": {
-          "description": "Whether this interface should be protected by the firewall.",
+          "description": "是否应通过防火墙保护此接口。",
           "optional": 1,
           "type": "boolean"
         },
         "host-tunnel": {
-          "description": "Enable host GSO over UDP tunnel offload. (VirtIO only).",
+          "description": "启用宿主机通过 UDP 隧道卸载 GSO。（仅适用于 VirtIO）。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Enable host GSO over UDP tunnel offload (VirtIO only). Requires QEMU > 10.2 and guest and host kernel support. Disabled by default starting with machine version 11.0+pve1 to work around an issue with the virtio-net driver in guest kernels. With machine versions 10.2 and 11.0, this is enabled by default."
+          "verbose_description": "启用宿主机通过 UDP 隧道卸载 GSO（仅适用于 VirtIO）。需要 QEMU > 10.2 以及客户机和宿主机内核支持。从机器版本 11.0+pve1 起默认禁用，以规避客户机内核中 virtio-net 驱动的问题。机器版本 10.2 和 11.0 默认启用。"
         },
         "i82551": {
           "alias": "macaddr",
@@ -1326,21 +1326,21 @@ Create or restore a virtual machine.
           "keyAlias": "model"
         },
         "link_down": {
-          "description": "Whether this interface should be disconnected (like pulling the plug).",
+          "description": "是否断开此接口的连接（如同拔掉网线）。",
           "optional": 1,
           "type": "boolean"
         },
         "macaddr": {
-          "description": "MAC address. That address must be unique within your network. This is automatically generated if not specified.",
+          "description": "MAC 地址。此地址必须在网络中唯一。如果未指定，将自动生成。",
           "format": "mac-addr",
           "format_description": "XX:XX:XX:XX:XX:XX",
           "optional": 1,
           "type": "string",
-          "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+          "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
         },
         "model": {
           "default_key": 1,
-          "description": "Network Card Model. The 'virtio' model provides the best performance with very low CPU overhead. If your guest does not support this driver, it is usually best to use 'e1000'.",
+          "description": "网卡型号。'virtio' 型号提供最佳性能，CPU 开销很低。如果客户机不支持此驱动，通常最好使用 'e1000'。",
           "enum": [
             "e1000",
             "e1000-82540em",
@@ -1360,7 +1360,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "mtu": {
-          "description": "Force MTU of network device (VirtIO only). Setting to '1' or empty will use the bridge MTU",
+          "description": "强制指定网络设备的 MTU（仅适用于 VirtIO）。设为 '1' 或留空将使用网桥 MTU",
           "maximum": 65520,
           "minimum": 1,
           "optional": 1,
@@ -1379,14 +1379,14 @@ Create or restore a virtual machine.
           "keyAlias": "model"
         },
         "queues": {
-          "description": "Number of packet queues to be used on the device.",
+          "description": "设备使用的数据包队列数量。",
           "maximum": 64,
           "minimum": 0,
           "optional": 1,
           "type": "integer"
         },
         "rate": {
-          "description": "Rate limit in mbps (megabytes per second) as floating point number.",
+          "description": "速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。",
           "minimum": 0,
           "optional": 1,
           "type": "number"
@@ -1396,14 +1396,14 @@ Create or restore a virtual machine.
           "keyAlias": "model"
         },
         "tag": {
-          "description": "VLAN tag to apply to packets on this interface.",
+          "description": "应用到此接口数据包的 VLAN 标签。",
           "maximum": 4094,
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "trunks": {
-          "description": "VLAN trunks to pass through this interface.",
+          "description": "通过此接口的 VLAN 中继。",
           "format_description": "vlanid[;vlanid...]",
           "optional": 1,
           "pattern": "(?^:\\d+(?:-\\d+)?(?:;\\d+(?:-\\d+)?)*)",
@@ -1423,41 +1423,41 @@ Create or restore a virtual machine.
       "typetext": "[model=]<enum> [,bridge=<bridge>] [,firewall=<1|0>] [,host-tunnel=<1|0>] [,link_down=<1|0>] [,macaddr=<XX:XX:XX:XX:XX:XX>] [,mtu=<integer>] [,queues=<integer>] [,rate=<number>] [,tag=<integer>] [,trunks=<vlanid[;vlanid...]>] [,<model>=<macaddr>]"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "numa": {
       "default": 0,
-      "description": "Enable/disable NUMA.",
+      "description": "启用/禁用 NUMA。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "numa[n]": {
-      "description": "NUMA topology.",
+      "description": "NUMA 拓扑。",
       "format": {
         "cpus": {
-          "description": "CPUs accessing this NUMA node.",
+          "description": "访问此 NUMA 节点的 CPU。",
           "format_description": "id[-id];...",
           "pattern": "(?^:\\d+(?:-\\d+)?(?:;\\d+(?:-\\d+)?)*)",
           "type": "string"
         },
         "hostnodes": {
-          "description": "Host NUMA nodes to use.",
+          "description": "要使用的宿主机 NUMA 节点。",
           "format_description": "id[-id];...",
           "optional": 1,
           "pattern": "(?^:\\d+(?:-\\d+)?(?:;\\d+(?:-\\d+)?)*)",
           "type": "string"
         },
         "memory": {
-          "description": "Amount of memory this NUMA node provides.",
+          "description": "此 NUMA 节点提供的内存容量。",
           "optional": 1,
           "type": "number"
         },
         "policy": {
-          "description": "NUMA allocation policy.",
+          "description": "NUMA 分配策略。",
           "enum": [
             "preferred",
             "bind",
@@ -1473,14 +1473,14 @@ Create or restore a virtual machine.
     },
     "onboot": {
       "default": 0,
-      "description": "Specifies whether a VM will be started during system bootup.",
+      "description": "指定虚拟机是否在系统启动时启动。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ostype": {
       "default": "other",
-      "description": "Specify guest operating system.",
+      "description": "指定客户机操作系统。",
       "enum": [
         "other",
         "wxp",
@@ -1498,17 +1498,17 @@ Create or restore a virtual machine.
       ],
       "optional": 1,
       "type": "string",
-      "verbose_description": "Specify guest operating system. This is used to enable special\noptimization/features for specific operating systems:\n\n[horizontal]\nother;; unspecified OS\nwxp;; Microsoft Windows XP\nw2k;; Microsoft Windows 2000\nw2k3;; Microsoft Windows 2003\nw2k8;; Microsoft Windows 2008\nwvista;; Microsoft Windows Vista\nwin7;; Microsoft Windows 7\nwin8;; Microsoft Windows 8/2012/2012r2\nwin10;; Microsoft Windows 10/2016/2019\nwin11;; Microsoft Windows 11/2022/2025\nl24;; Linux 2.4 Kernel\nl26;; Linux 2.6 - 7.X Kernel\nsolaris;; Solaris/OpenSolaris/OpenIndiania kernel\n"
+      "verbose_description": "指定客户机操作系统。用于为特定操作系统启用专门的\n优化/功能：\n\n[horizontal]\nother;; 未指定操作系统\nwxp;; Microsoft Windows XP\nw2k;; Microsoft Windows 2000\nw2k3;; Microsoft Windows 2003\nw2k8;; Microsoft Windows 2008\nwvista;; Microsoft Windows Vista\nwin7;; Microsoft Windows 7\nwin8;; Microsoft Windows 8/2012/2012r2\nwin10;; Microsoft Windows 10/2016/2019\nwin11;; Microsoft Windows 11/2022/2025\nl24;; Linux 2.4 内核\nl26;; Linux 2.6 - 7.X 内核\nsolaris;; Solaris/OpenSolaris/OpenIndiania 内核\n"
     },
     "parallel[n]": {
-      "description": "Map host parallel devices (n is 0 to 2).",
+      "description": "映射宿主机并行设备（n 为 0 到 2）。",
       "optional": 1,
       "pattern": "/dev/parport\\d+|/dev/usb/lp\\d+",
       "type": "string",
-      "verbose_description": "Map host parallel devices (n is 0 to 2).\n\nNOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such\nmachines - use with special care.\n\nCAUTION: Experimental! User reported problems with this option.\n"
+      "verbose_description": "映射宿主机并行设备（n 为 0 到 2）。\n\n注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类\n虚拟机——请格外谨慎。\n\n警告：实验性功能！有用户报告此选项存在问题。\n"
     },
     "pool": {
-      "description": "Add the VM to the specified pool.",
+      "description": "将虚拟机添加到指定资源池。",
       "format": "pve-poolid",
       "optional": 1,
       "type": "string",
@@ -1516,30 +1516,30 @@ Create or restore a virtual machine.
     },
     "protection": {
       "default": 0,
-      "description": "Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.",
+      "description": "设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "reboot": {
       "default": 1,
-      "description": "Allow reboot. If set to '0' the VM exit on reboot.",
+      "description": "允许重启。如果设为 '0'，虚拟机将在重启时退出。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "rng0": {
-      "description": "Configure a VirtIO-based Random Number Generator.",
+      "description": "配置基于 VirtIO 的随机数生成器。",
       "format": "pve-qm-rng",
       "optional": 1,
       "type": "string",
       "typetext": "[source=]</dev/urandom|/dev/random|/dev/hwrng> [,max_bytes=<integer>] [,period=<integer>]"
     },
     "sata[n]": {
-      "description": "Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "aio": {
-          "description": "AIO type to use.",
+          "description": "使用的 AIO 类型。",
           "enum": [
             "native",
             "threads",
@@ -1549,25 +1549,25 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "backup": {
-          "description": "Whether the drive should be included when making backups.",
+          "description": "备份时是否包含此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "bps": {
-          "description": "Maximum r/w speed in bytes per second.",
+          "description": "最大读/写速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
         },
         "bps_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_rd": {
-          "description": "Maximum read speed in bytes per second.",
+          "description": "最大读取速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -1576,14 +1576,14 @@ Create or restore a virtual machine.
           "alias": "bps_rd_max_length"
         },
         "bps_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_wr": {
-          "description": "Maximum write speed in bytes per second.",
+          "description": "最大写入速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -1592,14 +1592,14 @@ Create or restore a virtual machine.
           "alias": "bps_wr_max_length"
         },
         "bps_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "cache": {
-          "description": "The drive's cache mode",
+          "description": "驱动器的缓存模式",
           "enum": [
             "none",
             "writethrough",
@@ -1611,12 +1611,12 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "detect_zeroes": {
-          "description": "Controls whether to detect and try to optimize writes of zeroes.",
+          "description": "控制是否检测并尝试优化零值写入。",
           "optional": 1,
           "type": "boolean"
         },
         "discard": {
-          "description": "Controls whether to pass discard/trim requests to the underlying storage.",
+          "description": "控制是否将 discard/trim 请求传递到底层存储。",
           "enum": [
             "ignore",
             "on"
@@ -1626,13 +1626,13 @@ Create or restore a virtual machine.
         },
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "The drive's backing file's data format.",
+          "description": "驱动器底层文件的数据格式。",
           "enum": [
             "raw",
             "qcow",
@@ -1645,33 +1645,33 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
           "type": "string"
         },
         "iops": {
-          "description": "Maximum r/w I/O in operations per second.",
+          "description": "最大读/写 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max": {
-          "description": "Maximum unthrottled r/w I/O pool in operations per second.",
+          "description": "最大不限速读/写 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_rd": {
-          "description": "Maximum read I/O in operations per second.",
+          "description": "最大读取 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -1680,20 +1680,20 @@ Create or restore a virtual machine.
           "alias": "iops_rd_max_length"
         },
         "iops_rd_max": {
-          "description": "Maximum unthrottled read I/O pool in operations per second.",
+          "description": "最大不限速读取 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_wr": {
-          "description": "Maximum write I/O in operations per second.",
+          "description": "最大写入 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -1702,57 +1702,57 @@ Create or restore a virtual machine.
           "alias": "iops_wr_max_length"
         },
         "iops_wr_max": {
-          "description": "Maximum unthrottled write I/O pool in operations per second.",
+          "description": "最大不限速写入 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "mbps": {
-          "description": "Maximum r/w speed in megabytes per second.",
+          "description": "最大读/写速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_max": {
-          "description": "Maximum unthrottled r/w pool in megabytes per second.",
+          "description": "最大不限速读/写池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd": {
-          "description": "Maximum read speed in megabytes per second.",
+          "description": "最大读取速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd_max": {
-          "description": "Maximum unthrottled read pool in megabytes per second.",
+          "description": "最大不限速读取池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr": {
-          "description": "Maximum write speed in megabytes per second.",
+          "description": "最大写入速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr_max": {
-          "description": "Maximum unthrottled write pool in megabytes per second.",
+          "description": "最大不限速写入池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "media": {
           "default": "disk",
-          "description": "The drive's media type.",
+          "description": "驱动器的介质类型。",
           "enum": [
             "cdrom",
             "disk"
@@ -1762,12 +1762,12 @@ Create or restore a virtual machine.
         },
         "replicate": {
           "default": 1,
-          "description": "Whether the drive should considered for replication jobs.",
+          "description": "是否在复制任务中考虑此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "rerror": {
-          "description": "Read error action.",
+          "description": "读取错误时的操作。",
           "enum": [
             "ignore",
             "report",
@@ -1777,7 +1777,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "serial": {
-          "description": "The drive's reported serial number, url-encoded, up to 20 bytes long.",
+          "description": "驱动器报告的序列号，采用 URL 编码，最长 20 字节。",
           "format": "urlencoded",
           "format_description": "serial",
           "maxLength": 60,
@@ -1786,25 +1786,25 @@ Create or restore a virtual machine.
         },
         "shared": {
           "default": 0,
-          "description": "Mark this locally-managed volume as available on all nodes",
+          "description": "将此本地管理的卷标记为在所有节点上可用",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this locally-managed volume as available on all nodes.\n\nWARNING: This option does not share the volume automatically, it assumes it is shared already!"
+          "verbose_description": "将此本地管理的卷标记为在所有节点上可用。\n\n警告：此选项不会自动共享该卷，而是假定它已共享！"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
           "type": "string"
         },
         "snapshot": {
-          "description": "Controls qemu's snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.",
+          "description": "控制 qemu 的快照模式功能。如果启用，对磁盘的更改将是临时的，并会在虚拟机关闭时丢弃。",
           "optional": 1,
           "type": "boolean"
         },
         "ssd": {
-          "description": "Whether to expose this drive as an SSD, rather than a rotational hard disk.",
+          "description": "是否将此驱动器呈现为 SSD，而非旋转式硬盘。",
           "optional": 1,
           "type": "boolean"
         },
@@ -1812,7 +1812,7 @@ Create or restore a virtual machine.
           "alias": "file"
         },
         "werror": {
-          "description": "Write error action.",
+          "description": "写入错误时的操作。",
           "enum": [
             "enospc",
             "ignore",
@@ -1823,7 +1823,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "wwn": {
-          "description": "The drive's worldwide name, encoded as 16 bytes hex string, prefixed by '0x'.",
+          "description": "驱动器的全球名称，编码为带 '0x' 前缀的 16 字节十六进制字符串。",
           "format_description": "wwn",
           "optional": 1,
           "pattern": "(?^:^(0x)[0-9a-fA-F]{16})",
@@ -1835,10 +1835,10 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]"
     },
     "scsi[n]": {
-      "description": "Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "aio": {
-          "description": "AIO type to use.",
+          "description": "使用的 AIO 类型。",
           "enum": [
             "native",
             "threads",
@@ -1848,25 +1848,25 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "backup": {
-          "description": "Whether the drive should be included when making backups.",
+          "description": "备份时是否包含此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "bps": {
-          "description": "Maximum r/w speed in bytes per second.",
+          "description": "最大读/写速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
         },
         "bps_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_rd": {
-          "description": "Maximum read speed in bytes per second.",
+          "description": "最大读取速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -1875,14 +1875,14 @@ Create or restore a virtual machine.
           "alias": "bps_rd_max_length"
         },
         "bps_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_wr": {
-          "description": "Maximum write speed in bytes per second.",
+          "description": "最大写入速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -1891,14 +1891,14 @@ Create or restore a virtual machine.
           "alias": "bps_wr_max_length"
         },
         "bps_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "cache": {
-          "description": "The drive's cache mode",
+          "description": "驱动器的缓存模式",
           "enum": [
             "none",
             "writethrough",
@@ -1910,12 +1910,12 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "detect_zeroes": {
-          "description": "Controls whether to detect and try to optimize writes of zeroes.",
+          "description": "控制是否检测并尝试优化零值写入。",
           "optional": 1,
           "type": "boolean"
         },
         "discard": {
-          "description": "Controls whether to pass discard/trim requests to the underlying storage.",
+          "description": "控制是否将 discard/trim 请求传递到底层存储。",
           "enum": [
             "ignore",
             "on"
@@ -1925,13 +1925,13 @@ Create or restore a virtual machine.
         },
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "The drive's backing file's data format.",
+          "description": "驱动器底层文件的数据格式。",
           "enum": [
             "raw",
             "qcow",
@@ -1944,33 +1944,33 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
           "type": "string"
         },
         "iops": {
-          "description": "Maximum r/w I/O in operations per second.",
+          "description": "最大读/写 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max": {
-          "description": "Maximum unthrottled r/w I/O pool in operations per second.",
+          "description": "最大不限速读/写 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_rd": {
-          "description": "Maximum read I/O in operations per second.",
+          "description": "最大读取 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -1979,20 +1979,20 @@ Create or restore a virtual machine.
           "alias": "iops_rd_max_length"
         },
         "iops_rd_max": {
-          "description": "Maximum unthrottled read I/O pool in operations per second.",
+          "description": "最大不限速读取 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_wr": {
-          "description": "Maximum write I/O in operations per second.",
+          "description": "最大写入 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -2001,62 +2001,62 @@ Create or restore a virtual machine.
           "alias": "iops_wr_max_length"
         },
         "iops_wr_max": {
-          "description": "Maximum unthrottled write I/O pool in operations per second.",
+          "description": "最大不限速写入 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iothread": {
-          "description": "Whether to use iothreads for this drive",
+          "description": "是否为此驱动器使用 iothreads",
           "optional": 1,
           "type": "boolean"
         },
         "mbps": {
-          "description": "Maximum r/w speed in megabytes per second.",
+          "description": "最大读/写速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_max": {
-          "description": "Maximum unthrottled r/w pool in megabytes per second.",
+          "description": "最大不限速读/写池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd": {
-          "description": "Maximum read speed in megabytes per second.",
+          "description": "最大读取速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd_max": {
-          "description": "Maximum unthrottled read pool in megabytes per second.",
+          "description": "最大不限速读取池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr": {
-          "description": "Maximum write speed in megabytes per second.",
+          "description": "最大写入速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr_max": {
-          "description": "Maximum unthrottled write pool in megabytes per second.",
+          "description": "最大不限速写入池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "media": {
           "default": "disk",
-          "description": "The drive's media type.",
+          "description": "驱动器的介质类型。",
           "enum": [
             "cdrom",
             "disk"
@@ -2065,26 +2065,26 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "product": {
-          "description": "The drive's product name, up to 16 bytes long.",
+          "description": "驱动器的产品名称，最长 16 字节。",
           "format_description": "product",
           "optional": 1,
           "pattern": "[A-Za-z0-9\\-_\\s]{,16}",
           "type": "string"
         },
         "queues": {
-          "description": "Number of queues.",
+          "description": "队列数量。",
           "minimum": 2,
           "optional": 1,
           "type": "integer"
         },
         "replicate": {
           "default": 1,
-          "description": "Whether the drive should considered for replication jobs.",
+          "description": "是否在复制任务中考虑此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "rerror": {
-          "description": "Read error action.",
+          "description": "读取错误时的操作。",
           "enum": [
             "ignore",
             "report",
@@ -2094,18 +2094,18 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "ro": {
-          "description": "Whether the drive is read-only.",
+          "description": "驱动器是否为只读。",
           "optional": 1,
           "type": "boolean"
         },
         "scsiblock": {
           "default": 0,
-          "description": "whether to use scsi-block for full passthrough of host block device\n\nWARNING: can lead to I/O errors in combination with low memory or high memory fragmentation on host",
+          "description": "是否使用 scsi-block 完整直通宿主机块设备\n\n警告：宿主机内存不足或内存碎片严重时，可能导致 I/O 错误",
           "optional": 1,
           "type": "boolean"
         },
         "serial": {
-          "description": "The drive's reported serial number, url-encoded, up to 20 bytes long.",
+          "description": "驱动器报告的序列号，采用 URL 编码，最长 20 字节。",
           "format": "urlencoded",
           "format_description": "serial",
           "maxLength": 60,
@@ -2114,30 +2114,30 @@ Create or restore a virtual machine.
         },
         "shared": {
           "default": 0,
-          "description": "Mark this locally-managed volume as available on all nodes",
+          "description": "将此本地管理的卷标记为在所有节点上可用",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this locally-managed volume as available on all nodes.\n\nWARNING: This option does not share the volume automatically, it assumes it is shared already!"
+          "verbose_description": "将此本地管理的卷标记为在所有节点上可用。\n\n警告：此选项不会自动共享该卷，而是假定它已共享！"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
           "type": "string"
         },
         "snapshot": {
-          "description": "Controls qemu's snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.",
+          "description": "控制 qemu 的快照模式功能。如果启用，对磁盘的更改将是临时的，并会在虚拟机关闭时丢弃。",
           "optional": 1,
           "type": "boolean"
         },
         "ssd": {
-          "description": "Whether to expose this drive as an SSD, rather than a rotational hard disk.",
+          "description": "是否将此驱动器呈现为 SSD，而非旋转式硬盘。",
           "optional": 1,
           "type": "boolean"
         },
         "vendor": {
-          "description": "The drive's vendor name, up to 8 bytes long.",
+          "description": "驱动器的供应商名称，最长 8 字节。",
           "format_description": "vendor",
           "optional": 1,
           "pattern": "[A-Za-z0-9\\-_\\s]{,8}",
@@ -2147,7 +2147,7 @@ Create or restore a virtual machine.
           "alias": "file"
         },
         "werror": {
-          "description": "Write error action.",
+          "description": "写入错误时的操作。",
           "enum": [
             "enospc",
             "ignore",
@@ -2158,7 +2158,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "wwn": {
-          "description": "The drive's worldwide name, encoded as 16 bytes hex string, prefixed by '0x'.",
+          "description": "驱动器的全球名称，编码为带 '0x' 前缀的 16 字节十六进制字符串。",
           "format_description": "wwn",
           "optional": 1,
           "pattern": "(?^:^(0x)[0-9a-fA-F]{16})",
@@ -2171,7 +2171,7 @@ Create or restore a virtual machine.
     },
     "scsihw": {
       "default": "lsi",
-      "description": "SCSI controller model",
+      "description": "SCSI 控制器型号",
       "enum": [
         "lsi",
         "lsi53c810",
@@ -2184,21 +2184,21 @@ Create or restore a virtual machine.
       "type": "string"
     },
     "searchdomain": {
-      "description": "cloud-init: Sets DNS search domains for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.",
+      "description": "cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "serial[n]": {
-      "description": "Create a serial device inside the VM (n is 0 to 3)",
+      "description": "在虚拟机内创建串行设备（n 为 0 到 3）",
       "optional": 1,
       "pattern": "(/dev/[^,]+|socket)",
       "type": "string",
-      "verbose_description": "Create a serial device inside the VM (n is 0 to 3), and pass through a\nhost serial device (i.e. /dev/ttyS0), or create a unix socket on the\nhost side (use 'qm terminal' to open a terminal connection).\n\nNOTE: If you pass through a host serial device, it is no longer possible to migrate such machines -\nuse with special care.\n\nCAUTION: Experimental! User reported problems with this option.\n"
+      "verbose_description": "在虚拟机内创建串行设备（n 为 0 到 3），并直通\n宿主机串行设备（即 /dev/ttyS0），或在\n宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。\n\n注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——\n请格外谨慎。\n\n警告：实验性功能！有用户报告此选项存在问题。\n"
     },
     "shares": {
       "default": 1000,
-      "description": "Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.",
+      "description": "自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。",
       "maximum": 50000,
       "minimum": 0,
       "optional": 1,
@@ -2206,7 +2206,7 @@ Create or restore a virtual machine.
       "typetext": "<integer> (0 - 50000)"
     },
     "smbios1": {
-      "description": "Specify SMBIOS type 1 fields.",
+      "description": "指定 SMBIOS type 1 字段。",
       "format": "pve-qm-smbios1",
       "maxLength": 512,
       "optional": 1,
@@ -2215,7 +2215,7 @@ Create or restore a virtual machine.
     },
     "smp": {
       "default": 1,
-      "description": "The number of CPUs. Please use option -sockets instead.",
+      "description": "CPU 数量。请改用 -sockets 选项。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
@@ -2223,24 +2223,24 @@ Create or restore a virtual machine.
     },
     "sockets": {
       "default": 1,
-      "description": "The number of CPU sockets.",
+      "description": "CPU 插槽数量。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - N)"
     },
     "spice_enhancements": {
-      "description": "Configure additional enhancements for SPICE.",
+      "description": "配置 SPICE 的附加增强功能。",
       "format": {
         "foldersharing": {
           "default": "0",
-          "description": "Enable folder sharing via SPICE. Needs Spice-WebDAV daemon installed in the VM.",
+          "description": "通过 SPICE 启用文件夹共享。需要在虚拟机中安装 Spice-WebDAV 守护进程。",
           "optional": 1,
           "type": "boolean"
         },
         "videostreaming": {
           "default": "off",
-          "description": "Enable video streaming. Uses compression for detected video streams.",
+          "description": "启用视频流。对检测到的视频流使用压缩。",
           "enum": [
             "off",
             "all",
@@ -2255,7 +2255,7 @@ Create or restore a virtual machine.
       "typetext": "[foldersharing=<1|0>] [,videostreaming=<off|all|filter>]"
     },
     "sshkeys": {
-      "description": "cloud-init: Setup public SSH keys (one key per line, OpenSSH format).",
+      "description": "cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。",
       "format": "urlencoded",
       "optional": 1,
       "type": "string",
@@ -2263,28 +2263,28 @@ Create or restore a virtual machine.
     },
     "start": {
       "default": 0,
-      "description": "Start VM after it was created successfully.",
+      "description": "成功创建后启动虚拟机。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "startdate": {
       "default": "now",
-      "description": "Set the initial date of the real time clock. Valid format for date are:'now' or '2006-06-17T16:01:21' or '2006-06-17'.",
+      "description": "设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。",
       "optional": 1,
       "pattern": "(now|\\d{4}-\\d{1,2}-\\d{1,2}(T\\d{1,2}:\\d{1,2}:\\d{1,2})?)",
       "type": "string",
       "typetext": "(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)"
     },
     "startup": {
-      "description": "Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped.",
+      "description": "启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。",
       "format": "pve-startup-order",
       "optional": 1,
       "type": "string",
       "typetext": "[[order=]\\d+] [,up=\\d+] [,down=\\d+] "
     },
     "storage": {
-      "description": "Default storage.",
+      "description": "默认存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -2293,14 +2293,14 @@ Create or restore a virtual machine.
     },
     "tablet": {
       "default": 1,
-      "description": "Enable/disable the USB tablet device.",
+      "description": "启用/禁用 USB 数位板设备。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>",
-      "verbose_description": "Enable/disable the USB tablet device. This device is usually needed to allow absolute mouse positioning with VNC. Else the mouse runs out of sync with normal VNC clients. If you're running lots of console-only guests on one host, you may consider disabling this to save some context switches. This is turned off by default if you use spice (`qm set <vmid> --vga qxl`)."
+      "verbose_description": "启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set <vmid> --vga qxl`），则默认关闭此项。"
     },
     "tags": {
-      "description": "Tags of the VM. This is only meta information.",
+      "description": "虚拟机标签。此项仅为元信息。",
       "format": "pve-tag-list",
       "optional": 1,
       "type": "string",
@@ -2308,30 +2308,30 @@ Create or restore a virtual machine.
     },
     "tdf": {
       "default": 0,
-      "description": "Enable/disable time drift fix.",
+      "description": "启用/禁用时间漂移修正。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "template": {
       "default": 0,
-      "description": "Enable/disable Template.",
+      "description": "启用/禁用模板。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "tpmstate0": {
-      "description": "Configure a Disk for storing TPM state. The format is fixed to 'raw'. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "Format of the image.",
+          "description": "镜像格式。",
           "enum": [
             "raw",
             "qcow2",
@@ -2341,14 +2341,14 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
           "type": "string"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -2356,7 +2356,7 @@ Create or restore a virtual machine.
         },
         "version": {
           "default": "v1.2",
-          "description": "The TPM interface version. v2.0 is newer and should be preferred. Note that this cannot be changed later on.",
+          "description": "TPM 接口版本。v2.0 较新，应优先使用。注意，此项以后无法更改。",
           "enum": [
             "v1.2",
             "v2.0"
@@ -2373,18 +2373,18 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]"
     },
     "unique": {
-      "description": "Assign a unique random ethernet address.",
+      "description": "分配唯一的随机以太网地址。",
       "optional": 1,
       "requires": "archive",
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "unused[n]": {
-      "description": "Reference to unused volumes. This is used internally, and should not be modified manually.",
+      "description": "对未使用卷的引用。此项供内部使用，不应手动修改。",
       "format": {
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id",
           "format_description": "volume",
           "type": "string"
@@ -2398,18 +2398,18 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume>"
     },
     "usb[n]": {
-      "description": "Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).",
+      "description": "配置 USB 设备（n 为 0 到 4；对于机器版本 >= 7.1 且 ostype 为 l26 或 windows > 7 的客户机，n 最大可为 14）。",
       "format": {
         "host": {
           "default_key": 1,
-          "description": "The Host USB device or port or the value 'spice'. HOSTUSBDEVICE syntax is:\n\n 'bus-port(.port)*' (decimal numbers) or\n 'vendor_id:product_id' (hexadecimal numbers) or\n 'spice'\n\nYou can use the 'lsusb -t' command to list existing usb devices.\n\nNOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such\nmachines - use with special care.\n\nThe value 'spice' can be used to add a usb redirection devices for spice.\n\nEither this or the 'mapping' key must be set.\n",
+          "description": "宿主机 USB 设备、端口或值 'spice'。HOSTUSBDEVICE 语法如下：\n\n 'bus-port(.port)*'（十进制数），或\n 'vendor_id:product_id'（十六进制数），或\n 'spice'\n\n可使用 'lsusb -t' 命令列出现有 USB 设备。\n\n注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类\n虚拟机——请格外谨慎。\n\n值 'spice' 可用于为 spice 添加 USB 重定向设备。\n\n必须设置此项或 'mapping' 键。\n",
           "format_description": "HOSTUSBDEVICE|spice",
           "optional": 1,
           "pattern": "(?^:(?:(?:(?^:(0x)?([0-9A-Fa-f]{4}):(0x)?([0-9A-Fa-f]{4})))|(?:(?^:(\\d+)\\-(\\d+(\\.\\d+)*)))|[Ss][Pp][Ii][Cc][Ee]))",
           "type": "string"
         },
         "mapping": {
-          "description": "The ID of a cluster wide mapping. Either this or the default-key 'host' must be set.",
+          "description": "集群范围映射的 ID。必须设置此项或默认键 'host'。",
           "format": "pve-configid",
           "format_description": "mapping-id",
           "optional": 1,
@@ -2417,7 +2417,7 @@ Create or restore a virtual machine.
         },
         "usb3": {
           "default": 0,
-          "description": "Specifies whether if given host option is a USB3 device or port. For modern guests (machine version >= 7.1 and ostype l26 and windows > 7), this flag is irrelevant (all devices are plugged into a xhci controller).",
+          "description": "指定给定的 host 选项是否为 USB3 设备或端口。对于现代客户机（机器版本 >= 7.1，ostype 为 l26 和 windows > 7），此标志无关紧要（所有设备均接入 xhci 控制器）。",
           "optional": 1,
           "type": "boolean"
         }
@@ -2428,17 +2428,17 @@ Create or restore a virtual machine.
     },
     "vcpus": {
       "default": 0,
-      "description": "Number of hotplugged vcpus.",
+      "description": "热插拔的 vcpu 数量。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - N)"
     },
     "vga": {
-      "description": "Configure the VGA hardware.",
+      "description": "配置 VGA 硬件。",
       "format": {
         "clipboard": {
-          "description": "Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Live migration with a VNC clipboard is not possible with QEMU machine version < 10.1.",
+          "description": "启用特定剪贴板。未设置时，将根据显示类型添加 SPICE 剪贴板。QEMU 机器版本 < 10.1 时，无法使用 VNC 剪贴板进行在线迁移。",
           "enum": [
             "vnc"
           ],
@@ -2446,7 +2446,7 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "memory": {
-          "description": "Sets the VGA memory (in MiB). Has no effect with serial display.",
+          "description": "设置 VGA 内存（MiB）。使用串行显示时无效。",
           "maximum": 512,
           "minimum": 4,
           "optional": 1,
@@ -2455,7 +2455,7 @@ Create or restore a virtual machine.
         "type": {
           "default": "std",
           "default_key": 1,
-          "description": "Select the VGA type. Using type 'cirrus' is not recommended.",
+          "description": "选择 VGA 类型。不建议使用 'cirrus' 类型。",
           "enum": [
             "cirrus",
             "qxl",
@@ -2479,13 +2479,13 @@ Create or restore a virtual machine.
       "optional": 1,
       "type": "string",
       "typetext": "[[type=]<enum>] [,clipboard=<vnc>] [,memory=<integer>]",
-      "verbose_description": "Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is 'std' for all OS types besides some Windows versions (XP and older) which use 'cirrus'. The 'qxl' option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays them self.\nYou can also run without any graphic card, using a serial device as terminal."
+      "verbose_description": "配置 VGA 硬件。如果要使用高分辨率模式（>= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。\n也可以不使用任何显卡，而使用串行设备作为终端。"
     },
     "virtio[n]": {
-      "description": "Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.",
+      "description": "将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。",
       "format": {
         "aio": {
-          "description": "AIO type to use.",
+          "description": "使用的 AIO 类型。",
           "enum": [
             "native",
             "threads",
@@ -2495,25 +2495,25 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "backup": {
-          "description": "Whether the drive should be included when making backups.",
+          "description": "备份时是否包含此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "bps": {
-          "description": "Maximum r/w speed in bytes per second.",
+          "description": "最大读/写速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
         },
         "bps_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_rd": {
-          "description": "Maximum read speed in bytes per second.",
+          "description": "最大读取速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -2522,14 +2522,14 @@ Create or restore a virtual machine.
           "alias": "bps_rd_max_length"
         },
         "bps_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "bps_wr": {
-          "description": "Maximum write speed in bytes per second.",
+          "description": "最大写入速度，单位为字节/秒。",
           "format_description": "bps",
           "optional": 1,
           "type": "integer"
@@ -2538,14 +2538,14 @@ Create or restore a virtual machine.
           "alias": "bps_wr_max_length"
         },
         "bps_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "cache": {
-          "description": "The drive's cache mode",
+          "description": "驱动器的缓存模式",
           "enum": [
             "none",
             "writethrough",
@@ -2557,12 +2557,12 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "detect_zeroes": {
-          "description": "Controls whether to detect and try to optimize writes of zeroes.",
+          "description": "控制是否检测并尝试优化零值写入。",
           "optional": 1,
           "type": "boolean"
         },
         "discard": {
-          "description": "Controls whether to pass discard/trim requests to the underlying storage.",
+          "description": "控制是否将 discard/trim 请求传递到底层存储。",
           "enum": [
             "ignore",
             "on"
@@ -2572,13 +2572,13 @@ Create or restore a virtual machine.
         },
         "file": {
           "default_key": 1,
-          "description": "The drive's backing volume.",
+          "description": "驱动器的底层卷。",
           "format": "pve-volume-id-or-qm-path",
           "format_description": "volume",
           "type": "string"
         },
         "format": {
-          "description": "The drive's backing file's data format.",
+          "description": "驱动器底层文件的数据格式。",
           "enum": [
             "raw",
             "qcow",
@@ -2591,33 +2591,33 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "import-from": {
-          "description": "Create a new disk, importing from this source (volume ID or absolute path). When an absolute path is specified, it's up to you to ensure that the source is not actively used by another process during the import!",
+          "description": "创建新磁盘，并从此来源（卷 ID 或绝对路径）导入。指定绝对路径时，您需要自行确保导入期间没有其他进程正在使用源！",
           "format": "pve-volume-id-or-absolute-path",
           "format_description": "source volume",
           "optional": 1,
           "type": "string"
         },
         "iops": {
-          "description": "Maximum r/w I/O in operations per second.",
+          "description": "最大读/写 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max": {
-          "description": "Maximum unthrottled r/w I/O pool in operations per second.",
+          "description": "最大不限速读/写 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_max_length": {
-          "description": "Maximum length of I/O bursts in seconds.",
+          "description": "I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_rd": {
-          "description": "Maximum read I/O in operations per second.",
+          "description": "最大读取 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -2626,20 +2626,20 @@ Create or restore a virtual machine.
           "alias": "iops_rd_max_length"
         },
         "iops_rd_max": {
-          "description": "Maximum unthrottled read I/O pool in operations per second.",
+          "description": "最大不限速读取 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_rd_max_length": {
-          "description": "Maximum length of read I/O bursts in seconds.",
+          "description": "读取 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iops_wr": {
-          "description": "Maximum write I/O in operations per second.",
+          "description": "最大写入 I/O，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
@@ -2648,62 +2648,62 @@ Create or restore a virtual machine.
           "alias": "iops_wr_max_length"
         },
         "iops_wr_max": {
-          "description": "Maximum unthrottled write I/O pool in operations per second.",
+          "description": "最大不限速写入 I/O 池，单位为操作数/秒。",
           "format_description": "iops",
           "optional": 1,
           "type": "integer"
         },
         "iops_wr_max_length": {
-          "description": "Maximum length of write I/O bursts in seconds.",
+          "description": "写入 I/O 突发的最长持续时间，单位为秒。",
           "format_description": "seconds",
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "iothread": {
-          "description": "Whether to use iothreads for this drive",
+          "description": "是否为此驱动器使用 iothreads",
           "optional": 1,
           "type": "boolean"
         },
         "mbps": {
-          "description": "Maximum r/w speed in megabytes per second.",
+          "description": "最大读/写速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_max": {
-          "description": "Maximum unthrottled r/w pool in megabytes per second.",
+          "description": "最大不限速读/写池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd": {
-          "description": "Maximum read speed in megabytes per second.",
+          "description": "最大读取速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_rd_max": {
-          "description": "Maximum unthrottled read pool in megabytes per second.",
+          "description": "最大不限速读取池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr": {
-          "description": "Maximum write speed in megabytes per second.",
+          "description": "最大写入速度，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "mbps_wr_max": {
-          "description": "Maximum unthrottled write pool in megabytes per second.",
+          "description": "最大不限速写入池，单位为兆字节/秒。",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "media": {
           "default": "disk",
-          "description": "The drive's media type.",
+          "description": "驱动器的介质类型。",
           "enum": [
             "cdrom",
             "disk"
@@ -2713,12 +2713,12 @@ Create or restore a virtual machine.
         },
         "replicate": {
           "default": 1,
-          "description": "Whether the drive should considered for replication jobs.",
+          "description": "是否在复制任务中考虑此驱动器。",
           "optional": 1,
           "type": "boolean"
         },
         "rerror": {
-          "description": "Read error action.",
+          "description": "读取错误时的操作。",
           "enum": [
             "ignore",
             "report",
@@ -2728,12 +2728,12 @@ Create or restore a virtual machine.
           "type": "string"
         },
         "ro": {
-          "description": "Whether the drive is read-only.",
+          "description": "驱动器是否为只读。",
           "optional": 1,
           "type": "boolean"
         },
         "serial": {
-          "description": "The drive's reported serial number, url-encoded, up to 20 bytes long.",
+          "description": "驱动器报告的序列号，采用 URL 编码，最长 20 字节。",
           "format": "urlencoded",
           "format_description": "serial",
           "maxLength": 60,
@@ -2742,20 +2742,20 @@ Create or restore a virtual machine.
         },
         "shared": {
           "default": 0,
-          "description": "Mark this locally-managed volume as available on all nodes",
+          "description": "将此本地管理的卷标记为在所有节点上可用",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this locally-managed volume as available on all nodes.\n\nWARNING: This option does not share the volume automatically, it assumes it is shared already!"
+          "verbose_description": "将此本地管理的卷标记为在所有节点上可用。\n\n警告：此选项不会自动共享该卷，而是假定它已共享！"
         },
         "size": {
-          "description": "Disk size. This is purely informational and has no effect.",
+          "description": "磁盘大小。此项仅供参考，不产生实际影响。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
           "type": "string"
         },
         "snapshot": {
-          "description": "Controls qemu's snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.",
+          "description": "控制 qemu 的快照模式功能。如果启用，对磁盘的更改将是临时的，并会在虚拟机关闭时丢弃。",
           "optional": 1,
           "type": "boolean"
         },
@@ -2763,7 +2763,7 @@ Create or restore a virtual machine.
           "alias": "file"
         },
         "werror": {
-          "description": "Write error action.",
+          "description": "写入错误时的操作。",
           "enum": [
             "enospc",
             "ignore",
@@ -2779,11 +2779,11 @@ Create or restore a virtual machine.
       "typetext": "[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]"
     },
     "virtiofs[n]": {
-      "description": "Configuration for sharing a directory between host and guest using Virtio-fs.",
+      "description": "使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。",
       "format": {
         "cache": {
           "default": "auto",
-          "description": "The caching policy the file system should use (auto, always, metadata, never).",
+          "description": "文件系统应使用的缓存策略（auto、always、metadata、never）。",
           "enum": [
             "auto",
             "always",
@@ -2795,26 +2795,26 @@ Create or restore a virtual machine.
         },
         "direct-io": {
           "default": 0,
-          "description": "Honor the O_DIRECT flag passed down by guest applications.",
+          "description": "遵循客户机应用程序传下来的 O_DIRECT 标志。",
           "optional": 1,
           "type": "boolean"
         },
         "dirid": {
           "default_key": 1,
-          "description": "Mapping identifier of the directory mapping to be shared with the guest. Also used as a mount tag inside the VM.",
+          "description": "要与客户机共享的目录映射的映射标识符。也用作虚拟机内的挂载标签。",
           "format": "pve-configid",
           "format_description": "mapping-id",
           "type": "string"
         },
         "expose-acl": {
           "default": 0,
-          "description": "Enable support for POSIX ACLs (enabled ACL implies xattr) for this mount.",
+          "description": "为此挂载启用 POSIX ACL 支持（启用 ACL 会隐含启用 xattr）。",
           "optional": 1,
           "type": "boolean"
         },
         "expose-xattr": {
           "default": 0,
-          "description": "Enable support for extended attributes for this mount.",
+          "description": "为此挂载启用扩展属性支持。",
           "optional": 1,
           "type": "boolean"
         }
@@ -2825,15 +2825,15 @@ Create or restore a virtual machine.
     },
     "vmgenid": {
       "default": "1 (autogenerated)",
-      "description": "Set VM Generation ID. Use '1' to autogenerate on create or update, pass '0' to disable explicitly.",
+      "description": "设置虚拟机生成 ID。使用 '1' 在创建或更新时自动生成，传入 '0' 显式禁用。",
       "format_description": "UUID",
       "optional": 1,
       "pattern": "(?:[a-fA-F0-9]{8}(?:-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}|[01])",
       "type": "string",
-      "verbose_description": "The VM generation ID (vmgenid) device exposes a 128-bit integer value identifier to the guest OS. This allows to notify the guest operating system when the virtual machine is executed with a different configuration (e.g. snapshot execution or creation from a template). The guest operating system notices the change, and is then able to react as appropriate by marking its copies of distributed databases as dirty, re-initializing its random number generator, etc.\nNote that auto-creation only works when done through API/CLI create or update methods, but not when manually editing the config file."
+      "verbose_description": "虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。\n注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -2841,7 +2841,7 @@ Create or restore a virtual machine.
       "typetext": "<integer> (100 - 999999999)"
     },
     "vmstatestorage": {
-      "description": "Default storage for VM state volumes/files.",
+      "description": "虚拟机状态卷/文件的默认存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -2849,12 +2849,12 @@ Create or restore a virtual machine.
       "typetext": "<storage ID>"
     },
     "watchdog": {
-      "description": "Create a virtual hardware watchdog device.",
+      "description": "创建虚拟硬件看门狗设备。",
       "format": "pve-qm-watchdog",
       "optional": 1,
       "type": "string",
       "typetext": "[[model=]<i6300esb|ib700>] [,action=<enum>]",
-      "verbose_description": "Create a virtual hardware watchdog device. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified)"
+      "verbose_description": "创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作）"
     }
   }
 }

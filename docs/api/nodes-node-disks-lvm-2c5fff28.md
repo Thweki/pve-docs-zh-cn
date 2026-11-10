@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/lvm`
 
-List LVM Volume Groups
+列出 LVM 卷组
 
 **方法标识：** `index`
 
@@ -46,7 +46,7 @@ List LVM Volume Groups
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List LVM Volume Groups
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -76,22 +76,22 @@ List LVM Volume Groups
       "items": {
         "properties": {
           "children": {
-            "description": "The underlying physical volumes",
+            "description": "底层物理卷",
             "items": {
               "properties": {
                 "free": {
-                  "description": "The free bytes in the physical volume",
+                  "description": "物理卷中的空闲字节数",
                   "type": "integer"
                 },
                 "leaf": {
                   "type": "boolean"
                 },
                 "name": {
-                  "description": "The name of the physical volume",
+                  "description": "物理卷名称",
                   "type": "string"
                 },
                 "size": {
-                  "description": "The size of the physical volume in bytes",
+                  "description": "物理卷大小，单位为字节",
                   "type": "integer"
                 }
               },
@@ -101,18 +101,18 @@ List LVM Volume Groups
             "type": "array"
           },
           "free": {
-            "description": "The free bytes in the volume group",
+            "description": "卷组中的空闲字节数",
             "type": "integer"
           },
           "leaf": {
             "type": "boolean"
           },
           "name": {
-            "description": "The name of the volume group",
+            "description": "卷组名称",
             "type": "string"
           },
           "size": {
-            "description": "The size of the volume group in bytes",
+            "description": "卷组大小，单位为字节",
             "type": "integer"
           }
         },
@@ -130,7 +130,7 @@ List LVM Volume Groups
 
 ## POST `/nodes/{node}/disks/lvm`
 
-Create an LVM Volume Group
+创建 LVM 卷组
 
 **方法标识：** `create`
 
@@ -145,7 +145,7 @@ Create an LVM Volume Group
       "Sys.Modify"
     ]
   ],
-  "description": "Requires additionally 'Datastore.Allocate' on /storage when setting 'add_storage'"
+  "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"
 }
 ```
 
@@ -171,10 +171,10 @@ Create an LVM Volume Group
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | Configure storage using the Volume Group |
-| `device` | string | 是 | — | The block device you want to create the volume group on |
-| `name` | string | 是 | — | The storage identifier. |
-| `node` | string | 是 | — | The cluster node name. |
+| `add_storage` | boolean | 否 | 0 | 使用卷组配置存储 |
+| `device` | string | 是 | — | 要在其上创建卷组的块设备 |
+| `name` | string | 是 | — | 存储标识符。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -185,25 +185,25 @@ Create an LVM Volume Group
   "properties": {
     "add_storage": {
       "default": 0,
-      "description": "Configure storage using the Volume Group",
+      "description": "使用卷组配置存储",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "device": {
-      "description": "The block device you want to create the volume group on",
+      "description": "要在其上创建卷组的块设备",
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

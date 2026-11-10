@@ -40,8 +40,8 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -77,23 +77,23 @@
   "items": {
     "properties": {
       "delete": {
-        "description": "Indicates a pending delete request if present and not 0.",
+        "description": "存在且不为 0 时表示有待处理的删除请求。",
         "maximum": 2,
         "minimum": 0,
         "optional": 1,
         "type": "integer"
       },
       "key": {
-        "description": "Configuration option name.",
+        "description": "配置选项名称。",
         "type": "string"
       },
       "pending": {
-        "description": "Pending value.",
+        "description": "待应用的值。",
         "optional": 1,
         "type": "string"
       },
       "value": {
-        "description": "Current value.",
+        "description": "当前值。",
         "optional": 1,
         "type": "string"
       }

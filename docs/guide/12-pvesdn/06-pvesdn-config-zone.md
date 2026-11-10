@@ -1,158 +1,158 @@
-# 12.6. Zones <a href="#pvesdn_config_zone" id="pvesdn_config_zone"></a>
+# 12.6. 区域 <a href="#pvesdn_config_zone" id="pvesdn_config_zone"></a>
 
-A zone defines a virtually separated network. Zones are restricted to specific nodes and assigned permissions, in order to restrict users to a certain zone and its contained VNets.
+区域定义一个虚拟隔离的网络。区域被限制到特定节点并分配权限，以便将用户限制在某个区域及其中包含的 VNet 内。
 
-Different technologies can be used for separation:
+可使用不同技术实现隔离：
 
-- Simple: Isolated Bridge. A simple layer 3 routing bridge (NAT)
-- VLAN: Virtual LANs are the classic method of subdividing a LAN
-- QinQ: Stacked VLAN (formally known as `IEEE 802.1ad`)
-- VXLAN: Layer 2 VXLAN network via a UDP tunnel
-- EVPN (BGP EVPN): VXLAN with BGP to establish Layer 3 routing
+- Simple：隔离的网桥。一个简单的三层路由网桥（NAT）
+- VLAN：虚拟局域网是细分局域网的传统方法
+- QinQ：堆叠 VLAN（正式名称为 `IEEE 802.1ad`）
+- VXLAN：通过 UDP 隧道建立的二层 VXLAN 网络
+- EVPN（BGP EVPN）：结合 BGP 的 VXLAN，用于建立三层路由
 
-## 12.6.1. Common Options <a href="#pvesdn_config_common_options" id="pvesdn_config_common_options"></a>
+## 12.6.1. 通用选项 <a href="#pvesdn_config_common_options" id="pvesdn_config_common_options"></a>
 
-The following options are available for all zone types:
+以下选项适用于所有区域类型：
 
-**Nodes**
+**节点**
 
-The nodes which the zone and associated VNets should be deployed on.
+应部署该区域及相关 VNet 的节点。
 
 **IPAM**
 
-Use an IP Address Management (IPAM) tool to manage IPs in the zone. Optional, defaults to `pve`.
+使用 IP 地址管理（IPAM）工具管理区域中的 IP。可选，默认为 `pve`。
 
 **DNS**
 
-DNS API server. Optional.
+DNS API 服务器。可选。
 
 **ReverseDNS**
 
-Reverse DNS API server. Optional.
+反向 DNS API 服务器。可选。
 
 **DNSZone**
 
-DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server. Optional.
+DNS 域名。用于注册主机名，例如 `<hostname>.<domain>`。DNS 区域必须已存在于 DNS 服务器上。可选。
 
-## 12.6.2. Simple Zones <a href="#pvesdn_zone_plugin_simple" id="pvesdn_zone_plugin_simple"></a>
+## 12.6.2. Simple 区域 <a href="#pvesdn_zone_plugin_simple" id="pvesdn_zone_plugin_simple"></a>
 
-This is the simplest plugin. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+这是最简单的插件。它会创建一个隔离的 VNet 网桥。此网桥不连接物理接口，虚拟机流量仅在各节点本地流通。可用于 NAT 或路由设置。
 
-## 12.6.3. VLAN Zones <a href="#pvesdn_zone_plugin_vlan" id="pvesdn_zone_plugin_vlan"></a>
+## 12.6.3. VLAN 区域 <a href="#pvesdn_zone_plugin_vlan" id="pvesdn_zone_plugin_vlan"></a>
 
-The VLAN plugin uses an existing local Linux or OVS bridge to connect to the node’s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+VLAN 插件使用现有的本地 Linux 或 OVS 网桥连接节点的物理接口。它使用 VNet 中定义的 VLAN 标签隔离网段。这可实现不同节点之间的虚拟机连接。
 
-VLAN zone configuration options:
+VLAN 区域配置选项：
 
-**Bridge**
+**网桥**
 
-The local bridge or OVS switch, already configured on **each** node that allows node-to-node connection.
+本地网桥或 OVS 交换机，已在 **每个** 节点上配置，允许节点间连接。
 
-## 12.6.4. QinQ Zones <a href="#pvesdn_zone_plugin_qinq" id="pvesdn_zone_plugin_qinq"></a>
+## 12.6.4. QinQ 区域 <a href="#pvesdn_zone_plugin_qinq" id="pvesdn_zone_plugin_qinq"></a>
 
-QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the *Service VLAN*) whereas the inner VLAN tag is defined by the VNet.
+QinQ 又称 VLAN 堆叠，使用多层 VLAN 标签进行隔离。QinQ 区域定义外层 VLAN 标签（*服务 VLAN*），而内层 VLAN 标签由 VNet 定义。
 
 {% hint style="info" %}
-Your physical network switches must support stacked VLANs for this configuration.
+物理网络交换机必须支持堆叠 VLAN 才能使用此配置。
 {% endhint %}
 
-QinQ zone configuration options:
+QinQ 区域配置选项：
 
-**Bridge**
+**网桥**
 
-A local, VLAN-aware bridge that is already configured on each local node
+已在每个本地节点上配置的、支持 VLAN 感知的本地网桥
 
-**Service VLAN**
+**服务 VLAN**
 
-The main VLAN tag of this zone
+此区域的主 VLAN 标签
 
-**Service VLAN Protocol**
+**服务 VLAN 协议**
 
-Allows you to choose between an 802.1q (default) or 802.1ad service VLAN type.
+允许选择 802.1q（默认）或 802.1ad 服务 VLAN 类型。
 
 **MTU**
 
-Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to `1496` if you physical interface MTU is `1500`.
+由于标签双层堆叠，QinQ VLAN 需要额外 4 字节。例如，必须将 MTU 减小为 `1496`，如果物理接口 MTU 为 `1500`。
 
-## 12.6.5. VXLAN Zones <a href="#pvesdn_zone_plugin_vxlan" id="pvesdn_zone_plugin_vxlan"></a>
+## 12.6.5. VXLAN 区域 <a href="#pvesdn_zone_plugin_vxlan" id="pvesdn_zone_plugin_vxlan"></a>
 
-The VXLAN plugin establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port `4789`.
+VXLAN 插件在现有网络（底层网络）上建立隧道（覆盖网络）。它将二层以太网帧封装在四层 UDP 数据报中，使用默认目标端口 `4789`。
 
-You have to configure the underlay network yourself to enable UDP connectivity between all peers.
+必须自行配置底层网络，以实现所有对等方之间的 UDP 连接。
 
-You can, for example, create a VXLAN overlay network on top of public internet, appearing to the VMs as if they share the same local Layer 2 network.
+例如，可以在公共互联网上创建 VXLAN 覆盖网络，使虚拟机看起来就像共享同一个本地二层网络。
 
 {% hint style="warning" %}
-VXLAN on its own does does not provide any encryption. When joining multiple sites via VXLAN, make sure to establish a secure connection between the site, for example by using a site-to-site VPN.
+VXLAN 本身不提供任何加密。通过 VXLAN 连接多个站点时，务必在站点之间建立安全连接，例如使用站点到站点 VPN。
 {% endhint %}
 
-VXLAN zone configuration options:
+VXLAN 区域配置选项：
 
-**Peers Address List**
+**对等方地址列表**
 
-A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here.
+VXLAN 区域中每个节点的 IP 地址列表。可以是通过此 IP 地址可达的外部节点。此处必须列出集群中的所有节点。
 
-**SDN Fabric**
+**SDN 网络结构**
 
-Instead of manually defining all the peers, use a [Fabric](10-pvesdn-config-fabrics.md) for automatically generating the peer list.
+使用 [网络结构](10-pvesdn-config-fabrics.md) 自动生成对等方列表，以替代手动定义所有对等方。
 
 **MTU**
 
-Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+由于 VXLAN 封装占用 50 字节，MTU 需要比传出物理接口低 50 字节。
 
-## 12.6.6. EVPN Zones <a href="#pvesdn_zone_plugin_evpn" id="pvesdn_zone_plugin_evpn"></a>
+## 12.6.6. EVPN 区域 <a href="#pvesdn_zone_plugin_evpn" id="pvesdn_zone_plugin_evpn"></a>
 
-The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters. This is achieved by establishing a VPN and utilizing BGP as the routing protocol.
+EVPN 区域创建可跨多个集群的可路由三层网络。这通过建立 VPN 并使用 BGP 作为路由协议来实现。
 
-The VNet of EVPN can have an anycast IP address and/or MAC address. The bridge IP is the same on each node, meaning a virtual guest can use this address as gateway.
+EVPN 的 VNet 可具有任播 IP 地址和/或 MAC 地址。各节点的网桥 IP 相同，因此虚拟客户机可将此地址用作网关。
 
-Routing can work across VNets from different zones through a VRF (Virtual Routing and Forwarding) interface.
+路由可通过 VRF（虚拟路由与转发）接口跨不同区域的 VNet 工作。
 
-EVPN zone configuration options:
+EVPN 区域配置选项：
 
 **VRF VXLAN ID**
 
-A VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
+用于 VNet 之间专用路由互联的 VXLAN-ID。必须与 VNet 的 VXLAN-ID 不同。
 
-**Primay Controller**
+**主控制器**
 
-The primary EVPN-controller to use for this zone. The primary controller is used for auto-deriving the VTEP IPs, based on the peer definition. For more information see the [controller section](09-pvesdn-config-controllers.md#pvesdn_controller_plugin_evpn).
+此区域使用的主 EVPN 控制器。主控制器用于根据对等方定义自动推导 VTEP IP。更多信息请参阅 [控制器一节](09-pvesdn-config-controllers.md#pvesdn_controller_plugin_evpn)。
 
-**Addtional Controllers**
+**其他控制器**
 
-Additional EVPN controllers to use for this zone. Controllers listed here will announce the L2VPN EVPN routes for this zone.
+此区域使用的其他 EVPN 控制器。此处列出的控制器会通告此区域的 L2VPN EVPN 路由。
 
-**VNet MAC Address**
+**VNet MAC 地址**
 
-Anycast MAC address that gets assigned to all VNets in this zone. Will be auto-generated if not defined.
+分配给此区域所有 VNet 的任播 MAC 地址。如果未定义，将自动生成。
 
-**Exit Nodes**
+**出口节点**
 
-Nodes that shall be configured as exit gateways from the EVPN network, through the real network. The configured nodes will announce a default route in the EVPN network. Optional.
+应配置为从 EVPN 网络通过实际网络出去的出口网关的节点。配置的节点会在 EVPN 网络中通告默认路由。可选。
 
-**Primary Exit Node**
+**主出口节点**
 
-If you use multiple exit nodes, force traffic through this primary exit node, instead of load-balancing on all nodes. Optional but necessary if you want to use SNAT or if your upstream router doesn’t support ECMP.
+如果使用多个出口节点，强制流量通过此主出口节点，而非在所有节点上进行负载均衡。可选，但如果要使用 SNAT 或上游路由器不支持 ECMP，则必须设置。
 
-**Exit Nodes Local Routing**
+**出口节点本地路由**
 
-This is a special option if you need to reach a VM/CT service from an exit node. (By default, the exit nodes only allow forwarding traffic between real network and EVPN network). Optional.
+如果需要从出口节点访问虚拟机/容器服务，可使用此特殊选项。（默认情况下，出口节点仅允许在实际网络与 EVPN 网络之间转发流量。）可选。
 
-**Advertise Subnets**
+**通告子网**
 
-Announce the full subnet in the EVPN network. If you have silent VMs/CTs (for example, if you have multiple IPs and the anycast gateway doesn’t see traffic from these IPs, the IP addresses won’t be able to be reached inside the EVPN network). Optional.
+在 EVPN 网络中通告整个子网。如果存在静默的虚拟机/容器（例如有多个 IP，而任播网关看不到这些 IP 的流量，则这些 IP 地址将无法在 EVPN 网络内部访问）。可选。
 
-**Disable ARP ND Suppression**
+**禁用 ARP ND 抑制**
 
-Don’t suppress ARP or ND (Neighbor Discovery) packets. This is required if you use floating IPs in your VMs (IP and MAC addresses are being moved between systems). Optional.
+不抑制 ARP 或 ND（邻居发现）数据包。如果在虚拟机中使用浮动 IP（IP 和 MAC 地址在系统之间移动），则需要此选项。可选。
 
-**Route-target Import**
+**导入路由目标**
 
-Allows you to import a list of external EVPN route targets. Used for cross-DC or different EVPN network interconnects. Optional.
+允许导入外部 EVPN 路由目标列表。用于跨数据中心或不同 EVPN 网络的互联。可选。
 
 **MTU**
 
-Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes less than the maximal MTU of the outgoing physical interface. Optional, defaults to 1450\.
+由于 VXLAN 封装占用 50 字节，MTU 需要比传出物理接口的最大 MTU 低 50 字节。可选，默认为 1450。
 
 ---
 

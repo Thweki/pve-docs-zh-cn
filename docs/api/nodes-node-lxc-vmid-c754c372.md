@@ -46,11 +46,11 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `destroy-unreferenced-disks` | boolean | 否 | — | If set, destroy additionally all disks with the VMID from all enabled storages which are not referenced in the config. |
-| `force` | boolean | 否 | 0 | Force destroy, even if running. |
-| `node` | string | 是 | — | The cluster node name. |
-| `purge` | boolean | 否 | 0 | Remove container from all related configurations. For example, backup jobs, replication jobs or HA. Related ACLs and Firewall entries will *always* be removed. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `destroy-unreferenced-disks` | boolean | 否 | — | 如果设置，还将销毁所有已启用存储中具有该 VMID 且未在配置中引用的磁盘。 |
+| `force` | boolean | 否 | 0 | 强制销毁，即使正在运行。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `purge` | boolean | 否 | 0 | 从所有相关配置中移除容器，例如备份作业、复制作业或 HA。相关 ACL 和防火墙条目始终会被移除。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,33 +60,33 @@
   "additionalProperties": 0,
   "properties": {
     "destroy-unreferenced-disks": {
-      "description": "If set, destroy additionally all disks with the VMID from all enabled storages which are not referenced in the config.",
+      "description": "如果设置，还将销毁所有已启用存储中具有该 VMID 且未在配置中引用的磁盘。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "force": {
       "default": 0,
-      "description": "Force destroy, even if running.",
+      "description": "强制销毁，即使正在运行。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "purge": {
       "default": 0,
-      "description": "Remove container from all related configurations. For example, backup jobs, replication jobs or HA. Related ACLs and Firewall entries will *always* be removed.",
+      "description": "从所有相关配置中移除容器，例如备份作业、复制作业或 HA。相关 ACL 和防火墙条目始终会被移除。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -109,7 +109,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}`
 
-Directory index
+目录索引
 
 **方法标识：** `vmdiridx`
 
@@ -137,8 +137,8 @@ Directory index
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -148,13 +148,13 @@ Directory index
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

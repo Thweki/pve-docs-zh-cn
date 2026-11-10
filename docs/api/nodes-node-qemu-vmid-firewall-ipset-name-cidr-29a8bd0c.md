@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/qemu/{vmid}/firewall/ipset/{name}/{cidr}`
 
-Remove IP or Network from IPSet.
+从 IPSet 中移除 IP 或网络。
 
 **方法标识：** `remove_ip`
 
@@ -40,11 +40,11 @@ Remove IP or Network from IPSet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,33 +54,33 @@ Remove IP or Network from IPSet.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -103,7 +103,7 @@ Remove IP or Network from IPSet.
 
 ## GET `/nodes/{node}/qemu/{vmid}/firewall/ipset/{name}/{cidr}`
 
-Read IP or Network settings from IPSet.
+从 IPSet 读取 IP 或网络设置。
 
 **方法标识：** `read_ip`
 
@@ -137,10 +137,10 @@ Read IP or Network settings from IPSet.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
-| `name` | string | 是 | — | IP set name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
+| `name` | string | 是 | — | IP 集合名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -150,26 +150,26 @@ Read IP or Network settings from IPSet.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -192,7 +192,7 @@ Read IP or Network settings from IPSet.
 
 ## PUT `/nodes/{node}/qemu/{vmid}/firewall/ipset/{name}/{cidr}`
 
-Update IP or Network settings
+更新 IP 或网络设置
 
 **方法标识：** `update_ip`
 
@@ -226,13 +226,13 @@ Update IP or Network settings
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `name` | string | 是 | — | IP set name. |
-| `node` | string | 是 | — | The cluster node name. |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | string | 是 | — | IP 集合名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `nomatch` | boolean | 否 | — |  |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -242,7 +242,7 @@ Update IP or Network settings
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDRorAlias",
       "type": "string",
       "typetext": "<string>"
@@ -254,21 +254,21 @@ Update IP or Network settings
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "name": {
-      "description": "IP set name.",
+      "description": "IP 集合名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -279,7 +279,7 @@ Update IP or Network settings
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

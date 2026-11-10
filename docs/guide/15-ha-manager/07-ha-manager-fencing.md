@@ -1,4 +1,4 @@
-# 15.7. Fencing <a href="#ha_manager_fencing" id="ha_manager_fencing"></a>
+# 15.7. 隔离 <a href="#ha_manager_fencing" id="ha_manager_fencing"></a>
 
 节点发生故障时，隔离可确保故障节点一定处于离线状态。这是必需的，以确保资源在另一个节点上恢复时不会重复运行。这是一项非常重要的任务，因为如果没有隔离，就无法在另一个节点上恢复资源。
 
@@ -6,7 +6,7 @@
 
 如果随后我们直接在另一个节点上启动此 VM，就会产生危险的竞争条件，因为两个节点都会写入数据。这种情况可能会破坏所有 VM 数据，并导致整个 VM 无法使用。如果存储具有防止多重挂载的保护机制，恢复也可能失败。
 
-## 15.7.1. How Proxmox VE Fences <a href="#_how_proxmox_ve_fences" id="_how_proxmox_ve_fences"></a>
+## 15.7.1. Proxmox VE 如何执行隔离 <a href="#how_proxmox_ve_fences" id="how_proxmox_ve_fences"></a>
 
 有多种方法可以隔离节点，例如使用隔离设备切断节点电源或完全禁用其通信。这些设备通常相当昂贵，并且会给系统引入额外的关键组件，因为如果它们发生故障，您将无法恢复任何服务。
 
@@ -24,7 +24,7 @@
 
 近期的服务器主板通常包含此类硬件看门狗，但需要对其进行配置。如果没有可用或已配置的看门狗，我们会回退到 Linux 内核的 *softdog*。虽然它仍然可靠，但它并不独立于服务器硬件，因此可靠性低于硬件看门狗。
 
-## 15.7.2. Configure Hardware Watchdog <a href="#_configure_hardware_watchdog" id="_configure_hardware_watchdog"></a>
+## 15.7.2. 配置硬件看门狗 <a href="#configure_hardware_watchdog" id="configure_hardware_watchdog"></a>
 
 默认情况下，出于安全原因，所有硬件看门狗模块均被阻止。如果未正确初始化，它们就像一把上了膛的枪。要启用硬件看门狗，需要在 */etc/default/pve-ha-manager* 中指定要加载的模块，例如：
 
@@ -35,7 +35,7 @@ WATCHDOG_MODULE=iTCO_wdt
 
 此配置由 *watchdog-mux* 服务读取，该服务会在启动时加载指定的模块。
 
-## 15.7.3. Recover Fenced Services <a href="#_recover_fenced_services" id="_recover_fenced_services"></a>
+## 15.7.3. 恢复被隔离的服务 <a href="#recover_fenced_services" id="recover_fenced_services"></a>
 
 节点发生故障且隔离成功后，CRM 会尝试将服务从故障节点移动到仍在线的节点。
 
@@ -47,7 +47,7 @@ WATCHDOG_MODULE=iTCO_wdt
 发生节点故障时，CRM 会将服务分配给其余节点。这会增加这些节点上的服务数量，并可能导致高负载，尤其是在小型集群中。请合理设计集群，使其能够应对此类最坏情况。
 {% endhint %}
 
-## 15.7.4. Fencing \& Watchdog Status <a href="#ha_manager_fencing_status" id="ha_manager_fencing_status"></a>
+## 15.7.4. 隔离与看门狗状态 <a href="#ha_manager_fencing_status" id="ha_manager_fencing_status"></a>
 
 `ha-manager status` 的输出包含一个 fencing 条目，其中显示 CRM 看门狗状态。每个 LRM 条目还会显示其自身的看门狗状态。
 
@@ -65,7 +65,7 @@ HA 堆栈已就绪，但没有 CRM 正在作为主节点主动运行，例如尚
 
 **disarmed**
 
-All watchdogs have been released cluster-wide. No automatic fencing, failover, or recovery takes place. See [Disarming HA for Cluster Maintenance](12-ha-manager-disarm.md).
+所有看门狗已在整个集群范围释放。不会发生自动隔离、故障切换或恢复。参见 [为集群维护解除 HA 防护](12-ha-manager-disarm.md)。
 
 {% hint style="info" %}
 `watchdog-mux` 服务在其整个生命周期内始终保持底层 `/dev/watchdog` 设备处于打开状态，即使没有 HA 客户端连接也是如此。这可防止其他进程占用该设备，并确保 HA 堆栈始终能够重新获取它。并非所有硬件看门狗驱动程序都支持 magic close，因此关闭设备可能会触发意外重置。

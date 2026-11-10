@@ -1,40 +1,40 @@
-# 14.7. Permission Management <a href="#pveum_permission_management" id="pveum_permission_management"></a>
+# 14.7. 权限管理 <a href="#pveum_permission_management" id="pveum_permission_management"></a>
 
-In order for a user to perform an action (such as listing, modifying or deleting parts of a VM’s configuration), the user needs to have the appropriate permissions.
+用户要执行某项操作（例如列出、修改或删除虚拟机配置的部分内容），需要具备适当的权限。
 
-Proxmox VE uses a role and path based permission management system. An entry in the permissions table allows a user, group or token to take on a specific role when accessing an *object* or *path*. This means that such an access rule can be represented as a triple of *(path, user, role)*, *(path, group, role)* or *(path, token, role)*, with the role containing a set of allowed actions, and the path representing the target of these actions.
+Proxmox VE 使用基于角色和路径的权限管理系统。权限表中的条目允许用户、组或令牌在访问 *对象* 或 *路径* 时承担特定角色。这意味着此类访问规则可以表示为三元组 *(path, user, role)*、*(path, group, role)* 或 *(path, token, role)*，其中角色包含一组允许的操作，路径表示这些操作的目标。
 
-## 14.7.1. Roles <a href="#pveum_roles" id="pveum_roles"></a>
+## 14.7.1. 角色 <a href="#pveum_roles" id="pveum_roles"></a>
 
-A role is simply a list of privileges. Proxmox VE comes with a number of predefined roles, which satisfy most requirements.
+角色就是权限列表。Proxmox VE 附带多个预定义角色，可满足大多数需求。
 
-- `Administrator`: has full privileges
-- `NoAccess`: has no privileges (used to forbid access)
-- `PVEAdmin`: can do most tasks, but has no rights to modify system settings (`Sys.PowerMgmt`, `Sys.Modify`, `Realm.Allocate`) or permissions (`Permissions.Modify`)
-- `PVEAuditor`: has read only access
-- `PVEDatastoreAdmin`: create and allocate backup space and templates
-- `PVEDatastoreUser`: allocate backup space and view storage
-- `PVEMappingAdmin`: manage resource mappings
-- `PVEMappingUser`: view and use resource mappings
-- `PVEPoolAdmin`: allocate pools
-- `PVEPoolUser`: view pools
-- `PVESDNAdmin`: manage SDN configuration
-- `PVESDNUser`: access to bridges/vnets
-- `PVESysAdmin`: audit, system console and system logs
-- `PVETemplateUser`: view and clone templates
-- `PVEUserAdmin`: manage users
-- `PVEVMAdmin`: fully administer VMs
-- `PVEVMUser`: view, backup, configure CD-ROM, VM console, VM power management
+- `Administrator`：具有完整权限
+- `NoAccess`：没有任何权限（用于禁止访问）
+- `PVEAdmin`：可执行大多数任务，但无权修改系统设置（`Sys.PowerMgmt`、`Sys.Modify`、`Realm.Allocate`）或权限（`Permissions.Modify`）
+- `PVEAuditor`：具有只读权限
+- `PVEDatastoreAdmin`：创建和分配备份空间与模板
+- `PVEDatastoreUser`：分配备份空间并查看存储
+- `PVEMappingAdmin`：管理资源映射
+- `PVEMappingUser`：查看和使用资源映射
+- `PVEPoolAdmin`：分配池
+- `PVEPoolUser`：查看池
+- `PVESDNAdmin`：管理 SDN 配置
+- `PVESDNUser`：访问网桥/VNet
+- `PVESysAdmin`：审计、系统控制台和系统日志
+- `PVETemplateUser`：查看和克隆模板
+- `PVEUserAdmin`：管理用户
+- `PVEVMAdmin`：全面管理虚拟机
+- `PVEVMUser`：查看、备份、配置 CD-ROM、虚拟机控制台、虚拟机电源管理
 
-You can see the whole set of predefined roles in the GUI.
+可以在 GUI 中查看全部预定义角色。
 
-You can add new roles via the GUI or the command line.
+可以通过 GUI 或命令行添加新角色。
 
 [![screenshot/gui-datacenter-role-add.png](../../assets/screenshot-gui-datacenter-role-add-png-c06dd534e81c.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-role-add.png)
 
-From the GUI, navigate to the *Permissions → Roles* tab from *Datacenter* and click on the *Create* button. There you can set a role name and select any desired privileges from the *Privileges* drop-down menu.
+在 GUI 中，导航到 *权限 → 角色* 选项卡（位于 *数据中心*），然后点击 *创建* 按钮。在此可设置角色名称，并从 *权限* 下拉菜单中选择任何所需权限。
 
-To add a role through the command line, you can use the *pveum* CLI tool, for example:
+要通过命令行添加角色，可以使用 *pveum* CLI 工具，例如：
 
 ```text
 pveum role add VM_Power-only --privs "VM.PowerMgmt VM.Console"
@@ -42,153 +42,153 @@ pveum role add Sys_Power-only --privs "Sys.PowerMgmt Sys.Console"
 ```
 
 {% hint style="info" %}
-Roles starting with `PVE` are always builtin, custom roles are not allowed use this reserved prefix.
+以 `PVE` 开头的角色始终为内置角色，自定义角色不得使用此保留前缀。
 {% endhint %}
 
-## 14.7.2. Privileges <a href="#_privileges" id="_privileges"></a>
+## 14.7.2. 权限 <a href="#privileges" id="privileges"></a>
 
-A privilege is the right to perform a specific action. To simplify management, lists of privileges are grouped into roles, which can then be used in the permission table. Note that privileges cannot be directly assigned to users and paths without being part of a role.
+权限是执行特定操作的权利。为简化管理，权限列表被组织为角色，随后可用于权限表中。请注意，如果不是角色的一部分，权限不能直接分配给用户和路径。
 
-We currently support the following privileges:
+目前支持以下权限：
 
-**Node / System related privileges**
+**节点/系统相关权限**
 
-- `Group.Allocate`: create/modify/remove groups
-- `Mapping.Audit`: view resource mappings
-- `Mapping.Modify`: manage resource mappings
-- `Mapping.Use`: use resource mappings
-- `Permissions.Modify`: modify access permissions
-- `Pool.Allocate`: create/modify/remove a pool
-- `Pool.Audit`: view a pool
-- `Realm.AllocateUser`: assign user to a realm
-- `Realm.Allocate`: create/modify/remove authentication realms
-- `SDN.Allocate`: manage SDN configuration
-- `SDN.Audit`: view SDN configuration
-- `Sys.Audit`: view node status/config, Corosync cluster config, and HA config
-- `Sys.Console`: console access to node
-- `Sys.Incoming`: allow incoming data streams from other clusters (experimental)
-- `Sys.Modify`: create/modify/remove node network parameters
-- `Sys.PowerMgmt`: node power management (start, stop, reset, shutdown, …)
-- `Sys.Syslog`: view syslog
-- `User.Modify`: create/modify/remove user access and details.
+- `Group.Allocate`：创建/修改/移除组
+- `Mapping.Audit`：查看资源映射
+- `Mapping.Modify`：管理资源映射
+- `Mapping.Use`：使用资源映射
+- `Permissions.Modify`：修改访问权限
+- `Pool.Allocate`：创建/修改/移除池
+- `Pool.Audit`：查看池
+- `Realm.AllocateUser`：将用户分配到认证域
+- `Realm.Allocate`：创建/修改/移除认证域
+- `SDN.Allocate`：管理 SDN 配置
+- `SDN.Audit`：查看 SDN 配置
+- `Sys.Audit`：查看节点状态/配置、Corosync 集群配置和 HA 配置
+- `Sys.Console`：访问节点控制台
+- `Sys.Incoming`：允许来自其他集群的传入数据流（实验性）
+- `Sys.Modify`：创建/修改/移除节点网络参数
+- `Sys.PowerMgmt`：节点电源管理（启动、停止、重置、关闭等）
+- `Sys.Syslog`：查看 syslog
+- `User.Modify`：创建/修改/移除用户访问及详细信息。
 
-**Virtual machine related privileges**
+**虚拟机相关权限**
 
-- `SDN.Use`: access SDN vnets and local network bridges
-- `VM.Allocate`: create/remove VM on a server
-- `VM.Audit`: view VM config
-- `VM.Backup`: backup/restore VMs
-- `VM.Clone`: clone/copy a VM
-- `VM.Config.CDROM`: eject/change CD-ROM
-- `VM.Config.CPU`: modify CPU settings
-- `VM.Config.Cloudinit`: modify Cloud-init parameters
-- `VM.Config.Disk`: add/modify/remove disks
-- `VM.Config.HWType`: modify emulated hardware types
-- `VM.Config.Memory`: modify memory settings
-- `VM.Config.Network`: add/modify/remove network devices
-- `VM.Config.Options`: modify any other VM configuration
-- `VM.Console`: console access to VM
-- `VM.GuestAgent.Audit`: issue informational QEMU guest agent commands
-- `VM.GuestAgent.FileRead`: read files from the guest via QEMU guest agent
-- `VM.GuestAgent.FileSystemMgmt`: freeze/thaw/trim file systems via QEMU guest agent
-- `VM.GuestAgent.FileWrite`: write files in the guest via QEMU guest agent
-- `VM.GuestAgent.Unrestricted`: issue arbitrary QEMU guest agent commands
-- `VM.Migrate`: migrate VM to alternate server on cluster
-- `VM.PowerMgmt`: power management (start, stop, reset, shutdown, …)
-- `VM.Replicate`: configure and run guest replication
-- `VM.Snapshot.Rollback`: rollback VM to one of its snapshots
-- `VM.Snapshot`: create/delete VM snapshots
+- `SDN.Use`：访问 SDN VNet 和本地网桥
+- `VM.Allocate`：在服务器上创建/移除虚拟机
+- `VM.Audit`：查看虚拟机配置
+- `VM.Backup`：备份/恢复虚拟机
+- `VM.Clone`：克隆/复制虚拟机
+- `VM.Config.CDROM`：弹出/更换 CD-ROM
+- `VM.Config.CPU`：修改 CPU 设置
+- `VM.Config.Cloudinit`：修改 Cloud-init 参数
+- `VM.Config.Disk`：添加/修改/移除磁盘
+- `VM.Config.HWType`：修改模拟硬件类型
+- `VM.Config.Memory`：修改内存设置
+- `VM.Config.Network`：添加/修改/移除网络设备
+- `VM.Config.Options`：修改任何其他虚拟机配置
+- `VM.Console`：访问虚拟机控制台
+- `VM.GuestAgent.Audit`：发出获取信息的 QEMU 客户机代理命令
+- `VM.GuestAgent.FileRead`：通过 QEMU 客户机代理读取客户机中的文件
+- `VM.GuestAgent.FileSystemMgmt`：通过 QEMU 客户机代理冻结/解冻/修剪文件系统
+- `VM.GuestAgent.FileWrite`：通过 QEMU 客户机代理写入客户机中的文件
+- `VM.GuestAgent.Unrestricted`：发出任意 QEMU 客户机代理命令
+- `VM.Migrate`：将虚拟机迁移到集群中的其他服务器
+- `VM.PowerMgmt`：电源管理（启动、停止、重置、关闭等）
+- `VM.Replicate`：配置和运行客户机复制
+- `VM.Snapshot.Rollback`：将虚拟机回滚到其某个快照
+- `VM.Snapshot`：创建/删除虚拟机快照
 
-**Storage related privileges**
+**存储相关权限**
 
-- `Datastore.Allocate`: create/modify/remove a datastore and delete volumes
-- `Datastore.AllocateSpace`: allocate space on a datastore
-- `Datastore.AllocateTemplate`: allocate/upload templates and ISO images
-- `Datastore.Audit`: view/browse a datastore
+- `Datastore.Allocate`：创建/修改/移除数据存储并删除卷
+- `Datastore.AllocateSpace`：在数据存储上分配空间
+- `Datastore.AllocateTemplate`：分配/上传模板和 ISO 镜像
+- `Datastore.Audit`：查看/浏览数据存储
 
 {% hint style="warning" %}
-Both `Permissions.Modify` and `Sys.Modify` should be handled with care, as they allow modifying aspects of the system and its configuration that are dangerous or sensitive.
+`Permissions.Modify` 和 `Sys.Modify` 都应谨慎处理，因为它们允许修改系统及其配置中危险或敏感的部分。
 {% endhint %}
 
 {% hint style="warning" %}
-Carefully read the section about inheritance below to understand how assigned roles (and their privileges) are propagated along the ACL tree.
+请仔细阅读下面关于继承的章节，了解已分配角色（及其权限）如何沿 ACL 树传播。
 {% endhint %}
 
-## 14.7.3. Objects and Paths <a href="#_objects_and_paths" id="_objects_and_paths"></a>
+## 14.7.3. 对象与路径 <a href="#objects_and_paths" id="objects_and_paths"></a>
 
-Access permissions are assigned to objects, such as virtual machines, storages or resource pools. We use file system like paths to address these objects. These paths form a natural tree, and permissions of higher levels (shorter paths) can optionally be propagated down within this hierarchy.
+访问权限分配给对象，例如虚拟机、存储或资源池。我们使用类似文件系统的路径来定位这些对象。这些路径自然形成一棵树，可选择将较高级别（较短路径）的权限沿层次结构向下传播。
 
 <a id="pveum_templated_paths"></a>
 
 
 
-Paths can be templated. When an API call requires permissions on a templated path, the path may contain references to parameters of the API call. These references are specified in curly braces. Some parameters are implicitly taken from the API call’s URI. For instance, the permission path `/nodes/{node}` when calling */nodes/mynode/status* requires permissions on `/nodes/mynode`, while the path `{path}` in a PUT request to `/access/acl` refers to the method’s `path` parameter.
+路径可以使用模板。当 API 调用需要模板化路径上的权限时，路径可能包含对 API 调用参数的引用。这些引用使用花括号指定。某些参数隐式取自 API 调用的 URI。例如，权限路径 `/nodes/{node}` 在调用 */nodes/mynode/status* 时要求具有 `/nodes/mynode` 上的权限，而路径 `{path}` 在发往 `/access/acl` 的 PUT 请求中引用该方法的 `path` 参数。
 
-Some examples are:
+以下是一些示例：
 
-- `/nodes/{node}`: Access to Proxmox VE server machines
-- `/vms`: Covers all VMs
-- `/vms/{vmid}`: Access to specific VMs
-- `/storage/{storeid}`: Access to a specific storage
-- `/pool/{poolname}`: Access to resources contained in a specific [pool](#pveum_pools)
-- `/access/groups`: Group administration
-- `/access/realms/{realmid}`: Administrative access to realms
+- `/nodes/{node}`：访问 Proxmox VE 服务器
+- `/vms`：涵盖所有虚拟机
+- `/vms/{vmid}`：访问特定虚拟机
+- `/storage/{storeid}`：访问特定存储
+- `/pool/{poolname}`：访问特定 [池](#pveum_pools) 中包含的资源
+- `/access/groups`：组管理
+- `/access/realms/{realmid}`：对认证域的管理访问
 
-### Inheritance <a href="#_inheritance" id="_inheritance"></a>
+### 继承 <a href="#inheritance" id="inheritance"></a>
 
-As mentioned earlier, object paths form a file system like tree, and permissions can be inherited by objects down that tree (the propagate flag is set by default). We use the following inheritance rules:
+如前所述，对象路径形成类似文件系统的树，权限可以由树中下层对象继承（默认设置 propagate 标志）。使用以下继承规则：
 
-- Permissions for individual users always replace group permissions.
-- Permissions for groups apply when the user is member of that group.
-- Permissions on deeper levels replace those inherited from an upper level.
-- `NoAccess` cancels all other roles on a given path.
+- 单个用户的权限始终替换组权限。
+- 当用户是组成员时，组权限适用。
+- 较深层级的权限替换从上层继承的权限。
+- `NoAccess` 取消给定路径上的所有其他角色。
 
-Additionally, privilege separated tokens can never have permissions on any given path that their associated user does not have.
+此外，权限分离令牌在任何给定路径上都不可能拥有其关联用户不具备的权限。
 
-## 14.7.4. Pools <a href="#pveum_pools" id="pveum_pools"></a>
+## 14.7.4. 池 <a href="#pveum_pools" id="pveum_pools"></a>
 
-Pools can be used to group a set of virtual machines and datastores. You can then simply set permissions on pools (`/pool/{poolid}`), which are inherited by all pool members. This is a great way to simplify access control.
+池可用于将一组虚拟机和数据存储组织在一起。随后只需在池（`/pool/{poolid}`）上设置权限，所有池成员都会继承这些权限。这是简化访问控制的好方法。
 
-## 14.7.5. Which Permissions Do I Need? <a href="#_which_permissions_do_i_need" id="_which_permissions_do_i_need"></a>
+## 14.7.5. 我需要哪些权限？ <a href="#which_permissions_do_i_need" id="which_permissions_do_i_need"></a>
 
-The required API permissions are documented for each individual method, and can be found at [https://pve.proxmox.com/pve-docs/api-viewer/](../../api/README.md).
+每个方法的文档都记录了所需 API 权限，可在 [https://pve.proxmox.com/pve-docs/api-viewer/](../../api/README.md) 查阅。
 
-The permissions are specified as a list, which can be interpreted as a tree of logic and access-check functions:
+权限以列表形式指定，可解释为逻辑函数和访问检查函数组成的树：
 
-**`["and", <subtests>...]` and `["or", <subtests>...]`**
+**`["and", <subtests>...]` 和 `["or", <subtests>...]`**
 
-Each(`and`) or any(`or`) further element in the current list has to be true.
+当前列表中的每个（`and`）或任意（`or`）后续元素必须为真。
 
 **`["perm", <path>, [ <privileges>... ], <options>...]`**
 
-The `path` is a templated parameter (see [Objects and Paths](#pveum_templated_paths)). All (or, if the `any` option is used, any) of the listed privileges must be allowed on the specified path. If a `require-param` option is specified, then its specified parameter is required even if the API call’s schema otherwise lists it as being optional.
+`path` 是模板化参数（参见 [对象与路径](#objects_and_paths)）。在指定路径上，必须允许所列的全部权限（或者，如果使用 `any` 选项，则为任意权限）。如果指定 `require-param` 选项，则其指定参数为必填，即使 API 调用的模式将其列为可选。
 
 **`["userid-group", [ <privileges>... ], <options>...]`**
 
-The caller must have any of the listed privileges on `/access/groups`. In addition, there are two possible checks, depending on whether the `groups_param` option is set:
+调用方必须在 `/access/groups` 上具有所列任意权限。此外，根据是否设置 `groups_param` 选项，有两种可能的检查：
 
-- `groups_param` is set: The API call has a non-optional `groups` parameter and the caller must have any of the listed privileges on all of the listed groups.
-- `groups_param` is not set: The user passed via the `userid` parameter must exist and be part of a group on which the caller has any of the listed privileges (via the `/access/groups/<group>` path).
+- 设置了 `groups_param`：API 调用具有非可选的 `groups` 参数，调用方必须在所列全部组上具有所列任意权限。
+- 未设置 `groups_param`：通过 `userid` 参数传入的用户必须存在，并且属于调用方拥有所列任意权限的组（通过 `/access/groups/<group>` 路径）。
 
 **`["userid-param", "self"]`**
 
-The value provided for the API call’s `userid` parameter must refer to the user performing the action (usually in conjunction with `or`, to allow users to perform an action on themselves, even if they don’t have elevated privileges).
+为 API 调用的 `userid` 参数提供的值必须指向执行操作的用户（通常与 `or` 结合使用，允许用户对自身执行操作，即使没有提升的权限）。
 
 **`["userid-param", "Realm.AllocateUser"]`**
 
-The user needs `Realm.AllocateUser` access to `/access/realm/<realm>`, with `<realm>` referring to the realm of the user passed via the `userid` parameter. Note that the user does not need to exist in order to be associated with a realm, since user IDs are passed in the form of `<username>@<realm>`.
+用户需要具有 `Realm.AllocateUser` 访问权限，目标为 `/access/realm/<realm>`，其中 `<realm>` 指通过 `userid` 参数传入的用户所属认证域。请注意，用户无需存在即可与认证域关联，因为用户 ID 以 `<username>@<realm>` 形式传入。
 
 **`["perm-modify", <path>]`**
 
-The `path` is a templated parameter (see [Objects and Paths](#pveum_templated_paths)). The user needs either the `Permissions.Modify` privilege or, depending on the path, the following privileges as a possible substitute:
+`path` 是模板化参数（参见 [对象与路径](#objects_and_paths)）。用户需要具有 `Permissions.Modify` 权限，或根据路径，具备以下可作为替代的权限：
 
-- `/storage/...`: requires 'Datastore.Allocate\`
-- `/vms/...`: requires 'VM.Allocate\`
-- `/pool/...`: requires 'Pool.Allocate\`
+- `/storage/...`：需要“Datastore.Allocate”
+- `/vms/...`：需要“VM.Allocate”
+- `/pool/...`：需要“Pool.Allocate”
 
-  If the path is empty, `Permissions.Modify` on `/access` is required.
+  如果路径为空，需要具有 `Permissions.Modify`，位于 `/access` 上。
 
-  If the user does not have the `Permissions.Modify` privilege, they can only delegate subsets of their own privileges on the given path (e.g., a user with `PVEVMAdmin` could assign `PVEVMUser`, but not `PVEAdmin`).
+  如果用户没有 `Permissions.Modify` 权限，则只能委派其在给定路径上自身权限的子集（例如，拥有 `PVEVMAdmin` 的用户可以分配 `PVEVMUser`，但不能分配 `PVEAdmin`）。
 
 ---
 

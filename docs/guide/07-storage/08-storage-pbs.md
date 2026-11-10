@@ -6,7 +6,7 @@
 
 Proxmox Backup 存储可通过 Proxmox VE API、CLI 或 Web 界面直接添加。
 
-## 7.8.1. 配置 <a href="#_configuration_5" id="_configuration_5"></a>
+## 7.8.1. 配置 <a href="#configuration_5" id="configuration_5"></a>
 
 该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，还提供以下 Proxmox Backup Server 特有属性：
 
@@ -60,7 +60,7 @@ pbs: backup
         master-pubkey 1
 ```
 
-## 7.8.2. 存储功能 <a href="#_storage_features_4" id="_storage_features_4"></a>
+## 7.8.2. 存储功能 <a href="#storage_features_4" id="storage_features_4"></a>
 
 Proxmox Backup Server 仅支持备份，备份可以基于块级或文件级。Proxmox VE 对虚拟机使用块级备份，对容器使用文件级备份。
 
@@ -119,7 +119,7 @@ Proxmox Backup Server 仅支持备份，备份可以基于块级或文件级。P
 如果加密没有带来益处，例如在可信网络中本地运行服务器时，请不要使用加密。从未加密备份中恢复总是更容易。
 {% endhint %}
 
-## 7.8.4. 示例：通过 CLI 添加存储 <a href="#_example_add_storage_over_cli" id="_example_add_storage_over_cli"></a>
+## 7.8.4. 示例：通过 CLI 添加存储 <a href="#example_add_storage_over_cli" id="example_add_storage_over_cli"></a>
 
 可以通过以下命令获取可用的 Proxmox Backup Server 数据存储列表：
 

@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/ceph/fs/{name}`
 
-Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' still references the filesystem and is not disabled. Optionally also removes the storage entries and/or the underlying metadata and data pools.
+销毁 Ceph 文件系统。如果仍有未禁用的 'cephfs' 类型 PVE 存储条目引用此文件系统，则拒绝操作。也可选择移除存储条目和/或底层元数据池与数据池。
 
 **方法标识：** `destroyfs`
 
@@ -46,10 +46,10 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' sti
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | The Ceph filesystem name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `remove-pools` | boolean | 否 | 0 | Remove the metadata and data pools used by this filesystem. |
-| `remove-storages` | boolean | 否 | 0 | Remove pveceph-managed storages configured for this filesystem. |
+| `name` | string | 是 | — | Ceph 文件系统名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `remove-pools` | boolean | 否 | 0 | 移除此文件系统使用的元数据池和数据池。 |
+| `remove-storages` | boolean | 否 | 0 | 移除为此文件系统配置的、由 pveceph 管理的存储。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,26 +59,26 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' sti
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "The Ceph filesystem name.",
+      "description": "Ceph 文件系统名称。",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "remove-pools": {
       "default": 0,
-      "description": "Remove the metadata and data pools used by this filesystem.",
+      "description": "移除此文件系统使用的元数据池和数据池。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "remove-storages": {
       "default": 0,
-      "description": "Remove pveceph-managed storages configured for this filesystem.",
+      "description": "移除为此文件系统配置的、由 pveceph 管理的存储。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -99,7 +99,7 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' sti
 
 ## POST `/nodes/{node}/ceph/fs/{name}`
 
-Create a Ceph filesystem
+创建 Ceph 文件系统
 
 **方法标识：** `createfs`
 
@@ -139,10 +139,10 @@ Create a Ceph filesystem
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add-storage` | boolean | 否 | 0 | Configure the created CephFS as storage for this cluster. |
-| `name` | string | 否 | "cephfs" | The ceph filesystem name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `pg_num` | integer | 否 | 128 | Number of placement groups for the backing data pool. The metadata pool will use a quarter of this. |
+| `add-storage` | boolean | 否 | 0 | 将创建的 CephFS 配置为此集群的存储。 |
+| `name` | string | 否 | "cephfs" | Ceph 文件系统名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pg_num` | integer | 否 | 128 | 底层数据池的归置组数量。元数据池将使用此数量的四分之一。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -153,27 +153,27 @@ Create a Ceph filesystem
   "properties": {
     "add-storage": {
       "default": 0,
-      "description": "Configure the created CephFS as storage for this cluster.",
+      "description": "将创建的 CephFS 配置为此集群的存储。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
       "default": "cephfs",
-      "description": "The ceph filesystem name.",
+      "description": "Ceph 文件系统名称。",
       "optional": 1,
       "pattern": "(?^:^[^:/\\s]+$)",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pg_num": {
       "default": 128,
-      "description": "Number of placement groups for the backing data pool. The metadata pool will use a quarter of this.",
+      "description": "底层数据池的归置组数量。元数据池将使用此数量的四分之一。",
       "maximum": 32768,
       "minimum": 8,
       "optional": 1,

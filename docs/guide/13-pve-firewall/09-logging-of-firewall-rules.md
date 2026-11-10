@@ -1,10 +1,10 @@
-# 13.9. Logging of firewall rules <a href="#_logging_of_firewall_rules" id="_logging_of_firewall_rules"></a>
+# 13.9. 防火墙规则日志记录 <a href="#logging_of_firewall_rules" id="logging_of_firewall_rules"></a>
 
-By default, all logging of traffic filtered by the firewall rules is disabled. To enable logging, the `loglevel` for incoming and/or outgoing traffic has to be set in **Firewall** → **Options**. This can be done for the host as well as for the VM/CT firewall individually. By this, logging of Proxmox VE’s standard firewall rules is enabled and the output can be observed in **Firewall** → **Log**. Further, only some dropped or rejected packets are logged for the standard rules (see [default firewall rules](08-pve-firewall-default-rules.md)).
+默认情况下，禁用所有由防火墙规则过滤的流量的日志记录。要启用日志记录，必须设置传入和/或传出流量的 `loglevel`，位置为 **防火墙** → **选项**。可以分别对宿主机及虚拟机/容器防火墙进行设置。这样会启用 Proxmox VE 标准防火墙规则的日志记录，输出可在 **防火墙** → **日志** 中查看。此外，标准规则仅记录部分被丢弃或拒绝的数据包（参见 [默认防火墙规则](08-pve-firewall-default-rules.md)）。
 
-`loglevel` does not affect how much of the filtered traffic is logged. It changes a `LOGID` appended as prefix to the log output for easier filtering and post-processing.
+`loglevel` 不影响记录多少被过滤的流量。它会更改作为前缀附加到日志输出的 `LOGID`，以便过滤和后续处理。
 
-`loglevel` is one of the following flags:
+`loglevel` 是以下标志之一：
 
 <table id="pve_firewall_log_levels">
 
@@ -55,36 +55,36 @@ By default, all logging of traffic filtered by the firewall rules is disabled. T
 </tbody>
 </table>
 
-A typical firewall log output looks like this:
+典型的防火墙日志输出如下所示：
 
 ```text
 VMID LOGID CHAIN TIMESTAMP POLICY: PACKET_DETAILS
 ```
 
-In case of the host firewall, `VMID` is equal to 0\.
+对于宿主机防火墙，`VMID` 等于 0。
 
-## 13.9.1. Logging of user defined firewall rules <a href="#_logging_of_user_defined_firewall_rules" id="_logging_of_user_defined_firewall_rules"></a>
+## 13.9.1. 用户定义防火墙规则的日志记录 <a href="#logging_of_user_defined_firewall_rules" id="logging_of_user_defined_firewall_rules"></a>
 
-In order to log packets filtered by user-defined firewall rules, it is possible to set a log-level parameter for each rule individually. This allows to log in a fine grained manner and independent of the log-level defined for the standard rules in **Firewall** → **Options**.
+要记录被用户定义防火墙规则过滤的数据包，可以为每条规则单独设置 log-level 参数。这支持精细的日志记录，并且独立于在 **防火墙** → **选项** 中为标准规则定义的日志级别。
 
-While the `loglevel` for each individual rule can be defined or changed easily in the web UI during creation or modification of the rule, it is possible to set this also via the corresponding `pvesh` API calls.
+每条规则的 `loglevel` 可以在创建或修改规则时通过 Web UI 轻松定义或更改，也可以通过相应的 `pvesh` API 调用设置。
 
-Further, the log-level can also be set via the firewall configuration file by appending a `-log <loglevel>` to the selected rule (see [possible log-levels](#pve_firewall_log_levels)).
+此外，也可以通过防火墙配置文件设置日志级别，在所选规则后附加 `-log <loglevel>`（参见 [可用日志级别](09-logging-of-firewall-rules.md)）。
 
-For example, the following two are identical:
+例如，以下两项等价：
 
 ```text
 IN REJECT -p icmp -log nolog
 IN REJECT -p icmp
 ```
 
-whereas
+而
 
 ```text
 IN REJECT -p icmp -log debug
 ```
 
-produces a log output flagged with the `debug` level.
+会生成标记为 `debug` 级别的日志输出。
 
 ---
 

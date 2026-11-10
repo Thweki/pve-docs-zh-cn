@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme/tos`
 
-Retrieve ACME TermsOfService URL from CA. Deprecated, please use /cluster/acme/meta.
+从 CA 获取 ACME 服务条款 URL。已弃用，请使用 /cluster/acme/meta.
 
 **方法标识：** `get_tos`
 
@@ -28,7 +28,7 @@ Retrieve ACME TermsOfService URL from CA. Deprecated, please use /cluster/acme/m
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | URL of ACME CA directory endpoint. |
+| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ Retrieve ACME TermsOfService URL from CA. Deprecated, please use /cluster/acme/m
   "properties": {
     "directory": {
       "default": "https://acme-v02.api.letsencrypt.org/directory",
-      "description": "URL of ACME CA directory endpoint.",
+      "description": "ACME CA 目录端点的 URL。",
       "optional": 1,
       "pattern": "^https?://.*",
       "type": "string"
@@ -54,7 +54,7 @@ Retrieve ACME TermsOfService URL from CA. Deprecated, please use /cluster/acme/m
 
 ```json
 {
-  "description": "ACME TermsOfService URL.",
+  "description": "ACME 服务条款 URL。",
   "optional": 1,
   "type": "string"
 }

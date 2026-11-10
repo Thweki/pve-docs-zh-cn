@@ -1,52 +1,52 @@
-# 14.9. Real World Examples <a href="#_real_world_examples" id="_real_world_examples"></a>
+# 14.9. 实际示例 <a href="#real_world_examples" id="real_world_examples"></a>
 
-## 14.9.1. Administrator Group <a href="#_administrator_group" id="_administrator_group"></a>
+## 14.9.1. 管理员组 <a href="#administrator_group" id="administrator_group"></a>
 
-It is possible that an administrator would want to create a group of users with full administrator rights (without using the root account).
+管理员可能希望创建一组具有完整管理员权限的用户（不使用 root 账户）。
 
-To do this, first define the group:
+为此，首先定义组：
 
 ```text
  pveum group add admin -comment "System Administrators"
 ```
 
-Then assign the role:
+然后分配角色：
 
 ```text
  pveum acl modify / -group admin -role Administrator
 ```
 
-Finally, you can add users to the new *admin* group:
+最后，可以将用户添加到新的 *admin* 组：
 
 ```text
  pveum user modify testuser@pve -group admin
 ```
 
-## 14.9.2. Auditors <a href="#_auditors" id="_auditors"></a>
+## 14.9.2. 审计员 <a href="#auditors" id="auditors"></a>
 
-You can give read only access to users by assigning the `PVEAuditor` role to users or groups.
+可以通过向用户或组分配 `PVEAuditor` 角色，授予用户只读访问权限。
 
-Example 1: Allow user `joe@pve` to see everything
+示例 1：允许用户 `joe@pve` 查看所有内容
 
 ```text
  pveum acl modify / -user joe@pve -role PVEAuditor
 ```
 
-Example 2: Allow user `joe@pve` to see all virtual machines
+示例 2：允许用户 `joe@pve` 查看所有虚拟机
 
 ```text
  pveum acl modify /vms -user joe@pve -role PVEAuditor
 ```
 
-## 14.9.3. Delegate User Management <a href="#_delegate_user_management" id="_delegate_user_management"></a>
+## 14.9.3. 委派用户管理 <a href="#delegate_user_management" id="delegate_user_management"></a>
 
-If you want to delegate user management to user `joe@pve`, you can do that with:
+如果希望将用户管理委派给用户 `joe@pve`，可以使用：
 
 ```text
  pveum acl modify /access -user joe@pve -role PVEUserAdmin
 ```
 
-User `joe@pve` can now add and remove users, and change other user attributes, such as passwords. This is a very powerful role, and you most likely want to limit it to selected realms and groups. The following example allows `joe@pve` to modify users within the realm `pve`, if they are members of group `customers`:
+用户 `joe@pve` 现在可以添加和移除用户，以及更改其他用户属性，例如密码。这是一个非常强大的角色，您很可能希望将其限制在选定的认证域和组中。以下示例允许 `joe@pve` 修改认证域 `pve` 内的用户，条件是这些用户属于组 `customers`：
 
 ```text
  pveum acl modify /access/realm/pve -user joe@pve -role PVEUserAdmin
@@ -54,64 +54,64 @@ User `joe@pve` can now add and remove users, and change other user attributes, s
 ```
 
 {% hint style="info" %}
-The user is able to add other users, but only if they are members of the group `customers` and within the realm `pve`.
+该用户可以添加其他用户，但前提是这些用户属于组 `customers` 且位于认证域 `pve` 内。
 {% endhint %}
 
-## 14.9.4. Limited API Token for Monitoring <a href="#_limited_api_token_for_monitoring" id="_limited_api_token_for_monitoring"></a>
+## 14.9.4. 用于监控的受限 API 令牌 <a href="#limited_api_token_for_monitoring" id="limited_api_token_for_monitoring"></a>
 
-Permissions on API tokens are always a subset of those of their corresponding user, meaning that an API token can’t be used to carry out a task that the backing user has no permission to do. This section will demonstrate how you can use an API token with separate privileges, to limit the token owner’s permissions further.
+API 令牌的权限始终是对应用户权限的子集，这意味着 API 令牌不能用于执行其所属用户无权执行的任务。本节将演示如何使用具有单独权限的 API 令牌，进一步限制令牌所有者的权限。
 
-Give the user `joe@pve` the role PVEVMAdmin on all VMs:
+为用户 `joe@pve` 在所有虚拟机上授予 PVEVMAdmin 角色：
 
 ```text
  pveum acl modify /vms -user joe@pve -role PVEVMAdmin
 ```
 
-Add a new API token with separate privileges, which is only allowed to view VM information (for example, for monitoring purposes):
+添加具有单独权限的新 API 令牌，仅允许查看虚拟机信息（例如用于监控）：
 
 ```text
  pveum user token add joe@pve monitoring -privsep 1
  pveum acl modify /vms -token 'joe@pve!monitoring' -role PVEAuditor
 ```
 
-Verify the permissions of the user and token:
+验证用户和令牌的权限：
 
 ```text
  pveum user permissions joe@pve
  pveum user token permissions joe@pve monitoring
 ```
 
-## 14.9.5. Resource Pools <a href="#_resource_pools" id="_resource_pools"></a>
+## 14.9.5. 资源池 <a href="#resource_pools" id="resource_pools"></a>
 
-An enterprise is usually structured into several smaller departments, and it is common that you want to assign resources and delegate management tasks to each of these. Let’s assume that you want to set up a pool for a software development department. First, create a group:
+企业通常分为多个较小部门，通常希望为各部门分配资源并委派管理任务。假设要为软件开发部门设置一个池。首先创建组：
 
 ```text
  pveum group add developers -comment "Our software developers"
 ```
 
-Now we create a new user which is a member of that group:
+现在创建属于该组的新用户：
 
 ```text
  pveum user add developer1@pve -group developers -password
 ```
 
 {% hint style="info" %}
-The "-password" parameter will prompt you for a password
+“-password”参数将提示输入密码
 {% endhint %}
 
-Then we create a resource pool for our development department to use:
+然后为开发部门创建资源池：
 
 ```text
  pveum pool add dev-pool --comment "IT development pool"
 ```
 
-Finally, we can assign permissions to that pool:
+最后，可以为该池分配权限：
 
 ```text
  pveum acl modify /pool/dev-pool/ -group developers -role PVEAdmin
 ```
 
-Our software developers can now administer the resources assigned to that pool.
+软件开发人员现在可以管理分配给该池的资源。
 
 ---
 

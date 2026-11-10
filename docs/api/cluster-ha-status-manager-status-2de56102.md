@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ha/status/manager_status`
 
-Get full HA manager status, including LRM status.
+获取完整的 HA 管理器状态，包括 LRM 状态。
 
 **方法标识：** `manager_status`
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/status`
 
-Get the Ceph cluster status (raw 'ceph status' output). The response is cluster-wide and identical to /cluster/ceph/status; this node-level alias exists for operator convenience.
+获取 Ceph 集群状态（原始 'ceph status' 输出）。响应适用于整个集群，与 /cluster/ceph/status 相同；此节点级别别名用于方便操作人员。
 
 **方法标识：** `status`
 
@@ -49,7 +49,7 @@ Get the Ceph cluster status (raw 'ceph status' output). The response is cluster-
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Get the Ceph cluster status (raw 'ceph status' output). The response is cluster-
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

@@ -1,4 +1,4 @@
-# 9.6. 命令行界面示例 <a href="#_command_line_interface_examples" id="_command_line_interface_examples"></a>
+# 9.6. 命令行界面示例 <a href="#command_line_interface_examples" id="command_line_interface_examples"></a>
 
 为 ID 为 100 的客户机创建一个每 5 分钟运行一次、带宽限制为 10 Mbps（兆字节每秒）的复制作业。
 

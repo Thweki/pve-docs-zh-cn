@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/endpoints/gotify`
 
-Returns a list of all gotify endpoints
+返回所有 gotify 端点的列表
 
 **方法标识：** `get_gotify_endpoints`
 
@@ -47,23 +47,23 @@ Returns a list of all gotify endpoints
   "items": {
     "properties": {
       "comment": {
-        "description": "Comment",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "disable": {
         "default": 0,
-        "description": "Disable this target",
+        "description": "禁用此目标",
         "optional": 1,
         "type": "boolean"
       },
       "name": {
-        "description": "The name of the endpoint.",
+        "description": "端点名称。",
         "format": "pve-configid",
         "type": "string"
       },
       "origin": {
-        "description": "Show if this entry was created by a user or was built-in",
+        "description": "显示此条目是用户创建还是内置",
         "enum": [
           "user-created",
           "builtin",
@@ -72,7 +72,7 @@ Returns a list of all gotify endpoints
         "type": "string"
       },
       "server": {
-        "description": "Server URL",
+        "description": "服务器 URL",
         "type": "string"
       }
     },
@@ -90,7 +90,7 @@ Returns a list of all gotify endpoints
 
 ## POST `/cluster/notifications/endpoints/gotify`
 
-Create a new gotify endpoint
+创建新的 gotify 端点
 
 **方法标识：** `create_gotify_endpoint`
 
@@ -145,11 +145,11 @@ Create a new gotify endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Comment |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `server` | string | 是 | — | Server URL |
-| `token` | string | 是 | — | Secret token |
+| `comment` | string | 否 | — | 注释 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `name` | string | 是 | — | 端点名称。 |
+| `server` | string | 是 | — | 服务器 URL |
+| `token` | string | 是 | — | 秘密令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -159,31 +159,31 @@ Create a new gotify endpoint
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "server": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "type": "string",
       "typetext": "<string>"
     },
     "token": {
-      "description": "Secret token",
+      "description": "秘密令牌",
       "type": "string",
       "typetext": "<string>"
     }

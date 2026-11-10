@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/vzdump`
 
-Create backup.
+创建备份。
 
 **方法标识：** `vzdump`
 
@@ -14,7 +14,7 @@ Create backup.
 
 ```json
 {
-  "description": "The user needs 'VM.Backup' permissions on any VM, and 'Datastore.AllocateSpace' on the backup storage (and fleecing storage when fleecing is used). The 'tmpdir', 'dumpdir', 'script' and 'job-id' parameters are restricted to the 'root@pam' user. The 'prune-backups' setting requires 'Datastore.Allocate' on the backup storage. The 'bwlimit', 'performance' and 'ionice' parameters require 'Sys.Modify' on '/'. The 'stop' parameter requires 'Sys.Modify' on '/nodes/{node}'",
+  "description": "用户需要对任何虚拟机具有 'VM.Backup' 权限，以及对备份存储（使用 fleecing 时也包括 fleecing 存储）具有 'Datastore.AllocateSpace' 权限。'tmpdir'、'dumpdir'、'script' 和 'job-id' 参数仅限 'root@pam' 用户使用。'prune-backups' 设置需要对备份存储具有 'Datastore.Allocate' 权限。'bwlimit'、'performance' 和 'ionice' 参数需要对 '/' 具有 'Sys.Modify' 权限。'stop' 参数需要对 '/nodes/{node}' 具有 'Sys.Modify' 权限",
   "user": "all"
 }
 ```
@@ -41,39 +41,39 @@ Create backup.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `all` | boolean | 否 | 0 | Backup all known guest systems on this host. |
-| `bwlimit` | integer | 否 | 0 | Limit I/O bandwidth (in KiB/s). |
-| `compress` | string | 否 | "0" | Compress dump file.；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
-| `dumpdir` | string | 否 | — | Store resulting files to specified directory. |
-| `exclude` | string | 否 | — | Exclude specified guest systems (assumes --all) |
-| `exclude-path` | array | 否 | — | Exclude certain files/directories (shell globs). Paths starting with '/' are anchored to the container's root, other paths match relative to each subdirectory. |
-| `fleecing` | string | 否 | — | Options for backup fleecing (VM only). |
-| `ionice` | integer | 否 | 7 | Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value. |
-| `job-id` | string | 否 | — | The ID of the backup job. If set, the 'backup-job' metadata field of the backup notification will be set to this value. Only root@pam can set this parameter. |
-| `lockwait` | integer | 否 | 180 | Maximal time to wait for the global lock (minutes). |
-| `mailnotification` | string | 否 | "always" | Deprecated: use notification targets/matchers instead. Specify when to send a notification mail；可选值：`always`, `failure` |
-| `mailto` | string | 否 | — | Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications. |
-| `mode` | string | 否 | "snapshot" | Backup mode.；可选值：`snapshot`, `suspend`, `stop` |
-| `node` | string | 否 | — | Only run if executed on this node. |
-| `notes-template` | string | 否 | — | Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {{cluster}}, {{guestname}}, {{node}}, and {{vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as '\n' and '\\' respectively. |
-| `notification-mode` | string | 否 | "auto" | Determine which notification system to use. If set to 'legacy-sendmail', vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the 'sendmail' command. If set to 'notification-system', a notification will be sent via PVE's notification system, and the mailto and mailnotification will be ignored. If set to 'auto' (default setting), an email will be sent if mailto is set, and the notification system will be used if not.；可选值：`auto`, `legacy-sendmail`, `notification-system` |
-| `pbs-change-detection-mode` | string | 否 | — | PBS mode used to detect file changes and switch encoding format for container backups.；可选值：`legacy`, `data`, `metadata` |
-| `performance` | string | 否 | — | Other performance-related settings. |
-| `pigz` | integer | 否 | 0 | Use pigz instead of gzip when N&gt;0. N=1 uses half of cores, N&gt;1 uses N as thread count. |
-| `pool` | string | 否 | — | Backup all known guest systems included in the specified pool. |
-| `protected` | boolean | 否 | — | If true, mark backup(s) as protected. |
-| `prune-backups` | string | 否 | "keep-all=1" | Use these retention options instead of those from the storage configuration. |
-| `quiet` | boolean | 否 | 0 | Be quiet. |
-| `remove` | boolean | 否 | 1 | Prune older backups according to 'prune-backups'. |
-| `script` | string | 否 | — | Use specified hook script. |
-| `stdexcludes` | boolean | 否 | 1 | Exclude temporary files and logs. |
-| `stdout` | boolean | 否 | — | Write tar to stdout, not to a file. |
-| `stop` | boolean | 否 | 0 | Stop running backup jobs on this host. |
-| `stopwait` | integer | 否 | 10 | Maximal time to wait until a guest system is stopped (minutes). |
-| `storage` | string | 否 | — | Store resulting file to this storage. |
-| `tmpdir` | string | 否 | — | Store temporary files to specified directory. |
-| `vmid` | string | 否 | — | The ID of the guest system you want to backup. |
-| `zstd` | integer | 否 | 1 | Zstd threads. N=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count. |
+| `all` | boolean | 否 | 0 | 备份此宿主机上所有已知的客户机系统。 |
+| `bwlimit` | integer | 否 | 0 | 限制 I/O 带宽（单位为 KiB/s）。 |
+| `compress` | string | 否 | "0" | 压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
+| `dumpdir` | string | 否 | — | 将生成的文件保存到指定目录。 |
+| `exclude` | string | 否 | — | 排除指定客户机系统（假定 --all） |
+| `exclude-path` | array | 否 | — | 排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
+| `fleecing` | string | 否 | — | 备份 fleecing 选项（仅适用于虚拟机）。 |
+| `ionice` | integer | 否 | 7 | 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
+| `job-id` | string | 否 | — | 备份作业 ID。如果设置，备份通知中的 'backup-job' 元数据字段将设为此值。仅 root@pam 可设置此参数。 |
+| `lockwait` | integer | 否 | 180 | 等待全局锁的最长时间（分钟）。 |
+| `mailnotification` | string | 否 | "always" | 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
+| `mailto` | string | 否 | — | 已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
+| `mode` | string | 否 | "snapshot" | 备份模式。；可选值：`snapshot`, `suspend`, `stop` |
+| `node` | string | 否 | — | 仅在此节点上执行时运行。 |
+| `notes-template` | string | 否 | — | 用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
+| `notification-mode` | string | 否 | "auto" | 确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
+| `pbs-change-detection-mode` | string | 否 | — | 用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
+| `performance` | string | 否 | — | 其他性能相关设置。 |
+| `pigz` | integer | 否 | 0 | 当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
+| `pool` | string | 否 | — | 备份指定池中包含的所有已知客户机系统。 |
+| `protected` | boolean | 否 | — | 如果为 true，则将备份标记为受保护。 |
+| `prune-backups` | string | 否 | "keep-all=1" | 使用这些保留选项，而非存储配置中的选项。 |
+| `quiet` | boolean | 否 | 0 | 静默运行。 |
+| `remove` | boolean | 否 | 1 | 根据 'prune-backups' 清理旧备份。 |
+| `script` | string | 否 | — | 使用指定的钩子脚本。 |
+| `stdexcludes` | boolean | 否 | 1 | 排除临时文件和日志。 |
+| `stdout` | boolean | 否 | — | 将 tar 写入 stdout，而非文件。 |
+| `stop` | boolean | 否 | 0 | 停止此宿主机上正在运行的备份作业。 |
+| `stopwait` | integer | 否 | 10 | 等待客户机系统停止的最长时间（分钟）。 |
+| `storage` | string | 否 | — | 将生成的文件保存到此存储。 |
+| `tmpdir` | string | 否 | — | 将临时文件保存到指定目录。 |
+| `vmid` | string | 否 | — | 要备份的客户机系统 ID。 |
+| `zstd` | integer | 否 | 1 | Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -84,14 +84,14 @@ Create backup.
   "properties": {
     "all": {
       "default": 0,
-      "description": "Backup all known guest systems on this host.",
+      "description": "备份此宿主机上所有已知的客户机系统。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "bwlimit": {
       "default": 0,
-      "description": "Limit I/O bandwidth (in KiB/s).",
+      "description": "限制 I/O 带宽（单位为 KiB/s）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -99,7 +99,7 @@ Create backup.
     },
     "compress": {
       "default": "0",
-      "description": "Compress dump file.",
+      "description": "压缩转储文件。",
       "enum": [
         "0",
         "1",
@@ -111,20 +111,20 @@ Create backup.
       "type": "string"
     },
     "dumpdir": {
-      "description": "Store resulting files to specified directory.",
+      "description": "将生成的文件保存到指定目录。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "exclude": {
-      "description": "Exclude specified guest systems (assumes --all)",
+      "description": "排除指定客户机系统（假定 --all）",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "exclude-path": {
-      "description": "Exclude certain files/directories (shell globs). Paths starting with '/' are anchored to the container's root, other paths match relative to each subdirectory.",
+      "description": "排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。",
       "items": {
         "type": "string"
       },
@@ -133,7 +133,7 @@ Create backup.
       "typetext": "<array>"
     },
     "fleecing": {
-      "description": "Options for backup fleecing (VM only).",
+      "description": "备份 fleecing 选项（仅适用于虚拟机）。",
       "format": "backup-fleecing",
       "optional": 1,
       "type": "string",
@@ -141,7 +141,7 @@ Create backup.
     },
     "ionice": {
       "default": 7,
-      "description": "Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.",
+      "description": "使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。",
       "maximum": 8,
       "minimum": 0,
       "optional": 1,
@@ -149,7 +149,7 @@ Create backup.
       "typetext": "<integer> (0 - 8)"
     },
     "job-id": {
-      "description": "The ID of the backup job. If set, the 'backup-job' metadata field of the backup notification will be set to this value. Only root@pam can set this parameter.",
+      "description": "备份作业 ID。如果设置，备份通知中的 'backup-job' 元数据字段将设为此值。仅 root@pam 可设置此参数。",
       "maxLength": 50,
       "optional": 1,
       "pattern": "\\S+",
@@ -157,7 +157,7 @@ Create backup.
     },
     "lockwait": {
       "default": 180,
-      "description": "Maximal time to wait for the global lock (minutes).",
+      "description": "等待全局锁的最长时间（分钟）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
@@ -165,7 +165,7 @@ Create backup.
     },
     "mailnotification": {
       "default": "always",
-      "description": "Deprecated: use notification targets/matchers instead. Specify when to send a notification mail",
+      "description": "已弃用：请改用通知目标/匹配器。指定何时发送通知邮件",
       "enum": [
         "always",
         "failure"
@@ -174,7 +174,7 @@ Create backup.
       "type": "string"
     },
     "mailto": {
-      "description": "Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.",
+      "description": "已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。",
       "format": "email-or-username-list",
       "optional": 1,
       "type": "string",
@@ -182,7 +182,7 @@ Create backup.
     },
     "mode": {
       "default": "snapshot",
-      "description": "Backup mode.",
+      "description": "备份模式。",
       "enum": [
         "snapshot",
         "suspend",
@@ -192,14 +192,14 @@ Create backup.
       "type": "string"
     },
     "node": {
-      "description": "Only run if executed on this node.",
+      "description": "仅在此节点上执行时运行。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "notes-template": {
-      "description": "Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {{cluster}}, {{guestname}}, {{node}}, and {{vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as '\\n' and '\\\\' respectively.",
+      "description": "用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\\n' 和 '\\\\'。",
       "maxLength": 1024,
       "optional": 1,
       "requires": "storage",
@@ -208,7 +208,7 @@ Create backup.
     },
     "notification-mode": {
       "default": "auto",
-      "description": "Determine which notification system to use. If set to 'legacy-sendmail', vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the 'sendmail' command. If set to 'notification-system', a notification will be sent via PVE's notification system, and the mailto and mailnotification will be ignored. If set to 'auto' (default setting), an email will be sent if mailto is set, and the notification system will be used if not.",
+      "description": "确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。",
       "enum": [
         "auto",
         "legacy-sendmail",
@@ -218,7 +218,7 @@ Create backup.
       "type": "string"
     },
     "pbs-change-detection-mode": {
-      "description": "PBS mode used to detect file changes and switch encoding format for container backups.",
+      "description": "用于检测文件更改并切换容器备份编码格式的 PBS 模式。",
       "enum": [
         "legacy",
         "data",
@@ -228,7 +228,7 @@ Create backup.
       "type": "string"
     },
     "performance": {
-      "description": "Other performance-related settings.",
+      "description": "其他性能相关设置。",
       "format": "backup-performance",
       "optional": 1,
       "type": "string",
@@ -236,19 +236,19 @@ Create backup.
     },
     "pigz": {
       "default": 0,
-      "description": "Use pigz instead of gzip when N>0. N=1 uses half of cores, N>1 uses N as thread count.",
+      "description": "当 N>0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N>1 则将 N 用作线程数。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "pool": {
-      "description": "Backup all known guest systems included in the specified pool.",
+      "description": "备份指定池中包含的所有已知客户机系统。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "protected": {
-      "description": "If true, mark backup(s) as protected.",
+      "description": "如果为 true，则将备份标记为受保护。",
       "optional": 1,
       "requires": "storage",
       "type": "boolean",
@@ -256,7 +256,7 @@ Create backup.
     },
     "prune-backups": {
       "default": "keep-all=1",
-      "description": "Use these retention options instead of those from the storage configuration.",
+      "description": "使用这些保留选项，而非存储配置中的选项。",
       "format": "prune-backups",
       "optional": 1,
       "type": "string",
@@ -264,54 +264,54 @@ Create backup.
     },
     "quiet": {
       "default": 0,
-      "description": "Be quiet.",
+      "description": "静默运行。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "remove": {
       "default": 1,
-      "description": "Prune older backups according to 'prune-backups'.",
+      "description": "根据 'prune-backups' 清理旧备份。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "script": {
-      "description": "Use specified hook script.",
+      "description": "使用指定的钩子脚本。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "stdexcludes": {
       "default": 1,
-      "description": "Exclude temporary files and logs.",
+      "description": "排除临时文件和日志。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "stdout": {
-      "description": "Write tar to stdout, not to a file.",
+      "description": "将 tar 写入 stdout，而非文件。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "stop": {
       "default": 0,
-      "description": "Stop running backup jobs on this host.",
+      "description": "停止此宿主机上正在运行的备份作业。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "stopwait": {
       "default": 10,
-      "description": "Maximal time to wait until a guest system is stopped (minutes).",
+      "description": "等待客户机系统停止的最长时间（分钟）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "storage": {
-      "description": "Store resulting file to this storage.",
+      "description": "将生成的文件保存到此存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -319,13 +319,13 @@ Create backup.
       "typetext": "<storage ID>"
     },
     "tmpdir": {
-      "description": "Store temporary files to specified directory.",
+      "description": "将临时文件保存到指定目录。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The ID of the guest system you want to backup.",
+      "description": "要备份的客户机系统 ID。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",
@@ -333,7 +333,7 @@ Create backup.
     },
     "zstd": {
       "default": 1,
-      "description": "Zstd threads. N=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.",
+      "description": "Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"

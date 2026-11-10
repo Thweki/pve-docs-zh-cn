@@ -1,6 +1,6 @@
-# 29\. Appendix H: GNU Free Documentation License <a href="#_gnu_free_documentation_license" id="_gnu_free_documentation_license"></a>
+# 29\. 附录 H：GNU 自由文档许可证 <a href="#gnu_free_documentation_license" id="gnu_free_documentation_license"></a>
 
-Version 1.3, 3 November 2008
+版本 1.3，2008 年 11 月 3 日
 
 ```text
 Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
@@ -9,135 +9,135 @@ Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
 ```
 
-**0\. PREAMBLE**
+**0\. 序言**
 
-The purpose of this License is to make a manual, textbook, or other functional and useful document "free" in the sense of freedom: to assure everyone the effective freedom to copy and redistribute it, with or without modifying it, either commercially or noncommercially. Secondarily, this License preserves for the author and publisher a way to get credit for their work, while not being considered responsible for modifications made by others.
+本许可证的目的是使手册、教科书或其他具有实用功能的文档成为自由意义上的“自由”文档：确保每个人都切实享有复制和再分发该文档的自由，无论是否修改，也无论是否用于商业用途。其次，本许可证为作者和出版者保留一种使其工作获得认可的方式，同时使其不必为他人所作的修改承担责任。
 
-This License is a kind of "copyleft", which means that derivative works of the document must themselves be free in the same sense. It complements the GNU General Public License, which is a copyleft license designed for free software.
+本许可证是一种“著佐权”许可证，这意味着文档的衍生作品本身也必须在相同意义上保持自由。它补充了 GNU 通用公共许可证，后者是为自由软件设计的著佐权许可证。
 
-We have designed this License in order to use it for manuals for free software, because free software needs free documentation: a free program should come with manuals providing the same freedoms that the software does. But this License is not limited to software manuals; it can be used for any textual work, regardless of subject matter or whether it is published as a printed book. We recommend this License principally for works whose purpose is instruction or reference.
+我们设计本许可证是为了将其用于自由软件的手册，因为自由软件需要自由文档：自由程序应附有手册，提供与该软件相同的自由。但本许可证不限于软件手册；它可用于任何文字作品，无论其主题为何，也无论其是否以印刷书籍形式出版。我们主要推荐将本许可证用于以指导或参考为目的的作品。
 
-**1\. APPLICABILITY AND DEFINITIONS**
+**1\. 适用范围与定义**
 
-This License applies to any manual or other work, in any medium, that contains a notice placed by the copyright holder saying it can be distributed under the terms of this License. Such a notice grants a world-wide, royalty-free license, unlimited in duration, to use that work under the conditions stated herein. The "Document", below, refers to any such manual or work. Any member of the public is a licensee, and is addressed as "you". You accept the license if you copy, modify or distribute the work in a way requiring permission under copyright law.
+本许可证适用于任何媒介的手册或其他作品，前提是其中含有版权所有者放置的声明，说明该作品可按本许可证的条款分发。此类声明授予一项全球范围、免版税且期限不受限制的许可，允许依照此处所述条件使用该作品。下文中的“文档”指任何此类手册或作品。任何公众成员都是被许可人，并以“您”称呼。如果您以需要版权法许可的方式复制、修改或分发该作品，即表示您接受本许可证。
 
-A "Modified Version" of the Document means any work containing the Document or a portion of it, either copied verbatim, or with modifications and/or translated into another language.
+文档的“修改版本”指任何包含该文档或其一部分的作品，无论是逐字复制，还是经过修改和/或翻译成另一种语言。
 
-A "Secondary Section" is a named appendix or a front-matter section of the Document that deals exclusively with the relationship of the publishers or authors of the Document to the Document’s overall subject (or to related matters) and contains nothing that could fall directly within that overall subject. (Thus, if the Document is in part a textbook of mathematics, a Secondary Section may not explain any mathematics.) The relationship could be a matter of historical connection with the subject or with related matters, or of legal, commercial, philosophical, ethical or political position regarding them.
+“次要章节”指文档中具有名称的附录或前置部分，专门讨论文档出版者或作者与文档整体主题（或相关事项）之间的关系，且不含任何可直接归入该整体主题的内容。（因此，如果文档的一部分是数学教科书，次要章节就不得解释任何数学内容。）这种关系可以是与该主题或相关事项的历史联系，也可以是有关它们的法律、商业、哲学、伦理或政治立场。
 
-The "Invariant Sections" are certain Secondary Sections whose titles are designated, as being those of Invariant Sections, in the notice that says that the Document is released under this License. If a section does not fit the above definition of Secondary then it is not allowed to be designated as Invariant. The Document may contain zero Invariant Sections. If the Document does not identify any Invariant Sections then there are none.
+“不可变章节”指某些次要章节，其标题在声明文档按本许可证发布的声明中被指定为不可变章节的标题。如果某章节不符合上述次要章节的定义，就不允许将其指定为不可变章节。文档可以不含任何不可变章节。如果文档未标明任何不可变章节，则视为没有。
 
-The "Cover Texts" are certain short passages of text that are listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says that the Document is released under this License. A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be at most 25 words.
+“封面文字”指在声明文档按本许可证发布的声明中，被列为前封面文字或后封面文字的某些简短文字。前封面文字最多为 5 个词，后封面文字最多为 25 个词。
 
-A "Transparent" copy of the Document means a machine-readable copy, represented in a format whose specification is available to the general public, that is suitable for revising the document straightforwardly with generic text editors or (for images composed of pixels) generic paint programs or (for drawings) some widely available drawing editor, and that is suitable for input to text formatters or for automatic translation to a variety of formats suitable for input to text formatters. A copy made in an otherwise Transparent file format whose markup, or absence of markup, has been arranged to thwart or discourage subsequent modification by readers is not Transparent. An image format is not Transparent if used for any substantial amount of text. A copy that is not "Transparent" is called "Opaque".
+文档的“透明”副本指机器可读的副本，其所用格式的规范向公众公开，适合使用通用文本编辑器、通用绘图程序（用于由像素组成的图像）或某种广泛可用的绘图编辑器（用于图形）直接修改文档，并适合输入文本排版程序，或自动转换成适合输入文本排版程序的各种格式。如果某副本虽然采用其他方面符合透明要求的文件格式，但其标记或标记的缺失被刻意安排为阻碍或妨碍读者后续修改，则不属于透明副本。如果图像格式用于大量文本，则不属于透明格式。不是“透明”的副本称为“不透明”副本。
 
-Examples of suitable formats for Transparent copies include plain ASCII without markup, Texinfo input format, LaTeX input format, SGML or XML using a publicly available DTD, and standard-conforming simple HTML, PostScript or PDF designed for human modification. Examples of transparent image formats include PNG, XCF and JPG. Opaque formats include proprietary formats that can be read and edited only by proprietary word processors, SGML or XML for which the DTD and/or processing tools are not generally available, and the machine-generated HTML, PostScript or PDF produced by some word processors for output purposes only.
+适合透明副本的格式示例包括：不带标记的纯 ASCII、Texinfo 输入格式、LaTeX 输入格式、使用公开可用 DTD 的 SGML 或 XML，以及符合标准、便于人工修改的简单 HTML、PostScript 或 PDF。透明图像格式的示例包括 PNG、XCF 和 JPG。不透明格式包括：只能由专有文字处理器读取和编辑的专有格式，DTD 和/或处理工具未普遍公开的 SGML 或 XML，以及由某些文字处理器生成、仅用于输出的机器生成 HTML、PostScript 或 PDF。
 
-The "Title Page" means, for a printed book, the title page itself, plus such following pages as are needed to hold, legibly, the material this License requires to appear in the title page. For works in formats which do not have any title page as such, "Title Page" means the text near the most prominent appearance of the work’s title, preceding the beginning of the body of the text.
+对于印刷书籍，“扉页”指扉页本身，以及为清晰容纳本许可证要求出现在扉页上的材料而需要的后续页面。对于没有此类扉页的格式的作品，“扉页”指作品标题最显著出现位置附近、正文开始之前的文字。
 
-The "publisher" means any person or entity that distributes copies of the Document to the public.
+“出版者”指向公众分发文档副本的任何个人或实体。
 
-A section "Entitled XYZ" means a named subunit of the Document whose title either is precisely XYZ or contains XYZ in parentheses following text that translates XYZ in another language. (Here XYZ stands for a specific section name mentioned below, such as "Acknowledgements", "Dedications", "Endorsements", or "History".) To "Preserve the Title" of such a section when you modify the Document means that it remains a section "Entitled XYZ" according to this definition.
+“标题为 XYZ”的章节指文档中一个具有名称的子单元，其标题恰好为 XYZ，或在将 XYZ 翻译为另一种语言的文字之后，以括号包含 XYZ。（这里 XYZ 代表下文提到的某个特定章节名，例如“致谢”、“献词”、“背书”或“历史”。）修改文档时“保留”该章节的“标题”，是指按照此定义，它仍然是“标题为 XYZ”的章节。
 
-The Document may include Warranty Disclaimers next to the notice which states that this License applies to the Document. These Warranty Disclaimers are considered to be included by reference in this License, but only as regards disclaiming warranties: any other implication that these Warranty Disclaimers may have is void and has no effect on the meaning of this License.
+文档可以在声明本许可证适用于该文档的声明旁边附有免责声明。这些免责声明视为通过引用纳入本许可证，但仅限于免责方面；这些免责声明可能具有的任何其他含义均无效，并且不影响本许可证的含义。
 
-**2\. VERBATIM COPYING**
+**2\. 逐字复制**
 
-You may copy and distribute the Document in any medium, either commercially or noncommercially, provided that this License, the copyright notices, and the license notice saying this License applies to the Document are reproduced in all copies, and that you add no other conditions whatsoever to those of this License. You may not use technical measures to obstruct or control the reading or further copying of the copies you make or distribute. However, you may accept compensation in exchange for copies. If you distribute a large enough number of copies you must also follow the conditions in section 3\.
+您可以在任何媒介中复制和分发文档，无论是否用于商业用途，前提是所有副本都重现本许可证、版权声明以及说明本许可证适用于文档的许可声明，并且不在本许可证的条件之外添加任何其他条件。您不得使用技术措施阻碍或控制对您制作或分发的副本的阅读或进一步复制。但是，您可以通过提供副本收取报酬。如果分发的副本数量足够大，还必须遵守第 3 节的条件。
 
-You may also lend copies, under the same conditions stated above, and you may publicly display copies.
+您也可以按照上述相同条件出借副本，并可以公开展示副本。
 
-**3\. COPYING IN QUANTITY**
+**3\. 大量复制**
 
-If you publish printed copies (or copies in media that commonly have printed covers) of the Document, numbering more than 100, and the Document’s license notice requires Cover Texts, you must enclose the copies in covers that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the back cover. Both covers must also clearly and legibly identify you as the publisher of these copies. The front cover must present the full title with all words of the title equally prominent and visible. You may add other material on the covers in addition. Copying with changes limited to the covers, as long as they preserve the title of the Document and satisfy these conditions, can be treated as verbatim copying in other respects.
+如果您出版超过 100 份文档的印刷副本（或采用通常具有印刷封面的媒介的副本），且文档的许可声明要求封面文字，则必须为副本加上封面，并在封面上清楚、易读地载明所有这些封面文字：前封面文字放在前封面，后封面文字放在后封面。两个封面也必须清楚、易读地标明您是这些副本的出版者。前封面必须显示完整标题，标题的所有词都应同样醒目、可见。您还可以在封面上添加其他材料。如果修改仅限于封面，只要保留文档标题并满足这些条件，在其他方面就可以视为逐字复制。
 
-If the required texts for either cover are too voluminous to fit legibly, you should put the first ones listed (as many as fit reasonably) on the actual cover, and continue the rest onto adjacent pages.
+如果任何一面的封面所要求的文字过多，无法清晰容纳，应将列表中最前面的文字（尽可能在合理范围内容纳）放在实际封面上，其余文字接续在相邻页面上。
 
-If you publish or distribute Opaque copies of the Document numbering more than 100, you must either include a machine-readable Transparent copy along with each Opaque copy, or state in or with each Opaque copy a computer-network location from which the general network-using public has access to download using public-standard network protocols a complete Transparent copy of the Document, free of added material. If you use the latter option, you must take reasonably prudent steps, when you begin distribution of Opaque copies in quantity, to ensure that this Transparent copy will remain thus accessible at the stated location until at least one year after the last time you distribute an Opaque copy (directly or through your agents or retailers) of that edition to the public.
+如果您出版或分发超过 100 份文档的不透明副本，则必须为每份不透明副本附上一份机器可读的透明副本，或者在每份不透明副本中或随附材料中说明一个计算机网络位置，普通网络用户可以使用公共标准网络协议，从该位置下载完整且不含附加材料的文档透明副本。如果使用后一种方式，在开始大量分发不透明副本时，必须采取合理审慎的措施，确保该透明副本在所述位置持续可访问，至少直到您最后一次直接或通过代理或零售商向公众分发该版本的不透明副本之后一年。
 
-It is requested, but not required, that you contact the authors of the Document well before redistributing any large number of copies, to give them a chance to provide you with an updated version of the Document.
+我们希望但不强制要求您在大量再分发副本之前，提前联系文档作者，使其有机会向您提供文档的更新版本。
 
-**4\. MODIFICATIONS**
+**4\. 修改**
 
-You may copy and distribute a Modified Version of the Document under the conditions of sections 2 and 3 above, provided that you release the Modified Version under precisely this License, with the Modified Version filling the role of the Document, thus licensing distribution and modification of the Modified Version to whoever possesses a copy of it. In addition, you must do these things in the Modified Version:
+您可以依照上述第 2 节和第 3 节的条件复制和分发文档的修改版本，前提是您严格按本许可证发布修改版本，并让修改版本承担文档的角色，从而许可任何持有其副本的人分发和修改该修改版本。此外，您必须在修改版本中执行以下事项：
 
-1. Use in the Title Page (and on the covers, if any) a title distinct from that of the Document, and from those of previous versions (which should, if there were any, be listed in the History section of the Document). You may use the same title as a previous version if the original publisher of that version gives permission.
-2. List on the Title Page, as authors, one or more persons or entities responsible for authorship of the modifications in the Modified Version, together with at least five of the principal authors of the Document (all of its principal authors, if it has fewer than five), unless they release you from this requirement.
-3. State on the Title page the name of the publisher of the Modified Version, as the publisher.
-4. Preserve all the copyright notices of the Document.
-5. Add an appropriate copyright notice for your modifications adjacent to the other copyright notices.
-6. Include, immediately after the copyright notices, a license notice giving the public permission to use the Modified Version under the terms of this License, in the form shown in the Addendum below.
-7. Preserve in that license notice the full lists of Invariant Sections and required Cover Texts given in the Document’s license notice.
-8. Include an unaltered copy of this License.
-9. Preserve the section Entitled "History", Preserve its Title, and add to it an item stating at least the title, year, new authors, and publisher of the Modified Version as given on the Title Page. If there is no section Entitled "History" in the Document, create one stating the title, year, authors, and publisher of the Document as given on its Title Page, then add an item describing the Modified Version as stated in the previous sentence.
-10. Preserve the network location, if any, given in the Document for public access to a Transparent copy of the Document, and likewise the network locations given in the Document for previous versions it was based on. These may be placed in the "History" section. You may omit a network location for a work that was published at least four years before the Document itself, or if the original publisher of the version it refers to gives permission.
-11. For any section Entitled "Acknowledgements" or "Dedications", Preserve the Title of the section, and preserve in the section all the substance and tone of each of the contributor acknowledgements and/or dedications given therein.
-12. Preserve all the Invariant Sections of the Document, unaltered in their text and in their titles. Section numbers or the equivalent are not considered part of the section titles.
-13. Delete any section Entitled "Endorsements". Such a section may not be included in the Modified Version.
-14. Do not retitle any existing section to be Entitled "Endorsements" or to conflict in title with any Invariant Section.
-15. Preserve any Warranty Disclaimers.
+1. 在扉页上（以及封面上，如果有）使用与文档标题以及以前版本标题不同的标题（如果有以前版本，应在文档的历史章节中列出）。如果某个以前版本的原出版者给予许可，您可以使用与该版本相同的标题。
+2. 在扉页上，将对修改版本中的修改内容负有创作责任的一个或多个个人或实体列为作者，同时列出文档至少五位主要作者（如果主要作者少于五位，则全部列出），除非他们免除您的这一要求。
+3. 在扉页上，将修改版本出版者的名称列为出版者。
+4. 保留文档的所有版权声明。
+5. 在其他版权声明旁边，为您的修改添加适当的版权声明。
+6. 紧接版权声明之后，按下方补充说明中展示的形式加入许可声明，允许公众按照本许可证的条款使用修改版本。
+7. 在该许可声明中，保留文档许可声明所列的不可变章节和必需封面文字的完整列表。
+8. 包含本许可证未经修改的副本。
+9. 保留标题为“History（历史）”的章节及其标题，并向其中添加一个条目，至少说明扉页上给出的修改版本的标题、年份、新作者和出版者。如果文档中没有标题为“History（历史）”的章节，则创建一个，说明文档扉页上给出的标题、年份、作者和出版者，然后按照前句要求添加描述修改版本的条目。
+10. 保留文档中提供的供公众访问文档透明副本的网络位置（如果有），同样保留文档中提供的其所基于的以前版本的网络位置。这些内容可以放在“History（历史）”章节中。对于比文档本身至少早四年发表的作品，或在其所指版本的原出版者许可的情况下，可以省略相应网络位置。
+11. 对于标题为“Acknowledgements（致谢）”或“Dedications（献词）”的任何章节，保留其标题，并保留该章节中每条贡献者致谢和/或献词的全部实质内容及语气。
+12. 保留文档的所有不可变章节，其文字和标题均不得更改。章节编号或同等内容不视为章节标题的一部分。
+13. 删除任何标题为“Endorsements（背书）”的章节。修改版本不得包含此类章节。
+14. 不得将任何现有章节改为标题“Endorsements（背书）”，也不得使其标题与任何不可变章节冲突。
+15. 保留所有担保免责声明。
 
-If the Modified Version includes new front-matter sections or appendices that qualify as Secondary Sections and contain no material copied from the Document, you may at your option designate some or all of these sections as invariant. To do this, add their titles to the list of Invariant Sections in the Modified Version’s license notice. These titles must be distinct from any other section titles.
+如果修改版本包含新的前置章节或附录，这些章节或附录符合次要章节的定义，且不包含从文档复制的材料，则您可以自行选择将其中部分或全部指定为不可变章节。为此，请将其标题加入修改版本许可声明中的不可变章节列表。这些标题必须与其他任何章节标题不同。
 
-You may add a section Entitled "Endorsements", provided it contains nothing but endorsements of your Modified Version by various parties—for example, statements of peer review or that the text has been approved by an organization as the authoritative definition of a standard.
+您可以添加标题为“Endorsements（背书）”的章节，前提是其中仅包含各方对您修改版本的背书，例如同行评审声明，或某组织批准该文本作为某项标准权威定义的声明。
 
-You may add a passage of up to five words as a Front-Cover Text, and a passage of up to 25 words as a Back-Cover Text, to the end of the list of Cover Texts in the Modified Version. Only one passage of Front-Cover Text and one of Back-Cover Text may be added by (or through arrangements made by) any one entity. If the Document already includes a cover text for the same cover, previously added by you or by arrangement made by the same entity you are acting on behalf of, you may not add another; but you may replace the old one, on explicit permission from the previous publisher that added the old one.
+您可以在修改版本的封面文字列表末尾，添加一段最多五个词的前封面文字和一段最多 25 个词的后封面文字。任何一个实体只能自行添加或通过安排添加一段前封面文字和一段后封面文字。如果文档已包含此前由您或您所代表的同一实体安排添加、用于同一封面的封面文字，则不得再添加另一段；但在获得添加旧文字的前出版者明确许可后，可以替换旧文字。
 
-The author(s) and publisher(s) of the Document do not by this License give permission to use their names for publicity for or to assert or imply endorsement of any Modified Version.
+文档作者和出版者并未通过本许可证许可将其姓名或名称用于任何修改版本的宣传，或用于声称或暗示他们对任何修改版本的背书。
 
-**5\. COMBINING DOCUMENTS**
+**5\. 合并文档**
 
-You may combine the Document with other documents released under this License, under the terms defined in section 4 above for modified versions, provided that you include in the combination all of the Invariant Sections of all of the original documents, unmodified, and list them all as Invariant Sections of your combined work in its license notice, and that you preserve all their Warranty Disclaimers.
+您可以依照上述第 4 节中针对修改版本规定的条款，将文档与按本许可证发布的其他文档合并，前提是在合并作品中原样包含所有原始文档的全部不可变章节，并在合并作品的许可声明中将其全部列为不可变章节，同时保留其所有担保免责声明。
 
-The combined work need only contain one copy of this License, and multiple identical Invariant Sections may be replaced with a single copy. If there are multiple Invariant Sections with the same name but different contents, make the title of each such section unique by adding at the end of it, in parentheses, the name of the original author or publisher of that section if known, or else a unique number. Make the same adjustment to the section titles in the list of Invariant Sections in the license notice of the combined work.
+合并作品只需包含本许可证的一份副本，多个相同的不可变章节可以用单个副本替代。如果有多个名称相同但内容不同的不可变章节，必须在每个此类章节的标题末尾以括号添加该章节原作者或出版者的姓名或名称（如果已知），否则添加唯一编号，使每个标题都独一无二。也应对合并作品许可声明中不可变章节列表的章节标题作相同调整。
 
-In the combination, you must combine any sections Entitled "History" in the various original documents, forming one section Entitled "History"; likewise combine any sections Entitled "Acknowledgements", and any sections Entitled "Dedications". You must delete all sections Entitled "Endorsements".
+在合并时，必须将各原始文档中标题为“History（历史）”的章节合并为一个标题为“History（历史）”的章节；同样合并所有标题为“Acknowledgements（致谢）”的章节，以及所有标题为“Dedications（献词）”的章节。必须删除所有标题为“Endorsements（背书）”的章节。
 
-**6\. COLLECTIONS OF DOCUMENTS**
+**6\. 文档集合**
 
-You may make a collection consisting of the Document and other documents released under this License, and replace the individual copies of this License in the various documents with a single copy that is included in the collection, provided that you follow the rules of this License for verbatim copying of each of the documents in all other respects.
+您可以制作由本文件及其他按本许可证发布的文档组成的集合，并用包含在集合中的本许可证单份副本，替代各个文档中本许可证的各自副本，前提是在其他所有方面，对每个文档均遵循本许可证有关逐字复制的规则。
 
-You may extract a single document from such a collection, and distribute it individually under this License, provided you insert a copy of this License into the extracted document, and follow this License in all other respects regarding verbatim copying of that document.
+您可以从此类集合中提取单个文档，并按照本许可证单独分发，前提是在提取的文档中插入本许可证的副本，并在其他所有有关逐字复制该文档的方面遵守本许可证。
 
-**7\. AGGREGATION WITH INDEPENDENT WORKS**
+**7\. 与独立作品汇编**
 
-A compilation of the Document or its derivatives with other separate and independent documents or works, in or on a volume of a storage or distribution medium, is called an "aggregate" if the copyright resulting from the compilation is not used to limit the legal rights of the compilation’s users beyond what the individual works permit. When the Document is included in an aggregate, this License does not apply to the other works in the aggregate which are not themselves derivative works of the Document.
+如果将文档或其衍生作品与其他单独且独立的文档或作品一起编入存储或分发媒介的某卷中，且汇编产生的版权并未在各个作品许可范围之外限制汇编用户的合法权利，则这种汇编称为“聚合体”。当文档被包含在聚合体中时，本许可证不适用于聚合体中本身并非该文档衍生作品的其他作品。
 
-If the Cover Text requirement of section 3 is applicable to these copies of the Document, then if the Document is less than one half of the entire aggregate, the Document’s Cover Texts may be placed on covers that bracket the Document within the aggregate, or the electronic equivalent of covers if the Document is in electronic form. Otherwise they must appear on printed covers that bracket the whole aggregate.
+如果第 3 节的封面文字要求适用于这些文档副本，而文档占整个聚合体不到一半，则可以将文档的封面文字放在聚合体内部包围该文档的封面上；如果文档采用电子形式，也可放在电子形式的等效封面上。否则，它们必须出现在包围整个聚合体的印刷封面上。
 
-**8\. TRANSLATION**
+**8\. 翻译**
 
-Translation is considered a kind of modification, so you may distribute translations of the Document under the terms of section 4\. Replacing Invariant Sections with translations requires special permission from their copyright holders, but you may include translations of some or all Invariant Sections in addition to the original versions of these Invariant Sections. You may include a translation of this License, and all the license notices in the Document, and any Warranty Disclaimers, provided that you also include the original English version of this License and the original versions of those notices and disclaimers. In case of a disagreement between the translation and the original version of this License or a notice or disclaimer, the original version will prevail.
+翻译视为一种修改，因此您可以依照第 4 节的条款分发文档的译本。将不可变章节替换为译文，需要其版权所有者的特别许可；但您可以在这些不可变章节的原始版本之外，附加其中部分或全部不可变章节的译文。您可以包含本许可证、文档中的所有许可声明以及所有担保免责声明的译文，前提是同时包含本许可证的英文原版，以及这些声明和免责声明的原始版本。如果本许可证、声明或免责声明的译文与原始版本存在分歧，则以原始版本为准。
 
-If a section in the Document is Entitled "Acknowledgements", "Dedications", or "History", the requirement (section 4\) to Preserve its Title (section 1\) will typically require changing the actual title.
+如果文档中某章节标题为“Acknowledgements（致谢）”、“Dedications（献词）”或“History（历史）”，则保留其标题（第 1 节）的要求（第 4 节）通常会要求更改其实际标题。
 
-**9\. TERMINATION**
+**9\. 终止**
 
-You may not copy, modify, sublicense, or distribute the Document except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, or distribute it is void, and will automatically terminate your rights under this License.
+除非本许可证明确规定，否则您不得复制、修改、再许可或分发文档。任何以其他方式复制、修改、再许可或分发文档的尝试均无效，并将自动终止您在本许可证下的权利。
 
-However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.
+但是，如果您停止一切违反本许可证的行为，则特定版权所有者授予您的许可将恢复：(a) 暂时恢复，除非且直到该版权所有者明确并最终终止您的许可；以及 (b) 永久恢复，如果该版权所有者未在违规停止后 60 天内以某种合理方式通知您违规行为。
 
-Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.
+此外，如果特定版权所有者以某种合理方式通知您违规行为，这是您首次从该版权所有者处收到有关违反本许可证的通知（针对任何作品），并且您在收到通知后 30 天内纠正违规行为，则该版权所有者授予您的许可将永久恢复。
 
-Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.
+本节对您权利的终止，不会终止根据本许可证从您处获得副本或权利的各方的许可。如果您的权利已被终止且未永久恢复，则收到同一材料的部分或全部副本，并不会赋予您使用它的任何权利。
 
-**10\. FUTURE REVISIONS OF THIS LICENSE**
+**10\. 本许可证的未来修订**
 
-The Free Software Foundation may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. See [http://www.gnu.org/copyleft/](http://www.gnu.org/copyleft/).
+自由软件基金会可能不时发布 GNU 自由文档许可证新的修订版本。此类新版本将与当前版本的精神相似，但为应对新问题或新关注事项，具体细节可能有所不同。参见 [http://www.gnu.org/copyleft/](http://www.gnu.org/copyleft/)。
 
-Each version of the License is given a distinguishing version number. If the Document specifies that a particular numbered version of this License "or any later version" applies to it, you have the option of following the terms and conditions either of that specified version or of any later version that has been published (not as a draft) by the Free Software Foundation. If the Document does not specify a version number of this License, you may choose any version ever published (not as a draft) by the Free Software Foundation. If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy’s public statement of acceptance of a version permanently authorizes you to choose that version for the Document.
+本许可证的每个版本都有一个独特的版本号。如果文档指定本许可证的某个编号版本“或任何后续版本”适用于该文档，则您可以选择遵循该指定版本的条款和条件，或自由软件基金会发布的任何后续正式版本（非草案）。如果文档未指定本许可证的版本号，则您可以选择自由软件基金会曾经发布的任何正式版本（非草案）。如果文档指定某个代理可以决定允许使用本许可证的哪些未来版本，则该代理公开声明接受某版本，即永久授权您为该文档选择该版本。
 
-**11\. RELICENSING**
+**11\. 重新许可**
 
-"Massive Multiauthor Collaboration Site" (or "MMC Site") means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A "Massive Multiauthor Collaboration" (or "MMC") contained in the site means any set of copyrightable works thus published on the MMC site.
+“大型多人协作网站”（或“MMC 网站”）指任何发布可受版权保护的作品，并为任何人编辑这些作品提供显著便利设施的万维网服务器。任何人都可以编辑的公共 wiki 就是此类服务器的一个例子。网站中包含的“大型多人协作”（或“MMC”）指以此方式发布在 MMC 网站上的任何一组可受版权保护的作品。
 
-"CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization.
+“CC-BY-SA”指知识共享公司发布的知识共享署名-相同方式共享 3.0 许可证，以及该组织今后发布的该许可证的著佐权版本。知识共享公司是一家主要营业地点位于加利福尼亚州旧金山的非营利公司。
 
-"Incorporate" means to publish or republish a Document, in whole or in part, as part of another Document.
+“纳入”指将文档的全部或部分作为另一文档的一部分发布或再发布。
 
-An MMC is "eligible for relicensing" if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008\.
+如果 MMC 按本许可证授权，并且所有最初在该 MMC 以外的地方按本许可证发布、随后全部或部分纳入该 MMC 的作品均满足以下条件，则该 MMC“符合重新许可条件”：(1) 不含封面文字或不可变章节；(2) 在 2008 年 11 月 1 日之前以此方式纳入。
 
-The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.
+如果 MMC 符合重新许可条件，则 MMC 网站运营者可以在 2009 年 8 月 1 日之前的任何时间，在同一网站上按 CC-BY-SA 再发布该网站包含的 MMC。
 
 ---
 

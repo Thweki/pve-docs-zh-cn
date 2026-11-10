@@ -2,7 +2,7 @@
 
 内核同页合并（KSM）是 Linux 内核提供的一项可选内存去重功能，在 Proxmox VE 中默认启用。KSM 通过扫描一定范围的物理内存页以查找相同内容，并识别映射到这些物理页的虚拟页来工作。如果发现相同的页，则会重新映射相应的虚拟页，使它们全部指向同一个物理页，并释放旧页。虚拟页会被标记为“写时复制”，因此对它们的任何写入都会写入新的内存区域，同时保持共享物理页不变。
 
-## 3.14.1. KSM 的影响 <a href="#_implications_of_ksm" id="_implications_of_ksm"></a>
+## 3.14.1. KSM 的影响 <a href="#implications_of_ksm" id="implications_of_ksm"></a>
 
 KSM 可以优化虚拟化环境中的内存使用，因为运行相似操作系统或工作负载的多个 VM 可能会共享大量相同的内存页。
 
@@ -10,7 +10,7 @@ KSM 可以优化虚拟化环境中的内存使用，因为运行相似操作系�
 
 因此，如果您使用 Proxmox VE 提供托管服务，则应考虑禁用 KSM，以便为用户提供额外的安全保障。此外，您还应查看所在国家/地区的法规，因为禁用 KSM 可能是法律要求。
 
-## 3.14.2. 禁用 KSM <a href="#_disabling_ksm" id="_disabling_ksm"></a>
+## 3.14.2. 禁用 KSM <a href="#disabling_ksm" id="disabling_ksm"></a>
 
 可以在节点上或按 VM 分别禁用 KSM。
 

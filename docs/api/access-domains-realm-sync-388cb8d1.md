@@ -6,7 +6,7 @@
 
 ## POST `/access/domains/{realm}/sync`
 
-Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name 'name-$realm', so make sure those groups do not exist to prevent overwriting.
+将用户和/或组从配置的 LDAP 同步到 user.cfg。注意：同步组的名称为 'name-$realm'，因此请确保这些组尚不存在，以防覆盖。
 
 **方法标识：** `sync`
 
@@ -31,7 +31,7 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
       ]
     ]
   ],
-  "description": "'Realm.AllocateUser' on '/access/realm/<realm>' and  'User.Modify' permissions to '/access/groups/'."
+  "description": "需要对 '/access/realm/<realm>' 具有 'Realm.AllocateUser' 权限，以及  对 '/access/groups/' 具有 'User.Modify' 权限。"
 }
 ```
 
@@ -51,13 +51,13 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `dry-run` | boolean | 否 | 0 | If set, does not write anything. |
-| `enable-new` | boolean | 否 | "1" | Enable newly synced users immediately. |
-| `full` | boolean | 否 | — | DEPRECATED: use 'remove-vanished' instead. If set, uses the LDAP Directory as source of truth, deleting users or groups not returned from the sync and removing all locally modified properties of synced users. If not set, only syncs information which is present in the synced data, and does not delete or modify anything else. |
-| `purge` | boolean | 否 | — | DEPRECATED: use 'remove-vanished' instead. Remove ACLs for users or groups which were removed from the config during a sync. |
-| `realm` | string | 是 | — | Authentication domain ID |
-| `remove-vanished` | string | 否 | "none" | A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default). |
-| `scope` | string | 否 | — | Select what to sync.；可选值：`users`, `groups`, `both` |
+| `dry-run` | boolean | 否 | 0 | 如果设置，则不写入任何内容。 |
+| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
+| `full` | boolean | 否 | — | 已弃用：请改用 'remove-vanished'。如果设置，则将 LDAP 目录视为权威来源，删除同步未返回的用户或组，并移除同步用户的所有本地修改属性。如果未设置，则仅同步同步数据中存在的信息，不会删除或修改其他任何内容。 |
+| `purge` | boolean | 否 | — | 已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。 |
+| `realm` | string | 是 | — | 认证域 ID |
+| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -68,32 +68,32 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
   "properties": {
     "dry-run": {
       "default": 0,
-      "description": "If set, does not write anything.",
+      "description": "如果设置，则不写入任何内容。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "enable-new": {
       "default": "1",
-      "description": "Enable newly synced users immediately.",
+      "description": "立即启用新同步的用户。",
       "optional": "1",
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "full": {
-      "description": "DEPRECATED: use 'remove-vanished' instead. If set, uses the LDAP Directory as source of truth, deleting users or groups not returned from the sync and removing all locally modified properties of synced users. If not set, only syncs information which is present in the synced data, and does not delete or modify anything else.",
+      "description": "已弃用：请改用 'remove-vanished'。如果设置，则将 LDAP 目录视为权威来源，删除同步未返回的用户或组，并移除同步用户的所有本地修改属性。如果未设置，则仅同步同步数据中存在的信息，不会删除或修改其他任何内容。",
       "optional": "1",
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "purge": {
-      "description": "DEPRECATED: use 'remove-vanished' instead. Remove ACLs for users or groups which were removed from the config during a sync.",
+      "description": "已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。",
       "optional": "1",
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "realm": {
-      "description": "Authentication domain ID",
+      "description": "认证域 ID",
       "format": "pve-realm",
       "maxLength": 32,
       "type": "string",
@@ -101,14 +101,14 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
     },
     "remove-vanished": {
       "default": "none",
-      "description": "A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default).",
+      "description": "以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。",
       "optional": "1",
       "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none",
       "type": "string",
       "typetext": "([acl];[properties];[entry])|none"
     },
     "scope": {
-      "description": "Select what to sync.",
+      "description": "选择要同步的内容。",
       "enum": [
         "users",
         "groups",
@@ -127,7 +127,7 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
 
 ```json
 {
-  "description": "Worker Task-UPID",
+  "description": "工作任务 UPID",
   "type": "string"
 }
 ```

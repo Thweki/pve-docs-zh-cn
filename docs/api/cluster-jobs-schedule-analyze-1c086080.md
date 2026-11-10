@@ -6,7 +6,7 @@
 
 ## GET `/cluster/jobs/schedule-analyze`
 
-Returns a list of future schedule runtimes.
+返回未来计划运行时间的列表。
 
 **方法标识：** `schedule-analyze`
 
@@ -28,9 +28,9 @@ Returns a list of future schedule runtimes.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `iterations` | integer | 否 | 10 | Number of event-iteration to simulate and return. |
-| `schedule` | string | 是 | — | Job schedule. The format is a subset of `systemd` calendar events. |
-| `starttime` | integer | 否 | — | UNIX timestamp to start the calculation from. Defaults to the current time. |
+| `iterations` | integer | 否 | 10 | 要模拟并返回的事件迭代次数。 |
+| `schedule` | string | 是 | — | 作业计划。格式是 `systemd` 日历事件的子集。 |
+| `starttime` | integer | 否 | — | 计算起始时间的 UNIX 时间戳。默认为当前时间。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -41,7 +41,7 @@ Returns a list of future schedule runtimes.
   "properties": {
     "iterations": {
       "default": 10,
-      "description": "Number of event-iteration to simulate and return.",
+      "description": "要模拟并返回的事件迭代次数。",
       "maximum": 100,
       "minimum": 1,
       "optional": 1,
@@ -49,14 +49,14 @@ Returns a list of future schedule runtimes.
       "typetext": "<integer> (1 - 100)"
     },
     "schedule": {
-      "description": "Job schedule. The format is a subset of `systemd` calendar events.",
+      "description": "作业计划。格式是 `systemd` 日历事件的子集。",
       "format": "pve-calendar-event",
       "maxLength": 128,
       "type": "string",
       "typetext": "<string>"
     },
     "starttime": {
-      "description": "UNIX timestamp to start the calculation from. Defaults to the current time.",
+      "description": "计算起始时间的 UNIX 时间戳。默认为当前时间。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
@@ -71,15 +71,15 @@ Returns a list of future schedule runtimes.
 
 ```json
 {
-  "description": "An array of the next <iterations> events since <starttime>.",
+  "description": "自 <starttime> 起接下来 <iterations> 次事件的数组。",
   "items": {
     "properties": {
       "timestamp": {
-        "description": "UNIX timestamp for the run.",
+        "description": "运行时间的 UNIX 时间戳。",
         "type": "integer"
       },
       "utc": {
-        "description": "UTC timestamp for the run.",
+        "description": "运行时间的 UTC 时间戳。",
         "type": "string"
       }
     },

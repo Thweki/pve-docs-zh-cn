@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/query-url-metadata`
 
-Query metadata of an URL: file size, file name and mime type.
+查询 URL 的元数据：文件大小、文件名及 MIME 类型。
 
 **方法标识：** `query_url_metadata`
 
@@ -51,9 +51,9 @@ Query metadata of an URL: file size, file name and mime type.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `url` | string | 是 | — | The URL to query the metadata from. |
-| `verify-certificates` | boolean | 否 | 1 | If false, no SSL/TLS certificates will be verified. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `url` | string | 是 | — | 要查询元数据的 URL。 |
+| `verify-certificates` | boolean | 否 | 1 | 如果为 false，则不验证任何 SSL/TLS 证书。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -63,19 +63,19 @@ Query metadata of an URL: file size, file name and mime type.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "url": {
-      "description": "The URL to query the metadata from.",
+      "description": "要查询元数据的 URL。",
       "pattern": "https?://.*",
       "type": "string"
     },
     "verify-certificates": {
       "default": 1,
-      "description": "If false, no SSL/TLS certificates will be verified.",
+      "description": "如果为 false，则不验证任何 SSL/TLS 证书。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

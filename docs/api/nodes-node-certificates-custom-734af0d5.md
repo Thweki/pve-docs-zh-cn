@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/certificates/custom`
 
-DELETE custom certificate chain and key.
+删除自定义证书链和密钥。
 
 **方法标识：** `remove_custom_cert`
 
@@ -46,8 +46,8 @@ DELETE custom certificate chain and key.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `restart` | boolean | 否 | 0 | Restart pveproxy. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `restart` | boolean | 否 | 0 | 重启 pveproxy。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,14 +57,14 @@ DELETE custom certificate chain and key.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "restart": {
       "default": 0,
-      "description": "Restart pveproxy.",
+      "description": "重启 pveproxy。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -85,7 +85,7 @@ DELETE custom certificate chain and key.
 
 ## POST `/nodes/{node}/certificates/custom`
 
-Upload or update custom certificate chain and key.
+上传或更新自定义证书链和密钥。
 
 **方法标识：** `upload_custom_cert`
 
@@ -125,11 +125,11 @@ Upload or update custom certificate chain and key.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `certificates` | string | 是 | — | PEM encoded certificate (chain). |
-| `force` | boolean | 否 | 0 | Overwrite existing custom or ACME certificate files. |
-| `key` | string | 否 | — | PEM encoded private key. |
-| `node` | string | 是 | — | The cluster node name. |
-| `restart` | boolean | 否 | 0 | Restart pveproxy. |
+| `certificates` | string | 是 | — | PEM 编码的证书（链）。 |
+| `force` | boolean | 否 | 0 | 覆盖现有自定义证书或 ACME 证书文件。 |
+| `key` | string | 否 | — | PEM 编码的私钥。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `restart` | boolean | 否 | 0 | 重启 pveproxy。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -139,34 +139,34 @@ Upload or update custom certificate chain and key.
   "additionalProperties": 0,
   "properties": {
     "certificates": {
-      "description": "PEM encoded certificate (chain).",
+      "description": "PEM 编码的证书（链）。",
       "format": "pem-certificate-chain",
       "type": "string",
       "typetext": "<string>"
     },
     "force": {
       "default": 0,
-      "description": "Overwrite existing custom or ACME certificate files.",
+      "description": "覆盖现有自定义证书或 ACME 证书文件。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "key": {
-      "description": "PEM encoded private key.",
+      "description": "PEM 编码的私钥。",
       "format": "pem-string",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "restart": {
       "default": 0,
-      "description": "Restart pveproxy.",
+      "description": "重启 pveproxy。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -187,46 +187,46 @@ Upload or update custom certificate chain and key.
       "type": "string"
     },
     "fingerprint": {
-      "description": "Certificate SHA 256 fingerprint.",
+      "description": "证书 SHA 256 指纹。",
       "optional": 1,
       "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
       "type": "string"
     },
     "issuer": {
-      "description": "Certificate issuer name.",
+      "description": "证书颁发者名称。",
       "optional": 1,
       "type": "string"
     },
     "notafter": {
-      "description": "Certificate's notAfter timestamp (UNIX epoch).",
+      "description": "证书的 notAfter 时间戳（UNIX 纪元）。",
       "optional": 1,
       "renderer": "timestamp",
       "type": "integer"
     },
     "notbefore": {
-      "description": "Certificate's notBefore timestamp (UNIX epoch).",
+      "description": "证书的 notBefore 时间戳（UNIX 纪元）。",
       "optional": 1,
       "renderer": "timestamp",
       "type": "integer"
     },
     "pem": {
-      "description": "Certificate in PEM format",
+      "description": "PEM 格式的证书",
       "format": "pem-certificate",
       "optional": 1,
       "type": "string"
     },
     "public-key-bits": {
-      "description": "Certificate's public key size",
+      "description": "证书公钥大小",
       "optional": 1,
       "type": "integer"
     },
     "public-key-type": {
-      "description": "Certificate's public key algorithm",
+      "description": "证书公钥算法",
       "optional": 1,
       "type": "string"
     },
     "san": {
-      "description": "List of Certificate's SubjectAlternativeName entries.",
+      "description": "证书 SubjectAlternativeName 条目列表。",
       "items": {
         "type": "string"
       },
@@ -235,7 +235,7 @@ Upload or update custom certificate chain and key.
       "type": "array"
     },
     "subject": {
-      "description": "Certificate subject name.",
+      "description": "证书主体名称。",
       "optional": 1,
       "type": "string"
     }

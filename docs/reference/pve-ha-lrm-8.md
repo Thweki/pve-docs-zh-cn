@@ -1,22 +1,14 @@
 # pve-ha-lrm(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pve-ha-lrm \- PVE Local Resource Manager Daemon
+pve-ha-lrm \- PVE 本地资源管理器守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pve-ha-lrm"></a>
+### **pve-ha-lrm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-ha-lrm" id="cli_pve-ha-lrm"></a>
 
-
-
-**pve-ha-lrm** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pve-ha-lrm_help"></a>
-
-
-
-**pve-ha-lrm help** `[OPTIONS]`
+### **pve-ha-lrm help** `[OPTIONS]` <a href="#cli_pve-ha-lrm_help" id="cli_pve-ha-lrm_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,39 +20,27 @@ pve-ha-lrm \- PVE Local Resource Manager Daemon
 
 详细输出格式。
 
-<a id="cli_pve-ha-lrm_start"></a>
+### **pve-ha-lrm start** `[OPTIONS]` <a href="#cli_pve-ha-lrm_start" id="cli_pve-ha-lrm_start"></a>
 
-
-
-**pve-ha-lrm start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pve-ha-lrm_status"></a>
+### **pve-ha-lrm status** <a href="#cli_pve-ha-lrm_status" id="cli_pve-ha-lrm_status"></a>
 
+获取守护进程状态。
 
+### **pve-ha-lrm stop** <a href="#cli_pve-ha-lrm_stop" id="cli_pve-ha-lrm_stop"></a>
 
-**pve-ha-lrm status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pve-ha-lrm_stop"></a>
+这是本地资源管理器守护进程。
 
-
-
-**pve-ha-lrm stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This is the Local Resource Manager Daemon.
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

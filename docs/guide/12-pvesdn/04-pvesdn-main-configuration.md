@@ -1,17 +1,17 @@
-# 12.4. Configuration Overview <a href="#pvesdn_main_configuration" id="pvesdn_main_configuration"></a>
+# 12.4. 配置概述 <a href="#pvesdn_main_configuration" id="pvesdn_main_configuration"></a>
 
-Configuration is done at the web UI at datacenter level, separated into the following sections:
+在数据中心级别的 Web UI 中进行配置，分为以下部分：
 
-- SDN: Here you get an overview of the current active SDN state, and you can apply all pending changes to the whole cluster.
-- [Zones](06-pvesdn-config-zone.md): Create and manage the virtually separated network zones
-- [VNets](07-pvesdn-config-vnet.md): Create virtual network bridges and manage subnets
+- SDN：在此可查看当前活动 SDN 状态的概览，并将所有待处理更改应用到整个集群。
+- [区域](06-pvesdn-config-zone.md)：创建和管理虚拟隔离的网络区域
+- [VNet](07-pvesdn-config-vnet.md)：创建虚拟网桥并管理子网
 
-The Options category allows adding and managing additional services to be used in your SDN setup.
+“选项”类别允许添加和管理 SDN 设置中使用的其他服务。
 
-- [Controllers](09-pvesdn-config-controllers.md): For controlling layer 3 routing in complex setups
-- [DHCP](14-pvesdn-config-dhcp.md): Define a DHCP server for a zone that automatically allocates IPs for guests in the IPAM and leases them to the guests via DHCP.
-- [IPAM](12-pvesdn-config-ipam.md): Enables external for IP address management for guests
-- [DNS](13-pvesdn-config-dns.md): Define a DNS server integration for registering virtual guests' hostname and IP addresses
+- [控制器](09-pvesdn-config-controllers.md)：用于控制复杂设置中的三层路由
+- [DHCP](14-pvesdn-config-dhcp.md)：为区域定义 DHCP 服务器，自动在 IPAM 中为客户机分配 IP，并通过 DHCP 将其租给客户机。
+- [IPAM](12-pvesdn-config-ipam.md)：启用客户机的外部 IP 地址管理
+- [DNS](13-pvesdn-config-dns.md)：定义 DNS 服务器集成，用于注册虚拟客户机的主机名和 IP 地址
 
 ---
 

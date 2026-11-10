@@ -6,7 +6,7 @@
 
 ## GET `/cluster/config/totem`
 
-Get corosync totem protocol settings.
+获取 corosync totem 协议设置。
 
 **方法标识：** `totem`
 

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/status/suspend`
 
-Suspend virtual machine.
+挂起虚拟机。
 
 **方法标识：** `vm_suspend`
 
@@ -21,7 +21,7 @@ Suspend virtual machine.
       "VM.PowerMgmt"
     ]
   ],
-  "description": "You need 'VM.PowerMgmt' on /vms/{vmid}, and if you have set 'todisk', you need also 'VM.Config.Disk' on /vms/{vmid} and 'Datastore.AllocateSpace' on the storage for the vmstate."
+  "description": "需要对 /vms/{vmid} 具有 'VM.PowerMgmt' 权限；如果设置了 'todisk'，还需要对 /vms/{vmid} 具有 'VM.Config.Disk' 权限，以及对存放 vmstate 的存储具有 'Datastore.AllocateSpace' 权限。"
 }
 ```
 
@@ -47,11 +47,11 @@ Suspend virtual machine.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `statestorage` | string | 否 | — | The storage for the VM state |
-| `todisk` | boolean | 否 | 0 | If set, suspends the VM to disk. Will be resumed on next VM start. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `statestorage` | string | 否 | — | 存放虚拟机状态的存储 |
+| `todisk` | boolean | 否 | 0 | 如果设置，则将虚拟机挂起到磁盘。下次启动虚拟机时将恢复。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,19 +61,19 @@ Suspend virtual machine.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "statestorage": {
-      "description": "The storage for the VM state",
+      "description": "存放虚拟机状态的存储",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -83,13 +83,13 @@ Suspend virtual machine.
     },
     "todisk": {
       "default": 0,
-      "description": "If set, suspends the VM to disk. Will be resumed on next VM start.",
+      "description": "如果设置，则将虚拟机挂起到磁盘。下次启动虚拟机时将恢复。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/bulk-action/guest`
 
-Bulk action index.
+批量操作索引。
 
 **方法标识：** `index`
 

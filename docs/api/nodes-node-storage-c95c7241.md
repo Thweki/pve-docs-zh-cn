@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage`
 
-Get status for all datastores.
+获取所有数据存储的状态。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ Get status for all datastores.
 
 ```json
 {
-  "description": "Only list entries where you have 'Datastore.Audit' or 'Datastore.AllocateSpace' permissions on '/storage/<storage>'",
+  "description": "仅列出您对 '/storage/<storage>' 具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限的条目",
   "user": "all"
 }
 ```
@@ -41,12 +41,12 @@ Get status for all datastores.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `content` | string | 否 | — | Only list stores which support this content type. |
-| `enabled` | boolean | 否 | 0 | Only list stores which are enabled (not disabled in config). |
-| `format` | boolean | 否 | 0 | Include information about formats |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | Only list status for  specified storage |
-| `target` | string | 否 | — | If target is different to 'node', we only lists shared storages which content is accessible on this 'node' and the specified 'target' node. |
+| `content` | string | 否 | — | 仅列出支持此内容类型的存储。 |
+| `enabled` | boolean | 否 | 0 | 仅列出已启用的存储（在配置中未禁用）。 |
+| `format` | boolean | 否 | 0 | 包含格式信息 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 仅列出  指定存储的状态 |
+| `target` | string | 否 | — | 如果 target 与 'node' 不同，则仅列出内容可同时在此 'node' 和指定 'target' 节点上访问的共享存储。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Get status for all datastores.
   "additionalProperties": 0,
   "properties": {
     "content": {
-      "description": "Only list stores which support this content type.",
+      "description": "仅列出支持此内容类型的存储。",
       "format": "pve-storage-content-list",
       "optional": 1,
       "type": "string",
@@ -64,26 +64,26 @@ Get status for all datastores.
     },
     "enabled": {
       "default": 0,
-      "description": "Only list stores which are enabled (not disabled in config).",
+      "description": "仅列出已启用的存储（在配置中未禁用）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "format": {
       "default": 0,
-      "description": "Include information about formats",
+      "description": "包含格式信息",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "Only list status for  specified storage",
+      "description": "仅列出  指定存储的状态",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -91,7 +91,7 @@ Get status for all datastores.
       "typetext": "<storage ID>"
     },
     "target": {
-      "description": "If target is different to 'node', we only lists shared storages which content is accessible on this 'node' and the specified 'target' node.",
+      "description": "如果 target 与 'node' 不同，则仅列出内容可同时在此 'node' 和指定 'target' 节点上访问的共享存储。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
@@ -110,32 +110,32 @@ Get status for all datastores.
   "items": {
     "properties": {
       "active": {
-        "description": "Set when storage is accessible.",
+        "description": "存储可访问时设置。",
         "optional": 1,
         "type": "boolean"
       },
       "avail": {
-        "description": "Available storage space in bytes.",
+        "description": "可用存储空间，单位为字节。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "content": {
-        "description": "Allowed storage content types.",
+        "description": "允许的存储内容类型。",
         "format": "pve-storage-content-list",
         "type": "string"
       },
       "enabled": {
-        "description": "Set when storage is enabled (not disabled).",
+        "description": "存储已启用（未禁用）时设置。",
         "optional": 1,
         "type": "boolean"
       },
       "formats": {
-        "description": "Lists the supported and default format. Use 'formats' instead. Only included if 'format' parameter is set.",
+        "description": "列出支持的格式和默认格式。请改用 'formats'。仅在设置了 'format' 参数时包含。",
         "optional": 1,
         "properties": {
           "default": {
-            "description": "The default format of the storage.",
+            "description": "存储的默认格式。",
             "enum": [
               "qcow2",
               "raw",
@@ -145,7 +145,7 @@ Get status for all datastores.
             "type": "string"
           },
           "supported": {
-            "description": "The list of supported formats",
+            "description": "支持的格式列表",
             "items": {
               "enum": [
                 "qcow2",
@@ -161,39 +161,39 @@ Get status for all datastores.
         "type": "object"
       },
       "select_existing": {
-        "description": "Instead of creating new volumes, one must select one that is already existing. Only included if 'format' parameter is set.",
+        "description": "必须选择已有卷，而非创建新卷。仅在设置了 'format' 参数时包含。",
         "optional": 1,
         "type": "boolean"
       },
       "shared": {
-        "description": "Shared flag from storage configuration.",
+        "description": "存储配置中的 shared 标志。",
         "optional": 1,
         "type": "boolean"
       },
       "storage": {
-        "description": "The storage identifier.",
+        "description": "存储标识符。",
         "format": "pve-storage-id",
         "format_description": "storage ID",
         "type": "string"
       },
       "total": {
-        "description": "Total storage space in bytes.",
+        "description": "总存储空间，单位为字节。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "type": {
-        "description": "Storage type.",
+        "description": "存储类型。",
         "type": "string"
       },
       "used": {
-        "description": "Used storage space in bytes.",
+        "description": "已用存储空间，单位为字节。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "used_fraction": {
-        "description": "Used fraction (used/total).",
+        "description": "已用比例（used/total）。",
         "optional": 1,
         "renderer": "fraction_as_percentage",
         "type": "number"

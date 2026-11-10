@@ -1,6 +1,6 @@
-# 13.4. Security Groups <a href="#pve_firewall_security_groups" id="pve_firewall_security_groups"></a>
+# 13.4. 安全组 <a href="#pve_firewall_security_groups" id="pve_firewall_security_groups"></a>
 
-A security group is a collection of rules, defined at cluster level, which can be used in all VMs' rules. For example you can define a group named “webserver” with rules to open the *http* and *https* ports.
+安全组是在集群级别定义的规则集合，可用于所有虚拟机的规则中。例如，可以定义名为“webserver”的组，包含开放 *http* 和 *https* 端口的规则。
 
 ```text
 # /etc/pve/firewall/cluster.fw
@@ -10,7 +10,7 @@ IN  ACCEPT -p tcp -dport 80
 IN  ACCEPT -p tcp -dport 443
 ```
 
-Then, you can add this group to a VM’s firewall
+然后，可将此组添加到虚拟机的防火墙中
 
 ```text
 # /etc/pve/firewall/<VMID>.fw

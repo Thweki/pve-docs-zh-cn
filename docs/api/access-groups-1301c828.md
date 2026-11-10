@@ -6,7 +6,7 @@
 
 ## GET `/access/groups`
 
-Group index.
+组索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ Group index.
 
 ```json
 {
-  "description": "The returned list is restricted to groups where you have 'User.Modify', 'Sys.Audit'  or 'Group.Allocate' permissions on /access/groups/<group>.",
+  "description": "返回列表仅限于您具有 'User.Modify'、'Sys.Audit'  或 'Group.Allocate' 权限（作用于 /access/groups/<group>）的组。",
   "user": "all"
 }
 ```
@@ -44,7 +44,7 @@ Group index.
         "type": "string"
       },
       "users": {
-        "description": "list of users which form this group",
+        "description": "组成此组的用户列表",
         "format": "pve-userid-list",
         "optional": 1,
         "type": "string"
@@ -64,7 +64,7 @@ Group index.
 
 ## POST `/access/groups`
 
-Create new group.
+创建新组。
 
 **方法标识：** `create_group`
 

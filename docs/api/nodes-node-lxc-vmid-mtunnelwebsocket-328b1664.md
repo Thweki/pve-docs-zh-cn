@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/lxc/{vmid}/mtunnelwebsocket`
 
-Migration tunnel endpoint for websocket upgrade - only for internal use by VM migration.
+用于 websocket 升级的迁移隧道端点——仅供虚拟机迁移内部使用。
 
 **方法标识：** `mtunnelwebsocket`
 
@@ -14,7 +14,7 @@ Migration tunnel endpoint for websocket upgrade - only for internal use by VM mi
 
 ```json
 {
-  "description": "You need to pass a ticket valid for the selected socket. Tickets can be created via the mtunnel API call, which will check permissions accordingly.",
+  "description": "需要传入对所选套接字有效的票据。可通过 mtunnel API 调用创建票据，该调用会相应检查权限。",
   "user": "all"
 }
 ```
@@ -29,10 +29,10 @@ Migration tunnel endpoint for websocket upgrade - only for internal use by VM mi
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `socket` | string | 是 | — | unix socket to forward to |
-| `ticket` | string | 是 | — | ticket return by initial 'mtunnel' API call, or retrieved via 'ticket' tunnel command |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `socket` | string | 是 | — | 要转发到的 UNIX 套接字 |
+| `ticket` | string | 是 | — | 初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -42,23 +42,23 @@ Migration tunnel endpoint for websocket upgrade - only for internal use by VM mi
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "socket": {
-      "description": "unix socket to forward to",
+      "description": "要转发到的 UNIX 套接字",
       "type": "string",
       "typetext": "<string>"
     },
     "ticket": {
-      "description": "ticket return by initial 'mtunnel' API call, or retrieved via 'ticket' tunnel command",
+      "description": "初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

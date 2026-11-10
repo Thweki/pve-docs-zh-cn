@@ -1,16 +1,16 @@
-# 12.2. Support Status <a href="#pvesdn_support_status" id="pvesdn_support_status"></a>
+# 12.2. 支持状态 <a href="#pvesdn_support_status" id="pvesdn_support_status"></a>
 
-## 12.2.1. History <a href="#_history" id="_history"></a>
+## 12.2.1. 历史 <a href="#history" id="history"></a>
 
-The Proxmox VE SDN stack has been available as an experimental feature since 2019 and has been continuously improved and tested by many developers and users. With its integration into the web interface in Proxmox VE 6.2, a significant milestone towards broader integration was achieved. During the Proxmox VE 7 release cycle, numerous improvements and features were added. Based on user feedback, it became apparent that the fundamental design choices and their implementation were quite sound and stable. Consequently, labeling it as ‘experimental’ did not do justice to the state of the SDN stack. For Proxmox VE 8, a decision was made to lay the groundwork for full integration of the SDN feature by elevating the management of networks and interfaces to a core component in the Proxmox VE access control stack. In Proxmox VE 8.1, two major milestones were achieved: firstly, DHCP integration was added to the IP address management (IPAM) feature, and secondly, the SDN integration is now installed by default.
+Proxmox VE SDN 协议栈自 2019 年起作为实验性功能提供，并一直由众多开发者和用户持续改进和测试。在 Proxmox VE 6.2 中集成到 Web 界面，标志着迈向更广泛集成的重要里程碑。在 Proxmox VE 7 发布周期中，增加了许多改进和功能。根据用户反馈，可以看出基本设计选择及其实现相当可靠、稳定。因此，将其标记为“实验性”已不能准确反映 SDN 协议栈的状态。在 Proxmox VE 8 中，决定将网络和接口管理提升为 Proxmox VE 访问控制栈的核心组件，为全面集成 SDN 功能奠定基础。在 Proxmox VE 8.1 中实现了两个主要里程碑：首先，在 IP 地址管理（IPAM）功能中加入了 DHCP 集成；其次，现在默认安装 SDN 集成。
 
-## 12.2.2. Current Status <a href="#_current_status" id="_current_status"></a>
+## 12.2.2. 当前状态 <a href="#current_status" id="current_status"></a>
 
-The current support status for the various layers of our SDN installation is as follows:
+SDN 安装各层的当前支持状态如下：
 
-- Core SDN, which includes VNet management and its integration with the Proxmox VE stack, is fully supported.
-- IPAM, including DHCP management for virtual guests, is in tech preview.
-- Complex routing via FRRouting and controller integration are in tech preview.
+- 核心 SDN 包括 VNet 管理及其与 Proxmox VE 协议栈的集成，已获得完全支持。
+- IPAM（包括虚拟客户机的 DHCP 管理）处于技术预览阶段。
+- 通过 FRRouting 的复杂路由和控制器集成处于技术预览阶段。
 
 ---
 

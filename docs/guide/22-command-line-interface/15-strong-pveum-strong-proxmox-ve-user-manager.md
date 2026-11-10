@@ -1,180 +1,124 @@
-# 22.15. **pveum** \- Proxmox VE User Manager <a href="#_strong_pveum_strong_proxmox_ve_user_manager" id="_strong_pveum_strong_proxmox_ve_user_manager"></a>
+# 22.15. **pveum** \- Proxmox VE 用户管理器 <a href="#strong_pveum_strong_proxmox_ve_user_manager" id="strong_pveum_strong_proxmox_ve_user_manager"></a>
 
-<a id="cli_pveum"></a>
+## **pveum** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveum" id="cli_pveum"></a>
 
+## **pveum acl delete** `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_delete" id="cli_pveum_acl_delete"></a>
 
-
-**pveum** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pveum_acl_delete"></a>
-
-
-
-**pveum acl delete** `<path> --roles <string>` `[OPTIONS]`
-
-Update Access Control List (add or remove permissions).
+更新访问控制列表（添加或移除权限）。
 
 **`<path>`: `<string>`**
 
-Access control path
+访问控制路径
 
 **`--groups` `<string>`**
 
-List of groups.
+组列表。
 
-**`--propagate` `<boolean>` (*default \=* `1`)**
+**`--propagate` `<boolean>` （*默认值 \=* `1`）**
 
-Allow to propagate (inherit) permissions.
+允许传播（继承）权限。
 
 **`--roles` `<string>`**
 
-List of roles.
+角色列表。
 
 **`--tokens` `<string>`**
 
-List of API tokens.
+API 令牌列表。
 
 **`--users` `<string>`**
 
-List of users.
+用户列表。
 
-<a id="cli_pveum_acl_list"></a>
+## **pveum acl list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_acl_list" id="cli_pveum_acl_list"></a>
 
+获取访问控制列表（ACL）。
 
+## **pveum acl modify** `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_modify" id="cli_pveum_acl_modify"></a>
 
-**pveum acl list** `[FORMAT_OPTIONS]`
-
-Get Access Control List (ACLs).
-
-<a id="cli_pveum_acl_modify"></a>
-
-
-
-**pveum acl modify** `<path> --roles <string>` `[OPTIONS]`
-
-Update Access Control List (add or remove permissions).
+更新访问控制列表（添加或移除权限）。
 
 **`<path>`: `<string>`**
 
-Access control path
+访问控制路径
 
 **`--groups` `<string>`**
 
-List of groups.
+组列表。
 
-**`--propagate` `<boolean>` (*default \=* `1`)**
+**`--propagate` `<boolean>` （*默认值 \=* `1`）**
 
-Allow to propagate (inherit) permissions.
+允许传播（继承）权限。
 
 **`--roles` `<string>`**
 
-List of roles.
+角色列表。
 
 **`--tokens` `<string>`**
 
-List of API tokens.
+API 令牌列表。
 
 **`--users` `<string>`**
 
-List of users.
+用户列表。
 
-<a id="cli_pveum_acldel"></a>
+## **pveum acldel** <a href="#cli_pveum_acldel" id="cli_pveum_acldel"></a>
 
+*pveum acl delete* 的别名。
 
+## **pveum aclmod** <a href="#cli_pveum_aclmod" id="cli_pveum_aclmod"></a>
 
-**pveum acldel**
+*pveum acl modify* 的别名。
 
-An alias for *pveum acl delete*.
+## **pveum group add** `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_add" id="cli_pveum_group_add"></a>
 
-<a id="cli_pveum_aclmod"></a>
-
-
-
-**pveum aclmod**
-
-An alias for *pveum acl modify*.
-
-<a id="cli_pveum_group_add"></a>
-
-
-
-**pveum group add** `<groupid>` `[OPTIONS]`
-
-Create new group.
+创建新组。
 
 **`<groupid>`: `<string>`**
 
-no description available
+没有可用的说明
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_group_delete"></a>
+## **pveum group delete** `<groupid>` <a href="#cli_pveum_group_delete" id="cli_pveum_group_delete"></a>
 
-
-
-**pveum group delete** `<groupid>`
-
-Delete group.
+删除组。
 
 **`<groupid>`: `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_group_list"></a>
+## **pveum group list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_group_list" id="cli_pveum_group_list"></a>
 
+组索引。
 
+## **pveum group modify** `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_modify" id="cli_pveum_group_modify"></a>
 
-**pveum group list** `[FORMAT_OPTIONS]`
-
-Group index.
-
-<a id="cli_pveum_group_modify"></a>
-
-
-
-**pveum group modify** `<groupid>` `[OPTIONS]`
-
-Update group data.
+更新组数据。
 
 **`<groupid>`: `<string>`**
 
-no description available
+没有可用的说明
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_groupadd"></a>
+## **pveum groupadd** <a href="#cli_pveum_groupadd" id="cli_pveum_groupadd"></a>
 
+*pveum group add* 的别名。
 
+## **pveum groupdel** <a href="#cli_pveum_groupdel" id="cli_pveum_groupdel"></a>
 
-**pveum groupadd**
+*pveum group delete* 的别名。
 
-An alias for *pveum group add*.
+## **pveum groupmod** <a href="#cli_pveum_groupmod" id="cli_pveum_groupmod"></a>
 
-<a id="cli_pveum_groupdel"></a>
+*pveum group modify* 的别名。
 
-
-
-**pveum groupdel**
-
-An alias for *pveum group delete*.
-
-<a id="cli_pveum_groupmod"></a>
-
-
-
-**pveum groupmod**
-
-An alias for *pveum group modify*.
-
-<a id="cli_pveum_help"></a>
-
-
-
-**pveum help** `[OPTIONS]`
+## **pveum help** `[OPTIONS]` <a href="#cli_pveum_help" id="cli_pveum_help"></a>
 
 获取指定命令的帮助。
 
@@ -186,161 +130,137 @@ An alias for *pveum group modify*.
 
 详细输出格式。
 
-<a id="cli_pveum_passwd"></a>
+## **pveum passwd** `<userid>` `[OPTIONS]` <a href="#cli_pveum_passwd" id="cli_pveum_passwd"></a>
 
-
-
-**pveum passwd** `<userid>` `[OPTIONS]`
-
-Change user password.
+更改用户密码。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`--confirmation-password` `<string>`**
 
-The current password of the user performing the change.
+执行更改的用户的当前密码。
 
-<a id="cli_pveum_pool_add"></a>
+## **pveum pool add** `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_add" id="cli_pveum_pool_add"></a>
 
-
-
-**pveum pool add** `<poolid>` `[OPTIONS]`
-
-Create new pool.
+创建新资源池。
 
 **`<poolid>`: `<string>`**
 
-no description available
+没有可用的说明
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_pool_delete"></a>
+## **pveum pool delete** `<poolid>` <a href="#cli_pveum_pool_delete" id="cli_pveum_pool_delete"></a>
 
-
-
-**pveum pool delete** `<poolid>`
-
-Delete pool.
+删除资源池。
 
 **`<poolid>`: `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_pool_list"></a>
+## **pveum pool list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_pool_list" id="cli_pveum_pool_list"></a>
 
-
-
-**pveum pool list** `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-List pools or get pool configuration.
+列出资源池或获取资源池配置。
 
 **`--poolid` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--type` `<lxc | qemu | storage>`**
 
-no description available
+没有可用的说明
 
 {% hint style="info" %}
-Requires option(s): `poolid`
+需要选项：`poolid`
 {% endhint %}
 
-<a id="cli_pveum_pool_modify"></a>
+## **pveum pool modify** `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_modify" id="cli_pveum_pool_modify"></a>
 
-
-
-**pveum pool modify** `<poolid>` `[OPTIONS]`
-
-Update pool.
+更新资源池。
 
 **`<poolid>`: `<string>`**
 
-no description available
+没有可用的说明
 
-**`--allow-move` `<boolean>` (*default \=* `0`)**
+**`--allow-move` `<boolean>` （*默认值 \=* `0`）**
 
-Allow adding a guest even if already in another pool. The guest will be removed from its current pool and added to this one.
+即使客户机已在其他资源池中，也允许添加。客户机将从当前资源池移除，并添加到此资源池。
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--delete` `<boolean>` (*默认 \=* `0`)**
 
-Remove the passed VMIDs and/or storage IDs instead of adding them.
+移除传入的 VMID 和/或存储 ID，而非添加。
 
 **`--storage` `<string>`**
 
-List of storage IDs to add or remove from this pool.
+要添加到此资源池或从中移除的存储 ID 列表。
 
 **`--vms` `<string>`**
 
-List of guest VMIDs to add or remove from this pool.
+要添加到此资源池或从中移除的客户机 VMID 列表。
 
-<a id="cli_pveum_realm_add"></a>
+## **pveum realm add** `<realm> --type <string>` `[OPTIONS]` <a href="#cli_pveum_realm_add" id="cli_pveum_realm_add"></a>
 
-
-
-**pveum realm add** `<realm> --type <string>` `[OPTIONS]`
-
-Add an authentication server.
+添加认证服务器。
 
 **`<realm>`: `<string>`**
 
-Authentication domain ID
+认证域 ID
 
 **`--acr-values` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-Specifies the Authentication Context Class Reference values that theAuthorization Server is being requested to use for the Auth Request.
+指定请求授权服务器在认证请求中使用的认证上下文类引用值。
 
 **`--audiences` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-A list of audiences that the OpenID Issuer may include that are accepted in addition to *client-id*.
+除了 *client-id* 之外，还接受 OpenID 签发者可能包含的受众列表。
 
-**`--autocreate` `<boolean>` (*default \=* `0`)**
+**`--autocreate` `<boolean>` （*默认值 \=* `0`）**
 
-Automatically create users if they do not exist.
+如果用户不存在，则自动创建。
 
 **`--base_dn` `<string>`**
 
-LDAP base domain name
+LDAP 基础域名
 
 **`--bind_dn` `<string>`**
 
-LDAP bind domain name
+LDAP 绑定域名
 
-**`--capath` `<string>` (*default \=* `/etc/ssl/certs`)**
+**`--capath` `<string>` （*默认值 \=* `/etc/ssl/certs`）**
 
-Path to the CA certificate store
+CA 证书存储路径
 
-**`--case-sensitive` `<boolean>` (*default \=* `1`)**
+**`--case-sensitive` `<boolean>` （*默认值 \=* `1`）**
 
-username is case-sensitive
+用户名区分大小写
 
 **`--cert` `<string>`**
 
-Path to the client certificate
+客户端证书路径
 
 **`--certkey` `<string>`**
 
-Path to the client certificate key
+客户端证书密钥路径
 
-**`--check-connection` `<boolean>` (*default \=* `0`)**
+**`--check-connection` `<boolean>` （*默认值 \=* `0`）**
 
-Check bind connection to the server.
+检查与服务器的绑定连接。
 
 **`--client-id` `<string>`**
 
-OpenID Client ID
+OpenID 客户端 ID
 
 **`--client-key` `<string>`**
 
-OpenID Client Key
+OpenID 客户端密钥
 
 **`--comment` `<string>`**
 
@@ -348,199 +268,187 @@ OpenID Client Key
 
 **`--default` `<boolean>`**
 
-Use this as default realm
+将此认证域用作默认认证域
 
 **`--domain` `\S+`**
 
-AD domain name
+AD 域名
 
 **`--filter` `<string>`**
 
-LDAP filter for user sync.
+用户同步的 LDAP 过滤器。
 
-**`--group_classes` `<string>` (*default \=* `groupOfNames, group, univentionGroup, ipausergroup`)**
+**`--group_classes` `<string>` （*默认值 \=* `groupOfNames, group, univentionGroup, ipausergroup`）**
 
-The objectclasses for groups.
+组的对象类。
 
 **`--group_dn` `<string>`**
 
-LDAP base domain name for group sync. If not set, the base\_dn will be used.
+组同步的 LDAP 基础域名。如果未设置，则使用 base\_dn。
 
 **`--group_filter` `<string>`**
 
-LDAP filter for group sync.
+组同步的 LDAP 过滤器。
 
 **`--group_name_attr` `<string>`**
 
-LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name.
+表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。
 
-**`--groups-autocreate` `<boolean>` (*default \=* `0`)**
+**`--groups-autocreate` `<boolean>` （*默认值 \=* `0`）**
 
-Automatically create groups if they do not exist.
+如果组不存在，则自动创建。
 
 **`--groups-claim` `(?^:[A-Za-z0-9\.\-_]+)`**
 
-OpenID claim used to retrieve groups with.
+用于获取组的 OpenID 声明。
 
-**`--groups-overwrite` `<boolean>` (*default \=* `0`)**
+**`--groups-overwrite` `<boolean>` （*默认值 \=* `0`）**
 
-All groups will be overwritten for the user on login.
+登录时覆盖该用户的所有组。
 
 **`--issuer-url` `<string>`**
 
-OpenID Issuer Url
+OpenID 签发者 URL
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` (*default \=* `ldap`)**
+**`--mode` `<ldap | ldap+starttls | ldaps>` （*默认值 \=* `ldap`）**
 
-LDAP protocol mode.
+LDAP 协议模式。
 
 **`--password` `<string>`**
 
-LDAP bind password. Will be stored in */etc/pve/priv/realm/\<REALM\>.pw*.
+LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
 
 **`--port` `<integer> (1 - 65535)`**
 
-Server port.
+服务器端口。
 
 **`--prompt` `(?:none|login|consent|select_account|\S+)`**
 
-Specifies whether the Authorization Server prompts the End-User for reauthentication and consent.
+指定授权服务器是否提示最终用户重新认证并同意。
 
-**`--query-userinfo` `<boolean>` (*default \=* `1`)**
+**`--query-userinfo` `<boolean>` （*默认值 \=* `1`）**
 
-Enables querying the userinfo endpoint for claims values.
+启用对 userinfo 端点的查询，以获取声明值。
 
-**`--scopes` `<string>` (*default \=* `email profile`)**
+**`--scopes` `<string>` （*默认值 \=* `email profile`）**
 
-Specifies the scopes (user details) that should be authorized and returned, for example *email* or *profile*.
+指定应授权并返回的作用域（用户详细信息），例如 *email* 或 *profile*。
 
 **`--secure` `<boolean>`**
 
-Use secure LDAPS protocol. DEPRECATED: use *mode* instead.
+使用安全的 LDAPS 协议。已弃用：请改用 *mode*。
 
 **`--server1` `<string>`**
 
-Server IP address (or DNS name)
+服务器 IP 地址（或 DNS 名称）
 
 **`--server2` `<string>`**
 
-Fallback Server IP address (or DNS name)
+备用服务器 IP 地址（或 DNS 名称）
 
 **`--sslversion` `<tlsv1 | tlsv1_1 | tlsv1_2 | tlsv1_3>`**
 
-LDAPS TLS/SSL version. It’s not recommended to use version older than 1.2!
+LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 **`--sync-defaults-options` `[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]`**
 
-The default options for behavior of synchronizations.
+同步行为的默认选项。
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-Comma separated list of key\=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email\=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
+以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 *mail* 映射到 PVE 的 *email*，请写入 *email\=mail*。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
-Use Two-factor authentication.
+使用双因素认证。
 
 **`--type` `<ad | ldap | openid | pam | pve>`**
 
-Realm type.
+认证域类型。
 
 **`--user_attr` `\S{2,}`**
 
-LDAP user attribute name
+LDAP 用户属性名称
 
-**`--user_classes` `<string>` (*default \=* `inetorgperson, posixaccount, person, user`)**
+**`--user_classes` `<string>` （*默认值 \=* `inetorgperson, posixaccount, person, user`）**
 
-The objectclasses for users.
+用户的对象类。
 
 **`--username-claim` `<string>`**
 
-OpenID claim used to generate the unique username.
+用于生成唯一用户名的 OpenID 声明。
 
-**`--verify` `<boolean>` (*default \=* `0`)**
+**`--verify` `<boolean>` （*默认值 \=* `0`）**
 
-Verify the server’s SSL certificate
+验证服务器的 SSL 证书
 
-<a id="cli_pveum_realm_delete"></a>
+## **pveum realm delete** `<realm>` <a href="#cli_pveum_realm_delete" id="cli_pveum_realm_delete"></a>
 
-
-
-**pveum realm delete** `<realm>`
-
-Delete an authentication server.
+删除认证服务器。
 
 **`<realm>`: `<string>`**
 
-Authentication domain ID
+认证域 ID
 
-<a id="cli_pveum_realm_list"></a>
+## **pveum realm list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_realm_list" id="cli_pveum_realm_list"></a>
 
+认证域索引。
 
+## **pveum realm modify** `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_modify" id="cli_pveum_realm_modify"></a>
 
-**pveum realm list** `[FORMAT_OPTIONS]`
-
-Authentication domain index.
-
-<a id="cli_pveum_realm_modify"></a>
-
-
-
-**pveum realm modify** `<realm>` `[OPTIONS]`
-
-Update authentication server settings.
+更新认证服务器设置。
 
 **`<realm>`: `<string>`**
 
-Authentication domain ID
+认证域 ID
 
 **`--acr-values` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-Specifies the Authentication Context Class Reference values that theAuthorization Server is being requested to use for the Auth Request.
+指定请求授权服务器在认证请求中使用的认证上下文类引用值。
 
 **`--audiences` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-A list of audiences that the OpenID Issuer may include that are accepted in addition to *client-id*.
+除了 *client-id* 之外，还接受 OpenID 签发者可能包含的受众列表。
 
-**`--autocreate` `<boolean>` (*default \=* `0`)**
+**`--autocreate` `<boolean>` （*默认值 \=* `0`）**
 
-Automatically create users if they do not exist.
+如果用户不存在，则自动创建。
 
 **`--base_dn` `<string>`**
 
-LDAP base domain name
+LDAP 基础域名
 
 **`--bind_dn` `<string>`**
 
-LDAP bind domain name
+LDAP 绑定域名
 
-**`--capath` `<string>` (*default \=* `/etc/ssl/certs`)**
+**`--capath` `<string>` （*默认值 \=* `/etc/ssl/certs`）**
 
-Path to the CA certificate store
+CA 证书存储路径
 
-**`--case-sensitive` `<boolean>` (*default \=* `1`)**
+**`--case-sensitive` `<boolean>` （*默认值 \=* `1`）**
 
-username is case-sensitive
+用户名区分大小写
 
 **`--cert` `<string>`**
 
-Path to the client certificate
+客户端证书路径
 
 **`--certkey` `<string>`**
 
-Path to the client certificate key
+客户端证书密钥路径
 
-**`--check-connection` `<boolean>` (*default \=* `0`)**
+**`--check-connection` `<boolean>` （*默认值 \=* `0`）**
 
-Check bind connection to the server.
+检查与服务器的绑定连接。
 
 **`--client-id` `<string>`**
 
-OpenID Client ID
+OpenID 客户端 ID
 
 **`--client-key` `<string>`**
 
-OpenID Client Key
+OpenID 客户端密钥
 
 **`--comment` `<string>`**
 
@@ -548,7 +456,7 @@ OpenID Client Key
 
 **`--default` `<boolean>`**
 
-Use this as default realm
+将此认证域用作默认认证域
 
 **`--delete` `<string>`**
 
@@ -560,599 +468,495 @@ Use this as default realm
 
 **`--domain` `\S+`**
 
-AD domain name
+AD 域名
 
 **`--filter` `<string>`**
 
-LDAP filter for user sync.
+用户同步的 LDAP 过滤器。
 
-**`--group_classes` `<string>` (*default \=* `groupOfNames, group, univentionGroup, ipausergroup`)**
+**`--group_classes` `<string>` （*默认值 \=* `groupOfNames, group, univentionGroup, ipausergroup`）**
 
-The objectclasses for groups.
+组的对象类。
 
 **`--group_dn` `<string>`**
 
-LDAP base domain name for group sync. If not set, the base\_dn will be used.
+组同步的 LDAP 基础域名。如果未设置，则使用 base\_dn。
 
 **`--group_filter` `<string>`**
 
-LDAP filter for group sync.
+组同步的 LDAP 过滤器。
 
 **`--group_name_attr` `<string>`**
 
-LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name.
+表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。
 
-**`--groups-autocreate` `<boolean>` (*default \=* `0`)**
+**`--groups-autocreate` `<boolean>` （*默认值 \=* `0`）**
 
-Automatically create groups if they do not exist.
+如果组不存在，则自动创建。
 
 **`--groups-claim` `(?^:[A-Za-z0-9\.\-_]+)`**
 
-OpenID claim used to retrieve groups with.
+用于获取组的 OpenID 声明。
 
-**`--groups-overwrite` `<boolean>` (*default \=* `0`)**
+**`--groups-overwrite` `<boolean>` （*默认值 \=* `0`）**
 
-All groups will be overwritten for the user on login.
+登录时覆盖该用户的所有组。
 
 **`--issuer-url` `<string>`**
 
-OpenID Issuer Url
+OpenID 签发者 URL
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` (*default \=* `ldap`)**
+**`--mode` `<ldap | ldap+starttls | ldaps>` （*默认值 \=* `ldap`）**
 
-LDAP protocol mode.
+LDAP 协议模式。
 
 **`--password` `<string>`**
 
-LDAP bind password. Will be stored in */etc/pve/priv/realm/\<REALM\>.pw*.
+LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
 
 **`--port` `<integer> (1 - 65535)`**
 
-Server port.
+服务器端口。
 
 **`--prompt` `(?:none|login|consent|select_account|\S+)`**
 
-Specifies whether the Authorization Server prompts the End-User for reauthentication and consent.
+指定授权服务器是否提示最终用户重新认证并同意。
 
-**`--query-userinfo` `<boolean>` (*default \=* `1`)**
+**`--query-userinfo` `<boolean>` （*默认值 \=* `1`）**
 
-Enables querying the userinfo endpoint for claims values.
+启用对 userinfo 端点的查询，以获取声明值。
 
-**`--scopes` `<string>` (*default \=* `email profile`)**
+**`--scopes` `<string>` （*默认值 \=* `email profile`）**
 
-Specifies the scopes (user details) that should be authorized and returned, for example *email* or *profile*.
+指定应授权并返回的作用域（用户详细信息），例如 *email* 或 *profile*。
 
 **`--secure` `<boolean>`**
 
-Use secure LDAPS protocol. DEPRECATED: use *mode* instead.
+使用安全的 LDAPS 协议。已弃用：请改用 *mode*。
 
 **`--server1` `<string>`**
 
-Server IP address (or DNS name)
+服务器 IP 地址（或 DNS 名称）
 
 **`--server2` `<string>`**
 
-Fallback Server IP address (or DNS name)
+备用服务器 IP 地址（或 DNS 名称）
 
 **`--sslversion` `<tlsv1 | tlsv1_1 | tlsv1_2 | tlsv1_3>`**
 
-LDAPS TLS/SSL version. It’s not recommended to use version older than 1.2!
+LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 **`--sync-defaults-options` `[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]`**
 
-The default options for behavior of synchronizations.
+同步行为的默认选项。
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-Comma separated list of key\=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email\=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
+以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 *mail* 映射到 PVE 的 *email*，请写入 *email\=mail*。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
-Use Two-factor authentication.
+使用双因素认证。
 
 **`--user_attr` `\S{2,}`**
 
-LDAP user attribute name
+LDAP 用户属性名称
 
-**`--user_classes` `<string>` (*default \=* `inetorgperson, posixaccount, person, user`)**
+**`--user_classes` `<string>` （*默认值 \=* `inetorgperson, posixaccount, person, user`）**
 
-The objectclasses for users.
+用户的对象类。
 
-**`--verify` `<boolean>` (*default \=* `0`)**
+**`--verify` `<boolean>` （*默认值 \=* `0`）**
 
-Verify the server’s SSL certificate
+验证服务器的 SSL 证书
 
-<a id="cli_pveum_realm_sync"></a>
+## **pveum realm sync** `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_sync" id="cli_pveum_realm_sync"></a>
 
-
-
-**pveum realm sync** `<realm>` `[OPTIONS]`
-
-Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name *name-$realm*, so make sure those groups do not exist to prevent overwriting.
+将用户和/或组从配置的 LDAP 同步到 user.cfg。注意：同步后的组将命名为 *name-$realm*，因此请确保这些组不存在，以免覆盖。
 
 **`<realm>`: `<string>`**
 
-Authentication domain ID
+认证域 ID
 
-**`--dry-run` `<boolean>` (*default \=* `0`)**
+**`--dry-run` `<boolean>` （*默认值 \=* `0`）**
 
-If set, does not write anything.
+如果设置，则不写入任何内容。
 
-**`--enable-new` `<boolean>` (*default \=* `1`)**
+**`--enable-new` `<boolean>` （*默认值 \=* `1`）**
 
-Enable newly synced users immediately.
+立即启用新同步的用户。
 
 **`--full` `<boolean>`**
 
-DEPRECATED: use *remove-vanished* instead. If set, uses the LDAP Directory as source of truth, deleting users or groups not returned from the sync and removing all locally modified properties of synced users. If not set, only syncs information which is present in the synced data, and does not delete or modify anything else.
+已弃用：请改用 *remove-vanished*。如果设置，则以 LDAP 目录为准，删除同步未返回的用户或组，并移除同步用户所有在本地修改的属性。如果未设置，则仅同步已同步数据中存在的信息，不删除或修改其他任何内容。
 
 **`--purge` `<boolean>`**
 
-DEPRECATED: use *remove-vanished* instead. Remove ACLs for users or groups which were removed from the config during a sync.
+已弃用：请改用 *remove-vanished*。移除在同步期间从配置中移除的用户或组的 ACL。
 
-**`--remove-vanished` `([acl];[properties];[entry])|none` (*default \=* `none`)**
+**`--remove-vanished` `([acl];[properties];[entry])|none` （*默认值 \=* `none`）**
 
-A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: *entry* removes the user/group when not returned from the sync. *properties* removes the set properties on existing user/group that do not appear in the source (even custom ones). *acl* removes acls when the user/group is not returned from the sync. Instead of a list it also can be *none* (the default).
+以分号分隔的列表，指定当相应项目或用户在同步中消失时要移除的内容。可用值如下：*entry* 在同步未返回用户/组时将其移除。*properties* 移除现有用户/组上已设置但源中不存在的属性（包括自定义属性）。*acl* 在同步未返回用户/组时移除 ACL。也可以不使用列表，而使用 *none*（默认值）。
 
 **`--scope` `<both | groups | users>`**
 
-Select what to sync.
+选择要同步的内容。
 
-<a id="cli_pveum_role_add"></a>
+## **pveum role add** `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_add" id="cli_pveum_role_add"></a>
 
-
-
-**pveum role add** `<roleid>` `[OPTIONS]`
-
-Create new role.
+创建新角色。
 
 **`<roleid>`: `<string>`**
 
-no description available
+没有可用的说明
 
 **`--privs` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_role_delete"></a>
+## **pveum role delete** `<roleid>` <a href="#cli_pveum_role_delete" id="cli_pveum_role_delete"></a>
 
-
-
-**pveum role delete** `<roleid>`
-
-Delete role.
+删除角色。
 
 **`<roleid>`: `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_role_list"></a>
+## **pveum role list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_role_list" id="cli_pveum_role_list"></a>
 
+角色索引。
 
+## **pveum role modify** `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_modify" id="cli_pveum_role_modify"></a>
 
-**pveum role list** `[FORMAT_OPTIONS]`
-
-Role index.
-
-<a id="cli_pveum_role_modify"></a>
-
-
-
-**pveum role modify** `<roleid>` `[OPTIONS]`
-
-Update an existing role.
+更新现有角色。
 
 **`<roleid>`: `<string>`**
 
-no description available
+没有可用的说明
 
 **`--append` `<boolean>`**
 
-no description available
+没有可用的说明
 
 {% hint style="info" %}
-Requires option(s): `privs`
+需要选项：`privs`
 {% endhint %}
 
 **`--privs` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_roleadd"></a>
+## **pveum roleadd** <a href="#cli_pveum_roleadd" id="cli_pveum_roleadd"></a>
 
+*pveum role add* 的别名。
 
+## **pveum roledel** <a href="#cli_pveum_roledel" id="cli_pveum_roledel"></a>
 
-**pveum roleadd**
+*pveum role delete* 的别名。
 
-An alias for *pveum role add*.
+## **pveum rolemod** <a href="#cli_pveum_rolemod" id="cli_pveum_rolemod"></a>
 
-<a id="cli_pveum_roledel"></a>
+*pveum role modify* 的别名。
 
+## **pveum ticket** `<username>` `[OPTIONS]` <a href="#cli_pveum_ticket" id="cli_pveum_ticket"></a>
 
-
-**pveum roledel**
-
-An alias for *pveum role delete*.
-
-<a id="cli_pveum_rolemod"></a>
-
-
-
-**pveum rolemod**
-
-An alias for *pveum role modify*.
-
-<a id="cli_pveum_ticket"></a>
-
-
-
-**pveum ticket** `<username>` `[OPTIONS]`
-
-Create or verify authentication ticket.
+创建或验证认证票据。
 
 **`<username>`: `<string>`**
 
-User name
+用户名
 
-**`--new-format` `<boolean>` (*default \=* `1`)**
+**`--new-format` `<boolean>` （*默认值 \=* `1`）**
 
-This parameter is now ignored and assumed to be 1\.
+此参数现在会被忽略，并视为 1。
 
 **`--otp` `<string>`**
 
-One-time password for Two-factor authentication.
+双因素认证的一次性密码。
 
 **`--path` `<string>`**
 
-Verify ticket, and check if user have access *privs* on *path*
+验证票据，并检查用户是否具有 *privs* 访问权限，路径为 *path*
 
 {% hint style="info" %}
-Requires option(s): `privs`
+需要选项：`privs`
 {% endhint %}
 
 **`--privs` `<string>`**
 
-Verify ticket, and check if user have access *privs* on *path*
+验证票据，并检查用户是否具有 *privs* 访问权限，路径为 *path*
 
 {% hint style="info" %}
-Requires option(s): `path`
+需要选项：`path`
 {% endhint %}
 
 **`--realm` `<string>`**
 
-You can optionally pass the realm using this parameter. Normally the realm is simply added to the username \<username\>@\<realm\>.
+可以选择通过此参数传入认证域。通常将认证域直接添加到用户名中：\<username\>@\<realm\>。
 
 **`--tfa-challenge` `<string>`**
 
-The signed TFA challenge string the user wants to respond to.
+用户要响应的已签名 TFA 质询字符串。
 
-<a id="cli_pveum_user_add"></a>
+## **pveum user add** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_add" id="cli_pveum_user_add"></a>
 
-
-
-**pveum user add** `<userid>` `[OPTIONS]`
-
-Create new user.
+创建新用户。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--email` `<string>`**
 
-no description available
+没有可用的说明
 
-**`--enable` `<boolean>` (*default \=* `1`)**
+**`--enable` `<boolean>` （*默认值 \=* `1`）**
 
-Enable the account (default). You can set this to *0* to disable the account
+启用账户（默认）。可以将其设置为 *0* 以禁用账户
 
 **`--expire` `<integer> (0 - N)`**
 
-Account expiration date (seconds since epoch). *0* means no expiration date.
+账户到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
 
 **`--firstname` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--groups` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--keys` `[0-9a-zA-Z!=]{0,4096}`**
 
-Keys for two factor auth (yubico).
+双因素认证的密钥（yubico）。
 
 **`--lastname` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--password` `<string>`**
 
-Initial password.
+初始密码。
 
-<a id="cli_pveum_user_delete"></a>
+## **pveum user delete** `<userid>` <a href="#cli_pveum_user_delete" id="cli_pveum_user_delete"></a>
 
-
-
-**pveum user delete** `<userid>`
-
-Delete user.
+删除用户。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
-<a id="cli_pveum_user_list"></a>
+## **pveum user list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_list" id="cli_pveum_user_list"></a>
 
-
-
-**pveum user list** `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-User index.
+用户索引。
 
 **`--enabled` `<boolean>`**
 
-Optional filter for enable property.
+enable 属性的可选过滤器。
 
-**`--full` `<boolean>` (*default \=* `0`)**
+**`--full` `<boolean>` （*默认值 \=* `0`）**
 
-Include group and token information.
+包含组和令牌信息。
 
-<a id="cli_pveum_user_modify"></a>
+## **pveum user modify** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_modify" id="cli_pveum_user_modify"></a>
 
-
-
-**pveum user modify** `<userid>` `[OPTIONS]`
-
-Update user configuration.
+更新用户配置。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`--append` `<boolean>`**
 
-no description available
+没有可用的说明
 
 {% hint style="info" %}
-Requires option(s): `groups`
+需要选项：`groups`
 {% endhint %}
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--email` `<string>`**
 
-no description available
+没有可用的说明
 
-**`--enable` `<boolean>` (*default \=* `1`)**
+**`--enable` `<boolean>` （*默认值 \=* `1`）**
 
-Enable the account (default). You can set this to *0* to disable the account
+启用账户（默认）。可以将其设置为 *0* 以禁用账户
 
 **`--expire` `<integer> (0 - N)`**
 
-Account expiration date (seconds since epoch). *0* means no expiration date.
+账户到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
 
 **`--firstname` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--groups` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--keys` `[0-9a-zA-Z!=]{0,4096}`**
 
-Keys for two factor auth (yubico).
+双因素认证的密钥（yubico）。
 
 **`--lastname` `<string>`**
 
-no description available
+没有可用的说明
 
-<a id="cli_pveum_user_permissions"></a>
+## **pveum user permissions** `[<userid>]` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_permissions" id="cli_pveum_user_permissions"></a>
 
-
-
-**pveum user permissions** `[<userid>]` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Retrieve effective permissions of given user/token.
+获取给定用户/令牌的有效权限。
 
 **`<userid>`: `(?^:^(?^:[^\s:/]+)\@(?^:[A-Za-z][A-Za-z0-9\.\-_]+)(?:!(?^:[A-Za-z][A-Za-z0-9\.\-_]+))?$)`**
 
-User ID or full API token ID
+用户 ID 或完整的 API 令牌 ID
 
 **`--path` `<string>`**
 
-Only dump this specific path, not the whole tree.
+仅转储此特定路径，而不是整棵树。
 
-<a id="cli_pveum_user_tfa_delete"></a>
+## **pveum user tfa delete** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_tfa_delete" id="cli_pveum_user_tfa_delete"></a>
 
-
-
-**pveum user tfa delete** `<userid>` `[OPTIONS]`
-
-Delete TFA entries from a user.
+删除用户的 TFA 条目。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`--id` `<string>`**
 
-The TFA ID, if none provided, all TFA entries will be deleted.
+TFA ID，如果未提供，则删除所有 TFA 条目。
 
-<a id="cli_pveum_user_tfa_list"></a>
+## **pveum user tfa list** `[<userid>]` <a href="#cli_pveum_user_tfa_list" id="cli_pveum_user_tfa_list"></a>
 
-
-
-**pveum user tfa list** `[<userid>]`
-
-List TFA entries.
+列出 TFA 条目。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
-<a id="cli_pveum_user_tfa_unlock"></a>
+## **pveum user tfa unlock** `<userid>` <a href="#cli_pveum_user_tfa_unlock" id="cli_pveum_user_tfa_unlock"></a>
 
-
-
-**pveum user tfa unlock** `<userid>`
-
-Unlock a user’s TFA authentication.
+解锁用户的 TFA 认证。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
-<a id="cli_pveum_user_token_add"></a>
+## **pveum user token add** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_add" id="cli_pveum_user_token_add"></a>
 
-
-
-**pveum user token add** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Generate a new API token for a specific user. NOTE: returns API token value, which needs to be stored as it cannot be retrieved afterwards!
+为特定用户生成新的 API 令牌。注意：返回的 API 令牌值需要保存，因为之后无法再次获取！
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`<tokenid>`: `(?^:[A-Za-z][A-Za-z0-9\.\-_]+)`**
 
-User-specific token identifier.
+用户特定的令牌标识符。
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
-**`--expire` `<integer> (0 - N)` (*default \=* `same as user`)**
+**`--expire` `<integer> (0 - N)` （*默认值 \=* `same as user`）**
 
-API token expiration date (seconds since epoch). *0* means no expiration date.
+API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
 
-**`--privsep` `<boolean>` (*default \=* `1`)**
+**`--privsep` `<boolean>` （*默认值 \=* `1`）**
 
-Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
+使用单独的 ACL 限制 API 令牌权限（默认），或赋予对应用户的全部权限。
 
-<a id="cli_pveum_user_token_delete"></a>
+## **pveum user token delete** `<userid> <tokenid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_delete" id="cli_pveum_user_token_delete"></a>
 
-
-
-**pveum user token delete** `<userid> <tokenid>` `[FORMAT_OPTIONS]`
-
-Remove API token for a specific user.
+移除特定用户的 API 令牌。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`<tokenid>`: `(?^:[A-Za-z][A-Za-z0-9\.\-_]+)`**
 
-User-specific token identifier.
+用户特定的令牌标识符。
 
-<a id="cli_pveum_user_token_list"></a>
+## **pveum user token list** `<userid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_list" id="cli_pveum_user_token_list"></a>
 
-
-
-**pveum user token list** `<userid>` `[FORMAT_OPTIONS]`
-
-Get user API tokens.
+获取用户 API 令牌。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
-<a id="cli_pveum_user_token_modify"></a>
+## **pveum user token modify** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_modify" id="cli_pveum_user_token_modify"></a>
 
-
-
-**pveum user token modify** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Update API token for a specific user. NOTE: when *regenerate* is set, the returned token value needs to be stored as it cannot be retrieved afterwards!
+更新特定用户的 API 令牌。注意：设置 *regenerate* 后，返回的令牌值需要保存，因为之后无法再次获取！
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`<tokenid>`: `(?^:[A-Za-z][A-Za-z0-9\.\-_]+)`**
 
-User-specific token identifier.
+用户特定的令牌标识符。
 
 **`--comment` `<string>`**
 
-no description available
+没有可用的说明
 
 **`--delete` `<string>`**
 
 要删除的设置列表。
 
-**`--expire` `<integer> (0 - N)` (*default \=* `same as user`)**
+**`--expire` `<integer> (0 - N)` （*默认值 \=* `same as user`）**
 
-API token expiration date (seconds since epoch). *0* means no expiration date.
+API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
 
-**`--privsep` `<boolean>` (*default \=* `1`)**
+**`--privsep` `<boolean>` （*默认值 \=* `1`）**
 
-Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
+使用单独的 ACL 限制 API 令牌权限（默认），或赋予对应用户的全部权限。
 
-**`--regenerate` `<boolean>` (*default \=* `0`)**
+**`--regenerate` `<boolean>` （*默认值 \=* `0`）**
 
-Regenerate the token’s secret value. All users of the previous secret will lose access after this operation.
+重新生成令牌的秘密值。此操作之后，所有使用旧秘密值的用户都将失去访问权限。
 
-<a id="cli_pveum_user_token_permissions"></a>
+## **pveum user token permissions** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_permissions" id="cli_pveum_user_token_permissions"></a>
 
-
-
-**pveum user token permissions** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Retrieve effective permissions of given token.
+获取给定令牌的有效权限。
 
 **`<userid>`: `<string>`**
 
-Full User ID, in the `name@realm` format.
+完整的用户 ID，格式为 `name@realm`。
 
 **`<tokenid>`: `(?^:[A-Za-z][A-Za-z0-9\.\-_]+)`**
 
-User-specific token identifier.
+用户特定的令牌标识符。
 
 **`--path` `<string>`**
 
-Only dump this specific path, not the whole tree.
+仅转储此特定路径，而不是整棵树。
 
-<a id="cli_pveum_user_token_remove"></a>
+## **pveum user token remove** <a href="#cli_pveum_user_token_remove" id="cli_pveum_user_token_remove"></a>
 
+*pveum user token delete* 的别名。
 
+## **pveum useradd** <a href="#cli_pveum_useradd" id="cli_pveum_useradd"></a>
 
-**pveum user token remove**
+*pveum user add* 的别名。
 
-An alias for *pveum user token delete*.
+## **pveum userdel** <a href="#cli_pveum_userdel" id="cli_pveum_userdel"></a>
 
-<a id="cli_pveum_useradd"></a>
+*pveum user delete* 的别名。
 
+## **pveum usermod** <a href="#cli_pveum_usermod" id="cli_pveum_usermod"></a>
 
-
-**pveum useradd**
-
-An alias for *pveum user add*.
-
-<a id="cli_pveum_userdel"></a>
-
-
-
-**pveum userdel**
-
-An alias for *pveum user delete*.
-
-<a id="cli_pveum_usermod"></a>
-
-
-
-**pveum usermod**
-
-An alias for *pveum user modify*.
+*pveum user modify* 的别名。
 
 ---
 

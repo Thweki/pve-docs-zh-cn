@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/cfg/raw`
 
-Get the Ceph configuration file.
+获取 Ceph 配置文件。
 
 **方法标识：** `raw`
 
@@ -43,7 +43,7 @@ Get the Ceph configuration file.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,7 +53,7 @@ Get the Ceph configuration file.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

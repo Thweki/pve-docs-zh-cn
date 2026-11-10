@@ -1,141 +1,141 @@
-# 14.6. Two-Factor Authentication <a href="#pveum_tfa_auth" id="pveum_tfa_auth"></a>
+# 14.6. 双因素身份验证 <a href="#pveum_tfa_auth" id="pveum_tfa_auth"></a>
 
-There are two ways to use two-factor authentication:
+有两种方式使用双因素身份验证：
 
-It can be required by the authentication realm, either via *TOTP* (Time-based One-Time Password) or *YubiKey OTP*. In this case, a newly created user needs to have their keys added immediately, as there is no way to log in without the second factor. In the case of *TOTP*, users can also change the *TOTP* later on, provided they can log in first.
+认证域可以要求使用 *TOTP*（基于时间的一次性密码）或 *YubiKey OTP*。此时，新创建的用户需要立即添加密钥，因为没有第二因素就无法登录。对于 *TOTP*，用户还可以稍后更改 *TOTP*，前提是他们能够先登录。
 
-Alternatively, users can choose to opt-in to two-factor authentication later on, even if the realm does not enforce it.
+或者，即使认证域不强制要求，用户也可以在之后选择启用双因素身份验证。
 
-## 14.6.1. Available Second Factors <a href="#_available_second_factors" id="_available_second_factors"></a>
+## 14.6.1. 可用的第二因素 <a href="#available_second_factors" id="available_second_factors"></a>
 
-You can set up multiple second factors, in order to avoid a situation in which losing your smartphone or security key locks you out of your account permanently.
+可以设置多个第二因素，以避免丢失智能手机或安全密钥后永久无法访问账户。
 
-The following two-factor authentication methods are available in addition to realm-enforced TOTP and YubiKey OTP:
+除认证域强制使用的 TOTP 和 YubiKey OTP 外，还可以使用以下双因素身份验证方法：
 
-- User configured TOTP ([Time-based One-Time Password](https://en.wikipedia.org/wiki/Time-based_One-Time_Password)). A short code derived from a shared secret and the current time, it changes every 30 seconds.
-- WebAuthn ([Web Authentication](https://en.wikipedia.org/wiki/WebAuthn)). A general standard for authentication. It is implemented by various security devices, like hardware keys or trusted platform modules (TPM) from a computer or smart phone.
-- Single use Recovery Keys. A list of keys which should either be printed out and locked in a secure place or saved digitally in an electronic vault. Each key can be used only once. These are perfect for ensuring that you are not locked out, even if all of your other second factors are lost or corrupt.
+- 用户配置的 TOTP（[基于时间的一次性密码](https://en.wikipedia.org/wiki/Time-based_One-Time_Password)）。由共享密钥和当前时间推导出的短代码，每 30 秒更改一次。
+- WebAuthn（[Web 身份验证](https://en.wikipedia.org/wiki/WebAuthn)）。一种通用身份验证标准，由各种安全设备实现，例如硬件密钥，或计算机和智能手机中的可信平台模块（TPM）。
+- 一次性恢复密钥。应将此密钥列表打印后锁在安全的地方，或以数字形式保存在电子保险库中。每个密钥只能使用一次。即使所有其他第二因素均丢失或损坏，它们也能很好地确保您不会被锁定在账户之外。
 
-Before WebAuthn was supported, U2F could be setup by the user. Existing U2F factors can still be used, but it is recommended to switch to WebAuthn, once it is configured on the server.
+在支持 WebAuthn 之前，用户可以设置 U2F。现有 U2F 因素仍可使用，但建议在服务器上配置 WebAuthn 后切换到 WebAuthn。
 
-## 14.6.2. Realm Enforced Two-Factor Authentication <a href="#_realm_enforced_two_factor_authentication" id="_realm_enforced_two_factor_authentication"></a>
+## 14.6.2. 认证域强制的双因素身份验证 <a href="#realm_enforced_two_factor_authentication" id="realm_enforced_two_factor_authentication"></a>
 
-This can be done by selecting one of the available methods via the *TFA* dropdown box when adding or editing an Authentication Realm. When a realm has TFA enabled, it becomes a requirement, and only users with configured TFA will be able to log in.
+添加或编辑认证域时，可通过 *TFA* 下拉框选择一种可用方法。认证域启用 TFA 后，TFA 将成为强制要求，只有配置了 TFA 的用户才能登录。
 
-Currently there are two methods available:
+目前有两种可用方法：
 
-**Time-based OATH (TOTP)**
+**基于时间的 OATH（TOTP）**
 
-This uses the standard HMAC-SHA1 algorithm, where the current time is hashed with the user’s configured key. The time step and password length parameters are configurable.
+这使用标准 HMAC-SHA1 算法，将当前时间与用户配置的密钥一起进行哈希。时间步长和密码长度参数可配置。
 
-A user can have multiple keys configured (separated by spaces), and the keys can be specified in Base32 (RFC3548) or hexadecimal notation.
+用户可以配置多个密钥（以空格分隔），密钥可以使用 Base32（RFC3548）或十六进制表示。
 
-Proxmox VE provides a key generation tool (`oathkeygen`) which prints out a random key in Base32 notation, that can be used directly with various OTP tools, such as the `oathtool` command-line tool, or on Android Google Authenticator, FreeOTP, andOTP or similar applications.
+Proxmox VE 提供密钥生成工具（`oathkeygen`），可输出 Base32 表示的随机密钥，直接用于各种 OTP 工具，例如 `oathtool` 命令行工具，或 Android 上的 Google Authenticator、FreeOTP、andOTP 等类似应用。
 
 **YubiKey OTP**
 
-For authenticating via a YubiKey a Yubico API ID, API KEY and validation server URL must be configured, and users must have a YubiKey available. In order to get the key ID from a YubiKey, you can trigger the YubiKey once after connecting it via USB, and copy the first 12 characters of the typed password into the user’s *Key IDs* field.
+通过 YubiKey 进行身份验证时，必须配置 Yubico API ID、API KEY 和验证服务器 URL，并且用户必须拥有可用的 YubiKey。要从 YubiKey 获取密钥 ID，可以通过 USB 连接后触发 YubiKey 一次，并将输入密码的前 12 个字符复制到用户的 *密钥 ID* 字段。
 
-Please refer to the [YubiKey OTP](https://developers.yubico.com/OTP/) documentation for how to use the [YubiCloud](https://www.yubico.com/products/services-software/yubicloud/) or [host your own verification server](https://developers.yubico.com/Software_Projects/Yubico_OTP/YubiCloud_Validation_Servers/).
+请参阅 [YubiKey OTP](https://developers.yubico.com/OTP/) 文档，了解如何使用 [YubiCloud](https://www.yubico.com/products/services-software/yubicloud/) 或 [托管自己的验证服务器](https://developers.yubico.com/Software_Projects/Yubico_OTP/YubiCloud_Validation_Servers/)。
 
-## 14.6.3. Limits and Lockout of Two-Factor Authentication <a href="#pveum_tfa_lockout" id="pveum_tfa_lockout"></a>
+## 14.6.3. 双因素身份验证的限制与锁定 <a href="#pveum_tfa_lockout" id="pveum_tfa_lockout"></a>
 
-A second factor is meant to protect users if their password is somehow leaked or guessed. However, some factors could still be broken by brute force. For this reason, users will be locked out after too many failed 2nd factor login attempts.
+第二因素旨在用户密码以某种方式泄露或被猜出时提供保护。然而，某些因素仍可能被暴力破解。因此，第二因素登录尝试失败过多后，用户会被锁定。
 
-For TOTP, 8 failed attempts will disable the user’s TOTP factors. They are unlocked when logging in with a recovery key. If TOTP was the only available factor, admin intervention is required, and it is highly recommended to require the user to change their password immediately.
+对于 TOTP，8 次失败尝试会禁用用户的 TOTP 因素。使用恢复密钥登录时会解锁。如果 TOTP 是唯一可用因素，则需要管理员介入，并强烈建议要求用户立即更改密码。
 
-Since FIDO2/Webauthn and recovery keys are less susceptible to brute force attacks, the limit there is higher (100 tries), but all second factors are blocked for an hour when exceeded.
+由于 FIDO2/Webauthn 和恢复密钥较不易遭受暴力攻击，其限制较高（100 次尝试），但超出限制后，所有第二因素将被阻止一小时。
 
-An admin can unlock a user’s Two-Factor Authentication at any time via the user list in the UI or the command line:
+管理员可随时通过 UI 中的用户列表或命令行解锁用户的双因素身份验证：
 
 ```text
  pveum user tfa unlock joe@pve
 ```
 
-## 14.6.4. User Configured TOTP Authentication <a href="#pveum_user_configured_totp" id="pveum_user_configured_totp"></a>
+## 14.6.4. 用户配置的 TOTP 身份验证 <a href="#pveum_user_configured_totp" id="pveum_user_configured_totp"></a>
 
-Users can choose to enable *TOTP* or *WebAuthn* as a second factor on login, via the *TFA* button in the user list (unless the realm enforces *YubiKey OTP*).
+用户可以选择启用 *TOTP* 或 *WebAuthn* 作为登录时的第二因素，通过用户列表中的 *TFA* 按钮进行设置（除非认证域强制使用 *YubiKey OTP*）。
 
-Users can always add and use one time *Recovery Keys*.
+用户始终可以添加和使用一次性 *恢复密钥*。
 
 [![screenshot/gui-datacenter-two-factor.png](../../assets/screenshot-gui-datacenter-two-factor-png-00fd252ee4e8.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-two-factor.png)
 
-After opening the *TFA* window, the user is presented with a dialog to set up *TOTP* authentication. The *Secret* field contains the key, which can be randomly generated via the *Randomize* button. An optional *Issuer Name* can be added to provide information to the *TOTP* app about what the key belongs to. Most *TOTP* apps will show the issuer name together with the corresponding *OTP* values. The username is also included in the QR code for the *TOTP* app.
+打开 *TFA* 窗口后，用户会看到用于设置 *TOTP* 身份验证的对话框。*密钥* 字段包含密钥，可通过 *随机生成* 按钮随机生成。可以添加可选的 *签发者名称*，向 *TOTP* 应用提供此密钥用途的信息。大多数 *TOTP* 应用会将签发者名称与对应的 *OTP* 值一起显示。用户名也包含在供 *TOTP* 应用使用的二维码中。
 
-After generating a key, a QR code will be displayed, which can be used with most OTP apps such as FreeOTP. The user then needs to verify the current user password (unless logged in as *root*), as well as the ability to correctly use the *TOTP* key, by typing the current *OTP* value into the *Verification Code* field and pressing the *Apply* button.
+生成密钥后，会显示二维码，可用于 FreeOTP 等大多数 OTP 应用。随后用户需要验证当前用户密码（除非以 *root* 登录），并验证能够正确使用 *TOTP* 密钥：将当前 *OTP* 值输入 *验证码* 字段，然后按 *应用* 按钮。
 
 ## 14.6.5. TOTP <a href="#user_tfa_setup_totp" id="user_tfa_setup_totp"></a>
 
 [![screenshot/pve-gui-tfa-add-totp.png](../../assets/screenshot-pve-gui-tfa-add-totp-png-9157bafa11cd.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-gui-tfa-add-totp.png)
 
-There is no server setup required. Simply install a TOTP app on your smartphone (for example, [FreeOTP](https://freeotp.github.io/)) and use the Proxmox VE web interface to add a TOTP factor.
+不需要服务器设置。只需在智能手机上安装 TOTP 应用（例如 [FreeOTP](https://freeotp.github.io/)），并使用 Proxmox VE Web 界面添加 TOTP 因素。
 
 ## 14.6.6. WebAuthn <a href="#user_tfa_setup_webauthn" id="user_tfa_setup_webauthn"></a>
 
-For WebAuthn to work, you need to have two things:
+要使 WebAuthn 正常工作，需要具备两项条件：
 
-- A trusted HTTPS certificate (for example, by using [Let’s Encrypt](https://pve.proxmox.com/wiki/Certificate_Management)). While it probably works with an untrusted certificate, some browsers may warn or refuse WebAuthn operations if it is not trusted.
-- Setup the WebAuthn configuration (see **Datacenter → Options → WebAuthn Settings** in the Proxmox VE web interface). This can be auto-filled in most setups.
+- 受信任的 HTTPS 证书（例如使用 [Let’s Encrypt](https://pve.proxmox.com/wiki/Certificate_Management)）。虽然它可能可以使用不受信任的证书工作，但如果证书不受信任，某些浏览器可能发出警告或拒绝 WebAuthn 操作。
+- 设置 WebAuthn 配置（参见 Proxmox VE Web 界面的 **数据中心 → 选项 → WebAuthn 设置**）。大多数设置中可以自动填充。
 
-Once you have fulfilled both of these requirements, you can add a WebAuthn configuration in the **Two Factor** panel under **Datacenter → Permissions → Two Factor**.
+满足这两项要求后，即可在 **双因素** 面板（位于 **数据中心 → 权限 → 双因素** 下）添加 WebAuthn 配置。
 
-## 14.6.7. Recovery Keys <a href="#user_tfa_setup_recovery_keys" id="user_tfa_setup_recovery_keys"></a>
+## 14.6.7. 恢复密钥 <a href="#user_tfa_setup_recovery_keys" id="user_tfa_setup_recovery_keys"></a>
 
 [![screenshot/pve-gui-tfa-add-recovery-keys.png](../../assets/screenshot-pve-gui-tfa-add-recovery-keys-png-fe14f3271438.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-gui-tfa-add-recovery-keys.png)
 
-Recovery key codes do not need any preparation; you can simply create a set of recovery keys in the **Two Factor** panel under **Datacenter → Permissions → Two Factor**.
+恢复密钥代码无需任何准备；只需在 **双因素** 面板（位于 **数据中心 → 权限 → 双因素** 下）创建一组恢复密钥。
 
 {% hint style="info" %}
-There can only be one set of single-use recovery keys per user at any time.
+任何时候，每个用户只能有一组一次性恢复密钥。
 {% endhint %}
 
-## 14.6.8. Server Side Webauthn Configuration <a href="#pveum_configure_webauthn" id="pveum_configure_webauthn"></a>
+## 14.6.8. 服务器端 Webauthn 配置 <a href="#pveum_configure_webauthn" id="pveum_configure_webauthn"></a>
 
 [![screenshot/gui-datacenter-webauthn-edit.png](../../assets/screenshot-gui-datacenter-webauthn-edit-png-6abfdb023d63.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-webauthn-edit.png)
 
-To allow users to use *WebAuthn* authentication, it is necessary to use a valid domain with a valid SSL certificate, otherwise some browsers may warn or refuse to authenticate altogether.
+要允许用户使用 *WebAuthn* 身份验证，必须使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝身份验证。
 
 {% hint style="info" %}
-Changing the *WebAuthn* configuration may render all existing *WebAuthn* registrations unusable!
+更改 *WebAuthn* 配置可能使所有现有的 *WebAuthn* 注册失效！
 {% endhint %}
 
-This is done via `/etc/pve/datacenter.cfg`. For instance:
+这通过 `/etc/pve/datacenter.cfg` 完成。例如：
 
 ```text
 webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.example.com
 ```
 
-## 14.6.9. Server Side U2F Configuration <a href="#pveum_configure_u2f" id="pveum_configure_u2f"></a>
+## 14.6.9. 服务器端 U2F 配置 <a href="#pveum_configure_u2f" id="pveum_configure_u2f"></a>
 
 {% hint style="info" %}
-It is recommended to use WebAuthn instead.
+建议改用 WebAuthn。
 {% endhint %}
 
-To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId* [\[1\]](#note-f8fe8903-1) needs to be configured.
+要允许用户使用 *U2F* 身份验证，可能需要使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝使用 U2F。最初需要配置 *AppId* [\[1\]](#note-f8fe8903-1)。
 
 {% hint style="info" %}
-Changing the *AppId* will render all existing *U2F* registrations unusable!
+更改 *AppId* 会使所有现有的 *U2F* 注册失效！
 {% endhint %}
 
-This is done via `/etc/pve/datacenter.cfg`. For instance:
+这通过 `/etc/pve/datacenter.cfg` 完成。例如：
 
 ```text
 u2f: appid=https://mypve.example.com:8006
 ```
 
-For a single node, the *AppId* can simply be the address of the web interface, exactly as it is used in the browser, including the *https://* and the port, as shown above. Please note that some browsers may be more strict than others when matching *AppIds*.
+对于单个节点，*AppId* 可以直接设为 Web 界面的地址，与浏览器中使用的完全相同，包括 *https://* 和端口，如上所示。请注意，某些浏览器在匹配 *AppId* 时可能比其他浏览器更严格。
 
-When using multiple nodes, it is best to have a separate `https` server providing an `appid.json` [\[2\]](#note-f8fe8903-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
+使用多个节点时，最好使用单独的 `https` 服务器提供 `appid.json` [\[2\]](#note-f8fe8903-2) 文件，因为这似乎与大多数浏览器兼容。如果所有节点使用同一顶级域名的子域名，使用该顶级域名作为 *AppId* 可能就足够了。不过应注意，某些浏览器可能不接受这种方式。
 
 {% hint style="info" %}
-A bad *AppId* will usually produce an error, but we have encountered situations when this does not happen, particularly when using a top level domain *AppId* for a node that is accessed via a subdomain in Chromium. For this reason it is recommended to test the configuration with multiple browsers, as changing the *AppId* later will render existing *U2F* registrations unusable.
+错误的 *AppId* 通常会产生错误，但我们遇到过不产生错误的情况，特别是在 Chromium 中，通过子域名访问节点，却使用顶级域名的 *AppId* 时。因此，建议使用多个浏览器测试配置，因为之后更改 *AppId* 会使现有的 *U2F* 注册失效。
 {% endhint %}
 
-## 14.6.10. Activating U2F as a User <a href="#pveum_user_configured_u2f" id="pveum_user_configured_u2f"></a>
+## 14.6.10. 用户激活 U2F <a href="#pveum_user_configured_u2f" id="pveum_user_configured_u2f"></a>
 
-To enable *U2F* authentication, open the *TFA* window’s *U2F* tab, type in the current password (unless logged in as root), and press the *Register* button. If the server is set up correctly and the browser accepts the server’s provided *AppId*, a message will appear prompting the user to press the button on the *U2F* device (if it is a *YubiKey*, the button light should be toggling on and off steadily, roughly twice per second).
+要启用 *U2F* 身份验证，打开 *TFA* 窗口的 *U2F* 选项卡，输入当前密码（除非以 root 登录），然后按 *注册* 按钮。如果服务器设置正确，且浏览器接受服务器提供的 *AppId*，将出现消息，提示用户按下 *U2F* 设备上的按钮（如果是 *YubiKey*，按钮指示灯应稳定闪烁，约每秒两次）。
 
-Firefox users may need to enable *security.webauth.u2f* via *about:config* before they can use a *U2F* token.
+Firefox 用户可能需要启用 *security.webauth.u2f*（通过 *about:config*），才能使用 *U2F* 令牌。
 
 ## 注释
 
@@ -145,7 +145,7 @@ AppId [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico
 
 ### 注释 2 <a href="#note-f8fe8903-2" id="note-f8fe8903-2"></a>
 
-Multi-facet apps: [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)
+多 facet 应用：[https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)
 
 ---
 

@@ -44,13 +44,9 @@ Proxmox VE 安装程序会在所有选定用于安装的磁盘上创建 3 个分
 # proxmox-boot-tool status
 ```
 
-<a id="sysboot_proxmox_boot_setup"></a>
+### 设置新分区以用作同步的 ESP <a href="#sysboot_proxmox_boot_setup" id="sysboot_proxmox_boot_setup"></a>
 
-
-
-**设置新分区以用作同步的 ESP**
-
-To format and initialize a partition as synced ESP, e.g., after replacing a failed vdev in an rpool, or when converting an existing system that pre-dates the sync mechanism, `proxmox-boot-tool` from `proxmox-kernel-helper` can be used.
+要将分区格式化并初始化为同步的 ESP，例如在替换 rpool 中出现故障的 vdev 后，或在转换早于同步机制的现有系统时，可以使用 `proxmox-boot-tool`（来自 `proxmox-kernel-helper`）。
 
 {% hint style="warning" %}
 `format` 命令会格式化 `<partition>`，请务必传入正确的设备/分区！
@@ -78,11 +74,7 @@ To format and initialize a partition as synced ESP, e.g., after replacing a fail
 
 之后，`/etc/kernel/proxmox-boot-uuids` 中应新增一行，其中包含新添加分区的 UUID。`init` 命令还会自动触发对所有已配置 ESP 的刷新。
 
-<a id="sysboot_proxmox_boot_refresh"></a>
-
-
-
-**更新所有 ESP 上的配置**
+### 更新所有 ESP 上的配置 <a href="#sysboot_proxmox_boot_refresh" id="sysboot_proxmox_boot_refresh"></a>
 
 要复制并配置所有可引导的内核，并保持 `/etc/kernel/proxmox-boot-uuids` 中列出的所有 ESP 同步，您只需运行：
 
@@ -192,7 +184,7 @@ Boot0006* Linux Boot Manager    [...] File(\EFI\systemd\systemd-bootx64.efi)
 
 多年来，GRUB 一直是引导 Linux 系统事实上的标准，并且具有相当完善的文档 [\[3\]](#note-dbd1308e-3)。
 
-### 配置 <a href="#_configuration" id="_configuration"></a>
+### 配置 <a href="#configuration" id="configuration"></a>
 
 对 GRUB 配置的更改通过默认文件 `/etc/default/grub` 或 `/etc/default/grub.d` 中的配置片段完成。更改配置后，运行以下命令重新生成配置文件：[\[4\]](#note-dbd1308e-4)
 
@@ -310,7 +302,7 @@ Proxmox VE 的任何全新安装都会自动包含上述所有软件包。
 
 有关安全启动的工作原理以及如何自定义设置的更多详细信息，请参阅[我们的 Wiki](https://pve.proxmox.com/wiki/Secure_Boot_Setup)。
 
-### 将现有安装切换到安全启动 <a href="#_switching_an_existing_installation_to_secure_boot" id="_switching_an_existing_installation_to_secure_boot"></a>
+### 将现有安装切换到安全启动 <a href="#switching_an_existing_installation_to_secure_boot" id="switching_an_existing_installation_to_secure_boot"></a>
 
 {% hint style="warning" %}
 如果操作不正确，在某些情况下可能会导致安装无法启动。如果可用，重新安装宿主机将自动设置安全启动，无需任何额外交互。**请确保您拥有 Proxmox VE 宿主机的可用且经过充分测试的备份！**
@@ -397,7 +389,7 @@ Boot0009* proxmox       HD(2,GPT,..,0x800,0x100000)/File(\EFI\proxmox\shimx64.ef
 要注册自定义密钥，请参阅相关的[安全启动 Wiki 页面](https://pve.proxmox.com/wiki/Secure_Boot_Setup#Setup_instructions_for_db_key_variant)。
 {% endhint %}
 
-### 在安全启动中使用 DKMS/第三方模块 <a href="#_using_dkms_third_party_modules_with_secure_boot" id="_using_dkms_third_party_modules_with_secure_boot"></a>
+### 在安全启动中使用 DKMS/第三方模块 <a href="#using_dkms_third_party_modules_with_secure_boot" id="using_dkms_third_party_modules_with_secure_boot"></a>
 
 在启用安全启动的系统上，内核将拒绝加载未经可信密钥签名的模块。内核软件包随附的默认模块集使用嵌入内核镜像中的临时密钥签名，该密钥受该特定版本内核镜像信任。
 

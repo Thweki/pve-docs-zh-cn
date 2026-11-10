@@ -1,38 +1,22 @@
 # pvesubscription(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvesubscription \- Proxmox VE Subscription Manager
+pvesubscription \- Proxmox VE 订阅管理器
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvesubscription"></a>
+### **pvesubscription** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesubscription" id="cli_pvesubscription"></a>
 
+### **pvesubscription delete** <a href="#cli_pvesubscription_delete" id="cli_pvesubscription_delete"></a>
 
+删除此节点的订阅密钥。
 
-**pvesubscription** `<COMMAND> [ARGS] [OPTIONS]`
+### **pvesubscription get** <a href="#cli_pvesubscription_get" id="cli_pvesubscription_get"></a>
 
-<a id="cli_pvesubscription_delete"></a>
+读取订阅信息。
 
-
-
-**pvesubscription delete**
-
-Delete subscription key of this node.
-
-<a id="cli_pvesubscription_get"></a>
-
-
-
-**pvesubscription get**
-
-Read subscription info.
-
-<a id="cli_pvesubscription_help"></a>
-
-
-
-**pvesubscription help** `[OPTIONS]`
+### **pvesubscription help** `[OPTIONS]` <a href="#cli_pvesubscription_help" id="cli_pvesubscription_help"></a>
 
 获取指定命令的帮助。
 
@@ -44,47 +28,35 @@ Read subscription info.
 
 详细输出格式。
 
-<a id="cli_pvesubscription_set"></a>
+### **pvesubscription set** `<key>` <a href="#cli_pvesubscription_set" id="cli_pvesubscription_set"></a>
 
-
-
-**pvesubscription set** `<key>`
-
-Set subscription key.
+设置订阅密钥。
 
 **`<key>`: `\s*pve([1248])([cbsp])-(arm-)?[0-9a-f]{10}\s*`**
 
-Proxmox VE subscription key
+Proxmox VE 订阅密钥
 
-<a id="cli_pvesubscription_set-offline-key"></a>
+### **pvesubscription set-offline-key** `<data>` <a href="#cli_pvesubscription_set-offline-key" id="cli_pvesubscription_set-offline-key"></a>
 
-
-
-**pvesubscription set-offline-key** `<data>`
-
-Internal use only! To set an offline key, use the package proxmox-offline-mirror-helper instead.
+仅供内部使用！要设置离线密钥，请改用 proxmox-offline-mirror-helper 软件包。
 
 **`<data>`: `<string>`**
 
-A signed subscription info blob
+已签名的订阅信息数据块
 
-<a id="cli_pvesubscription_update"></a>
+### **pvesubscription update** `[OPTIONS]` <a href="#cli_pvesubscription_update" id="cli_pvesubscription_update"></a>
 
-
-
-**pvesubscription update** `[OPTIONS]`
-
-Update subscription info.
+更新订阅信息。
 
 **`--force` `<boolean>`（*默认 \=* `0`）**
 
-Always connect to server, even if local cache is still valid.
+始终连接服务器，即使本地缓存仍有效。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-This tool is used to handle Proxmox VE subscriptions.
+此工具用于处理 Proxmox VE 订阅。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

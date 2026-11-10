@@ -7,10 +7,10 @@
 以下步骤介绍如何从一个同时也是 [Ceph](../08-pveceph/README.md) 集群成员的集群中移除节点。如果节点上未安装 Ceph，则可以直接忽略其中提及 Ceph 的步骤。
 
 {% hint style="info" %}
-如果配置中包含 QDevice，则需要先按照常见问题中[此处](11-corosync-external-vote-support.md#_adding_deleting_nodes_after_qdevice_setup)的说明将其移除，然后再移除集群节点。
+如果配置中包含 QDevice，则需要先按照常见问题中[此处](11-corosync-external-vote-support.md#adding_deleting_nodes_after_qdevice_setup)的说明将其移除，然后再移除集群节点。
 {% endhint %}
 
-## 5.5.1. 前提条件 <a href="#_prerequisites" id="_prerequisites"></a>
+## 5.5.1. 前提条件 <a href="#prerequisites" id="prerequisites"></a>
 
 - 将所有虚拟机和容器迁离该节点。
 - 备份待删除节点上的所有本地数据。
@@ -26,7 +26,7 @@
   {% endhint %}
 - 确保 Ceph 集群中仍有足够的[监视器](../08-pveceph/05-pve-ceph-monitors.md)、[管理器](../08-pveceph/06-pve-ceph-manager.md)可用，并且在使用 CephFS 时，仍有足够的[元数据服务器](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds)可用。
 
-## 5.5.2. 移除集群节点 <a href="#_remove_the_cluster_node" id="_remove_the_cluster_node"></a>
+## 5.5.2. 移除集群节点 <a href="#remove_the_cluster_node" id="remove_the_cluster_node"></a>
 
 在从集群中移除节点之前，必须确保该节点不再是 Ceph 集群的一部分，并且其上不再驻留任何 Ceph 资源或服务。
 
@@ -87,7 +87,7 @@ Membership information
             3          1 node3
    ```
 
-## 5.5.3. 节点移除后的清理步骤 <a href="#_cleanup_steps_after_node_removal" id="_cleanup_steps_after_node_removal"></a>
+## 5.5.3. 节点移除后的清理步骤 <a href="#cleanup_steps_after_node_removal" id="cleanup_steps_after_node_removal"></a>
 
 - 被移除节点的配置文件仍位于集群文件系统中的 */etc/pve/nodes/node4* 下。恢复您仍需要的所有配置，然后删除该目录。
 - 被移除节点的 SSH 指纹仍将位于其他节点上的 *known\_hosts* 文件中。如果使用相同 IP 或主机名重新加入节点后收到 SSH 错误，请在重新添加的节点上运行一次 `pvecm

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/mapping/usb`
 
-List USB Hardware Mappings
+列出 USB 硬件映射
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ List USB Hardware Mappings
 
 ```json
 {
-  "description": "Only lists entries where you have 'Mapping.Modify', 'Mapping.Use' or 'Mapping.Audit' permissions on '/mapping/usb/<id>'.",
+  "description": "仅列出您对 '/mapping/usb/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ List USB Hardware Mappings
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | If given, checks the configurations on the given node for correctness, and adds relevant errors to the devices. |
+| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将相关错误加入设备。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ List USB Hardware Mappings
   "additionalProperties": 0,
   "properties": {
     "check-node": {
-      "description": "If given, checks the configurations on the given node for correctness, and adds relevant errors to the devices.",
+      "description": "如果指定，则检查给定节点上的配置是否正确，并将相关错误加入设备。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
@@ -58,19 +58,19 @@ List USB Hardware Mappings
   "items": {
     "properties": {
       "description": {
-        "description": "A description of the logical mapping.",
+        "description": "逻辑映射的描述。",
         "type": "string"
       },
       "error": {
-        "description": "A list of errors when 'check_node' is given.",
+        "description": "指定 'check_node' 时的错误列表。",
         "items": {
           "properties": {
             "message": {
-              "description": "The message of the error",
+              "description": "错误消息",
               "type": "string"
             },
             "severity": {
-              "description": "The severity of the error",
+              "description": "错误严重程度",
               "type": "string"
             }
           },
@@ -78,13 +78,13 @@ List USB Hardware Mappings
         }
       },
       "id": {
-        "description": "The logical ID of the mapping.",
+        "description": "映射的逻辑 ID。",
         "type": "string"
       },
       "map": {
-        "description": "The entries of the mapping.",
+        "description": "映射条目。",
         "items": {
-          "description": "A mapping for a node.",
+          "description": "节点的映射。",
           "type": "string"
         },
         "type": "array"
@@ -104,7 +104,7 @@ List USB Hardware Mappings
 
 ## POST `/cluster/mapping/usb`
 
-Create a new hardware mapping.
+创建新的硬件映射。
 
 **方法标识：** `create`
 
@@ -138,9 +138,9 @@ Create a new hardware mapping.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | Description of the logical USB device. |
-| `id` | string | 是 | — | The ID of the logical USB mapping. |
-| `map` | array | 是 | — | A list of maps for the cluster nodes. |
+| `description` | string | 否 | — | 逻辑 USB 设备的描述。 |
+| `id` | string | 是 | — | 逻辑 USB 映射的 ID。 |
+| `map` | array | 是 | — | 集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -150,40 +150,40 @@ Create a new hardware mapping.
   "additionalProperties": 0,
   "properties": {
     "description": {
-      "description": "Description of the logical USB device.",
+      "description": "逻辑 USB 设备的描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "id": {
-      "description": "The ID of the logical USB mapping.",
+      "description": "逻辑 USB 映射的 ID。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "map": {
-      "description": "A list of maps for the cluster nodes.",
+      "description": "集群节点的映射列表。",
       "items": {
         "format": {
           "description": {
-            "description": "Description of the node specific device.",
+            "description": "节点特定设备的描述。",
             "maxLength": 4096,
             "optional": 1,
             "type": "string"
           },
           "id": {
-            "description": "The vendor and device ID that is expected. If a USB path is given, it is only used for detecting hardware changes",
+            "description": "预期的供应商和设备 ID。如果给定 USB 路径，则此项仅用于检测硬件变化",
             "pattern": "(?^:^[0-9A-Fa-f]{4}:[0-9A-Fa-f]{4}$)",
             "type": "string"
           },
           "node": {
-            "description": "The cluster node name.",
+            "description": "集群节点名称。",
             "format": "pve-node",
             "type": "string"
           },
           "path": {
-            "description": "The path to the usb device.",
+            "description": "USB 设备路径。",
             "optional": 1,
             "pattern": "(?^:^(\\d+)\\-(\\d+(\\.\\d+)*)$)",
             "type": "string"

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme/meta`
 
-Retrieve ACME Directory Meta Information
+获取 ACME 目录元信息
 
 **方法标识：** `get_meta`
 
@@ -34,7 +34,7 @@ Retrieve ACME Directory Meta Information
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | URL of ACME CA directory endpoint. |
+| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,7 +45,7 @@ Retrieve ACME Directory Meta Information
   "properties": {
     "directory": {
       "default": "https://acme-v02.api.letsencrypt.org/directory",
-      "description": "URL of ACME CA directory endpoint.",
+      "description": "ACME CA 目录端点的 URL。",
       "optional": 1,
       "pattern": "^https?://.*",
       "type": "string"
@@ -63,7 +63,7 @@ Retrieve ACME Directory Meta Information
   "additionalProperties": 1,
   "properties": {
     "caaIdentities": {
-      "description": "Hostnames referring to the ACME servers.",
+      "description": "指向 ACME 服务器的主机名。",
       "items": {
         "type": "string"
       },
@@ -71,17 +71,17 @@ Retrieve ACME Directory Meta Information
       "type": "array"
     },
     "externalAccountRequired": {
-      "description": "EAB Required",
+      "description": "需要 EAB",
       "optional": 1,
       "type": "boolean"
     },
     "termsOfService": {
-      "description": "ACME TermsOfService URL.",
+      "description": "ACME 服务条款 URL。",
       "optional": 1,
       "type": "string"
     },
     "website": {
-      "description": "URL to more information about the ACME server.",
+      "description": "指向 ACME 服务器更多信息的 URL。",
       "optional": 1,
       "type": "string"
     }

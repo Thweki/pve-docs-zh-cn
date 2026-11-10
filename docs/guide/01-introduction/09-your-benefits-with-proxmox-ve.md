@@ -1,4 +1,4 @@
-# 1.9. 使用 Proxmox VE 的优势 <a href="#_your_benefits_with_proxmox_ve" id="_your_benefits_with_proxmox_ve"></a>
+# 1.9. 使用 Proxmox VE 的优势 <a href="#your_benefits_with_proxmox_ve" id="your_benefits_with_proxmox_ve"></a>
 
 - 开源软件
 - 无供应商锁定

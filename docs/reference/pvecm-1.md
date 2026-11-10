@@ -2,59 +2,47 @@
 
 ## 名称 <a href="#chapter_pvecm" id="chapter_pvecm"></a>
 
-pvecm \- Proxmox VE Cluster Manager
+pvecm \- Proxmox VE 集群管理器
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvecm"></a>
+### **pvecm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvecm" id="cli_pvecm"></a>
 
+### **pvecm add** `<hostname>` `[OPTIONS]` <a href="#cli_pvecm_add" id="cli_pvecm_add"></a>
 
-
-**pvecm** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvecm_add"></a>
-
-
-
-**pvecm add** `<hostname>` `[OPTIONS]`
-
-Adds the current node to an existing cluster.
+将当前节点加入现有集群。
 
 **`<hostname>`: `<string>`**
 
-Hostname (or IP) of an existing cluster member.
+现有集群成员的主机名（或 IP）。
 
 **`--fingerprint` `([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}`**
 
-Certificate SHA 256 fingerprint.
+证书 SHA 256 指纹。
 
 **`--force` `<boolean>`**
 
-Do not throw error if node already exists.
+如果节点已存在，则不抛出错误。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
 **`--use_ssh` `<boolean>`**
 
-Always use SSH to join, even if peer may do it over API.
+始终使用 SSH 加入，即使对端可以通过 API 完成。
 
 **`--votes` `<integer> (0 - N)`**
 
-Number of votes for this node
+此节点的票数
 
-<a id="cli_pvecm_addnode"></a>
+### **pvecm addnode** `<node>` `[OPTIONS]` <a href="#cli_pvecm_addnode" id="cli_pvecm_addnode"></a>
 
-
-
-**pvecm addnode** `<node>` `[OPTIONS]`
-
-Adds a node to the cluster configuration. This call is for internal use.
+将节点添加到集群配置。此调用供内部使用。
 
 **`<node>`: `<string>`**
 
@@ -62,93 +50,73 @@ Adds a node to the cluster configuration. This call is for internal use.
 
 **`--apiversion` `<integer>`**
 
-The JOIN\_API\_VERSION of the new node.
+新节点的 JOIN\_API\_VERSION。
 
 **`--force` `<boolean>`**
 
-Do not throw error if node already exists.
+如果节点已存在，则不抛出错误。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--new_node_ip` `<string>`**
 
-IP Address of node to add. Used as fallback if no links are given.
+要添加节点的 IP 地址。未提供链路时用作回退值。
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
 **`--votes` `<integer> (0 - N)`**
 
-Number of votes for this node
+此节点的票数
 
-<a id="cli_pvecm_apiver"></a>
+### **pvecm apiver** <a href="#cli_pvecm_apiver" id="cli_pvecm_apiver"></a>
 
+返回此节点上可用的集群加入 API 版本。
 
+### **pvecm create** `<clustername>` `[OPTIONS]` <a href="#cli_pvecm_create" id="cli_pvecm_create"></a>
 
-**pvecm apiver**
-
-Return the version of the cluster join API available on this node.
-
-<a id="cli_pvecm_create"></a>
-
-
-
-**pvecm create** `<clustername>` `[OPTIONS]`
-
-Generate new cluster configuration. If no links given, default to local IP address as link0.
+生成新的集群配置。如果未提供链路，则默认将本地 IP 地址用作 link0。
 
 **`<clustername>`: `<string>`**
 
-The name of the cluster.
+集群名称。
 
 **`--link[n]` `[address=]<IP> [,priority=<integer>]`**
 
-Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)
+单个 corosync 链路的地址和优先级信息。（最多支持 8 个链路；link0..link7）
 
 **`--nodeid` `<integer> (1 - N)`**
 
-Node id for this node.
+此节点的节点 ID。
 
-**`--token-coefficient` `<integer> (0 - N)` (*default \=* `125`)**
+**`--token-coefficient` `<integer> (0 - N)` （*默认值 \=* `125`）**
 
-Coefficient used to determine Corosync’s token timeout. See the corosync.conf(5) manual for more details.
+用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。
 
 **`--votes` `<integer> (1 - N)`**
 
-Number of votes for this node.
+此节点的票数。
 
-<a id="cli_pvecm_delnode"></a>
+### **pvecm delnode** `<node>` <a href="#cli_pvecm_delnode" id="cli_pvecm_delnode"></a>
 
-
-
-**pvecm delnode** `<node>`
-
-Removes a node from the cluster configuration.
+从集群配置中移除节点。
 
 **`<node>`: `<string>`**
 
 集群节点名称。
 
-<a id="cli_pvecm_expected"></a>
+### **pvecm expected** `<expected>` <a href="#cli_pvecm_expected" id="cli_pvecm_expected"></a>
 
-
-
-**pvecm expected** `<expected>`
-
-Tells corosync a new value of expected votes.
+告知 corosync 新的预期票数值。
 
 **`<expected>`: `<integer> (1 - N)`**
 
-Expected votes
+预期票数
 
-<a id="cli_pvecm_help"></a>
-
-
-
-**pvecm help** `[OPTIONS]`
+### **pvecm help** `[OPTIONS]` <a href="#cli_pvecm_help" id="cli_pvecm_help"></a>
 
 获取指定命令的帮助。
 
@@ -160,107 +128,79 @@ Expected votes
 
 详细输出格式。
 
-<a id="cli_pvecm_keygen"></a>
+### **pvecm keygen** `<filename>` <a href="#cli_pvecm_keygen" id="cli_pvecm_keygen"></a>
 
-
-
-**pvecm keygen** `<filename>`
-
-Generate new cryptographic key for corosync.
+为 corosync 生成新的加密密钥。
 
 **`<filename>`: `<string>`**
 
-Output file name
+输出文件名
 
-<a id="cli_pvecm_mtunnel"></a>
+### **pvecm mtunnel** `[<extra-args>]` `[OPTIONS]` <a href="#cli_pvecm_mtunnel" id="cli_pvecm_mtunnel"></a>
 
-
-
-**pvecm mtunnel** `[<extra-args>]` `[OPTIONS]`
-
-Used by VM/CT migration \- do not use manually.
+由虚拟机/容器迁移使用，请勿手动使用。
 
 **`<extra-args>`: `<array>`**
 
 以数组形式提供的额外参数
 
-**`--get_migration_ip` `<boolean>` (*default \=* `0`)**
+**`--get_migration_ip` `<boolean>` （*默认值 \=* `0`）**
 
-return the migration IP, if configured
+如果配置了迁移 IP，则返回该 IP
 
 **`--migration_network` `<string>`**
 
-the migration network used to detect the local migration IP
+用于检测本地迁移 IP 的迁移网络
 
 **`--run-command` `<boolean>`**
 
-Run a command with a tcp socket as standard input. The IP address and port are printed via this command’s stdandard output first, each on a separate line.
+运行命令，并使用 tcp 套接字作为标准输入。首先通过此命令的标准输出打印 IP 地址和端口，各占一行。
 
-<a id="cli_pvecm_nodes"></a>
+### **pvecm nodes** <a href="#cli_pvecm_nodes" id="cli_pvecm_nodes"></a>
 
+显示本地所见的集群节点。
 
+### **pvecm qdevice remove** <a href="#cli_pvecm_qdevice_remove" id="cli_pvecm_qdevice_remove"></a>
 
-**pvecm nodes**
+移除已配置的 QDevice
 
-Displays the local view of the cluster nodes.
+### **pvecm qdevice setup** `<address>` `[OPTIONS]` <a href="#cli_pvecm_qdevice_setup" id="cli_pvecm_qdevice_setup"></a>
 
-<a id="cli_pvecm_qdevice_remove"></a>
-
-
-
-**pvecm qdevice remove**
-
-Remove a configured QDevice
-
-<a id="cli_pvecm_qdevice_setup"></a>
-
-
-
-**pvecm qdevice setup** `<address>` `[OPTIONS]`
-
-Setup the use of a QDevice
+设置 QDevice 的使用
 
 **`<address>`: `<string>`**
 
-Specifies the network address of an external corosync QDevice
+指定外部 corosync QDevice 的网络地址
 
 **`--force` `<boolean>`**
 
-Do not throw error on possible dangerous operations.
+遇到可能危险的操作时不抛出错误。
 
 **`--network` `<string>`**
 
-The network which should be used to connect to the external qdevice
+应使用哪个网络连接外部 qdevice
 
-<a id="cli_pvecm_status"></a>
+### **pvecm status** <a href="#cli_pvecm_status" id="cli_pvecm_status"></a>
 
+显示本地所见的集群状态。
 
+### **pvecm updatecerts** `[OPTIONS]` <a href="#cli_pvecm_updatecerts" id="cli_pvecm_updatecerts"></a>
 
-**pvecm status**
-
-Displays the local view of the cluster status.
-
-<a id="cli_pvecm_updatecerts"></a>
-
-
-
-**pvecm updatecerts** `[OPTIONS]`
-
-Update node certificates (and generate all needed files/directories).
+更新节点证书（并生成所有所需文件/目录）。
 
 **`--force` `<boolean>`**
 
-Force generation of new SSL certificate.
+强制生成新的 SSL 证书。
 
 **`--silent` `<boolean>`**
 
-Ignore errors (i.e. when cluster has no quorum).
+忽略错误（例如集群没有仲裁时）。
 
-**`--unmerge-known-hosts` `<boolean>` (*default \=* `0`)**
+**`--unmerge-known-hosts` `<boolean>` （*默认值 \=* `0`）**
 
-Unmerge legacy SSH known hosts.
+取消合并旧版 SSH 已知主机记录。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 Proxmox VE 集群管理器 `pvecm` 是一个用于创建物理服务器组的工具。这样的组称为**集群**。我们使用 [Corosync Cluster Engine](http://www.corosync.org) 实现可靠的组通信。集群中的节点数量没有明确限制。在实践中，实际可支持的节点数量可能受宿主机和网络性能限制。目前（2021 年），已有报告称，使用高端企业级硬件的集群在生产环境中运行了超过 50 个节点。
 
@@ -283,7 +223,7 @@ Proxmox VE 集群管理器 `pvecm` 是一个用于创建物理服务器组的工
 - 如果您对高可用性感兴趣，则至少需要三个节点才能实现可靠的仲裁。所有节点应使用相同的版本。
 
   {% hint style="info" %}
-  For smaller 2-node clusters, the [QDevice](#_corosync_external_vote_support) can be used to provide a 3rd vote.
+  对于较小的 2 节点集群，可以使用 [QDevice](#corosync_external_vote_support) 提供第 3 票。
   {% endhint %}
 - 我们建议为集群流量使用专用的物理 NIC。
 
@@ -301,18 +241,18 @@ Proxmox VE 集群管理器 `pvecm` 是一个用于创建物理服务器组的工
   {% endhint %}
 
   {% hint style="info" %}
-  A single link backed by a bond can be problematic in certain failure scenarios, see [Corosync Over Bonds](#pvecm_corosync_over_bonds).
+  由 bond 支撑的单链路在某些故障场景下可能存在问题，请参阅 [Corosync 使用 bond](#pvecm_corosync_over_bonds)。
   {% endhint %}
 - 添加节点时需要集群节点的 root 密码。
 - 仅当节点使用同一供应商的 CPU 时，才支持虚拟机在线迁移。在其他情况下也可能可行，但无法保证。
 
-## Preparing Nodes <a href="#_preparing_nodes" id="_preparing_nodes"></a>
+## 准备节点 <a href="#preparing_nodes" id="preparing_nodes"></a>
 
 首先，在所有节点上安装 Proxmox VE。确保每个节点在安装时都使用最终的主机名和 IP 配置。创建集群后，无法更改主机名和 IP。
 
-While it’s common to reference all node names and their IPs in `/etc/hosts` (or make their names resolvable through other means), this is not necessary for a cluster to work. It may be useful however, as you can then connect from one node to another via SSH, using the easier to remember node name (see also [Link Address Types](#pvecm_corosync_addresses)). Note that we always recommend referencing nodes by their IP addresses in the cluster configuration.
+虽然常见做法是在 `/etc/hosts` 中列出所有节点名称及其 IP（或通过其他方式使名称能够解析），但集群运行并不需要这样做。不过，这可能很有用，因为随后可以使用更容易记忆的节点名称，通过 SSH 从一个节点连接到另一个节点（另请参阅[链路地址类型](#pvecm_corosync_addresses)）。请注意，我们始终建议在集群配置中通过 IP 地址引用节点。
 
-## Create a Cluster <a href="#pvecm_create_cluster" id="pvecm_create_cluster"></a>
+## 创建集群 <a href="#pvecm_create_cluster" id="pvecm_create_cluster"></a>
 
 您可以在控制台上（通过 `ssh` 登录）创建集群，也可以通过 Proxmox VE Web 界面（*数据中心 → 集群*）使用 API 创建集群。
 
@@ -320,19 +260,19 @@ While it’s common to reference all node names and their IPs in `/etc/hosts` (o
 为集群使用唯一名称。此名称以后无法更改。集群名称遵循与节点名称相同的规则。
 {% endhint %}
 
-### Create via Web GUI <a href="#pvecm_cluster_create_via_gui" id="pvecm_cluster_create_via_gui"></a>
+### 通过 Web GUI 创建 <a href="#pvecm_cluster_create_via_gui" id="pvecm_cluster_create_via_gui"></a>
 
 [![screenshot/gui-cluster-create.png](../assets/screenshot-gui-cluster-create-png-7f6db200d48f.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-create.png)
 
 在 *数据中心 → 集群* 下，点击 **创建集群**。输入集群名称，并从下拉列表中选择一个网络连接，用作主集群网络（Link 0）。默认使用通过节点主机名解析得到的 IP。
 
-As of Proxmox VE 6.2, up to 8 fallback links can be added to a cluster. To add a redundant link, click the *Add* button and select a link number and IP address from the respective fields. Prior to Proxmox VE 6.2, to add a second link as fallback, you can select the *Advanced* checkbox and choose an additional network interface (Link 1, see also [Corosync Redundancy](#pvecm_redundancy)).
+从 Proxmox VE 6.2 开始，可以向集群添加最多 8 条备用链路。要添加冗余链路，请单击*添加*按钮，并从相应字段选择链路编号和 IP 地址。在 Proxmox VE 6.2 之前，要添加第二条链路作为备用，可以选中*高级*复选框，并选择额外的网络接口（Link 1，另请参阅 [Corosync 冗余](#pvecm_redundancy)）。
 
 {% hint style="info" %}
-Ensure that the network selected for cluster communication is not used for any high traffic purposes, like network storage or live-migration. While the cluster network itself produces small amounts of data, it is very sensitive to latency. Check out full [cluster network requirements](#pvecm_cluster_network_requirements).
+确保选作集群通信的网络不用于任何高流量用途，例如网络存储或在线迁移。虽然集群网络本身产生的数据量很小，但对延迟非常敏感。请查看完整的[集群网络要求](#pvecm_cluster_network_requirements)。
 {% endhint %}
 
-### Create via the Command Line <a href="#pvecm_cluster_create_via_cli" id="pvecm_cluster_create_via_cli"></a>
+### 通过命令行创建 <a href="#pvecm_cluster_create_via_cli" id="pvecm_cluster_create_via_cli"></a>
 
 通过 `ssh` 登录第一个 Proxmox VE 节点，然后运行以下命令：
 
@@ -346,19 +286,19 @@ Ensure that the network selected for cluster communication is not used for any h
  hp1# pvecm status
 ```
 
-### Multiple Clusters in the Same Network <a href="#_multiple_clusters_in_the_same_network" id="_multiple_clusters_in_the_same_network"></a>
+### 同一网络中的多个集群 <a href="#multiple_clusters_in_the_same_network" id="multiple_clusters_in_the_same_network"></a>
 
 可以在同一物理或逻辑网络中创建多个集群。在这种情况下，每个集群必须具有唯一名称，以避免集群通信栈中可能发生的冲突。此外，这还能使集群清晰可辨，从而有助于避免人为混淆。
 
 虽然 corosync 集群的带宽要求相对较低，但数据包延迟和每秒数据包数（PPS）速率是限制因素。同一网络中的不同集群可能会相互竞争这些资源，因此对于较大的集群，使用独立的物理网络基础设施可能仍然有意义。
 
-## Adding Nodes to the Cluster <a href="#pvecm_join_node_to_cluster" id="pvecm_join_node_to_cluster"></a>
+## 向集群添加节点 <a href="#pvecm_join_node_to_cluster" id="pvecm_join_node_to_cluster"></a>
 
 {% hint style="danger" %}
 加入集群时，`/etc/pve` 中的所有现有配置都会被覆盖。特别是，加入的节点不能包含任何客户机，否则客户机 ID 可能会冲突，并且该节点将继承集群的存储配置。作为变通方法，要加入包含现有客户机的节点，可以为每个客户机创建备份（使用 `vzdump`），并在加入后以不同的 ID 恢复。如果节点的存储布局不同，则需要重新添加该节点的存储，并调整每个存储的节点限制，以反映该存储实际在哪些节点上可用。
 {% endhint %}
 
-### Join Node to Cluster via GUI <a href="#_join_node_to_cluster_via_gui" id="_join_node_to_cluster_via_gui"></a>
+### 通过 GUI 将节点加入集群 <a href="#join_node_to_cluster_via_gui" id="join_node_to_cluster_via_gui"></a>
 
 [![screenshot/gui-cluster-join-information.png](../assets/screenshot-gui-cluster-join-information-png-9984deb0957b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-join-information.png)
 
@@ -376,7 +316,7 @@ Ensure that the network selected for cluster communication is not used for any h
 
 现在，您的节点应显示在 *数据中心 → 集群* 下。
 
-### Join Node to Cluster via Command Line <a href="#_join_node_to_cluster_via_command_line" id="_join_node_to_cluster_via_command_line"></a>
+### 通过命令行将节点加入集群 <a href="#join_node_to_cluster_via_command_line" id="join_node_to_cluster_via_command_line"></a>
 
 通过 `ssh` 登录要加入现有集群的节点。
 
@@ -384,7 +324,7 @@ Ensure that the network selected for cluster communication is not used for any h
  # pvecm add IP-ADDRESS-CLUSTER
 ```
 
-For `IP-ADDRESS-CLUSTER`, use the IP or hostname of an existing cluster node. An IP address is recommended (see [Link Address Types](#pvecm_corosync_addresses)).
+对于 `IP-ADDRESS-CLUSTER`，请使用现有集群节点的 IP 或主机名。建议使用 IP 地址（参见[链路地址类型](#pvecm_corosync_addresses)）。
 
 默认情况下，`pvecm add` 会使用现有集群节点的 API 进行身份验证，提示输入该节点的 `root@pam` 密码，并验证其 SHA-256 证书指纹。此默认流程不需要 SSH 密码身份验证，因此管理员可以保留 `PasswordAuthentication no` 设置（位于 `sshd_config` 中）。
 
@@ -453,7 +393,7 @@ Membership information
          4          1 hp4
 ```
 
-### Adding Nodes with Separated Cluster Network <a href="#pvecm_adding_nodes_with_separated_cluster_network" id="pvecm_adding_nodes_with_separated_cluster_network"></a>
+### 添加具有独立集群网络的节点 <a href="#pvecm_adding_nodes_with_separated_cluster_network" id="pvecm_adding_nodes_with_separated_cluster_network"></a>
 
 向使用独立集群网络的集群添加节点时，需要使用 *link0* 参数设置节点在该网络上的地址：
 
@@ -461,23 +401,23 @@ Membership information
 # pvecm add IP-ADDRESS-CLUSTER --link0 LOCAL-IP-ADDRESS-LINK0
 ```
 
-If you want to use the built-in [redundancy](#pvecm_redundancy) of the Kronosnet transport layer, also use the *link1* parameter.
+如果要使用 Kronosnet 传输层内置的[冗余](#pvecm_redundancy)，还应使用 *link1* 参数。
 
 使用 GUI 时，可以从相应的 *Link X* 字段中选择正确的接口，这些字段位于 **集群加入** 对话框中。
 
-## Remove a Cluster Node <a href="#pvecm_remove_node" id="pvecm_remove_node"></a>
+## 移除集群节点 <a href="#pvecm_remove_node" id="pvecm_remove_node"></a>
 
 {% hint style="danger" %}
 在继续操作之前，请仔细阅读该过程，因为它可能不符合您的意图或需求。
 {% endhint %}
 
-The following steps explain how to remove a node from a cluster that was also part of a [Ceph](pveceph-1.md#chapter_pveceph) cluster. If Ceph was not installed on your node, you can simply ignore the steps that mention it.
+以下步骤说明如何从集群移除一个同时属于 [Ceph](pveceph-1.md#chapter_pveceph) 集群的节点。如果节点上未安装 Ceph，可以直接忽略提到 Ceph 的步骤。
 
 {% hint style="info" %}
-If your configuration contains a QDevice, you will need to remove it before removing the cluster node, as outlined in the FAQ [here](#_adding_deleting_nodes_after_qdevice_setup).
+如果配置包含 QDevice，则需要在移除集群节点之前先移除它，相关说明参见[此处](#adding_deleting_nodes_after_qdevice_setup)的常见问题。
 {% endhint %}
 
-### Prerequisites <a href="#_prerequisites" id="_prerequisites"></a>
+### 前提条件 <a href="#prerequisites" id="prerequisites"></a>
 
 - 将所有虚拟机和容器迁离该节点。
 - 备份待删除节点上的所有本地数据。
@@ -491,9 +431,9 @@ If your configuration contains a QDevice, you will need to remove it before remo
   {% hint style="info" %}
   确保仍有足够数量带有 OSD 的节点可用，以满足为 Ceph 池配置的 `size/min_size` 参数。如果可用节点少于 `size`（默认值：3）个，数据冗余程度将会降低。如果可用节点少于 `min_size`（默认值：2）个，池的 I/O 将被阻塞，直到有足够的副本可用。如果受影响的客户机的 I/O 被阻塞，它们可能会崩溃。
   {% endhint %}
-- Ensure that sufficient [monitors](pveceph-1.md#pve_ceph_monitors), [managers](pveceph-1.md#pve_ceph_manager) and, if using CephFS, [metadata servers](pveceph-1.md#pveceph_fs_mds) remain available in the Ceph cluster.
+- 确保 Ceph 集群中仍有足够的[监视器](pveceph-1.md#pve_ceph_monitors)、[管理器](pveceph-1.md#pve_ceph_manager)，以及在使用 CephFS 时的[元数据服务器](pveceph-1.md#pveceph_fs_mds)可用。
 
-### Remove the Cluster Node <a href="#_remove_the_cluster_node" id="_remove_the_cluster_node"></a>
+### 移除集群节点 <a href="#remove_the_cluster_node" id="remove_the_cluster_node"></a>
 
 在从集群中移除节点之前，必须确保该节点不再是 Ceph 集群的一部分，并且其上不再驻留任何 Ceph 资源或服务。
 
@@ -513,15 +453,15 @@ Membership information
 
 1. 首先从 Ceph 集群中移除该节点，这包括多个步骤：
 
-   1. Start by [destroying](pveceph-1.md#pve_ceph_osd_destroy) the remaining Ceph OSDs on the node to be deleted, one after another.
-   2. Wait until the [CEPH status](pveceph-1.md#pve_ceph_mon_and_ts) reaches `HEALTH_OK` again.
-   3. If any exists, destroy the remaining [Ceph metadata servers](pveceph-1.md#pveceph_fs_mds) via the web interface at *Ceph → CephFS* or by running:
+   1. 首先逐个[销毁](pveceph-1.md#pve_ceph_osd_destroy)要删除节点上剩余的 Ceph OSD。
+   2. 等待 [CEPH 状态](pveceph-1.md#pve_ceph_mon_and_ts)再次达到 `HEALTH_OK`。
+   3. 如果仍有剩余的 [Ceph 元数据服务器](pveceph-1.md#pveceph_fs_mds)，请通过 Web 界面的 *Ceph → CephFS* 或运行以下命令将其销毁：
 
       ```text
       node4# pveceph mds destroy node4
       ```
-   4. [Destroy the remaining Ceph monitor.](pveceph-1.md#pveceph_destroy_mon)
-   5. [Destroy the remaining Ceph manager.](pveceph-1.md#pveceph_destroy_mgr)
+   4. [销毁剩余的 Ceph 监视器。](pveceph-1.md#pveceph_destroy_mon)
+   5. [销毁剩余的 Ceph 管理器。](pveceph-1.md#pveceph_destroy_mgr)
    6. 最后，从 CRUSH 层次结构中移除现在已清空的 Ceph 桶（待移除的 Proxmox VE 节点）。
 
       ```text
@@ -554,12 +494,12 @@ Membership information
             3          1 node3
    ```
 
-### Cleanup Steps After Node Removal <a href="#_cleanup_steps_after_node_removal" id="_cleanup_steps_after_node_removal"></a>
+### 移除节点后的清理步骤 <a href="#cleanup_steps_after_node_removal" id="cleanup_steps_after_node_removal"></a>
 
 - 被移除节点的配置文件仍位于集群文件系统中的 */etc/pve/nodes/node4* 下。恢复您仍需要的所有配置，然后删除该目录。
 - 被移除节点的 SSH 指纹仍将位于其他节点上的 *known\_hosts* 文件中。如果使用相同 IP 或主机名重新加入节点后收到 SSH 错误，请在重新添加的节点上运行一次 `pvecm
     updatecerts`，以在整个集群范围内更新其指纹。
-- Existing [high availability rules](ha-manager-1.md#ha_manager_rules) will still reference the deleted node, therefore remove the node from any existing rules.
+- 现有的[高可用性规则](ha-manager-1.md#ha_manager_rules)仍会引用已删除的节点，因此请从任何现有规则中移除该节点。
 - 被移除节点的公钥仍会列在 */etc/pve/priv/authorized\_keys* 中，如果不再需要，应将其删除。
 
 **重新加入同一节点：**
@@ -567,9 +507,9 @@ Membership information
 如果希望同一台服务器再次加入同一集群，必须：
 
 - 在服务器上重新安装 Proxmox VE，
-- then [rejoin the node to the cluster](#pvecm_join_node_to_cluster)
+- 然后[将节点重新加入集群](#pvecm_join_node_to_cluster)
 
-## Separate a Node Without Reinstalling <a href="#pvecm_separate_node_without_reinstall" id="pvecm_separate_node_without_reinstall"></a>
+## 在不重新安装的情况下分离节点 <a href="#pvecm_separate_node_without_reinstall" id="pvecm_separate_node_without_reinstall"></a>
 
 {% hint style="danger" %}
 这**不是**推荐的方法，请谨慎操作。如果不确定，请使用前一种方法。
@@ -580,7 +520,7 @@ Membership information
 建议创建一个新存储，只有要分离的节点才有权访问该存储。例如，这可以是您的 NFS 上的新导出，也可以是新的 Ceph 池。重要的是，完全相同的存储不能被多个集群访问。设置此存储后，将该节点上的所有数据和 VM 都移动到此存储中。然后，您就可以将节点从集群中分离出来了。
 
 {% hint style="info" %}
-If your configuration contains a QDevice, you will need to remove it before removing the cluster node, as outlined in the FAQ [here](#_adding_deleting_nodes_after_qdevice_setup).
+如果配置包含 QDevice，则需要在移除集群节点之前先移除它，相关说明参见[此处](#adding_deleting_nodes_after_qdevice_setup)的常见问题。
 {% endhint %}
 
 {% hint style="warning" %}
@@ -640,7 +580,7 @@ rm /var/lib/corosync/*
 该节点的 SSH 密钥仍将保留在 *authorized\_key* 文件中。这意味着各节点仍可以使用公钥身份验证相互连接。您应通过从 */etc/pve/priv/authorized\_keys* 文件中删除相应密钥来解决此问题。
 {% endhint %}
 
-## Quorum <a href="#_quorum" id="_quorum"></a>
+## 仲裁 <a href="#quorum" id="quorum"></a>
 
 Proxmox VE 使用基于仲裁的技术，在所有集群节点之间提供一致的状态。
 
@@ -655,15 +595,15 @@ Proxmox VE 使用基于仲裁的技术，在所有集群节点之间提供一致
 默认情况下，Proxmox VE 为每个节点分配一票。
 {% endhint %}
 
-## Cluster Network <a href="#pvecm_cluster_network" id="pvecm_cluster_network"></a>
+## 集群网络 <a href="#pvecm_cluster_network" id="pvecm_cluster_network"></a>
 
 集群网络是集群的核心。通过它发送的所有消息都必须按照各自的顺序可靠地传递到所有节点。在 Proxmox VE 中，这部分由 corosync 完成，它是一种高性能、低开销的高可用性开发工具包的实现。它服务于我们的去中心化配置文件系统（`pmxcfs`）。
 
-### Network Requirements <a href="#pvecm_cluster_network_requirements" id="pvecm_cluster_network_requirements"></a>
+### 网络要求 <a href="#pvecm_cluster_network_requirements" id="pvecm_cluster_network_requirements"></a>
 
 Proxmox VE 集群栈要求所有节点之间具有延迟低于 5 毫秒的可靠网络（LAN 性能），才能稳定运行。虽然在节点数量较少的配置中，延迟较高的网络*可能*也能正常工作，但这并无保证；当节点超过三个且延迟高于约 10 ms 时，能正常工作的可能性就相当低。
 
-The network should not be used heavily by other members, as while corosync does not use much bandwidth, it is sensitive to latency jitters; ideally corosync runs on its own physically separated network. Especially do not use a shared network for corosync and storage (except as a potential low-priority fallback in a [redundant](#pvecm_redundancy) configuration).
+其他成员不应大量占用此网络，因为 corosync 虽然使用的带宽不多，但对延迟抖动敏感；理想情况下，corosync 应运行在独立的物理隔离网络上。尤其不要让 corosync 与存储共享网络（除非在[冗余](#pvecm_redundancy)配置中用作可能的低优先级备用链路）。
 
 在建立集群之前，检查网络是否适合此用途是一种良好做法。为确保节点能够在集群网络上相互连接，可以使用 `ping` 工具测试它们之间的连通性。
 
@@ -674,38 +614,38 @@ Corosync 在 3.0 版之前使用组播（该版本随 Proxmox VE 6.0 引入）�
 {% endhint %}
 
 {% hint style="danger" %}
-You can still enable Multicast or legacy unicast by setting your transport to `udp` or `udpu` in your [corosync.conf](#pvecm_edit_corosync_conf), but keep in mind that this will disable all cryptography and redundancy support. This is therefore not recommended.
+仍可以将传输设置为 `udp` 或 `udpu` 来启用多播或旧版单播，该设置位于 [corosync.conf](#pvecm_edit_corosync_conf) 中，但请注意，这将禁用所有加密和冗余支持。因此不建议这样做。
 {% endhint %}
 
-### Corosync Over Bonds <a href="#pvecm_corosync_over_bonds" id="pvecm_corosync_over_bonds"></a>
+### Corosync 使用 bond <a href="#pvecm_corosync_over_bonds" id="pvecm_corosync_over_bonds"></a>
 
-#### 建议 <a href="#_recommendations" id="_recommendations"></a>
+#### 建议 <a href="#recommendations" id="recommendations"></a>
 
-We recommend at least one dedicated physical NIC for the primary Corosync link, see [Requirements](#pvecm_cluster_requirements). Bonds may be used as additional links for increased redundancy. The following caveats apply **whenever a bond is used for Corosync traffic**:
+建议为主要 Corosync 链路配备至少一个专用物理 NIC，参见[要求](#pvecm_cluster_requirements)。bond 可以用作额外链路，以增强冗余。**只要使用 bond 传输 Corosync 流量**，就需注意以下事项：
 
 - 在某些故障场景中，绑定模式 **active-backup** 可能无法提供预期的冗余，详情请见下文。
 - 我们**不建议**将绑定模式 **balance-rr**、**balance-xor**、**balance-tlb** 或 **balance-alb** 用于 Corosync 流量。已知它们在某些故障场景中会引发问题，详情请见下文。
 - **IEEE 802.3ad (LACP)**：如果将 LACP 绑定用于 corosync 流量，我们强烈建议设置 `bond-lacp-rate fast`，并且 **Proxmox VE** 节点和**交换机**两端都要设置！使用默认设置 `bond-lacp-rate slow` 时，已知此模式在某些故障场景中会引发问题，详情请见下文。
 
-#### 背景 <a href="#_background" id="_background"></a>
+#### 背景 <a href="#background" id="background"></a>
 
-Using a bond as a Corosync link can be problematic in certain failure scenarios. Consider the failure scenario where one of the bonded interfaces fails and stops transmitting packets, but its link state stays up, and there are no other Corosync links available. In this scenario, some bond modes may cause a state of asymmetric connectivity where cluster nodes can only communicate with different subsets of other nodes. Affected are bond modes that provide load balancing, as these modes may still try to send out a subset of packets via the failed interface. In case of asymmetric connectivity, Corosync may not be able to form a stable quorum in the cluster. If this state persists and HA is enabled, even nodes whose bond does not have any issues may fence themselves. In the worst case, the whole cluster may fence itself.
+将 bond 用作 Corosync 链路，在某些故障场景下可能存在问题。考虑这样一种故障场景：bond 中的一个接口故障并停止发送数据包，但其链路状态仍为启用，且没有其他可用的 Corosync 链路。在这种情况下，某些 bond 模式可能导致连接不对称状态，即集群节点只能与其他节点的不同子集通信。受影响的是提供负载均衡的 bond 模式，因为这些模式可能仍尝试通过故障接口发送部分数据包。在连接不对称的情况下，Corosync 可能无法在集群中形成稳定的仲裁。如果这种状态持续且启用了 HA，即使 bond 没有任何问题的节点，也可能自我隔离。最坏情况下，整个集群可能自我隔离。
 
 在上述故障场景中，绑定模式 **active-backup** **不会**导致非对称连接。但是，发生接口故障的绑定可能无法切换到备份链路。该节点可能会与集群失去连接，并在启用 HA 时自我隔离。
 
 在上述故障场景中，绑定模式 **balance-rr**、**balance-xor**、**balance\_tlb** 或 **balance-alb** 可能导致非对称连接，如果启用了 HA，这可能会导致意外隔离。
 
-Bond mode **IEEE 802.3ad (LACP)** can cause asymmetric connectivity in the failure scenario above, but it can recover from this state, as each side of the bond (Proxmox VE node and switch) can stop using a bonded interface if it has not received three LACPDUs in a row on it. However, with default settings, LACPDUs are only sent every 30 seconds, yielding a failover time of 90 seconds. This is too long, as nodes with HA resources will fence themselves already after roughly one minute without a stable quorum. If LACP bonds are used for corosync traffic, we recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! Setting this option on one side requests the other side to send an LACPDU every second. Setting this option on both sides can reduce the failover time in the scenario above to 3 seconds and thus prevent fencing.
+绑定模式 **IEEE 802.3ad (LACP)** 在上述故障场景中可能导致非对称连接，但能从此状态恢复，因为绑定的两端（Proxmox VE 节点和交换机）在绑定接口连续未收到三个 LACPDU 时，都可以停止使用该接口。不过，默认设置下每 30 秒才发送一次 LACPDU，导致故障切换时间达到 90 秒。此时间过长，因为带有 HA 资源的节点在约一分钟没有稳定仲裁后就会自行隔离。如果使用 LACP 绑定传输 corosync 流量，建议设置 `bond-lacp-rate fast`，且在 **Proxmox VE** 节点和 **交换机** 上都设置！在一端设置此选项会要求另一端每秒发送一个 LACPDU。两端都设置此选项可将上述场景中的故障切换时间缩短为 3 秒，从而避免隔离。
 
-### Separate Cluster Network <a href="#_separate_cluster_network" id="_separate_cluster_network"></a>
+### 独立集群网络 <a href="#separate_cluster_network" id="separate_cluster_network"></a>
 
 创建集群时不指定任何参数，corosync 集群网络通常会与 Web 界面和虚拟机的网络共用。根据您的设置，甚至存储流量也可能通过同一网络发送。建议更改这种情况，因为 corosync 是对时间要求严格的实时应用程序。
 
-#### 设置新网络 <a href="#_setting_up_a_new_network" id="_setting_up_a_new_network"></a>
+#### 设置新网络 <a href="#setting_up_a_new_network" id="setting_up_a_new_network"></a>
 
-First, you have to set up a new network interface. It should be on a physically separate network. Ensure that your network fulfills the [cluster network requirements](#pvecm_cluster_network_requirements).
+首先，必须设置一个新的网络接口。它应位于物理隔离的网络上。确保网络满足[集群网络要求](#pvecm_cluster_network_requirements)。
 
-#### 在创建集群时分离 <a href="#_separate_on_cluster_creation" id="_separate_on_cluster_creation"></a>
+#### 在创建集群时分离 <a href="#separate_on_cluster_creation" id="separate_on_cluster_creation"></a>
 
 这可以通过 *linkX* 参数实现，该参数属于用于创建新集群的 *pvecm create* 命令。
 
@@ -721,13 +661,13 @@ pvecm create test --link0 10.10.10.1
 systemctl status corosync
 ```
 
-Afterwards, proceed as described above to [add nodes with a separated cluster network](#pvecm_adding_nodes_with_separated_cluster_network).
+随后，按上文所述[添加具有独立集群网络的节点](#pvecm_adding_nodes_with_separated_cluster_network)。
 
 #### 创建集群后分离 <a href="#pvecm_separate_cluster_net_after_creation" id="pvecm_separate_cluster_net_after_creation"></a>
 
 如果您已经创建了集群，并希望在不重建整个集群的情况下将其通信切换到另一个网络，可以执行此操作。此更改可能导致集群短暂失去仲裁，因为各节点必须重启 corosync，并逐一在新网络上启动。
 
-Check how to [edit the corosync.conf file](#pvecm_edit_corosync_conf) first. Then, open it and you should see a file similar to:
+首先查看如何[编辑 corosync.conf 文件](#pvecm_edit_corosync_conf)。然后打开该文件，应看到类似以下内容的文件：
 
 ```text
 logging {
@@ -783,7 +723,7 @@ totem {
 
 首先要做的是在节点条目中添加 *name* 属性（如果尚未看到它们）。这些属性**必须**与节点名称匹配。
 
-Then replace all addresses from the *ring0\_addr* properties of all nodes with the new addresses. You may use plain IP addresses or hostnames here. If you use hostnames, ensure that they are resolvable from all nodes (see also [Link Address Types](#pvecm_corosync_addresses)).
+然后将所有节点 *ring0\_addr* 属性中的所有地址替换为新地址。这里可以使用普通 IP 地址或主机名。如果使用主机名，请确保所有节点都能解析它们（另请参阅[链路地址类型](#pvecm_corosync_addresses)）。
 
 在此示例中，我们要将集群通信切换到 10.10.10.0/25 网络，因此分别更改每个节点的 *ring0\_addr*。
 
@@ -841,7 +781,7 @@ totem {
 }
 ```
 
-Then, after a final check to see that all changed information is correct, we save it and once again follow the [edit corosync.conf file](#pvecm_edit_corosync_conf) section to bring it into effect.
+最后检查所有已更改的信息是否正确，然后保存，并再次遵循[编辑 corosync.conf 文件](#pvecm_edit_corosync_conf)章节，使其生效。
 
 这些更改将实时应用，因此并非必须重启 corosync。如果您还更改了其他设置，或发现 corosync 报告问题，可以选择触发重启。
 
@@ -859,7 +799,7 @@ systemctl status corosync
 
 如果 corosync 重新开始工作，也请在所有其他节点上重启它。随后，这些节点将在新网络上逐一加入集群成员关系。
 
-### Corosync Addresses <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
+### Corosync 地址 <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
 
 corosync 链路地址（为保持向后兼容，使用 *ringX\_addr* 在 `corosync.conf` 中表示）可通过两种方式指定：
 
@@ -876,7 +816,7 @@ corosync 链路地址（为保持向后兼容，使用 *ringX\_addr* 在 `corosy
 
 在较早版本中加入集群的节点，很可能仍在 `corosync.conf` 中使用未解析的主机名。如上所述，将其替换为 IP 或独立主机名可能是个不错的主意。
 
-## Corosync Redundancy <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
+## Corosync 冗余 <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
 
 Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/udpu 传输不支持此功能）。要启用该功能，可以通过 *--linkX* 参数（属于 `pvecm`）、在 GUI 中设置为 **Link 1**（创建集群或添加新节点时），或者通过指定多个 *ringX\_addr*（位于 `corosync.conf` 中）来指定多个链路地址。
 
@@ -900,13 +840,13 @@ Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/u
 
 由于除非所有更高优先级的链路都发生故障，否则较低优先级的链路不会承载流量，因此，将用于其他任务（虚拟机、存储等）的网络指定为低优先级链路是一种有用的策略。在最坏的情况下，延迟较高或较为拥塞的连接可能也比完全没有连接要好。
 
-### Adding Redundant Links To An Existing Cluster <a href="#_adding_redundant_links_to_an_existing_cluster" id="_adding_redundant_links_to_an_existing_cluster"></a>
+### 向现有集群添加冗余链路 <a href="#adding_redundant_links_to_an_existing_cluster" id="adding_redundant_links_to_an_existing_cluster"></a>
 
-To add a new link to a running configuration, first check how to [edit the corosync.conf file](#pvecm_edit_corosync_conf).
+要向正在运行的配置添加新链路，请先查看如何[编辑 corosync.conf 文件](#pvecm_edit_corosync_conf)。
 
 然后，将新的 *ringX\_addr* 添加到 `nodelist` 小节中的每个节点。确保所有添加该条目的节点都使用相同的 *X*，并且该编号在每个节点内都是唯一的。
 
-Lastly, add a new *interface*, as shown below, to your `totem` section, replacing *X* with the link number chosen above.
+最后，按下图添加新的 *interface* 至 `totem` 节，将 *X* 替换为上面选择的链路编号。
 
 假设您添加了一条编号为 1 的链路，新配置文件可能如下所示：
 
@@ -963,7 +903,7 @@ totem {
 }
 ```
 
-The new link will be enabled as soon as you follow the last steps to [edit the corosync.conf file](#pvecm_edit_corosync_conf). A restart should not be necessary. You can check that corosync loaded the new link using:
+按照[编辑 corosync.conf 文件](#pvecm_edit_corosync_conf)的最后步骤操作后，新链路就会启用。应该无需重启。可以使用以下命令检查 corosync 是否加载了新链路：
 
 ```text
 journalctl -b -u corosync
@@ -977,7 +917,7 @@ pvecm status
 
 如果您看到集群状态正常，则表示新链路正在使用中。
 
-## Role of SSH in Proxmox VE Clusters <a href="#_role_of_ssh_in_proxmox_ve_clusters" id="_role_of_ssh_in_proxmox_ve_clusters"></a>
+## SSH 在 Proxmox VE 集群中的作用 <a href="#role_of_ssh_in_proxmox_ve_clusters" id="role_of_ssh_in_proxmox_ve_clusters"></a>
 
 Proxmox VE 将 SSH 隧道用于多种功能。
 
@@ -989,7 +929,7 @@ Proxmox VE 将 SSH 隧道用于多种功能。
   迁移期间，会在源节点和目标节点之间建立一条或多条 SSH 隧道，用于交换迁移信息以及传输内存和磁盘内容。
 - 存储复制
 
-### SSH setup <a href="#_ssh_setup" id="_ssh_setup"></a>
+### SSH 设置 <a href="#ssh_setup" id="ssh_setup"></a>
 
 在 Proxmox VE 系统上，会对 SSH 配置/设置进行以下更改：
 
@@ -1001,7 +941,7 @@ Proxmox VE 将 SSH 隧道用于多种功能。
 较早的系统还可能将 `/etc/ssh/ssh_known_hosts` 设置为指向 `/etc/pve/priv/known_hosts` 的符号链接，其中包含所有节点主机密钥的合并版本。此机制已在 `pve-cluster <<INSERT VERSION>>` 中被显式主机密钥固定取代；如果该符号链接仍然存在，可以通过运行 `pvecm updatecerts --unmerge-known-hosts` 将其解除配置。
 {% endhint %}
 
-### Pitfalls due to automatic execution of `.bashrc` and siblings <a href="#_pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings" id="_pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings"></a>
+### 自动执行 `.bashrc` 及同类文件引起的问题 <a href="#pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings" id="pitfalls_due_to_automatic_execution_of_span_class_monospaced_bashrc_span_and_siblings"></a>
 
 如果您有自定义的 `.bashrc`，或由所配置 shell 在登录时执行的其他类似文件，那么一旦会话成功建立，`ssh` 就会自动运行该文件。这可能会导致一些意外行为，因为在上述任何操作中，这些命令都可能以 root 权限执行。这可能产生有问题的副作用！
 
@@ -1017,7 +957,7 @@ case $- in
 esac
 ```
 
-## Corosync External Vote Support <a href="#_corosync_external_vote_support" id="_corosync_external_vote_support"></a>
+## Corosync 外部投票支持 <a href="#corosync_external_vote_support" id="corosync_external_vote_support"></a>
 
 本节介绍在 Proxmox VE 集群中部署外部投票器的一种方法。配置后，集群可以承受更多节点故障，同时不破坏集群通信的安全属性。
 
@@ -1028,7 +968,7 @@ esac
 
 因此，即使在较小的部署中（例如 2\+1 个节点），也可以实现更高的可用性。
 
-### QDevice Technical Overview <a href="#_qdevice_technical_overview" id="_qdevice_technical_overview"></a>
+### QDevice 技术概述 <a href="#qdevice_technical_overview" id="qdevice_technical_overview"></a>
 
 Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进程。它根据在外部运行的第三方仲裁器的决定，为集群的仲裁子系统提供配置数量的选票。其主要用途是使集群能够承受比标准仲裁规则所允许的更多的节点故障。这是安全的，因为外部设备可以看到所有节点，因此可以只选择一组节点并将选票投给该组。只有在该组节点获得第三方选票后能够（再次）达到仲裁时，才会这样做。
 
@@ -1040,7 +980,7 @@ Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进�
 与 corosync 本身不同，QDevice 通过 TCP/IP 连接到集群。该守护进程也可以在集群的 LAN 之外运行，并且不受 corosync 的低延迟要求限制。
 {% endhint %}
 
-### Supported Setups <a href="#_supported_setups" id="_supported_setups"></a>
+### 支持的配置 <a href="#supported_setups" id="supported_setups"></a>
 
 对于节点数为偶数的集群，我们支持使用 QDevice；如果双节点集群需要提供更高的可用性，我们也建议使用 QDevice。对于节点数为奇数的集群，我们目前不鼓励使用 QDevice。原因在于 QDevice 为每种集群类型提供的票数不同。节点数为偶数的集群会获得额外的一票，这只会提高可用性，因为如果 QDevice 本身发生故障，您的处境与完全没有 QDevice 时相同。
 
@@ -1051,7 +991,7 @@ Corosync 仲裁设备（QDevice）是在每个集群节点上运行的守护进�
 
 如果您了解这些缺点和影响，可以自行决定是否要在节点数为奇数的集群配置中使用该技术。
 
-### QDevice-Net Setup <a href="#_qdevice_net_setup" id="_qdevice_net_setup"></a>
+### QDevice-Net 设置 <a href="#qdevice_net_setup" id="qdevice_net_setup"></a>
 
 我们建议以非特权用户身份运行任何为 corosync-qdevice 提供投票的守护进程。Proxmox VE 和 Debian 提供的软件包已按此方式配置。守护进程与集群之间的流量必须加密，以确保 QDevice 安全地集成到 Proxmox VE 中。
 
@@ -1117,21 +1057,21 @@ Membership information
 如果您的 QDevice 被列为 `Not Alive`（在上面的输出中为 `NA`），请确保可以通过 TCP/IP 访问外部服务器的端口 `5403`（qnetd 服务器的默认端口）！
 {% endhint %}
 
-### Frequently Asked Questions <a href="#_frequently_asked_questions" id="_frequently_asked_questions"></a>
+### 常见问题 <a href="#frequently_asked_questions" id="frequently_asked_questions"></a>
 
-#### 打破平局 <a href="#_tie_breaking" id="_tie_breaking"></a>
+#### 打破平局 <a href="#tie_breaking" id="tie_breaking"></a>
 
 在出现平局时，如果两个大小相同的集群分区彼此不可见，但都能看到 QDevice，则 QDevice 会选择节点 ID 最低的分区，并向其提供一票。可以使用配置选项 `tie_breaker` 调整此行为（更多信息请参阅 `man corosync-qdevice`），并且需要在所有节点上重启 `corosync-qdevice.service`。
 
-#### 可能的负面影响 <a href="#_possible_negative_implications" id="_possible_negative_implications"></a>
+#### 可能的负面影响 <a href="#possible_negative_implications" id="possible_negative_implications"></a>
 
 对于节点数为偶数的集群，使用 QDevice 不会产生负面影响。如果它无法正常工作，则与完全没有 QDevice 相同。
 
-#### 设置 QDevice 后添加/删除节点 <a href="#_adding_deleting_nodes_after_qdevice_setup" id="_adding_deleting_nodes_after_qdevice_setup"></a>
+#### 设置 QDevice 后添加/删除节点 <a href="#adding_deleting_nodes_after_qdevice_setup" id="adding_deleting_nodes_after_qdevice_setup"></a>
 
 如果您想在配置了 QDevice 的集群中添加新节点或删除现有节点，需要先移除 QDevice。之后，您可以正常添加或删除节点。一旦集群再次具有偶数个节点，您就可以按照前面的说明重新设置 QDevice。
 
-#### 移除 QDevice <a href="#_removing_the_qdevice" id="_removing_the_qdevice"></a>
+#### 移除 QDevice <a href="#removing_the_qdevice" id="removing_the_qdevice"></a>
 
 如果您使用官方 `pvecm` 工具添加了 QDevice，可以通过运行以下命令将其移除：
 
@@ -1139,7 +1079,7 @@ Membership information
 pve# pvecm qdevice remove
 ```
 
-## Corosync Configuration <a href="#_corosync_configuration" id="_corosync_configuration"></a>
+## Corosync 配置 <a href="#corosync_configuration" id="corosync_configuration"></a>
 
 `/etc/pve/corosync.conf` 文件在 Proxmox VE 集群中起着核心作用。它控制集群成员关系及其网络。有关更多信息，请查看 corosync.conf 手册页：
 
@@ -1149,7 +1089,7 @@ man corosync.conf
 
 对于节点成员关系，您应始终使用 Proxmox VE 提供的 `pvecm` 工具。对于其他更改，您可能需要手动编辑配置文件。以下是一些执行此操作的最佳实践建议。
 
-### Edit corosync.conf <a href="#pvecm_edit_corosync_conf" id="pvecm_edit_corosync_conf"></a>
+### 编辑 corosync.conf <a href="#pvecm_edit_corosync_conf" id="pvecm_edit_corosync_conf"></a>
 
 编辑 corosync.conf 文件并不总是很简单直接。每个集群节点上都有两个该文件，一个位于 `/etc/pve/corosync.conf`，另一个位于 `/etc/corosync/corosync.conf`。编辑集群文件系统中的文件会将更改传播到本地文件，但反之则不会。
 
@@ -1192,13 +1132,13 @@ systemctl restart corosync
 
 出现错误时，请查看下面的故障排除部分。
 
-### Changing the Token Coefficient <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
+### 更改令牌系数 <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
 
-The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
+可以在 `totem` 节（位于 `/etc/pve/corosync.conf` 中）配置令牌系数。如果未显式设置令牌系数，则默认为 650 毫秒。从 Proxmox VE 9.2 开始，新集群会在 `/etc/pve/corosync.conf` 中显式设置较低的令牌系数 125 毫秒。这可缩短节点故障后重新建立集群成员关系所需的时间。
 
 corosync 使用令牌系数，根据集群规模计算多个超时时间[\[2\]](#note-1e0acfb6-2)，其中最重要的是令牌超时和共识超时。corosync 实现了令牌传递协议。令牌超时指定节点等待令牌多长时间后会声明令牌丢失[\[3\]](#note-1e0acfb6-3)。共识超时[\[4\]](#note-1e0acfb6-4)指定节点就新的集群成员关系达成共识的等待时间。令牌超时与共识超时之和，定义了节点离线后重新建立新集群成员关系所需的最短时间。
 
-Keeping the sum of token and consensus timeouts below 30 seconds reduces the time needed for reestablishing a new cluster membership after a node failure. When HA is enabled, it is especially important that this time stays below 45 seconds to ensure that a new cluster membership is formed before the [watchdog timeout](ha-manager-1.md#ha_manager_crm) of 60 seconds expires, which would trigger a node fence. A safety margin below this 45 second limit is advisable so that transient timing variations do not push the cluster past the watchdog threshold. The recommended mechanism for lowering the token and consensus timeouts is lowering the token coefficient as explained below.
+将令牌超时和共识超时的总和保持在 30 秒以下，可缩短节点故障后重新建立集群成员关系所需的时间。启用 HA 时，尤其需要将此时间保持在 45 秒以下，以确保在[看门狗超时](ha-manager-1.md#ha_manager_crm)的 60 秒期限到期之前形成新的集群成员关系，否则会触发节点隔离。建议在此 45 秒限制之下留出安全余量，以免短暂的时序波动使集群超过看门狗阈值。降低令牌超时和共识超时的推荐机制是降低令牌系数，如下文所述。
 
 您可以使用以下命令检查当前的令牌超时和共识超时（以毫秒为单位）：
 
@@ -1219,9 +1159,9 @@ runtime.config.totem.token (u32) = 4950
 - 如果超过 40 秒，则建议这样做，
 - 如果超过 45 秒，则强烈建议这样做。
 
-To lower the token coefficient, first make sure your setup adheres [to the network requirements](#pvecm_cluster_network_requirements), especially with regards to latency. Then:
+要降低令牌系数，首先确保配置符合[网络要求](#pvecm_cluster_network_requirements)，特别是延迟要求。然后：
 
-- If the `token_coefficient` is not yet set explicitly to 125 milliseconds in corosync.conf, [edit corosync.conf](#pvecm_edit_corosync_conf) and add `token_coefficient: 125` to the `totem` section. Do not forget to [increase the `config_version`](#pvecm_edit_corosync_conf).
+- 如果 `token_coefficient` 尚未在 corosync.conf 中明确设置为 125 毫秒，请[编辑 corosync.conf](#pvecm_edit_corosync_conf)，并将 `token_coefficient: 125` 添加到 `totem` 部分。不要忘记[增加 `config_version`](#pvecm_edit_corosync_conf)。
 - 否则，如果 125 毫秒仍不足以将超时时间保持在上述限制内，请选择一个 `token_coefficient`，使令牌超时与共识超时之和最多为 45 秒。默认情况下，corosync 按以下公式计算令牌超时和共识超时（以毫秒为单位）：
 
   ```text
@@ -1229,13 +1169,13 @@ To lower the token coefficient, first make sure your setup adheres [to the netwo
   consensus = 1.2 * token
   ```
 
-  [Edit corosync.conf](#pvecm_edit_corosync_conf) and set an appropriate `token_coefficient` option in the `totem` section. Do not forget to [increase the `config_version`](#pvecm_edit_corosync_conf). Test your setup thoroughly for stability!
+  [编辑 corosync.conf](#pvecm_edit_corosync_conf)，并设置适当的 `token_coefficient` 选项，其位置为 `totem` 部分。不要忘记[增加 `config_version`](#pvecm_edit_corosync_conf)。全面测试配置的稳定性！
 
-After adjusting the `token_coefficient` in `corosync.conf`, recent corosync versions will automatically adopt the new value for the cluster. For corosync versions below `3.1.10-pve1`, corosync needs to be restarted on all nodes for the change to take effect.
+调整 `token_coefficient`（位于 `corosync.conf` 中）后，较新的 corosync 版本会自动为集群采用新值。对于低于 `3.1.10-pve1` 的 corosync 版本，需要在所有节点上重启 corosync 才能使更改生效。
 
-### Troubleshooting <a href="#_troubleshooting" id="_troubleshooting"></a>
+### 故障排查 <a href="#troubleshooting" id="troubleshooting"></a>
 
-#### 问题：*quorum.expected\_votes 必须进行配置* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
+#### 问题：*quorum.expected\_votes 必须进行配置* <a href="#issue_em_quorum_expected_votes_must_be_configured_em" id="issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
 当 corosync 启动失败并且您在系统日志中收到以下消息时：
 
@@ -1249,7 +1189,7 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 
 这意味着配置中为 corosync *ringX\_addr* 设置的主机名无法解析。
 
-#### 无仲裁时写入配置 <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
+#### 无仲裁时写入配置 <a href="#write_configuration_when_not_quorate" id="write_configuration_when_not_quorate"></a>
 
 如果您需要在无仲裁的节点上更改 */etc/pve/corosync.conf*，并且了解自己在做什么，请使用：
 
@@ -1261,13 +1201,13 @@ pvecm expected 1
 
 如果 corosync 已无法启动，仅这样做还不够。在这种情况下，最好编辑 */etc/corosync/corosync.conf* 中 corosync 配置的本地副本，以便 corosync 能够再次启动。确保所有节点上的此配置内容相同，以避免脑裂。
 
-### Corosync Configuration Glossary <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
+### Corosync 配置术语表 <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
 
 **ringX\_addr**
 
 此项为节点之间 Kronosnet 连接的不同链路地址命名。
 
-## Cluster Cold Start <a href="#_cluster_cold_start" id="_cluster_cold_start"></a>
+## 集群冷启动 <a href="#cluster_cold_start" id="cluster_cold_start"></a>
 
 显然，当所有节点都离线时，集群不具备仲裁。这是断电后的常见情况。
 
@@ -1279,7 +1219,7 @@ pvecm expected 1
 
 当您开启节点时，或在断电后恢复供电时，某些节点很可能会比其他节点启动得更快。请注意，客户机的启动会延迟，直到达到仲裁要求为止。
 
-## Guest VMID Auto-Selection <a href="#pvecm_next_id_range" id="pvecm_next_id_range"></a>
+## 自动选择客户机 VMID <a href="#pvecm_next_id_range" id="pvecm_next_id_range"></a>
 
 创建新客户机时，Web 界面会自动向后端请求一个空闲的 VMID。默认搜索范围为 `100` 到 `1000000`（低于由模式定义强制规定的最大允许 VMID）。
 
@@ -1291,17 +1231,17 @@ pvecm expected 1
 该范围仅用于 next-id API 调用，因此它不是硬性限制。
 {% endhint %}
 
-## Guest Migration <a href="#_guest_migration" id="_guest_migration"></a>
+## 客户机迁移 <a href="#guest_migration" id="guest_migration"></a>
 
 将虚拟客户机迁移到其他节点是集群中一项有用的功能。可以通过一些设置来控制此类迁移的行为。可以通过配置文件 `datacenter.cfg` 完成此操作，也可以通过 API 或命令行参数针对特定迁移进行设置。
 
 客户机处于在线还是离线状态，以及是否具有本地资源（如本地磁盘），都会有所不同。
 
-For details about virtual machine migration, see the [QEMU/KVM Migration Chapter](qm-1.md#qm_migration).
+关于虚拟机迁移的详情，请参阅 [QEMU/KVM 迁移章节](qm-1.md#qm_migration)。
 
-For details about container migration, see the [Container Migration Chapter](pct-1.md#pct_migration).
+关于容器迁移的详情，请参阅[容器迁移章节](pct-1.md#pct_migration)。
 
-### Migration Type <a href="#_migration_type" id="_migration_type"></a>
+### 迁移类型 <a href="#migration_type" id="migration_type"></a>
 
 迁移类型定义迁移数据应通过加密（`secure`）通道还是未加密（`insecure`）通道发送。将迁移类型设置为 `insecure` 意味着虚拟客户机的 RAM 内容也将以未加密方式传输，这可能导致客户机内部的关键数据（例如密码或加密密钥）泄露。
 
@@ -1313,7 +1253,7 @@ For details about container migration, see the [Container Migration Chapter](pct
 
 加密需要大量计算能力，因此通常会将此设置更改为 `insecure` 以获得更好的性能。对现代系统的影响较小，因为它们在硬件中实现了 AES 加密。在传输速率可达到 10 Gbps 或更高的快速网络中，性能影响尤为明显。
 
-### Migration Network <a href="#pvecm_migration_network" id="pvecm_migration_network"></a>
+### 迁移网络 <a href="#pvecm_migration_network" id="pvecm_migration_network"></a>
 
 默认情况下，Proxmox VE 使用集群通信所在的网络发送迁移流量。这并非最佳选择，因为敏感的集群流量可能受到干扰，而且该网络可能无法提供节点上可用的最佳带宽。
 
@@ -1321,7 +1261,7 @@ For details about container migration, see the [Container Migration Chapter](pct
 
 迁移网络使用 CIDR 表示法进行设置。这样做的优点是您不必为每个节点设置单独的 IP 地址。Proxmox VE 可以根据以 CIDR 形式指定的网络，确定目标节点上的实际地址。要启用此功能，所指定的网络必须确保每个节点在相应网络中恰好有一个 IP。
 
-#### 示例 <a href="#_example" id="_example"></a>
+#### 示例 <a href="#example" id="example"></a>
 
 假设我们有一个三节点部署，使用三个独立的网络。一个用于与互联网进行公共通信，一个用于集群通信，还有一个速度非常快的网络，我们希望将其用作迁移专用网络。
 
@@ -1367,7 +1307,7 @@ migration: secure,network=10.1.2.0/24
 在 `/etc/pve/datacenter.cfg` 中设置迁移网络时，必须始终同时设置迁移类型。
 {% endhint %}
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

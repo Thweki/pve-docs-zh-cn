@@ -1,28 +1,20 @@
 # qmrestore(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-qmrestore \- Restore QemuServer `vzdump` Backups
+qmrestore \- 恢复 QemuServer `vzdump` 备份
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_qmrestore_help"></a>
+### **qmrestore** `help` <a href="#cli_qmrestore_help" id="cli_qmrestore_help"></a>
 
+### **qmrestore** `<archive> <vmid>` `[OPTIONS]` <a href="#cli_qmrestore" id="cli_qmrestore"></a>
 
-
-**qmrestore** `help`
-
-<a id="cli_qmrestore"></a>
-
-
-
-**qmrestore** `<archive> <vmid>` `[OPTIONS]`
-
-Restore QemuServer vzdump backups.
+恢复 QemuServer vzdump 备份。
 
 **`<archive>`: `<string>`**
 
-The backup file. You can pass *\-* to read from standard input.
+备份文件。可以传入 *\-* 以从标准输入读取。
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
@@ -34,15 +26,15 @@ VM 的唯一 ID。
 
 **`--force` `<boolean>`**
 
-Allow to overwrite existing VM.
+允许覆盖现有虚拟机。
 
 **`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
-Add the VM as a HA resource after it was restored.
+恢复虚拟机后，将其添加为 HA 资源。
 
 **`--live-restore` `<boolean>`**
 
-Start the VM immediately from the backup and restore in background. PBS only.
+立即从备份启动虚拟机，并在后台恢复。仅适用于 PBS。
 
 **`--pool` `<string>`**
 
@@ -50,21 +42,21 @@ Start the VM immediately from the backup and restore in background. PBS only.
 
 **`--start` `<boolean>`（*默认 \=* `0`）**
 
-Start VM after it was restored successfully.
+成功恢复后启动虚拟机。
 
 **`--storage` `<storage ID>`**
 
-Default storage.
+默认存储。
 
 **`--unique` `<boolean>`**
 
 分配唯一的随机以太网地址。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-Restore the QemuServer vzdump backup `archive` to virtual machine `vmid`. Volumes are allocated on the original storage if there is no `storage` specified.
+将 QemuServer vzdump 备份 `archive` 恢复到虚拟机 `vmid`。如果未指定 `storage`，则在原始存储上分配卷。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

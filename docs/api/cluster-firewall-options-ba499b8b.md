@@ -6,7 +6,7 @@
 
 ## GET `/cluster/firewall/options`
 
-Get Firewall options.
+获取防火墙选项。
 
 **方法标识：** `get_options`
 
@@ -41,23 +41,23 @@ Get Firewall options.
   "properties": {
     "ebtables": {
       "default": 1,
-      "description": "Enable ebtables rules cluster wide.",
+      "description": "在整个集群中启用 ebtables 规则。",
       "optional": 1,
       "type": "boolean"
     },
     "enable": {
       "default": 0,
-      "description": "Enable or disable the firewall cluster wide.",
+      "description": "在整个集群中启用或禁用防火墙。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "log_ratelimit": {
-      "description": "Log ratelimiting settings",
+      "description": "日志速率限制设置",
       "format": {
         "burst": {
           "default": 5,
-          "description": "Initial burst of packages which will always get logged before the rate is applied",
+          "description": "应用速率限制前始终记录日志的初始突发数据包数量",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
@@ -65,12 +65,12 @@ Get Firewall options.
         "enable": {
           "default": "1",
           "default_key": 1,
-          "description": "Enable or disable log rate limiting",
+          "description": "启用或禁用日志速率限制",
           "type": "boolean"
         },
         "rate": {
           "default": "1/second",
-          "description": "Frequency with which the burst bucket gets refilled",
+          "description": "补充突发令牌桶的频率",
           "format_description": "rate",
           "optional": 1,
           "pattern": "[1-9][0-9]*\\/(second|minute|hour|day)",
@@ -81,7 +81,7 @@ Get Firewall options.
       "type": "string"
     },
     "policy_forward": {
-      "description": "Forward policy.",
+      "description": "转发策略。",
       "enum": [
         "ACCEPT",
         "DROP"
@@ -90,7 +90,7 @@ Get Firewall options.
       "type": "string"
     },
     "policy_in": {
-      "description": "Input policy.",
+      "description": "输入策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -100,7 +100,7 @@ Get Firewall options.
       "type": "string"
     },
     "policy_out": {
-      "description": "Output policy.",
+      "description": "输出策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -116,7 +116,7 @@ Get Firewall options.
 
 ## PUT `/cluster/firewall/options`
 
-Set Firewall options.
+设置防火墙选项。
 
 **方法标识：** `set_options`
 
@@ -150,14 +150,14 @@ Set Firewall options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `ebtables` | boolean | 否 | 1 | Enable ebtables rules cluster wide. |
-| `enable` | integer | 否 | 0 | Enable or disable the firewall cluster wide. |
-| `log_ratelimit` | string | 否 | — | Log ratelimiting settings |
-| `policy_forward` | string | 否 | — | Forward policy.；可选值：`ACCEPT`, `DROP` |
-| `policy_in` | string | 否 | — | Input policy.；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `policy_out` | string | 否 | — | Output policy.；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `ebtables` | boolean | 否 | 1 | 在整个集群中启用 ebtables 规则。 |
+| `enable` | integer | 否 | 0 | 在整个集群中启用或禁用防火墙。 |
+| `log_ratelimit` | string | 否 | — | 日志速率限制设置 |
+| `policy_forward` | string | 否 | — | 转发策略。；可选值：`ACCEPT`, `DROP` |
+| `policy_in` | string | 否 | — | 输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `policy_out` | string | 否 | — | 输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -167,14 +167,14 @@ Set Firewall options.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -182,25 +182,25 @@ Set Firewall options.
     },
     "ebtables": {
       "default": 1,
-      "description": "Enable ebtables rules cluster wide.",
+      "description": "在整个集群中启用 ebtables 规则。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "enable": {
       "default": 0,
-      "description": "Enable or disable the firewall cluster wide.",
+      "description": "在整个集群中启用或禁用防火墙。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "log_ratelimit": {
-      "description": "Log ratelimiting settings",
+      "description": "日志速率限制设置",
       "format": {
         "burst": {
           "default": 5,
-          "description": "Initial burst of packages which will always get logged before the rate is applied",
+          "description": "应用速率限制前始终记录日志的初始突发数据包数量",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
@@ -208,12 +208,12 @@ Set Firewall options.
         "enable": {
           "default": "1",
           "default_key": 1,
-          "description": "Enable or disable log rate limiting",
+          "description": "启用或禁用日志速率限制",
           "type": "boolean"
         },
         "rate": {
           "default": "1/second",
-          "description": "Frequency with which the burst bucket gets refilled",
+          "description": "补充突发令牌桶的频率",
           "format_description": "rate",
           "optional": 1,
           "pattern": "[1-9][0-9]*\\/(second|minute|hour|day)",
@@ -225,7 +225,7 @@ Set Firewall options.
       "typetext": "[enable=]<1|0> [,burst=<integer>] [,rate=<rate>]"
     },
     "policy_forward": {
-      "description": "Forward policy.",
+      "description": "转发策略。",
       "enum": [
         "ACCEPT",
         "DROP"
@@ -234,7 +234,7 @@ Set Firewall options.
       "type": "string"
     },
     "policy_in": {
-      "description": "Input policy.",
+      "description": "输入策略。",
       "enum": [
         "ACCEPT",
         "REJECT",
@@ -244,7 +244,7 @@ Set Firewall options.
       "type": "string"
     },
     "policy_out": {
-      "description": "Output policy.",
+      "description": "输出策略。",
       "enum": [
         "ACCEPT",
         "REJECT",

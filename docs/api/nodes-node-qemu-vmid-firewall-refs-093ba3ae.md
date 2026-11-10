@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/firewall/refs`
 
-Lists possible IPSet/Alias reference which are allowed in source/dest properties.
+列出源地址/目标地址属性中允许使用的 IPSet/别名引用。
 
 **方法标识：** `refs`
 
@@ -34,9 +34,9 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `type` | string | 否 | — | Only list references of specified type.；可选值：`alias`, `ipset` |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `type` | string | 否 | — | 仅列出指定类型的引用。；可选值：`alias`, `ipset` |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -46,13 +46,13 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Only list references of specified type.",
+      "description": "仅列出指定类型的引用。",
       "enum": [
         "alias",
         "ipset"
@@ -61,7 +61,7 @@ Lists possible IPSet/Alias reference which are allowed in source/dest properties
       "type": "string"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

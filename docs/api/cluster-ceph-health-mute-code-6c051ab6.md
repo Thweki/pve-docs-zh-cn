@@ -6,7 +6,7 @@
 
 ## PUT `/cluster/ceph/health-mute/{code}`
 
-Mute or unmute a Ceph health check. A muted check no longer counts towards the cluster status, but stays visible and keeps being evaluated.
+静默或取消静默 Ceph 健康检查。静默的检查不再计入集群状态，但仍然可见且会继续评估。
 
 **方法标识：** `health_mute`
 
@@ -40,10 +40,10 @@ Mute or unmute a Ceph health check. A muted check no longer counts towards the c
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `code` | string | 是 | — | The health check to mute, as reported by 'ceph health', for example 'AUTH_INSECURE_CLIENT_KEY_TYPE'. |
-| `sticky` | boolean | 否 | 0 | Keep the mute even when the check gets worse. Without this a mute clears itself as soon as the number of affected items grows, which brings the check back to attention. Only used when muting. |
-| `ttl` | string | 否 | — | How long the mute lasts, for example '2h', '3d' or '1w'. Without it the mute has no expiry. Only used when muting. |
-| `value` | boolean | 是 | — | Whether to mute (true) or unmute (false) the check. |
+| `code` | string | 是 | — | 要静默的健康检查，使用 'ceph health' 报告的名称，例如 'AUTH_INSECURE_CLIENT_KEY_TYPE'。 |
+| `sticky` | boolean | 否 | 0 | 即使检查情况恶化也保持静默。若不启用，则受影响条目数量一旦增加，静默便会自动解除，使该检查重新引起注意。仅在静默时使用。 |
+| `ttl` | string | 否 | — | 静默持续时间，例如 '2h'、'3d' 或 '1w'。省略则静默永不过期。仅在静默时使用。 |
+| `value` | boolean | 是 | — | 是静默（true）还是取消静默（false）此检查。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,26 +53,26 @@ Mute or unmute a Ceph health check. A muted check no longer counts towards the c
   "additionalProperties": 0,
   "properties": {
     "code": {
-      "description": "The health check to mute, as reported by 'ceph health', for example 'AUTH_INSECURE_CLIENT_KEY_TYPE'.",
+      "description": "要静默的健康检查，使用 'ceph health' 报告的名称，例如 'AUTH_INSECURE_CLIENT_KEY_TYPE'。",
       "maxLength": 64,
       "pattern": "[A-Z][A-Z0-9_]+",
       "type": "string"
     },
     "sticky": {
       "default": 0,
-      "description": "Keep the mute even when the check gets worse. Without this a mute clears itself as soon as the number of affected items grows, which brings the check back to attention. Only used when muting.",
+      "description": "即使检查情况恶化也保持静默。若不启用，则受影响条目数量一旦增加，静默便会自动解除，使该检查重新引起注意。仅在静默时使用。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ttl": {
-      "description": "How long the mute lasts, for example '2h', '3d' or '1w'. Without it the mute has no expiry. Only used when muting.",
+      "description": "静默持续时间，例如 '2h'、'3d' 或 '1w'。省略则静默永不过期。仅在静默时使用。",
       "optional": 1,
       "pattern": "\\d+[ \\t]*(?:s|sec|seconds?|m|min|minutes?|h|hr|hours?|d|days?|w|wk|weeks?|mo|months?|y|yr|years?)(?:[ \\t]*\\d+[ \\t]*(?:s|sec|seconds?|m|min|minutes?|h|hr|hours?|d|days?|w|wk|weeks?|mo|months?|y|yr|years?))*(?!\\n)",
       "type": "string"
     },
     "value": {
-      "description": "Whether to mute (true) or unmute (false) the check.",
+      "description": "是静默（true）还是取消静默（false）此检查。",
       "type": "boolean",
       "typetext": "<boolean>"
     }

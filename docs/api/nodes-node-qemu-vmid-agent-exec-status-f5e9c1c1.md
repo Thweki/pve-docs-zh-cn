@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/agent/exec-status`
 
-Gets the status of the given pid started by the guest-agent
+获取客户机代理启动的给定 pid 的状态
 
 **方法标识：** `exec-status`
 
@@ -46,9 +46,9 @@ Gets the status of the given pid started by the guest-agent
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `pid` | integer | 是 | — | The PID to query |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `pid` | integer | 是 | — | 要查询的 PID |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,18 +58,18 @@ Gets the status of the given pid started by the guest-agent
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "pid": {
-      "description": "The PID to query",
+      "description": "要查询的 PID",
       "type": "integer",
       "typetext": "<integer>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -88,36 +88,36 @@ Gets the status of the given pid started by the guest-agent
 {
   "properties": {
     "err-data": {
-      "description": "stderr of the process",
+      "description": "进程的 stderr",
       "optional": 1,
       "type": "string"
     },
     "err-truncated": {
-      "description": "true if stderr was not fully captured",
+      "description": "如果未完整捕获 stderr，则为 true",
       "optional": 1,
       "type": "boolean"
     },
     "exitcode": {
-      "description": "process exit code if it was normally terminated.",
+      "description": "进程正常终止时的退出码。",
       "optional": 1,
       "type": "integer"
     },
     "exited": {
-      "description": "Tells if the given command has exited yet.",
+      "description": "表示给定命令是否已经退出。",
       "type": "boolean"
     },
     "out-data": {
-      "description": "stdout of the process",
+      "description": "进程的 stdout",
       "optional": 1,
       "type": "string"
     },
     "out-truncated": {
-      "description": "true if stdout was not fully captured",
+      "description": "如果未完整捕获 stdout，则为 true",
       "optional": 1,
       "type": "boolean"
     },
     "signal": {
-      "description": "signal number or exception code if the process was abnormally terminated.",
+      "description": "进程异常终止时的信号编号或异常代码。",
       "optional": 1,
       "type": "integer"
     }

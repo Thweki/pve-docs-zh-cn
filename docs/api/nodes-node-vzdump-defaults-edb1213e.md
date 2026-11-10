@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/vzdump/defaults`
 
-Get the currently configured vzdump defaults.
+获取当前配置的 vzdump 默认值。
 
 **方法标识：** `defaults`
 
@@ -14,7 +14,7 @@ Get the currently configured vzdump defaults.
 
 ```json
 {
-  "description": "The user needs 'Datastore.Audit' or 'Datastore.AllocateSpace' permissions for the specified storage (or default storage if none specified). Some properties are only returned when the user has 'Sys.Audit' permissions for the node.",
+  "description": "用户需要对指定存储（未指定时为默认存储）具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限。仅当用户具有此节点的 'Sys.Audit' 权限时，才会返回某些属性。",
   "user": "all"
 }
 ```
@@ -35,8 +35,8 @@ Get the currently configured vzdump defaults.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | The storage identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -46,13 +46,13 @@ Get the currently configured vzdump defaults.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -73,20 +73,20 @@ Get the currently configured vzdump defaults.
   "properties": {
     "all": {
       "default": 0,
-      "description": "Backup all known guest systems on this host.",
+      "description": "备份此宿主机上所有已知的客户机系统。",
       "optional": 1,
       "type": "boolean"
     },
     "bwlimit": {
       "default": 0,
-      "description": "Limit I/O bandwidth (in KiB/s).",
+      "description": "限制 I/O 带宽（单位为 KiB/s）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "compress": {
       "default": "0",
-      "description": "Compress dump file.",
+      "description": "压缩转储文件。",
       "enum": [
         "0",
         "1",
@@ -98,18 +98,18 @@ Get the currently configured vzdump defaults.
       "type": "string"
     },
     "dumpdir": {
-      "description": "Store resulting files to specified directory.",
+      "description": "将生成的文件保存到指定目录。",
       "optional": 1,
       "type": "string"
     },
     "exclude": {
-      "description": "Exclude specified guest systems (assumes --all)",
+      "description": "排除指定客户机系统（假定 --all）",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string"
     },
     "exclude-path": {
-      "description": "Exclude certain files/directories (shell globs). Paths starting with '/' are anchored to the container's root, other paths match relative to each subdirectory.",
+      "description": "排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。",
       "items": {
         "type": "string"
       },
@@ -117,14 +117,14 @@ Get the currently configured vzdump defaults.
       "type": "array"
     },
     "fleecing": {
-      "description": "Options for backup fleecing (VM only).",
+      "description": "备份 fleecing 选项（仅适用于虚拟机）。",
       "format": "backup-fleecing",
       "optional": 1,
       "type": "string"
     },
     "ionice": {
       "default": 7,
-      "description": "Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.",
+      "description": "使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。",
       "maximum": 8,
       "minimum": 0,
       "optional": 1,
@@ -132,14 +132,14 @@ Get the currently configured vzdump defaults.
     },
     "lockwait": {
       "default": 180,
-      "description": "Maximal time to wait for the global lock (minutes).",
+      "description": "等待全局锁的最长时间（分钟）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "mailnotification": {
       "default": "always",
-      "description": "Deprecated: use notification targets/matchers instead. Specify when to send a notification mail",
+      "description": "已弃用：请改用通知目标/匹配器。指定何时发送通知邮件",
       "enum": [
         "always",
         "failure"
@@ -148,14 +148,14 @@ Get the currently configured vzdump defaults.
       "type": "string"
     },
     "mailto": {
-      "description": "Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.",
+      "description": "已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。",
       "format": "email-or-username-list",
       "optional": 1,
       "type": "string"
     },
     "mode": {
       "default": "snapshot",
-      "description": "Backup mode.",
+      "description": "备份模式。",
       "enum": [
         "snapshot",
         "suspend",
@@ -165,13 +165,13 @@ Get the currently configured vzdump defaults.
       "type": "string"
     },
     "node": {
-      "description": "Only run if executed on this node.",
+      "description": "仅在此节点上执行时运行。",
       "format": "pve-node",
       "optional": 1,
       "type": "string"
     },
     "notes-template": {
-      "description": "Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {{cluster}}, {{guestname}}, {{node}}, and {{vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as '\\n' and '\\\\' respectively.",
+      "description": "用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\\n' 和 '\\\\'。",
       "maxLength": 1024,
       "optional": 1,
       "requires": "storage",
@@ -179,7 +179,7 @@ Get the currently configured vzdump defaults.
     },
     "notification-mode": {
       "default": "auto",
-      "description": "Determine which notification system to use. If set to 'legacy-sendmail', vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the 'sendmail' command. If set to 'notification-system', a notification will be sent via PVE's notification system, and the mailto and mailnotification will be ignored. If set to 'auto' (default setting), an email will be sent if mailto is set, and the notification system will be used if not.",
+      "description": "确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。",
       "enum": [
         "auto",
         "legacy-sendmail",
@@ -189,7 +189,7 @@ Get the currently configured vzdump defaults.
       "type": "string"
     },
     "pbs-change-detection-mode": {
-      "description": "PBS mode used to detect file changes and switch encoding format for container backups.",
+      "description": "用于检测文件更改并切换容器备份编码格式的 PBS 模式。",
       "enum": [
         "legacy",
         "data",
@@ -199,92 +199,92 @@ Get the currently configured vzdump defaults.
       "type": "string"
     },
     "performance": {
-      "description": "Other performance-related settings.",
+      "description": "其他性能相关设置。",
       "format": "backup-performance",
       "optional": 1,
       "type": "string"
     },
     "pigz": {
       "default": 0,
-      "description": "Use pigz instead of gzip when N>0. N=1 uses half of cores, N>1 uses N as thread count.",
+      "description": "当 N>0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N>1 则将 N 用作线程数。",
       "optional": 1,
       "type": "integer"
     },
     "pool": {
-      "description": "Backup all known guest systems included in the specified pool.",
+      "description": "备份指定池中包含的所有已知客户机系统。",
       "optional": 1,
       "type": "string"
     },
     "protected": {
-      "description": "If true, mark backup(s) as protected.",
+      "description": "如果为 true，则将备份标记为受保护。",
       "optional": 1,
       "requires": "storage",
       "type": "boolean"
     },
     "prune-backups": {
       "default": "keep-all=1",
-      "description": "Use these retention options instead of those from the storage configuration.",
+      "description": "使用这些保留选项，而非存储配置中的选项。",
       "format": "prune-backups",
       "optional": 1,
       "type": "string"
     },
     "quiet": {
       "default": 0,
-      "description": "Be quiet.",
+      "description": "静默运行。",
       "optional": 1,
       "type": "boolean"
     },
     "remove": {
       "default": 1,
-      "description": "Prune older backups according to 'prune-backups'.",
+      "description": "根据 'prune-backups' 清理旧备份。",
       "optional": 1,
       "type": "boolean"
     },
     "script": {
-      "description": "Use specified hook script.",
+      "description": "使用指定的钩子脚本。",
       "optional": 1,
       "type": "string"
     },
     "stdexcludes": {
       "default": 1,
-      "description": "Exclude temporary files and logs.",
+      "description": "排除临时文件和日志。",
       "optional": 1,
       "type": "boolean"
     },
     "stop": {
       "default": 0,
-      "description": "Stop running backup jobs on this host.",
+      "description": "停止此宿主机上正在运行的备份作业。",
       "optional": 1,
       "type": "boolean"
     },
     "stopwait": {
       "default": 10,
-      "description": "Maximal time to wait until a guest system is stopped (minutes).",
+      "description": "等待客户机系统停止的最长时间（分钟）。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "storage": {
-      "description": "Store resulting file to this storage.",
+      "description": "将生成的文件保存到此存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
       "type": "string"
     },
     "tmpdir": {
-      "description": "Store temporary files to specified directory.",
+      "description": "将临时文件保存到指定目录。",
       "optional": 1,
       "type": "string"
     },
     "vmid": {
-      "description": "The ID of the guest system you want to backup.",
+      "description": "要备份的客户机系统 ID。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string"
     },
     "zstd": {
       "default": 1,
-      "description": "Zstd threads. N=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.",
+      "description": "Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。",
       "optional": 1,
       "type": "integer"
     }

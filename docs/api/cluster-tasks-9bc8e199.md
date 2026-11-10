@@ -6,7 +6,7 @@
 
 ## GET `/cluster/tasks`
 
-List recent tasks (cluster wide).
+列出近期任务（整个集群）。
 
 **方法标识：** `tasks`
 

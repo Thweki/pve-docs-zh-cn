@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/endpoints/smtp`
 
-Returns a list of all smtp endpoints
+返回所有 smtp 端点的列表
 
 **方法标识：** `get_smtp_endpoints`
 
@@ -57,27 +57,27 @@ Returns a list of all smtp endpoints
   "items": {
     "properties": {
       "author": {
-        "description": "Author of the mail. Defaults to 'Proxmox VE'.",
+        "description": "邮件作者。默认为 'Proxmox VE'。",
         "optional": 1,
         "type": "string"
       },
       "comment": {
-        "description": "Comment",
+        "description": "注释",
         "optional": 1,
         "type": "string"
       },
       "disable": {
         "default": 0,
-        "description": "Disable this target",
+        "description": "禁用此目标",
         "optional": 1,
         "type": "boolean"
       },
       "from-address": {
-        "description": "`From` address for the mail",
+        "description": "邮件的 `From` 地址",
         "type": "string"
       },
       "mailto": {
-        "description": "List of email recipients",
+        "description": "电子邮件收件人列表",
         "items": {
           "format": "email-or-username",
           "type": "string"
@@ -86,7 +86,7 @@ Returns a list of all smtp endpoints
         "type": "array"
       },
       "mailto-user": {
-        "description": "List of users",
+        "description": "用户列表",
         "items": {
           "format": "pve-userid",
           "type": "string"
@@ -96,7 +96,7 @@ Returns a list of all smtp endpoints
       },
       "mode": {
         "default": "tls",
-        "description": "Determine which encryption method shall be used for the connection.",
+        "description": "确定连接应使用哪种加密方法。",
         "enum": [
           "insecure",
           "starttls",
@@ -106,12 +106,12 @@ Returns a list of all smtp endpoints
         "type": "string"
       },
       "name": {
-        "description": "The name of the endpoint.",
+        "description": "端点名称。",
         "format": "pve-configid",
         "type": "string"
       },
       "origin": {
-        "description": "Show if this entry was created by a user or was built-in",
+        "description": "显示此条目是用户创建还是内置",
         "enum": [
           "user-created",
           "builtin",
@@ -120,16 +120,16 @@ Returns a list of all smtp endpoints
         "type": "string"
       },
       "port": {
-        "description": "The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections.",
+        "description": "使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。",
         "optional": 1,
         "type": "integer"
       },
       "server": {
-        "description": "The address of the SMTP server.",
+        "description": "SMTP 服务器地址。",
         "type": "string"
       },
       "username": {
-        "description": "Username for SMTP authentication",
+        "description": "SMTP 认证的用户名",
         "optional": 1,
         "type": "string"
       }
@@ -148,7 +148,7 @@ Returns a list of all smtp endpoints
 
 ## POST `/cluster/notifications/endpoints/smtp`
 
-Create a new smtp endpoint
+创建新的 smtp 端点
 
 **方法标识：** `create_smtp_endpoint`
 
@@ -203,18 +203,18 @@ Create a new smtp endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | Author of the mail. Defaults to 'Proxmox VE'. |
-| `comment` | string | 否 | — | Comment |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `from-address` | string | 是 | — | `From` address for the mail |
-| `mailto` | array | 否 | — | List of email recipients |
-| `mailto-user` | array | 否 | — | List of users |
-| `mode` | string | 否 | "tls" | Determine which encryption method shall be used for the connection.；可选值：`insecure`, `starttls`, `tls` |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `password` | string | 否 | — | Password for SMTP authentication |
-| `port` | integer | 否 | — | The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections. |
-| `server` | string | 是 | — | The address of the SMTP server. |
-| `username` | string | 否 | — | Username for SMTP authentication |
+| `author` | string | 否 | — | 邮件作者。默认为 'Proxmox VE'。 |
+| `comment` | string | 否 | — | 注释 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `from-address` | string | 是 | — | 邮件的 `From` 地址 |
+| `mailto` | array | 否 | — | 电子邮件收件人列表 |
+| `mailto-user` | array | 否 | — | 用户列表 |
+| `mode` | string | 否 | "tls" | 确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
+| `name` | string | 是 | — | 端点名称。 |
+| `password` | string | 否 | — | SMTP 认证的密码 |
+| `port` | integer | 否 | — | 使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
+| `server` | string | 是 | — | SMTP 服务器地址。 |
+| `username` | string | 否 | — | SMTP 认证的用户名 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -224,31 +224,31 @@ Create a new smtp endpoint
   "additionalProperties": 0,
   "properties": {
     "author": {
-      "description": "Author of the mail. Defaults to 'Proxmox VE'.",
+      "description": "邮件作者。默认为 'Proxmox VE'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "type": "string",
       "typetext": "<string>"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -258,7 +258,7 @@ Create a new smtp endpoint
       "typetext": "<array>"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -269,7 +269,7 @@ Create a new smtp endpoint
     },
     "mode": {
       "default": "tls",
-      "description": "Determine which encryption method shall be used for the connection.",
+      "description": "确定连接应使用哪种加密方法。",
       "enum": [
         "insecure",
         "starttls",
@@ -279,30 +279,30 @@ Create a new smtp endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "Password for SMTP authentication",
+      "description": "SMTP 认证的密码",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections.",
+      "description": "使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "server": {
-      "description": "The address of the SMTP server.",
+      "description": "SMTP 服务器地址。",
       "type": "string",
       "typetext": "<string>"
     },
     "username": {
-      "description": "Username for SMTP authentication",
+      "description": "SMTP 认证的用户名",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

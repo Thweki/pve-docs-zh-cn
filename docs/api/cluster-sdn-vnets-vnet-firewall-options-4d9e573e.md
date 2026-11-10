@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/vnets/{vnet}/firewall/options`
 
-Get vnet firewall options.
+获取 vnet 防火墙选项。
 
 **方法标识：** `get_options`
 
@@ -14,7 +14,7 @@ Get vnet firewall options.
 
 ```json
 {
-  "description": "Needs SDN.Audit or SDN.Allocate permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ Get vnet firewall options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ Get vnet firewall options.
   "additionalProperties": 0,
   "properties": {
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -58,12 +58,12 @@ Get vnet firewall options.
   "properties": {
     "enable": {
       "default": 0,
-      "description": "Enable/disable firewall rules.",
+      "description": "启用/禁用防火墙规则。",
       "optional": 1,
       "type": "boolean"
     },
     "log_level_forward": {
-      "description": "Log level for forwarded traffic.",
+      "description": "转发流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -79,7 +79,7 @@ Get vnet firewall options.
       "type": "string"
     },
     "policy_forward": {
-      "description": "Forward policy.",
+      "description": "转发策略。",
       "enum": [
         "ACCEPT",
         "DROP"
@@ -94,7 +94,7 @@ Get vnet firewall options.
 
 ## PUT `/cluster/sdn/vnets/{vnet}/firewall/options`
 
-Set Firewall options.
+设置防火墙选项。
 
 **方法标识：** `set_options`
 
@@ -102,7 +102,7 @@ Set Firewall options.
 
 ```json
 {
-  "description": "Needs SDN.Allocate permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
 }
 ```
@@ -123,12 +123,12 @@ Set Firewall options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `enable` | boolean | 否 | 0 | Enable/disable firewall rules. |
-| `log_level_forward` | string | 否 | — | Log level for forwarded traffic.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `policy_forward` | string | 否 | — | Forward policy.；可选值：`ACCEPT`, `DROP` |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | boolean | 否 | 0 | 启用/禁用防火墙规则。 |
+| `log_level_forward` | string | 否 | — | 转发流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `policy_forward` | string | 否 | — | 转发策略。；可选值：`ACCEPT`, `DROP` |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -138,14 +138,14 @@ Set Firewall options.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -153,13 +153,13 @@ Set Firewall options.
     },
     "enable": {
       "default": 0,
-      "description": "Enable/disable firewall rules.",
+      "description": "启用/禁用防火墙规则。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "log_level_forward": {
-      "description": "Log level for forwarded traffic.",
+      "description": "转发流量的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -175,7 +175,7 @@ Set Firewall options.
       "type": "string"
     },
     "policy_forward": {
-      "description": "Forward policy.",
+      "description": "转发策略。",
       "enum": [
         "ACCEPT",
         "DROP"
@@ -184,7 +184,7 @@ Set Firewall options.
       "type": "string"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",

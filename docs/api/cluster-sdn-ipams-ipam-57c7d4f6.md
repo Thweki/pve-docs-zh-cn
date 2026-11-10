@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/ipams/{ipam}`
 
-Delete sdn ipam object configuration.
+删除 SDN ipam 对象配置。
 
 **方法标识：** `delete`
 
@@ -40,8 +40,8 @@ Delete sdn ipam object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | The SDN ipam object identifier. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ Delete sdn ipam object configuration.
   "additionalProperties": 0,
   "properties": {
     "ipam": {
-      "description": "The SDN ipam object identifier.",
+      "description": "SDN ipam 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -78,7 +78,7 @@ Delete sdn ipam object configuration.
 
 ## GET `/cluster/sdn/ipams/{ipam}`
 
-Read sdn ipam configuration.
+读取 SDN ipam 配置。
 
 **方法标识：** `read`
 
@@ -106,7 +106,7 @@ Read sdn ipam configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | The SDN ipam object identifier. |
+| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -116,7 +116,7 @@ Read sdn ipam configuration.
   "additionalProperties": 0,
   "properties": {
     "ipam": {
-      "description": "The SDN ipam object identifier.",
+      "description": "SDN ipam 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
@@ -137,7 +137,7 @@ Read sdn ipam configuration.
 
 ## PUT `/cluster/sdn/ipams/{ipam}`
 
-Update sdn ipam object configuration.
+更新 SDN ipam 对象配置。
 
 **方法标识：** `update`
 
@@ -171,11 +171,11 @@ Update sdn ipam object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `fingerprint` | string | 否 | — | Certificate SHA 256 fingerprint. |
-| `ipam` | string | 是 | — | The SDN ipam object identifier. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
+| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 | `section` | integer | 否 | — |  |
 | `token` | string | 否 | — |  |
 | `url` | string | 否 | — |  |
@@ -188,7 +188,7 @@ Update sdn ipam object configuration.
   "additionalProperties": 0,
   "properties": {
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -196,26 +196,26 @@ Update sdn ipam object configuration.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "fingerprint": {
-      "description": "Certificate SHA 256 fingerprint.",
+      "description": "证书 SHA 256 指纹。",
       "optional": 1,
       "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
       "type": "string"
     },
     "ipam": {
-      "description": "The SDN ipam object identifier.",
+      "description": "SDN ipam 对象标识符。",
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

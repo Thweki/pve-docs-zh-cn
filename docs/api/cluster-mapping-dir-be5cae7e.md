@@ -6,7 +6,7 @@
 
 ## GET `/cluster/mapping/dir`
 
-List directory mapping
+列出目录映射
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ List directory mapping
 
 ```json
 {
-  "description": "Only lists entries where you have 'Mapping.Modify', 'Mapping.Use' or 'Mapping.Audit' permissions on '/mapping/dir/<id>'.",
+  "description": "仅列出您对 '/mapping/dir/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ List directory mapping
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | If given, checks the configurations on the given node for correctness, and adds relevant diagnostics for the directory to the response. |
+| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将与该目录相关的诊断信息加入响应。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ List directory mapping
   "additionalProperties": 0,
   "properties": {
     "check-node": {
-      "description": "If given, checks the configurations on the given node for correctness, and adds relevant diagnostics for the directory to the response.",
+      "description": "如果指定，则检查给定节点上的配置是否正确，并将与该目录相关的诊断信息加入响应。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
@@ -58,15 +58,15 @@ List directory mapping
   "items": {
     "properties": {
       "checks": {
-        "description": "A list of checks, only present if 'check-node' is set.",
+        "description": "检查列表，仅在设置了 'check-node' 时存在。",
         "items": {
           "properties": {
             "message": {
-              "description": "The message of the error",
+              "description": "错误消息",
               "type": "string"
             },
             "severity": {
-              "description": "The severity of the error",
+              "description": "错误严重程度",
               "enum": [
                 "warning",
                 "error"
@@ -80,17 +80,17 @@ List directory mapping
         "type": "array"
       },
       "description": {
-        "description": "A description of the logical mapping.",
+        "description": "逻辑映射的描述。",
         "type": "string"
       },
       "id": {
-        "description": "The logical ID of the mapping.",
+        "description": "映射的逻辑 ID。",
         "type": "string"
       },
       "map": {
-        "description": "The entries of the mapping.",
+        "description": "映射条目。",
         "items": {
-          "description": "A mapping for a node.",
+          "description": "节点的映射。",
           "type": "string"
         },
         "type": "array"
@@ -110,7 +110,7 @@ List directory mapping
 
 ## POST `/cluster/mapping/dir`
 
-Create a new directory mapping.
+创建新的目录映射。
 
 **方法标识：** `create`
 
@@ -144,9 +144,9 @@ Create a new directory mapping.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | Description of the directory mapping |
-| `id` | string | 是 | — | The ID of the directory mapping |
-| `map` | array | 是 | — | A list of maps for the cluster nodes. |
+| `description` | string | 否 | — | 目录映射的描述 |
+| `id` | string | 是 | — | 目录映射的 ID |
+| `map` | array | 是 | — | 集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -156,29 +156,29 @@ Create a new directory mapping.
   "additionalProperties": 0,
   "properties": {
     "description": {
-      "description": "Description of the directory mapping",
+      "description": "目录映射的描述",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "id": {
-      "description": "The ID of the directory mapping",
+      "description": "目录映射的 ID",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "map": {
-      "description": "A list of maps for the cluster nodes.",
+      "description": "集群节点的映射列表。",
       "items": {
         "format": {
           "node": {
-            "description": "The cluster node name.",
+            "description": "集群节点名称。",
             "format": "pve-node",
             "type": "string"
           },
           "path": {
-            "description": "Absolute directory path that should be shared with the guest.",
+            "description": "应与客户机共享的目录的绝对路径。",
             "format": "pve-storage-path-in-property-string",
             "type": "string"
           }

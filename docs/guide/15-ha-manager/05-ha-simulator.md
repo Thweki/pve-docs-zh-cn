@@ -1,4 +1,4 @@
-# 15.5. HA Simulator <a href="#_ha_simulator" id="_ha_simulator"></a>
+# 15.5. HA 模拟器 <a href="#ha_simulator" id="ha_simulator"></a>
 
 [![screenshot/gui-ha-manager-status.png](../../assets/screenshot-gui-ha-manager-status-png-228d45135771.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ha-manager-status.png)
 

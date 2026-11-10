@@ -1,8 +1,8 @@
-# 10.13. 使用 `qm` 管理虚拟机 <a href="#_managing_virtual_machines_with_span_class_monospaced_qm_span" id="_managing_virtual_machines_with_span_class_monospaced_qm_span"></a>
+# 10.13. 使用 `qm` 管理虚拟机 <a href="#managing_virtual_machines_with_span_class_monospaced_qm_span" id="managing_virtual_machines_with_span_class_monospaced_qm_span"></a>
 
 qm 是 Proxmox VE 上用于管理 QEMU/KVM 虚拟机的工具。您可以创建和销毁虚拟机，并控制其运行（启动/停止/挂起/恢复）。此外，还可以使用 qm 在关联的配置文件中设置参数，也可以创建和删除虚拟磁盘。
 
-## 10.13.1. CLI 使用示例 <a href="#_cli_usage_examples" id="_cli_usage_examples"></a>
+## 10.13.1. CLI 使用示例 <a href="#cli_usage_examples" id="cli_usage_examples"></a>
 
 使用上传到 *local* 存储的 iso 文件，在 *local-lvm* 存储上创建一个带有 4 GB IDE 磁盘的 VM
 

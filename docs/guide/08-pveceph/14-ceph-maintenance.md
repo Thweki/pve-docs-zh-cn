@@ -1,4 +1,4 @@
-# 8.14. Ceph 维护 <a href="#_ceph_maintenance" id="_ceph_maintenance"></a>
+# 8.14. Ceph 维护 <a href="#ceph_maintenance" id="ceph_maintenance"></a>
 
 ## 8.14.1. 替换 OSD <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
 
@@ -14,7 +14,7 @@
 ceph crash archive-all
 ```
 
-## 8.14.2. Trim/Discard <a href="#_trim_discard" id="_trim_discard"></a>
+## 8.14.2. Trim/Discard <a href="#trim_discard" id="trim_discard"></a>
 
 定期在虚拟机和容器中运行 *fstrim*（discard）是一种良好做法。这会释放文件系统不再使用的数据块，从而减少数据占用和资源负载。大多数现代操作系统都会定期向其磁盘发出此类 discard 命令。您只需确保虚拟机启用 [磁盘丢弃选项](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_hard_disk_discard)。
 
@@ -42,7 +42,7 @@ ceph health mute <CHECK> 2w
 
 本节介绍如何将集群拥有的密钥和兼容 Ceph 用户的密钥从 `aes` 迁移到 `aes256k`。有关 Ceph 用户、票据和密钥存储的说明，请参阅 [Cephx 身份验证](11-pveceph-cephx-how-it-works.md)。
 
-### 为什么会出现这些健康检查 <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
+### 为什么会出现这些健康检查 <a href="#why_the_health_checks_appear" id="why_the_health_checks_appear"></a>
 
 Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法的密钥和临时访问凭据新增了健康检查。因此，即使集群在升级前运行时没有警告，这些检查也可能在升级后立即出现。较旧的方法受 [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156) 影响。有关背景信息，请参阅上游发布公告 [\[2\]](#note-4de62a9e-2)。
 
@@ -62,7 +62,7 @@ Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法
 - 仅以 `root` 身份在一个节点上运行辅助工具。在其运行期间，不要启动另一次迁移或滚动重启，也不要使用其他工具更改 Ceph 密钥。辅助工具的锁不会阻止直接执行 Ceph 身份验证命令。
 - 如果此集群禁用了 Cephx，请改为按照 [禁用 Cephx 的集群](#pveceph_cephx_disabled) 中的说明操作。
 
-#### 1\. 迁移集群拥有的密钥 <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
+#### 1\. 迁移集群拥有的密钥 <a href="#1_migrate_the_cluster_owned_keys" id="1_migrate_the_cluster_owned_keys"></a>
 
 在默认试运行模式下检查集群拥有的密钥迁移计划：
 
@@ -82,11 +82,7 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 
 #### 2\. 迁移兼容 Ceph 用户的密钥 <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
-<a id="pveceph_cipher_support"></a>
-
-
-
-**检查兼容性**
+#### 检查兼容性 <a href="#pveceph_cipher_support" id="pveceph_cipher_support"></a>
 
 多个工作负载可以共享一个 Ceph 用户。仅当所有客户端（包括已断开连接的客户端和外部客户端）都支持 `aes256k` 时，才迁移其密钥。更新后的 Proxmox VE 软件包中的 Ceph 程序支持该功能；内核客户端要求 **正在运行** 的内核版本为 7.0 或更新。
 
@@ -133,11 +129,7 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 
 在某个密钥处于暂存状态期间，不要添加或降级监视器，也不要使用其他工具更改该用户的密钥。其 `AUTH_INSECURE_CLIENT_KEY_TYPE` 警告会一直保留，直到确认操作将新密钥设为当前密钥并使旧密钥失效。
 
-<a id="pveceph_cephx_refresh_clients"></a>
-
-
-
-**刷新客户端**
+#### 刷新客户端 <a href="#pveceph_cephx_refresh_clients" id="pveceph_cephx_refresh_clients"></a>
 
 - 在 Web 界面中在线迁移受影响的虚拟机，或者将其停止后再启动。仅重启客户机是不够的。
 - 停止并重新启动受影响的容器和其他 RBD 客户端。
@@ -170,7 +162,7 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 `/etc/pve/priv/cephx-key-migration.json` 会记录进度，并包含保密的旧密钥。请妥善保护它，并一直保留到迁移完成且每个客户端都已刷新。过早删除它会丢失恢复迁移所需的记录。
 {% endhint %}
 
-### 其他迁移详情 <a href="#_additional_migration_details" id="_additional_migration_details"></a>
+### 其他迁移详情 <a href="#additional_migration_details" id="additional_migration_details"></a>
 
 #### 健康检查参考 <a href="#pveceph_cephx_health_check_reference" id="pveceph_cephx_health_check_reference"></a>
 
@@ -269,13 +261,13 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 2. 将所有客户端刷新回该密钥，包括已断开连接的客户端和外部密钥副本。辅助程序会像正向迁移期间一样重试托管的 CephFS 挂载。
 3. 使用 `--confirm-abort-clients-refreshed <USER> --apply` 运行辅助程序以停用暂存密钥。如果监视器会话收集不完整、某个可见会话使用了暂存密钥、其密钥未知，或者某个存储密钥副本仍保存着暂存密钥，辅助程序会拒绝执行。
 
-#### 紧急加密算法覆盖 <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
+#### 紧急加密算法覆盖 <a href="#emergency_cipher_override" id="emergency_cipher_override"></a>
 
 监视器通常使用 MonMap 中存储的 `auth_allowed_ciphers` 列表来决定允许哪些密钥加密算法通过身份验证。本地启动选项 `mon_auth_emergency_allowed_ciphers` 会为某个监视器替换该列表。在错误的限制导致管理员无法访问后，它可以临时允许现有管理密钥所使用的加密算法 [\[3\]](#note-4de62a9e-3)。
 
 配置此覆盖后，Ceph 会触发 `AUTH_EMERGENCY_CIPHERS_SET`。辅助程序会拒绝最终限制，因为更改 MonMap 不会生效。请仅使用此覆盖来恢复访问，然后修复正常配置，将其从 `/etc/pve/ceph.conf` 中移除，并在最后一次试运行之前重启每个监视器。
 
-#### 中断的运行与手动回退 <a href="#_interrupted_runs_and_manual_fallback" id="_interrupted_runs_and_manual_fallback"></a>
+#### 中断的运行与手动回退 <a href="#interrupted_runs_and_manual_fallback" id="interrupted_runs_and_manual_fallback"></a>
 
 发生中断后，待受影响的节点可以访问时，运行不带选项的辅助程序。未完成的密钥更新可以在其守护进程停止期间恢复。请保持日志不变，并遵循打印出的后续步骤，而不要开始手动轮换。请检查受影响的节点和服务日志，而不要假定已停止守护进程的密钥需要修复。
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes`
 
-Cluster node index.
+集群节点索引。
 
 **方法标识：** `index`
 
@@ -35,45 +35,45 @@ Cluster node index.
   "items": {
     "properties": {
       "cpu": {
-        "description": "CPU utilization.",
+        "description": "CPU 使用率。",
         "optional": 1,
         "renderer": "fraction_as_percentage",
         "type": "number"
       },
       "level": {
-        "description": "Support level.",
+        "description": "支持级别。",
         "optional": 1,
         "type": "string"
       },
       "maxcpu": {
-        "description": "Number of available CPUs.",
+        "description": "可用 CPU 数量。",
         "optional": 1,
         "type": "integer"
       },
       "maxmem": {
-        "description": "Number of available memory in bytes.",
+        "description": "可用内存字节数。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "mem": {
-        "description": "Used memory in bytes.",
+        "description": "已用内存字节数。",
         "optional": 1,
         "renderer": "bytes",
         "type": "integer"
       },
       "node": {
-        "description": "The cluster node name.",
+        "description": "集群节点名称。",
         "format": "pve-node",
         "type": "string"
       },
       "ssl_fingerprint": {
-        "description": "The SSL fingerprint for the node certificate.",
+        "description": "节点证书的 SSL 指纹。",
         "optional": 1,
         "type": "string"
       },
       "status": {
-        "description": "Node status.",
+        "description": "节点状态。",
         "enum": [
           "unknown",
           "online",
@@ -82,7 +82,7 @@ Cluster node index.
         "type": "string"
       },
       "uptime": {
-        "description": "Node uptime in seconds.",
+        "description": "节点运行时间，单位为秒。",
         "optional": 1,
         "renderer": "duration",
         "type": "integer"

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph/status`
 
-Get ceph status.
+获取 ceph 状态。
 
 **方法标识：** `status`
 

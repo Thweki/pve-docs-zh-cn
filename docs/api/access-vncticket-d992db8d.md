@@ -6,7 +6,7 @@
 
 ## POST `/access/vncticket`
 
-verify VNC authentication ticket.
+验证 VNC 身份验证票据。
 
 **方法标识：** `verify_vnc_ticket`
 
@@ -14,7 +14,7 @@ verify VNC authentication ticket.
 
 ```json
 {
-  "description": "You need to pass valid credientials.",
+  "description": "需要传入有效凭据。",
   "user": "world"
 }
 ```
@@ -35,11 +35,11 @@ verify VNC authentication ticket.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `authid` | string | 是 | — | UserId or token |
-| `path` | string | 是 | — | Verify ticket, and check if user have access 'privs' on 'path' |
-| `port` | integer | 否 | — | Verify that the ticket is valid for this port. |
-| `privs` | string | 是 | — | Verify ticket, and check if user have access 'privs' on 'path' |
-| `vncticket` | string | 是 | — | The VNC ticket. |
+| `authid` | string | 是 | — | UserId 或令牌 |
+| `path` | string | 是 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `port` | integer | 否 | — | 验证票据对此端口是否有效。 |
+| `privs` | string | 是 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `vncticket` | string | 是 | — | VNC 票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -49,32 +49,32 @@ verify VNC authentication ticket.
   "additionalProperties": 0,
   "properties": {
     "authid": {
-      "description": "UserId or token",
+      "description": "UserId 或令牌",
       "maxLength": 64,
       "type": "string",
       "typetext": "<string>"
     },
     "path": {
-      "description": "Verify ticket, and check if user have access 'privs' on 'path'",
+      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
       "maxLength": 64,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "Verify that the ticket is valid for this port.",
+      "description": "验证票据对此端口是否有效。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "privs": {
-      "description": "Verify ticket, and check if user have access 'privs' on 'path'",
+      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
       "format": "pve-priv-list",
       "maxLength": 64,
       "type": "string",
       "typetext": "<string>"
     },
     "vncticket": {
-      "description": "The VNC ticket.",
+      "description": "VNC 票据。",
       "type": "string",
       "typetext": "<string>"
     }

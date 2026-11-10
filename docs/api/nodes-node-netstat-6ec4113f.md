@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/netstat`
 
-Read tap/vm network device interface counters
+读取 tap/虚拟机网络设备接口计数器
 
 **方法标识：** `netstat`
 
@@ -40,7 +40,7 @@ Read tap/vm network device interface counters
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Read tap/vm network device interface counters
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

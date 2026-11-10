@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/status`
 
-Read node status
+读取节点状态
 
 **方法标识：** `status`
 
@@ -40,7 +40,7 @@ Read node status
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Read node status
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -68,10 +68,10 @@ Read node status
   "additionalProperties": 1,
   "properties": {
     "boot-info": {
-      "description": "Meta-information about the boot mode.",
+      "description": "有关启动模式的元信息。",
       "properties": {
         "mode": {
-          "description": "Through which firmware the system got booted.",
+          "description": "系统通过哪种固件启动。",
           "enum": [
             "efi",
             "legacy-bios"
@@ -79,7 +79,7 @@ Read node status
           "type": "string"
         },
         "secureboot": {
-          "description": "System is booted in secure mode, only applicable for the \"efi\" mode.",
+          "description": "系统以安全模式启动，仅适用于 \"efi\" 模式。",
           "optional": 1,
           "type": "boolean"
         }
@@ -87,56 +87,56 @@ Read node status
       "type": "object"
     },
     "cpu": {
-      "description": "The current cpu usage.",
+      "description": "当前 CPU 使用率。",
       "type": "number"
     },
     "cpuinfo": {
       "properties": {
         "cores": {
-          "description": "The number of physical cores of the CPU.",
+          "description": "CPU 的物理核心数量。",
           "type": "integer"
         },
         "cpus": {
-          "description": "The number of logical threads of the CPU.",
+          "description": "CPU 的逻辑线程数量。",
           "type": "integer"
         },
         "model": {
-          "description": "The CPU model",
+          "description": "CPU 型号",
           "type": "string"
         },
         "sockets": {
-          "description": "The number of logical threads of the CPU.",
+          "description": "CPU 的逻辑线程数量。",
           "type": "integer"
         }
       },
       "type": "object"
     },
     "current-kernel": {
-      "description": "Meta-information about the currently booted kernel of this node.",
+      "description": "有关此节点当前启动的内核的元信息。",
       "properties": {
         "machine": {
-          "description": "Hardware (architecture) type",
+          "description": "硬件（架构）类型",
           "type": "string"
         },
         "release": {
-          "description": "OS kernel release (e.g., \"6.8.0\")",
+          "description": "操作系统内核发行版本（例如 \"6.8.0\"）",
           "type": "string"
         },
         "sysname": {
-          "description": "OS kernel name (e.g., \"Linux\")",
+          "description": "操作系统内核名称（例如 \"Linux\"）",
           "type": "string"
         },
         "version": {
-          "description": "OS kernel version with build info",
+          "description": "包含构建信息的操作系统内核版本",
           "type": "string"
         }
       },
       "type": "object"
     },
     "loadavg": {
-      "description": "An array of load avg for 1, 5 and 15 minutes respectively.",
+      "description": "分别为 1、5 和 15 分钟平均负载的数组。",
       "items": {
-        "description": "The value of the load.",
+        "description": "负载值。",
         "type": "string"
       },
       "type": "array"
@@ -144,44 +144,44 @@ Read node status
     "memory": {
       "properties": {
         "available": {
-          "description": "The available memory in bytes.",
+          "description": "可用内存字节数。",
           "type": "integer"
         },
         "free": {
-          "description": "The free memory in bytes.",
+          "description": "空闲内存字节数。",
           "type": "integer"
         },
         "total": {
-          "description": "The total memory in bytes.",
+          "description": "总内存字节数。",
           "type": "integer"
         },
         "used": {
-          "description": "The used memory in bytes.",
+          "description": "已用内存字节数。",
           "type": "integer"
         }
       },
       "type": "object"
     },
     "pveversion": {
-      "description": "The PVE version string.",
+      "description": "PVE 版本字符串。",
       "type": "string"
     },
     "rootfs": {
       "properties": {
         "avail": {
-          "description": "The available bytes in the root filesystem.",
+          "description": "根文件系统中的可用字节数。",
           "type": "integer"
         },
         "free": {
-          "description": "The free bytes on the root filesystem.",
+          "description": "根文件系统上的空闲字节数。",
           "type": "integer"
         },
         "total": {
-          "description": "The total size of the root filesystem in bytes.",
+          "description": "根文件系统总大小，单位为字节。",
           "type": "integer"
         },
         "used": {
-          "description": "The used bytes in the root filesystem.",
+          "description": "根文件系统中的已用字节数。",
           "type": "integer"
         }
       },
@@ -194,7 +194,7 @@ Read node status
 
 ## POST `/nodes/{node}/status`
 
-Reboot or shutdown a node.
+重启或关闭节点。
 
 **方法标识：** `node_cmd`
 
@@ -234,8 +234,8 @@ Reboot or shutdown a node.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `command` | string | 是 | — | Specify the command.；可选值：`reboot`, `shutdown` |
-| `node` | string | 是 | — | The cluster node name. |
+| `command` | string | 是 | — | 指定命令。；可选值：`reboot`, `shutdown` |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -245,7 +245,7 @@ Reboot or shutdown a node.
   "additionalProperties": 0,
   "properties": {
     "command": {
-      "description": "Specify the command.",
+      "description": "指定命令。",
       "enum": [
         "reboot",
         "shutdown"
@@ -253,7 +253,7 @@ Reboot or shutdown a node.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

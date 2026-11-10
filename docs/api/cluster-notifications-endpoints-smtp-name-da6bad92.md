@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/notifications/endpoints/smtp/{name}`
 
-Remove smtp endpoint
+移除 smtp 端点
 
 **方法标识：** `delete_smtp_endpoint`
 
@@ -70,7 +70,7 @@ Remove smtp endpoint
 
 ## GET `/cluster/notifications/endpoints/smtp/{name}`
 
-Return a specific smtp endpoint
+返回指定的 smtp 端点
 
 **方法标识：** `get_smtp_endpoint`
 
@@ -140,33 +140,33 @@ Return a specific smtp endpoint
 {
   "properties": {
     "author": {
-      "description": "Author of the mail. Defaults to 'Proxmox VE'.",
+      "description": "邮件作者。默认为 'Proxmox VE'。",
       "optional": 1,
       "type": "string"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "type": "string"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -175,7 +175,7 @@ Return a specific smtp endpoint
       "type": "array"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -185,7 +185,7 @@ Return a specific smtp endpoint
     },
     "mode": {
       "default": "tls",
-      "description": "Determine which encryption method shall be used for the connection.",
+      "description": "确定连接应使用哪种加密方法。",
       "enum": [
         "insecure",
         "starttls",
@@ -195,21 +195,21 @@ Return a specific smtp endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string"
     },
     "port": {
-      "description": "The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections.",
+      "description": "使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。",
       "optional": 1,
       "type": "integer"
     },
     "server": {
-      "description": "The address of the SMTP server.",
+      "description": "SMTP 服务器地址。",
       "type": "string"
     },
     "username": {
-      "description": "Username for SMTP authentication",
+      "description": "SMTP 认证的用户名",
       "optional": 1,
       "type": "string"
     }
@@ -220,7 +220,7 @@ Return a specific smtp endpoint
 
 ## PUT `/cluster/notifications/endpoints/smtp/{name}`
 
-Update existing smtp endpoint
+更新现有 smtp 端点
 
 **方法标识：** `update_smtp_endpoint`
 
@@ -275,20 +275,20 @@ Update existing smtp endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | Author of the mail. Defaults to 'Proxmox VE'. |
-| `comment` | string | 否 | — | Comment |
-| `delete` | array | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `from-address` | string | 否 | — | `From` address for the mail |
-| `mailto` | array | 否 | — | List of email recipients |
-| `mailto-user` | array | 否 | — | List of users |
-| `mode` | string | 否 | "tls" | Determine which encryption method shall be used for the connection.；可选值：`insecure`, `starttls`, `tls` |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `password` | string | 否 | — | Password for SMTP authentication |
-| `port` | integer | 否 | — | The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections. |
-| `server` | string | 否 | — | The address of the SMTP server. |
-| `username` | string | 否 | — | Username for SMTP authentication |
+| `author` | string | 否 | — | 邮件作者。默认为 'Proxmox VE'。 |
+| `comment` | string | 否 | — | 注释 |
+| `delete` | array | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
+| `mailto` | array | 否 | — | 电子邮件收件人列表 |
+| `mailto-user` | array | 否 | — | 用户列表 |
+| `mode` | string | 否 | "tls" | 确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
+| `name` | string | 是 | — | 端点名称。 |
+| `password` | string | 否 | — | SMTP 认证的密码 |
+| `port` | integer | 否 | — | 使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
+| `server` | string | 否 | — | SMTP 服务器地址。 |
+| `username` | string | 否 | — | SMTP 认证的用户名 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -298,19 +298,19 @@ Update existing smtp endpoint
   "additionalProperties": 0,
   "properties": {
     "author": {
-      "description": "Author of the mail. Defaults to 'Proxmox VE'.",
+      "description": "邮件作者。默认为 'Proxmox VE'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -320,7 +320,7 @@ Update existing smtp endpoint
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -328,19 +328,19 @@ Update existing smtp endpoint
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -350,7 +350,7 @@ Update existing smtp endpoint
       "typetext": "<array>"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -361,7 +361,7 @@ Update existing smtp endpoint
     },
     "mode": {
       "default": "tls",
-      "description": "Determine which encryption method shall be used for the connection.",
+      "description": "确定连接应使用哪种加密方法。",
       "enum": [
         "insecure",
         "starttls",
@@ -371,31 +371,31 @@ Update existing smtp endpoint
       "type": "string"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "Password for SMTP authentication",
+      "description": "SMTP 认证的密码",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "The port to be used. Defaults to 465 for TLS based connections, 587 for STARTTLS based connections and port 25 for insecure plain-text connections.",
+      "description": "使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "server": {
-      "description": "The address of the SMTP server.",
+      "description": "SMTP 服务器地址。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "username": {
-      "description": "Username for SMTP authentication",
+      "description": "SMTP 认证的用户名",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

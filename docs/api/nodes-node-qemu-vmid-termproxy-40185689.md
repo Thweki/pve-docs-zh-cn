@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/termproxy`
 
-Creates a TCP proxy connections.
+创建 TCP 代理连接。
 
 **方法标识：** `termproxy`
 
@@ -40,9 +40,9 @@ Creates a TCP proxy connections.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `serial` | string | 否 | — | opens a serial terminal (defaults to display)；可选值：`serial0`, `serial1`, `serial2`, `serial3` |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `serial` | string | 否 | — | 打开串行终端（默认为 display）；可选值：`serial0`, `serial1`, `serial2`, `serial3` |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Creates a TCP proxy connections.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "serial": {
-      "description": "opens a serial terminal (defaults to display)",
+      "description": "打开串行终端（默认为 display）",
       "enum": [
         "serial0",
         "serial1",
@@ -69,7 +69,7 @@ Creates a TCP proxy connections.
       "type": "string"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/endpoints`
 
-Index for all available endpoint types.
+所有可用端点类型的索引。
 
 **方法标识：** `endpoints_index`
 

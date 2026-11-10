@@ -1,6 +1,6 @@
-# 19.1. pvesubscription \- Subscription Management <a href="#_pvesubscription_subscription_management" id="_pvesubscription_subscription_management"></a>
+# 19.1. pvesubscription \- 订阅管理 <a href="#pvesubscription_subscription_management" id="pvesubscription_subscription_management"></a>
 
-This tool is used to handle Proxmox VE subscriptions.
+此工具用于处理 Proxmox VE 订阅。
 
 ---
 

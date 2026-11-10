@@ -1,16 +1,8 @@
-# 23.4. **pvestatd** \- Proxmox VE Status Daemon <a href="#_strong_pvestatd_strong_proxmox_ve_status_daemon" id="_strong_pvestatd_strong_proxmox_ve_status_daemon"></a>
+# 23.4. **pvestatd** \- Proxmox VE 状态守护进程 <a href="#strong_pvestatd_strong_proxmox_ve_status_daemon" id="strong_pvestatd_strong_proxmox_ve_status_daemon"></a>
 
-<a id="cli_pvestatd"></a>
+## **pvestatd** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvestatd" id="cli_pvestatd"></a>
 
-
-
-**pvestatd** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvestatd_help"></a>
-
-
-
-**pvestatd help** `[OPTIONS]`
+## **pvestatd help** `[OPTIONS]` <a href="#cli_pvestatd_help" id="cli_pvestatd_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,41 +14,25 @@
 
 详细输出格式。
 
-<a id="cli_pvestatd_restart"></a>
+## **pvestatd restart** <a href="#cli_pvestatd_restart" id="cli_pvestatd_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+## **pvestatd start** `[OPTIONS]` <a href="#cli_pvestatd_start" id="cli_pvestatd_start"></a>
 
-**pvestatd restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvestatd_start"></a>
-
-
-
-**pvestatd start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvestatd_status"></a>
+## **pvestatd status** <a href="#cli_pvestatd_status" id="cli_pvestatd_status"></a>
 
+获取守护进程状态。
 
+## **pvestatd stop** <a href="#cli_pvestatd_stop" id="cli_pvestatd_stop"></a>
 
-**pvestatd status**
-
-Get daemon status.
-
-<a id="cli_pvestatd_stop"></a>
-
-
-
-**pvestatd stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

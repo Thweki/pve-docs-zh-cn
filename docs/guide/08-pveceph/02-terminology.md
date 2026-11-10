@@ -1,4 +1,4 @@
-# 8.2. 术语 <a href="#_terminology" id="_terminology"></a>
+# 8.2. 术语 <a href="#terminology" id="terminology"></a>
 
 **Ceph 由多个守护进程组成，用作 RBD 存储时需要：**
 

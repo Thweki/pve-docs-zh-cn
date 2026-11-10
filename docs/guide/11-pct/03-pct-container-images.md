@@ -1,10 +1,10 @@
-# 11.3. Container Images <a href="#pct_container_images" id="pct_container_images"></a>
+# 11.3. 容器镜像 <a href="#pct_container_images" id="pct_container_images"></a>
 
 容器镜像有时也称为“模板”或“应用设备”，是包含运行容器所需一切的 `tar` 归档文件。Proxmox VE 可以使用两种主要类型的镜像：用于创建完整虚拟环境的 **System Container Templates**，以及基于 OCI 标准、用于运行特定应用的 **Application Container Images**。
 
-## 11.3.1. System Container Templates <a href="#_system_container_templates" id="_system_container_templates"></a>
+## 11.3.1. 系统容器模板 <a href="#system_container_templates" id="system_container_templates"></a>
 
-Proxmox VE itself provides a variety of basic templates for the [most common Linux distributions](02-pct-supported-distributions.md). They can be downloaded using the GUI or the `pveam` (short for Proxmox VE Appliance Manager) command-line utility. Additionally, [TurnKey Linux](https://www.turnkeylinux.org/) container templates are also available to download.
+Proxmox VE 自身提供适用于 [最常见 Linux 发行版](02-pct-supported-distributions.md) 的多种基本模板。可使用 GUI 或 `pveam`（Proxmox VE Appliance Manager 的缩写）命令行实用程序下载。此外，也可下载 [TurnKey Linux](https://www.turnkeylinux.org/) 容器模板。
 
 可用模板列表通过 *pve-daily-update* 定时器每天更新。您也可以通过执行以下命令手动触发更新：
 
@@ -73,13 +73,13 @@ local:vztmpl/debian-10.0-standard_10.0-1_amd64.tar.gz  219.95MB
 # pveam remove local:vztmpl/debian-10.0-standard_10.0-1_amd64.tar.gz
 ```
 
-## 11.3.2. Open Container Initiative (OCI) Images <a href="#_open_container_initiative_oci_images" id="_open_container_initiative_oci_images"></a>
+## 11.3.2. 开放容器倡议（OCI）镜像 <a href="#open_container_initiative_oci_images" id="open_container_initiative_oci_images"></a>
 
 Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用容器。请注意，目前在 Proxmox VE 中运行应用容器仍被视为技术预览。
 
 从 OCI 镜像创建的容器仍使用现有的 LXC 框架。
 
-## 11.3.3. Obtaining OCI Images <a href="#_obtaining_oci_images" id="_obtaining_oci_images"></a>
+## 11.3.3. 获取 OCI 镜像 <a href="#obtaining_oci_images" id="obtaining_oci_images"></a>
 
 在 Web 界面中，可以手动上传 OCI 镜像，也可以通过存储的容器模板视图中的 **Pull from OCI registry** 按钮从镜像仓库拉取镜像。
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/vzdump/extractconfig`
 
-Extract configuration from vzdump backup archive.
+从 vzdump 备份归档中提取配置。
 
 **方法标识：** `extractconfig`
 
@@ -14,7 +14,7 @@ Extract configuration from vzdump backup archive.
 
 ```json
 {
-  "description": "The user needs 'VM.Backup' permissions on the backed up guest ID, and 'Datastore.AllocateSpace' on the backup storage.",
+  "description": "用户需要对所备份的客户机 ID 具有 'VM.Backup' 权限，以及对备份存储具有 'Datastore.AllocateSpace' 权限。",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ Extract configuration from vzdump backup archive.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `volume` | string | 是 | — | Volume identifier |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `volume` | string | 是 | — | 卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Extract configuration from vzdump backup archive.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "volume": {
-      "description": "Volume identifier",
+      "description": "卷标识符",
       "type": "string",
       "typetext": "<string>"
     }

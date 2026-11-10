@@ -6,7 +6,7 @@
 
 ## GET `/cluster/options`
 
-Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
+获取数据中心选项。如果对 '/' 没有 'Sys.Audit' 权限，则不会返回所有选项。
 
 **方法标识：** `get_options`
 
@@ -41,46 +41,46 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
 {
   "properties": {
     "allowed-tags": {
-      "description": "The tags the current user is allowed to set and see.",
+      "description": "当前用户可设置和查看的标签。",
       "items": {
-        "description": "A tag.",
+        "description": "标签。",
         "type": "string"
       },
       "type": "array"
     },
     "bwlimit": {
-      "description": "Set I/O bandwidth limit for various operations (in KiB/s).",
+      "description": "为各类操作设置 I/O 带宽限制（单位为 KiB/s）。",
       "format": {
         "clone": {
-          "description": "bandwidth limit in KiB/s for cloning disks",
+          "description": "克隆磁盘的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "default": {
-          "description": "default bandwidth limit in KiB/s",
+          "description": "默认带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "migration": {
-          "description": "bandwidth limit in KiB/s for migrating guests (including moving local disks)",
+          "description": "迁移客户机（包括移动本地磁盘）的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "move": {
-          "description": "bandwidth limit in KiB/s for moving disks",
+          "description": "移动磁盘的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "restore": {
-          "description": "bandwidth limit in KiB/s for restoring guests from backups",
+          "description": "从备份还原客户机的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
@@ -91,13 +91,13 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "consent-text": {
-      "description": "Consent text that is displayed before logging in.",
+      "description": "登录前显示的同意文本。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string"
     },
     "console": {
-      "description": "Select the default Console viewer. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer comtatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.",
+      "description": "选择默认控制台查看器。可以使用内置 java applet（VNC；已弃用，会映射到 html5）、与外部 virt-viewer 兼容的应用程序（SPICE）、基于 HTML5 的 VNC 查看器（noVNC），或基于 HTML5 的控制台客户端（xtermjs）。如果所选查看器不可用（例如虚拟机未启用 SPICE），则回退到 noVNC。",
       "enum": [
         "applet",
         "vv",
@@ -108,11 +108,11 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "crs": {
-      "description": "Cluster resource scheduling settings.",
+      "description": "集群资源调度设置。",
       "format": {
         "ha": {
           "default": "basic",
-          "description": "Use this resource scheduler mode for HA.",
+          "description": "为 HA 使用此资源调度器模式。",
           "enum": [
             "basic",
             "static",
@@ -120,17 +120,17 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "Configures how the HA Manager should select nodes to start or recover services:\n\n- with 'basic', only the number of services is used,\n- with 'static', static CPU and memory configuration of services are considered,\n- with 'dynamic', static and dynamic CPU and memory usage of services are considered.\n"
+          "verbose_description": "配置 HA 管理器应如何选择节点以启动或恢复服务：\n\n- 'basic'：仅使用服务数量，\n- 'static'：考虑服务的静态 CPU 和内存配置，\n- 'dynamic'：考虑服务的静态和动态 CPU 及内存用量。\n"
         },
         "ha-auto-rebalance": {
           "default": 0,
-          "description": "Whether to use CRS for balancing HA resources automatically depending on the current node imbalance.",
+          "description": "是否根据当前节点不均衡程度使用 CRS 自动均衡 HA 资源。",
           "optional": 1,
           "type": "boolean"
         },
         "ha-auto-rebalance-hold-duration": {
           "default": 3,
-          "description": "The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration.",
+          "description": "集群节点不均衡程度必须连续超过阈值的 HA 轮次数，达到后触发自动资源均衡迁移。",
           "minimum": 0,
           "optional": 1,
           "requires": "ha-auto-rebalance",
@@ -138,7 +138,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "ha-auto-rebalance-margin": {
           "default": 10,
-          "description": "The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration.",
+          "description": "执行资源均衡迁移所需的集群节点不均衡程度最小相对改善百分比。",
           "maximum": 100,
           "minimum": 0,
           "optional": 1,
@@ -147,7 +147,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "ha-auto-rebalance-method": {
           "default": "bruteforce",
-          "description": "The method to use for the scoring of balancing migrations.",
+          "description": "对均衡迁移进行评分所用的方法。",
           "enum": [
             "bruteforce",
             "topsis"
@@ -158,7 +158,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "ha-auto-rebalance-threshold": {
           "default": 30,
-          "description": "The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded.",
+          "description": "集群节点不均衡百分比，超过此值将触发自动资源均衡系统。",
           "maximum": 100,
           "minimum": 0,
           "optional": 1,
@@ -167,7 +167,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "ha-rebalance-on-start": {
           "default": 0,
-          "description": "Set to use CRS for selecting a suited node when a HA services request-state changes from stop to start.",
+          "description": "设置为在 HA 服务请求状态从 stop 变为 start 时使用 CRS 选择合适节点。",
           "optional": 1,
           "type": "boolean"
         }
@@ -176,20 +176,20 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "description": {
-      "description": "Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.",
+      "description": "数据中心描述。显示在 Web 界面的数据中心备注面板中。作为注释保存在配置文件中。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string"
     },
     "email_from": {
-      "description": "Specify email address to send notification from (default is root@$hostname)",
+      "description": "指定发送通知所用的电子邮件发件地址（默认为 root@$hostname）",
       "format": "email-opt",
       "optional": 1,
       "type": "string"
     },
     "fencing": {
       "default": "watchdog",
-      "description": "Set the fencing mode of the HA cluster. Hardware mode needs a valid configuration of fence devices in /etc/pve/ha/fence.cfg. With both all two modes are used.\n\nWARNING: 'hardware' and 'both' are EXPERIMENTAL & WIP",
+      "description": "设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中正确配置隔离设备。both 模式同时使用这两种模式。\n\n警告：'hardware' 和 'both' 均为实验性功能，仍在开发中",
       "enum": [
         "watchdog",
         "hardware",
@@ -199,11 +199,11 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "ha": {
-      "description": "Cluster wide HA settings.",
+      "description": "集群范围的 HA 设置。",
       "format": {
         "shutdown_policy": {
           "default": "conditional",
-          "description": "The policy for HA services on node shutdown. 'freeze' disables auto-recovery, 'failover' ensures recovery, 'conditional' recovers on poweroff and freezes on reboot. 'migrate' will migrate running services to other nodes, if possible. With 'freeze' or 'failover', HA Services will always get stopped first on shutdown.",
+          "description": "节点关闭时 HA 服务的策略。'freeze' 禁用自动恢复，'failover' 确保恢复，'conditional' 在关机时恢复、重启时冻结。'migrate' 在可能时将正在运行的服务迁移到其他节点。使用 'freeze' 或 'failover' 时，关闭节点始终会先停止 HA 服务。",
           "enum": [
             "freeze",
             "failover",
@@ -211,20 +211,20 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
             "migrate"
           ],
           "type": "string",
-          "verbose_description": "Describes the policy for handling HA services on poweroff or reboot of a node. Freeze will always freeze services which are still located on the node on shutdown, those services won't be recovered by the HA manager. Failover will not mark the services as frozen and thus the services will get recovered to other nodes, if the shutdown node does not come up again quickly (< 1min). 'conditional' chooses automatically depending on the type of shutdown, i.e., on a reboot the service will be frozen but on a poweroff the service will stay as is, and thus get recovered after about 2 minutes. Migrate will try to move all running services to another node when a reboot or shutdown was triggered. The poweroff process will only continue once no running services are located on the node anymore. If the node comes up again, the service will be moved back to the previously powered-off node, at least if no other migration, reloaction or recovery took place."
+          "verbose_description": "描述节点关机或重启时处理 HA 服务的策略。Freeze 总是冻结关闭时仍在该节点上的服务，这些服务不会由 HA 管理器恢复。Failover 不会将服务标记为冻结，因此如果关闭的节点未迅速恢复上线（< 1min），服务将恢复到其他节点。'conditional' 根据关闭类型自动选择，即重启时冻结服务，关机时保留服务状态，从而在约 2 分钟后恢复。Migrate 在触发重启或关机时尝试将所有正在运行的服务移至其他节点。只有当节点上不再存在运行中的服务时，关机过程才会继续。如果节点重新上线，服务将移回先前关闭的节点，前提是期间没有发生其他迁移、重新安置或恢复。"
         }
       },
       "optional": 1,
       "type": "string"
     },
     "http_proxy": {
-      "description": "Specify external http proxy which is used for downloads (example: 'http://username:password@host:port/')",
+      "description": "指定用于下载的外部 HTTP 代理（例如：'http://username:password@host:port/')",
       "optional": 1,
       "pattern": "http://.*",
       "type": "string"
     },
     "keyboard": {
-      "description": "Default keybord layout for vnc server.",
+      "description": "VNC 服务器的默认键盘布局。",
       "enum": [
         "de",
         "de-ch",
@@ -256,7 +256,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "language": {
-      "description": "Default GUI language.",
+      "description": "默认 GUI 语言。",
       "enum": [
         "ar",
         "ca",
@@ -290,30 +290,30 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "location": {
-      "description": "The location of the cluster.",
+      "description": "集群位置。",
       "format": "pve-node-location",
       "optional": 1,
       "type": "string"
     },
     "mac_prefix": {
       "default": "BC:24:11",
-      "description": "Prefix for the auto-generated MAC addresses of virtual guests. The default 'BC:24:11' is the OUI assigned by the IEEE to Proxmox Server Solutions GmbH for a 24-bit large MAC block. You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or behind NAT).",
+      "description": "虚拟客户机自动生成的 MAC 地址前缀。默认值 'BC:24:11' 是 IEEE 分配给 Proxmox Server Solutions GmbH 的 OUI，对应 24 位大型 MAC 地址块。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT 后方）。",
       "format": "mac-prefix",
       "optional": 1,
       "type": "string",
-      "verbose_description": "Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).\n \nNote that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.\n Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.\n\nFor publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins."
+      "verbose_description": "虚拟客户机自动生成的 MAC 地址前缀。默认值 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），对应大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT/地址伪装后方）。\n \n请注意，当运行多个客户机网络部分或全部共享的集群时，强烈建议扩展默认 MAC 前缀，或生成自定义的有效前缀，以减少 MAC 冲突概率。例如，为每个集群在 Proxmox OUI 后添加不同的额外十六进制位，如第一个集群使用 `BC:24:11:0`，第二个使用 `BC:24:11:1`，依此类推。\n 也可以在逻辑上分隔客户机网络，例如使用 VLAN。\n\n对于可公开访问的客户机，建议向 IEEE 注册自己的 https://standards.ieee.org/products-programs/regauth/[OUI]，或与您自身或托管服务提供商的网络管理员协调。"
     },
     "max_workers": {
-      "description": "Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager.",
+      "description": "定义执行 'stopall VMs' 等操作或 HA 管理器任务时，每个节点最多启动的工作任务数  。",
       "minimum": 1,
       "optional": 1,
       "type": "integer"
     },
     "migration": {
-      "description": "For cluster wide migration settings.",
+      "description": "用于集群范围的迁移设置。",
       "format": {
         "network": {
-          "description": "CIDR of the (sub) network that is used for migration. Used as a fallback for replications jobs if the replication network setting is not set",
+          "description": "用于迁移的（子）网络的 CIDR。如果未设置复制网络设置，则复制任务将以此作为后备值",
           "format": "CIDR",
           "format_description": "CIDR",
           "optional": 1,
@@ -322,7 +322,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         "type": {
           "default": "secure",
           "default_key": 1,
-          "description": "Migration traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.",
+          "description": "迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。",
           "enum": [
             "secure",
             "insecure"
@@ -334,16 +334,16 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "migration_unsecure": {
-      "description": "Migration is secure using SSH tunnel by default. For secure private networks you can disable it to speed up migration. Deprecated, use the 'migration' property instead!",
+      "description": "默认使用 SSH 隧道保障迁移安全。在安全的私有网络上，可禁用此功能以加快迁移。已弃用，请改用 'migration' 属性！",
       "optional": 1,
       "type": "boolean"
     },
     "next-id": {
-      "description": "Control the range for the free VMID auto-selection pool.",
+      "description": "控制空闲 VMID 自动选择池的范围。",
       "format": {
         "lower": {
           "default": 100,
-          "description": "Lower, inclusive boundary for free next-id API range.",
+          "description": "空闲 next-id API 范围的下限，包含此值。",
           "max": 999999999,
           "min": 100,
           "optional": 1,
@@ -351,7 +351,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "upper": {
           "default": 1000000,
-          "description": "Upper, exclusive boundary for free next-id API range.",
+          "description": "空闲 next-id API 范围的上限，不包含此值。",
           "max": 1000000000,
           "min": 100,
           "optional": 1,
@@ -362,10 +362,10 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "notify": {
-      "description": "Cluster-wide notification settings.",
+      "description": "集群范围的通知设置。",
       "format": {
         "fencing": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "enum": [
             "always",
             "never"
@@ -375,7 +375,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "package-updates": {
           "default": "auto",
-          "description": "DEPRECATED: Use datacenter notification settings instead. Control when the daily update job should send out notifications.",
+          "description": "已弃用：请改用数据中心通知设置。控制每日更新作业何时发送通知。",
           "enum": [
             "auto",
             "always",
@@ -383,10 +383,10 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be  production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
+          "verbose_description": "已弃用：请改用数据中心通知设置。\n控制每日更新作业发送通知的频率：\n* 'auto' 对具有有效订阅的系统每天发送，因为假定这些系统已  用于生产环境，因此应了解待处理更新。\n* 'always' 如果有新的待处理更新，则每次更新都发送。\n* 'never' 从不发送新待处理更新的通知。\n"
         },
         "replication": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "enum": [
             "always",
             "never"
@@ -395,19 +395,19 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
           "type": "string"
         },
         "target-fencing": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
         },
         "target-package-updates": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
         },
         "target-replication": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
@@ -417,17 +417,17 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "registered-tags": {
-      "description": "A list of tags that require a `Sys.Modify` on '/' to set and delete. Tags set here that are also in 'user-tag-access' also require `Sys.Modify`.",
+      "description": "设置和删除时需要对 '/' 具有 `Sys.Modify` 权限的标签列表。此处设置且同时位于 'user-tag-access' 中的标签也需要 `Sys.Modify`。",
       "optional": 1,
       "pattern": "(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*);)*(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*)",
       "type": "string",
       "typetext": "<tag>[;<tag>...]"
     },
     "replication": {
-      "description": "For cluster wide replication settings.",
+      "description": "用于集群范围的复制设置。",
       "format": {
         "network": {
-          "description": "CIDR of the (sub) network that is used for replication jobs.",
+          "description": "用于复制任务的（子）网络的 CIDR。",
           "format": "CIDR",
           "format_description": "CIDR",
           "optional": 1,
@@ -436,7 +436,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         "type": {
           "default": "secure",
           "default_key": 1,
-          "description": "Replication traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.",
+          "description": "复制流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。",
           "enum": [
             "secure",
             "insecure"
@@ -448,16 +448,16 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "tag-style": {
-      "description": "Tag style options.",
+      "description": "标签样式选项。",
       "format": {
         "case-sensitive": {
           "default": 0,
-          "description": "Controls if filtering for unique tags on update should check case-sensitive.",
+          "description": "控制更新时筛选唯一标签是否区分大小写。",
           "optional": 1,
           "type": "boolean"
         },
         "color-map": {
-          "description": "Manual color mapping for tags (semicolon separated).",
+          "description": "手动标签颜色映射（以分号分隔）。",
           "optional": 1,
           "pattern": "(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*):[0-9a-fA-F]{6}(?::[0-9a-fA-F]{6})?)(?:;(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*):[0-9a-fA-F]{6}(?::[0-9a-fA-F]{6})?))*",
           "type": "string",
@@ -465,7 +465,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "ordering": {
           "default": "alphabetical",
-          "description": "Controls the sorting of the tags in the web-interface and the API update.",
+          "description": "控制 Web 界面和 API 更新中的标签排序。",
           "enum": [
             "config",
             "alphabetical"
@@ -475,7 +475,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
         },
         "shape": {
           "default": "circle",
-          "description": "Tag shape for the web ui tree. 'full' draws the full tag. 'circle' draws only a circle with the background color. 'dense' only draws a small rectancle (useful when many tags are assigned to each guest).'none' disables showing the tags.",
+          "description": "Web UI 树中的标签形状。'full' 绘制完整标签。'circle' 仅绘制带背景色的圆形。'dense' 仅绘制小矩形（适用于每个客户机分配了大量标签的情况）。'none' 禁止显示标签。",
           "enum": [
             "full",
             "circle",
@@ -493,13 +493,13 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "description": "u2f",
       "format": {
         "appid": {
-          "description": "U2F AppId URL override. Defaults to the origin.",
+          "description": "覆盖 U2F AppId URL。默认为源站。",
           "format_description": "APPID",
           "optional": 1,
           "type": "string"
         },
         "origin": {
-          "description": "U2F Origin override. Mostly useful for single nodes with a single URL.",
+          "description": "覆盖 U2F Origin。主要适用于只有一个 URL 的单节点。",
           "format_description": "URL",
           "optional": 1,
           "type": "string"
@@ -509,11 +509,11 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "user-tag-access": {
-      "description": "Privilege options for user-settable tags",
+      "description": "用户可设置标签的权限选项",
       "format": {
         "user-allow": {
           "default": "free",
-          "description": "Controls tag usage for users without `Sys.Modify` on `/` by either allowing `none`, a `list`, already `existing` or anything (`free`).",
+          "description": "控制没有 `Sys.Modify` 权限（作用于 `/`）的用户的标签使用方式，允许 `none`、`list`、已 `existing` 或任意标签（`free`）。",
           "enum": [
             "none",
             "list",
@@ -522,10 +522,10 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "Controls which tags can be set or deleted on resources a user controls (such as guests). Users with the `Sys.Modify` privilege on `/` are alwaysunrestricted.\n* 'none' no tags are usable.\n* 'list' tags from 'user-allow-list' are usable.\n* 'existing' like list, but already existing tags of resources are also usable.\n* 'free' no tag restrictions.\n"
+          "verbose_description": "控制用户可在其控制的资源（例如客户机）上设置或删除哪些标签。具有 `Sys.Modify` 权限（作用于 `/`）的用户始终不受限制。\n* 'none' 不可使用任何标签。\n* 'list' 可使用 'user-allow-list' 中的标签。\n* 'existing' 与 list 相同，但也可使用资源上已有的标签。\n* 'free' 无标签限制。\n"
         },
         "user-allow-list": {
-          "description": "List of tags users are allowed to set and delete (semicolon separated) for 'user-allow' values 'list' and 'existing'.",
+          "description": "当 'user-allow' 为 'list' 和 'existing' 时，用户允许设置和删除的标签列表（以分号分隔）。",
           "optional": 1,
           "pattern": "(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*)(?:;(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*))*",
           "type": "string",
@@ -536,28 +536,28 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "type": "string"
     },
     "webauthn": {
-      "description": "webauthn configuration",
+      "description": "webauthn 配置",
       "format": {
         "allow-subdomains": {
           "default": 1,
-          "description": "Whether to allow the origin to be a subdomain, rather than the exact URL.",
+          "description": "是否允许源站为子域，而不必是完全相同的 URL。",
           "optional": 1,
           "type": "boolean"
         },
         "id": {
-          "description": "Relying party ID. Must be the domain name without protocol, port or location. Changing this *will* break existing credentials.",
+          "description": "依赖方 ID。必须为不含协议、端口或路径的域名。更改此项必定导致现有凭据失效。",
           "format_description": "DOMAINNAME",
           "optional": 1,
           "type": "string"
         },
         "origin": {
-          "description": "Site origin. Must be a `https://` URL (or `http://localhost`). Should contain the address users type in their browsers to access the web interface. Changing this *may* break existing credentials.",
+          "description": "站点源站。必须为 `https://` URL（或 `http://localhost`）。应包含用户在浏览器中访问 Web 界面时输入的地址。更改此项可能导致现有凭据失效。",
           "format_description": "URL",
           "optional": 1,
           "type": "string"
         },
         "rp": {
-          "description": "Relying party name. Any text identifier. Changing this *may* break existing credentials.",
+          "description": "依赖方名称。任意文本标识符。更改此项可能导致现有凭据失效。",
           "format_description": "RELYING_PARTY",
           "optional": 1,
           "type": "string"
@@ -573,7 +573,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
 
 ## PUT `/cluster/options`
 
-Set datacenter options.
+设置数据中心选项。
 
 **方法标识：** `set_options`
 
@@ -607,31 +607,31 @@ Set datacenter options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | string | 否 | — | Set I/O bandwidth limit for various operations (in KiB/s). |
-| `consent-text` | string | 否 | — | Consent text that is displayed before logging in. |
-| `console` | string | 否 | — | Select the default Console viewer. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer comtatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.；可选值：`applet`, `vv`, `html5`, `xtermjs` |
-| `crs` | string | 否 | — | Cluster resource scheduling settings. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `description` | string | 否 | — | Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file. |
-| `email_from` | string | 否 | — | Specify email address to send notification from (default is root@$hostname) |
-| `fencing` | string | 否 | "watchdog" | Set the fencing mode of the HA cluster. Hardware mode needs a valid configuration of fence devices in /etc/pve/ha/fence.cfg. With both all two modes are used.<br><br>WARNING: 'hardware' and 'both' are EXPERIMENTAL &amp; WIP；可选值：`watchdog`, `hardware`, `both` |
-| `ha` | string | 否 | — | Cluster wide HA settings. |
-| `http_proxy` | string | 否 | — | Specify external http proxy which is used for downloads (example: 'http://username:password@host:port/') |
-| `keyboard` | string | 否 | — | Default keybord layout for vnc server.；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `language` | string | 否 | — | Default GUI language.；可选值：`ar`, `ca`, `da`, `de`, `en`, `es`, `eu`, `fa`, `fr`, `hr`, `he`, `it`, `ja`, `ka`, `kr`, `nb`, `nl`, `nn`, `pl`, `pt_BR`, `ru`, `sl`, `sv`, `tr`, `ukr`, `zh_CN`, `zh_TW` |
-| `location` | string | 否 | — | The location of the cluster. |
-| `mac_prefix` | string | 否 | "BC:24:11" | Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).<br> <br>Note that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.<br> Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.<br><br>For publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins. |
-| `max_workers` | integer | 否 | — | Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager. |
-| `migration` | string | 否 | — | For cluster wide migration settings. |
-| `migration_unsecure` | boolean | 否 | — | Migration is secure using SSH tunnel by default. For secure private networks you can disable it to speed up migration. Deprecated, use the 'migration' property instead! |
-| `next-id` | string | 否 | — | Control the range for the free VMID auto-selection pool. |
-| `notify` | string | 否 | — | Cluster-wide notification settings. |
-| `registered-tags` | string | 否 | — | A list of tags that require a `Sys.Modify` on '/' to set and delete. Tags set here that are also in 'user-tag-access' also require `Sys.Modify`. |
-| `replication` | string | 否 | — | For cluster wide replication settings. |
-| `tag-style` | string | 否 | — | Tag style options. |
+| `bwlimit` | string | 否 | — | 为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
+| `consent-text` | string | 否 | — | 登录前显示的同意文本。 |
+| `console` | string | 否 | — | 选择默认控制台查看器。可以使用内置 java applet（VNC；已弃用，会映射到 html5）、与外部 virt-viewer 兼容的应用程序（SPICE）、基于 HTML5 的 VNC 查看器（noVNC），或基于 HTML5 的控制台客户端（xtermjs）。如果所选查看器不可用（例如虚拟机未启用 SPICE），则回退到 noVNC。；可选值：`applet`, `vv`, `html5`, `xtermjs` |
+| `crs` | string | 否 | — | 集群资源调度设置。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `description` | string | 否 | — | 数据中心描述。显示在 Web 界面的数据中心备注面板中。作为注释保存在配置文件中。 |
+| `email_from` | string | 否 | — | 指定发送通知所用的电子邮件发件地址（默认为 root@$hostname） |
+| `fencing` | string | 否 | "watchdog" | 设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中正确配置隔离设备。both 模式同时使用这两种模式。<br><br>警告：'hardware' 和 'both' 均为实验性功能，仍在开发中；可选值：`watchdog`, `hardware`, `both` |
+| `ha` | string | 否 | — | 集群范围的 HA 设置。 |
+| `http_proxy` | string | 否 | — | 指定用于下载的外部 HTTP 代理（例如：'http://username:password@host:port/') |
+| `keyboard` | string | 否 | — | VNC 服务器的默认键盘布局。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `language` | string | 否 | — | 默认 GUI 语言。；可选值：`ar`, `ca`, `da`, `de`, `en`, `es`, `eu`, `fa`, `fr`, `hr`, `he`, `it`, `ja`, `ka`, `kr`, `nb`, `nl`, `nn`, `pl`, `pt_BR`, `ru`, `sl`, `sv`, `tr`, `ukr`, `zh_CN`, `zh_TW` |
+| `location` | string | 否 | — | 集群位置。 |
+| `mac_prefix` | string | 否 | "BC:24:11" | 虚拟客户机自动生成的 MAC 地址前缀。默认值 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），对应大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT/地址伪装后方）。<br> <br>请注意，当运行多个客户机网络部分或全部共享的集群时，强烈建议扩展默认 MAC 前缀，或生成自定义的有效前缀，以减少 MAC 冲突概率。例如，为每个集群在 Proxmox OUI 后添加不同的额外十六进制位，如第一个集群使用 `BC:24:11:0`，第二个使用 `BC:24:11:1`，依此类推。<br> 也可以在逻辑上分隔客户机网络，例如使用 VLAN。<br><br>对于可公开访问的客户机，建议向 IEEE 注册自己的 https://standards.ieee.org/products-programs/regauth/[OUI]，或与您自身或托管服务提供商的网络管理员协调。 |
+| `max_workers` | integer | 否 | — | 定义执行 'stopall VMs' 等操作或 HA 管理器任务时，每个节点最多启动的工作任务数  。 |
+| `migration` | string | 否 | — | 用于集群范围的迁移设置。 |
+| `migration_unsecure` | boolean | 否 | — | 默认使用 SSH 隧道保障迁移安全。在安全的私有网络上，可禁用此功能以加快迁移。已弃用，请改用 'migration' 属性！ |
+| `next-id` | string | 否 | — | 控制空闲 VMID 自动选择池的范围。 |
+| `notify` | string | 否 | — | 集群范围的通知设置。 |
+| `registered-tags` | string | 否 | — | 设置和删除时需要对 '/' 具有 `Sys.Modify` 权限的标签列表。此处设置且同时位于 'user-tag-access' 中的标签也需要 `Sys.Modify`。 |
+| `replication` | string | 否 | — | 用于集群范围的复制设置。 |
+| `tag-style` | string | 否 | — | 标签样式选项。 |
 | `u2f` | string | 否 | — | u2f |
-| `user-tag-access` | string | 否 | — | Privilege options for user-settable tags |
-| `webauthn` | string | 否 | — | webauthn configuration |
+| `user-tag-access` | string | 否 | — | 用户可设置标签的权限选项 |
+| `webauthn` | string | 否 | — | webauthn 配置 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -641,38 +641,38 @@ Set datacenter options.
   "additionalProperties": 0,
   "properties": {
     "bwlimit": {
-      "description": "Set I/O bandwidth limit for various operations (in KiB/s).",
+      "description": "为各类操作设置 I/O 带宽限制（单位为 KiB/s）。",
       "format": {
         "clone": {
-          "description": "bandwidth limit in KiB/s for cloning disks",
+          "description": "克隆磁盘的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "default": {
-          "description": "default bandwidth limit in KiB/s",
+          "description": "默认带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "migration": {
-          "description": "bandwidth limit in KiB/s for migrating guests (including moving local disks)",
+          "description": "迁移客户机（包括移动本地磁盘）的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "move": {
-          "description": "bandwidth limit in KiB/s for moving disks",
+          "description": "移动磁盘的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
           "type": "number"
         },
         "restore": {
-          "description": "bandwidth limit in KiB/s for restoring guests from backups",
+          "description": "从备份还原客户机的带宽限制，单位为 KiB/s",
           "format_description": "LIMIT",
           "minimum": "0",
           "optional": 1,
@@ -684,14 +684,14 @@ Set datacenter options.
       "typetext": "[clone=<LIMIT>] [,default=<LIMIT>] [,migration=<LIMIT>] [,move=<LIMIT>] [,restore=<LIMIT>]"
     },
     "consent-text": {
-      "description": "Consent text that is displayed before logging in.",
+      "description": "登录前显示的同意文本。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "console": {
-      "description": "Select the default Console viewer. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer comtatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.",
+      "description": "选择默认控制台查看器。可以使用内置 java applet（VNC；已弃用，会映射到 html5）、与外部 virt-viewer 兼容的应用程序（SPICE）、基于 HTML5 的 VNC 查看器（noVNC），或基于 HTML5 的控制台客户端（xtermjs）。如果所选查看器不可用（例如虚拟机未启用 SPICE），则回退到 noVNC。",
       "enum": [
         "applet",
         "vv",
@@ -702,11 +702,11 @@ Set datacenter options.
       "type": "string"
     },
     "crs": {
-      "description": "Cluster resource scheduling settings.",
+      "description": "集群资源调度设置。",
       "format": {
         "ha": {
           "default": "basic",
-          "description": "Use this resource scheduler mode for HA.",
+          "description": "为 HA 使用此资源调度器模式。",
           "enum": [
             "basic",
             "static",
@@ -714,17 +714,17 @@ Set datacenter options.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "Configures how the HA Manager should select nodes to start or recover services:\n\n- with 'basic', only the number of services is used,\n- with 'static', static CPU and memory configuration of services are considered,\n- with 'dynamic', static and dynamic CPU and memory usage of services are considered.\n"
+          "verbose_description": "配置 HA 管理器应如何选择节点以启动或恢复服务：\n\n- 'basic'：仅使用服务数量，\n- 'static'：考虑服务的静态 CPU 和内存配置，\n- 'dynamic'：考虑服务的静态和动态 CPU 及内存用量。\n"
         },
         "ha-auto-rebalance": {
           "default": 0,
-          "description": "Whether to use CRS for balancing HA resources automatically depending on the current node imbalance.",
+          "description": "是否根据当前节点不均衡程度使用 CRS 自动均衡 HA 资源。",
           "optional": 1,
           "type": "boolean"
         },
         "ha-auto-rebalance-hold-duration": {
           "default": 3,
-          "description": "The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration.",
+          "description": "集群节点不均衡程度必须连续超过阈值的 HA 轮次数，达到后触发自动资源均衡迁移。",
           "minimum": 0,
           "optional": 1,
           "requires": "ha-auto-rebalance",
@@ -732,7 +732,7 @@ Set datacenter options.
         },
         "ha-auto-rebalance-margin": {
           "default": 10,
-          "description": "The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration.",
+          "description": "执行资源均衡迁移所需的集群节点不均衡程度最小相对改善百分比。",
           "maximum": 100,
           "minimum": 0,
           "optional": 1,
@@ -741,7 +741,7 @@ Set datacenter options.
         },
         "ha-auto-rebalance-method": {
           "default": "bruteforce",
-          "description": "The method to use for the scoring of balancing migrations.",
+          "description": "对均衡迁移进行评分所用的方法。",
           "enum": [
             "bruteforce",
             "topsis"
@@ -752,7 +752,7 @@ Set datacenter options.
         },
         "ha-auto-rebalance-threshold": {
           "default": 30,
-          "description": "The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded.",
+          "description": "集群节点不均衡百分比，超过此值将触发自动资源均衡系统。",
           "maximum": 100,
           "minimum": 0,
           "optional": 1,
@@ -761,7 +761,7 @@ Set datacenter options.
         },
         "ha-rebalance-on-start": {
           "default": 0,
-          "description": "Set to use CRS for selecting a suited node when a HA services request-state changes from stop to start.",
+          "description": "设置为在 HA 服务请求状态从 stop 变为 start 时使用 CRS 选择合适节点。",
           "optional": 1,
           "type": "boolean"
         }
@@ -771,21 +771,21 @@ Set datacenter options.
       "typetext": "[ha=<basic|static|dynamic>] [,ha-auto-rebalance=<1|0>] [,ha-auto-rebalance-hold-duration=<number>] [,ha-auto-rebalance-margin=<number>] [,ha-auto-rebalance-method=<bruteforce|topsis>] [,ha-auto-rebalance-threshold=<number>] [,ha-rebalance-on-start=<1|0>]"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "description": {
-      "description": "Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.",
+      "description": "数据中心描述。显示在 Web 界面的数据中心备注面板中。作为注释保存在配置文件中。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "email_from": {
-      "description": "Specify email address to send notification from (default is root@$hostname)",
+      "description": "指定发送通知所用的电子邮件发件地址（默认为 root@$hostname）",
       "format": "email-opt",
       "optional": 1,
       "type": "string",
@@ -793,7 +793,7 @@ Set datacenter options.
     },
     "fencing": {
       "default": "watchdog",
-      "description": "Set the fencing mode of the HA cluster. Hardware mode needs a valid configuration of fence devices in /etc/pve/ha/fence.cfg. With both all two modes are used.\n\nWARNING: 'hardware' and 'both' are EXPERIMENTAL & WIP",
+      "description": "设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中正确配置隔离设备。both 模式同时使用这两种模式。\n\n警告：'hardware' 和 'both' 均为实验性功能，仍在开发中",
       "enum": [
         "watchdog",
         "hardware",
@@ -803,11 +803,11 @@ Set datacenter options.
       "type": "string"
     },
     "ha": {
-      "description": "Cluster wide HA settings.",
+      "description": "集群范围的 HA 设置。",
       "format": {
         "shutdown_policy": {
           "default": "conditional",
-          "description": "The policy for HA services on node shutdown. 'freeze' disables auto-recovery, 'failover' ensures recovery, 'conditional' recovers on poweroff and freezes on reboot. 'migrate' will migrate running services to other nodes, if possible. With 'freeze' or 'failover', HA Services will always get stopped first on shutdown.",
+          "description": "节点关闭时 HA 服务的策略。'freeze' 禁用自动恢复，'failover' 确保恢复，'conditional' 在关机时恢复、重启时冻结。'migrate' 在可能时将正在运行的服务迁移到其他节点。使用 'freeze' 或 'failover' 时，关闭节点始终会先停止 HA 服务。",
           "enum": [
             "freeze",
             "failover",
@@ -815,7 +815,7 @@ Set datacenter options.
             "migrate"
           ],
           "type": "string",
-          "verbose_description": "Describes the policy for handling HA services on poweroff or reboot of a node. Freeze will always freeze services which are still located on the node on shutdown, those services won't be recovered by the HA manager. Failover will not mark the services as frozen and thus the services will get recovered to other nodes, if the shutdown node does not come up again quickly (< 1min). 'conditional' chooses automatically depending on the type of shutdown, i.e., on a reboot the service will be frozen but on a poweroff the service will stay as is, and thus get recovered after about 2 minutes. Migrate will try to move all running services to another node when a reboot or shutdown was triggered. The poweroff process will only continue once no running services are located on the node anymore. If the node comes up again, the service will be moved back to the previously powered-off node, at least if no other migration, reloaction or recovery took place."
+          "verbose_description": "描述节点关机或重启时处理 HA 服务的策略。Freeze 总是冻结关闭时仍在该节点上的服务，这些服务不会由 HA 管理器恢复。Failover 不会将服务标记为冻结，因此如果关闭的节点未迅速恢复上线（< 1min），服务将恢复到其他节点。'conditional' 根据关闭类型自动选择，即重启时冻结服务，关机时保留服务状态，从而在约 2 分钟后恢复。Migrate 在触发重启或关机时尝试将所有正在运行的服务移至其他节点。只有当节点上不再存在运行中的服务时，关机过程才会继续。如果节点重新上线，服务将移回先前关闭的节点，前提是期间没有发生其他迁移、重新安置或恢复。"
         }
       },
       "optional": 1,
@@ -823,13 +823,13 @@ Set datacenter options.
       "typetext": "shutdown_policy=<enum>"
     },
     "http_proxy": {
-      "description": "Specify external http proxy which is used for downloads (example: 'http://username:password@host:port/')",
+      "description": "指定用于下载的外部 HTTP 代理（例如：'http://username:password@host:port/')",
       "optional": 1,
       "pattern": "http://.*",
       "type": "string"
     },
     "keyboard": {
-      "description": "Default keybord layout for vnc server.",
+      "description": "VNC 服务器的默认键盘布局。",
       "enum": [
         "de",
         "de-ch",
@@ -861,7 +861,7 @@ Set datacenter options.
       "type": "string"
     },
     "language": {
-      "description": "Default GUI language.",
+      "description": "默认 GUI 语言。",
       "enum": [
         "ar",
         "ca",
@@ -895,7 +895,7 @@ Set datacenter options.
       "type": "string"
     },
     "location": {
-      "description": "The location of the cluster.",
+      "description": "集群位置。",
       "format": "pve-node-location",
       "optional": 1,
       "type": "string",
@@ -903,25 +903,25 @@ Set datacenter options.
     },
     "mac_prefix": {
       "default": "BC:24:11",
-      "description": "Prefix for the auto-generated MAC addresses of virtual guests. The default 'BC:24:11' is the OUI assigned by the IEEE to Proxmox Server Solutions GmbH for a 24-bit large MAC block. You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or behind NAT).",
+      "description": "虚拟客户机自动生成的 MAC 地址前缀。默认值 'BC:24:11' 是 IEEE 分配给 Proxmox Server Solutions GmbH 的 OUI，对应 24 位大型 MAC 地址块。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT 后方）。",
       "format": "mac-prefix",
       "optional": 1,
       "type": "string",
       "typetext": "<string>",
-      "verbose_description": "Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).\n \nNote that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.\n Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.\n\nFor publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins."
+      "verbose_description": "虚拟客户机自动生成的 MAC 地址前缀。默认值 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），对应大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT/地址伪装后方）。\n \n请注意，当运行多个客户机网络部分或全部共享的集群时，强烈建议扩展默认 MAC 前缀，或生成自定义的有效前缀，以减少 MAC 冲突概率。例如，为每个集群在 Proxmox OUI 后添加不同的额外十六进制位，如第一个集群使用 `BC:24:11:0`，第二个使用 `BC:24:11:1`，依此类推。\n 也可以在逻辑上分隔客户机网络，例如使用 VLAN。\n\n对于可公开访问的客户机，建议向 IEEE 注册自己的 https://standards.ieee.org/products-programs/regauth/[OUI]，或与您自身或托管服务提供商的网络管理员协调。"
     },
     "max_workers": {
-      "description": "Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager.",
+      "description": "定义执行 'stopall VMs' 等操作或 HA 管理器任务时，每个节点最多启动的工作任务数  。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (1 - N)"
     },
     "migration": {
-      "description": "For cluster wide migration settings.",
+      "description": "用于集群范围的迁移设置。",
       "format": {
         "network": {
-          "description": "CIDR of the (sub) network that is used for migration. Used as a fallback for replications jobs if the replication network setting is not set",
+          "description": "用于迁移的（子）网络的 CIDR。如果未设置复制网络设置，则复制任务将以此作为后备值",
           "format": "CIDR",
           "format_description": "CIDR",
           "optional": 1,
@@ -930,7 +930,7 @@ Set datacenter options.
         "type": {
           "default": "secure",
           "default_key": 1,
-          "description": "Migration traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.",
+          "description": "迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。",
           "enum": [
             "secure",
             "insecure"
@@ -943,17 +943,17 @@ Set datacenter options.
       "typetext": "[type=]<secure|insecure> [,network=<CIDR>]"
     },
     "migration_unsecure": {
-      "description": "Migration is secure using SSH tunnel by default. For secure private networks you can disable it to speed up migration. Deprecated, use the 'migration' property instead!",
+      "description": "默认使用 SSH 隧道保障迁移安全。在安全的私有网络上，可禁用此功能以加快迁移。已弃用，请改用 'migration' 属性！",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "next-id": {
-      "description": "Control the range for the free VMID auto-selection pool.",
+      "description": "控制空闲 VMID 自动选择池的范围。",
       "format": {
         "lower": {
           "default": 100,
-          "description": "Lower, inclusive boundary for free next-id API range.",
+          "description": "空闲 next-id API 范围的下限，包含此值。",
           "max": 999999999,
           "min": 100,
           "optional": 1,
@@ -961,7 +961,7 @@ Set datacenter options.
         },
         "upper": {
           "default": 1000000,
-          "description": "Upper, exclusive boundary for free next-id API range.",
+          "description": "空闲 next-id API 范围的上限，不包含此值。",
           "max": 1000000000,
           "min": 100,
           "optional": 1,
@@ -973,10 +973,10 @@ Set datacenter options.
       "typetext": "[lower=<integer>] [,upper=<integer>]"
     },
     "notify": {
-      "description": "Cluster-wide notification settings.",
+      "description": "集群范围的通知设置。",
       "format": {
         "fencing": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "enum": [
             "always",
             "never"
@@ -986,7 +986,7 @@ Set datacenter options.
         },
         "package-updates": {
           "default": "auto",
-          "description": "DEPRECATED: Use datacenter notification settings instead. Control when the daily update job should send out notifications.",
+          "description": "已弃用：请改用数据中心通知设置。控制每日更新作业何时发送通知。",
           "enum": [
             "auto",
             "always",
@@ -994,10 +994,10 @@ Set datacenter options.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be  production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
+          "verbose_description": "已弃用：请改用数据中心通知设置。\n控制每日更新作业发送通知的频率：\n* 'auto' 对具有有效订阅的系统每天发送，因为假定这些系统已  用于生产环境，因此应了解待处理更新。\n* 'always' 如果有新的待处理更新，则每次更新都发送。\n* 'never' 从不发送新待处理更新的通知。\n"
         },
         "replication": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "enum": [
             "always",
             "never"
@@ -1006,19 +1006,19 @@ Set datacenter options.
           "type": "string"
         },
         "target-fencing": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
         },
         "target-package-updates": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
         },
         "target-replication": {
-          "description": "UNUSED - Use datacenter notification settings instead.",
+          "description": "未使用——请改用数据中心通知设置。",
           "format_description": "TARGET",
           "optional": 1,
           "type": "string"
@@ -1029,17 +1029,17 @@ Set datacenter options.
       "typetext": "[fencing=<always|never>] [,package-updates=<auto|always|never>] [,replication=<always|never>] [,target-fencing=<TARGET>] [,target-package-updates=<TARGET>] [,target-replication=<TARGET>]"
     },
     "registered-tags": {
-      "description": "A list of tags that require a `Sys.Modify` on '/' to set and delete. Tags set here that are also in 'user-tag-access' also require `Sys.Modify`.",
+      "description": "设置和删除时需要对 '/' 具有 `Sys.Modify` 权限的标签列表。此处设置且同时位于 'user-tag-access' 中的标签也需要 `Sys.Modify`。",
       "optional": 1,
       "pattern": "(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*);)*(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*)",
       "type": "string",
       "typetext": "<tag>[;<tag>...]"
     },
     "replication": {
-      "description": "For cluster wide replication settings.",
+      "description": "用于集群范围的复制设置。",
       "format": {
         "network": {
-          "description": "CIDR of the (sub) network that is used for replication jobs.",
+          "description": "用于复制任务的（子）网络的 CIDR。",
           "format": "CIDR",
           "format_description": "CIDR",
           "optional": 1,
@@ -1048,7 +1048,7 @@ Set datacenter options.
         "type": {
           "default": "secure",
           "default_key": 1,
-          "description": "Replication traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.",
+          "description": "复制流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。",
           "enum": [
             "secure",
             "insecure"
@@ -1061,16 +1061,16 @@ Set datacenter options.
       "typetext": "[type=]<secure|insecure> [,network=<CIDR>]"
     },
     "tag-style": {
-      "description": "Tag style options.",
+      "description": "标签样式选项。",
       "format": {
         "case-sensitive": {
           "default": 0,
-          "description": "Controls if filtering for unique tags on update should check case-sensitive.",
+          "description": "控制更新时筛选唯一标签是否区分大小写。",
           "optional": 1,
           "type": "boolean"
         },
         "color-map": {
-          "description": "Manual color mapping for tags (semicolon separated).",
+          "description": "手动标签颜色映射（以分号分隔）。",
           "optional": 1,
           "pattern": "(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*):[0-9a-fA-F]{6}(?::[0-9a-fA-F]{6})?)(?:;(?:(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*):[0-9a-fA-F]{6}(?::[0-9a-fA-F]{6})?))*",
           "type": "string",
@@ -1078,7 +1078,7 @@ Set datacenter options.
         },
         "ordering": {
           "default": "alphabetical",
-          "description": "Controls the sorting of the tags in the web-interface and the API update.",
+          "description": "控制 Web 界面和 API 更新中的标签排序。",
           "enum": [
             "config",
             "alphabetical"
@@ -1088,7 +1088,7 @@ Set datacenter options.
         },
         "shape": {
           "default": "circle",
-          "description": "Tag shape for the web ui tree. 'full' draws the full tag. 'circle' draws only a circle with the background color. 'dense' only draws a small rectancle (useful when many tags are assigned to each guest).'none' disables showing the tags.",
+          "description": "Web UI 树中的标签形状。'full' 绘制完整标签。'circle' 仅绘制带背景色的圆形。'dense' 仅绘制小矩形（适用于每个客户机分配了大量标签的情况）。'none' 禁止显示标签。",
           "enum": [
             "full",
             "circle",
@@ -1107,13 +1107,13 @@ Set datacenter options.
       "description": "u2f",
       "format": {
         "appid": {
-          "description": "U2F AppId URL override. Defaults to the origin.",
+          "description": "覆盖 U2F AppId URL。默认为源站。",
           "format_description": "APPID",
           "optional": 1,
           "type": "string"
         },
         "origin": {
-          "description": "U2F Origin override. Mostly useful for single nodes with a single URL.",
+          "description": "覆盖 U2F Origin。主要适用于只有一个 URL 的单节点。",
           "format_description": "URL",
           "optional": 1,
           "type": "string"
@@ -1124,11 +1124,11 @@ Set datacenter options.
       "typetext": "[appid=<APPID>] [,origin=<URL>]"
     },
     "user-tag-access": {
-      "description": "Privilege options for user-settable tags",
+      "description": "用户可设置标签的权限选项",
       "format": {
         "user-allow": {
           "default": "free",
-          "description": "Controls tag usage for users without `Sys.Modify` on `/` by either allowing `none`, a `list`, already `existing` or anything (`free`).",
+          "description": "控制没有 `Sys.Modify` 权限（作用于 `/`）的用户的标签使用方式，允许 `none`、`list`、已 `existing` 或任意标签（`free`）。",
           "enum": [
             "none",
             "list",
@@ -1137,10 +1137,10 @@ Set datacenter options.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "Controls which tags can be set or deleted on resources a user controls (such as guests). Users with the `Sys.Modify` privilege on `/` are alwaysunrestricted.\n* 'none' no tags are usable.\n* 'list' tags from 'user-allow-list' are usable.\n* 'existing' like list, but already existing tags of resources are also usable.\n* 'free' no tag restrictions.\n"
+          "verbose_description": "控制用户可在其控制的资源（例如客户机）上设置或删除哪些标签。具有 `Sys.Modify` 权限（作用于 `/`）的用户始终不受限制。\n* 'none' 不可使用任何标签。\n* 'list' 可使用 'user-allow-list' 中的标签。\n* 'existing' 与 list 相同，但也可使用资源上已有的标签。\n* 'free' 无标签限制。\n"
         },
         "user-allow-list": {
-          "description": "List of tags users are allowed to set and delete (semicolon separated) for 'user-allow' values 'list' and 'existing'.",
+          "description": "当 'user-allow' 为 'list' 和 'existing' 时，用户允许设置和删除的标签列表（以分号分隔）。",
           "optional": 1,
           "pattern": "(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*)(?:;(?^i:[a-z0-9_][a-z0-9_\\-\\+\\.]*))*",
           "type": "string",
@@ -1152,28 +1152,28 @@ Set datacenter options.
       "typetext": "[user-allow=<enum>] [,user-allow-list=<tag>[;<tag>...]]"
     },
     "webauthn": {
-      "description": "webauthn configuration",
+      "description": "webauthn 配置",
       "format": {
         "allow-subdomains": {
           "default": 1,
-          "description": "Whether to allow the origin to be a subdomain, rather than the exact URL.",
+          "description": "是否允许源站为子域，而不必是完全相同的 URL。",
           "optional": 1,
           "type": "boolean"
         },
         "id": {
-          "description": "Relying party ID. Must be the domain name without protocol, port or location. Changing this *will* break existing credentials.",
+          "description": "依赖方 ID。必须为不含协议、端口或路径的域名。更改此项必定导致现有凭据失效。",
           "format_description": "DOMAINNAME",
           "optional": 1,
           "type": "string"
         },
         "origin": {
-          "description": "Site origin. Must be a `https://` URL (or `http://localhost`). Should contain the address users type in their browsers to access the web interface. Changing this *may* break existing credentials.",
+          "description": "站点源站。必须为 `https://` URL（或 `http://localhost`）。应包含用户在浏览器中访问 Web 界面时输入的地址。更改此项可能导致现有凭据失效。",
           "format_description": "URL",
           "optional": 1,
           "type": "string"
         },
         "rp": {
-          "description": "Relying party name. Any text identifier. Changing this *may* break existing credentials.",
+          "description": "依赖方名称。任意文本标识符。更改此项可能导致现有凭据失效。",
           "format_description": "RELYING_PARTY",
           "optional": 1,
           "type": "string"

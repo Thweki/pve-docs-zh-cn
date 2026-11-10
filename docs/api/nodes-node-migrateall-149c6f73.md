@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/migrateall`
 
-Migrate all VMs and Containers.
+迁移所有虚拟机和容器。
 
 **方法标识：** `migrateall`
 
@@ -14,7 +14,7 @@ Migrate all VMs and Containers.
 
 ```json
 {
-  "description": "The 'VM.Migrate' permission is required on '/' or on '/vms/<ID>' for each ID passed via the 'vms' parameter.",
+  "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。",
   "user": "all"
 }
 ```
@@ -41,12 +41,12 @@ Migrate all VMs and Containers.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | — | Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set! |
-| `maxworkers` | integer | 否 | — | Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set!Deprecated, use 'max-workers' instead. |
-| `node` | string | 是 | — | The cluster node name. |
-| `target` | string | 是 | — | Target node. |
-| `vms` | string | 否 | — | Only consider Guests with these IDs. |
-| `with-local-disks` | boolean | 否 | — | Enable live storage migration for local disk |
+| `max-workers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！ |
+| `maxworkers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！已弃用，请改用 'max-workers'。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `target` | string | 是 | — | 目标节点。 |
+| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
+| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Migrate all VMs and Containers.
   "additionalProperties": 0,
   "properties": {
     "max-workers": {
-      "description": "Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set!",
+      "description": "并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -64,7 +64,7 @@ Migrate all VMs and Containers.
       "typetext": "<integer> (1 - 64)"
     },
     "maxworkers": {
-      "description": "Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set!Deprecated, use 'max-workers' instead.",
+      "description": "并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！已弃用，请改用 'max-workers'。",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,
@@ -72,26 +72,26 @@ Migrate all VMs and Containers.
       "typetext": "<integer> (1 - 64)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vms": {
-      "description": "Only consider Guests with these IDs.",
+      "description": "仅考虑具有这些 ID 的客户机。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "with-local-disks": {
-      "description": "Enable live storage migration for local disk",
+      "description": "为本地磁盘启用在线存储迁移",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

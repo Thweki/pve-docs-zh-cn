@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/pbs`
 
-Scan remote Proxmox Backup Server.
+扫描远程 Proxmox Backup Server。
 
 **方法标识：** `pbsscan`
 
@@ -46,12 +46,12 @@ Scan remote Proxmox Backup Server.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `fingerprint` | string | 否 | — | Certificate SHA 256 fingerprint. |
-| `node` | string | 是 | — | The cluster node name. |
-| `password` | string | 是 | — | User password or API token secret. |
-| `port` | integer | 否 | 8007 | Optional port. |
-| `server` | string | 是 | — | The server address (name or IP). |
-| `username` | string | 是 | — | User-name or API token-ID. |
+| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `password` | string | 是 | — | 用户密码或 API 令牌密钥。 |
+| `port` | integer | 否 | 8007 | 可选端口。 |
+| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
+| `username` | string | 是 | — | 用户名或 API 令牌 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,25 +61,25 @@ Scan remote Proxmox Backup Server.
   "additionalProperties": 0,
   "properties": {
     "fingerprint": {
-      "description": "Certificate SHA 256 fingerprint.",
+      "description": "证书 SHA 256 指纹。",
       "optional": 1,
       "pattern": "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "User password or API token secret.",
+      "description": "用户密码或 API 令牌密钥。",
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
       "default": 8007,
-      "description": "Optional port.",
+      "description": "可选端口。",
       "maximum": 65535,
       "minimum": 1,
       "optional": 1,
@@ -87,13 +87,13 @@ Scan remote Proxmox Backup Server.
       "typetext": "<integer> (1 - 65535)"
     },
     "server": {
-      "description": "The server address (name or IP).",
+      "description": "服务器地址（名称或 IP）。",
       "format": "pve-storage-server",
       "type": "string",
       "typetext": "<string>"
     },
     "username": {
-      "description": "User-name or API token-ID.",
+      "description": "用户名或 API 令牌 ID。",
       "type": "string",
       "typetext": "<string>"
     }
@@ -110,12 +110,12 @@ Scan remote Proxmox Backup Server.
   "items": {
     "properties": {
       "comment": {
-        "description": "Comment from server.",
+        "description": "服务器提供的注释。",
         "optional": 1,
         "type": "string"
       },
       "store": {
-        "description": "The datastore name.",
+        "description": "数据存储名称。",
         "type": "string"
       }
     },

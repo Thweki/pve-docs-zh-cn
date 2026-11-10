@@ -6,7 +6,7 @@
 
 ## GET `/cluster/config`
 
-Directory index.
+目录索引。
 
 **方法标识：** `index`
 
@@ -54,7 +54,7 @@ Directory index.
 
 ## POST `/cluster/config`
 
-Generate new cluster configuration. If no links given, default to local IP address as link0.
+生成新的集群配置。如果未提供链路，则默认将本地 IP 地址用作 link0。
 
 **方法标识：** `create`
 
@@ -74,11 +74,11 @@ Generate new cluster configuration. If no links given, default to local IP addre
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `clustername` | string | 是 | — | The name of the cluster. |
-| `link[n]` | string | 否 | — | Address and priority information of a single corosync link. (up to 8 links supported; link0..link7) |
-| `nodeid` | integer | 否 | — | Node id for this node. |
-| `token-coefficient` | integer | 否 | 125 | Coefficient used to determine Corosync's token timeout. See the corosync.conf(5) manual for more details. |
-| `votes` | integer | 否 | — | Number of votes for this node. |
+| `clustername` | string | 是 | — | 集群名称。 |
+| `link[n]` | string | 否 | — | 单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
+| `nodeid` | integer | 否 | — | 此节点的节点 ID。 |
+| `token-coefficient` | integer | 否 | 125 | 用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。 |
+| `votes` | integer | 否 | — | 此节点的票数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -88,25 +88,25 @@ Generate new cluster configuration. If no links given, default to local IP addre
   "additionalProperties": 0,
   "properties": {
     "clustername": {
-      "description": "The name of the cluster.",
+      "description": "集群名称。",
       "format": "pve-node",
       "maxLength": 15,
       "type": "string",
       "typetext": "<string>"
     },
     "link[n]": {
-      "description": "Address and priority information of a single corosync link. (up to 8 links supported; link0..link7)",
+      "description": "单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7）",
       "format": {
         "address": {
           "default_key": 1,
-          "description": "Hostname (or IP) of this corosync link address.",
+          "description": "此 corosync 链路地址的主机名（或 IP）。",
           "format": "address",
           "format_description": "IP",
           "type": "string"
         },
         "priority": {
           "default": 0,
-          "description": "The priority for the link when knet is used in 'passive' mode (default). Lower value means higher priority. Only valid for cluster create, ignored on node add.",
+          "description": "knet 在 'passive' 模式（默认）下使用时的链路优先级。值越小，优先级越高。仅对创建集群有效，添加节点时忽略。",
           "maximum": 255,
           "minimum": 0,
           "optional": 1,
@@ -118,7 +118,7 @@ Generate new cluster configuration. If no links given, default to local IP addre
       "typetext": "[address=]<IP> [,priority=<integer>]"
     },
     "nodeid": {
-      "description": "Node id for this node.",
+      "description": "此节点的节点 ID。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
@@ -126,14 +126,14 @@ Generate new cluster configuration. If no links given, default to local IP addre
     },
     "token-coefficient": {
       "default": 125,
-      "description": "Coefficient used to determine Corosync's token timeout. See the corosync.conf(5) manual for more details.",
+      "description": "用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "votes": {
-      "description": "Number of votes for this node.",
+      "description": "此节点的票数。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",

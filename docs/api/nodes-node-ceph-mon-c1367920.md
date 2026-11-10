@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/mon`
 
-Get Ceph monitor list.
+获取 Ceph 监视器列表。
 
 **方法标识：** `listmon`
 
@@ -49,7 +49,7 @@ Get Ceph monitor list.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Get Ceph monitor list.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,51 +77,51 @@ Get Ceph monitor list.
   "items": {
     "properties": {
       "addr": {
-        "description": "Address as advertised by the monitor; Ceph-formatted (typically 'IP:PORT/NONCE', possibly as a messenger-v2 vector depending on Ceph version and ceph.conf shape).",
+        "description": "监视器通告的地址；采用 Ceph 格式（通常为 'IP:PORT/NONCE'，也可能是 messenger-v2 向量，取决于 Ceph 版本和 ceph.conf 的结构）。",
         "optional": 1,
         "type": "string"
       },
       "ceph_version": {
-        "description": "Full Ceph version string of the monitor daemon.",
+        "description": "监视器守护进程的完整 Ceph 版本字符串。",
         "optional": 1,
         "type": "string"
       },
       "ceph_version_short": {
-        "description": "Short Ceph version string of the monitor daemon (e.g. '19.2.0').",
+        "description": "监视器守护进程的简短 Ceph 版本字符串（例如 '19.2.0'）。",
         "optional": 1,
         "type": "string"
       },
       "direxists": {
-        "description": "Set when the monitor's data directory exists on this node.",
+        "description": "此节点上存在监视器数据目录时设置。",
         "optional": 1,
         "type": "boolean"
       },
       "host": {
-        "description": "Host the monitor runs on.",
+        "description": "运行监视器的宿主机。",
         "optional": 1,
         "type": "string"
       },
       "name": {
-        "description": "Monitor id (typically the hostname).",
+        "description": "监视器 ID（通常为主机名）。",
         "type": "string"
       },
       "quorum": {
-        "description": "Set when the monitor is part of the current quorum.",
+        "description": "监视器属于当前仲裁成员时设置。",
         "optional": 1,
         "type": "boolean"
       },
       "rank": {
-        "description": "Rank of the monitor within the mon map.",
+        "description": "监视器在 mon 映射中的 rank。",
         "optional": 1,
         "type": "integer"
       },
       "service": {
-        "description": "Set if a ceph-mon@<id> systemd unit is enabled on the hosting node; absent otherwise.",
+        "description": "如果运行所在节点启用了 ceph-mon@<id> systemd 单元，则设置；否则不存在此项。",
         "optional": 1,
         "type": "boolean"
       },
       "state": {
-        "description": "Run state of the monitor: 'running' (in quorum), 'stopped' (systemd unit configured but daemon not visible to the cluster), or 'unknown' (no rados access).",
+        "description": "监视器的运行状态：'running'（参与仲裁）、'stopped'（已配置 systemd 单元，但集群看不到该守护进程），或 'unknown'（无法访问 rados）。",
         "optional": 1,
         "type": "string"
       }

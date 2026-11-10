@@ -39,6 +39,10 @@ def translated_soup(path):
 def plain_heading(el):
     return re.sub(r'\s+',' ',el.get_text(' ',strip=True))
 
+def anchor_id(value):
+    # GitBook strips leading underscores and normalizes custom heading anchors.
+    return re.sub(r'[^a-z0-9_-]+','-',value.lower()).strip('_-')
+
 def add_page(path,node,source,title=None,shift=0):
     # AsciiDoc's browser JS normally collects inline notes at the end. GitBook
     # drops standalone HTML anchors, so use native heading anchors for endnotes.
@@ -59,13 +63,41 @@ def add_page(path,node,source,title=None,shift=0):
             content=BeautifulSoup('<div>'+inner+'</div>','html.parser').div
             section.append(content)
         node.append(section)
+    # Turn existing anchored captions and command signatures into native
+    # headings, since GitBook does not retain standalone HTML bookmarks.
+    for block in list(node.select('div[id]')):
+        ident=block['id'];caption=block.find(class_='title',recursive=False)
+        if caption is None and ident.startswith('cli_'):caption=block.find('p',recursive=False)
+        if caption is None:continue
+        parent_heading=None
+        for parent in block.parents:
+            if any(re.fullmatch(r'sect[1-6]',c) for c in parent.get('class',[])):
+                parent_heading=parent.find(re.compile('^h[1-6]$'),recursive=False);break
+        level=min(6,int(parent_heading.name[1])+1) if parent_heading else 3-shift
+        caption.name='h'+str(level);caption['id']=ident;del block['id']
+    for bibliography in node.select('.bibliography'):
+        for li in list(bibliography.select('li')):li.unwrap()
+        for ul in list(bibliography.select('ul')):ul.unwrap()
+        for bookmark in list(bibliography.select('a[id]')):
+            ident=bookmark['id'];paragraph=bookmark.find_parent('p')
+            if paragraph is None:continue
+            heading=BeautifulSoup('','html.parser').new_tag('h'+str(2-shift),id=ident)
+            heading.string='['+ident+']';paragraph.insert_before(heading)
+            sibling=bookmark.next_sibling
+            if isinstance(sibling,NavigableString):
+                sibling.replace_with(re.sub(r'^\s*\['+re.escape(ident)+r'\]+\s*','',str(sibling),count=1))
+            bookmark.extract()
     heading=node.find(re.compile('^h[1-6]$'))
     title=title or (plain_heading(heading) if heading else path.stem)
     page={'path':path,'node':node,'source':source,'title':title,'shift':shift}
     PAGES.append(page)
-    if heading and heading.get('id'):PAGE_TOP_ANCHORS.add((path,heading['id']))
-    for el in node.select('[id]'):
-        ANCHORS[(source,el['id'])]=(path,el['id'])
+    current=anchor_id(heading['id']) if heading and heading.get('id') else ''
+    if current:PAGE_TOP_ANCHORS.add((path,current))
+    for el in node.find_all(True):
+        if re.fullmatch(r'h[1-6]',el.name) and el.get('id'):current=anchor_id(el['id'])
+        if el.get('id'):
+            # Remaining non-heading bookmarks resolve to their section heading.
+            ANCHORS[(source,el['id'])]=(path,current)
     return page
 
 def relpath(target,current):
@@ -92,7 +124,7 @@ def link(href,current,source):
         if match:
             page,anchor=match
             # GitBook promotes the first H1 to the page title, without its HTML id.
-            if (page,anchor) in PAGE_TOP_ANCHORS:return relpath(page,current)
+            if not anchor or (page,anchor) in PAGE_TOP_ANCHORS:return relpath(page,current)
             return ('' if page==current else relpath(page,current))+'#'+anchor
     if target in FILE_DEFAULTS:
         return relpath(FILE_DEFAULTS[target],current)+(('#'+fragment) if fragment else '')
@@ -108,7 +140,7 @@ class GitBookMarkdown(MarkdownConverter):
     def convert_hN(self,n,el,text,parent_tags):
         n=max(1,min(6,n+self.page['shift']))
         title=re.sub(r'\s+',' ',text.strip())
-        anchor=el.get('id')
+        anchor=anchor_id(el['id']) if el.get('id') else None
         explicit=f' <a href="#{anchor}" id="{anchor}"></a>' if anchor else ''
         return '\n\n'+'#'*n+' '+title+explicit+'\n\n'
     def convert_pre(self,el,text,parent_tags):
@@ -290,7 +322,7 @@ def main():
 
 ## 版本与来源
 
-文档正文、章节层级、表格、代码示例、提示框和图片均取自上述官方快照。为了在 GitBook 中阅读，将长章节拆分为子页面，并将原站交叉引用改写为本书内部链接。原始标题锚点予以保留。
+文档正文、章节层级、表格、代码示例、提示框和图片均取自上述官方快照。为了在 GitBook 中阅读，将长章节拆分为子页面，并将原站交叉引用改写为本书内部链接。标题和书签按 GitBook 规则转换为可跳转的章节锚点，脚注整理为各页末尾的注释。
 
 本书不代表 Proxmox Server Solutions GmbH 对译文的认可。中文译文与英文原文有歧义时，请对照每页底部的官方来源。
 '''
@@ -314,7 +346,7 @@ def main():
     write(Path('SUMMARY.md'),'\n'.join(summary))
     report={'translation_units':len(UNITS),'translated_units':len(TRANSLATIONS),'missing_units':len(missing),'guide_pages':len([p for p in PAGES if p['source']=='pve-admin-guide.html']),'manuals':len(manuals),'api_operations':operations,'pages':len(list(DOCS.rglob('*.md')))}
     (ROOT/'reports/render.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-    (ROOT/'work/anchor-map.json').write_text(json.dumps({f'{src}#{anchor}':str(path)+'#'+dest for (src,anchor),(path,dest) in ANCHORS.items()},ensure_ascii=False,indent=2))
+    (ROOT/'work/anchor-map.json').write_text(json.dumps({f'{src}#{anchor}':str(path)+(('#'+dest) if dest else '') for (src,anchor),(path,dest) in ANCHORS.items()},ensure_ascii=False,indent=2))
     print(json.dumps(report,ensure_ascii=False))
 
 if __name__=='__main__':main()

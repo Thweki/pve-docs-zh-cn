@@ -1,4 +1,4 @@
-# 6.2. 文件访问权限 <a href="#_file_access_rights" id="_file_access_rights"></a>
+# 6.2. 文件访问权限 <a href="#file_access_rights" id="file_access_rights"></a>
 
 所有文件和目录的所有者均为用户 `root`，所属组均为 `www-data`。只有 root 拥有写权限，但 `www-data` 组可以读取大多数文件。以下路径下的文件只能由 root 访问：
 

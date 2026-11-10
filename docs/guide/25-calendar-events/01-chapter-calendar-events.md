@@ -1,31 +1,31 @@
-# 25.1. Schedule Format <a href="#chapter_calendar_events" id="chapter_calendar_events"></a>
+# 25.1. 计划格式 <a href="#chapter_calendar_events" id="chapter_calendar_events"></a>
 
-Proxmox VE has a very flexible scheduling configuration. It is based on the systemd time calendar event format.[\[1\]](#note-a1ddaff8-1) Calendar events may be used to refer to one or more points in time in a single expression.
+Proxmox VE 具有非常灵活的调度配置。它基于 systemd 时间日历事件格式。[\[1\]](#note-a1ddaff8-1) 日历事件可以用单个表达式引用一个或多个时间点。
 
-Such a calendar event uses the following format:
+此类日历事件采用以下格式：
 
 ```text
 [WEEKDAY] [[YEARS-]MONTHS-DAYS] [HOURS:MINUTES[:SECONDS]]
 ```
 
-This format allows you to configure a set of days on which the job should run. You can also set one or more start times. It tells the replication scheduler the moments in time when a job should start. With this information we, can create a job which runs every workday at 10 PM: `'mon,tue,wed,thu,fri 22'` which could be abbreviated to: `'mon..fri
-22'`, most reasonable schedules can be written quite intuitive this way.
+此格式允许配置任务应在哪些天运行。也可以设置一个或多个开始时间。它会告知复制调度器任务应启动的时间点。根据这些信息，可以创建一个每个工作日晚上 10 点运行的任务：`'mon,tue,wed,thu,fri 22'`，可简写为：`'mon..fri
+22'`；大多数合理的计划都能以这种方式直观地编写。
 
 {% hint style="info" %}
-Hours are formatted in 24-hour format.
+小时采用 24 小时制。
 {% endhint %}
 
-To allow a convenient and shorter configuration, one or more repeat times per guest can be set. They indicate that replications are done on the start-time(s) itself and the start-time(s) plus all multiples of the repetition value. If you want to start replication at 8 AM and repeat it every 15 minutes until 9 AM you would use: `'8:00/15'`
+为使配置更方便、简短，可以为每个客户机设置一个或多个重复时间。它们表示在开始时间本身，以及开始时间加上重复值的所有倍数时执行复制。如果希望从上午 8 点开始复制，并每 15 分钟重复一次直到上午 9 点，可以使用：`'8:00/15'`
 
-Here you see that if no hour separation (`:`), is used the value gets interpreted as minute. If such a separation is used, the value on the left denotes the hour(s), and the value on the right denotes the minute(s). Further, you can use `*` to match all possible values.
+这里可以看到，如果未使用小时分隔符（`:`），则该值解释为分钟。如果使用此分隔符，则左侧值表示小时，右侧值表示分钟。此外，还可以使用 `*` 匹配所有可能值。
 
-To get additional ideas look at [more Examples below](02-detailed-specification.md#pvesr_schedule_format_examples).
+更多思路请查看[下方的更多示例](02-detailed-specification.md#pvesr_schedule_format_examples)。
 
 ## 注释
 
 ### 注释 1 <a href="#note-a1ddaff8-1" id="note-a1ddaff8-1"></a>
 
-see `man 7 systemd.time` for more information
+更多信息请参见 `man 7 systemd.time`
 
 ---
 

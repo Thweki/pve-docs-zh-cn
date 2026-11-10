@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/tasks`
 
-Read task list for one node (finished tasks).
+读取某个节点的任务列表（已完成任务）。
 
 **方法标识：** `node_tasks`
 
@@ -14,7 +14,7 @@ Read task list for one node (finished tasks).
 
 ```json
 {
-  "description": "List task associated with the current user, or all task the user has 'Sys.Audit' permissions on /nodes/<node> (the <node> the task runs on).",
+  "description": "列出与当前用户关联的任务，或用户对 /nodes/<node>（任务运行所在的 <node>）具有 'Sys.Audit' 权限的所有任务。",
   "user": "all"
 }
 ```
@@ -35,17 +35,17 @@ Read task list for one node (finished tasks).
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `errors` | boolean | 否 | 0 | Only list tasks with a status of ERROR. |
-| `limit` | integer | 否 | 50 | Only list this number of tasks. |
-| `node` | string | 是 | — | The cluster node name. |
-| `since` | integer | 否 | — | Only list tasks since this UNIX epoch. |
-| `source` | string | 否 | "archive" | List archived, active or all tasks.；可选值：`archive`, `active`, `all` |
-| `start` | integer | 否 | 0 | List tasks beginning from this offset. |
-| `statusfilter` | string | 否 | — | List of Task States that should be returned. |
-| `typefilter` | string | 否 | — | Only list tasks of this type (e.g., vzstart, vzdump). |
-| `until` | integer | 否 | — | Only list tasks until this UNIX epoch. |
-| `userfilter` | string | 否 | — | Only list tasks from this user. |
-| `vmid` | integer | 否 | — | Only list tasks for this VM. |
+| `errors` | boolean | 否 | 0 | 仅列出状态为 ERROR 的任务。 |
+| `limit` | integer | 否 | 50 | 仅列出此数量的任务。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `since` | integer | 否 | — | 仅列出此 UNIX 时间戳之后的任务。 |
+| `source` | string | 否 | "archive" | 列出已归档、活动或所有任务。；可选值：`archive`, `active`, `all` |
+| `start` | integer | 否 | 0 | 从此偏移量开始列出任务。 |
+| `statusfilter` | string | 否 | — | 应返回的任务状态列表。 |
+| `typefilter` | string | 否 | — | 仅列出此类型的任务（例如 vzstart、vzdump）。 |
+| `until` | integer | 否 | — | 仅列出截至此 UNIX 时间戳的任务。 |
+| `userfilter` | string | 否 | — | 仅列出此用户的任务。 |
+| `vmid` | integer | 否 | — | 仅列出此虚拟机的任务。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,34 +56,34 @@ Read task list for one node (finished tasks).
   "properties": {
     "errors": {
       "default": 0,
-      "description": "Only list tasks with a status of ERROR.",
+      "description": "仅列出状态为 ERROR 的任务。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "limit": {
       "default": 50,
-      "description": "Only list this number of tasks.",
+      "description": "仅列出此数量的任务。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "since": {
-      "description": "Only list tasks since this UNIX epoch.",
+      "description": "仅列出此 UNIX 时间戳之后的任务。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "source": {
       "default": "archive",
-      "description": "List archived, active or all tasks.",
+      "description": "列出已归档、活动或所有任务。",
       "enum": [
         "archive",
         "active",
@@ -94,39 +94,39 @@ Read task list for one node (finished tasks).
     },
     "start": {
       "default": 0,
-      "description": "List tasks beginning from this offset.",
+      "description": "从此偏移量开始列出任务。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "statusfilter": {
-      "description": "List of Task States that should be returned.",
+      "description": "应返回的任务状态列表。",
       "format": "pve-task-status-type-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "typefilter": {
-      "description": "Only list tasks of this type (e.g., vzstart, vzdump).",
+      "description": "仅列出此类型的任务（例如 vzstart、vzdump）。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "until": {
-      "description": "Only list tasks until this UNIX epoch.",
+      "description": "仅列出截至此 UNIX 时间戳的任务。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "userfilter": {
-      "description": "Only list tasks from this user.",
+      "description": "仅列出此用户的任务。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "Only list tasks for this VM.",
+      "description": "仅列出此虚拟机的任务。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -149,7 +149,7 @@ Read task list for one node (finished tasks).
       "endtime": {
         "optional": 1,
         "renderer": "timestamp",
-        "title": "Endtime",
+        "title": "结束时间",
         "type": "integer"
       },
       "id": {
@@ -157,7 +157,7 @@ Read task list for one node (finished tasks).
         "type": "string"
       },
       "node": {
-        "title": "Node",
+        "title": "节点",
         "type": "string"
       },
       "pid": {
@@ -169,16 +169,16 @@ Read task list for one node (finished tasks).
       },
       "starttime": {
         "renderer": "timestamp",
-        "title": "Starttime",
+        "title": "开始时间",
         "type": "integer"
       },
       "status": {
         "optional": 1,
-        "title": "Status",
+        "title": "状态",
         "type": "string"
       },
       "type": {
-        "title": "Type",
+        "title": "类型",
         "type": "string"
       },
       "upid": {
@@ -186,7 +186,7 @@ Read task list for one node (finished tasks).
         "type": "string"
       },
       "user": {
-        "title": "User",
+        "title": "用户",
         "type": "string"
       }
     },

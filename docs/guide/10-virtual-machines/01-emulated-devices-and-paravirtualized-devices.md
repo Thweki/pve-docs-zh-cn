@@ -1,4 +1,4 @@
-# 10.1. 模拟设备和半虚拟化设备 <a href="#_emulated_devices_and_paravirtualized_devices" id="_emulated_devices_and_paravirtualized_devices"></a>
+# 10.1. 模拟设备和半虚拟化设备 <a href="#emulated_devices_and_paravirtualized_devices" id="emulated_devices_and_paravirtualized_devices"></a>
 
 QEMU 模拟的 PC 硬件包括主板、网络控制器、SCSI、IDE 和 SATA 控制器、串口（完整列表见 `kvm(1)` 手册页），所有这些都由软件模拟。所有这些设备都是现有硬件设备的精确软件等效物，如果客户机中运行的操作系统具有适当的驱动程序，就会像在真实硬件上运行一样使用这些设备。这使 QEMU 能够运行*未经修改的*操作系统。
 

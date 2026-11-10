@@ -1,4 +1,4 @@
-# 15.4. How It Works <a href="#_how_it_works_2" id="_how_it_works_2"></a>
+# 15.4. 工作原理 <a href="#how_it_works_2" id="how_it_works_2"></a>
 
 本节详细介绍 Proxmox VE HA 管理器的内部机制。它描述了所有涉及的守护进程以及它们如何协同工作。为提供 HA，每个节点上运行两个守护进程：
 
@@ -16,7 +16,7 @@
 锁由我们的分布式配置文件系统（pmxcfs）提供。它们用于确保每个 LRM 只有一个活动实例并正常工作。由于 LRM 只有持有自己的锁时才会执行操作，因此，如果我们能够获取其锁，就可以将故障节点标记为已隔离。随后，这让我们能够安全地恢复任何发生故障的 HA 服务，而不会受到当前状态未知的故障节点的任何干扰。这一切都由当前持有管理器主锁的 CRM 监督。
 {% endhint %}
 
-## 15.4.1. Service States <a href="#ha_manager_service_states" id="ha_manager_service_states"></a>
+## 15.4.1. 服务状态 <a href="#ha_manager_service_states" id="ha_manager_service_states"></a>
 
 CRM 使用服务状态枚举来记录当前服务状态。此状态显示在 GUI 中，并且可以使用`ha-manager`命令行工具查询：
 
@@ -46,7 +46,7 @@ service vm:501 (elsa, started)
 
 **started**
 
-Service is active an LRM should start it ASAP if not already running. If the Service fails and is detected to be not running the LRM restarts it (see [Start Failure Policy](08-ha-manager-start-failure-policy.md)).
+服务处于活动状态，如果尚未运行，LRM 应尽快启动它。如果服务出现故障并被检测为未运行，LRM 会重启它（参见 [启动失败策略](08-ha-manager-start-failure-policy.md)）。
 
 **starting**
 
@@ -54,7 +54,7 @@ Service is active an LRM should start it ASAP if not already running. If the Ser
 
 **fence**
 
-Wait for node fencing as the service node is not inside the quorate cluster partition (see [Fencing](07-ha-manager-fencing.md)). As soon as node gets fenced successfully the service will be placed into the recovery state.
+等待节点隔离，因为服务所在节点不在具有仲裁的集群分区内（参见 [隔离](07-ha-manager-fencing.md)）。节点成功隔离后，服务将立即置于恢复状态。
 
 **recovery**
 
@@ -62,7 +62,7 @@ Wait for node fencing as the service node is not inside the quorate cluster part
 
 **freeze**
 
-Do not touch the service state. We use this state while we reboot a node, or when we restart the LRM daemon (see [Package Updates](10-ha-manager-package-updates.md)).
+不触碰服务状态。在重启节点或重启 LRM 守护进程时使用此状态（参见 [软件包更新](10-ha-manager-package-updates.md)）。
 
 **ignored**
 
@@ -74,7 +74,7 @@ Do not touch the service state. We use this state while we reboot a node, or whe
 
 **error**
 
-Service is disabled because of LRM errors. Needs manual intervention (see [Error Recovery](09-ha-manager-error-recovery.md)).
+服务因 LRM 错误而禁用。需要手动干预（参见 [错误恢复](09-ha-manager-error-recovery.md)）。
 
 **queued**
 
@@ -84,7 +84,7 @@ Service is disabled because of LRM errors. Needs manual intervention (see [Error
 
 服务已停止并标记为 `disabled`
 
-## 15.4.2. Local Resource Manager <a href="#ha_manager_lrm" id="ha_manager_lrm"></a>
+## 15.4.2. 本地资源管理器 <a href="#ha_manager_lrm" id="ha_manager_lrm"></a>
 
 本地资源管理器（`pve-ha-lrm`）在启动时作为守护进程启动，并等待 HA 集群达到仲裁，从而使集群范围的锁能够正常工作。
 
@@ -120,7 +120,7 @@ CRM 和 LRM 之间针对每个服务的操作通常始终保持同步。这意�
 HA 栈会记录其执行的每个操作。这有助于了解集群中发生了什么以及为什么会发生。此处重要的是查看 LRM 和 CRM 这两个守护进程分别做了什么。您可以在服务所在的节点上使用 `journalctl -u pve-ha-lrm`，并在当前主节点上对 pve-ha-crm 使用相同的命令。
 {% endhint %}
 
-## 15.4.3. Cluster Resource Manager <a href="#ha_manager_crm" id="ha_manager_crm"></a>
+## 15.4.3. 集群资源管理器 <a href="#ha_manager_crm" id="ha_manager_crm"></a>
 
 集群资源管理器（`pve-ha-crm`）在每个节点上启动，并在该节点等待管理器锁，该锁同一时间只能由一个节点持有。成功获取管理器锁的节点会提升为 CRM 主节点。
 
@@ -144,7 +144,7 @@ CRM 丢失了锁，这意味着发生了故障并且失去了仲裁。
 
 当集群成员确定自己已不再处于集群仲裁中时，LRM 会等待新的仲裁形成。在形成集群仲裁之前，该节点无法重置看门狗。如果节点上有活动服务，或者 LRM 或 CRM 进程未被调度或被终止，这将在看门狗超时后触发重启（这发生在 60 秒后）。
 
-Note that if a node has an active CRM but the LRM is idle, a quorum loss will not trigger a self-fence reset. The reason for this is that all state files and configurations that the CRM accesses are backed up by the [clustered configuration file system](../06-pmxcfs/README.md), which becomes read-only upon quorum loss. This means that the CRM only needs to protect itself against its process being scheduled for too long, in which case another CRM could take over unaware of the situation, causing corruption of the HA state. The open watchdog ensures that this cannot happen.
+请注意，如果节点上的 CRM 处于活动状态，但 LRM 空闲，失去仲裁不会触发自我隔离重置。这是因为 CRM 访问的所有状态文件和配置都由 [集群配置文件系统](../06-pmxcfs/README.md) 支撑，失去仲裁后该文件系统会变为只读。这意味着 CRM 只需防止其进程长时间得不到调度，因为在这种情况下，另一个 CRM 可能在不知情的情况下接管，导致 HA 状态损坏。已打开的看门狗可确保这种情况不会发生。
 
 如果超过 15 分钟未配置任何服务，CRM 会自动返回空闲状态并完全关闭看门狗。
 

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/ceph/stop`
 
-Stop ceph services.
+停止 ceph 服务。
 
 **方法标识：** `stop`
 
@@ -46,8 +46,8 @@ Stop ceph services.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `service` | string | 否 | "ceph.target" | Ceph service name. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `service` | string | 否 | "ceph.target" | Ceph 服务名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,14 +57,14 @@ Stop ceph services.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "service": {
       "default": "ceph.target",
-      "description": "Ceph service name.",
+      "description": "Ceph 服务名称。",
       "optional": 1,
       "pattern": "(ceph|mon|mds|osd|mgr)(\\.[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?)?",
       "type": "string"

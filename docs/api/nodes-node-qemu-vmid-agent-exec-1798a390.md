@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/agent/exec`
 
-Executes the given command in the vm via the guest-agent and returns an object with the pid.
+通过 guest-agent 在虚拟机内执行给定命令，并返回包含 pid 的对象。
 
 **方法标识：** `exec`
 
@@ -46,10 +46,10 @@ Executes the given command in the vm via the guest-agent and returns an object w
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `command` | array | 是 | — | The command as a list of program + arguments. |
-| `input-data` | string | 否 | — | Data to pass as 'input-data' to the guest. Usually treated as STDIN to 'command'. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `command` | array | 是 | — | 命令，以程序及参数列表形式提供。 |
+| `input-data` | string | 否 | — | 作为 'input-data' 传递给客户机的数据。通常作为 'command' 的 STDIN。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,29 +59,29 @@ Executes the given command in the vm via the guest-agent and returns an object w
   "additionalProperties": 0,
   "properties": {
     "command": {
-      "description": "The command as a list of program + arguments.",
+      "description": "命令，以程序及参数列表形式提供。",
       "items": {
-        "description": "A single part of the program + arguments.",
+        "description": "程序及参数的单个组成部分。",
         "type": "string"
       },
       "type": "array",
       "typetext": "<array>"
     },
     "input-data": {
-      "description": "Data to pass as 'input-data' to the guest. Usually treated as STDIN to 'command'.",
+      "description": "作为 'input-data' 传递给客户机的数据。通常作为 'command' 的 STDIN。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -100,7 +100,7 @@ Executes the given command in the vm via the guest-agent and returns an object w
 {
   "properties": {
     "pid": {
-      "description": "The PID of the process started by the guest-agent.",
+      "description": "guest-agent 启动的进程的 PID。",
       "type": "integer"
     }
   },

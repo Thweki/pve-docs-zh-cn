@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/controllers/{controller}`
 
-Delete sdn controller object configuration.
+删除 SDN 控制器对象配置。
 
 **方法标识：** `delete`
 
@@ -40,8 +40,8 @@ Delete sdn controller object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `controller` | string | 是 | — | The SDN controller object identifier. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
+| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,14 +51,14 @@ Delete sdn controller object configuration.
   "additionalProperties": 0,
   "properties": {
     "controller": {
-      "description": "The SDN controller object identifier.",
+      "description": "SDN 控制器对象标识符。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]",
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -79,7 +79,7 @@ Delete sdn controller object configuration.
 
 ## GET `/cluster/sdn/controllers/{controller}`
 
-Read sdn controller configuration.
+读取 SDN 控制器配置。
 
 **方法标识：** `read`
 
@@ -107,9 +107,9 @@ Read sdn controller configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `controller` | string | 是 | — | The SDN controller object identifier. |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
+| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -119,20 +119,20 @@ Read sdn controller configuration.
   "additionalProperties": 0,
   "properties": {
     "controller": {
-      "description": "The SDN controller object identifier.",
+      "description": "SDN 控制器对象标识符。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]",
       "type": "string"
     },
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -149,7 +149,7 @@ Read sdn controller configuration.
 {
   "properties": {
     "asn": {
-      "description": "The local ASN of the controller. BGP & EVPN only.",
+      "description": "控制器的本地 ASN。仅适用于 BGP 和 EVPN。",
       "maximum": 4294967295,
       "minimum": 0,
       "optional": 1,
@@ -157,7 +157,7 @@ Read sdn controller configuration.
     },
     "bgp-mode": {
       "default": "auto",
-      "description": "Whether to use eBGP or iBGP. Auto mode chooses depending on BGP controller or falls back to iBGP.",
+      "description": "使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。",
       "enum": [
         "auto",
         "external",
@@ -167,78 +167,78 @@ Read sdn controller configuration.
       "type": "string"
     },
     "bgp-multipath-as-relax": {
-      "description": "Consider different AS paths of equal length for multipath computation. BGP only.",
+      "description": "在多路径计算中考虑长度相等的不同 AS 路径。仅适用于 BGP。",
       "optional": 1,
       "type": "boolean"
     },
     "controller": {
-      "description": "Name of the controller.",
+      "description": "控制器名称。",
       "type": "string"
     },
     "digest": {
-      "description": "Digest of the controller section.",
+      "description": "控制器配置节的摘要。",
       "optional": 1,
       "type": "string"
     },
     "ebgp": {
-      "description": "Enable eBGP (remote-as external). BGP only.",
+      "description": "启用 eBGP（remote-as external）。仅适用于 BGP。",
       "optional": 1,
       "type": "boolean"
     },
     "ebgp-multihop": {
-      "description": "Set maximum amount of hops for eBGP peers. Needs ebgp set to 1. BGP only.",
+      "description": "设置 eBGP 对等端的最大跳数。需要将 ebgp 设为 1。仅适用于 BGP。",
       "optional": 1,
       "type": "integer"
     },
     "isis-domain": {
-      "description": "Name of the IS-IS domain. IS-IS only.",
+      "description": "IS-IS 域的名称。仅适用于 IS-IS。",
       "optional": 1,
       "type": "string"
     },
     "isis-ifaces": {
-      "description": "Comma-separated list of interfaces where IS-IS should be active. IS-IS only.",
+      "description": "应启用 IS-IS 的接口列表，以逗号分隔。仅适用于 IS-IS。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string"
     },
     "isis-net": {
-      "description": "Network Entity title for this node in the IS-IS network. IS-IS only.",
+      "description": "此节点在 IS-IS 网络中的网络实体名称。仅适用于 IS-IS。",
       "format": "pve-sdn-isis-net",
       "optional": 1,
       "type": "string"
     },
     "loopback": {
-      "description": "Name of the loopback/dummy interface that provides the Router-IP. BGP only.",
+      "description": "提供 Router-IP 的 loopback/dummy 接口名称。仅适用于 BGP。",
       "optional": 1,
       "type": "string"
     },
     "node": {
-      "description": "Node(s) where this controller is active.",
+      "description": "启用此控制器的节点。",
       "optional": 1,
       "type": "string"
     },
     "nodes": {
-      "description": "List of cluster node names.",
+      "description": "集群节点名称列表。",
       "format": "pve-node-list",
       "optional": 1,
       "type": "string"
     },
     "peer-group-name": {
-      "description": "Name of the peer group for this EVPN controller",
+      "description": "此 EVPN 控制器的对等组名称",
       "optional": 1,
       "type": "string"
     },
     "peers": {
-      "description": "Comma-separated list of the peers IP addresses.",
+      "description": "对等端 IP 地址列表，以逗号分隔。",
       "optional": 1,
       "type": "string"
     },
     "pending": {
-      "description": "Changes that have not yet been applied to the running configuration.",
+      "description": "尚未应用到运行配置的更改。",
       "optional": 1,
       "properties": {
         "asn": {
-          "description": "The local ASN of the controller. BGP & EVPN only.",
+          "description": "控制器的本地 ASN。仅适用于 BGP 和 EVPN。",
           "maximum": 4294967295,
           "minimum": 0,
           "optional": 1,
@@ -246,7 +246,7 @@ Read sdn controller configuration.
         },
         "bgp-mode": {
           "default": "auto",
-          "description": "Whether to use eBGP or iBGP. Auto mode chooses depending on BGP controller or falls back to iBGP.",
+          "description": "使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。",
           "enum": [
             "auto",
             "external",
@@ -256,60 +256,60 @@ Read sdn controller configuration.
           "type": "string"
         },
         "bgp-multipath-as-relax": {
-          "description": "Consider different AS paths of equal length for multipath computation. BGP only.",
+          "description": "在多路径计算中考虑长度相等的不同 AS 路径。仅适用于 BGP。",
           "optional": 1,
           "type": "boolean"
         },
         "ebgp": {
-          "description": "Enable eBGP (remote-as external). BGP only.",
+          "description": "启用 eBGP（remote-as external）。仅适用于 BGP。",
           "optional": 1,
           "type": "boolean"
         },
         "ebgp-multihop": {
-          "description": "Set maximum amount of hops for eBGP peers. Needs ebgp set to 1. BGP only.",
+          "description": "设置 eBGP 对等端的最大跳数。需要将 ebgp 设为 1。仅适用于 BGP。",
           "optional": 1,
           "type": "integer"
         },
         "isis-domain": {
-          "description": "Name of the IS-IS domain. IS-IS only.",
+          "description": "IS-IS 域的名称。仅适用于 IS-IS。",
           "optional": 1,
           "type": "string"
         },
         "isis-ifaces": {
-          "description": "Comma-separated list of interfaces where IS-IS should be active. IS-IS only.",
+          "description": "应启用 IS-IS 的接口列表，以逗号分隔。仅适用于 IS-IS。",
           "format": "pve-iface-list",
           "optional": 1,
           "type": "string"
         },
         "isis-net": {
-          "description": "Network Entity title for this node in the IS-IS network. IS-IS only.",
+          "description": "此节点在 IS-IS 网络中的网络实体名称。仅适用于 IS-IS。",
           "format": "pve-sdn-isis-net",
           "optional": 1,
           "type": "string"
         },
         "loopback": {
-          "description": "Name of the loopback/dummy interface that provides the Router-IP. BGP only.",
+          "description": "提供 Router-IP 的 loopback/dummy 接口名称。仅适用于 BGP。",
           "optional": 1,
           "type": "string"
         },
         "node": {
-          "description": "Node(s) where this controller is active.",
+          "description": "启用此控制器的节点。",
           "optional": 1,
           "type": "string"
         },
         "nodes": {
-          "description": "List of cluster node names.",
+          "description": "集群节点名称列表。",
           "format": "pve-node-list",
           "optional": 1,
           "type": "string"
         },
         "peer-group-name": {
-          "description": "Name of the peer group for this EVPN controller",
+          "description": "此 EVPN 控制器的对等组名称",
           "optional": 1,
           "type": "string"
         },
         "peers": {
-          "description": "Comma-separated list of the peers IP addresses.",
+          "description": "对等端 IP 地址列表，以逗号分隔。",
           "optional": 1,
           "type": "string"
         }
@@ -317,7 +317,7 @@ Read sdn controller configuration.
       "type": "object"
     },
     "state": {
-      "description": "State of the SDN configuration object.",
+      "description": "SDN 配置对象的状态。",
       "enum": [
         "new",
         "changed",
@@ -327,7 +327,7 @@ Read sdn controller configuration.
       "type": "string"
     },
     "type": {
-      "description": "Type of the controller",
+      "description": "控制器类型",
       "enum": [
         "bgp",
         "evpn",
@@ -342,7 +342,7 @@ Read sdn controller configuration.
 
 ## PUT `/cluster/sdn/controllers/{controller}`
 
-Update sdn controller object configuration.
+更新 SDN 控制器对象配置。
 
 **方法标识：** `update`
 
@@ -376,26 +376,26 @@ Update sdn controller object configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `asn` | integer | 否 | — | autonomous system number |
-| `bgp-mode` | string | 否 | "auto" | Whether to use eBGP or iBGP. Auto mode chooses depending on BGP controller or falls back to iBGP.；可选值：`auto`, `external`, `internal` |
-| `bgp-multipath-as-path-relax` | boolean | 否 | — | Consider different AS paths of equal length for multipath computation. |
-| `controller` | string | 是 | — | The SDN controller object identifier. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `ebgp` | boolean | 否 | — | Enable eBGP (remote-as external). |
-| `ebgp-multihop` | integer | 否 | — | Set maximum amount of hops for eBGP peers. |
-| `fabric` | string | 否 | — | SDN fabric to use as underlay for this EVPN controller. |
-| `isis-domain` | string | 否 | — | Name of the IS-IS domain. |
-| `isis-ifaces` | string | 否 | — | Comma-separated list of interfaces where IS-IS should be active. |
-| `isis-net` | string | 否 | — | Network Entity title for this node in the IS-IS network. |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `loopback` | string | 否 | — | Name of the loopback/dummy interface that provides the Router-IP. |
-| `node` | string | 否 | — | The cluster node name. |
-| `nodes` | string | 否 | — | List of cluster node names. |
-| `peer-group-name` | string | 否 | "VTEP" | Name of the peer group for this EVPN controller |
-| `peers` | string | 否 | — | peers address list. |
-| `route-map-in` | string | 否 | — | Route Map that should be applied for incoming routes |
-| `route-map-out` | string | 否 | — | Route Map that should be applied for outgoing routes |
+| `asn` | integer | 否 | — | 自治系统编号 |
+| `bgp-mode` | string | 否 | "auto" | 使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。；可选值：`auto`, `external`, `internal` |
+| `bgp-multipath-as-path-relax` | boolean | 否 | — | 在多路径计算中考虑长度相等的不同 AS 路径。 |
+| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `ebgp` | boolean | 否 | — | 启用 eBGP（remote-as external）。 |
+| `ebgp-multihop` | integer | 否 | — | 设置 eBGP 对等端的最大跳数。 |
+| `fabric` | string | 否 | — | 此 EVPN 控制器用作底层网络的 SDN fabric。 |
+| `isis-domain` | string | 否 | — | IS-IS 域的名称。 |
+| `isis-ifaces` | string | 否 | — | 应启用 IS-IS 的接口列表，以逗号分隔。 |
+| `isis-net` | string | 否 | — | 此节点在 IS-IS 网络中的网络实体名称。 |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `loopback` | string | 否 | — | 提供 Router-IP 的 loopback/dummy 接口名称。 |
+| `node` | string | 否 | — | 集群节点名称。 |
+| `nodes` | string | 否 | — | 集群节点名称列表。 |
+| `peer-group-name` | string | 否 | "VTEP" | 此 EVPN 控制器的对等组名称 |
+| `peers` | string | 否 | — | 对等端地址列表。 |
+| `route-map-in` | string | 否 | — | 应对传入路由应用的 Route Map |
+| `route-map-out` | string | 否 | — | 应对传出路由应用的 Route Map |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -405,7 +405,7 @@ Update sdn controller object configuration.
   "additionalProperties": 0,
   "properties": {
     "asn": {
-      "description": "autonomous system number",
+      "description": "自治系统编号",
       "maximum": 4294967295,
       "minimum": 0,
       "optional": 1,
@@ -414,7 +414,7 @@ Update sdn controller object configuration.
     },
     "bgp-mode": {
       "default": "auto",
-      "description": "Whether to use eBGP or iBGP. Auto mode chooses depending on BGP controller or falls back to iBGP.",
+      "description": "使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。",
       "enum": [
         "auto",
         "external",
@@ -424,20 +424,20 @@ Update sdn controller object configuration.
       "type": "string"
     },
     "bgp-multipath-as-path-relax": {
-      "description": "Consider different AS paths of equal length for multipath computation.",
+      "description": "在多路径计算中考虑长度相等的不同 AS 路径。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "controller": {
-      "description": "The SDN controller object identifier.",
+      "description": "SDN 控制器对象标识符。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]",
       "type": "string"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -445,46 +445,46 @@ Update sdn controller object configuration.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "ebgp": {
-      "description": "Enable eBGP (remote-as external).",
+      "description": "启用 eBGP（remote-as external）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ebgp-multihop": {
-      "description": "Set maximum amount of hops for eBGP peers.",
+      "description": "设置 eBGP 对等端的最大跳数。",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer>"
     },
     "fabric": {
-      "description": "SDN fabric to use as underlay for this EVPN controller.",
+      "description": "此 EVPN 控制器用作底层网络的 SDN fabric。",
       "format": "pve-sdn-fabric-id",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "isis-domain": {
-      "description": "Name of the IS-IS domain.",
+      "description": "IS-IS 域的名称。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "isis-ifaces": {
-      "description": "Comma-separated list of interfaces where IS-IS should be active.",
+      "description": "应启用 IS-IS 的接口列表，以逗号分隔。",
       "format": "pve-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "isis-net": {
-      "description": "Network Entity title for this node in the IS-IS network.",
+      "description": "此节点在 IS-IS 网络中的网络实体名称。",
       "format": "pve-sdn-isis-net",
       "maxLength": 50,
       "minLength": 20,
@@ -493,26 +493,26 @@ Update sdn controller object configuration.
       "type": "string"
     },
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "loopback": {
-      "description": "Name of the loopback/dummy interface that provides the Router-IP.",
+      "description": "提供 Router-IP 的 loopback/dummy 接口名称。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "nodes": {
-      "description": "List of cluster node names.",
+      "description": "集群节点名称列表。",
       "format": "pve-node-list",
       "optional": 1,
       "type": "string",
@@ -520,28 +520,28 @@ Update sdn controller object configuration.
     },
     "peer-group-name": {
       "default": "VTEP",
-      "description": "Name of the peer group for this EVPN controller",
+      "description": "此 EVPN 控制器的对等组名称",
       "format": "pve-configid",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "peers": {
-      "description": "peers address list.",
+      "description": "对等端地址列表。",
       "format": "ip-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "route-map-in": {
-      "description": "Route Map that should be applied for incoming routes",
+      "description": "应对传入路由应用的 Route Map",
       "format": "pve-sdn-route-map-id",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "route-map-out": {
-      "description": "Route Map that should be applied for outgoing routes",
+      "description": "应对传出路由应用的 Route Map",
       "format": "pve-sdn-route-map-id",
       "optional": 1,
       "type": "string",

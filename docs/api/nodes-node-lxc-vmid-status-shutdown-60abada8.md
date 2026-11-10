@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/lxc/{vmid}/status/shutdown`
 
-Shutdown the container. This will trigger a clean shutdown of the container, see lxc-stop(1) for details.
+关闭容器。此操作会触发容器正常关闭，详情参见 lxc-stop(1)。
 
 **方法标识：** `vm_shutdown`
 
@@ -46,10 +46,10 @@ Shutdown the container. This will trigger a clean shutdown of the container, see
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `forceStop` | boolean | 否 | 0 | Make sure the Container stops. |
-| `node` | string | 是 | — | The cluster node name. |
-| `timeout` | integer | 否 | 60 | Wait maximal timeout seconds. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `forceStop` | boolean | 否 | 0 | 确保容器停止。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `timeout` | integer | 否 | 60 | 最多等待 timeout 秒。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,27 +60,27 @@ Shutdown the container. This will trigger a clean shutdown of the container, see
   "properties": {
     "forceStop": {
       "default": 0,
-      "description": "Make sure the Container stops.",
+      "description": "确保容器停止。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "timeout": {
       "default": 60,
-      "description": "Wait maximal timeout seconds.",
+      "description": "最多等待 timeout 秒。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

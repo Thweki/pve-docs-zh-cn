@@ -1,76 +1,76 @@
-# 16.6. Backup Retention <a href="#vzdump_retention" id="vzdump_retention"></a>
+# 16.6. 备份保留 <a href="#vzdump_retention" id="vzdump_retention"></a>
 
-With the `prune-backups` option you can specify which backups you want to keep in a flexible manner.
+通过 `prune-backups` 选项，可以灵活指定要保留哪些备份。
 
 [![screenshot/gui-cluster-backup-edit-02-retention.png](../../assets/screenshot-gui-cluster-backup-edit-02-retention-png-53ef529cdcbb.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-02-retention.png)
 
-The following retention options are available:
+可用的保留选项如下：
 
 **`keep-all <boolean>`**
 
-Keep all backups. If this is `true`, no other options can be set.
+保留所有备份。如果此项为 `true`，则不能设置其他选项。
 
 **`keep-last <N>`**
 
-Keep the last `<N>` backups.
+保留最后 `<N>` 个备份。
 
 **`keep-hourly <N>`**
 
-Keep backups for the last `<N>` hours. If there is more than one backup for a single hour, only the latest is kept.
+保留最近 `<N>` 小时的备份。如果同一小时有多个备份，只保留最新的。
 
 **`keep-daily <N>`**
 
-Keep backups for the last `<N>` days. If there is more than one backup for a single day, only the latest is kept.
+保留最近 `<N>` 天的备份。如果同一天有多个备份，只保留最新的。
 
 **`keep-weekly <N>`**
 
-Keep backups for the last `<N>` weeks. If there is more than one backup for a single week, only the latest is kept.
+保留最近 `<N>` 周的备份。如果同一周有多个备份，只保留最新的。
 
 {% hint style="info" %}
-Weeks start on Monday and end on Sunday. The software uses the `ISO week date`-system and handles weeks at the end of the year correctly.
+一周从星期一开始，到星期日结束。软件使用 `ISO week date` 系统，并正确处理年末的周数。
 {% endhint %}
 
 **`keep-monthly <N>`**
 
-Keep backups for the last `<N>` months. If there is more than one backup for a single month, only the latest is kept.
+保留最近 `<N>` 个月的备份。如果同一个月有多个备份，只保留最新的。
 
 **`keep-yearly <N>`**
 
-Keep backups for the last `<N>` years. If there is more than one backup for a single year, only the latest is kept.
+保留最近 `<N>` 年的备份。如果同一年有多个备份，只保留最新的。
 
-The retention options are processed in the order given above. Each option only covers backups within its time period. The next option does not take care of already covered backups. It will only consider older backups.
+保留选项按上述顺序处理。每个选项仅涵盖其时间段内的备份。下一个选项不处理已涵盖的备份，只考虑更早的备份。
 
-Specify the retention options you want to use as a comma-separated list, for example:
+以逗号分隔的列表指定要使用的保留选项，例如：
 
 ```text
 # vzdump 777 --prune-backups keep-last=3,keep-daily=13,keep-yearly=9
 ```
 
-While you can pass `prune-backups` directly to `vzdump`, it is often more sensible to configure the setting on the storage level, which can be done via the web interface.
+虽然可以将 `prune-backups` 直接传递给 `vzdump`，但通常在存储级别配置此设置更合理，可通过 Web 界面完成。
 
-## 16.6.1. Prune Simulator <a href="#_prune_simulator" id="_prune_simulator"></a>
+## 16.6.1. 清理模拟器 <a href="#prune_simulator" id="prune_simulator"></a>
 
-You can use the [prune simulator of the Proxmox Backup Server documentation](https://pbs.proxmox.com/docs/prune-simulator) to explore the effect of different retention options with various backup schedules.
+可以使用 [Proxmox Backup Server 文档中的清理模拟器](https://pbs.proxmox.com/docs/prune-simulator)，探索不同保留选项对各种备份计划的影响。
 
-## 16.6.2. Retention Settings Example <a href="#_retention_settings_example" id="_retention_settings_example"></a>
+## 16.6.2. 保留设置示例 <a href="#retention_settings_example" id="retention_settings_example"></a>
 
-The backup frequency and retention of old backups may depend on how often data changes, and how important an older state may be, in a specific work load. When backups act as a company’s document archive, there may also be legal requirements for how long backups must be kept.
+备份频率和旧备份的保留可能取决于特定工作负载中数据更改的频繁程度，以及较早状态的重要程度。当备份充当公司的文档归档时，还可能存在关于备份保存期限的法律要求。
 
-For this example, we assume that you are doing daily backups, have a retention period of 10 years, and the period between backups stored gradually grows.
+在此示例中，假设您每天进行备份，保留期为 10 年，且保存的备份之间的间隔逐渐增长。
 
-`keep-last=3` \- even if only daily backups are taken, an admin may want to create an extra one just before or after a big upgrade. Setting keep-last ensures this.
+`keep-last=3` \- 即使只进行每日备份，管理员也可能希望在重大升级之前或之后创建额外备份。设置 keep-last 可确保这一点。
 
-`keep-hourly` is not set \- for daily backups this is not relevant. You cover extra manual backups already, with keep-last.
+未设置 `keep-hourly` \- 对于每日备份，这无关紧要。keep-last 已涵盖额外的手动备份。
 
-`keep-daily=13` \- together with keep-last, which covers at least one day, this ensures that you have at least two weeks of backups.
+`keep-daily=13` \- 与至少涵盖一天的 keep-last 一起使用，确保至少拥有两周的备份。
 
-`keep-weekly=8` \- ensures that you have at least two full months of weekly backups.
+`keep-weekly=8` \- 确保至少拥有两个完整月的每周备份。
 
-`keep-monthly=11` \- together with the previous keep settings, this ensures that you have at least a year of monthly backups.
+`keep-monthly=11` \- 与前面的保留设置一起使用，确保至少拥有一年的每月备份。
 
-`keep-yearly=9` \- this is for the long term archive. As you covered the current year with the previous options, you would set this to nine for the remaining ones, giving you a total of at least 10 years of coverage.
+`keep-yearly=9` \- 用于长期归档。由于前面的选项已涵盖当前年份，应将此项设为九以保留其余年份，从而总共至少覆盖 10 年。
 
-We recommend that you use a higher retention period than is minimally required by your environment; you can always reduce it if you find it is unnecessarily high, but you cannot recreate backups once they have been removed.
+建议使用长于环境最低要求的保留期；如果发现不必要地过长，可以随时缩短，但一旦备份被移除，就无法重新创建。
 
 ---
 

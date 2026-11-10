@@ -6,7 +6,7 @@
 
 ## GET `/cluster/firewall/aliases`
 
-List aliases
+列出别名
 
 **方法标识：** `get_aliases`
 
@@ -48,7 +48,7 @@ List aliases
         "type": "string"
       },
       "digest": {
-        "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+        "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
         "maxLength": 64,
         "optional": 0,
         "type": "string"
@@ -71,7 +71,7 @@ List aliases
 
 ## POST `/cluster/firewall/aliases`
 
-Create IP or Network Alias.
+创建 IP 或网络别名。
 
 **方法标识：** `create_alias`
 
@@ -105,9 +105,9 @@ Create IP or Network Alias.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | Network/IP specification in CIDR format. |
+| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
 | `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | Alias name. |
+| `name` | string | 是 | — | 别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -117,7 +117,7 @@ Create IP or Network Alias.
   "additionalProperties": 0,
   "properties": {
     "cidr": {
-      "description": "Network/IP specification in CIDR format.",
+      "description": "CIDR 格式的网络/IP 规范。",
       "format": "IPorCIDR",
       "type": "string",
       "typetext": "<string>"
@@ -129,7 +129,7 @@ Create IP or Network Alias.
       "typetext": "<string>"
     },
     "name": {
-      "description": "Alias name.",
+      "description": "别名名称。",
       "maxLength": 64,
       "minLength": 2,
       "pattern": "[A-Za-z][A-Za-z0-9\\-\\_]+",

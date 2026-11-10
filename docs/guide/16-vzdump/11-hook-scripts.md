@@ -1,6 +1,6 @@
-# 16.11. Hook Scripts <a href="#_hook_scripts" id="_hook_scripts"></a>
+# 16.11. 钩子脚本 <a href="#hook_scripts" id="hook_scripts"></a>
 
-You can specify a hook script with option `--script`. This script is called at various phases of the backup process, with parameters accordingly set. You can find an example in the documentation directory (`vzdump-hook-script.pl`).
+可以使用选项 `--script` 指定钩子脚本。此脚本会在备份过程的各个阶段被调用，并设置相应参数。文档目录（`vzdump-hook-script.pl`）中提供了一个示例。
 
 ---
 

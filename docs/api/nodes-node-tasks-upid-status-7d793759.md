@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/tasks/{upid}/status`
 
-Read task status.
+读取任务状态。
 
 **方法标识：** `read_task_status`
 
@@ -14,7 +14,7 @@ Read task status.
 
 ```json
 {
-  "description": "The user needs 'Sys.Audit' permissions on '/nodes/<node>' if they are not the owner of the task.",
+  "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。",
   "user": "all"
 }
 ```
@@ -41,8 +41,8 @@ Read task status.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `upid` | string | 是 | — | The task's unique ID. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `upid` | string | 是 | — | 任务的唯一 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,13 +52,13 @@ Read task status.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "upid": {
-      "description": "The task's unique ID.",
+      "description": "任务的唯一 ID。",
       "type": "string",
       "typetext": "<string>"
     }

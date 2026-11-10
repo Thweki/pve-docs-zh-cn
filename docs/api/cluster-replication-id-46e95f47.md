@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/replication/{id}`
 
-Mark replication job for removal.
+将复制任务标记为待移除。
 
 **方法标识：** `delete`
 
@@ -14,7 +14,7 @@ Mark replication job for removal.
 
 ```json
 {
-  "description": "Requires the VM.Replicate permission on /vms/<vmid>.",
+  "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
 }
 ```
@@ -35,9 +35,9 @@ Mark replication job for removal.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | Will remove the jobconfig entry, but will not cleanup. |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
-| `keep` | boolean | 否 | 0 | Keep replicated data at target (do not remove). |
+| `force` | boolean | 否 | 0 | 将移除 jobconfig 条目，但不执行清理。 |
+| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `keep` | boolean | 否 | 0 | 保留目标上的复制数据（不移除）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -48,20 +48,20 @@ Mark replication job for removal.
   "properties": {
     "force": {
       "default": 0,
-      "description": "Will remove the jobconfig entry, but will not cleanup.",
+      "description": "将移除 jobconfig 条目，但不执行清理。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
     },
     "keep": {
       "default": 0,
-      "description": "Keep replicated data at target (do not remove).",
+      "description": "保留目标上的复制数据（不移除）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -82,7 +82,7 @@ Mark replication job for removal.
 
 ## GET `/cluster/replication/{id}`
 
-Read replication job configuration.
+读取复制任务配置。
 
 **方法标识：** `read`
 
@@ -90,7 +90,7 @@ Read replication job configuration.
 
 ```json
 {
-  "description": "Requires the VM.Audit permission on /vms/<vmid>.",
+  "description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。",
   "user": "all"
 }
 ```
@@ -105,7 +105,7 @@ Read replication job configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
+| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -115,7 +115,7 @@ Read replication job configuration.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
@@ -132,44 +132,44 @@ Read replication job configuration.
 {
   "properties": {
     "comment": {
-      "description": "Description.",
+      "description": "描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
-      "description": "Flag to disable/deactivate the entry.",
+      "description": "用于禁用/停用条目的标志。",
       "optional": 1,
       "type": "boolean"
     },
     "guest": {
-      "description": "Guest ID.",
+      "description": "客户机 ID。",
       "type": "integer"
     },
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
     },
     "jobnum": {
-      "description": "Unique, sequential ID assigned to each job.",
+      "description": "分配给每个任务的唯一连续 ID。",
       "type": "integer"
     },
     "rate": {
-      "description": "Rate limit in mbps (megabytes per second) as floating point number.",
+      "description": "速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。",
       "minimum": 1,
       "optional": 1,
       "type": "number"
     },
     "remove_job": {
-      "description": "Mark the replication job for removal. The job will remove all local replication snapshots. When set to 'full', it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.",
+      "description": "将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。",
       "enum": [
         "local",
         "full"
@@ -179,26 +179,26 @@ Read replication job configuration.
     },
     "schedule": {
       "default": "*/15",
-      "description": "Storage replication schedule. The format is a subset of `systemd` calendar events.",
+      "description": "存储复制计划。其格式是 `systemd` 日历事件的一个子集。",
       "format": "pve-calendar-event",
       "maxLength": 128,
       "optional": 1,
       "type": "string"
     },
     "source": {
-      "description": "For internal use, to detect if the guest was stolen.",
+      "description": "供内部使用，用于检测客户机是否被接管。",
       "format": "pve-node",
       "optional": 1,
       "type": "string"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "optional": 0,
       "type": "string"
     },
     "type": {
-      "description": "Section type.",
+      "description": "节类型。",
       "enum": [
         "local"
       ],
@@ -211,7 +211,7 @@ Read replication job configuration.
 
 ## PUT `/cluster/replication/{id}`
 
-Update replication job configuration.
+更新复制任务配置。
 
 **方法标识：** `update`
 
@@ -219,7 +219,7 @@ Update replication job configuration.
 
 ```json
 {
-  "description": "Requires the VM.Replicate permission on /vms/<vmid>.",
+  "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
 }
 ```
@@ -240,15 +240,15 @@ Update replication job configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Description. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | — | Flag to disable/deactivate the entry. |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
-| `rate` | number | 否 | — | Rate limit in mbps (megabytes per second) as floating point number. |
-| `remove_job` | string | 否 | — | Mark the replication job for removal. The job will remove all local replication snapshots. When set to 'full', it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.；可选值：`local`, `full` |
-| `schedule` | string | 否 | "*/15" | Storage replication schedule. The format is a subset of `systemd` calendar events. |
-| `source` | string | 否 | — | For internal use, to detect if the guest was stolen. |
+| `comment` | string | 否 | — | 描述。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | — | 用于禁用/停用条目的标志。 |
+| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `rate` | number | 否 | — | 速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。 |
+| `remove_job` | string | 否 | — | 将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。；可选值：`local`, `full` |
+| `schedule` | string | 否 | "*/15" | 存储复制计划。其格式是 `systemd` 日历事件的一个子集。 |
+| `source` | string | 否 | — | 供内部使用，用于检测客户机是否被接管。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -258,14 +258,14 @@ Update replication job configuration.
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Description.",
+      "description": "描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "maxLength": 4096,
       "optional": 1,
@@ -273,33 +273,33 @@ Update replication job configuration.
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disable": {
-      "description": "Flag to disable/deactivate the entry.",
+      "description": "用于禁用/停用条目的标志。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
     },
     "rate": {
-      "description": "Rate limit in mbps (megabytes per second) as floating point number.",
+      "description": "速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。",
       "minimum": 1,
       "optional": 1,
       "type": "number",
       "typetext": "<number> (1 - N)"
     },
     "remove_job": {
-      "description": "Mark the replication job for removal. The job will remove all local replication snapshots. When set to 'full', it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.",
+      "description": "将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。",
       "enum": [
         "local",
         "full"
@@ -309,7 +309,7 @@ Update replication job configuration.
     },
     "schedule": {
       "default": "*/15",
-      "description": "Storage replication schedule. The format is a subset of `systemd` calendar events.",
+      "description": "存储复制计划。其格式是 `systemd` 日历事件的一个子集。",
       "format": "pve-calendar-event",
       "maxLength": 128,
       "optional": 1,
@@ -317,7 +317,7 @@ Update replication job configuration.
       "typetext": "<string>"
     },
     "source": {
-      "description": "For internal use, to detect if the guest was stolen.",
+      "description": "供内部使用，用于检测客户机是否被接管。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",

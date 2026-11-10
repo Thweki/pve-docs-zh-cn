@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/disks/zfs`
 
-List Zpools.
+列出 Zpool。
 
 **方法标识：** `index`
 
@@ -46,7 +46,7 @@ List Zpools.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List Zpools.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -116,7 +116,7 @@ List Zpools.
 
 ## POST `/nodes/{node}/disks/zfs`
 
-Create a ZFS pool.
+创建 ZFS 池。
 
 **方法标识：** `create`
 
@@ -131,7 +131,7 @@ Create a ZFS pool.
       "Sys.Modify"
     ]
   ],
-  "description": "Requires additionally 'Datastore.Allocate' on /storage when setting 'add_storage'"
+  "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"
 }
 ```
 
@@ -157,14 +157,14 @@ Create a ZFS pool.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | Configure storage using the zpool. |
-| `ashift` | integer | 否 | 12 | Pool sector size exponent. |
-| `compression` | string | 否 | "on" | The compression algorithm to use.；可选值：`on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd` |
-| `devices` | string | 是 | — | The block devices you want to create the zpool on. |
+| `add_storage` | boolean | 否 | 0 | 使用 zpool 配置存储。 |
+| `ashift` | integer | 否 | 12 | 池扇区大小指数。 |
+| `compression` | string | 否 | "on" | 要使用的压缩算法。；可选值：`on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd` |
+| `devices` | string | 是 | — | 要在其上创建 zpool 的块设备。 |
 | `draid-config` | string | 否 | — |  |
-| `name` | string | 是 | — | The storage identifier. |
-| `node` | string | 是 | — | The cluster node name. |
-| `raidlevel` | string | 是 | — | The RAID level to use.；可选值：`single`, `mirror`, `raid10`, `raidz`, `raidz2`, `raidz3`, `draid`, `draid2`, `draid3` |
+| `name` | string | 是 | — | 存储标识符。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `raidlevel` | string | 是 | — | 要使用的 RAID 级别。；可选值：`single`, `mirror`, `raid10`, `raidz`, `raidz2`, `raidz3`, `draid`, `draid2`, `draid3` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -175,14 +175,14 @@ Create a ZFS pool.
   "properties": {
     "add_storage": {
       "default": 0,
-      "description": "Configure storage using the zpool.",
+      "description": "使用 zpool 配置存储。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ashift": {
       "default": 12,
-      "description": "Pool sector size exponent.",
+      "description": "池扇区大小指数。",
       "maximum": 16,
       "minimum": 9,
       "optional": 1,
@@ -191,7 +191,7 @@ Create a ZFS pool.
     },
     "compression": {
       "default": "on",
-      "description": "The compression algorithm to use.",
+      "description": "要使用的压缩算法。",
       "enum": [
         "on",
         "off",
@@ -205,7 +205,7 @@ Create a ZFS pool.
       "type": "string"
     },
     "devices": {
-      "description": "The block devices you want to create the zpool on.",
+      "description": "要在其上创建 zpool 的块设备。",
       "format": "string-list",
       "type": "string",
       "typetext": "<string>"
@@ -213,12 +213,12 @@ Create a ZFS pool.
     "draid-config": {
       "format": {
         "data": {
-          "description": "The number of data devices per redundancy group. (dRAID)",
+          "description": "每个冗余组的数据设备数量。（dRAID）",
           "minimum": 1,
           "type": "integer"
         },
         "spares": {
-          "description": "Number of dRAID spares.",
+          "description": "dRAID 备用设备数量。",
           "minimum": 0,
           "type": "integer"
         }
@@ -228,20 +228,20 @@ Create a ZFS pool.
       "typetext": "data=<integer> ,spares=<integer>"
     },
     "name": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "raidlevel": {
-      "description": "The RAID level to use.",
+      "description": "要使用的 RAID 级别。",
       "enum": [
         "single",
         "mirror",

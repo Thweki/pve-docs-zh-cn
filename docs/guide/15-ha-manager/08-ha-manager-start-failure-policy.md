@@ -1,4 +1,4 @@
-# 15.8. Start Failure Policy <a href="#ha_manager_start_failure_policy" id="ha_manager_start_failure_policy"></a>
+# 15.8. 启动失败策略 <a href="#ha_manager_start_failure_policy" id="ha_manager_start_failure_policy"></a>
 
 如果服务在一个节点上启动失败一次或多次，启动失败策略就会生效。该策略可用于配置应在同一节点上触发多少次重启，以及应重新定位服务多少次，以便尝试在另一个节点上启动它。此策略旨在绕过特定节点上共享资源的暂时不可用。例如，如果共享存储因网络问题等原因在某个具有仲裁的节点上不再可用，但在其他节点上仍然可用，则重新定位策略仍允许服务启动。
 

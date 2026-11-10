@@ -1,10 +1,10 @@
-# 15.6. Configuration <a href="#_configuration_15" id="_configuration_15"></a>
+# 15.6. 配置 <a href="#configuration_15" id="configuration_15"></a>
 
 HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 `ha-manager` 命令行界面或 Proxmox VE Web 界面配置 HA——这两个界面都提供了管理 HA 的简便方法。自动化工具可以直接使用 API。
 
 所有 HA 配置文件都位于 `/etc/pve/ha/` 中，因此它们会自动分发到集群节点，并且所有节点共享相同的 HA 配置。
 
-## 15.6.1. Resources <a href="#ha_manager_resource_config" id="ha_manager_resource_config"></a>
+## 15.6.1. 资源 <a href="#ha_manager_resource_config" id="ha_manager_resource_config"></a>
 
 [![screenshot/gui-ha-manager-status.png](../../assets/screenshot-gui-ha-manager-status-png-228d45135771.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ha-manager-status.png)
 
@@ -84,7 +84,7 @@ ct: 102
 # ha-manager add ct:102
 ```
 
-## 15.6.2. Groups <a href="#ha_manager_groups" id="ha_manager_groups"></a>
+## 15.6.2. 组 <a href="#ha_manager_groups" id="ha_manager_groups"></a>
 
 {% hint style="info" %}
 自 Proxmox VE 9.0 起，HA 组已弃用，并迁移到 HA 节点亲和性规则。
@@ -157,7 +157,7 @@ group: mygroup2
 
 另一种场景是，某个服务被隔离后，已在另一个节点上恢复。管理员尝试修复被隔离的节点，并使其重新上线，以调查故障原因并检查其是否能再次稳定运行。设置 `nofailback` 标志可防止已恢复的服务直接移回被隔离的节点。
 
-## 15.6.3. Rules <a href="#ha_manager_rules" id="ha_manager_rules"></a>
+## 15.6.3. 规则 <a href="#ha_manager_rules" id="ha_manager_rules"></a>
 
 HA 规则用于对 HA 管理的资源施加特定约束，这些规则在 HA 规则配置文件 `/etc/pve/ha/rules.cfg` 中定义。
 
@@ -181,7 +181,7 @@ HA 规则是否已禁用。
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
 <table>
-<caption>Table 18. Available HA Rule Types</caption>
+<caption>表 18. 可用 HA 规则类型</caption>
 
 
 <thead>
@@ -257,7 +257,7 @@ node-affinity: priority-cascade
         resources vm:400,ct:500
 ```
 
-#### 节点亲和性规则属性 <a href="#_node_affinity_rule_properties" id="_node_affinity_rule_properties"></a>
+#### 节点亲和性规则属性 <a href="#node_affinity_rule_properties" id="node_affinity_rule_properties"></a>
 
 **`affinity`: `<negative | positive>` (*默认值 \=* `positive`)**
 
@@ -321,23 +321,23 @@ resource-affinity: keep-separate
         resources vm:200,ct:300
 ```
 
-#### 正向与负向资源亲和性规则之间的相互作用 <a href="#_interactions_between_positive_and_negative_resource_affinity_rules" id="_interactions_between_positive_and_negative_resource_affinity_rules"></a>
+#### 正向与负向资源亲和性规则之间的相互作用 <a href="#interactions_between_positive_and_negative_resource_affinity_rules" id="interactions_between_positive_and_negative_resource_affinity_rules"></a>
 
 如果某些 HA 资源位于一条正向资源亲和性规则中，同时也属于一条负向资源亲和性规则，那么该正向资源亲和性规则中的所有其他 HA 资源，也与这些负向资源亲和性规则中的 HA 资源具有负向亲和性。
 
 例如，如果 HA 资源 `vm:100`、`vm:101` 和 `vm:102` 位于一条正向资源亲和性规则中，而 `vm:100` 与 HA 资源 `ct:200` 位于一条负向资源亲和性规则中，那么 `vm:101` 和 `vm:102` 也分别与 `ct:200` 具有负向资源亲和性。
 
-Note that if there are two or more HA resources in both a positive and negative resource affinity rule, then those will be disabled as they cause a conflict: Two or more HA resources cannot be kept on the same node and separated on different nodes at the same time. For more information on these cases, see the section about [rule conflicts and errors](#ha_manager_rule_conflicts) below.
+请注意，如果有两个或更多 HA 资源同时位于正向和反向资源亲和性规则中，则这些规则会被禁用，因为它们会导致冲突：两个或更多 HA 资源不能既保持在同一节点上，又同时分离到不同节点上。有关这些情况的更多信息，请参阅下文关于 [规则冲突和错误](#ha_manager_rule_conflicts) 的章节。
 
-#### 节点亲和性规则与正向资源亲和性规则之间的相互作用 <a href="#_interactions_between_node_and_positive_resource_affinity_rules" id="_interactions_between_node_and_positive_resource_affinity_rules"></a>
+#### 节点亲和性规则与正向资源亲和性规则之间的相互作用 <a href="#interactions_between_node_and_positive_resource_affinity_rules" id="interactions_between_node_and_positive_resource_affinity_rules"></a>
 
 如果节点亲和性规则中的某些 HA 资源同时属于一条正向资源亲和性规则，那么该正向资源亲和性规则中的所有其他 HA 资源也会继承该节点亲和性规则。
 
 例如，如果 HA 资源 `vm:100`、`vm:101` 和 `vm:102` 位于一条正向资源亲和性规则中，而 `vm:102` 位于一条节点亲和性规则中，该规则将 `vm:102` 限制为只能在 `node3` 上运行，那么 `vm:100` 和 `vm:101` 也将被限制为只能在 `node3` 上运行。
 
-Please note that if there are two or more HA resources in a positive resource affinity rule and in different node affinity rules, then those rules will cause an error and will be disabled as this is currently not supported. For more information on these cases, see the section about [rule conflicts and errors](#ha_manager_rule_conflicts) below.
+请注意，如果两个或更多 HA 资源同时位于正向资源亲和性规则和不同的节点亲和性规则中，则这些规则会导致错误并被禁用，因为目前不支持此情况。有关这些情况的更多信息，请参阅下文关于 [规则冲突和错误](#ha_manager_rule_conflicts) 的章节。
 
-#### 资源亲和性规则属性 <a href="#_resource_affinity_rule_properties" id="_resource_affinity_rule_properties"></a>
+#### 资源亲和性规则属性 <a href="#resource_affinity_rule_properties" id="resource_affinity_rule_properties"></a>
 
 **`affinity`: `<negative | positive>`**
 
@@ -347,7 +347,7 @@ Please note that if there are two or more HA resources in a positive resource af
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-## 15.6.4. Rule Conflicts and Errors <a href="#ha_manager_rule_conflicts" id="ha_manager_rule_conflicts"></a>
+## 15.6.4. 规则冲突和错误 <a href="#ha_manager_rule_conflicts" id="ha_manager_rule_conflicts"></a>
 
 HA 规则可以对 HA 资源施加相当复杂的约束。为确保新建或修改的 HA 规则不会给 HA 堆栈的 CRS 调度器引入不确定性，HA 规则会在应用前接受可行性测试。任何未通过这些测试的规则都将被禁用，直到冲突和错误得到解决。
 

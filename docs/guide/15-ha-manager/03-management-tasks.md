@@ -1,4 +1,4 @@
-# 15.3. Management Tasks <a href="#_management_tasks" id="_management_tasks"></a>
+# 15.3. 管理任务 <a href="#management_tasks" id="management_tasks"></a>
 
 本节简要介绍常见的管理任务。第一步是为资源启用 HA。这通过将资源添加到 HA 资源配置中来完成。您可以使用 GUI 执行此操作，也可以直接使用命令行工具，例如：
 

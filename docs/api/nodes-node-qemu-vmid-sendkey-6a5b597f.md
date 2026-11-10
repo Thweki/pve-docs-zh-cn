@@ -6,7 +6,7 @@
 
 ## PUT `/nodes/{node}/qemu/{vmid}/sendkey`
 
-Send key event to virtual machine.
+向虚拟机发送按键事件。
 
 **方法标识：** `vm_sendkey`
 
@@ -46,10 +46,10 @@ Send key event to virtual machine.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `key` | string | 是 | — | The key (qemu monitor encoding). |
-| `node` | string | 是 | — | The cluster node name. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `key` | string | 是 | — | 按键（qemu 监视器编码）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,24 +59,24 @@ Send key event to virtual machine.
   "additionalProperties": 0,
   "properties": {
     "key": {
-      "description": "The key (qemu monitor encoding).",
+      "description": "按键（qemu 监视器编码）。",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

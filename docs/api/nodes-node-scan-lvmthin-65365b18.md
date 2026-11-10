@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/lvmthin`
 
-List local LVM Thin Pools.
+列出本地 LVM 精简池。
 
 **方法标识：** `lvmthinscan`
 
@@ -46,7 +46,7 @@ List local LVM Thin Pools.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `vg` | string | 是 | — |  |
 
 <details>
@@ -57,7 +57,7 @@ List local LVM Thin Pools.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -80,7 +80,7 @@ List local LVM Thin Pools.
   "items": {
     "properties": {
       "lv": {
-        "description": "The LVM Thin Pool name (LVM logical volume).",
+        "description": "LVM 精简池名称（LVM 逻辑卷）。",
         "type": "string"
       }
     },

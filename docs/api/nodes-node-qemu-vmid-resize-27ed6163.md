@@ -6,7 +6,7 @@
 
 ## PUT `/nodes/{node}/qemu/{vmid}/resize`
 
-Extend volume size.
+扩展卷大小。
 
 **方法标识：** `resize_vm`
 
@@ -46,12 +46,12 @@ Extend volume size.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications. |
-| `disk` | string | 是 | — | The disk you want to resize.；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
-| `node` | string | 是 | — | The cluster node name. |
-| `size` | string | 是 | — | The new size. With the `+` sign the value is added to the actual size of the volume and without it, the value is taken as an absolute one. Shrinking disk size is not supported. |
-| `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `disk` | string | 是 | — | 要调整大小的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `size` | string | 是 | — | 新大小。带 `+` 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。 |
+| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -61,14 +61,14 @@ Extend volume size.
   "additionalProperties": 0,
   "properties": {
     "digest": {
-      "description": "Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disk": {
-      "description": "The disk you want to resize.",
+      "description": "要调整大小的磁盘。",
       "enum": [
         "ide0",
         "ide1",
@@ -133,24 +133,24 @@ Extend volume size.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "size": {
-      "description": "The new size. With the `+` sign the value is added to the actual size of the volume and without it, the value is taken as an absolute one. Shrinking disk size is not supported.",
+      "description": "新大小。带 `+` 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。",
       "pattern": "\\+?\\d+(\\.\\d+)?[KMGT]?",
       "type": "string"
     },
     "skiplock": {
-      "description": "Ignore locks - only root is allowed to use this option.",
+      "description": "忽略锁——仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -167,7 +167,7 @@ Extend volume size.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/feature`
 
-Check if feature for virtual machine is available.
+检查虚拟机功能是否可用。
 
 **方法标识：** `vm_feature`
 
@@ -46,10 +46,10 @@ Check if feature for virtual machine is available.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `feature` | string | 是 | — | Feature to check.；可选值：`snapshot`, `clone`, `copy` |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 否 | — | The name of the snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `feature` | string | 是 | — | 要检查的功能。；可选值：`snapshot`, `clone`, `copy` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 否 | — | 快照名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Check if feature for virtual machine is available.
   "additionalProperties": 0,
   "properties": {
     "feature": {
-      "description": "Feature to check.",
+      "description": "要检查的功能。",
       "enum": [
         "snapshot",
         "clone",
@@ -68,13 +68,13 @@ Check if feature for virtual machine is available.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "optional": 1,
@@ -82,7 +82,7 @@ Check if feature for virtual machine is available.
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

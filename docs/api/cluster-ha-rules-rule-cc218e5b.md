@@ -40,7 +40,7 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `rule` | string | 是 | — | HA rule identifier. |
+| `rule` | string | 是 | — | HA 规则标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@
   "additionalProperties": 0,
   "properties": {
     "rule": {
-      "description": "HA rule identifier.",
+      "description": "HA 规则标识符。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -71,7 +71,7 @@
 
 ## GET `/cluster/ha/rules/{rule}`
 
-Read HA rule.
+读取 HA 规则。
 
 **方法标识：** `read_rule`
 
@@ -99,7 +99,7 @@ Read HA rule.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `rule` | string | 是 | — | HA rule identifier. |
+| `rule` | string | 是 | — | HA 规则标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -109,7 +109,7 @@ Read HA rule.
   "additionalProperties": 0,
   "properties": {
     "rule": {
-      "description": "HA rule identifier.",
+      "description": "HA 规则标识符。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -126,12 +126,12 @@ Read HA rule.
 {
   "properties": {
     "rule": {
-      "description": "HA rule identifier.",
+      "description": "HA 规则标识符。",
       "format": "pve-configid",
       "type": "string"
     },
     "type": {
-      "description": "HA rule type.",
+      "description": "HA 规则类型。",
       "enum": [
         "node-affinity",
         "resource-affinity"

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/config`
 
-Get node configuration options.
+获取节点配置选项。
 
 **方法标识：** `get_config`
 
@@ -40,8 +40,8 @@ Get node configuration options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `property` | string | 否 | "all" | Return only a specific property from the node configuration.；可选值：`acme`, `acmedomain0`, `acmedomain1`, `acmedomain2`, `acmedomain3`, `acmedomain4`, `acmedomain5`, `ballooning-target`, `description`, `location`, `startall-onboot-delay`, `wakeonlan` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `property` | string | 否 | "all" | 仅返回节点配置中的特定属性。；可选值：`acme`, `acmedomain0`, `acmedomain1`, `acmedomain2`, `acmedomain3`, `acmedomain4`, `acmedomain5`, `ballooning-target`, `description`, `location`, `startall-onboot-delay`, `wakeonlan` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,14 +51,14 @@ Get node configuration options.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "property": {
       "default": "all",
-      "description": "Return only a specific property from the node configuration.",
+      "description": "仅返回节点配置中的特定属性。",
       "enum": [
         "acme",
         "acmedomain0",
@@ -88,18 +88,18 @@ Get node configuration options.
 {
   "properties": {
     "acme": {
-      "description": "Node specific ACME settings.",
+      "description": "节点特定 ACME 设置。",
       "format": {
         "account": {
           "default": "default",
-          "description": "ACME account config file name.",
+          "description": "ACME 账户配置文件名。",
           "format": "pve-configid",
           "format_description": "name",
           "optional": 1,
           "type": "string"
         },
         "domains": {
-          "description": "List of domains for this node's ACME certificate",
+          "description": "此节点 ACME 证书的域名列表",
           "format": "pve-acme-domain-list",
           "format_description": "domain[;domain;...]",
           "optional": 1,
@@ -110,10 +110,10 @@ Get node configuration options.
       "type": "string"
     },
     "acmedomain[n]": {
-      "description": "ACME domain and validation plugin",
+      "description": "ACME 域名和验证插件",
       "format": {
         "alias": {
-          "description": "Alias for the Domain to verify ACME Challenge over DNS",
+          "description": "用于通过 DNS 验证 ACME 质询的域名别名",
           "format": "pve-acme-alias",
           "format_description": "domain",
           "optional": 1,
@@ -121,14 +121,14 @@ Get node configuration options.
         },
         "domain": {
           "default_key": 1,
-          "description": "domain for this node's ACME certificate",
+          "description": "此节点 ACME 证书的域名",
           "format": "pve-acme-domain",
           "format_description": "domain",
           "type": "string"
         },
         "plugin": {
           "default": "standalone",
-          "description": "The ACME plugin ID",
+          "description": "ACME 插件 ID",
           "format": "pve-configid",
           "format_description": "name of the plugin configuration",
           "optional": 1,
@@ -140,44 +140,44 @@ Get node configuration options.
     },
     "ballooning-target": {
       "default": 80,
-      "description": "RAM usage target for ballooning (in percent of total memory)",
+      "description": "ballooning 的 RAM 使用目标（占总内存的百分比）",
       "maximum": 100,
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "description": {
-      "description": "Description for the Node. Shown in the web-interface node notes panel. This is saved as comment inside the configuration file.",
+      "description": "节点描述。显示在 Web 界面的节点备注面板中。作为注释保存在配置文件中。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string"
     },
     "location": {
-      "description": "The location of the node. Overrides the default from the datacenter config.",
+      "description": "节点位置。覆盖数据中心配置中的默认值。",
       "format": "pve-node-location",
       "optional": 1,
       "type": "string"
     },
     "startall-onboot-delay": {
       "default": 0,
-      "description": "Initial delay in seconds, before starting all the Virtual Guests with on-boot enabled.",
+      "description": "启动所有启用了 on-boot 的虚拟客户机前的初始延迟，单位为秒。",
       "maximum": 300,
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "wakeonlan": {
-      "description": "Node specific wake on LAN settings.",
+      "description": "节点特定的局域网唤醒设置。",
       "format": {
         "bind-interface": {
           "default": "The interface carrying the default route",
-          "description": "Bind to this interface when sending wake on LAN packet",
+          "description": "发送局域网唤醒数据包时绑定到此接口",
           "format": "pve-iface",
           "format_description": "bind interface",
           "optional": 1,
@@ -185,7 +185,7 @@ Get node configuration options.
         },
         "broadcast-address": {
           "default": "255.255.255.255",
-          "description": "IPv4 broadcast address to use when sending wake on LAN packet",
+          "description": "发送局域网唤醒数据包时使用的 IPv4 广播地址",
           "format": "ipv4",
           "format_description": "IPv4 broadcast address",
           "optional": 1,
@@ -193,7 +193,7 @@ Get node configuration options.
         },
         "mac": {
           "default_key": 1,
-          "description": "MAC address for wake on LAN",
+          "description": "用于局域网唤醒的 MAC 地址",
           "format": "mac-addr",
           "format_description": "MAC address",
           "type": "string"
@@ -209,7 +209,7 @@ Get node configuration options.
 
 ## PUT `/nodes/{node}/config`
 
-Set node configuration options.
+设置节点配置选项。
 
 **方法标识：** `set_options`
 
@@ -249,16 +249,16 @@ Set node configuration options.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `acme` | string | 否 | — | Node specific ACME settings. |
-| `acmedomain[n]` | string | 否 | — | ACME domain and validation plugin |
-| `ballooning-target` | integer | 否 | 80 | RAM usage target for ballooning (in percent of total memory) |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `description` | string | 否 | — | Description for the Node. Shown in the web-interface node notes panel. This is saved as comment inside the configuration file. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications. |
-| `location` | string | 否 | — | The location of the node. Overrides the default from the datacenter config. |
-| `node` | string | 是 | — | The cluster node name. |
-| `startall-onboot-delay` | integer | 否 | 0 | Initial delay in seconds, before starting all the Virtual Guests with on-boot enabled. |
-| `wakeonlan` | string | 否 | — | Node specific wake on LAN settings. |
+| `acme` | string | 否 | — | 节点特定 ACME 设置。 |
+| `acmedomain[n]` | string | 否 | — | ACME 域名和验证插件 |
+| `ballooning-target` | integer | 否 | 80 | ballooning 的 RAM 使用目标（占总内存的百分比） |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `description` | string | 否 | — | 节点描述。显示在 Web 界面的节点备注面板中。作为注释保存在配置文件中。 |
+| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `location` | string | 否 | — | 节点位置。覆盖数据中心配置中的默认值。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `startall-onboot-delay` | integer | 否 | 0 | 启动所有启用了 on-boot 的虚拟客户机前的初始延迟，单位为秒。 |
+| `wakeonlan` | string | 否 | — | 节点特定的局域网唤醒设置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -268,18 +268,18 @@ Set node configuration options.
   "additionalProperties": 0,
   "properties": {
     "acme": {
-      "description": "Node specific ACME settings.",
+      "description": "节点特定 ACME 设置。",
       "format": {
         "account": {
           "default": "default",
-          "description": "ACME account config file name.",
+          "description": "ACME 账户配置文件名。",
           "format": "pve-configid",
           "format_description": "name",
           "optional": 1,
           "type": "string"
         },
         "domains": {
-          "description": "List of domains for this node's ACME certificate",
+          "description": "此节点 ACME 证书的域名列表",
           "format": "pve-acme-domain-list",
           "format_description": "domain[;domain;...]",
           "optional": 1,
@@ -291,10 +291,10 @@ Set node configuration options.
       "typetext": "[account=<name>] [,domains=<domain[;domain;...]>]"
     },
     "acmedomain[n]": {
-      "description": "ACME domain and validation plugin",
+      "description": "ACME 域名和验证插件",
       "format": {
         "alias": {
-          "description": "Alias for the Domain to verify ACME Challenge over DNS",
+          "description": "用于通过 DNS 验证 ACME 质询的域名别名",
           "format": "pve-acme-alias",
           "format_description": "domain",
           "optional": 1,
@@ -302,14 +302,14 @@ Set node configuration options.
         },
         "domain": {
           "default_key": 1,
-          "description": "domain for this node's ACME certificate",
+          "description": "此节点 ACME 证书的域名",
           "format": "pve-acme-domain",
           "format_description": "domain",
           "type": "string"
         },
         "plugin": {
           "default": "standalone",
-          "description": "The ACME plugin ID",
+          "description": "ACME 插件 ID",
           "format": "pve-configid",
           "format_description": "name of the plugin configuration",
           "optional": 1,
@@ -322,7 +322,7 @@ Set node configuration options.
     },
     "ballooning-target": {
       "default": 80,
-      "description": "RAM usage target for ballooning (in percent of total memory)",
+      "description": "ballooning 的 RAM 使用目标（占总内存的百分比）",
       "maximum": 100,
       "minimum": 0,
       "optional": 1,
@@ -330,42 +330,42 @@ Set node configuration options.
       "typetext": "<integer> (0 - 100)"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "description": {
-      "description": "Description for the Node. Shown in the web-interface node notes panel. This is saved as comment inside the configuration file.",
+      "description": "节点描述。显示在 Web 界面的节点备注面板中。作为注释保存在配置文件中。",
       "maxLength": 65536,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "location": {
-      "description": "The location of the node. Overrides the default from the datacenter config.",
+      "description": "节点位置。覆盖数据中心配置中的默认值。",
       "format": "pve-node-location",
       "optional": 1,
       "type": "string",
       "typetext": "latitude=<number> ,longitude=<number> [,name=<name>]"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "startall-onboot-delay": {
       "default": 0,
-      "description": "Initial delay in seconds, before starting all the Virtual Guests with on-boot enabled.",
+      "description": "启动所有启用了 on-boot 的虚拟客户机前的初始延迟，单位为秒。",
       "maximum": 300,
       "minimum": 0,
       "optional": 1,
@@ -373,11 +373,11 @@ Set node configuration options.
       "typetext": "<integer> (0 - 300)"
     },
     "wakeonlan": {
-      "description": "Node specific wake on LAN settings.",
+      "description": "节点特定的局域网唤醒设置。",
       "format": {
         "bind-interface": {
           "default": "The interface carrying the default route",
-          "description": "Bind to this interface when sending wake on LAN packet",
+          "description": "发送局域网唤醒数据包时绑定到此接口",
           "format": "pve-iface",
           "format_description": "bind interface",
           "optional": 1,
@@ -385,7 +385,7 @@ Set node configuration options.
         },
         "broadcast-address": {
           "default": "255.255.255.255",
-          "description": "IPv4 broadcast address to use when sending wake on LAN packet",
+          "description": "发送局域网唤醒数据包时使用的 IPv4 广播地址",
           "format": "ipv4",
           "format_description": "IPv4 broadcast address",
           "optional": 1,
@@ -393,7 +393,7 @@ Set node configuration options.
         },
         "mac": {
           "default_key": 1,
-          "description": "MAC address for wake on LAN",
+          "description": "用于局域网唤醒的 MAC 地址",
           "format": "mac-addr",
           "format_description": "MAC address",
           "type": "string"

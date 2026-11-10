@@ -1,14 +1,14 @@
-# 12.1. Introduction <a href="#pvesdn_overview" id="pvesdn_overview"></a>
+# 12.1. 简介 <a href="#pvesdn_overview" id="pvesdn_overview"></a>
 
-The Proxmox VE SDN allows for separation and fine-grained control of virtual guest networks, using flexible, software-controlled configurations.
+Proxmox VE SDN 使用灵活的软件控制配置，实现虚拟客户机网络的隔离和精细控制。
 
-Separation is managed through **zones**, virtual networks (**VNets**), and **subnets**. A zone is its own virtually separated network area. A VNet is a virtual network that belongs to a zone. A subnet is an IP range inside a VNet.
+隔离通过 **区域**、虚拟网络（**VNet**）和 **子网** 管理。区域是独立的虚拟隔离网络区域。VNet 是属于某个区域的虚拟网络。子网是 VNet 内的一个 IP 地址范围。
 
-Depending on the type of the zone, the network behaves differently and offers specific features, advantages, and limitations.
+根据区域类型的不同，网络具有不同的行为，并提供特定的功能、优势和限制。
 
-Use cases for SDN range from an isolated private network on each individual node to complex overlay networks across multiple PVE clusters on different locations.
+SDN 的用例包括各个节点上隔离的私有网络，以及跨不同地点的多个 PVE 集群的复杂覆盖网络。
 
-After configuring an VNet in the cluster-wide datacenter SDN administration interface, it is available as a common Linux bridge, locally on each node, to be assigned to VMs and Containers.
+在集群范围的数据中心 SDN 管理界面中配置 VNet 后，它会作为普通 Linux 网桥在每个节点本地可用，可分配给虚拟机和容器。
 
 ---
 

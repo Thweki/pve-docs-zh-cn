@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme/directories`
 
-Get named known ACME directory endpoints.
+获取具有名称的已知 ACME 目录端点。
 
 **方法标识：** `get_directories`
 
@@ -39,7 +39,7 @@ Get named known ACME directory endpoints.
         "type": "string"
       },
       "url": {
-        "description": "URL of ACME CA directory endpoint.",
+        "description": "ACME CA 目录端点的 URL。",
         "pattern": "^https?://.*",
         "type": "string"
       }

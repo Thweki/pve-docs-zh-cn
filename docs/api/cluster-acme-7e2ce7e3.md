@@ -6,7 +6,7 @@
 
 ## GET `/cluster/acme`
 
-ACMEAccount index.
+ACMEAccount 索引。
 
 **方法标识：** `index`
 

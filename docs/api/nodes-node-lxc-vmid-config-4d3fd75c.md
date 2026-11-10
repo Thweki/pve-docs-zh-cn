@@ -40,10 +40,10 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `current` | boolean | 否 | 0 | Get current values (instead of pending values). |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapshot` | string | 否 | — | Fetch config values from given snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `current` | boolean | 否 | 0 | 获取当前值（而非待应用值）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapshot` | string | 否 | — | 从给定快照获取配置值。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -54,19 +54,19 @@
   "properties": {
     "current": {
       "default": 0,
-      "description": "Get current values (instead of pending values).",
+      "description": "获取当前值（而非待应用值）。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapshot": {
-      "description": "Fetch config values from given snapshot.",
+      "description": "从给定快照获取配置值。",
       "format": "pve-configid",
       "maxLength": 40,
       "optional": 1,
@@ -74,7 +74,7 @@
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -94,7 +94,7 @@
   "properties": {
     "arch": {
       "default": "amd64",
-      "description": "OS architecture type.",
+      "description": "操作系统架构类型。",
       "enum": [
         "amd64",
         "i386",
@@ -108,7 +108,7 @@
     },
     "cmode": {
       "default": "tty",
-      "description": "Console mode. By default, the console command tries to open a connection to one of the available tty devices. By setting cmode to 'console' it tries to attach to /dev/console instead. If you set cmode to 'shell', it simply invokes a shell inside the container (no login).",
+      "description": "控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。",
       "enum": [
         "shell",
         "console",
@@ -119,12 +119,12 @@
     },
     "console": {
       "default": 1,
-      "description": "Attach a console device (/dev/console) to the container.",
+      "description": "将控制台设备（/dev/console）连接到容器。",
       "optional": 1,
       "type": "boolean"
     },
     "cores": {
-      "description": "The number of cores assigned to the container. A container can use all available cores by default.",
+      "description": "分配给容器的核心数。默认情况下，容器可使用所有可用核心。",
       "maximum": 8192,
       "minimum": 1,
       "optional": 1,
@@ -132,7 +132,7 @@
     },
     "cpulimit": {
       "default": 0,
-      "description": "Limit of CPU usage.\n\nNOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit.",
+      "description": "CPU 使用量限制。\n\n注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。",
       "maximum": 8192,
       "minimum": 0,
       "optional": 1,
@@ -140,42 +140,42 @@
     },
     "cpuunits": {
       "default": "cgroup v1: 1024, cgroup v2: 100",
-      "description": "CPU weight for a container, will be clamped to [1, 10000] in cgroup v2.",
+      "description": "容器的 CPU 权重，在 cgroup v2 中会限制到 [1, 10000] 范围内。",
       "maximum": 500000,
       "minimum": 0,
       "optional": 1,
       "type": "integer",
-      "verbose_description": "CPU weight for a container. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this container gets. Number is relative to the weights of all the other running guests."
+      "verbose_description": "容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。"
     },
     "debug": {
       "default": 0,
-      "description": "Try to be more verbose. For now this only enables debug log-level on start.",
+      "description": "尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。",
       "optional": 1,
       "type": "boolean"
     },
     "description": {
-      "description": "Description for the Container. Shown in the web-interface CT's summary. This is saved as comment inside the configuration file.",
+      "description": "容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。",
       "maxLength": 8192,
       "optional": 1,
       "type": "string"
     },
     "dev[n]": {
-      "description": "Device to pass through to the container",
+      "description": "要直通到容器的设备",
       "format": {
         "deny-write": {
           "default": 0,
-          "description": "Deny the container to write to the device",
+          "description": "禁止容器写入设备",
           "optional": 1,
           "type": "boolean"
         },
         "gid": {
-          "description": "Group ID to be assigned to the device node",
+          "description": "要分配给设备节点的组 ID",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
         },
         "mode": {
-          "description": "Access mode to be set on the device node",
+          "description": "要为设备节点设置的访问模式",
           "format_description": "Octal access mode",
           "optional": 1,
           "pattern": "0[0-7]{3}",
@@ -183,15 +183,15 @@
         },
         "path": {
           "default_key": 1,
-          "description": "Device to pass through to the container",
+          "description": "要直通到容器的设备",
           "format": "pve-lxc-dev-string",
           "format_description": "Path",
           "optional": 1,
           "type": "string",
-          "verbose_description": "Path to the device to pass through to the container"
+          "verbose_description": "要直通到容器的设备路径"
         },
         "uid": {
-          "description": "User ID to be assigned to the device node",
+          "description": "要分配给设备节点的用户 ID",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
@@ -201,51 +201,51 @@
       "type": "string"
     },
     "digest": {
-      "description": "SHA1 digest of configuration file. This can be used to prevent concurrent modifications.",
+      "description": "配置文件的 SHA1 摘要。可用于防止并发修改。",
       "type": "string"
     },
     "entrypoint": {
       "default": "/sbin/init",
-      "description": "Command to run as init, optionally with arguments; may start with an absolute path, relative path, or a binary in $PATH.",
+      "description": "用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。",
       "optional": 1,
       "pattern": "(?^:[^\\x00-\\x08\\x0a-\\x1F\\x7F]+)",
       "type": "string"
     },
     "env": {
-      "description": "The container runtime environment as NUL-separated list. Replaces any lxc.environment.runtime entries in the config.",
+      "description": "容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。",
       "optional": 1,
       "pattern": "(?^:(?:\\w+=[^\\x00-\\x08\\x0a-\\x1F\\x7F]*)(?:\\0\\w+=[^\\x00-\\x08\\x0a-\\x1F\\x7F]*)*)",
       "type": "string"
     },
     "features": {
-      "description": "Allow containers access to advanced features.",
+      "description": "允许容器访问高级功能。",
       "format": {
         "force_rw_sys": {
           "default": 0,
-          "description": "Mount /sys in unprivileged containers as `rw` instead of `mixed`. This can break networking under newer (>= v245) systemd-network use.",
+          "description": "在非特权容器中将 /sys 挂载为 `rw`，而非 `mixed`。在使用较新版本（>= v245）的 systemd-network 时，这可能破坏网络功能。",
           "optional": 1,
           "type": "boolean"
         },
         "fuse": {
           "default": 0,
-          "description": "Allow using 'fuse' file systems in a container. Note that interactions between fuse and the freezer cgroup can potentially cause I/O deadlocks.",
+          "description": "允许在容器内使用 'fuse' 文件系统。注意，fuse 与 freezer cgroup 之间的交互可能导致 I/O 死锁。",
           "optional": 1,
           "type": "boolean"
         },
         "keyctl": {
           "default": 0,
-          "description": "For unprivileged containers only: Allow the use of the keyctl() system call. This is required to use docker inside a container. By default unprivileged containers will see this system call as non-existent. This is mostly a workaround for systemd-networkd, as it will treat it as a fatal error when some keyctl() operations are denied by the kernel due to lacking permissions. Essentially, you can choose between running systemd-networkd or docker.",
+          "description": "仅适用于非特权容器：允许使用 keyctl() 系统调用。在容器内使用 docker 需要此功能。默认情况下，非特权容器会认为此系统调用不存在。这主要是针对 systemd-networkd 的变通措施，因为当内核因权限不足而拒绝某些 keyctl() 操作时，它会将其视为致命错误。实质上，您可以在运行 systemd-networkd 和 docker 之间作出选择。",
           "optional": 1,
           "type": "boolean"
         },
         "mknod": {
           "default": 0,
-          "description": "Allow unprivileged containers to use mknod() to add certain device nodes. This requires a kernel with seccomp trap to user space support (5.3 or newer). This is experimental.",
+          "description": "允许非特权容器使用 mknod() 添加特定设备节点。这需要内核支持将 seccomp 陷阱交由用户空间处理（5.3 或更新版本）。此功能为实验性。",
           "optional": 1,
           "type": "boolean"
         },
         "mount": {
-          "description": "Allow mounting file systems of specific types. This should be a list of file system types as used with the mount command. Note that this can have negative effects on the container's security. With access to a loop device, mounting a file can circumvent the mknod permission of the devices cgroup, mounting an NFS file system can block the host's I/O completely and prevent it from rebooting, etc.",
+          "description": "允许挂载特定类型的文件系统。此处应为 mount 命令所用的文件系统类型列表。注意，这可能对容器安全性产生负面影响。可以访问 loop 设备时，挂载文件能够绕过 devices cgroup 的 mknod 权限；挂载 NFS 文件系统可能完全阻塞宿主机 I/O 并使其无法重启等。",
           "format_description": "fstype;fstype;...",
           "optional": 1,
           "pattern": "(?^:[a-zA-Z0-9_; ]+)",
@@ -253,7 +253,7 @@
         },
         "nesting": {
           "default": 0,
-          "description": "Allow nesting. Best used with unprivileged containers with additional id mapping. Note that this will expose procfs and sysfs contents of the host to the guest. This is also required by systemd to isolate services.",
+          "description": "允许嵌套。最好与具有附加 ID 映射的非特权容器一起使用。注意，这会向客户机暴露宿主机的 procfs 和 sysfs 内容。systemd 隔离服务也需要此功能。",
           "optional": 1,
           "type": "boolean"
         }
@@ -262,20 +262,20 @@
       "type": "string"
     },
     "hookscript": {
-      "description": "Script that will be executed during various steps in the containers lifetime.",
+      "description": "在容器生命周期各个阶段执行的脚本。",
       "format": "pve-volume-id",
       "optional": 1,
       "type": "string"
     },
     "hostname": {
-      "description": "Set a host name for the container.",
+      "description": "为容器设置主机名。",
       "format": "dns-name",
       "maxLength": 255,
       "optional": 1,
       "type": "string"
     },
     "lock": {
-      "description": "Lock/unlock the container.",
+      "description": "锁定/解锁容器。",
       "enum": [
         "backup",
         "create",
@@ -292,7 +292,7 @@
       "type": "string"
     },
     "lxc": {
-      "description": "Array of lxc low-level configurations ([[key1, value1], [key2, value2] ...]).",
+      "description": "LXC 底层配置数组（[[key1, value1], [key2, value2] ...]）。",
       "items": {
         "items": {
           "type": "string"
@@ -304,79 +304,79 @@
     },
     "memory": {
       "default": 512,
-      "description": "Amount of RAM for the container in MB.",
+      "description": "容器的 RAM 容量，单位为 MB。",
       "minimum": 16,
       "optional": 1,
       "type": "integer"
     },
     "mp[n]": {
-      "description": "Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.",
+      "description": "将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。",
       "format": {
         "acl": {
-          "description": "Explicitly enable or disable ACL support.",
+          "description": "显式启用或禁用 ACL 支持。",
           "optional": 1,
           "type": "boolean"
         },
         "backup": {
-          "description": "Whether to include the mount point in backups.",
+          "description": "是否在备份中包含挂载点。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Whether to include the mount point in backups (only used for volume mount points)."
+          "verbose_description": "是否在备份中包含挂载点（仅适用于卷挂载点）。"
         },
         "idmap": {
-          "description": "Map specific container UIDs/GIDs to underlying disk UIDs/GIDs for this mount point",
+          "description": "将特定容器 UID/GID 映射到此挂载点底层磁盘的 UID/GID",
           "format_description": "type:container:disk:range-size[;type:container:disk:range-size;...]",
           "optional": 1,
           "pattern": "(?^:^(?:passthrough|[ug]:[0-9]+:[0-9]+:[1-9][0-9]*(?:;[ug]:[0-9]+:[0-9]+:[1-9][0-9]*)*)$)",
           "type": "string",
-          "verbose_description": "Customize UID/GID mappings that override the container's `lxc.idmap` for this mount point. Accepts a semicolon-separated list of `type:container:disk:range-size` entries.\n\n`type` is `u` for UID or `g` for GID.\n\n`container` is the first ID as seen inside the container.\n\n`disk` is the first corresponding ID on the underlying filesystem.\n\n`range-size` is the number of consecutive IDs to map.\n\nUnmapped IDs fall back to the container's `lxc.idmap`.\n\nExample 1: `u:123:456:1` maps UID 123 in the container to UID 456 on the disk. Files owned by UID 456 on the disk will appear as UID 123 inside the container.\n\nExample 2: `g:100:50:5` maps 5 consecutive GIDs, such that GIDs 100-104 in the container are mapped to GIDs 50-54 on the disk.\n\nExample 3: `passthrough` identity-maps all UIDs and GIDs, meaning IDs inside the container will match the IDs on the disk."
+          "verbose_description": "自定义 UID/GID 映射，覆盖此挂载点的容器 `lxc.idmap`。接受以分号分隔的 `type:container:disk:range-size` 条目列表。\n\n`type` 对 UID 为 `u`，对 GID 为 `g`。\n\n`container` 是容器内看到的第一个 ID。\n\n`disk` 是底层文件系统上相应的第一个 ID。\n\n`range-size` 是要映射的连续 ID 数量。\n\n未映射的 ID 回退到容器的 `lxc.idmap`。\n\n示例 1：`u:123:456:1` 将容器内的 UID 123 映射到磁盘上的 UID 456。磁盘上属于 UID 456 的文件，在容器内显示为属于 UID 123。\n\n示例 2：`g:100:50:5` 映射 5 个连续 GID，使容器内的 GID 100-104 映射到磁盘上的 GID 50-54。\n\n示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，即容器内的 ID 与磁盘上的 ID 相同。"
         },
         "keepattrs": {
           "default": 0,
-          "description": "Inherit ownership and permissions from the mount point directory.",
+          "description": "从挂载点目录继承所有权和权限。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Inherit UID, GID and access mode from the mount point directory, if it exists already."
+          "verbose_description": "如果挂载点目录已存在，则继承其 UID、GID 和访问模式。"
         },
         "mountoptions": {
-          "description": "Extra mount options for rootfs/mps.",
+          "description": "rootfs/mps 的额外挂载选项。",
           "format_description": "opt[;opt...]",
           "optional": 1,
           "pattern": "(?^:(?^:(discard|lazytime|noatime|nodev|noexec|nosuid))(;(?^:(discard|lazytime|noatime|nodev|noexec|nosuid)))*)",
           "type": "string"
         },
         "mp": {
-          "description": "Path to the mount point as seen from inside the container (must not contain symlinks).",
+          "description": "从容器内部看到的挂载点路径（不得包含符号链接）。",
           "format": "pve-lxc-mp-string",
           "format_description": "Path",
           "type": "string",
-          "verbose_description": "Path to the mount point as seen from inside the container.\n\nNOTE: Must not contain any symlinks for security reasons."
+          "verbose_description": "从容器内部看到的挂载点路径。\n\n注意：出于安全原因，不得包含任何符号链接。"
         },
         "quota": {
-          "description": "Enable user quotas inside the container (not supported with zfs subvolumes)",
+          "description": "在容器内启用用户配额（不支持 ZFS 子卷）",
           "optional": 1,
           "type": "boolean"
         },
         "replicate": {
           "default": 1,
-          "description": "Will include this volume to a storage replica job.",
+          "description": "将此卷包含在存储复制作业中。",
           "optional": 1,
           "type": "boolean"
         },
         "ro": {
-          "description": "Read-only mount point",
+          "description": "只读挂载点",
           "optional": 1,
           "type": "boolean"
         },
         "shared": {
           "default": 0,
-          "description": "Mark this non-volume mount point as available on multiple nodes (see 'nodes')",
+          "description": "将此非卷挂载点标记为在多个节点上可用（参见 'nodes'）",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this non-volume mount point as available on all nodes.\n\nWARNING: This option does not share the mount point automatically, it assumes it is shared already!"
+          "verbose_description": "将此非卷挂载点标记为在所有节点上可用。\n\n警告：此选项不会自动共享挂载点，而是假定它已共享！"
         },
         "size": {
-          "description": "Volume size (read only value).",
+          "description": "卷大小（只读值）。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -384,7 +384,7 @@
         },
         "volume": {
           "default_key": 1,
-          "description": "Volume, device or directory to mount into the container.",
+          "description": "要挂载到容器内的卷、设备或目录。",
           "format": "pve-lxc-mp-string",
           "format_description": "volume",
           "type": "string"
@@ -394,107 +394,107 @@
       "type": "string"
     },
     "nameserver": {
-      "description": "Sets DNS server IP address for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.",
+      "description": "设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。",
       "format": "lxc-ip-with-ll-iface-list",
       "optional": 1,
       "type": "string"
     },
     "net[n]": {
-      "description": "Specifies network interfaces for the container.",
+      "description": "指定容器的网络接口。",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to.",
+          "description": "网络设备要连接的网桥。",
           "format_description": "bridge",
           "optional": 1,
           "pattern": "[-_.\\w\\d]+",
           "type": "string"
         },
         "firewall": {
-          "description": "Controls whether this interface's firewall rules should be used.",
+          "description": "控制是否使用此接口的防火墙规则。",
           "optional": 1,
           "type": "boolean"
         },
         "gw": {
-          "description": "Default gateway for IPv4 traffic.",
+          "description": "IPv4 流量的默认网关。",
           "format": "ipv4",
           "format_description": "GatewayIPv4",
           "optional": 1,
           "type": "string"
         },
         "gw6": {
-          "description": "Default gateway for IPv6 traffic.",
+          "description": "IPv6 流量的默认网关。",
           "format": "ipv6",
           "format_description": "GatewayIPv6",
           "optional": 1,
           "type": "string"
         },
         "host-managed": {
-          "description": "Whether this interface's IP configuration should be managed by the host. When enabled, the host (rather than the container) is responsible for the interface's IP configuration. The container should not run its own DHCP client or network manager on this interface. This is useful for containers that lack an internal network management stack, like many application containers.",
+          "description": "此接口的 IP 配置是否由宿主机管理。启用时，由宿主机而非容器负责此接口的 IP 配置。容器不应在此接口上运行自己的 DHCP 客户端或网络管理器。适用于缺少内部网络管理栈的容器，例如许多应用容器。",
           "optional": 1,
           "type": "boolean"
         },
         "hwaddr": {
-          "description": "The interface MAC address. This is dynamically allocated by default, but you can set that statically if needed, for example to always have the same link-local IPv6 address. (lxc.network.hwaddr)",
+          "description": "接口 MAC 地址。默认动态分配，但可按需静态设置，例如始终使用同一链路本地 IPv6 地址。（lxc.network.hwaddr）",
           "format": "mac-addr",
           "format_description": "XX:XX:XX:XX:XX:XX",
           "optional": 1,
           "type": "string",
-          "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+          "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
         },
         "ip": {
-          "description": "IPv4 address in CIDR format.",
+          "description": "CIDR 格式的 IPv4 地址。",
           "format": "pve-ipv4-config",
           "format_description": "(IPv4/CIDR|dhcp|manual)",
           "optional": 1,
           "type": "string"
         },
         "ip6": {
-          "description": "IPv6 address in CIDR format.",
+          "description": "CIDR 格式的 IPv6 地址。",
           "format": "pve-ipv6-config",
           "format_description": "(IPv6/CIDR|auto|dhcp|manual)",
           "optional": 1,
           "type": "string"
         },
         "link_down": {
-          "description": "Whether this interface should be disconnected (like pulling the plug).",
+          "description": "是否断开此接口的连接（如同拔掉网线）。",
           "optional": 1,
           "type": "boolean"
         },
         "mtu": {
-          "description": "Maximum transfer unit of the interface. (lxc.network.mtu)",
+          "description": "接口的最大传输单元。（lxc.network.mtu）",
           "maximum": 65535,
           "minimum": 64,
           "optional": 1,
           "type": "integer"
         },
         "name": {
-          "description": "Name of the network device as seen from inside the container. (lxc.network.name)",
+          "description": "从容器内部看到的网络设备名称。（lxc.network.name）",
           "format_description": "string",
           "pattern": "[-_.\\w\\d]+",
           "type": "string"
         },
         "rate": {
-          "description": "Apply rate limiting to the interface",
+          "description": "对接口应用速率限制",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "tag": {
-          "description": "VLAN tag for this interface.",
+          "description": "此接口的 VLAN 标签。",
           "maximum": 4094,
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "trunks": {
-          "description": "VLAN ids to pass through the interface",
+          "description": "通过此接口的 VLAN ID",
           "format_description": "vlanid[;vlanid...]",
           "optional": 1,
           "pattern": "(?^:\\d+(?:;\\d+)*)",
           "type": "string"
         },
         "type": {
-          "description": "Network interface type.",
+          "description": "网络接口类型。",
           "enum": [
             "veth"
           ],
@@ -507,12 +507,12 @@
     },
     "onboot": {
       "default": 0,
-      "description": "Specifies whether a container will be started during system bootup.",
+      "description": "指定容器是否在系统启动时启动。",
       "optional": 1,
       "type": "boolean"
     },
     "ostype": {
-      "description": "OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/<ostype>.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.",
+      "description": "操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/<ostype>.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。",
       "enum": [
         "debian",
         "devuan",
@@ -531,58 +531,58 @@
     },
     "protection": {
       "default": 0,
-      "description": "Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation.",
+      "description": "设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。",
       "optional": 1,
       "type": "boolean"
     },
     "rootfs": {
-      "description": "Use volume as container root.",
+      "description": "将卷用作容器根目录。",
       "format": {
         "acl": {
-          "description": "Explicitly enable or disable ACL support.",
+          "description": "显式启用或禁用 ACL 支持。",
           "optional": 1,
           "type": "boolean"
         },
         "idmap": {
-          "description": "Map specific container UIDs/GIDs to underlying disk UIDs/GIDs for this mount point",
+          "description": "将特定容器 UID/GID 映射到此挂载点底层磁盘的 UID/GID",
           "format_description": "type:container:disk:range-size[;type:container:disk:range-size;...]",
           "optional": 1,
           "pattern": "(?^:^(?:passthrough|[ug]:[0-9]+:[0-9]+:[1-9][0-9]*(?:;[ug]:[0-9]+:[0-9]+:[1-9][0-9]*)*)$)",
           "type": "string",
-          "verbose_description": "Customize UID/GID mappings that override the container's `lxc.idmap` for this mount point. Accepts a semicolon-separated list of `type:container:disk:range-size` entries.\n\n`type` is `u` for UID or `g` for GID.\n\n`container` is the first ID as seen inside the container.\n\n`disk` is the first corresponding ID on the underlying filesystem.\n\n`range-size` is the number of consecutive IDs to map.\n\nUnmapped IDs fall back to the container's `lxc.idmap`.\n\nExample 1: `u:123:456:1` maps UID 123 in the container to UID 456 on the disk. Files owned by UID 456 on the disk will appear as UID 123 inside the container.\n\nExample 2: `g:100:50:5` maps 5 consecutive GIDs, such that GIDs 100-104 in the container are mapped to GIDs 50-54 on the disk.\n\nExample 3: `passthrough` identity-maps all UIDs and GIDs, meaning IDs inside the container will match the IDs on the disk."
+          "verbose_description": "自定义 UID/GID 映射，覆盖此挂载点的容器 `lxc.idmap`。接受以分号分隔的 `type:container:disk:range-size` 条目列表。\n\n`type` 对 UID 为 `u`，对 GID 为 `g`。\n\n`container` 是容器内看到的第一个 ID。\n\n`disk` 是底层文件系统上相应的第一个 ID。\n\n`range-size` 是要映射的连续 ID 数量。\n\n未映射的 ID 回退到容器的 `lxc.idmap`。\n\n示例 1：`u:123:456:1` 将容器内的 UID 123 映射到磁盘上的 UID 456。磁盘上属于 UID 456 的文件，在容器内显示为属于 UID 123。\n\n示例 2：`g:100:50:5` 映射 5 个连续 GID，使容器内的 GID 100-104 映射到磁盘上的 GID 50-54。\n\n示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，即容器内的 ID 与磁盘上的 ID 相同。"
         },
         "mountoptions": {
-          "description": "Extra mount options for rootfs/mps.",
+          "description": "rootfs/mps 的额外挂载选项。",
           "format_description": "opt[;opt...]",
           "optional": 1,
           "pattern": "(?^:(?^:(discard|lazytime|noatime|nodev|noexec|nosuid))(;(?^:(discard|lazytime|noatime|nodev|noexec|nosuid)))*)",
           "type": "string"
         },
         "quota": {
-          "description": "Enable user quotas inside the container (not supported with zfs subvolumes)",
+          "description": "在容器内启用用户配额（不支持 ZFS 子卷）",
           "optional": 1,
           "type": "boolean"
         },
         "replicate": {
           "default": 1,
-          "description": "Will include this volume to a storage replica job.",
+          "description": "将此卷包含在存储复制作业中。",
           "optional": 1,
           "type": "boolean"
         },
         "ro": {
-          "description": "Read-only mount point",
+          "description": "只读挂载点",
           "optional": 1,
           "type": "boolean"
         },
         "shared": {
           "default": 0,
-          "description": "Mark this non-volume mount point as available on multiple nodes (see 'nodes')",
+          "description": "将此非卷挂载点标记为在多个节点上可用（参见 'nodes'）",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this non-volume mount point as available on all nodes.\n\nWARNING: This option does not share the mount point automatically, it assumes it is shared already!"
+          "verbose_description": "将此非卷挂载点标记为在所有节点上可用。\n\n警告：此选项不会自动共享挂载点，而是假定它已共享！"
         },
         "size": {
-          "description": "Volume size (read only value).",
+          "description": "卷大小（只读值）。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -590,7 +590,7 @@
         },
         "volume": {
           "default_key": 1,
-          "description": "Volume, device or directory to mount into the container.",
+          "description": "要挂载到容器内的卷、设备或目录。",
           "format": "pve-lxc-mp-string",
           "format_description": "volume",
           "type": "string"
@@ -600,13 +600,13 @@
       "type": "string"
     },
     "searchdomain": {
-      "description": "Sets DNS search domains for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.",
+      "description": "设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。",
       "format": "dns-name-list",
       "optional": 1,
       "type": "string"
     },
     "startup": {
-      "description": "Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped.",
+      "description": "启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。",
       "format": "pve-startup-order",
       "optional": 1,
       "type": "string",
@@ -614,32 +614,32 @@
     },
     "swap": {
       "default": 512,
-      "description": "Amount of SWAP for the container in MB.",
+      "description": "容器的 SWAP 容量，单位为 MB。",
       "minimum": 0,
       "optional": 1,
       "type": "integer"
     },
     "tags": {
-      "description": "Tags of the Container. This is only meta information.",
+      "description": "容器标签。此项仅为元信息。",
       "format": "pve-tag-list",
       "optional": 1,
       "type": "string"
     },
     "template": {
       "default": 0,
-      "description": "Enable/disable Template.",
+      "description": "启用/禁用模板。",
       "optional": 1,
       "type": "boolean"
     },
     "timezone": {
-      "description": "Time zone to use in the container. If option isn't set, then nothing will be done. Can be set to 'host' to match the host time zone, or an arbitrary time zone option from /usr/share/zoneinfo/zone.tab",
+      "description": "容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项",
       "format": "pve-ct-timezone",
       "optional": 1,
       "type": "string"
     },
     "tty": {
       "default": 2,
-      "description": "Specify the number of tty available to the container",
+      "description": "指定容器可用的 tty 数量",
       "maximum": 6,
       "minimum": 0,
       "optional": 1,
@@ -647,16 +647,16 @@
     },
     "unprivileged": {
       "default": 0,
-      "description": "Makes the container run as unprivileged user. For creation, the default is 1. For restore, the default is the value from the backup. (Should not be modified manually.)",
+      "description": "使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。）",
       "optional": 1,
       "type": "boolean"
     },
     "unused[n]": {
-      "description": "Reference to unused volumes. This is used internally, and should not be modified manually.",
+      "description": "对未使用卷的引用。此项供内部使用，不应手动修改。",
       "format": {
         "volume": {
           "default_key": 1,
-          "description": "The volume that is not used currently.",
+          "description": "当前未使用的卷。",
           "format": "pve-volume-id",
           "format_description": "volume",
           "type": "string"
@@ -693,7 +693,7 @@
     "any",
     1
   ],
-  "description": "non-volume mount points in rootfs and mp[n] are restricted to root@pam"
+  "description": "rootfs 和 mp[n] 中的非卷挂载点仅限 root@pam 使用"
 }
 ```
 
@@ -719,43 +719,43 @@
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `arch` | string | 否 | "amd64" | OS architecture type.；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
-| `cmode` | string | 否 | "tty" | Console mode. By default, the console command tries to open a connection to one of the available tty devices. By setting cmode to 'console' it tries to attach to /dev/console instead. If you set cmode to 'shell', it simply invokes a shell inside the container (no login).；可选值：`shell`, `console`, `tty` |
-| `console` | boolean | 否 | 1 | Attach a console device (/dev/console) to the container. |
-| `cores` | integer | 否 | — | The number of cores assigned to the container. A container can use all available cores by default. |
-| `cpulimit` | number | 否 | 0 | Limit of CPU usage.<br><br>NOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit. |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a container. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this container gets. Number is relative to the weights of all the other running guests. |
-| `debug` | boolean | 否 | 0 | Try to be more verbose. For now this only enables debug log-level on start. |
-| `delete` | string | 否 | — | A list of settings you want to delete. |
-| `description` | string | 否 | — | Description for the Container. Shown in the web-interface CT's summary. This is saved as comment inside the configuration file. |
-| `dev[n]` | string | 否 | — | Device to pass through to the container |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications. |
-| `entrypoint` | string | 否 | "/sbin/init" | Command to run as init, optionally with arguments; may start with an absolute path, relative path, or a binary in $PATH. |
-| `env` | string | 否 | — | The container runtime environment as NUL-separated list. Replaces any lxc.environment.runtime entries in the config. |
-| `features` | string | 否 | — | Allow containers access to advanced features. |
-| `hookscript` | string | 否 | — | Script that will be executed during various steps in the containers lifetime. |
-| `hostname` | string | 否 | — | Set a host name for the container. |
-| `lock` | string | 否 | — | Lock/unlock the container.；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
-| `memory` | integer | 否 | 512 | Amount of RAM for the container in MB. |
-| `mp[n]` | string | 否 | — | Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. |
-| `nameserver` | string | 否 | — | Sets DNS server IP address for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver. |
-| `net[n]` | string | 否 | — | Specifies network interfaces for the container. |
-| `node` | string | 是 | — | The cluster node name. |
-| `onboot` | boolean | 否 | 0 | Specifies whether a container will be started during system bootup. |
-| `ostype` | string | 否 | — | OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/&lt;ostype&gt;.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
-| `protection` | boolean | 否 | 0 | Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation. |
-| `revert` | string | 否 | — | Revert a pending change. |
-| `rootfs` | string | 否 | — | Use volume as container root. |
-| `searchdomain` | string | 否 | — | Sets DNS search domains for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver. |
-| `startup` | string | 否 | — | Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped. |
-| `swap` | integer | 否 | 512 | Amount of SWAP for the container in MB. |
-| `tags` | string | 否 | — | Tags of the Container. This is only meta information. |
-| `template` | boolean | 否 | 0 | Enable/disable Template. |
-| `timezone` | string | 否 | — | Time zone to use in the container. If option isn't set, then nothing will be done. Can be set to 'host' to match the host time zone, or an arbitrary time zone option from /usr/share/zoneinfo/zone.tab |
-| `tty` | integer | 否 | 2 | Specify the number of tty available to the container |
-| `unprivileged` | boolean | 否 | 0 | Makes the container run as unprivileged user. For creation, the default is 1. For restore, the default is the value from the backup. (Should not be modified manually.) |
-| `unused[n]` | string | 否 | — | Reference to unused volumes. This is used internally, and should not be modified manually. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `arch` | string | 否 | "amd64" | 操作系统架构类型。；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
+| `cmode` | string | 否 | "tty" | 控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。；可选值：`shell`, `console`, `tty` |
+| `console` | boolean | 否 | 1 | 将控制台设备（/dev/console）连接到容器。 |
+| `cores` | integer | 否 | — | 分配给容器的核心数。默认情况下，容器可使用所有可用核心。 |
+| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。 |
+| `debug` | boolean | 否 | 0 | 尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。 |
+| `delete` | string | 否 | — | 要删除的设置列表。 |
+| `description` | string | 否 | — | 容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。 |
+| `dev[n]` | string | 否 | — | 要直通到容器的设备 |
+| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `entrypoint` | string | 否 | "/sbin/init" | 用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。 |
+| `env` | string | 否 | — | 容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。 |
+| `features` | string | 否 | — | 允许容器访问高级功能。 |
+| `hookscript` | string | 否 | — | 在容器生命周期各个阶段执行的脚本。 |
+| `hostname` | string | 否 | — | 为容器设置主机名。 |
+| `lock` | string | 否 | — | 锁定/解锁容器。；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
+| `memory` | integer | 否 | 512 | 容器的 RAM 容量，单位为 MB。 |
+| `mp[n]` | string | 否 | — | 将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。 |
+| `nameserver` | string | 否 | — | 设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `net[n]` | string | 否 | — | 指定容器的网络接口。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `onboot` | boolean | 否 | 0 | 指定容器是否在系统启动时启动。 |
+| `ostype` | string | 否 | — | 操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/&lt;ostype&gt;.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
+| `protection` | boolean | 否 | 0 | 设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。 |
+| `revert` | string | 否 | — | 撤销待应用的更改。 |
+| `rootfs` | string | 否 | — | 将卷用作容器根目录。 |
+| `searchdomain` | string | 否 | — | 设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `swap` | integer | 否 | 512 | 容器的 SWAP 容量，单位为 MB。 |
+| `tags` | string | 否 | — | 容器标签。此项仅为元信息。 |
+| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
+| `timezone` | string | 否 | — | 容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项 |
+| `tty` | integer | 否 | 2 | 指定容器可用的 tty 数量 |
+| `unprivileged` | boolean | 否 | 0 | 使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。） |
+| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -766,7 +766,7 @@
   "properties": {
     "arch": {
       "default": "amd64",
-      "description": "OS architecture type.",
+      "description": "操作系统架构类型。",
       "enum": [
         "amd64",
         "i386",
@@ -780,7 +780,7 @@
     },
     "cmode": {
       "default": "tty",
-      "description": "Console mode. By default, the console command tries to open a connection to one of the available tty devices. By setting cmode to 'console' it tries to attach to /dev/console instead. If you set cmode to 'shell', it simply invokes a shell inside the container (no login).",
+      "description": "控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。",
       "enum": [
         "shell",
         "console",
@@ -791,13 +791,13 @@
     },
     "console": {
       "default": 1,
-      "description": "Attach a console device (/dev/console) to the container.",
+      "description": "将控制台设备（/dev/console）连接到容器。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "cores": {
-      "description": "The number of cores assigned to the container. A container can use all available cores by default.",
+      "description": "分配给容器的核心数。默认情况下，容器可使用所有可用核心。",
       "maximum": 8192,
       "minimum": 1,
       "optional": 1,
@@ -806,7 +806,7 @@
     },
     "cpulimit": {
       "default": 0,
-      "description": "Limit of CPU usage.\n\nNOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit.",
+      "description": "CPU 使用量限制。\n\n注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。",
       "maximum": 8192,
       "minimum": 0,
       "optional": 1,
@@ -815,52 +815,52 @@
     },
     "cpuunits": {
       "default": "cgroup v1: 1024, cgroup v2: 100",
-      "description": "CPU weight for a container, will be clamped to [1, 10000] in cgroup v2.",
+      "description": "容器的 CPU 权重，在 cgroup v2 中会限制到 [1, 10000] 范围内。",
       "maximum": 500000,
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - 500000)",
-      "verbose_description": "CPU weight for a container. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this container gets. Number is relative to the weights of all the other running guests."
+      "verbose_description": "容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。"
     },
     "debug": {
       "default": 0,
-      "description": "Try to be more verbose. For now this only enables debug log-level on start.",
+      "description": "尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "description": {
-      "description": "Description for the Container. Shown in the web-interface CT's summary. This is saved as comment inside the configuration file.",
+      "description": "容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。",
       "maxLength": 8192,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dev[n]": {
-      "description": "Device to pass through to the container",
+      "description": "要直通到容器的设备",
       "format": {
         "deny-write": {
           "default": 0,
-          "description": "Deny the container to write to the device",
+          "description": "禁止容器写入设备",
           "optional": 1,
           "type": "boolean"
         },
         "gid": {
-          "description": "Group ID to be assigned to the device node",
+          "description": "要分配给设备节点的组 ID",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
         },
         "mode": {
-          "description": "Access mode to be set on the device node",
+          "description": "要为设备节点设置的访问模式",
           "format_description": "Octal access mode",
           "optional": 1,
           "pattern": "0[0-7]{3}",
@@ -868,15 +868,15 @@
         },
         "path": {
           "default_key": 1,
-          "description": "Device to pass through to the container",
+          "description": "要直通到容器的设备",
           "format": "pve-lxc-dev-string",
           "format_description": "Path",
           "optional": 1,
           "type": "string",
-          "verbose_description": "Path to the device to pass through to the container"
+          "verbose_description": "要直通到容器的设备路径"
         },
         "uid": {
-          "description": "User ID to be assigned to the device node",
+          "description": "要分配给设备节点的用户 ID",
           "minimum": 0,
           "optional": 1,
           "type": "integer"
@@ -887,7 +887,7 @@
       "typetext": "[[path=]<Path>] [,deny-write=<1|0>] [,gid=<integer>] [,mode=<Octal access mode>] [,uid=<integer>]"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string",
@@ -895,46 +895,46 @@
     },
     "entrypoint": {
       "default": "/sbin/init",
-      "description": "Command to run as init, optionally with arguments; may start with an absolute path, relative path, or a binary in $PATH.",
+      "description": "用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。",
       "optional": 1,
       "pattern": "(?^:[^\\x00-\\x08\\x0a-\\x1F\\x7F]+)",
       "type": "string"
     },
     "env": {
-      "description": "The container runtime environment as NUL-separated list. Replaces any lxc.environment.runtime entries in the config.",
+      "description": "容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。",
       "optional": 1,
       "pattern": "(?^:(?:\\w+=[^\\x00-\\x08\\x0a-\\x1F\\x7F]*)(?:\\0\\w+=[^\\x00-\\x08\\x0a-\\x1F\\x7F]*)*)",
       "type": "string"
     },
     "features": {
-      "description": "Allow containers access to advanced features.",
+      "description": "允许容器访问高级功能。",
       "format": {
         "force_rw_sys": {
           "default": 0,
-          "description": "Mount /sys in unprivileged containers as `rw` instead of `mixed`. This can break networking under newer (>= v245) systemd-network use.",
+          "description": "在非特权容器中将 /sys 挂载为 `rw`，而非 `mixed`。在使用较新版本（>= v245）的 systemd-network 时，这可能破坏网络功能。",
           "optional": 1,
           "type": "boolean"
         },
         "fuse": {
           "default": 0,
-          "description": "Allow using 'fuse' file systems in a container. Note that interactions between fuse and the freezer cgroup can potentially cause I/O deadlocks.",
+          "description": "允许在容器内使用 'fuse' 文件系统。注意，fuse 与 freezer cgroup 之间的交互可能导致 I/O 死锁。",
           "optional": 1,
           "type": "boolean"
         },
         "keyctl": {
           "default": 0,
-          "description": "For unprivileged containers only: Allow the use of the keyctl() system call. This is required to use docker inside a container. By default unprivileged containers will see this system call as non-existent. This is mostly a workaround for systemd-networkd, as it will treat it as a fatal error when some keyctl() operations are denied by the kernel due to lacking permissions. Essentially, you can choose between running systemd-networkd or docker.",
+          "description": "仅适用于非特权容器：允许使用 keyctl() 系统调用。在容器内使用 docker 需要此功能。默认情况下，非特权容器会认为此系统调用不存在。这主要是针对 systemd-networkd 的变通措施，因为当内核因权限不足而拒绝某些 keyctl() 操作时，它会将其视为致命错误。实质上，您可以在运行 systemd-networkd 和 docker 之间作出选择。",
           "optional": 1,
           "type": "boolean"
         },
         "mknod": {
           "default": 0,
-          "description": "Allow unprivileged containers to use mknod() to add certain device nodes. This requires a kernel with seccomp trap to user space support (5.3 or newer). This is experimental.",
+          "description": "允许非特权容器使用 mknod() 添加特定设备节点。这需要内核支持将 seccomp 陷阱交由用户空间处理（5.3 或更新版本）。此功能为实验性。",
           "optional": 1,
           "type": "boolean"
         },
         "mount": {
-          "description": "Allow mounting file systems of specific types. This should be a list of file system types as used with the mount command. Note that this can have negative effects on the container's security. With access to a loop device, mounting a file can circumvent the mknod permission of the devices cgroup, mounting an NFS file system can block the host's I/O completely and prevent it from rebooting, etc.",
+          "description": "允许挂载特定类型的文件系统。此处应为 mount 命令所用的文件系统类型列表。注意，这可能对容器安全性产生负面影响。可以访问 loop 设备时，挂载文件能够绕过 devices cgroup 的 mknod 权限；挂载 NFS 文件系统可能完全阻塞宿主机 I/O 并使其无法重启等。",
           "format_description": "fstype;fstype;...",
           "optional": 1,
           "pattern": "(?^:[a-zA-Z0-9_; ]+)",
@@ -942,7 +942,7 @@
         },
         "nesting": {
           "default": 0,
-          "description": "Allow nesting. Best used with unprivileged containers with additional id mapping. Note that this will expose procfs and sysfs contents of the host to the guest. This is also required by systemd to isolate services.",
+          "description": "允许嵌套。最好与具有附加 ID 映射的非特权容器一起使用。注意，这会向客户机暴露宿主机的 procfs 和 sysfs 内容。systemd 隔离服务也需要此功能。",
           "optional": 1,
           "type": "boolean"
         }
@@ -952,14 +952,14 @@
       "typetext": "[force_rw_sys=<1|0>] [,fuse=<1|0>] [,keyctl=<1|0>] [,mknod=<1|0>] [,mount=<fstype;fstype;...>] [,nesting=<1|0>]"
     },
     "hookscript": {
-      "description": "Script that will be executed during various steps in the containers lifetime.",
+      "description": "在容器生命周期各个阶段执行的脚本。",
       "format": "pve-volume-id",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "hostname": {
-      "description": "Set a host name for the container.",
+      "description": "为容器设置主机名。",
       "format": "dns-name",
       "maxLength": 255,
       "optional": 1,
@@ -967,7 +967,7 @@
       "typetext": "<string>"
     },
     "lock": {
-      "description": "Lock/unlock the container.",
+      "description": "锁定/解锁容器。",
       "enum": [
         "backup",
         "create",
@@ -985,80 +985,80 @@
     },
     "memory": {
       "default": 512,
-      "description": "Amount of RAM for the container in MB.",
+      "description": "容器的 RAM 容量，单位为 MB。",
       "minimum": 16,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (16 - N)"
     },
     "mp[n]": {
-      "description": "Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.",
+      "description": "将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。",
       "format": {
         "acl": {
-          "description": "Explicitly enable or disable ACL support.",
+          "description": "显式启用或禁用 ACL 支持。",
           "optional": 1,
           "type": "boolean"
         },
         "backup": {
-          "description": "Whether to include the mount point in backups.",
+          "description": "是否在备份中包含挂载点。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Whether to include the mount point in backups (only used for volume mount points)."
+          "verbose_description": "是否在备份中包含挂载点（仅适用于卷挂载点）。"
         },
         "idmap": {
-          "description": "Map specific container UIDs/GIDs to underlying disk UIDs/GIDs for this mount point",
+          "description": "将特定容器 UID/GID 映射到此挂载点底层磁盘的 UID/GID",
           "format_description": "type:container:disk:range-size[;type:container:disk:range-size;...]",
           "optional": 1,
           "pattern": "(?^:^(?:passthrough|[ug]:[0-9]+:[0-9]+:[1-9][0-9]*(?:;[ug]:[0-9]+:[0-9]+:[1-9][0-9]*)*)$)",
           "type": "string",
-          "verbose_description": "Customize UID/GID mappings that override the container's `lxc.idmap` for this mount point. Accepts a semicolon-separated list of `type:container:disk:range-size` entries.\n\n`type` is `u` for UID or `g` for GID.\n\n`container` is the first ID as seen inside the container.\n\n`disk` is the first corresponding ID on the underlying filesystem.\n\n`range-size` is the number of consecutive IDs to map.\n\nUnmapped IDs fall back to the container's `lxc.idmap`.\n\nExample 1: `u:123:456:1` maps UID 123 in the container to UID 456 on the disk. Files owned by UID 456 on the disk will appear as UID 123 inside the container.\n\nExample 2: `g:100:50:5` maps 5 consecutive GIDs, such that GIDs 100-104 in the container are mapped to GIDs 50-54 on the disk.\n\nExample 3: `passthrough` identity-maps all UIDs and GIDs, meaning IDs inside the container will match the IDs on the disk."
+          "verbose_description": "自定义 UID/GID 映射，覆盖此挂载点的容器 `lxc.idmap`。接受以分号分隔的 `type:container:disk:range-size` 条目列表。\n\n`type` 对 UID 为 `u`，对 GID 为 `g`。\n\n`container` 是容器内看到的第一个 ID。\n\n`disk` 是底层文件系统上相应的第一个 ID。\n\n`range-size` 是要映射的连续 ID 数量。\n\n未映射的 ID 回退到容器的 `lxc.idmap`。\n\n示例 1：`u:123:456:1` 将容器内的 UID 123 映射到磁盘上的 UID 456。磁盘上属于 UID 456 的文件，在容器内显示为属于 UID 123。\n\n示例 2：`g:100:50:5` 映射 5 个连续 GID，使容器内的 GID 100-104 映射到磁盘上的 GID 50-54。\n\n示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，即容器内的 ID 与磁盘上的 ID 相同。"
         },
         "keepattrs": {
           "default": 0,
-          "description": "Inherit ownership and permissions from the mount point directory.",
+          "description": "从挂载点目录继承所有权和权限。",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Inherit UID, GID and access mode from the mount point directory, if it exists already."
+          "verbose_description": "如果挂载点目录已存在，则继承其 UID、GID 和访问模式。"
         },
         "mountoptions": {
-          "description": "Extra mount options for rootfs/mps.",
+          "description": "rootfs/mps 的额外挂载选项。",
           "format_description": "opt[;opt...]",
           "optional": 1,
           "pattern": "(?^:(?^:(discard|lazytime|noatime|nodev|noexec|nosuid))(;(?^:(discard|lazytime|noatime|nodev|noexec|nosuid)))*)",
           "type": "string"
         },
         "mp": {
-          "description": "Path to the mount point as seen from inside the container (must not contain symlinks).",
+          "description": "从容器内部看到的挂载点路径（不得包含符号链接）。",
           "format": "pve-lxc-mp-string",
           "format_description": "Path",
           "type": "string",
-          "verbose_description": "Path to the mount point as seen from inside the container.\n\nNOTE: Must not contain any symlinks for security reasons."
+          "verbose_description": "从容器内部看到的挂载点路径。\n\n注意：出于安全原因，不得包含任何符号链接。"
         },
         "quota": {
-          "description": "Enable user quotas inside the container (not supported with zfs subvolumes)",
+          "description": "在容器内启用用户配额（不支持 ZFS 子卷）",
           "optional": 1,
           "type": "boolean"
         },
         "replicate": {
           "default": 1,
-          "description": "Will include this volume to a storage replica job.",
+          "description": "将此卷包含在存储复制作业中。",
           "optional": 1,
           "type": "boolean"
         },
         "ro": {
-          "description": "Read-only mount point",
+          "description": "只读挂载点",
           "optional": 1,
           "type": "boolean"
         },
         "shared": {
           "default": 0,
-          "description": "Mark this non-volume mount point as available on multiple nodes (see 'nodes')",
+          "description": "将此非卷挂载点标记为在多个节点上可用（参见 'nodes'）",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this non-volume mount point as available on all nodes.\n\nWARNING: This option does not share the mount point automatically, it assumes it is shared already!"
+          "verbose_description": "将此非卷挂载点标记为在所有节点上可用。\n\n警告：此选项不会自动共享挂载点，而是假定它已共享！"
         },
         "size": {
-          "description": "Volume size (read only value).",
+          "description": "卷大小（只读值）。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -1066,7 +1066,7 @@
         },
         "volume": {
           "default_key": 1,
-          "description": "Volume, device or directory to mount into the container.",
+          "description": "要挂载到容器内的卷、设备或目录。",
           "format": "pve-lxc-mp-string",
           "format_description": "volume",
           "type": "string"
@@ -1077,108 +1077,108 @@
       "typetext": "[volume=]<volume> ,mp=<Path> [,acl=<1|0>] [,backup=<1|0>] [,idmap=<type:container:disk:range-size[;type:container:disk:range-size;...]>] [,keepattrs=<1|0>] [,mountoptions=<opt[;opt...]>] [,quota=<1|0>] [,replicate=<1|0>] [,ro=<1|0>] [,shared=<1|0>] [,size=<DiskSize>]"
     },
     "nameserver": {
-      "description": "Sets DNS server IP address for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.",
+      "description": "设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。",
       "format": "lxc-ip-with-ll-iface-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "net[n]": {
-      "description": "Specifies network interfaces for the container.",
+      "description": "指定容器的网络接口。",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to.",
+          "description": "网络设备要连接的网桥。",
           "format_description": "bridge",
           "optional": 1,
           "pattern": "[-_.\\w\\d]+",
           "type": "string"
         },
         "firewall": {
-          "description": "Controls whether this interface's firewall rules should be used.",
+          "description": "控制是否使用此接口的防火墙规则。",
           "optional": 1,
           "type": "boolean"
         },
         "gw": {
-          "description": "Default gateway for IPv4 traffic.",
+          "description": "IPv4 流量的默认网关。",
           "format": "ipv4",
           "format_description": "GatewayIPv4",
           "optional": 1,
           "type": "string"
         },
         "gw6": {
-          "description": "Default gateway for IPv6 traffic.",
+          "description": "IPv6 流量的默认网关。",
           "format": "ipv6",
           "format_description": "GatewayIPv6",
           "optional": 1,
           "type": "string"
         },
         "host-managed": {
-          "description": "Whether this interface's IP configuration should be managed by the host. When enabled, the host (rather than the container) is responsible for the interface's IP configuration. The container should not run its own DHCP client or network manager on this interface. This is useful for containers that lack an internal network management stack, like many application containers.",
+          "description": "此接口的 IP 配置是否由宿主机管理。启用时，由宿主机而非容器负责此接口的 IP 配置。容器不应在此接口上运行自己的 DHCP 客户端或网络管理器。适用于缺少内部网络管理栈的容器，例如许多应用容器。",
           "optional": 1,
           "type": "boolean"
         },
         "hwaddr": {
-          "description": "The interface MAC address. This is dynamically allocated by default, but you can set that statically if needed, for example to always have the same link-local IPv6 address. (lxc.network.hwaddr)",
+          "description": "接口 MAC 地址。默认动态分配，但可按需静态设置，例如始终使用同一链路本地 IPv6 地址。（lxc.network.hwaddr）",
           "format": "mac-addr",
           "format_description": "XX:XX:XX:XX:XX:XX",
           "optional": 1,
           "type": "string",
-          "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+          "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
         },
         "ip": {
-          "description": "IPv4 address in CIDR format.",
+          "description": "CIDR 格式的 IPv4 地址。",
           "format": "pve-ipv4-config",
           "format_description": "(IPv4/CIDR|dhcp|manual)",
           "optional": 1,
           "type": "string"
         },
         "ip6": {
-          "description": "IPv6 address in CIDR format.",
+          "description": "CIDR 格式的 IPv6 地址。",
           "format": "pve-ipv6-config",
           "format_description": "(IPv6/CIDR|auto|dhcp|manual)",
           "optional": 1,
           "type": "string"
         },
         "link_down": {
-          "description": "Whether this interface should be disconnected (like pulling the plug).",
+          "description": "是否断开此接口的连接（如同拔掉网线）。",
           "optional": 1,
           "type": "boolean"
         },
         "mtu": {
-          "description": "Maximum transfer unit of the interface. (lxc.network.mtu)",
+          "description": "接口的最大传输单元。（lxc.network.mtu）",
           "maximum": 65535,
           "minimum": 64,
           "optional": 1,
           "type": "integer"
         },
         "name": {
-          "description": "Name of the network device as seen from inside the container. (lxc.network.name)",
+          "description": "从容器内部看到的网络设备名称。（lxc.network.name）",
           "format_description": "string",
           "pattern": "[-_.\\w\\d]+",
           "type": "string"
         },
         "rate": {
-          "description": "Apply rate limiting to the interface",
+          "description": "对接口应用速率限制",
           "format_description": "mbps",
           "optional": 1,
           "type": "number"
         },
         "tag": {
-          "description": "VLAN tag for this interface.",
+          "description": "此接口的 VLAN 标签。",
           "maximum": 4094,
           "minimum": 1,
           "optional": 1,
           "type": "integer"
         },
         "trunks": {
-          "description": "VLAN ids to pass through the interface",
+          "description": "通过此接口的 VLAN ID",
           "format_description": "vlanid[;vlanid...]",
           "optional": 1,
           "pattern": "(?^:\\d+(?:;\\d+)*)",
           "type": "string"
         },
         "type": {
-          "description": "Network interface type.",
+          "description": "网络接口类型。",
           "enum": [
             "veth"
           ],
@@ -1191,20 +1191,20 @@
       "typetext": "name=<string> [,bridge=<bridge>] [,firewall=<1|0>] [,gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,host-managed=<1|0>] [,hwaddr=<XX:XX:XX:XX:XX:XX>] [,ip=<(IPv4/CIDR|dhcp|manual)>] [,ip6=<(IPv6/CIDR|auto|dhcp|manual)>] [,link_down=<1|0>] [,mtu=<integer>] [,rate=<mbps>] [,tag=<integer>] [,trunks=<vlanid[;vlanid...]>] [,type=<veth>]"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "onboot": {
       "default": 0,
-      "description": "Specifies whether a container will be started during system bootup.",
+      "description": "指定容器是否在系统启动时启动。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "ostype": {
-      "description": "OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/<ostype>.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.",
+      "description": "操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/<ostype>.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。",
       "enum": [
         "debian",
         "devuan",
@@ -1223,66 +1223,66 @@
     },
     "protection": {
       "default": 0,
-      "description": "Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation.",
+      "description": "设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "revert": {
-      "description": "Revert a pending change.",
+      "description": "撤销待应用的更改。",
       "format": "pve-configid-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "rootfs": {
-      "description": "Use volume as container root.",
+      "description": "将卷用作容器根目录。",
       "format": {
         "acl": {
-          "description": "Explicitly enable or disable ACL support.",
+          "description": "显式启用或禁用 ACL 支持。",
           "optional": 1,
           "type": "boolean"
         },
         "idmap": {
-          "description": "Map specific container UIDs/GIDs to underlying disk UIDs/GIDs for this mount point",
+          "description": "将特定容器 UID/GID 映射到此挂载点底层磁盘的 UID/GID",
           "format_description": "type:container:disk:range-size[;type:container:disk:range-size;...]",
           "optional": 1,
           "pattern": "(?^:^(?:passthrough|[ug]:[0-9]+:[0-9]+:[1-9][0-9]*(?:;[ug]:[0-9]+:[0-9]+:[1-9][0-9]*)*)$)",
           "type": "string",
-          "verbose_description": "Customize UID/GID mappings that override the container's `lxc.idmap` for this mount point. Accepts a semicolon-separated list of `type:container:disk:range-size` entries.\n\n`type` is `u` for UID or `g` for GID.\n\n`container` is the first ID as seen inside the container.\n\n`disk` is the first corresponding ID on the underlying filesystem.\n\n`range-size` is the number of consecutive IDs to map.\n\nUnmapped IDs fall back to the container's `lxc.idmap`.\n\nExample 1: `u:123:456:1` maps UID 123 in the container to UID 456 on the disk. Files owned by UID 456 on the disk will appear as UID 123 inside the container.\n\nExample 2: `g:100:50:5` maps 5 consecutive GIDs, such that GIDs 100-104 in the container are mapped to GIDs 50-54 on the disk.\n\nExample 3: `passthrough` identity-maps all UIDs and GIDs, meaning IDs inside the container will match the IDs on the disk."
+          "verbose_description": "自定义 UID/GID 映射，覆盖此挂载点的容器 `lxc.idmap`。接受以分号分隔的 `type:container:disk:range-size` 条目列表。\n\n`type` 对 UID 为 `u`，对 GID 为 `g`。\n\n`container` 是容器内看到的第一个 ID。\n\n`disk` 是底层文件系统上相应的第一个 ID。\n\n`range-size` 是要映射的连续 ID 数量。\n\n未映射的 ID 回退到容器的 `lxc.idmap`。\n\n示例 1：`u:123:456:1` 将容器内的 UID 123 映射到磁盘上的 UID 456。磁盘上属于 UID 456 的文件，在容器内显示为属于 UID 123。\n\n示例 2：`g:100:50:5` 映射 5 个连续 GID，使容器内的 GID 100-104 映射到磁盘上的 GID 50-54。\n\n示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，即容器内的 ID 与磁盘上的 ID 相同。"
         },
         "mountoptions": {
-          "description": "Extra mount options for rootfs/mps.",
+          "description": "rootfs/mps 的额外挂载选项。",
           "format_description": "opt[;opt...]",
           "optional": 1,
           "pattern": "(?^:(?^:(discard|lazytime|noatime|nodev|noexec|nosuid))(;(?^:(discard|lazytime|noatime|nodev|noexec|nosuid)))*)",
           "type": "string"
         },
         "quota": {
-          "description": "Enable user quotas inside the container (not supported with zfs subvolumes)",
+          "description": "在容器内启用用户配额（不支持 ZFS 子卷）",
           "optional": 1,
           "type": "boolean"
         },
         "replicate": {
           "default": 1,
-          "description": "Will include this volume to a storage replica job.",
+          "description": "将此卷包含在存储复制作业中。",
           "optional": 1,
           "type": "boolean"
         },
         "ro": {
-          "description": "Read-only mount point",
+          "description": "只读挂载点",
           "optional": 1,
           "type": "boolean"
         },
         "shared": {
           "default": 0,
-          "description": "Mark this non-volume mount point as available on multiple nodes (see 'nodes')",
+          "description": "将此非卷挂载点标记为在多个节点上可用（参见 'nodes'）",
           "optional": 1,
           "type": "boolean",
-          "verbose_description": "Mark this non-volume mount point as available on all nodes.\n\nWARNING: This option does not share the mount point automatically, it assumes it is shared already!"
+          "verbose_description": "将此非卷挂载点标记为在所有节点上可用。\n\n警告：此选项不会自动共享挂载点，而是假定它已共享！"
         },
         "size": {
-          "description": "Volume size (read only value).",
+          "description": "卷大小（只读值）。",
           "format": "disk-size",
           "format_description": "DiskSize",
           "optional": 1,
@@ -1290,7 +1290,7 @@
         },
         "volume": {
           "default_key": 1,
-          "description": "Volume, device or directory to mount into the container.",
+          "description": "要挂载到容器内的卷、设备或目录。",
           "format": "pve-lxc-mp-string",
           "format_description": "volume",
           "type": "string"
@@ -1301,14 +1301,14 @@
       "typetext": "[volume=]<volume> [,acl=<1|0>] [,idmap=<type:container:disk:range-size[;type:container:disk:range-size;...]>] [,mountoptions=<opt[;opt...]>] [,quota=<1|0>] [,replicate=<1|0>] [,ro=<1|0>] [,shared=<1|0>] [,size=<DiskSize>]"
     },
     "searchdomain": {
-      "description": "Sets DNS search domains for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.",
+      "description": "设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。",
       "format": "dns-name-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "startup": {
-      "description": "Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped.",
+      "description": "启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。",
       "format": "pve-startup-order",
       "optional": 1,
       "type": "string",
@@ -1316,14 +1316,14 @@
     },
     "swap": {
       "default": 512,
-      "description": "Amount of SWAP for the container in MB.",
+      "description": "容器的 SWAP 容量，单位为 MB。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "tags": {
-      "description": "Tags of the Container. This is only meta information.",
+      "description": "容器标签。此项仅为元信息。",
       "format": "pve-tag-list",
       "optional": 1,
       "type": "string",
@@ -1331,13 +1331,13 @@
     },
     "template": {
       "default": 0,
-      "description": "Enable/disable Template.",
+      "description": "启用/禁用模板。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "timezone": {
-      "description": "Time zone to use in the container. If option isn't set, then nothing will be done. Can be set to 'host' to match the host time zone, or an arbitrary time zone option from /usr/share/zoneinfo/zone.tab",
+      "description": "容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项",
       "format": "pve-ct-timezone",
       "optional": 1,
       "type": "string",
@@ -1345,7 +1345,7 @@
     },
     "tty": {
       "default": 2,
-      "description": "Specify the number of tty available to the container",
+      "description": "指定容器可用的 tty 数量",
       "maximum": 6,
       "minimum": 0,
       "optional": 1,
@@ -1354,17 +1354,17 @@
     },
     "unprivileged": {
       "default": 0,
-      "description": "Makes the container run as unprivileged user. For creation, the default is 1. For restore, the default is the value from the backup. (Should not be modified manually.)",
+      "description": "使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。）",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "unused[n]": {
-      "description": "Reference to unused volumes. This is used internally, and should not be modified manually.",
+      "description": "对未使用卷的引用。此项供内部使用，不应手动修改。",
       "format": {
         "volume": {
           "default_key": 1,
-          "description": "The volume that is not used currently.",
+          "description": "当前未使用的卷。",
           "format": "pve-volume-id",
           "format_description": "volume",
           "type": "string"
@@ -1375,7 +1375,7 @@
       "typetext": "[volume=]<volume>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

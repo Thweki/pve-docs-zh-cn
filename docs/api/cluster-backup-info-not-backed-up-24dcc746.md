@@ -6,7 +6,7 @@
 
 ## GET `/cluster/backup-info/not-backed-up`
 
-Shows all guests which are not covered by any backup job.
+显示未被任何备份作业覆盖的所有客户机。
 
 **方法标识：** `get_guests_not_in_backup`
 
@@ -44,16 +44,16 @@ Shows all guests which are not covered by any backup job.
 
 ```json
 {
-  "description": "Contains the guest objects.",
+  "description": "包含客户机对象。",
   "items": {
     "properties": {
       "name": {
-        "description": "Name of the guest",
+        "description": "客户机名称",
         "optional": 1,
         "type": "string"
       },
       "type": {
-        "description": "Type of the guest.",
+        "description": "客户机类型。",
         "enum": [
           "qemu",
           "lxc"
@@ -61,7 +61,7 @@ Shows all guests which are not covered by any backup job.
         "type": "string"
       },
       "vmid": {
-        "description": "VMID of the guest.",
+        "description": "客户机的 VMID。",
         "type": "integer"
       }
     },

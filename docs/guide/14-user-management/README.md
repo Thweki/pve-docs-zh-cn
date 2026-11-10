@@ -1,20 +1,20 @@
-# 14\. User Management <a href="#chapter_user_management" id="chapter_user_management"></a>
+# 14\. 用户管理 <a href="#chapter_user_management" id="chapter_user_management"></a>
 
-Proxmox VE supports multiple authentication sources, for example Linux PAM, an integrated Proxmox VE authentication server, LDAP, Microsoft Active Directory and OpenID Connect.
+Proxmox VE 支持多种身份验证来源，例如 Linux PAM、集成的 Proxmox VE 身份验证服务器、LDAP、Microsoft Active Directory 和 OpenID Connect。
 
-By using role-based user and permission management for all objects (VMs, Storage, nodes, etc.), granular access can be defined.
+通过对所有对象（虚拟机、存储、节点等）使用基于角色的用户和权限管理，可以定义精细的访问权限。
 
 ## 本章内容
 
-- [14.1. Users](01-pveum-users.md)
-- [14.2. Groups](02-pveum-groups.md)
-- [14.3. API Tokens](03-pveum-tokens.md)
-- [14.4. Resource Pools](04-pveum-resource-pools.md)
-- [14.5. Authentication Realms](05-pveum-authentication-realms.md)
-- [14.6. Two-Factor Authentication](06-pveum-tfa-auth.md)
-- [14.7. Permission Management](07-pveum-permission-management.md)
-- [14.8. Command-line Tool](08-command-line-tool.md)
-- [14.9. Real World Examples](09-real-world-examples.md)
+- [14.1. 用户](01-pveum-users.md)
+- [14.2. 组](02-pveum-groups.md)
+- [14.3. API 令牌](03-pveum-tokens.md)
+- [14.4. 资源池](04-pveum-resource-pools.md)
+- [14.5. 认证域](05-pveum-authentication-realms.md)
+- [14.6. 双因素身份验证](06-pveum-tfa-auth.md)
+- [14.7. 权限管理](07-pveum-permission-management.md)
+- [14.8. 命令行工具](08-command-line-tool.md)
+- [14.9. 实际示例](09-real-world-examples.md)
 
 ---
 

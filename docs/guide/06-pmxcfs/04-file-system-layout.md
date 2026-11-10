@@ -1,4 +1,4 @@
-# 6.4. 文件系统布局 <a href="#_file_system_layout" id="_file_system_layout"></a>
+# 6.4. 文件系统布局 <a href="#file_system_layout" id="file_system_layout"></a>
 
 该文件系统挂载于：
 
@@ -6,7 +6,7 @@
 /etc/pve
 ```
 
-## 6.4.1. 文件 <a href="#_files" id="_files"></a>
+## 6.4.1. 文件 <a href="#files" id="files"></a>
 
 <table>
 
@@ -167,7 +167,7 @@
 </tbody>
 </table>
 
-## 6.4.2. 符号链接 <a href="#_symbolic_links" id="_symbolic_links"></a>
+## 6.4.2. 符号链接 <a href="#symbolic_links" id="symbolic_links"></a>
 
 集群文件系统中的某些目录使用符号链接，以指向节点自身的配置文件。因此，下表中所指向的文件在集群的每个节点上分别对应不同的文件。
 
@@ -194,7 +194,7 @@
 </tbody>
 </table>
 
-## 6.4.3. 用于调试的特殊状态文件（JSON） <a href="#_special_status_files_for_debugging_json" id="_special_status_files_for_debugging_json"></a>
+## 6.4.3. 用于调试的特殊状态文件（JSON） <a href="#special_status_files_for_debugging_json" id="special_status_files_for_debugging_json"></a>
 
 <table>
 
@@ -223,7 +223,7 @@
 </tbody>
 </table>
 
-## 6.4.4. 启用/禁用调试 <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
+## 6.4.4. 启用/禁用调试 <a href="#enable_disable_debugging" id="enable_disable_debugging"></a>
 
 可以使用以下命令启用详细的 syslog 消息：
 

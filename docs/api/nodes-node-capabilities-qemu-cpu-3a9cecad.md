@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/capabilities/qemu/cpu`
 
-List all custom and default CPU models.
+列出所有自定义和默认 CPU 型号。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ List all custom and default CPU models.
 
 ```json
 {
-  "description": "Custom models are filtered to those the current user has any of Mapping.{Audit,Use,Modify} on /mapping/cpu/<name>; Sys.Audit on /nodes continues to grant visibility of all custom models for back-compat.",
+  "description": "自定义型号会筛选为当前用户对 /mapping/cpu/<name> 具有 Mapping.{Audit,Use,Modify} 中任意权限的型号；为向后兼容，对 /nodes 的 Sys.Audit 权限仍允许查看所有自定义型号。",
   "user": "all"
 }
 ```
@@ -29,8 +29,8 @@ List all custom and default CPU models.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `arch` | string | 否 | — | Virtual processor architecture. Defaults to the host architecture.；可选值：`x86_64`, `aarch64` |
-| `node` | string | 是 | — | The cluster node name. |
+| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -40,7 +40,7 @@ List all custom and default CPU models.
   "additionalProperties": 0,
   "properties": {
     "arch": {
-      "description": "Virtual processor architecture. Defaults to the host architecture.",
+      "description": "虚拟处理器架构。默认为宿主机架构。",
       "enum": [
         "x86_64",
         "aarch64"
@@ -49,7 +49,7 @@ List all custom and default CPU models.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -67,20 +67,20 @@ List all custom and default CPU models.
   "items": {
     "properties": {
       "abstract": {
-        "description": "True for PVE-internal abstract profiles like x86-64-v2, -v3, -v4. These do not correspond to a QEMU CPU type and cannot be used as a custom model's 'reported-model'.",
+        "description": "对于 x86-64-v2、-v3、-v4 等 PVE 内部抽象配置，为 true。它们不对应 QEMU CPU 类型，不能用作自定义型号的 'reported-model'。",
         "optional": 1,
         "type": "boolean"
       },
       "custom": {
-        "description": "True if this is a custom CPU model.",
+        "description": "如果这是自定义 CPU 型号，则为 true。",
         "type": "boolean"
       },
       "name": {
-        "description": "Name of the CPU model. Identifies it for subsequent API calls. Prefixed with 'custom-' for custom models.",
+        "description": "CPU 型号名称。在后续 API 调用中用作标识。自定义型号带有 'custom-' 前缀。",
         "type": "string"
       },
       "vendor": {
-        "description": "CPU vendor visible to the guest when this model is selected. Vendor of 'reported-model' in case of custom models.",
+        "description": "选择此型号时客户机可见的 CPU 供应商。对于自定义型号，为 'reported-model' 的供应商。",
         "type": "string"
       }
     },

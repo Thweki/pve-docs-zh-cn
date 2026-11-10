@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/notifications/endpoints/gotify/{name}`
 
-Remove gotify endpoint
+移除 gotify 端点
 
 **方法标识：** `delete_gotify_endpoint`
 
@@ -70,7 +70,7 @@ Remove gotify endpoint
 
 ## GET `/cluster/notifications/endpoints/gotify/{name}`
 
-Return a specific gotify endpoint
+返回指定的 gotify 端点
 
 **方法标识：** `get_gotify_endpoint`
 
@@ -114,7 +114,7 @@ Return a specific gotify endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Name of the endpoint. |
+| `name` | string | 是 | — | 端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -124,7 +124,7 @@ Return a specific gotify endpoint
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "Name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
@@ -141,29 +141,29 @@ Return a specific gotify endpoint
 {
   "properties": {
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string"
     },
     "server": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "type": "string"
     }
   },
@@ -173,7 +173,7 @@ Return a specific gotify endpoint
 
 ## PUT `/cluster/notifications/endpoints/gotify/{name}`
 
-Update existing gotify endpoint
+更新现有 gotify 端点
 
 **方法标识：** `update_gotify_endpoint`
 
@@ -228,13 +228,13 @@ Update existing gotify endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | Comment |
-| `delete` | array | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `name` | string | 是 | — | The name of the endpoint. |
-| `server` | string | 否 | — | Server URL |
-| `token` | string | 否 | — | Secret token |
+| `comment` | string | 否 | — | 注释 |
+| `delete` | array | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `name` | string | 是 | — | 端点名称。 |
+| `server` | string | 否 | — | 服务器 URL |
+| `token` | string | 否 | — | 秘密令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -244,13 +244,13 @@ Update existing gotify endpoint
   "additionalProperties": 0,
   "properties": {
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -260,7 +260,7 @@ Update existing gotify endpoint
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -268,25 +268,25 @@ Update existing gotify endpoint
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "server": {
-      "description": "Server URL",
+      "description": "服务器 URL",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "token": {
-      "description": "Secret token",
+      "description": "秘密令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

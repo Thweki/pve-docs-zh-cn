@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/fs`
 
-Directory index.
+目录索引。
 
 **方法标识：** `index`
 
@@ -49,7 +49,7 @@ Directory index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Directory index.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -78,38 +78,38 @@ Directory index.
     "additionalProperties": 1,
     "properties": {
       "data_pool": {
-        "description": "Name of the filesystem's first data pool. A CephFS can have more than one data pool; consumers interested in the full set should read 'data_pools' instead. Kept for backwards compatibility.",
+        "description": "文件系统第一个数据池的名称。CephFS 可拥有多个数据池；需要完整集合的使用方应读取 'data_pools'。为向后兼容而保留。",
         "type": "string"
       },
       "data_pool_ids": {
-        "description": "Numeric ids of the data pools.",
+        "description": "数据池的数字 ID。",
         "items": {
-          "description": "Data pool id.",
+          "description": "数据池 ID。",
           "type": "integer"
         },
         "optional": 1,
         "type": "array"
       },
       "data_pools": {
-        "description": "Names of all data pools assigned to the filesystem; a CephFS can have multiple data pools (e.g. replicated metadata plus EC data, or multiple device-class-specific data pools).",
+        "description": "分配给文件系统的所有数据池的名称；CephFS 可有多个数据池（例如复制型元数据加 EC 数据，或多个特定设备类别的数据池）。",
         "items": {
-          "description": "Data pool name.",
+          "description": "数据池名称。",
           "type": "string"
         },
         "optional": 1,
         "type": "array"
       },
       "metadata_pool": {
-        "description": "Name of the metadata pool.",
+        "description": "元数据池名称。",
         "type": "string"
       },
       "metadata_pool_id": {
-        "description": "Numeric id of the metadata pool.",
+        "description": "元数据池的数字 ID。",
         "optional": 1,
         "type": "integer"
       },
       "name": {
-        "description": "The ceph filesystem name.",
+        "description": "Ceph 文件系统名称。",
         "type": "string"
       }
     },

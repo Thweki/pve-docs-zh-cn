@@ -1,4 +1,4 @@
-# 2.5. 在 Debian 上安装 Proxmox VE <a href="#_install_proxmox_ve_on_debian" id="_install_proxmox_ve_on_debian"></a>
+# 2.5. 在 Debian 上安装 Proxmox VE <a href="#install_proxmox_ve_on_debian" id="install_proxmox_ve_on_debian"></a>
 
 Proxmox VE 以一组 Debian 软件包的形式提供，可以安装在标准 Debian 安装之上。[配置软件仓库后](../03-system-administration/01-sysadmin-package-repositories.md)，您需要运行以下命令：
 

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/scan/cifs`
 
-Scan remote CIFS server.
+扫描远程 CIFS 服务器。
 
 **方法标识：** `cifsscan`
 
@@ -46,11 +46,11 @@ Scan remote CIFS server.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `domain` | string | 否 | — | SMB domain (Workgroup). |
-| `node` | string | 是 | — | The cluster node name. |
-| `password` | string | 否 | — | User password. |
-| `server` | string | 是 | — | The server address (name or IP). |
-| `username` | string | 否 | — | User name. |
+| `domain` | string | 否 | — | SMB 域（工作组）。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `password` | string | 否 | — | 用户密码。 |
+| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
+| `username` | string | 否 | — | 用户名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,31 +60,31 @@ Scan remote CIFS server.
   "additionalProperties": 0,
   "properties": {
     "domain": {
-      "description": "SMB domain (Workgroup).",
+      "description": "SMB 域（工作组）。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "User password.",
+      "description": "用户密码。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "server": {
-      "description": "The server address (name or IP).",
+      "description": "服务器地址（名称或 IP）。",
       "format": "pve-storage-server",
       "type": "string",
       "typetext": "<string>"
     },
     "username": {
-      "description": "User name.",
+      "description": "用户名。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
@@ -102,11 +102,11 @@ Scan remote CIFS server.
   "items": {
     "properties": {
       "description": {
-        "description": "Descriptive text from server.",
+        "description": "服务器提供的描述文本。",
         "type": "string"
       },
       "share": {
-        "description": "The cifs share name.",
+        "description": "CIFS 共享名称。",
         "type": "string"
       }
     },

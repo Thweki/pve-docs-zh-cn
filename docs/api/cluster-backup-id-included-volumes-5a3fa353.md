@@ -6,7 +6,7 @@
 
 ## GET `/cluster/backup/{id}/included_volumes`
 
-Returns included guests and the backup status of their disks. Optimized to be used in ExtJS tree views.
+返回包含的客户机及其磁盘的备份状态。已针对 ExtJS 树视图进行优化。
 
 **方法标识：** `get_volume_backup_included`
 
@@ -40,7 +40,7 @@ Returns included guests and the backup status of their disks. Optimized to be us
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | The job ID. |
+| `id` | string | 是 | — | 作业 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -50,7 +50,7 @@ Returns included guests and the backup status of their disks. Optimized to be us
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "The job ID.",
+      "description": "作业 ID。",
       "maxLength": 50,
       "pattern": "\\S+",
       "type": "string"
@@ -65,29 +65,29 @@ Returns included guests and the backup status of their disks. Optimized to be us
 
 ```json
 {
-  "description": "Root node of the tree object. Children represent guests, grandchildren represent volumes of that guest.",
+  "description": "树对象的根节点。子节点表示客户机，孙节点表示该客户机的卷。",
   "properties": {
     "children": {
       "items": {
         "properties": {
           "children": {
-            "description": "The volumes of the guest with the information if they will be included in backups.",
+            "description": "客户机的卷及其是否包含在备份中的信息。",
             "items": {
               "properties": {
                 "id": {
-                  "description": "Configuration key of the volume.",
+                  "description": "卷的配置键。",
                   "type": "string"
                 },
                 "included": {
-                  "description": "Whether the volume is included in the backup or not.",
+                  "description": "卷是否包含在备份中。",
                   "type": "boolean"
                 },
                 "name": {
-                  "description": "Name of the volume.",
+                  "description": "卷名称。",
                   "type": "string"
                 },
                 "reason": {
-                  "description": "The reason why the volume is included (or excluded).",
+                  "description": "包含（或排除）该卷的原因。",
                   "type": "string"
                 }
               },
@@ -97,16 +97,16 @@ Returns included guests and the backup status of their disks. Optimized to be us
             "type": "array"
           },
           "id": {
-            "description": "VMID of the guest.",
+            "description": "客户机的 VMID。",
             "type": "integer"
           },
           "name": {
-            "description": "Name of the guest",
+            "description": "客户机名称",
             "optional": 1,
             "type": "string"
           },
           "type": {
-            "description": "Type of the guest, VM, CT or unknown for removed but not purged guests.",
+            "description": "客户机类型：VM、CT，或对于已移除但未清除的客户机为 unknown。",
             "enum": [
               "qemu",
               "lxc",

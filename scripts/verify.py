@@ -39,12 +39,14 @@ def technical_schema(x):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--allow-partial',action='store_true');args=p.parse_args()
     md=MarkdownIt('commonmark',{'html':True}).enable('table')
-    errors=[];warnings=[];files=sorted(DOCS.rglob('*.md'));anchors={};links=[]
+    errors=[];warnings=[];files=sorted(DOCS.rglob('*.md'));anchors={};heading_anchors={};links=[]
     code=collections.Counter();html_tables=0;hints=0;image_links=[]
     for file in files:
         text=file.read_text();tokens=md.parse(text)
-        ids=set()
+        ids=set();heading_ids=[];in_heading=False
         for token in tokens:
+            if token.type=='heading_open':in_heading=True
+            if token.type=='heading_close':in_heading=False
             if token.type=='fence' and ('guide' in file.parts or 'reference' in file.parts):
                 code[token.content.rstrip('\n')]+=1
             if token.type in {'html_block','html_inline'}:
@@ -61,9 +63,13 @@ def main():
                     links.append((file,child.attrGet('src')));image_links.append((file,child.attrGet('src')))
                 if child.type=='html_inline':
                     s=BeautifulSoup(child.content,'html.parser')
-                    for el in s.select('[id]'):ids.add(el['id'])
+                    for el in s.select('[id]'):
+                        ids.add(el['id'])
+                        if in_heading:heading_ids.append(el['id'])
                     for el in s.select('[href]'):links.append((file,el['href']))
         anchors[file.resolve()]=ids
+        heading_anchors[file.resolve()]=set(heading_ids)
+        if len(set(heading_ids))!=len(heading_ids):errors.append(f'duplicate heading id: {file.relative_to(DOCS)}')
         if re.search(r'⟦\d+⟧',text):errors.append(f'unrestored placeholder: {file.relative_to(DOCS)}')
         if text.count('{% hint ')!=text.count('{% endhint %}'):errors.append(f'unbalanced hints: {file.relative_to(DOCS)}')
         if 'guide' in file.parts or 'reference' in file.parts:hints+=text.count('{% hint ')
@@ -76,6 +82,8 @@ def main():
         if not target.exists():errors.append(f'broken file link: {file.relative_to(DOCS)} -> {href}')
         elif fragment and target.suffix=='.md' and fragment not in anchors.get(target,set()):
             errors.append(f'broken anchor: {file.relative_to(DOCS)} -> {href}')
+        elif fragment and target.suffix=='.md' and fragment not in heading_anchors.get(target,set()):
+            errors.append(f'anchor is not a GitBook heading: {file.relative_to(DOCS)} -> {href}')
     expected_code=collections.Counter();expected_tables=0;expected_hints=0;expected_images=0
     for path in sorted((ROOT/'source/prepared').glob('*.html')):
         original=BeautifulSoup(path.read_text(),'html.parser');translated=translated_soup(path)

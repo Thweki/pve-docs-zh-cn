@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/services/{service}/state`
 
-Read service properties
+读取服务属性
 
 **方法标识：** `service_state`
 
@@ -46,8 +46,8 @@ Read service properties
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `service` | string | 是 | — | Service ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,13 +57,13 @@ Read service properties
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "service": {
-      "description": "Service ID",
+      "description": "服务 ID",
       "enum": [
         "chrony",
         "corosync",
@@ -103,7 +103,7 @@ Read service properties
 {
   "properties": {
     "active-state": {
-      "description": "Current state of the service process (systemd ActiveState).",
+      "description": "服务进程的当前状态（systemd ActiveState）。",
       "enum": [
         "active",
         "inactive",
@@ -118,19 +118,19 @@ Read service properties
       "type": "string"
     },
     "desc": {
-      "description": "Description of the service.",
+      "description": "服务描述。",
       "type": "string"
     },
     "name": {
-      "description": "Short identifier for the service (e.g., \"pveproxy\").",
+      "description": "服务的简短标识符（例如 \"pveproxy\"）。",
       "type": "string"
     },
     "service": {
-      "description": "Systemd unit name (e.g., pveproxy).",
+      "description": "Systemd 单元名称（例如 pveproxy）。",
       "type": "string"
     },
     "state": {
-      "description": "Execution status of the service (systemd SubState).",
+      "description": "服务执行状态（systemd SubState）。",
       "enum": [
         "dead",
         "condition",
@@ -163,7 +163,7 @@ Read service properties
       "type": "string"
     },
     "unit-state": {
-      "description": "Whether the service is enabled (systemd UnitFileState).",
+      "description": "服务是否已启用（systemd UnitFileState）。",
       "enum": [
         "enabled",
         "enabled-runtime",

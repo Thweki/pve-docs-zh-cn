@@ -1,22 +1,14 @@
 # pvedaemon(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvedaemon \- PVE API Daemon
+pvedaemon \- PVE API 守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvedaemon"></a>
+### **pvedaemon** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvedaemon" id="cli_pvedaemon"></a>
 
-
-
-**pvedaemon** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvedaemon_help"></a>
-
-
-
-**pvedaemon help** `[OPTIONS]`
+### **pvedaemon help** `[OPTIONS]` <a href="#cli_pvedaemon_help" id="cli_pvedaemon_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,63 +20,47 @@ pvedaemon \- PVE API Daemon
 
 详细输出格式。
 
-<a id="cli_pvedaemon_restart"></a>
+### **pvedaemon restart** <a href="#cli_pvedaemon_restart" id="cli_pvedaemon_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+### **pvedaemon start** `[OPTIONS]` <a href="#cli_pvedaemon_start" id="cli_pvedaemon_start"></a>
 
-**pvedaemon restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvedaemon_start"></a>
-
-
-
-**pvedaemon start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvedaemon_status"></a>
+### **pvedaemon status** <a href="#cli_pvedaemon_status" id="cli_pvedaemon_status"></a>
 
+获取守护进程状态。
 
+### **pvedaemon stop** <a href="#cli_pvedaemon_stop" id="cli_pvedaemon_stop"></a>
 
-**pvedaemon status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pvedaemon_stop"></a>
-
-
-
-**pvedaemon stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This daemon exposes the whole Proxmox VE API on `127.0.0.1:85`. It runs as `root` and has permission to do all privileged operations.
+此守护进程在 `127.0.0.1:85` 上提供完整的 Proxmox VE API。它以 `root` 身份运行，并具有执行所有特权操作的权限。
 
 {% hint style="info" %}
-The daemon listens to a local address only, so you cannot access it from outside. The `pveproxy` daemon exposes the API to the outside world.
+此守护进程仅监听本地地址，因此无法从外部访问。`pveproxy` 守护进程将 API 对外提供。
 {% endhint %}
 
-## Number of Workers <a href="#pvedaemon_max_workers" id="pvedaemon_max_workers"></a>
+## 工作进程数量 <a href="#pvedaemon_max_workers" id="pvedaemon_max_workers"></a>
 
-`pvedaemon` delegates handling of incoming requests to worker processes. By default, `pvedaemon` spawns 3 worker processes, which is sufficient for most workloads. For automation-heavy workloads that issue a huge volume of API requests and that experience slow request handling or timeouts, the number of worker processes can be increased by setting `MAX_WORKERS` in `/etc/default/pvedaemon`, for example:
+`pvedaemon` 将传入请求交给工作进程处理。默认情况下，`pvedaemon` 启动 3 个工作进程，这对大多数工作负载已经足够。对于发出大量 API 请求并遇到请求处理缓慢或超时的高度自动化工作负载，可以设置 `MAX_WORKERS` 来增加工作进程数量，此设置位于 `/etc/default/pvedaemon` 中，例如：
 
 ```text
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
+请注意，增加工作进程数量可能会提高 CPU 使用率。工作进程数量必须大于 0 且小于 128。
 
-The same setting exists for [pveproxy](pveproxy-8.md#pveproxy_max_workers).
+[pveproxy](pveproxy-8.md#pveproxy_max_workers) 也有相同的设置。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/config/nodes`
 
-Corosync node list.
+Corosync 节点列表。
 
 **方法标识：** `nodes`
 

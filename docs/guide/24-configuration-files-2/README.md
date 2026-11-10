@@ -1,9 +1,9 @@
-# 24\. Appendix C: Configuration Files <a href="#_configuration_files_2" id="_configuration_files_2"></a>
+# 24\. 附录 C：配置文件 <a href="#configuration_files_2" id="configuration_files_2"></a>
 
 ## 本章内容
 
-- [24.1. General](01-configuration-files.md)
-- [24.2. Datacenter Configuration](02-datacenter-configuration-file.md)
+- [24.1. 常规](01-configuration-files.md)
+- [24.2. 数据中心配置](02-datacenter-configuration-file.md)
 
 ---
 

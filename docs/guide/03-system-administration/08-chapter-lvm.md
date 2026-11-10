@@ -38,17 +38,17 @@
 
 从 4.2 版开始，逻辑卷“data”是一个 LVM-thin 池，用于存储基于块的客户机镜像，而 `/var/lib/vz` 只是根文件系统上的一个目录。
 
-## 3.8.1. 硬件 <a href="#_hardware" id="_hardware"></a>
+## 3.8.1. 硬件 <a href="#hardware" id="hardware"></a>
 
 对于此类设置，我们强烈建议使用硬件 RAID 控制器（带 BBU）。这可以提高性能、提供冗余，并使磁盘更换更加容易（支持热插拔）。
 
 LVM 本身不需要任何特殊硬件，内存要求也非常低。
 
-## 3.8.2. 引导加载程序 <a href="#_bootloader" id="_bootloader"></a>
+## 3.8.2. 引导加载程序 <a href="#bootloader" id="bootloader"></a>
 
 默认情况下，我们会安装两个引导加载程序。第一个分区包含标准的 GRUB 引导加载程序。第二个分区是**E**FI **系**统**分**区（ESP），它使系统能够在 EFI 系统上引导，并从用户空间应用[持久性固件更新](03-chapter-firmware-updates.md#sysadmin_firmware_persistent)。
 
-## 3.8.3. 创建卷组 <a href="#_creating_a_volume_group" id="_creating_a_volume_group"></a>
+## 3.8.3. 创建卷组 <a href="#creating_a_volume_group" id="creating_a_volume_group"></a>
 
 假设我们有一块空磁盘 `/dev/sdb`，并希望在其上创建一个名为“vmdata”的卷组。
 
@@ -74,7 +74,7 @@ LVM 本身不需要任何特殊硬件，内存要求也非常低。
 # vgcreate vmdata /dev/sdb1
 ```
 
-## 3.8.4. 为 `/var/lib/vz` 创建额外的 LV <a href="#_creating_an_extra_lv_for_span_class_monospaced_var_lib_vz_span" id="_creating_an_extra_lv_for_span_class_monospaced_var_lib_vz_span"></a>
+## 3.8.4. 为 `/var/lib/vz` 创建额外的 LV <a href="#creating_an_extra_lv_for_span_class_monospaced_var_lib_vz_span" id="creating_an_extra_lv_for_span_class_monospaced_var_lib_vz_span"></a>
 
 只需创建一个新的精简 LV 即可轻松完成。
 
@@ -106,7 +106,7 @@ LVM 本身不需要任何特殊硬件，内存要求也非常低。
 # echo '/dev/pve/vz /var/lib/vz ext4 defaults 0 2' >> /etc/fstab
 ```
 
-## 3.8.5. 调整精简池的大小 <a href="#_resizing_the_thin_pool" id="_resizing_the_thin_pool"></a>
+## 3.8.5. 调整精简池的大小 <a href="#resizing_the_thin_pool" id="resizing_the_thin_pool"></a>
 
 使用以下命令调整 LV 和元数据池的大小：
 
@@ -118,7 +118,7 @@ LVM 本身不需要任何特殊硬件，内存要求也非常低。
 扩展数据池时，也必须扩展元数据池。
 {% endhint %}
 
-## 3.8.6. 创建 LVM-thin 池 <a href="#_create_a_lvm_thin_pool" id="_create_a_lvm_thin_pool"></a>
+## 3.8.6. 创建 LVM-thin 池 <a href="#create_a_lvm_thin_pool" id="create_a_lvm_thin_pool"></a>
 
 精简池必须创建在卷组之上。有关如何创建卷组，请参阅“LVM”一节。
 

@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/subscription`
 
-Delete subscription key of this node.
+删除此节点的订阅密钥。
 
 **方法标识：** `delete`
 
@@ -46,7 +46,7 @@ Delete subscription key of this node.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Delete subscription key of this node.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -77,7 +77,7 @@ Delete subscription key of this node.
 
 ## GET `/nodes/{node}/subscription`
 
-Read subscription info.
+读取订阅信息。
 
 **方法标识：** `get`
 
@@ -105,7 +105,7 @@ Read subscription info.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -115,7 +115,7 @@ Read subscription info.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -133,57 +133,57 @@ Read subscription info.
   "additionalProperties": 0,
   "properties": {
     "checktime": {
-      "description": "Timestamp of the last check done.",
+      "description": "上次检查的时间戳。",
       "optional": 1,
       "type": "integer"
     },
     "key": {
-      "description": "The subscription key, if set and permitted to access.",
+      "description": "订阅密钥（如果已设置且获准访问）。",
       "optional": 1,
       "type": "string"
     },
     "level": {
-      "description": "A short code for the subscription level.",
+      "description": "订阅级别的简短代码。",
       "optional": 1,
       "type": "string"
     },
     "message": {
-      "description": "A more human readable status message.",
+      "description": "更便于人类阅读的状态消息。",
       "optional": 1,
       "type": "string"
     },
     "nextduedate": {
-      "description": "Next due date of the set subscription.",
+      "description": "已设置订阅的下次到期日期。",
       "optional": 1,
       "type": "string"
     },
     "productname": {
-      "description": "Human readable productname of the set subscription.",
+      "description": "已设置订阅的人类可读产品名称。",
       "optional": 1,
       "type": "string"
     },
     "regdate": {
-      "description": "Register date of the set subscription.",
+      "description": "已设置订阅的注册日期。",
       "optional": 1,
       "type": "string"
     },
     "serverid": {
-      "description": "The server ID, if permitted to access.",
+      "description": "服务器 ID（如果获准访问）。",
       "optional": 1,
       "type": "string"
     },
     "signature": {
-      "description": "Signature for offline keys",
+      "description": "离线密钥的签名",
       "optional": 1,
       "type": "string"
     },
     "sockets": {
-      "description": "The number of sockets for this host.",
+      "description": "此宿主机的插槽数量。",
       "optional": 1,
       "type": "integer"
     },
     "status": {
-      "description": "The current subscription status.",
+      "description": "当前订阅状态。",
       "enum": [
         "new",
         "notfound",
@@ -195,7 +195,7 @@ Read subscription info.
       "type": "string"
     },
     "url": {
-      "description": "URL to the web shop.",
+      "description": "网上商店的 URL。",
       "optional": 1,
       "type": "string"
     }
@@ -206,7 +206,7 @@ Read subscription info.
 
 ## POST `/nodes/{node}/subscription`
 
-Update subscription info.
+更新订阅信息。
 
 **方法标识：** `update`
 
@@ -246,8 +246,8 @@ Update subscription info.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | Always connect to server, even if local cache is still valid. |
-| `node` | string | 是 | — | The cluster node name. |
+| `force` | boolean | 否 | 0 | 始终连接服务器，即使本地缓存仍然有效。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -258,13 +258,13 @@ Update subscription info.
   "properties": {
     "force": {
       "default": 0,
-      "description": "Always connect to server, even if local cache is still valid.",
+      "description": "始终连接服务器，即使本地缓存仍然有效。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -285,7 +285,7 @@ Update subscription info.
 
 ## PUT `/nodes/{node}/subscription`
 
-Set subscription key.
+设置订阅密钥。
 
 **方法标识：** `set`
 
@@ -325,8 +325,8 @@ Set subscription key.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `key` | string | 是 | — | Proxmox VE subscription key |
-| `node` | string | 是 | — | The cluster node name. |
+| `key` | string | 是 | — | Proxmox VE 订阅密钥 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -336,13 +336,13 @@ Set subscription key.
   "additionalProperties": 0,
   "properties": {
     "key": {
-      "description": "Proxmox VE subscription key",
+      "description": "Proxmox VE 订阅密钥",
       "maxLength": 32,
       "pattern": "\\s*pve([1248])([cbsp])-(arm-)?[0-9a-f]{10}\\s*",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

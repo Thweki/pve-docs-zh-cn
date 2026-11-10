@@ -1,21 +1,21 @@
-# 14.3. API Tokens <a href="#pveum_tokens" id="pveum_tokens"></a>
+# 14.3. API 令牌 <a href="#pveum_tokens" id="pveum_tokens"></a>
 
-API tokens allow stateless access to most parts of the REST API from another system, software, or API client. Exceptions are endpoints that provide access to the virtual machine or system console. These endpoints require user privileges and cannot be accessed via an API token.
+API 令牌允许其他系统、软件或 API 客户端以无状态方式访问 REST API 的大部分功能。例外是提供虚拟机或系统控制台访问的端点。这些端点需要用户权限，不能通过 API 令牌访问。
 
-Tokens can be generated for individual users and can be given separate permissions and expiration dates to limit the scope and duration of the access. Should the API token get compromised, it can be revoked without disabling the user itself.
+可以为单个用户生成令牌，并赋予单独的权限和到期日期，以限制访问范围和持续时间。如果 API 令牌泄露，可以撤销令牌，而无需禁用用户本身。
 
-API tokens come in two basic types:
+API 令牌有两种基本类型：
 
-- Separated privileges: The token needs to be given explicit access with ACLs. Its effective permissions are calculated by intersecting user and token permissions. **This is the default** for newly created tokens.
-- Full privileges: The token’s permissions are identical to that of the associated user. Disable Privilege Separation only when the integration genuinely needs the user’s full permissions.
+- 分离权限：需要通过 ACL 向令牌显式授予访问权限。其有效权限通过用户权限与令牌权限取交集计算。**这是默认设置**，适用于新创建的令牌。
+- 完整权限：令牌权限与关联用户的权限完全相同。只有集成确实需要用户的完整权限时，才禁用权限分离。
 
-Set an `expire` timestamp (Unix epoch seconds) when creating a token so that abandoned automation does not silently keep working. The authentication code refuses requests once the deadline has passed.
+创建令牌时设置 `expire` 时间戳（Unix 纪元秒数），以免废弃的自动化任务悄无声息地继续运行。一旦超过期限，身份验证代码就会拒绝请求。
 
 {% hint style="danger" %}
-The token value is only displayed/returned once when the token is generated. It cannot be retrieved again over the API at a later time!
+令牌值仅在生成令牌时显示/返回一次。之后无法再次通过 API 获取！
 {% endhint %}
 
-To use an API token, set the HTTP header *Authorization* to the displayed value of the form `PVEAPIToken=USER@REALM!TOKENID=UUID` when making API requests, or refer to your API client’s documentation.
+要使用 API 令牌，请在发出 API 请求时将 HTTP 标头 *Authorization* 设为显示的值，形式为 `PVEAPIToken=USER@REALM!TOKENID=UUID`，或参阅 API 客户端文档。
 
 ---
 

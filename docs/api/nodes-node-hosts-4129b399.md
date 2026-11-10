@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/hosts`
 
-Get the content of /etc/hosts.
+获取 /etc/hosts. 的内容
 
 **方法标识：** `get_etc_hosts`
 
@@ -46,7 +46,7 @@ Get the content of /etc/hosts.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Get the content of /etc/hosts.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -73,11 +73,11 @@ Get the content of /etc/hosts.
 {
   "properties": {
     "data": {
-      "description": "The content of /etc/hosts.",
+      "description": "/etc/hosts. 的内容",
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
@@ -89,7 +89,7 @@ Get the content of /etc/hosts.
 
 ## POST `/nodes/{node}/hosts`
 
-Write /etc/hosts.
+写入 /etc/hosts.
 
 **方法标识：** `write_etc_hosts`
 
@@ -129,9 +129,9 @@ Write /etc/hosts.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `data` | string | 是 | — | The target content of /etc/hosts. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `node` | string | 是 | — | The cluster node name. |
+| `data` | string | 是 | — | /etc/hosts. 的目标内容 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -141,19 +141,19 @@ Write /etc/hosts.
   "additionalProperties": 0,
   "properties": {
     "data": {
-      "description": "The target content of /etc/hosts.",
+      "description": "/etc/hosts. 的目标内容",
       "type": "string",
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

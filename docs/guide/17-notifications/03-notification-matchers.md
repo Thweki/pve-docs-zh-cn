@@ -1,12 +1,12 @@
-# 17.3. Notification Matchers <a href="#notification_matchers" id="notification_matchers"></a>
+# 17.3. 通知匹配器 <a href="#notification_matchers" id="notification_matchers"></a>
 
 [![screenshot/gui-datacenter-notification-matcher.png](../../assets/screenshot-gui-datacenter-notification-matcher-png-ce9976b1ea69.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-notification-matcher.png)
 
-Notification matchers route notifications to notification targets based on their matching rules. These rules can match certain properties of a notification, such as the timestamp (`match-calendar`), the severity of the notification (`match-severity`) or metadata fields (`match-field`). If a notification is matched by a matcher, all targets configured for the matcher will receive the notification.
+通知匹配器根据其匹配规则将通知路由到通知目标。这些规则可以匹配通知的某些属性，例如时间戳（`match-calendar`）、通知的严重性（`match-severity`）或元数据字段（`match-field`）。如果通知被某个匹配器匹配，为该匹配器配置的所有目标都会收到通知。
 
-An arbitrary number of matchers can be created, each with with their own matching rules and targets to notify. Every target is notified at most once for every notification, even if the target is used in multiple matchers.
+可以创建任意数量的匹配器，每个匹配器都有自己的匹配规则和通知目标。即使同一目标用于多个匹配器，每个通知也最多向该目标发送一次。
 
-A matcher without any matching rules is always true; the configured targets will always be notified.
+没有任何匹配规则的匹配器始终为真；配置的目标始终会收到通知。
 
 ```text
 matcher: always-matches
@@ -14,45 +14,45 @@ matcher: always-matches
         comment This matcher always matches
 ```
 
-## 17.3.1. Matcher Options <a href="#_matcher_options" id="_matcher_options"></a>
+## 17.3.1. 匹配器选项 <a href="#matcher_options" id="matcher_options"></a>
 
-- `target`: Determine which target should be notified if the matcher matches. can be used multiple times to notify multiple targets.
-- `invert-match`: Inverts the result of the whole matcher
-- `mode`: Determines how the individual match rules are evaluated to compute the result for the whole matcher. If set to `all`, all matching rules must match. If set to `any`, at least one rule must match. Defaults to `all`.
-- `match-calendar`: Match the notification’s timestamp against a schedule.
-- `match-field`: Match the notification’s metadata fields.
-- `match-severity`: Match the notification’s severity.
-- `comment`: Comment for this matcher.
+- `target`：确定匹配器匹配时应通知哪个目标。可以多次使用，以通知多个目标。
+- `invert-match`：反转整个匹配器的结果
+- `mode`：确定如何求值各个匹配规则，以计算整个匹配器的结果。如果设置为 `all`，则所有匹配规则都必须匹配。如果设置为 `any`，则至少一个规则必须匹配。默认为 `all`。
+- `match-calendar`：将通知的时间戳与时间计划匹配。
+- `match-field`：匹配通知的元数据字段。
+- `match-severity`：匹配通知的严重性。
+- `comment`：此匹配器的注释。
 
-## 17.3.2. Calendar Matching Rules <a href="#notification_matchers_calendar" id="notification_matchers_calendar"></a>
+## 17.3.2. 日历匹配规则 <a href="#notification_matchers_calendar" id="notification_matchers_calendar"></a>
 
-A calendar matcher matches the time when a notification is sent against a configurable schedule.
+日历匹配器将通知发送的时间与可配置的时间计划进行匹配。
 
 - `match-calendar 8-12`
 - `match-calendar 8:00-15:30`
 - `match-calendar mon..fri 9:00-17:00`
 - `match-calendar sun,tue..wed,fri 9-17`
 
-## 17.3.3. Field Matching Rules <a href="#notification_matchers_field" id="notification_matchers_field"></a>
+## 17.3.3. 字段匹配规则 <a href="#notification_matchers_field" id="notification_matchers_field"></a>
 
-Notifications have a selection of metadata fields that can be matched. When using `exact` as a matching mode, a `,` can be used as a separator. The matching rule then matches if the metadata field has **any** of the specified values.
+通知具有一些可供匹配的元数据字段。使用 `exact` 作为匹配模式时，可以使用 `,` 作为分隔符。只要元数据字段具有指定值中的**任意一个**，匹配规则就会匹配。
 
-- `match-field exact:type=vzdump` Only match notifications about backups.
-- `match-field exact:type=replication,fencing` Match `replication` and `fencing` notifications.
-- `match-field regex:hostname=^.+\.example\.com$` Match the hostname of the node.
+- `match-field exact:type=vzdump` 仅匹配与备份有关的通知。
+- `match-field exact:type=replication,fencing` 匹配 `replication` 和 `fencing` 通知。
+- `match-field regex:hostname=^.+\.example\.com$` 匹配节点的主机名。
 
-If a matched metadata field does not exist, the notification will not be matched. For instance, a `match-field regex:hostname=.*` directive will only match notifications that have an arbitrary `hostname` metadata field, but will not match if the field does not exist.
+如果要匹配的元数据字段不存在，通知将不会被匹配。例如，`match-field regex:hostname=.*` 指令只会匹配具有任意 `hostname` 元数据字段的通知，如果该字段不存在，则不会匹配。
 
-## 17.3.4. Severity Matching Rules <a href="#notification_matchers_severity" id="notification_matchers_severity"></a>
+## 17.3.4. 严重性匹配规则 <a href="#notification_matchers_severity" id="notification_matchers_severity"></a>
 
-A notification has a associated severity that can be matched.
+通知具有关联的严重性，可用于匹配。
 
-- `match-severity error`: Only match errors
-- `match-severity warning,error`: Match warnings and error
+- `match-severity error`：仅匹配错误
+- `match-severity warning,error`：匹配警告和错误
 
-The following severities are in use: `info`, `notice`, `warning`, `error`, `unknown`.
+使用以下严重性：`info`、`notice`、`warning`、`error`、`unknown`。
 
-## 17.3.5. Examples <a href="#_examples_12" id="_examples_12"></a>
+## 17.3.5. 示例 <a href="#examples_12" id="examples_12"></a>
 
 ```text
 matcher: workday

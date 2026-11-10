@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage/{storage}/file-restore/download`
 
-Extract a file or directory (as zip archive) from a PBS backup.
+从 PBS 备份提取文件或目录（作为 zip 归档）。
 
 **方法标识：** `download`
 
@@ -14,7 +14,7 @@ Extract a file or directory (as zip archive) from a PBS backup.
 
 ```json
 {
-  "description": "You need read access for the volume.",
+  "description": "需要具有卷的读取访问权限。",
   "user": "all"
 }
 ```
@@ -41,11 +41,11 @@ Extract a file or directory (as zip archive) from a PBS backup.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `filepath` | string | 是 | — | base64-path to the directory or file to download. |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `tar` | boolean | 否 | 0 | Download dirs as 'tar.zst' instead of 'zip'. |
-| `volume` | string | 是 | — | Backup volume ID or name. Currently only PBS snapshots are supported. |
+| `filepath` | string | 是 | — | 要下载的目录或文件的 base64 路径。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `tar` | boolean | 否 | 0 | 将目录下载为 'tar.zst' 而非 'zip'。 |
+| `volume` | string | 是 | — | 备份卷 ID 或名称。目前仅支持 PBS 快照。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -55,18 +55,18 @@ Extract a file or directory (as zip archive) from a PBS backup.
   "additionalProperties": 0,
   "properties": {
     "filepath": {
-      "description": "base64-path to the directory or file to download.",
+      "description": "要下载的目录或文件的 base64 路径。",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
@@ -74,13 +74,13 @@ Extract a file or directory (as zip archive) from a PBS backup.
     },
     "tar": {
       "default": 0,
-      "description": "Download dirs as 'tar.zst' instead of 'zip'.",
+      "description": "将目录下载为 'tar.zst' 而非 'zip'。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "volume": {
-      "description": "Backup volume ID or name. Currently only PBS snapshots are supported.",
+      "description": "备份卷 ID 或名称。目前仅支持 PBS 快照。",
       "type": "string",
       "typetext": "<string>"
     }

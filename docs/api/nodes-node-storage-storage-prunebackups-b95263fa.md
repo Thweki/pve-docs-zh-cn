@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/storage/{storage}/prunebackups`
 
-Prune backups. Only those using the standard naming scheme are considered.
+清理备份。仅考虑采用标准命名方案的备份。
 
 **方法标识：** `delete`
 
@@ -14,7 +14,7 @@ Prune backups. Only those using the standard naming scheme are considered.
 
 ```json
 {
-  "description": "You need the 'Datastore.Allocate' privilege on the storage (or if a VM ID is specified, 'Datastore.AllocateSpace' and 'VM.Backup' for the VM).",
+  "description": "需要对存储具有 'Datastore.Allocate' 权限（若指定了虚拟机 ID，则需 'Datastore.AllocateSpace' 权限以及该虚拟机的 'VM.Backup' 权限）。",
   "user": "all"
 }
 ```
@@ -41,11 +41,11 @@ Prune backups. Only those using the standard naming scheme are considered.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `prune-backups` | string | 否 | — | Use these retention options instead of those from the storage configuration. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `type` | string | 否 | — | Either 'qemu' or 'lxc'. Only consider backups for guests of this type.；可选值：`qemu`, `lxc` |
-| `vmid` | integer | 否 | — | Only prune backups for this VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `prune-backups` | string | 否 | — | 使用这些保留选项，而非存储配置中的选项。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `type` | string | 否 | — | 'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
+| `vmid` | integer | 否 | — | 仅清理此虚拟机的备份。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -55,27 +55,27 @@ Prune backups. Only those using the standard naming scheme are considered.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "prune-backups": {
-      "description": "Use these retention options instead of those from the storage configuration.",
+      "description": "使用这些保留选项，而非存储配置中的选项。",
       "format": "prune-backups",
       "optional": 1,
       "type": "string",
       "typetext": "[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "type": {
-      "description": "Either 'qemu' or 'lxc'. Only consider backups for guests of this type.",
+      "description": "'qemu' 或 'lxc'。仅考虑此类型客户机的备份。",
       "enum": [
         "qemu",
         "lxc"
@@ -84,7 +84,7 @@ Prune backups. Only those using the standard naming scheme are considered.
       "type": "string"
     },
     "vmid": {
-      "description": "Only prune backups for this VM.",
+      "description": "仅清理此虚拟机的备份。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -108,7 +108,7 @@ Prune backups. Only those using the standard naming scheme are considered.
 
 ## GET `/nodes/{node}/storage/{storage}/prunebackups`
 
-Get prune information for backups. NOTE: this is only a preview and might not be what a subsequent prune call does if backups are removed/added in the meantime.
+获取备份清理信息。注意：这只是预览，如果期间移除/添加了备份，则后续清理调用的实际操作可能与预览不同。
 
 **方法标识：** `dryrun`
 
@@ -151,11 +151,11 @@ Get prune information for backups. NOTE: this is only a preview and might not be
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `prune-backups` | string | 否 | — | Use these retention options instead of those from the storage configuration. |
-| `storage` | string | 是 | — | The storage identifier. |
-| `type` | string | 否 | — | Either 'qemu' or 'lxc'. Only consider backups for guests of this type.；可选值：`qemu`, `lxc` |
-| `vmid` | integer | 否 | — | Only consider backups for this guest. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `prune-backups` | string | 否 | — | 使用这些保留选项，而非存储配置中的选项。 |
+| `storage` | string | 是 | — | 存储标识符。 |
+| `type` | string | 否 | — | 'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
+| `vmid` | integer | 否 | — | 仅考虑此客户机的备份。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -165,27 +165,27 @@ Get prune information for backups. NOTE: this is only a preview and might not be
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "prune-backups": {
-      "description": "Use these retention options instead of those from the storage configuration.",
+      "description": "使用这些保留选项，而非存储配置中的选项。",
       "format": "prune-backups",
       "optional": 1,
       "type": "string",
       "typetext": "[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
       "typetext": "<storage ID>"
     },
     "type": {
-      "description": "Either 'qemu' or 'lxc'. Only consider backups for guests of this type.",
+      "description": "'qemu' 或 'lxc'。仅考虑此类型客户机的备份。",
       "enum": [
         "qemu",
         "lxc"
@@ -194,7 +194,7 @@ Get prune information for backups. NOTE: this is only a preview and might not be
       "type": "string"
     },
     "vmid": {
-      "description": "Only consider backups for this guest.",
+      "description": "仅考虑此客户机的备份。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -215,11 +215,11 @@ Get prune information for backups. NOTE: this is only a preview and might not be
   "items": {
     "properties": {
       "ctime": {
-        "description": "Creation time of the backup (seconds since the UNIX epoch).",
+        "description": "备份创建时间（自 UNIX 纪元起的秒数）。",
         "type": "integer"
       },
       "mark": {
-        "description": "Whether the backup would be kept or removed. Backups that are protected or don't use the standard naming scheme are not removed.",
+        "description": "备份将被保留还是移除。受保护或不采用标准命名方案的备份不会被移除。",
         "enum": [
           "keep",
           "remove",
@@ -229,16 +229,16 @@ Get prune information for backups. NOTE: this is only a preview and might not be
         "type": "string"
       },
       "type": {
-        "description": "One of 'qemu', 'lxc', 'openvz' or 'unknown'.",
+        "description": "'qemu'、'lxc'、'openvz' 或 'unknown' 之一。",
         "type": "string"
       },
       "vmid": {
-        "description": "The VM the backup belongs to.",
+        "description": "备份所属的虚拟机。",
         "optional": 1,
         "type": "integer"
       },
       "volid": {
-        "description": "Backup volume ID.",
+        "description": "备份卷 ID。",
         "type": "string"
       }
     },

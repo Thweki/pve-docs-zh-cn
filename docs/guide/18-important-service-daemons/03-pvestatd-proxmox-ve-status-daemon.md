@@ -1,6 +1,6 @@
-# 18.3. pvestatd \- Proxmox VE Status Daemon <a href="#_pvestatd_proxmox_ve_status_daemon" id="_pvestatd_proxmox_ve_status_daemon"></a>
+# 18.3. pvestatd \- Proxmox VE 状态守护进程 <a href="#pvestatd_proxmox_ve_status_daemon" id="pvestatd_proxmox_ve_status_daemon"></a>
 
-This daemon queries the status of VMs, storages and containers at regular intervals. The result is sent to all nodes in the cluster.
+此守护进程定期查询虚拟机、存储和容器的状态。结果发送给集群中的所有节点。
 
 ---
 

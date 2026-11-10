@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/fabrics/{fabric}/interfaces`
 
-Get all interfaces for a fabric.
+获取 fabric 的所有接口。
 
 **方法标识：** `interfaces`
 
@@ -46,8 +46,8 @@ Get all interfaces for a fabric.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | Identifier for SDN fabrics |
-| `node` | string | 是 | — | The cluster node name. |
+| `fabric` | string | 是 | — | SDN fabric 的标识符 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,7 +57,7 @@ Get all interfaces for a fabric.
   "additionalProperties": 0,
   "properties": {
     "fabric": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -65,7 +65,7 @@ Get all interfaces for a fabric.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,15 +83,15 @@ Get all interfaces for a fabric.
   "items": {
     "properties": {
       "name": {
-        "description": "The name of the network interface.",
+        "description": "网络接口名称。",
         "type": "string"
       },
       "state": {
-        "description": "The current state of the interface.",
+        "description": "接口当前状态。",
         "type": "string"
       },
       "type": {
-        "description": "The type of this interface in the fabric (e.g. Point-to-Point, Broadcast, ..).",
+        "description": "此接口在 fabric 中的类型（例如 Point-to-Point、Broadcast 等）。",
         "type": "string"
       }
     },

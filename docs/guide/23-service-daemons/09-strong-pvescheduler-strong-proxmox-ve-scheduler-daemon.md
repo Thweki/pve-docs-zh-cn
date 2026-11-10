@@ -1,16 +1,8 @@
-# 23.9. **pvescheduler** \- Proxmox VE Scheduler Daemon <a href="#_strong_pvescheduler_strong_proxmox_ve_scheduler_daemon" id="_strong_pvescheduler_strong_proxmox_ve_scheduler_daemon"></a>
+# 23.9. **pvescheduler** \- Proxmox VE 调度守护进程 <a href="#strong_pvescheduler_strong_proxmox_ve_scheduler_daemon" id="strong_pvescheduler_strong_proxmox_ve_scheduler_daemon"></a>
 
-<a id="cli_pvescheduler"></a>
+## **pvescheduler** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvescheduler" id="cli_pvescheduler"></a>
 
-
-
-**pvescheduler** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvescheduler_help"></a>
-
-
-
-**pvescheduler help** `[OPTIONS]`
+## **pvescheduler help** `[OPTIONS]` <a href="#cli_pvescheduler_help" id="cli_pvescheduler_help"></a>
 
 获取指定命令的帮助。
 
@@ -22,41 +14,25 @@
 
 详细输出格式。
 
-<a id="cli_pvescheduler_restart"></a>
+## **pvescheduler restart** <a href="#cli_pvescheduler_restart" id="cli_pvescheduler_restart"></a>
 
+重启守护进程（如果未运行则启动）。
 
+## **pvescheduler start** `[OPTIONS]` <a href="#cli_pvescheduler_start" id="cli_pvescheduler_start"></a>
 
-**pvescheduler restart**
-
-Restart the daemon (or start if not running).
-
-<a id="cli_pvescheduler_start"></a>
-
-
-
-**pvescheduler start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pvescheduler_status"></a>
+## **pvescheduler status** <a href="#cli_pvescheduler_status" id="cli_pvescheduler_status"></a>
 
+获取守护进程状态。
 
+## **pvescheduler stop** <a href="#cli_pvescheduler_stop" id="cli_pvescheduler_stop"></a>
 
-**pvescheduler status**
-
-Get daemon status.
-
-<a id="cli_pvescheduler_stop"></a>
-
-
-
-**pvescheduler stop**
-
-Stop the daemon.
+停止守护进程。
 
 ---
 

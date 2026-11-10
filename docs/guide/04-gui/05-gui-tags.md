@@ -12,7 +12,7 @@
 # qm set ID --tags 'myfirsttag;mysecondtag'
 ```
 
-## 4.5.1. 样式配置 <a href="#_style_configuration" id="_style_configuration"></a>
+## 4.5.1. 样式配置 <a href="#style_configuration" id="style_configuration"></a>
 
 [![screenshot/gui-datacenter-tag-style.png](../../assets/screenshot-gui-datacenter-tag-style-png-f3ff2cf9dfd8.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-tag-style.png)
 
@@ -24,11 +24,11 @@
 
 将标签 `example` 的背景颜色设置为黑色（#000000），文本颜色设置为白色（#FFFFFF）。
 
-## 4.5.2. 权限 <a href="#_permissions" id="_permissions"></a>
+## 4.5.2. 权限 <a href="#permissions" id="permissions"></a>
 
 [![screenshot/gui-datacenter-options.png](../../assets/screenshot-gui-datacenter-options-png-535789a52e69.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-options.png)
 
-By default, users with the privilege `VM.Config.Options` on a guest (`/vms/ID`) can set any tags they want (see [Permission Management](../14-user-management/07-pveum-permission-management.md)). If you want to restrict this behavior, appropriate permissions can be set under *Datacenter → Options → User Tag Access*:
+默认情况下，具有 `VM.Config.Options` 权限（在客户机 `/vms/ID` 上）的用户可以设置任意标签（参见 [权限管理](../14-user-management/07-pveum-permission-management.md)）。如果希望限制此行为，可以在 *数据中心 → 选项 → 用户标签访问* 下设置适当的权限：
 
 - `free`：用户在设置标签时不受限制（默认）
 - `list`：用户可以根据预定义的标签列表设置标签
@@ -37,7 +37,7 @@ By default, users with the privilege `VM.Config.Options` on a guest (`/vms/ID`) 
 
 同样也可以通过 CLI 完成此操作。
 
-Note that a user with the `Sys.Modify` privileges on `/` is always able to set or delete any tags, regardless of the settings here. Additionally, there is a configurable list of `registered tags` which can only be added and removed by users with the privilege `Sys.Modify` on `/`. The list of registered tags can be edited under *Datacenter → Options → Registered Tags* or via the CLI.
+请注意，具有 `Sys.Modify` 权限（在 `/` 上）的用户始终可以设置或删除任意标签，不受此处设置的影响。此外，还有一个可配置的 `registered tags` 列表，只有具有 `Sys.Modify` 权限（在 `/` 上）的用户才能添加和移除其中的标签。可以在 *数据中心 → 选项 → 已注册标签* 下或通过 CLI 编辑已注册标签列表。
 
 有关确切选项以及如何在 CLI 中调用它们的更多详细信息，请参见[数据中心配置](../24-configuration-files-2/02-datacenter-configuration-file.md)。
 

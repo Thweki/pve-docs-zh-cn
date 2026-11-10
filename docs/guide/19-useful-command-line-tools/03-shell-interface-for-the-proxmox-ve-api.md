@@ -1,26 +1,26 @@
-# 19.3. Shell interface for the Proxmox VE API <a href="#_shell_interface_for_the_proxmox_ve_api" id="_shell_interface_for_the_proxmox_ve_api"></a>
+# 19.3. Proxmox VE API 的 Shell 接口 <a href="#shell_interface_for_the_proxmox_ve_api" id="shell_interface_for_the_proxmox_ve_api"></a>
 
-The Proxmox VE management tool (`pvesh`) allows to directly invoke API function, without using the REST/HTTPS server.
+Proxmox VE 管理工具（`pvesh`）允许直接调用 API 函数，无需使用 REST/HTTPS 服务器。
 
 {% hint style="info" %}
-Only *root* is allowed to do that.
+只有 *root* 可以这样做。
 {% endhint %}
 
-## 19.3.1. EXAMPLES <a href="#_examples_13" id="_examples_13"></a>
+## 19.3.1. 示例 <a href="#examples_13" id="examples_13"></a>
 
-Get the list of nodes in my cluster
+获取我的集群中的节点列表
 
 ```text
 # pvesh get /nodes
 ```
 
-Get a list of available options for the datacenter
+获取数据中心的可用选项列表
 
 ```text
 # pvesh usage cluster/options -v
 ```
 
-Set the HTMl5 NoVNC console as the default console for the datacenter
+将 HTMl5 NoVNC 控制台设置为数据中心的默认控制台
 
 ```text
 # pvesh set cluster/options -console html5

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/move_disk`
 
-Move volume to different storage or to a different VM.
+将卷移动到其他存储或其他虚拟机。
 
 **方法标识：** `move_vm_disk`
 
@@ -21,7 +21,7 @@ Move volume to different storage or to a different VM.
       "VM.Config.Disk"
     ]
   ],
-  "description": "You need 'VM.Config.Disk' permissions on /vms/{vmid}, and 'Datastore.AllocateSpace' permissions on the storage. To move a disk to another VM, you need the permissions on the target VM as well."
+  "description": "需要对 /vms/{vmid} 具有 'VM.Config.Disk' 权限，以及对存储具有 'Datastore.AllocateSpace' 权限。要将磁盘移至另一个虚拟机，还需要对目标虚拟机具有相应权限。"
 }
 ```
 
@@ -47,17 +47,17 @@ Move volume to different storage or to a different VM.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "move limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `delete` | boolean | 否 | 0 | Delete the original disk after successful copy. By default the original disk is kept as unused disk. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications. |
-| `disk` | string | 是 | — | The disk you want to move.；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
-| `format` | string | 否 | — | Target disk format. Only used when moving to a different storage. If the target storage does not support the format, the storage's default format is used instead.；可选值：`raw`, `qcow2`, `vmdk` |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | Target storage. |
-| `target-digest` | string | 否 | — | Prevent changes if the current config file of the target VM has a different SHA1 digest. This can be used to detect concurrent modifications. |
-| `target-disk` | string | 否 | — | The config key the disk will be moved to on the target VM (for example, ide0 or scsi1). Default is the source disk key.；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
-| `target-vmid` | integer | 否 | — | The (unique) ID of the VM. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `bwlimit` | integer | 否 | "move limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | boolean | 否 | 0 | 成功复制后删除原始磁盘。默认将原始磁盘保留为未使用磁盘。 |
+| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `disk` | string | 是 | — | 要移动的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| `format` | string | 否 | — | 目标磁盘格式。仅在移动到不同存储时使用。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 否 | — | 目标存储。 |
+| `target-digest` | string | 否 | — | 如果目标虚拟机当前配置文件的 SHA1 摘要不同，则阻止更改。可用于检测并发修改。 |
+| `target-disk` | string | 否 | — | 磁盘在目标虚拟机上要移至的配置键（例如 ide0 或 scsi1）。默认为源磁盘键。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -68,7 +68,7 @@ Move volume to different storage or to a different VM.
   "properties": {
     "bwlimit": {
       "default": "move limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "integer",
@@ -76,20 +76,20 @@ Move volume to different storage or to a different VM.
     },
     "delete": {
       "default": 0,
-      "description": "Delete the original disk after successful copy. By default the original disk is kept as unused disk.",
+      "description": "成功复制后删除原始磁盘。默认将原始磁盘保留为未使用磁盘。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "disk": {
-      "description": "The disk you want to move.",
+      "description": "要移动的磁盘。",
       "enum": [
         "ide0",
         "ide1",
@@ -410,7 +410,7 @@ Move volume to different storage or to a different VM.
       "type": "string"
     },
     "format": {
-      "description": "Target disk format. Only used when moving to a different storage. If the target storage does not support the format, the storage's default format is used instead.",
+      "description": "目标磁盘格式。仅在移动到不同存储时使用。如果目标存储不支持该格式，则改用存储的默认格式。",
       "enum": [
         "raw",
         "qcow2",
@@ -420,13 +420,13 @@ Move volume to different storage or to a different VM.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "Target storage.",
+      "description": "目标存储。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,
@@ -434,14 +434,14 @@ Move volume to different storage or to a different VM.
       "typetext": "<storage ID>"
     },
     "target-digest": {
-      "description": "Prevent changes if the current config file of the target VM has a different SHA1 digest. This can be used to detect concurrent modifications.",
+      "description": "如果目标虚拟机当前配置文件的 SHA1 摘要不同，则阻止更改。可用于检测并发修改。",
       "maxLength": 40,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "target-disk": {
-      "description": "The config key the disk will be moved to on the target VM (for example, ide0 or scsi1). Default is the source disk key.",
+      "description": "磁盘在目标虚拟机上要移至的配置键（例如 ide0 或 scsi1）。默认为源磁盘键。",
       "enum": [
         "ide0",
         "ide1",
@@ -763,7 +763,7 @@ Move volume to different storage or to a different VM.
       "type": "string"
     },
     "target-vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -772,7 +772,7 @@ Move volume to different storage or to a different VM.
       "typetext": "<integer> (100 - 999999999)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -789,7 +789,7 @@ Move volume to different storage or to a different VM.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/spiceshell`
 
-Creates a SPICE shell.
+创建 SPICE shell。
 
 **方法标识：** `spiceshell`
 
@@ -46,10 +46,10 @@ Creates a SPICE shell.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `cmd` | string | 否 | "login" | Run specific command or default to login (requires 'root@pam')；可选值：`ceph_install`, `login`, `upgrade` |
-| `cmd-opts` | string | 否 | "" | Add parameters to a command. Encoded as null terminated strings. |
-| `node` | string | 是 | — | The cluster node name. |
-| `proxy` | string | 否 | — | SPICE proxy server. This can be used by the client to specify the proxy server. All nodes in a cluster runs 'spiceproxy', so it is up to the client to choose one. By default, we return the node where the VM is currently running. As reasonable setting is to use same node you use to connect to the API (This is window.location.hostname for the JS GUI). |
+| `cmd` | string | 否 | "login" | 运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
+| `cmd-opts` | string | 否 | "" | 向命令添加参数。编码为以空字符结尾的字符串。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `proxy` | string | 否 | — | SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,7 +60,7 @@ Creates a SPICE shell.
   "properties": {
     "cmd": {
       "default": "login",
-      "description": "Run specific command or default to login (requires 'root@pam')",
+      "description": "运行特定命令，默认为 login（需要 'root@pam'）",
       "enum": [
         "ceph_install",
         "login",
@@ -71,20 +71,20 @@ Creates a SPICE shell.
     },
     "cmd-opts": {
       "default": "",
-      "description": "Add parameters to a command. Encoded as null terminated strings.",
+      "description": "向命令添加参数。编码为以空字符结尾的字符串。",
       "optional": 1,
       "requires": "cmd",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "proxy": {
-      "description": "SPICE proxy server. This can be used by the client to specify the proxy server. All nodes in a cluster runs 'spiceproxy', so it is up to the client to choose one. By default, we return the node where the VM is currently running. As reasonable setting is to use same node you use to connect to the API (This is window.location.hostname for the JS GUI).",
+      "description": "SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。",
       "format": "address",
       "optional": 1,
       "type": "string",
@@ -101,7 +101,7 @@ Creates a SPICE shell.
 ```json
 {
   "additionalProperties": 1,
-  "description": "Returned values can be directly passed to the 'remote-viewer' application.",
+  "description": "返回值可直接传递给 'remote-viewer' 应用程序。",
   "properties": {
     "host": {
       "type": "string"

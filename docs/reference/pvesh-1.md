@@ -1,70 +1,50 @@
 # pvesh(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pvesh \- Shell interface for the Proxmox VE API
+pvesh \- Proxmox VE API 的 Shell 接口
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pvesh"></a>
+### **pvesh** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesh" id="cli_pvesh"></a>
 
+### **pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_create" id="cli_pvesh_create"></a>
 
-
-**pvesh** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvesh_create"></a>
-
-
-
-**pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API POST on \<api\_path\>.
+对 \<api\_path\> 调用 API POST。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_delete"></a>
+### **pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_delete" id="cli_pvesh_delete"></a>
 
-
-
-**pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API DELETE on \<api\_path\>.
+对 \<api\_path\> 调用 API DELETE。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_get"></a>
+### **pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_get" id="cli_pvesh_get"></a>
 
-
-
-**pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API GET on \<api\_path\>.
+对 \<api\_path\> 调用 API GET。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_help"></a>
-
-
-
-**pvesh help** `[OPTIONS]`
+### **pvesh help** `[OPTIONS]` <a href="#cli_pvesh_help" id="cli_pvesh_help"></a>
 
 获取指定命令的帮助。
 
@@ -76,122 +56,110 @@ Disable automatic proxying.
 
 详细输出格式。
 
-<a id="cli_pvesh_ls"></a>
+### **pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_ls" id="cli_pvesh_ls"></a>
 
-
-
-**pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-List child objects on \<api\_path\>.
+列出 \<api\_path\> 下的子对象。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_set"></a>
+### **pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_set" id="cli_pvesh_set"></a>
 
-
-
-**pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API PUT on \<api\_path\>.
+对 \<api\_path\> 调用 API PUT。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_usage"></a>
+### **pvesh usage** `<api_path>` `[OPTIONS]` <a href="#cli_pvesh_usage" id="cli_pvesh_usage"></a>
 
-
-
-**pvesh usage** `<api_path>` `[OPTIONS]`
-
-print API usage information for \<api\_path\>.
+打印 \<api\_path\> 的 API 使用信息。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--command` `<create | delete | get | set>`**
 
-API command.
+API 命令。
 
 **`--returns` `<boolean>`**
 
-Including schema for returned data.
+包含返回数据的模式定义。
 
 **`--verbose` `<boolean>`**
 
 详细输出格式。
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-The Proxmox VE management tool (`pvesh`) allows to directly invoke API function, without using the REST/HTTPS server.
+Proxmox VE 管理工具（`pvesh`）允许直接调用 API 函数，无需使用 REST/HTTPS 服务器。
 
 {% hint style="info" %}
-Only *root* is allowed to do that.
+只有 *root* 可以这样做。
 {% endhint %}
 
-## FORMAT\_OPTIONS <a href="#_format_options" id="_format_options"></a>
+## FORMAT\_OPTIONS <a href="#format_options" id="format_options"></a>
 
-It is possible to specify the output format using the `--output-format` parameter. The default format *text* uses ASCII-art to draw nice borders around tables. It additionally transforms some values into human-readable text, for example:
+可以使用 `--output-format` 参数指定输出格式。默认格式 *text* 使用 ASCII 字符画为表格绘制美观的边框。此外，还会将某些值转换为易于阅读的文本，例如：
 
-- Unix epoch is displayed as ISO 8601 date string.
-- Durations are displayed as week/day/hour/minute/second count, i.e `1d 5h`.
-- Byte sizes value include units (`B`, `KiB`, `MiB`, `GiB`, `TiB`, `PiB`).
-- Fractions are display as percentage, i.e. 1.0 is displayed as 100%.
+- Unix 纪元时间显示为 ISO 8601 日期字符串。
+- 时长显示为周/天/小时/分钟/秒的数量，即 `1d 5h`。
+- 字节大小值包含单位（`B`、`KiB`、`MiB`、`GiB`、`TiB`、`PiB`）。
+- 小数显示为百分比，即 1.0 显示为 100%。
 
-You can also completely suppress output using option `--quiet`.
+还可以使用选项 `--quiet` 完全禁止输出。
 
-**`--human-readable` `<boolean>` (*default \=* `1`)**
+**`--human-readable` `<boolean>`（*默认值 \=* `1`）**
 
-Call output rendering functions to produce human readable text.
+调用输出渲染函数，生成易于阅读的文本。
 
-**`--noborder` `<boolean>` (*default \=* `0`)**
+**`--noborder` `<boolean>`（*默认值 \=* `0`）**
 
-Do not draw borders (for *text* format).
+不绘制边框（适用于 *text* 格式）。
 
-**`--noheader` `<boolean>` (*default \=* `0`)**
+**`--noheader` `<boolean>`（*默认值 \=* `0`）**
 
-Do not show column headers (for *text* format).
+不显示列标题（适用于 *text* 格式）。
 
-**`--output-format` `<json | json-pretty | text | yaml>` (*default \=* `text`)**
+**`--output-format` `<json | json-pretty | text | yaml>`（*默认值 \=* `text`）**
 
-Output format.
+输出格式。
 
 **`--quiet` `<boolean>`**
 
-Suppress printing results.
+禁止打印结果。
 
-## EXAMPLES <a href="#_examples" id="_examples"></a>
+## 示例 <a href="#examples" id="examples"></a>
 
-Get the list of nodes in my cluster
+获取我的集群中的节点列表
 
 ```text
 # pvesh get /nodes
 ```
 
-Get a list of available options for the datacenter
+获取数据中心的可用选项列表
 
 ```text
 # pvesh usage cluster/options -v
 ```
 
-Set the HTMl5 NoVNC console as the default console for the datacenter
+将 HTMl5 NoVNC 控制台设置为数据中心的默认控制台
 
 ```text
 # pvesh set cluster/options -console html5
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

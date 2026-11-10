@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/query-oci-repo-tags`
 
-List all tags for an OCI repository reference.
+列出 OCI 仓库引用的所有标签。
 
 **方法标识：** `query_oci_repo_tags`
 
@@ -40,8 +40,8 @@ List all tags for an OCI repository reference.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `reference` | string | 是 | — | The reference to the repository to query tags from. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `reference` | string | 是 | — | 要查询其标签的仓库引用。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ List all tags for an OCI repository reference.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "reference": {
-      "description": "The reference to the repository to query tags from.",
+      "description": "要查询其标签的仓库引用。",
       "pattern": "^(?:(?:[a-zA-Z\\d]|[a-zA-Z\\d][a-zA-Z\\d-]*[a-zA-Z\\d])(?:\\.(?:[a-zA-Z\\d]|[a-zA-Z\\d][a-zA-Z\\d-]*[a-zA-Z\\d]))*(?::\\d+)?/)?[a-z\\d]+(?:(?:[._]|__|[-]*)[a-z\\d]+)*(?:/[a-z\\d]+(?:(?:[._]|__|[-]*)[a-z\\d]+)*)*$",
       "type": "string"
     }

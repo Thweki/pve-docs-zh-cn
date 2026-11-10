@@ -6,7 +6,7 @@
 
 ## GET `/cluster/config/qdevice`
 
-Get QDevice status
+获取 QDevice 状态
 
 **方法标识：** `status`
 

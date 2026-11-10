@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/hardware/usb`
 
-List local USB devices.
+列出本地 USB 设备。
 
 **方法标识：** `usbscan`
 
@@ -46,7 +46,7 @@ List local USB devices.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ List local USB devices.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

@@ -1,6 +1,6 @@
-# 22.1. General <a href="#cli_general" id="cli_general"></a>
+# 22.1. 常规 <a href="#cli_general" id="cli_general"></a>
 
-Regarding the historically non-uniform casing style for options, see [the related section for configuration files](../24-configuration-files-2/01-configuration-files.md#configuration_files_casing).
+关于选项在历史上不统一的大小写风格，请参阅[配置文件相关章节](../24-configuration-files-2/01-configuration-files.md#configuration_files_casing)。
 
 ---
 

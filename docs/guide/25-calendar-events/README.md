@@ -1,9 +1,9 @@
-# 25\. Appendix D: Calendar Events <a href="#_calendar_events" id="_calendar_events"></a>
+# 25\. 附录 D：日历事件 <a href="#calendar_events" id="calendar_events"></a>
 
 ## 本章内容
 
-- [25.1. Schedule Format](01-chapter-calendar-events.md)
-- [25.2. Detailed Specification](02-detailed-specification.md)
+- [25.1. 计划格式](01-chapter-calendar-events.md)
+- [25.2. 详细规范](02-detailed-specification.md)
 
 ---
 

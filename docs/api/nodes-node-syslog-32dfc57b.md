@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/syslog`
 
-Read system log
+读取系统日志
 
 **方法标识：** `syslog`
 
@@ -47,11 +47,11 @@ Read system log
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | The cluster node name. |
-| `service` | string | 否 | — | Service ID |
-| `since` | string | 否 | — | Display all log since this date-time string. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `service` | string | 否 | — | 服务 ID |
+| `since` | string | 否 | — | 显示从此日期时间字符串开始的所有日志。 |
 | `start` | integer | 否 | — |  |
-| `until` | string | 否 | — | Display all log until this date-time string. |
+| `until` | string | 否 | — | 显示截至此日期时间字符串的所有日志。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -67,20 +67,20 @@ Read system log
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "service": {
-      "description": "Service ID",
+      "description": "服务 ID",
       "maxLength": 128,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "since": {
-      "description": "Display all log since this date-time string.",
+      "description": "显示从此日期时间字符串开始的所有日志。",
       "optional": 1,
       "pattern": "^\\d{4}-\\d{2}-\\d{2}( \\d{2}:\\d{2}(:\\d{2})?)?$",
       "type": "string"
@@ -92,7 +92,7 @@ Read system log
       "typetext": "<integer> (0 - N)"
     },
     "until": {
-      "description": "Display all log until this date-time string.",
+      "description": "显示截至此日期时间字符串的所有日志。",
       "optional": 1,
       "pattern": "^\\d{4}-\\d{2}-\\d{2}( \\d{2}:\\d{2}(:\\d{2})?)?$",
       "type": "string"
@@ -110,11 +110,11 @@ Read system log
   "items": {
     "properties": {
       "n": {
-        "description": "Line number",
+        "description": "行号",
         "type": "integer"
       },
       "t": {
-        "description": "Line text",
+        "description": "行文本",
         "type": "string"
       }
     },

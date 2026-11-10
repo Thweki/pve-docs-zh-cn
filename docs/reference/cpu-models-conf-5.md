@@ -1,18 +1,18 @@
 # cpu-models.conf(5)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
 cpu-models.conf \- 自定义 CPU 模型配置文件
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
 */etc/pve/virtual-guest/cpu-models.conf*
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
 `/etc/pve/virtual-guest/cpu-models.conf` 文件存储自定义 CPU 模型，VM 可使用这些模型来访问高级 CPU 功能（例如自定义 CPU 标志）。
 
-## 文件格式 <a href="#_file_format" id="_file_format"></a>
+## 文件格式 <a href="#file_format" id="file_format"></a>
 
 每个 CPU 模型在文件中都有各自的节，节的开头为以下标头：
 
@@ -34,7 +34,7 @@ reported-model qemu64
 
 空白行以及以 `#` 开头的行会被忽略。
 
-## 选项 <a href="#_options" id="_options"></a>
+## 选项 <a href="#options" id="options"></a>
 
 **`flags`: `<+FLAG[;-FLAG...]>`**
 
@@ -64,7 +64,7 @@ Hyper-V 供应商 ID。Windows 客户机中的某些驱动程序或程序需要�
 
 报告给客户机的 CPU 模型和供应商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效；默认模型始终会向客户机操作系统报告其自身。
 
-## 示例文件 <a href="#_example_file" id="_example_file"></a>
+## 示例文件 <a href="#example_file" id="example_file"></a>
 
 ```text
 cpu-model: avx
@@ -75,7 +75,7 @@ cpu-model: avx
     reported-model kvm64
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

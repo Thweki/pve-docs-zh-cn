@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn`
 
-Directory index.
+目录索引。
 
 **方法标识：** `index`
 
@@ -58,7 +58,7 @@ Directory index.
 
 ## PUT `/cluster/sdn`
 
-Apply sdn controller changes &amp;&amp; reload.
+应用 SDN 控制器更改并重新加载。
 
 **方法标识：** `reload`
 
@@ -92,8 +92,8 @@ Apply sdn controller changes &amp;&amp; reload.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
-| `release-lock` | boolean | 否 | 1 | When lock-token has been provided and configuration successfully committed, release the lock automatically afterwards |
+| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| `release-lock` | boolean | 否 | 1 | 提供 lock-token 且配置成功提交后，自动释放锁 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -103,14 +103,14 @@ Apply sdn controller changes &amp;&amp; reload.
   "additionalProperties": 0,
   "properties": {
     "lock-token": {
-      "description": "the token for unlocking the global SDN configuration",
+      "description": "用于解锁全局 SDN 配置的令牌",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "release-lock": {
       "default": 1,
-      "description": "When lock-token has been provided and configuration successfully committed, release the lock automatically afterwards",
+      "description": "提供 lock-token 且配置成功提交后，自动释放锁",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

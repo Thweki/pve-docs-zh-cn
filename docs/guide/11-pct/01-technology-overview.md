@@ -1,4 +1,4 @@
-# 11.1. Technology Overview <a href="#_technology_overview" id="_technology_overview"></a>
+# 11.1. 技术概述 <a href="#technology_overview" id="technology_overview"></a>
 
 - LXC（[https://linuxcontainers.org/](https://linuxcontainers.org/)）
 - 集成到 Proxmox VE 图形化 Web 用户界面（GUI）中
@@ -8,8 +8,8 @@
 - 控制组（*cgroups*），用于资源隔离和限制
 - *AppArmor* 和 *seccomp*，用于提高安全性
 - 现代 Linux 内核
-- Image based deployment ([templates](02-pct-supported-distributions.md))
-- Uses Proxmox VE [storage library](../07-storage/README.md)
+- 基于镜像的部署（[模板](02-pct-supported-distributions.md)）
+- 使用 Proxmox VE [存储库](../07-storage/README.md)
 - 从宿主机配置容器（网络、DNS、存储等）
 
 ---

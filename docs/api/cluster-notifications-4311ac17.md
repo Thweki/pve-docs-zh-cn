@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications`
 
-Index for notification-related API endpoints.
+通知相关 API 端点的索引。
 
 **方法标识：** `index`
 

@@ -26,7 +26,7 @@ Proxmox VE 用户界面默认使用英语。不过，得益于社区的贡献，
 
 即使您不熟悉 git，也可以帮助翻译 Proxmox VE。首先，您可以在[此处](https://git.proxmox.com/?p=proxmox-i18n.git;a=tree)下载语言文件。找到要改进的语言，然后右键单击该语言文件的“raw”链接，并选择*“将链接另存为…”*。对文件进行修改，然后将最终译文连同已签署的[贡献者许可协议](https://pve.proxmox.com/wiki/Developer_Documentation#Software_License_and_Copyright)直接发送至 office(at)proxmox.com。
 
-## 1.13.3. 测试翻译 <a href="#_testing_the_translation" id="_testing_the_translation"></a>
+## 1.13.3. 测试翻译 <a href="#testing_the_translation" id="testing_the_translation"></a>
 
 要在 Proxmox VE 中使用该翻译，必须先将 `.po` 文件转换为 `.js` 文件。您可以通过调用以下脚本完成此操作，该脚本位于同一仓库中：
 
@@ -50,7 +50,7 @@ Proxmox VE 用户界面默认使用英语。不过，得益于社区的贡献，
 # apt-get install perl liblocale-po-perl libjson-perl
 ```
 
-## 1.13.4. 发送翻译 <a href="#_sending_the_translation" id="_sending_the_translation"></a>
+## 1.13.4. 发送翻译 <a href="#sending_the_translation" id="sending_the_translation"></a>
 
 您可以将完成的翻译（`.po` 文件）连同已签署的贡献者许可协议发送至 Proxmox 团队，地址为 office(at)proxmox.com。或者，如果您有一定的开发经验，可以将其作为补丁发送至 Proxmox VE 开发邮件列表。请参阅[开发者文档](https://pve.proxmox.com/wiki/Developer_Documentation)。
 

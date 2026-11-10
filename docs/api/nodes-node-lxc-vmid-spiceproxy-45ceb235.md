@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/lxc/{vmid}/spiceproxy`
 
-Returns a SPICE configuration to connect to the CT.
+返回用于连接容器的 SPICE 配置。
 
 **方法标识：** `spiceproxy`
 
@@ -46,9 +46,9 @@ Returns a SPICE configuration to connect to the CT.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `proxy` | string | 否 | — | SPICE proxy server. This can be used by the client to specify the proxy server. All nodes in a cluster runs 'spiceproxy', so it is up to the client to choose one. By default, we return the node where the VM is currently running. As reasonable setting is to use same node you use to connect to the API (This is window.location.hostname for the JS GUI). |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `proxy` | string | 否 | — | SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,20 +58,20 @@ Returns a SPICE configuration to connect to the CT.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "proxy": {
-      "description": "SPICE proxy server. This can be used by the client to specify the proxy server. All nodes in a cluster runs 'spiceproxy', so it is up to the client to choose one. By default, we return the node where the VM is currently running. As reasonable setting is to use same node you use to connect to the API (This is window.location.hostname for the JS GUI).",
+      "description": "SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。",
       "format": "address",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -89,7 +89,7 @@ Returns a SPICE configuration to connect to the CT.
 ```json
 {
   "additionalProperties": 1,
-  "description": "Returned values can be directly passed to the 'remote-viewer' application.",
+  "description": "返回值可直接传递给 'remote-viewer' 应用程序。",
   "properties": {
     "host": {
       "type": "string"

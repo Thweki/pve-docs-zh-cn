@@ -1,49 +1,49 @@
 # pveperf(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pveperf \- the Proxmox benchmark
+pveperf \- Proxmox 基准测试
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
 **pveperf** `[PATH]`
 
-## 描述 <a href="#_description" id="_description"></a>
+## 描述 <a href="#description" id="description"></a>
 
-Tries to gather some CPU/hard disk performance data on the hard disk mounted at `PATH` (`/` is used as default):
+尝试在挂载到 `PATH` 的硬盘上收集一些 CPU/硬盘性能数据（默认使用 `/`）：
 
 **CPU BOGOMIPS**
 
-bogomips sum of all CPUs
+所有 CPU 的 bogomips 总和
 
 **REGEX/SECOND**
 
-regular expressions per second (perl performance test), should be above 300000
+每秒正则表达式数（perl 性能测试），应高于 300000
 
 **HD SIZE**
 
-hard disk size
+硬盘大小
 
 **BUFFERED READS**
 
-simple HD read test. Modern HDs should reach at least 40 MB/sec
+简单的硬盘读取测试。现代硬盘应至少达到 40 MB/sec
 
 **AVERAGE SEEK TIME**
 
-tests average seek time. Fast SCSI HDs reach values \< 8 milliseconds. Common IDE/SATA disks get values from 15 to 20 ms.
+测试平均寻道时间。高速 SCSI 硬盘可达到 \< 8 毫秒。普通 IDE/SATA 磁盘的值为 15 到 20 ms。
 
 **FSYNCS/SECOND**
 
-value should be greater than 200 (you should enable `write
-back` cache mode on you RAID controller \- needs a battery backed cache (BBWC)).
+此值应大于 200（应在 RAID 控制器上启用 `write
+back` 缓存模式，需要具有电池保护的缓存（BBWC））。
 
 **DNS EXT**
 
-average time to resolve an external DNS name
+解析外部 DNS 名称的平均时间
 
 **DNS INT**
 
-average time to resolve a local DNS name
+解析本地 DNS 名称的平均时间
 
 <a id="footnotes"></a>
 

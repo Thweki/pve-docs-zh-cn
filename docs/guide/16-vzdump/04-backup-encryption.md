@@ -1,6 +1,6 @@
-# 16.4. Backup Encryption <a href="#_backup_encryption" id="_backup_encryption"></a>
+# 16.4. 备份加密 <a href="#backup_encryption" id="backup_encryption"></a>
 
-For Proxmox Backup Server storages, you can optionally set up client-side encryption of backups, see [the corresponding section.](../07-storage/08-storage-pbs.md#storage_pbs_encryption)
+对于 Proxmox Backup Server 存储，可以选择设置备份的客户端加密，参见 [相应章节。](../07-storage/08-storage-pbs.md#storage_pbs_encryption)
 
 ---
 

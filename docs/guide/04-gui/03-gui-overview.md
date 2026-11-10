@@ -1,4 +1,4 @@
-# 4.3. GUI 概述 <a href="#_gui_overview" id="_gui_overview"></a>
+# 4.3. GUI 概述 <a href="#gui_overview" id="gui_overview"></a>
 
 [![screenshot/gui-datacenter-summary.png](../../assets/screenshot-gui-datacenter-summary-png-ade3f5660241.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-summary.png)
 
@@ -35,7 +35,7 @@ Proxmox VE 用户界面由四个区域组成。
 您可以缩小或扩大资源树和日志面板，或完全隐藏日志面板。当您在小尺寸显示器上工作并希望有更多空间查看其他内容时，这会很有帮助。
 {% endhint %}
 
-## 4.3.1. 标题栏 <a href="#_header" id="_header"></a>
+## 4.3.1. 标题栏 <a href="#header" id="header"></a>
 
 在左上方，您首先看到的是 Proxmox 徽标。其旁边是当前运行的 Proxmox VE 版本。在旁边的搜索栏中，您可以搜索特定对象（VM、容器、节点、…）。这有时比在资源树中选择对象更快。
 
@@ -108,7 +108,7 @@ Proxmox VE 用户界面由四个区域组成。
 </tr>
 </table>
 
-## 4.3.3. 资源树 <a href="#_resource_tree" id="_resource_tree"></a>
+## 4.3.3. 资源树 <a href="#resource_tree" id="resource_tree"></a>
 
 这是主导航树。在树的顶部，你可以选择一些预定义视图，这些视图会改变下方树的结构。默认视图是 **服务器视图**，它显示以下对象类型：
 
@@ -174,7 +174,7 @@ Proxmox VE 用户界面由四个区域组成。
 </tr>
 </table>
 
-## 4.3.4. 日志面板 <a href="#_log_panel" id="_log_panel"></a>
+## 4.3.4. 日志面板 <a href="#log_panel" id="log_panel"></a>
 
 日志面板的主要用途是向你显示集群中当前正在发生的事情。创建新虚拟机等操作会在后台执行，我们将这种后台作业称为 *任务*。
 

@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/sdn/vnets/{vnet}/ips`
 
-Delete IP Mappings in a VNet
+删除 VNet 中的 IP 映射
 
 **方法标识：** `ipdelete`
 
@@ -40,10 +40,10 @@ Delete IP Mappings in a VNet
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | The IP address to delete |
-| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
-| `zone` | string | 是 | — | The SDN zone object identifier. |
+| `ip` | string | 是 | — | 要删除的 IP 地址 |
+| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| `zone` | string | 是 | — | SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -53,29 +53,29 @@ Delete IP Mappings in a VNet
   "additionalProperties": 0,
   "properties": {
     "ip": {
-      "description": "The IP address to delete",
+      "description": "要删除的 IP 地址",
       "format": "ip",
       "type": "string",
       "typetext": "<string>"
     },
     "mac": {
-      "description": "Unicast MAC address.",
+      "description": "单播 MAC 地址。",
       "format": "mac-addr",
       "format_description": "XX:XX:XX:XX:XX:XX",
       "optional": 1,
       "type": "string",
       "typetext": "<XX:XX:XX:XX:XX:XX>",
-      "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+      "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "zone": {
-      "description": "The SDN zone object identifier.",
+      "description": "SDN 区域对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -97,7 +97,7 @@ Delete IP Mappings in a VNet
 
 ## POST `/cluster/sdn/vnets/{vnet}/ips`
 
-Create IP Mapping in a VNet
+在 VNet 中创建 IP 映射
 
 **方法标识：** `ipcreate`
 
@@ -131,10 +131,10 @@ Create IP Mapping in a VNet
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | The IP address to associate with the given MAC address |
-| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
-| `zone` | string | 是 | — | The SDN zone object identifier. |
+| `ip` | string | 是 | — | 要与给定 MAC 地址关联的 IP 地址 |
+| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| `zone` | string | 是 | — | SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -144,29 +144,29 @@ Create IP Mapping in a VNet
   "additionalProperties": 0,
   "properties": {
     "ip": {
-      "description": "The IP address to associate with the given MAC address",
+      "description": "要与给定 MAC 地址关联的 IP 地址",
       "format": "ip",
       "type": "string",
       "typetext": "<string>"
     },
     "mac": {
-      "description": "Unicast MAC address.",
+      "description": "单播 MAC 地址。",
       "format": "mac-addr",
       "format_description": "XX:XX:XX:XX:XX:XX",
       "optional": 1,
       "type": "string",
       "typetext": "<XX:XX:XX:XX:XX:XX>",
-      "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+      "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "zone": {
-      "description": "The SDN zone object identifier.",
+      "description": "SDN 区域对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -188,7 +188,7 @@ Create IP Mapping in a VNet
 
 ## PUT `/cluster/sdn/vnets/{vnet}/ips`
 
-Update IP Mapping in a VNet
+更新 VNet 中的 IP 映射
 
 **方法标识：** `ipupdate`
 
@@ -222,11 +222,11 @@ Update IP Mapping in a VNet
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | The IP address to associate with the given MAC address |
-| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
-| `vmid` | integer | 否 | — | The (unique) ID of the VM. |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
-| `zone` | string | 是 | — | The SDN zone object identifier. |
+| `ip` | string | 是 | — | 要与给定 MAC 地址关联的 IP 地址 |
+| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| `zone` | string | 是 | — | SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -236,22 +236,22 @@ Update IP Mapping in a VNet
   "additionalProperties": 0,
   "properties": {
     "ip": {
-      "description": "The IP address to associate with the given MAC address",
+      "description": "要与给定 MAC 地址关联的 IP 地址",
       "format": "ip",
       "type": "string",
       "typetext": "<string>"
     },
     "mac": {
-      "description": "Unicast MAC address.",
+      "description": "单播 MAC 地址。",
       "format": "mac-addr",
       "format_description": "XX:XX:XX:XX:XX:XX",
       "optional": 1,
       "type": "string",
       "typetext": "<XX:XX:XX:XX:XX:XX>",
-      "verbose_description": "A common MAC address with the I/G (Individual/Group) bit not set."
+      "verbose_description": "未设置 I/G（个体/组）位的普通 MAC 地址。"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -260,14 +260,14 @@ Update IP Mapping in a VNet
       "typetext": "<integer> (100 - 999999999)"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
       "type": "string"
     },
     "zone": {
-      "description": "The SDN zone object identifier.",
+      "description": "SDN 区域对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",

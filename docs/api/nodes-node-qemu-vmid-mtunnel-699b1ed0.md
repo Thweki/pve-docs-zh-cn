@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/mtunnel`
 
-Migration tunnel endpoint - only for internal use by VM migration.
+迁移隧道端点——仅供虚拟机迁移内部使用。
 
 **方法标识：** `mtunnel`
 
@@ -31,7 +31,7 @@ Migration tunnel endpoint - only for internal use by VM migration.
       ]
     ]
   ],
-  "description": "You need 'VM.Allocate' permissions on '/vms/{vmid}' and Sys.Incoming on '/'. Further permission checks happen during the actual migration."
+  "description": "需要对 '/vms/{vmid}' 具有 'VM.Allocate' 权限，并对 '/' 具有 Sys.Incoming 权限。进一步的权限检查在实际迁移期间进行。"
 }
 ```
 
@@ -51,10 +51,10 @@ Migration tunnel endpoint - only for internal use by VM migration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bridges` | string | 否 | — | List of network bridges to check availability. Will be checked again for actually used bridges during migration. |
-| `node` | string | 是 | — | The cluster node name. |
-| `storages` | string | 否 | — | List of storages to check permission and availability. Will be checked again for all actually used storages during migration. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `bridges` | string | 否 | — | 要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storages` | string | 否 | — | 要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -64,27 +64,27 @@ Migration tunnel endpoint - only for internal use by VM migration.
   "additionalProperties": 0,
   "properties": {
     "bridges": {
-      "description": "List of network bridges to check availability. Will be checked again for actually used bridges during migration.",
+      "description": "要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。",
       "format": "pve-bridge-id-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storages": {
-      "description": "List of storages to check permission and availability. Will be checked again for all actually used storages during migration.",
+      "description": "要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。",
       "format": "pve-storage-id-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

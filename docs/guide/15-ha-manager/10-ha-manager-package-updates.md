@@ -1,4 +1,4 @@
-# 15.10. Package Updates <a href="#ha_manager_package_updates" id="ha_manager_package_updates"></a>
+# 15.10. 软件包更新 <a href="#ha_manager_package_updates" id="ha_manager_package_updates"></a>
 
 更新 ha-manager 时，应逐个节点进行，切勿同时更新所有节点，原因有多个。首先，尽管我们对软件进行了全面测试，但仍无法完全排除影响你特定配置的错误。逐个节点更新并在每个节点更新完成后检查其功能，有助于从可能出现的问题中恢复；而同时更新所有节点可能导致集群损坏，通常也不是良好做法。
 

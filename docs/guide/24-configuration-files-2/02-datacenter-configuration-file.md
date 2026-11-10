@@ -1,8 +1,8 @@
-# 24.2. Datacenter Configuration <a href="#datacenter_configuration_file" id="datacenter_configuration_file"></a>
+# 24.2. 数据中心配置 <a href="#datacenter_configuration_file" id="datacenter_configuration_file"></a>
 
 文件 `/etc/pve/datacenter.cfg` 是 Proxmox VE 的配置文件。它包含所有节点使用的集群范围默认值。
 
-## 24.2.1. File Format <a href="#_file_format_3" id="_file_format_3"></a>
+## 24.2.1. 文件格式 <a href="#file_format_3" id="file_format_3"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -12,7 +12,7 @@ OPTION: value
 
 文件中的空白行会被忽略，以 `#` 字符开头的行会被视为注释，同样会被忽略。
 
-## 24.2.2. Options <a href="#_options" id="_options"></a>
+## 24.2.2. 选项 <a href="#options" id="options"></a>
 
 **`bwlimit`: `[clone=<LIMIT>] [,default=<LIMIT>] [,migration=<LIMIT>] [,move=<LIMIT>] [,restore=<LIMIT>]`**
 
@@ -224,7 +224,7 @@ VNC 服务器的默认键盘布局。
 
 **`registered-tags`: `<tag>[;<tag>...]`**
 
-A list of tags that require a `Sys.Modify` on */* to set and delete. Tags set here that are also in *user-tag-access* also require `Sys.Modify`.
+设置和删除时需要具有 `Sys.Modify`（位于 */* 上）的标签列表。此处设置且也位于 *user-tag-access* 中的标签还需要 `Sys.Modify`。
 
 **`replication`: `[type=]<secure|insecure> [,network=<CIDR>]`**
 

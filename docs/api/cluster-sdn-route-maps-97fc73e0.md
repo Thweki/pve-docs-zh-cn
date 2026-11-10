@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/route-maps`
 
-List Route Maps
+列出路由映射
 
 **方法标识：** `list_route_maps`
 
@@ -14,7 +14,7 @@ List Route Maps
 
 ```json
 {
-  "description": "Only returns route maps where you have 'SDN.Audit' or 'SDN.Allocate' permissions.",
+  "description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射。",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ List Route Maps
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `running` | boolean | 否 | — | Display running config. |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -38,7 +38,7 @@ List Route Maps
 {
   "properties": {
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -56,7 +56,7 @@ List Route Maps
   "items": {
     "properties": {
       "id": {
-        "description": "The SDN route map identifier",
+        "description": "SDN 路由映射标识符",
         "format": "pve-sdn-route-map-id",
         "type": "string"
       }

@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/ceph/mgr/{id}`
 
-Destroy Ceph Manager.
+销毁 Ceph 管理器。
 
 **方法标识：** `destroymgr`
 
@@ -46,8 +46,8 @@ Destroy Ceph Manager.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | The ID of the manager |
-| `node` | string | 是 | — | The cluster node name. |
+| `id` | string | 是 | — | 管理器的 ID |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,12 +57,12 @@ Destroy Ceph Manager.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "The ID of the manager",
+      "description": "管理器的 ID",
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,7 +83,7 @@ Destroy Ceph Manager.
 
 ## POST `/nodes/{node}/ceph/mgr/{id}`
 
-Create Ceph Manager
+创建 Ceph 管理器
 
 **方法标识：** `createmgr`
 
@@ -123,8 +123,8 @@ Create Ceph Manager
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 否 | "nodename" | The ID for the manager, when omitted the same as the nodename. |
-| `node` | string | 是 | — | The cluster node name. |
+| `id` | string | 否 | "nodename" | 管理器的 ID，省略时与节点名称相同。 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -135,14 +135,14 @@ Create Ceph Manager
   "properties": {
     "id": {
       "default": "nodename",
-      "description": "The ID for the manager, when omitted the same as the nodename.",
+      "description": "管理器的 ID，省略时与节点名称相同。",
       "maxLength": 200,
       "optional": 1,
       "pattern": "[a-zA-Z0-9]([a-zA-Z0-9\\-]*[a-zA-Z0-9])?",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

@@ -14,7 +14,7 @@ Proxmox 定期为所有存储库提供更新。要安装更新，请使用基于
 有关偶尔将 Ceph 升级到下一个主要版本的信息，请参阅 [Ceph 存储库](01-sysadmin-package-repositories.md#sysadmin_package_repositories_ceph)。
 
 {% hint style="info" %}
-APT 软件包管理系统非常灵活，并提供了许多功能，有关更多信息，请参阅 `man apt` 或 [\[Hertzog13\]](../21-bibliography/README.md#Hertzog13)。
+APT 软件包管理系统非常灵活，并提供了许多功能，有关更多信息，请参阅 `man apt` 或 [\[Hertzog13\]](../21-bibliography/README.md#hertzog13)。
 {% endhint %}
 
 {% hint style="success" %}

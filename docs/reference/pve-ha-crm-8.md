@@ -1,22 +1,14 @@
 # pve-ha-crm(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## 名称 <a href="#name" id="name"></a>
 
-pve-ha-crm \- PVE Cluster Resource Manager Daemon
+pve-ha-crm \- PVE 集群资源管理器守护进程
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#synopsis" id="synopsis"></a>
 
-<a id="cli_pve-ha-crm"></a>
+### **pve-ha-crm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-ha-crm" id="cli_pve-ha-crm"></a>
 
-
-
-**pve-ha-crm** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pve-ha-crm_help"></a>
-
-
-
-**pve-ha-crm help** `[OPTIONS]`
+### **pve-ha-crm help** `[OPTIONS]` <a href="#cli_pve-ha-crm_help" id="cli_pve-ha-crm_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,39 +20,27 @@ pve-ha-crm \- PVE Cluster Resource Manager Daemon
 
 详细输出格式。
 
-<a id="cli_pve-ha-crm_start"></a>
+### **pve-ha-crm start** `[OPTIONS]` <a href="#cli_pve-ha-crm_start" id="cli_pve-ha-crm_start"></a>
 
-
-
-**pve-ha-crm start** `[OPTIONS]`
-
-Start the daemon.
+启动守护进程。
 
 **`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode \- stay in foreground
+调试模式，保持在前台运行
 
-<a id="cli_pve-ha-crm_status"></a>
+### **pve-ha-crm status** <a href="#cli_pve-ha-crm_status" id="cli_pve-ha-crm_status"></a>
 
+获取守护进程状态。
 
+### **pve-ha-crm stop** <a href="#cli_pve-ha-crm_stop" id="cli_pve-ha-crm_stop"></a>
 
-**pve-ha-crm status**
+停止守护进程。
 
-Get daemon status.
+## 描述 <a href="#description" id="description"></a>
 
-<a id="cli_pve-ha-crm_stop"></a>
+这是集群资源管理器守护进程。
 
-
-
-**pve-ha-crm stop**
-
-Stop the daemon.
-
-## 描述 <a href="#_description" id="_description"></a>
-
-This is the Cluster Resource Manager Daemon.
-
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

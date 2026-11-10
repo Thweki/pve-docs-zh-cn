@@ -6,7 +6,7 @@
 
 ## DELETE `/pools/{poolid}`
 
-Delete pool (deprecated, no support for nested pools, use 'DELETE /pools/?poolid={poolid}').
+删除资源池（已弃用，不支持嵌套资源池，请使用 'DELETE /pools/?poolid={poolid}'）。
 
 **方法标识：** `delete_pool_deprecated`
 
@@ -21,7 +21,7 @@ Delete pool (deprecated, no support for nested pools, use 'DELETE /pools/?poolid
       "Pool.Allocate"
     ]
   ],
-  "description": "You can only delete empty pools (no members)."
+  "description": "只能删除空资源池（无成员）。"
 }
 ```
 
@@ -71,7 +71,7 @@ Delete pool (deprecated, no support for nested pools, use 'DELETE /pools/?poolid
 
 ## GET `/pools/{poolid}`
 
-Get pool configuration (deprecated, no support for nested pools, use 'GET /pools/?poolid={poolid}').
+获取资源池配置（已弃用，不支持嵌套资源池，请使用 'GET /pools/?poolid={poolid}'）。
 
 **方法标识：** `read_pool`
 
@@ -178,7 +178,7 @@ Get pool configuration (deprecated, no support for nested pools, use 'GET /pools
 
 ## PUT `/pools/{poolid}`
 
-Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poolid={poolid}' instead).
+更新资源池数据（已弃用，不支持嵌套资源池——请改用 'PUT /pools/?poolid={poolid}'）。
 
 **方法标识：** `update_pool_deprecated`
 
@@ -193,7 +193,7 @@ Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poo
       "Pool.Allocate"
     ]
   ],
-  "description": "You also need the right to modify permissions on any object you add/delete."
+  "description": "还需要有权修改所添加/删除的任何对象的权限。"
 }
 ```
 
@@ -213,12 +213,12 @@ Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poo
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `allow-move` | boolean | 否 | 0 | Allow adding a guest even if already in another pool. The guest will be removed from its current pool and added to this one. |
+| `allow-move` | boolean | 否 | 0 | 即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。 |
 | `comment` | string | 否 | — |  |
-| `delete` | boolean | 否 | 0 | Remove the passed VMIDs and/or storage IDs instead of adding them. |
+| `delete` | boolean | 否 | 0 | 移除传入的 VMID 和/或存储 ID，而非添加。 |
 | `poolid` | string | 是 | — |  |
-| `storage` | string | 否 | — | List of storage IDs to add or remove from this pool. |
-| `vms` | string | 否 | — | List of guest VMIDs to add or remove from this pool. |
+| `storage` | string | 否 | — | 要添加到此资源池或从中移除的存储 ID 列表。 |
+| `vms` | string | 否 | — | 要添加到此资源池或从中移除的客户机 VMID 列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -229,7 +229,7 @@ Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poo
   "properties": {
     "allow-move": {
       "default": 0,
-      "description": "Allow adding a guest even if already in another pool. The guest will be removed from its current pool and added to this one.",
+      "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -241,7 +241,7 @@ Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poo
     },
     "delete": {
       "default": 0,
-      "description": "Remove the passed VMIDs and/or storage IDs instead of adding them.",
+      "description": "移除传入的 VMID 和/或存储 ID，而非添加。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -252,14 +252,14 @@ Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poo
       "typetext": "<string>"
     },
     "storage": {
-      "description": "List of storage IDs to add or remove from this pool.",
+      "description": "要添加到此资源池或从中移除的存储 ID 列表。",
       "format": "pve-storage-id-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vms": {
-      "description": "List of guest VMIDs to add or remove from this pool.",
+      "description": "要添加到此资源池或从中移除的客户机 VMID 列表。",
       "format": "pve-vmid-list",
       "optional": 1,
       "type": "string",

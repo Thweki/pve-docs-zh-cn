@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/dry-run`
 
-Dry-run the SDN apply action and return the difference between the current configuration and the pending configuration
+试运行 SDN 应用操作，并返回当前配置与待应用配置之间的差异
 
 **方法标识：** `dry-run`
 
@@ -46,7 +46,7 @@ Dry-run the SDN apply action and return the difference between the current confi
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,7 +56,7 @@ Dry-run the SDN apply action and return the difference between the current confi
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -73,12 +73,12 @@ Dry-run the SDN apply action and return the difference between the current confi
 {
   "properties": {
     "frr-diff": {
-      "description": "The difference between the current and pending FRR configuration.",
+      "description": "当前 FRR 配置与待应用 FRR 配置之间的差异。",
       "optional": 1,
       "type": "string"
     },
     "interfaces-diff": {
-      "description": "The difference between the current and pending /etc/network/interfaces.d/sdn configuration.",
+      "description": "当前 /etc/network/interfaces.d/sdn 配置与待应用配置之间的差异。",
       "optional": 1,
       "type": "string"
     }

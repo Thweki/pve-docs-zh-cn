@@ -6,7 +6,7 @@
 
 ## POST `/cluster/notifications/targets/{name}/test`
 
-Send a test notification to a provided target.
+向提供的目标发送测试通知。
 
 **方法标识：** `test_target`
 
@@ -57,7 +57,7 @@ Send a test notification to a provided target.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Name of the target. |
+| `name` | string | 是 | — | 目标名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -67,7 +67,7 @@ Send a test notification to a provided target.
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "Name of the target.",
+      "description": "目标名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"

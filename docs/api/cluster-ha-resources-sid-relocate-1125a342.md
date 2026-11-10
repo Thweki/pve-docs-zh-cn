@@ -6,7 +6,7 @@
 
 ## POST `/cluster/ha/resources/{sid}/relocate`
 
-Request resource relocation to another node. This stops the service on the old node, and restarts it on the target node.
+请求将资源重新安置到另一节点。此操作会停止旧节点上的服务，并在目标节点上重新启动。
 
 **方法标识：** `relocate`
 
@@ -40,8 +40,8 @@ Request resource relocation to another node. This stops the service on the old n
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | Target node. |
-| `sid` | string | 是 | — | HA resource ID. This consists of a resource type followed by a resource specific name, separated with colon (example: vm:100 / ct:100). For virtual machines and containers, you can simply use the VM or CT id as a shortcut (example: 100). |
+| `node` | string | 是 | — | 目标节点。 |
+| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -51,13 +51,13 @@ Request resource relocation to another node. This stops the service on the old n
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "sid": {
-      "description": "HA resource ID. This consists of a resource type followed by a resource specific name, separated with colon (example: vm:100 / ct:100). For virtual machines and containers, you can simply use the VM or CT id as a shortcut (example: 100).",
+      "description": "HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。",
       "format": "pve-ha-resource-or-vm-id",
       "type": "string",
       "typetext": "<type>:<name>"
@@ -74,12 +74,12 @@ Request resource relocation to another node. This stops the service on the old n
 {
   "properties": {
     "blocking-resources": {
-      "description": "HA resources, which are blocking the given HA resource from being relocated to the requested target node.",
+      "description": "阻止将给定 HA 资源重新安置到请求的目标节点的 HA 资源。",
       "items": {
-        "description": "A blocking HA resource",
+        "description": "阻塞迁移的 HA 资源",
         "properties": {
           "cause": {
-            "description": "The reason why the HA resource is blocking the relocation.",
+            "description": "此 HA 资源阻塞重新安置的原因。",
             "enum": [
               "node-affinity",
               "resource-affinity"
@@ -87,7 +87,7 @@ Request resource relocation to another node. This stops the service on the old n
             "type": "string"
           },
           "sid": {
-            "description": "The blocking HA resource id",
+            "description": "阻塞迁移的 HA 资源 ID",
             "type": "string"
           }
         },
@@ -97,21 +97,21 @@ Request resource relocation to another node. This stops the service on the old n
       "type": "array"
     },
     "comigrated-resources": {
-      "description": "HA resources, which are relocated to the same requested target node as the given HA resource, because these are in positive affinity with the HA resource.",
+      "description": "由于与给定 HA 资源具有正向亲和性，而重新安置到相同请求目标节点的 HA 资源。",
       "items": {
-        "description": "A comigrated HA resource",
+        "description": "一同迁移的 HA 资源",
         "type": "string"
       },
       "optional": 1,
       "type": "array"
     },
     "requested-node": {
-      "description": "Node, which was requested to be relocated to.",
+      "description": "请求重新安置到的节点。",
       "optional": 0,
       "type": "string"
     },
     "sid": {
-      "description": "HA resource, which is requested to be relocated.",
+      "description": "请求重新安置的 HA 资源。",
       "optional": 0,
       "type": "string"
     }

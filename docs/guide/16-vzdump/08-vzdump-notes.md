@@ -1,19 +1,19 @@
-# 16.8. Backup Notes <a href="#vzdump_notes" id="vzdump_notes"></a>
+# 16.8. 备份备注 <a href="#vzdump_notes" id="vzdump_notes"></a>
 
-You can add notes to backups using the *Edit Notes* button in the UI or via the storage content API.
+可以使用 UI 中的 *编辑备注* 按钮，或通过存储内容 API 为备份添加备注。
 
 [![screenshot/gui-cluster-backup-edit-03-template.png](../../assets/screenshot-gui-cluster-backup-edit-03-template-png-bf2a2cf7a400.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-03-template.png)
 
-It is also possible to specify a template for generating notes dynamically for a backup job and for manual backup. The template string can contain variables, surrounded by two curly braces, which will be replaced by the corresponding value when the backup is executed.
+还可以指定模板，为备份作业和手动备份动态生成备注。模板字符串可包含由两个花括号包围的变量，在执行备份时会替换为相应值。
 
 目前支持：
 
-- `{{cluster}}` the cluster name, if any
-- `{{guestname}}` the virtual guest’s assigned name
-- `{{node}}` the host name of the node the backup is being created
-- `{{vmid}}` the numerical VMID of the guest
+- `{{cluster}}` 集群名称（如果存在）
+- `{{guestname}}` 虚拟客户机分配的名称
+- `{{node}}` 创建备份所在节点的主机名
+- `{{vmid}}` 客户机的数字 VMID
 
-When specified via API or CLI, it needs to be a single line, where newline and backslash need to be escaped as literal `\n` and `\\` respectively.
+通过 API 或 CLI 指定时，必须为单行，其中换行和反斜杠分别需要转义为字面值 `\n` 和 `\\`。
 
 ---
 

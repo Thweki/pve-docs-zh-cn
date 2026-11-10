@@ -6,7 +6,7 @@
 
 ## DELETE `/access/tfa/{userid}/{id}`
 
-Delete a TFA entry by ID.
+按 ID 删除 TFA 条目。
 
 **方法标识：** `delete_tfa`
 
@@ -46,9 +46,9 @@ Delete a TFA entry by ID.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | A TFA entry id. |
-| `password` | string | 否 | — | The current password of the user performing the change. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `id` | string | 是 | — | TFA 条目 ID。 |
+| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,12 +58,12 @@ Delete a TFA entry by ID.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "A TFA entry id.",
+      "description": "TFA 条目 ID。",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "The current password of the user performing the change.",
+      "description": "执行更改的用户的当前密码。",
       "maxLength": 64,
       "minLength": 5,
       "optional": 1,
@@ -71,7 +71,7 @@ Delete a TFA entry by ID.
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -93,7 +93,7 @@ Delete a TFA entry by ID.
 
 ## GET `/access/tfa/{userid}/{id}`
 
-Fetch a requested TFA entry if present.
+获取请求的 TFA 条目（如存在）。
 
 **方法标识：** `get_tfa_entry`
 
@@ -134,8 +134,8 @@ Fetch a requested TFA entry if present.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | A TFA entry id. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `id` | string | 是 | — | TFA 条目 ID。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -145,12 +145,12 @@ Fetch a requested TFA entry if present.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "A TFA entry id.",
+      "description": "TFA 条目 ID。",
       "type": "string",
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",
@@ -166,28 +166,28 @@ Fetch a requested TFA entry if present.
 
 ```json
 {
-  "description": "TFA Entry.",
+  "description": "TFA 条目。",
   "properties": {
     "created": {
-      "description": "Creation time of this entry as unix epoch.",
+      "description": "此条目的创建时间，以 UNIX 纪元时间表示。",
       "type": "integer"
     },
     "description": {
-      "description": "User chosen description for this entry.",
+      "description": "用户为此条目选择的描述。",
       "type": "string"
     },
     "enable": {
       "default": 1,
-      "description": "Whether this TFA entry is currently enabled.",
+      "description": "此 TFA 条目当前是否已启用。",
       "optional": 1,
       "type": "boolean"
     },
     "id": {
-      "description": "The id used to reference this entry.",
+      "description": "用于引用此条目的 ID。",
       "type": "string"
     },
     "type": {
-      "description": "TFA Entry Type.",
+      "description": "TFA 条目类型。",
       "enum": [
         "totp",
         "u2f",
@@ -204,7 +204,7 @@ Fetch a requested TFA entry if present.
 
 ## PUT `/access/tfa/{userid}/{id}`
 
-Add a TFA entry for a user.
+为用户添加 TFA 条目。
 
 **方法标识：** `update_tfa_entry`
 
@@ -244,11 +244,11 @@ Add a TFA entry for a user.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | A description to distinguish multiple entries from one another |
-| `enable` | boolean | 否 | — | Whether the entry should be enabled for login. |
-| `id` | string | 是 | — | A TFA entry id. |
-| `password` | string | 否 | — | The current password of the user performing the change. |
-| `userid` | string | 是 | — | Full User ID, in the `name@realm` format. |
+| `description` | string | 否 | — | 用于区分多个条目的描述 |
+| `enable` | boolean | 否 | — | 是否应启用此条目用于登录。 |
+| `id` | string | 是 | — | TFA 条目 ID。 |
+| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
+| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -258,25 +258,25 @@ Add a TFA entry for a user.
   "additionalProperties": 0,
   "properties": {
     "description": {
-      "description": "A description to distinguish multiple entries from one another",
+      "description": "用于区分多个条目的描述",
       "maxLength": 255,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "enable": {
-      "description": "Whether the entry should be enabled for login.",
+      "description": "是否应启用此条目用于登录。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "id": {
-      "description": "A TFA entry id.",
+      "description": "TFA 条目 ID。",
       "type": "string",
       "typetext": "<string>"
     },
     "password": {
-      "description": "The current password of the user performing the change.",
+      "description": "执行更改的用户的当前密码。",
       "maxLength": 64,
       "minLength": 5,
       "optional": 1,
@@ -284,7 +284,7 @@ Add a TFA entry for a user.
       "typetext": "<string>"
     },
     "userid": {
-      "description": "Full User ID, in the `name@realm` format.",
+      "description": "完整用户 ID，采用 `name@realm` 格式。",
       "format": "pve-userid",
       "maxLength": 64,
       "type": "string",

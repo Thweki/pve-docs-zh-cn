@@ -1,64 +1,44 @@
-# 22.8. **pvesh** \- Shell interface for the Proxmox VE API <a href="#_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api" id="_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api"></a>
+# 22.8. **pvesh** \- Proxmox VE API 的 Shell 接口 <a href="#strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api" id="strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api"></a>
 
-<a id="cli_pvesh"></a>
+## **pvesh** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesh" id="cli_pvesh"></a>
 
+## **pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_create" id="cli_pvesh_create"></a>
 
-
-**pvesh** `<COMMAND> [ARGS] [OPTIONS]`
-
-<a id="cli_pvesh_create"></a>
-
-
-
-**pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API POST on \<api\_path\>.
+对 \<api\_path\> 调用 API POST。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_delete"></a>
+## **pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_delete" id="cli_pvesh_delete"></a>
 
-
-
-**pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API DELETE on \<api\_path\>.
+对 \<api\_path\> 调用 API DELETE。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_get"></a>
+## **pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_get" id="cli_pvesh_get"></a>
 
-
-
-**pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API GET on \<api\_path\>.
+对 \<api\_path\> 调用 API GET。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_help"></a>
-
-
-
-**pvesh help** `[OPTIONS]`
+## **pvesh help** `[OPTIONS]` <a href="#cli_pvesh_help" id="cli_pvesh_help"></a>
 
 获取指定命令的帮助。
 
@@ -70,57 +50,45 @@ Disable automatic proxying.
 
 详细输出格式。
 
-<a id="cli_pvesh_ls"></a>
+## **pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_ls" id="cli_pvesh_ls"></a>
 
-
-
-**pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-List child objects on \<api\_path\>.
+列出 \<api\_path\> 下的子对象。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_set"></a>
+## **pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_set" id="cli_pvesh_set"></a>
 
-
-
-**pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
-
-Call API PUT on \<api\_path\>.
+对 \<api\_path\> 调用 API PUT。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--noproxy` `<boolean>`**
 
-Disable automatic proxying.
+禁用自动代理。
 
-<a id="cli_pvesh_usage"></a>
+## **pvesh usage** `<api_path>` `[OPTIONS]` <a href="#cli_pvesh_usage" id="cli_pvesh_usage"></a>
 
-
-
-**pvesh usage** `<api_path>` `[OPTIONS]`
-
-print API usage information for \<api\_path\>.
+打印 \<api\_path\> 的 API 使用信息。
 
 **`<api_path>`: `<string>`**
 
-API path.
+API 路径。
 
 **`--command` `<create | delete | get | set>`**
 
-API command.
+API 命令。
 
 **`--returns` `<boolean>`**
 
-Including schema for returned data.
+包含返回数据的模式定义。
 
 **`--verbose` `<boolean>`**
 

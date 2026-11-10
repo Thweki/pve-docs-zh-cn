@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/sdn/fabrics/{fabric}/neighbors`
 
-Get all neighbors for a fabric.
+获取 fabric 的所有邻居。
 
 **方法标识：** `neighbors`
 
@@ -46,8 +46,8 @@ Get all neighbors for a fabric.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | Identifier for SDN fabrics |
-| `node` | string | 是 | — | The cluster node name. |
+| `fabric` | string | 是 | — | SDN fabric 的标识符 |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -57,7 +57,7 @@ Get all neighbors for a fabric.
   "additionalProperties": 0,
   "properties": {
     "fabric": {
-      "description": "Identifier for SDN fabrics",
+      "description": "SDN fabric 的标识符",
       "format": "pve-sdn-fabric-id",
       "maxLength": 8,
       "minLength": 2,
@@ -65,7 +65,7 @@ Get all neighbors for a fabric.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -83,15 +83,15 @@ Get all neighbors for a fabric.
   "items": {
     "properties": {
       "neighbor": {
-        "description": "The IP or hostname of the neighbor.",
+        "description": "邻居的 IP 或主机名。",
         "type": "string"
       },
       "status": {
-        "description": "The status of the neighbor, as returned by FRR.",
+        "description": "FRR 返回的邻居状态。",
         "type": "string"
       },
       "uptime": {
-        "description": "The uptime of this neighbor, as returned by FRR (e.g. 8h24m12s).",
+        "description": "FRR 返回的此邻居的运行时间（例如 8h24m12s）。",
         "type": "string"
       }
     },

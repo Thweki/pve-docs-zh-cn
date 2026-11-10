@@ -6,7 +6,7 @@
 
 ## GET `/cluster/jobs/realm-sync`
 
-List configured realm-sync-jobs.
+列出已配置的 realm-sync 作业。
 
 **方法标识：** `syncjob_index`
 
@@ -41,48 +41,48 @@ List configured realm-sync-jobs.
   "items": {
     "properties": {
       "comment": {
-        "description": "A comment for the job.",
+        "description": "作业注释。",
         "optional": 1,
         "type": "string"
       },
       "enabled": {
-        "description": "If the job is enabled or not.",
+        "description": "作业是否启用。",
         "type": "boolean"
       },
       "id": {
-        "description": "The ID of the entry.",
+        "description": "条目的 ID。",
         "type": "string"
       },
       "last-run": {
-        "description": "Last execution time of the job in seconds since the beginning of the UNIX epoch",
+        "description": "作业上次执行时间，以自 UNIX 纪元起的秒数表示",
         "optional": 1,
         "type": "integer"
       },
       "next-run": {
-        "description": "Next planned execution time of the job in seconds since the beginning of the UNIX epoch.",
+        "description": "作业下次计划执行时间，以自 UNIX 纪元起的秒数表示。",
         "optional": 1,
         "type": "integer"
       },
       "realm": {
-        "description": "Authentication domain ID",
+        "description": "认证域 ID",
         "format": "pve-realm",
         "maxLength": 32,
         "type": "string"
       },
       "remove-vanished": {
         "default": "none",
-        "description": "A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: 'entry' removes the user/group when not returned from the sync. 'properties' removes the set properties on existing user/group that do not appear in the source (even custom ones). 'acl' removes acls when the user/group is not returned from the sync. Instead of a list it also can be 'none' (the default).",
+        "description": "以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。",
         "optional": "1",
         "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none",
         "type": "string",
         "typetext": "([acl];[properties];[entry])|none"
       },
       "schedule": {
-        "description": "The configured sync schedule.",
+        "description": "已配置的同步计划。",
         "type": "string"
       },
       "scope": {
-        "description": "Select what to sync.",
+        "description": "选择要同步的内容。",
         "enum": [
           "users",
           "groups",

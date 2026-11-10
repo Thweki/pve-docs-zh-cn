@@ -20,11 +20,7 @@ ceph --watch
 
 本节包含常用的故障排除信息。更多信息可在 Ceph 官方网站的“故障排除”下找到 [\[1\]](#note-90fb47b2-1)。
 
-<a id="pve_ceph_ts_logs"></a>
-
-
-
-**受影响节点上的相关日志**
+### 受影响节点上的相关日志 <a href="#pve_ceph_ts_logs" id="pve_ceph_ts_logs"></a>
 
 - [磁盘健康监控](../03-system-administration/07-disk-health-monitoring.md)
 - *系统 → 系统日志*，或通过 CLI，例如查看最近 2 天的日志：
@@ -49,11 +45,7 @@ ceph crash archive-all
 
 要获得更详细的视图，每个 Ceph 服务在 `/var/log/ceph/` 下都有一个日志文件。如果需要更详细的信息，可以调整日志级别 [\[2\]](#note-90fb47b2-2)。
 
-<a id="pve_ceph_ts_causes"></a>
-
-
-
-**Ceph 问题的常见原因**
+### Ceph 问题的常见原因 <a href="#pve_ceph_ts_causes" id="pve_ceph_ts_causes"></a>
 
 - 网络问题，例如拥塞、交换机故障、接口关闭或防火墙阻塞。检查所有 Proxmox VE 节点在 [corosync 集群网络](../05-pvecm/08-pvecm-cluster-network.md) 以及 [Ceph 公共网络和集群网络](04-pve-ceph-install-wizard.md) 上是否都能可靠访问。
 - 磁盘或连接部件存在以下情况：
@@ -63,11 +55,7 @@ ceph crash archive-all
   - 在较高负载下 I/O 性能不足（例如使用 HDD、消费级硬件或 [不建议使用的 RAID 控制器](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_raid) 时）
 - 不符合健康 Ceph 集群的 [建议](03-recommendations-for-a-healthy-ceph-cluster.md)。
 
-<a id="pve_ceph_ts_problems"></a>
-
-
-
-**常见 Ceph 问题**
+### 常见 Ceph 问题 <a href="#pve_ceph_ts_problems" id="pve_ceph_ts_problems"></a>
 
 ****
 

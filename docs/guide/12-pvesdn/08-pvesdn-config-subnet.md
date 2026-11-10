@@ -1,34 +1,34 @@
-# 12.8. Subnets <a href="#pvesdn_config_subnet" id="pvesdn_config_subnet"></a>
+# 12.8. 子网 <a href="#pvesdn_config_subnet" id="pvesdn_config_subnet"></a>
 
-A subnet define a specific IP range, described by the CIDR network address. Each VNet, can have one or more subnets.
+子网定义由 CIDR 网络地址描述的特定 IP 范围。每个 VNet 可以具有一个或多个子网。
 
-A subnet can be used to:
+子网可用于：
 
-- Restrict the IP addresses you can define on a specific VNet
-- Assign routes/gateways on a VNet in layer 3 zones
-- Enable SNAT on a VNet in layer 3 zones
-- Auto assign IPs on virtual guests (VM or CT) through IPAM plugins
-- DNS registration through DNS plugins
+- 限制可在特定 VNet 上定义的 IP 地址
+- 在三层区域中的 VNet 上分配路由/网关
+- 在三层区域中的 VNet 上启用 SNAT
+- 通过 IPAM 插件为虚拟客户机（虚拟机或容器）自动分配 IP
+- 通过 DNS 插件进行 DNS 注册
 
-If an IPAM server is associated with the subnet zone, the subnet prefix will be automatically registered in the IPAM.
+如果 IPAM 服务器与子网区域关联，子网前缀将自动注册到 IPAM 中。
 
-Subnet configuration options:
+子网配置选项：
 
 **ID**
 
-A CIDR network address, for example 10.0.0.0/8
+CIDR 网络地址，例如 10.0.0.0/8
 
-**Gateway**
+**网关**
 
-The IP address of the network’s default gateway. On layer 3 zones (Simple/EVPN plugins), it will be deployed on the VNet.
+网络默认网关的 IP 地址。在三层区域（Simple/EVPN 插件）中，它将部署在 VNet 上。
 
 **SNAT**
 
-Enable Source NAT which allows VMs from inside a VNet to connect to the outside network by forwarding the packets to the nodes outgoing interface. On EVPN zones, forwarding is done on EVPN gateway-nodes. Optional.
+启用源 NAT，将数据包转发到节点的传出接口，使 VNet 内的虚拟机能够连接外部网络。在 EVPN 区域中，转发在 EVPN 网关节点上完成。可选。
 
-**DNS Zone Prefix**
+**DNS 区域前缀**
 
-Add a prefix to the domain registration, like \<hostname\>.prefix.\<domain\> Optional.
+向域名注册添加前缀，例如 \<hostname\>.prefix.\<domain\>。可选。
 
 ---
 

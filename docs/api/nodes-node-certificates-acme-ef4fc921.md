@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/certificates/acme`
 
-ACME index.
+ACME 索引。
 
 **方法标识：** `index`
 
@@ -28,7 +28,7 @@ ACME index.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -38,7 +38,7 @@ ACME index.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"

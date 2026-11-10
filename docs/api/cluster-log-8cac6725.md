@@ -6,7 +6,7 @@
 
 ## GET `/cluster/log`
 
-Read cluster log
+读取集群日志
 
 **方法标识：** `log`
 
@@ -14,7 +14,7 @@ Read cluster log
 
 ```json
 {
-  "description": "The user needs 'Sys.Syslog' on '/' in order to get all logs.",
+  "description": "用户需要对 '/' 具有 'Sys.Syslog' 权限，才能获取所有日志。",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ Read cluster log
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max` | integer | 否 | — | Maximum number of entries. |
+| `max` | integer | 否 | — | 最大条目数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ Read cluster log
   "additionalProperties": 0,
   "properties": {
     "max": {
-      "description": "Maximum number of entries.",
+      "description": "最大条目数。",
       "minimum": 1,
       "optional": 1,
       "type": "integer",

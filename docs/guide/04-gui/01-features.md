@@ -1,4 +1,4 @@
-# 4.1. 功能 <a href="#_features" id="_features"></a>
+# 4.1. 功能 <a href="#features" id="features"></a>
 
 - Proxmox VE 集群的无缝集成与管理
 - 使用 AJAX 技术动态更新资源

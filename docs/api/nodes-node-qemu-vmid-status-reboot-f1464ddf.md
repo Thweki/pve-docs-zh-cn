@@ -6,7 +6,7 @@
 
 ## POST `/nodes/{node}/qemu/{vmid}/status/reboot`
 
-Reboot the VM by shutting it down, and starting it again. Applies pending changes.
+通过先关闭再启动来重启虚拟机。应用待处理的更改。
 
 **方法标识：** `vm_reboot`
 
@@ -46,9 +46,9 @@ Reboot the VM by shutting it down, and starting it again. Applies pending change
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `timeout` | integer | 否 | — | Wait maximal timeout seconds for the shutdown. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `timeout` | integer | 否 | — | 最多等待 timeout 秒以完成关闭。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,20 +58,20 @@ Reboot the VM by shutting it down, and starting it again. Applies pending change
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "timeout": {
-      "description": "Wait maximal timeout seconds for the shutdown.",
+      "description": "最多等待 timeout 秒以完成关闭。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

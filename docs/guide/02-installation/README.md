@@ -3,7 +3,7 @@
 Proxmox VE 基于 Debian GNU/Linux。Proxmox 提供的安装磁盘映像（ISO 文件）包含完整的 Debian 系统以及所有必要的 Proxmox VE 软件包。
 
 {% hint style="success" %}
-有关 Proxmox VE 版本与 Debian 版本之间的对应关系，请参阅[常见问题解答中的支持表格](../20-frequently-asked-questions-2/README.md#faq-support-table)。
+有关 Proxmox VE 版本与 Debian 版本之间的对应关系，请参阅[常见问题解答中的支持表格](../20-frequently-asked-questions-2/README.md)。
 {% endhint %}
 
 安装程序会引导您完成设置，允许您对本地磁盘进行分区、应用基本系统配置（例如时区、语言、网络），并安装所有必需的软件包。此过程应不超过几分钟。对于新用户和现有用户，推荐使用提供的 ISO 进行安装。

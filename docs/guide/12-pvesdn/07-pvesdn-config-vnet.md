@@ -1,41 +1,41 @@
-# 12.7. VNets <a href="#pvesdn_config_vnet" id="pvesdn_config_vnet"></a>
+# 12.7. VNet <a href="#pvesdn_config_vnet" id="pvesdn_config_vnet"></a>
 
-After creating a virtual network (VNet) through the SDN GUI, a local network interface with the same name is available on each node. To connect a guest to the VNet, assign the interface to the guest and set the IP address accordingly.
+通过 SDN GUI 创建虚拟网络（VNet）后，每个节点上都会出现同名的本地网络接口。要将客户机连接到 VNet，请将该接口分配给客户机，并相应设置 IP 地址。
 
-Depending on the zone, these options have different meanings and are explained in the respective zone section in this document.
+根据区域的不同，这些选项具有不同含义，本文档相应区域的章节中进行了说明。
 
 {% hint style="warning" %}
-In the current state, some options may have no effect or won’t work in certain zones.
+目前，某些选项可能在特定区域中无效或无法工作。
 {% endhint %}
 
-VNet configuration options:
+VNet 配置选项：
 
 **ID**
 
-An up to 8 character ID to identify a VNet
+标识 VNet 的 ID，最多 8 个字符
 
-**Alias**
+**别名**
 
-More descriptive identifier. Assigned as an alias on the interface. Optional
+更具描述性的标识符。作为别名分配给接口。可选
 
-**Zone**
+**区域**
 
-The associated zone for this VNet
+此 VNet 关联的区域
 
-**Tag**
+**标签**
 
-The unique VLAN or VXLAN ID
+唯一的 VLAN 或 VXLAN ID
 
-**VLAN Aware**
+**VLAN 感知**
 
-Enables vlan-aware option on the interface, enabling configuration in the guest.
+在接口上启用 vlan-aware 选项，允许在客户机中配置。
 
-**Isolate Ports**
+**隔离端口**
 
-Sets the isolated flag for all guest ports of this interface, but not for the interface itself. This means guests can only send traffic to non-isolated bridge-ports, which is the bridge itself. In order for this setting to take effect, you need to restart the affected guest.
+为此接口的所有客户机端口设置隔离标志，但不对接口本身设置。这意味着客户机只能向非隔离的网桥端口发送流量，也就是网桥本身。要使此设置生效，需要重启受影响的客户机。
 
 {% hint style="info" %}
-Port isolation is local to each host. Use the [VNET Firewall](15-pvesdn-firewall-integration.md) to further isolate traffic in the VNET across nodes. For example, DROP by default and only allow traffic from the IP subnet to the gateway and vice versa.
+端口隔离仅在每台宿主机本地生效。使用 [VNET 防火墙](15-pvesdn-firewall-integration.md) 进一步隔离 VNET 内跨节点的流量。例如，默认 DROP，仅允许从 IP 子网到网关及反向的流量。
 {% endhint %}
 
 ---

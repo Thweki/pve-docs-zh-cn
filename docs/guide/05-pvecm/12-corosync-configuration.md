@@ -1,4 +1,4 @@
-# 5.12. Corosync 配置 <a href="#_corosync_configuration" id="_corosync_configuration"></a>
+# 5.12. Corosync 配置 <a href="#corosync_configuration" id="corosync_configuration"></a>
 
 `/etc/pve/corosync.conf` 文件在 Proxmox VE 集群中起着核心作用。它控制集群成员关系及其网络。有关更多信息，请查看 corosync.conf 手册页：
 
@@ -53,7 +53,7 @@ systemctl restart corosync
 
 ## 5.12.2. 更改令牌系数 <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
 
-The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
+可以在 `totem` 节（位于 `/etc/pve/corosync.conf` 中）配置令牌系数。如果未显式设置令牌系数，则默认为 650 毫秒。从 Proxmox VE 9.2 开始，新集群会在 `/etc/pve/corosync.conf` 中显式设置较低的令牌系数 125 毫秒。这可缩短节点故障后重新建立集群成员关系所需的时间。
 
 corosync 使用令牌系数，根据集群规模计算多个超时时间[\[1\]](#note-92024276-1)，其中最重要的是令牌超时和共识超时。corosync 实现了令牌传递协议。令牌超时指定节点等待令牌多长时间后会声明令牌丢失[\[2\]](#note-92024276-2)。共识超时[\[3\]](#note-92024276-3)指定节点就新的集群成员关系达成共识的等待时间。令牌超时与共识超时之和，定义了节点离线后重新建立新集群成员关系所需的最短时间。
 
@@ -80,7 +80,7 @@ runtime.config.totem.token (u32) = 4950
 
 要降低令牌系数，首先请确保您的设置符合[网络要求](08-pvecm-cluster-network.md#pvecm_cluster_network_requirements)，尤其是在延迟方面。然后：
 
-- If the `token_coefficient` is not yet set explicitly to 125 milliseconds in corosync.conf, [edit corosync.conf](#pvecm_edit_corosync_conf) and add `token_coefficient: 125` to the `totem` section. Do not forget to [increase the `config_version`](#pvecm_edit_corosync_conf).
+- 如果 `token_coefficient` 尚未在 corosync.conf 中显式设为 125 毫秒，[编辑 corosync.conf](#pvecm_edit_corosync_conf) 并将 `token_coefficient: 125` 添加至 `totem` 节。不要忘记 [增大 `config_version`](#pvecm_edit_corosync_conf)。
 - 否则，如果 125 毫秒仍不足以将超时时间保持在上述限制内，请选择一个 `token_coefficient`，使令牌超时与共识超时之和最多为 45 秒。默认情况下，corosync 按以下公式计算令牌超时和共识超时（以毫秒为单位）：
 
   ```text
@@ -88,13 +88,13 @@ runtime.config.totem.token (u32) = 4950
   consensus = 1.2 * token
   ```
 
-  [Edit corosync.conf](#pvecm_edit_corosync_conf) and set an appropriate `token_coefficient` option in the `totem` section. Do not forget to [increase the `config_version`](#pvecm_edit_corosync_conf). Test your setup thoroughly for stability!
+  [编辑 corosync.conf](#pvecm_edit_corosync_conf)，并设置适当的 `token_coefficient` 选项（位于 `totem` 节）。不要忘记 [增大 `config_version`](#pvecm_edit_corosync_conf)。请全面测试设置的稳定性！
 
-After adjusting the `token_coefficient` in `corosync.conf`, recent corosync versions will automatically adopt the new value for the cluster. For corosync versions below `3.1.10-pve1`, corosync needs to be restarted on all nodes for the change to take effect.
+调整 `token_coefficient`（位于 `corosync.conf` 中）后，较新的 corosync 版本会自动为集群采用新值。对于低于 `3.1.10-pve1` 的 corosync 版本，需要在所有节点上重启 corosync 才能使更改生效。
 
-## 5.12.3. 故障排除 <a href="#_troubleshooting" id="_troubleshooting"></a>
+## 5.12.3. 故障排除 <a href="#troubleshooting" id="troubleshooting"></a>
 
-### 问题：*quorum.expected\_votes 必须进行配置* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
+### 问题：*quorum.expected\_votes 必须进行配置* <a href="#issue_em_quorum_expected_votes_must_be_configured_em" id="issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
 当 corosync 启动失败并且您在系统日志中收到以下消息时：
 
@@ -108,7 +108,7 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 
 这意味着配置中为 corosync *ringX\_addr* 设置的主机名无法解析。
 
-### 无仲裁时写入配置 <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
+### 无仲裁时写入配置 <a href="#write_configuration_when_not_quorate" id="write_configuration_when_not_quorate"></a>
 
 如果您需要在无仲裁的节点上更改 */etc/pve/corosync.conf*，并且了解自己在做什么，请使用：
 

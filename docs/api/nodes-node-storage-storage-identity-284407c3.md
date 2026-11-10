@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/storage/{storage}/identity`
 
-Return identity information for this storage instance.
+返回此存储实例的标识信息。
 
 **方法标识：** `identity`
 
@@ -49,8 +49,8 @@ Return identity information for this storage instance.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 是 | — | The storage identifier. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `storage` | string | 是 | — | 存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -60,13 +60,13 @@ Return identity information for this storage instance.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "storage": {
-      "description": "The storage identifier.",
+      "description": "存储标识符。",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "type": "string",
@@ -84,11 +84,11 @@ Return identity information for this storage instance.
 {
   "properties": {
     "id": {
-      "description": "Unique identifier for this storage instance. The exact format and semantics depend on the storage plugin type.",
+      "description": "此存储实例的唯一标识符。确切格式和含义取决于存储插件类型。",
       "type": "string"
     },
     "type": {
-      "description": "The type of the storage.",
+      "description": "存储类型。",
       "enum": [
         "btrfs",
         "cephfs",

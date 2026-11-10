@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/migrate`
 
-Get preconditions for migration.
+获取迁移前提条件。
 
 **方法标识：** `migrate_vm_precondition`
 
@@ -46,9 +46,9 @@ Get preconditions for migration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `target` | string | 否 | — | Target node. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `target` | string | 否 | — | 目标节点。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -58,20 +58,20 @@ Get preconditions for migration.
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -90,45 +90,45 @@ Get preconditions for migration.
 {
   "properties": {
     "allowed_nodes": {
-      "description": "List of nodes allowed for migration.",
+      "description": "允许迁移到的节点列表。",
       "items": {
-        "description": "An allowed node",
+        "description": "允许的节点",
         "type": "string"
       },
       "optional": 1,
       "type": "array"
     },
     "dependent-ha-resources": {
-      "description": "HA resources, which will be migrated to the same target node as the VM, because these are in positive affinity with the VM.",
+      "description": "由于与虚拟机具有正向亲和性，而将迁移到同一目标节点的 HA 资源。",
       "items": {
-        "description": "The '<ty>:<id>' resource IDs of a HA resource with a positive affinity rule to this VM.",
+        "description": "与此虚拟机具有正向亲和性规则的 HA 资源的 '<ty>:<id>' 资源 ID。",
         "type": "string"
       },
       "optional": 1,
       "type": "array"
     },
     "has-dbus-vmstate": {
-      "description": "Whether the VM host supports migrating additional VM state, such as conntrack entries.",
+      "description": "虚拟机宿主机是否支持迁移附加虚拟机状态，例如 conntrack 条目。",
       "type": "boolean"
     },
     "local_disks": {
-      "description": "List local disks including CD-Rom, unused and not referenced disks",
+      "description": "列出本地磁盘，包括 CD-ROM、未使用及未被引用的磁盘",
       "items": {
         "properties": {
           "cdrom": {
-            "description": "True if the disk is a cdrom.",
+            "description": "如果磁盘为 cdrom，则为 true。",
             "type": "boolean"
           },
           "is_unused": {
-            "description": "True if the disk is unused.",
+            "description": "如果磁盘未使用，则为 true。",
             "type": "boolean"
           },
           "size": {
-            "description": "The size of the disk in bytes.",
+            "description": "磁盘大小，单位为字节。",
             "type": "integer"
           },
           "volid": {
-            "description": "The volid of the disk.",
+            "description": "磁盘的 volid。",
             "type": "string"
           }
         },
@@ -137,36 +137,36 @@ Get preconditions for migration.
       "type": "array"
     },
     "local_resources": {
-      "description": "List local resources (e.g. pci, usb) that block migration.",
+      "description": "列出阻止迁移的本地资源（例如 PCI、USB）。",
       "items": {
-        "description": "A local resource",
+        "description": "本地资源",
         "type": "string"
       },
       "type": "array"
     },
     "mapped-resource-info": {
-      "description": "Object of mapped resources with additional information such if they're live migratable.",
+      "description": "映射资源对象，包含其是否支持在线迁移等附加信息。",
       "type": "object"
     },
     "mapped-resources": {
-      "description": "List of mapped resources e.g. pci, usb. Deprecated, use 'mapped-resource-info' instead.",
+      "description": "映射资源列表，例如 PCI、USB。已弃用，请改用 'mapped-resource-info'。",
       "items": {
-        "description": "A mapped resource",
+        "description": "映射资源",
         "type": "string"
       },
       "type": "array"
     },
     "not_allowed_nodes": {
-      "description": "List of not allowed nodes with additional information.",
+      "description": "不允许迁移到的节点列表及附加信息。",
       "optional": 1,
       "properties": {
         "blocking-ha-resources": {
-          "description": "HA resources, which are blocking the VM from being migrated to the node.",
+          "description": "阻止虚拟机迁移到该节点的 HA 资源。",
           "items": {
-            "description": "A blocking HA resource",
+            "description": "阻塞迁移的 HA 资源",
             "properties": {
               "cause": {
-                "description": "The reason why the HA resource is blocking the migration.",
+                "description": "此 HA 资源阻塞迁移的原因。",
                 "enum": [
                   "node-affinity",
                   "resource-affinity"
@@ -174,7 +174,7 @@ Get preconditions for migration.
                 "type": "string"
               },
               "sid": {
-                "description": "The blocking HA resource id",
+                "description": "阻塞迁移的 HA 资源 ID",
                 "type": "string"
               }
             },
@@ -184,9 +184,9 @@ Get preconditions for migration.
           "type": "array"
         },
         "unavailable_storages": {
-          "description": "A list of not available storages.",
+          "description": "不可用存储列表。",
           "items": {
-            "description": "A storage",
+            "description": "存储",
             "type": "string"
           },
           "optional": 1,
@@ -196,7 +196,7 @@ Get preconditions for migration.
       "type": "object"
     },
     "running": {
-      "description": "Determines if the VM is running.",
+      "description": "确定虚拟机是否正在运行。",
       "type": "boolean"
     }
   },
@@ -206,7 +206,7 @@ Get preconditions for migration.
 
 ## POST `/nodes/{node}/qemu/{vmid}/migrate`
 
-Migrate virtual machine. Creates a new migration task.
+迁移虚拟机。创建新的迁移任务。
 
 **方法标识：** `migrate_vm`
 
@@ -246,17 +246,17 @@ Migrate virtual machine. Creates a new migration task.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | Override I/O bandwidth limit (in KiB/s). |
-| `force` | boolean | 否 | — | Allow to migrate VMs which use local devices. Only root may use this option. |
-| `migration_network` | string | 否 | — | CIDR of the (sub) network that is used for migration. |
-| `migration_type` | string | 否 | — | Migration traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.；可选值：`secure`, `insecure` |
-| `node` | string | 是 | — | The cluster node name. |
-| `online` | boolean | 否 | — | Use online/live migration if VM is running. Ignored if VM is stopped. |
-| `target` | string | 是 | — | Target node. |
-| `targetstorage` | string | 否 | — | Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
-| `with-conntrack-state` | boolean | 否 | 0 | Whether to migrate conntrack entries for running VMs. |
-| `with-local-disks` | boolean | 否 | — | Enable live storage migration for local disk |
+| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
+| `force` | boolean | 否 | — | 允许迁移使用本地设备的虚拟机。仅 root 可使用此选项。 |
+| `migration_network` | string | 否 | — | 用于迁移的（子）网络的 CIDR。 |
+| `migration_type` | string | 否 | — | 迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。；可选值：`secure`, `insecure` |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `online` | boolean | 否 | — | 如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
+| `target` | string | 是 | — | 目标节点。 |
+| `targetstorage` | string | 否 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| `with-conntrack-state` | boolean | 否 | 0 | 是否为运行中的虚拟机迁移 conntrack 条目。 |
+| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -267,27 +267,27 @@ Migrate virtual machine. Creates a new migration task.
   "properties": {
     "bwlimit": {
       "default": "migrate limit from datacenter or storage config",
-      "description": "Override I/O bandwidth limit (in KiB/s).",
+      "description": "覆盖 I/O 带宽限制（KiB/s）。",
       "minimum": "0",
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "force": {
-      "description": "Allow to migrate VMs which use local devices. Only root may use this option.",
+      "description": "允许迁移使用本地设备的虚拟机。仅 root 可使用此选项。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "migration_network": {
-      "description": "CIDR of the (sub) network that is used for migration.",
+      "description": "用于迁移的（子）网络的 CIDR。",
       "format": "CIDR",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "migration_type": {
-      "description": "Migration traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.",
+      "description": "迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。",
       "enum": [
         "secure",
         "insecure"
@@ -296,32 +296,32 @@ Migrate virtual machine. Creates a new migration task.
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "online": {
-      "description": "Use online/live migration if VM is running. Ignored if VM is stopped.",
+      "description": "如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "target": {
-      "description": "Target node.",
+      "description": "目标节点。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "targetstorage": {
-      "description": "Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself.",
+      "description": "从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。",
       "format": "storage-pair-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -330,13 +330,13 @@ Migrate virtual machine. Creates a new migration task.
     },
     "with-conntrack-state": {
       "default": 0,
-      "description": "Whether to migrate conntrack entries for running VMs.",
+      "description": "是否为运行中的虚拟机迁移 conntrack 条目。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "with-local-disks": {
-      "description": "Enable live storage migration for local disk",
+      "description": "为本地磁盘启用在线存储迁移",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -351,7 +351,7 @@ Migrate virtual machine. Creates a new migration task.
 
 ```json
 {
-  "description": "the task ID.",
+  "description": "任务 ID。",
   "type": "string"
 }
 ```

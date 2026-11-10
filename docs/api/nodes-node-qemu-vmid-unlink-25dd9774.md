@@ -6,7 +6,7 @@
 
 ## PUT `/nodes/{node}/qemu/{vmid}/unlink`
 
-Unlink/delete disk images.
+解除链接/删除磁盘镜像。
 
 **方法标识：** `unlink`
 
@@ -46,10 +46,10 @@ Unlink/delete disk images.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called 'unused[n]', which contains the volume ID. Unlink of unused[n] always cause physical removal. |
-| `idlist` | string | 是 | — | A list of disk IDs you want to delete. |
-| `node` | string | 是 | — | The cluster node name. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `force` | boolean | 否 | — | 强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
+| `idlist` | string | 是 | — | 要删除的磁盘 ID 列表。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,25 +59,25 @@ Unlink/delete disk images.
   "additionalProperties": 0,
   "properties": {
     "force": {
-      "description": "Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called 'unused[n]', which contains the volume ID. Unlink of unused[n] always cause physical removal.",
+      "description": "强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "idlist": {
-      "description": "A list of disk IDs you want to delete.",
+      "description": "要删除的磁盘 ID 列表。",
       "format": "pve-configid-list",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/apt/changelog`
 
-Get package changelogs.
+获取软件包更改日志。
 
 **方法标识：** `changelog`
 
@@ -40,9 +40,9 @@ Get package changelogs.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Package name. |
-| `node` | string | 是 | — | The cluster node name. |
-| `version` | string | 否 | — | Package version. |
+| `name` | string | 是 | — | 软件包名称。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `version` | string | 否 | — | 软件包版本。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -52,18 +52,18 @@ Get package changelogs.
   "additionalProperties": 0,
   "properties": {
     "name": {
-      "description": "Package name.",
+      "description": "软件包名称。",
       "pattern": "(?^:[a-z0-9][-+.a-z0-9:]+)",
       "type": "string"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "version": {
-      "description": "Package version.",
+      "description": "软件包版本。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"

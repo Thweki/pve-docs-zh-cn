@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/ceph/cmd-safety`
 
-Heuristical check if it is safe to perform an action.
+启发式检查执行操作是否安全。
 
 **方法标识：** `cmd_safety`
 
@@ -46,10 +46,10 @@ Heuristical check if it is safe to perform an action.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | Action to check；可选值：`stop`, `destroy` |
-| `id` | string | 是 | — | ID of the service |
-| `node` | string | 是 | — | The cluster node name. |
-| `service` | string | 是 | — | Service type；可选值：`osd`, `mon`, `mds` |
+| `action` | string | 是 | — | 要检查的操作；可选值：`stop`, `destroy` |
+| `id` | string | 是 | — | 服务 ID |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `service` | string | 是 | — | 服务类型；可选值：`osd`, `mon`, `mds` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -59,7 +59,7 @@ Heuristical check if it is safe to perform an action.
   "additionalProperties": 0,
   "properties": {
     "action": {
-      "description": "Action to check",
+      "description": "要检查的操作",
       "enum": [
         "stop",
         "destroy"
@@ -67,18 +67,18 @@ Heuristical check if it is safe to perform an action.
       "type": "string"
     },
     "id": {
-      "description": "ID of the service",
+      "description": "服务 ID",
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "service": {
-      "description": "Service type",
+      "description": "服务类型",
       "enum": [
         "osd",
         "mon",
@@ -99,11 +99,11 @@ Heuristical check if it is safe to perform an action.
   "additionalProperties": 0,
   "properties": {
     "safe": {
-      "description": "True if Ceph reports the requested action is safe.",
+      "description": "如果 Ceph 报告请求的操作安全，则为 true。",
       "type": "boolean"
     },
     "status": {
-      "description": "Human-readable status message from Ceph (typically the reason an action is not safe); absent when Ceph returned no message.",
+      "description": "Ceph 的人类可读状态消息（通常为操作不安全的原因）；Ceph 未返回消息时不存在此项。",
       "optional": 1,
       "type": "string"
     }

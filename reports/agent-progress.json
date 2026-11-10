@@ -1,0 +1,24 @@
+{
+  "groups": {
+    "a": {
+      "assigned": 1674,
+      "valid_outputs": 1674,
+      "remaining": 0
+    },
+    "b": {
+      "assigned": 2559,
+      "valid_outputs": 2559,
+      "remaining": 0
+    },
+    "c": {
+      "assigned": 2400,
+      "valid_outputs": 2400,
+      "remaining": 0
+    }
+  },
+  "newly_merged": 204,
+  "total_units": 11508,
+  "valid_translations": 11508,
+  "missing_translations": 0,
+  "errors": []
+}

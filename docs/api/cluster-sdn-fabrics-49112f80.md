@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/fabrics`
 
-SDN Fabrics Index
+SDN Fabric 索引
 
 **方法标识：** `index`
 

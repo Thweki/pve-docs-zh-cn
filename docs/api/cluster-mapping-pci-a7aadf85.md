@@ -6,7 +6,7 @@
 
 ## GET `/cluster/mapping/pci`
 
-List PCI Hardware Mapping
+列出 PCI 硬件映射
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ List PCI Hardware Mapping
 
 ```json
 {
-  "description": "Only lists entries where you have 'Mapping.Modify', 'Mapping.Use' or 'Mapping.Audit' permissions on '/mapping/pci/<id>'.",
+  "description": "仅列出您对 '/mapping/pci/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
 }
 ```
@@ -29,7 +29,7 @@ List PCI Hardware Mapping
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | If given, checks the configurations on the given node for correctness, and adds relevant diagnostics for the devices to the response. |
+| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将与设备相关的诊断信息加入响应。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,7 +39,7 @@ List PCI Hardware Mapping
   "additionalProperties": 0,
   "properties": {
     "check-node": {
-      "description": "If given, checks the configurations on the given node for correctness, and adds relevant diagnostics for the devices to the response.",
+      "description": "如果指定，则检查给定节点上的配置是否正确，并将与设备相关的诊断信息加入响应。",
       "format": "pve-node",
       "optional": 1,
       "type": "string",
@@ -58,15 +58,15 @@ List PCI Hardware Mapping
   "items": {
     "properties": {
       "checks": {
-        "description": "A list of checks, only present if 'check_node' is set.",
+        "description": "检查列表，仅在设置了 'check_node' 时存在。",
         "items": {
           "properties": {
             "message": {
-              "description": "The message of the error",
+              "description": "错误消息",
               "type": "string"
             },
             "severity": {
-              "description": "The severity of the error",
+              "description": "错误严重程度",
               "enum": [
                 "warning",
                 "error"
@@ -80,17 +80,17 @@ List PCI Hardware Mapping
         "type": "array"
       },
       "description": {
-        "description": "A description of the logical mapping.",
+        "description": "逻辑映射的描述。",
         "type": "string"
       },
       "id": {
-        "description": "The logical ID of the mapping.",
+        "description": "映射的逻辑 ID。",
         "type": "string"
       },
       "map": {
-        "description": "The entries of the mapping.",
+        "description": "映射条目。",
         "items": {
-          "description": "A mapping for a node.",
+          "description": "节点的映射。",
           "type": "string"
         },
         "type": "array"
@@ -110,7 +110,7 @@ List PCI Hardware Mapping
 
 ## POST `/cluster/mapping/pci`
 
-Create a new hardware mapping.
+创建新的硬件映射。
 
 **方法标识：** `create`
 
@@ -144,11 +144,11 @@ Create a new hardware mapping.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | Description of the logical PCI device. |
-| `id` | string | 是 | — | The ID of the logical PCI mapping. |
-| `live-migration-capable` | boolean | 否 | 0 | Marks the device(s) as being able to be live-migrated (Experimental). This needs hardware and driver support to work. |
-| `map` | array | 是 | — | A list of maps for the cluster nodes. |
-| `mdev` | boolean | 否 | 0 | Marks the device(s) as being capable of providing mediated devices. |
+| `description` | string | 否 | — | 逻辑 PCI 设备的描述。 |
+| `id` | string | 是 | — | 逻辑 PCI 映射的 ID。 |
+| `live-migration-capable` | boolean | 否 | 0 | 将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。 |
+| `map` | array | 是 | — | 集群节点的映射列表。 |
+| `mdev` | boolean | 否 | 0 | 将设备标记为能够提供中介设备。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -158,57 +158,57 @@ Create a new hardware mapping.
   "additionalProperties": 0,
   "properties": {
     "description": {
-      "description": "Description of the logical PCI device.",
+      "description": "逻辑 PCI 设备的描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "id": {
-      "description": "The ID of the logical PCI mapping.",
+      "description": "逻辑 PCI 映射的 ID。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"
     },
     "live-migration-capable": {
       "default": 0,
-      "description": "Marks the device(s) as being able to be live-migrated (Experimental). This needs hardware and driver support to work.",
+      "description": "将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "map": {
-      "description": "A list of maps for the cluster nodes.",
+      "description": "集群节点的映射列表。",
       "items": {
         "format": {
           "description": {
-            "description": "Description of the node specific device.",
+            "description": "节点特定设备的描述。",
             "maxLength": 4096,
             "optional": 1,
             "type": "string"
           },
           "id": {
-            "description": "The vendor and device ID that is expected. Used for detecting hardware changes",
+            "description": "预期的供应商和设备 ID。用于检测硬件变化",
             "pattern": "(?^:^[0-9A-Fa-f]{4}:[0-9A-Fa-f]{4}$)",
             "type": "string"
           },
           "iommugroup": {
-            "description": "The IOMMU group in which the device is to be expected in. Used for detecting hardware changes.",
+            "description": "预期设备所在的 IOMMU 组。用于检测硬件变化。",
             "optional": 1,
             "type": "integer"
           },
           "node": {
-            "description": "The cluster node name.",
+            "description": "集群节点名称。",
             "format": "pve-node",
             "type": "string"
           },
           "path": {
-            "description": "The path to the device. If the function is omitted, the whole device is mapped. In that case use the attributes of the first device. You can give multiple paths as a semicolon separated list, the first available will then be chosen on guest start.",
+            "description": "设备路径。如果省略功能号，则映射整个设备。此时使用第一个设备的属性。可以提供以分号分隔的多个路径，客户机启动时将选择第一个可用路径。",
             "pattern": "(?:[a-f0-9]{4,}:[a-f0-9]{2}:[a-f0-9]{2}(?:.[a-f0-9])?;)*[a-f0-9]{4,}:[a-f0-9]{2}:[a-f0-9]{2}(?:.[a-f0-9])?",
             "type": "string"
           },
           "subsystem-id": {
-            "description": "The subsystem vendor and device ID that is expected. Used for detecting hardware changes.",
+            "description": "预期的子系统供应商和设备 ID。用于检测硬件变化。",
             "optional": 1,
             "pattern": "(?^:^[0-9A-Fa-f]{4}:[0-9A-Fa-f]{4}$)",
             "type": "string"
@@ -222,7 +222,7 @@ Create a new hardware mapping.
     },
     "mdev": {
       "default": 0,
-      "description": "Marks the device(s) as being capable of providing mediated devices.",
+      "description": "将设备标记为能够提供中介设备。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

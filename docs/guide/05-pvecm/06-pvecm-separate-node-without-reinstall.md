@@ -9,7 +9,7 @@
 建议创建一个新存储，只有要分离的节点才有权访问该存储。例如，这可以是您的 NFS 上的新导出，也可以是新的 Ceph 池。重要的是，完全相同的存储不能被多个集群访问。设置此存储后，将该节点上的所有数据和 VM 都移动到此存储中。然后，您就可以将节点从集群中分离出来了。
 
 {% hint style="info" %}
-如果配置中包含 QDevice，则需要先按照常见问题中[此处](11-corosync-external-vote-support.md#_adding_deleting_nodes_after_qdevice_setup)的说明将其移除，然后再移除集群节点。
+如果配置中包含 QDevice，则需要先按照常见问题中[此处](11-corosync-external-vote-support.md#adding_deleting_nodes_after_qdevice_setup)的说明将其移除，然后再移除集群节点。
 {% endhint %}
 
 {% hint style="warning" %}

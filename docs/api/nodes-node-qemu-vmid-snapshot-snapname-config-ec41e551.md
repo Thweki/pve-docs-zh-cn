@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/qemu/{vmid}/snapshot/{snapname}/config`
 
-Get snapshot configuration
+获取快照配置
 
 **方法标识：** `get_snapshot_config`
 
@@ -44,9 +44,9 @@ Get snapshot configuration
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 是 | — | The name of the snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 是 | — | 快照名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -56,20 +56,20 @@ Get snapshot configuration
   "additionalProperties": 0,
   "properties": {
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,
@@ -92,7 +92,7 @@ Get snapshot configuration
 
 ## PUT `/nodes/{node}/qemu/{vmid}/snapshot/{snapname}/config`
 
-Update snapshot metadata.
+更新快照元数据。
 
 **方法标识：** `update_snapshot_config`
 
@@ -132,10 +132,10 @@ Update snapshot metadata.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | A textual description or comment. |
-| `node` | string | 是 | — | The cluster node name. |
-| `snapname` | string | 是 | — | The name of the snapshot. |
-| `vmid` | integer | 是 | — | The (unique) ID of the VM. |
+| `description` | string | 否 | — | 文本描述或注释。 |
+| `node` | string | 是 | — | 集群节点名称。 |
+| `snapname` | string | 是 | — | 快照名称。 |
+| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -145,26 +145,26 @@ Update snapshot metadata.
   "additionalProperties": 0,
   "properties": {
     "description": {
-      "description": "A textual description or comment.",
+      "description": "文本描述或注释。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
     },
     "snapname": {
-      "description": "The name of the snapshot.",
+      "description": "快照名称。",
       "format": "pve-configid",
       "maxLength": 40,
       "type": "string",
       "typetext": "<string>"
     },
     "vmid": {
-      "description": "The (unique) ID of the VM.",
+      "description": "虚拟机的（唯一）ID。",
       "format": "pve-vmid",
       "maximum": 999999999,
       "minimum": 100,

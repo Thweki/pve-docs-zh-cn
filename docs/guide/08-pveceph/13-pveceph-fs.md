@@ -48,11 +48,11 @@ mds standby replay = true
 pveceph fs create --pg_num 128 --add-storage
 ```
 
-This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](09-pve-ceph-pools.md) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
-[\[placement\_groups\]](09-pve-ceph-pools.md#_footnote_placement_groups)  
-. Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
+这会创建名为 *cephfs* 的 CephFS，使用名为 *cephfs\_data*、具有 *128* 个归置组的数据池，以及名为 *cephfs\_metadata*、归置组数量为数据池四分之一（`32`）的元数据池。请查看 [Proxmox VE 管理的 Ceph 池章节](09-pve-ceph-pools.md) 或访问 Ceph 文档，了解适合您设置的归置组数量（`pg_num`）的更多信息   
+[\[placement\_groups\]](09-pve-ceph-pools.md#footnote_placement_groups)  
+。此外，*--add-storage* 参数会在 CephFS 成功创建后将其添加至 Proxmox VE 存储配置。
 
-## 8.13.3. 销毁 CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
+## 8.13.3. 销毁 CephFS <a href="#destroy_cephfs" id="destroy_cephfs"></a>
 
 {% hint style="warning" %}
 销毁 CephFS 将使其中的所有数据无法使用。此操作无法撤销！

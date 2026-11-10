@@ -1,26 +1,26 @@
-# 13.7. Services and Commands <a href="#pve_firewall_services_commands" id="pve_firewall_services_commands"></a>
+# 13.7. 服务与命令 <a href="#pve_firewall_services_commands" id="pve_firewall_services_commands"></a>
 
-The firewall runs two service daemons on each node:
+防火墙在每个节点上运行两个服务守护进程：
 
-- pvefw-logger: NFLOG daemon (ulogd replacement).
-- pve-firewall: updates iptables rules
+- pvefw-logger：NFLOG 守护进程（ulogd 的替代品）。
+- pve-firewall：更新 iptables 规则
 
-There is also a CLI command named `pve-firewall`, which can be used to start and stop the firewall service:
+还有一个名为 `pve-firewall` 的 CLI 命令，可用于启动和停止防火墙服务：
 
 ```text
 # pve-firewall start
 # pve-firewall stop
 ```
 
-To get the status use:
+要获取状态，请使用：
 
 ```text
 # pve-firewall status
 ```
 
-The above command reads and compiles all firewall rules, so you will see warnings if your firewall configuration contains any errors.
+上述命令会读取并编译所有防火墙规则，因此如果防火墙配置包含任何错误，您将看到警告。
 
-If you want to see the generated iptables rules you can use:
+如果希望查看生成的 iptables 规则，可以使用：
 
 ```text
 # iptables-save

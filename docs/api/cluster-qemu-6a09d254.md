@@ -6,7 +6,7 @@
 
 ## GET `/cluster/qemu`
 
-Cluster-wide QEMU index
+集群范围的 QEMU 索引
 
 **方法标识：** `index`
 

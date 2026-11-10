@@ -6,7 +6,7 @@
 
 ## GET `/access/domains`
 
-Authentication domain index.
+认证域索引。
 
 **方法标识：** `index`
 
@@ -14,7 +14,7 @@ Authentication domain index.
 
 ```json
 {
-  "description": "Anyone can access that, because we need that list for the login box (before the user is authenticated).",
+  "description": "任何人均可访问，因为登录框在用户通过身份验证之前就需要此列表。",
   "user": "world"
 }
 ```
@@ -36,7 +36,7 @@ Authentication domain index.
   "items": {
     "properties": {
       "comment": {
-        "description": "A comment. The GUI use this text when you select a domain (Realm) on the login window.",
+        "description": "注释。在登录窗口中选择域（认证域）时，GUI 使用此文本。",
         "optional": 1,
         "type": "string"
       },
@@ -44,7 +44,7 @@ Authentication domain index.
         "type": "string"
       },
       "tfa": {
-        "description": "Two-factor authentication provider.",
+        "description": "双因素身份验证提供程序。",
         "enum": [
           "yubico",
           "oath"
@@ -70,7 +70,7 @@ Authentication domain index.
 
 ## POST `/access/domains`
 
-Add an authentication server.
+添加认证服务器。
 
 **方法标识：** `create`
 
@@ -104,49 +104,49 @@ Add an authentication server.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `acr-values` | string | 否 | — | Specifies the Authentication Context Class Reference values that theAuthorization Server is being requested to use for the Auth Request. |
-| `audiences` | string | 否 | — | A list of audiences that the OpenID Issuer may include that are accepted in addition to 'client-id'. |
-| `autocreate` | boolean | 否 | 0 | Automatically create users if they do not exist. |
-| `base_dn` | string | 否 | — | LDAP base domain name |
-| `bind_dn` | string | 否 | — | LDAP bind domain name |
-| `capath` | string | 否 | "/etc/ssl/certs" | Path to the CA certificate store |
-| `case-sensitive` | boolean | 否 | 1 | username is case-sensitive |
-| `cert` | string | 否 | — | Path to the client certificate |
-| `certkey` | string | 否 | — | Path to the client certificate key |
-| `check-connection` | boolean | 否 | 0 | Check bind connection to the server. |
-| `client-id` | string | 否 | — | OpenID Client ID |
-| `client-key` | string | 否 | — | OpenID Client Key |
-| `comment` | string | 否 | — | Description. |
-| `default` | boolean | 否 | — | Use this as default realm |
-| `domain` | string | 否 | — | AD domain name |
-| `filter` | string | 否 | — | LDAP filter for user sync. |
-| `group_classes` | string | 否 | "groupOfNames, group, univentionGroup, ipausergroup" | The objectclasses for groups. |
-| `group_dn` | string | 否 | — | LDAP base domain name for group sync. If not set, the base_dn will be used. |
-| `group_filter` | string | 否 | — | LDAP filter for group sync. |
-| `group_name_attr` | string | 否 | — | LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name. |
-| `groups-autocreate` | boolean | 否 | 0 | Automatically create groups if they do not exist. |
-| `groups-claim` | string | 否 | — | OpenID claim used to retrieve groups with. |
-| `groups-overwrite` | boolean | 否 | 0 | All groups will be overwritten for the user on login. |
-| `issuer-url` | string | 否 | — | OpenID Issuer Url |
-| `mode` | string | 否 | "ldap" | LDAP protocol mode.；可选值：`ldap`, `ldaps`, `ldap+starttls` |
-| `password` | string | 否 | — | LDAP bind password. Will be stored in '/etc/pve/priv/realm/&lt;REALM&gt;.pw'. |
-| `port` | integer | 否 | — | Server port. |
-| `prompt` | string | 否 | — | Specifies whether the Authorization Server prompts the End-User for reauthentication and consent. |
-| `query-userinfo` | boolean | 否 | 1 | Enables querying the userinfo endpoint for claims values. |
-| `realm` | string | 是 | — | Authentication domain ID |
-| `scopes` | string | 否 | "email profile" | Specifies the scopes (user details) that should be authorized and returned, for example 'email' or 'profile'. |
-| `secure` | boolean | 否 | — | Use secure LDAPS protocol. DEPRECATED: use 'mode' instead. |
-| `server1` | string | 否 | — | Server IP address (or DNS name) |
-| `server2` | string | 否 | — | Fallback Server IP address (or DNS name) |
-| `sslversion` | string | 否 | — | LDAPS TLS/SSL version. It's not recommended to use version older than 1.2!；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
-| `sync-defaults-options` | string | 否 | — | The default options for behavior of synchronizations. |
-| `sync_attributes` | string | 否 | — | Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write  'email=mail'. By default, each PVE user field is represented  by an LDAP attribute of the same name. |
-| `tfa` | string | 否 | — | Use Two-factor authentication. |
-| `type` | string | 是 | — | Realm type.；可选值：`ad`, `ldap`, `openid`, `pam`, `pve` |
-| `user_attr` | string | 否 | — | LDAP user attribute name |
-| `user_classes` | string | 否 | "inetorgperson, posixaccount, person, user" | The objectclasses for users. |
-| `username-claim` | string | 否 | — | OpenID claim used to generate the unique username. |
-| `verify` | boolean | 否 | 0 | Verify the server's SSL certificate |
+| `acr-values` | string | 否 | — | 指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。 |
+| `audiences` | string | 否 | — | 除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。 |
+| `autocreate` | boolean | 否 | 0 | 如果用户不存在，则自动创建。 |
+| `base_dn` | string | 否 | — | LDAP 基础域名 |
+| `bind_dn` | string | 否 | — | LDAP 绑定域名 |
+| `capath` | string | 否 | "/etc/ssl/certs" | CA 证书存储路径 |
+| `case-sensitive` | boolean | 否 | 1 | 用户名区分大小写 |
+| `cert` | string | 否 | — | 客户端证书路径 |
+| `certkey` | string | 否 | — | 客户端证书密钥路径 |
+| `check-connection` | boolean | 否 | 0 | 检查到服务器的绑定连接。 |
+| `client-id` | string | 否 | — | OpenID 客户端 ID |
+| `client-key` | string | 否 | — | OpenID 客户端密钥 |
+| `comment` | string | 否 | — | 描述。 |
+| `default` | boolean | 否 | — | 将此认证域用作默认认证域 |
+| `domain` | string | 否 | — | AD 域名 |
+| `filter` | string | 否 | — | 用户同步的 LDAP 过滤器。 |
+| `group_classes` | string | 否 | "groupOfNames, group, univentionGroup, ipausergroup" | 组的 objectclass。 |
+| `group_dn` | string | 否 | — | 组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。 |
+| `group_filter` | string | 否 | — | 组同步的 LDAP 过滤器。 |
+| `group_name_attr` | string | 否 | — | 表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。 |
+| `groups-autocreate` | boolean | 否 | 0 | 如果组不存在，则自动创建。 |
+| `groups-claim` | string | 否 | — | 用于获取组的 OpenID 声明。 |
+| `groups-overwrite` | boolean | 否 | 0 | 用户登录时将覆盖其所有组。 |
+| `issuer-url` | string | 否 | — | OpenID 颁发者 URL |
+| `mode` | string | 否 | "ldap" | LDAP 协议模式。；可选值：`ldap`, `ldaps`, `ldap+starttls` |
+| `password` | string | 否 | — | LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/&lt;REALM&gt;.pw'。 |
+| `port` | integer | 否 | — | 服务器端口。 |
+| `prompt` | string | 否 | — | 指定授权服务器是否提示最终用户重新身份验证并表示同意。 |
+| `query-userinfo` | boolean | 否 | 1 | 启用查询 userinfo 端点以获取声明值。 |
+| `realm` | string | 是 | — | 认证域 ID |
+| `scopes` | string | 否 | "email profile" | 指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。 |
+| `secure` | boolean | 否 | — | 使用安全的 LDAPS 协议。已弃用：请改用 'mode'。 |
+| `server1` | string | 否 | — | 服务器 IP 地址（或 DNS 名称） |
+| `server2` | string | 否 | — | 后备服务器 IP 地址（或 DNS 名称） |
+| `sslversion` | string | 否 | — | LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
+| `sync-defaults-options` | string | 否 | — | 同步行为的默认选项。 |
+| `sync_attributes` | string | 否 | — | 以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。 |
+| `tfa` | string | 否 | — | 使用双因素身份验证。 |
+| `type` | string | 是 | — | 认证域类型。；可选值：`ad`, `ldap`, `openid`, `pam`, `pve` |
+| `user_attr` | string | 否 | — | LDAP 用户属性名称 |
+| `user_classes` | string | 否 | "inetorgperson, posixaccount, person, user" | 用户的 objectclass。 |
+| `username-claim` | string | 否 | — | 用于生成唯一用户名的 OpenID 声明。 |
+| `verify` | boolean | 否 | 0 | 验证服务器的 SSL 证书 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -156,33 +156,33 @@ Add an authentication server.
   "additionalProperties": 0,
   "properties": {
     "acr-values": {
-      "description": "Specifies the Authentication Context Class Reference values that theAuthorization Server is being requested to use for the Auth Request.",
+      "description": "指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。",
       "optional": 1,
       "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
       "type": "string"
     },
     "audiences": {
-      "description": "A list of audiences that the OpenID Issuer may include that are accepted in addition to 'client-id'.",
+      "description": "除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。",
       "optional": 1,
       "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
       "type": "string"
     },
     "autocreate": {
       "default": 0,
-      "description": "Automatically create users if they do not exist.",
+      "description": "如果用户不存在，则自动创建。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "base_dn": {
-      "description": "LDAP base domain name",
+      "description": "LDAP 基础域名",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "bind_dn": {
-      "description": "LDAP bind domain name",
+      "description": "LDAP 绑定域名",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
@@ -190,73 +190,73 @@ Add an authentication server.
     },
     "capath": {
       "default": "/etc/ssl/certs",
-      "description": "Path to the CA certificate store",
+      "description": "CA 证书存储路径",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "case-sensitive": {
       "default": 1,
-      "description": "username is case-sensitive",
+      "description": "用户名区分大小写",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "cert": {
-      "description": "Path to the client certificate",
+      "description": "客户端证书路径",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "certkey": {
-      "description": "Path to the client certificate key",
+      "description": "客户端证书密钥路径",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "check-connection": {
       "default": 0,
-      "description": "Check bind connection to the server.",
+      "description": "检查到服务器的绑定连接。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "client-id": {
-      "description": "OpenID Client ID",
+      "description": "OpenID 客户端 ID",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "client-key": {
-      "description": "OpenID Client Key",
+      "description": "OpenID 客户端密钥",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Description.",
+      "description": "描述。",
       "maxLength": 4096,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "default": {
-      "description": "Use this as default realm",
+      "description": "将此认证域用作默认认证域",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "domain": {
-      "description": "AD domain name",
+      "description": "AD 域名",
       "maxLength": 256,
       "optional": 1,
       "pattern": "\\S+",
       "type": "string"
     },
     "filter": {
-      "description": "LDAP filter for user sync.",
+      "description": "用户同步的 LDAP 过滤器。",
       "maxLength": 2048,
       "optional": 1,
       "type": "string",
@@ -264,28 +264,28 @@ Add an authentication server.
     },
     "group_classes": {
       "default": "groupOfNames, group, univentionGroup, ipausergroup",
-      "description": "The objectclasses for groups.",
+      "description": "组的 objectclass。",
       "format": "ldap-simple-attr-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "group_dn": {
-      "description": "LDAP base domain name for group sync. If not set, the base_dn will be used.",
+      "description": "组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "group_filter": {
-      "description": "LDAP filter for group sync.",
+      "description": "组同步的 LDAP 过滤器。",
       "maxLength": 2048,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "group_name_attr": {
-      "description": "LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name.",
+      "description": "表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。",
       "format": "ldap-simple-attr",
       "maxLength": 256,
       "optional": 1,
@@ -294,13 +294,13 @@ Add an authentication server.
     },
     "groups-autocreate": {
       "default": 0,
-      "description": "Automatically create groups if they do not exist.",
+      "description": "如果组不存在，则自动创建。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "groups-claim": {
-      "description": "OpenID claim used to retrieve groups with.",
+      "description": "用于获取组的 OpenID 声明。",
       "maxLength": 256,
       "optional": 1,
       "pattern": "(?^:[A-Za-z0-9\\.\\-_]+)",
@@ -308,13 +308,13 @@ Add an authentication server.
     },
     "groups-overwrite": {
       "default": 0,
-      "description": "All groups will be overwritten for the user on login.",
+      "description": "用户登录时将覆盖其所有组。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "issuer-url": {
-      "description": "OpenID Issuer Url",
+      "description": "OpenID 颁发者 URL",
       "maxLength": 256,
       "optional": 1,
       "type": "string",
@@ -322,7 +322,7 @@ Add an authentication server.
     },
     "mode": {
       "default": "ldap",
-      "description": "LDAP protocol mode.",
+      "description": "LDAP 协议模式。",
       "enum": [
         "ldap",
         "ldaps",
@@ -332,13 +332,13 @@ Add an authentication server.
       "type": "string"
     },
     "password": {
-      "description": "LDAP bind password. Will be stored in '/etc/pve/priv/realm/<REALM>.pw'.",
+      "description": "LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/<REALM>.pw'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "port": {
-      "description": "Server port.",
+      "description": "服务器端口。",
       "maximum": 65535,
       "minimum": 1,
       "optional": 1,
@@ -346,20 +346,20 @@ Add an authentication server.
       "typetext": "<integer> (1 - 65535)"
     },
     "prompt": {
-      "description": "Specifies whether the Authorization Server prompts the End-User for reauthentication and consent.",
+      "description": "指定授权服务器是否提示最终用户重新身份验证并表示同意。",
       "optional": 1,
       "pattern": "(?:none|login|consent|select_account|\\S+)",
       "type": "string"
     },
     "query-userinfo": {
       "default": 1,
-      "description": "Enables querying the userinfo endpoint for claims values.",
+      "description": "启用查询 userinfo 端点以获取声明值。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "realm": {
-      "description": "Authentication domain ID",
+      "description": "认证域 ID",
       "format": "pve-realm",
       "maxLength": 32,
       "type": "string",
@@ -367,19 +367,19 @@ Add an authentication server.
     },
     "scopes": {
       "default": "email profile",
-      "description": "Specifies the scopes (user details) that should be authorized and returned, for example 'email' or 'profile'.",
+      "description": "指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "secure": {
-      "description": "Use secure LDAPS protocol. DEPRECATED: use 'mode' instead.",
+      "description": "使用安全的 LDAPS 协议。已弃用：请改用 'mode'。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "server1": {
-      "description": "Server IP address (or DNS name)",
+      "description": "服务器 IP 地址（或 DNS 名称）",
       "format": "address",
       "maxLength": 256,
       "optional": 1,
@@ -387,7 +387,7 @@ Add an authentication server.
       "typetext": "<string>"
     },
     "server2": {
-      "description": "Fallback Server IP address (or DNS name)",
+      "description": "后备服务器 IP 地址（或 DNS 名称）",
       "format": "address",
       "maxLength": 256,
       "optional": 1,
@@ -395,7 +395,7 @@ Add an authentication server.
       "typetext": "<string>"
     },
     "sslversion": {
-      "description": "LDAPS TLS/SSL version. It's not recommended to use version older than 1.2!",
+      "description": "LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！",
       "enum": [
         "tlsv1",
         "tlsv1_1",
@@ -406,20 +406,20 @@ Add an authentication server.
       "type": "string"
     },
     "sync-defaults-options": {
-      "description": "The default options for behavior of synchronizations.",
+      "description": "同步行为的默认选项。",
       "format": "realm-sync-options",
       "optional": 1,
       "type": "string",
       "typetext": "[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]"
     },
     "sync_attributes": {
-      "description": "Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write  'email=mail'. By default, each PVE user field is represented  by an LDAP attribute of the same name.",
+      "description": "以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。",
       "optional": 1,
       "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*",
       "type": "string"
     },
     "tfa": {
-      "description": "Use Two-factor authentication.",
+      "description": "使用双因素身份验证。",
       "format": "pve-tfa-config",
       "maxLength": 128,
       "optional": 1,
@@ -427,7 +427,7 @@ Add an authentication server.
       "typetext": "type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]"
     },
     "type": {
-      "description": "Realm type.",
+      "description": "认证域类型。",
       "enum": [
         "ad",
         "ldap",
@@ -438,7 +438,7 @@ Add an authentication server.
       "type": "string"
     },
     "user_attr": {
-      "description": "LDAP user attribute name",
+      "description": "LDAP 用户属性名称",
       "maxLength": 256,
       "optional": 1,
       "pattern": "\\S{2,}",
@@ -446,21 +446,21 @@ Add an authentication server.
     },
     "user_classes": {
       "default": "inetorgperson, posixaccount, person, user",
-      "description": "The objectclasses for users.",
+      "description": "用户的 objectclass。",
       "format": "ldap-simple-attr-list",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "username-claim": {
-      "description": "OpenID claim used to generate the unique username.",
+      "description": "用于生成唯一用户名的 OpenID 声明。",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "verify": {
       "default": 0,
-      "description": "Verify the server's SSL certificate",
+      "description": "验证服务器的 SSL 证书",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/fabrics/all`
 
-SDN Fabrics Index
+SDN Fabric 索引
 
 **方法标识：** `list_all`
 
@@ -14,7 +14,7 @@ SDN Fabrics Index
 
 ```json
 {
-  "description": "Only list fabrics where you have 'SDN.Audit' or 'SDN.Allocate' permissions on\n'/sdn/fabrics/<fabric>', only list nodes where you have 'Sys.Audit' or 'Sys.Modify' on /nodes/<node_id>",
+  "description": "仅列出您具有以下权限的 fabric：对\n'/sdn/fabrics/<fabric>' 的 'SDN.Audit' 或 'SDN.Allocate' 权限；仅列出您对 /nodes/<node_id> 具有 'Sys.Audit' 或 'Sys.Modify' 权限的节点",
   "user": "all"
 }
 ```
@@ -29,8 +29,8 @@ SDN Fabrics Index
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | Display pending config. |
-| `running` | boolean | 否 | — | Display running config. |
+| `pending` | boolean | 否 | — | 显示待应用的配置。 |
+| `running` | boolean | 否 | — | 显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -39,13 +39,13 @@ SDN Fabrics Index
 {
   "properties": {
     "pending": {
-      "description": "Display pending config.",
+      "description": "显示待应用的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "running": {
-      "description": "Display running config.",
+      "description": "显示运行中的配置。",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -65,7 +65,7 @@ SDN Fabrics Index
       "items": {
         "properties": {
           "area": {
-            "description": "OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.",
+            "description": "OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。",
             "instance-types": [
               "ospf"
             ],
@@ -74,7 +74,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "csnp_interval": {
-            "description": "The csnp_interval property for Openfabric",
+            "description": "Openfabric 的 csnp_interval 属性",
             "instance-types": [
               "openfabric"
             ],
@@ -85,13 +85,13 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "digest": {
-            "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+            "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
             "maxLength": 64,
             "optional": 1,
             "type": "string"
           },
           "hello_interval": {
-            "description": "The hello_interval property for Openfabric",
+            "description": "Openfabric 的 hello_interval 属性",
             "instance-types": [
               "openfabric"
             ],
@@ -102,7 +102,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "id": {
-            "description": "Identifier for SDN fabrics",
+            "description": "SDN fabric 的标识符",
             "format": "pve-sdn-fabric-id",
             "maxLength": 8,
             "minLength": 2,
@@ -110,24 +110,24 @@ SDN Fabrics Index
             "type": "string"
           },
           "ip6_prefix": {
-            "description": "The IP prefix for Node IPs",
+            "description": "节点 IP 的 IP 前缀",
             "format": "CIDR",
             "optional": 1,
             "type": "string"
           },
           "ip_prefix": {
-            "description": "The IP prefix for Node IPs",
+            "description": "节点 IP 的 IP 前缀",
             "format": "CIDR",
             "optional": 1,
             "type": "string"
           },
           "lock-token": {
-            "description": "the token for unlocking the global SDN configuration",
+            "description": "用于解锁全局 SDN 配置的令牌",
             "optional": 1,
             "type": "string"
           },
           "persistent_keepalive": {
-            "description": "A seconds interval, between 1 and 65535 inclusive, of how often to send an authenticated empty packet to the peer for the purpose of keeping a stateful firewall or NAT mapping valid persistently. For example, if the interface very rarely sends traffic, but it might at anytime receive traffic from another node, and it is behind NAT, the interface might benefit from having a persistent keepalive interval of 25 seconds. If unset or set to 0, it is turned off",
+            "description": "发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用",
             "instance-types": [
               "wireguard"
             ],
@@ -138,7 +138,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "protocol": {
-            "description": "Type of configuration entry in an SDN Fabric section config",
+            "description": "SDN Fabric 配置节中配置条目的类型",
             "enum": [
               "openfabric",
               "ospf",
@@ -156,13 +156,13 @@ SDN Fabrics Index
                 "items": {
                   "format": {
                     "route-map": {
-                      "description": "Route map to filter or transform redistributed routes from this source.",
+                      "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                       "format": "pve-sdn-route-map-id",
                       "optional": 1,
                       "type": "string"
                     },
                     "source": {
-                      "description": "The protocol from which to redistribute routes from.",
+                      "description": "要从中重分发路由的协议。",
                       "enum": [
                         "bgp",
                         "connected",
@@ -184,13 +184,13 @@ SDN Fabrics Index
                 "items": {
                   "format": {
                     "route-map": {
-                      "description": "Route map to filter or transform redistributed routes from this source.",
+                      "description": "用于过滤或转换从此来源重分发的路由的路由映射。",
                       "format": "pve-sdn-route-map-id",
                       "optional": 1,
                       "type": "string"
                     },
                     "source": {
-                      "description": "The protocol from which to redistribute routes from.",
+                      "description": "要从中重分发路由的协议。",
                       "enum": [
                         "connected",
                         "kernel",
@@ -210,7 +210,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "route_filter": {
-            "description": "A prefix list that should be used for filtering routes that are to be installed into the kernel routing table",
+            "description": "用于过滤将安装到内核路由表中的路由的前缀列表",
             "format": "pve-sdn-prefix-list-id",
             "instance-types": [
               "ospf",
@@ -229,7 +229,7 @@ SDN Fabrics Index
       "items": {
         "properties": {
           "allowed_ips": {
-            "description": "A list of IPs that are routable via this node in the WireGuard fabric.",
+            "description": "WireGuard fabric 中可经由此节点路由的 IP 列表。",
             "instance-types": [
               "wireguard"
             ],
@@ -242,13 +242,13 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "digest": {
-            "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+            "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
             "maxLength": 64,
             "optional": 1,
             "type": "string"
           },
           "endpoint": {
-            "description": "The endpoint used for connecting to this node.",
+            "description": "用于连接此节点的端点。",
             "instance-types": [
               "wireguard"
             ],
@@ -257,7 +257,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "fabric_id": {
-            "description": "Identifier for SDN fabrics",
+            "description": "SDN fabric 的标识符",
             "format": "pve-sdn-fabric-id",
             "maxLength": 8,
             "minLength": 2,
@@ -267,33 +267,33 @@ SDN Fabrics Index
           "interfaces": {
             "oneOf": [
               {
-                "description": "OpenFabric network interface",
+                "description": "OpenFabric 网络接口",
                 "instance-types": [
                   "openfabric"
                 ],
                 "items": {
                   "format": {
                     "hello_multiplier": {
-                      "description": "The hello_multiplier property of the interface",
+                      "description": "接口的 hello_multiplier 属性",
                       "maximum": 100,
                       "minimum": 2,
                       "optional": 1,
                       "type": "integer"
                     },
                     "ip": {
-                      "description": "IPv4 address for this node",
+                      "description": "此节点的 IPv4 地址",
                       "format": "CIDRv4",
                       "optional": 1,
                       "type": "string"
                     },
                     "ip6": {
-                      "description": "IPv6 address for this node",
+                      "description": "此节点的 IPv6 地址",
                       "format": "CIDRv6",
                       "optional": 1,
                       "type": "string"
                     },
                     "name": {
-                      "description": "Name of the network interface",
+                      "description": "网络接口名称",
                       "format": "pve-iface",
                       "type": "string"
                     }
@@ -304,25 +304,25 @@ SDN Fabrics Index
                 "type": "array"
               },
               {
-                "description": "OSPF network interface",
+                "description": "OSPF 网络接口",
                 "instance-types": [
                   "ospf"
                 ],
                 "items": {
                   "format": {
                     "ip": {
-                      "description": "IPv4 address for this node",
+                      "description": "此节点的 IPv4 地址",
                       "format": "CIDRv4",
                       "optional": 1,
                       "type": "string"
                     },
                     "name": {
-                      "description": "Name of the network interface",
+                      "description": "网络接口名称",
                       "format": "pve-iface",
                       "type": "string"
                     },
                     "network_type": {
-                      "description": "Network Type of the OSPF interface",
+                      "description": "OSPF 接口的网络类型",
                       "enum": [
                         "broadcast",
                         "non-broadcast",
@@ -339,12 +339,12 @@ SDN Fabrics Index
                 "type": "array"
               },
               {
-                "description": "List of WireGuard network interfaces for this node.",
+                "description": "此节点的 WireGuard 网络接口列表。",
                 "instance-types": [
                   "wireguard"
                 ],
                 "items": {
-                  "description": "WireGuard network interface",
+                  "description": "WireGuard 网络接口",
                   "format": "pve-sdn-fabric-wireguard-interface",
                   "type": "string"
                 },
@@ -352,14 +352,14 @@ SDN Fabrics Index
                 "type": "array"
               },
               {
-                "description": "BGP network interface",
+                "description": "BGP 网络接口",
                 "instance-types": [
                   "bgp"
                 ],
                 "items": {
                   "format": {
                     "name": {
-                      "description": "Name of the network interface",
+                      "description": "网络接口名称",
                       "format": "pve-iface",
                       "type": "string"
                     }
@@ -373,24 +373,24 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "ip": {
-            "description": "IPv4 address for this node",
+            "description": "此节点的 IPv4 地址",
             "format": "ipv4",
             "optional": 1,
             "type": "string"
           },
           "ip6": {
-            "description": "IPv6 address for this node",
+            "description": "此节点的 IPv6 地址",
             "format": "ipv6",
             "optional": 1,
             "type": "string"
           },
           "lock-token": {
-            "description": "the token for unlocking the global SDN configuration",
+            "description": "用于解锁全局 SDN 配置的令牌",
             "optional": 1,
             "type": "string"
           },
           "node_id": {
-            "description": "Identifier for nodes in an SDN fabric",
+            "description": "SDN fabric 中节点的标识符",
             "format": "pve-node",
             "type": "string"
           },
@@ -401,26 +401,26 @@ SDN Fabrics Index
             "items": {
               "format": {
                 "endpoint": {
-                  "description": "Override for the endpoint settings in the node section.",
+                  "description": "覆盖节点配置节中的端点设置。",
                   "optional": 1,
                   "type": "string"
                 },
                 "iface": {
-                  "description": "The interface of this node that uses this peer definition.",
+                  "description": "此节点使用此对等端定义的接口。",
                   "type": "string"
                 },
                 "node": {
-                  "description": "The name of the referenced node section (the external node or the internal peer node).",
+                  "description": "所引用节点配置节的名称（外部节点或内部对等节点）。",
                   "type": "string"
                 },
                 "node_iface": {
-                  "description": "The interface of the other node, if it is internal",
+                  "description": "另一个节点的接口（如果它是内部节点）",
                   "optional": 1,
                   "type": "string"
                 },
                 "skip_route_generation": {
                   "default": 0,
-                  "description": "Whether routes for the allowed IPs should be created in the kernel routing table.",
+                  "description": "是否应在内核路由表中为允许的 IP 创建路由。",
                   "optional": 1,
                   "type": "boolean"
                 },
@@ -439,7 +439,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "protocol": {
-            "description": "Type of configuration entry in an SDN Fabric section config",
+            "description": "SDN Fabric 配置节中配置条目的类型",
             "enum": [
               "openfabric",
               "ospf",
@@ -449,7 +449,7 @@ SDN Fabrics Index
             "type": "string"
           },
           "public_key": {
-            "description": "The public key for the external node.",
+            "description": "外部节点的公钥。",
             "instance-types": [
               "wireguard"
             ],
@@ -458,7 +458,7 @@ SDN Fabrics Index
             "type-property": "protocol"
           },
           "role": {
-            "description": "The role of this node in the WireGuard fabric.",
+            "description": "此节点在 WireGuard fabric 中的角色。",
             "enum": [
               "internal",
               "external"

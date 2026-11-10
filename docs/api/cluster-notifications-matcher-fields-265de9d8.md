@@ -6,7 +6,7 @@
 
 ## GET `/cluster/notifications/matcher-fields`
 
-Returns known notification metadata fields
+返回已知的通知元数据字段
 
 **方法标识：** `get_matcher_fields`
 
@@ -57,7 +57,7 @@ Returns known notification metadata fields
   "items": {
     "properties": {
       "name": {
-        "description": "Name of the field.",
+        "description": "字段名称。",
         "type": "string"
       }
     },

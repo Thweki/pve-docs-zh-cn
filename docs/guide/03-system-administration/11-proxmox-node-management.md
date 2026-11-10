@@ -4,7 +4,7 @@ Proxmox VE 节点管理工具（`pvenode`）允许你控制节点特定的设置
 
 目前，`pvenode` 允许你设置节点描述、对节点上的客户机执行各种批量操作、查看节点的任务历史记录，以及管理节点的 SSL 证书；这些证书由 `pveproxy` 用于 API 和 Web GUI。
 
-## 3.11.1. 网络唤醒（Wake-on-LAN） <a href="#_wake_on_lan" id="_wake_on_lan"></a>
+## 3.11.1. 网络唤醒（Wake-on-LAN） <a href="#wake_on_lan" id="wake_on_lan"></a>
 
 Wake-on-LAN（WoL）允许你通过发送魔术包来唤醒网络中处于睡眠状态的计算机。至少有一个 NIC 必须支持此功能，并且需要在计算机的固件（BIOS/UEFI）配置中启用相应选项。选项名称可能从*启用 Wake-on-Lan*到*通过 PCIE 设备开机*不等；如果不确定，请查阅主板厂商手册。可以运行以下命令，使用 `ethtool` 检查 `<interface>` 的 WoL 配置：
 
@@ -18,7 +18,7 @@ ethtool <interface> | grep Wake-on
 pvenode wakeonlan <node>
 ```
 
-This broadcasts the WoL magic packet on UDP port 9, containing the MAC address of `<node>` obtained from the `wakeonlan` property. The node-specific `wakeonlan` property can be set using the following command:
+这会在 UDP 端口 9 上广播 WoL 魔术包，其中包含 `<node>` 的 MAC 地址，该地址从 `wakeonlan` 属性获取。可以使用以下命令设置节点特定的 `wakeonlan` 属性：
 
 ```text
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX
@@ -36,7 +36,7 @@ pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,bind-interface=<iface-name>
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,broadcast-address=<broadcast-address>
 ```
 
-## 3.11.2. 任务历史记录 <a href="#_task_history" id="_task_history"></a>
+## 3.11.2. 任务历史记录 <a href="#task_history" id="task_history"></a>
 
 排查服务器问题（例如备份作业失败）时，查看先前运行任务的日志通常会很有帮助。在 Proxmox VE 中，可以通过 `pvenode task` 命令访问节点的任务历史记录。
 
@@ -52,9 +52,9 @@ pvenode task list --errors --vmid 100
 pvenode task log UPID:pve1:00010D94:001CA6EA:6124E1B9:vzdump:100:root@pam:
 ```
 
-## 3.11.3. 客户机批量电源管理 <a href="#_bulk_guest_power_management" id="_bulk_guest_power_management"></a>
+## 3.11.3. 客户机批量电源管理 <a href="#bulk_guest_power_management" id="bulk_guest_power_management"></a>
 
-In case you have many VMs/containers, starting and stopping guests can be carried out in bulk operations with the `startall` and `stopall` subcommands of `pvenode`. By default, `pvenode startall` will only start VMs/containers which have been set to automatically start on boot (see [Automatic Start and Shutdown of Virtual Machines](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_startup_and_shutdown)), however, you can override this behavior with the `--force` flag. Both commands also have a `--vms` option, which limits the stopped/started guests to the specified VMIDs.
+如果拥有许多虚拟机/容器，可以通过 `startall` 和 `stopall` 子命令（属于 `pvenode`）批量启动和停止客户机。默认情况下，`pvenode startall` 仅启动已设置为开机自动启动的虚拟机/容器（参见 [虚拟机的自动启动和关闭](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_startup_and_shutdown)），不过可以使用 `--force` 标志覆盖此行为。这两个命令还都有 `--vms` 选项，可将停止/启动的客户机限制为指定的 VMID。
 
 例如，要启动 VM *100*、*101* 和 *102*，无论它们是否设置了 `onboot`，都可以使用：
 
@@ -82,7 +82,7 @@ stopall 命令首先尝试执行正常关闭，然后等待，直到所有客户
 pvenode config set --startall-onboot-delay 10
 ```
 
-## 3.11.5. 客户机批量迁移 <a href="#_bulk_guest_migration" id="_bulk_guest_migration"></a>
+## 3.11.5. 客户机批量迁移 <a href="#bulk_guest_migration" id="bulk_guest_migration"></a>
 
 如果升级时需要将所有客户机从一个节点迁移到另一个节点，`pvenode` 还提供用于批量迁移的 `migrateall` 子命令。默认情况下，此命令会将系统上的每个客户机迁移到目标节点，但也可以设置为仅迁移一组客户机。
 

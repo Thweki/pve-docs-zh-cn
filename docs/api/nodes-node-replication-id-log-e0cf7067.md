@@ -6,7 +6,7 @@
 
 ## GET `/nodes/{node}/replication/{id}/log`
 
-Read replication job log.
+读取复制作业日志。
 
 **方法标识：** `read_job_log`
 
@@ -14,7 +14,7 @@ Read replication job log.
 
 ```json
 {
-  "description": "Requires the VM.Audit permission on /vms/<vmid>, or 'Sys.Audit' on '/nodes/<node>'",
+  "description": "需要对 /vms/<vmid> 具有 VM.Audit 权限，或对 '/nodes/<node>' 具有 'Sys.Audit' 权限",
   "user": "all"
 }
 ```
@@ -41,9 +41,9 @@ Read replication job log.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
+| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
 | `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | The cluster node name. |
+| `node` | string | 是 | — | 集群节点名称。 |
 | `start` | integer | 否 | — |  |
 
 <details>
@@ -54,7 +54,7 @@ Read replication job log.
   "additionalProperties": 0,
   "properties": {
     "id": {
-      "description": "Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'.",
+      "description": "复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '<GUEST>-<JOBNUM>'。",
       "format": "pve-replication-job-id",
       "pattern": "[1-9][0-9]{2,8}-\\d{1,9}",
       "type": "string"
@@ -66,7 +66,7 @@ Read replication job log.
       "typetext": "<integer> (0 - N)"
     },
     "node": {
-      "description": "The cluster node name.",
+      "description": "集群节点名称。",
       "format": "pve-node",
       "type": "string",
       "typetext": "<string>"
@@ -90,11 +90,11 @@ Read replication job log.
   "items": {
     "properties": {
       "n": {
-        "description": "Line number",
+        "description": "行号",
         "type": "integer"
       },
       "t": {
-        "description": "Line text",
+        "description": "行文本",
         "type": "string"
       }
     },

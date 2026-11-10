@@ -22,7 +22,7 @@ ZFS 是由 Sun Microsystems 设计的文件系统与逻辑卷管理器的结合�
 - 加密
 - …
 
-## 3.9.1. 硬件 <a href="#_hardware_2" id="_hardware_2"></a>
+## 3.9.1. 硬件 <a href="#hardware_2" id="hardware_2"></a>
 
 ZFS 对内存依赖很大，因此至少需要 8GB 才能开始使用。实践中，应在硬件/预算允许的范围内尽可能多配置内存。为防止数据损坏，我们建议使用高品质的 ECC RAM。
 
@@ -34,7 +34,7 @@ ZFS 对内存依赖很大，因此至少需要 8GB 才能开始使用。实践�
 
 如果您尝试在 VM 内安装 Proxmox VE（嵌套虚拟化），请勿为该 VM 的磁盘使用 `virtio`，因为 ZFS 不支持它们。请改用 IDE 或 SCSI（也适用于 `virtio` SCSI 控制器类型）。
 
-## 3.9.2. 安装为根文件系统 <a href="#_installation_as_root_file_system" id="_installation_as_root_file_system"></a>
+## 3.9.2. 安装为根文件系统 <a href="#installation_as_root_file_system" id="installation_as_root_file_system"></a>
 
 使用 Proxmox VE 安装程序进行安装时，可以选择 ZFS 作为根文件系统。您需要在安装时选择 RAID 类型：
 
@@ -171,7 +171,7 @@ rpool/swap        4.25G  7.69T    64K  -
 
 镜像 vdev（RAID1、RAID10）对 VM 工作负载具有良好的表现。除非您的环境有特定需求和特性，且 RAIDZ 的性能特性可以接受，否则应使用镜像 vdev。
 
-## 3.9.4. ZFS dRAID <a href="#_zfs_draid" id="_zfs_draid"></a>
+## 3.9.4. ZFS dRAID <a href="#zfs_draid" id="zfs_draid"></a>
 
 在 ZFS dRAID（去集群化 RAID）中，热备盘也参与 RAID。其备用容量会被预留，并在某块磁盘发生故障时用于重建。根据配置的不同，与 RAIDZ 相比，在磁盘发生故障时这可提供更快的重建速度。更多信息请参阅 OpenZFS 官方文档。[\[1\]](#note-769d32f3-1)
 
@@ -193,17 +193,17 @@ GUI 要求比最低磁盘数多一块磁盘（即 dRAID1 需要 3 块）。它�
 # man zpoolconcepts
 ```
 
-### 备用磁盘和数据 <a href="#_spares_and_data" id="_spares_and_data"></a>
+### 备用磁盘和数据 <a href="#spares_and_data" id="spares_and_data"></a>
 
 `spares` 的数量告知系统应准备多少块磁盘以应对磁盘故障。默认值为 0 `spares`。没有备用磁盘，重建就不会获得任何速度优势。
 
 `data` 定义冗余组中的设备数量。默认值为 8。但如果 `disks - parity - spares` 等于某个小于 8 的值，则使用较小的数值。一般来说，`data` 设备数量越少，IOPS 越高、压缩率越好、重同步速度越快，但定义较少的数据设备会减少池的可用存储容量。
 
-## 3.9.5. 引导加载程序 <a href="#_bootloader_2" id="_bootloader_2"></a>
+## 3.9.5. 引导加载程序 <a href="#bootloader_2" id="bootloader_2"></a>
 
 Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool) 管理引导加载程序配置。有关详细信息，请参阅 [Proxmox VE 宿主机引导加载程序](13-sysboot.md) 一章。
 
-## 3.9.6. ZFS 管理 <a href="#_zfs_administration" id="_zfs_administration"></a>
+## 3.9.6. ZFS 管理 <a href="#zfs_administration" id="zfs_administration"></a>
 
 本节提供一些常见任务的使用示例。ZFS 本身功能非常强大，并提供了许多选项。管理 ZFS 的主要命令是 `zfs` 和 `zpool`。这两个命令都配有详尽的手册页，可以使用以下命令阅读：
 
@@ -267,7 +267,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zpool create -f -o ashift=12 <pool> raidz1 <device1> <device2> <device3>
 ```
 
-### 使用 RAIDZ-2 创建新池 <a href="#_create_a_new_pool_with_raidz_2" id="_create_a_new_pool_with_raidz_2"></a>
+### 使用 RAIDZ-2 创建新池 <a href="#create_a_new_pool_with_raidz_2" id="create_a_new_pool_with_raidz_2"></a>
 
 最少 4 块磁盘
 
@@ -396,7 +396,7 @@ zpool attach <pool> <raidzN-M> <device>
 {% endhint %}
 
 {% hint style="info" %}
-Make sure to pass *grub* as mode to `proxmox-boot-tool init` if `proxmox-boot-tool status` indicates your current disks are using GRUB, especially if Secure Boot is enabled!
+务必将 *grub* 作为模式传递给 `proxmox-boot-tool init`，如果 `proxmox-boot-tool status` 表明当前磁盘使用 GRUB，尤其是在启用了安全启动时！
 {% endhint %}
 
 **直接使用 GRUB：**
@@ -409,7 +409,7 @@ Make sure to pass *grub* as mode to `proxmox-boot-tool init` if `proxmox-boot-to
 只有使用 Proxmox VE 6.3 或更早版本安装且尚未手动迁移为使用 `proxmox-boot-tool` 的系统才直接使用 GRUB。
 {% endhint %}
 
-## 3.9.7. 配置电子邮件通知 <a href="#_configure_e_mail_notification" id="_configure_e_mail_notification"></a>
+## 3.9.7. 配置电子邮件通知 <a href="#configure_e_mail_notification" id="configure_e_mail_notification"></a>
 
 ZFS 附带一个事件守护进程 `ZED`，用于监视 ZFS 内核模块生成的事件。该守护进程还可以针对池错误等 ZFS 事件发送电子邮件。较新的 ZFS 软件包将该守护进程放在独立的 `zfs-zed` 软件包中，在 Proxmox VE 中默认应已安装该软件包。
 
@@ -447,7 +447,7 @@ options zfs zfs_arc_max=8589934592
 此示例设置将使用量限制为 8 GiB（*8 \* 230*）。
 
 {% hint style="warning" %}
-In case your desired `zfs_arc_max` value is lower than or equal to `zfs_arc_min` (which defaults to 1/32 of the system memory), `zfs_arc_max` will be ignored unless you also set `zfs_arc_min` to at most `zfs_arc_max - 1`.
+如果所需的 `zfs_arc_max` 值小于或等于 `zfs_arc_min`（默认为系统内存的 1/32），则会忽略 `zfs_arc_max`，除非同时将 `zfs_arc_min` 设为不超过 `zfs_arc_max - 1`。
 {% endhint %}
 
 ```text
@@ -582,8 +582,8 @@ Enter passphrase for 'tank/encrypted_data':
 
 在加密数据集下创建的客户机卷，其 `encryptionroot` 属性也会相应设置。每个 encryptionroot 只需加载一次密钥材料，其下的所有加密数据集便都可以使用。
 
-See the `encryptionroot`, `encryption`, `keylocation`, `keyformat` and `keystatus` properties, the `zfs load-key`, `zfs unload-key` and `zfs
-change-key` commands and the `Encryption` section from `man zfs` for more details and advanced usage.
+有关更多详情和高级用法，请参阅 `encryptionroot`、`encryption`、`keylocation`、`keyformat` 和 `keystatus` 属性，`zfs load-key`、`zfs unload-key` 和 `zfs
+change-key` 命令，以及 `Encryption` 一节（位于 `man zfs` 中）。
 
 ## 3.9.11. ZFS 中的压缩 <a href="#zfs_compression" id="zfs_compression"></a>
 

@@ -6,7 +6,7 @@
 
 ## GET `/cluster/ceph`
 
-Cluster ceph index.
+集群 ceph 索引。
 
 **方法标识：** `cephindex`
 

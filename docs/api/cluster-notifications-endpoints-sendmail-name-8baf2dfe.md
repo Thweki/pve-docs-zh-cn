@@ -6,7 +6,7 @@
 
 ## DELETE `/cluster/notifications/endpoints/sendmail/{name}`
 
-Remove sendmail endpoint
+移除 sendmail 端点
 
 **方法标识：** `delete_sendmail_endpoint`
 
@@ -70,7 +70,7 @@ Remove sendmail endpoint
 
 ## GET `/cluster/notifications/endpoints/sendmail/{name}`
 
-Return a specific sendmail endpoint
+返回指定的 sendmail 端点
 
 **方法标识：** `get_sendmail_endpoint`
 
@@ -140,34 +140,34 @@ Return a specific sendmail endpoint
 {
   "properties": {
     "author": {
-      "description": "Author of the mail",
+      "description": "邮件作者",
       "optional": 1,
       "type": "string"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string"
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "optional": 1,
       "type": "string"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -176,7 +176,7 @@ Return a specific sendmail endpoint
       "type": "array"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -185,7 +185,7 @@ Return a specific sendmail endpoint
       "type": "array"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string"
     }
@@ -196,7 +196,7 @@ Return a specific sendmail endpoint
 
 ## PUT `/cluster/notifications/endpoints/sendmail/{name}`
 
-Update existing sendmail endpoint
+更新现有 sendmail 端点
 
 **方法标识：** `update_sendmail_endpoint`
 
@@ -251,15 +251,15 @@ Update existing sendmail endpoint
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | Author of the mail |
-| `comment` | string | 否 | — | Comment |
-| `delete` | array | 否 | — | A list of settings you want to delete. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `disable` | boolean | 否 | 0 | Disable this target |
-| `from-address` | string | 否 | — | `From` address for the mail |
-| `mailto` | array | 否 | — | List of email recipients |
-| `mailto-user` | array | 否 | — | List of users |
-| `name` | string | 是 | — | The name of the endpoint. |
+| `author` | string | 否 | — | 邮件作者 |
+| `comment` | string | 否 | — | 注释 |
+| `delete` | array | 否 | — | 要删除的设置列表。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | boolean | 否 | 0 | 禁用此目标 |
+| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
+| `mailto` | array | 否 | — | 电子邮件收件人列表 |
+| `mailto-user` | array | 否 | — | 用户列表 |
+| `name` | string | 是 | — | 端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -269,19 +269,19 @@ Update existing sendmail endpoint
   "additionalProperties": 0,
   "properties": {
     "author": {
-      "description": "Author of the mail",
+      "description": "邮件作者",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "comment": {
-      "description": "Comment",
+      "description": "注释",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "delete": {
-      "description": "A list of settings you want to delete.",
+      "description": "要删除的设置列表。",
       "items": {
         "format": "pve-configid",
         "type": "string"
@@ -291,7 +291,7 @@ Update existing sendmail endpoint
       "typetext": "<array>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
@@ -299,19 +299,19 @@ Update existing sendmail endpoint
     },
     "disable": {
       "default": 0,
-      "description": "Disable this target",
+      "description": "禁用此目标",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
     },
     "from-address": {
-      "description": "`From` address for the mail",
+      "description": "邮件的 `From` 地址",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "mailto": {
-      "description": "List of email recipients",
+      "description": "电子邮件收件人列表",
       "items": {
         "format": "email-or-username",
         "type": "string"
@@ -321,7 +321,7 @@ Update existing sendmail endpoint
       "typetext": "<array>"
     },
     "mailto-user": {
-      "description": "List of users",
+      "description": "用户列表",
       "items": {
         "format": "pve-userid",
         "type": "string"
@@ -331,7 +331,7 @@ Update existing sendmail endpoint
       "typetext": "<array>"
     },
     "name": {
-      "description": "The name of the endpoint.",
+      "description": "端点名称。",
       "format": "pve-configid",
       "type": "string",
       "typetext": "<string>"

@@ -1,4 +1,4 @@
-# 23.6. **pmxcfs** \- Proxmox Cluster File System <a href="#_strong_pmxcfs_strong_proxmox_cluster_file_system" id="_strong_pmxcfs_strong_proxmox_cluster_file_system"></a>
+# 23.6. **pmxcfs** \- Proxmox 集群文件系统 <a href="#strong_pmxcfs_strong_proxmox_cluster_file_system" id="strong_pmxcfs_strong_proxmox_cluster_file_system"></a>
 
 **pmxcfs** `[OPTIONS]`
 

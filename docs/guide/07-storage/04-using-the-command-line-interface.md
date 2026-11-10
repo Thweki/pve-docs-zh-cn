@@ -1,10 +1,10 @@
-# 7.4. 使用命令行界面 <a href="#_using_the_command_line_interface" id="_using_the_command_line_interface"></a>
+# 7.4. 使用命令行界面 <a href="#using_the_command_line_interface" id="using_the_command_line_interface"></a>
 
 建议你熟悉存储池和卷标识符背后的概念，但在实际使用中，并不强制你在命令行上执行任何此类底层操作。通常，卷的分配和删除由 VM 和容器管理工具完成。
 
 尽管如此，仍有一个名为 `pvesm` 的命令行工具（“Proxmox VE Storage Manager”），它能够执行常见的存储管理任务。
 
-## 7.4.1. 示例 <a href="#_examples" id="_examples"></a>
+## 7.4.1. 示例 <a href="#examples" id="examples"></a>
 
 添加存储池
 

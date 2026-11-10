@@ -1,48 +1,48 @@
-# 14.5. Authentication Realms <a href="#pveum_authentication_realms" id="pveum_authentication_realms"></a>
+# 14.5. 认证域 <a href="#pveum_authentication_realms" id="pveum_authentication_realms"></a>
 
-As Proxmox VE users are just counterparts for users existing on some external realm, the realms have to be configured in `/etc/pve/domains.cfg`. The following realms (authentication methods) are available:
+由于 Proxmox VE 用户只是某些外部认证域中现有用户的对应项，因此必须在 `/etc/pve/domains.cfg` 中配置认证域。可用的认证域（身份验证方法）如下：
 
-**Linux PAM Standard Authentication**
+**Linux PAM 标准身份验证**
 
-Linux PAM is a framework for system-wide user authentication. These users are created on the host system with commands such as `adduser`. If PAM users exist on the Proxmox VE host system, corresponding entries can be added to Proxmox VE, to allow these users to log in via their system username and password.
+Linux PAM 是系统范围的用户身份验证框架。这些用户通过 `adduser` 等命令在宿主机系统上创建。如果 Proxmox VE 宿主机系统中存在 PAM 用户，可以向 Proxmox VE 添加相应条目，允许这些用户使用系统用户名和密码登录。
 
-**Proxmox VE Authentication Server**
+**Proxmox VE 身份验证服务器**
 
-This is a Unix-like password store, which stores hashed passwords in `/etc/pve/priv/shadow.cfg`. Passwords are hashed using the SHA-256 hashing algorithm. This is the most convenient realm for small-scale (or even mid-scale) installations, where users do not need access to anything outside of Proxmox VE. In this case, users are fully managed by Proxmox VE and are able to change their own passwords via the GUI.
+这是类似 Unix 的密码存储，将密码哈希存储在 `/etc/pve/priv/shadow.cfg` 中。密码使用 SHA-256 哈希算法进行哈希。对于小型（甚至中型）安装，如果用户无需访问 Proxmox VE 之外的任何内容，这是最方便的认证域。在这种情况下，用户完全由 Proxmox VE 管理，并且可以通过 GUI 更改自己的密码。
 
 **LDAP**
 
-LDAP (Lightweight Directory Access Protocol) is an open, cross-platform protocol for authentication using directory services. OpenLDAP is a popular open-source implementations of the LDAP protocol.
+LDAP（轻量目录访问协议）是使用目录服务进行身份验证的开放跨平台协议。OpenLDAP 是一种流行的 LDAP 协议开源实现。
 
-**Microsoft Active Directory (AD)**
+**Microsoft Active Directory（AD）**
 
-Microsoft Active Directory (AD) is a directory service for Windows domain networks and is supported as an authentication realm for Proxmox VE. It supports LDAP as an authentication protocol.
+Microsoft Active Directory（AD）是 Windows 域网络的目录服务，Proxmox VE 支持将其作为认证域。它支持使用 LDAP 作为身份验证协议。
 
 **OpenID Connect**
 
-OpenID Connect is implemented as an identity layer on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the user, based on authentication performed by an external authorization server.
+OpenID Connect 作为身份层实现在 OAuth 2.0 协议之上。它允许客户端根据外部授权服务器执行的身份验证来验证用户身份。
 
-## 14.5.1. Linux PAM Standard Authentication <a href="#user-realms-pam" id="user-realms-pam"></a>
+## 14.5.1. Linux PAM 标准身份验证 <a href="#user-realms-pam" id="user-realms-pam"></a>
 
-As Linux PAM corresponds to host system users, a system user must exist on each node which the user is allowed to log in on. The user authenticates with their usual system password. This realm is added by default and can’t be removed.
+由于 Linux PAM 对应宿主机系统用户，因此在允许用户登录的每个节点上都必须存在系统用户。用户使用其通常的系统密码进行身份验证。此认证域默认添加且无法移除。
 
-Password changes via the GUI or, equivalently, the `/access/password` API endpoint only apply to the local node and not cluster-wide. Even though Proxmox VE has a multi-master design, using different passwords for different nodes can still offer a security benefit.
+通过 GUI 或等效的 `/access/password` API 端点更改密码，仅应用于本地节点，而非整个集群。尽管 Proxmox VE 采用多主设计，为不同节点使用不同密码仍可带来安全收益。
 
-In terms of configurability, an administrator can choose to require two-factor authentication with logins from the realm and to set the realm as the default authentication realm.
+在可配置性方面，管理员可以要求此认证域的登录使用双因素身份验证，并将该认证域设为默认认证域。
 
-## 14.5.2. Proxmox VE Authentication Server <a href="#user-realms-pve" id="user-realms-pve"></a>
+## 14.5.2. Proxmox VE 身份验证服务器 <a href="#user-realms-pve" id="user-realms-pve"></a>
 
-The Proxmox VE authentication server realm is a simple Unix-like password store. The realm is created by default, and as with Linux PAM, the only configuration items available are the ability to require two-factor authentication for users of the realm, and to set it as the default realm for login.
+Proxmox VE 身份验证服务器认证域是简单的类 Unix 密码存储。该认证域默认创建，与 Linux PAM 一样，唯一可用的配置项是要求此认证域用户进行双因素身份验证，以及将其设为默认登录认证域。
 
-Unlike the other Proxmox VE realm types, users are created and authenticated entirely through Proxmox VE, rather than authenticating against another system. Hence, you are required to set a password for this type of user upon creation.
+与其他 Proxmox VE 认证域类型不同，用户的创建和身份验证完全通过 Proxmox VE 进行，而非针对其他系统进行身份验证。因此，创建此类用户时必须设置密码。
 
 ## 14.5.3. LDAP <a href="#user-realms-ldap" id="user-realms-ldap"></a>
 
-You can also use an external LDAP server for user authentication (for example, OpenLDAP). In this realm type, users are searched under a *Base Domain Name* (`base_dn`), using the username attribute specified in the *User Attribute Name* (`user_attr`) field.
+也可以使用外部 LDAP 服务器进行用户身份验证（例如 OpenLDAP）。在此认证域类型中，会在 *基本域名*（`base_dn`）下搜索用户，使用 *用户属性名称*（`user_attr`）字段指定的用户名属性。
 
-A server and optional fallback server can be configured, and the connection can be encrypted via SSL. Furthermore, filters can be configured for directories and groups. Filters allow you to further limit the scope of the realm.
+可以配置一台服务器和可选的备用服务器，连接可通过 SSL 加密。此外，可以为目录和组配置过滤器。过滤器允许进一步限制认证域的范围。
 
-For instance, if a user is represented via the following LDIF dataset:
+例如，如果用户通过以下 LDIF 数据集表示：
 
 ```text
 # user1 of People at ldap-test.com
@@ -57,184 +57,184 @@ sn: Testers
 description: This is the first test user.
 ```
 
-The *Base Domain Name* would be `ou=People,dc=ldap-test,dc=com` and the user attribute would be `uid`.
+*基本域名* 将为 `ou=People,dc=ldap-test,dc=com`，用户属性将为 `uid`。
 
-If Proxmox VE needs to authenticate (bind) to the LDAP server before being able to query and authenticate users, a bind domain name can be configured via the `bind_dn` property in `/etc/pve/domains.cfg`. Its password then has to be stored in `/etc/pve/priv/realm/<realmname>.pw` (for example, `/etc/pve/priv/realm/my-ldap.pw`). This file should contain a single line with the raw password.
+如果 Proxmox VE 需要先向 LDAP 服务器进行身份验证（绑定）才能查询和验证用户，可以通过 `bind_dn` 属性（位于 `/etc/pve/domains.cfg` 中）配置绑定域名。其密码随后必须存储在 `/etc/pve/priv/realm/<realmname>.pw` 中（例如 `/etc/pve/priv/realm/my-ldap.pw`）。此文件应包含单行明文密码。
 
-To verify certificates, you need to set `capath`. You can set it either directly to the CA certificate of your LDAP server, or to the system path containing all trusted CA certificates (`/etc/ssl/certs`). Additionally, you need to set the `verify` option, which can also be done over the web interface.
+要验证证书，需要设置 `capath`。可以将其直接设为 LDAP 服务器的 CA 证书，或包含所有受信任 CA 证书的系统路径（`/etc/ssl/certs`）。此外，还需设置 `verify` 选项，也可以通过 Web 界面设置。
 
-The main configuration options for an LDAP server realm are as follows:
+LDAP 服务器认证域的主要配置选项如下：
 
-- `Realm` (`realm`): The realm identifier for Proxmox VE users
-- `Base Domain Name` (`base_dn`): The directory which users are searched under
-- `User Attribute Name` (`user_attr`): The LDAP attribute containing the username that users will log in with
-- `Server` (`server1`): The server hosting the LDAP directory
-- `Fallback Server` (`server2`): An optional fallback server address, in case the primary server is unreachable
-- `Port` (`port`): The port that the LDAP server listens on
-
-{% hint style="info" %}
-In order to allow a particular user to authenticate using the LDAP server, you must also add them as a user of that realm from the Proxmox VE server. This can be carried out automatically with [syncing](#pveum_ldap_sync).
-{% endhint %}
-
-## 14.5.4. Microsoft Active Directory (AD) <a href="#user-realms-ad" id="user-realms-ad"></a>
-
-To set up Microsoft AD as a realm, a server address and authentication domain need to be specified. Active Directory supports most of the same properties as LDAP, such as an optional fallback server, port, and SSL encryption. Furthermore, users can be added to Proxmox VE automatically via [sync](#pveum_ldap_sync) operations, after configuration.
-
-As with LDAP, if Proxmox VE needs to authenticate before it binds to the AD server, you must configure the *Bind User* (`bind_dn`) property. This property is typically required by default for Microsoft AD.
-
-The main configuration settings for Microsoft Active Directory are:
-
-- `Realm` (`realm`): The realm identifier for Proxmox VE users
-- `Domain` (`domain`): The AD domain of the server
-- `Server` (`server1`): The FQDN or IP address of the server
-- `Fallback Server` (`server2`): An optional fallback server address, in case the primary server is unreachable
-- `Port` (`port`): The port that the Microsoft AD server listens on
+- `Realm`（`realm`）：Proxmox VE 用户的认证域标识符
+- `Base Domain Name`（`base_dn`）：搜索用户的目录
+- `User Attribute Name`（`user_attr`）：包含用户登录时所用用户名的 LDAP 属性
+- `Server`（`server1`）：托管 LDAP 目录的服务器
+- `Fallback Server`（`server2`）：可选的备用服务器地址，以备主服务器无法访问
+- `Port`（`port`）：LDAP 服务器监听的端口
 
 {% hint style="info" %}
-Microsoft AD normally checks values like usernames without case sensitivity. To make Proxmox VE do the same, you can disable the default `case-sensitive` option by editing the realm in the web UI, or using the CLI (change the `ID` with the realm ID): `pveum realm modify ID --case-sensitive 0`
+要允许特定用户使用 LDAP 服务器进行身份验证，还必须在 Proxmox VE 服务器中将其添加为该认证域的用户。可以通过 [同步](#pveum_ldap_sync) 自动完成。
 {% endhint %}
 
-## 14.5.5. Syncing LDAP-Based Realms <a href="#pveum_ldap_sync" id="pveum_ldap_sync"></a>
+## 14.5.4. Microsoft Active Directory（AD） <a href="#user-realms-ad" id="user-realms-ad"></a>
+
+要将 Microsoft AD 设置为认证域，需要指定服务器地址和认证域。Active Directory 支持与 LDAP 大部分相同的属性，例如可选的备用服务器、端口和 SSL 加密。此外，配置后可以通过 [同步](#pveum_ldap_sync) 操作自动将用户添加到 Proxmox VE。
+
+与 LDAP 一样，如果 Proxmox VE 在绑定到 AD 服务器之前需要进行身份验证，必须配置 *绑定用户*（`bind_dn`）属性。Microsoft AD 默认通常需要此属性。
+
+Microsoft Active Directory 的主要配置设置为：
+
+- `Realm`（`realm`）：Proxmox VE 用户的认证域标识符
+- `Domain`（`domain`）：服务器的 AD 域
+- `Server`（`server1`）：服务器的 FQDN 或 IP 地址
+- `Fallback Server`（`server2`）：可选的备用服务器地址，以备主服务器无法访问
+- `Port`（`port`）：Microsoft AD 服务器监听的端口
+
+{% hint style="info" %}
+Microsoft AD 通常以不区分大小写的方式检查用户名等值。要使 Proxmox VE 采用相同行为，可以在 Web UI 中编辑认证域来禁用默认的 `case-sensitive` 选项，或使用 CLI（将 `ID` 替换为认证域 ID）：`pveum realm modify ID --case-sensitive 0`
+{% endhint %}
+
+## 14.5.5. 同步基于 LDAP 的认证域 <a href="#pveum_ldap_sync" id="pveum_ldap_sync"></a>
 
 [![screenshot/gui-datacenter-realm-add-ldap.png](../../assets/screenshot-gui-datacenter-realm-add-ldap-png-c2ca43be55a3.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-realm-add-ldap.png)
 
-It’s possible to automatically sync users and groups for LDAP-based realms (LDAP \& Microsoft Active Directory), rather than having to add them to Proxmox VE manually. You can access the sync options from the Add/Edit window of the web interface’s `Authentication` panel or via the `pveum realm add/modify` commands. You can then carry out the sync operation from the `Authentication` panel of the GUI or using the following command:
+可以自动同步基于 LDAP 的认证域（LDAP 和 Microsoft Active Directory）的用户和组，无需手动将其添加到 Proxmox VE。可以从 Web 界面 `Authentication` 面板的添加/编辑窗口访问同步选项，或使用 `pveum realm add/modify` 命令。随后可以从 GUI 的 `Authentication` 面板执行同步操作，或使用以下命令：
 
 ```text
 pveum realm sync <realm>
 ```
 
-Users and groups are synced to the cluster-wide configuration file, `/etc/pve/user.cfg`.
+用户和组同步到集群范围的配置文件 `/etc/pve/user.cfg`。
 
-### Attributes to Properties <a href="#_attributes_to_properties" id="_attributes_to_properties"></a>
+### 属性到用户属性的映射 <a href="#attributes_to_properties" id="attributes_to_properties"></a>
 
-If the sync response includes user attributes, they will be synced into the matching user property in the `user.cfg`. For example: `firstname` or `lastname`.
+如果同步响应包含用户属性，它们将同步到 `user.cfg` 中匹配的用户属性。例如：`firstname` 或 `lastname`。
 
-If the names of the attributes are not matching the Proxmox VE properties, you can set a custom field-to-field map in the config by using the `sync_attributes` option.
+如果属性名称与 Proxmox VE 用户属性不匹配，可以使用 `sync_attributes` 选项在配置中设置自定义的字段对字段映射。
 
-How such properties are handled if anything vanishes can be controlled via the sync options, see below.
+如果某些内容消失，可以通过同步选项控制如何处理这些属性，参见下文。
 
-### Sync Configuration <a href="#_sync_configuration" id="_sync_configuration"></a>
+### 同步配置 <a href="#sync_configuration" id="sync_configuration"></a>
 
-The configuration options for syncing LDAP-based realms can be found in the `Sync Options` tab of the Add/Edit window.
+基于 LDAP 的认证域的同步配置选项位于添加/编辑窗口的 `Sync Options` 选项卡。
 
-The configuration options are as follows:
+配置选项如下：
 
-- `Bind User` (`bind_dn`): Refers to the LDAP account used to query users and groups. This account needs access to all desired entries. If it’s set, the search will be carried out via binding; otherwise, the search will be carried out anonymously. The user must be a complete LDAP formatted distinguished name (DN), for example, `cn=admin,dc=example,dc=com`.
-- Groupname attr. (group\_name\_attr): Represents the users' groups. Only entries which adhere to the usual character limitations of the `user.cfg` are synced. Groups are synced with `-$realm` attached to the name, in order to avoid naming conflicts. Please ensure that a sync does not overwrite manually created groups.
-- `User classes` (`user_classes`): Objects classes associated with users.
-- `Group classes` (`group_classes`): Objects classes associated with groups.
-- `E-Mail attribute`: If the LDAP-based server specifies user email addresses, these can also be included in the sync by setting the associated attribute here. From the command line, this is achievable through the `--sync_attributes` parameter.
-- `User Filter` (`filter`): For further filter options to target specific users.
-- `Group Filter` (`group_filter`): For further filter options to target specific groups.
+- `Bind User`（`bind_dn`）：指用于查询用户和组的 LDAP 账户。此账户需要访问所有所需条目的权限。如果设置，将通过绑定执行搜索；否则匿名搜索。用户必须是完整的 LDAP 格式可分辨名称（DN），例如 `cn=admin,dc=example,dc=com`。
+- 组名称属性（group\_name\_attr）：表示用户的组。仅同步遵守 `user.cfg` 常规字符限制的条目。为避免名称冲突，同步组时会在名称后附加 `-$realm`。请确保同步不会覆盖手动创建的组。
+- `User classes`（`user_classes`）：与用户关联的对象类。
+- `Group classes`（`group_classes`）：与组关联的对象类。
+- `E-Mail attribute`：如果基于 LDAP 的服务器指定了用户电子邮件地址，也可以在此设置关联属性，将其包含在同步中。在命令行中，可通过 `--sync_attributes` 参数实现。
+- `User Filter`（`filter`）：用于进一步针对特定用户的过滤选项。
+- `Group Filter`（`group_filter`）：用于进一步针对特定组的过滤选项。
 
 {% hint style="info" %}
-Filters allow you to create a set of additional match criteria, to narrow down the scope of a sync. Information on available LDAP filter types and their usage can be found at [ldap.com](https://ldap.com/ldap-filters/).
+过滤器允许创建一组附加匹配条件，以缩小同步范围。有关可用 LDAP 过滤器类型及其用法的信息，请参阅 [ldap.com](https://ldap.com/ldap-filters/)。
 {% endhint %}
 
-### Sync Options <a href="#pveum_ldap_sync_options" id="pveum_ldap_sync_options"></a>
+### 同步选项 <a href="#pveum_ldap_sync_options" id="pveum_ldap_sync_options"></a>
 
 [![screenshot/gui-datacenter-realm-add-ldap-sync-options.png](../../assets/screenshot-gui-datacenter-realm-add-ldap-sync-options-png-c67727ab860d.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-realm-add-ldap-sync-options.png)
 
-In addition to the options specified in the previous section, you can also configure further options that describe the behavior of the sync operation.
+除上一节指定的选项外，还可以配置其他选项，描述同步操作的行为。
 
-These options are either set as parameters before the sync, or as defaults via the realm option `sync-defaults-options`.
+这些选项可以在同步前作为参数设置，也可以通过认证域选项 `sync-defaults-options` 设置为默认值。
 
-The main options for syncing are:
+同步的主要选项为：
 
-- `Scope` (`scope`): The scope of what to sync. It can be either `users`, `groups` or `both`.
-- `Enable new` (`enable-new`): If set, the newly synced users are enabled and can log in. The default is `true`.
-- `Remove Vanished` (`remove-vanished`): This is a list of options which, when activated, determine if they are removed when they are not returned from the sync response. The options are:
+- `Scope`（`scope`）：要同步的范围。可以是 `users`、`groups` 或 `both`。
+- `Enable new`（`enable-new`）：如果设置，新同步的用户会被启用并可登录。默认为 `true`。
+- `Remove Vanished`（`remove-vanished`）：这是一个选项列表，激活后决定在同步响应未返回相应内容时是否移除它们。选项包括：
 
-  - `ACL` (`acl)`: Remove ACLs of users and groups which were not returned returned in the sync response. This most often makes sense together with `Entry`.
-  - `Entry` (`entry`): Removes entries (i.e. users and groups) when they are not returned in the sync response.
-  - `Properties` (`properties`): Removes properties of entries where the user in the sync response did not contain those attributes. This includes all properties, even those never set by a sync. Exceptions are tokens and the enable flag, these will be retained even with this option enabled.
-- `Preview` (`dry-run`): No data is written to the config. This is useful if you want to see which users and groups would get synced to the `user.cfg`.
+  - `ACL`（`acl)`：移除同步响应未返回的用户和组的 ACL。通常与 `Entry` 配合使用最为合理。
+  - `Entry`（`entry`）：如果同步响应未返回条目（即用户和组），则移除这些条目。
+  - `Properties`（`properties`）：如果同步响应中的用户不包含某些属性，则移除条目的这些属性。这包括所有属性，甚至从未由同步设置的属性。令牌和启用标志除外，即使启用此选项也会保留。
+- `Preview`（`dry-run`）：不向配置写入任何数据。如果希望查看哪些用户和组会被同步到 `user.cfg`，此选项很有用。
 
-### Reserved characters <a href="#pveum_ldap_reserved_characters" id="pveum_ldap_reserved_characters"></a>
+### 保留字符 <a href="#pveum_ldap_reserved_characters" id="pveum_ldap_reserved_characters"></a>
 
-Certain characters are reserved (see [RFC2253](https://www.ietf.org/rfc/rfc2253.txt)) and cannot be easily used in attribute values in DNs without being escaped properly.
+某些字符为保留字符（参见 [RFC2253](https://www.ietf.org/rfc/rfc2253.txt)），如果未正确转义，就无法轻易在 DN 的属性值中使用。
 
-Following characters need escaping:
+以下字符需要转义：
 
-- Space ( ) at the beginning or end
-- Number sign (`#`) at the beginning
-- Comma (`,`)
-- Plus sign (`+`)
-- Double quote (`"`)
-- Forward slashes (`/`)
-- Angle brackets (`<>`)
-- Semicolon (`;`)
-- Equals sign (`=`)
+- 开头或末尾的空格（ ）
+- 开头的井号（`#`）
+- 逗号（`,`）
+- 加号（`+`）
+- 双引号（`"`）
+- 正斜杠（`/`）
+- 尖括号（`<>`）
+- 分号（`;`）
+- 等号（`=`）
 
-To use such characters in DNs, surround the attribute value in double quotes. For example, to bind with a user with the CN (Common Name) `Example, User`, use `CN="Example, User",OU=people,DC=example,DC=com` as value for `bind_dn`.
+要在 DN 中使用此类字符，请用双引号括起属性值。例如，要使用 CN（通用名称）为 `Example, User` 的用户绑定，请将 `CN="Example, User",OU=people,DC=example,DC=com` 用作 `bind_dn` 的值。
 
-This applies to the `base_dn`, `bind_dn`, and `group_dn` attributes.
+这适用于 `base_dn`、`bind_dn` 和 `group_dn` 属性。
 
 {% hint style="info" %}
-Users with colons and forward slashes cannot be synced since these are reserved characters in usernames.
+含有冒号和正斜杠的用户无法同步，因为这些是用户名中的保留字符。
 {% endhint %}
 
 ## 14.5.6. OpenID Connect <a href="#pveum_openid" id="pveum_openid"></a>
 
-The main OpenID Connect configuration options are:
+OpenID Connect 的主要配置选项为：
 
-- `Issuer URL` (`issuer-url`): This is the URL of the authorization server. Proxmox VE uses the OpenID Connect Discovery protocol to automatically configure further details.
+- `Issuer URL`（`issuer-url`）：这是授权服务器的 URL。Proxmox VE 使用 OpenID Connect Discovery 协议自动配置更多详细信息。
 
-  While it is possible to use unencrypted `http://` URLs, we strongly recommend to use encrypted `https://` connections.
-- `Realm` (`realm`): The realm identifier for Proxmox VE users
-- `Client ID` (`client-id`): OpenID Client ID.
-- `Client Key` (`client-key`): Optional OpenID Client Key.
-- `Autocreate Users` (`autocreate`): Automatically create users if they do not exist. While authentication is done at the OpenID server, all users still need an entry in the Proxmox VE user configuration. You can either add them manually, or use the `autocreate` option to automatically add new users.
-- `Username Claim` (`username-claim`): OpenID claim used to generate the unique username (`subject`, `username` or `email`).
-- `Autocreate Groups` (`groups-autocreate`): Create all groups in the claim instead of using existing PVE groups (default behavior).
-- `Groups Claim` (`groups-claim`): OpenID claim used to retrieve the groups from the ID token or userinfo endpoint.
-- `Overwrite Groups` (`groups-overwrite`): Overwrite all groups assigned to user instead of appending to existing groups (default behavior).
+  虽然可以使用未加密的 `http://` URL，但强烈建议使用加密的 `https://` 连接。
+- `Realm`（`realm`）：Proxmox VE 用户的认证域标识符
+- `Client ID`（`client-id`）：OpenID 客户端 ID。
+- `Client Key`（`client-key`）：可选的 OpenID 客户端密钥。
+- `Autocreate Users`（`autocreate`）：如果用户不存在，则自动创建。虽然身份验证在 OpenID 服务器上完成，但所有用户仍需要在 Proxmox VE 用户配置中有条目。可以手动添加，或使用 `autocreate` 选项自动添加新用户。
+- `Username Claim`（`username-claim`）：用于生成唯一用户名的 OpenID 声明（`subject`、`username` 或 `email`）。
+- `Autocreate Groups`（`groups-autocreate`）：创建声明中的所有组，而非使用现有 PVE 组（默认行为）。
+- `Groups Claim`（`groups-claim`）：用于从 ID 令牌或 userinfo 端点检索组的 OpenID 声明。
+- `Overwrite Groups`（`groups-overwrite`）：覆盖分配给用户的所有组，而非追加到现有组（默认行为）。
 
-### Username mapping <a href="#_username_mapping" id="_username_mapping"></a>
+### 用户名映射 <a href="#username_mapping" id="username_mapping"></a>
 
-The OpenID Connect specification defines a single unique attribute (*claim* in OpenID terms) named `subject`. By default, we use the value of this attribute to generate Proxmox VE usernames, by simple adding `@` and the realm name: `${subject}@${realm}`.
+OpenID Connect 规范定义了一个唯一属性（OpenID 术语中称为 *声明*），名为 `subject`。默认使用此属性的值生成 Proxmox VE 用户名，只需添加 `@` 和认证域名称：`${subject}@${realm}`。
 
-Unfortunately, most OpenID servers use random strings for `subject`, like `DGH76OKH34BNG3245SB`, so a typical username would look like `DGH76OKH34BNG3245SB@yourrealm`. While unique, it is difficult for humans to remember such random strings, making it quite impossible to associate real users with this.
+遗憾的是，大多数 OpenID 服务器对 `subject` 使用随机字符串，例如 `DGH76OKH34BNG3245SB`，因此典型用户名类似 `DGH76OKH34BNG3245SB@yourrealm`。虽然唯一，但这种随机字符串很难记忆，几乎无法将其与真实用户关联。
 
-The `username-claim` setting allows you to use other attributes for the username mapping. Setting it to `username` is preferred if the OpenID Connect server provides that attribute and guarantees its uniqueness.
+`username-claim` 设置允许使用其他属性进行用户名映射。如果 OpenID Connect 服务器提供该属性并保证其唯一性，则优先将其设为 `username`。
 
-Another option is to use `email`, which also yields human readable usernames. Again, only use this setting if the server guarantees the uniqueness of this attribute.
+另一种选择是使用 `email`，这也会产生易读的用户名。同样，只有服务器保证此属性唯一时才使用此设置。
 
-### Groups mapping <a href="#_groups_mapping" id="_groups_mapping"></a>
+### 组映射 <a href="#groups_mapping" id="groups_mapping"></a>
 
-Specifying the `groups-claim` setting in the OpenID configuration enables group mapping functionality. The data provided in the `groups-claim` should be a list of strings that correspond to groups that a user should be a member of in Proxmox VE. To prevent collisions, group names from the OpenID claim are suffixed with `-<realm name>` (e.g. for the OpenID group name `my-openid-group` in the realm `oidc`, the group name in Proxmox VE would be `my-openid-group-oidc`).
+在 OpenID 配置中指定 `groups-claim` 设置会启用组映射功能。`groups-claim` 提供的数据应为字符串列表，对应用户在 Proxmox VE 中应加入的组。为防止冲突，OpenID 声明中的组名称会添加后缀 `-<realm name>`（例如，OpenID 组名称为 `my-openid-group`，位于认证域 `oidc`，则 Proxmox VE 中的组名称为 `my-openid-group-oidc`）。
 
-Any groups reported by the OpenID provider that do not exist in Proxmox VE are ignored by default. If all groups reported by the OpenID provider should exist in Proxmox VE, the `groups-autocreate` option may be used to automatically create these groups on user logins.
+默认情况下，OpenID 提供商报告但在 Proxmox VE 中不存在的组都会被忽略。如果 OpenID 提供商报告的所有组都应在 Proxmox VE 中存在，可使用 `groups-autocreate` 选项，在用户登录时自动创建这些组。
 
-By default, groups are appended to the user’s existing groups. It may be desirable to overwrite any groups that the user is already a member in Proxmox VE with those from the OpenID provider. Enabling the `groups-overwrite` setting removes all groups from the user in Proxmox VE before adding the groups reported by the OpenID provider.
+默认情况下，组会追加到用户现有的组中。有时可能希望用 OpenID 提供商的组覆盖用户在 Proxmox VE 中已加入的所有组。启用 `groups-overwrite` 设置后，会先移除用户在 Proxmox VE 中的所有组，再添加 OpenID 提供商报告的组。
 
-In some cases, OpenID servers may send groups claims which include invalid characters for Proxmox VE group IDs. Any groups that contain characters not allowed in a Proxmox VE group name are not included and a warning will be sent to the logs.
+某些情况下，OpenID 服务器发送的组声明可能含有 Proxmox VE 组 ID 中不允许的字符。任何包含 Proxmox VE 组名称不允许字符的组都不会被包含，并会向日志发送警告。
 
-### Advanced settings <a href="#_advanced_settings" id="_advanced_settings"></a>
+### 高级设置 <a href="#advanced_settings" id="advanced_settings"></a>
 
-- `Query userinfo endpoint` (`query-userinfo`): Enabling this option requires the OpenID Connect authenticator to query the "userinfo" endpoint for claim values. Disabling this option is useful for some identity providers that do not support the "userinfo" endpoint (e.g. ADFS).
+- `Query userinfo endpoint`（`query-userinfo`）：启用此选项会要求 OpenID Connect 身份验证器查询“userinfo”端点以获取声明值。对于某些不支持“userinfo”端点的身份提供商（例如 ADFS），禁用此选项很有用。
 
-### Examples <a href="#_examples_9" id="_examples_9"></a>
+### 示例 <a href="#examples_9" id="examples_9"></a>
 
-Here is an example of creating an OpenID realm using Google. You need to replace `--client-id` and `--client-key` with the values from your Google OpenID settings.
+以下是使用 Google 创建 OpenID 认证域的示例。需要将 `--client-id` 和 `--client-key` 替换为 Google OpenID 设置中的值。
 
 ```text
 pveum realm add myrealm1 --type openid --issuer-url  https://accounts.google.com --client-id XXXX --client-key YYYY --username-claim email
 ```
 
-The above command uses `--username-claim email`, so that the usernames on the Proxmox VE side look like `example.user@google.com@myrealm1`.
+上述命令使用 `--username-claim email`，因此 Proxmox VE 端的用户名类似 `example.user@google.com@myrealm1`。
 
-Keycloak ([https://www.keycloak.org/](https://www.keycloak.org/)) is a popular open source Identity and Access Management tool, which supports OpenID Connect. In the following example, you need to replace the `--issuer-url` and `--client-id` with your information:
+Keycloak（[https://www.keycloak.org/](https://www.keycloak.org/)）是一种流行的开源身份和访问管理工具，支持 OpenID Connect。在以下示例中，需要将 `--issuer-url` 和 `--client-id` 替换为您的信息：
 
 ```text
 pveum realm add myrealm2 --type openid --issuer-url  https://your.server:8080/realms/your-realm --client-id XXX --username-claim username
 ```
 
-Using `--username-claim username` enables simple usernames on the Proxmox VE side, like `example.user@myrealm2`.
+使用 `--username-claim username` 可在 Proxmox VE 端获得简单的用户名，例如 `example.user@myrealm2`。
 
 {% hint style="warning" %}
-You need to ensure that the user is not allowed to edit the username setting themselves (on the Keycloak server).
+需要确保不允许用户自行编辑用户名设置（在 Keycloak 服务器上）。
 {% endhint %}
 
 ---

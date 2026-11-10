@@ -6,7 +6,7 @@
 
 ## GET `/cluster/sdn/vnets/{vnet}/firewall/rules`
 
-List rules.
+列出规则。
 
 **方法标识：** `get_rules`
 
@@ -14,7 +14,7 @@ List rules.
 
 ```json
 {
-  "description": "Needs SDN.Audit or SDN.Allocate permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限",
   "user": "all"
 }
 ```
@@ -35,7 +35,7 @@ null
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -45,7 +45,7 @@ null
   "additionalProperties": 0,
   "properties": {
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
@@ -64,46 +64,46 @@ null
   "items": {
     "properties": {
       "action": {
-        "description": "Rule action ('ACCEPT', 'DROP', 'REJECT') or security group name",
+        "description": "规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称",
         "type": "string"
       },
       "comment": {
-        "description": "Descriptive comment",
+        "description": "描述性注释",
         "optional": 1,
         "type": "string"
       },
       "dest": {
-        "description": "Restrict packet destination address",
+        "description": "限制数据包目标地址",
         "optional": 1,
         "type": "string"
       },
       "dport": {
-        "description": "Restrict TCP/UDP destination port",
+        "description": "限制 TCP/UDP 目标端口",
         "optional": 1,
         "type": "string"
       },
       "enable": {
-        "description": "Flag to enable/disable a rule",
+        "description": "用于启用/禁用规则的标志",
         "optional": 1,
         "type": "integer"
       },
       "icmp-type": {
-        "description": "Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'",
+        "description": "指定 icmp-type。仅在 proto 等于 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效",
         "optional": 1,
         "type": "string"
       },
       "iface": {
-        "description": "Network interface name. You have to use network configuration key names for VMs and containers",
+        "description": "网络接口名称。虚拟机和容器必须使用网络配置键名",
         "optional": 1,
         "type": "string"
       },
       "ipversion": {
-        "description": "IP version (4 or 6) - automatically determined from source/dest addresses",
+        "description": "IP 版本（4 或 6）——根据源地址/目标地址自动确定",
         "optional": 1,
         "type": "integer"
       },
       "log": {
-        "description": "Log level for firewall rule",
+        "description": "防火墙规则的日志级别",
         "enum": [
           "emerg",
           "alert",
@@ -119,31 +119,31 @@ null
         "type": "string"
       },
       "macro": {
-        "description": "Use predefined standard macro",
+        "description": "使用预定义的标准宏",
         "optional": 1,
         "type": "string"
       },
       "pos": {
-        "description": "Rule position in the ruleset",
+        "description": "规则在规则集中的位置",
         "type": "integer"
       },
       "proto": {
-        "description": "IP protocol. You can use protocol names ('tcp'/'udp') or simple numbers, as defined in '/etc/protocols'",
+        "description": "IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字",
         "optional": 1,
         "type": "string"
       },
       "source": {
-        "description": "Restrict packet source address",
+        "description": "限制数据包源地址",
         "optional": 1,
         "type": "string"
       },
       "sport": {
-        "description": "Restrict TCP/UDP source port",
+        "description": "限制 TCP/UDP 源端口",
         "optional": 1,
         "type": "string"
       },
       "type": {
-        "description": "Rule type",
+        "description": "规则类型",
         "type": "string"
       }
     },
@@ -161,7 +161,7 @@ null
 
 ## POST `/cluster/sdn/vnets/{vnet}/firewall/rules`
 
-Create new rule.
+创建新规则。
 
 **方法标识：** `create_rule`
 
@@ -169,7 +169,7 @@ Create new rule.
 
 ```json
 {
-  "description": "Needs SDN.Allocate permissions on '/sdn/zones/<zone>/<vnet>'",
+  "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
 }
 ```
@@ -196,22 +196,22 @@ null
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | Rule action ('ACCEPT', 'DROP', 'REJECT') or security group name. |
-| `comment` | string | 否 | — | Descriptive comment. |
-| `dest` | string | 否 | — | Restrict packet destination address. This can refer to a single IP address, an IP set ('+ipsetname') or an IP alias definition. You can also specify an address range like '20.34.101.207-201.3.9.99', or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists. |
-| `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `dport` | string | 否 | — | Restrict TCP/UDP destination port. You can use service names or simple numbers (0-65535), as defined in '/etc/services'. Port ranges can be specified with '\d+:\d+', for example '80:85', and you can use comma separated list to match several ports or ranges. |
-| `enable` | integer | 否 | — | Flag to enable/disable a rule. |
-| `icmp-type` | string | 否 | — | Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'. |
-| `iface` | string | 否 | — | Network interface name. You have to use network configuration key names for VMs and containers ('net\d+'). Host related rules can use arbitrary strings. |
-| `log` | string | 否 | — | Log level for firewall rule.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | Use predefined standard macro. |
-| `pos` | integer | 否 | — | Update rule at position &lt;pos&gt;. |
-| `proto` | string | 否 | — | IP protocol. You can use protocol names ('tcp'/'udp') or simple numbers, as defined in '/etc/protocols'. |
-| `source` | string | 否 | — | Restrict packet source address. This can refer to a single IP address, an IP set ('+ipsetname') or an IP alias definition. You can also specify an address range like '20.34.101.207-201.3.9.99', or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists. |
-| `sport` | string | 否 | — | Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in '/etc/services'. Port ranges can be specified with '\d+:\d+', for example '80:85', and you can use comma separated list to match several ports or ranges. |
-| `type` | string | 是 | — | Rule type.；可选值：`in`, `out`, `forward`, `group` |
-| `vnet` | string | 是 | — | The SDN vnet object identifier. |
+| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | string | 否 | — | 描述性注释。 |
+| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
+| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | string | 否 | — | 使用预定义的标准宏。 |
+| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -221,7 +221,7 @@ null
   "additionalProperties": 0,
   "properties": {
     "action": {
-      "description": "Rule action ('ACCEPT', 'DROP', 'REJECT') or security group name.",
+      "description": "规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。",
       "maxLength": 20,
       "minLength": 2,
       "optional": 0,
@@ -229,14 +229,14 @@ null
       "type": "string"
     },
     "comment": {
-      "description": "Descriptive comment.",
+      "description": "描述性注释。",
       "format": "pve-fw-comment-spec",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dest": {
-      "description": "Restrict packet destination address. This can refer to a single IP address, an IP set ('+ipsetname') or an IP alias definition. You can also specify an address range like '20.34.101.207-201.3.9.99', or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.",
+      "description": "限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。",
       "format": "pve-fw-addr-spec",
       "maxLength": 512,
       "optional": 1,
@@ -244,35 +244,35 @@ null
       "typetext": "<string>"
     },
     "digest": {
-      "description": "Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
       "maxLength": 64,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "dport": {
-      "description": "Restrict TCP/UDP destination port. You can use service names or simple numbers (0-65535), as defined in '/etc/services'. Port ranges can be specified with '\\d+:\\d+', for example '80:85', and you can use comma separated list to match several ports or ranges.",
+      "description": "限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\\d+:\\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。",
       "format": "pve-fw-dport-spec",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "enable": {
-      "description": "Flag to enable/disable a rule.",
+      "description": "用于启用/禁用规则的标志。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "icmp-type": {
-      "description": "Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'.",
+      "description": "指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。",
       "format": "pve-fw-icmp-type-spec",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "iface": {
-      "description": "Network interface name. You have to use network configuration key names for VMs and containers ('net\\d+'). Host related rules can use arbitrary strings.",
+      "description": "网络接口名称。虚拟机和容器必须使用网络配置键名（'net\\d+'）。宿主机相关规则可使用任意字符串。",
       "format": "pve-iface",
       "maxLength": 20,
       "minLength": 2,
@@ -281,7 +281,7 @@ null
       "typetext": "<string>"
     },
     "log": {
-      "description": "Log level for firewall rule.",
+      "description": "防火墙规则的日志级别。",
       "enum": [
         "emerg",
         "alert",
@@ -297,28 +297,28 @@ null
       "type": "string"
     },
     "macro": {
-      "description": "Use predefined standard macro.",
+      "description": "使用预定义的标准宏。",
       "maxLength": 128,
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "pos": {
-      "description": "Update rule at position <pos>.",
+      "description": "更新位置 <pos> 处的规则。",
       "minimum": 0,
       "optional": 1,
       "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "proto": {
-      "description": "IP protocol. You can use protocol names ('tcp'/'udp') or simple numbers, as defined in '/etc/protocols'.",
+      "description": "IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。",
       "format": "pve-fw-protocol-spec",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "source": {
-      "description": "Restrict packet source address. This can refer to a single IP address, an IP set ('+ipsetname') or an IP alias definition. You can also specify an address range like '20.34.101.207-201.3.9.99', or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.",
+      "description": "限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。",
       "format": "pve-fw-addr-spec",
       "maxLength": 512,
       "optional": 1,
@@ -326,14 +326,14 @@ null
       "typetext": "<string>"
     },
     "sport": {
-      "description": "Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in '/etc/services'. Port ranges can be specified with '\\d+:\\d+', for example '80:85', and you can use comma separated list to match several ports or ranges.",
+      "description": "限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\\d+:\\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。",
       "format": "pve-fw-sport-spec",
       "optional": 1,
       "type": "string",
       "typetext": "<string>"
     },
     "type": {
-      "description": "Rule type.",
+      "description": "规则类型。",
       "enum": [
         "in",
         "out",
@@ -344,7 +344,7 @@ null
       "type": "string"
     },
     "vnet": {
-      "description": "The SDN vnet object identifier.",
+      "description": "SDN vnet 对象标识符。",
       "maxLength": 8,
       "minLength": 2,
       "pattern": "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]",
