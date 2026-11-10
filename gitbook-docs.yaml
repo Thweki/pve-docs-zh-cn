@@ -1,0 +1,12 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Proxmox VE 中文文档
+  structure:
+    - type: space
+      key: pve-docs-zh-cn
+      title: Proxmox VE 中文文档
+      path: pve-docs-zh-cn
+      default: true
+      content:
+        directory: ./
+        language: zh

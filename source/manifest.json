@@ -1,0 +1,308 @@
+{
+  "base_url": "https://pve.proxmox.com/pve-docs/",
+  "version": "9.2.13",
+  "snapshot_date": "2026-11-10",
+  "documents": [
+    {
+      "file": "cpu-models.conf.5.html",
+      "bytes": 35049,
+      "sha256": "7e0b044443d3996bdae414870eb44516773275406da3dbac9776338f3392c10e",
+      "words": 808,
+      "images": 0,
+      "code_blocks": 3,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "datacenter.cfg.5.html",
+      "bytes": 70381,
+      "sha256": "82436287bb100843be95f87369df6262c61d7d23465732ce7ba833ddb927a183",
+      "words": 1923,
+      "images": 5,
+      "code_blocks": 1,
+      "tables": 0,
+      "hints": 5
+    },
+    {
+      "file": "ha-manager.1.html",
+      "bytes": 238327,
+      "sha256": "e051d50e1eb55309bf0c5c883b1e66cb5accc4a43ad3bdb745299e30f26ea6e6",
+      "words": 12164,
+      "images": 28,
+      "code_blocks": 40,
+      "tables": 2,
+      "hints": 22
+    },
+    {
+      "file": "pct.1.html",
+      "bytes": 346613,
+      "sha256": "1afdf0511387eb05ef0844ee0ea77a80ce741dc1982f3ed4894919844bee583f",
+      "words": 14897,
+      "images": 39,
+      "code_blocks": 42,
+      "tables": 0,
+      "hints": 33
+    },
+    {
+      "file": "pct.conf.5.html",
+      "bytes": 75557,
+      "sha256": "c824d7a99cf2bd8cc9b3516eece8031515a7dfd619020b06d1c4011196f6b568",
+      "words": 2256,
+      "images": 5,
+      "code_blocks": 3,
+      "tables": 0,
+      "hints": 5
+    },
+    {
+      "file": "pmxcfs.8.html",
+      "bytes": 62465,
+      "sha256": "e577a62cd8761f80dd6d4ef2b00cf06be08be02b39118f2892352b009e55998c",
+      "words": 1492,
+      "images": 2,
+      "code_blocks": 8,
+      "tables": 3,
+      "hints": 2
+    },
+    {
+      "file": "pve-admin-guide.html",
+      "bytes": 4013836,
+      "sha256": "80735a3c9ab497c5e6a147e891f6cdc4625793cce3bba5d0d966d4946dfdcd37",
+      "words": 183217,
+      "images": 537,
+      "code_blocks": 737,
+      "tables": 123,
+      "hints": 431
+    },
+    {
+      "file": "pve-firewall.8.html",
+      "bytes": 229692,
+      "sha256": "8ef6836e066c502345ddb90b4e6cb202fbbe15e1bc7a639c21cfe67f749f61c5",
+      "words": 6221,
+      "images": 8,
+      "code_blocks": 40,
+      "tables": 87,
+      "hints": 8
+    },
+    {
+      "file": "pve-ha-crm.8.html",
+      "bytes": 30371,
+      "sha256": "519438c84ef090169f12f4d77139278f24dc82ecf7c5340771aa8b6ce54375e1",
+      "words": 196,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pve-ha-lrm.8.html",
+      "bytes": 30367,
+      "sha256": "4471981e2845e1407a08a7e04d6116c7ec8921cb120c89c3ac1fde19c59ab36a",
+      "words": 196,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pveam.1.html",
+      "bytes": 31927,
+      "sha256": "716a3241fb6067e0180177a2abf8203275ee3124634b47377cf8810c5d579f98",
+      "words": 241,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pveceph.1.html",
+      "bytes": 370008,
+      "sha256": "dd697ce528ab484ead20097a08dd43b3b4d7911f07fb752ee776755ea0383c8f",
+      "words": 13287,
+      "images": 55,
+      "code_blocks": 62,
+      "tables": 6,
+      "hints": 44
+    },
+    {
+      "file": "pvecm.1.html",
+      "bytes": 259876,
+      "sha256": "5e8131a33fcc1834f4223d0944004f987e8e932446b191223c191b87d6eff9eb",
+      "words": 9363,
+      "images": 38,
+      "code_blocks": 50,
+      "tables": 0,
+      "hints": 35
+    },
+    {
+      "file": "pvedaemon.8.html",
+      "bytes": 35747,
+      "sha256": "0e0fd5daed282227fc8385ae29f386e060cd272f49f56cf53e490c3d8d77b95d",
+      "words": 334,
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 0,
+      "hints": 1
+    },
+    {
+      "file": "pvenode.1.html",
+      "bytes": 73684,
+      "sha256": "2b2e7a108ff12ee4308bacb955a5309dcea1f4ed0bd45e094baf6987ee747fa7",
+      "words": 2663,
+      "images": 1,
+      "code_blocks": 13,
+      "tables": 0,
+      "hints": 1
+    },
+    {
+      "file": "pveperf.1.html",
+      "bytes": 28566,
+      "sha256": "0ba942b2f81aed096b90728f8ac1ec2233b2a547221ecbe52e55776e7f9fb1c7",
+      "words": 139,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pveproxy.8.html",
+      "bytes": 68234,
+      "sha256": "71669677981e9435fcd7a62284951f92015c447a6c0c1e9d631a3f3cf56a99dd",
+      "words": 1361,
+      "images": 6,
+      "code_blocks": 15,
+      "tables": 1,
+      "hints": 6
+    },
+    {
+      "file": "pvescheduler.8.html",
+      "bytes": 30903,
+      "sha256": "3aeba80987a98b9fb26e8e4f8507c5b2a3a596b8588d70cb46c04b9d2ebdaf18",
+      "words": 216,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pvesh.1.html",
+      "bytes": 41263,
+      "sha256": "8d7511167638e410ef26fb1849e29109f328e521ead27a1b0cb0491f6aca01f7",
+      "words": 498,
+      "images": 1,
+      "code_blocks": 3,
+      "tables": 0,
+      "hints": 1
+    },
+    {
+      "file": "pvesm.1.html",
+      "bytes": 313007,
+      "sha256": "0a8da31399eeb06722d459bd24c6c1eaf254edba4c89d8be586d420647229e5b",
+      "words": 11045,
+      "images": 33,
+      "code_blocks": 65,
+      "tables": 14,
+      "hints": 32
+    },
+    {
+      "file": "pvesr.1.html",
+      "bytes": 68098,
+      "sha256": "3548eaad586a5f141c93feb83a6a14fe83ec32a61b3b884108e3aefde9f164fb",
+      "words": 2109,
+      "images": 4,
+      "code_blocks": 9,
+      "tables": 1,
+      "hints": 3
+    },
+    {
+      "file": "pvestatd.8.html",
+      "bytes": 30690,
+      "sha256": "297fbb87afe25d5a512fb0b0de23d0c2b1716d10af67e41810e37e754c85e153",
+      "words": 208,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pvesubscription.1.html",
+      "bytes": 31733,
+      "sha256": "9cd797676bbcdbcc06a56b283c8353041e253590f4a111fa40fc067969cfb1d5",
+      "words": 243,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "pveum.1.html",
+      "bytes": 250281,
+      "sha256": "0eceda478114de476a2cbaf7e407bf59cf7af74585e02f55f9ea562270dfe981",
+      "words": 9687,
+      "images": 30,
+      "code_blocks": 29,
+      "tables": 0,
+      "hints": 22
+    },
+    {
+      "file": "qm.1.html",
+      "bytes": 739177,
+      "sha256": "5e812963c6f94e8d7de6a87f338681cba1729ef8e9bc1531980c00e9311dc1ab",
+      "words": 39581,
+      "images": 84,
+      "code_blocks": 103,
+      "tables": 0,
+      "hints": 67
+    },
+    {
+      "file": "qm.conf.5.html",
+      "bytes": 195304,
+      "sha256": "a81f19f22fd38a503e9a1d7673c5b52f6b29151f777eee822a3e9c1b37726100",
+      "words": 7409,
+      "images": 17,
+      "code_blocks": 3,
+      "tables": 0,
+      "hints": 17
+    },
+    {
+      "file": "qmeventd.8.html",
+      "bytes": 29660,
+      "sha256": "de646115352b511a07e21a592fc5f7035c343fd56d4bc4f66b73e07e5a434d27",
+      "words": 213,
+      "images": 0,
+      "code_blocks": 3,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "qmrestore.1.html",
+      "bytes": 31237,
+      "sha256": "c8d774cd3b2bddf0d8568427d02b5de6fdf978328ba59deb160069c4a0a18be1",
+      "words": 265,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "spiceproxy.8.html",
+      "bytes": 31701,
+      "sha256": "44f902d7f83e6545974ed9b9dd51c97fdefaef3f5474ceaacbbdeefb601fe904",
+      "words": 290,
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "hints": 0
+    },
+    {
+      "file": "vzdump.1.html",
+      "bytes": 151198,
+      "sha256": "56f72756693a8d85aba7d5b31b39f622aba744a9084cd270f5a83ea3bb31acc3",
+      "words": 5789,
+      "images": 21,
+      "code_blocks": 19,
+      "tables": 2,
+      "hints": 16
+    }
+  ],
+  "api_descriptions": 7106
+}

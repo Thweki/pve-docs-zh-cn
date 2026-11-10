@@ -1,0 +1,73 @@
+# 2.1. System Requirements <a href="#_system_requirements" id="_system_requirements"></a>
+
+We recommend using high quality server hardware, when running Proxmox VE in production. To further decrease the impact of a failed host, you can run Proxmox VE in a cluster with highly available (HA) virtual machines and containers.
+
+Proxmox VE can use local storage (DAS), SAN, NAS, and distributed storage like Ceph RBD. For details see [chapter storage](../07-storage/README.md#chapter_storage).
+
+## 2.1.1. Minimum Requirements, for Evaluation <a href="#install_minimal_requirements" id="install_minimal_requirements"></a>
+
+These minimum requirements are for evaluation purposes only and should not be used in production.
+
+- CPU: 64-bit x86 (Intel 64 or AMD64). Alternatively, 64-bit ARM (arm64, aarch64) with an ARMv8-A or newer CPU, see [64-bit ARM (arm64) Support](#install_arm64_support).
+- For x86 hosts, an Intel VT or AMD-V capable CPU and motherboard for KVM full virtualization support. On the supported arm64 platforms, KVM hardware-assisted virtualization needs no equivalent CPU flag.
+- RAM: 1 GB RAM, plus additional RAM needed for guests
+- Hard drive
+- One network card (NIC)
+
+## 2.1.2. Recommended System Requirements <a href="#install_recommended_requirements" id="install_recommended_requirements"></a>
+
+- Intel 64 or AMD64 with an Intel VT or AMD-V CPU flag. Alternatively, a 64-bit ARM host with an ARMv9-A or newer CPU, see [64-bit ARM (arm64) Support](#install_arm64_support).
+- Memory: Minimum 2 GB for the OS and Proxmox VE services, plus designated memory for guests. For Ceph and ZFS, additional memory is required; approximately 1GB of memory for every TB of used storage.
+- Fast and redundant storage, best results are achieved with SSDs.
+- OS storage: Use a hardware RAID with battery protected write cache (“BBU”) or non-RAID with ZFS (optional SSD for ZIL).
+- VM storage:
+
+  - For local storage, use either a hardware RAID with battery backed write cache (BBU) or non-RAID for ZFS and Ceph. Neither ZFS nor Ceph are compatible with a hardware RAID controller.
+  - Shared and distributed storage is possible.
+  - SSDs with Power-Loss-Protection (PLP) are recommended for good performance. Using consumer SSDs is discouraged.
+- Redundant (Multi-)Gbit NICs, with additional NICs depending on the preferred storage technology and cluster setup.
+- For PCI(e) passthrough, the CPU and motherboard need to support an input/output memory management unit (IOMMU): Intel VT-d or AMD-Vi on x86, or a System Memory Management Unit (SMMU) on arm64.
+
+{% hint style="success" %}
+IOMMU usually also needs to be enabled in the BIOS/UEFI. See the [PCI(e) Passthrough](../10-virtual-machines/09-qm-pci-passthrough.md#qm_pci_passthrough) chapter for details.
+{% endhint %}
+
+## 2.1.3. 64-bit ARM (arm64) Support <a href="#install_arm64_support" id="install_arm64_support"></a>
+
+Proxmox VE supports native 64-bit ARM (arm64, aarch64) on the NVIDIA Grace Hopper and NVIDIA Vera platforms. On other UEFI-based ARMv9-A or newer hardware, support is best-effort. Device-tree-only single-board computers, such as the Raspberry Pi, are not supported.
+
+An arm64 host must boot through UEFI and describe its hardware through ACPI (Advanced Configuration and Power Interface). Proxmox VE does not support device-tree-only or legacy BIOS boot on arm64.
+
+Several x86-specific features are not available on arm64:
+
+- Virtual machines cannot use SeaBIOS. On arm64, guests always boot through UEFI, provided by the ARM build of OVMF, also known as AAVMF.
+- AMD SEV (Secure Encrypted Virtualization) memory encryption and Intel’s GVT-g mediated vGPUs are x86-only.
+- There is no operating-system-level CPU microcode package, unlike `intel-microcode` and `amd64-microcode` on x86.
+
+A cluster can contain both x86 and arm64 nodes, but guests cannot move between nodes of different architectures while running:
+
+- Live migration is only possible between nodes of the same architecture, because a running guest’s CPU state cannot be transferred across architectures.
+- A guest, whether a virtual machine or a container, only runs on a node whose architecture matches the guest. Offline migration, backup and restore, or shared storage can move a guest’s data to a node of a different architecture, but the guest still needs to be reinstalled or reconfigured for that architecture before it starts.
+
+## 2.1.4. Simple Performance Overview <a href="#_simple_performance_overview" id="_simple_performance_overview"></a>
+
+To get an overview of the CPU and hard disk performance on an installed Proxmox VE system, run the included `pveperf` tool.
+
+{% hint style="info" %}
+This is just a very quick and general benchmark. More detailed tests are recommended, especially regarding the I/O performance of your system.
+{% endhint %}
+
+## 2.1.5. Supported Web Browsers for Accessing the Web Interface <a href="#_supported_web_browsers_for_accessing_the_web_interface" id="_supported_web_browsers_for_accessing_the_web_interface"></a>
+
+To access the web-based user interface, we recommend using one of the following browsers:
+
+- Firefox, a release from the current year, or the latest Extended Support Release
+- Chrome, a release from the current year
+- Microsoft’s currently supported version of Edge
+- Safari, a release from the current year
+
+When accessed from a mobile device, Proxmox VE will show a lightweight, touch-based interface.
+
+---
+
+来源：[Proxmox VE 官方文档](https://pve.proxmox.com/pve-docs/pve-admin-guide.html) · 版本 9.2.13 · 非官方中文翻译。

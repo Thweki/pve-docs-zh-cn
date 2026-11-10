@@ -1,0 +1,116 @@
+# 7.7. CIFS Backend <a href="#storage_cifs" id="storage_cifs"></a>
+
+Storage pool type: `cifs`
+
+The CIFS backend extends the directory backend, so that no manual setup of a CIFS mount is needed. Such a storage can be added directly through the Proxmox VE API or the web UI, with all our backend advantages, like server heartbeat check or comfortable selection of exported shares.
+
+## 7.7.1. Configuration <a href="#_configuration_4" id="_configuration_4"></a>
+
+The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following CIFS special properties are available:
+
+**server**
+
+Server IP or DNS name. Required.
+
+{% hint style="success" %}
+To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name - unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+{% endhint %}
+
+**share**
+
+CIFS share to use (get available ones with `pvesm scan cifs <address>` or the web UI). Required.
+
+**username**
+
+The username for the CIFS storage. Optional, defaults to ‘guest’.
+
+**password**
+
+The user password. Optional. It will be saved in a file only readable by root (`/etc/pve/priv/storage/<STORAGE-ID>.pw`).
+
+**domain**
+
+Sets the user domain (workgroup) for this storage. Optional.
+
+**smbversion**
+
+SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2+ version supported by both the client and server. SMB1 is not supported due to security issues.
+
+**path**
+
+The local mount point. Optional, defaults to `/mnt/pve/<STORAGE_ID>/`.
+
+**content-dirs**
+
+Overrides for the default directory layout. Optional.
+
+**options**
+
+Additional CIFS mount options (see `man mount.cifs`). Some options are set automatically and shouldn’t be set here. Proxmox VE will always set the option `soft`. Depending on the configuration, these options are set automatically: `username`, `credentials`, `guest`, `domain`, `vers`.
+
+**subdir**
+
+The subdirectory of the share to mount. Optional, defaults to the root directory of the share.
+
+**Configuration Example (`/etc/pve/storage.cfg`)**
+
+```text
+cifs: backup
+        path /mnt/pve/backup
+        server 10.0.0.11
+        share VMData
+        content backup
+        options noserverino,echo_interval=30
+        username anna
+        smbversion 3
+        subdir /data
+```
+
+## 7.7.2. Storage Features <a href="#_storage_features_3" id="_storage_features_3"></a>
+
+CIFS does not support snapshots on a storage level. But you may use `qcow2` backing files if you still want to have snapshots and cloning features available.
+
+<table>
+<caption>Table 6. Storage features for backend <code>cifs</code></caption>
+
+
+
+
+
+<thead>
+<tr>
+<th>Content types</th>
+<th>Image formats</th>
+<th>Shared</th>
+<th>Snapshots</th>
+<th>Clones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>images rootdir vztmpl iso backup snippets</p></td>
+<td><p>raw qcow2 vmdk</p></td>
+<td><p>yes</p></td>
+<td><p>qcow2</p></td>
+<td><p>qcow2</p></td>
+</tr>
+</tbody>
+</table>
+
+## 7.7.3. Examples <a href="#_examples_4" id="_examples_4"></a>
+
+You can get a list of exported CIFS shares with:
+
+```text
+# pvesm scan cifs <server> [--username <username>] [--password]
+```
+
+Then you can add one of these shares as a storage to the whole Proxmox VE cluster with:
+
+```text
+# pvesm add cifs <storagename> --server <server> --share <share> [--username <username>] [--password]
+```
+
+---
+
+来源：[Proxmox VE 官方文档](https://pve.proxmox.com/pve-docs/pve-admin-guide.html) · 版本 9.2.13 · 非官方中文翻译。

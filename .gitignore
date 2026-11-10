@@ -1,0 +1,11 @@
+.venv/
+upstream/
+work/
+source/html/
+source/api/
+source/prepared/
+source/raw-assets/
+preview/
+__pycache__/
+.DS_Store
+*.zip

@@ -1,0 +1,193 @@
+# 3.10. BTRFS <a href="#chapter_btrfs" id="chapter_btrfs"></a>
+
+{% hint style="warning" %}
+BTRFS integration is currently a **technology preview** in Proxmox VE.
+{% endhint %}
+
+BTRFS is a modern copy on write file system natively supported by the Linux kernel, implementing features such as snapshots, built-in RAID and self healing via checksums for data and metadata. Starting with Proxmox VE 7.0, BTRFS is introduced as optional selection for the root file system.
+
+**General BTRFS advantages**
+
+- Main system setup almost identical to the traditional ext4 based setup
+- Snapshots
+- Data compression on file system level
+- Copy-on-write clone
+- RAID0, RAID1 and RAID10
+- Protection against data corruption
+- Self healing
+- Natively supported by the Linux kernel
+
+**Caveats**
+
+- RAID levels 5/6 are experimental and dangerous, see [BTRFS Status](https://btrfs.readthedocs.io/en/latest/Status.html)
+
+## 3.10.1. Installation as Root File System <a href="#_installation_as_root_file_system_2" id="_installation_as_root_file_system_2"></a>
+
+When you install using the Proxmox VE installer, you can choose BTRFS for the root file system. You need to select the RAID type at installation time:
+
+<table>
+<tr>
+<td>RAID0 <br/></td>
+<td>
+<p>Also called “striping”. The capacity of such volume is the sum of the capacities of all disks. But RAID0 does not add any redundancy, so the failure of a single drive makes the volume unusable.</p>
+</td>
+</tr>
+<tr>
+<td>RAID1 <br/></td>
+<td>
+<p>Also called “mirroring”. Data is written identically to all disks. This mode requires at least 2 disks with the same size. The resulting capacity is that of a single disk.</p>
+</td>
+</tr>
+<tr>
+<td>RAID10 <br/></td>
+<td>
+<p>A combination of RAID0 and RAID1. Requires at least 4 disks.</p>
+</td>
+</tr>
+</table>
+
+The installer automatically partitions the disks and creates an additional subvolume at `/var/lib/pve/local-btrfs`. In order to use that with the Proxmox VE tools, the installer creates the following configuration entry in `/etc/pve/storage.cfg`:
+
+```text
+dir: local
+        path /var/lib/vz
+        content iso,vztmpl,backup
+        disable
+
+btrfs: local-btrfs
+        path /var/lib/pve/local-btrfs
+        content iso,vztmpl,backup,images,rootdir
+```
+
+This explicitly disables the default `local` storage in favor of a BTRFS specific storage entry on the additional subvolume.
+
+The `btrfs` command is used to configure and manage the BTRFS file system, After the installation, the following command lists all additional subvolumes:
+
+```text
+# btrfs subvolume list /
+ID 256 gen 6 top level 5 path var/lib/pve/local-btrfs
+```
+
+## 3.10.2. BTRFS Administration <a href="#_btrfs_administration" id="_btrfs_administration"></a>
+
+This section gives you some usage examples for common tasks.
+
+### Creating a BTRFS file system <a href="#_creating_a_btrfs_file_system" id="_creating_a_btrfs_file_system"></a>
+
+To create BTRFS file systems, `mkfs.btrfs` is used. The `-d` and `-m` parameters are used to set the profile for metadata and data respectively. With the optional `-L` parameter, a label can be set.
+
+Generally, the following modes are supported: `single`, `raid0`, `raid1`, `raid10`.
+
+Create a BTRFS file system on a single disk `/dev/sdb` with the label `My-Storage`:
+
+```text
+ # mkfs.btrfs -m single -d single -L My-Storage /dev/sdb
+```
+
+Or create a RAID1 on the two partitions `/dev/sdb1` and `/dev/sdc1`:
+
+```text
+ # mkfs.btrfs -m raid1 -d raid1 -L My-Storage /dev/sdb1 /dev/sdc1
+```
+
+### Mounting a BTRFS file system <a href="#_mounting_a_btrfs_file_system" id="_mounting_a_btrfs_file_system"></a>
+
+The new file-system can then be mounted either manually, for example:
+
+```text
+ # mkdir /my-storage
+ # mount /dev/sdb /my-storage
+```
+
+A BTRFS can also be added to `/etc/fstab` like any other mount point, automatically mounting it on boot. It’s recommended to avoid using block-device paths but use the `UUID` value the `mkfs.btrfs` command printed, especially there is more than one disk in a BTRFS setup.
+
+For example:
+
+**File `/etc/fstab`**
+
+```text
+# ... other mount points left out for brevity
+
+# using the UUID from the mkfs.btrfs output is highly recommended
+UUID=e2c0c3ff-2114-4f54-b767-3a203e49f6f3 /my-storage btrfs defaults 0 0
+```
+
+{% hint style="success" %}
+If you do not have the UUID available anymore you can use the `blkid` tool to list all properties of block-devices.
+{% endhint %}
+
+Afterwards you can trigger the first mount by executing:
+
+```text
+mount /my-storage
+```
+
+After the next reboot this will be automatically done by the system at boot.
+
+### Adding a BTRFS file system to Proxmox VE <a href="#_adding_a_btrfs_file_system_to_proxmox_ve" id="_adding_a_btrfs_file_system_to_proxmox_ve"></a>
+
+You can add an existing BTRFS file system to Proxmox VE via the web interface, or using the CLI, for example:
+
+```text
+pvesm add btrfs my-storage --path /my-storage
+```
+
+### Creating a subvolume <a href="#_creating_a_subvolume" id="_creating_a_subvolume"></a>
+
+Creating a subvolume links it to a path in the BTRFS file system, where it will appear as a regular directory.
+
+```text
+# btrfs subvolume create /some/path
+```
+
+Afterwards `/some/path` will act like a regular directory.
+
+### Deleting a subvolume <a href="#_deleting_a_subvolume" id="_deleting_a_subvolume"></a>
+
+Contrary to directories removed via `rmdir`, subvolumes do not need to be empty in order to be deleted via the `btrfs` command.
+
+```text
+# btrfs subvolume delete /some/path
+```
+
+### Creating a snapshot of a subvolume <a href="#_creating_a_snapshot_of_a_subvolume" id="_creating_a_snapshot_of_a_subvolume"></a>
+
+BTRFS does not actually distinguish between snapshots and normal subvolumes, so taking a snapshot can also be seen as creating an arbitrary copy of a subvolume. By convention, Proxmox VE will use the read-only flag when creating snapshots of guest disks or subvolumes, but this flag can also be changed later on.
+
+```text
+# btrfs subvolume snapshot -r /some/path /a/new/path
+```
+
+This will create a read-only "clone" of the subvolume on `/some/path` at `/a/new/path`. Any future modifications to `/some/path` cause the modified data to be copied before modification.
+
+If the read-only (`-r`) option is left out, both subvolumes will be writable.
+
+### Enabling compression <a href="#_enabling_compression" id="_enabling_compression"></a>
+
+By default, BTRFS does not compress data. To enable compression, the `compress` mount option can be added. Note that data already written will not be compressed after the fact.
+
+By default, the rootfs will be listed in `/etc/fstab` as follows:
+
+```text
+UUID=<uuid of your root file system> / btrfs defaults 0 1
+```
+
+You can simply append `compress=zstd`, `compress=lzo`, or `compress=zlib` to the `defaults` above like so:
+
+```text
+UUID=<uuid of your root file system> / btrfs defaults,compress=zstd 0 1
+```
+
+This change will take effect after rebooting.
+
+### Checking Space Usage <a href="#_checking_space_usage" id="_checking_space_usage"></a>
+
+The classic `df` tool may output confusing values for some BTRFS setups. For a better estimate use the `btrfs filesystem usage /PATH` command, for example:
+
+```text
+# btrfs fi usage /my-storage
+```
+
+---
+
+来源：[Proxmox VE 官方文档](https://pve.proxmox.com/pve-docs/pve-admin-guide.html) · 版本 9.2.13 · 非官方中文翻译。

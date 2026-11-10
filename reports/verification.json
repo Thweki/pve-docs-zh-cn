@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "pages": 760,
+  "translation_units": 11440,
+  "valid_translations": 1091,
+  "missing_translations": 10349,
+  "original_code_blocks": 1249,
+  "rendered_original_code_blocks": 1249,
+  "tables": 429,
+  "hints": 751,
+  "image_occurrences": 164,
+  "unique_original_assets": 108,
+  "local_links_checked": 4173,
+  "errors": [],
+  "warnings": [],
+  "english_prose_for_review": []
+}
