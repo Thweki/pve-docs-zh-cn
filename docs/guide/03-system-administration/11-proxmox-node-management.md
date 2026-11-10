@@ -1,18 +1,18 @@
 # 3.11. Proxmox Node Management <a href="#proxmox_node_management" id="proxmox_node_management"></a>
 
-The Proxmox VE node management tool (`pvenode`) allows you to control node specific settings and resources.
+Proxmox VE 节点管理工具（`pvenode`）允许你控制节点特定的设置和资源。
 
-Currently `pvenode` allows you to set a node’s description, run various bulk operations on the node’s guests, view the node’s task history, and manage the node’s SSL certificates, which are used for the API and the web GUI through `pveproxy`.
+目前，`pvenode` 允许你设置节点描述、对节点上的客户机执行各种批量操作、查看节点的任务历史记录，以及管理节点的 SSL 证书；这些证书由 `pveproxy` 用于 API 和 Web GUI。
 
 ## 3.11.1. Wake-on-LAN <a href="#_wake_on_lan" id="_wake_on_lan"></a>
 
-Wake-on-LAN (WoL) allows you to switch on a sleeping computer in the network, by sending a magic packet. At least one NIC must support this feature, and the respective option needs to be enabled in the computer’s firmware (BIOS/UEFI) configuration. The option name can vary from *Enable Wake-on-Lan* to *Power On By PCIE Device*; check your motherboard’s vendor manual, if you’re unsure. `ethtool` can be used to check the WoL configuration of `<interface>` by running:
+Wake-on-LAN（WoL）允许你通过发送魔术包来唤醒网络中处于睡眠状态的计算机。至少有一个 NIC 必须支持此功能，并且需要在计算机的固件（BIOS/UEFI）配置中启用相应选项。选项名称可能从*启用 Wake-on-Lan*到*通过 PCIE 设备开机*不等；如果不确定，请查阅主板厂商手册。可以运行以下命令，使用 `ethtool` 检查 `<interface>` 的 WoL 配置：
 
 ```text
 ethtool <interface> | grep Wake-on
 ```
 
-`pvenode` allows you to wake sleeping members of a cluster via WoL, using the command:
+`pvenode` 允许你通过 WoL 唤醒集群中处于睡眠状态的成员，命令为：
 
 ```text
 pvenode wakeonlan <node>
@@ -24,13 +24,13 @@ This broadcasts the WoL magic packet on UDP port 9, containing the MAC address o
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX
 ```
 
-The interface via which to send the WoL packet is determined from the default route. It can be overwritten by setting the `bind-interface` via the following command:
+发送 WoL 数据包的接口由默认路由确定。可以通过以下命令设置 `bind-interface` 来覆盖该接口：
 
 ```text
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,bind-interface=<iface-name>
 ```
 
-The broadcast address (default `255.255.255.255`) used when sending the WoL packet can further be changed by setting the `broadcast-address` explicitly using the following command:
+发送 WoL 数据包时使用的广播地址（默认为 `255.255.255.255`）也可以通过以下命令显式设置 `broadcast-address` 来更改：
 
 ```text
 pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,broadcast-address=<broadcast-address>
@@ -38,15 +38,15 @@ pvenode config set -wakeonlan XX:XX:XX:XX:XX:XX,broadcast-address=<broadcast-add
 
 ## 3.11.2. Task History <a href="#_task_history" id="_task_history"></a>
 
-When troubleshooting server issues, for example, failed backup jobs, it can often be helpful to have a log of the previously run tasks. With Proxmox VE, you can access the nodes’s task history through the `pvenode task` command.
+排查服务器问题（例如备份作业失败）时，查看先前运行任务的日志通常会很有帮助。在 Proxmox VE 中，可以通过 `pvenode task` 命令访问节点的任务历史记录。
 
-You can get a filtered list of a node’s finished tasks with the `list` subcommand. For example, to get a list of tasks related to VM *100* that ended with an error, the command would be:
+可以使用 `list` 子命令获取节点已完成任务的筛选列表。例如，要获取与 VM *100* 相关且以错误结束的任务列表，命令如下：
 
 ```text
 pvenode task list --errors --vmid 100
 ```
 
-The log of a task can then be printed using its UPID:
+随后可以使用任务的 UPID 打印其日志：
 
 ```text
 pvenode task log UPID:pve1:00010D94:001CA6EA:6124E1B9:vzdump:100:root@pam:
@@ -56,27 +56,27 @@ pvenode task log UPID:pve1:00010D94:001CA6EA:6124E1B9:vzdump:100:root@pam:
 
 In case you have many VMs/containers, starting and stopping guests can be carried out in bulk operations with the `startall` and `stopall` subcommands of `pvenode`. By default, `pvenode startall` will only start VMs/containers which have been set to automatically start on boot (see [Automatic Start and Shutdown of Virtual Machines](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_startup_and_shutdown)), however, you can override this behavior with the `--force` flag. Both commands also have a `--vms` option, which limits the stopped/started guests to the specified VMIDs.
 
-For example, to start VMs *100*, *101*, and *102*, regardless of whether they have `onboot` set, you can use:
+例如，要启动 VM *100*、*101* 和 *102*，无论它们是否设置了 `onboot`，都可以使用：
 
 ```text
 pvenode startall --vms 100,101,102 --force
 ```
 
-To stop these guests (and any other guests that may be running), use the command:
+要停止这些客户机（以及可能正在运行的任何其他客户机），请使用以下命令：
 
 ```text
 pvenode stopall
 ```
 
 {% hint style="info" %}
-The stopall command first attempts to perform a clean shutdown and then waits until either all guests have successfully shut down or an overridable timeout (3 minutes by default) has expired. Once that happens and the force-stop parameter is not explicitly set to 0 (false), all virtual guests that are still running are hard stopped.
+stopall 命令首先尝试执行正常关闭，然后等待，直到所有客户机均成功关闭，或可覆盖的超时时间（默认为 3 分钟）到期。此后，如果 force-stop 参数未显式设置为 0（false），则所有仍在运行的虚拟客户机都会被强制停止。
 {% endhint %}
 
 ## 3.11.4. First Guest Boot Delay <a href="#first_guest_boot_delay" id="first_guest_boot_delay"></a>
 
-In case your VMs/containers rely on slow-to-start external resources, for example an NFS server, you can also set a per-node delay between the time Proxmox VE boots and the time the first VM/container that is configured to autostart boots (see [Automatic Start and Shutdown of Virtual Machines](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_startup_and_shutdown)).
+如果 VM/容器依赖启动缓慢的外部资源（例如 NFS 服务器），还可以按节点设置一段延迟，即 Proxmox VE 启动后与第一台配置为自动启动的 VM/容器启动前的间隔（参见[虚拟机的自动启动和关闭](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_startup_and_shutdown)）。
 
-You can achieve this by setting the following (where `10` represents the delay in seconds):
+可通过以下设置实现（其中 `10` 表示以秒为单位的延迟）：
 
 ```text
 pvenode config set --startall-onboot-delay 10
@@ -84,9 +84,9 @@ pvenode config set --startall-onboot-delay 10
 
 ## 3.11.5. Bulk Guest Migration <a href="#_bulk_guest_migration" id="_bulk_guest_migration"></a>
 
-In case an upgrade situation requires you to migrate all of your guests from one node to another, `pvenode` also offers the `migrateall` subcommand for bulk migration. By default, this command will migrate every guest on the system to the target node. It can however be set to only migrate a set of guests.
+如果升级时需要将所有客户机从一个节点迁移到另一个节点，`pvenode` 还提供用于批量迁移的 `migrateall` 子命令。默认情况下，此命令会将系统上的每个客户机迁移到目标节点，但也可以设置为仅迁移一组客户机。
 
-For example, to migrate VMs *100*, *101*, and *102*, to the node *pve2*, with live-migration for local disks enabled, you can run:
+例如，要将 VM *100*、*101* 和 *102* 迁移到节点 *pve2*，并启用本地磁盘的在线迁移，可以运行：
 
 ```text
 pvenode migrateall pve2 --vms 100,101,102 --with-local-disks
@@ -94,7 +94,7 @@ pvenode migrateall pve2 --vms 100,101,102 --with-local-disks
 
 ## 3.11.6. RAM Usage Target for Ballooning <a href="#ballooning-target" id="ballooning-target"></a>
 
-The target percentage for [automatic memory allocation](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_ballooning) defaults to 80%. You can customize this target per node by setting the `ballooning-target` property. For example, to target 90% host memory usage instead:
+[自动内存分配](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_ballooning)的目标百分比默认为 80%。可以通过设置 `ballooning-target` 属性，按节点自定义此目标。例如，要将目标改为宿主机内存使用率达到 90%：
 
 ```text
 pvenode config set --ballooning-target 90

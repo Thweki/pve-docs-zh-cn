@@ -1,24 +1,24 @@
 # 9.6. Command-line Interface Examples <a href="#_command_line_interface_examples" id="_command_line_interface_examples"></a>
 
-Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100\.
+为 ID 为 100 的客户机创建一个每 5 分钟运行一次、带宽限制为 10 Mbps（兆字节每秒）的复制作业。
 
 ```text
 # pvesr create-local-job 100-0 pve1 --schedule "*/5" --rate 10
 ```
 
-Disable an active job with ID `100-0`.
+禁用 ID 为 `100-0` 的活动作业。
 
 ```text
 # pvesr disable 100-0
 ```
 
-Enable a deactivated job with ID `100-0`.
+启用 ID 为 `100-0` 的已停用作业。
 
 ```text
 # pvesr enable 100-0
 ```
 
-Change the schedule interval of the job with ID `100-0` to once per hour.
+将 ID 为 `100-0` 的作业的计划间隔更改为每小时一次。
 
 ```text
 # pvesr update 100-0 --schedule '*/00'

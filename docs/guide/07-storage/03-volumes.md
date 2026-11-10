@@ -1,6 +1,6 @@
 # 7.3. Volumes <a href="#_volumes" id="_volumes"></a>
 
-We use a special notation to address storage data. When you allocate data from a storage pool, it returns such a volume identifier. A volume is identified by the `<STORAGE_ID>`, followed by a storage type dependent volume name, separated by colon. A valid `<VOLUME_ID>` looks like:
+我们使用一种特殊表示法来定位存储数据。当你从存储池分配数据时，它会返回这样一个卷标识符。卷由 `<STORAGE_ID>` 和后随的卷名标识，卷名取决于存储类型，二者以冒号分隔。有效的 `<VOLUME_ID>` 如下所示：
 
 ```text
 local:230/example-image.raw
@@ -18,7 +18,7 @@ local:vztmpl/debian-5.0-joomla_1.5.9-1_i386.tar.gz
 iscsi-storage:0.0.2.scsi-14f504e46494c4500494b5042546d2d646744372d31616d61
 ```
 
-To get the file system path for a `<VOLUME_ID>` use:
+要获取 `<VOLUME_ID>` 的文件系统路径，请使用：
 
 ```text
 pvesm path <VOLUME_ID>
@@ -26,9 +26,9 @@ pvesm path <VOLUME_ID>
 
 ## 7.3.1. Volume Ownership <a href="#_volume_ownership" id="_volume_ownership"></a>
 
-There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230\. Most storage backends encodes this ownership information into the volume name.
+对于 `image` 类型的卷，存在所有权关系。每个此类卷都归某个 VM 或容器所有。例如，卷 `local:230/example-image.raw` 归 VM 230 所有。大多数存储后端会将此所有权信息编码到卷名中。
 
-When you remove a VM or Container, the system also removes all associated volumes which are owned by that VM or Container.
+删除 VM 或容器时，系统还会删除归该 VM 或容器所有的所有关联卷。
 
 ---
 

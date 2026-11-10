@@ -1,6 +1,6 @@
 # 4.6. Consent Banner <a href="#gui_consent_banner" id="gui_consent_banner"></a>
 
-A custom consent banner that has to be accepted before login can be configured in *Datacenter → Options → Consent Text*. If there is no content, the consent banner will not be displayed. The text will be stored as a base64 string in the `/etc/pve/datacenter.cfg` config file.
+可在 *数据中心 → 选项 → 同意文本* 中配置登录前必须接受的自定义同意横幅。如果没有内容，则不会显示同意横幅。该文本将以 base64 字符串形式存储在 `/etc/pve/datacenter.cfg` 配置文件中。
 
 ---
 

@@ -2,15 +2,13 @@
 
 ## 8.14.1. Replace OSDs <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
 
-With the following steps you can replace the disk of an OSD, which is one of the most common maintenance tasks in Ceph. If there is a problem with an OSD while its disk still seems to be healthy, read the [troubleshooting](15-pve-ceph-mon-and-ts.md#pve_ceph_mon_and_ts) section first.
+通过以下步骤，您可以替换 OSD 的磁盘，这是 Ceph 中最常见的维护任务之一。如果 OSD 出现问题，但其磁盘看起来仍然正常，请先阅读 [故障排除](15-pve-ceph-mon-and-ts.md) 部分。
 
-1. If the disk failed, get a [recommended](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_disk) replacement disk of the same type and size.
+1. 如果磁盘发生故障，请准备一块 [推荐](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_disk) 的、类型和大小相同的替换磁盘。
 2. [Destroy](07-pve-ceph-osds.md#pve_ceph_osd_destroy) the OSD in question.
-3. Detach the old disk from the server and attach the new one.
+3. 从服务器上卸下旧磁盘并安装新磁盘。
 4. [Create](07-pve-ceph-osds.md#pve_ceph_osd_create) the OSD again.
-5. After automatic rebalancing, the cluster status should switch back to `HEALTH_OK`. Any still listed crashes can be acknowledged by running the following command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+5. 自动重新平衡后，集群状态应恢复为 `HEALTH_OK`。对于仍列出的任何崩溃记录，可以运行以下命令予以确认：
 
 ```text
 ceph crash archive-all
@@ -18,79 +16,69 @@ ceph crash archive-all
 
 ## 8.14.2. Trim/Discard <a href="#_trim_discard" id="_trim_discard"></a>
 
-It is good practice to run *fstrim* (discard) regularly on VMs and containers. This releases data blocks that the filesystem isn’t using anymore. It reduces data usage and resource load. Most modern operating systems issue such discard commands to their disks regularly. You only need to ensure that the Virtual Machines enable the [disk discard option](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_hard_disk_discard).
+定期在虚拟机和容器中运行 *fstrim*（discard）是一种良好做法。这会释放文件系统不再使用的数据块，从而减少数据占用和资源负载。大多数现代操作系统都会定期向其磁盘发出此类 discard 命令。您只需确保虚拟机启用 [磁盘丢弃选项](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_hard_disk_discard)。
 
 ## 8.14.3. Scrub \& Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
 
-Ceph ensures data integrity by *scrubbing* placement groups. Ceph checks every object in a PG for its health. There are two forms of Scrubbing, daily cheap metadata checks and weekly deep data checks. The weekly deep scrub reads the objects and uses checksums to ensure data integrity. If a running scrub interferes with business (performance) needs, you can adjust the time when scrubs   
-\[Ceph scrubbing [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)\]  
- are executed.
+Ceph 通过对归置组进行 *擦洗* 来确保数据完整性。Ceph 会检查 PG 中每个对象的健康状况。擦洗分为两种形式：每天进行的低成本元数据检查和每周进行的深度数据检查。每周深度擦洗会读取对象并使用校验和来确保数据完整性。如果正在运行的擦洗干扰业务（性能）需求，您可以调整执行擦洗 [\[1\]](#note-4de62a9e-1) 的时间。
 
 ## 8.14.4. Mute a Health Check <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
 
-Muting a health check keeps it visible but excludes it from the overall health status, making new problems easier to notice. Ceph continues evaluating the check. Use a duration so that a deferred warning returns automatically, for example after two weeks:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+将健康检查静音后，它仍然可见，但会被排除在总体健康状态之外，从而更容易发现新问题。Ceph 会继续评估该检查。请设置一个持续时间，以便被暂缓的警告自动恢复，例如两周后：
 
 ```text
 ceph health mute <CHECK> 2w
 ```
 
-In the web interface, expand the check under **Datacenter → Ceph**, click *Mute*, and set a duration. The check stays in the list, marked as muted; use *Unmute* in the same place to restore it earlier.
+在 Web 界面中，展开 **数据中心 → Ceph** 下的检查，点击 *静音*，并设置持续时间。该检查会保留在列表中，并标记为已静音；如需提前恢复，请在同一位置使用 *取消静音*。
 
-By default, a mute clears when more items become affected. Enable *Keep Mute*, or add `--sticky` to the command, only if the check should stay muted in that case. This does not change the duration: a timed sticky mute still expires.
+默认情况下，当更多项目受到影响时，静音会被清除。仅当希望在这种情况下仍保持静音时，才启用 *保持静音*，或在命令中添加 `--sticky`。这不会改变持续时间：设置了持续时间的粘性静音仍会到期。
 
 {% hint style="info" %}
-Muting does not resolve the condition. You accept its risk for as long as the mute lasts.
+静音并不能解决该状况。在静音持续期间，即表示您接受其风险。
 {% endhint %}
 
 ## 8.14.5. Migrate Cephx Keys from `aes` to `aes256k` <a href="#pveceph_cephx_migration" id="pveceph_cephx_migration"></a>
 
-This section explains how to migrate the cluster-owned keys and the keys of compatible Ceph users from `aes` to `aes256k`. For an explanation of Ceph users, tickets, and key storage, see [Cephx Authentication](11-pveceph-cephx-how-it-works.md#pveceph_cephx_how_it_works).
+本节介绍如何将集群拥有的密钥和兼容 Ceph 用户的密钥从 `aes` 迁移到 `aes256k`。有关 Ceph 用户、票据和密钥存储的说明，请参阅 [Cephx 身份验证](11-pveceph-cephx-how-it-works.md)。
 
 ### Why the Health Checks Appear <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
 
-Ceph Squid 19.2.6 and Ceph Tentacle 20.2.4 add health checks for keys and temporary access credentials that use the older `aes` encryption method. The checks can therefore appear directly after an upgrade even if the cluster worked without warnings before. The older method is affected by [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156). See the upstream release announcement for background   
-\[Ceph: Squid v19.2.6 and Tentacle v20.2.4 released [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)\]  
-.
+Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法的密钥和临时访问凭据新增了健康检查。因此，即使集群在升级前运行时没有警告，这些检查也可能在升级后立即出现。较旧的方法受 [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156) 影响。有关背景信息，请参阅上游发布公告 [\[2\]](#note-4de62a9e-2)。
 
-Two checks set the cluster status to *HEALTH\_ERR*. This does not mean that storage access or a Ceph service has failed. Follow the steps below to migrate to `aes256k` and, when all clients support it, disable the vulnerable method.
+两项检查会将集群状态设置为 *HEALTH\_ERR*。这并不意味着存储访问或某个 Ceph 服务发生故障。请按照以下步骤迁移到 `aes256k`，并在所有客户端都支持后，禁用这种易受攻击的方法。
 
 ### Migration Steps <a href="#pveceph_cephx_migration_helper" id="pveceph_cephx_migration_helper"></a>
 
-The migration helper checks the cluster, rotates keys, and resumes interrupted work. Review each dry run before applying its plan; add `--verbose` for full node, keyring, and device inventories and inspection diagnostics.
+迁移辅助工具会检查集群、轮换密钥，并继续中断的工作。在应用计划之前，请检查每次试运行的结果；添加 `--verbose` 可获取完整的节点、密钥环和设备清单以及检查诊断信息。
 
-Reruns do not rotate completed keys again. After each run, invoke the helper without options to check the current state and follow the next steps it prints.
+重复运行不会再次轮换已完成的密钥。每次运行后，请不带选项调用辅助工具，以检查当前状态并按照其输出的后续步骤操作。
 
-**Before You Begin**
+**开始之前**
 
-- Upgrade `pve-manager` to 9.2.19 or newer and install the latest Ceph packages on every node. Staged client-key rotation requires Ceph 19.2.6-pve3, 20.2.4-pve3, or newer on every monitor.
-- Then complete the rolling restart of all Ceph services.
-- Resolve health warnings and errors not listed in [Health Check Reference](#pveceph_cephx_health_check_reference). Ensure every node is reachable over SSH.
-- Run the helper as `root` on one node only. Do not start another migration, a rolling restart, or change Ceph keys with other tools while it runs. The helper’s lock does not block direct Ceph authentication commands.
-- If Cephx is disabled on this cluster, follow [Clusters with Cephx Disabled](#pveceph_cephx_disabled) instead.
+- 将 `pve-manager` 升级到 9.2.19 或更新版本，并在每个节点上安装最新的 Ceph 软件包。分阶段客户端密钥轮换要求每个监视器上都安装 Ceph 19.2.6-pve3、20.2.4-pve3 或更新版本。
+- 然后完成所有 Ceph 服务的滚动重启。
+- 解决 [健康检查参考](#pveceph_cephx_health_check_reference) 中未列出的健康警告和错误。确保每个节点均可通过 SSH 访问。
+- 仅以 `root` 身份在一个节点上运行辅助工具。在其运行期间，不要启动另一次迁移或滚动重启，也不要使用其他工具更改 Ceph 密钥。辅助工具的锁不会阻止直接执行 Ceph 身份验证命令。
+- 如果此集群禁用了 Cephx，请改为按照 [禁用 Cephx 的集群](#pveceph_cephx_disabled) 中的说明操作。
 
 #### 1\. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
 
-Review the cluster-owned migration in the default dry-run mode:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+在默认试运行模式下检查集群拥有的密钥迁移计划：
 
 ```text
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys --rotate-cluster-keys
 ```
 
-If the plan reports no blocker, apply the same selection:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果计划未报告任何阻塞项，请应用相同的选择：
 
 ```text
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys --rotate-cluster-keys --apply
 ```
 
-The helper rotates the manager, metadata server, OSD, monitor, bootstrap, crash, and [encrypted OSD lockbox keys](11-pveceph-cephx-how-it-works.md#pveceph_cephx_lockbox). It restarts services one at a time when needed, including monitors. Storage-user keys and `client.admin` stay unchanged, existing tickets remain valid, and the old cipher stays enabled.
+辅助工具会轮换管理器、元数据服务器、OSD、监视器、bootstrap、crash 和 [加密 OSD 锁箱密钥](11-pveceph-cephx-how-it-works.md#pveceph_cephx_lockbox)。它会在需要时逐个重启服务，包括监视器。存储用户密钥和 `client.admin` 保持不变，现有票据仍然有效，旧加密算法保持启用。
 
-After Ceph updates its health status, the two error-severity checks clear. The warning about rotating service keys can remain for a few hours while old rotating keys expire. You do not need to wait for this warning to clear before continuing with the migration.
+Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的轮换密钥过期期间，有关轮换服务密钥的警告可能会持续几个小时。继续迁移之前，无需等待此警告清除。
 
 #### 2\. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
@@ -98,7 +86,7 @@ After Ceph updates its health status, the two error-severity checks clear. The w
 
 
 
-**Check compatibility**
+**检查兼容性**
 
 Several workloads can share one Ceph user. Migrate its key only when every client supports `aes256k`, including disconnected and external clients. Ceph programs from the updated Proxmox VE packages support it; kernel clients require a **running** kernel version 7.0 or newer.
 
@@ -107,85 +95,79 @@ Several workloads can share one Ceph user. Migrate its key only when every clien
 
 <tbody>
 <tr>
-<td><p>Virtual machine with RBD disks</p></td>
-<td><p>Userspace, unless <code>krbd</code> is enabled.</p></td>
+<td><p>使用 RBD 磁盘的虚拟机</p></td>
+<td><p>用户空间，除非启用了 <code>krbd</code>。</p></td>
 </tr>
 <tr>
-<td><p>Container on RBD</p></td>
-<td><p>Always the kernel client.</p></td>
+<td><p>RBD 上的容器</p></td>
+<td><p>始终使用内核客户端。</p></td>
 </tr>
 <tr>
-<td><p>CephFS mount</p></td>
-<td><p>Kernel, unless <code>fuse</code> is enabled.</p></td>
+<td><p>CephFS 挂载</p></td>
+<td><p>内核，除非启用了 <code>fuse</code>。</p></td>
 </tr>
 </tbody>
 </table>
 
-Check external systems too. If any affected client is incompatible or unknown, leave its user’s key unchanged and postpone this step.
+还要检查外部系统。如果任何受影响的客户端不兼容或情况未知，请保持其用户的密钥不变，并推迟此步骤。
 
-**Stage the keys**
+**暂存密钥**
 
-Use `--rotate-all-storage-keys` for the dedicated users of managed local RBD and CephFS storages, together with `--rotate-admin-key` for `client.admin`, which the command line and storages without their own user share. Every client of these users is affected; storages of external clusters are excluded.
+将 `--rotate-all-storage-keys` 用于托管的本地 RBD 和 CephFS 存储的专用用户，并将 `--rotate-admin-key` 用于 `client.admin`，后者由命令行和没有自己用户的存储共用。这些用户的每个客户端都会受到影响；外部集群的存储除外。
 
-The helper stages each new key and writes it to the managed keyring and secret files. Both keys remain valid until confirmation, allowing clients to refresh before the old key is retired. If a monitor cannot keep both keys valid, the helper refuses staging and names the monitor to update or restart.
+辅助程序会暂存每个新密钥，并将其写入托管的密钥环和机密密钥文件。在确认之前，两个密钥都保持有效，以便客户端在旧密钥停用前完成刷新。如果某个监视器无法让两个密钥同时保持有效，辅助程序会拒绝暂存，并指出需要更新或重启的监视器。
 
-Review the combined plan:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+检查合并后的计划：
 
 ```text
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys \
     --rotate-all-storage-keys --rotate-admin-key
 ```
 
-If the plan reports no blocker, apply it:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果计划未报告任何阻塞项，请应用该计划：
 
 ```text
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys \
     --rotate-all-storage-keys --rotate-admin-key --apply
 ```
 
-While a key is staged, do not add or downgrade monitors or change that user’s keys with other tools. Its `AUTH_INSECURE_CLIENT_KEY_TYPE` warning remains until confirmation makes the new key current and invalidates the old one.
+在某个密钥处于暂存状态期间，不要添加或降级监视器，也不要使用其他工具更改该用户的密钥。其 `AUTH_INSECURE_CLIENT_KEY_TYPE` 警告会一直保留，直到确认操作将新密钥设为当前密钥并使旧密钥失效。
 
 <a id="pveceph_cephx_refresh_clients"></a>
 
 
 
-**Refresh Clients**
+**刷新客户端**
 
-- Live-migrate affected virtual machines in the web interface, or stop and start them. A guest reboot is not enough.
-- Stop and start affected containers and other RBD clients.
-- Let backups, restores, disk imports, and clones on Ceph storage finish before confirmation; these operations can retain the key they started with.
-- The helper refreshes idle CephFS mounts and leaves busy or unresponsive mounts alone. Once nothing uses them, rerun the helper with `--apply` to retry the outstanding mounts. If your virtual machines have ISOs from a CephFS mount attached, you may have to detach the ISOs or migrate affected virtual machines to a different node to be able to refresh the CephFS mount on that node.
-- For clients outside Proxmox VE, distribute the staged credential from the [managed key files](#pveceph_cephx_external_copies), then restart or remount those clients.
+- 在 Web 界面中在线迁移受影响的虚拟机，或者将其停止后再启动。仅重启客户机是不够的。
+- 停止并重新启动受影响的容器和其他 RBD 客户端。
+- 在确认之前，让 Ceph 存储上的备份、恢复、磁盘导入和克隆操作完成；这些操作可能会一直保留其开始时使用的密钥。
+- 辅助程序会刷新空闲的 CephFS 挂载，而不会处理繁忙或无响应的挂载。待这些挂载不再被使用后，使用 `--apply` 重新运行辅助程序，以重试尚未完成的挂载。如果您的虚拟机挂载了来自 CephFS 挂载的 ISO，您可能需要卸载这些 ISO，或者将受影响的虚拟机迁移到其他节点，才能刷新该节点上的 CephFS 挂载。
+- 对于 Proxmox VE 之外的客户端，请从[托管的密钥文件](#pveceph_cephx_external_copies)中分发暂存凭据，然后重启或重新挂载这些客户端。
 
-The helper reports sessions that may still hold an old key. Client hints are host-wide, not session attribution or a complete workload inventory. Sockets without an owning process are listed separately. Check disconnected clients and external key copies yourself.
+辅助程序会报告可能仍持有旧密钥的会话。客户端提示涵盖整个宿主机，并非会话归属信息或完整的工作负载清单。没有所属进程的套接字会单独列出。请自行检查已断开连接的客户端和外部密钥副本。
 
 #### 3\. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
 
-Run a final dry run to check for remaining old-key sessions. It offers a confirmation command when its observed checks pass, but cannot verify disconnected clients or external key copies for you.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+执行最后一次试运行，检查是否仍有使用旧密钥的会话。当其观察到的检查全部通过时，它会提供确认命令，但无法为您验证已断开连接的客户端或外部密钥副本。
 
 ```text
 /usr/share/pve-manager/migrations/pve-cephx-rotate-service-keys
 ```
 
 {% hint style="warning" %}
-Clients that still need an old key or cipher cannot authenticate after this step. Existing IO can appear to work until a reconnect and then fail. Do not use `--force` to bypass a blocker.
+在此步骤之后，仍需要旧密钥或旧加密算法的客户端将无法通过身份验证。现有 I/O 可能看起来仍能正常工作，直到重新连接时才失败。不要使用 `--force` 绕过阻塞项。
 {% endhint %}
 
-After checking disconnected clients and external copies, run the exact command the dry run prints. When every rotation is ready and no key needs the old cipher, it will print the options `--apply --confirm-all-clients-refreshed
---restrict-ciphers`.
+检查已断开连接的客户端和外部副本后，运行试运行所打印的确切命令。当所有轮换都已就绪且没有密钥需要旧加密算法时，它将打印选项 `--apply --confirm-all-clients-refreshed
+--restrict-ciphers`。
 
-If any client remains incompatible, keep its key unchanged and the old cipher enabled rather than restricting it. You can [mute the remaining warnings](#pveceph_mute_health_check) while waiting for those clients to upgrade.
+如果任何客户端仍不兼容，请保持其密钥不变并继续启用旧加密算法，而不是限制旧加密算法。您可以在等待这些客户端升级期间[将剩余警告静音](#pveceph_mute_health_check)。
 
-Use `pveceph auth status` for current and pending key ciphers, as `ceph auth ls` does not list pending keys.
+使用 `pveceph auth status` 查看当前和待处理的密钥加密算法，因为 `ceph auth ls` 不会列出待处理的密钥。
 
 {% hint style="info" %}
-`/etc/pve/priv/cephx-key-migration.json` records progress and contains secret old keys. Protect it and keep it until the migration is complete and every client has been refreshed. Deleting it earlier loses the records needed to resume.
+`/etc/pve/priv/cephx-key-migration.json` 会记录进度，并包含保密的旧密钥。请妥善保护它，并一直保留到迁移完成且每个客户端都已刷新。过早删除它会丢失恢复迁移所需的记录。
 {% endhint %}
 
 ### Additional Migration Details <a href="#_additional_migration_details" id="_additional_migration_details"></a>
@@ -198,56 +180,54 @@ Use `pveceph auth status` for current and pending key ciphers, as `ceph auth ls`
 
 <thead>
 <tr>
-<th>Health check</th>
-<th>Meaning</th>
-<th>Action</th>
+<th>健康检查</th>
+<th>含义</th>
+<th>操作</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p><code>AUTH_INSECURE_SERVICE_KEY_TYPE</code></p></td>
-<td><p>A Ceph service key uses the old cipher.</p></td>
-<td><p>Run the cluster-owned migration. This check has error severity.</p></td>
+<td><p>某个 Ceph 服务密钥使用了旧加密算法。</p></td>
+<td><p>运行由集群负责的迁移。此检查的严重级别为错误。</p></td>
 </tr>
 <tr>
 <td><p><code>AUTH_INSECURE_SERVICE_TICKETS</code></p></td>
-<td><p>Monitors issue service tickets with the old cipher.</p></td>
-<td><p>Run the cluster-owned migration. This check has error severity.</p></td>
+<td><p>监视器使用旧加密算法签发服务票据。</p></td>
+<td><p>运行由集群负责的迁移。此检查的严重级别为错误。</p></td>
 </tr>
 <tr>
 <td><p><code>AUTH_INSECURE_CLIENT_KEY_TYPE</code></p></td>
-<td><p>The active key of a Ceph user uses the old cipher. A staged user stays listed until its rotation is confirmed.</p></td>
-<td><p>Rotate the keys of compatible users and confirm them, or mute the warning.</p></td>
+<td><p>某个 Ceph 用户的活动密钥使用了旧加密算法。已暂存密钥的用户会一直列在其中，直到其轮换得到确认。</p></td>
+<td><p>轮换兼容用户的密钥并确认轮换，或者将警告静音。</p></td>
 </tr>
 <tr>
 <td><p><code>AUTH_INSECURE_ROTATING_SERVICE_KEY_TYPE</code></p></td>
-<td><p>A rotating service key uses the old cipher.</p></td>
-<td><p>Continue the migration; old rotating keys expire automatically and do not prevent final cipher restriction.</p></td>
+<td><p>正在轮换的服务密钥使用了旧加密算法。</p></td>
+<td><p>继续迁移；正在轮换的旧密钥会自动过期，不会妨碍最终限制加密算法。</p></td>
 </tr>
 <tr>
 <td><p><code>AUTH_INSECURE_KEYS_ALLOWED</code></p></td>
-<td><p>Monitors accept the old cipher.</p></td>
-<td><p>Finish the migration, or mute the warning while old clients remain.</p></td>
+<td><p>监视器接受旧加密算法。</p></td>
+<td><p>完成迁移，或者在仍有旧客户端期间将警告静音。</p></td>
 </tr>
 <tr>
 <td><p><code>AUTH_INSECURE_KEYS_CREATABLE</code></p></td>
-<td><p>Monitors can create old-cipher keys.</p></td>
-<td><p>Finish the migration, or mute the warning while old clients remain.</p></td>
+<td><p>监视器可以创建使用旧加密算法的密钥。</p></td>
+<td><p>完成迁移，或者在仍有旧客户端期间将警告静音。</p></td>
 </tr>
 </tbody>
 </table>
 
 #### Clusters with Cephx Disabled <a href="#pveceph_cephx_disabled" id="pveceph_cephx_disabled"></a>
 
-Ceph evaluates these health checks from the stored keys and cipher settings, also when Cephx is disabled, that is, when `auth_cluster_required`, `auth_service_required`, and `auth_client_required` are set to `none`. Disabling Cephx therefore does not clear them, and changing the authentication method interrupts existing clients, which need a restart or remount afterwards.
+Ceph 会根据存储的密钥和加密算法设置评估这些健康检查，即使禁用了 Cephx 也是如此，也就是当 `auth_cluster_required`、`auth_service_required` 和 `auth_client_required` 设置为 `none` 时。因此，禁用 Cephx 并不会清除这些检查，而更改身份验证方法会中断现有客户端，之后需要重启或重新挂载这些客户端。
 
-On a cluster with Cephx disabled:
+在禁用 Cephx 的集群上：
 
-1. Run the helper without options and apply its plan. It migrates the manager, metadata server, and OSD keys, restarting services one at a time when needed, and switches the service tickets to the new cipher. This clears both error-severity checks. If an old `mon.` key is stored in the authentication database, the helper instead refuses and asks you to migrate that key first.
-2. Optionally, migrate the bootstrap and crash keys with `--rotate-client-keys`.
-3. Mute the remaining warnings without a duration. While Cephx is disabled, the helper does not migrate the keys of other Ceph users, as their clients do not authenticate with Cephx:
-
-   Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+1. 运行不带选项的辅助程序并应用其计划。它会迁移管理器、元数据服务器和 OSD 密钥，在需要时逐个重启服务，并将服务票据切换到新加密算法。这会清除两个严重级别为错误的检查。如果身份验证数据库中存储了旧的 `mon.` 密钥，辅助程序会改为拒绝执行，并要求您先迁移该密钥。
+2. 可以选择使用 `--rotate-client-keys` 迁移 bootstrap 和 crash 密钥。
+3. 在不设置时长的情况下将剩余警告静音。禁用 Cephx 期间，辅助程序不会迁移其他 Ceph 用户的密钥，因为其客户端不使用 Cephx 进行身份验证：
 
    ```text
    ceph health mute AUTH_INSECURE_CLIENT_KEY_TYPE --sticky
@@ -255,137 +235,127 @@ On a cluster with Cephx disabled:
    ceph health mute AUTH_INSECURE_KEYS_CREATABLE --sticky
    ```
 
-Do not restrict the allowed ciphers or forbid creating old-cipher keys by hand while the preferred cipher is still `aes`, as creating keys then fails.
+当首选加密算法仍为 `aes` 时，不要手动限制允许的加密算法或禁止创建使用旧加密算法的密钥，否则创建密钥会失败。
 
-Before you enable Cephx again, unmute these checks and make sure that every monitor, Ceph service, and client still has a key file matching the authentication database. Restart the monitors first, then all other Ceph services, and restart or remount the clients. Then run the migration as described in [Migration Steps](#pveceph_cephx_migration_helper).
+在重新启用 Cephx 之前，请取消这些检查的静音，并确保每个监视器、Ceph 服务和客户端仍具有与身份验证数据库匹配的密钥文件。先重启监视器，然后重启所有其他 Ceph 服务，并重启或重新挂载客户端。随后按照[迁移步骤](#pveceph_cephx_migration_helper)中的说明运行迁移。
 
 #### Staged Keys and Confirmation <a href="#pveceph_cephx_staged_keys" id="pveceph_cephx_staged_keys"></a>
 
-The helper disables automatic promotion of pending client keys so that the monitors keep both credentials valid. An older monitor would promote a staged key on its first use and end the grace period for the whole cluster. The helper therefore stages only when every monitor supports the feature and checks this again on every run.
+辅助程序会禁用待处理客户端密钥的自动提升，以便监视器让两个凭据都保持有效。较旧的监视器会在暂存密钥首次使用时将其提升，并终止整个集群的宽限期。因此，只有在每个监视器都支持该功能时，辅助程序才会进行暂存，并且每次运行时都会再次检查这一点。
 
-With `--apply`, `--confirm-all-clients-refreshed` makes every staged key current and invalidates its previous key. The initial check refuses the entire batch if any open rotation is not ready. The helper then rechecks each key before retiring its old credential. If a client returns during the batch, completed rotations stay committed and the blocked key stays staged. To confirm ready users separately, use `--confirm-clients-refreshed <USER>` with `--apply`.
+使用 `--apply` 时，`--confirm-all-clients-refreshed` 会将每个暂存密钥设为当前密钥，并使其先前的密钥失效。如果任何尚未完成的轮换未就绪，初始检查会拒绝整个批次。随后，辅助程序会在停用每个旧凭据之前重新检查相应密钥。如果某个客户端在此批次处理期间重新出现，已完成的轮换会保持提交状态，而受阻的密钥会保持暂存状态。要单独确认已就绪的用户，请将 `--confirm-clients-refreshed <USER>` 与 `--apply` 一起使用。
 
-Ceph 19.2.6-pve4 and 20.2.4-pve4 or newer monitors can identify each session’s key, allowing refreshed clients to stay connected during forward or rollback confirmation. Upgrade and restart older monitors to use this feature. Without key identification, every visible client of that user must disconnect before confirmation; upgrading is preferable for a shared user such as `client.admin`.
+Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个会话的密钥，从而让已刷新的客户端在正向确认或回滚确认期间保持连接。请升级并重启较旧的监视器以使用此功能。如果没有密钥识别功能，该用户的每个可见客户端都必须在确认前断开连接；对于 `client.admin` 这类共享用户，最好进行升级。
 
 #### Key Copies for External Clients <a href="#pveceph_cephx_external_copies" id="pveceph_cephx_external_copies"></a>
 
-For an external client of the local cluster, copy the staged credential from the managed file for its Ceph user:
+对于本地集群的外部客户端，请从其 Ceph 用户的托管文件中复制暂存凭据：
 
 - RBD keyring: `/etc/pve/priv/ceph/<STORAGE_ID>.keyring`
 - CephFS bare secret: `/etc/pve/priv/ceph/<STORAGE_ID>.secret`
 - Administrative keyring: `/etc/pve/priv/ceph.client.admin.keyring`
 
-Use the credential for that user, not `client.admin` as a substitute. Transfer it securely and update every saved copy before refreshing the client. Storage backed by an external cluster is different: the helper never rotates that cluster’s keys. Follow its administrator’s key-rotation procedure.
+请使用该用户的凭据，不要用 `client.admin` 代替。请安全地传输凭据，并在刷新客户端之前更新每个已保存的副本。由外部集群提供后端的存储则有所不同：辅助程序绝不会轮换该集群的密钥。请遵循其管理员的密钥轮换流程。
 
-A storage with `monhost` set counts as external even if its monitors belong to the local cluster, so the helper does not update its key copy. If that copy holds the key of a Ceph user you migrate, update it with the staged key of the same user before confirming, or with the restored key before confirming a rollback. The helper refuses to retire a key it finds in a storage key copy; verify copies it cannot check yourself.
+设置了 `monhost` 的存储会被视为外部存储，即使其监视器属于本地集群也是如此，因此辅助程序不会更新其密钥副本。如果该副本保存了您要迁移的 Ceph 用户的密钥，请在确认前使用同一用户的暂存密钥更新它，或者在确认回滚前使用恢复的密钥更新它。如果辅助程序在存储密钥副本中发现某个密钥，它会拒绝停用该密钥；请自行验证辅助程序无法检查的副本。
 
-The helper lists local users not managed by Proxmox VE separately. Follow their client’s supported rotation procedure, or leave their keys unchanged and keep the old cipher enabled.
+辅助程序会单独列出不受 Proxmox VE 管理的本地用户。请遵循其客户端支持的轮换流程，或者保持其密钥不变并继续启用旧加密算法。
 
 #### Roll Back a Staged Client Key <a href="#pveceph_cephx_rollback" id="pveceph_cephx_rollback"></a>
 
-To return a staged user to its current key:
+要将已暂存密钥的用户恢复为其当前密钥：
 
-1. Run the helper with `--abort-staged-key <USER> --apply`. It restores the current key to every managed copy while both credentials remain valid.
-2. Refresh all clients back to that key, including disconnected clients and external key copies. The helper retries managed CephFS mounts as during forward migration.
-3. Run the helper with `--confirm-abort-clients-refreshed <USER> --apply` to retire the staged key. The helper refuses if monitor session collection is incomplete, a visible session uses the staged key, its key is unknown, or a storage key copy still holds the staged key.
+1. 使用 `--abort-staged-key <USER> --apply` 运行辅助程序。在两个凭据均保持有效期间，它会将当前密钥恢复到每个托管副本。
+2. 将所有客户端刷新回该密钥，包括已断开连接的客户端和外部密钥副本。辅助程序会像正向迁移期间一样重试托管的 CephFS 挂载。
+3. 使用 `--confirm-abort-clients-refreshed <USER> --apply` 运行辅助程序以停用暂存密钥。如果监视器会话收集不完整、某个可见会话使用了暂存密钥、其密钥未知，或者某个存储密钥副本仍保存着暂存密钥，辅助程序会拒绝执行。
 
 #### Emergency Cipher Override <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
 
-Monitors normally use the `auth_allowed_ciphers` list stored in the MonMap to decide which key ciphers may authenticate. The local startup option `mon_auth_emergency_allowed_ciphers` replaces that list for a monitor. It can temporarily allow the cipher of an existing administrative key after an incorrect restriction locked administrators out   
-\[Ceph: Emergency Allowed Ciphers [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)\]  
-.
+监视器通常使用 MonMap 中存储的 `auth_allowed_ciphers` 列表来决定允许哪些密钥加密算法通过身份验证。本地启动选项 `mon_auth_emergency_allowed_ciphers` 会为某个监视器替换该列表。在错误的限制导致管理员无法访问后，它可以临时允许现有管理密钥所使用的加密算法 [\[3\]](#note-4de62a9e-3)。
 
-Ceph raises `AUTH_EMERGENCY_CIPHERS_SET` while this override is configured. The helper refuses the final restriction because changing the MonMap would not take effect. Use the override only to recover access, then repair the normal configuration, remove it from `/etc/pve/ceph.conf`, and restart every monitor before the final dry run.
+配置此覆盖后，Ceph 会触发 `AUTH_EMERGENCY_CIPHERS_SET`。辅助程序会拒绝最终限制，因为更改 MonMap 不会生效。请仅使用此覆盖来恢复访问，然后修复正常配置，将其从 `/etc/pve/ceph.conf` 中移除，并在最后一次试运行之前重启每个监视器。
 
 #### Interrupted Runs and Manual Fallback <a href="#_interrupted_runs_and_manual_fallback" id="_interrupted_runs_and_manual_fallback"></a>
 
-After an interruption, run the helper without options once the affected nodes are reachable. Unfinished key updates can resume while their daemons are stopped. Keep the journal unchanged and follow the printed next steps rather than starting a manual rotation. Check the affected nodes and service logs rather than assuming a down daemon’s key needs repair.
+发生中断后，待受影响的节点可以访问时，运行不带选项的辅助程序。未完成的密钥更新可以在其守护进程停止期间恢复。请保持日志不变，并遵循打印出的后续步骤，而不要开始手动轮换。请检查受影响的节点和服务日志，而不要假定已停止守护进程的密钥需要修复。
 
-If the helper still cannot proceed, install the latest `pve-manager` and retry. Contact Proxmox support before editing the journal or keyrings, or before using the upstream Cephx key migration procedure   
-\[Ceph documentation: [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)\]  
-. That procedure changes the Ceph authentication database, but does not account for these Proxmox VE details:
+如果辅助程序仍无法继续，请安装最新的 `pve-manager` 并重试。在编辑日志或密钥环之前，或者在使用上游 Cephx 密钥迁移流程 [\[4\]](#note-4de62a9e-4) 之前，请联系 Proxmox 支持。该流程会更改 Ceph 身份验证数据库，但不会考虑以下 Proxmox VE 细节：
 
-- Ensure every managed key copy below `/etc/pve/priv` and `/var/lib/ceph` contains the key that Ceph accepts. Merge changes into `/etc/pve/priv/ceph.mon.keyring`; never overwrite it.
-- Update an encrypted OSD’s lockbox key in both the authentication database and its block-device LVM tag. Its temporary keyring is not the persistent copy.
-- Refresh every client before invalidating its previous Ceph user key.
-- Rotate `client.admin` last and prepare an independently tested recovery user before changing it.
+- 确保 `/etc/pve/priv` 和 `/var/lib/ceph` 下的每个托管密钥副本都包含 Ceph 接受的密钥。将更改合并到 `/etc/pve/priv/ceph.mon.keyring`；切勿覆盖它。
+- 在身份验证数据库和加密 OSD 的块设备 LVM 标签中更新其 lockbox 密钥。其临时密钥环不是持久副本。
+- 在使客户端先前的 Ceph 用户密钥失效之前，刷新每个客户端。
+- 最后轮换 `client.admin`，并在更改它之前准备一个经过独立测试的恢复用户。
 
-Use manual key-rotation or cipher-restriction commands only with a complete, tested recovery plan that covers every item above.
+只有在具备涵盖上述每一项的完整且经过测试的恢复计划时，才能使用手动密钥轮换或加密算法限制命令。
 
 ## 8.14.6. Shutdown Proxmox VE \+ Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
 
-To shut down the whole Proxmox VE \+ Ceph cluster, first stop all Ceph clients. These will mainly be VMs and containers. If you have additional clients that might access a Ceph FS or an installed RADOS GW, stop these as well. Highly available guests will switch their state to *stopped* when powered down via the Proxmox VE tooling.
+要关闭整个 Proxmox VE \+ Ceph 集群，请先停止所有 Ceph 客户端。这些客户端主要是虚拟机和容器。如果您有其他可能访问 Ceph FS 或已安装的 RADOS GW 的客户端，也请停止它们。通过 Proxmox VE 工具关机时，高可用性客户机会将其状态切换为 *stopped*。
 
-Once all clients, VMs and containers are off or not accessing the Ceph cluster anymore, verify that the Ceph cluster is in a healthy state. Either via the Web UI or the CLI:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+一旦所有客户端、虚拟机和容器都已关闭或不再访问 Ceph 集群，请验证 Ceph 集群处于健康状态。可以通过 Web UI 或 CLI 进行验证：
 
 ```text
 ceph -s
 ```
 
-In order to not cause any recovery during the shut down and later power on phases, enable the *noout* OSD flag. Either in the **Ceph → OSD** panel behind the **Manage Global Flags** button or the CLI:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+为避免在关机和后续开机阶段引发任何恢复，请启用 *noout* OSD 标志。可以通过 **Ceph → OSD** 面板中的 **管理全局标志**按钮，或者通过 CLI 启用：
 
 ```text
 ceph osd set noout
 ```
 
-Start powering down your nodes without a monitor (MON). After these nodes are down, continue by shutting down nodes with monitors on them.
+先关闭没有监视器（MON）的节点。这些节点关闭后，再继续关闭带有监视器的节点。
 
-When powering on the cluster, start the nodes with monitors (MONs) first. Once all nodes are up and running, confirm that all Ceph services are up and running. In the end, the only warning you should see for Ceph is that the *noout* flag is still set. You can disable it via the web UI or via the CLI:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+为集群开机时，先启动带有监视器（MON）的节点。所有节点都启动并运行后，确认所有 Ceph 服务都已启动并运行。最后，您应该看到的唯一 Ceph 警告是 *noout* 标志仍处于设置状态。您可以通过 Web UI 或 CLI 禁用它：
 
 ```text
 ceph osd unset noout
 ```
 
-You can now start up the guests. Highly available guests will change their state to *started* when they power on.
+现在可以启动客户机了。高可用性客户机开机时，会将其状态更改为 *started*。
 
 ## 8.14.7. Network Changes <a href="#pveceph_network_change" id="pveceph_network_change"></a>
 
-It is possible to change the networks used by Ceph in a HCI setup without any downtime if **both the old and new networks can be configured at the same time**.
+如果**可以同时配置旧网络和新网络**，则可以在 HCI 部署中更改 Ceph 使用的网络，而不会造成任何停机。
 
-The procedure differs depending on which network you want to change.
+具体流程会因您要更改的网络而异。
 
 {% hint style="info" %}
-A word of caution! It is critical that the change of the used networks by Ceph is being done carefully. Otherwise it could lead to a broken Ceph cluster with downtime to get it back into a working state! We recommend doing a trial run of the procedure in a (virtual) test cluster before changing the production infrastructure.
+注意！谨慎更改 Ceph 所使用的网络至关重要。否则可能导致 Ceph 集群损坏，并需要停机才能使其恢复工作状态！我们建议先在（虚拟）测试集群中试运行该过程，然后再更改生产基础设施。
 {% endhint %}
 
-After the new network has been configured on all hosts, make sure you test it before proceeding with the changes. One way is to ping all hosts on the new network. If you use a large MTU, make sure to also test that it works. For example by sending ping packets that will result in a final packet at the max MTU size.
+在所有宿主机上配置好新网络后，请务必先对其进行测试，然后再继续更改。一种方法是在新网络上 ping 所有宿主机。如果使用较大的 MTU，请确保也测试其是否正常工作。例如，可以发送 ping 数据包，使最终数据包的大小达到最大 MTU。
 
-To test an MTU of 9000, you will need the following packet sizes:
+要测试 9000 的 MTU，需要使用以下数据包大小：
 
 {% hint style="info" %}
-We assume a simple network configuration. In more complicated setups, you might need to configure a lower MTU to account for any headers that might be added once a packet leaves the host.
+我们假设采用简单的网络配置。在更复杂的部署中，您可能需要配置较低的 MTU，以计入数据包离开宿主机后可能添加的任何标头。
 {% endhint %}
 
 <table>
 <tr>
-<td>IPv4 <br/></td>
+<td>IPv4 <br/>
+</td>
 <td>
-<p>The overhead of IP and ICMP is <em>28</em> bytes; the resulting packet size for the ping then is <em>8972</em> bytes.</p>
+<p>IP 和 ICMP 的开销为 <em>28</em> 字节；因此 ping 最终的数据包大小为 <em>8972</em> 字节。</p>
 </td>
 </tr>
 <tr>
-<td>IPv6 <br/></td>
+<td>IPv6 <br/>
+</td>
 <td>
-<p>The overhead is <em>48</em> bytes and the resulting packet size is <em>8952</em> bytes.</p>
+<p>开销为 <em>48</em> 字节，最终数据包大小为 <em>8952</em> 字节。</p>
 </td>
 </tr>
 </table>
 
-The resulting ping command will look like this for an IPv4:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+对于 IPv4，最终使用的 ping 命令如下所示：
 
 ```text
 ping -M do -s 8972 {target IP}
 ```
 
-When you are switching between IPv4 and IPv6 networks, you need to make sure that the following options in the `ceph.conf` file are correctly set to `true` or `false`. These config options configure if Ceph services should bind to IPv4 or IPv6 addresses.
+在 IPv4 和 IPv6 网络之间切换时，需要确保 `ceph.conf` 文件中的以下选项正确设置为 `true` 或 `false`。这些配置选项决定 Ceph 服务应绑定到 IPv4 还是 IPv6 地址。
 
 ```text
 ms_bind_ipv4 = true
@@ -394,37 +364,35 @@ ms_bind_ipv6 = false
 
 ### Change the Ceph Public Network <a href="#pveceph_network_change_public" id="pveceph_network_change_public"></a>
 
-The Ceph Public network is the main communication channel in a Ceph cluster between the different services and clients (for example, a VM). Changing it to a different network is not as simple as changing the Ceph Cluster network. The main reason is that besides the configuration in the `ceph.conf` file, the Ceph MONs (monitors) have an internal configuration where they keep track of all the other MONs that are part of the cluster, the *monmap*.
+Ceph 公共网络是 Ceph 集群中不同服务与客户端（例如 VM）之间的主要通信通道。将其更改为其他网络并不像更改 Ceph 集群网络那样简单。主要原因是，除了在 `ceph.conf` 文件中的配置外，Ceph MON（监视器）还有一项内部配置，用于跟踪属于集群的所有其他 MON，即 *monmap*。
 
-Therefore, the procedure to change the Ceph Public network is a bit more involved:
+因此，更改 Ceph 公共网络的过程要稍微复杂一些：
 
-1. Change `public_network` in the `/etc/pve/ceph.conf` file (do not change any other value)
-2. Restart non MON services: OSDs, MGRs and MDS on one host
+1. 更改 `public_network`（在 `/etc/pve/ceph.conf` 文件中，不要更改任何其他值）
+2. 重启一台宿主机上的非 MON 服务：OSD、MGR 和 MDS
 3. Wait until Ceph is back to *HEALTH\_OK*
-4. Verify services are using the new network
-5. Continue restarting services on the next host
-6. Destroy one MON
-7. Recreate MON
+4. 验证服务是否正在使用新网络
+5. 继续在下一台宿主机上重启服务
+6. 销毁一个 MON
+7. 重新创建 MON
 8. Wait until Ceph is back to *HEALTH\_OK*
-9. Continue destroying and recreating MONs
+9. 继续销毁并重新创建 MON
 
-You first need to edit the `/etc/pve/ceph.conf` file. Change the `public_network` line to match the new subnet.
+首先需要编辑 `/etc/pve/ceph.conf` 文件。更改 `public_network` 行，使其与新子网匹配。
 
 ```text
 public_network = 10.9.9.30/24
 ```
 
 {% hint style="warning" %}
-Do not change the `mon_host` line or any `[mon.HOSTNAME]` sections. These will be updated automatically when the MONs are destroyed and recreated.
+不要更改 `mon_host` 行或任何 `[mon.HOSTNAME]` 节。销毁并重新创建 MON 时，这些内容会自动更新。
 {% endhint %}
 
 {% hint style="info" %}
-Don’t worry if the host bits (for example, the last octet) are set by default, the netmask in CIDR notation defines the network part.
+如果默认设置了主机位（例如最后一个八位组），不必担心；CIDR 表示法中的网络掩码定义了网络部分。
 {% endhint %}
 
-After you have changed the network, you need to restart the non MON services in the cluster for the changes to take effect. Do so one node at a time! To restart all non MON services on one node, you can use the following commands on that node. Ceph has `systemd` targets for each type of service.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+更改网络后，需要重启集群中的非 MON 服务，才能使更改生效。请每次只操作一个节点！要重启一个节点上的所有非 MON 服务，可以在该节点上使用以下命令。Ceph 为每种服务类型都设有 `systemd` 目标。
 
 ```text
 systemctl restart ceph-osd.target
@@ -433,86 +401,98 @@ systemctl restart ceph-mds.target
 ```
 
 {% hint style="info" %}
-You will only have MDS daemons (Metadata Servers) if you use CephFS.
+只有使用 CephFS 时，才会有 MDS 守护进程（元数据服务器）。
 {% endhint %}
 
 {% hint style="info" %}
-After the first OSD service got restarted, the GUI will complain that the OSD is not reachable anymore. This is not an issue; VMs can still reach them. The reason for the message is that the MGR service cannot reach the OSD anymore. The error will vanish after the MGR services get restarted.
+第一个 OSD 服务重启后，GUI 会提示该 OSD 不再可达。这不是问题；VM 仍然可以访问这些 OSD。出现该消息的原因是 MGR 服务无法再访问该 OSD。MGR 服务重启后，该错误会消失。
 {% endhint %}
 
 {% hint style="warning" %}
-Do not restart OSDs on multiple hosts at the same time. Chances are that for some PGs (placement groups), 2 out of the (default) 3 replicas will be down. This will result in I/O being halted until the minimum required number (`min_size`) of replicas is available again.
+不要同时在多台宿主机上重启 OSD。对于某些 PG（归置组），（默认）3 个副本中很可能有 2 个会不可用。这将导致 I/O 暂停，直到可用副本数量重新达到最低要求（`min_size`）。
 {% endhint %}
 
-To verify that the services are listening on the new network, you can run the following command on each node:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要验证服务是否正在新网络上监听，可以在每个节点上运行以下命令：
 
 ```text
 ss -tulpn | grep ceph
 ```
 
 {% hint style="info" %}
-Since OSDs will also listen on the Ceph Cluster network, expect to see that network too in the output of `ss -tulpn`.
+由于 OSD 也会在 Ceph 集群网络上监听，因此在 `ss -tulpn` 的输出中也会看到该网络。
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the services are listening on the new network, continue to restart the services on the host.
+一旦 Ceph 集群恢复完全健康状态（*HEALTH\_OK*），且服务正在新网络上监听，就继续重启该宿主机上的服务。
 
-The last services that need to be moved to the new network are the Ceph MONs themselves. The easiest way is to destroy and recreate each monitor one by one. This way, any mention of it in the `ceph.conf` and the monitor internal `monmap` is handled automatically.
+最后需要迁移到新网络的服务是 Ceph MON 本身。最简单的方法是逐一销毁并重新创建每个监视器。这样，`ceph.conf` 和监视器内部 `monmap` 中任何与之相关的条目都会自动处理。
 
-Destroy the first MON and create it again. Wait a few moments before you continue on to the next MON in the cluster, and make sure the cluster reports *HEALTH\_OK* before proceeding.
+销毁第一个 MON，然后重新创建它。继续处理集群中的下一个 MON 之前，请稍等片刻，并确保集群报告 *HEALTH\_OK* 后再继续。
 
-Once all MONs are recreated, you can verify that any mention of MONs in the `ceph.conf` file references the new network. That means mainly the `mon_host` line and the `[mon.HOSTNAME]` sections.
+重新创建所有 MON 后，可以验证 `ceph.conf` 文件中所有涉及 MON 的内容是否都引用新网络。这主要包括 `mon_host` 行和 `[mon.HOSTNAME]` 节。
 
-One final `ss -tulpn | grep ceph` should show that the old network is not used by any Ceph service anymore.
+最后再运行一次 `ss -tulpn | grep ceph`，应显示任何 Ceph 服务都不再使用旧网络。
 
 ### Change the Ceph Cluster Network <a href="#pveceph_network_change_cluster" id="pveceph_network_change_cluster"></a>
 
-The Ceph Cluster network is used for the replication traffic between the OSDs. Therefore, it can be beneficial to place it on its own fast physical network.
+Ceph 集群网络用于 OSD 之间的复制流量。因此，将其放置在独立的高速物理网络上可能会有所帮助。
 
-The overall procedure is:
+总体过程如下：
 
-1. Change `cluster_network` in the `/etc/pve/ceph.conf` file
-2. Restart OSDs on one host
+1. 更改 `cluster_network`（位于 `/etc/pve/ceph.conf` 文件中）
+2. 重启一台宿主机上的 OSD
 3. Wait until Ceph is back to *HEALTH\_OK*
-4. Verify OSDs are using the new network
-5. Continue restarting OSDs on the next host
+4. 验证 OSD 是否正在使用新网络
+5. 继续在下一台宿主机上重启 OSD
 
-You first need to edit the `/etc/pve/ceph.conf` file. Change the `cluster_network` line to match the new subnet.
+首先需要编辑 `/etc/pve/ceph.conf` 文件。更改 `cluster_network` 行，使其与新子网匹配。
 
 ```text
 cluster_network = 10.9.9.30/24
 ```
 
 {% hint style="info" %}
-Don’t worry if the host bits (for example, the last octet) are set by default; the netmask in CIDR notation defines the network part.
+如果默认设置了主机位（例如最后一个八位组），不必担心；CIDR 表示法中的网络掩码定义了网络部分。
 {% endhint %}
 
-After you have changed the network, you need to restart the OSDs in the cluster for the changes to take effect. Do so one node at a time! To restart all OSDs on one node, you can use the following command on the CLI on that node:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+更改网络后，需要重启集群中的 OSD，才能使更改生效。请每次只操作一个节点！要重启一个节点上的所有 OSD，可以在该节点的 CLI 中运行以下命令：
 
 ```text
 systemctl restart ceph-osd.target
 ```
 
 {% hint style="warning" %}
-Do not restart OSDs on multiple hosts at the same time. Chances are that for some PGs (placement groups), 2 out of the (default) 3 replicas will be down. This will result in I/O being halted until the minimum required number (`min_size`) of replicas is available again.
+不要同时在多台宿主机上重启 OSD。对于某些 PG（归置组），（默认）3 个副本中很可能有 2 个会不可用。这将导致 I/O 暂停，直到可用副本数量重新达到最低要求（`min_size`）。
 {% endhint %}
 
-To verify that the OSD services are listening on the new network, you can either check the **OSD Details → Network** tab in the **Ceph → OSD** panel or by running the following command on the host:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要验证 OSD 服务是否正在新网络上监听，可以检查 **OSD 详细信息 → 网络** 选项卡（位于 **Ceph → OSD** 面板中），也可以在宿主机上运行以下命令：
 
 ```text
 ss -tulpn | grep ceph-osd
 ```
 
 {% hint style="info" %}
-Since OSDs will also listen on the Ceph Public network, expect to see that network too in the output of `ss -tulpn`.
+由于 OSD 也会在 Ceph 公共网络上监听，因此在 `ss -tulpn` 的输出中也会看到该网络。
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the OSDs are listening on the new network, continue to restart the OSDs on the next host.
+一旦 Ceph 集群恢复完全健康状态（*HEALTH\_OK*），且 OSD 正在新网络上监听，就继续在下一台宿主机上重启 OSD。
+
+## 注释
+
+### 注释 1 <a href="#note-4de62a9e-1" id="note-4de62a9e-1"></a>
+
+Ceph 擦洗 [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)
+
+### 注释 2 <a href="#note-4de62a9e-2" id="note-4de62a9e-2"></a>
+
+Ceph：Squid v19.2.6 和 Tentacle v20.2.4 发布 [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)
+
+### 注释 3 <a href="#note-4de62a9e-3" id="note-4de62a9e-3"></a>
+
+Ceph：紧急允许的加密算法 [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)
+
+### 注释 4 <a href="#note-4de62a9e-4" id="note-4de62a9e-4"></a>
+
+Ceph 文档：[https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)
 
 ---
 

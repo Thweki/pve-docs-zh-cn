@@ -1,36 +1,36 @@
 # 5.9. Corosync Redundancy <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
 
-Corosync supports redundant networking via its integrated Kronosnet layer by default (it is not supported on the legacy udp/udpu transports). It can be enabled by specifying more than one link address, either via the *--linkX* parameters of `pvecm`, in the GUI as **Link 1** (while creating a cluster or adding a new node) or by specifying more than one *ringX\_addr* in `corosync.conf`.
+Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/udpu 传输不支持此功能）。要启用该功能，可以通过 *--linkX* 参数（属于 `pvecm`）、在 GUI 中设置为 **Link 1**（创建集群或添加新节点时），或者通过指定多个 *ringX\_addr*（位于 `corosync.conf` 中）来指定多个链路地址。
 
 {% hint style="info" %}
-To provide useful failover, every link should be on its own physical network connection.
+为提供有效的故障切换，每条链路都应使用独立的物理网络连接。
 {% endhint %}
 
-The following examples assume that each cluster node has one static address in 10.10.10.0/25 and one static address in 10.20.20.0/25 configured.
+以下示例假设每个集群节点都配置了一个 10.10.10.0/25 中的静态地址和一个 10.20.20.0/25 中的静态地址。
 
-Links are used according to a priority setting. You can configure this priority by setting *knet\_link\_priority* in the corresponding interface section in `corosync.conf`, or, preferably, using the *priority* parameter when creating your cluster with `pvecm`:
+链路根据优先级设置使用。您可以在对应的接口小节中设置 *knet\_link\_priority* 来配置此优先级（该小节位于 `corosync.conf`），或者，最好在创建集群时使用 *priority* 参数，并通过 `pvecm` 执行创建操作：
 
 ```text
  # pvecm create CLUSTERNAME --link0 10.10.10.1,priority=15 --link1 10.20.20.1,priority=20
 ```
 
-This would cause *link1* to be used first, since it has the higher priority.
+这将使 *link1* 被优先使用，因为它的优先级更高。
 
-If no priorities are configured manually (or two links have the same priority), links will be used in order of their number, with the lower number having higher priority.
+如果未手动配置优先级（或两条链路的优先级相同），链路将按其编号顺序使用，编号越小，优先级越高。
 
-Even if all links are working, only the one with the highest priority will see corosync traffic. Link priorities cannot be mixed, meaning that links with different priorities will not be able to communicate with each other.
+即使所有链路都正常工作，也只有优先级最高的链路会承载 corosync 流量。链路优先级不能混合，这意味着优先级不同的链路将无法相互通信。
 
-Since lower priority links will not see traffic unless all higher priorities have failed, it becomes a useful strategy to specify networks used for other tasks (VMs, storage, etc.) as low-priority links. If worst comes to worst, a higher latency or more congested connection might be better than no connection at all.
+由于除非所有更高优先级的链路都发生故障，否则较低优先级的链路不会承载流量，因此，将用于其他任务（虚拟机、存储等）的网络指定为低优先级链路是一种有用的策略。在最坏的情况下，延迟较高或较为拥塞的连接可能也比完全没有连接要好。
 
 ## 5.9.1. Adding Redundant Links To An Existing Cluster <a href="#_adding_redundant_links_to_an_existing_cluster" id="_adding_redundant_links_to_an_existing_cluster"></a>
 
-To add a new link to a running configuration, first check how to [edit the corosync.conf file](12-corosync-configuration.md#pvecm_edit_corosync_conf).
+要向运行中的配置添加新链路，首先请查看如何[编辑 corosync.conf 文件](12-corosync-configuration.md#pvecm_edit_corosync_conf)。
 
-Then, add a new *ringX\_addr* to every node in the `nodelist` section. Make sure that your *X* is the same for every node you add it to, and that it is unique for each node.
+然后，将新的 *ringX\_addr* 添加到 `nodelist` 小节中的每个节点。确保所有添加该条目的节点都使用相同的 *X*，并且该编号在每个节点内都是唯一的。
 
 Lastly, add a new *interface*, as shown below, to your `totem` section, replacing *X* with the link number chosen above.
 
-Assuming you added a link with number 1, the new configuration file could look like this:
+假设您添加了一条编号为 1 的链路，新配置文件可能如下所示：
 
 ```text
 logging {
@@ -85,19 +85,19 @@ totem {
 }
 ```
 
-The new link will be enabled as soon as you follow the last steps to [edit the corosync.conf file](12-corosync-configuration.md#pvecm_edit_corosync_conf). A restart should not be necessary. You can check that corosync loaded the new link using:
+按照[编辑 corosync.conf 文件](12-corosync-configuration.md#pvecm_edit_corosync_conf)的最后步骤操作后，新链路即会启用。应该无需重启。您可以使用以下命令检查 corosync 是否已加载新链路：
 
 ```text
 journalctl -b -u corosync
 ```
 
-It might be a good idea to test the new link by temporarily disconnecting the old link on one node and making sure that its status remains online while disconnected:
+最好在其中一个节点上暂时断开旧链路来测试新链路，并确保其状态在断开期间仍保持在线：
 
 ```text
 pvecm status
 ```
 
-If you see a healthy cluster state, it means that your new link is being used.
+如果您看到集群状态正常，则表示新链路正在使用中。
 
 ---
 

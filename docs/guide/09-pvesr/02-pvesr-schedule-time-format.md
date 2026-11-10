@@ -1,6 +1,6 @@
 # 9.2. Schedule Format <a href="#pvesr_schedule_time_format" id="pvesr_schedule_time_format"></a>
 
-Replication uses [calendar events](../25-calendar-events/01-chapter-calendar-events.md#chapter_calendar_events) for configuring the schedule.
+复制使用 [日历事件](../25-calendar-events/01-chapter-calendar-events.md) 来配置计划。
 
 ---
 

@@ -1,8 +1,8 @@
 # 5.2. Preparing Nodes <a href="#_preparing_nodes" id="_preparing_nodes"></a>
 
-First, install Proxmox VE on all nodes. Make sure that each node is installed with the final hostname and IP configuration. Changing the hostname and IP is not possible after cluster creation.
+首先，在所有节点上安装 Proxmox VE。确保每个节点在安装时都使用最终的主机名和 IP 配置。创建集群后，无法更改主机名和 IP。
 
-While it’s common to reference all node names and their IPs in `/etc/hosts` (or make their names resolvable through other means), this is not necessary for a cluster to work. It may be useful however, as you can then connect from one node to another via SSH, using the easier to remember node name (see also [Link Address Types](08-pvecm-cluster-network.md#pvecm_corosync_addresses)). Note that we always recommend referencing nodes by their IP addresses in the cluster configuration.
+虽然在 `/etc/hosts` 中引用所有节点名称及其 IP（或通过其他方式使其名称可解析）很常见，但集群运行并不需要这样做。不过，这样做可能很有用，因为随后可以使用更容易记住的节点名称，通过 SSH 从一个节点连接到另一个节点（另请参见[链路地址类型](08-pvecm-cluster-network.md#pvecm_corosync_addresses)）。请注意，我们始终建议在集群配置中通过节点的 IP 地址来引用节点。
 
 ---
 

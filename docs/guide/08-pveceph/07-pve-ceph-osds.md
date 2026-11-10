@@ -2,75 +2,63 @@
 
 [![screenshot/gui-ceph-osd-status.png](../../assets/screenshot-gui-ceph-osd-status-png-eb5fb509c420.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-osd-status.png)
 
-Ceph **O**bject **S**torage **D**aemons store objects for Ceph over the network. It is recommended to use one OSD per physical disk.
+Ceph 对象存储守护进程（**O**bject **S**torage **D**aemons）通过网络为 Ceph 存储对象。建议每块物理磁盘使用一个 OSD。
 
 ## 8.7.1. Create OSDs <a href="#pve_ceph_osd_create" id="pve_ceph_osd_create"></a>
 
-You can create an OSD either via the Proxmox VE web interface or via the CLI using `pveceph`. For example:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+您可以通过 Proxmox VE Web 界面或 CLI 使用 `pveceph` 创建 OSD。例如：
 
 ```text
 pveceph osd create /dev/sd[X]
 ```
 
 {% hint style="success" %}
-We recommend a Ceph cluster with at least three nodes and at least 12 OSDs, evenly distributed among the nodes.
+我们建议 Ceph 集群至少包含三个节点和至少 12 个 OSD，并在各节点之间均匀分布。
 {% endhint %}
 
-If the disk was in use before (for example, for ZFS or as an OSD) you first need to zap all traces of that usage. To remove the partition table, boot sector and any other OSD leftover, you can use the following command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果磁盘此前已被使用（例如用于 ZFS 或作为 OSD），您需要先清除所有相关使用痕迹。要删除分区表、引导扇区和任何其他 OSD 残留，可以使用以下命令：
 
 ```text
 ceph-volume lvm zap /dev/sd[X] --destroy
 ```
 
 {% hint style="warning" %}
-The above command will destroy all data on the disk!
+上述命令将销毁磁盘上的所有数据！
 {% endhint %}
 
 **Ceph Bluestore**
 
-Starting with the Ceph Kraken release, a new Ceph OSD storage type was introduced called Bluestore   
-\[Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)\]  
-. This is the default when creating OSDs since Ceph Luminous.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+从 Ceph Kraken 版本开始，引入了一种名为 Bluestore [\[1\]](#note-1ca5c74f-1) 的新 Ceph OSD 存储类型。自 Ceph Luminous 起，创建 OSD 时默认使用此类型。
 
 ```text
 pveceph osd create /dev/sd[X]
 ```
 
-**Block.db and block.wal**
+**Block.db 和 block.wal**
 
-If you want to use a separate DB/WAL device for your OSDs, you can specify it through the *-db\_dev* and *-wal\_dev* options. The WAL is placed with the DB, if not specified separately.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果您想为 OSD 使用单独的 DB/WAL 设备，可以通过 *-db\_dev* 和 *-wal\_dev* 选项指定。如果未单独指定 WAL，则会将其与 DB 放在一起。
 
 ```text
 pveceph osd create /dev/sd[X] -db_dev /dev/sd[Y] -wal_dev /dev/sd[Z]
 ```
 
-You can directly choose the size of those with the *-db\_size* and *-wal\_size* parameters respectively. If they are not given, the following values (in order) will be used:
+您可以分别通过 *-db\_size* 和 *-wal\_size* 参数直接指定它们的大小。如果未给出这些参数，将按顺序使用以下值：
 
-- bluestore\_block\_{db,wal}\_size from Ceph configuration…
+- bluestore\_block\_{db,wal}\_size，来自 Ceph 配置……
 
   - … database, section *osd*
   - … database, section *global*
   - … file, section *osd*
   - … file, section *global*
-- 10% (DB)/1% (WAL) of OSD size
+- OSD 大小的 10%（DB）/1%（WAL）
 
 {% hint style="info" %}
-The DB stores BlueStore’s internal metadata, and the WAL is BlueStore’s internal journal or write-ahead log. It is recommended to use a fast SSD or NVRAM for better performance.
+DB 存储 BlueStore 的内部元数据，WAL 是 BlueStore 的内部日志或预写式日志。建议使用高速 SSD 或 NVRAM 以获得更好的性能。
 {% endhint %}
 
 **Ceph Filestore**
 
-Before Ceph Luminous, Filestore was used as the default storage type for Ceph OSDs. Starting with Ceph Nautilus, Proxmox VE does not support creating such OSDs with *pveceph* anymore. If you still want to create filestore OSDs, use *ceph-volume* directly.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+在 Ceph Luminous 之前，Filestore 是 Ceph OSD 的默认存储类型。从 Ceph Nautilus 开始，Proxmox VE 不再支持使用 *pveceph* 创建此类 OSD。如果您仍想创建 filestore OSD，请直接使用 *ceph-volume*。
 
 ```text
 ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
@@ -78,52 +66,50 @@ ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
 
 ## 8.7.2. Destroy OSDs <a href="#pve_ceph_osd_destroy" id="pve_ceph_osd_destroy"></a>
 
-If you experience problems with an OSD or its disk, try to [troubleshoot](15-pve-ceph-mon-and-ts.md#pve_ceph_mon_and_ts) them first to decide if a [replacement](14-ceph-maintenance.md#pve_ceph_osd_replace) is needed.
+如果 OSD 或其磁盘出现问题，请先尝试对其进行 [故障排除](15-pve-ceph-mon-and-ts.md)，以确定是否需要 [更换](14-ceph-maintenance.md#pve_ceph_osd_replace)。
 
-To destroy an OSD, navigate to the *\<Node\> → Ceph → OSD* panel or use the mentioned CLI commands on the node where the OSD is located.
+要销毁 OSD，请转到 *\<Node\> → Ceph → OSD* 面板，或在 OSD 所在节点上使用上述 CLI 命令。
 
-1. Make sure the cluster has enough space to handle the removal of the OSD. In the *Ceph → OSD* panel,if the to-be destroyed OSD is still `up` and `in` (non-zero value at `AVAIL`), make sure that all OSDs have their `Used (%)` value well below the `nearfull_ratio` of default `85%`.
+1. 确保集群有足够的空间来应对 OSD 的移除。在 *Ceph → OSD* 面板中，如果待销毁的 OSD 仍处于 `up` 和 `in` 状态（`AVAIL` 为非零值），请确保所有 OSD 的 `Used (%)` 值都远低于 `nearfull_ratio`，后者的默认值为 `85%`。
 
-   This way you can reduce the risk from the upcoming rebalancing, which may cause OSDs to run full and thereby blocking I/O on Ceph pools.
+   这样可以降低即将进行的重新均衡所带来的风险，重新均衡可能导致 OSD 写满，从而阻塞 Ceph 池上的 I/O。
 
-   Use the following command to get the same information on the CLI:
-
-   Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+   使用以下命令可在 CLI 上获取相同的信息：
 
    ```text
    ceph osd df tree
    ```
-2. If the to-be destroyed OSD is not `out` yet, select the OSD and click on **Out**. This will exclude it from data distribution and start a rebalance.
+2. 如果待销毁的 OSD 尚未处于 `out` 状态，请选择该 OSD，然后单击 **Out**。这会将其排除在数据分布之外，并启动重新均衡。
 
-   The following command does the same:
-
-   Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+   以下命令可执行相同操作：
 
    ```text
    ceph osd out <id>
    ```
-3. If you can, wait until Ceph has finished the rebalance to always have enough replicas. The OSD will be empty; once it is, it will show *0 PGs*.
-4. Click on **Stop**. If stopping is not safe yet, a warning will appear, and you should click on **Cancel**. Try it again in a few moments.
+3. 如果条件允许，请等待 Ceph 完成重新均衡，以始终保有足够的副本。OSD 将会变空；清空后，它会显示 *0 PGs*。
+4. 单击 **Stop**。如果目前尚无法安全停止，将会出现警告，此时应单击 **Cancel**。稍等片刻后再试。
 
-   The following commands can be used to check if it is safe to stop and stop the OSD:
-
-   Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+   以下命令可用于检查停止 OSD 是否安全，并用于停止 OSD：
 
    ```text
    ceph osd ok-to-stop <id>
    pveceph stop --service osd.<id>
    ```
-5. Finally:
+5. 最后：
 
-   To remove the OSD from Ceph and delete all disk data, first click on **More → Destroy**. Enable the cleanup option to clean up the partition table and other structures. This makes it possible to immediately reuse the disk in Proxmox VE. Then, click on **Remove**.
+   要从 Ceph 中移除 OSD 并删除所有磁盘数据，请先单击 **More → Destroy**。启用清理选项，以清除分区表和其他结构。这样便可以立即在 Proxmox VE 中重新使用该磁盘。然后，单击 **Remove**。
 
-   The CLI command to destroy the OSD is:
-
-   Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+   用于销毁 OSD 的 CLI 命令是：
 
    ```text
    pveceph osd destroy <id> [--cleanup]
    ```
+
+## 注释
+
+### 注释 1 <a href="#note-1ca5c74f-1" id="note-1ca5c74f-1"></a>
+
+Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)
 
 ---
 

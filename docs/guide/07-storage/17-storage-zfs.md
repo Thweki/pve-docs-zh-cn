@@ -1,10 +1,10 @@
 # 7.17. ZFS over ISCSI Backend <a href="#storage_zfs" id="storage_zfs"></a>
 
-Storage pool type: `zfs`
+存储池类型：`zfs`
 
-This backend accesses a remote machine having a ZFS pool as storage and an iSCSI target implementation via `ssh`. For each guest disk it creates a ZVOL and, exports it as iSCSI LUN. This LUN is used by Proxmox VE for the guest disk.
+此后端通过 `ssh` 访问一台远程机器，该机器以 ZFS 池作为存储，并实现了 iSCSI 目标。它为每个客户机磁盘创建一个 ZVOL，并将其导出为 iSCSI LUN。Proxmox VE 将此 LUN 用作客户机磁盘。
 
-The following iSCSI target implementations are supported:
+支持以下 iSCSI 目标实现：
 
 - LIO (Linux)
 - IET (Linux)
@@ -12,14 +12,14 @@ The following iSCSI target implementations are supported:
 - Comstar (Solaris)
 
 {% hint style="info" %}
-This plugin needs a ZFS capable remote storage appliance, you cannot use it to create a ZFS Pool on a regular Storage Appliance/SAN
+此插件需要支持 ZFS 的远程存储设备，不能用它在我现在继续...普通存储设备/SAN 上创建 ZFS 池
 {% endhint %}
 
 ## 7.17.1. Configuration <a href="#_configuration_11" id="_configuration_11"></a>
 
-In order to use the ZFS over iSCSI plugin you need to configure the remote machine (target) to accept `ssh` connections from the Proxmox VE node. Proxmox VE connects to the target for creating the ZVOLs and exporting them via iSCSI. Authentication is done through a ssh-key (without password protection) stored in `/etc/pve/priv/zfs/<target_ip>_id_rsa`
+要使用 ZFS over iSCSI 插件，需要配置远程机器（目标），使其接受来自 Proxmox VE 节点的 `ssh` 连接。Proxmox VE 连接到目标以创建 ZVOL，并通过 iSCSI 将其导出。身份验证通过存储在 `/etc/pve/priv/zfs/<target_ip>_id_rsa` 中的 SSH 密钥（无密码保护）完成。
 
-The following steps create a ssh-key and distribute it to the storage machine with IP 192.0.2.1:
+以下步骤创建一个 SSH 密钥，并将其分发到 IP 地址为 192.0.2.1 的存储机器：
 
 ```text
 mkdir /etc/pve/priv/zfs
@@ -28,49 +28,49 @@ ssh-copy-id -i /etc/pve/priv/zfs/192.0.2.1_id_rsa.pub root@192.0.2.1
 ssh -i /etc/pve/priv/zfs/192.0.2.1_id_rsa root@192.0.2.1
 ```
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following ZFS over ISCSI specific properties:
+此后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 ZFS over ISCSI 特有属性：
 
 **pool**
 
-The ZFS pool/filesystem on the iSCSI target. All allocations are done within that pool.
+iSCSI 目标上的 ZFS 池/文件系统。所有分配都在该池中进行。
 
-**portal**
+**门户**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-**target**
+**目标端**
 
-iSCSI target.
+iSCSI 目标端。
 
 **iscsiprovider**
 
-The iSCSI target implementation used on the remote machine
+远程机器上使用的 iSCSI 目标实现
 
 **comstar\_tg**
 
-target group for comstar views.
+comstar 视图的目标组。
 
 **comstar\_hg**
 
-host group for comstar views.
+comstar 视图的主机组。
 
 **lio\_tpg**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **nowritecache**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **blocksize**
 
-Set ZFS blocksize parameter.
+设置 ZFS 的 blocksize 参数。
 
 **sparse**
 
-Use ZFS thin-provisioning. A sparse volume is a volume whose reservation is not equal to the volume size.
+使用 ZFS 精简置备。稀疏卷是指预留空间不等于卷大小的卷。
 
-**Configuration Examples (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 zfs: lio
@@ -110,10 +110,10 @@ zfs: iet
 
 ## 7.17.2. Storage Features <a href="#_storage_features_12" id="_storage_features_12"></a>
 
-The ZFS over iSCSI plugin provides a shared storage, which is capable of snapshots. You need to make sure that the ZFS appliance does not become a single point of failure in your deployment.
+ZFS over iSCSI 插件提供支持快照的共享存储。您需要确保 ZFS 设备不会成为部署中的单点故障。
 
 <table>
-<caption>Table 15. Storage features for backend <code>iscsi</code></caption>
+<caption>表 15. 后端 <code>iscsi</code> 的存储功能</caption>
 
 
 
@@ -121,20 +121,20 @@ The ZFS over iSCSI plugin provides a shared storage, which is capable of snapsho
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>

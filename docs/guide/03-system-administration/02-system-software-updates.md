@@ -1,4 +1,4 @@
-# 3.2. 系统软件更新 <a href="#system_software_updates" id="system_software_updates"></a>
+# 3.2. System Software Updates <a href="#system_software_updates" id="system_software_updates"></a>
 
 Proxmox 定期为所有存储库提供更新。要安装更新，请使用基于 Web 的图形用户界面或以下命令行命令：
 

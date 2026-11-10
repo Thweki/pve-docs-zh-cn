@@ -1,48 +1,44 @@
 # 3.13. Host Bootloader <a href="#sysboot" id="sysboot"></a>
 
-Proxmox VE currently uses one of two bootloaders depending on the disk setup selected in the installer.
+Proxmox VE 目前会根据安装程序中选择的磁盘设置，使用两种引导加载程序中的一种。
 
-For EFI Systems installed with ZFS as the root filesystem `systemd-boot` is used, unless Secure Boot is enabled. All other deployments use the standard GRUB bootloader (this usually also applies to systems which are installed on top of Debian).
+对于以 ZFS 作为根文件系统安装的 EFI 系统，除非启用了 Secure Boot，否则使用 `systemd-boot`。所有其他部署都使用标准的 GRUB 引导加载程序（这通常也适用于在 Debian 之上安装的系统）。
 
 ## 3.13.1. Partitioning Scheme Used by the Installer <a href="#sysboot_installer_part_scheme" id="sysboot_installer_part_scheme"></a>
 
-The Proxmox VE installer creates 3 partitions on all disks selected for installation.
+Proxmox VE 安装程序会在所有选定用于安装的磁盘上创建 3 个分区。
 
-The created partitions are:
+创建的分区如下：
 
-- a 1 MB BIOS Boot Partition (gdisk type EF02)
-- a 512 MB EFI System Partition (ESP, gdisk type EF00)
-- a third partition spanning the set `hdsize` parameter or the remaining space used for the chosen storage type
+- 一个 1 MB 的 BIOS 引导分区（gdisk 类型 EF02）
+- 一个 512 MB 的 EFI 系统分区（ESP，gdisk 类型 EF00）
+- 第三个分区，其大小由设置的 `hdsize` 参数决定，或者使用所选存储类型的剩余空间
 
-Systems using ZFS as root filesystem are booted with a kernel and initrd image stored on the 512 MB EFI System Partition. For legacy BIOS systems, and EFI systems with Secure Boot enabled, GRUB is used, for EFI systems without Secure Boot, `systemd-boot` is used. Both are installed and configured to point to the ESPs.
+使用 ZFS 作为根文件系统的系统，通过存储在 512 MB EFI 系统分区上的内核和 initrd 镜像引导。对于传统 BIOS 系统以及启用了 Secure Boot 的 EFI 系统，使用 GRUB；对于未启用 Secure Boot 的 EFI 系统，使用 `systemd-boot`。两者都会安装并配置为指向 ESP。
 
-GRUB in BIOS mode (`--target i386-pc`) is installed onto the BIOS Boot Partition of all selected disks on all systems booted with GRUB   
-\[These are all installs with root on `ext4` or `xfs` and installs with root on ZFS on non-EFI systems\]  
-.
+在所有使用 GRUB 引导的系统上，BIOS 模式的 GRUB（`--target i386-pc`）会安装到所有选定磁盘的 BIOS 引导分区中 [\[1\]](#note-dbd1308e-1)。
 
 {% hint style="info" %}
-This applies to x86 hosts. On arm64, Proxmox VE boots through UEFI only, so there is no BIOS Boot Partition and no `i386-pc` GRUB target; GRUB is installed in EFI mode using the `arm64-efi` target instead.
+这适用于 x86 宿主机。在 arm64 上，Proxmox VE 仅通过 UEFI 引导，因此没有 BIOS 引导分区，也没有 `i386-pc` GRUB 目标；GRUB 会以 EFI 模式安装，并改用 `arm64-efi` 目标。
 {% endhint %}
 
 ## 3.13.2. Synchronizing the content of the ESP with `proxmox-boot-tool` <a href="#sysboot_proxmox_boot_tool" id="sysboot_proxmox_boot_tool"></a>
 
-`proxmox-boot-tool` is a utility used to keep the contents of the EFI System Partitions properly configured and synchronized. It copies certain kernel versions to all ESPs and configures the respective bootloader to boot from the `vfat` formatted ESPs. In the context of ZFS as root filesystem this means that you can use all optional features on your root pool instead of the subset which is also present in the ZFS implementation in GRUB or having to create a separate small boot-pool   
-\[Booting ZFS on root with GRUB [https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html](https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html)\]  
-.
+`proxmox-boot-tool` 是一个实用程序，用于保持 EFI 系统分区的内容配置正确并同步。它将特定的内核版本复制到所有 ESP，并配置相应的引导加载程序，以便从采用 `vfat` 格式的 ESP 引导。在 ZFS 作为根文件系统的情况下，这意味着您可以在根池上使用所有可选功能，而不必局限于 GRUB 中 ZFS 实现也支持的功能子集，也不必创建一个独立的小型引导池 [\[2\]](#note-dbd1308e-2)。
 
-In setups with redundancy all disks are partitioned with an ESP, by the installer. This ensures the system boots even if the first boot device fails or if the BIOS can only boot from a particular disk.
+在具有冗余的设置中，安装程序会为所有磁盘划分一个 ESP。这可以确保即使第一个引导设备发生故障，或者 BIOS 只能从特定磁盘引导，系统仍能启动。
 
-The ESPs are not kept mounted during regular operation. This helps to prevent filesystem corruption to the `vfat` formatted ESPs in case of a system crash, and removes the need to manually adapt `/etc/fstab` in case the primary boot device fails.
+在常规运行期间，ESP 不会保持挂载状态。这有助于防止系统崩溃时采用 `vfat` 格式的 ESP 发生文件系统损坏，也无需在主引导设备发生故障时手动调整 `/etc/fstab`。
 
-`proxmox-boot-tool` handles the following tasks:
+`proxmox-boot-tool` 负责以下任务：
 
-- formatting and setting up a new partition
-- copying and configuring new kernel images and initrd images to all listed ESPs
-- synchronizing the configuration on kernel upgrades and other maintenance tasks
-- managing the list of kernel versions which are synchronized
-- configuring the boot-loader to boot a particular kernel version (pinning)
+- 格式化并设置新分区
+- 将新的内核镜像和 initrd 镜像复制并配置到所有列出的 ESP
+- 在内核升级和其他维护任务期间同步配置
+- 管理需要同步的内核版本列表
+- 配置引导加载程序以引导特定内核版本（固定）
 
-You can view the currently configured ESPs and their state by running:
+您可以通过运行以下命令查看当前配置的 ESP 及其状态：
 
 ```text
 # proxmox-boot-tool status
@@ -52,21 +48,21 @@ You can view the currently configured ESPs and their state by running:
 
 
 
-**Setting up a new partition for use as synced ESP**
+**设置新分区以用作同步的 ESP**
 
 To format and initialize a partition as synced ESP, e.g., after replacing a failed vdev in an rpool, or when converting an existing system that pre-dates the sync mechanism, `proxmox-boot-tool` from `proxmox-kernel-helper` can be used.
 
 {% hint style="warning" %}
-the `format` command will format the `<partition>`, make sure to pass in the right device/partition!
+`format` 命令会格式化 `<partition>`，请务必传入正确的设备/分区！
 {% endhint %}
 
-For example, to format an empty partition `/dev/sda2` as ESP, run the following:
+例如，要将空分区 `/dev/sda2` 格式化为 ESP，请运行以下命令：
 
 ```text
 # proxmox-boot-tool format /dev/sda2
 ```
 
-To setup an existing, unmounted ESP located on `/dev/sda2` for inclusion in Proxmox VE’s kernel update synchronization mechanism, use the following:
+要设置位于 `/dev/sda2` 上现有的未挂载 ESP，将其纳入 Proxmox VE 的内核更新同步机制，请使用以下命令：
 
 ```text
 # proxmox-boot-tool init /dev/sda2
@@ -78,15 +74,15 @@ To setup an existing, unmounted ESP located on `/dev/sda2` for inclusion in Prox
 # proxmox-boot-tool init /dev/sda2 grub
 ```
 
-to force initialization with GRUB instead of `systemd-boot`, for example for Secure Boot support.
+以强制使用 GRUB 而不是 `systemd-boot` 进行初始化，例如用于支持 Secure Boot。
 
-Afterwards `/etc/kernel/proxmox-boot-uuids` should contain a new line with the UUID of the newly added partition. The `init` command will also automatically trigger a refresh of all configured ESPs.
+之后，`/etc/kernel/proxmox-boot-uuids` 中应新增一行，其中包含新添加分区的 UUID。`init` 命令还会自动触发对所有已配置 ESP 的刷新。
 
 <a id="sysboot_proxmox_boot_refresh"></a>
 
 
 
-**Updating the configuration on all ESPs**
+**更新所有 ESP 上的配置**
 
 To copy and configure all bootable kernels and keep all ESPs listed in `/etc/kernel/proxmox-boot-uuids` in sync you just need to run:
 
@@ -94,35 +90,35 @@ To copy and configure all bootable kernels and keep all ESPs listed in `/etc/ker
 # proxmox-boot-tool refresh
 ```
 
-(The equivalent to running `update-grub` systems with `ext4` or `xfs` on root).
+（这相当于运行 `update-grub`，适用于以 `ext4` 或 `xfs` 为根文件系统的系统）。
 
-This is necessary should you make changes to the kernel commandline, or want to sync all kernels and initrds.
+如果您更改了内核命令行，或者希望同步所有内核和 initrd，则需要执行此操作。
 
 {% hint style="info" %}
-Both `update-initramfs` and `apt` (when necessary) will automatically trigger a refresh.
+`update-initramfs` 和 `apt`（必要时）都会自动触发刷新。
 {% endhint %}
 
-**Kernel Versions considered by `proxmox-boot-tool`**
+**由 `proxmox-boot-tool` 处理的内核版本**
 
-The following kernel versions are configured by default:
+默认配置以下内核版本：
 
-- the currently running kernel
-- the version being newly installed on package updates
-- the two latest already installed kernels
-- the latest version of the second-to-last kernel series (e.g. 5.0, 5.3), if applicable
-- any manually selected kernels
+- 当前正在运行的内核
+- 软件包更新时新安装的版本
+- 已安装内核中最新的两个版本
+- 倒数第二个内核系列的最新版本（例如 5.0、5.3），如适用
+- 任何手动选择的内核
 
-**Manually keeping a kernel bootable**
+**手动保持内核可引导**
 
-Should you wish to add a certain kernel and initrd image to the list of bootable kernels use `proxmox-boot-tool kernel add`.
+如果您希望将某个内核和 initrd 镜像添加到可引导内核列表中，请使用 `proxmox-boot-tool kernel add`。
 
-For example run the following to add the kernel with ABI version `5.0.15-1-pve` to the list of kernels to keep installed and synced to all ESPs:
+例如，运行以下命令，将 ABI 版本为 `5.0.15-1-pve` 的内核添加到需要保持安装并同步到所有 ESP 的内核列表中：
 
 ```text
 # proxmox-boot-tool kernel add 5.0.15-1-pve
 ```
 
-`proxmox-boot-tool kernel list` will list all kernel versions currently selected for booting:
+`proxmox-boot-tool kernel list` 将列出当前选择用于引导的所有内核版本：
 
 ```text
 # proxmox-boot-tool kernel list
@@ -134,75 +130,71 @@ Automatically selected kernels:
 4.15.18-18-pve
 ```
 
-Run `proxmox-boot-tool kernel remove` to remove a kernel from the list of manually selected kernels, for example:
+运行 `proxmox-boot-tool kernel remove` 可从手动选择的内核列表中移除一个内核，例如：
 
 ```text
 # proxmox-boot-tool kernel remove 5.0.15-1-pve
 ```
 
 {% hint style="info" %}
-It’s required to run `proxmox-boot-tool refresh` to update all EFI System Partitions (ESPs) after a manual kernel addition or removal from above.
+在上述手动添加或移除内核之后，必须运行 `proxmox-boot-tool refresh` 来更新所有 EFI 系统分区（ESP）。
 {% endhint %}
 
 ## 3.13.3. Determine which Bootloader is Used <a href="#sysboot_determine_bootloader_used" id="sysboot_determine_bootloader_used"></a>
 
 [![screenshot/boot-grub.png](../../assets/screenshot-boot-grub-png-a99b5d180a67.png)](https://pve.proxmox.com/pve-docs/images/screenshot/boot-grub.png)
 
-The simplest and most reliable way to determine which bootloader is used, is to watch the boot process of the Proxmox VE node.
+确定使用哪种引导加载程序的最简单、最可靠方法，是观察 Proxmox VE 节点的引导过程。
 
-You will either see the blue box of GRUB or the simple black on white `systemd-boot`.
+您会看到 GRUB 的蓝色方框，或者白底黑字的简洁 `systemd-boot` 界面。
 
 [![screenshot/boot-systemdboot.png](../../assets/screenshot-boot-systemdboot-png-1363e5a3196a.png)](https://pve.proxmox.com/pve-docs/images/screenshot/boot-systemdboot.png)
 
-Determining the bootloader from a running system might not be 100% accurate. The safest way is to run the following command:
+从正在运行的系统确定引导加载程序可能并非 100% 准确。最安全的方法是运行以下命令：
 
 ```text
 # efibootmgr -v
 ```
 
-If it returns a message that EFI variables are not supported, GRUB is used in BIOS/Legacy mode.
+如果返回的消息表明不支持 EFI 变量，则说明 GRUB 以 BIOS/传统模式运行。
 
-If the output contains a line that looks similar to the following, GRUB is used in UEFI mode.
+如果输出中包含类似下面的一行，则说明 GRUB 以 UEFI 模式运行。
 
 ```text
 Boot0005* proxmox       [...] File(\EFI\proxmox\grubx64.efi)
 ```
 
-If the active boot entry points to `\EFI\proxmox\shimx64.efi` like in the following example, GRUB is used in UEFI mode with Secure Boot enabled.
+如果活动引导项指向 `\EFI\proxmox\shimx64.efi`，如下例所示，则说明 GRUB 以启用了 Secure Boot 的 UEFI 模式运行。
 
 ```text
 Boot0005* proxmox       [...] File(\EFI\proxmox\shimx64.efi)
 ```
 
-If the output contains a line similar to the following, `systemd-boot` is used.
+如果输出中包含类似下面的一行，则说明使用的是 `systemd-boot`。
 
 ```text
 Boot0006* Linux Boot Manager    [...] File(\EFI\systemd\systemd-bootx64.efi)
 ```
 
 {% hint style="info" %}
-The file names above are for x86 hosts. On arm64, the equivalent binaries are named `grubaa64.efi`, `shimaa64.efi`, and `systemd-bootaa64.efi`.
+上述文件名适用于 x86 宿主机。在 arm64 上，等效的二进制文件名为 `grubaa64.efi`、`shimaa64.efi` 和 `systemd-bootaa64.efi`。
 {% endhint %}
 
-By running:
+通过运行：
 
 ```text
 # proxmox-boot-tool status
 ```
 
-you can find out if `proxmox-boot-tool` is configured, which is a good indication of how the system is booted.
+您可以确定是否配置了 `proxmox-boot-tool`，这可以很好地指示系统的引导方式。
 
 ## 3.13.4. GRUB <a href="#sysboot_grub" id="sysboot_grub"></a>
 
-GRUB has been the de-facto standard for booting Linux systems for many years and is quite well documented   
-\[GRUB Manual [https://www.gnu.org/software/grub/manual/grub/grub.html](https://www.gnu.org/software/grub/manual/grub/grub.html)\]  
-.
+多年来，GRUB 一直是引导 Linux 系统事实上的标准，并且具有相当完善的文档 [\[3\]](#note-dbd1308e-3)。
 
 ### Configuration <a href="#_configuration" id="_configuration"></a>
 
-Changes to the GRUB configuration are done via the defaults file `/etc/default/grub` or config snippets in `/etc/default/grub.d`. To regenerate the configuration file after a change to the configuration run:   
-\[Systems using `proxmox-boot-tool` will call `proxmox-boot-tool
-refresh` upon `update-grub`.\]
+对 GRUB 配置的更改通过默认文件 `/etc/default/grub` 或 `/etc/default/grub.d` 中的配置片段完成。更改配置后，运行以下命令重新生成配置文件：[\[4\]](#note-dbd1308e-4)
 
 ```text
 # update-grub
@@ -210,15 +202,15 @@ refresh` upon `update-grub`.\]
 
 ## 3.13.5. Systemd-boot <a href="#sysboot_systemd_boot" id="sysboot_systemd_boot"></a>
 
-`systemd-boot` is a lightweight EFI bootloader. It reads the kernel and initrd images directly from the EFI Service Partition (ESP) where it is installed. The main advantage of directly loading the kernel from the ESP is that it does not need to reimplement the drivers for accessing the storage. In Proxmox VE [`proxmox-boot-tool`](#sysboot_proxmox_boot_tool) is used to keep the configuration on the ESPs synchronized.
+`systemd-boot` 是一个轻量级 EFI 引导加载程序。它直接从其安装所在的 EFI 系统分区（ESP）读取内核和 initrd 镜像。直接从 ESP 加载内核的主要优势是无需重新实现用于访问存储的驱动程序。在 Proxmox VE 中，使用 [`proxmox-boot-tool`](#sysboot_proxmox_boot_tool) 来保持 ESP 上的配置同步。
 
 ### Configuration <a href="#sysboot_systemd_boot_config" id="sysboot_systemd_boot_config"></a>
 
-`systemd-boot` is configured via the file `loader/loader.conf` in the root directory of an EFI System Partition (ESP). See the `loader.conf(5)` manpage for details.
+`systemd-boot` 通过 EFI 系统分区（ESP）根目录中的文件 `loader/loader.conf` 进行配置。详情请参阅 `loader.conf(5)` 手册页。
 
-Each bootloader entry is placed in a file of its own in the directory `loader/entries/`
+每个引导项都单独存放在目录 `loader/entries/` 下的一个文件中
 
-An example entry.conf looks like this (`/` refers to the root of the ESP):
+示例 entry.conf 如下所示（`/` 指 ESP 的根目录）：
 
 ```text
 title    Proxmox
@@ -230,67 +222,67 @@ initrd   /EFI/proxmox/5.0.15-1-pve/initrd.img-5.0.15-1-pve
 
 ## 3.13.6. Editing the Kernel Commandline <a href="#sysboot_edit_kernel_cmdline" id="sysboot_edit_kernel_cmdline"></a>
 
-You can modify the kernel commandline in the following places, depending on the bootloader used:
+您可以在以下位置修改内核命令行，具体取决于所使用的引导加载程序：
 
 **GRUB**
 
-The kernel commandline needs to be placed in the variable `GRUB_CMDLINE_LINUX_DEFAULT` in the file `/etc/default/grub`. Running `update-grub` appends its content to all `linux` entries in `/boot/grub/grub.cfg`.
+内核命令行需要写入变量 `GRUB_CMDLINE_LINUX_DEFAULT`，该变量位于文件 `/etc/default/grub` 中。运行 `update-grub` 会将其内容附加到所有 `linux` 条目，这些条目位于 `/boot/grub/grub.cfg` 中。
 
 **Systemd-boot**
 
-The kernel commandline needs to be placed as one line in `/etc/kernel/cmdline`. To apply your changes, run `proxmox-boot-tool refresh`, which sets it as the `option` line for all config files in `loader/entries/proxmox-*.conf`.
+内核命令行需要作为一行写入 `/etc/kernel/cmdline`。要应用更改，请运行 `proxmox-boot-tool refresh`，它会将其设置为 `option` 行，并应用于 `loader/entries/proxmox-*.conf` 中的所有配置文件。
 
-A complete list of kernel parameters can be found at *https://www.kernel.org/doc/html/v\<YOUR-KERNEL-VERSION\>/admin-guide/kernel-parameters.html*. replace \<YOUR-KERNEL-VERSION\> with the major.minor version, for example, for kernels based on version 6.5 the URL would be: [https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html](https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html)
+完整的内核参数列表可在 *https://www.kernel.org/doc/html/v\<YOUR-KERNEL-VERSION\>/admin-guide/kernel-parameters.html* 找到。将 \<YOUR-KERNEL-VERSION\> 替换为主版本号.次版本号，例如，对于基于 6.5 版本的内核，URL 为：[https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html](https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html)
 
-You can find your kernel version by checking the web interface (*Node → Summary*), or by running
+您可以通过查看 Web 界面（*节点 → 概要*）或运行以下命令来查找您的内核版本
 
 ```text
 # uname -r
 ```
 
-Use the first two numbers at the front of the output.
+使用输出开头的两个数字。
 
 ## 3.13.7. Override the Kernel-Version for next Boot <a href="#sysboot_kernel_pin" id="sysboot_kernel_pin"></a>
 
-To select a kernel that is not currently the default kernel, you can either:
+要选择当前并非默认内核的内核，您可以：
 
-- use the boot loader menu that is displayed at the beginning of the boot process
-- use the `proxmox-boot-tool` to `pin` the system to a kernel version either once or permanently (until pin is reset).
+- 使用在引导过程开始时显示的引导加载程序菜单
+- 使用 `proxmox-boot-tool` 通过 `pin` 将系统固定到某个内核版本，可以仅固定一次，也可以永久固定（直到重置固定设置）。
 
-This should help you work around incompatibilities between a newer kernel version and the hardware.
+这应该有助于您规避较新内核版本与硬件之间的不兼容问题。
 
 {% hint style="info" %}
-Such a pin should be removed as soon as possible so that all current security patches of the latest kernel are also applied to the system.
+应尽快移除此类固定设置，以便最新内核的所有当前安全补丁也能应用于系统。
 {% endhint %}
 
-For example: To permanently select the version `5.15.30-1-pve` for booting you would run:
+例如：要永久选择版本 `5.15.30-1-pve` 用于引导，您需要运行：
 
 ```text
 # proxmox-boot-tool kernel pin 5.15.30-1-pve
 ```
 
 {% hint style="success" %}
-The pinning functionality works for all Proxmox VE systems, not only those using `proxmox-boot-tool` to synchronize the contents of the ESPs, if your system does not use `proxmox-boot-tool` for synchronizing you can also skip the `proxmox-boot-tool refresh` call in the end.
+固定功能适用于所有 Proxmox VE 系统，而不仅限于使用 `proxmox-boot-tool` 同步 ESP 内容的系统；如果您的系统不使用 `proxmox-boot-tool` 进行同步，也可以跳过最后的 `proxmox-boot-tool refresh` 调用。
 {% endhint %}
 
-You can also set a kernel version to be booted on the next system boot only. This is for example useful to test if an updated kernel has resolved an issue, which caused you to `pin` a version in the first place:
+您还可以设置某个内核版本仅在下次系统引导时使用。例如，这可用于测试更新后的内核是否已解决最初导致您使用 `pin` 固定某个版本的问题：
 
 ```text
 # proxmox-boot-tool kernel pin 5.15.30-1-pve --next-boot
 ```
 
-To remove any pinned version configuration use the `unpin` subcommand:
+要移除任何固定版本配置，请使用 `unpin` 子命令：
 
 ```text
 # proxmox-boot-tool kernel unpin
 ```
 
-While `unpin` has a `--next-boot` option as well, it is used to clear a pinned version set with `--next-boot`. As that happens already automatically on boot, invoking it manually is of little use.
+虽然 `unpin` 也有 `--next-boot` 选项，但它用于清除通过 `--next-boot` 设置的固定版本。由于系统在引导时已经会自动执行此操作，因此手动调用它并没有多大用处。
 
-After setting, or clearing pinned versions you also need to synchronize the content and configuration on the ESPs by running the `refresh` subcommand.
+设置或清除固定版本后，还需要通过运行 `refresh` 子命令来同步 ESP 上的内容和配置。
 
 {% hint style="success" %}
-You will be prompted to automatically do for `proxmox-boot-tool` managed systems if you call the tool interactively.
+如果以交互方式调用该工具，系统会提示您为 `proxmox-boot-tool` 管理的系统自动执行此操作。
 {% endhint %}
 
 ```text
@@ -299,9 +291,9 @@ You will be prompted to automatically do for `proxmox-boot-tool` managed systems
 
 ## 3.13.8. Secure Boot <a href="#sysboot_secure_boot" id="sysboot_secure_boot"></a>
 
-Since Proxmox VE 8.1, Secure Boot is supported out of the box via signed packages and integration in `proxmox-boot-tool`.
+从 Proxmox VE 8.1 开始，通过签名软件包以及与 `proxmox-boot-tool` 的集成，开箱即用地支持 Secure Boot。
 
-The following packages are required for secure boot to work. You can install them all at once by using the ‘proxmox-secure-boot-support’ meta-package.
+要使 Secure Boot 正常工作，需要以下软件包。您可以使用 ‘proxmox-secure-boot-support’ 元软件包一次性安装它们。
 
 - `shim-signed` (shim bootloader signed by Microsoft)
 - `shim-helpers-amd64-signed` (fallback bootloader and MOKManager, signed by Proxmox)
@@ -309,49 +301,49 @@ The following packages are required for secure boot to work. You can install the
 - `proxmox-kernel-6.X.Y-Z-pve-signed` (Kernel image, signed by Proxmox)
 
 {% hint style="info" %}
-The `shim-helpers-amd64-signed` and `grub-efi-amd64-signed` package names are for x86 hosts. On arm64, the corresponding packages are `shim-helpers-arm64-signed` and `grub-efi-arm64-signed`.
+`shim-helpers-amd64-signed` 和 `grub-efi-amd64-signed` 软件包名称适用于 x86 宿主机。在 arm64 上，对应的软件包为 `shim-helpers-arm64-signed` 和 `grub-efi-arm64-signed`。
 {% endhint %}
 
-Only GRUB is supported as bootloader out of the box, since other bootloader are currently not eligible for secure boot code-signing.
+开箱即用仅支持 GRUB 作为引导加载程序，因为其他引导加载程序目前不符合安全启动代码签名的条件。
 
-Any new installation of Proxmox VE will automatically have all of the above packages included.
+Proxmox VE 的任何全新安装都会自动包含上述所有软件包。
 
-More details about how Secure Boot works, and how to customize the setup, are available in [our wiki](https://pve.proxmox.com/wiki/Secure_Boot_Setup).
+有关安全启动的工作原理以及如何自定义设置的更多详细信息，请参阅[我们的 Wiki](https://pve.proxmox.com/wiki/Secure_Boot_Setup)。
 
 ### Switching an Existing Installation to Secure Boot <a href="#_switching_an_existing_installation_to_secure_boot" id="_switching_an_existing_installation_to_secure_boot"></a>
 
 {% hint style="warning" %}
-This can lead to an unbootable installation in some cases if not done correctly. Reinstalling the host will setup Secure Boot automatically if available, without any extra interactions. **Make sure you have a working and well-tested backup of your Proxmox VE host!**
+如果操作不正确，在某些情况下可能会导致安装无法启动。如果可用，重新安装宿主机将自动设置安全启动，无需任何额外交互。**请确保您拥有 Proxmox VE 宿主机的可用且经过充分测试的备份！**
 {% endhint %}
 
-An existing UEFI installation can be switched over to Secure Boot if desired, without having to reinstall Proxmox VE from scratch.
+现有 UEFI 安装可以根据需要切换到安全启动，而无需从头重新安装 Proxmox VE。
 
-First, ensure all your system is up-to-date. Next, install `proxmox-secure-boot-support`. GRUB automatically creates the needed EFI boot entry for booting via the default shim.
+首先，确保您的整个系统均为最新状态。接下来，安装 `proxmox-secure-boot-support`。GRUB 会自动创建所需的 EFI 启动项，以便通过默认 shim 启动。
 
 **systemd-boot**
 
-If `systemd-boot` is used as a bootloader (see [Determine which Bootloader is used](#sysboot_determine_bootloader_used)), some additional setup is needed. This is only the case if Proxmox VE was installed with ZFS-on-root.
+如果 `systemd-boot` 用作引导加载程序（请参阅[确定使用的引导加载程序](#sysboot_determine_bootloader_used)），则需要进行一些额外设置。仅当 Proxmox VE 以 ZFS-on-root 方式安装时才是这种情况。
 
-To check the latter, run:
+要检查后者，请运行：
 
 ```text
 # findmnt /
 ```
 
-If the host is indeed using ZFS as root filesystem, the `FSTYPE` column should contain `zfs`:
+如果宿主机确实使用 ZFS 作为根文件系统，则 `FSTYPE` 列应包含 `zfs`：
 
 ```text
 TARGET SOURCE           FSTYPE OPTIONS
 /      rpool/ROOT/pve-1 zfs    rw,relatime,xattr,noacl,casesensitive
 ```
 
-Next, a suitable potential ESP (EFI system partition) must be found. This can be done using the `lsblk` command as following:
+接下来，必须找到合适的候选 ESP（EFI 系统分区）。可以使用 `lsblk` 命令完成此操作，方法如下：
 
 ```text
 # lsblk -o +FSTYPE
 ```
 
-The output should look something like this:
+输出应类似于：
 
 ```text
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS FSTYPE
@@ -365,21 +357,21 @@ sdb      8:16   0   32G  0 disk
 └─sdb3   8:19   0 31.5G  0 part             zfs_member
 ```
 
-In this case, the partitions `sda2` and `sdb2` are the targets. They can be identified by the their size of 512M and their `FSTYPE` being `vfat`, in this case on a ZFS RAID-1 installation.
+在这种情况下，目标分区为 `sda2` 和 `sdb2`。可以通过其 512M 的大小以及 `FSTYPE` 为 `vfat` 来识别它们；本例中的安装采用 ZFS RAID-1。
 
-These partitions must be properly set up for booting through GRUB using `proxmox-boot-tool`. This command (using `sda2` as an example) must be run separately for each individual ESP:
+必须使用 `proxmox-boot-tool` 正确设置这些分区，以便通过 GRUB 启动。此命令（以 `sda2` 为例）必须针对每个 ESP 分别运行：
 
 ```text
 # proxmox-boot-tool init /dev/sda2 grub
 ```
 
-Afterwards, you can sanity-check the setup by running the following command:
+之后，您可以通过运行以下命令检查设置是否正确：
 
 ```text
 # efibootmgr -v
 ```
 
-This list should contain an entry looking similar to this:
+此列表应包含一个类似以下内容的条目：
 
 ```text
 [..]
@@ -388,38 +380,38 @@ Boot0009* proxmox       HD(2,GPT,..,0x800,0x100000)/File(\EFI\proxmox\shimx64.ef
 ```
 
 {% hint style="info" %}
-The old `systemd-boot` bootloader will be kept, but GRUB will be preferred. This way, if booting using GRUB in Secure Boot mode does not work for any reason, the system can still be booted using `systemd-boot` with Secure Boot turned off.
+旧的 `systemd-boot` 引导加载程序将保留，但会优先使用 GRUB。这样，如果出于任何原因无法在安全启动模式下使用 GRUB 启动，仍可在关闭安全启动的情况下使用 `systemd-boot` 启动系统。
 {% endhint %}
 
-Now the host can be rebooted and Secure Boot enabled in the UEFI firmware setup utility.
+现在可以重新启动宿主机，并在 UEFI 固件设置实用程序中启用安全启动。
 
-On reboot, a new entry named `proxmox` should be selectable in the UEFI firmware boot menu, which boots using the pre-signed EFI shim.
+重新启动后，UEFI 固件启动菜单中应出现一个名为 `proxmox` 的新条目供选择，该条目使用预签名的 EFI shim 启动。
 
-If, for any reason, no `proxmox` entry can be found in the UEFI boot menu, you can try adding it manually (if supported by the firmware), by adding the file `\EFI\proxmox\shimx64.efi` as a custom boot entry.
+如果出于任何原因在 UEFI 启动菜单中找不到 `proxmox` 条目，可以尝试手动添加（如果固件支持），方法是将文件 `\EFI\proxmox\shimx64.efi` 添加为自定义启动项。
 
 {% hint style="info" %}
-Some UEFI firmwares are known to drop the `proxmox` boot option on reboot. This can happen if the `proxmox` boot entry is pointing to a GRUB installation on a disk, where the disk itself is not a boot option. If possible, try adding the disk as a boot option in the UEFI firmware setup utility and run `proxmox-boot-tool` again.
+已知某些 UEFI 固件会在重新启动时丢弃 `proxmox` 启动选项。如果 `proxmox` 启动项指向磁盘上的 GRUB 安装，而该磁盘本身不是启动选项，就可能发生这种情况。如果可能，请尝试在 UEFI 固件设置实用程序中将该磁盘添加为启动选项，然后再次运行 `proxmox-boot-tool`。
 {% endhint %}
 
 {% hint style="success" %}
-To enroll custom keys, see the accompanying [Secure Boot wiki page](https://pve.proxmox.com/wiki/Secure_Boot_Setup#Setup_instructions_for_db_key_variant).
+要注册自定义密钥，请参阅相关的[安全启动 Wiki 页面](https://pve.proxmox.com/wiki/Secure_Boot_Setup#Setup_instructions_for_db_key_variant)。
 {% endhint %}
 
 ### Using DKMS/Third Party Modules With Secure Boot <a href="#_using_dkms_third_party_modules_with_secure_boot" id="_using_dkms_third_party_modules_with_secure_boot"></a>
 
-On systems with Secure Boot enabled, the kernel will refuse to load modules which are not signed by a trusted key. The default set of modules shipped with the kernel packages is signed with an ephemeral key embedded in the kernel image which is trusted by that specific version of the kernel image.
+在启用安全启动的系统上，内核将拒绝加载未经可信密钥签名的模块。内核软件包随附的默认模块集使用嵌入内核镜像中的临时密钥签名，该密钥受该特定版本内核镜像信任。
 
-In order to load other modules, such as those built with DKMS or manually, they need to be signed with a key trusted by the Secure Boot stack. The easiest way to achieve this is to enroll them as Machine Owner Key (`MOK`) with `mokutil`.
+要加载其他模块（例如使用 DKMS 构建或手动构建的模块），需要使用安全启动堆栈信任的密钥对其进行签名。实现此目的最简单的方法是将其作为机器所有者密钥（`MOK`）通过 `mokutil` 进行注册。
 
-The `dkms` tool will automatically generate a keypair and certificate in `/var/lib/dkms/mok.key` and `/var/lib/dkms/mok.pub` and use it for signing the kernel modules it builds and installs.
+`dkms` 工具会自动在 `/var/lib/dkms/mok.key` 和 `/var/lib/dkms/mok.pub` 中生成密钥对和证书，并使用其对所构建和安装的内核模块进行签名。
 
-You can view the certificate contents with
+您可以使用以下命令查看证书内容：
 
 ```text
 # openssl x509 -in /var/lib/dkms/mok.pub -noout -text
 ```
 
-and enroll it on your system using the following command:
+并使用以下命令将其注册到您的系统中：
 
 ```text
 # mokutil --import /var/lib/dkms/mok.pub
@@ -427,9 +419,28 @@ input password:
 input password again:
 ```
 
-The `mokutil` command will ask for a (temporary) password twice, this password needs to be entered one more time in the next step of the process! Rebooting the system should automatically boot into the `MOKManager` EFI binary, which allows you to verify the key/certificate and confirm the enrollment using the password selected when starting the enrollment using `mokutil`. Afterwards, the kernel should allow loading modules built with DKMS (which are signed with the enrolled `MOK`). The `MOK` can also be used to sign custom EFI binaries and kernel images if desired.
+`mokutil` 命令会两次要求输入（临时）密码，在下一步操作中还需要再输入一次此密码！重新启动系统后，应自动启动到 `MOKManager` EFI 二进制文件，您可以在其中验证密钥/证书，并使用通过 `mokutil` 开始注册时所选择的密码确认注册。之后，内核应允许加载使用 DKMS 构建的模块（这些模块使用已注册的 `MOK` 签名）。如果需要，`MOK` 还可用于签名自定义 EFI 二进制文件和内核镜像。
 
-The same procedure can also be used for custom/third-party modules not managed with DKMS, but the key/certificate generation and signing steps need to be done manually in that case.
+相同的过程也可用于不受 DKMS 管理的自定义/第三方模块，但在这种情况下，需要手动完成密钥/证书生成和签名步骤。
+
+## 注释
+
+### 注释 1 <a href="#note-dbd1308e-1" id="note-dbd1308e-1"></a>
+
+这包括所有根文件系统位于 `ext4` 或 `xfs` 上的安装，以及非 EFI 系统上根文件系统位于 ZFS 上的安装
+
+### 注释 2 <a href="#note-dbd1308e-2" id="note-dbd1308e-2"></a>
+
+使用 GRUB 从根 ZFS 引导 [https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html](https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html)
+
+### 注释 3 <a href="#note-dbd1308e-3" id="note-dbd1308e-3"></a>
+
+GRUB 手册 [https://www.gnu.org/software/grub/manual/grub/grub.html](https://www.gnu.org/software/grub/manual/grub/grub.html)
+
+### 注释 4 <a href="#note-dbd1308e-4" id="note-dbd1308e-4"></a>
+
+对于使用 `proxmox-boot-tool` 的系统，`proxmox-boot-tool
+refresh` 将在 `update-grub` 时被调用。
 
 ---
 

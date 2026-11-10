@@ -1,36 +1,36 @@
 # 5.5. Remove a Cluster Node <a href="#pvecm_remove_node" id="pvecm_remove_node"></a>
 
 {% hint style="danger" %}
-Read the procedure carefully before proceeding, as it may not be what you want or need.
+在继续操作之前，请仔细阅读该过程，因为它可能不符合您的意图或需求。
 {% endhint %}
 
-The following steps explain how to remove a node from a cluster that was also part of a [Ceph](../08-pveceph/README.md#chapter_pveceph) cluster. If Ceph was not installed on your node, you can simply ignore the steps that mention it.
+以下步骤介绍如何从一个同时也是 [Ceph](../08-pveceph/README.md) 集群成员的集群中移除节点。如果节点上未安装 Ceph，则可以直接忽略其中提及 Ceph 的步骤。
 
 {% hint style="info" %}
-If your configuration contains a QDevice, you will need to remove it before removing the cluster node, as outlined in the FAQ [here](11-corosync-external-vote-support.md#_adding_deleting_nodes_after_qdevice_setup).
+如果配置中包含 QDevice，则需要先按照常见问题中[此处](11-corosync-external-vote-support.md#_adding_deleting_nodes_after_qdevice_setup)的说明将其移除，然后再移除集群节点。
 {% endhint %}
 
 ## 5.5.1. Prerequisites <a href="#_prerequisites" id="_prerequisites"></a>
 
-- Move all virtual machines and containers away from the node.
-- Back up all local data on the node to be deleted.
-- Make sure the node to be deleted is not part of any replication job anymore.
+- 将所有虚拟机和容器迁离该节点。
+- 备份待删除节点上的所有本地数据。
+- 确保待删除的节点不再属于任何复制任务。
 
   {% hint style="danger" %}
-  If you fail to remove replication jobs from a node before removing the node itself, the replication job will become irremovable. Note that replication automatically switches direction when a replicated VM is migrated. Therefore, migrating a replicated VM from a node that is going to be deleted will set up replication jobs to that node automatically.
+  如果在移除节点本身之前，未能从该节点移除复制任务，复制任务将变得无法移除。请注意，当已配置复制的 VM 迁移时，复制会自动切换方向。因此，将已配置复制的 VM 从待删除的节点迁出，会自动建立指向该节点的复制任务。
   {% endhint %}
-- Ensure that the remaining Ceph cluster has sufficient storage space and that the OSDs are running (i.e. `up` and `in`). The destruction of any OSD, especially the last one on a node, will trigger a data rebalance in Ceph.
+- 确保剩余的 Ceph 集群具有足够的存储空间，并且 OSD 正在运行（即 `up` 和 `in`）。销毁任何 OSD，尤其是节点上的最后一个 OSD，都会触发 Ceph 数据重新平衡。
 
   {% hint style="info" %}
-  Make sure that there are still enough nodes with OSDs available to satisfy the `size/min_size` parameters configured for the Ceph pools. If there are fewer than `size` (default: 3\) nodes available, data redundancy will be degraded. If there are fewer than `min_size` (default: 2\) nodes available, the I/O of the pools will be blocked until there are enough replicas available. Affected guests may crash if their I/O is blocked.
+  确保仍有足够数量带有 OSD 的节点可用，以满足为 Ceph 池配置的 `size/min_size` 参数。如果可用节点少于 `size`（默认值：3）个，数据冗余程度将会降低。如果可用节点少于 `min_size`（默认值：2）个，池的 I/O 将被阻塞，直到有足够的副本可用。如果受影响的客户机的 I/O 被阻塞，它们可能会崩溃。
   {% endhint %}
-- Ensure that sufficient [monitors](../08-pveceph/05-pve-ceph-monitors.md#pve_ceph_monitors), [managers](../08-pveceph/06-pve-ceph-manager.md#pve_ceph_manager) and, if using CephFS, [metadata servers](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds) remain available in the Ceph cluster.
+- 确保 Ceph 集群中仍有足够的[监视器](../08-pveceph/05-pve-ceph-monitors.md)、[管理器](../08-pveceph/06-pve-ceph-manager.md)可用，并且在使用 CephFS 时，仍有足够的[元数据服务器](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds)可用。
 
 ## 5.5.2. Remove the Cluster Node <a href="#_remove_the_cluster_node" id="_remove_the_cluster_node"></a>
 
-Before a node can be removed from a cluster, you must ensure that it is no longer part of a Ceph cluster and that no Ceph resources or services are residing on it.
+在从集群中移除节点之前，必须确保该节点不再是 Ceph 集群的一部分，并且其上不再驻留任何 Ceph 资源或服务。
 
-In the following example, the cluster node `node4` will be removed from both the Ceph-, and Proxmox VE corosync-cluster.
+在以下示例中，将从 Ceph 集群和 Proxmox VE corosync 集群中同时移除集群节点 `node4`。
 
 ```text
 node4# pvecm nodes
@@ -44,37 +44,37 @@ Membership information
          4          1 node4 (local)
 ```
 
-1. Start by removing the node from the Ceph cluster, this consists of multiple steps:
+1. 首先从 Ceph 集群中移除该节点，这包括多个步骤：
 
-   1. Start by [destroying](../08-pveceph/07-pve-ceph-osds.md#pve_ceph_osd_destroy) the remaining Ceph OSDs on the node to be deleted, one after another.
-   2. Wait until the [CEPH status](../08-pveceph/15-pve-ceph-mon-and-ts.md#pve_ceph_mon_and_ts) reaches `HEALTH_OK` again.
-   3. If any exists, destroy the remaining [Ceph metadata servers](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds) via the web interface at *Ceph → CephFS* or by running:
+   1. 首先，逐一[销毁](../08-pveceph/07-pve-ceph-osds.md#pve_ceph_osd_destroy)待删除节点上剩余的 Ceph OSD。
+   2. 等待 [CEPH 状态](../08-pveceph/15-pve-ceph-mon-and-ts.md)再次恢复到 `HEALTH_OK`。
+   3. 如果存在剩余的 [Ceph 元数据服务器](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds)，请通过 *Ceph → CephFS* 处的 Web 界面将其销毁，或者运行：
 
       ```text
       node4# pveceph mds destroy node4
       ```
    4. [Destroy the remaining Ceph monitor.](../08-pveceph/05-pve-ceph-monitors.md#pveceph_destroy_mon)
    5. [Destroy the remaining Ceph manager.](../08-pveceph/06-pve-ceph-manager.md#pveceph_destroy_mgr)
-   6. Finally, remove the now empty Ceph bucket (Proxmox VE node to be removed) from the CRUSH hierarchy.
+   6. 最后，从 CRUSH 层次结构中移除现在已清空的 Ceph 桶（待移除的 Proxmox VE 节点）。
 
       ```text
       node4# ceph osd crush remove node4
       ```
-2. Now, power off `node4` and ensure that it will not power on again in this network with its current configuration.
+2. 现在，关闭 `node4` 的电源，并确保它不会以当前配置在此网络中再次开机。
 
    {% hint style="warning" %}
-   As mentioned above, it is critical to power off the node **before** removal, and make sure that it will **not** power on again (in the existing cluster network) with its current configuration. If you power on the node as it is, the cluster could end up broken, and it could be difficult to restore it to a functioning state.
+   如上所述，在移除**之前**将节点关机至关重要，并且必须确保它**不会**以当前配置（在现有集群网络中）再次开机。如果按原样将节点开机，集群可能会损坏，并且可能难以恢复到正常运行的状态。
    {% endhint %}
-3. Log into one of the remaining cluster nodes and remove the node `node4` from the cluster.
+3. 登录剩余的任一集群节点，然后从集群中移除节点 `node4`。
 
    ```text
    node1# pvecm delnode node4
    ```
 
    {% hint style="info" %}
-   It is possible that you will receive an error message stating `could not kill node (error = cs_err_not_exist)`. This does not signify an actual failure in the deletion of the node, but rather a failure in Corosync trying to kill an offline node. Thus, it can be safely ignored.
+   您可能会收到一条错误消息，内容为 `could not kill node (error = cs_err_not_exist)`。这并不表示节点删除实际失败，而是表示 Corosync 尝试终止离线节点时失败。因此，可以安全地忽略该消息。
    {% endhint %}
-4. Verify the node was successfully removed from the cluster
+4. 验证节点已成功从集群中移除
 
    ```text
    node1# pvecm nodes
@@ -89,18 +89,18 @@ Membership information
 
 ## 5.5.3. Cleanup Steps After Node Removal <a href="#_cleanup_steps_after_node_removal" id="_cleanup_steps_after_node_removal"></a>
 
-- The configuration files of the removed node will still reside in */etc/pve/nodes/node4* in the cluster filesystem. Recover any configuration you still need and remove the directory afterwards.
-- The SSH fingerprint of the removed node will still reside in the *known\_hosts* file on the other nodes. If you receive an SSH error after rejoining a node with the same IP or hostname, run `pvecm
-    updatecerts` once on the re-added node to update its fingerprint cluster wide.
-- Existing [high availability rules](../15-ha-manager/06-configuration-15.md#ha_manager_rules) will still reference the deleted node, therefore remove the node from any existing rules.
-- The public key of the removed node will still be listed in */etc/pve/priv/authorized\_keys* and should be deleted if it is no longer needed.
+- 被移除节点的配置文件仍位于集群文件系统中的 */etc/pve/nodes/node4* 下。恢复您仍需要的所有配置，然后删除该目录。
+- 被移除节点的 SSH 指纹仍将位于其他节点上的 *known\_hosts* 文件中。如果使用相同 IP 或主机名重新加入节点后收到 SSH 错误，请在重新添加的节点上运行一次 `pvecm
+    updatecerts`，以在整个集群范围内更新其指纹。
+- 现有的[高可用性规则](../15-ha-manager/06-configuration-15.md#ha_manager_rules)仍将引用已删除的节点，因此请从所有现有规则中移除该节点。
+- 被移除节点的公钥仍会列在 */etc/pve/priv/authorized\_keys* 中，如果不再需要，应将其删除。
 
-**Rejoin the same node again:**
+**重新加入同一节点：**
 
-If you want the same server to join the same cluster again, you have to:
+如果希望同一台服务器再次加入同一集群，必须：
 
-- Reinstall Proxmox VE on the server,
-- then [rejoin the node to the cluster](04-pvecm-join-node-to-cluster.md#pvecm_join_node_to_cluster)
+- 在服务器上重新安装 Proxmox VE，
+- then [rejoin the node to the cluster](04-pvecm-join-node-to-cluster.md)
 
 ---
 

@@ -1,4 +1,4 @@
-# 3.6. 外部指标服务器 <a href="#external_metric_server" id="external_metric_server"></a>
+# 3.6. External Metric Server <a href="#external_metric_server" id="external_metric_server"></a>
 
 [![screenshot/gui-datacenter-metric-server-list.png](../../assets/screenshot-gui-datacenter-metric-server-list-png-29de6badd9c9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-metric-server-list.png)
 
@@ -12,7 +12,7 @@
 
 外部指标服务器定义保存在 */etc/pve/status.cfg* 中，并可通过 Web 界面编辑。
 
-## 3.6.1. Graphite 服务器配置 <a href="#metric_server_graphite" id="metric_server_graphite"></a>
+## 3.6.1. Graphite server configuration <a href="#metric_server_graphite" id="metric_server_graphite"></a>
 
 [![screenshot/gui-datacenter-metric-server-graphite.png](../../assets/screenshot-gui-datacenter-metric-server-graphite-png-e9da46d8b1be.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-metric-server-graphite.png)
 
@@ -22,7 +22,7 @@
 
 您还可以将插件配置为使用 TCP。为避免阻塞重要的 `pvestatd` 统计信息收集守护进程，需要设置超时时间，以应对网络问题。
 
-## 3.6.2. InfluxDB 插件配置 <a href="#metric_server_influxdb" id="metric_server_influxdb"></a>
+## 3.6.2. Influxdb plugin configuration <a href="#metric_server_influxdb" id="metric_server_influxdb"></a>
 
 [![screenshot/gui-datacenter-metric-server-influxdb.png](../../assets/screenshot-gui-datacenter-metric-server-influxdb-png-a15fa331c7ff.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-metric-server-influxdb.png)
 

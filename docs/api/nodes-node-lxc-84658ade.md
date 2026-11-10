@@ -255,8 +255,8 @@ LXC 容器索引（按节点）。
 | `cmode` | string | 否 | "tty" | Console mode. By default, the console command tries to open a connection to one of the available tty devices. By setting cmode to 'console' it tries to attach to /dev/console instead. If you set cmode to 'shell', it simply invokes a shell inside the container (no login).；可选值：`shell`, `console`, `tty` |
 | `console` | boolean | 否 | 1 | Attach a console device (/dev/console) to the container. |
 | `cores` | integer | 否 | — | The number of cores assigned to the container. A container can use all available cores by default. |
-| `cpulimit` | number | 否 | 0 | Limit of CPU usage. NOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit. |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a container, will be clamped to [1, 10000] in cgroup v2. |
+| `cpulimit` | number | 否 | 0 | Limit of CPU usage.<br><br>NOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit. |
+| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a container. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this container gets. Number is relative to the weights of all the other running guests. |
 | `debug` | boolean | 否 | 0 | Try to be more verbose. For now this only enables debug log-level on start. |
 | `description` | string | 否 | — | Description for the Container. Shown in the web-interface CT's summary. This is saved as comment inside the configuration file. |
 | `dev[n]` | string | 否 | — | Device to pass through to the container |
@@ -354,7 +354,7 @@ LXC 容器索引（按节点）。
     },
     "cpulimit": {
       "default": 0,
-      "description": "Limit of CPU usage. NOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit.",
+      "description": "Limit of CPU usage.\n\nNOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit.",
       "maximum": 8192,
       "minimum": 0,
       "optional": 1,

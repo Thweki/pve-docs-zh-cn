@@ -138,7 +138,7 @@ Get the virtual machine configuration with pending configuration changes applied
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>`（*默认 \=* `0`）**
+**`--current` `<boolean>` (*default \=* `0`)**
 
 获取当前值（而非待生效值）。
 
@@ -278,7 +278,7 @@ Requires option(s): `archive`
 
 Freeze CPU at startup (use *c* monitor command to start execution).
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>` (*default \=* `0`)**
 
 Add the VM as a HA resource after it was created.
 
@@ -386,7 +386,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -402,7 +402,7 @@ Map host parallel devices (n is 0 to 2).
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -458,7 +458,7 @@ Configure additional enhancements for SPICE.
 
 cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 Start VM after it was created successfully.
 
@@ -486,7 +486,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -634,7 +634,7 @@ Target storage.
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (*default \=* `0`)**
 
 Delete the original disk after successful copy. By default the original disk is kept as unused disk.
 
@@ -666,7 +666,7 @@ VM 的唯一 ID。
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*默认 \=* `0`)**
+**`--dryrun` `<boolean>` (*default \=* `0`)**
 
 Do not actually write changes out to VM config(s).
 
@@ -946,7 +946,7 @@ CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
 
-**`--dryrun` `<boolean>` (*默认 \=* `0`)**
+**`--dryrun` `<boolean>` (*default \=* `0`)**
 
 Show the create command and exit without doing anything.
 
@@ -1062,7 +1062,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -1074,7 +1074,7 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1154,7 +1154,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -1274,7 +1274,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -1402,11 +1402,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (*default \=* `0`)**
 
 Delete the original VM and related data after successful migration. By default the original VM is kept on the source cluster in a stopped state.
 
@@ -1490,7 +1490,7 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 Whether the VM should get started after rolling back successfully. (Note: VMs will be automatically started if the snapshot includes RAM.)
 
@@ -1742,7 +1742,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -1754,7 +1754,7 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1838,7 +1838,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -1914,7 +1914,7 @@ Shutdown virtual machine. This is similar to pressing the power button on a phys
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*默认 \=* `0`)**
+**`--forceStop` `<boolean>` (*default \=* `0`)**
 
 Make sure the VM stops.
 
@@ -2046,7 +2046,7 @@ Do not deactivate storage volumes.
 
 集群节点名称。
 
-**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
+**`--overrule-shutdown` `<boolean>` (*default \=* `0`)**
 
 Try to abort active *qmshutdown* tasks before stopping.
 

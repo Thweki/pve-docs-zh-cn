@@ -2,70 +2,78 @@
 
 [![screenshot/gui-datacenter-summary.png](../../assets/screenshot-gui-datacenter-summary-png-ade3f5660241.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-summary.png)
 
-The Proxmox VE user interface consists of four regions.
+Proxmox VE 用户界面由四个区域组成。
 
 <table>
 <tr>
-<td>Header <br/></td>
+<td>Header <br/>
+</td>
 <td>
-<p>On top. Shows status information and contains buttons for most important actions.</p>
+<p>位于顶部。显示状态信息，并包含用于最重要操作的按钮。</p>
 </td>
 </tr>
 <tr>
-<td>Resource Tree <br/></td>
+<td>Resource Tree <br/>
+</td>
 <td>
-<p>At the left side. A navigation tree where you can select specific objects.</p>
+<p>位于左侧。可在其中选择特定对象的导航树。</p>
 </td>
 </tr>
 <tr>
-<td>Content Panel <br/></td>
+<td>Content Panel <br/>
+</td>
 <td>
-<p>Center region. Selected objects display configuration options and status here.</p>
+<p>中央区域。所选对象在此处显示配置选项和状态。</p>
 </td>
 </tr>
 <tr>
-<td>Log Panel <br/></td>
+<td>Log Panel <br/>
+</td>
 <td>
-<p>At the bottom. Displays log entries for recent tasks. You can double-click on those log entries to get more details, or to abort a running task.</p>
+<p>位于底部。显示最近任务的日志条目。您可以双击这些日志条目以获取更多详细信息，或中止正在运行的任务。</p>
 </td>
 </tr>
 </table>
 
 {% hint style="info" %}
-You can shrink and expand the size of the resource tree and log panel, or completely hide the log panel. This can be helpful when you work on small displays and want more space to view other content.
+您可以缩小或扩大资源树和日志面板，或完全隐藏日志面板。当您在小尺寸显示器上工作并希望有更多空间查看其他内容时，这会很有帮助。
 {% endhint %}
 
 ## 4.3.1. Header <a href="#_header" id="_header"></a>
 
-On the top left side, the first thing you see is the Proxmox logo. Next to it is the current running version of Proxmox VE. In the search bar nearside you can search for specific objects (VMs, containers, nodes, …). This is sometimes faster than selecting an object in the resource tree.
+在左上方，您首先看到的是 Proxmox 徽标。其旁边是当前运行的 Proxmox VE 版本。在旁边的搜索栏中，您可以搜索特定对象（VM、容器、节点、…）。这有时比在资源树中选择对象更快。
 
-The right part of the header contains four buttons:
+标题栏右侧包含四个按钮：
 
 <table>
 <tr>
-<td>Documentation <br/></td>
+<td>Documentation <br/>
+</td>
 <td>
-<p>Opens a new browser window showing the reference documentation.</p>
+<p>打开一个显示参考文档的新浏览器窗口。</p>
 </td>
 </tr>
 <tr>
-<td>Create VM <br/></td>
+<td>Create VM <br/>
+</td>
 <td>
-<p>Opens the virtual machine creation wizard.</p>
+<p>打开虚拟机创建向导。</p>
 </td>
 </tr>
 <tr>
-<td>Create CT <br/></td>
+<td>Create CT <br/>
+</td>
 <td>
-<p>Open the container creation wizard.</p>
+<p>打开容器创建向导。</p>
 </td>
 </tr>
 <tr>
-<td>User Menu <br/></td>
+<td>User Menu <br/>
+</td>
 <td>
-<p>Displays the identity of the user you’re currently logged in with, and clicking it opens a menu with user-specific options.</p>
+<p>显示您当前登录用户的身份，单击它会打开一个包含用户特定选项的菜单。</p>
 <div>
-<p>In the user menu, you’ll find the <em>My Settings</em> dialog, which provides local UI settings. Below that, there are shortcuts for <em>TFA</em> (Two-Factor Authentication) and <em>Password</em> self-service. You’ll also find options to change the <em>Language</em> and the <em>Color Theme.</em> Finally, at the bottom of the menu is the <em>Logout</em> option.</p>
+<p>在用户菜单中，您会找到<em>我的设置</em>对话框，其中提供本地 UI 设置。其下方是<em>TFA</em>（双因素身份验证）和<em>密码</em>自助服务的快捷方式。您还可以找到更改<em>语言</em>和<em>颜色主题</em>的选项。最后，菜单底部是<em>注销</em>选项。</p>
 </div>
 </td>
 </tr>
@@ -75,118 +83,131 @@ The right part of the header contains four buttons:
 
 [![screenshot/gui-my-settings.png](../../assets/screenshot-gui-my-settings-png-318ec9e5f40a.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-my-settings.png)
 
-The *My Settings* window allows you to set locally stored settings. These include the *Dashboard Storages* which allow you to enable or disable specific storages to be counted towards the total amount visible in the datacenter summary. If no storage is checked the total is the sum of all storages, same as enabling every single one.
+*我的设置*窗口允许您设置本地存储的设置。其中包括*仪表板存储*，可用于启用或禁用特定存储，以决定其是否计入数据中心摘要中显示的总量。如果未选中任何存储，则总量为所有存储之和，与启用每一个存储相同。
 
-Below the dashboard settings you find the stored user name and a button to clear it as well as a button to reset every layout in the GUI to its default.
+在仪表板设置下方，您可以找到已保存的用户名以及清除该用户名的按钮，还有一个将 GUI 中每种布局重置为默认值的按钮。
 
-On the right side there are *xterm.js Settings*. These contain the following options:
+右侧是*xterm.js 设置*。其中包含以下选项：
 
 <table>
 <tr>
-<td>Font-Family <br/></td>
+<td>Font-Family <br/>
+</td>
 <td>
-<p>The font to be used in xterm.js (e.g. Arial).</p>
+<p>xterm.js 中使用的字体（例如 Arial）。</p>
 </td>
 </tr>
 <tr>
-<td>Font-Size <br/></td>
+<td>Font-Size <br/>
+</td>
 <td>
-<p>The preferred font size to be used.</p>
+<p>首选使用的字号。</p>
 </td>
 </tr>
 <tr>
-<td>Letter Spacing <br/></td>
+<td>Letter Spacing <br/>
+</td>
 <td>
-<p>Increases or decreases spacing between letters in text.</p>
+<p>增大或减小文本中字母之间的间距。</p>
 </td>
 </tr>
 <tr>
-<td>Line Height <br/></td>
+<td>Line Height <br/>
+</td>
 <td>
-<p>Specify the absolute height of a line.</p>
+<p>指定一行的绝对高度。</p>
 </td>
 </tr>
 </table>
 
 ## 4.3.3. Resource Tree <a href="#_resource_tree" id="_resource_tree"></a>
 
-This is the main navigation tree. On top of the tree you can select some predefined views, which change the structure of the tree below. The default view is the **Server View**, and it shows the following object types:
+这是主导航树。在树的顶部，你可以选择一些预定义视图，这些视图会改变下方树的结构。默认视图是 **服务器视图**，它显示以下对象类型：
 
 <table>
 <tr>
-<td>Datacenter <br/></td>
+<td>Datacenter <br/>
+</td>
 <td>
-<p>Contains cluster-wide settings (relevant for all nodes).</p>
+<p>包含集群范围的设置（与所有节点相关）。</p>
 </td>
 </tr>
 <tr>
-<td>Node <br/></td>
+<td>Node <br/>
+</td>
 <td>
-<p>Represents the hosts inside a cluster, where the guests run.</p>
+<p>表示集群中运行客户机的宿主机。</p>
 </td>
 </tr>
 <tr>
-<td>Guest <br/></td>
+<td>Guest <br/>
+</td>
 <td>
-<p>VMs, containers and templates.</p>
+<p>虚拟机、容器和模板。</p>
 </td>
 </tr>
 <tr>
-<td>Storage <br/></td>
+<td>Storage <br/>
+</td>
 <td>
-<p>Data Storage.</p>
+<p>数据存储。</p>
 </td>
 </tr>
 <tr>
-<td>Pool <br/></td>
+<td>Pool <br/>
+</td>
 <td>
-<p>It is possible to group guests using a pool to simplify management.</p>
+<p>可以使用池对客户机进行分组，以简化管理。</p>
 </td>
 </tr>
 </table>
 
-The following view types are available:
+可用的视图类型如下：
 
 <table>
 <tr>
-<td>Server View <br/></td>
+<td>Server View <br/>
+</td>
 <td>
-<p>Shows all kinds of objects, grouped by nodes.</p>
+<p>显示所有类型的对象，并按节点分组。</p>
 </td>
 </tr>
 <tr>
-<td>Folder View <br/></td>
+<td>Folder View <br/>
+</td>
 <td>
-<p>Shows all kinds of objects, grouped by object type.</p>
+<p>显示所有类型的对象，并按对象类型分组。</p>
 </td>
 </tr>
 <tr>
-<td>Pool View <br/></td>
+<td>Pool View <br/>
+</td>
 <td>
-<p>Show VMs and containers, grouped by pool.</p>
+<p>显示虚拟机和容器，并按池分组。</p>
 </td>
 </tr>
 <tr>
-<td>Tag View <br/></td>
+<td>Tag View <br/>
+</td>
 <td>
-<p>Show VMs and containers, grouped by tags.</p>
+<p>显示虚拟机和容器，并按标签分组。</p>
 </td>
 </tr>
 </table>
 
 ## 4.3.4. Log Panel <a href="#_log_panel" id="_log_panel"></a>
 
-The main purpose of the log panel is to show you what is currently going on in your cluster. Actions like creating an new VM are executed in the background, and we call such a background job a *task*.
+日志面板的主要用途是向你显示集群中当前正在发生的事情。创建新虚拟机等操作会在后台执行，我们将这种后台作业称为 *任务*。
 
-Any output from such a task is saved into a separate log file. You can view that log by simply double-click a task log entry. It is also possible to abort a running task there.
+此类任务的任何输出都会保存到单独的日志文件中。只需双击任务日志条目即可查看该日志。也可以在那里中止正在运行的任务。
 
-Please note that we display the most recent tasks from all cluster nodes here. So you can see when somebody else is working on another cluster node in real-time.
+请注意，这里会显示所有集群节点上最近的任务。因此，你可以实时看到其他人何时正在另一个集群节点上工作。
 
 {% hint style="info" %}
-We remove older and finished task from the log panel to keep that list short. But you can still find those tasks within the node panel in the *Task History*.
+我们会从日志面板中移除较早且已完成的任务，以缩短该列表。不过，你仍然可以在节点面板的 *任务历史* 中找到这些任务。
 {% endhint %}
 
-Some short-running actions simply send logs to all cluster members. You can see those messages in the *Cluster log* panel.
+一些运行时间较短的操作只会将日志发送给所有集群成员。你可以在 *集群日志* 面板中查看这些消息。
 
 ---
 

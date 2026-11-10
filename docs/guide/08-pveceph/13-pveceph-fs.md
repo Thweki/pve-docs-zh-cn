@@ -1,114 +1,105 @@
 # 8.13. CephFS <a href="#pveceph_fs" id="pveceph_fs"></a>
 
-Ceph also provides a filesystem, which runs on top of the same object storage as RADOS block devices do. A **M**eta**d**ata **S**erver (`MDS`) is used to map the RADOS backed objects to files and directories, allowing Ceph to provide a POSIX-compliant, replicated filesystem. This allows you to easily configure a clustered, highly available, shared filesystem. Ceph’s Metadata Servers guarantee that files are evenly distributed over the entire Ceph cluster. As a result, even cases of high load will not overwhelm a single host, which can be an issue with traditional shared filesystem approaches, for example `NFS`.
+Ceph 还提供一种文件系统，它运行在与 RADOS 块设备相同的对象存储之上。**元**数**据**服**务**器（`MDS`）用于将 RADOS 支持的对象映射为文件和目录，使 Ceph 能够提供符合 POSIX 标准、支持复制的文件系统。这使您可以轻松配置集群化、高可用性的共享文件系统。Ceph 的元数据服务器可确保文件均匀分布在整个 Ceph 集群中。因此，即使在高负载情况下，也不会使单台宿主机不堪重负，而传统共享文件系统方案（例如 `NFS`）可能会存在这一问题。
 
 [![screenshot/gui-node-ceph-cephfs-panel.png](../../assets/screenshot-gui-node-ceph-cephfs-panel-png-51eb3988f01e.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-cephfs-panel.png)
 
-Proxmox VE supports both creating a hyper-converged CephFS and using an existing [CephFS as storage](../07-storage/15-storage-cephfs.md#storage_cephfs) to save backups, ISO files, and container templates.
+Proxmox VE 既支持创建超融合 CephFS，也支持使用现有的 [CephFS 作为存储](../07-storage/15-storage-cephfs.md) 来保存备份、ISO 文件和容器模板。
 
 ## 8.13.1. Metadata Server (MDS) <a href="#pveceph_fs_mds" id="pveceph_fs_mds"></a>
 
-CephFS needs at least one Metadata Server to be configured and running, in order to function. You can create an MDS through the Proxmox VE web GUI’s `Node
--> CephFS` panel or from the command line with:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+CephFS 需要至少配置并运行一个元数据服务器才能正常工作。您可以通过 Proxmox VE Web GUI 的 `Node
+-> CephFS` 面板创建 MDS，也可以使用以下命令从命令行创建：
 
 ```text
 pveceph mds create
 ```
 
-Multiple metadata servers can be created in a cluster, but with the default settings, only one can be active at a time. If an MDS or its node becomes unresponsive (or crashes), another `standby` MDS will get promoted to `active`. You can speed up the handover between the active and standby MDS by using the *hotstandby* parameter option on creation, or if you have already created it you may set/add:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+可以在集群中创建多个元数据服务器，但在默认设置下，同一时间只能有一个处于活动状态。如果某个 MDS 或其节点无响应（或崩溃），另一个 `standby` MDS 将被提升为 `active`。您可以在创建时使用 *hotstandby* 参数选项，加快活动 MDS 与备用 MDS 之间的交接；如果已经创建了 MDS，也可以设置/添加：
 
 ```text
 mds standby replay = true
 ```
 
-in the respective MDS section of `/etc/pve/ceph.conf`. With this enabled, the specified MDS will remain in a `warm` state, polling the active one, so that it can take over faster in case of any issues.
+在 `/etc/pve/ceph.conf` 中相应的 MDS 部分。启用此选项后，指定的 MDS 将保持 `warm` 状态并轮询活动 MDS，以便在出现任何问题时更快接管。
 
 {% hint style="info" %}
-This active polling will have an additional performance impact on your system and the active `MDS`.
+这种主动轮询会给您的系统和活动 `MDS` 带来额外的性能开销。
 {% endhint %}
 
-**Multiple Active MDS**
+**多个活动 MDS**
 
-Since Luminous (12.2.x) you can have multiple active metadata servers running at once, but this is normally only useful if you have a high amount of clients running in parallel. Otherwise the `MDS` is rarely the bottleneck in a system. If you want to set this up, please refer to the Ceph documentation.   
-\[Configuring multiple active MDS daemons [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)\]
+自 Luminous（12.2.x）起，您可以同时运行多个活动元数据服务器，但通常只有在并行运行大量客户端时才有用。否则，`MDS` 很少会成为系统瓶颈。如果要进行此设置，请参阅 Ceph 文档。[\[1\]](#note-88da87b0-1)
 
 ## 8.13.2. Create CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
 
-With Proxmox VE’s integration of CephFS, you can easily create a CephFS using the web interface, CLI or an external API interface. Some prerequisites are required for this to work:
+借助 Proxmox VE 对 CephFS 的集成，您可以轻松通过 Web 界面、CLI 或外部 API 接口创建 CephFS。要实现这一点，需要满足一些先决条件：
 
-**Prerequisites for a successful CephFS setup:**
+**成功设置 CephFS 的先决条件：**
 
 - [Install Ceph packages](04-pve-ceph-install-wizard.md#pve_ceph_install) \- if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
-- [Setup Monitors](05-pve-ceph-monitors.md#pve_ceph_monitors)
-- [Setup your OSDs](05-pve-ceph-monitors.md#pve_ceph_monitors)
+- [Setup Monitors](05-pve-ceph-monitors.md)
+- [Setup your OSDs](05-pve-ceph-monitors.md)
 - [Setup at least one MDS](#pveceph_fs_mds)
 
-After this is complete, you can simply create a CephFS through either the Web GUI’s `Node -> CephFS` panel or the command-line tool `pveceph`, for example:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+完成上述步骤后，您只需通过 Web GUI 的 `Node -> CephFS` 面板或命令行工具 `pveceph` 即可创建 CephFS，例如：
 
 ```text
 pveceph fs create --pg_num 128 --add-storage
 ```
 
-This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](09-pve-ceph-pools.md#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
+This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](09-pve-ceph-pools.md) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
 [\[placement\_groups\]](09-pve-ceph-pools.md#_footnote_placement_groups)  
 . Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
 
 ## 8.13.3. Destroy CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
 
 {% hint style="warning" %}
-Destroying a CephFS will render all of its data unusable. This cannot be undone!
+销毁 CephFS 将使其中的所有数据无法使用。此操作无法撤销！
 {% endhint %}
 
-To completely and gracefully remove a CephFS, the following steps are necessary:
+要彻底且妥善地移除 CephFS，需要执行以下步骤：
 
-- Disconnect every non-Proxmox VE client (e.g. unmount the CephFS in guests).
-- Disable all related CephFS Proxmox VE storage entries (to prevent it from being automatically mounted).
-- Remove all used resources from guests (e.g. ISOs) that are on the CephFS you want to destroy.
-- Unmount the CephFS storages on all cluster nodes manually with
-
-  Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+- 断开所有非 Proxmox VE 客户端的连接（例如，在客户机中卸载 CephFS）。
+- 禁用所有相关的 CephFS Proxmox VE 存储条目（以防止其被自动挂载）。
+- 从客户机中移除要销毁的 CephFS 上所有已使用的资源（例如 ISO）。
+- 在所有集群节点上使用以下命令手动卸载 CephFS 存储：
 
   ```text
   umount /mnt/pve/<STORAGE-NAME>
   ```
 
-  Where `<STORAGE-NAME>` is the name of the CephFS storage in your Proxmox VE.
-- Now make sure that no metadata server (`MDS`) is running for that CephFS, either by stopping or destroying them. This can be done through the web interface or via the command-line interface, for the latter you would issue the following command:
-
-  Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+  其中，`<STORAGE-NAME>` 是您的 Proxmox VE 中 CephFS 存储的名称。
+- 现在，通过停止或销毁这些元数据服务器，确保没有元数据服务器（`MDS`）在为该 CephFS 运行。这可以通过 Web 界面或命令行界面完成；对于后者，您需要执行以下命令：
 
   ```text
   pveceph stop --service mds.NAME
   ```
 
-  to stop them, or
-
-  Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+  以停止它们，或者
 
   ```text
   pveceph mds destroy NAME
   ```
 
-  to destroy them.
+  以销毁它们。
 
-  Note that standby servers will automatically be promoted to active when an active `MDS` is stopped or removed, so it is best to first stop all standby servers.
-- Now you can destroy the CephFS with
-
-  Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+  请注意，当活动 `MDS` 停止或被移除时，备用服务器会自动提升为活动状态，因此最好先停止所有备用服务器。
+- 现在，您可以使用以下命令销毁 CephFS：
 
   ```text
   pveceph fs destroy NAME --remove-storages --remove-pools
   ```
 
-  This will automatically destroy the underlying Ceph pools as well as remove the storages from pve config.
+  这还会自动销毁底层 Ceph 池，并从 pve 配置中移除这些存储。
 
-After these steps, the CephFS should be completely removed and if you have other CephFS instances, the stopped metadata servers can be started again to act as standbys.
+完成这些步骤后，CephFS 应该已被完全移除；如果您还有其他 CephFS 实例，可以重新启动已停止的元数据服务器，让它们充当备用服务器。
+
+## 注释
+
+### 注释 1 <a href="#note-88da87b0-1" id="note-88da87b0-1"></a>
+
+配置多个活动 MDS 守护进程 [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)
 
 ---
 

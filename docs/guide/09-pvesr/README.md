@@ -1,23 +1,23 @@
 # 9\. Storage Replication <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
-The `pvesr` command-line tool manages the Proxmox VE storage replication framework. Storage replication brings redundancy for guests using local storage and reduces migration time.
+`pvesr` 命令行工具用于管理 Proxmox VE 存储复制框架。存储复制为使用本地存储的客户机提供冗余，并缩短迁移时间。
 
-It replicates guest volumes to another node so that all data is available without using shared storage. Replication uses snapshots to minimize traffic sent over the network. Therefore, new data is sent only incrementally after the initial full sync. In the case of a node failure, your guest data is still available on the replicated node.
+它会将客户机卷复制到另一个节点，因此无需使用共享存储即可使所有数据可用。复制使用快照来最大限度地减少通过网络发送的流量。因此，在初始完全同步之后，仅增量发送新数据。如果节点发生故障，客户机数据仍可在副本所在节点上使用。
 
-The replication is done automatically in configurable intervals. The minimum replication interval is one minute, and the maximal interval once a week. The format used to specify those intervals is a subset of `systemd` calendar events, see [Schedule Format](02-pvesr-schedule-time-format.md#pvesr_schedule_time_format) section:
+复制会按可配置的时间间隔自动进行。最短复制间隔为一分钟，最长间隔为每周一次。用于指定这些间隔的格式是 `systemd` 日历事件的子集，请参阅 [计划格式](02-pvesr-schedule-time-format.md) 一节：
 
-It is possible to replicate a guest to multiple target nodes, but not twice to the same target node.
+可以将一台客户机复制到多个目标节点，但不能向同一目标节点复制两次。
 
-Each replications bandwidth can be limited, to avoid overloading a storage or server.
+可以限制每次复制的带宽，以避免存储或服务器过载。
 
-Only changes since the last replication (so-called `deltas`) need to be transferred if the guest is migrated to a node to which it already is replicated. This reduces the time needed significantly. The replication direction automatically switches if you migrate a guest to the replication target node.
+如果客户机迁移到的节点已经是其复制目标，则只需传输自上次复制以来的更改（所谓的 `deltas`）。这可显著缩短所需时间。如果将客户机迁移到复制目标节点，复制方向会自动切换。
 
-For example: VM100 is currently on `nodeA` and gets replicated to `nodeB`. You migrate it to `nodeB`, so now it gets automatically replicated back from `nodeB` to `nodeA`.
+例如：VM100 当前位于 `nodeA`，并复制到 `nodeB`。您将其迁移到 `nodeB`，因此现在它会自动从 `nodeB` 复制回 `nodeA`。
 
-If you migrate to a node where the guest is not replicated, the whole disk data must send over. After the migration, the replication job continues to replicate this guest to the configured nodes.
+如果迁移到的节点不是客户机的复制目标，则必须传输整个磁盘数据。迁移后，复制作业会继续将此客户机复制到配置的节点。
 
 {% hint style="warning" %}
-High-Availability is allowed in combination with storage replication, but there may be some data loss between the last synced time and the time a node failed.
+高可用性可以与存储复制结合使用，但在上次同步时间与节点故障时间之间可能会丢失一些数据。
 {% endhint %}
 
 ## 本章内容

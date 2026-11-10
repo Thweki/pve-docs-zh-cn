@@ -1,6 +1,6 @@
 # 24.1. General <a href="#configuration_files" id="configuration_files"></a>
 
-Most configuration files in Proxmox VE reside on the [shared cluster file system](../06-pmxcfs/README.md#chapter_pmxcfs) mounted at `/etc/pve`. There are exceptions, like the node-specific configuration file for backups in `/etc/vzdump.conf`.
+Most configuration files in Proxmox VE reside on the [shared cluster file system](../06-pmxcfs/README.md) mounted at `/etc/pve`. There are exceptions, like the node-specific configuration file for backups in `/etc/vzdump.conf`.
 
 Usually, the properties in a configuration file are derived from the JSON Schema that is also used for the associated API endpoints.
 

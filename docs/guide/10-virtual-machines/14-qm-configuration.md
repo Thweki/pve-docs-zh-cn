@@ -55,7 +55,7 @@ snaptime: 1457170803
 
 There are a few snapshot related properties like `parent` and `snaptime`. The `parent` property is used to store the parent/child relationship between snapshots. `snaptime` is the snapshot creation time stamp (Unix epoch).
 
-You can optionally save the memory of a running VM with the option `vmstate`. For details about how the target storage gets chosen for the VM state, see [State storage selection](11-qm-hibernate.md#qm_vmstatestorage) in the chapter [Hibernation](11-qm-hibernate.md#qm_hibernate).
+You can optionally save the memory of a running VM with the option `vmstate`. For details about how the target storage gets chosen for the VM state, see [State storage selection](11-qm-hibernate.md#qm_vmstatestorage) in the chapter [Hibernation](11-qm-hibernate.md).
 
 ## 10.14.3. Options <a href="#qm_options" id="qm_options"></a>
 
@@ -513,7 +513,7 @@ The drive’s media type.
 
 The drive’s reported model name, url-encoded, up to 40 bytes long.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -525,7 +525,7 @@ Read error action.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -771,7 +771,7 @@ Amount of memory this NUMA node provides.
 
 NUMA allocation policy.
 
-**`onboot`: `<boolean>` (*默认 \=* `0`)**
+**`onboot`: `<boolean>` (*default \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -781,13 +781,15 @@ Specify guest operating system. This is used to enable special optimization/feat
 
 <table>
 <tr>
-<td>other <br/></td>
+<td>other <br/>
+</td>
 <td>
 <p>unspecified OS</p>
 </td>
 </tr>
 <tr>
-<td>wxp <br/></td>
+<td>wxp <br/>
+</td>
 <td>
 <p>Microsoft Windows XP</p>
 </td>
@@ -820,31 +822,36 @@ w2k8
 </td>
 </tr>
 <tr>
-<td>wvista <br/></td>
+<td>wvista <br/>
+</td>
 <td>
 <p>Microsoft Windows Vista</p>
 </td>
 </tr>
 <tr>
-<td>win7 <br/></td>
+<td>win7 <br/>
+</td>
 <td>
 <p>Microsoft Windows 7</p>
 </td>
 </tr>
 <tr>
-<td>win8 <br/></td>
+<td>win8 <br/>
+</td>
 <td>
 <p>Microsoft Windows 8/2012/2012r2</p>
 </td>
 </tr>
 <tr>
-<td>win10 <br/></td>
+<td>win10 <br/>
+</td>
 <td>
 <p>Microsoft Windows 10/2016/2019</p>
 </td>
 </tr>
 <tr>
-<td>win11 <br/></td>
+<td>win11 <br/>
+</td>
 <td>
 <p>Microsoft Windows 11/2022/2025</p>
 </td>
@@ -868,7 +875,8 @@ l26
 </td>
 </tr>
 <tr>
-<td>solaris <br/></td>
+<td>solaris <br/>
+</td>
 <td>
 <p>Solaris/OpenSolaris/OpenIndiania kernel</p>
 </td>
@@ -887,7 +895,7 @@ This option allows direct access to host hardware. So it is no longer possible t
 Experimental! User reported problems with this option.
 {% endhint %}
 
-**`protection`: `<boolean>` (*默认 \=* `0`)**
+**`protection`: `<boolean>` (*default \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1031,7 +1039,7 @@ Maximum unthrottled write pool in megabytes per second.
 
 The drive’s media type.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1043,7 +1051,7 @@ Read error action.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -1203,7 +1211,7 @@ The drive’s product name, up to 16 bytes long.
 
 Number of queues.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1227,7 +1235,7 @@ can lead to I/O errors in combination with low memory or high memory fragmentati
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -1363,7 +1371,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`template`: `<boolean>` (*默认 \=* `0`)**
+**`template`: `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -1571,7 +1579,7 @@ Maximum unthrottled write pool in megabytes per second.
 
 The drive’s media type.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1587,7 +1595,7 @@ Whether the drive is read-only.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 

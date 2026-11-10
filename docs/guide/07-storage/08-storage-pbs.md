@@ -1,52 +1,52 @@
 # 7.8. Proxmox Backup Server <a href="#storage_pbs" id="storage_pbs"></a>
 
-Storage pool type: `pbs`
+存储池类型：`pbs`
 
-This backend allows direct integration of a [Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview) into Proxmox VE like any other storage.
+该后端允许将 [Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview) 像其他存储一样直接集成到 Proxmox VE 中。
 
-A Proxmox Backup storage can be added directly through the Proxmox VE API, CLI or the web interface.
+Proxmox Backup 存储可通过 Proxmox VE API、CLI 或 Web 界面直接添加。
 
 ## 7.8.1. Configuration <a href="#_configuration_5" id="_configuration_5"></a>
 
-The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following special properties to Proxmox Backup Server are available:
+该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，还提供以下 Proxmox Backup Server 特有属性：
 
 **server**
 
-Server IP or DNS name. Required.
+服务器 IP 或 DNS 名称。必需。
 
 **port**
 
-Use this port instead of the default one, i.e. `8007`. Optional.
+使用此端口代替默认端口（即 `8007`）。可选。
 
 **username**
 
-The username for the Proxmox Backup Server storage. Required.
+Proxmox Backup Server 存储的用户名。必需。
 
 {% hint style="success" %}
-Do not forget to add the realm to the username. For example, `root@pam` or `archiver@pbs`.
+不要忘记在用户名中添加领域。例如，`root@pam` 或 `archiver@pbs`。
 {% endhint %}
 
 **password**
 
-The user password. The value will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.pw` with access restricted to the root user. Required.
+用户密码。该值将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.pw` 下的文件中，并且仅允许 root 用户访问。必需。
 
 **datastore**
 
-The ID of the Proxmox Backup Server datastore to use. Required.
+要使用的 Proxmox Backup Server 数据存储的 ID。必需。
 
 **fingerprint**
 
-The fingerprint of the Proxmox Backup Server API TLS certificate. You can get it in the Servers Dashboard or using the `proxmox-backup-manager cert info` command. Required for self-signed certificates or any other one where the host does not trusts the servers CA.
+Proxmox Backup Server API TLS 证书的指纹。可以在服务器仪表板中获取，也可以使用 `proxmox-backup-manager cert info` 命令获取。对于自签名证书，或宿主机不信任服务器 CA 的任何其他证书，此项为必需。
 
 **encryption-key**
 
-A key to encrypt the backup data from the client side. Currently only non-password protected (no key derive function (kdf)) are supported. Will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.enc` with access restricted to the root user. Use the magic value `autogen` to automatically generate a new one using `proxmox-backup-client key create --kdf none <path>`. Optional.
+用于从客户端加密备份数据的密钥。目前仅支持不受密码保护的密钥（不使用密钥派生函数（kdf））。密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.enc` 下的文件中，并且仅允许 root 用户访问。使用特殊值 `autogen` 可通过 `proxmox-backup-client key create --kdf none <path>` 自动生成新密钥。可选。
 
 **master-pubkey**
 
-A public RSA key used to encrypt the backup encryption key as part of the backup task. Will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.master.pem` with access restricted to the root user. The encrypted copy of the backup encryption key will be appended to each backup and stored on the Proxmox Backup Server instance for recovery purposes. Optional, requires `encryption-key`.
+用于在备份任务中加密备份加密密钥的 RSA 公钥。该密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.master.pem` 下的文件中，并且仅允许 root 用户访问。备份加密密钥的加密副本将附加到每个备份中，并存储在 Proxmox Backup Server 实例上，以用于恢复。可选，需要 `encryption-key`。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 pbs: backup
@@ -62,10 +62,10 @@ pbs: backup
 
 ## 7.8.2. Storage Features <a href="#_storage_features_4" id="_storage_features_4"></a>
 
-Proxmox Backup Server only supports backups, they can be block-level or file-level based. Proxmox VE uses block-level for virtual machines and file-level for container.
+Proxmox Backup Server 仅支持备份，备份可以基于块级或文件级。Proxmox VE 对虚拟机使用块级备份，对容器使用文件级备份。
 
 <table>
-<caption>Table 7. Storage features for backend <code>pbs</code></caption>
+<caption>表 7. 后端 <code>pbs</code> 的存储功能</caption>
 
 
 
@@ -73,18 +73,18 @@ Proxmox Backup Server only supports backups, they can be block-level or file-lev
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>backup</p></td>
 <td><p>n/a</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 <td><p>n/a</p></td>
 <td><p>n/a</p></td>
 </tr>
@@ -95,39 +95,39 @@ Proxmox Backup Server only supports backups, they can be block-level or file-lev
 
 [![screenshot/storage-pbs-encryption-with-key.png](../../assets/screenshot-storage-pbs-encryption-with-key-png-52aa90aa5d08.png)](https://pve.proxmox.com/pve-docs/images/screenshot/storage-pbs-encryption-with-key.png)
 
-Optionally, you can configure client-side encryption with AES-256 in GCM mode. Encryption can be configured either via the web interface, or on the CLI with the `encryption-key` option (see above). The key will be saved in the file `/etc/pve/priv/storage/<STORAGE-ID>.enc`, which is only accessible by the root user.
+可以选择配置使用 GCM 模式的 AES-256 客户端加密。可以通过 Web 界面配置加密，也可以在 CLI 上使用 `encryption-key` 选项进行配置（见上文）。密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.enc` 文件中，该文件仅 root 用户可访问。
 
 {% hint style="warning" %}
-Without their key, backups will be inaccessible. Thus, you should keep keys ordered and in a place that is separate from the contents being backed up. It can happen, for example, that you back up an entire system, using a key on that system. If the system then becomes inaccessible for any reason and needs to be restored, this will not be possible as the encryption key will be lost along with the broken system.
+没有密钥，备份将无法访问。因此，您应妥善管理密钥，并将其存放在与所备份内容分开的位置。例如，可能会发生这样的情况：您使用存储在某个系统上的密钥备份了整个系统。如果该系统随后因任何原因无法访问并需要恢复，则将无法进行恢复，因为加密密钥会随故障系统一起丢失。
 {% endhint %}
 
-It is recommended that you keep your key safe, but easily accessible, in order for quick disaster recovery. For this reason, the best place to store it is in your password manager, where it is immediately recoverable. As a backup to this, you should also save the key to a USB flash drive and store that in a secure place. This way, it is detached from any system, but is still easy to recover from, in case of emergency. Finally, in preparation for the worst case scenario, you should also consider keeping a paper copy of your key locked away in a safe place. The `paperkey` subcommand can be used to create a QR encoded version of your key. The following command sends the output of the `paperkey` command to a text file, for easy printing.
+建议您妥善保管密钥，同时确保其易于获取，以便快速进行灾难恢复。因此，最佳存放位置是密码管理器，在那里可以立即找回密钥。作为备用措施，还应将密钥保存到 USB 闪存盘，并将其存放在安全的位置。这样，密钥不依赖于任何系统，同时在紧急情况下仍易于恢复。最后，为应对最坏情况，还应考虑将密钥的纸质副本锁在安全的地方。`paperkey` 子命令可用于创建密钥的 QR 编码版本。以下命令将 `paperkey` 命令的输出发送到文本文件，以便于打印。
 
 ```text
 # proxmox-backup-client key paperkey /etc/pve/priv/storage/<STORAGE-ID>.enc --output-format text > qrkey.txt
 ```
 
-Additionally, it is possible to use a single RSA master key pair for key recovery purposes: configure all clients doing encrypted backups to use a single public master key, and all subsequent encrypted backups will contain a RSA-encrypted copy of the used AES encryption key. The corresponding private master key allows recovering the AES key and decrypting the backup even if the client system is no longer available.
+此外，还可以使用单个 RSA 主密钥对进行密钥恢复：将所有执行加密备份的客户端配置为使用同一个主公钥，之后所有加密备份都将包含所用 AES 加密密钥的 RSA 加密副本。即使客户端系统不再可用，相应的主私钥也可用于恢复 AES 密钥并解密备份。
 
 {% hint style="warning" %}
-The same safe-keeping rules apply to the master key pair as to the regular encryption keys. Without a copy of the private key recovery is not possible! The `paperkey` command supports generating paper copies of private master keys for storage in a safe, physical location.
+主密钥对适用与普通加密密钥相同的安全保管规则。没有私钥副本就无法恢复！`paperkey` 命令支持生成主私钥的纸质副本，以便存放在安全的物理位置。
 {% endhint %}
 
-Because the encryption is managed on the client side, you can use the same datastore on the server for unencrypted backups and encrypted backups, even if they are encrypted with different keys. However, deduplication between backups with different keys is not possible, so it is often better to create separate datastores.
+由于加密在客户端进行管理，您可以在服务器上对未加密备份和加密备份使用同一个数据存储，即使这些备份使用不同的密钥加密也是如此。但是，使用不同密钥的备份之间无法进行重复数据删除，因此通常最好创建单独的数据存储。
 
 {% hint style="info" %}
-Do not use encryption if there is no benefit from it, for example, when you are running the server locally in a trusted network. It is always easier to recover from unencrypted backups.
+如果加密没有带来益处，例如在可信网络中本地运行服务器时，请不要使用加密。从未加密备份中恢复总是更容易。
 {% endhint %}
 
 ## 7.8.4. Example: Add Storage over CLI <a href="#_example_add_storage_over_cli" id="_example_add_storage_over_cli"></a>
 
-You can get a list of available Proxmox Backup Server datastores with:
+可以通过以下命令获取可用的 Proxmox Backup Server 数据存储列表：
 
 ```text
 # pvesm scan pbs <server> <username> [--password <string>] [--fingerprint <string>]
 ```
 
-Then you can add one of these datastores as a storage to the whole Proxmox VE cluster with:
+然后，可以通过以下命令将其中一个数据存储作为存储添加到整个 Proxmox VE 集群：
 
 ```text
 # pvesm add pbs <id> --server <server> --datastore <datastore> --username <username> --fingerprint 00:B4:... --password

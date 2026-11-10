@@ -62,7 +62,7 @@ To manually start a backup of VM `123` with fleecing images created on the stora
 vzdump 123 --fleecing enabled=1,storage=local-lvm
 ```
 
-As always, you can set the option for specific backup jobs, or as a node-wide fallback via the [configuration options](10-vzdump-configuration.md#vzdump_configuration). In the UI, fleecing can be configured in the *Advanced* tab when editing a backup job.
+As always, you can set the option for specific backup jobs, or as a node-wide fallback via the [configuration options](10-vzdump-configuration.md). In the UI, fleecing can be configured in the *Advanced* tab when editing a backup job.
 
 The fleecing storage should be a fast local storage, with thin provisioning and discard support. Examples are LVM-thin, RBD, ZFS with `sparse 1` in the storage configuration, many file-based storages. Ideally, the fleecing storage is a dedicated storage, so it running full will not affect other guests and just fail the backup. Parts of the fleecing image that have been backed up will be discarded to try and keep the space usage low.
 
@@ -76,7 +76,7 @@ On a storage that’s not thinly provisioned, for example, LVM or ZFS without th
 
 Setting the change detection mode defines the encoding format for the pxar archives and how changed, and unchanged files are handled for container backups with Proxmox Backup Server as the target.
 
-The change detection mode option can be configured for individual backup jobs in the *Advanced* tab while editing a job. Further, this option can be set as node-wide fallback via the [configuration options](10-vzdump-configuration.md#vzdump_configuration).
+The change detection mode option can be configured for individual backup jobs in the *Advanced* tab while editing a job. Further, this option can be set as node-wide fallback via the [configuration options](10-vzdump-configuration.md).
 
 There are 3 change detection modes available:
 

@@ -360,7 +360,7 @@ Get OSD details.
 
 ID of the OSD
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>` (*default \=* `0`)**
 
 Print verbose information, same as json-pretty output format.
 
@@ -432,7 +432,7 @@ Destroy pool
 
 The name of the pool. It must be unique.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 If true, destroys pool even if in use
 
@@ -456,7 +456,7 @@ Show the current pool status.
 
 The name of the pool. It must be unique.
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>` (*default \=* `0`)**
 
 If enabled, will display additional data(eg. statistics).
 

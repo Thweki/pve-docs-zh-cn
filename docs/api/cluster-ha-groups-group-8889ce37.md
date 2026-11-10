@@ -166,9 +166,9 @@ Read ha group configuration. (deprecated in favor of HA rules)
 | `delete` | string | 否 | — | A list of settings you want to delete. |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
 | `group` | string | 是 | — | The HA group identifier. |
-| `nodes` | string | 否 | — | List of cluster node names with optional priority. |
+| `nodes` | string | 否 | — | List of cluster node members, where a priority can be given to each node. A resource will run on the available nodes with the highest priority. If there are more nodes in the highest priority class, the resources will get distributed to those nodes. The priorities have a relative meaning only. The higher the number, the higher the priority. |
 | `nofailback` | boolean | 否 | 0 | The CRM tries to run services on the node with the highest priority. If a node with higher priority comes online, the CRM migrates the service to that node. Enabling nofailback prevents that behavior. |
-| `restricted` | boolean | 否 | 0 | Resources bound to restricted groups may only run on nodes defined by the group. |
+| `restricted` | boolean | 否 | 0 | Resources bound to restricted groups may only run on nodes defined by the group. The resource will be placed in the stopped state if no group node member is online. Resources on unrestricted groups may run on any cluster node if all group members are offline, but they will migrate back as soon as a group member comes online. One can implement a 'preferred node' behavior using an unrestricted group with only one member. |
 
 <details>
 <summary>完整请求参数结构</summary>

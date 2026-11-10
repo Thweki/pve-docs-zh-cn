@@ -1,4 +1,4 @@
-# 2\. 安装 Proxmox VE <a href="#chapter_installation" id="chapter_installation"></a>
+# 2\. Installing Proxmox VE <a href="#chapter_installation" id="chapter_installation"></a>
 
 Proxmox VE 基于 Debian GNU/Linux。Proxmox 提供的安装磁盘映像（ISO 文件）包含完整的 Debian 系统以及所有必要的 Proxmox VE 软件包。
 
@@ -12,11 +12,11 @@ Proxmox VE 基于 Debian GNU/Linux。Proxmox 提供的安装磁盘映像（ISO �
 
 ## 本章内容
 
-- [2.1. 系统要求](01-system-requirements.md)
-- [2.2. 准备安装介质](02-installation-prepare-media.md)
-- [2.3. 使用 Proxmox VE 安装程序](03-installation-installer.md)
-- [2.4. 无人值守安装](04-installation-unattended.md)
-- [2.5. 在 Debian 上安装 Proxmox VE](05-install-proxmox-ve-on-debian.md)
+- [2.1. System Requirements](01-system-requirements.md)
+- [2.2. Prepare Installation Media](02-installation-prepare-media.md)
+- [2.3. Using the Proxmox VE Installer](03-installation-installer.md)
+- [2.4. Unattended Installation](04-installation-unattended.md)
+- [2.5. Install Proxmox VE on Debian](05-install-proxmox-ve-on-debian.md)
 
 ---
 

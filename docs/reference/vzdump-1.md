@@ -1,10 +1,10 @@
 # vzdump(1)
 
-## 名称 <a href="#chapter_vzdump" id="chapter_vzdump"></a>
+## NAME <a href="#chapter_vzdump" id="chapter_vzdump"></a>
 
 vzdump \- Backup Utility for VMs and Containers
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_vzdump_help"></a>
 
@@ -160,7 +160,7 @@ Store temporary files to specified directory.
 
 Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 Backups are a requirement for any sensible IT deployment, and Proxmox VE provides a fully integrated solution, using the capabilities of each storage and each guest system type. This allows the system administrator to fine tune via the `mode` option between consistency of the backups and downtime of the guest system.
 
@@ -303,19 +303,13 @@ That way it is possible to store several backup in the same directory. You can l
 
 ## Backup File Compression <a href="#_backup_file_compression" id="_backup_file_compression"></a>
 
-The backup file can be compressed with one of the following algorithms: `lzo`   
-\[Lempel–Ziv–Oberhumer a lossless data compression algorithm [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)\]  
-, `gzip`   
-\[gzip \- based on the DEFLATE algorithm [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)\]  
- or `zstd`   
-\[Zstandard a lossless data compression algorithm [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)\]  
-.
+The backup file can be compressed with one of the following algorithms: `lzo`
+[\[1\]](#note-6c818b60-1), `gzip` [\[2\]](#note-6c818b60-2) or `zstd`
+[\[3\]](#note-6c818b60-3).
 
 Currently, Zstandard (zstd) is the fastest of these three algorithms. Multi-threading is another advantage of zstd over lzo and gzip. Lzo and gzip are more widely used and often installed by default.
 
-You can install pigz   
-\[pigz \- parallel implementation of gzip [https://zlib.net/pigz/](https://zlib.net/pigz/)\]  
- as a drop-in replacement for gzip to provide better performance due to multi-threading. For pigz \& zstd, the amount of threads/cores can be adjusted. See the [configuration options](#vzdump_configuration) below.
+You can install pigz [\[4\]](#note-6c818b60-4) as a drop-in replacement for gzip to provide better performance due to multi-threading. For pigz \& zstd, the amount of threads/cores can be adjusted. See the [configuration options](#vzdump_configuration) below.
 
 The extension of the backup file name can usually be used to determine which compression algorithm has been used to create the backup.
 
@@ -529,7 +523,7 @@ To enable secure access to VM images, which might contain untrusted data, a temp
 For troubleshooting purposes, each temporary VM instance generates a log file in `/var/log/proxmox-backup/file-restore/`. The log file might contain additional information in case an attempt to restore individual files or accessing file systems contained in a backup archive fails.
 {% endhint %}
 
-## 配置 <a href="#vzdump_configuration" id="vzdump_configuration"></a>
+## Configuration <a href="#vzdump_configuration" id="vzdump_configuration"></a>
 
 Global configuration is stored in `/etc/vzdump.conf`. The file uses a simple colon separated key/value format. Each line has the following format:
 
@@ -798,7 +792,7 @@ Clone an existing container 101 to a new container 300 with a 4GB root file syst
 # vzdump 101 --stdout | pct restore --rootfs 4 300 -
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -813,6 +807,24 @@ Clone an existing container 101 to a new container 300 with a 4GB root file syst
 
 
 ---
+
+## 注释
+
+### 注释 1 <a href="#note-6c818b60-1" id="note-6c818b60-1"></a>
+
+Lempel–Ziv–Oberhumer a lossless data compression algorithm [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)
+
+### 注释 2 <a href="#note-6c818b60-2" id="note-6c818b60-2"></a>
+
+gzip \- based on the DEFLATE algorithm [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)
+
+### 注释 3 <a href="#note-6c818b60-3" id="note-6c818b60-3"></a>
+
+Zstandard a lossless data compression algorithm [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)
+
+### 注释 4 <a href="#note-6c818b60-4" id="note-6c818b60-4"></a>
+
+pigz \- parallel implementation of gzip [https://zlib.net/pigz/](https://zlib.net/pigz/)
 
 ---
 

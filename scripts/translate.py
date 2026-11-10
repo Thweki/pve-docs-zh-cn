@@ -9,6 +9,30 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 TOKENS=re.compile(r'⟦\d+⟧')
+NUMBER_WORDS=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty']
+CN_DIGITS={'零':0,'一':1,'二':2,'两':2,'双':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9}
+
+def numeric_error(source,target):
+    """Preserve quantities while accepting 'three/3/三' translation choices."""
+    a=collections.Counter(re.findall(r'\d+(?:[.,]\d+)*',source))
+    b=collections.Counter(re.findall(r'\d+(?:[.,]\d+)*',target))
+    chinese=collections.Counter()
+    for word in re.findall('[零一二两双三四五六七八九十]+',target):
+        if word=='十':value=10
+        elif word.count('十')==1:
+            left,right=word.split('十')
+            if len(left)>1 or len(right)>1:continue
+            value=CN_DIGITS.get(left,1)*10+CN_DIGITS.get(right,0)
+        elif len(word)==1:value=CN_DIGITS[word]
+        else:continue
+        chinese[str(value)]+=1
+    for number,count in (a-b).items():
+        if chinese[number]<count:return True
+    for number,count in (b-a).items():
+        if number.isdigit() and int(number)<len(NUMBER_WORDS):
+            if len(re.findall(r'\b'+NUMBER_WORDS[int(number)]+r'\b',source,re.I))>=count:continue
+        return True
+    return False
 SYSTEM='''你是精通 Proxmox VE、Linux、KVM、LXC、Ceph、ZFS、网络、虚拟化的中文技术文档译者。
 任务：将给出的 JSON 对象中每一个英文值完整翻译成简体中文，返回相同键的 JSON 对象。
 硬性要求：
@@ -26,8 +50,7 @@ def validate(source, translated):
     if TOKENS.findall(source)!=TOKENS.findall(translated):return 'placeholder sequence changed'
     # A suspiciously short output is retried, never silently accepted as a summary.
     prose=TOKENS.sub('',source);target=TOKENS.sub('',translated)
-    numbers=lambda s:collections.Counter(re.findall(r'\d+(?:[.,]\d+)*',s))
-    if numbers(prose)!=numbers(target):return 'numeric values changed'
+    if numeric_error(prose,target):return 'numeric values changed'
     if collections.Counter(re.findall(r'<[A-Za-z][^<>]*>',prose))!=collections.Counter(re.findall(r'<[A-Za-z][^<>]*>',target)):
         return 'literal angle-bracket values changed'
     if len(prose)>160 and len(target)<len(prose)*0.12:return 'too short'

@@ -65,7 +65,7 @@ The integer of ordered lists does not need to be correct, they will be numbered 
 
 Task list use a empty box `[ ]` for unfinished tasks and a box with an `X` for finished tasks.
 
-For example:
+例如：
 
 ```text
 - [X] First task already done!

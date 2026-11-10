@@ -1,10 +1,10 @@
 # 7\. Proxmox VE Storage <a href="#chapter_storage" id="chapter_storage"></a>
 
-The Proxmox VE storage model is very flexible. Virtual machine images can either be stored on one or several local storages, or on shared storage like NFS or iSCSI (NAS, SAN). There are no limits, and you may configure as many storage pools as you like. You can use all storage technologies available for Debian Linux.
+Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多个本地存储上，也可以存储在 NFS 或 iSCSI（NAS、SAN）等共享存储上。没有任何限制，您可以根据需要配置任意数量的存储池。您可以使用 Debian Linux 可用的所有存储技术。
 
-One major benefit of storing VMs on shared storage is the ability to live-migrate running machines without any downtime, as all nodes in the cluster have direct access to VM disk images. There is no need to copy VM image data, so live migration is very fast in that case.
+将 VM 存储在共享存储上的一个主要好处是，可以在线迁移正在运行的机器而无需任何停机，因为集群中的所有节点都可以直接访问 VM 磁盘镜像。无需复制 VM 镜像数据，因此在这种情况下在线迁移速度非常快。
 
-The storage library (package `libpve-storage-perl`) uses a flexible plugin system to provide a common interface to all storage types. This can be easily adopted to include further storage types in the future.
+存储库（软件包 `libpve-storage-perl`）使用灵活的插件系统，为所有存储类型提供通用接口。可以轻松地对其进行扩展，以便将来支持更多存储类型。
 
 ## 本章内容
 

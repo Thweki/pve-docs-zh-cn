@@ -30,7 +30,7 @@ VM 的唯一 ID。
 
 Allow to overwrite existing VM.
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>` (*default \=* `0`)**
 
 Add the VM as a HA resource after it was restored.
 
@@ -42,7 +42,7 @@ Start the VM immediately from the backup and restore in background. PBS only.
 
 将 VM 添加到指定池。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 Start VM after it was restored successfully.
 

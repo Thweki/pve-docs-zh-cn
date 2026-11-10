@@ -1,10 +1,10 @@
 # pvesh(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 pvesh \- Shell interface for the Proxmox VE API
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesh"></a>
 
@@ -132,7 +132,7 @@ Including schema for returned data.
 
 详细输出格式。
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 The Proxmox VE management tool (`pvesh`) allows to directly invoke API function, without using the REST/HTTPS server.
 
@@ -191,7 +191,7 @@ Set the HTMl5 NoVNC console as the default console for the datacenter
 # pvesh set cluster/options -console html5
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

@@ -1,4 +1,4 @@
-# 3\. 宿主机系统管理 <a href="#chapter_system_administration" id="chapter_system_administration"></a>
+# 3\. Host System Administration <a href="#chapter_system_administration" id="chapter_system_administration"></a>
 
 以下各节将重点介绍常见的虚拟化任务，并说明 Proxmox VE 在宿主机管理方面的特定事项。
 
@@ -8,15 +8,15 @@ Proxmox VE 基于 [Debian GNU/Linux](https://www.debian.org/)，并通过额外�
 
 ## 本章内容
 
-- [3.1. 软件包仓库](01-sysadmin-package-repositories.md)
-- [3.2. 系统软件更新](02-system-software-updates.md)
-- [3.3. 固件更新](03-chapter-firmware-updates.md)
-- [3.4. 网络配置](04-sysadmin-network-configuration.md)
-- [3.5. 时间同步](05-time-synchronization.md)
-- [3.6. 外部指标服务器](06-external-metric-server.md)
-- [3.7. 磁盘健康监控](07-disk-health-monitoring.md)
-- [3.8. 逻辑卷管理器（LVM）](08-chapter-lvm.md)
-- [3.9. Linux 上的 ZFS](09-chapter-zfs.md)
+- [3.1. Package Repositories](01-sysadmin-package-repositories.md)
+- [3.2. System Software Updates](02-system-software-updates.md)
+- [3.3. Firmware Updates](03-chapter-firmware-updates.md)
+- [3.4. Network Configuration](04-sysadmin-network-configuration.md)
+- [3.5. Time Synchronization](05-time-synchronization.md)
+- [3.6. External Metric Server](06-external-metric-server.md)
+- [3.7. Disk Health Monitoring](07-disk-health-monitoring.md)
+- [3.8. Logical Volume Manager (LVM)](08-chapter-lvm.md)
+- [3.9. ZFS on Linux](09-chapter-zfs.md)
 - [3.10. BTRFS](10-chapter-btrfs.md)
 - [3.11. Proxmox Node Management](11-proxmox-node-management.md)
 - [3.12. Certificate Management](12-sysadmin-certificate-management.md)

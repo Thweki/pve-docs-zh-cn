@@ -82,7 +82,7 @@ Contact email addresses.
 
 Order a new certificate from ACME-compatible CA.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Overwrite existing custom certificate.
 
@@ -94,7 +94,7 @@ Overwrite existing custom certificate.
 
 Renew existing certificate from CA.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Force renewal even if expiry is more than 30 days away.
 
@@ -254,7 +254,7 @@ PEM encoded certificate (chain).
 
 PEM encoded private key.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Overwrite existing custom or ACME certificate files.
 

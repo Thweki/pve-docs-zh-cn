@@ -1,4 +1,4 @@
-# 1.12. 改进 Proxmox VE 文档 <a href="#howto_improve_pve_docs" id="howto_improve_pve_docs"></a>
+# 1.12. Improving the Proxmox VE Documentation <a href="#howto_improve_pve_docs" id="howto_improve_pve_docs"></a>
 
 始终欢迎对 Proxmox VE 文档作出贡献和改进。您可以通过多种方式参与贡献。
 

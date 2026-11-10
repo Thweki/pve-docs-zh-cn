@@ -4,15 +4,11 @@ Most users will simply use the GUI to manage users. But there is also a fully fe
 
 Here are some simple usage examples. To show help, type:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum
 ```
 
 or (to show detailed help about a specific command)
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum help user add
@@ -20,15 +16,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 Create a new user:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum user add testuser@pve -comment "Just a test"
 ```
 
 Set or change the password (not all realms support this):
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum passwd testuser@pve
@@ -36,23 +28,17 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 Disable a user:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum user modify testuser@pve -enable 0
 ```
 
 Create a new group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add testgroup
 ```
 
 Create a new role:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum role add PVE_Power-only -privs "VM.PowerMgmt VM.Console"

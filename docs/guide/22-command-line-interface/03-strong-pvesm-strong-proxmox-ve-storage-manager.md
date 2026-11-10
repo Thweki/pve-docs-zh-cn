@@ -124,7 +124,7 @@ Always access rbd through krbd kernel module.
 
 **`--lio_tpg` `<string>`**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **`--master-pubkey` `a file containing a PEM-formatted master public key`**
 
@@ -160,7 +160,7 @@ List of nodes for which the storage configuration applies.
 
 **`--nowritecache` `<boolean>`**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **`--options` `<string>`**
 
@@ -184,7 +184,7 @@ Use this port to connect to the storage instead of the default one (for example,
 
 **`--portal` `<string>`**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
 **`--preallocation` `<falloc | full | metadata | off>` (*default \=* `metadata`)**
 
@@ -244,7 +244,7 @@ Only list logical volumes tagged with *pve-vm-ID*.
 
 **`--target` `<string>`**
 
-iSCSI target.
+iSCSI 目标端。
 
 **`--thinpool` `<string>`**
 
@@ -768,7 +768,7 @@ Always access rbd through krbd kernel module.
 
 **`--lio_tpg` `<string>`**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **`--master-pubkey` `a file containing a PEM-formatted master public key`**
 
@@ -804,7 +804,7 @@ List of nodes for which the storage configuration applies.
 
 **`--nowritecache` `<boolean>`**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **`--options` `<string>`**
 

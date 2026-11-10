@@ -2,122 +2,121 @@
 
 ## 3.12.1. Certificates for Intra-Cluster Communication <a href="#_certificates_for_intra_cluster_communication" id="_certificates_for_intra_cluster_communication"></a>
 
-Each Proxmox VE cluster creates by default its own (self-signed) Certificate Authority (CA) and generates a certificate for each node which gets signed by the aforementioned CA. These certificates are used for encrypted communication with the cluster’s `pveproxy` service and the Shell/Console feature if SPICE is used.
+每个 Proxmox VE 集群默认都会创建自己的（自签名）证书颁发机构（CA），并为每个节点生成一个由上述 CA 签名的证书。这些证书用于与集群的 `pveproxy` 服务进行加密通信，以及在使用 SPICE 时用于 Shell/Console 功能。
 
-The CA certificate and key are stored in the [Proxmox Cluster File System (pmxcfs)](../06-pmxcfs/README.md#chapter_pmxcfs).
+CA 证书和密钥存储在[Proxmox 集群文件系统（pmxcfs）](../06-pmxcfs/README.md)中。
 
-To distribute the cluster CA to administrator workstations and avoid browser warnings, copy `/etc/pve/pve-root-ca.pem` from any cluster node out of band (for example via `scp` or by reading it through an existing SSH session) and import it into the operating system or browser trust store. There is no API or web interface endpoint for downloading the file.
+为了将集群 CA 分发到管理员工作站并避免浏览器警告，请通过带外方式从任意集群节点复制 `/etc/pve/pve-root-ca.pem`（例如通过 `scp`，或通过现有 SSH 会话读取该文件），然后将其导入操作系统或浏览器的信任库。没有可用于下载该文件的 API 或 Web 界面端点。
 
 ## 3.12.2. Certificates for API and Web GUI <a href="#sysadmin_certs_api_gui" id="sysadmin_certs_api_gui"></a>
 
-The REST API and web GUI are provided by the `pveproxy` service, which runs on each node.
+REST API 和 Web GUI 由在每个节点上运行的 `pveproxy` 服务提供。
 
-You have the following options for the certificate used by `pveproxy`:
+对于 `pveproxy` 使用的证书，有以下选项：
 
-1. By default the node-specific certificate in `/etc/pve/nodes/NODENAME/pve-ssl.pem` is used. This certificate is signed by the cluster CA and therefore not automatically trusted by browsers and operating systems.
-2. use an externally provided certificate (e.g. signed by a commercial CA).
-3. use ACME (Let’s Encrypt) to get a trusted certificate with automatic renewal, this is also integrated in the Proxmox VE API and web interface.
+1. 默认使用 `/etc/pve/nodes/NODENAME/pve-ssl.pem` 中节点特定的证书。此证书由集群 CA 签名，因此不会自动受到浏览器和操作系统的信任。
+2. 使用外部提供的证书（例如由商业 CA 签名的证书）。
+3. 使用 ACME（Let’s Encrypt）获取可自动续期的受信任证书，此功能也已集成到 Proxmox VE API 和 Web 界面中。
 
-For options 2 and 3 the file `/etc/pve/local/pveproxy-ssl.pem` (and `/etc/pve/local/pveproxy-ssl.key`, which needs to be without password) is used.
+对于选项 2 和 3，使用文件 `/etc/pve/local/pveproxy-ssl.pem`（以及 `/etc/pve/local/pveproxy-ssl.key`，后者必须没有密码保护）。
 
 {% hint style="info" %}
-Keep in mind that `/etc/pve/local` is a node specific symlink to `/etc/pve/nodes/NODENAME`.
+请记住，`/etc/pve/local` 是指向 `/etc/pve/nodes/NODENAME` 的节点特定符号链接。
 {% endhint %}
 
-Certificates are managed with the Proxmox VE Node management command (see the `pvenode(1)` manpage).
+证书通过 Proxmox VE 节点管理命令进行管理（参见 `pvenode(1)` 手册页）。
 
 {% hint style="warning" %}
-Do not replace or manually modify the automatically generated node certificate files in `/etc/pve/local/pve-ssl.pem` and `/etc/pve/local/pve-ssl.key` or the cluster CA files in `/etc/pve/pve-root-ca.pem` and `/etc/pve/priv/pve-root-ca.key`.
+不要替换或手动修改 `/etc/pve/local/pve-ssl.pem` 和 `/etc/pve/local/pve-ssl.key` 中自动生成的节点证书文件，也不要替换或手动修改 `/etc/pve/pve-root-ca.pem` 和 `/etc/pve/priv/pve-root-ca.key` 中的集群 CA 文件。
 {% endhint %}
 
 ## 3.12.3. Upload Custom Certificate <a href="#sysadmin_certs_upload_custom" id="sysadmin_certs_upload_custom"></a>
 
-If you already have a certificate which you want to use for a Proxmox VE node you can upload that certificate simply over the web interface.
+如果已有要用于 Proxmox VE 节点的证书，可以直接通过 Web 界面上传该证书。
 
 [![screenshot/gui-node-certs-upload-custom.png](../../assets/screenshot-gui-node-certs-upload-custom-png-a449fdd87b86.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-certs-upload-custom.png)
 
-Note that the certificates key file, if provided, mustn’t be password protected.
+请注意，如果提供证书密钥文件，该文件不得受密码保护。
 
 ## 3.12.4. Trusted certificates via Let’s Encrypt (ACME) <a href="#sysadmin_certs_get_trusted_acme_cert" id="sysadmin_certs_get_trusted_acme_cert"></a>
 
-Proxmox VE includes an implementation of the **A**utomatic **C**ertificate **M**anagement **E**nvironment **ACME** protocol, allowing Proxmox VE admins to use an ACME provider like Let’s Encrypt for easy setup of TLS certificates which are accepted and trusted on modern operating systems and web browsers out of the box.
+Proxmox VE 包含对 **A**utomatic **C**ertificate **M**anagement **E**nvironment **ACME** 协议的实现，允许 Proxmox VE 管理员使用 Let’s Encrypt 等 ACME 提供商，轻松设置现代操作系统和 Web 浏览器开箱即接受并信任的 TLS 证书。
 
-Currently, the two ACME endpoints implemented are the [Let’s Encrypt (LE)](https://letsencrypt.org) production and its staging environment. Our ACME client supports validation of `http-01` challenges using a built-in web server and validation of `dns-01` challenges using a DNS plugin supporting all the DNS API endpoints [acme.sh](https://acme.sh) does.
+目前实现的两个 ACME 端点是 [Let’s Encrypt (LE)](https://letsencrypt.org) 生产环境及其预发布环境。我们的 ACME 客户端支持使用内置 Web 服务器验证 `http-01` 挑战，并支持使用 DNS 插件验证 `dns-01` 挑战；该 DNS 插件支持 [acme.sh](https://acme.sh) 所支持的所有 DNS API 端点。
 
 ### ACME Account <a href="#sysadmin_certs_acme_account" id="sysadmin_certs_acme_account"></a>
 
 [![screenshot/gui-datacenter-acme-register-account.png](../../assets/screenshot-gui-datacenter-acme-register-account-png-e973a4f280cf.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-acme-register-account.png)
 
-You need to register an ACME account per cluster with the endpoint you want to use. The email address used for that account will serve as contact point for renewal-due or similar notifications from the ACME endpoint.
+需要为每个集群在要使用的端点处注册一个 ACME 账户。该账户使用的电子邮件地址将作为 ACME 端点发送续期到期或类似通知的联系地址。
 
-You can register and deactivate ACME accounts over the web interface `Datacenter -> ACME` or using the `pvenode` command-line tool.
+可以通过 Web 界面 `Datacenter -> ACME` 或使用 `pvenode` 命令行工具注册和停用 ACME 账户。
 
 ```text
  pvenode acme account register account-name mail@example.com
 ```
 
 {% hint style="success" %}
-Because of [rate-limits](https://letsencrypt.org/docs/rate-limits/) you should use LE `staging` for experiments or if you use ACME for the first time.
+由于[速率限制](https://letsencrypt.org/docs/rate-limits/)，进行实验或首次使用 ACME 时，应使用 LE `staging`。
 {% endhint %}
 
 ### ACME Plugins <a href="#sysadmin_certs_acme_plugins" id="sysadmin_certs_acme_plugins"></a>
 
-The ACME plugins task is to provide automatic verification that you, and thus the Proxmox VE cluster under your operation, are the real owner of a domain. This is the basis building block for automatic certificate management.
+ACME 插件的作用是自动验证您以及由您管理的 Proxmox VE 集群确实是域名的所有者。这是自动证书管理的基础。
 
-The ACME protocol specifies different types of challenges, for example the `http-01` where a web server provides a file with a certain content to prove that it controls a domain. Sometimes this isn’t possible, either because of technical limitations or if the address of a record to is not reachable from the public internet. The `dns-01` challenge can be used in these cases. This challenge is fulfilled by creating a certain DNS record in the domain’s zone.
+ACME 协议规定了不同类型的挑战，例如 `http-01`：由 Web 服务器提供具有特定内容的文件，以证明其控制某个域名。有时由于技术限制，或者由于记录的地址无法从公共互联网访问，这种方法并不可行。在这些情况下可以使用 `dns-01` 挑战。该挑战通过在域名的区域中创建特定 DNS 记录来完成。
 
 [![screenshot/gui-datacenter-acme-overview.png](../../assets/screenshot-gui-datacenter-acme-overview-png-cad3d764a7c7.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-acme-overview.png)
 
-Proxmox VE supports both of those challenge types out of the box, you can configure plugins either over the web interface under `Datacenter -> ACME`, or using the `pvenode acme plugin add` command.
+Proxmox VE 开箱即支持这两种挑战类型，可以在 Web 界面的 `Datacenter -> ACME` 下配置插件，也可以使用 `pvenode acme plugin add` 命令进行配置。
 
-ACME Plugin configurations are stored in `/etc/pve/priv/acme/plugins.cfg`. A plugin is available for all nodes in the cluster.
+ACME 插件配置存储在 `/etc/pve/priv/acme/plugins.cfg` 中。插件对集群中的所有节点均可用。
 
 ### Node Domains <a href="#_node_domains" id="_node_domains"></a>
 
-Each domain is node specific. You can add new or manage existing domain entries under `Node -> Certificates`, or using the `pvenode config` command.
+每个域名都是节点特定的。可以在 `Node -> Certificates` 下添加新域名条目或管理现有域名条目，也可以使用 `pvenode config` 命令。
 
 [![screenshot/gui-node-certs-add-domain.png](../../assets/screenshot-gui-node-certs-add-domain-png-45582cac9fd9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-certs-add-domain.png)
 
-After configuring the desired domain(s) for a node and ensuring that the desired ACME account is selected, you can order your new certificate over the web interface. On success the interface will reload after 10 seconds.
+为节点配置所需域名并确保选择了所需的 ACME 账户后，即可通过 Web 界面订购新证书。成功后，界面将在 10 秒后重新加载。
 
-Renewal will happen [automatically](#sysadmin_certs_acme_automatic_renewal).
+续期将[自动](#sysadmin_certs_acme_automatic_renewal)进行。
 
 ## 3.12.5. ACME HTTP Challenge Plugin <a href="#sysadmin_certs_acme_http_challenge" id="sysadmin_certs_acme_http_challenge"></a>
 
-There is always an implicitly configured `standalone` plugin for validating `http-01` challenges via the built-in webserver spawned on port 80\.
+始终存在一个隐式配置的 `standalone` 插件，用于通过在端口 80 上启动的内置 Web 服务器验证 `http-01` 挑战。
 
 {% hint style="info" %}
-The name `standalone` means that it can provide the validation on it’s own, without any third party service. So, this plugin works also for cluster nodes.
+名称 `standalone` 表示它可以自行提供验证，无需任何第三方服务。因此，此插件也适用于集群节点。
 {% endhint %}
 
-There are a few prerequisites to use it for certificate management with Let’s Encrypts ACME.
+将其用于 Let’s Encrypt 的 ACME 证书管理需要满足一些前提条件。
 
-- You have to accept the ToS of Let’s Encrypt to register an account.
+- 必须接受 Let’s Encrypt 的服务条款（ToS）才能注册账户。
 - **Port 80** of the node needs to be reachable from the internet.
-- There **must** be no other listener on port 80\.
-- The requested (sub)domain needs to resolve to a public IP of the Node.
+- 端口 80 上**不得**有其他监听器。
+- 请求的（子）域名需要解析到节点的公网 IP。
 
 ## 3.12.6. ACME DNS API Challenge Plugin <a href="#sysadmin_certs_acme_dns_challenge" id="sysadmin_certs_acme_dns_challenge"></a>
 
-On systems where external access for validation via the `http-01` method is not possible or desired, it is possible to use the `dns-01` validation method. This validation method requires a DNS server that allows provisioning of `TXT` records via an API.
+对于无法或不希望通过 `http-01` 方法进行外部访问验证的系统，可以使用 `dns-01` 验证方法。此验证方法要求 DNS 服务器允许通过 API 配置 `TXT` 记录。
 
 ### Configuring ACME DNS APIs for validation <a href="#sysadmin_certs_acme_dns_api_config" id="sysadmin_certs_acme_dns_api_config"></a>
 
-Proxmox VE re-uses the DNS plugins developed for the `acme.sh`   
-\[acme.sh [https://github.com/acmesh-official/acme.sh](https://github.com/acmesh-official/acme.sh)\]  
- project, please refer to its documentation for details on configuration of specific APIs.
+Proxmox VE re-uses the DNS plugins developed for the `acme.sh`
+[\[1\]](#note-72f8bd77-1) project, please refer to its documentation for details on configuration of specific APIs.
 
-The easiest way to configure a new plugin with the DNS API is using the web interface (`Datacenter -> ACME`).
+配置使用 DNS API 的新插件，最简单的方法是使用 Web 界面（`Datacenter -> ACME`）。
 
 [![screenshot/gui-datacenter-acme-add-dns-plugin.png](../../assets/screenshot-gui-datacenter-acme-add-dns-plugin-png-ae07ef783a05.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-acme-add-dns-plugin.png)
 
-Choose `DNS` as challenge type. Then you can select your API provider, enter the credential data to access your account over their API. The validation delay determines the time in seconds between setting the DNS record and prompting the ACME provider to validate it, as providers often need some time to propagate the record in their infrastructure.
+选择 `DNS` 作为挑战类型。然后可以选择 API 提供商，并输入通过其 API 访问账户所需的凭据数据。验证延迟决定从设置 DNS 记录到提示 ACME 提供商验证该记录之间的秒数，因为提供商通常需要一些时间才能在其基础设施中传播该记录。
 
 {% hint style="success" %}
-See the acme.sh [How to use DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#how-to-use-dns-api) wiki for more detailed information about getting API credentials for your provider.
+有关获取提供商 API 凭据的更详细信息，请参阅 acme.sh [如何使用 DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#how-to-use-dns-api) Wiki。
 {% endhint %}
 
-As there are many DNS providers and API endpoints Proxmox VE automatically generates the form for the credentials for some providers. For the others you will see a bigger text area, simply copy all the credentials `KEY`\=`VALUE` pairs in there.
+由于 DNS 提供商和 API 端点众多，Proxmox VE 会自动为某些提供商生成凭据表单。对于其他提供商，您会看到一个较大的文本区域，只需将所有凭据 `KEY`\=`VALUE` 对复制到其中即可。
 
 ### DNS Validation through CNAME Alias <a href="#_dns_validation_through_cname_alias" id="_dns_validation_through_cname_alias"></a>
 
@@ -125,18 +124,18 @@ A special `alias` mode can be used to handle the validation on a different domai
 
 ### Combination of Plugins <a href="#_combination_of_plugins" id="_combination_of_plugins"></a>
 
-Combining `http-01` and `dns-01` validation is possible in case your node is reachable via multiple domains with different requirements / DNS provisioning capabilities. Mixing DNS APIs from multiple providers or instances is also possible by specifying different plugin instances per domain.
+如果节点可通过多个具有不同要求或 DNS 置备能力的域名访问，则可以组合 `http-01` 和 `dns-01` 验证。通过为每个域名指定不同的插件实例，也可以混用来自多个提供商或实例的 DNS API。
 
 {% hint style="success" %}
-Accessing the same service over multiple domains increases complexity and should be avoided if possible.
+通过多个域名访问同一服务会增加复杂性，应尽可能避免。
 {% endhint %}
 
 ## 3.12.7. Automatic renewal of ACME certificates <a href="#sysadmin_certs_acme_automatic_renewal" id="sysadmin_certs_acme_automatic_renewal"></a>
 
-If a node has been successfully configured with an ACME-provided certificate (either via pvenode or via the GUI), the certificate will be automatically renewed by the `pve-daily-update.service`. Currently, renewal will be attempted if the certificate has expired already, or will expire in the next 30 days.
+如果节点已成功配置为由 ACME 提供的证书（通过 pvenode 或 GUI），证书将由 `pve-daily-update.service` 自动续期。目前，如果证书已经过期，或将在未来 30 天内过期，就会尝试续期。
 
 {% hint style="info" %}
-If you are using a custom directory that issues short-lived certificates, disabling the random delay for the `pve-daily-update.timer` unit might be advisable to avoid missing a certificate renewal after a reboot.
+如果使用颁发短期证书的自定义目录，建议禁用 `pve-daily-update.timer` 单元的随机延迟，以避免重启后错过证书续期。
 {% endhint %}
 
 ## 3.12.8. ACME Examples with `pvenode` <a href="#_acme_examples_with_span_class_monospaced_pvenode_span" id="_acme_examples_with_span_class_monospaced_pvenode_span"></a>
@@ -173,14 +172,14 @@ Task OK
 ### Example: Setting up the OVH API for validating a domain <a href="#_example_setting_up_the_ovh_api_for_validating_a_domain" id="_example_setting_up_the_ovh_api_for_validating_a_domain"></a>
 
 {% hint style="info" %}
-the account registration steps are the same no matter which plugins are used, and are not repeated here.
+无论使用哪种插件，账户注册步骤都相同，此处不再重复。
 {% endhint %}
 
 {% hint style="info" %}
-`OVH_AK` and `OVH_AS` need to be obtained from OVH according to the OVH API documentation
+需要根据 OVH API 文档从 OVH 获取 `OVH_AK` 和 `OVH_AS`
 {% endhint %}
 
-First you need to get all information so you and Proxmox VE can access the API.
+首先，需要获取所有信息，以便您和 Proxmox VE 能够访问 API。
 
 ```text
 root@proxmox:~# cat /path/to/api-token
@@ -207,7 +206,7 @@ https://eu.api.ovh.com/1.0/auth/credential  -d '{
 root@proxmox:~# echo "OVH_CK=ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ" >> /path/to/api-token
 ```
 
-Now you can setup the the ACME plugin:
+现在可以设置 ACME 插件：
 
 ```text
 root@proxmox:~# pvenode acme plugin add dns example_plugin --api ovh --data /path/to/api_token
@@ -229,7 +228,7 @@ root@proxmox:~# pvenode acme plugin config example_plugin
 └────────┴──────────────────────────────────────────┘
 ```
 
-At last you can configure the domain you want to get certificates for and place the certificate order for it:
+最后，可以配置要为其获取证书的域名，并为该域名提交证书订单：
 
 ```text
 root@proxmox:~# pvenode config set -acmedomain0 example.proxmox.com,plugin=example_plugin
@@ -269,7 +268,7 @@ Task OK
 
 ### Example: Switching from the `staging` to the regular ACME directory <a href="#sysadmin_certs_acme_switch_from_staging" id="sysadmin_certs_acme_switch_from_staging"></a>
 
-Changing the ACME directory for an account is unsupported, but as Proxmox VE supports more than one account you can just create a new one with the production (trusted) ACME directory as endpoint. You can also deactivate the staging account and recreate it.
+不支持更改账户的 ACME 目录，但由于 Proxmox VE 支持多个账户，您可以直接创建一个新账户，并将生产（受信任的）ACME 目录作为端点。您也可以停用暂存账户，然后重新创建它。
 
 **Example: Changing the `default` ACME account from `staging` to directory using `pvenode`**
 
@@ -290,6 +289,12 @@ Do you agree to the above terms? [y|N]y
 ...
 Task OK
 ```
+
+## 注释
+
+### 注释 1 <a href="#note-72f8bd77-1" id="note-72f8bd77-1"></a>
+
+acme.sh [https://github.com/acmesh-official/acme.sh](https://github.com/acmesh-official/acme.sh)
 
 ---
 

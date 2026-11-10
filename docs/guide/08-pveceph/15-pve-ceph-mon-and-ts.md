@@ -1,20 +1,16 @@
 # 8.15. Ceph Monitoring and Troubleshooting <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
 
-It is important to continuously monitor the health of a Ceph deployment from the beginning, either by using the Ceph tools or by accessing the status through the Proxmox VE [API](../../api/README.md).
+从一开始就持续监控 Ceph 部署的健康状况非常重要，可以使用 Ceph 工具，也可以通过 Proxmox VE [API](../../api/README.md) 访问状态。
 
-The following Ceph commands can be used to see if the cluster is healthy (*HEALTH\_OK*), if there are warnings (*HEALTH\_WARN*), or even errors (*HEALTH\_ERR*). If the cluster is in an unhealthy state, the status commands below will also give you an overview of the current events and actions to take. To stop their execution, press CTRL-C.
+以下 Ceph 命令可用于查看集群是否健康（*HEALTH\_OK*）、是否存在警告（*HEALTH\_WARN*），甚至是否存在错误（*HEALTH\_ERR*）。如果集群处于不健康状态，下面的状态命令还会概述当前事件和应采取的操作。要停止执行，请按 CTRL-C。
 
-Continuously watch the cluster status:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+持续查看集群状态：
 
 ```text
 watch ceph --status
 ```
 
-Print the cluster status once (not being updated) and continuously append lines of status events:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+打印一次集群状态（不更新），并持续追加状态事件行：
 
 ```text
 ceph --watch
@@ -22,80 +18,78 @@ ceph --watch
 
 ## 8.15.1. Troubleshooting <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
 
-This section includes frequently used troubleshooting information. More information can be found on the official Ceph website under Troubleshooting   
-\[Ceph troubleshooting [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)\]  
-.
+本节包含常用的故障排除信息。更多信息可在 Ceph 官方网站的“故障排除”下找到 [\[1\]](#note-90fb47b2-1)。
 
 <a id="pve_ceph_ts_logs"></a>
 
 
 
-**Relevant Logs on Affected Node**
+**受影响节点上的相关日志**
 
-- [Disk Health Monitoring](../03-system-administration/07-disk-health-monitoring.md#disk_health_monitoring)
+- [Disk Health Monitoring](../03-system-administration/07-disk-health-monitoring.md)
 - *System → System Log* or via the CLI, for example of the last 2 days:
-
-  Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
   ```text
   journalctl --since "2 days ago"
   ```
-- IPMI and RAID controller logs
+- IPMI 和 RAID 控制器日志
 
-Ceph service crashes can be listed and viewed in detail by running the following commands:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+可以通过运行以下命令列出 Ceph 服务崩溃并查看详细信息：
 
 ```text
 ceph crash ls
 ceph crash info <crash_id>
 ```
 
-Crashes marked as new can be acknowledged by running:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+可以通过运行以下命令确认标记为 new 的崩溃：
 
 ```text
 ceph crash archive-all
 ```
 
-To get a more detailed view, every Ceph service has a log file under `/var/log/ceph/`. If more detail is required, the log level can be adjusted   
-\[Ceph log and debugging [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)\]  
-.
+要获得更详细的视图，每个 Ceph 服务在 `/var/log/ceph/` 下都有一个日志文件。如果需要更详细的信息，可以调整日志级别 [\[2\]](#note-90fb47b2-2)。
 
 <a id="pve_ceph_ts_causes"></a>
 
 
 
-**Common Causes of Ceph Problems**
+**Ceph 问题的常见原因**
 
-- Network problems like congestion, a faulty switch, a shut down interface or a blocking firewall. Check whether all Proxmox VE nodes are reliably reachable on the [corosync cluster network](../05-pvecm/08-pvecm-cluster-network.md#pvecm_cluster_network) and on the [Ceph public and cluster network](04-pve-ceph-install-wizard.md#pve_ceph_install_wizard).
-- Disk or connection parts which are:
+- 网络问题，例如拥塞、交换机故障、接口关闭或防火墙阻塞。检查所有 Proxmox VE 节点在 [corosync 集群网络](../05-pvecm/08-pvecm-cluster-network.md) 以及 [Ceph 公共网络和集群网络](04-pve-ceph-install-wizard.md) 上是否都能可靠访问。
+- 磁盘或连接部件存在以下情况：
 
-  - defective
-  - not firmly mounted
-  - lacking I/O performance under higher load (e.g. when using HDDs, consumer hardware or [inadvisable RAID controllers](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_raid))
-- Not fulfilling the [recommendations](03-recommendations-for-a-healthy-ceph-cluster.md#_recommendations_for_a_healthy_ceph_cluster) for a healthy Ceph cluster.
+  - 有缺陷
+  - 安装不牢固
+  - 在较高负载下 I/O 性能不足（例如使用 HDD、消费级硬件或 [不建议使用的 RAID 控制器](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_raid) 时）
+- 不符合健康 Ceph 集群的 [建议](03-recommendations-for-a-healthy-ceph-cluster.md)。
 
 <a id="pve_ceph_ts_problems"></a>
 
 
 
-**Common Ceph Problems**
+**常见 Ceph 问题**
 
 ****
 
-**OSDs `down`/crashed**
+**OSD `down`/crashed**
 
-A faulty OSD will be reported as `down` and mostly (auto) `out` 10 minutes later. Depending on the cause, it can also automatically become `up` and `in` again. To try a manual activation via web interface, go to *Any node → Ceph → OSD*, select the OSD and click on **Start**, **In** and **Reload**. When using the shell, run following command on the affected node:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+有故障的 OSD 会被报告为 `down`，并且通常会在 10 分钟后自动变为 `out`。根据原因，它也可能自动恢复为 `up` 和 `in`。要尝试通过 Web 界面手动激活，请转到 *任意节点 → Ceph → OSD*，选择该 OSD，然后依次点击 **启动**、**In** 和 **重新加载**。使用 shell 时，在受影响的节点上运行以下命令：
 
 ```text
 ceph-volume lvm activate --all
 ```
 
-To activate a failed OSD, it may be necessary to [safely reboot](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance) the respective node or, as a last resort, to [recreate or replace](14-ceph-maintenance.md#pve_ceph_osd_replace) the OSD.
+要激活发生故障的 OSD，可能需要 [安全重启](../15-ha-manager/11-ha-manager-node-maintenance.md) 相应节点，或者作为最后手段，[重新创建或更换](14-ceph-maintenance.md#pve_ceph_osd_replace) 该 OSD。
+
+## 注释
+
+### 注释 1 <a href="#note-90fb47b2-1" id="note-90fb47b2-1"></a>
+
+Ceph 故障排除 [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)
+
+### 注释 2 <a href="#note-90fb47b2-2" id="note-90fb47b2-2"></a>
+
+Ceph 日志和调试 [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)
 
 ---
 

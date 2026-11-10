@@ -1,25 +1,25 @@
 # 9.1. Supported Storage Types <a href="#_supported_storage_types" id="_supported_storage_types"></a>
 
 <table>
-<caption>Table 16. Storage Types</caption>
+<caption>表 16. 存储类型</caption>
 
 
 
 
 <thead>
 <tr>
-<th>Description</th>
-<th>Plugin type</th>
-<th>Snapshots</th>
-<th>Stable</th>
+<th>描述</th>
+<th>插件类型</th>
+<th>快照</th>
+<th>稳定</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>ZFS (local)</p></td>
+<td><p>ZFS（本地）</p></td>
 <td><p>zfspool</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>

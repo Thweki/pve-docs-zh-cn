@@ -2,7 +2,7 @@
 
 [![screenshot/gui-ceph-log.png](../../assets/screenshot-gui-ceph-log-png-45dce0bd0f84.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-log.png)
 
-Add an [RBD storage](../07-storage/14-ceph-rados-block-devices.md#ceph_rados_block_devices) in the web interface to use a Ceph pool for virtual machine and container disks. For an external cluster, follow the [authentication instructions](../07-storage/14-ceph-rados-block-devices.md#storage_rbd_auth) to configure a dedicated Ceph user and its keyring.
+在 Web 界面中添加一个 [RBD 存储](../07-storage/14-ceph-rados-block-devices.md)，以便将 Ceph 池用于虚拟机和容器磁盘。对于外部集群，请按照 [身份验证说明](../07-storage/14-ceph-rados-block-devices.md#storage_rbd_auth) 配置专用的 Ceph 用户及其密钥环。
 
 ---
 

@@ -8,7 +8,7 @@ import base64, concurrent.futures, hashlib, html, json, mimetypes, re, subproces
 from pathlib import Path
 from urllib.parse import urljoin
 import requests
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://pve.proxmox.com/pve-docs/'
@@ -73,10 +73,16 @@ def protect_element(el):
     def token(value):
         marker=f'⟦{len(fragments)}⟧';fragments.append(value);return marker
     def visit(n):
+        if isinstance(n,Comment):return ''
         if isinstance(n,NavigableString):
-            text=re.sub(r'\s+',' ',str(n))
-            # Bare links are executable destinations too; keep them byte-for-byte.
-            return LITERALS.sub(lambda m:token(html.escape(m[0],quote=False)),text)
+            pieces=re.split('(\n)',str(n)) if el.get('data-preserve-lines') else [str(n)]
+            out=[]
+            for piece in pieces:
+                if piece=='\n':out.append(token('\n'));continue
+                text=re.sub(r'\s+',' ',piece)
+                # Bare links and technical literals are not translator-editable.
+                out.append(LITERALS.sub(lambda m:token(html.escape(m[0],quote=False)),text))
+            return ''.join(out)
         if not isinstance(n,Tag):return ''
         if n.name in {'code','tt','kbd','samp','img','br','sup'} or 'monospaced' in n.get('class',[]):
             return token(str(n))
@@ -108,7 +114,7 @@ def annotate(node):
         return
     for child in list(node.children):
         if isinstance(child,Tag):annotate(child)
-        elif isinstance(child,NavigableString) and re.search(r'[A-Za-z]{2}',str(child)):
+        elif isinstance(child,NavigableString) and not isinstance(child,Comment) and re.search(r'[A-Za-z]{2}',str(child)):
             wrapper=BeautifulSoup('<span></span>','html.parser').span
             child.replace_with(wrapper);wrapper.append(child);add_unit(wrapper)
 
@@ -116,6 +122,7 @@ def prepare_html(name):
     soup=BeautifulSoup((ROOT/'source/html'/name).read_text(),'html.parser')
     body=soup.select_one('#content')
     if body is None:raise ValueError(f'No content: {name}')
+    for comment in body.find_all(string=lambda value:isinstance(value,Comment)):comment.extract()
     for el in body.select('a.headerlink,a.to-top,script,style'):el.decompose()
     for img in body.select('img'):
         img['src']=asset(img['src'],img.get('alt','image'))
@@ -141,11 +148,12 @@ def prepare_api():
         nonlocal count
         if isinstance(x,dict):
             for k,v in list(x.items()):
-                if k=='description' and isinstance(v,str) and re.search('[A-Za-z]{2}',v):
+                if k in {'description','verbose_description','title'} and isinstance(v,str) and re.search('[A-Za-z]{2}',v):
                     # Treat documentation descriptions as prose, not schema syntax.
                     el=BeautifulSoup('<p></p>','html.parser').p;el.string=v
+                    el['data-preserve-lines']='true'
                     add_unit(el)
-                    if el.get('data-i18n'):x['_description_i18n']=el['data-i18n'];count+=1
+                    if el.get('data-i18n'):x['_'+k+'_i18n']=el['data-i18n'];count+=1
                 else:walk(v)
         elif isinstance(x,list):
             for v in x:walk(v)

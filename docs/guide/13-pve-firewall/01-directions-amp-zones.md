@@ -19,7 +19,7 @@ Traffic that is leaving a zone.
 Traffic that is passing through a zone. In the host zone this can be routed traffic (when the host is acting as a gateway or performing NAT). At a VNet-level this affects all traffic that is passing by a VNet, including traffic from/to bridged network interfaces.
 
 {% hint style="warning" %}
-Creating rules for forwarded traffic is currently only possible when using the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md#pve_firewall_nft). Any forward rules will be ignored by the stock `pve-firewall` and have no effect!
+Creating rules for forwarded traffic is currently only possible when using the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md). Any forward rules will be ignored by the stock `pve-firewall` and have no effect!
 {% endhint %}
 
 ## 13.1.2. Zones <a href="#_zones" id="_zones"></a>
@@ -39,7 +39,7 @@ Traffic going from/to a VM or CT. You cannot define rules for forwarded traffic,
 Traffic passing through a SDN VNet, either from guest to guest or from host to guest and vice-versa. Since this traffic is always forwarded traffic, it is only possible to create rules with direction forward.
 
 {% hint style="warning" %}
-Creating rules on a VNet-level is currently only possible when using the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md#pve_firewall_nft). Any VNet-level rules will be ignored by the stock `pve-firewall` and have no effect!
+Creating rules on a VNet-level is currently only possible when using the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md). Any VNet-level rules will be ignored by the stock `pve-firewall` and have no effect!
 {% endhint %}
 
 ---

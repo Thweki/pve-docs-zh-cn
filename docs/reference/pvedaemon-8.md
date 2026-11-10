@@ -1,10 +1,10 @@
 # pvedaemon(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 pvedaemon \- PVE API Daemon
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvedaemon"></a>
 
@@ -44,7 +44,7 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 Debug mode \- stay in foreground
 
@@ -64,7 +64,7 @@ Get daemon status.
 
 Stop the daemon.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 This daemon exposes the whole Proxmox VE API on `127.0.0.1:85`. It runs as `root` and has permission to do all privileged operations.
 
@@ -84,7 +84,7 @@ Note that a higher number of worker processes may result in higher CPU usage. Th
 
 The same setting exists for [pveproxy](pveproxy-8.md#pveproxy_max_workers).
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

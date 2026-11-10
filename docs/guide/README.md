@@ -1,8 +1,8 @@
 # 管理手册
 
-- [1. 简介](01-introduction/README.md)
-- [2. 安装 Proxmox VE](02-installation/README.md)
-- [3. 宿主机系统管理](03-system-administration/README.md)
+- [1. Introduction](01-introduction/README.md)
+- [2. Installing Proxmox VE](02-installation/README.md)
+- [3. Host System Administration](03-system-administration/README.md)
 - [4. Graphical User Interface](04-gui/README.md)
 - [5. Cluster Manager](05-pvecm/README.md)
 - [6. Proxmox Cluster File System (pmxcfs)](06-pmxcfs/README.md)

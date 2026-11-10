@@ -18,7 +18,7 @@ A unique BGP ASN number. It’s highly recommended to use a private ASN number (
 
 **SDN Fabric**
 
-A [Fabric](10-pvesdn-config-fabrics.md#pvesdn_config_fabrics) that contains all the nodes part of the EVPN zone. Will be used as the underlay network.
+A [Fabric](10-pvesdn-config-fabrics.md) that contains all the nodes part of the EVPN zone. Will be used as the underlay network.
 
 **Peers**
 

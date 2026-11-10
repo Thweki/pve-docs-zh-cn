@@ -1,17 +1,17 @@
 # 5\. Cluster Manager <a href="#chapter_pvecm" id="chapter_pvecm"></a>
 
-The Proxmox VE cluster manager `pvecm` is a tool to create a group of physical servers. Such a group is called a **cluster**. We use the [Corosync Cluster Engine](http://www.corosync.org) for reliable group communication. There’s no explicit limit for the number of nodes in a cluster. In practice, the actual possible node count may be limited by the host and network performance. Currently (2021), there are reports of clusters (using high-end enterprise hardware) with over 50 nodes in production.
+Proxmox VE 集群管理器 `pvecm` 是一个用于创建物理服务器组的工具。这样的组称为**集群**。我们使用 [Corosync Cluster Engine](http://www.corosync.org) 实现可靠的组通信。集群中的节点数量没有明确限制。在实践中，实际可支持的节点数量可能受宿主机和网络性能限制。目前（2021 年），已有报告称，使用高端企业级硬件的集群在生产环境中运行了超过 50 个节点。
 
-`pvecm` can be used to create a new cluster, join nodes to a cluster, leave the cluster, get status information, and do various other cluster-related tasks. The **P**rox**m**o**x** **C**luster **F**ile **S**ystem (“pmxcfs”) is used to transparently distribute the cluster configuration to all cluster nodes.
+`pvecm` 可用于创建新集群、将节点加入集群、离开集群、获取状态信息以及执行各种其他集群相关任务。**P**rox**m**o**x** **C**luster **F**ile **S**ystem（“pmxcfs”）用于以透明方式将集群配置分发到所有集群节点。
 
-Grouping nodes into a cluster has the following advantages:
+将节点组成集群具有以下优点：
 
-- Centralized, web-based management
-- Multi-master clusters: each node can do all management tasks
+- 集中式、基于 Web 的管理
+- 多主集群：每个节点都可以执行所有管理任务
 - Use of `pmxcfs`, a database-driven file system, for storing configuration files, replicated in real-time on all nodes using `corosync`
-- Easy migration of virtual machines and containers between physical hosts
-- Fast deployment
-- Cluster-wide services like firewall and HA
+- 在物理宿主机之间轻松迁移虚拟机和容器
+- 快速部署
+- 集群范围的服务，如防火墙和 HA
 
 ## 本章内容
 

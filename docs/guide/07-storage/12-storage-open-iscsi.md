@@ -1,30 +1,30 @@
 # 7.12. Open-iSCSI initiator <a href="#storage_open_iscsi" id="storage_open_iscsi"></a>
 
-Storage pool type: `iscsi`
+存储池类型：`iscsi`
 
-iSCSI is a widely employed technology used to connect to storage servers. Almost all storage vendors support iSCSI. There are also open source iSCSI target solutions available, e.g. [OpenMediaVault](https://www.openmediavault.org/), which is based on Debian.
+iSCSI 是一种广泛用于连接存储服务器的技术。几乎所有存储厂商都支持 iSCSI。此外，还有开源的 iSCSI 目标端解决方案，例如基于 Debian 的 [OpenMediaVault](https://www.openmediavault.org/)。
 
-To use this backend, you need to install the [Open-iSCSI](https://www.open-iscsi.com/) (`open-iscsi`) package. This is a standard Debian package, but it is not installed by default to save resources.
+要使用此后端，需要安装 [Open-iSCSI](https://www.open-iscsi.com/)（`open-iscsi`）软件包。这是标准的 Debian 软件包，但为节省资源，默认不会安装。
 
 ```text
 # apt-get install open-iscsi
 ```
 
-Low-level iscsi management task can be done using the `iscsiadm` tool.
+可以使用 `iscsiadm` 工具执行底层 iSCSI 管理任务。
 
 ## 7.12.1. Configuration <a href="#_configuration_8" id="_configuration_8"></a>
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following iSCSI specific properties:
+后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 iSCSI 特定属性：
 
-**portal**
+**门户**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-**target**
+**目标端**
 
-iSCSI target.
+iSCSI 目标端。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 iscsi: mynas
@@ -34,19 +34,19 @@ iscsi: mynas
 ```
 
 {% hint style="success" %}
-If you want to use LVM on top of iSCSI, it make sense to set `content none`. That way it is not possible to create VMs using iSCSI LUNs directly.
+如果要在 iSCSI 之上使用 LVM，设置 `content none` 是合理的。这样就无法直接使用 iSCSI LUN 创建 VM。
 {% endhint %}
 
 ## 7.12.2. File naming conventions <a href="#_file_naming_conventions_5" id="_file_naming_conventions_5"></a>
 
-The iSCSI protocol does not define an interface to allocate or delete data. Instead, that needs to be done on the target side and is vendor specific. The target simply exports them as numbered LUNs. So Proxmox VE iSCSI volume names just encodes some information about the LUN as seen by the linux kernel.
+iSCSI 协议未定义用于分配或删除数据的接口。相反，这些操作需要在目标端完成，并且因厂商而异。目标端只是将它们导出为带编号的 LUN。因此，Proxmox VE 的 iSCSI 卷名称仅编码 Linux 内核所看到的 LUN 的一些信息。
 
 ## 7.12.3. Storage Features <a href="#_storage_features_8" id="_storage_features_8"></a>
 
-iSCSI is a block level type storage, and provides no management interface. So it is usually best to export one big LUN, and setup LVM on top of that LUN. You can then use the LVM plugin to manage the storage on that iSCSI LUN.
+iSCSI 是块级存储，不提供管理接口。因此，通常最好导出一个大型 LUN，并在该 LUN 之上配置 LVM。然后，就可以使用 LVM 插件管理该 iSCSI LUN 上的存储。
 
 <table>
-<caption>Table 11. Storage features for backend <code>iscsi</code></caption>
+<caption>表 11. 后端 <code>iscsi</code> 的存储功能</caption>
 
 
 
@@ -54,27 +54,27 @@ iSCSI is a block level type storage, and provides no management interface. So it
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images none</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
 ## 7.12.4. Examples <a href="#_examples_8" id="_examples_8"></a>
 
-You can scan a remote iSCSI portal and get a list of possible targets with:
+可以使用以下命令扫描远程 iSCSI 门户并获取可能的目标端列表：
 
 ```text
 pvesm scan iscsi <HOST[:PORT]>

@@ -1,18 +1,12 @@
 # 16.3. Backup File Compression <a href="#_backup_file_compression" id="_backup_file_compression"></a>
 
-The backup file can be compressed with one of the following algorithms: `lzo`   
-\[Lempel–Ziv–Oberhumer a lossless data compression algorithm [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)\]  
-, `gzip`   
-\[gzip \- based on the DEFLATE algorithm [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)\]  
- or `zstd`   
-\[Zstandard a lossless data compression algorithm [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)\]  
-.
+The backup file can be compressed with one of the following algorithms: `lzo`
+[\[1\]](#note-18fb615f-1), `gzip` [\[2\]](#note-18fb615f-2) or `zstd`
+[\[3\]](#note-18fb615f-3).
 
 Currently, Zstandard (zstd) is the fastest of these three algorithms. Multi-threading is another advantage of zstd over lzo and gzip. Lzo and gzip are more widely used and often installed by default.
 
-You can install pigz   
-\[pigz \- parallel implementation of gzip [https://zlib.net/pigz/](https://zlib.net/pigz/)\]  
- as a drop-in replacement for gzip to provide better performance due to multi-threading. For pigz \& zstd, the amount of threads/cores can be adjusted. See the [configuration options](10-vzdump-configuration.md#vzdump_configuration) below.
+You can install pigz [\[4\]](#note-18fb615f-4) as a drop-in replacement for gzip to provide better performance due to multi-threading. For pigz \& zstd, the amount of threads/cores can be adjusted. See the [configuration options](10-vzdump-configuration.md) below.
 
 The extension of the backup file name can usually be used to determine which compression algorithm has been used to create the backup.
 
@@ -36,6 +30,24 @@ The extension of the backup file name can usually be used to determine which com
 </table>
 
 If the backup file name doesn’t end with one of the above file extensions, then it was not compressed by vzdump.
+
+## 注释
+
+### 注释 1 <a href="#note-18fb615f-1" id="note-18fb615f-1"></a>
+
+Lempel–Ziv–Oberhumer a lossless data compression algorithm [https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer](https://en.wikipedia.org/wiki/Lempel-Ziv-Oberhumer)
+
+### 注释 2 <a href="#note-18fb615f-2" id="note-18fb615f-2"></a>
+
+gzip \- based on the DEFLATE algorithm [https://en.wikipedia.org/wiki/Gzip](https://en.wikipedia.org/wiki/Gzip)
+
+### 注释 3 <a href="#note-18fb615f-3" id="note-18fb615f-3"></a>
+
+Zstandard a lossless data compression algorithm [https://en.wikipedia.org/wiki/Zstandard](https://en.wikipedia.org/wiki/Zstandard)
+
+### 注释 4 <a href="#note-18fb615f-4" id="note-18fb615f-4"></a>
+
+pigz \- parallel implementation of gzip [https://zlib.net/pigz/](https://zlib.net/pigz/)
 
 ---
 

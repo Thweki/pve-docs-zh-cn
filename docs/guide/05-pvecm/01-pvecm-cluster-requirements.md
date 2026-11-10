@@ -1,33 +1,33 @@
 # 5.1. Requirements <a href="#pvecm_cluster_requirements" id="pvecm_cluster_requirements"></a>
 
-- All nodes must be able to connect to each other via UDP ports 5405-5412 for corosync to work.
-- Date and time must be synchronized.
-- An SSH tunnel on TCP port 22 between nodes is required.
-- If you are interested in High Availability, you need to have at least three nodes for reliable quorum. All nodes should have the same version.
+- 所有节点必须能够通过 UDP 端口 5405-5412 相互连接，corosync 才能正常工作。
+- 日期和时间必须保持同步。
+- 节点之间需要通过 TCP 端口 22 建立 SSH 隧道。
+- 如果您对高可用性感兴趣，则至少需要三个节点才能实现可靠的仲裁。所有节点应使用相同的版本。
 
   {% hint style="info" %}
-  For smaller 2-node clusters, the [QDevice](11-corosync-external-vote-support.md#_corosync_external_vote_support) can be used to provide a 3rd vote.
+  对于较小的双节点集群，可以使用 [QDevice](11-corosync-external-vote-support.md) 提供第三票。
   {% endhint %}
-- We recommend a dedicated physical NIC for the cluster traffic.
+- 我们建议为集群流量使用专用的物理 NIC。
 
   {% hint style="info" %}
-  The Proxmox VE cluster communication uses the Corosync protocol. It needs consistent low latency but not a lot of bandwidth. A dedicated 1 Gbit NIC is enough in most situations. It helps to avoid situations where other services can use up all the available bandwidth. Which in turn would increase the latency for the Corosync packets.
+  Proxmox VE 集群通信使用 Corosync 协议。它需要稳定的低延迟，但不需要很大的带宽。在大多数情况下，专用的 1 Gbit NIC 就足够了。这有助于避免其他服务耗尽所有可用带宽的情况，而这又会增加 Corosync 数据包的延迟。
   {% endhint %}
-- Additional links for cluster traffic offers redundancy in case the dedicated network is down.
+- 为集群流量添加额外链路可在专用网络发生故障时提供冗余。
 
   {% hint style="info" %}
-  Corosync supports up to 8 links.
-  {% endhint %}
-
-  {% hint style="info" %}
-  To ensure reliable Corosync redundancy, it is essential to have at least another link on a different physical network. This enables Corosync to keep the cluster communication alive should the dedicated network be down.
+  Corosync 最多支持 8 条链路。
   {% endhint %}
 
   {% hint style="info" %}
-  A single link backed by a bond can be problematic in certain failure scenarios, see [Corosync Over Bonds](08-pvecm-cluster-network.md#pvecm_corosync_over_bonds).
+  为确保可靠的 Corosync 冗余，必须在不同的物理网络上至少再配置一条链路。这样，当专用网络发生故障时，Corosync 仍能保持集群通信。
   {% endhint %}
-- The root password of a cluster node is required for adding nodes.
-- Online migration of virtual machines is only supported when nodes have CPUs from the same vendor. It might work otherwise, but this is never guaranteed.
+
+  {% hint style="info" %}
+  由 bond 支持的单一链路在某些故障场景下可能会出现问题，请参见[通过 Bond 使用 Corosync](08-pvecm-cluster-network.md#pvecm_corosync_over_bonds)。
+  {% endhint %}
+- 添加节点时需要集群节点的 root 密码。
+- 仅当节点使用同一供应商的 CPU 时，才支持虚拟机在线迁移。在其他情况下也可能可行，但无法保证。
 
 ---
 

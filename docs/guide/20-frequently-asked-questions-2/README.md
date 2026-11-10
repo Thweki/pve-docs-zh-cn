@@ -147,7 +147,7 @@ New FAQs are appended to the bottom of this section.
     ```
 
     {% hint style="info" %}
-    Always ensure you correctly setup the [package repositories](../03-system-administration/01-sysadmin-package-repositories.md#sysadmin_package_repositories) and only continue with the actual upgrade if `apt update` did not hit any error.
+    Always ensure you correctly setup the [package repositories](../03-system-administration/01-sysadmin-package-repositories.md) and only continue with the actual upgrade if `apt update` did not hit any error.
     {% endhint %}
 13. *How can I upgrade Proxmox VE to the next major release?*
 

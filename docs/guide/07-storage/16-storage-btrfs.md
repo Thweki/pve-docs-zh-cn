@@ -1,20 +1,20 @@
 # 7.16. BTRFS Backend <a href="#storage_btrfs" id="storage_btrfs"></a>
 
-Storage pool type: `btrfs`
+存储池类型：`btrfs`
 
-On the surface, this storage type is very similar to the directory storage type, so see the directory backend section for a general overview.
+从表面上看，这种存储类型与目录存储类型非常相似，因此总体概述请参阅目录后端一节。
 
-The main difference is that with this storage type `raw` formatted disks will be placed in a subvolume, in order to allow taking snapshots and supporting offline storage migration with snapshots being preserved.
+主要区别在于，使用这种存储类型时，`raw` 格式的磁盘将放置在子卷中，以便创建快照，并支持保留快照的离线存储迁移。
 
 {% hint style="info" %}
-BTRFS will honor the `O_DIRECT` flag when opening files, meaning VMs should not use cache mode `none`, otherwise there will be checksum errors.
+BTRFS 在打开文件时会遵循 `O_DIRECT` 标志，这意味着虚拟机不应使用缓存模式 `none`，否则会出现校验和错误。
 {% endhint %}
 
 ## 7.16.1. Configuration <a href="#_configuration_10" id="_configuration_10"></a>
 
-This backend is configured similarly to the directory storage. Note that when adding a directory as a BTRFS storage, which is not itself also the mount point, it is highly recommended to specify the actual mount point via the `is_mountpoint` option.
+此后端的配置方式与目录存储类似。请注意，将本身并非挂载点的目录添加为 BTRFS 存储时，强烈建议通过 `is_mountpoint` 选项指定实际挂载点。
 
-For example, if a BTRFS file system is mounted at `/mnt/data2` and its `pve-storage/` subdirectory (which may be a snapshot, which is recommended) should be added as a storage pool called `data2`, you can use the following entry:
+例如，如果 BTRFS 文件系统挂载在 `/mnt/data2`，并且要将其 `pve-storage/` 子目录（可以是快照，建议如此）添加为名为 `data2` 的存储池，可以使用以下条目：
 
 ```text
 btrfs: data2
@@ -25,7 +25,7 @@ btrfs: data2
 
 ## 7.16.2. Snapshots <a href="#_snapshots" id="_snapshots"></a>
 
-When taking a snapshot of a subvolume or `raw` file, the snapshot will be created as a read-only subvolume with the same path followed by an `@` and the snapshot’s name.
+为子卷或 `raw` 文件创建快照时，快照将创建为只读子卷，其路径为原路径后接 `@` 和快照名称。
 
 ---
 

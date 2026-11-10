@@ -41,7 +41,7 @@ Delete IP Mappings in a VNet
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `ip` | string | 是 | — | The IP address to delete |
-| `mac` | string | 否 | — | Unicast MAC address. |
+| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
 | `vnet` | string | 是 | — | The SDN vnet object identifier. |
 | `zone` | string | 是 | — | The SDN zone object identifier. |
 
@@ -132,7 +132,7 @@ Create IP Mapping in a VNet
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `ip` | string | 是 | — | The IP address to associate with the given MAC address |
-| `mac` | string | 否 | — | Unicast MAC address. |
+| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
 | `vnet` | string | 是 | — | The SDN vnet object identifier. |
 | `zone` | string | 是 | — | The SDN zone object identifier. |
 
@@ -223,7 +223,7 @@ Update IP Mapping in a VNet
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `ip` | string | 是 | — | The IP address to associate with the given MAC address |
-| `mac` | string | 否 | — | Unicast MAC address. |
+| `mac` | string | 否 | — | A common MAC address with the I/G (Individual/Group) bit not set. |
 | `vmid` | integer | 否 | — | The (unique) ID of the VM. |
 | `vnet` | string | 是 | — | The SDN vnet object identifier. |
 | `zone` | string | 是 | — | The SDN zone object identifier. |

@@ -55,7 +55,7 @@ Configuration options:
 
 ### On the Fabric <a href="#pvesdn_openfabric_fabric" id="pvesdn_openfabric_fabric"></a>
 
-**Name**
+**名称**
 
 This is the name of the OpenFabric fabric and can be at most 8 characters long.
 
@@ -193,7 +193,7 @@ Configuration options:
 
 ### On the Fabric <a href="#pvesdn_wireguard_fabric" id="pvesdn_wireguard_fabric"></a>
 
-**Name**
+**名称**
 
 This is the name of the WireGuard fabric and can be at most 8 characters long.
 
@@ -217,7 +217,7 @@ A comma-separated list of CIDRs (for example `198.51.100.0/24`, or `0.0.0.0/0` t
 
 **External**
 
-**Name**
+**名称**
 
 The name of the external node.
 
@@ -235,7 +235,7 @@ A comma-separated list of CIDRs (for example `198.51.100.0/24`, or `0.0.0.0/0` t
 
 ### On The Interface <a href="#pvesdn_wireguard_interface" id="pvesdn_wireguard_interface"></a>
 
-**Name**
+**名称**
 
 The name of the network interface on the Linux host. One to eight characters that must start with an alphanumeric character; the remaining characters may be alphanumeric or hyphens.
 

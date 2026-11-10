@@ -1,4 +1,4 @@
-# 1.1. 集中管理 <a href="#intro_central_management" id="intro_central_management"></a>
+# 1.1. Central Management <a href="#intro_central_management" id="intro_central_management"></a>
 
 虽然许多人从单个节点开始，但 Proxmox VE 可以横向扩展到由大量节点组成的集群。集群栈已完全集成，并随默认安装一起提供。
 

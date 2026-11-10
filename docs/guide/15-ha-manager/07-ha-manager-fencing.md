@@ -65,7 +65,7 @@ HA 堆栈已就绪，但没有 CRM 正在作为主节点主动运行，例如尚
 
 **disarmed**
 
-All watchdogs have been released cluster-wide. No automatic fencing, failover, or recovery takes place. See [Disarming HA for Cluster Maintenance](12-ha-manager-disarm.md#ha_manager_disarm).
+All watchdogs have been released cluster-wide. No automatic fencing, failover, or recovery takes place. See [Disarming HA for Cluster Maintenance](12-ha-manager-disarm.md).
 
 {% hint style="info" %}
 `watchdog-mux` 服务在其整个生命周期内始终保持底层 `/dev/watchdog` 设备处于打开状态，即使没有 HA 客户端连接也是如此。这可防止其他进程占用该设备，并确保 HA 堆栈始终能够重新获取它。并非所有硬件看门狗驱动程序都支持 magic close，因此关闭设备可能会触发意外重置。

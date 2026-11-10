@@ -1,12 +1,12 @@
 # 7.2. Storage Configuration <a href="#_storage_configuration" id="_storage_configuration"></a>
 
-All Proxmox VE related storage configuration is stored within a single text file at `/etc/pve/storage.cfg`. As this file is within `/etc/pve/`, it gets automatically distributed to all cluster nodes. So all nodes share the same storage configuration.
+所有与 Proxmox VE 相关的存储配置都存储在 `/etc/pve/storage.cfg` 处的单个文本文件中。由于该文件位于 `/etc/pve/` 中，因此会自动分发到所有集群节点。所以，所有节点共享相同的存储配置。
 
-Sharing storage configuration makes perfect sense for shared storage, because the same “shared” storage is accessible from all nodes. But it is also useful for local storage types. In this case such local storage is available on all nodes, but it is physically different and can have totally different content.
+共享存储配置对于共享存储非常有意义，因为所有节点都可以访问同一个“共享”存储。但它对本地存储类型也很有用。在这种情况下，此类本地存储在所有节点上都可用，但它们在物理上并不相同，并且可以包含完全不同的内容。
 
 ## 7.2.1. Storage Pools <a href="#_storage_pools" id="_storage_pools"></a>
 
-Each storage pool has a `<type>`, and is uniquely identified by its `<STORAGE_ID>`. A pool configuration looks like this:
+每个存储池都有一个 `<type>`，并通过其 `<STORAGE_ID>` 进行唯一标识。池配置如下所示：
 
 ```text
 <type>: <STORAGE_ID>
@@ -16,11 +16,11 @@ Each storage pool has a `<type>`, and is uniquely identified by its `<STORAGE_ID
         ...
 ```
 
-The `<type>: <STORAGE_ID>` line starts the pool definition, which is then followed by a list of properties. Most properties require a value. Some have reasonable defaults, in which case you can omit the value.
+`<type>: <STORAGE_ID>` 行开始池定义，后面是属性列表。大多数属性都需要一个值。某些属性有合理的默认值，在这种情况下可以省略该值。
 
-To be more specific, take a look at the default storage configuration after installation. It contains one special local storage pool named `local`, which refers to the directory `/var/lib/vz` and is always available. The Proxmox VE installer creates additional storage entries depending on the storage type chosen at installation time.
+具体来说，请查看安装后的默认存储配置。其中包含一个名为 `local` 的特殊本地存储池，该池指向目录 `/var/lib/vz`，并且始终可用。Proxmox VE 安装程序会根据安装时选择的存储类型创建其他存储条目。
 
-**Default storage configuration (`/etc/pve/storage.cfg`)**
+**默认存储配置（`/etc/pve/storage.cfg`）**
 
 ```text
 dir: local
@@ -41,71 +41,71 @@ zfspool: local-zfs
 ```
 
 {% hint style="danger" %}
-It is problematic to have multiple storage configurations pointing to the exact same underlying storage. Such an *aliased* storage configuration can lead to two different volume IDs (*volid*) pointing to the exact same disk image. Proxmox VE expects that the images' volume IDs point to, are unique. Choosing different content types for *aliased* storage configurations can be fine, but is not recommended.
+让多个存储配置指向完全相同的底层存储会产生问题。此类*别名*存储配置可能导致两个不同的卷 ID（*volid*）指向完全相同的磁盘镜像。Proxmox VE 要求镜像的卷 ID 所指向的位置是唯一的。为*别名*存储配置选择不同的内容类型或许可行，但不建议这样做。
 {% endhint %}
 
 ## 7.2.2. Common Storage Properties <a href="#_common_storage_properties" id="_common_storage_properties"></a>
 
-A few storage properties are common among different storage types.
+一些存储属性为不同存储类型所共有。
 
 **nodes**
 
-List of cluster node names where this storage is usable/accessible. One can use this property to restrict storage access to a limited set of nodes.
+可使用或访问此存储的集群节点名称列表。可以使用此属性将存储访问权限限制在一组特定的节点内。
 
 **content**
 
-A storage can support several content types, for example virtual disk images, cdrom iso images, container templates or container root directories. Not all storage types support all content types. One can set this property to select what this storage is used for.
+一个存储可以支持多种内容类型，例如虚拟磁盘镜像、CD-ROM ISO 镜像、容器模板或容器根目录。并非所有存储类型都支持所有内容类型。可以设置此属性来选择此存储的用途。
 
 **images**
 
-QEMU/KVM VM images.
+QEMU/KVM VM 镜像。
 
 **rootdir**
 
-Allow to store container data.
+允许存储容器数据。
 
 **vztmpl**
 
-Container templates.
+容器模板。
 
 **backup**
 
-Backup files (`vzdump`).
+备份文件（`vzdump`）。
 
 **iso**
 
-ISO images
+ISO 镜像
 
 **snippets**
 
-Snippet files, for example guest hook scripts
+片段文件，例如客户机钩子脚本
 
 **import**
 
-OVAs and VM disk images that can be imported from this storage
+可从此存储导入的 OVA 和 VM 磁盘镜像
 
 **shared**
 
-Indicate that this is a single storage with the same contents on all nodes (or all listed in the *nodes* option). It will not make the contents of a local storage automatically accessible to other nodes, it just marks an already shared storage as such!
+表明这是一个在所有节点（或 *nodes* 选项中列出的所有节点）上具有相同内容的单一存储。它不会使本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享存储！
 
 **disable**
 
-You can use this flag to disable the storage completely.
+可以使用此标志完全禁用该存储。
 
 **prune-backups**
 
-Retention options for backups. For details, see [Backup Retention](../16-vzdump/06-vzdump-retention.md#vzdump_retention).
+备份的保留选项。有关详细信息，请参阅[备份保留](../16-vzdump/06-vzdump-retention.md)。
 
 **format**
 
-Default image format (`raw|qcow2|vmdk`)
+默认镜像格式（`raw|qcow2|vmdk`）
 
 **preallocation**
 
 Preallocation mode (`off|metadata|falloc|full`) for `raw` and `qcow2` images on file-based storages. The default is `metadata`, which is treated like `off` for `raw` images. When using network storages in combination with large `qcow2` images, using `off` can help to avoid timeouts.
 
 {% hint style="warning" %}
-It is not advisable to use the same storage pool on different Proxmox VE clusters. Some storage operation need exclusive access to the storage, so proper locking is required. While this is implemented within a cluster, it does not work between different clusters.
+不建议在不同的 Proxmox VE 集群上使用同一个存储池。某些存储操作需要独占访问存储，因此需要正确的锁定机制。虽然集群内部实现了这种锁定，但它在不同集群之间不起作用。
 {% endhint %}
 
 ---

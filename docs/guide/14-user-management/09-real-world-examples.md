@@ -6,23 +6,17 @@ It is possible that an administrator would want to create a group of users with 
 
 To do this, first define the group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add admin -comment "System Administrators"
 ```
 
 Then assign the role:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify / -group admin -role Administrator
 ```
 
 Finally, you can add users to the new *admin* group:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user modify testuser@pve -group admin
@@ -34,15 +28,11 @@ You can give read only access to users by assigning the `PVEAuditor` role to use
 
 Example 1: Allow user `joe@pve` to see everything
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify / -user joe@pve -role PVEAuditor
 ```
 
 Example 2: Allow user `joe@pve` to see all virtual machines
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /vms -user joe@pve -role PVEAuditor
@@ -52,15 +42,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 If you want to delegate user management to user `joe@pve`, you can do that with:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify /access -user joe@pve -role PVEUserAdmin
 ```
 
 User `joe@pve` can now add and remove users, and change other user attributes, such as passwords. This is a very powerful role, and you most likely want to limit it to selected realms and groups. The following example allows `joe@pve` to modify users within the realm `pve`, if they are members of group `customers`:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /access/realm/pve -user joe@pve -role PVEUserAdmin
@@ -77,15 +63,11 @@ Permissions on API tokens are always a subset of those of their corresponding us
 
 Give the user `joe@pve` the role PVEVMAdmin on all VMs:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify /vms -user joe@pve -role PVEVMAdmin
 ```
 
 Add a new API token with separate privileges, which is only allowed to view VM information (for example, for monitoring purposes):
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user token add joe@pve monitoring -privsep 1
@@ -93,8 +75,6 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 ```
 
 Verify the permissions of the user and token:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user permissions joe@pve
@@ -105,15 +85,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 An enterprise is usually structured into several smaller departments, and it is common that you want to assign resources and delegate management tasks to each of these. Let’s assume that you want to set up a pool for a software development department. First, create a group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add developers -comment "Our software developers"
 ```
 
 Now we create a new user which is a member of that group:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user add developer1@pve -group developers -password
@@ -125,15 +101,11 @@ The "-password" parameter will prompt you for a password
 
 Then we create a resource pool for our development department to use:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum pool add dev-pool --comment "IT development pool"
 ```
 
 Finally, we can assign permissions to that pool:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /pool/dev-pool/ -group developers -role PVEAdmin

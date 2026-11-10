@@ -1,10 +1,10 @@
 # pvesm(1)
 
-## 名称 <a href="#chapter_storage" id="chapter_storage"></a>
+## NAME <a href="#chapter_storage" id="chapter_storage"></a>
 
 pvesm \- Proxmox VE Storage Manager
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesm"></a>
 
@@ -130,7 +130,7 @@ Always access rbd through krbd kernel module.
 
 **`--lio_tpg` `<string>`**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **`--master-pubkey` `a file containing a PEM-formatted master public key`**
 
@@ -166,7 +166,7 @@ List of nodes for which the storage configuration applies.
 
 **`--nowritecache` `<boolean>`**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **`--options` `<string>`**
 
@@ -190,7 +190,7 @@ Use this port to connect to the storage instead of the default one (for example,
 
 **`--portal` `<string>`**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
 **`--preallocation` `<falloc | full | metadata | off>` (*default \=* `metadata`)**
 
@@ -250,7 +250,7 @@ Only list logical volumes tagged with *pve-vm-ID*.
 
 **`--target` `<string>`**
 
-iSCSI target.
+iSCSI 目标端。
 
 **`--thinpool` `<string>`**
 
@@ -774,7 +774,7 @@ Always access rbd through krbd kernel module.
 
 **`--lio_tpg` `<string>`**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **`--master-pubkey` `a file containing a PEM-formatted master public key`**
 
@@ -810,7 +810,7 @@ List of nodes for which the storage configuration applies.
 
 **`--nowritecache` `<boolean>`**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **`--options` `<string>`**
 
@@ -924,25 +924,25 @@ If target is different to *node*, we only lists shared storages which content is
 
 An alias for *pvesm scan zfs*.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
-The Proxmox VE storage model is very flexible. Virtual machine images can either be stored on one or several local storages, or on shared storage like NFS or iSCSI (NAS, SAN). There are no limits, and you may configure as many storage pools as you like. You can use all storage technologies available for Debian Linux.
+Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多个本地存储上，也可以存储在 NFS 或 iSCSI（NAS、SAN）等共享存储上。没有任何限制，您可以根据需要配置任意数量的存储池。您可以使用 Debian Linux 可用的所有存储技术。
 
-One major benefit of storing VMs on shared storage is the ability to live-migrate running machines without any downtime, as all nodes in the cluster have direct access to VM disk images. There is no need to copy VM image data, so live migration is very fast in that case.
+将 VM 存储在共享存储上的一个主要好处是，可以在线迁移正在运行的机器而无需任何停机，因为集群中的所有节点都可以直接访问 VM 磁盘镜像。无需复制 VM 镜像数据，因此在这种情况下在线迁移速度非常快。
 
-The storage library (package `libpve-storage-perl`) uses a flexible plugin system to provide a common interface to all storage types. This can be easily adopted to include further storage types in the future.
+存储库（软件包 `libpve-storage-perl`）使用灵活的插件系统，为所有存储类型提供通用接口。可以轻松地对其进行扩展，以便将来支持更多存储类型。
 
 ## Storage Types <a href="#_storage_types" id="_storage_types"></a>
 
-There are basically two different classes of storage types:
+基本上有两类不同的存储类型：
 
-**File level storage**
+**文件级存储**
 
-File level based storage technologies allow access to a fully featured (POSIX) file system. They are in general more flexible than any Block level storage (see below), and allow you to store content of any type. ZFS is probably the most advanced system, and it has full support for snapshots and clones.
+文件级存储技术允许访问功能完整的（POSIX）文件系统。它们通常比任何块级存储（见下文）都更灵活，并允许您存储任何类型的内容。ZFS 可能是最先进的系统，它完全支持快照和克隆。
 
-**Block level storage**
+**块级存储**
 
-Allows to store large *raw* images. It is usually not possible to store other files (ISO, backups, ..) on such storage types. Most modern block level storage implementations support snapshots and clones. Ceph RADOS is a distributed systems, replicating storage data to different nodes that can be accessed as RBD (RADOS Block Device).
+允许存储大型 *raw* 镜像。通常无法在这类存储类型上存储其他文件（ISO、备份等）。大多数现代块级存储实现都支持快照和克隆。Ceph RADOS 是一个分布式系统，可将存储数据复制到不同的节点，并可作为 RBD（RADOS 块设备）进行访问。
 
 <table>
 <caption>Table 1. Available storage types</caption>
@@ -954,163 +954,163 @@ Allows to store large *raw* images. It is usually not possible to store other fi
 
 <thead>
 <tr>
-<th>Description</th>
-<th>Plugin type</th>
-<th>Level</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Stable</th>
+<th>描述</th>
+<th>插件类型</th>
+<th>级别</th>
+<th>共享</th>
+<th>快照</th>
+<th>稳定</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>ZFS (local)</p></td>
+<td><p>ZFS（本地）</p></td>
 <td><p>zfspool</p></td>
-<td><p>both<sup>1</sup></p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>两者<sup>1</sup></p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
-<td><p>Directory</p></td>
+<td><p>目录</p></td>
 <td><p>dir</p></td>
-<td><p>file</p></td>
-<td><p>no</p></td>
-<td><p>yes<sup>2</sup></p></td>
-<td><p>yes</p></td>
+<td><p>文件</p></td>
+<td><p>否</p></td>
+<td><p>是<sup>2</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>BTRFS</p></td>
 <td><p>btrfs</p></td>
-<td><p>file</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>TP<sup>5</sup></p></td>
+<td><p>文件</p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>技术预览<sup>5</sup></p></td>
 </tr>
 <tr>
 <td><p>NFS</p></td>
 <td><p>nfs</p></td>
-<td><p>file</p></td>
-<td><p>yes</p></td>
-<td><p>yes<sup>2</sup></p></td>
-<td><p>yes</p></td>
+<td><p>文件</p></td>
+<td><p>是</p></td>
+<td><p>是<sup>2</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>CIFS</p></td>
 <td><p>cifs</p></td>
-<td><p>file</p></td>
-<td><p>yes</p></td>
-<td><p>yes<sup>2</sup></p></td>
-<td><p>yes</p></td>
+<td><p>文件</p></td>
+<td><p>是</p></td>
+<td><p>是<sup>2</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>Proxmox Backup</p></td>
 <td><p>pbs</p></td>
-<td><p>both</p></td>
-<td><p>yes</p></td>
+<td><p>两者</p></td>
+<td><p>是</p></td>
 <td><p>n/a</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>CephFS</p></td>
 <td><p>cephfs</p></td>
-<td><p>file</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>文件</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>LVM</p></td>
 <td><p>lvm</p></td>
-<td><p>block</p></td>
-<td><p>no<sup>3</sup></p></td>
-<td><p>yes<sup>4</sup></p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>否<sup>3</sup></p></td>
+<td><p>是<sup>4</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>LVM-thin</p></td>
 <td><p>lvmthin</p></td>
-<td><p>block</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>iSCSI/kernel</p></td>
 <td><p>iscsi</p></td>
-<td><p>block</p></td>
-<td><p>yes<sup>3</sup></p></td>
-<td><p>yes<sup>4</sup></p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>是<sup>3</sup></p></td>
+<td><p>是<sup>4</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>iSCSI/libiscsi</p></td>
 <td><p>iscsidirect</p></td>
-<td><p>block</p></td>
-<td><p>yes<sup>3</sup></p></td>
-<td><p>yes<sup>4</sup></p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>是<sup>3</sup></p></td>
+<td><p>是<sup>4</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>FC/SAS</p></td>
 <td><p>native<sup>6</sup></p></td>
-<td><p>block</p></td>
-<td><p>yes<sup>3</sup></p></td>
-<td><p>yes<sup>4</sup></p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>是<sup>3</sup></p></td>
+<td><p>是<sup>4</sup></p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
 <td><p>Ceph/RBD</p></td>
 <td><p>rbd</p></td>
-<td><p>block</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 <tr>
-<td><p>ZFS over iSCSI</p></td>
+<td><p>基于 iSCSI 的 ZFS</p></td>
 <td><p>zfs</p></td>
-<td><p>block</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>块</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
 
-1: Disk images for VMs are stored in ZFS volume (zvol) datasets, which provide block device functionality.
+1：VM 的磁盘镜像存储在 ZFS 卷（zvol）数据集中，这些数据集提供块设备功能。
 
-2: On file based storages, snapshots are possible with the *qcow2* format, either using the internal snapshot function, or snapshots as volume chains4. Creating and deleting internal *qcow2* snapshots will block a running VM and is not an efficient operation. The performance is particularly bad with network storages like NFS. On some setups and for large disks (multiple hundred GiB or TiB sized), these operations may take several minutes, or in extreme cases, even hours. If your setup is affected, create and remove snapshots while the VM is shut down, expecting a long task duration.
+2：在基于文件的存储上，可以使用 *qcow2* 格式创建快照，既可以使用内部快照功能，也可以使用卷链快照4。创建和删除内部 *qcow2* 快照会阻塞正在运行的 VM，而且效率不高。在 NFS 等网络存储上，性能尤其差。在某些配置中，对于大型磁盘（大小为数百 GiB 或 TiB 级），这些操作可能需要几分钟，在极端情况下甚至需要数小时。如果您的配置受到影响，请在 VM 关机时创建和删除快照，并做好任务耗时较长的准备。
 
-3: With iSCSI, FibreChannel (FC), or SAS block storage as shared storage in a cluster, LVM is used to split the LUN into virtual disks. The [Multipath Guide](https://pve.proxmox.com/wiki/Multipath) explains how to configure it in a cluster, including multipathing which is usually a requirement in these scenarios.
+3：在集群中使用 iSCSI、FibreChannel（FC）或 SAS 块存储作为共享存储时，LVM 用于将 LUN 划分为虚拟磁盘。[多路径指南](https://pve.proxmox.com/wiki/Multipath)介绍了如何在集群中进行配置，包括多路径配置，在这些场景中通常需要多路径。
 
 4: Since Proxmox VE 9, snapshots as a volume chain have been available for VMs. These snapshots use separate volumes for the snapshot data and layer them. For more details, see the description for `snapshot-as-volume-chain` in the [LVM configuration](#pvesm_lvm_config) section.
 
-5 Technology preview with best-effort support.
+5 技术预览，提供尽力而为的支持。
 
-6 Fibre Channel (FC) and SAS block storage is handled directly by the host without a dedicated storage plugin.
+6 Fibre Channel（FC）和 SAS 块存储由宿主机直接处理，无需专用存储插件。
 
 ### Thin Provisioning <a href="#_thin_provisioning" id="_thin_provisioning"></a>
 
-A number of storages, and the QEMU image format `qcow2`, support *thin provisioning*. With thin provisioning activated, only the blocks that the guest system actually use will be written to the storage.
+许多存储以及 QEMU 镜像格式 `qcow2` 都支持 *精简置备*。启用精简置备后，只有客户机系统实际使用的块才会写入存储。
 
-Say for instance you create a VM with a 32GB hard disk, and after installing the guest system OS, the root file system of the VM contains 3 GB of data. In that case only 3GB are written to the storage, even if the guest VM sees a 32GB hard drive. In this way thin provisioning allows you to create disk images which are larger than the currently available storage blocks. You can create large disk images for your VMs, and when the need arises, add more disks to your storage without resizing the VMs' file systems.
+例如，假设您创建了一台配备 32GB 硬盘的 VM，安装客户机操作系统后，该 VM 的根文件系统中包含 3 GB 数据。在这种情况下，即使客户机 VM 看到的是 32GB 硬盘，也只有 3GB 会写入存储。通过这种方式，精简置备允许您创建大于当前可用存储块的磁盘镜像。您可以为 VM 创建大型磁盘镜像，并在需要时向存储添加更多磁盘，而无需调整 VM 文件系统的大小。
 
-All storage types which have the “Snapshots” feature also support thin provisioning.
+所有具有“快照”功能的存储类型也都支持精简置备。
 
 {% hint style="danger" %}
-If a storage runs full, all guests using volumes on that storage receive IO errors. This can cause file system inconsistencies and may corrupt your data. So it is advisable to avoid over-provisioning of your storage resources, or carefully observe free space to avoid such conditions.
+如果存储空间用尽，使用该存储上卷的所有客户机都会收到 IO 错误。这可能导致文件系统不一致，并可能损坏您的数据。因此，建议避免对存储资源进行过度置备，或者仔细监测可用空间，以避免出现此类情况。
 {% endhint %}
 
 ## Storage Configuration <a href="#_storage_configuration" id="_storage_configuration"></a>
 
-All Proxmox VE related storage configuration is stored within a single text file at `/etc/pve/storage.cfg`. As this file is within `/etc/pve/`, it gets automatically distributed to all cluster nodes. So all nodes share the same storage configuration.
+所有与 Proxmox VE 相关的存储配置都存储在 `/etc/pve/storage.cfg` 处的单个文本文件中。由于该文件位于 `/etc/pve/` 中，因此会自动分发到所有集群节点。所以，所有节点共享相同的存储配置。
 
-Sharing storage configuration makes perfect sense for shared storage, because the same “shared” storage is accessible from all nodes. But it is also useful for local storage types. In this case such local storage is available on all nodes, but it is physically different and can have totally different content.
+共享存储配置对于共享存储非常有意义，因为所有节点都可以访问同一个“共享”存储。但它对本地存储类型也很有用。在这种情况下，此类本地存储在所有节点上都可用，但它们在物理上并不相同，并且可以包含完全不同的内容。
 
 ### Storage Pools <a href="#_storage_pools" id="_storage_pools"></a>
 
-Each storage pool has a `<type>`, and is uniquely identified by its `<STORAGE_ID>`. A pool configuration looks like this:
+每个存储池都有一个 `<type>`，并通过其 `<STORAGE_ID>` 进行唯一标识。池配置如下所示：
 
 ```text
 <type>: <STORAGE_ID>
@@ -1120,11 +1120,11 @@ Each storage pool has a `<type>`, and is uniquely identified by its `<STORAGE_ID
         ...
 ```
 
-The `<type>: <STORAGE_ID>` line starts the pool definition, which is then followed by a list of properties. Most properties require a value. Some have reasonable defaults, in which case you can omit the value.
+`<type>: <STORAGE_ID>` 行开始池定义，后面是属性列表。大多数属性都需要一个值。某些属性有合理的默认值，在这种情况下可以省略该值。
 
-To be more specific, take a look at the default storage configuration after installation. It contains one special local storage pool named `local`, which refers to the directory `/var/lib/vz` and is always available. The Proxmox VE installer creates additional storage entries depending on the storage type chosen at installation time.
+具体来说，请查看安装后的默认存储配置。其中包含一个名为 `local` 的特殊本地存储池，该池指向目录 `/var/lib/vz`，并且始终可用。Proxmox VE 安装程序会根据安装时选择的存储类型创建其他存储条目。
 
-**Default storage configuration (`/etc/pve/storage.cfg`)**
+**默认存储配置（`/etc/pve/storage.cfg`）**
 
 ```text
 dir: local
@@ -1145,56 +1145,56 @@ zfspool: local-zfs
 ```
 
 {% hint style="danger" %}
-It is problematic to have multiple storage configurations pointing to the exact same underlying storage. Such an *aliased* storage configuration can lead to two different volume IDs (*volid*) pointing to the exact same disk image. Proxmox VE expects that the images' volume IDs point to, are unique. Choosing different content types for *aliased* storage configurations can be fine, but is not recommended.
+让多个存储配置指向完全相同的底层存储会产生问题。此类*别名*存储配置可能导致两个不同的卷 ID（*volid*）指向完全相同的磁盘镜像。Proxmox VE 要求镜像的卷 ID 所指向的位置是唯一的。为*别名*存储配置选择不同的内容类型或许可行，但不建议这样做。
 {% endhint %}
 
 ### Common Storage Properties <a href="#_common_storage_properties" id="_common_storage_properties"></a>
 
-A few storage properties are common among different storage types.
+一些存储属性为不同存储类型所共有。
 
 **nodes**
 
-List of cluster node names where this storage is usable/accessible. One can use this property to restrict storage access to a limited set of nodes.
+可使用或访问此存储的集群节点名称列表。可以使用此属性将存储访问权限限制在一组特定的节点内。
 
 **content**
 
-A storage can support several content types, for example virtual disk images, cdrom iso images, container templates or container root directories. Not all storage types support all content types. One can set this property to select what this storage is used for.
+一个存储可以支持多种内容类型，例如虚拟磁盘镜像、CD-ROM ISO 镜像、容器模板或容器根目录。并非所有存储类型都支持所有内容类型。可以设置此属性来选择此存储的用途。
 
 **images**
 
-QEMU/KVM VM images.
+QEMU/KVM VM 镜像。
 
 **rootdir**
 
-Allow to store container data.
+允许存储容器数据。
 
 **vztmpl**
 
-Container templates.
+容器模板。
 
 **backup**
 
-Backup files (`vzdump`).
+备份文件（`vzdump`）。
 
 **iso**
 
-ISO images
+ISO 镜像
 
 **snippets**
 
-Snippet files, for example guest hook scripts
+片段文件，例如客户机钩子脚本
 
 **import**
 
-OVAs and VM disk images that can be imported from this storage
+可从此存储导入的 OVA 和 VM 磁盘镜像
 
 **shared**
 
-Indicate that this is a single storage with the same contents on all nodes (or all listed in the *nodes* option). It will not make the contents of a local storage automatically accessible to other nodes, it just marks an already shared storage as such!
+表明这是一个在所有节点（或 *nodes* 选项中列出的所有节点）上具有相同内容的单一存储。它不会使本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享存储！
 
 **disable**
 
-You can use this flag to disable the storage completely.
+可以使用此标志完全禁用该存储。
 
 **prune-backups**
 
@@ -1202,19 +1202,19 @@ Retention options for backups. For details, see [Backup Retention](vzdump-1.md#v
 
 **format**
 
-Default image format (`raw|qcow2|vmdk`)
+默认镜像格式（`raw|qcow2|vmdk`）
 
 **preallocation**
 
 Preallocation mode (`off|metadata|falloc|full`) for `raw` and `qcow2` images on file-based storages. The default is `metadata`, which is treated like `off` for `raw` images. When using network storages in combination with large `qcow2` images, using `off` can help to avoid timeouts.
 
 {% hint style="warning" %}
-It is not advisable to use the same storage pool on different Proxmox VE clusters. Some storage operation need exclusive access to the storage, so proper locking is required. While this is implemented within a cluster, it does not work between different clusters.
+不建议在不同的 Proxmox VE 集群上使用同一个存储池。某些存储操作需要独占访问存储，因此需要正确的锁定机制。虽然集群内部实现了这种锁定，但它在不同集群之间不起作用。
 {% endhint %}
 
 ## Volumes <a href="#_volumes" id="_volumes"></a>
 
-We use a special notation to address storage data. When you allocate data from a storage pool, it returns such a volume identifier. A volume is identified by the `<STORAGE_ID>`, followed by a storage type dependent volume name, separated by colon. A valid `<VOLUME_ID>` looks like:
+我们使用一种特殊表示法来定位存储数据。当你从存储池分配数据时，它会返回这样一个卷标识符。卷由 `<STORAGE_ID>` 和后随的卷名标识，卷名取决于存储类型，二者以冒号分隔。有效的 `<VOLUME_ID>` 如下所示：
 
 ```text
 local:230/example-image.raw
@@ -1232,7 +1232,7 @@ local:vztmpl/debian-5.0-joomla_1.5.9-1_i386.tar.gz
 iscsi-storage:0.0.2.scsi-14f504e46494c4500494b5042546d2d646744372d31616d61
 ```
 
-To get the file system path for a `<VOLUME_ID>` use:
+要获取 `<VOLUME_ID>` 的文件系统路径，请使用：
 
 ```text
 pvesm path <VOLUME_ID>
@@ -1240,19 +1240,19 @@ pvesm path <VOLUME_ID>
 
 ### Volume Ownership <a href="#_volume_ownership" id="_volume_ownership"></a>
 
-There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230\. Most storage backends encodes this ownership information into the volume name.
+对于 `image` 类型的卷，存在所有权关系。每个此类卷都归某个 VM 或容器所有。例如，卷 `local:230/example-image.raw` 归 VM 230 所有。大多数存储后端会将此所有权信息编码到卷名中。
 
-When you remove a VM or Container, the system also removes all associated volumes which are owned by that VM or Container.
+删除 VM 或容器时，系统还会删除归该 VM 或容器所有的所有关联卷。
 
 ## Using the Command-line Interface <a href="#_using_the_command_line_interface" id="_using_the_command_line_interface"></a>
 
-It is recommended to familiarize yourself with the concept behind storage pools and volume identifiers, but in real life, you are not forced to do any of those low level operations on the command line. Normally, allocation and removal of volumes is done by the VM and Container management tools.
+建议你熟悉存储池和卷标识符背后的概念，但在实际使用中，并不强制你在命令行上执行任何此类底层操作。通常，卷的分配和删除由 VM 和容器管理工具完成。
 
-Nevertheless, there is a command-line tool called `pvesm` (“Proxmox VE Storage Manager”), which is able to perform common storage management tasks.
+尽管如此，仍有一个名为 `pvesm` 的命令行工具（“Proxmox VE Storage Manager”），它能够执行常见的存储管理任务。
 
 ### Examples <a href="#_examples" id="_examples"></a>
 
-Add storage pools
+添加存储池
 
 ```text
 pvesm add <TYPE> <STORAGE_ID> <OPTIONS>
@@ -1262,19 +1262,19 @@ pvesm add lvm <STORAGE_ID> --vgname <VGNAME>
 pvesm add iscsi <STORAGE_ID> --portal <HOST[:PORT]> --target <TARGET>
 ```
 
-Disable storage pools
+禁用存储池
 
 ```text
 pvesm set <STORAGE_ID> --disable 1
 ```
 
-Enable storage pools
+启用存储池
 
 ```text
 pvesm set <STORAGE_ID> --disable 0
 ```
 
-Change/set storage options
+更改/设置存储选项
 
 ```text
 pvesm set <STORAGE_ID> <OPTIONS>
@@ -1283,71 +1283,71 @@ pvesm set local --format qcow2
 pvesm set <STORAGE_ID> --content iso
 ```
 
-Remove storage pools. This does not delete any data, and does not disconnect or unmount anything. It just removes the storage configuration.
+删除存储池。此操作不会删除任何数据，也不会断开连接或卸载任何内容。它仅删除存储配置。
 
 ```text
 pvesm remove <STORAGE_ID>
 ```
 
-Allocate volumes
+分配卷
 
 ```text
 pvesm alloc <STORAGE_ID> <VMID> <name> <size> [--format <raw|qcow2>]
 ```
 
-Allocate a 4G volume in local storage. The name is auto-generated if you pass an empty string as `<name>`
+在本地存储中分配一个 4G 的卷。如果将空字符串作为 `<name>` 传入，则会自动生成名称。
 
 ```text
 pvesm alloc local <VMID> '' 4G
 ```
 
-Free volumes
+释放卷
 
 ```text
 pvesm free <VOLUME_ID>
 ```
 
 {% hint style="warning" %}
-This really destroys all volume data.
+此操作确实会销毁所有卷数据。
 {% endhint %}
 
-List storage status
+列出存储状态
 
 ```text
 pvesm status
 ```
 
-List storage contents
+列出存储内容
 
 ```text
 pvesm list <STORAGE_ID> [--vmid <VMID>]
 ```
 
-List volumes allocated by VMID
+列出按 VMID 分配的卷
 
 ```text
 pvesm list <STORAGE_ID> --vmid <VMID>
 ```
 
-List iso images
+列出 ISO 镜像
 
 ```text
 pvesm list <STORAGE_ID> --content iso
 ```
 
-List container templates
+列出容器模板
 
 ```text
 pvesm list <STORAGE_ID> --content vztmpl
 ```
 
-Show file system path for a volume
+显示卷的文件系统路径
 
 ```text
 pvesm path <VOLUME_ID>
 ```
 
-Exporting the volume `local:103/vm-103-disk-0.qcow2` to the file `target`. This is mostly used internally with `pvesm import`. The stream format qcow2\+size is different to the qcow2 format. Consequently, the exported file cannot simply be attached to a VM. This also holds for the other formats.
+将卷 `local:103/vm-103-disk-0.qcow2` 导出到文件 `target`。这主要在内部与 `pvesm import` 一起使用。流格式 qcow2\+size 与 qcow2 格式不同。因此，导出的文件不能直接附加到 VM。其他格式也是如此。
 
 ```text
 pvesm export local:103/vm-103-disk-0.qcow2 qcow2+size target --with-snapshots 1
@@ -1355,21 +1355,21 @@ pvesm export local:103/vm-103-disk-0.qcow2 qcow2+size target --with-snapshots 1
 
 ## Directory Backend <a href="#storage_directory" id="storage_directory"></a>
 
-Storage pool type: `dir`
+存储池类型：`dir`
 
-Proxmox VE can use local directories or locally mounted shares for storage. A directory is a file level storage, so you can store any content type like virtual disk images, containers, templates, ISO images or backup files.
+Proxmox VE 可以使用本地目录或本地挂载的共享目录进行存储。目录是一种文件级存储，因此你可以存储任何内容类型，例如虚拟磁盘镜像、容器、模板、ISO 镜像或备份文件。
 
 {% hint style="info" %}
-You can mount additional storages via standard linux `/etc/fstab`, and then define a directory storage for that mount point. This way you can use any file system supported by Linux.
+你可以通过标准 Linux `/etc/fstab` 挂载其他存储，然后为该挂载点定义一个目录存储。通过这种方式，可以使用 Linux 支持的任何文件系统。
 {% endhint %}
 
-This backend assumes that the underlying directory is POSIX compatible, but nothing else. This implies that you cannot create snapshots at the storage level. But there exists a workaround for VM images using the `qcow2` file format, because that format supports snapshots internally.
+此后端仅假定底层目录兼容 POSIX，别无其他要求。这意味着你无法在存储级别创建快照。但使用 `qcow2` 文件格式的 VM 镜像有一种变通方法，因为该格式内部支持快照。
 
 {% hint style="success" %}
-Some storage types do not support `O_DIRECT`, so you can’t use cache mode `none` with such storages. Simply use cache mode `writeback` instead.
+某些存储类型不支持 `O_DIRECT`，因此无法在此类存储上使用缓存模式 `none`。只需改用缓存模式 `writeback` 即可。
 {% endhint %}
 
-We use a predefined directory layout to store different content types into different sub-directories. This layout is used by all file level storage backends.
+我们使用预定义的目录布局，将不同的内容类型存储到不同的子目录中。所有文件级存储后端都使用此布局。
 
 <table>
 <caption>Table 2. Directory layout</caption>
@@ -1377,33 +1377,33 @@ We use a predefined directory layout to store different content types into diffe
 
 <thead>
 <tr>
-<th>Content type</th>
-<th>Subdir</th>
+<th>内容类型</th>
+<th>子目录</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>VM images</p></td>
+<td><p>VM 镜像</p></td>
 <td><p><code>images/&lt;VMID&gt;/</code></p></td>
 </tr>
 <tr>
-<td><p>ISO images</p></td>
+<td><p>ISO 镜像</p></td>
 <td><p><code>template/iso/</code></p></td>
 </tr>
 <tr>
-<td><p>Container templates</p></td>
+<td><p>容器模板</p></td>
 <td><p><code>template/cache/</code></p></td>
 </tr>
 <tr>
-<td><p>Backup files</p></td>
+<td><p>备份文件</p></td>
 <td><p><code>dump/</code></p></td>
 </tr>
 <tr>
-<td><p>Snippets</p></td>
+<td><p>片段</p></td>
 <td><p><code>snippets/</code></p></td>
 </tr>
 <tr>
-<td><p>Import</p></td>
+<td><p>导入</p></td>
 <td><p><code>import/</code></p></td>
 </tr>
 </tbody>
@@ -1411,17 +1411,17 @@ We use a predefined directory layout to store different content types into diffe
 
 ### Configuration <a href="#_configuration" id="_configuration"></a>
 
-This backend supports all common storage properties, and adds two additional properties. The `path` property is used to specify the directory. This needs to be an absolute file system path.
+此后端支持所有通用存储属性，并增加了两个附加属性。`path` 属性用于指定目录。该目录必须是绝对文件系统路径。
 
-The optional `content-dirs` property allows for the default layout to be changed. It consists of a comma-separated list of identifiers in the following format:
+可选的 `content-dirs` 属性允许更改默认布局。它由逗号分隔的标识符列表组成，格式如下：
 
 ```text
 vtype=path
 ```
 
-Where `vtype` is one of the allowed content types for the storage, and `path` is a path relative to the mountpoint of the storage.
+其中，`vtype` 是该存储允许的一种内容类型，`path` 是相对于该存储挂载点的路径。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 dir: backup
@@ -1432,11 +1432,11 @@ dir: backup
         content-dirs backup=custom/backup/dir
 ```
 
-The above configuration defines a storage pool called `backup`. That pool can be used to store up to 7 regular backups (`keep-last=7`) and 3 protected backups per VM. The real path for the backup files is `/mnt/backup/custom/backup/dir/...`.
+上述配置定义了一个名为 `backup` 的存储池。该池可用于为每个 VM 存储最多 7 个常规备份（`keep-last=7`）和 3 个受保护备份。备份文件的实际路径为 `/mnt/backup/custom/backup/dir/...`。
 
 ### File naming conventions <a href="#_file_naming_conventions" id="_file_naming_conventions"></a>
 
-This backend uses a well defined naming scheme for VM images:
+此后端为 VM 镜像使用明确定义的命名方案：
 
 ```text
 vm-<VMID>-<NAME>.<FORMAT>
@@ -1444,31 +1444,31 @@ vm-<VMID>-<NAME>.<FORMAT>
 
 **`<VMID>`**
 
-This specifies the owner VM.
+指定所有者 VM。
 
 **`<NAME>`**
 
-This can be an arbitrary name (`ascii`) without white space. The backend uses `disk-[N]` as default, where `[N]` is replaced by an integer to make the name unique.
+这可以是不含空白字符的任意名称（`ascii`）。后端默认使用 `disk-[N]`，其中 `[N]` 会被替换为一个整数，以使名称唯一。
 
 **`<FORMAT>`**
 
-Specifies the image format (`raw|qcow2|vmdk`).
+指定镜像格式（`raw|qcow2|vmdk`）。
 
-When you create a VM template, all VM images are renamed to indicate that they are now read-only, and can be used as a base image for clones:
+创建 VM 模板时，所有 VM 镜像都会被重命名，以表明它们现在是只读的，并且可以用作克隆的基础镜像：
 
 ```text
 base-<VMID>-<NAME>.<FORMAT>
 ```
 
 {% hint style="info" %}
-Such base images are used to generate cloned images. So it is important that those files are read-only, and never get modified. The backend changes the access mode to `0444`, and sets the immutable flag (`chattr +i`) if the storage supports that.
+此类基础镜像用于生成克隆镜像。因此，必须确保这些文件为只读且永远不会被修改。后端会将访问模式更改为 `0444`，并在存储支持的情况下设置不可变标志（`chattr +i`）。
 {% endhint %}
 
 ### Storage Features <a href="#_storage_features" id="_storage_features"></a>
 
-As mentioned above, most file systems do not support snapshots out of the box. To workaround that problem, this backend is able to use `qcow2` internal snapshot capabilities.
+如上所述，大多数文件系统本身并不支持快照。为解决此问题，此后端能够使用 `qcow2` 的内部快照功能。
 
-Same applies to clones. The backend uses the `qcow2` base image feature to create clones.
+克隆也是如此。后端使用 `qcow2` 的基础镜像功能来创建克隆。
 
 <table>
 <caption>Table 3. Storage features for backend <code>dir</code></caption>
@@ -1479,18 +1479,18 @@ Same applies to clones. The backend uses the `qcow2` base image feature to creat
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir vztmpl iso backup snippets</p></td>
 <td><p>raw qcow2 vmdk subvol</p></td>
-<td><p>no</p></td>
+<td><p>否</p></td>
 <td><p>qcow2</p></td>
 <td><p>qcow2</p></td>
 </tr>
@@ -1499,7 +1499,7 @@ Same applies to clones. The backend uses the `qcow2` base image feature to creat
 
 ### Examples <a href="#_examples_2" id="_examples_2"></a>
 
-Please use the following command to allocate a 4GB image on storage `local`:
+请使用以下命令在存储 `local` 上分配一个 4GB 镜像：
 
 ```text
 # pvesm alloc local 100 vm-100-disk10.raw 4G
@@ -1508,17 +1508,17 @@ successfully created 'local:100/vm-100-disk10.raw'
 ```
 
 {% hint style="info" %}
-The image name must conform to above naming conventions.
+镜像名称必须符合上述命名约定。
 {% endhint %}
 
-The real file system path is shown with:
+实际的文件系统路径可通过以下命令查看：
 
 ```text
 # pvesm path local:100/vm-100-disk10.raw
 /var/lib/vz/images/100/vm-100-disk10.raw
 ```
 
-And you can remove the image with:
+可以通过以下命令删除镜像：
 
 ```text
 # pvesm free local:100/vm-100-disk10.raw
@@ -1526,37 +1526,37 @@ And you can remove the image with:
 
 ## NFS Backend <a href="#storage_nfs" id="storage_nfs"></a>
 
-Storage pool type: `nfs`
+存储池类型：`nfs`
 
-The NFS backend is based on the directory backend, so it shares most properties. The directory layout and the file naming conventions are the same. The main advantage is that you can directly configure the NFS server properties, so the backend can mount the share automatically. There is no need to modify `/etc/fstab`. The backend can also test if the server is online, and provides a method to query the server for exported shares.
+NFS 后端基于目录后端，因此二者共享大多数属性。目录布局和文件命名约定相同。主要优势在于，您可以直接配置 NFS 服务器属性，使后端能够自动挂载共享。无需修改 `/etc/fstab`。后端还可以测试服务器是否在线，并提供查询服务器所导出共享的方法。
 
 ### Configuration <a href="#_configuration_2" id="_configuration_2"></a>
 
-The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following properties are used to configure the NFS server:
+该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，以下属性用于配置 NFS 服务器：
 
 **server**
 
-Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+服务器 IP 或 DNS 名称。为避免 DNS 查询延迟，通常最好使用 IP 地址而不是 DNS 名称，除非您有非常可靠的 DNS 服务器，或者已在本地 `/etc/hosts` 文件中列出该服务器。
 
 **export**
 
-NFS export path (as listed by `pvesm nfsscan`).
+NFS 导出路径（由 `pvesm nfsscan` 列出）。
 
-You can also set NFS mount options:
+您还可以设置 NFS 挂载选项：
 
 **path**
 
-The local mount point (defaults to `/mnt/pve/<STORAGE_ID>/`).
+本地挂载点（默认为 `/mnt/pve/<STORAGE_ID>/`）。
 
 **content-dirs**
 
-Overrides for the default directory layout. Optional.
+默认目录布局的覆盖设置。可选。
 
 **options**
 
-NFS mount options (see `man nfs`).
+NFS 挂载选项（参见 `man nfs`）。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 nfs: iso-templates
@@ -1568,12 +1568,12 @@ nfs: iso-templates
 ```
 
 {% hint style="success" %}
-After an NFS request times out, NFS request are retried indefinitely by default. This can lead to unexpected hangs on the client side. For read-only content, it is worth to consider the NFS `soft` option, which limits the number of retries to three.
+NFS 请求超时后，默认会无限期重试 NFS 请求。这可能导致客户端出现意外挂起。对于只读内容，值得考虑使用 NFS 的 `soft` 选项，该选项将重试次数限制为三次。
 {% endhint %}
 
 ### Storage Features <a href="#_storage_features_2" id="_storage_features_2"></a>
 
-NFS does not support snapshots, but the backend uses `qcow2` features to implement snapshots and cloning.
+NFS 不支持快照，但后端利用 `qcow2` 的功能来实现快照和克隆。
 
 <table>
 <caption>Table 4. Storage features for backend <code>nfs</code></caption>
@@ -1584,18 +1584,18 @@ NFS does not support snapshots, but the backend uses `qcow2` features to impleme
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir vztmpl iso backup snippets</p></td>
 <td><p>raw qcow2 vmdk</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 <td><p>qcow2</p></td>
 <td><p>qcow2</p></td>
 </tr>
@@ -1604,7 +1604,7 @@ NFS does not support snapshots, but the backend uses `qcow2` features to impleme
 
 ### Examples <a href="#_examples_3" id="_examples_3"></a>
 
-You can get a list of exported NFS shares with:
+可以通过以下命令获取已导出的 NFS 共享列表：
 
 ```text
 # pvesm scan nfs <server>
@@ -1612,59 +1612,59 @@ You can get a list of exported NFS shares with:
 
 ## CIFS Backend <a href="#storage_cifs" id="storage_cifs"></a>
 
-Storage pool type: `cifs`
+存储池类型：`cifs`
 
-The CIFS backend extends the directory backend, so that no manual setup of a CIFS mount is needed. Such a storage can be added directly through the Proxmox VE API or the web UI, with all our backend advantages, like server heartbeat check or comfortable selection of exported shares.
+CIFS 后端扩展了目录后端，因此无需手动设置 CIFS 挂载。可以通过 Proxmox VE API 或 Web 界面直接添加此类存储，并享有我们后端的所有优势，例如服务器心跳检查或便捷地选择导出的共享。
 
 ### Configuration <a href="#_configuration_3" id="_configuration_3"></a>
 
-The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following CIFS special properties are available:
+该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，还提供以下 CIFS 特有属性：
 
 **server**
 
-Server IP or DNS name. Required.
+服务器 IP 或 DNS 名称。必需。
 
 {% hint style="success" %}
-To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+为避免 DNS 查询延迟，通常最好使用 IP 地址而不是 DNS 名称，除非您有非常可靠的 DNS 服务器，或者已在本地 `/etc/hosts` 文件中列出该服务器。
 {% endhint %}
 
 **share**
 
-CIFS share to use (get available ones with `pvesm scan cifs <address>` or the web UI). Required.
+要使用的 CIFS 共享（通过 `pvesm scan cifs <address>` 或 Web 界面获取可用共享）。必需。
 
 **username**
 
-The username for the CIFS storage. Optional, defaults to ‘guest’.
+CIFS 存储的用户名。可选，默认为“guest”。
 
 **password**
 
-The user password. Optional. It will be saved in a file only readable by root (`/etc/pve/priv/storage/<STORAGE-ID>.pw`).
+用户密码。可选。密码将保存在只有 root 可读的文件中（`/etc/pve/priv/storage/<STORAGE-ID>.pw`）。
 
 **domain**
 
-Sets the user domain (workgroup) for this storage. Optional.
+为此存储设置用户域（工作组）。可选。
 
 **smbversion**
 
-SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2\+ version supported by both the client and server. SMB1 is not supported due to security issues.
+SMB 协议版本。可选，设置为 `default` 或未设置时，协商客户端和服务器均支持的最高 SMB2\+ 版本。由于安全问题，不支持 SMB1。
 
 **path**
 
-The local mount point. Optional, defaults to `/mnt/pve/<STORAGE_ID>/`.
+本地挂载点。可选，默认为 `/mnt/pve/<STORAGE_ID>/`。
 
 **content-dirs**
 
-Overrides for the default directory layout. Optional.
+默认目录布局的覆盖设置。可选。
 
 **options**
 
-Additional CIFS mount options (see `man mount.cifs`). Some options are set automatically and shouldn’t be set here. Proxmox VE will always set the option `soft`. Depending on the configuration, these options are set automatically: `username`, `credentials`, `guest`, `domain`, `vers`.
+其他 CIFS 挂载选项（参见 `man mount.cifs`）。某些选项会自动设置，不应在此处设置。Proxmox VE 将始终设置 `soft` 选项。根据配置，以下选项会自动设置：`username`、`credentials`、`guest`、`domain`、`vers`。
 
 **subdir**
 
-The subdirectory of the share to mount. Optional, defaults to the root directory of the share.
+要挂载的共享子目录。可选，默认为共享的根目录。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 cifs: backup
@@ -1680,7 +1680,7 @@ cifs: backup
 
 ### Storage Features <a href="#_storage_features_3" id="_storage_features_3"></a>
 
-CIFS does not support snapshots on a storage level. But you may use `qcow2` backing files if you still want to have snapshots and cloning features available.
+CIFS 在存储级别不支持快照。但如果仍希望使用快照和克隆功能，可以使用 `qcow2` 后备文件。
 
 <table>
 <caption>Table 5. Storage features for backend <code>cifs</code></caption>
@@ -1691,18 +1691,18 @@ CIFS does not support snapshots on a storage level. But you may use `qcow2` back
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir vztmpl iso backup snippets</p></td>
 <td><p>raw qcow2 vmdk</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 <td><p>qcow2</p></td>
 <td><p>qcow2</p></td>
 </tr>
@@ -1711,13 +1711,13 @@ CIFS does not support snapshots on a storage level. But you may use `qcow2` back
 
 ### Examples <a href="#_examples_4" id="_examples_4"></a>
 
-You can get a list of exported CIFS shares with:
+可以通过以下命令获取已导出的 CIFS 共享列表：
 
 ```text
 # pvesm scan cifs <server> [--username <username>] [--password]
 ```
 
-Then you can add one of these shares as a storage to the whole Proxmox VE cluster with:
+然后，可以通过以下命令将其中一个共享作为存储添加到整个 Proxmox VE 集群：
 
 ```text
 # pvesm add cifs <storagename> --server <server> --share <share> [--username <username>] [--password]
@@ -1725,53 +1725,53 @@ Then you can add one of these shares as a storage to the whole Proxmox VE cluste
 
 ## Proxmox Backup Server <a href="#storage_pbs" id="storage_pbs"></a>
 
-Storage pool type: `pbs`
+存储池类型：`pbs`
 
-This backend allows direct integration of a [Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview) into Proxmox VE like any other storage.
+该后端允许将 [Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview) 像其他存储一样直接集成到 Proxmox VE 中。
 
-A Proxmox Backup storage can be added directly through the Proxmox VE API, CLI or the web interface.
+Proxmox Backup 存储可通过 Proxmox VE API、CLI 或 Web 界面直接添加。
 
 ### Configuration <a href="#_configuration_4" id="_configuration_4"></a>
 
-The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following special properties to Proxmox Backup Server are available:
+该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，还提供以下 Proxmox Backup Server 特有属性：
 
 **server**
 
-Server IP or DNS name. Required.
+服务器 IP 或 DNS 名称。必需。
 
 **port**
 
-Use this port instead of the default one, i.e. `8007`. Optional.
+使用此端口代替默认端口（即 `8007`）。可选。
 
 **username**
 
-The username for the Proxmox Backup Server storage. Required.
+Proxmox Backup Server 存储的用户名。必需。
 
 {% hint style="success" %}
-Do not forget to add the realm to the username. For example, `root@pam` or `archiver@pbs`.
+不要忘记在用户名中添加领域。例如，`root@pam` 或 `archiver@pbs`。
 {% endhint %}
 
 **password**
 
-The user password. The value will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.pw` with access restricted to the root user. Required.
+用户密码。该值将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.pw` 下的文件中，并且仅允许 root 用户访问。必需。
 
 **datastore**
 
-The ID of the Proxmox Backup Server datastore to use. Required.
+要使用的 Proxmox Backup Server 数据存储的 ID。必需。
 
 **fingerprint**
 
-The fingerprint of the Proxmox Backup Server API TLS certificate. You can get it in the Servers Dashboard or using the `proxmox-backup-manager cert info` command. Required for self-signed certificates or any other one where the host does not trusts the servers CA.
+Proxmox Backup Server API TLS 证书的指纹。可以在服务器仪表板中获取，也可以使用 `proxmox-backup-manager cert info` 命令获取。对于自签名证书，或宿主机不信任服务器 CA 的任何其他证书，此项为必需。
 
 **encryption-key**
 
-A key to encrypt the backup data from the client side. Currently only non-password protected (no key derive function (kdf)) are supported. Will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.enc` with access restricted to the root user. Use the magic value `autogen` to automatically generate a new one using `proxmox-backup-client key create --kdf none <path>`. Optional.
+用于从客户端加密备份数据的密钥。目前仅支持不受密码保护的密钥（不使用密钥派生函数（kdf））。密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.enc` 下的文件中，并且仅允许 root 用户访问。使用特殊值 `autogen` 可通过 `proxmox-backup-client key create --kdf none <path>` 自动生成新密钥。可选。
 
 **master-pubkey**
 
-A public RSA key used to encrypt the backup encryption key as part of the backup task. Will be saved in a file under `/etc/pve/priv/storage/<STORAGE-ID>.master.pem` with access restricted to the root user. The encrypted copy of the backup encryption key will be appended to each backup and stored on the Proxmox Backup Server instance for recovery purposes. Optional, requires `encryption-key`.
+用于在备份任务中加密备份加密密钥的 RSA 公钥。该密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.master.pem` 下的文件中，并且仅允许 root 用户访问。备份加密密钥的加密副本将附加到每个备份中，并存储在 Proxmox Backup Server 实例上，以用于恢复。可选，需要 `encryption-key`。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 pbs: backup
@@ -1787,7 +1787,7 @@ pbs: backup
 
 ### Storage Features <a href="#_storage_features_4" id="_storage_features_4"></a>
 
-Proxmox Backup Server only supports backups, they can be block-level or file-level based. Proxmox VE uses block-level for virtual machines and file-level for container.
+Proxmox Backup Server 仅支持备份，备份可以基于块级或文件级。Proxmox VE 对虚拟机使用块级备份，对容器使用文件级备份。
 
 <table>
 <caption>Table 6. Storage features for backend <code>pbs</code></caption>
@@ -1798,18 +1798,18 @@ Proxmox Backup Server only supports backups, they can be block-level or file-lev
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>backup</p></td>
 <td><p>n/a</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 <td><p>n/a</p></td>
 <td><p>n/a</p></td>
 </tr>
@@ -1820,39 +1820,39 @@ Proxmox Backup Server only supports backups, they can be block-level or file-lev
 
 [![screenshot/storage-pbs-encryption-with-key.png](../assets/screenshot-storage-pbs-encryption-with-key-png-52aa90aa5d08.png)](https://pve.proxmox.com/pve-docs/images/screenshot/storage-pbs-encryption-with-key.png)
 
-Optionally, you can configure client-side encryption with AES-256 in GCM mode. Encryption can be configured either via the web interface, or on the CLI with the `encryption-key` option (see above). The key will be saved in the file `/etc/pve/priv/storage/<STORAGE-ID>.enc`, which is only accessible by the root user.
+可以选择配置使用 GCM 模式的 AES-256 客户端加密。可以通过 Web 界面配置加密，也可以在 CLI 上使用 `encryption-key` 选项进行配置（见上文）。密钥将保存在 `/etc/pve/priv/storage/<STORAGE-ID>.enc` 文件中，该文件仅 root 用户可访问。
 
 {% hint style="warning" %}
-Without their key, backups will be inaccessible. Thus, you should keep keys ordered and in a place that is separate from the contents being backed up. It can happen, for example, that you back up an entire system, using a key on that system. If the system then becomes inaccessible for any reason and needs to be restored, this will not be possible as the encryption key will be lost along with the broken system.
+没有密钥，备份将无法访问。因此，您应妥善管理密钥，并将其存放在与所备份内容分开的位置。例如，可能会发生这样的情况：您使用存储在某个系统上的密钥备份了整个系统。如果该系统随后因任何原因无法访问并需要恢复，则将无法进行恢复，因为加密密钥会随故障系统一起丢失。
 {% endhint %}
 
-It is recommended that you keep your key safe, but easily accessible, in order for quick disaster recovery. For this reason, the best place to store it is in your password manager, where it is immediately recoverable. As a backup to this, you should also save the key to a USB flash drive and store that in a secure place. This way, it is detached from any system, but is still easy to recover from, in case of emergency. Finally, in preparation for the worst case scenario, you should also consider keeping a paper copy of your key locked away in a safe place. The `paperkey` subcommand can be used to create a QR encoded version of your key. The following command sends the output of the `paperkey` command to a text file, for easy printing.
+建议您妥善保管密钥，同时确保其易于获取，以便快速进行灾难恢复。因此，最佳存放位置是密码管理器，在那里可以立即找回密钥。作为备用措施，还应将密钥保存到 USB 闪存盘，并将其存放在安全的位置。这样，密钥不依赖于任何系统，同时在紧急情况下仍易于恢复。最后，为应对最坏情况，还应考虑将密钥的纸质副本锁在安全的地方。`paperkey` 子命令可用于创建密钥的 QR 编码版本。以下命令将 `paperkey` 命令的输出发送到文本文件，以便于打印。
 
 ```text
 # proxmox-backup-client key paperkey /etc/pve/priv/storage/<STORAGE-ID>.enc --output-format text > qrkey.txt
 ```
 
-Additionally, it is possible to use a single RSA master key pair for key recovery purposes: configure all clients doing encrypted backups to use a single public master key, and all subsequent encrypted backups will contain a RSA-encrypted copy of the used AES encryption key. The corresponding private master key allows recovering the AES key and decrypting the backup even if the client system is no longer available.
+此外，还可以使用单个 RSA 主密钥对进行密钥恢复：将所有执行加密备份的客户端配置为使用同一个主公钥，之后所有加密备份都将包含所用 AES 加密密钥的 RSA 加密副本。即使客户端系统不再可用，相应的主私钥也可用于恢复 AES 密钥并解密备份。
 
 {% hint style="warning" %}
-The same safe-keeping rules apply to the master key pair as to the regular encryption keys. Without a copy of the private key recovery is not possible! The `paperkey` command supports generating paper copies of private master keys for storage in a safe, physical location.
+主密钥对适用与普通加密密钥相同的安全保管规则。没有私钥副本就无法恢复！`paperkey` 命令支持生成主私钥的纸质副本，以便存放在安全的物理位置。
 {% endhint %}
 
-Because the encryption is managed on the client side, you can use the same datastore on the server for unencrypted backups and encrypted backups, even if they are encrypted with different keys. However, deduplication between backups with different keys is not possible, so it is often better to create separate datastores.
+由于加密在客户端进行管理，您可以在服务器上对未加密备份和加密备份使用同一个数据存储，即使这些备份使用不同的密钥加密也是如此。但是，使用不同密钥的备份之间无法进行重复数据删除，因此通常最好创建单独的数据存储。
 
 {% hint style="info" %}
-Do not use encryption if there is no benefit from it, for example, when you are running the server locally in a trusted network. It is always easier to recover from unencrypted backups.
+如果加密没有带来益处，例如在可信网络中本地运行服务器时，请不要使用加密。从未加密备份中恢复总是更容易。
 {% endhint %}
 
 ### Example: Add Storage over CLI <a href="#_example_add_storage_over_cli" id="_example_add_storage_over_cli"></a>
 
-You can get a list of available Proxmox Backup Server datastores with:
+可以通过以下命令获取可用的 Proxmox Backup Server 数据存储列表：
 
 ```text
 # pvesm scan pbs <server> <username> [--password <string>] [--fingerprint <string>]
 ```
 
-Then you can add one of these datastores as a storage to the whole Proxmox VE cluster with:
+然后，可以通过以下命令将其中一个数据存储作为存储添加到整个 Proxmox VE 集群：
 
 ```text
 # pvesm add pbs <id> --server <server> --datastore <datastore> --username <username> --fingerprint 00:B4:... --password
@@ -1860,31 +1860,31 @@ Then you can add one of these datastores as a storage to the whole Proxmox VE cl
 
 ## Local ZFS Pool Backend <a href="#storage_zfspool" id="storage_zfspool"></a>
 
-Storage pool type: `zfspool`
+存储池类型：`zfspool`
 
-This backend allows you to access local ZFS pools (or ZFS file systems inside such pools).
+该后端允许您访问本地 ZFS 池（或此类池中的 ZFS 文件系统）。
 
 ### Configuration <a href="#_configuration_5" id="_configuration_5"></a>
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following ZFS specific properties:
+该后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 ZFS 特有属性：
 
 **pool**
 
-Select the ZFS pool/filesystem. All allocations are done within that pool.
+选择 ZFS 池/文件系统。所有分配都在该池内完成。
 
 **blocksize**
 
-Set ZFS blocksize parameter.
+设置 ZFS 的 blocksize 参数。
 
 **sparse**
 
-Use ZFS thin-provisioning. A sparse volume is a volume whose reservation is not equal to the volume size.
+使用 ZFS 精简置备。稀疏卷是指预留空间不等于卷大小的卷。
 
-**mountpoint**
+**挂载点**
 
 The mount point of the ZFS pool/filesystem. Changing this does not affect the `mountpoint` property of the dataset seen by `zfs`. Defaults to `/<pool>`.
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 zfspool: vmdata
@@ -1895,7 +1895,7 @@ zfspool: vmdata
 
 ### File naming conventions <a href="#_file_naming_conventions_2" id="_file_naming_conventions_2"></a>
 
-The backend uses the following naming scheme for VM images:
+后端对 VM 镜像使用以下命名方案：
 
 ```text
 vm-<VMID>-<NAME>      // normal VM images
@@ -1905,15 +1905,15 @@ subvol-<VMID>-<NAME>  // subvolumes (ZFS filesystem for containers)
 
 **`<VMID>`**
 
-This specifies the owner VM.
+指定所有者 VM。
 
 **`<NAME>`**
 
-This can be an arbitrary name (`ascii`) without white space. The backend uses `disk[N]` as default, where `[N]` is replaced by an integer to make the name unique.
+这可以是不含空白的任意名称（`ascii`）。后端默认使用 `disk[N]`，其中 `[N]` 会替换为一个整数，以确保名称唯一。
 
 ### Storage Features <a href="#_storage_features_5" id="_storage_features_5"></a>
 
-ZFS is probably the most advanced storage type regarding snapshot and cloning. The backend uses ZFS datasets for both VM images (format `raw`) and container data (format `subvol`). ZFS properties are inherited from the parent dataset, so you can simply set defaults on the parent dataset.
+就快照和克隆而言，ZFS 可能是最先进的存储类型。后端同时将 ZFS 数据集用于 VM 镜像（格式为 `raw`）和容器数据（格式为 `subvol`）。ZFS 属性会从父数据集继承，因此您可以直接在父数据集上设置默认值。
 
 <table>
 <caption>Table 7. Storage features for backend <code>zfs</code></caption>
@@ -1924,49 +1924,49 @@ ZFS is probably the most advanced storage type regarding snapshot and cloning. T
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw subvol</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
 
 ### Encryption <a href="#_encryption" id="_encryption"></a>
 
-ZFS supports encryption of dataset hierarchies. Each encrypted dataset, is either an `encryption_root`, storing the properties for encryption itself or descendant of its `encryption_root` \- see the `zfs-load-key(8)` manpage for details.
+ZFS 支持对数据集层级结构进行加密。每个加密数据集要么是 `encryption_root`，自身存储加密属性，要么是其 `encryption_root` 的后代——详情请参阅 `zfs-load-key(8)` 手册页。
 
-Sending and receiving encrypted datasets is subject to constraints as some encryption parameters (initialization vectors for the symmetric ciphers) need to be either transferred with the data, breaking inheriting the encryption properties on the receiving side, or need to be recreated on target, requiring the data to be sent unencrypted \- see the `zfs-recv(8)` manpage for details.
+发送和接收加密数据集受到一些限制，因为某些加密参数（对称密码的初始化向量）要么需要随数据一起传输，这会破坏接收端对加密属性的继承；要么需要在目标端重新创建，这就要求以未加密形式发送数据——详情请参阅 `zfs-recv(8)` 手册页。
 
-For migration and storage replication of encrypted datasets in Proxmox VE, the data is sent without the encryption properties, and the state of encryption is determined by the target.
+在 Proxmox VE 中迁移和存储复制加密数据集时，发送的数据不包含加密属性，加密状态由目标端决定。
 
-If you want to send and receive encrypted ZFS datasets, you need to ensure that all involved storages on all nodes are encrypted.
+如果要发送和接收加密的 ZFS 数据集，需要确保所有节点上所有涉及的存储均已加密。
 
 ### Examples <a href="#_examples_5" id="_examples_5"></a>
 
-It is recommended to create an extra ZFS file system to store your VM images:
+建议额外创建一个 ZFS 文件系统来存储 VM 镜像：
 
 ```text
 # zfs create tank/vmdata
 ```
 
-To enable compression on that newly allocated file system:
+要在新分配的文件系统上启用压缩：
 
 ```text
 # zfs set compression=on tank/vmdata
 ```
 
-You can get a list of available ZFS filesystems with:
+可以使用以下命令获取可用 ZFS 文件系统的列表：
 
 ```text
 # pvesm scan zfs
@@ -1974,59 +1974,59 @@ You can get a list of available ZFS filesystems with:
 
 ## LVM Backend <a href="#storage_lvm" id="storage_lvm"></a>
 
-Storage pool type: `lvm`
+存储池类型：`lvm`
 
-LVM is a lightweight software layer that sits on top of hard disks and partitions. It can be used to divide available disk space into smaller logical volumes.
+LVM 是位于硬盘和分区之上的轻量级软件层。它可用于将可用磁盘空间划分为更小的逻辑卷。
 
-Another use case is placing LVM on top of a large iSCSI LUN (Logical Unit Number) or a SAN (Storage Area Network) connected via Fibre Channel. This allows you to easily manage the space on the iSCSI LUN, which would otherwise be impossible because the iSCSI specification does not define a management interface for space allocation.
+另一种用例是在大型 iSCSI LUN（逻辑单元号）或通过光纤通道连接的 SAN（存储区域网络）之上部署 LVM。这样，您就可以轻松管理 iSCSI LUN 上的空间；否则这将无法实现，因为 iSCSI 规范未定义用于空间分配的管理接口。
 
 ### Configuration <a href="#pvesm_lvm_config" id="pvesm_lvm_config"></a>
 
-The LVM backend supports the common storage properties `content`, `nodes`, `disable`, and the following LVM specific properties:
+LVM 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 LVM 特定属性：
 
 **`vgname`**
 
-LVM volume group name. This must point to an existing volume group.
+LVM 卷组名称。必须指向一个现有的卷组。
 
 **`base`**
 
-Base volume. This volume is automatically activated before accessing the storage. This is mostly useful when the LVM volume group resides on a remote iSCSI server.
+基础卷。在访问存储之前，会自动激活此卷。当 LVM 卷组位于远程 iSCSI 服务器上时，这尤其有用。
 
 **`saferemove`**
 
-Called "Wipe Removed Volumes" in the web UI. Zero-out data when removing LVs. When removing a volume, this makes sure that all data gets erased and cannot be accessed by other LVs created later (which happen to be assigned the same physical extents). This is a costly operation, but may be required as a security measure in certain environments.
+在 Web 界面中称为“擦除已删除的卷”（Wipe Removed Volumes）。删除 LV 时将数据清零。删除卷时，这可确保所有数据都被擦除，之后创建的其他 LV（恰好分配到相同物理区域）无法访问这些数据。这是一项开销很大的操作，但在某些环境中，可能需要将其作为一项安全措施。
 
-Storage devices that support the "write zeroes" operation will use `blkdiscard` to zero blocks. Otherwise, a fallback to `cstream` is performed.
+支持“写零”操作的存储设备将使用 `blkdiscard` 将块清零。否则，将改用 `cstream`。
 
 **`saferemove-stepsize`**
 
-Wipe step size in MiB (`blkdiscard -p` parameter value), capped to the maximum step size supported by the underlying storage. Up to 32 MiB (maximum) by default.
+擦除步长，单位为 MiB（`blkdiscard -p` 参数值），上限为底层存储支持的最大步长。默认最高为 32 MiB（最大值）。
 
 **`saferemove_throughput`**
 
-Wipe throughput (`cstream -t` parameter value), up to 10 MiB/s by default.
+擦除吞吐量（`cstream -t` 参数值），默认最高为 10 MiB/s。
 
 **`snapshot-as-volume-chain`**
 
-Set this flag to enable snapshot support for virtual machines on LVM with a volume backing chain. With this setting, taking a snapshot persists the current state under the snapshot’s name and starts a new volume backed by the snapshot.
+设置此标志可为使用卷后备链的 LVM 上的虚拟机启用快照支持。启用此设置后，拍摄快照会以快照名称保存当前状态，并启动一个以该快照为后备的新卷。
 
-A volume based on a snapshot references its parent snapshot volume as its backing volume and records only the differences to that backing volume. Snapshot volumes are currently thick-provisioned LVM logical volumes.
+基于快照的卷将其父快照卷引用为后备卷，并且仅记录与该后备卷的差异。目前，快照卷是厚置备的 LVM 逻辑卷。
 
-This design avoids issues with native LVM snapshots, such as significant input/output (I/O) penalties and unexpected, dangerous behavior when running out of pre-allocated space.
+这种设计避免了原生 LVM 快照的问题，例如显著的输入/输出（I/O）性能损失，以及预分配空间耗尽时出现的意外危险行为。
 
-Snapshots as volume chains provide vendor-agnostic support for snapshots on any storage system that supports block storage. This includes iSCSI and Fibre Channel-attached SANs.
+卷链快照为任何支持块存储的存储系统提供与厂商无关的快照支持。这包括 iSCSI 和通过光纤通道连接的 SAN。
 
-Note that, although this feature relies on qcow2, it only uses qcow2’s ability to layer multiple volumes in a backing chain, not qcow2’s snapshot functionality. The snapshot functionality is managed by the PVE storage system.
+请注意，尽管此功能依赖 qcow2，但它仅使用 qcow2 在后备链中对多个卷进行分层的能力，而不使用 qcow2 的快照功能。快照功能由 PVE 存储系统管理。
 
-Enabling or disabling this flag only affects newly created virtual disk volumes.
+启用或禁用此标志仅影响新创建的虚拟磁盘卷。
 
-For efficient support of `snapshot-as-volume-chain`, the backing storage must support thin-provisioning and discard. Each snapshot will appear to use the full volume size on the PVE side, but the actual space usage on the underlying storage will be smaller if those requirements are met.
+为了高效支持 `snapshot-as-volume-chain`，后备存储必须支持精简置备和 discard。在 PVE 端，每个快照都会显示为占用完整的卷大小，但如果满足这些要求，其在底层存储上的实际空间占用会更小。
 
 {% hint style="warning" %}
-Snapshots as volume chains are currently a **technology preview** in Proxmox VE.
+卷链快照目前在 Proxmox VE 中属于**技术预览**。
 {% endhint %}
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 lvm: myspace
@@ -2036,7 +2036,7 @@ lvm: myspace
 
 ### File naming conventions <a href="#_file_naming_conventions_3" id="_file_naming_conventions_3"></a>
 
-The backend use basically the same naming conventions as the ZFS pool backend.
+该后端基本上使用与 ZFS 池后端相同的命名约定。
 
 ```text
 vm-<VMID>-<NAME>      // normal VM images
@@ -2044,12 +2044,12 @@ vm-<VMID>-<NAME>      // normal VM images
 
 ### Storage Features <a href="#_storage_features_6" id="_storage_features_6"></a>
 
-LVM is a typical block storage system. Unfortunately, regular LVM snapshots are inefficient because they interfere with all write operations within the entire volume group while the snapshot is active, which causes significant I/O degradation. This is why LVM does not support linked clones, and why Proxmox VE added support for snapshots as volume chains. This feature manages the snapshot volume through the storage plugin and uses qcow2 to layer separate volumes as a backing chain. This creates a single disk state that is exposed to the guest.
+LVM 是典型的块存储系统。遗憾的是，常规 LVM 快照效率低下，因为在快照处于活动状态时，它们会干扰整个卷组内的所有写操作，导致 I/O 性能显著下降。这就是 LVM 不支持链接克隆的原因，也是 Proxmox VE 增加卷链快照支持的原因。此功能通过存储插件管理快照卷，并使用 qcow2 将各个独立卷分层组成后备链。这会创建向客户机公开的单一磁盘状态。
 
-A benefit of LVM is that it can be used with shared storage. For example, an iSCSI LUN. The backend implements proper cluster-wide locking if the storage is marked as shared in the configuration.
+LVM 的一个优点是可以与共享存储配合使用，例如 iSCSI LUN。如果在配置中将存储标记为共享，后端会实现适当的集群范围锁定。
 
 {% hint style="success" %}
-You can use the LVM-thin backend for non-shared local storage. It supports snapshots and linked clones.
+对于非共享的本地存储，可以使用 LVM-thin 后端。它支持快照和链接克隆。
 {% endhint %}
 
 <table>
@@ -2062,22 +2062,22 @@ You can use the LVM-thin backend for non-shared local storage. It supports snaps
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Full Clones</th>
-<th>Linked Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>完整克隆</th>
+<th>链接克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw, qcow2<sup>1</sup></p></td>
-<td><p>possible</p></td>
-<td><p>yes<sup>1</sup></p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>可行</p></td>
+<td><p>是<sup>1</sup></p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
@@ -2086,7 +2086,7 @@ You can use the LVM-thin backend for non-shared local storage. It supports snaps
 
 ### Examples <a href="#_examples_6" id="_examples_6"></a>
 
-You can get a list of available LVM volume groups with:
+可以使用以下命令获取可用 LVM 卷组的列表：
 
 ```text
 # pvesm scan lvm
@@ -2094,11 +2094,11 @@ You can get a list of available LVM volume groups with:
 
 ## LVM thin Backend <a href="#storage_lvmthin" id="storage_lvmthin"></a>
 
-Storage pool type: `lvmthin`
+存储池类型：`lvmthin`
 
-LVM normally allocates blocks when you create a volume. LVM thin pools instead allocates blocks when they are written. This behaviour is called thin-provisioning, because volumes can be much larger than physically available space.
+LVM 通常在创建卷时分配块。而 LVM thin 池则在写入块时才分配块。这种行为称为精简置备，因为卷可以远大于实际可用的物理空间。
 
-You can use the normal LVM command-line tools to manage and create LVM thin pools (see `man lvmthin` for details). Assuming you already have a LVM volume group called `pve`, the following commands create a new LVM thin pool (size 100G) called `data`:
+可以使用常规的 LVM 命令行工具管理和创建 LVM thin 池（详情请参阅 `man lvmthin`）。假设已经有一个名为 `pve` 的 LVM 卷组，以下命令将创建一个名为 `data` 的新 LVM thin 池（大小为 100G）：
 
 ```text
 lvcreate -L 100G -n data pve
@@ -2107,17 +2107,17 @@ lvconvert --type thin-pool pve/data
 
 ### Configuration <a href="#_configuration_6" id="_configuration_6"></a>
 
-The LVM thin backend supports the common storage properties `content`, `nodes`, `disable`, and the following LVM specific properties:
+LVM thin 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 LVM 特定属性：
 
 **`vgname`**
 
-LVM volume group name. This must point to an existing volume group.
+LVM 卷组名称。必须指向一个现有的卷组。
 
 **`thinpool`**
 
-The name of the LVM thin pool.
+LVM thin 池的名称。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 lvmthin: local-lvm
@@ -2128,7 +2128,7 @@ lvmthin: local-lvm
 
 ### File naming conventions <a href="#_file_naming_conventions_4" id="_file_naming_conventions_4"></a>
 
-The backend use basically the same naming conventions as the ZFS pool backend.
+该后端基本上使用与 ZFS 池后端相同的命名约定。
 
 ```text
 vm-<VMID>-<NAME>      // normal VM images
@@ -2136,9 +2136,9 @@ vm-<VMID>-<NAME>      // normal VM images
 
 ### Storage Features <a href="#_storage_features_7" id="_storage_features_7"></a>
 
-LVM thin is a block storage, but fully supports snapshots and clones efficiently. New volumes are automatically initialized with zero.
+LVM thin 是块存储，但能高效地全面支持快照和克隆。新卷会自动用零初始化。
 
-It must be mentioned that LVM thin pools cannot be shared across multiple nodes, so you can only use them as local storage.
+必须指出，LVM thin 池不能跨多个节点共享，因此只能将其用作本地存储。
 
 <table>
 <caption>Table 9. Storage features for backend <code>lvmthin</code></caption>
@@ -2149,27 +2149,27 @@ It must be mentioned that LVM thin pools cannot be shared across multiple nodes,
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
 
 ### Examples <a href="#_examples_7" id="_examples_7"></a>
 
-You can get a list of available LVM thin pools on the volume group `pve` with:
+可以使用以下命令获取卷组 `pve` 上可用的 LVM thin 池列表：
 
 ```text
 # pvesm scan lvmthin pve
@@ -2177,31 +2177,31 @@ You can get a list of available LVM thin pools on the volume group `pve` with:
 
 ## Open-iSCSI initiator <a href="#storage_open_iscsi" id="storage_open_iscsi"></a>
 
-Storage pool type: `iscsi`
+存储池类型：`iscsi`
 
-iSCSI is a widely employed technology used to connect to storage servers. Almost all storage vendors support iSCSI. There are also open source iSCSI target solutions available, e.g. [OpenMediaVault](https://www.openmediavault.org/), which is based on Debian.
+iSCSI 是一种广泛用于连接存储服务器的技术。几乎所有存储厂商都支持 iSCSI。此外，还有开源的 iSCSI 目标端解决方案，例如基于 Debian 的 [OpenMediaVault](https://www.openmediavault.org/)。
 
-To use this backend, you need to install the [Open-iSCSI](https://www.open-iscsi.com/) (`open-iscsi`) package. This is a standard Debian package, but it is not installed by default to save resources.
+要使用此后端，需要安装 [Open-iSCSI](https://www.open-iscsi.com/)（`open-iscsi`）软件包。这是标准的 Debian 软件包，但为节省资源，默认不会安装。
 
 ```text
 # apt-get install open-iscsi
 ```
 
-Low-level iscsi management task can be done using the `iscsiadm` tool.
+可以使用 `iscsiadm` 工具执行底层 iSCSI 管理任务。
 
 ### Configuration <a href="#_configuration_7" id="_configuration_7"></a>
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following iSCSI specific properties:
+后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 iSCSI 特定属性：
 
-**portal**
+**门户**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-**target**
+**目标端**
 
-iSCSI target.
+iSCSI 目标端。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 iscsi: mynas
@@ -2211,16 +2211,16 @@ iscsi: mynas
 ```
 
 {% hint style="success" %}
-If you want to use LVM on top of iSCSI, it make sense to set `content none`. That way it is not possible to create VMs using iSCSI LUNs directly.
+如果要在 iSCSI 之上使用 LVM，设置 `content none` 是合理的。这样就无法直接使用 iSCSI LUN 创建 VM。
 {% endhint %}
 
 ### File naming conventions <a href="#_file_naming_conventions_5" id="_file_naming_conventions_5"></a>
 
-The iSCSI protocol does not define an interface to allocate or delete data. Instead, that needs to be done on the target side and is vendor specific. The target simply exports them as numbered LUNs. So Proxmox VE iSCSI volume names just encodes some information about the LUN as seen by the linux kernel.
+iSCSI 协议未定义用于分配或删除数据的接口。相反，这些操作需要在目标端完成，并且因厂商而异。目标端只是将它们导出为带编号的 LUN。因此，Proxmox VE 的 iSCSI 卷名称仅编码 Linux 内核所看到的 LUN 的一些信息。
 
 ### Storage Features <a href="#_storage_features_8" id="_storage_features_8"></a>
 
-iSCSI is a block level type storage, and provides no management interface. So it is usually best to export one big LUN, and setup LVM on top of that LUN. You can then use the LVM plugin to manage the storage on that iSCSI LUN.
+iSCSI 是块级存储，不提供管理接口。因此，通常最好导出一个大型 LUN，并在该 LUN 之上配置 LVM。然后，就可以使用 LVM 插件管理该 iSCSI LUN 上的存储。
 
 <table>
 <caption>Table 10. Storage features for backend <code>iscsi</code></caption>
@@ -2231,27 +2231,27 @@ iSCSI is a block level type storage, and provides no management interface. So it
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images none</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
 ### Examples <a href="#_examples_8" id="_examples_8"></a>
 
-You can scan a remote iSCSI portal and get a list of possible targets with:
+可以使用以下命令扫描远程 iSCSI 门户并获取可能的目标端列表：
 
 ```text
 pvesm scan iscsi <HOST[:PORT]>
@@ -2259,17 +2259,17 @@ pvesm scan iscsi <HOST[:PORT]>
 
 ## User Mode iSCSI Backend <a href="#storage_iscsidirect" id="storage_iscsidirect"></a>
 
-Storage pool type: `iscsidirect`
+存储池类型：`iscsidirect`
 
-This backend provides basically the same functionality as the Open-iSCSI backed, but uses a user-level library to implement it. You need to install the `libiscsi-bin` package in order to use this backend.
+此后端提供的功能基本上与 Open-iSCSI 后端相同，但使用用户级库实现。需要安装 `libiscsi-bin` 软件包才能使用此后端。
 
-It should be noted that there are no kernel drivers involved, so this can be viewed as performance optimization. But this comes with the drawback that you cannot use LVM on top of such iSCSI LUN. So you need to manage all space allocations at the storage server side.
+需要注意的是，这不涉及任何内核驱动程序，因此可以将其视为一种性能优化。但缺点是，无法在此类 iSCSI LUN 之上使用 LVM。因此，需要在存储服务器端管理所有空间分配。
 
 ### Configuration <a href="#_configuration_8" id="_configuration_8"></a>
 
-The user mode iSCSI backend uses the same configuration options as the Open-iSCSI backed.
+用户模式 iSCSI 后端使用与 Open-iSCSI 后端相同的配置选项。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 iscsidirect: faststore
@@ -2280,7 +2280,7 @@ iscsidirect: faststore
 ### Storage Features <a href="#_storage_features_9" id="_storage_features_9"></a>
 
 {% hint style="info" %}
-This backend works with VMs only. Containers cannot use this driver.
+此后端仅适用于 VM。容器无法使用此驱动程序。
 {% endhint %}
 
 <table>
@@ -2292,68 +2292,68 @@ This backend works with VMs only. Containers cannot use this driver.
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
 ## Ceph RADOS Block Devices (RBD) <a href="#ceph_rados_block_devices" id="ceph_rados_block_devices"></a>
 
-Storage pool type: `rbd`
+存储池类型：`rbd`
 
-[Ceph](https://ceph.com) is a distributed object store and file system designed to provide excellent performance, reliability and scalability. RADOS block devices implement a feature rich block level storage, and you get the following advantages:
+[Ceph](https://ceph.com) 是一种分布式对象存储和文件系统，旨在提供卓越的性能、可靠性和可扩展性。RADOS 块设备实现了功能丰富的块级存储，并具有以下优势：
 
-- thin provisioning
-- resizable volumes
-- distributed and redundant (striped over multiple OSDs)
-- full snapshot and clone capabilities
-- self healing
-- no single point of failure
-- scalable to the exabyte level
-- kernel and user space implementation available
+- 精简置备
+- 可调整大小的卷
+- 分布式且具备冗余（跨多个 OSD 条带化）
+- 完整的快照和克隆功能
+- 自我修复
+- 无单点故障
+- 可扩展到艾字节级
+- 提供内核和用户空间实现
 
 {% hint style="info" %}
-For smaller deployments, it is also possible to run Ceph services directly on your Proxmox VE nodes. Recent hardware has plenty of CPU power and RAM, so running storage services and VMs on same node is possible.
+对于较小规模的部署，也可以直接在 Proxmox VE 节点上运行 Ceph 服务。现代硬件拥有充足的 CPU 性能和内存，因此可以在同一节点上运行存储服务和虚拟机。
 {% endhint %}
 
 ### Configuration <a href="#storage_rbd_config" id="storage_rbd_config"></a>
 
-This backend supports the common storage properties `nodes`, `disable`, `content`, and the following `rbd` specific properties:
+此后端支持通用存储属性 `nodes`、`disable`、`content`，以及以下 `rbd` 特有属性：
 
 **monhost**
 
-List of monitor daemon IPs. Optional, only needed if Ceph is not running on the Proxmox VE cluster. With `monhost` set, Proxmox VE treats the cluster as external and keeps a separate key copy for this storage, even if the monitors belong to the Ceph cluster of this Proxmox VE cluster.
+监视器守护进程 IP 列表。可选，仅当 Ceph 未在 Proxmox VE 集群上运行时才需要。设置 `monhost` 后，Proxmox VE 会将该集群视为外部集群，并为此存储保留单独的密钥副本，即使这些监视器属于此 Proxmox VE 集群的 Ceph 集群也是如此。
 
 **pool**
 
-Ceph pool name.
+Ceph 池名称。
 
 **username**
 
-Ceph client ID. Optional, defaults to `admin`. Use only the ID without the `client.` prefix.
+Ceph 客户端 ID。可选，默认为 `admin`。仅使用不带 `client.` 前缀的 ID。
 
 **krbd**
 
-Enforce access to rados block devices through the krbd kernel module. Optional.
+强制通过 krbd 内核模块访问 rados 块设备。可选。
 
 {% hint style="info" %}
-Containers will use `krbd` independent of the option value.
+无论该选项的值如何，容器都将使用 `krbd`。
 {% endhint %}
 
-**Configuration Example for an external Ceph cluster (`/etc/pve/storage.cfg`)**
+**外部 Ceph 集群的配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 rbd: ceph-external
@@ -2364,26 +2364,24 @@ rbd: ceph-external
 ```
 
 {% hint style="success" %}
-You can use the `rbd` utility to do low-level management tasks.
+您可以使用 `rbd` 实用程序执行底层管理任务。
 {% endhint %}
 
 ### Authentication <a href="#storage_rbd_auth" id="storage_rbd_auth"></a>
 
 {% hint style="info" %}
-If Ceph is installed locally on the Proxmox VE cluster, the following is done automatically when adding the storage.
+如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
 {% endhint %}
 
-If you use `cephx` authentication, which is enabled by default, provide a keyring from the external Ceph cluster. Obtain or create a dedicated identity with only the capabilities required for this storage, as described in Ceph User Management.<a id="_footnote_cephusermgmt"></a>  
-\[[Ceph User Management](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)\]  
- The example below uses `client.pve-rbd`; do not copy `client.admin` to a storage client.
+如果使用默认启用的 `cephx` 身份验证，请提供来自外部 Ceph 集群的密钥环。按照 Ceph 用户管理中的说明，获取或创建一个仅具有此存储所需权限的专用身份。[\[cephusermgmt\]](#_footnote_cephusermgmt) 以下示例使用 `client.pve-rbd`；不要将 `client.admin` 复制到存储客户端。
 
-Copy the keyring to one Proxmox VE node:
+将密钥环复制到一个 Proxmox VE 节点：
 
 ```text
 # scp <external-ceph-server>:/etc/ceph/ceph.client.pve-rbd.keyring /root/rbd.keyring
 ```
 
-Then pass that file and the identity without its `client.` prefix to `pvesm`:
+然后将该文件和不带 `client.` 前缀的身份传递给 `pvesm`：
 
 ```text
 # pvesm add rbd <name> --monhost "10.1.1.20 10.1.1.21 10.1.1.22" \
@@ -2391,39 +2389,37 @@ Then pass that file and the identity without its `client.` prefix to `pvesm`:
     --keyring /root/rbd.keyring
 ```
 
-After `pvesm` succeeds, remove `/root/rbd.keyring` because it contains the key in plain text.
+`pvesm` 成功后，删除 `/root/rbd.keyring`，因为其中包含明文密钥。
 
-When configuring an external RBD storage via the GUI, you can copy and paste the keyring into the appropriate field.
+通过 GUI 配置外部 RBD 存储时，可以将密钥环复制并粘贴到相应字段中。
 
-The keyring will be stored at
+密钥环将存储在
 
 ```text
 # /etc/pve/priv/ceph/<STORAGE_ID>.keyring
 ```
 
-If the external cluster rotates this identity, replace the stored keyring before refreshing its consumers. The local cephx migration helper never rotates keys of external clusters.
+如果外部集群轮换此身份，请在刷新其使用者之前替换已存储的密钥环。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
 ### Ceph client configuration (optional) <a href="#_ceph_client_configuration_optional" id="_ceph_client_configuration_optional"></a>
 
-Connecting to an external Ceph storage doesn’t always allow setting client-specific options in the config DB on the external cluster. You can add a `ceph.conf` beside the Ceph keyring to change the Ceph client configuration for the storage.
+连接外部 Ceph 存储时，并不总能在外部集群的配置数据库中设置客户端特定选项。您可以在 Ceph 密钥环旁添加一个 `ceph.conf`，以更改该存储的 Ceph 客户端配置。
 
-The ceph.conf needs to have the same name as the storage.
+ceph.conf 必须与存储同名。
 
 ```text
 # /etc/pve/priv/ceph/<STORAGE_ID>.conf
 ```
 
-See the RBD configuration reference   
-\[RBD configuration reference [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)\]  
- for possible settings.
+有关可用设置，请参阅 RBD 配置参考 [\[2\]](#note-ba7965fa-2)。
 
 {% hint style="info" %}
-Do not change these settings lightly. Proxmox VE is merging the \<STORAGE\_ID\>.conf with the storage configuration.
+请勿轻易更改这些设置。Proxmox VE 会将 \<STORAGE\_ID\>.conf 与存储配置合并。
 {% endhint %}
 
 ### Storage Features <a href="#_storage_features_10" id="_storage_features_10"></a>
 
-The `rbd` backend is a block level storage, and implements full snapshot and clone functionality.
+`rbd` 后端是块级存储，实现了完整的快照和克隆功能。
 
 <table>
 <caption>Table 12. Storage features for backend <code>rbd</code></caption>
@@ -2434,29 +2430,29 @@ The `rbd` backend is a block level storage, and implements full snapshot and clo
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
 
 ## Ceph Filesystem (CephFS) <a href="#storage_cephfs" id="storage_cephfs"></a>
 
-Storage pool type: `cephfs`
+存储池类型：`cephfs`
 
-CephFS implements a POSIX-compliant filesystem, using a [Ceph](https://ceph.com) storage cluster to store its data. As CephFS builds upon Ceph, it shares most of its properties. This includes redundancy, scalability, self-healing, and high availability.
+CephFS 实现了一个符合 POSIX 标准的文件系统，使用 [Ceph](https://ceph.com) 存储集群来存储数据。由于 CephFS 构建于 Ceph 之上，因此它继承了 Ceph 的大部分特性，包括冗余性、可扩展性、自我修复和高可用性。
 
 {% hint style="success" %}
 Proxmox VE can [manage Ceph setups](pveceph-1.md#chapter_pveceph), which makes configuring a CephFS storage easier. As modern hardware offers a lot of processing power and RAM, running storage services and VMs on same node is possible without a significant performance impact.
@@ -2465,38 +2461,38 @@ Proxmox VE can [manage Ceph setups](pveceph-1.md#chapter_pveceph), which makes c
 To use the CephFS storage plugin, you must replace the stock Debian Ceph client, by adding our Ceph repository. Once added, run `apt update`, followed by `apt dist-upgrade`, in order to get the newest packages.
 
 {% hint style="warning" %}
-Please ensure that there are no other Ceph repositories configured. Otherwise the installation will fail or there will be mixed package versions on the node, leading to unexpected behavior.
+请确保未配置其他 Ceph 软件仓库。否则安装将失败，或者节点上会存在混合版本的软件包，从而导致意外行为。
 {% endhint %}
 
 ### Configuration <a href="#storage_cephfs_config" id="storage_cephfs_config"></a>
 
-This backend supports the common storage properties `nodes`, `disable`, `content`, as well as the following `cephfs` specific properties:
+此后端支持通用存储属性 `nodes`、`disable`、`content`，以及以下 `cephfs` 特有属性：
 
 **fs-name**
 
-Name of the Ceph FS.
+Ceph 文件系统名称。
 
 **monhost**
 
-List of monitor daemon addresses. Optional, only needed if Ceph is not running on the Proxmox VE cluster. With `monhost` set, Proxmox VE treats the cluster as external and keeps a separate key copy for this storage, even if the monitors belong to the Ceph cluster of this Proxmox VE cluster.
+监视器守护进程地址列表。可选，仅当 Ceph 未在 Proxmox VE 集群上运行时才需要。设置 `monhost` 后，Proxmox VE 会将该集群视为外部集群，并为此存储保留单独的密钥副本，即使这些监视器属于此 Proxmox VE 集群的 Ceph 集群也是如此。
 
 **path**
 
-The local mount point. Optional, defaults to `/mnt/pve/<STORAGE_ID>/`.
+本地挂载点。可选，默认为 `/mnt/pve/<STORAGE_ID>/`。
 
 **username**
 
-Ceph client ID. Optional, defaults to `admin`. Use only the ID without the `client.` prefix.
+Ceph 客户端 ID。可选，默认为 `admin`。仅使用不带 `client.` 前缀的 ID。
 
 **subdir**
 
-CephFS subdirectory to mount. Optional, defaults to `/`.
+要挂载的 CephFS 子目录。可选，默认为 `/`。
 
 **fuse**
 
-Access CephFS through FUSE, instead of the kernel client. Optional, defaults to `0`.
+通过 FUSE 而非内核客户端访问 CephFS。可选，默认为 `0`。
 
-**Configuration example for an external Ceph cluster (`/etc/pve/storage.cfg`)**
+**外部 Ceph 集群的配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 cephfs: cephfs-external
@@ -2508,27 +2504,27 @@ cephfs: cephfs-external
 ```
 
 {% hint style="info" %}
-Don’t forget to set up the client’s secret key file, if cephx was not disabled.
+如果未禁用 cephx，请不要忘记设置客户端的密钥文件。
 {% endhint %}
 
 ### Authentication <a href="#storage_cephfs_auth" id="storage_cephfs_auth"></a>
 
 {% hint style="info" %}
-If Ceph is installed locally on the Proxmox VE cluster, the following is done automatically when adding the storage.
+如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
 {% endhint %}
 
-If you use `cephx` authentication, which is enabled by default, provide the secret of a dedicated identity with only the capabilities required for this storage. Obtain or create the identity as described in Ceph User Management.  
+如果使用默认启用的 `cephx` 身份验证，请提供一个专用身份的密钥，该身份仅具有此存储所需的权限。按照 Ceph 用户管理中的说明获取或创建该身份。  
 [\[cephusermgmt\]](#_footnote_cephusermgmt)  
- The example below uses `client.pve-cephfs`; do not use `client.admin` for a storage client.
+ 以下示例使用 `client.pve-cephfs`；不要将 `client.admin` 用于存储客户端。
 
-Export the bare key through SSH to one Proxmox VE node:
+通过 SSH 将密钥本身导出到一个 Proxmox VE 节点：
 
 ```text
 # ssh root@<external-ceph-server> \
     'ceph auth get-key client.pve-cephfs' > /root/cephfs.secret
 ```
 
-Then pass that file and the identity without its `client.` prefix to `pvesm`:
+然后将该文件和不带 `client.` 前缀的身份传递给 `pvesm`：
 
 ```text
 # pvesm add cephfs <name> --monhost "10.1.1.20 10.1.1.21 10.1.1.22" \
@@ -2536,15 +2532,15 @@ Then pass that file and the identity without its `client.` prefix to `pvesm`:
     --keyring /root/cephfs.secret
 ```
 
-After `pvesm` succeeds, remove `/root/cephfs.secret` because it contains the key in plain text.
+`pvesm` 成功后，删除 `/root/cephfs.secret`，因为其中包含明文密钥。
 
-When configuring an external CephFS storage in the web interface, paste the secret into the appropriate field. CephFS uses the bare key, not the RBD keyring format with a `[client.<USER>]` section. Proxmox VE stores the secret at `/etc/pve/priv/ceph/<STORAGE_ID>.secret`.
+在 Web 界面中配置外部 CephFS 存储时，请将密钥粘贴到相应字段中。CephFS 使用密钥本身，而不是带有 `[client.<USER>]` 节的 RBD 密钥环格式。Proxmox VE 将密钥存储在 `/etc/pve/priv/ceph/<STORAGE_ID>.secret`。
 
-If the external cluster rotates this identity, replace the stored secret before remounting the storage. The local cephx migration helper never rotates keys of external clusters.
+如果外部集群轮换此身份，请在重新挂载存储之前替换已存储的密钥。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
 ### Storage Features <a href="#_storage_features_11" id="_storage_features_11"></a>
 
-The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
+`cephfs` 后端是一个基于 Ceph 集群、符合 POSIX 标准的文件系统。
 
 <table>
 <caption>Table 13. Storage features for backend <code>cephfs</code></caption>
@@ -2555,43 +2551,43 @@ The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>vztmpl iso backup snippets</p></td>
 <td><p>none</p></td>
-<td><p>yes</p></td>
-<td><p>yes<sup>[1]</sup></p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>是<sup>[1]</sup></p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
-\[1\] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
+\[1\] 尽管目前没有已知缺陷，但快照尚不能保证稳定，因为它们缺乏充分测试。
 
 ## BTRFS Backend <a href="#storage_btrfs" id="storage_btrfs"></a>
 
-Storage pool type: `btrfs`
+存储池类型：`btrfs`
 
-On the surface, this storage type is very similar to the directory storage type, so see the directory backend section for a general overview.
+从表面上看，这种存储类型与目录存储类型非常相似，因此总体概述请参阅目录后端一节。
 
-The main difference is that with this storage type `raw` formatted disks will be placed in a subvolume, in order to allow taking snapshots and supporting offline storage migration with snapshots being preserved.
+主要区别在于，使用这种存储类型时，`raw` 格式的磁盘将放置在子卷中，以便创建快照，并支持保留快照的离线存储迁移。
 
 {% hint style="info" %}
-BTRFS will honor the `O_DIRECT` flag when opening files, meaning VMs should not use cache mode `none`, otherwise there will be checksum errors.
+BTRFS 在打开文件时会遵循 `O_DIRECT` 标志，这意味着虚拟机不应使用缓存模式 `none`，否则会出现校验和错误。
 {% endhint %}
 
 ### Configuration <a href="#_configuration_9" id="_configuration_9"></a>
 
-This backend is configured similarly to the directory storage. Note that when adding a directory as a BTRFS storage, which is not itself also the mount point, it is highly recommended to specify the actual mount point via the `is_mountpoint` option.
+此后端的配置方式与目录存储类似。请注意，将本身并非挂载点的目录添加为 BTRFS 存储时，强烈建议通过 `is_mountpoint` 选项指定实际挂载点。
 
-For example, if a BTRFS file system is mounted at `/mnt/data2` and its `pve-storage/` subdirectory (which may be a snapshot, which is recommended) should be added as a storage pool called `data2`, you can use the following entry:
+例如，如果 BTRFS 文件系统挂载在 `/mnt/data2`，并且要将其 `pve-storage/` 子目录（可以是快照，建议如此）添加为名为 `data2` 的存储池，可以使用以下条目：
 
 ```text
 btrfs: data2
@@ -2600,17 +2596,17 @@ btrfs: data2
         is_mountpoint /mnt/data2
 ```
 
-### 快照 <a href="#_snapshots" id="_snapshots"></a>
+### Snapshots <a href="#_snapshots" id="_snapshots"></a>
 
-When taking a snapshot of a subvolume or `raw` file, the snapshot will be created as a read-only subvolume with the same path followed by an `@` and the snapshot’s name.
+为子卷或 `raw` 文件创建快照时，快照将创建为只读子卷，其路径为原路径后接 `@` 和快照名称。
 
 ## ZFS over ISCSI Backend <a href="#storage_zfs" id="storage_zfs"></a>
 
-Storage pool type: `zfs`
+存储池类型：`zfs`
 
-This backend accesses a remote machine having a ZFS pool as storage and an iSCSI target implementation via `ssh`. For each guest disk it creates a ZVOL and, exports it as iSCSI LUN. This LUN is used by Proxmox VE for the guest disk.
+此后端通过 `ssh` 访问一台远程机器，该机器以 ZFS 池作为存储，并实现了 iSCSI 目标。它为每个客户机磁盘创建一个 ZVOL，并将其导出为 iSCSI LUN。Proxmox VE 将此 LUN 用作客户机磁盘。
 
-The following iSCSI target implementations are supported:
+支持以下 iSCSI 目标实现：
 
 - LIO (Linux)
 - IET (Linux)
@@ -2618,14 +2614,14 @@ The following iSCSI target implementations are supported:
 - Comstar (Solaris)
 
 {% hint style="info" %}
-This plugin needs a ZFS capable remote storage appliance, you cannot use it to create a ZFS Pool on a regular Storage Appliance/SAN
+此插件需要支持 ZFS 的远程存储设备，不能用它在我现在继续...普通存储设备/SAN 上创建 ZFS 池
 {% endhint %}
 
 ### Configuration <a href="#_configuration_10" id="_configuration_10"></a>
 
-In order to use the ZFS over iSCSI plugin you need to configure the remote machine (target) to accept `ssh` connections from the Proxmox VE node. Proxmox VE connects to the target for creating the ZVOLs and exporting them via iSCSI. Authentication is done through a ssh-key (without password protection) stored in `/etc/pve/priv/zfs/<target_ip>_id_rsa`
+要使用 ZFS over iSCSI 插件，需要配置远程机器（目标），使其接受来自 Proxmox VE 节点的 `ssh` 连接。Proxmox VE 连接到目标以创建 ZVOL，并通过 iSCSI 将其导出。身份验证通过存储在 `/etc/pve/priv/zfs/<target_ip>_id_rsa` 中的 SSH 密钥（无密码保护）完成。
 
-The following steps create a ssh-key and distribute it to the storage machine with IP 192.0.2.1:
+以下步骤创建一个 SSH 密钥，并将其分发到 IP 地址为 192.0.2.1 的存储机器：
 
 ```text
 mkdir /etc/pve/priv/zfs
@@ -2634,49 +2630,49 @@ ssh-copy-id -i /etc/pve/priv/zfs/192.0.2.1_id_rsa.pub root@192.0.2.1
 ssh -i /etc/pve/priv/zfs/192.0.2.1_id_rsa root@192.0.2.1
 ```
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following ZFS over ISCSI specific properties:
+此后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 ZFS over ISCSI 特有属性：
 
 **pool**
 
-The ZFS pool/filesystem on the iSCSI target. All allocations are done within that pool.
+iSCSI 目标上的 ZFS 池/文件系统。所有分配都在该池中进行。
 
-**portal**
+**门户**
 
-iSCSI portal (IP or DNS name with optional port).
+iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-**target**
+**目标端**
 
-iSCSI target.
+iSCSI 目标端。
 
 **iscsiprovider**
 
-The iSCSI target implementation used on the remote machine
+远程机器上使用的 iSCSI 目标实现
 
 **comstar\_tg**
 
-target group for comstar views.
+comstar 视图的目标组。
 
 **comstar\_hg**
 
-host group for comstar views.
+comstar 视图的主机组。
 
 **lio\_tpg**
 
-target portal group for Linux LIO targets
+Linux LIO 目标的目标门户组
 
 **nowritecache**
 
-disable write caching on the target
+禁用目标上的写入缓存
 
 **blocksize**
 
-Set ZFS blocksize parameter.
+设置 ZFS 的 blocksize 参数。
 
 **sparse**
 
-Use ZFS thin-provisioning. A sparse volume is a volume whose reservation is not equal to the volume size.
+使用 ZFS 精简置备。稀疏卷是指预留空间不等于卷大小的卷。
 
-**Configuration Examples (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 zfs: lio
@@ -2716,7 +2712,7 @@ zfs: iet
 
 ### Storage Features <a href="#_storage_features_12" id="_storage_features_12"></a>
 
-The ZFS over iSCSI plugin provides a shared storage, which is capable of snapshots. You need to make sure that the ZFS appliance does not become a single point of failure in your deployment.
+ZFS over iSCSI 插件提供支持快照的共享存储。您需要确保 ZFS 设备不会成为部署中的单点故障。
 
 <table>
 <caption>Table 14. Storage features for backend <code>iscsi</code></caption>
@@ -2727,25 +2723,25 @@ The ZFS over iSCSI plugin provides a shared storage, which is capable of snapsho
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -2760,6 +2756,16 @@ The ZFS over iSCSI plugin provides a shared storage, which is capable of snapsho
 
 
 ---
+
+## 注释
+
+### 注释 cephusermgmt <a href="#_footnote_cephusermgmt" id="_footnote_cephusermgmt"></a>
+
+[Ceph 用户管理](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)
+
+### 注释 2 <a href="#note-ba7965fa-2" id="note-ba7965fa-2"></a>
+
+RBD 配置参考 [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)
 
 ---
 

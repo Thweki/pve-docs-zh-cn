@@ -2,10 +2,10 @@
 
 [![screenshot/gui-login-window.png](../../assets/screenshot-gui-login-window-png-9cd1c28376f9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-login-window.png)
 
-When you connect to the server, you will first see the login window. Proxmox VE supports various authentication backends (*Realm*), and you can select the language here. The GUI is translated to more than 20 languages.
+连接到服务器时，您首先会看到登录窗口。Proxmox VE 支持多种身份验证后端（*Realm*），并且您可以在此处选择语言。GUI 已翻译成 20 多种语言。
 
 {% hint style="info" %}
-You can save the user name on the client side by selecting the checkbox at the bottom. This saves some typing when you login next time.
+通过选中底部的复选框，您可以在客户端保存用户名。这样下次登录时可以减少一些输入。
 {% endhint %}
 
 ---

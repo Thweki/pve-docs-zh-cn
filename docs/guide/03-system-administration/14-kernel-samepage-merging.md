@@ -1,42 +1,42 @@
 # 3.14. Kernel Samepage Merging (KSM) <a href="#kernel_samepage_merging" id="kernel_samepage_merging"></a>
 
-Kernel Samepage Merging (KSM) is an optional memory deduplication feature offered by the Linux kernel, which is enabled by default in Proxmox VE. KSM works by scanning a range of physical memory pages for identical content, and identifying the virtual pages that are mapped to them. If identical pages are found, the corresponding virtual pages are re-mapped so that they all point to the same physical page, and the old pages are freed. The virtual pages are marked as "copy-on-write", so that any writes to them will be written to a new area of memory, leaving the shared physical page intact.
+内核同页合并（KSM）是 Linux 内核提供的一项可选内存去重功能，在 Proxmox VE 中默认启用。KSM 通过扫描一定范围的物理内存页以查找相同内容，并识别映射到这些物理页的虚拟页来工作。如果发现相同的页，则会重新映射相应的虚拟页，使它们全部指向同一个物理页，并释放旧页。虚拟页会被标记为“写时复制”，因此对它们的任何写入都会写入新的内存区域，同时保持共享物理页不变。
 
 ## 3.14.1. Implications of KSM <a href="#_implications_of_ksm" id="_implications_of_ksm"></a>
 
-KSM can optimize memory usage in virtualization environments, as multiple VMs running similar operating systems or workloads could potentially share a lot of common memory pages.
+KSM 可以优化虚拟化环境中的内存使用，因为运行相似操作系统或工作负载的多个 VM 可能会共享大量相同的内存页。
 
-However, while KSM can reduce memory usage, it also comes with some security risks, as it can expose VMs to side-channel attacks. Research has shown that it is possible to infer information about a running VM via a second VM on the same host, by exploiting certain characteristics of KSM.
+然而，虽然 KSM 可以减少内存使用，但它也会带来一些安全风险，因为它可能使 VM 面临侧信道攻击。研究表明，通过利用 KSM 的某些特性，可以借助同一宿主机上的第二个 VM 推断有关正在运行的 VM 的信息。
 
-Thus, if you are using Proxmox VE to provide hosting services, you should consider disabling KSM, in order to provide your users with additional security. Furthermore, you should check your country’s regulations, as disabling KSM may be a legal requirement.
+因此，如果您使用 Proxmox VE 提供托管服务，则应考虑禁用 KSM，以便为用户提供额外的安全保障。此外，您还应查看所在国家/地区的法规，因为禁用 KSM 可能是法律要求。
 
 ## 3.14.2. Disabling KSM <a href="#_disabling_ksm" id="_disabling_ksm"></a>
 
-KSM can be disabled on a node or on a per-VM basis.
+可以在节点上或按 VM 分别禁用 KSM。
 
-**Disable KSM on a Node**
+**在节点上禁用 KSM**
 
-To see if KSM is active on a node, you can check the output of:
+要查看节点上是否已激活 KSM，可以检查以下命令的输出：
 
 ```text
 # systemctl status ksmtuned
 ```
 
-If it is, it can be disabled immediately with:
+如果已激活，可以使用以下命令立即禁用它：
 
 ```text
 # systemctl disable --now ksmtuned
 ```
 
-Finally, to unmerge all the currently merged pages, run:
+最后，要取消合并当前所有已合并的页，请运行：
 
 ```text
 # echo 2 > /sys/kernel/mm/ksm/run
 ```
 
-**Disabe KSM for a Specific VM**
+**为特定 VM 禁用 KSM**
 
-The `allow-ksm` VM configuration option controls whether memory page merging is allowed for a given VM. The option defaults to true and can be disabled with:
+`allow-ksm` VM 配置选项控制是否允许对指定 VM 进行内存页合并。该选项默认为 true，可以使用以下命令禁用：
 
 ```text
 # qm set <vmid> --allow-ksm 0

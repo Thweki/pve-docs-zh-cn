@@ -47,11 +47,11 @@ Create the initial Ceph default configuration and set up symlinks. Idempotent on
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `cluster-network` | string | 否 | — | Declare a separate cluster network, OSDs will route heartbeat, object replication and recovery traffic over it |
-| `disable_cephx` | boolean | 否 | 0 | Disable cephx authentication. WARNING: cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private! |
+| `disable_cephx` | boolean | 否 | 0 | Disable cephx authentication.<br><br>WARNING: cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private! |
 | `min_size` | integer | 否 | 2 | Minimum number of available replicas per object to allow I/O |
 | `network` | string | 否 | — | Use specific network for all ceph related traffic |
 | `node` | string | 是 | — | The cluster node name. |
-| `pg_bits` | integer | 否 | 6 | Placement group bits, used to specify the default number of placement groups. Depreacted. This setting was deprecated in recent Ceph versions. |
+| `pg_bits` | integer | 否 | 6 | Placement group bits, used to specify the default number of placement groups.<br><br>Depreacted. This setting was deprecated in recent Ceph versions. |
 | `size` | integer | 否 | 3 | Targeted number of replicas per object |
 
 <details>
@@ -72,7 +72,7 @@ Create the initial Ceph default configuration and set up symlinks. Idempotent on
     },
     "disable_cephx": {
       "default": 0,
-      "description": "Disable cephx authentication. WARNING: cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!",
+      "description": "Disable cephx authentication.\n\nWARNING: cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!",
       "optional": 1,
       "type": "boolean",
       "typetext": "<boolean>"
@@ -102,7 +102,7 @@ Create the initial Ceph default configuration and set up symlinks. Idempotent on
     },
     "pg_bits": {
       "default": 6,
-      "description": "Placement group bits, used to specify the default number of placement groups. Depreacted. This setting was deprecated in recent Ceph versions.",
+      "description": "Placement group bits, used to specify the default number of placement groups.\n\nDepreacted. This setting was deprecated in recent Ceph versions.",
       "maximum": 14,
       "minimum": 6,
       "optional": 1,

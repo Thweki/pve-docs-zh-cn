@@ -1,4 +1,4 @@
-# 2.2. 准备安装介质 <a href="#installation_prepare_media" id="installation_prepare_media"></a>
+# 2.2. Prepare Installation Media <a href="#installation_prepare_media" id="installation_prepare_media"></a>
 
 从以下地址下载安装程序 ISO 映像：[https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso)
 
@@ -9,7 +9,7 @@ Proxmox VE 安装介质是混合 ISO 映像。它有以下两种使用方式：
 
 建议使用 USB 闪存驱动器安装 Proxmox VE，因为这种方式速度更快。
 
-## 2.2.1. 准备 USB 闪存驱动器作为安装介质 <a href="#_prepare_a_usb_flash_drive_as_installation_medium" id="_prepare_a_usb_flash_drive_as_installation_medium"></a>
+## 2.2.1. Prepare a USB Flash Drive as Installation Medium <a href="#_prepare_a_usb_flash_drive_as_installation_medium" id="_prepare_a_usb_flash_drive_as_installation_medium"></a>
 
 闪存驱动器的容量必须大于 ISO 映像。
 
@@ -21,7 +21,7 @@ Proxmox VE 安装介质是混合 ISO 映像。它有以下两种使用方式：
 请确保 USB 闪存驱动器未挂载，且其中不包含任何重要数据。
 {% endhint %}
 
-## 2.2.2. GNU/Linux 操作说明 <a href="#_instructions_for_gnu_linux" id="_instructions_for_gnu_linux"></a>
+## 2.2.2. Instructions for GNU/Linux <a href="#_instructions_for_gnu_linux" id="_instructions_for_gnu_linux"></a>
 
 在类 Unix 操作系统上，使用 `dd` 命令将 ISO 映像复制到 USB 闪存驱动器。首先找到 USB 闪存驱动器的正确设备名称（见下文）。然后运行 `dd` 命令。
 
@@ -37,7 +37,7 @@ Proxmox VE 安装介质是混合 ISO 映像。它有以下两种使用方式：
 请务必小心，不要覆盖错误的磁盘！
 {% endhint %}
 
-### 查找正确的 USB 设备名称 <a href="#_find_the_correct_usb_device_name" id="_find_the_correct_usb_device_name"></a>
+### Find the Correct USB Device Name <a href="#_find_the_correct_usb_device_name" id="_find_the_correct_usb_device_name"></a>
 
 有两种方法可以确定 USB 闪存驱动器的名称。第一种方法是比较插入闪存驱动器前后 `dmesg` 命令输出的最后几行。第二种方法是比较 `lsblk` 命令的输出。打开终端并运行：
 
@@ -53,7 +53,7 @@ Proxmox VE 安装介质是混合 ISO 映像。它有以下两种使用方式：
 
 此时会出现一个新设备。这就是您要使用的设备。为更加稳妥，请检查报告的大小是否与您的 USB 闪存驱动器相符。
 
-## 2.2.3. macOS 操作说明 <a href="#_instructions_for_macos" id="_instructions_for_macos"></a>
+## 2.2.3. Instructions for macOS <a href="#_instructions_for_macos" id="_instructions_for_macos"></a>
 
 打开终端（在 Spotlight 中搜索 Terminal）。
 
@@ -92,13 +92,13 @@ macOS 往往会自动将 *.dmg* 附加到输出文件名中。
 上一条命令中故意使用的是 *rdiskX*，而不是 *diskX*。这样可以提高写入速度。
 {% endhint %}
 
-## 2.2.4. Windows 使用说明 <a href="#_instructions_for_windows" id="_instructions_for_windows"></a>
+## 2.2.4. Instructions for Windows <a href="#_instructions_for_windows" id="_instructions_for_windows"></a>
 
-### 使用 Etcher <a href="#_using_etcher" id="_using_etcher"></a>
+### Using Etcher <a href="#_using_etcher" id="_using_etcher"></a>
 
 Etcher 开箱即用。请从 [https://etcher.io](https://etcher.io) 下载 Etcher。它会引导您完成选择 ISO 和 USB 闪存盘的过程。
 
-### 使用 Rufus <a href="#_using_rufus" id="_using_rufus"></a>
+### Using Rufus <a href="#_using_rufus" id="_using_rufus"></a>
 
 Rufus 是一种更轻量级的替代方案，但您需要使用 **DD 模式** 才能正常工作。请从 [https://rufus.ie/](https://rufus.ie/) 下载 Rufus。您可以安装它，也可以使用便携版。选择目标驱动器和 Proxmox VE ISO 文件。
 

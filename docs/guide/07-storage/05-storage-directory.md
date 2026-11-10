@@ -1,54 +1,54 @@
 # 7.5. Directory Backend <a href="#storage_directory" id="storage_directory"></a>
 
-Storage pool type: `dir`
+存储池类型：`dir`
 
-Proxmox VE can use local directories or locally mounted shares for storage. A directory is a file level storage, so you can store any content type like virtual disk images, containers, templates, ISO images or backup files.
+Proxmox VE 可以使用本地目录或本地挂载的共享目录进行存储。目录是一种文件级存储，因此你可以存储任何内容类型，例如虚拟磁盘镜像、容器、模板、ISO 镜像或备份文件。
 
 {% hint style="info" %}
-You can mount additional storages via standard linux `/etc/fstab`, and then define a directory storage for that mount point. This way you can use any file system supported by Linux.
+你可以通过标准 Linux `/etc/fstab` 挂载其他存储，然后为该挂载点定义一个目录存储。通过这种方式，可以使用 Linux 支持的任何文件系统。
 {% endhint %}
 
-This backend assumes that the underlying directory is POSIX compatible, but nothing else. This implies that you cannot create snapshots at the storage level. But there exists a workaround for VM images using the `qcow2` file format, because that format supports snapshots internally.
+此后端仅假定底层目录兼容 POSIX，别无其他要求。这意味着你无法在存储级别创建快照。但使用 `qcow2` 文件格式的 VM 镜像有一种变通方法，因为该格式内部支持快照。
 
 {% hint style="success" %}
-Some storage types do not support `O_DIRECT`, so you can’t use cache mode `none` with such storages. Simply use cache mode `writeback` instead.
+某些存储类型不支持 `O_DIRECT`，因此无法在此类存储上使用缓存模式 `none`。只需改用缓存模式 `writeback` 即可。
 {% endhint %}
 
-We use a predefined directory layout to store different content types into different sub-directories. This layout is used by all file level storage backends.
+我们使用预定义的目录布局，将不同的内容类型存储到不同的子目录中。所有文件级存储后端都使用此布局。
 
 <table>
-<caption>Table 3. Directory layout</caption>
+<caption>表 3. 目录布局</caption>
 
 
 <thead>
 <tr>
-<th>Content type</th>
-<th>Subdir</th>
+<th>内容类型</th>
+<th>子目录</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>VM images</p></td>
+<td><p>VM 镜像</p></td>
 <td><p><code>images/&lt;VMID&gt;/</code></p></td>
 </tr>
 <tr>
-<td><p>ISO images</p></td>
+<td><p>ISO 镜像</p></td>
 <td><p><code>template/iso/</code></p></td>
 </tr>
 <tr>
-<td><p>Container templates</p></td>
+<td><p>容器模板</p></td>
 <td><p><code>template/cache/</code></p></td>
 </tr>
 <tr>
-<td><p>Backup files</p></td>
+<td><p>备份文件</p></td>
 <td><p><code>dump/</code></p></td>
 </tr>
 <tr>
-<td><p>Snippets</p></td>
+<td><p>片段</p></td>
 <td><p><code>snippets/</code></p></td>
 </tr>
 <tr>
-<td><p>Import</p></td>
+<td><p>导入</p></td>
 <td><p><code>import/</code></p></td>
 </tr>
 </tbody>
@@ -56,17 +56,17 @@ We use a predefined directory layout to store different content types into diffe
 
 ## 7.5.1. Configuration <a href="#_configuration_2" id="_configuration_2"></a>
 
-This backend supports all common storage properties, and adds two additional properties. The `path` property is used to specify the directory. This needs to be an absolute file system path.
+此后端支持所有通用存储属性，并增加了两个附加属性。`path` 属性用于指定目录。该目录必须是绝对文件系统路径。
 
-The optional `content-dirs` property allows for the default layout to be changed. It consists of a comma-separated list of identifiers in the following format:
+可选的 `content-dirs` 属性允许更改默认布局。它由逗号分隔的标识符列表组成，格式如下：
 
 ```text
 vtype=path
 ```
 
-Where `vtype` is one of the allowed content types for the storage, and `path` is a path relative to the mountpoint of the storage.
+其中，`vtype` 是该存储允许的一种内容类型，`path` 是相对于该存储挂载点的路径。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 dir: backup
@@ -77,11 +77,11 @@ dir: backup
         content-dirs backup=custom/backup/dir
 ```
 
-The above configuration defines a storage pool called `backup`. That pool can be used to store up to 7 regular backups (`keep-last=7`) and 3 protected backups per VM. The real path for the backup files is `/mnt/backup/custom/backup/dir/...`.
+上述配置定义了一个名为 `backup` 的存储池。该池可用于为每个 VM 存储最多 7 个常规备份（`keep-last=7`）和 3 个受保护备份。备份文件的实际路径为 `/mnt/backup/custom/backup/dir/...`。
 
 ## 7.5.2. File naming conventions <a href="#_file_naming_conventions" id="_file_naming_conventions"></a>
 
-This backend uses a well defined naming scheme for VM images:
+此后端为 VM 镜像使用明确定义的命名方案：
 
 ```text
 vm-<VMID>-<NAME>.<FORMAT>
@@ -89,34 +89,34 @@ vm-<VMID>-<NAME>.<FORMAT>
 
 **`<VMID>`**
 
-This specifies the owner VM.
+指定所有者 VM。
 
 **`<NAME>`**
 
-This can be an arbitrary name (`ascii`) without white space. The backend uses `disk-[N]` as default, where `[N]` is replaced by an integer to make the name unique.
+这可以是不含空白字符的任意名称（`ascii`）。后端默认使用 `disk-[N]`，其中 `[N]` 会被替换为一个整数，以使名称唯一。
 
 **`<FORMAT>`**
 
-Specifies the image format (`raw|qcow2|vmdk`).
+指定镜像格式（`raw|qcow2|vmdk`）。
 
-When you create a VM template, all VM images are renamed to indicate that they are now read-only, and can be used as a base image for clones:
+创建 VM 模板时，所有 VM 镜像都会被重命名，以表明它们现在是只读的，并且可以用作克隆的基础镜像：
 
 ```text
 base-<VMID>-<NAME>.<FORMAT>
 ```
 
 {% hint style="info" %}
-Such base images are used to generate cloned images. So it is important that those files are read-only, and never get modified. The backend changes the access mode to `0444`, and sets the immutable flag (`chattr +i`) if the storage supports that.
+此类基础镜像用于生成克隆镜像。因此，必须确保这些文件为只读且永远不会被修改。后端会将访问模式更改为 `0444`，并在存储支持的情况下设置不可变标志（`chattr +i`）。
 {% endhint %}
 
 ## 7.5.3. Storage Features <a href="#_storage_features" id="_storage_features"></a>
 
-As mentioned above, most file systems do not support snapshots out of the box. To workaround that problem, this backend is able to use `qcow2` internal snapshot capabilities.
+如上所述，大多数文件系统本身并不支持快照。为解决此问题，此后端能够使用 `qcow2` 的内部快照功能。
 
-Same applies to clones. The backend uses the `qcow2` base image feature to create clones.
+克隆也是如此。后端使用 `qcow2` 的基础镜像功能来创建克隆。
 
 <table>
-<caption>Table 4. Storage features for backend <code>dir</code></caption>
+<caption>表 4. 后端 <code>dir</code> 的存储功能</caption>
 
 
 
@@ -124,18 +124,18 @@ Same applies to clones. The backend uses the `qcow2` base image feature to creat
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir vztmpl iso backup snippets</p></td>
 <td><p>raw qcow2 vmdk subvol</p></td>
-<td><p>no</p></td>
+<td><p>否</p></td>
 <td><p>qcow2</p></td>
 <td><p>qcow2</p></td>
 </tr>
@@ -144,7 +144,7 @@ Same applies to clones. The backend uses the `qcow2` base image feature to creat
 
 ## 7.5.4. Examples <a href="#_examples_2" id="_examples_2"></a>
 
-Please use the following command to allocate a 4GB image on storage `local`:
+请使用以下命令在存储 `local` 上分配一个 4GB 镜像：
 
 ```text
 # pvesm alloc local 100 vm-100-disk10.raw 4G
@@ -153,17 +153,17 @@ successfully created 'local:100/vm-100-disk10.raw'
 ```
 
 {% hint style="info" %}
-The image name must conform to above naming conventions.
+镜像名称必须符合上述命名约定。
 {% endhint %}
 
-The real file system path is shown with:
+实际的文件系统路径可通过以下命令查看：
 
 ```text
 # pvesm path local:100/vm-100-disk10.raw
 /var/lib/vz/images/100/vm-100-disk10.raw
 ```
 
-And you can remove the image with:
+可以通过以下命令删除镜像：
 
 ```text
 # pvesm free local:100/vm-100-disk10.raw

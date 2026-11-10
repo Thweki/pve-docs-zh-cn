@@ -1,10 +1,10 @@
 # pveum(1)
 
-## 名称 <a href="#chapter_user_management" id="chapter_user_management"></a>
+## NAME <a href="#chapter_user_management" id="chapter_user_management"></a>
 
 pveum \- Proxmox VE User Manager
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pveum"></a>
 
@@ -276,7 +276,7 @@ Allow adding a guest even if already in another pool. The guest will be removed 
 
 no description available
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (*default \=* `0`)**
 
 Remove the passed VMIDs and/or storage IDs instead of adding them.
 
@@ -1160,7 +1160,7 @@ An alias for *pveum user delete*.
 
 An alias for *pveum user modify*.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 Proxmox VE supports multiple authentication sources, for example Linux PAM, an integrated Proxmox VE authentication server, LDAP, Microsoft Active Directory and OpenID Connect.
 
@@ -1507,8 +1507,6 @@ Since FIDO2/Webauthn and recovery keys are less susceptible to brute force attac
 
 An admin can unlock a user’s Two-Factor Authentication at any time via the user list in the UI or the command line:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum user tfa unlock joe@pve
 ```
@@ -1572,9 +1570,8 @@ webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.ex
 It is recommended to use WebAuthn instead.
 {% endhint %}
 
-To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId*   
-\[AppId [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)\]  
- needs to be configured.
+To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId*
+[\[1\]](#note-f5682feb-1) needs to be configured.
 
 {% hint style="info" %}
 Changing the *AppId* will render all existing *U2F* registrations unusable!
@@ -1588,9 +1585,8 @@ u2f: appid=https://mypve.example.com:8006
 
 For a single node, the *AppId* can simply be the address of the web interface, exactly as it is used in the browser, including the *https://* and the port, as shown above. Please note that some browsers may be more strict than others when matching *AppIds*.
 
-When using multiple nodes, it is best to have a separate `https` server providing an `appid.json`   
-\[Multi-facet apps: [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)\]  
- file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
+When using multiple nodes, it is best to have a separate `https` server providing an `appid.json`
+[\[2\]](#note-f5682feb-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
 
 {% hint style="info" %}
 A bad *AppId* will usually produce an error, but we have encountered situations when this does not happen, particularly when using a top level domain *AppId* for a node that is accessed via a subdomain in Chromium. For this reason it is recommended to test the configuration with multiple browsers, as changing the *AppId* later will render existing *U2F* registrations unusable.
@@ -1639,8 +1635,6 @@ You can add new roles via the GUI or the command line.
 From the GUI, navigate to the *Permissions → Roles* tab from *Datacenter* and click on the *Create* button. There you can set a role name and select any desired privileges from the *Privileges* drop-down menu.
 
 To add a role through the command line, you can use the *pveum* CLI tool, for example:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
 pveum role add VM_Power-only --privs "VM.PowerMgmt VM.Console"
@@ -1802,15 +1796,11 @@ Most users will simply use the GUI to manage users. But there is also a fully fe
 
 Here are some simple usage examples. To show help, type:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum
 ```
 
 or (to show detailed help about a specific command)
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum help user add
@@ -1818,15 +1808,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 Create a new user:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum user add testuser@pve -comment "Just a test"
 ```
 
 Set or change the password (not all realms support this):
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum passwd testuser@pve
@@ -1834,23 +1820,17 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 Disable a user:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum user modify testuser@pve -enable 0
 ```
 
 Create a new group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add testgroup
 ```
 
 Create a new role:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum role add PVE_Power-only -privs "VM.PowerMgmt VM.Console"
@@ -1864,23 +1844,17 @@ It is possible that an administrator would want to create a group of users with 
 
 To do this, first define the group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add admin -comment "System Administrators"
 ```
 
 Then assign the role:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify / -group admin -role Administrator
 ```
 
 Finally, you can add users to the new *admin* group:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user modify testuser@pve -group admin
@@ -1892,15 +1866,11 @@ You can give read only access to users by assigning the `PVEAuditor` role to use
 
 Example 1: Allow user `joe@pve` to see everything
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify / -user joe@pve -role PVEAuditor
 ```
 
 Example 2: Allow user `joe@pve` to see all virtual machines
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /vms -user joe@pve -role PVEAuditor
@@ -1910,15 +1880,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 If you want to delegate user management to user `joe@pve`, you can do that with:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify /access -user joe@pve -role PVEUserAdmin
 ```
 
 User `joe@pve` can now add and remove users, and change other user attributes, such as passwords. This is a very powerful role, and you most likely want to limit it to selected realms and groups. The following example allows `joe@pve` to modify users within the realm `pve`, if they are members of group `customers`:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /access/realm/pve -user joe@pve -role PVEUserAdmin
@@ -1935,15 +1901,11 @@ Permissions on API tokens are always a subset of those of their corresponding us
 
 Give the user `joe@pve` the role PVEVMAdmin on all VMs:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum acl modify /vms -user joe@pve -role PVEVMAdmin
 ```
 
 Add a new API token with separate privileges, which is only allowed to view VM information (for example, for monitoring purposes):
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user token add joe@pve monitoring -privsep 1
@@ -1951,8 +1913,6 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 ```
 
 Verify the permissions of the user and token:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user permissions joe@pve
@@ -1963,15 +1923,11 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 An enterprise is usually structured into several smaller departments, and it is common that you want to assign resources and delegate management tasks to each of these. Let’s assume that you want to set up a pool for a software development department. First, create a group:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum group add developers -comment "Our software developers"
 ```
 
 Now we create a new user which is a member of that group:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum user add developer1@pve -group developers -password
@@ -1983,15 +1939,11 @@ The "-password" parameter will prompt you for a password
 
 Then we create a resource pool for our development department to use:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
  pveum pool add dev-pool --comment "IT development pool"
 ```
 
 Finally, we can assign permissions to that pool:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
 ```text
  pveum acl modify /pool/dev-pool/ -group developers -role PVEAdmin
@@ -1999,7 +1951,7 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 
 Our software developers can now administer the resources assigned to that pool.
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -2014,6 +1966,16 @@ Our software developers can now administer the resources assigned to that pool.
 
 
 ---
+
+## 注释
+
+### 注释 1 <a href="#note-f5682feb-1" id="note-f5682feb-1"></a>
+
+AppId [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)
+
+### 注释 2 <a href="#note-f5682feb-2" id="note-f5682feb-2"></a>
+
+Multi-facet apps: [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)
 
 ---
 

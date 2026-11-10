@@ -1,6 +1,6 @@
 # 14.1. Users <a href="#pveum_users" id="pveum_users"></a>
 
-Proxmox VE stores user attributes in `/etc/pve/user.cfg`. Passwords are not stored here; users are instead associated with the [authentication realms](05-pveum-authentication-realms.md#pveum_authentication_realms) described below. Therefore, a user is often internally identified by their username and realm in the form `<userid>@<realm>`.
+Proxmox VE stores user attributes in `/etc/pve/user.cfg`. Passwords are not stored here; users are instead associated with the [authentication realms](05-pveum-authentication-realms.md) described below. Therefore, a user is often internally identified by their username and realm in the form `<userid>@<realm>`.
 
 Each user entry in this file contains the following information:
 

@@ -1,36 +1,36 @@
 # 7.6. NFS Backend <a href="#storage_nfs" id="storage_nfs"></a>
 
-Storage pool type: `nfs`
+存储池类型：`nfs`
 
-The NFS backend is based on the directory backend, so it shares most properties. The directory layout and the file naming conventions are the same. The main advantage is that you can directly configure the NFS server properties, so the backend can mount the share automatically. There is no need to modify `/etc/fstab`. The backend can also test if the server is online, and provides a method to query the server for exported shares.
+NFS 后端基于目录后端，因此二者共享大多数属性。目录布局和文件命名约定相同。主要优势在于，您可以直接配置 NFS 服务器属性，使后端能够自动挂载共享。无需修改 `/etc/fstab`。后端还可以测试服务器是否在线，并提供查询服务器所导出共享的方法。
 
 ## 7.6.1. Configuration <a href="#_configuration_3" id="_configuration_3"></a>
 
-The backend supports all common storage properties, except the shared flag, which is always set. Additionally, the following properties are used to configure the NFS server:
+该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，以下属性用于配置 NFS 服务器：
 
 **server**
 
-Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+服务器 IP 或 DNS 名称。为避免 DNS 查询延迟，通常最好使用 IP 地址而不是 DNS 名称，除非您有非常可靠的 DNS 服务器，或者已在本地 `/etc/hosts` 文件中列出该服务器。
 
 **export**
 
-NFS export path (as listed by `pvesm nfsscan`).
+NFS 导出路径（由 `pvesm nfsscan` 列出）。
 
-You can also set NFS mount options:
+您还可以设置 NFS 挂载选项：
 
 **path**
 
-The local mount point (defaults to `/mnt/pve/<STORAGE_ID>/`).
+本地挂载点（默认为 `/mnt/pve/<STORAGE_ID>/`）。
 
 **content-dirs**
 
-Overrides for the default directory layout. Optional.
+默认目录布局的覆盖设置。可选。
 
 **options**
 
-NFS mount options (see `man nfs`).
+NFS 挂载选项（参见 `man nfs`）。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 nfs: iso-templates
@@ -42,15 +42,15 @@ nfs: iso-templates
 ```
 
 {% hint style="success" %}
-After an NFS request times out, NFS request are retried indefinitely by default. This can lead to unexpected hangs on the client side. For read-only content, it is worth to consider the NFS `soft` option, which limits the number of retries to three.
+NFS 请求超时后，默认会无限期重试 NFS 请求。这可能导致客户端出现意外挂起。对于只读内容，值得考虑使用 NFS 的 `soft` 选项，该选项将重试次数限制为三次。
 {% endhint %}
 
 ## 7.6.2. Storage Features <a href="#_storage_features_2" id="_storage_features_2"></a>
 
-NFS does not support snapshots, but the backend uses `qcow2` features to implement snapshots and cloning.
+NFS 不支持快照，但后端利用 `qcow2` 的功能来实现快照和克隆。
 
 <table>
-<caption>Table 5. Storage features for backend <code>nfs</code></caption>
+<caption>表 5. 后端 <code>nfs</code> 的存储功能</caption>
 
 
 
@@ -58,18 +58,18 @@ NFS does not support snapshots, but the backend uses `qcow2` features to impleme
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir vztmpl iso backup snippets</p></td>
 <td><p>raw qcow2 vmdk</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
 <td><p>qcow2</p></td>
 <td><p>qcow2</p></td>
 </tr>
@@ -78,7 +78,7 @@ NFS does not support snapshots, but the backend uses `qcow2` features to impleme
 
 ## 7.6.3. Examples <a href="#_examples_3" id="_examples_3"></a>
 
-You can get a list of exported NFS shares with:
+可以通过以下命令获取已导出的 NFS 共享列表：
 
 ```text
 # pvesm scan nfs <server>

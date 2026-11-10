@@ -14,7 +14,7 @@ SDN Fabrics Index
 
 ```json
 {
-  "description": "Only list nodes where you have 'SDN.Audit' or 'SDN.Allocate' permissions on '/sdn/fabrics/<fabric>' and 'Sys.Audit' or 'Sys.Modify' on /nodes/<node_id>",
+  "description": "Only list nodes where you have 'SDN.Audit' or 'SDN.Allocate' permissions on\n'/sdn/fabrics/<fabric>' and 'Sys.Audit' or 'Sys.Modify' on /nodes/<node_id>",
   "user": "all"
 }
 ```

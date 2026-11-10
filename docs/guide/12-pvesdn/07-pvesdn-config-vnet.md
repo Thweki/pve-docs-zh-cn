@@ -35,7 +35,7 @@ Enables vlan-aware option on the interface, enabling configuration in the guest.
 Sets the isolated flag for all guest ports of this interface, but not for the interface itself. This means guests can only send traffic to non-isolated bridge-ports, which is the bridge itself. In order for this setting to take effect, you need to restart the affected guest.
 
 {% hint style="info" %}
-Port isolation is local to each host. Use the [VNET Firewall](15-pvesdn-firewall-integration.md#pvesdn_firewall_integration) to further isolate traffic in the VNET across nodes. For example, DROP by default and only allow traffic from the IP subnet to the gateway and vice versa.
+Port isolation is local to each host. Use the [VNET Firewall](15-pvesdn-firewall-integration.md) to further isolate traffic in the VNET across nodes. For example, DROP by default and only allow traffic from the IP subnet to the gateway and vice versa.
 {% endhint %}
 
 ---

@@ -271,7 +271,7 @@ VNet related configuration is read from:
 This can be used for setting firewall configuration globally on a VNet level, without having to set firewall rules for each VM inside the VNet separately. It can only contain rules for the `FORWARD` direction, since there is no notion of incoming or outgoing traffic. This affects all traffic travelling from one bridge port to another, including the host interface.
 
 {% hint style="warning" %}
-This feature is currently only available for the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md#pve_firewall_nft)
+This feature is currently only available for the new [nftables-based proxmox-firewall](13-pve-firewall-nft.md)
 {% endhint %}
 
 Since traffic passing the `FORWARD` chain is bi-directional, you need to create rules for both directions if you want traffic to pass both ways. For instance if HTTP traffic for a specific host should be allowed, you would need to create the following rules:

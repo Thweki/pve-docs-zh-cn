@@ -287,7 +287,7 @@ Create or restore a virtual machine.
 | `amd-sev` | string | 否 | — | Secure Encrypted Virtualization (SEV) features by AMD CPUs |
 | `arch` | string | 否 | — | Virtual processor architecture. Defaults to the host architecture.；可选值：`x86_64`, `aarch64` |
 | `archive` | string | 否 | — | The backup archive. Either the file system path to a .tar or .vma file (use '-' to pipe data from stdin) or a proxmox storage backup volume identifier. |
-| `args` | string | 否 | — | Arbitrary arguments passed to kvm. |
+| `args` | string | 否 | — | Arbitrary arguments passed to kvm, for example:<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>NOTE: this option is for experts only.<br> |
 | `audio0` | string | 否 | — | Configure a audio device, useful in combination with QXL/Spice. |
 | `autostart` | boolean | 否 | 0 | Automatic restart after crash (currently ignored). |
 | `balloon` | integer | 否 | — | Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero. |
@@ -303,21 +303,21 @@ Create or restore a virtual machine.
 | `ciuser` | string | 否 | — | cloud-init: User name to change ssh keys and password for instead of the image's configured default user. |
 | `cores` | integer | 否 | 1 | The number of cores per socket. |
 | `cpu` | string | 否 | — | Emulated CPU type. |
-| `cpulimit` | number | 否 | 0 | Limit of CPU usage. |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2. |
+| `cpulimit` | number | 否 | 0 | Limit of CPU usage.<br><br>NOTE: If the computer has 2 CPUs, it has total of '2' CPU time. Value '0' indicates no CPU limit. |
+| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. |
 | `description` | string | 否 | — | Description for the VM. Shown in the web-interface VM's summary. This is saved as comment inside the configuration file. |
 | `efidisk0` | string | 否 | — | Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `force` | boolean | 否 | — | Allow to overwrite existing VM. |
 | `freeze` | boolean | 否 | — | Freeze CPU at startup (use 'c' monitor command to start execution). |
 | `ha-managed` | boolean | 否 | 0 | Add the VM as a HA resource after it was created. |
 | `hookscript` | string | 否 | — | Script that will be executed during various steps in the vms lifetime. |
-| `hostpci[n]` | string | 否 | — | Map host PCI devices into guest. |
+| `hostpci[n]` | string | 否 | — | Map host PCI devices into guest.<br><br>NOTE: This option allows direct access to host hardware. So it is no longer<br>possible to migrate such machines - use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
 | `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version &gt;= 7.1 and ostype l26 or windows &gt; 7. |
-| `hugepages` | string | 否 | — | Enables hugepages memory. Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.；可选值：`any`, `2`, `1024` |
+| `hugepages` | string | 否 | — | Enables hugepages memory.<br><br>Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.；可选值：`any`, `2`, `1024` |
 | `ide[n]` | string | 否 | — | Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `import-working-storage` | string | 否 | — | A file-based storage with 'images' content-type enabled, which is used as an intermediary extraction storage during import. Defaults to the source storage. |
 | `intel-tdx` | string | 否 | — | Trusted Domain Extension (TDX) features by Intel CPUs |
-| `ipconfig[n]` | string | 否 | — | cloud-init: Specify IP addresses and gateways for the corresponding interface. IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified. The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer. If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. |
+| `ipconfig[n]` | string | 否 | — | cloud-init: Specify IP addresses and gateways for the corresponding interface.<br><br>IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.<br><br>The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit<br>gateway should be provided.<br>For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires<br>cloud-init 19.4 or newer.<br><br>If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using<br>dhcp on IPv4.<br> |
 | `ivshmem` | string | 否 | — | Inter-VM shared memory. Useful for direct communication between VMs, or to the host. |
 | `keephugepages` | boolean | 否 | 0 | Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts. |
 | `keyboard` | string | 否 | null | Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
@@ -336,8 +336,8 @@ Create or restore a virtual machine.
 | `numa` | boolean | 否 | 0 | Enable/disable NUMA. |
 | `numa[n]` | string | 否 | — | NUMA topology. |
 | `onboot` | boolean | 否 | 0 | Specifies whether a VM will be started during system bootup. |
-| `ostype` | string | 否 | "other" | Specify guest operating system.；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
-| `parallel[n]` | string | 否 | — | Map host parallel devices (n is 0 to 2). |
+| `ostype` | string | 否 | "other" | Specify guest operating system. This is used to enable special<br>optimization/features for specific operating systems:<br><br>[horizontal]<br>other;; unspecified OS<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 Kernel<br>l26;; Linux 2.6 - 7.X Kernel<br>solaris;; Solaris/OpenSolaris/OpenIndiania kernel<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
+| `parallel[n]` | string | 否 | — | Map host parallel devices (n is 0 to 2).<br><br>NOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such<br>machines - use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
 | `pool` | string | 否 | — | Add the VM to the specified pool. |
 | `protection` | boolean | 否 | 0 | Sets the protection flag of the VM. This will disable the remove VM and remove disk operations. |
 | `reboot` | boolean | 否 | 1 | Allow reboot. If set to '0' the VM exit on reboot. |
@@ -346,7 +346,7 @@ Create or restore a virtual machine.
 | `scsi[n]` | string | 否 | — | Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `scsihw` | string | 否 | "lsi" | SCSI controller model；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
 | `searchdomain` | string | 否 | — | cloud-init: Sets DNS search domains for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set. |
-| `serial[n]` | string | 否 | — | Create a serial device inside the VM (n is 0 to 3) |
+| `serial[n]` | string | 否 | — | Create a serial device inside the VM (n is 0 to 3), and pass through a<br>host serial device (i.e. /dev/ttyS0), or create a unix socket on the<br>host side (use 'qm terminal' to open a terminal connection).<br><br>NOTE: If you pass through a host serial device, it is no longer possible to migrate such machines -<br>use with special care.<br><br>CAUTION: Experimental! User reported problems with this option.<br> |
 | `shares` | integer | 否 | 1000 | Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd. |
 | `smbios1` | string | 否 | — | Specify SMBIOS type 1 fields. |
 | `smp` | integer | 否 | 1 | The number of CPUs. Please use option -sockets instead. |
@@ -357,7 +357,7 @@ Create or restore a virtual machine.
 | `startdate` | string | 否 | "now" | Set the initial date of the real time clock. Valid format for date are:'now' or '2006-06-17T16:01:21' or '2006-06-17'. |
 | `startup` | string | 否 | — | Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped. |
 | `storage` | string | 否 | — | Default storage. |
-| `tablet` | boolean | 否 | 1 | Enable/disable the USB tablet device. |
+| `tablet` | boolean | 否 | 1 | Enable/disable the USB tablet device. This device is usually needed to allow absolute mouse positioning with VNC. Else the mouse runs out of sync with normal VNC clients. If you're running lots of console-only guests on one host, you may consider disabling this to save some context switches. This is turned off by default if you use spice (`qm set &lt;vmid&gt; --vga qxl`). |
 | `tags` | string | 否 | — | Tags of the VM. This is only meta information. |
 | `tdf` | boolean | 否 | 0 | Enable/disable time drift fix. |
 | `template` | boolean | 否 | 0 | Enable/disable Template. |
@@ -366,13 +366,13 @@ Create or restore a virtual machine.
 | `unused[n]` | string | 否 | — | Reference to unused volumes. This is used internally, and should not be modified manually. |
 | `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version &gt;= 7.1 and ostype l26 or windows &gt; 7, n can be up to 14). |
 | `vcpus` | integer | 否 | 0 | Number of hotplugged vcpus. |
-| `vga` | string | 否 | — | Configure the VGA hardware. |
+| `vga` | string | 否 | — | Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is 'std' for all OS types besides some Windows versions (XP and older) which use 'cirrus'. The 'qxl' option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays them self.<br>You can also run without any graphic card, using a serial device as terminal. |
 | `virtio[n]` | string | 否 | — | Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `virtiofs[n]` | string | 否 | — | Configuration for sharing a directory between host and guest using Virtio-fs. |
-| `vmgenid` | string | 否 | "1 (autogenerated)" | Set VM Generation ID. Use '1' to autogenerate on create or update, pass '0' to disable explicitly. |
+| `vmgenid` | string | 否 | "1 (autogenerated)" | The VM generation ID (vmgenid) device exposes a 128-bit integer value identifier to the guest OS. This allows to notify the guest operating system when the virtual machine is executed with a different configuration (e.g. snapshot execution or creation from a template). The guest operating system notices the change, and is then able to react as appropriate by marking its copies of distributed databases as dirty, re-initializing its random number generator, etc.<br>Note that auto-creation only works when done through API/CLI create or update methods, but not when manually editing the config file. |
 | `vmid` | integer | 是 | — | The (unique) ID of the VM. |
 | `vmstatestorage` | string | 否 | — | Default storage for VM state volumes/files. |
-| `watchdog` | string | 否 | — | Create a virtual hardware watchdog device. |
+| `watchdog` | string | 否 | — | Create a virtual hardware watchdog device. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified) |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -750,7 +750,7 @@ Create or restore a virtual machine.
       "typetext": "<string>"
     },
     "hugepages": {
-      "description": "Enables hugepages memory. Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.",
+      "description": "Enables hugepages memory.\n\nSets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.",
       "enum": [
         "any",
         "2",
@@ -1082,7 +1082,7 @@ Create or restore a virtual machine.
       "typetext": "[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]"
     },
     "ipconfig[n]": {
-      "description": "cloud-init: Specify IP addresses and gateways for the corresponding interface. IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified. The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer. If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.",
+      "description": "cloud-init: Specify IP addresses and gateways for the corresponding interface.\n\nIP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.\n\nThe special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit\ngateway should be provided.\nFor IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires\ncloud-init 19.4 or newer.\n\nIf cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using\ndhcp on IPv4.\n",
       "format": "pve-qm-ipconfig",
       "optional": 1,
       "type": "string",
@@ -1276,7 +1276,7 @@ Create or restore a virtual machine.
       "description": "Specify network devices.",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge is called 'vmbr0'. If you do not specify a bridge, we create a kvm user (NATed) network device, which provides DHCP and DNS services. The following addresses are used: 10.0.2.2 Gateway 10.0.2.3 DNS Server 10.0.2.4 SMB Server The DHCP server assign addresses to the guest starting from 10.0.2.15.",
+          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2 Gateway\n 10.0.2.3 DNS Server\n 10.0.2.4 SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
           "format": "pve-bridge-id",
           "format_description": "bridge",
           "optional": 1,
@@ -2100,7 +2100,7 @@ Create or restore a virtual machine.
         },
         "scsiblock": {
           "default": 0,
-          "description": "whether to use scsi-block for full passthrough of host block device WARNING: can lead to I/O errors in combination with low memory or high memory fragmentation on host",
+          "description": "whether to use scsi-block for full passthrough of host block device\n\nWARNING: can lead to I/O errors in combination with low memory or high memory fragmentation on host",
           "optional": 1,
           "type": "boolean"
         },
@@ -2402,7 +2402,7 @@ Create or restore a virtual machine.
       "format": {
         "host": {
           "default_key": 1,
-          "description": "The Host USB device or port or the value 'spice'. HOSTUSBDEVICE syntax is: 'bus-port(.port)*' (decimal numbers) or 'vendor_id:product_id' (hexadecimal numbers) or 'spice' You can use the 'lsusb -t' command to list existing usb devices. NOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such machines - use with special care. The value 'spice' can be used to add a usb redirection devices for spice. Either this or the 'mapping' key must be set.",
+          "description": "The Host USB device or port or the value 'spice'. HOSTUSBDEVICE syntax is:\n\n 'bus-port(.port)*' (decimal numbers) or\n 'vendor_id:product_id' (hexadecimal numbers) or\n 'spice'\n\nYou can use the 'lsusb -t' command to list existing usb devices.\n\nNOTE: This option allows direct access to host hardware. So it is no longer possible to migrate such\nmachines - use with special care.\n\nThe value 'spice' can be used to add a usb redirection devices for spice.\n\nEither this or the 'mapping' key must be set.\n",
           "format_description": "HOSTUSBDEVICE|spice",
           "optional": 1,
           "pattern": "(?^:(?:(?:(?^:(0x)?([0-9A-Fa-f]{4}):(0x)?([0-9A-Fa-f]{4})))|(?:(?^:(\\d+)\\-(\\d+(\\.\\d+)*)))|[Ss][Pp][Ii][Cc][Ee]))",

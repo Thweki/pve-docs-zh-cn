@@ -1,12 +1,12 @@
 # 4\. Graphical User Interface <a href="#chapter_gui" id="chapter_gui"></a>
 
-Proxmox VE is simple. There is no need to install a separate management tool, and everything can be done through your web browser (Latest Firefox or Google Chrome is preferred). A built-in HTML5 console is used to access the guest console. As an alternative, [SPICE](https://www.spice-space.org/) can be used.
+Proxmox VE 简单易用。无需安装单独的管理工具，一切均可通过 Web 浏览器完成（建议使用最新版本的 Firefox 或 Google Chrome）。内置 HTML5 控制台用于访问客户机控制台。作为替代方案，也可以使用[SPICE](https://www.spice-space.org/)。
 
-Because we use the Proxmox cluster file system (pmxcfs), you can connect to any node to manage the entire cluster. Each node can manage the entire cluster. There is no need for a dedicated manager node.
+由于我们使用 Proxmox 集群文件系统（pmxcfs），您可以连接到任何节点来管理整个集群。每个节点都可以管理整个集群，无需专用的管理节点。
 
-You can use the web-based administration interface with any modern browser. When Proxmox VE detects that you are connecting from a mobile device, you are redirected to a simpler, touch-based user interface.
+您可以使用任何现代浏览器访问基于 Web 的管理界面。当 Proxmox VE 检测到您从移动设备连接时，会将您重定向到更简洁的触控式用户界面。
 
-The web interface can be reached via [https://youripaddress:8006](https://youripaddress:8006) (default login is: *root*, and the password is specified during the installation process).
+可通过 [https://youripaddress:8006](https://youripaddress:8006) 访问 Web 界面（默认登录名为：*root*，密码在安装过程中指定）。
 
 ## 本章内容
 

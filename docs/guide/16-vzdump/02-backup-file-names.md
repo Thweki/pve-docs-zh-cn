@@ -6,7 +6,7 @@ Newer versions of vzdump encode the guest type and the backup time into the file
 vzdump-lxc-105-2009_10_09-11_04_43.tar
 ```
 
-That way it is possible to store several backup in the same directory. You can limit the number of backups that are kept with various retention options, see the [Backup Retention](06-vzdump-retention.md#vzdump_retention) section below.
+That way it is possible to store several backup in the same directory. You can limit the number of backups that are kept with various retention options, see the [Backup Retention](06-vzdump-retention.md) section below.
 
 ---
 

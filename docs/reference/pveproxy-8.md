@@ -1,10 +1,10 @@
 # pveproxy(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 pveproxy \- PVE API Proxy Daemon
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pveproxy"></a>
 
@@ -44,7 +44,7 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 Debug mode \- stay in foreground
 
@@ -64,7 +64,7 @@ Get daemon status.
 
 Stop the daemon.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 This daemon exposes the whole Proxmox VE API on TCP port 8006 using HTTPS. It runs as user `www-data` and has very limited permissions. Operation requiring more permissions are forwarded to the local `pvedaemon`.
 
@@ -274,7 +274,7 @@ Note that a higher number of worker processes may result in higher CPU usage. Th
 
 The same setting exists for [pvedaemon](pvedaemon-8.md#pvedaemon_max_workers).
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

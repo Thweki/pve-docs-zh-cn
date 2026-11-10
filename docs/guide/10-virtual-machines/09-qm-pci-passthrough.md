@@ -275,7 +275,7 @@ You can override the PCI vendor ID, device ID, and subsystem IDs that will be se
 
 The available options are `vendor-id`, `device-id`, `sub-vendor-id`, and `sub-device-id`. You can set any or all of these to override your device’s default IDs.
 
-For example:
+例如：
 
 ```text
 # qm set VMID -hostpci0 02:00,device-id=0x10f6,sub-vendor-id=0x0000
@@ -366,7 +366,7 @@ With this set, Proxmox VE automatically creates such a device on VM start, and c
 
 ## 10.9.5. Usage in Clusters <a href="#_use_in_clusters" id="_use_in_clusters"></a>
 
-It is also possible to map devices at a cluster level, so that they can be properly used with HA and hardware changes are detected and non-root users can configure them. See [Resource Mapping](12-resource-mapping.md#resource_mapping) for details on that.
+It is also possible to map devices at a cluster level, so that they can be properly used with HA and hardware changes are detected and non-root users can configure them. See [Resource Mapping](12-resource-mapping.md) for details on that.
 
 ## 10.9.6. vIOMMU (emulated IOMMU) <a href="#qm_pci_viommu" id="qm_pci_viommu"></a>
 

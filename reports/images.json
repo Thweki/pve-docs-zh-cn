@@ -1,0 +1,542 @@
+[
+  {
+    "path": "assets/note-46cd2459b8fb.png",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "path": "assets/warning-349b612f00b7.png",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "path": "assets/tip-f496b28534ac.png",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "path": "assets/screenshot-gui-ha-manager-status-png-228d45135771.png",
+    "width": 985,
+    "height": 568
+  },
+  {
+    "path": "assets/screenshot-gui-ha-manager-add-resource-png-ecdb9be5d10e.png",
+    "width": 600,
+    "height": 221
+  },
+  {
+    "path": "assets/screenshot-gui-ha-manager-groups-view-png-7c996739200b.png",
+    "width": 985,
+    "height": 568
+  },
+  {
+    "path": "assets/screenshot-gui-ha-manager-add-group-png-4ee8eb028494.png",
+    "width": 600,
+    "height": 492
+  },
+  {
+    "path": "assets/caution-792fe0000e4f.png",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "path": "assets/important-b3789e2c208e.png",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-options-crs-png-ef60ed8326a1.png",
+    "width": 450,
+    "height": 330
+  },
+  {
+    "path": "assets/screenshot-gui-create-ct-general-png-12aca10f1f54.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-ct-cpu-png-e255ce428e71.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-ct-memory-png-c79b942688af.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-ct-root-disk-png-02418851db73.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-ct-network-png-0b934631b465.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-edit-start-order-png-9683f539b3b2.png",
+    "width": 320,
+    "height": 196
+  },
+  {
+    "path": "assets/proxmox-software-stack-79043b73264a.svg",
+    "width": "526pt",
+    "height": "401pt"
+  },
+  {
+    "path": "assets/screenshot-pve-grub-menu-png-daaa98e42125.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-tui-installer-png-b3905616fe63.png",
+    "width": 739,
+    "height": 419
+  },
+  {
+    "path": "assets/screenshot-pve-select-target-disk-png-dd544bdd8564.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-select-location-png-d1bd2e26bff2.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-set-password-png-bc5b3f84937b.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-setup-network-png-b8ac9f540804.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-install-summary-png-e1d15db0395a.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-pve-installation-png-e07b3e136345.png",
+    "width": 1044,
+    "height": 788
+  },
+  {
+    "path": "assets/screenshot-gui-login-window-png-9cd1c28376f9.png",
+    "width": 400,
+    "height": 196
+  },
+  {
+    "path": "assets/screenshot-gui-node-repositories-png-994a4b8cedfd.png",
+    "width": 1410,
+    "height": 837
+  },
+  {
+    "path": "assets/default-network-setup-bridge-svg-a8f40ccd7839.svg",
+    "width": "572pt",
+    "height": "360pt"
+  },
+  {
+    "path": "assets/default-network-setup-routed-svg-3315223b8d8f.svg",
+    "width": "571pt",
+    "height": "360pt"
+  },
+  {
+    "path": "assets/default-network-setup-bond-svg-ac3faddda6f5.svg",
+    "width": "571pt",
+    "height": "360pt"
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-metric-server-list-png-29de6badd9c9.png",
+    "width": 1065,
+    "height": 780
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-metric-server-graphite-png-e9da46d8b1be.png",
+    "width": 600,
+    "height": 182
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-metric-server-influxdb-png-a15fa331c7ff.png",
+    "width": 600,
+    "height": 153
+  },
+  {
+    "path": "assets/screenshot-gui-node-certs-upload-custom-png-a449fdd87b86.png",
+    "width": 600,
+    "height": 332
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-acme-register-account-png-e973a4f280cf.png",
+    "width": 400,
+    "height": 260
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-acme-overview-png-cad3d764a7c7.png",
+    "width": 901,
+    "height": 592
+  },
+  {
+    "path": "assets/screenshot-gui-node-certs-add-domain-png-45582cac9fd9.png",
+    "width": 450,
+    "height": 188
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-acme-add-dns-plugin-png-ae07ef783a05.png",
+    "width": 550,
+    "height": 312
+  },
+  {
+    "path": "assets/screenshot-boot-grub-png-a99b5d180a67.png",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "path": "assets/screenshot-boot-systemdboot-png-1363e5a3196a.png",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-summary-png-ade3f5660241.png",
+    "width": 1605,
+    "height": 1200
+  },
+  {
+    "path": "assets/screenshot-gui-my-settings-png-318ec9e5f40a.png",
+    "width": 800,
+    "height": 525
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-search-png-0d4035c472d2.png",
+    "width": 1605,
+    "height": 1200
+  },
+  {
+    "path": "assets/screenshot-gui-node-summary-png-fa9649a32134.png",
+    "width": 1605,
+    "height": 1200
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-summary-png-58b9f19bf02c.png",
+    "width": 1200,
+    "height": 768
+  },
+  {
+    "path": "assets/screenshot-gui-storage-summary-local-png-bed0feb5e875.png",
+    "width": 1605,
+    "height": 1200
+  },
+  {
+    "path": "assets/screenshot-gui-pool-summary-development-png-00f1481ce5db.png",
+    "width": 1280,
+    "height": 1024
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-summary-tags-edit-png-c6e85f4f644b.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-tag-style-png-f3ff2cf9dfd8.png",
+    "width": 800,
+    "height": 482
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-options-png-535789a52e69.png",
+    "width": 809,
+    "height": 524
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-create-png-7f6db200d48f.png",
+    "width": 600,
+    "height": 197
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-join-information-png-9984deb0957b.png",
+    "width": 800,
+    "height": 251
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-join-png-312c75a66075.png",
+    "width": 800,
+    "height": 288
+  },
+  {
+    "path": "assets/screenshot-storage-pbs-encryption-with-key-png-52aa90aa5d08.png",
+    "width": 600,
+    "height": 315
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-status-dashboard-png-35c265732db2.png",
+    "width": 1705,
+    "height": 1009
+  },
+  {
+    "path": "assets/screenshot-gui-node-ceph-install-png-146fee5f8339.png",
+    "width": 808,
+    "height": 636
+  },
+  {
+    "path": "assets/screenshot-gui-node-ceph-install-wizard-step0-png-41f18d5b8097.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-node-ceph-install-wizard-step2-png-8fdd1bc317bd.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-monitor-png-5183f95d9815.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-osd-status-png-eb5fb509c420.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-pools-png-4290e2ffb7bf.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-pool-create-png-020d880342d1.png",
+    "width": 600,
+    "height": 284
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-config-png-b4544eca3b00.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-ceph-log-png-45dce0bd0f84.png",
+    "width": 1280,
+    "height": 1024
+  },
+  {
+    "path": "assets/screenshot-gui-node-ceph-cephfs-panel-png-51eb3988f01e.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-add-replication-job-png-8a556dc3f050.png",
+    "width": 985,
+    "height": 516
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-general-png-60617f9d68b1.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-os-png-2f840c53a6ca.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-system-png-511b121389af.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-cpu-png-cf8772d20d7e.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-memory-png-3dded0eeb67d.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-create-vm-network-png-52dc7176c8f4.png",
+    "width": 700,
+    "height": 510
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-edit-bootorder-png-e24815e584de.png",
+    "width": 640,
+    "height": 267
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-migrate-png-75844014c4d2.png",
+    "width": 600,
+    "height": 151
+  },
+  {
+    "path": "assets/screenshot-gui-qemu-full-clone-png-cd406793042e.png",
+    "width": 600,
+    "height": 250
+  },
+  {
+    "path": "assets/screenshot-gui-import-wizard-general-png-988ac134e0fc.png",
+    "width": 700,
+    "height": 467
+  },
+  {
+    "path": "assets/screenshot-gui-import-wizard-advanced-png-6fe679ff204b.png",
+    "width": 700,
+    "height": 486
+  },
+  {
+    "path": "assets/screenshot-gui-cloudinit-hardware-png-a02f91a43c57.png",
+    "width": 809,
+    "height": 516
+  },
+  {
+    "path": "assets/screenshot-gui-cloudinit-config-png-19f801d9de33.png",
+    "width": 809,
+    "height": 516
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-resource-mappings-png-da2a9a26150d.png",
+    "width": 1290,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-mapping-pci-edit-png-96b3f049d8df.png",
+    "width": 800,
+    "height": 512
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-mapping-usb-edit-png-e01c9f9453d3.png",
+    "width": 600,
+    "height": 235
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-fabrics-overview-png-c99a393b26d1.png",
+    "width": 1290,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-fabric-openfabric-png-2d126fc4d343.png",
+    "width": 300,
+    "height": 240
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-node-openfabric-png-576369f483c5.png",
+    "width": 800,
+    "height": 463
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-fabric-ospf-png-80bda2875d3b.png",
+    "width": 300,
+    "height": 182
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-node-ospf-png-66f01ebaaa66.png",
+    "width": 800,
+    "height": 434
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-fabric-wireguard-png-a9b9ae75c98b.png",
+    "width": 400,
+    "height": 168
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-internal-node-wireguard-png-1540ed7410bf.png",
+    "width": 800,
+    "height": 415
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-create-external-node-wireguard-png-4da4203f662b.png",
+    "width": 800,
+    "height": 245
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-select-peers-wireguard-png-1c9ac309b979.png",
+    "width": 800,
+    "height": 507
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-pool-window-png-5f93766a3f43.png",
+    "width": 300,
+    "height": 153
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-realm-add-ldap-png-c2ca43be55a3.png",
+    "width": 640,
+    "height": 326
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-realm-add-ldap-sync-options-png-c67727ab860d.png",
+    "width": 640,
+    "height": 347
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-two-factor-png-00fd252ee4e8.png",
+    "width": 1390,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-pve-gui-tfa-add-totp-png-9157bafa11cd.png",
+    "width": 512,
+    "height": 506
+  },
+  {
+    "path": "assets/screenshot-pve-gui-tfa-add-recovery-keys-png-fe14f3271438.png",
+    "width": 600,
+    "height": 289
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-webauthn-edit-png-6abfdb023d63.png",
+    "width": 450,
+    "height": 231
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-role-add-png-c06dd534e81c.png",
+    "width": 400,
+    "height": 153
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-backup-overview-png-18af9966fffc.png",
+    "width": 1290,
+    "height": 956
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-backup-edit-01-general-png-fa4abeeaaef7.png",
+    "width": 720,
+    "height": 658
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-backup-edit-04-advanced-png-d0a22edf1c07.png",
+    "width": 720,
+    "height": 377
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-backup-edit-02-retention-png-53ef529cdcbb.png",
+    "width": 720,
+    "height": 294
+  },
+  {
+    "path": "assets/screenshot-gui-cluster-backup-edit-03-template-png-bf2a2cf7a400.png",
+    "width": 720,
+    "height": 286
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-notification-sendmail-png-17b7e706eb02.png",
+    "width": 700,
+    "height": 254
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-notification-smtp-png-97310312d2e2.png",
+    "width": 700,
+    "height": 390
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-notification-gotify-png-1b8ec9289482.png",
+    "width": 700,
+    "height": 240
+  },
+  {
+    "path": "assets/screenshot-gui-datacenter-notification-matcher-png-ce9976b1ea69.png",
+    "width": 700,
+    "height": 465
+  }
+]

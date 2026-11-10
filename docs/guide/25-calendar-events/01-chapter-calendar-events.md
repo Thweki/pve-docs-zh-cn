@@ -1,8 +1,6 @@
 # 25.1. Schedule Format <a href="#chapter_calendar_events" id="chapter_calendar_events"></a>
 
-Proxmox VE has a very flexible scheduling configuration. It is based on the systemd time calendar event format.  
-\[see `man 7 systemd.time` for more information\]  
- Calendar events may be used to refer to one or more points in time in a single expression.
+Proxmox VE has a very flexible scheduling configuration. It is based on the systemd time calendar event format.[\[1\]](#note-a1ddaff8-1) Calendar events may be used to refer to one or more points in time in a single expression.
 
 Such a calendar event uses the following format:
 
@@ -22,6 +20,12 @@ To allow a convenient and shorter configuration, one or more repeat times per gu
 Here you see that if no hour separation (`:`), is used the value gets interpreted as minute. If such a separation is used, the value on the left denotes the hour(s), and the value on the right denotes the minute(s). Further, you can use `*` to match all possible values.
 
 To get additional ideas look at [more Examples below](02-detailed-specification.md#pvesr_schedule_format_examples).
+
+## 注释
+
+### 注释 1 <a href="#note-a1ddaff8-1" id="note-a1ddaff8-1"></a>
+
+see `man 7 systemd.time` for more information
 
 ---
 

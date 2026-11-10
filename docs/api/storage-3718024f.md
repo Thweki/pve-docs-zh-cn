@@ -129,7 +129,7 @@ Create a new storage.
 | `bwlimit` | string | 否 | — | Set I/O bandwidth limit for various operations (in KiB/s). |
 | `comstar_hg` | string | 否 | — | host group for comstar views |
 | `comstar_tg` | string | 否 | — | target group for comstar views |
-| `content` | string | 否 | — | Allowed content types. NOTE: the value 'rootdir' is used for Containers, and value 'images' for VMs. |
+| `content` | string | 否 | — | Allowed content types.<br><br>NOTE: the value 'rootdir' is used for Containers, and value 'images' for VMs.<br> |
 | `content-dirs` | string | 否 | — | Overrides for default content type directories. |
 | `create-base-path` | boolean | 否 | "yes" | Create the base directory if it doesn't exist. |
 | `create-subdirs` | boolean | 否 | "yes" | Populate the directory with the default structure. |
@@ -269,7 +269,7 @@ Create a new storage.
       "typetext": "<string>"
     },
     "content": {
-      "description": "Allowed content types. NOTE: the value 'rootdir' is used for Containers, and value 'images' for VMs.",
+      "description": "Allowed content types.\n\nNOTE: the value 'rootdir' is used for Containers, and value 'images' for VMs.\n",
       "format": "pve-storage-content-list",
       "optional": 1,
       "type": "string",

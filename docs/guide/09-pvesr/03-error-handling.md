@@ -1,57 +1,57 @@
 # 9.3. Error Handling <a href="#_error_handling" id="_error_handling"></a>
 
-If a replication job encounters problems, it is placed in an error state. In this state, the configured replication intervals get suspended temporarily. The failed replication is repeatedly tried again in a 30 minute interval. Once this succeeds, the original schedule gets activated again.
+如果复制作业遇到问题，它会进入错误状态。在此状态下，配置的复制间隔会暂时暂停。系统会每隔 30 分钟重试失败的复制。一旦成功，原来的计划就会重新激活。
 
 ## 9.3.1. Possible issues <a href="#_possible_issues" id="_possible_issues"></a>
 
-Some of the most common issues are in the following list. Depending on your setup there may be another cause.
+以下列出了一些最常见的问题。根据您的部署情况，可能还有其他原因。
 
-- Network is not working.
-- No free space left on the replication target storage.
-- Storage with the same storage ID is not available on the target node.
+- 网络未正常工作。
+- 复制目标存储上没有剩余可用空间。
+- 目标节点上无法使用具有相同存储 ID 的存储。
 
 {% hint style="info" %}
-You can always use the replication log to find out what is causing the problem.
+您始终可以使用复制日志来找出问题的原因。
 {% endhint %}
 
 ## 9.3.2. Migrating a guest in case of Error <a href="#_migrating_a_guest_in_case_of_error" id="_migrating_a_guest_in_case_of_error"></a>
 
-In the case of a grave error, a virtual guest may get stuck on a failed node. You then need to move it manually to a working node again.
+发生严重错误时，虚拟客户机可能会卡在故障节点上。此时需要手动将其重新迁移到正常工作的节点。
 
 ## 9.3.3. Example <a href="#_example_2" id="_example_2"></a>
 
-Let’s assume that you have two guests (VM 100 and CT 200\) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
+假设您有两个客户机（VM 100 和 CT 200）运行在节点 A 上，并复制到节点 B。节点 A 发生故障且无法重新上线。现在，您必须手动将客户机迁移到节点 B。
 
-- connect to node B over ssh or open its shell via the web UI
-- check if that the cluster is quorate
+- 通过 ssh 连接到节点 B，或通过 Web UI 打开其 Shell
+- 检查集群是否具有仲裁
 
   ```text
   # pvecm status
   ```
-- If you have no quorum, we strongly advise to fix this first and make the node operable again. Only if this is not possible at the moment, you may use the following command to enforce quorum on the current node:
+- 如果没有仲裁，我们强烈建议先解决此问题，使节点恢复可操作状态。仅当目前无法做到这一点时，才可使用以下命令在当前节点上强制达到仲裁：
 
   ```text
   # pvecm expected 1
   ```
 
 {% hint style="warning" %}
-Avoid changes which affect the cluster if `expected votes` are set (for example adding/removing nodes, storages, virtual guests) at all costs. Only use it to get vital guests up and running again or to resolve the quorum issue itself.
+设置 `expected votes` 后，务必避免任何影响集群的更改（例如添加/移除节点、存储、虚拟客户机）。仅使用它来让关键客户机恢复运行，或解决仲裁问题本身。
 {% endhint %}
 
-- move both guest configuration files form the origin node A to node B:
+- 将两个客户机配置文件从原节点 A 移动到节点 B：
 
   ```text
   # mv /etc/pve/nodes/A/qemu-server/100.conf /etc/pve/nodes/B/qemu-server/100.conf
   # mv /etc/pve/nodes/A/lxc/200.conf /etc/pve/nodes/B/lxc/200.conf
   ```
-- Now you can start the guests again:
+- 现在可以重新启动这些客户机：
 
   ```text
   # qm start 100
   # pct start 200
   ```
 
-Remember to replace the VMIDs and node names with your respective values.
+请记得将 VMID 和节点名称替换为各自的值。
 
 ---
 

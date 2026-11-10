@@ -2,7 +2,7 @@
 
 官方支持的发行版列表如下。
 
-Templates for the following distributions are available through our repositories. You can use [pveam](03-pct-container-images.md#pct_container_images) tool or the Graphical User Interface to download them.
+Templates for the following distributions are available through our repositories. You can use [pveam](03-pct-container-images.md) tool or the Graphical User Interface to download them.
 
 ## 11.2.1. Alpine Linux <a href="#_alpine_linux" id="_alpine_linux"></a>
 

@@ -1,58 +1,58 @@
 # 7.10. LVM Backend <a href="#storage_lvm" id="storage_lvm"></a>
 
-Storage pool type: `lvm`
+存储池类型：`lvm`
 
-LVM is a lightweight software layer that sits on top of hard disks and partitions. It can be used to divide available disk space into smaller logical volumes.
+LVM 是位于硬盘和分区之上的轻量级软件层。它可用于将可用磁盘空间划分为更小的逻辑卷。
 
-Another use case is placing LVM on top of a large iSCSI LUN (Logical Unit Number) or a SAN (Storage Area Network) connected via Fibre Channel. This allows you to easily manage the space on the iSCSI LUN, which would otherwise be impossible because the iSCSI specification does not define a management interface for space allocation.
+另一种用例是在大型 iSCSI LUN（逻辑单元号）或通过光纤通道连接的 SAN（存储区域网络）之上部署 LVM。这样，您就可以轻松管理 iSCSI LUN 上的空间；否则这将无法实现，因为 iSCSI 规范未定义用于空间分配的管理接口。
 
 ## 7.10.1. Configuration <a href="#pvesm_lvm_config" id="pvesm_lvm_config"></a>
 
-The LVM backend supports the common storage properties `content`, `nodes`, `disable`, and the following LVM specific properties:
+LVM 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 LVM 特定属性：
 
 **`vgname`**
 
-LVM volume group name. This must point to an existing volume group.
+LVM 卷组名称。必须指向一个现有的卷组。
 
 **`base`**
 
-Base volume. This volume is automatically activated before accessing the storage. This is mostly useful when the LVM volume group resides on a remote iSCSI server.
+基础卷。在访问存储之前，会自动激活此卷。当 LVM 卷组位于远程 iSCSI 服务器上时，这尤其有用。
 
 **`saferemove`**
 
-Called "Wipe Removed Volumes" in the web UI. Zero-out data when removing LVs. When removing a volume, this makes sure that all data gets erased and cannot be accessed by other LVs created later (which happen to be assigned the same physical extents). This is a costly operation, but may be required as a security measure in certain environments.
+在 Web 界面中称为“擦除已删除的卷”（Wipe Removed Volumes）。删除 LV 时将数据清零。删除卷时，这可确保所有数据都被擦除，之后创建的其他 LV（恰好分配到相同物理区域）无法访问这些数据。这是一项开销很大的操作，但在某些环境中，可能需要将其作为一项安全措施。
 
-Storage devices that support the "write zeroes" operation will use `blkdiscard` to zero blocks. Otherwise, a fallback to `cstream` is performed.
+支持“写零”操作的存储设备将使用 `blkdiscard` 将块清零。否则，将改用 `cstream`。
 
 **`saferemove-stepsize`**
 
-Wipe step size in MiB (`blkdiscard -p` parameter value), capped to the maximum step size supported by the underlying storage. Up to 32 MiB (maximum) by default.
+擦除步长，单位为 MiB（`blkdiscard -p` 参数值），上限为底层存储支持的最大步长。默认最高为 32 MiB（最大值）。
 
 **`saferemove_throughput`**
 
-Wipe throughput (`cstream -t` parameter value), up to 10 MiB/s by default.
+擦除吞吐量（`cstream -t` 参数值），默认最高为 10 MiB/s。
 
 **`snapshot-as-volume-chain`**
 
-Set this flag to enable snapshot support for virtual machines on LVM with a volume backing chain. With this setting, taking a snapshot persists the current state under the snapshot’s name and starts a new volume backed by the snapshot.
+设置此标志可为使用卷后备链的 LVM 上的虚拟机启用快照支持。启用此设置后，拍摄快照会以快照名称保存当前状态，并启动一个以该快照为后备的新卷。
 
-A volume based on a snapshot references its parent snapshot volume as its backing volume and records only the differences to that backing volume. Snapshot volumes are currently thick-provisioned LVM logical volumes.
+基于快照的卷将其父快照卷引用为后备卷，并且仅记录与该后备卷的差异。目前，快照卷是厚置备的 LVM 逻辑卷。
 
-This design avoids issues with native LVM snapshots, such as significant input/output (I/O) penalties and unexpected, dangerous behavior when running out of pre-allocated space.
+这种设计避免了原生 LVM 快照的问题，例如显著的输入/输出（I/O）性能损失，以及预分配空间耗尽时出现的意外危险行为。
 
-Snapshots as volume chains provide vendor-agnostic support for snapshots on any storage system that supports block storage. This includes iSCSI and Fibre Channel-attached SANs.
+卷链快照为任何支持块存储的存储系统提供与厂商无关的快照支持。这包括 iSCSI 和通过光纤通道连接的 SAN。
 
-Note that, although this feature relies on qcow2, it only uses qcow2’s ability to layer multiple volumes in a backing chain, not qcow2’s snapshot functionality. The snapshot functionality is managed by the PVE storage system.
+请注意，尽管此功能依赖 qcow2，但它仅使用 qcow2 在后备链中对多个卷进行分层的能力，而不使用 qcow2 的快照功能。快照功能由 PVE 存储系统管理。
 
-Enabling or disabling this flag only affects newly created virtual disk volumes.
+启用或禁用此标志仅影响新创建的虚拟磁盘卷。
 
-For efficient support of `snapshot-as-volume-chain`, the backing storage must support thin-provisioning and discard. Each snapshot will appear to use the full volume size on the PVE side, but the actual space usage on the underlying storage will be smaller if those requirements are met.
+为了高效支持 `snapshot-as-volume-chain`，后备存储必须支持精简置备和 discard。在 PVE 端，每个快照都会显示为占用完整的卷大小，但如果满足这些要求，其在底层存储上的实际空间占用会更小。
 
 {% hint style="warning" %}
-Snapshots as volume chains are currently a **technology preview** in Proxmox VE.
+卷链快照目前在 Proxmox VE 中属于**技术预览**。
 {% endhint %}
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 lvm: myspace
@@ -62,7 +62,7 @@ lvm: myspace
 
 ## 7.10.2. File naming conventions <a href="#_file_naming_conventions_3" id="_file_naming_conventions_3"></a>
 
-The backend use basically the same naming conventions as the ZFS pool backend.
+该后端基本上使用与 ZFS 池后端相同的命名约定。
 
 ```text
 vm-<VMID>-<NAME>      // normal VM images
@@ -70,16 +70,16 @@ vm-<VMID>-<NAME>      // normal VM images
 
 ## 7.10.3. Storage Features <a href="#_storage_features_6" id="_storage_features_6"></a>
 
-LVM is a typical block storage system. Unfortunately, regular LVM snapshots are inefficient because they interfere with all write operations within the entire volume group while the snapshot is active, which causes significant I/O degradation. This is why LVM does not support linked clones, and why Proxmox VE added support for snapshots as volume chains. This feature manages the snapshot volume through the storage plugin and uses qcow2 to layer separate volumes as a backing chain. This creates a single disk state that is exposed to the guest.
+LVM 是典型的块存储系统。遗憾的是，常规 LVM 快照效率低下，因为在快照处于活动状态时，它们会干扰整个卷组内的所有写操作，导致 I/O 性能显著下降。这就是 LVM 不支持链接克隆的原因，也是 Proxmox VE 增加卷链快照支持的原因。此功能通过存储插件管理快照卷，并使用 qcow2 将各个独立卷分层组成后备链。这会创建向客户机公开的单一磁盘状态。
 
-A benefit of LVM is that it can be used with shared storage. For example, an iSCSI LUN. The backend implements proper cluster-wide locking if the storage is marked as shared in the configuration.
+LVM 的一个优点是可以与共享存储配合使用，例如 iSCSI LUN。如果在配置中将存储标记为共享，后端会实现适当的集群范围锁定。
 
 {% hint style="success" %}
-You can use the LVM-thin backend for non-shared local storage. It supports snapshots and linked clones.
+对于非共享的本地存储，可以使用 LVM-thin 后端。它支持快照和链接克隆。
 {% endhint %}
 
 <table>
-<caption>Table 9. Storage features for backend <code>lvm</code></caption>
+<caption>表 9. 后端 <code>lvm</code> 的存储功能</caption>
 
 
 
@@ -88,31 +88,31 @@ You can use the LVM-thin backend for non-shared local storage. It supports snaps
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Full Clones</th>
-<th>Linked Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>完整克隆</th>
+<th>链接克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw, qcow2<sup>1</sup></p></td>
-<td><p>possible</p></td>
-<td><p>yes<sup>1</sup></p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p>可行</p></td>
+<td><p>是<sup>1</sup></p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
-1: Since Proxmox VE 9, snapshots as a volume chain have been available for VMs, for details see the [LVM configuration](#pvesm_lvm_config) section.
+1：自 Proxmox VE 9 起，VM 已支持卷链快照，详情请参阅“[LVM 配置](#pvesm_lvm_config)”一节。
 
 ## 7.10.4. Examples <a href="#_examples_6" id="_examples_6"></a>
 
-You can get a list of available LVM volume groups with:
+可以使用以下命令获取可用 LVM 卷组的列表：
 
 ```text
 # pvesm scan lvm

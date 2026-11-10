@@ -1,10 +1,10 @@
 # pvesr(1)
 
-## 名称 <a href="#chapter_pvesr" id="chapter_pvesr"></a>
+## NAME <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
 pvesr \- Proxmox VE Storage Replication
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesr"></a>
 
@@ -64,7 +64,7 @@ Mark replication job for removal.
 
 Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Will remove the jobconfig entry, but will not cleanup.
 
@@ -156,7 +156,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 The list of volume IDs to consider.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Allow to remove all existion volumes (empty volume list).
 
@@ -200,7 +200,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 Send an email notification in case of a failure.
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>` (*default \=* `0`)**
 
 Print more verbose logs to stdout.
 
@@ -288,26 +288,26 @@ Storage replication schedule. The format is a subset of `systemd` calendar event
 
 For internal use, to detect if the guest was stolen.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
-The `pvesr` command-line tool manages the Proxmox VE storage replication framework. Storage replication brings redundancy for guests using local storage and reduces migration time.
+`pvesr` 命令行工具用于管理 Proxmox VE 存储复制框架。存储复制为使用本地存储的客户机提供冗余，并缩短迁移时间。
 
-It replicates guest volumes to another node so that all data is available without using shared storage. Replication uses snapshots to minimize traffic sent over the network. Therefore, new data is sent only incrementally after the initial full sync. In the case of a node failure, your guest data is still available on the replicated node.
+它会将客户机卷复制到另一个节点，因此无需使用共享存储即可使所有数据可用。复制使用快照来最大限度地减少通过网络发送的流量。因此，在初始完全同步之后，仅增量发送新数据。如果节点发生故障，客户机数据仍可在副本所在节点上使用。
 
 The replication is done automatically in configurable intervals. The minimum replication interval is one minute, and the maximal interval once a week. The format used to specify those intervals is a subset of `systemd` calendar events, see [Schedule Format](#pvesr_schedule_time_format) section:
 
-It is possible to replicate a guest to multiple target nodes, but not twice to the same target node.
+可以将一台客户机复制到多个目标节点，但不能向同一目标节点复制两次。
 
-Each replications bandwidth can be limited, to avoid overloading a storage or server.
+可以限制每次复制的带宽，以避免存储或服务器过载。
 
-Only changes since the last replication (so-called `deltas`) need to be transferred if the guest is migrated to a node to which it already is replicated. This reduces the time needed significantly. The replication direction automatically switches if you migrate a guest to the replication target node.
+如果客户机迁移到的节点已经是其复制目标，则只需传输自上次复制以来的更改（所谓的 `deltas`）。这可显著缩短所需时间。如果将客户机迁移到复制目标节点，复制方向会自动切换。
 
-For example: VM100 is currently on `nodeA` and gets replicated to `nodeB`. You migrate it to `nodeB`, so now it gets automatically replicated back from `nodeB` to `nodeA`.
+例如：VM100 当前位于 `nodeA`，并复制到 `nodeB`。您将其迁移到 `nodeB`，因此现在它会自动从 `nodeB` 复制回 `nodeA`。
 
-If you migrate to a node where the guest is not replicated, the whole disk data must send over. After the migration, the replication job continues to replicate this guest to the configured nodes.
+如果迁移到的节点不是客户机的复制目标，则必须传输整个磁盘数据。迁移后，复制作业会继续将此客户机复制到配置的节点。
 
 {% hint style="warning" %}
-High-Availability is allowed in combination with storage replication, but there may be some data loss between the last synced time and the time a node failed.
+高可用性可以与存储复制结合使用，但在上次同步时间与节点故障时间之间可能会丢失一些数据。
 {% endhint %}
 
 ## Supported Storage Types <a href="#_supported_storage_types" id="_supported_storage_types"></a>
@@ -320,18 +320,18 @@ High-Availability is allowed in combination with storage replication, but there 
 
 <thead>
 <tr>
-<th>Description</th>
-<th>Plugin type</th>
-<th>Snapshots</th>
-<th>Stable</th>
+<th>描述</th>
+<th>插件类型</th>
+<th>快照</th>
+<th>稳定</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>ZFS (local)</p></td>
+<td><p>ZFS（本地）</p></td>
 <td><p>zfspool</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
@@ -342,75 +342,75 @@ Replication uses calendar events for configuring the schedule.
 
 ## Error Handling <a href="#_error_handling" id="_error_handling"></a>
 
-If a replication job encounters problems, it is placed in an error state. In this state, the configured replication intervals get suspended temporarily. The failed replication is repeatedly tried again in a 30 minute interval. Once this succeeds, the original schedule gets activated again.
+如果复制作业遇到问题，它会进入错误状态。在此状态下，配置的复制间隔会暂时暂停。系统会每隔 30 分钟重试失败的复制。一旦成功，原来的计划就会重新激活。
 
 ### Possible issues <a href="#_possible_issues" id="_possible_issues"></a>
 
-Some of the most common issues are in the following list. Depending on your setup there may be another cause.
+以下列出了一些最常见的问题。根据您的部署情况，可能还有其他原因。
 
-- Network is not working.
-- No free space left on the replication target storage.
-- Storage with the same storage ID is not available on the target node.
+- 网络未正常工作。
+- 复制目标存储上没有剩余可用空间。
+- 目标节点上无法使用具有相同存储 ID 的存储。
 
 {% hint style="info" %}
-You can always use the replication log to find out what is causing the problem.
+您始终可以使用复制日志来找出问题的原因。
 {% endhint %}
 
 ### Migrating a guest in case of Error <a href="#_migrating_a_guest_in_case_of_error" id="_migrating_a_guest_in_case_of_error"></a>
 
-In the case of a grave error, a virtual guest may get stuck on a failed node. You then need to move it manually to a working node again.
+发生严重错误时，虚拟客户机可能会卡在故障节点上。此时需要手动将其重新迁移到正常工作的节点。
 
 ### Example <a href="#_example" id="_example"></a>
 
-Let’s assume that you have two guests (VM 100 and CT 200\) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
+假设您有两个客户机（VM 100 和 CT 200）运行在节点 A 上，并复制到节点 B。节点 A 发生故障且无法重新上线。现在，您必须手动将客户机迁移到节点 B。
 
-- connect to node B over ssh or open its shell via the web UI
-- check if that the cluster is quorate
+- 通过 ssh 连接到节点 B，或通过 Web UI 打开其 Shell
+- 检查集群是否具有仲裁
 
   ```text
   # pvecm status
   ```
-- If you have no quorum, we strongly advise to fix this first and make the node operable again. Only if this is not possible at the moment, you may use the following command to enforce quorum on the current node:
+- 如果没有仲裁，我们强烈建议先解决此问题，使节点恢复可操作状态。仅当目前无法做到这一点时，才可使用以下命令在当前节点上强制达到仲裁：
 
   ```text
   # pvecm expected 1
   ```
 
 {% hint style="warning" %}
-Avoid changes which affect the cluster if `expected votes` are set (for example adding/removing nodes, storages, virtual guests) at all costs. Only use it to get vital guests up and running again or to resolve the quorum issue itself.
+设置 `expected votes` 后，务必避免任何影响集群的更改（例如添加/移除节点、存储、虚拟客户机）。仅使用它来让关键客户机恢复运行，或解决仲裁问题本身。
 {% endhint %}
 
-- move both guest configuration files form the origin node A to node B:
+- 将两个客户机配置文件从原节点 A 移动到节点 B：
 
   ```text
   # mv /etc/pve/nodes/A/qemu-server/100.conf /etc/pve/nodes/B/qemu-server/100.conf
   # mv /etc/pve/nodes/A/lxc/200.conf /etc/pve/nodes/B/lxc/200.conf
   ```
-- Now you can start the guests again:
+- 现在可以重新启动这些客户机：
 
   ```text
   # qm start 100
   # pct start 200
   ```
 
-Remember to replace the VMIDs and node names with your respective values.
+请记得将 VMID 和节点名称替换为各自的值。
 
 ## Managing Jobs <a href="#_managing_jobs" id="_managing_jobs"></a>
 
 [![screenshot/gui-qemu-add-replication-job.png](../assets/screenshot-gui-qemu-add-replication-job-png-8a556dc3f050.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-qemu-add-replication-job.png)
 
-You can use the web GUI to create, modify, and remove replication jobs easily. Additionally, the command-line interface (CLI) tool `pvesr` can be used to do this.
+您可以使用 Web GUI 轻松创建、修改和删除复制作业。此外，还可以使用命令行界面（CLI）工具 `pvesr` 完成这些操作。
 
-You can find the replication panel on all levels (datacenter, node, virtual guest) in the web GUI. They differ in which jobs get shown: all, node- or guest-specific jobs.
+在 Web GUI 中，可以在所有级别（数据中心、节点、虚拟客户机）找到复制面板。它们的区别在于显示哪些作业：全部作业、节点特定作业或客户机特定作业。
 
 When adding a new job, you need to specify the guest if not already selected as well as the target node. The replication [schedule](#pvesr_schedule_time_format) can be set if the default of `all
 15 minutes` is not desired. You may impose a rate-limit on a replication job. The rate limit can help to keep the load on the storage acceptable.
 
-A replication job is identified by a cluster-wide unique ID. This ID is composed of the VMID in addition to a job number. This ID must only be specified manually if the CLI tool is used.
+复制作业由集群范围内唯一的 ID 标识。此 ID 由 VMID 和作业编号组成。只有使用 CLI 工具时才必须手动指定此 ID。
 
 ## Network <a href="#_network" id="_network"></a>
 
-By default, replication traffic will go through the same network as the guest migration traffic. If the migration network is not set, this will in turn default to the management network.
+默认情况下，复制流量与客户机迁移流量使用同一网络。如果未设置迁移网络，则复制流量会转而默认使用管理网络。
 
 To use a different network for the replication traffic, configure the `Replication Network` in the web interface under `Datacenter -> Options ->
 Replication Settings` or set the `replication` property in the `datacenter.cfg` file:
@@ -422,31 +422,31 @@ replication: secure,network=10.1.2.0/24
 
 ## Command-line Interface Examples <a href="#_command_line_interface_examples" id="_command_line_interface_examples"></a>
 
-Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100\.
+为 ID 为 100 的客户机创建一个每 5 分钟运行一次、带宽限制为 10 Mbps（兆字节每秒）的复制作业。
 
 ```text
 # pvesr create-local-job 100-0 pve1 --schedule "*/5" --rate 10
 ```
 
-Disable an active job with ID `100-0`.
+禁用 ID 为 `100-0` 的活动作业。
 
 ```text
 # pvesr disable 100-0
 ```
 
-Enable a deactivated job with ID `100-0`.
+启用 ID 为 `100-0` 的已停用作业。
 
 ```text
 # pvesr enable 100-0
 ```
 
-Change the schedule interval of the job with ID `100-0` to once per hour.
+将 ID 为 `100-0` 的作业的计划间隔更改为每小时一次。
 
 ```text
 # pvesr update 100-0 --schedule '*/00'
 ```
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

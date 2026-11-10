@@ -1,14 +1,11 @@
 # 10.6. VM Generation ID <a href="#_vm_generation_id" id="_vm_generation_id"></a>
 
-Proxmox VE supports Virtual Machine Generation ID (*vmgenid*)   
-\[Official *vmgenid* Specification [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)\]  
- for virtual machines. This can be used by the guest operating system to detect any event resulting in a time shift event, for example, restoring a backup or a snapshot rollback.
+Proxmox VE supports Virtual Machine Generation ID (*vmgenid*) [\[1\]](#note-bccd999c-1) for virtual machines. This can be used by the guest operating system to detect any event resulting in a time shift event, for example, restoring a backup or a snapshot rollback.
 
 When creating new VMs, a *vmgenid* will be automatically generated and saved in its configuration file.
 
-To create and add a *vmgenid* to an already existing VM one can pass the special value ‘1’ to let Proxmox VE autogenerate one or manually set the *UUID*   
-\[Online GUID generator [http://guid.one/](http://guid.one/)\]  
- by using it as value, for example:
+To create and add a *vmgenid* to an already existing VM one can pass the special value ‘1’ to let Proxmox VE autogenerate one or manually set the *UUID*
+[\[2\]](#note-bccd999c-2) by using it as value, for example:
 
 ```text
 # qm set VMID -vmgenid 1
@@ -25,9 +22,21 @@ In the rare case the *vmgenid* mechanism is not wanted one can pass ‘0’ for 
 # qm set VMID -delete vmgenid
 ```
 
-The most prominent use case for *vmgenid* are newer Microsoft Windows operating systems, which use it to avoid problems in time sensitive or replicate services (such as databases or domain controller   
-\[[https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture)\]  
-) on snapshot rollback, backup restore or a whole VM clone operation.
+The most prominent use case for *vmgenid* are newer Microsoft Windows operating systems, which use it to avoid problems in time sensitive or replicate services (such as databases or domain controller [\[3\]](#note-bccd999c-3)) on snapshot rollback, backup restore or a whole VM clone operation.
+
+## 注释
+
+### 注释 1 <a href="#note-bccd999c-1" id="note-bccd999c-1"></a>
+
+Official *vmgenid* Specification [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)
+
+### 注释 2 <a href="#note-bccd999c-2" id="note-bccd999c-2"></a>
+
+Online GUID generator [http://guid.one/](http://guid.one/)
+
+### 注释 3 <a href="#note-bccd999c-3" id="note-bccd999c-3"></a>
+
+[https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture)
 
 ---
 

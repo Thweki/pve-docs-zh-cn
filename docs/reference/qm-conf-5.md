@@ -1,14 +1,14 @@
 # qm.conf(5)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 qm.conf \- Proxmox VE Virtual Machine Configuration
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 */etc/pve/qemu-server/\<VMID\>.conf*
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 The `/etc/pve/qemu-server/<VMID>.conf` files stores VM configuration, where "VMID" is the numeric ID of the given VM.
 
@@ -16,7 +16,7 @@ The `/etc/pve/qemu-server/<VMID>.conf` files stores VM configuration, where "VMI
 ID \< 100 保留供内部使用。
 {% endhint %}
 
-## 文件格式 <a href="#_file_format" id="_file_format"></a>
+## File Format <a href="#_file_format" id="_file_format"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -28,7 +28,7 @@ OPTION: value
 
 One can use the `qm` command to generate and modify those files.
 
-## 选项 <a href="#_options" id="_options"></a>
+## Options <a href="#_options" id="_options"></a>
 
 **`acpi`: `<boolean>` (*default \=* `1`)**
 
@@ -484,7 +484,7 @@ The drive’s media type.
 
 The drive’s reported model name, url-encoded, up to 40 bytes long.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -496,7 +496,7 @@ Read error action.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -742,7 +742,7 @@ Amount of memory this NUMA node provides.
 
 NUMA allocation policy.
 
-**`onboot`: `<boolean>` (*默认 \=* `0`)**
+**`onboot`: `<boolean>` (*default \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -752,13 +752,15 @@ Specify guest operating system. This is used to enable special optimization/feat
 
 <table>
 <tr>
-<td>other <br/></td>
+<td>other <br/>
+</td>
 <td>
 <p>unspecified OS</p>
 </td>
 </tr>
 <tr>
-<td>wxp <br/></td>
+<td>wxp <br/>
+</td>
 <td>
 <p>Microsoft Windows XP</p>
 </td>
@@ -791,31 +793,36 @@ w2k8
 </td>
 </tr>
 <tr>
-<td>wvista <br/></td>
+<td>wvista <br/>
+</td>
 <td>
 <p>Microsoft Windows Vista</p>
 </td>
 </tr>
 <tr>
-<td>win7 <br/></td>
+<td>win7 <br/>
+</td>
 <td>
 <p>Microsoft Windows 7</p>
 </td>
 </tr>
 <tr>
-<td>win8 <br/></td>
+<td>win8 <br/>
+</td>
 <td>
 <p>Microsoft Windows 8/2012/2012r2</p>
 </td>
 </tr>
 <tr>
-<td>win10 <br/></td>
+<td>win10 <br/>
+</td>
 <td>
 <p>Microsoft Windows 10/2016/2019</p>
 </td>
 </tr>
 <tr>
-<td>win11 <br/></td>
+<td>win11 <br/>
+</td>
 <td>
 <p>Microsoft Windows 11/2022/2025</p>
 </td>
@@ -839,7 +846,8 @@ l26
 </td>
 </tr>
 <tr>
-<td>solaris <br/></td>
+<td>solaris <br/>
+</td>
 <td>
 <p>Solaris/OpenSolaris/OpenIndiania kernel</p>
 </td>
@@ -858,7 +866,7 @@ This option allows direct access to host hardware. So it is no longer possible t
 Experimental! User reported problems with this option.
 {% endhint %}
 
-**`protection`: `<boolean>` (*默认 \=* `0`)**
+**`protection`: `<boolean>` (*default \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1002,7 +1010,7 @@ Maximum unthrottled write pool in megabytes per second.
 
 The drive’s media type.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1014,7 +1022,7 @@ Read error action.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -1174,7 +1182,7 @@ The drive’s product name, up to 16 bytes long.
 
 Number of queues.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1198,7 +1206,7 @@ can lead to I/O errors in combination with low memory or high memory fragmentati
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -1334,7 +1342,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`template`: `<boolean>` (*默认 \=* `0`)**
+**`template`: `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -1542,7 +1550,7 @@ Maximum unthrottled write pool in megabytes per second.
 
 The drive’s media type.
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 Whether the drive should considered for replication jobs.
 
@@ -1558,7 +1566,7 @@ Whether the drive is read-only.
 
 The drive’s reported serial number, url-encoded, up to 20 bytes long.
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 Mark this locally-managed volume as available on all nodes.
 
@@ -1622,7 +1630,7 @@ The action to perform if after activation the guest fails to poll the watchdog i
 
 Watchdog type to emulate.
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

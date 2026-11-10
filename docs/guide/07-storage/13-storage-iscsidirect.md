@@ -1,16 +1,16 @@
 # 7.13. User Mode iSCSI Backend <a href="#storage_iscsidirect" id="storage_iscsidirect"></a>
 
-Storage pool type: `iscsidirect`
+存储池类型：`iscsidirect`
 
-This backend provides basically the same functionality as the Open-iSCSI backed, but uses a user-level library to implement it. You need to install the `libiscsi-bin` package in order to use this backend.
+此后端提供的功能基本上与 Open-iSCSI 后端相同，但使用用户级库实现。需要安装 `libiscsi-bin` 软件包才能使用此后端。
 
-It should be noted that there are no kernel drivers involved, so this can be viewed as performance optimization. But this comes with the drawback that you cannot use LVM on top of such iSCSI LUN. So you need to manage all space allocations at the storage server side.
+需要注意的是，这不涉及任何内核驱动程序，因此可以将其视为一种性能优化。但缺点是，无法在此类 iSCSI LUN 之上使用 LVM。因此，需要在存储服务器端管理所有空间分配。
 
 ## 7.13.1. Configuration <a href="#_configuration_9" id="_configuration_9"></a>
 
-The user mode iSCSI backend uses the same configuration options as the Open-iSCSI backed.
+用户模式 iSCSI 后端使用与 Open-iSCSI 后端相同的配置选项。
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 iscsidirect: faststore
@@ -21,11 +21,11 @@ iscsidirect: faststore
 ## 7.13.2. Storage Features <a href="#_storage_features_9" id="_storage_features_9"></a>
 
 {% hint style="info" %}
-This backend works with VMs only. Containers cannot use this driver.
+此后端仅适用于 VM。容器无法使用此驱动程序。
 {% endhint %}
 
 <table>
-<caption>Table 12. Storage features for backend <code>iscsidirect</code></caption>
+<caption>表 12. 后端 <code>iscsidirect</code> 的存储功能</caption>
 
 
 
@@ -33,20 +33,20 @@ This backend works with VMs only. Containers cannot use this driver.
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images</p></td>
 <td><p>raw</p></td>
-<td><p>yes</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>否</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>

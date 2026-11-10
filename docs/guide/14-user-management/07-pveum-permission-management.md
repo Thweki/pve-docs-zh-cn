@@ -36,8 +36,6 @@ From the GUI, navigate to the *Permissions → Roles* tab from *Datacenter* and 
 
 To add a role through the command line, you can use the *pveum* CLI tool, for example:
 
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
-
 ```text
 pveum role add VM_Power-only --privs "VM.PowerMgmt VM.Console"
 pveum role add Sys_Power-only --privs "Sys.PowerMgmt Sys.Console"

@@ -34,17 +34,13 @@ lxc.apparmor.profile = unconfined
 
 *cgroups* 的当前版本是 [*cgroupv2*](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v2.html)。随着 Proxmox VE 7.0 的发布，cgroup 子系统的 [v1 版本](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v1/index.html)已被弃用，并在 Proxmox VE 9.0 中被完全移除。在 Proxmox VE 7.0 之前，默认使用“混合”模式。
 
-### CGroup 版本兼容性 <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
+### CGroup Version Compatibility <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
 
 就 Proxmox VE 而言，纯 *cgroupv2* 与旧混合环境的主要区别在于，使用 *cgroupv2* 时，内存和交换空间现在可以独立控制。容器的内存和交换空间设置可以直接映射到这些值，而以前只能限制内存上限以及内存与交换空间**总和**的上限。
 
 另一个重要区别是 *devices* 控制器的配置方式完全不同。因此，纯 *cgroupv2* 环境目前不支持文件系统配额。
 
-*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2*   
-\[this includes all newest major versions of container templates shipped by Proxmox VE\]  
-, as do containers not using *systemd* as init system   
-\[for example Alpine Linux\]  
-.
+*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2* [\[1\]](#note-d942b21b-1), as do containers not using *systemd* as init system [\[2\]](#note-d942b21b-2).
 
 {% hint style="info" %}
 CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *systemd* 版本太旧，无法在 *cgroupv2* 环境中运行。您可以：
@@ -54,7 +50,7 @@ CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *system
 - 将容器或其服务迁移到虚拟机。虚拟机与宿主机的交互要少得多，因此可以在其中顺利安装几十年前的操作系统版本。
 {% endhint %}
 
-### 更改 CGroup 版本 <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
+### Changing CGroup Version <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
 
 在 Proxmox VE 9.0 之前，您可以使用以下内核命令行参数切换回以前的版本：
 
@@ -63,6 +59,16 @@ systemd.unified_cgroup_hierarchy=0
 ```
 
 See [this section](../03-system-administration/13-sysboot.md#sysboot_edit_kernel_cmdline) on editing the kernel boot command line on where to add the parameter.
+
+## 注释
+
+### 注释 1 <a href="#note-d942b21b-1" id="note-d942b21b-1"></a>
+
+this includes all newest major versions of container templates shipped by Proxmox VE
+
+### 注释 2 <a href="#note-d942b21b-2" id="note-d942b21b-2"></a>
+
+for example Alpine Linux
 
 ---
 

@@ -121,13 +121,13 @@ Create OSD
 | --- | --- | --- | --- | --- |
 | `crush-device-class` | string | 否 | — | Set the device class of the OSD in crush. |
 | `db_dev` | string | 否 | — | Block device name for block.db. |
-| `db_dev_size` | number | 否 | — | Size in GiB for block.db. |
+| `db_dev_size` | number | 否 | — | If a block.db is requested but the size is not given, will be automatically selected by: bluestore_block_db_size from the ceph database (osd or global section) or config (osd or global section) in that order. If this is not available, it will be sized 10% of the size of the OSD device. Fails if the available size is not enough. |
 | `dev` | string | 是 | — | Block device name. |
 | `encrypted` | boolean | 否 | 0 | Enables encryption of the OSD. |
 | `node` | string | 是 | — | The cluster node name. |
 | `osds-per-device` | integer | 否 | — | OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with 'db_dev' and 'wal_dev'. |
 | `wal_dev` | string | 否 | — | Block device name for block.wal. |
-| `wal_dev_size` | number | 否 | — | Size in GiB for block.wal. |
+| `wal_dev_size` | number | 否 | — | If a block.wal is requested but the size is not given, will be automatically selected by: bluestore_block_wal_size from the ceph database (osd or global section) or config (osd or global section) in that order. If this is not available, it will be sized 1% of the size of the OSD device. Fails if the available size is not enough. |
 
 <details>
 <summary>完整请求参数结构</summary>

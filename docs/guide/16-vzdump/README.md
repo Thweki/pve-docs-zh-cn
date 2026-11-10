@@ -6,11 +6,11 @@ Proxmox VE backups are always full backups \- containing the VM/CT configuration
 
 **Backup Storage**
 
-Before a backup can run, a backup storage must be defined. Refer to the [storage documentation](../07-storage/README.md#chapter_storage) on how to add a storage. It can either be a Proxmox Backup Server storage, where backups are stored as de-duplicated chunks and metadata, or a file-level storage, where backups are stored as regular files. Using Proxmox Backup Server on a dedicated host is recommended, because of its advanced features. Using an NFS server is a good alternative. In both cases, you might want to save those backups later to a tape drive, for off-site archiving.
+Before a backup can run, a backup storage must be defined. Refer to the [storage documentation](../07-storage/README.md) on how to add a storage. It can either be a Proxmox Backup Server storage, where backups are stored as de-duplicated chunks and metadata, or a file-level storage, where backups are stored as regular files. Using Proxmox Backup Server on a dedicated host is recommended, because of its advanced features. Using an NFS server is a good alternative. In both cases, you might want to save those backups later to a tape drive, for off-site archiving.
 
 **Scheduled Backup**
 
-Backup jobs can be scheduled so that they are executed automatically on specific days and times, for selectable nodes and guest systems. See the [Backup Jobs](05-vzdump-jobs.md#vzdump_jobs) section for more.
+Backup jobs can be scheduled so that they are executed automatically on specific days and times, for selectable nodes and guest systems. See the [Backup Jobs](05-vzdump-jobs.md) section for more.
 
 ## 本章内容
 

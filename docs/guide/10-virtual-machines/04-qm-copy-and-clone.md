@@ -24,7 +24,7 @@ Modern storage drivers support a way to generate fast linked clones. Such a clon
 
 They are called *linked* because the new image still refers to the original. Unmodified data blocks are read from the original image, but modification are written (and afterwards read) from a new location. This technique is called *Copy-on-write*.
 
-This requires that the original volume is read-only. With Proxmox VE one can convert any VM into a read-only [Template](05-qm-templates.md#qm_templates)). Such templates can later be used to create linked clones efficiently.
+This requires that the original volume is read-only. With Proxmox VE one can convert any VM into a read-only [Template](05-qm-templates.md)). Such templates can later be used to create linked clones efficiently.
 
 {% hint style="info" %}
 You cannot delete an original template while linked clones exist.

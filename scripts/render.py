@@ -16,7 +16,7 @@ if (ROOT/'work/translations.jsonl').exists():
     for line in (ROOT/'work/translations.jsonl').read_text().splitlines():
         if line.strip():TRANSLATIONS.update(json.loads(line))
 TRANSLATIONS={k:v for k,v in TRANSLATIONS.items() if k in UNITS and not validate(UNITS[k]['text'],v)}
-PAGES=[];ANCHORS={};FILE_DEFAULTS={};CHAPTER_DEFAULTS={};API_LINKS={}
+PAGES=[];ANCHORS={};FILE_DEFAULTS={};CHAPTER_DEFAULTS={};API_LINKS={};PAGE_TOP_ANCHORS=set()
 
 def restore(key):
     u=UNITS[key];text=TRANSLATIONS.get(key,u['text'])
@@ -40,10 +40,30 @@ def plain_heading(el):
     return re.sub(r'\s+',' ',el.get_text(' ',strip=True))
 
 def add_page(path,node,source,title=None,shift=0):
+    # AsciiDoc's browser JS normally collects inline notes at the end. GitBook
+    # drops standalone HTML anchors, so use native heading anchors for endnotes.
+    notes=list(node.select('span.footnote'))
+    if notes:
+        factory=BeautifulSoup('','html.parser');section=factory.new_tag('div')
+        heading=factory.new_tag('h'+str(2-shift));heading.string='注释';section.append(heading)
+        for i,span in enumerate(notes,1):
+            anchor=span.get('id') or 'note-'+hashlib.sha256(str(path).encode()).hexdigest()[:8]+'-'+str(i)
+            label=re.sub(r'^_footnote_?','',span.get('id','')) or str(i)
+            reference=factory.new_tag('a',href='#'+anchor);reference.string='['+label+']'
+            inner=span.decode_contents()
+            inner=re.sub(r'^\s*<br\s*/?>\s*\[','',inner)
+            inner=re.sub(r'\]\s*<br\s*/?>\s*$','',inner)
+            span.replace_with(reference)
+            note_heading=factory.new_tag('h'+str(3-shift),id=anchor)
+            note_heading.string='注释 '+label;section.append(note_heading)
+            content=BeautifulSoup('<div>'+inner+'</div>','html.parser').div
+            section.append(content)
+        node.append(section)
     heading=node.find(re.compile('^h[1-6]$'))
     title=title or (plain_heading(heading) if heading else path.stem)
     page={'path':path,'node':node,'source':source,'title':title,'shift':shift}
     PAGES.append(page)
+    if heading and heading.get('id'):PAGE_TOP_ANCHORS.add((path,heading['id']))
     for el in node.select('[id]'):
         ANCHORS[(source,el['id'])]=(path,el['id'])
     return page
@@ -71,6 +91,8 @@ def link(href,current,source):
             match=ANCHORS.get(('pve-admin-guide.html',fragment))
         if match:
             page,anchor=match
+            # GitBook promotes the first H1 to the page title, without its HTML id.
+            if (page,anchor) in PAGE_TOP_ANCHORS:return relpath(page,current)
             return ('' if page==current else relpath(page,current))+'#'+anchor
     if target in FILE_DEFAULTS:
         return relpath(FILE_DEFAULTS[target],current)+(('#'+fragment) if fragment else '')
@@ -158,7 +180,10 @@ def guide_pages():
         match=next((p for p in chapters if p['node'].find(id=anchor)),None)
         if match:CHAPTER_DEFAULTS[f'chapter-{name}.html']=match['path']
     footnotes=body.select_one('#footnotes')
-    if footnotes:add_page(Path('guide/footnotes.md'),footnotes,'pve-admin-guide.html','脚注')
+    if footnotes and footnotes.get_text(strip=True):
+        add_page(Path('guide/footnotes.md'),footnotes,'pve-admin-guide.html','脚注')
+    elif (DOCS/'guide/footnotes.md').exists():
+        (DOCS/'guide/footnotes.md').unlink()
     return chapters
 
 def manual_pages():
@@ -176,9 +201,10 @@ def manual_pages():
 def schema_translated(x):
     if isinstance(x,list):return [schema_translated(v) for v in x]
     if not isinstance(x,dict):return x
-    out={k:schema_translated(v) for k,v in x.items() if not k.startswith('_description_i18n')}
-    if x.get('_description_i18n'):
-        out['description']=BeautifulSoup(restore(x['_description_i18n']),'html.parser').get_text()
+    out={k:schema_translated(v) for k,v in x.items() if not (k.startswith('_') and k.endswith('_i18n'))}
+    for field in ('description','verbose_description','title'):
+        if x.get('_'+field+'_i18n'):
+            out[field]=BeautifulSoup(restore(x['_'+field+'_i18n']),'html.parser').get_text()
     return out
 
 def write(path,text):
@@ -200,7 +226,7 @@ def api_pages():
                 body=[f'# `{path}`\n',f'原始接口路径：`{path}`。\n','方法、参数名、类型、默认值和枚举值与官方规范一致。\n']
                 for method,original in methods.items():
                     operations+=1;info=schema_translated(original)
-                    body += [f'## {method} `{path}`\n',html.escape(info.get('description',''),quote=False)+'\n']
+                    body += [f'## {method} `{path}`\n',html.escape(info.get('verbose_description') or info.get('description',''),quote=False)+'\n']
                     if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
@@ -212,7 +238,7 @@ def api_pages():
                         for key,v in props.items():
                             typ=v.get('type','')
                             required=not v.get('optional',False)
-                            desc=v.get('description','')
+                            desc=v.get('verbose_description') or v.get('description','')
                             if v.get('enum') is not None:desc+='；可选值：'+', '.join('`'+str(z)+'`' for z in v['enum'])
                             body.append('| '+' | '.join([f'`{key}`',cell(typ),'是' if required else '否',cell(json.dumps(v['default'],ensure_ascii=False)) if 'default' in v else '—',cell(desc)])+' |')
                         body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```json\n'+json.dumps(params,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
@@ -271,7 +297,7 @@ def main():
     write(Path('README.md'),intro)
     write(Path('guide/README.md'),'# 管理手册\n\n'+'\n'.join(f'- [{c["title"]}]({relpath(c["path"],Path("guide/README.md"))})' for c in chapters))
     write(Path('reference/README.md'),'# 命令与配置参考\n\n'+'\n'.join(f'- [{c["title"]}]({relpath(c["path"],Path("reference/README.md"))})' for c in manuals))
-    summary=['# 目录\n','- [首页](README.md)','- [管理手册](guide/README.md)']
+    summary=['# 目录\n','- [Proxmox VE 中文文档](README.md "首页")','- [管理手册](guide/README.md)']
     for c in chapters:
         summary.append(f'  - [{c["title"]}]({c["path"]})')
         for child in c.get('children',[]):summary.append(f'    - [{child["title"]}]({child["path"]})')

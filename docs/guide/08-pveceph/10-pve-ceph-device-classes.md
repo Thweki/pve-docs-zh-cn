@@ -2,33 +2,25 @@
 
 [![screenshot/gui-ceph-config.png](../../assets/screenshot-gui-ceph-config-png-b4544eca3b00.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-config.png)
 
-The   
-\[[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)\]  
- (**C**ontrolled **R**eplication **U**nder **S**calable **H**ashing) algorithm is at the foundation of Ceph.
+[\[1\]](#note-882796c1-1)（**C**ontrolled **R**eplication **U**nder **S**calable **H**ashing）算法是 Ceph 的基础。
 
-CRUSH calculates where to store and retrieve data from. This has the advantage that no central indexing service is needed. CRUSH works using a map of OSDs, buckets (device locations) and rulesets (data replication) for pools.
+CRUSH 用于计算数据的存储位置和读取位置。其优势在于不需要中央索引服务。CRUSH 使用由 OSD、桶（设备位置）和池规则集（数据复制）组成的映射来工作。
 
 {% hint style="info" %}
-Further information can be found in the Ceph documentation, under the section CRUSH map   
-\[CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)\]  
-.
+更多信息请参阅 Ceph 文档中的 CRUSH map 一节 [\[2\]](#note-882796c1-2)。
 {% endhint %}
 
-This map can be altered to reflect different replication hierarchies. The object replicas can be separated (e.g., failure domains), while maintaining the desired distribution.
+可以更改此映射，以反映不同的复制层次结构。在保持所需分布的同时，可以将对象副本分隔开（例如，按故障域分隔）。
 
-A common configuration is to use different classes of disks for different Ceph pools. For this reason, Ceph introduced device classes with luminous, to accommodate the need for easy ruleset generation.
+一种常见配置是为不同的 Ceph 池使用不同类别的磁盘。为此，Ceph 从 Luminous 开始引入了设备类别，以满足轻松生成规则集的需求。
 
-The device classes can be seen in the *ceph osd tree* output. These classes represent their own root bucket, which can be seen with the below command.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+可以在 *ceph osd tree* 的输出中查看设备类别。这些类别各自代表一个根桶，可以使用以下命令查看。
 
 ```text
 ceph osd crush tree --show-shadow
 ```
 
-Example output form the above command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+上述命令的示例输出：
 
 ```text
 ID  CLASS WEIGHT  TYPE NAME
@@ -48,9 +40,7 @@ ID  CLASS WEIGHT  TYPE NAME
  14  nvme 0.72769         osd.14
 ```
 
-To instruct a pool to only distribute objects on a specific device class, you first need to create a ruleset for the device class:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要指示池仅在特定设备类别上分布对象，首先需要为该设备类别创建一个规则集：
 
 ```text
 ceph osd crush rule create-replicated <rule-name> <root> <failure-domain> <class>
@@ -62,38 +52,46 @@ ceph osd crush rule create-replicated <rule-name> <root> <failure-domain> <class
 <tbody>
 <tr>
 <td><p>&lt;rule-name&gt;</p></td>
-<td><p>name of the rule, to connect with a pool (seen in GUI &amp; CLI)</p></td>
+<td><p>规则名称，用于与池关联（可在 GUI 和 CLI 中看到）</p></td>
 </tr>
 <tr>
 <td><p>&lt;root&gt;</p></td>
-<td><p>which crush root it should belong to (default Ceph root "default")</p></td>
+<td><p>应属于哪个 CRUSH 根（默认 Ceph 根为 "default"）</p></td>
 </tr>
 <tr>
 <td><p>&lt;failure-domain&gt;</p></td>
-<td><p>at which failure-domain the objects should be distributed (usually host)</p></td>
+<td><p>对象应在哪个故障域中分布（通常为 host）</p></td>
 </tr>
 <tr>
 <td><p>&lt;class&gt;</p></td>
-<td><p>what type of OSD backing store to use (e.g., nvme, ssd, hdd)</p></td>
+<td><p>要使用的 OSD 后备存储类型（例如 nvme、ssd、hdd）</p></td>
 </tr>
 </tbody>
 </table>
 
-Once the rule is in the CRUSH map, you can tell a pool to use the ruleset.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+规则加入 CRUSH map 后，即可指示池使用该规则集。
 
 ```text
 ceph osd pool set <pool-name> crush_rule <rule-name>
 ```
 
 {% hint style="success" %}
-If the pool already contains objects, these must be moved accordingly. Depending on your setup, this may introduce a big performance impact on your cluster. As an alternative, you can create a new pool and move disks separately.
+如果池中已包含对象，则必须相应地移动这些对象。根据您的设置，这可能会对集群性能产生很大影响。作为替代方案，您可以创建一个新池并单独移动磁盘。
 {% endhint %}
 
 {% hint style="warning" %}
-When using the PG autoscaler, all pools in the cluster are required to use CRUSH rules of the same kind, either all specifying a device class, or none. Otherwise the autoscaler will skip the affected pools and their `pg_num` will not be adjusted.
+使用 PG 自动缩放器时，集群中的所有池都必须使用相同类型的 CRUSH 规则，要么全部指定设备类别，要么全部不指定。否则，自动缩放器将跳过受影响的池，其 `pg_num` 也不会得到调整。
 {% endhint %}
+
+## 注释
+
+### 注释 1 <a href="#note-882796c1-1" id="note-882796c1-1"></a>
+
+[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)
+
+### 注释 2 <a href="#note-882796c1-2" id="note-882796c1-2"></a>
+
+CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)
 
 ---
 

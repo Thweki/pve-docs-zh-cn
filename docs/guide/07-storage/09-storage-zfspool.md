@@ -1,30 +1,30 @@
 # 7.9. Local ZFS Pool Backend <a href="#storage_zfspool" id="storage_zfspool"></a>
 
-Storage pool type: `zfspool`
+存储池类型：`zfspool`
 
-This backend allows you to access local ZFS pools (or ZFS file systems inside such pools).
+该后端允许您访问本地 ZFS 池（或此类池中的 ZFS 文件系统）。
 
 ## 7.9.1. Configuration <a href="#_configuration_6" id="_configuration_6"></a>
 
-The backend supports the common storage properties `content`, `nodes`, `disable`, and the following ZFS specific properties:
+该后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 ZFS 特有属性：
 
 **pool**
 
-Select the ZFS pool/filesystem. All allocations are done within that pool.
+选择 ZFS 池/文件系统。所有分配都在该池内完成。
 
 **blocksize**
 
-Set ZFS blocksize parameter.
+设置 ZFS 的 blocksize 参数。
 
 **sparse**
 
-Use ZFS thin-provisioning. A sparse volume is a volume whose reservation is not equal to the volume size.
+使用 ZFS 精简置备。稀疏卷是指预留空间不等于卷大小的卷。
 
-**mountpoint**
+**挂载点**
 
 The mount point of the ZFS pool/filesystem. Changing this does not affect the `mountpoint` property of the dataset seen by `zfs`. Defaults to `/<pool>`.
 
-**Configuration Example (`/etc/pve/storage.cfg`)**
+**配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 zfspool: vmdata
@@ -35,7 +35,7 @@ zfspool: vmdata
 
 ## 7.9.2. File naming conventions <a href="#_file_naming_conventions_2" id="_file_naming_conventions_2"></a>
 
-The backend uses the following naming scheme for VM images:
+后端对 VM 镜像使用以下命名方案：
 
 ```text
 vm-<VMID>-<NAME>      // normal VM images
@@ -45,18 +45,18 @@ subvol-<VMID>-<NAME>  // subvolumes (ZFS filesystem for containers)
 
 **`<VMID>`**
 
-This specifies the owner VM.
+指定所有者 VM。
 
 **`<NAME>`**
 
-This can be an arbitrary name (`ascii`) without white space. The backend uses `disk[N]` as default, where `[N]` is replaced by an integer to make the name unique.
+这可以是不含空白的任意名称（`ascii`）。后端默认使用 `disk[N]`，其中 `[N]` 会替换为一个整数，以确保名称唯一。
 
 ## 7.9.3. Storage Features <a href="#_storage_features_5" id="_storage_features_5"></a>
 
-ZFS is probably the most advanced storage type regarding snapshot and cloning. The backend uses ZFS datasets for both VM images (format `raw`) and container data (format `subvol`). ZFS properties are inherited from the parent dataset, so you can simply set defaults on the parent dataset.
+就快照和克隆而言，ZFS 可能是最先进的存储类型。后端同时将 ZFS 数据集用于 VM 镜像（格式为 `raw`）和容器数据（格式为 `subvol`）。ZFS 属性会从父数据集继承，因此您可以直接在父数据集上设置默认值。
 
 <table>
-<caption>Table 8. Storage features for backend <code>zfs</code></caption>
+<caption>表 8. 后端 <code>zfs</code> 的存储功能</caption>
 
 
 
@@ -64,49 +64,49 @@ ZFS is probably the most advanced storage type regarding snapshot and cloning. T
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>images rootdir</p></td>
 <td><p>raw subvol</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>否</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
 
 ## 7.9.4. Encryption <a href="#_encryption" id="_encryption"></a>
 
-ZFS supports encryption of dataset hierarchies. Each encrypted dataset, is either an `encryption_root`, storing the properties for encryption itself or descendant of its `encryption_root` \- see the `zfs-load-key(8)` manpage for details.
+ZFS 支持对数据集层级结构进行加密。每个加密数据集要么是 `encryption_root`，自身存储加密属性，要么是其 `encryption_root` 的后代——详情请参阅 `zfs-load-key(8)` 手册页。
 
-Sending and receiving encrypted datasets is subject to constraints as some encryption parameters (initialization vectors for the symmetric ciphers) need to be either transferred with the data, breaking inheriting the encryption properties on the receiving side, or need to be recreated on target, requiring the data to be sent unencrypted \- see the `zfs-recv(8)` manpage for details.
+发送和接收加密数据集受到一些限制，因为某些加密参数（对称密码的初始化向量）要么需要随数据一起传输，这会破坏接收端对加密属性的继承；要么需要在目标端重新创建，这就要求以未加密形式发送数据——详情请参阅 `zfs-recv(8)` 手册页。
 
-For migration and storage replication of encrypted datasets in Proxmox VE, the data is sent without the encryption properties, and the state of encryption is determined by the target.
+在 Proxmox VE 中迁移和存储复制加密数据集时，发送的数据不包含加密属性，加密状态由目标端决定。
 
-If you want to send and receive encrypted ZFS datasets, you need to ensure that all involved storages on all nodes are encrypted.
+如果要发送和接收加密的 ZFS 数据集，需要确保所有节点上所有涉及的存储均已加密。
 
 ## 7.9.5. Examples <a href="#_examples_5" id="_examples_5"></a>
 
-It is recommended to create an extra ZFS file system to store your VM images:
+建议额外创建一个 ZFS 文件系统来存储 VM 镜像：
 
 ```text
 # zfs create tank/vmdata
 ```
 
-To enable compression on that newly allocated file system:
+要在新分配的文件系统上启用压缩：
 
 ```text
 # zfs set compression=on tank/vmdata
 ```
 
-You can get a list of available ZFS filesystems with:
+可以使用以下命令获取可用 ZFS 文件系统的列表：
 
 ```text
 # pvesm scan zfs

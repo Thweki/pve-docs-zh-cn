@@ -6,7 +6,7 @@
 
 建议的方法是在将节点从集群中移除后重新安装该节点。这可确保所有集群/SSH 密钥以及任何共享配置数据均被销毁。
 
-In some cases, you might prefer to put a node back to local mode without reinstalling, which is described in [Separate A Node Without Reinstalling](../05-pvecm/06-pvecm-separate-node-without-reinstall.md#pvecm_separate_node_without_reinstall)
+在某些情况下，您可能希望在不重新安装的情况下将节点恢复为本地模式，[无需重新安装即可分离节点](../05-pvecm/06-pvecm-separate-node-without-reinstall.md)中对此进行了说明
 
 ## 6.5.2. Recovering/Moving Guests from Failed Nodes <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
 

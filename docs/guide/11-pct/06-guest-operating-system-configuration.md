@@ -52,9 +52,7 @@ Proxmox VE 所做的更改会用注释标记括起来：
 
 大多数修改取决于操作系统，因此会因发行版和版本而异。您可以通过手动将 `ostype` 设置为 `unmanaged` 来完全禁用这些修改。
 
-操作系统类型检测通过测试容器内的特定文件来完成。Proxmox VE 首先检查 `/etc/os-release` 文件  
-\[/etc/os-release 取代了众多的各发行版专用版本文件 [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)\]  
-。如果该文件不存在，或者其中不包含清晰可辨的发行版标识符，则会检查以下发行版专用的版本文件。
+操作系统类型检测通过测试容器内的特定文件来完成。Proxmox VE 首先检查 `/etc/os-release` 文件[\[1\]](#note-0a8e0f70-1)。如果该文件不存在，或者其中不包含清晰可辨的发行版标识符，则会检查以下发行版专用的版本文件。
 
 **Ubuntu**
 
@@ -87,6 +85,12 @@ Proxmox VE 所做的更改会用注释标记括起来：
 {% hint style="info" %}
 如果配置的 `ostype` 与自动检测到的类型不同，容器将无法启动。
 {% endhint %}
+
+## 注释
+
+### 注释 1 <a href="#note-0a8e0f70-1" id="note-0a8e0f70-1"></a>
+
+/etc/os-release 取代了众多的各发行版专用版本文件 [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)
 
 ---
 

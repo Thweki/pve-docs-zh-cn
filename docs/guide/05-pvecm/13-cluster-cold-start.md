@@ -1,14 +1,14 @@
 # 5.13. Cluster Cold Start <a href="#_cluster_cold_start" id="_cluster_cold_start"></a>
 
-It is obvious that a cluster is not quorate when all nodes are offline. This is a common case after a power failure.
+显然，当所有节点都离线时，集群不具备仲裁。这是断电后的常见情况。
 
 {% hint style="info" %}
-It is always a good idea to use an uninterruptible power supply (“UPS”, also called “battery backup”) to avoid this state, especially if you want HA.
+使用不间断电源（“UPS”，也称为“电池备份”）来避免这种状态始终是个好主意，尤其是在您需要 HA 时。
 {% endhint %}
 
-On node startup, the `pve-guests` service is started and waits for quorum. Once quorate, it starts all guests which have the `onboot` flag set.
+节点启动时，`pve-guests` 服务会启动并等待仲裁。达到仲裁后，它会启动所有设置了 `onboot` 标志的客户机。
 
-When you turn on nodes, or when power comes back after power failure, it is likely that some nodes will boot faster than others. Please keep in mind that guest startup is delayed until you reach quorum.
+当您开启节点时，或在断电后恢复供电时，某些节点很可能会比其他节点启动得更快。请注意，客户机的启动会延迟，直到达到仲裁要求为止。
 
 ---
 

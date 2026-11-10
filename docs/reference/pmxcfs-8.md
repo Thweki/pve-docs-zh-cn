@@ -1,10 +1,10 @@
 # pmxcfs(8)
 
-## 名称 <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
+## NAME <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
 
 pmxcfs \- Proxmox 集群文件系统
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 **pmxcfs** `[OPTIONS]`
 
@@ -42,7 +42,7 @@ systemctl stop pve-cluster
 systemctl status pve-cluster
 ```
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系统，用于存储配置文件，并通过 `corosync` 实时复制到所有集群节点。我们使用它来存储所有与 Proxmox VE 相关的配置文件。
 
@@ -56,17 +56,17 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 - 自动将 corosync 集群配置更新到所有节点
 - 包含分布式锁机制
 
-## POSIX 兼容性 <a href="#_posix_compatibility" id="_posix_compatibility"></a>
+## POSIX Compatibility <a href="#_posix_compatibility" id="_posix_compatibility"></a>
 
 该文件系统基于 FUSE，因此其行为类似于 POSIX。但有些功能并未实现，因为我们不需要它们：
 
 - 只能创建普通文件和目录，不能创建符号链接，……
 - 不能重命名非空目录（因为这样可以更容易地保证 VMID 的唯一性）。
 - 不能更改文件权限（权限基于路径）
-- `O_EXCL` 创建操作不是原子的（与旧版 NFS 类似）
-- `O_TRUNC` 创建操作不是原子的（FUSE 限制）
+- `O_EXCL` creates were not atomic (like old NFS)
+- `O_TRUNC` creates are not atomic (FUSE restriction)
 
-## 文件访问权限 <a href="#_file_access_rights" id="_file_access_rights"></a>
+## File Access Rights <a href="#_file_access_rights" id="_file_access_rights"></a>
 
 所有文件和目录的所有者均为用户 `root`，所属组均为 `www-data`。只有 root 拥有写权限，但 `www-data` 组可以读取大多数文件。以下路径下的文件只能由 root 访问：
 
@@ -75,11 +75,11 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 /etc/pve/nodes/${NAME}/priv/
 ```
 
-## 技术 <a href="#_technology" id="_technology"></a>
+## Technology <a href="#_technology" id="_technology"></a>
 
 我们使用 [Corosync Cluster Engine](https://www.corosync.org) 进行集群通信，并使用 [SQlite](https://www.sqlite.org) 作为数据库文件。该文件系统使用 [FUSE](https://github.com/libfuse/libfuse) 在用户空间中实现。
 
-## 文件系统布局 <a href="#_file_system_layout" id="_file_system_layout"></a>
+## File System Layout <a href="#_file_system_layout" id="_file_system_layout"></a>
 
 该文件系统挂载于：
 
@@ -87,7 +87,7 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 /etc/pve
 ```
 
-### 文件 <a href="#_files" id="_files"></a>
+### Files <a href="#_files" id="_files"></a>
 
 <table>
 
@@ -248,7 +248,7 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 </tbody>
 </table>
 
-### 符号链接 <a href="#_symbolic_links" id="_symbolic_links"></a>
+### Symbolic links <a href="#_symbolic_links" id="_symbolic_links"></a>
 
 集群文件系统中的某些目录使用符号链接，以指向节点自身的配置文件。因此，下表中所指向的文件在集群的每个节点上分别对应不同的文件。
 
@@ -275,7 +275,7 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 </tbody>
 </table>
 
-### 用于调试的特殊状态文件（JSON） <a href="#_special_status_files_for_debugging_json" id="_special_status_files_for_debugging_json"></a>
+### Special status files for debugging (JSON) <a href="#_special_status_files_for_debugging_json" id="_special_status_files_for_debugging_json"></a>
 
 <table>
 
@@ -304,7 +304,7 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 </tbody>
 </table>
 
-### 启用/禁用调试 <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
+### Enable/Disable debugging <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
 
 可以使用以下命令启用详细的 syslog 消息：
 
@@ -318,17 +318,17 @@ echo "1" >/etc/pve/.debug
 echo "0" >/etc/pve/.debug
 ```
 
-## 恢复 <a href="#_recovery" id="_recovery"></a>
+## Recovery <a href="#_recovery" id="_recovery"></a>
 
 如果您的 Proxmox VE 宿主机出现严重问题，例如硬件故障，复制 pmxcfs 数据库文件 `/var/lib/pve-cluster/config.db` 并将其移动到新的 Proxmox VE 宿主机可能会有所帮助。在新宿主机上（未运行任何内容），您需要停止 `pve-cluster` 服务并替换 `config.db` 文件（所需权限为 `0600`）。随后，根据丢失的 Proxmox VE 宿主机调整 `/etc/hostname` 和 `/etc/hosts`，然后重新启动并检查（也不要忘记您的 VM/CT 数据）。
 
-### 移除集群配置 <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
+### Remove Cluster Configuration <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
 
 建议的方法是在将节点从集群中移除后重新安装该节点。这可确保所有集群/SSH 密钥以及任何共享配置数据均被销毁。
 
 在某些情况下，您可能希望在不重新安装的情况下将节点恢复为本地模式，[不重装而分离节点](pvecm-1.md#pvecm_separate_node_without_reinstall)中对此进行了说明
 
-### 从故障节点恢复/迁移客户机 <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
+### Recovering/Moving Guests from Failed Nodes <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
 
 对于 `nodes/<NAME>/qemu-server/`（VM）和 `nodes/<NAME>/lxc/`（容器）中的客户机配置文件，Proxmox VE 将包含这些文件的节点 `<NAME>` 视为相应客户机的所有者。这一概念使得我们可以使用本地锁，而不是开销较大的集群范围锁，以防止并发更改客户机配置。
 
@@ -350,7 +350,7 @@ mv /etc/pve/nodes/node1/qemu-server/100.conf /etc/pve/nodes/node2/qemu-server/
 具有本地磁盘（或其他仅在离线节点上可用的本地资源）的客户机无法通过这种方式恢复。请等待故障节点重新加入集群，或从备份中恢复此类客户机。
 {% endhint %}
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

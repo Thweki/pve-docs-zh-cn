@@ -74,9 +74,9 @@ A route map referenced by a controller cannot be deleted while it is still in us
 
 ## 12.11.3. Where Prefix Lists and Route Maps Are Used <a href="#pvesdn_config_route_filtering_usage" id="pvesdn_config_route_filtering_usage"></a>
 
-The BGP and EVPN [controllers](09-pvesdn-config-controllers.md#pvesdn_config_controllers) each take an `incoming` and an `outgoing` route map. Incoming maps run against routes received from a peer before installing them; outgoing maps run against routes before announcing them. Both fields are optional and selected from the route maps configured in the SDN.
+The BGP and EVPN [controllers](09-pvesdn-config-controllers.md) each take an `incoming` and an `outgoing` route map. Incoming maps run against routes received from a peer before installing them; outgoing maps run against routes before announcing them. Both fields are optional and selected from the route maps configured in the SDN.
 
-The OSPF and OpenFabric [fabrics](10-pvesdn-config-fabrics.md#pvesdn_config_fabrics) take a `Route
+The OSPF and OpenFabric [fabrics](10-pvesdn-config-fabrics.md) take a `Route
 Filter` option that references a prefix list. When set, only routes whose destinations pass the prefix list are installed in the kernel routing table. Without an explicit filter, the fabric generates a default filter from the fabric’s own `IPv4 Prefix` and `IPv6 Prefix` CIDRs (an FRR `access-list` permitting those networks); configure a route filter when you need a different policy, for example to allow a default route learned from a border node.
 
 ## 12.11.4. Examples <a href="#pvesdn_config_route_filtering_examples" id="pvesdn_config_route_filtering_examples"></a>

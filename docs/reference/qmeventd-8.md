@@ -1,10 +1,10 @@
 # qmeventd(8)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 qmeventd \- PVE QEMU Eventd Daemon
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 **qmeventd** `[-f]` `[-v]` `PATH`
 
@@ -34,11 +34,11 @@ systemctl stop qmeventd
 systemctl status qmeventd
 ```
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 `qmeventd` is a daemon that listens on PATH for incoming connections from a qemu qmp socket, and waits for SHUTDOWN events. When a client then disconnects, it executes `/usr/sbin/qm cleanup`. This makes it easy to clean up leftover tap devices, vgpus, etc.
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

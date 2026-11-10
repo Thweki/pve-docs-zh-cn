@@ -39,7 +39,7 @@ After setting the `nftables` configuration key, the new `proxmox-firewall` servi
 systemctl status proxmox-firewall
 ```
 
-You can also examine the generated ruleset. You can find more information about this in the section [Helpful Commands](#pve_firewall_nft_helpful_commands). You should also check whether `pve-firewall` is no longer generating iptables rules, you can find the respective commands in the [Services and Commands](07-pve-firewall-services-commands.md#pve_firewall_services_commands) section.
+You can also examine the generated ruleset. You can find more information about this in the section [Helpful Commands](#pve_firewall_nft_helpful_commands). You should also check whether `pve-firewall` is no longer generating iptables rules, you can find the respective commands in the [Services and Commands](07-pve-firewall-services-commands.md) section.
 
 Switching back to the old firewall can be done by simply setting the configuration value back to 0 / No.
 

@@ -1,10 +1,10 @@
 # pvesubscription(1)
 
-## 名称 <a href="#_name" id="_name"></a>
+## NAME <a href="#_name" id="_name"></a>
 
 pvesubscription \- Proxmox VE Subscription Manager
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesubscription"></a>
 
@@ -76,15 +76,15 @@ A signed subscription info blob
 
 Update subscription info.
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 Always connect to server, even if local cache is still valid.
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 This tool is used to handle Proxmox VE subscriptions.
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

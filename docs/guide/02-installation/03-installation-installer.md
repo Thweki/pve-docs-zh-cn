@@ -1,4 +1,4 @@
-# 2.3. 使用 Proxmox VE 安装程序 <a href="#installation_installer" id="installation_installer"></a>
+# 2.3. Using the Proxmox VE Installer <a href="#installation_installer" id="installation_installer"></a>
 
 安装程序 ISO 镜像包含以下内容：
 
@@ -12,7 +12,7 @@
 安装过程中，所选驱动器上的所有现有数据都将被删除。安装程序不会为其他操作系统添加启动菜单项。
 {% endhint %}
 
-请插入[准备好的安装介质](02-installation-prepare-media.md#installation_prepare_media)（例如 USB 闪存盘或 CD-ROM），并从该介质启动。
+请插入[准备好的安装介质](02-installation-prepare-media.md)（例如 USB 闪存盘或 CD-ROM），并从该介质启动。
 
 {% hint style="success" %}
 请确保已在服务器的固件设置中启用从安装介质（例如 USB）启动。使用 Proxmox VE 8.1 之前版本的安装程序启动时，需要禁用安全启动。
@@ -48,7 +48,7 @@
 
 **高级选项：安装 Proxmox VE（图形界面，调试模式）**
 
-以调试模式启动安装。在几个安装步骤中会打开控制台。如果出现问题，这有助于调试。要退出调试控制台，请按 `CTRL-D`。此选项可用于启动一个提供所有基本工具的 Live 系统。例如，您可以用它来[修复降级的 ZFS *rpool*](../03-system-administration/09-chapter-zfs.md#chapter_zfs)，或修复现有 Proxmox VE 安装的[引导加载程序](../03-system-administration/13-sysboot.md#sysboot)。
+以调试模式启动安装。在几个安装步骤中会打开控制台。如果出现问题，这有助于调试。要退出调试控制台，请按 `CTRL-D`。此选项可用于启动一个提供所有基本工具的 Live 系统。例如，您可以用它来[修复降级的 ZFS *rpool*](../03-system-administration/09-chapter-zfs.md)，或修复现有 Proxmox VE 安装的[引导加载程序](../03-system-administration/13-sysboot.md)。
 
 **高级选项：安装 Proxmox VE（终端 UI，调试模式）**
 
@@ -60,7 +60,7 @@
 
 **高级选项：安装 Proxmox VE（自动化）**
 
-以无人值守模式启动安装程序，即使 ISO 尚未针对自动化安装进行适当准备。此选项可用于收集硬件详细信息，也可能有助于调试自动化安装设置。更多信息请参阅[无人值守安装](04-installation-unattended.md#installation_unattended)。
+以无人值守模式启动安装程序，即使 ISO 尚未针对自动化安装进行适当准备。此选项可用于收集硬件详细信息，也可能有助于调试自动化安装设置。更多信息请参阅[无人值守安装](04-installation-unattended.md)。
 
 **高级选项：救援启动**
 
@@ -131,22 +131,22 @@ Proxmox VE 也可以安装在 ZFS 上。由于 ZFS 提供多种软件 RAID 级�
 
 如果安装失败，请在第二个 TTY（*CTRL \+ ALT \+ F2*）上查看具体错误，并确保系统满足[最低要求](01-system-requirements.md#install_minimal_requirements)。
 
-如果安装仍无法正常工作，请参阅[如何获取帮助一章](../01-introduction/10-getting-help.md#getting_help)。
+如果安装仍无法正常工作，请参阅[如何获取帮助一章](../01-introduction/10-getting-help.md)。
 
-## 2.3.1. 安装后访问管理界面 <a href="#_accessing_the_management_interface_post_installation" id="_accessing_the_management_interface_post_installation"></a>
+## 2.3.1. Accessing the Management Interface Post-Installation <a href="#_accessing_the_management_interface_post_installation" id="_accessing_the_management_interface_post_installation"></a>
 
 [![screenshot/gui-login-window.png](../../assets/screenshot-gui-login-window-png-9cd1c28376f9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-login-window.png)
 
 成功安装并重新启动系统后，您可以使用 Proxmox VE Web 界面进行进一步配置。
 
-1. 将浏览器指向安装期间指定的 IP 地址和端口 8006，例如：[https://youripaddress:8006](https://youripaddress:8006)
+1. Point your browser to the IP address given during the installation and port 8006, for example: [https://youripaddress:8006](https://youripaddress:8006)
 2. 使用 `root` 用户名（领域为 *PAM*）和安装期间设置的密码登录。
 3. 上传您的订阅密钥以访问企业版存储库。否则，您需要设置一个公开的、测试较少的软件包存储库，才能获取安全修复、错误修复和新功能的更新。
 4. 检查 IP 配置和主机名。
 5. 检查时区。
-6. 检查您的[防火墙设置](../13-pve-firewall/README.md#chapter_pve_firewall)。
+6. 检查您的[防火墙设置](../13-pve-firewall/README.md)。
 
-## 2.3.2. 高级 LVM 配置选项 <a href="#advanced_lvm_options" id="advanced_lvm_options"></a>
+## 2.3.2. Advanced LVM Configuration Options <a href="#advanced_lvm_options" id="advanced_lvm_options"></a>
 
 安装程序会创建名为 `pve` 的卷组（VG），以及名为 `root`、`data` 和 `swap` 的其他逻辑卷（LV），前提是使用 `ext4` 或 `xfs`。要控制这些卷的大小，请使用：
 
@@ -190,7 +190,7 @@ In case of LVM thin, the `data` pool will only be created if `datasize` is bigge
 LVM 要求 VG 中有可用空间才能创建快照（lvmthin 快照不需要）。
 {% endhint %}
 
-## 2.3.3. 高级 ZFS 配置选项 <a href="#advanced_zfs_options" id="advanced_zfs_options"></a>
+## 2.3.3. Advanced ZFS Configuration Options <a href="#advanced_zfs_options" id="advanced_zfs_options"></a>
 
 如果使用 ZFS，安装程序会创建 ZFS 池 `rpool`。不会创建交换空间，但您可以在安装磁盘上保留一些未分区空间用于交换。也可以在安装后创建交换 zvol，但这可能会导致问题（请参阅[ZFS 交换说明](../03-system-administration/09-chapter-zfs.md#zfs_swap)）。
 
@@ -218,7 +218,7 @@ LVM 要求 VG 中有可用空间才能创建快照（lvmthin 快照不需要）�
 
 定义要使用的硬盘总大小。这有助于在硬盘上保留可用空间，以便进一步分区（例如创建交换分区）。`hdsize` 仅对可引导磁盘生效，即对于 RAID0、RAID1 或 RAID10，仅第一块磁盘或镜像生效；对于 RAID-Z\[123\]，则对所有磁盘生效。
 
-## 2.3.4. BTRFS 高级配置选项 <a href="#advanced_btrfs_options" id="advanced_btrfs_options"></a>
+## 2.3.4. Advanced BTRFS Configuration Options <a href="#advanced_btrfs_options" id="advanced_btrfs_options"></a>
 
 使用 BTRFS 时不会创建交换空间，但您可以在安装磁盘上保留一些未分区空间用于交换。您可以创建独立分区、BTRFS 子卷，或使用 `btrfs filesystem
 mkswapfile` 命令创建交换文件。
@@ -231,7 +231,7 @@ mkswapfile` 命令创建交换文件。
 
 定义要使用的硬盘总大小。这有助于在硬盘上保留可用空间，以便进一步分区（例如创建交换分区）。
 
-## 2.3.5. ZFS 性能提示 <a href="#_zfs_performance_tips" id="_zfs_performance_tips"></a>
+## 2.3.5. ZFS Performance Tips <a href="#_zfs_performance_tips" id="_zfs_performance_tips"></a>
 
 ZFS 在配备大量内存时性能最佳。如果打算使用 ZFS，请确保为其提供足够的 RAM。一个较好的计算方法是 4GB 加上每 TB 原始磁盘空间 1GB RAM。
 
@@ -241,7 +241,7 @@ ZFS 可以使用专用驱动器作为写缓存，称为 ZFS 意图日志（ZIL�
 # zpool add <pool-name> log </dev/path_to_fast_ssd>
 ```
 
-## 2.3.6. 添加 `nomodeset` 内核参数 <a href="#nomodeset_kernel_param" id="nomodeset_kernel_param"></a>
+## 2.3.6. Adding the `nomodeset` Kernel Parameter <a href="#nomodeset_kernel_param" id="nomodeset_kernel_param"></a>
 
 由于显卡驱动程序问题，非常旧或非常新的硬件可能会出现问题。如果安装在引导过程中挂起，可以尝试添加 `nomodeset` 参数。这会阻止 Linux 内核加载任何显卡驱动程序，并强制其继续使用 BIOS/UEFI 提供的帧缓冲区。
 

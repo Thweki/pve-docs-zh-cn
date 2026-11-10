@@ -1,38 +1,38 @@
 # 8.6. Ceph Manager <a href="#pve_ceph_manager" id="pve_ceph_manager"></a>
 
-The Manager daemon runs alongside the monitors. It provides an interface to monitor the cluster. Since the release of Ceph luminous, at least one ceph-mgr   
-\[Ceph Manager [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)\]  
- daemon is required.
+Manager 守护进程与监视器一同运行。它提供用于监控集群的接口。自 Ceph luminous 发布以来，至少需要一个 ceph-mgr [\[1\]](#note-c14d5ee4-1) 守护进程。
 
 ## 8.6.1. Create Manager <a href="#pveceph_create_mgr" id="pveceph_create_mgr"></a>
 
-Multiple Managers can be installed, but only one Manager is active at any given time.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+可以安装多个管理器，但在任何给定时间只有一个管理器处于活动状态。
 
 ```text
 pveceph mgr create
 ```
 
 {% hint style="info" %}
-It is recommended to install the Ceph Manager on the monitor nodes. For high availability install more then one manager.
+建议将 Ceph 管理器安装在监视器节点上。为实现高可用性，请安装多个管理器。
 {% endhint %}
 
 ## 8.6.2. Destroy Manager <a href="#pveceph_destroy_mgr" id="pveceph_destroy_mgr"></a>
 
-To remove a Ceph Manager via the GUI, first select a node in the tree view and go to the **Ceph → Monitor** panel. Select the Manager and click the **Destroy** button.
+要通过 GUI 移除 Ceph 管理器，请先在树视图中选择一个节点，然后转到 **Ceph → Monitor** 面板。选择 Manager，然后单击 **Destroy** 按钮。
 
-To remove a Ceph Monitor via the CLI, first connect to the node on which the Manager is running. Then execute the following command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要通过 CLI 移除 Ceph 监视器，请先连接到正在运行 Manager 的节点。然后执行以下命令：
 
 ```text
 pveceph mgr destroy
 ```
 
 {% hint style="info" %}
-While a manager is not a hard-dependency, it is crucial for a Ceph cluster, as it handles important features like PG-autoscaling, device health monitoring, telemetry and more.
+虽然管理器不是硬性依赖，但它对 Ceph 集群至关重要，因为它负责 PG 自动缩放、设备运行状况监控、遥测等重要功能。
 {% endhint %}
+
+## 注释
+
+### 注释 1 <a href="#note-c14d5ee4-1" id="note-c14d5ee4-1"></a>
+
+Ceph 管理器 [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)
 
 ---
 

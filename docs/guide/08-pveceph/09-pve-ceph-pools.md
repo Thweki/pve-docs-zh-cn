@@ -2,143 +2,126 @@
 
 [![screenshot/gui-ceph-pools.png](../../assets/screenshot-gui-ceph-pools-png-4290e2ffb7bf.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-pools.png)
 
-A pool is a logical group for storing objects. It holds a collection of objects, known as **P**lacement **G**roups (`PG`, `pg_num`).
+池是用于存储对象的逻辑组。它包含一组对象，称为 **P**lacement **G**roups（`PG`，`pg_num`）。
 
 ## 8.9.1. Create and Edit Pools <a href="#_create_and_edit_pools" id="_create_and_edit_pools"></a>
 
-You can create and edit pools from the command line or the web interface of any Proxmox VE host under **Ceph → Pools**.
+您可以通过命令行或任何 Proxmox VE 宿主机的 Web 界面，在 **Ceph → Pools** 下创建和编辑池。
 
-When no options are given, we set a default of **128 PGs**, a **size of 3 replicas** and a **min\_size of 2 replicas**, to ensure no data loss occurs if any OSD fails.
+当未给出任何选项时，我们会默认设置 **128 PGs**、**3 个副本的 size** 和 **2 个副本的 min\_size**，以确保任何 OSD 发生故障时都不会造成数据丢失。
 
 {% hint style="warning" %}
-**Do not set a min\_size of 1**. A replicated pool with min\_size of 1 allows I/O on an object when it has only 1 replica, which could lead to data loss, incomplete PGs or unfound objects.
+**不要将 min\_size 设置为 1**。对于 min\_size 为 1 的副本池，当对象只有 1 个副本时仍允许对其执行 I/O，这可能导致数据丢失、PG 不完整或无法找到对象。
 {% endhint %}
 
-It is advised that you either enable the PG-Autoscaler or calculate the PG number based on your setup. You can find the formula and the PG calculator   
-\[PG calculator [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)\]  
- online. From Ceph Nautilus onward, you can change the number of PGs <a id="_footnote_placement_groups"></a>  
-\[Placement Groups [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)\]  
- after the setup.
+建议您启用 PG-Autoscaler，或根据您的部署计算 PG 数量。您可以在线找到相关公式和 PG 计算器 [\[1\]](#note-91ded4b9-1)。从 Ceph Nautilus 起，您可以在完成设置后更改 PG [\[placement\_groups\]](#_footnote_placement_groups) 的数量。
 
-The PG autoscaler <a id="_footnote_autoscaler"></a>  
-\[Automated Scaling [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)\]  
- can automatically scale the PG count for a pool in the background. Setting the `Target Size` or `Target Ratio` advanced parameters helps the PG-Autoscaler to make better decisions.
+PG 自动缩放器 [\[autoscaler\]](#_footnote_autoscaler) 可以在后台自动调整池的 PG 数量。设置 `Target Size` 或 `Target Ratio` 高级参数有助于 PG-Autoscaler 做出更好的决策。
 
-**Example for creating a pool over the CLI**
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+**通过 CLI 创建池的示例**
 
 ```text
 pveceph pool create <pool-name> --add_storages
 ```
 
 {% hint style="success" %}
-If you would also like to automatically define a storage for your pool, keep the ‘Add as Storage’ checkbox checked in the web interface, or use the command-line option *--add\_storages* at pool creation.
+如果您还想自动为池定义存储，请在 Web 界面中保持选中“Add as Storage”复选框，或在创建池时使用命令行选项 *--add\_storages*。
 {% endhint %}
 
 ### Pool Options <a href="#_pool_options" id="_pool_options"></a>
 
 [![screenshot/gui-ceph-pool-create.png](../../assets/screenshot-gui-ceph-pool-create-png-020d880342d1.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-pool-create.png)
 
-The following options are available on pool creation, and partially also when editing a pool.
+以下选项可在创建池时使用，其中部分选项也可在编辑池时使用。
 
-**Name**
+**名称**
 
-The name of the pool. This must be unique and can’t be changed afterwards.
+池的名称。该名称必须唯一，且之后无法更改。
 
-**Size**
+**大小**
 
-The number of replicas per object. Ceph always tries to have this many copies of an object. Default: `3`.
+每个对象的副本数。Ceph 始终尝试为对象保留此数量的副本。默认值：`3`。
 
-**PG Autoscale Mode**
+**PG 自动缩放模式**
 
-The automatic PG scaling mode   
-[\[autoscaler\]](#_footnote_autoscaler)  
- of the pool. If set to `warn`, it produces a warning message when a pool has a non-optimal PG count. Default: `warn`.
+池的自动 PG 缩放模式   
+[\[自动缩放器\]](#_footnote_autoscaler)  
+。如果设置为 `warn`，当池的 PG 数量不是最佳值时，会生成警告消息。默认值：`warn`。
 
-**Add as Storage**
+**添加为存储**
 
-Configure a VM or container storage using the new pool. Default: `true` (only visible on creation).
+使用新池配置 VM 或容器存储。默认值：`true`（仅在创建时可见）。
 
-**Advanced Options**
+**高级选项**
 
-**Min. Size**
+**最小大小**
 
-The minimum number of replicas per object. Ceph will reject I/O on the pool if a PG has less than this many replicas. Default: `2`.
+每个对象的最小副本数。如果 PG 的副本数少于此值，Ceph 将拒绝该池上的 I/O。默认值：`2`。
 
-**Crush Rule**
+**CRUSH 规则**
 
-The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH \& device classes](10-pve-ceph-device-classes.md#pve_ceph_device_classes) for information on device-based rules.
+用于映射集群中对象放置位置的规则。这些规则定义数据在集群中的放置方式。有关基于设备的规则的信息，请参阅 [Ceph CRUSH 和设备类别](10-pve-ceph-device-classes.md)。
 
-**\# of PGs**
+**PG 数量**
 
-The number of placement groups   
+池在初始时应具有的归置组   
 [\[placement\_groups\]](#_footnote_placement_groups)  
- that the pool should have at the beginning. Default: `128`.
+ 数量。默认值：`128`。
 
-**Target Ratio**
+**目标比例**
 
-The ratio of data that is expected in the pool. The PG autoscaler uses the ratio relative to other ratio sets. It takes precedence over the `target size` if both are set.
+池中预期数据所占的比例。PG 自动缩放器会结合其他已设置的比例来使用此比例。如果两者均已设置，则此设置优先于 `target size`。
 
-**Target Size**
+**目标大小**
 
-The estimated amount of data expected in the pool. The PG autoscaler uses this size to estimate the optimal PG count.
+池中预期数据的估计量。PG 自动缩放器使用此大小来估计最佳 PG 数量。
 
-**Min. \# of PGs**
+**最小 PG 数量**
 
-The minimum number of placement groups. This setting is used to fine-tune the lower bound of the PG count for that pool. The PG autoscaler will not merge PGs below this threshold.
+归置组的最小数量。此设置用于微调该池 PG 数量的下限。PG 自动缩放器不会将 PG 合并到低于此阈值。
 
-Further information on Ceph pool handling can be found in the Ceph pool operation   
-\[Ceph pool operation [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)\]  
- manual.
+有关 Ceph 池处理的更多信息，请参阅 Ceph 池操作 [\[4\]](#note-91ded4b9-4)手册。
 
 ## 8.9.2. Erasure Coded Pools <a href="#pve_ceph_ec_pools" id="pve_ceph_ec_pools"></a>
 
-Erasure coding (EC) is a form of ‘forward error correction’ codes that allows to recover from a certain amount of data loss. Erasure coded pools can offer more usable space compared to replicated pools, but they do that for the price of performance.
+纠删码（EC）是一种“前向纠错”编码，可在发生一定量的数据丢失时恢复数据。与副本池相比，纠删码池可以提供更多可用空间，但代价是性能下降。
 
-For comparison: in classic, replicated pools, multiple replicas of the data are stored (`size`) while in erasure coded pool, data is split into `k` data chunks with additional `m` coding (checking) chunks. Those coding chunks can be used to recreate data should data chunks be missing.
+相比之下：在传统的副本池中，会存储数据的多个副本（`size`）；而在纠删码池中，数据会被拆分为 `k` 个数据块，并附加 `m` 个编码（校验）块。如果数据块丢失，可以使用这些编码块重建数据。
 
-The number of coding chunks, `m`, defines how many OSDs can be lost without losing any data. The total amount of objects stored is `k + m`.
+编码块数量 `m` 决定了在不丢失任何数据的情况下可以容忍丢失多少个 OSD。存储的对象总数为 `k + m`。
 
 ### Creating EC Pools <a href="#_creating_ec_pools" id="_creating_ec_pools"></a>
 
-Erasure coded (EC) pools can be created with the `pveceph` CLI tooling. Planning an EC pool needs to account for the fact, that they work differently than replicated pools.
+可以使用 `pveceph` 命令行工具创建纠删码（EC）池。规划 EC 池时，必须考虑其工作方式与副本池不同这一事实。
 
-The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2`   
-\[Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)\]  
-.
+The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2`
+[\[5\]](#note-91ded4b9-5).
 
-If there are less than `min_size` OSDs available, any IO to the pool will be blocked until there are enough OSDs available again.
+如果可用 OSD 少于 `min_size` 个，则对该池的所有 I/O 都将被阻塞，直到再次有足够的 OSD 可用。
 
 {% hint style="info" %}
-When planning an erasure coded pool, keep an eye on the `min_size` as it defines how many OSDs need to be available. Otherwise, IO will be blocked.
+规划纠删码池时，请留意 `min_size`，因为它决定了需要有多少个 OSD 可用。否则，I/O 将被阻塞。
 {% endhint %}
 
-For example, an EC pool with `k = 2` and `m = 1` will have `size = 3`, `min_size = 2` and will stay operational if one OSD fails. If the pool is configured with `k = 2`, `m = 2`, it will have a `size = 4` and `min_size = 3` and stay operational if one OSD is lost.
+例如，一个 `k = 2`、`m = 1` 的 EC 池将具有 `size = 3`、`min_size = 2`，并且在一个 OSD 发生故障时仍可继续运行。如果该池配置为 `k = 2`、`m = 2`，则将为 `size = 4` 和 `min_size = 3`，并且在一个 OSD 丢失时仍可继续运行。
 
-To create a new EC pool, run the following command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要创建新的 EC 池，请运行以下命令：
 
 ```text
 pveceph pool create <pool-name> --erasure-coding k=2,m=1
 ```
 
-Optional parameters are `failure-domain` and `device-class`. If you need to change any EC profile settings used by the pool, you will have to create a new pool with a new profile.
+可选参数为 `failure-domain` 和 `device-class`。如果需要更改池所使用的任何 EC 配置文件设置，则必须使用新的配置文件创建一个新池。
 
-This will create a new EC pool plus the needed replicated pool to store the RBD omap and other metadata. In the end, there will be a `<pool name>-data` and `<pool name>-metadata` pool. The default behavior is to create a matching storage configuration as well. If that behavior is not wanted, you can disable it by providing the `--add_storages 0` parameter. When configuring the storage configuration manually, keep in mind that the `data-pool` parameter needs to be set. Only then will the EC pool be used to store the data objects. For example:
+这将创建一个新的 EC 池，以及用于存储 RBD omap 和其他元数据所需的副本池。最终会有一个 `<pool name>-data` 池和一个 `<pool name>-metadata` 池。默认行为还会创建匹配的存储配置。如果不需要此行为，可以通过提供 `--add_storages 0` 参数将其禁用。手动配置存储时，请记住必须设置 `data-pool` 参数。只有这样，EC 池才会用于存储数据对象。例如：
 
 {% hint style="info" %}
-The optional parameters `--size`, `--min_size` and `--crush_rule` will be used for the replicated metadata pool, but not for the erasure coded data pool. If you need to change the `min_size` on the data pool, you can do it later. The `size` and `crush_rule` parameters cannot be changed on erasure coded pools.
+可选参数 `--size`、`--min_size` 和 `--crush_rule` 将用于副本元数据池，而不会用于纠删码数据池。如果需要更改数据池的 `min_size`，可以稍后再进行更改。无法在纠删码池上更改 `size` 和 `crush_rule` 参数。
 {% endhint %}
 
-If there is a need to further customize the EC profile, you can do so by creating it with the Ceph tools directly   
-\[Ceph Erasure Code Profile [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)\]  
-, and specify the profile to use with the `profile` parameter.
+如果需要进一步自定义 EC 配置文件，可以直接使用 Ceph 工具创建该配置文件 [\[6\]](#note-91ded4b9-6)，并通过 `profile` 参数指定要使用的配置文件。
 
-For example:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+例如：
 
 ```text
 pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
@@ -146,15 +129,13 @@ pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
 
 ### FastEC (`allow_ec_optimizations`) <a href="#_fastec_span_class_monospaced_allow_ec_optimizations_span" id="_fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
 
-Ceph Tentacle introduces a new erasure coding I/O path called FastEC, enabled per pool via the `allow_ec_optimizations` flag. FastEC adds partial reads and partial writes on EC pools, substantially improving small random I/O performance — the dominant access pattern of virtual machine disk I/O. Upstream recommends it for RBD and CephFS backed storage   
-\[Ceph Erasure Code [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)\]  
-.
+Ceph Tentacle 引入了一种名为 FastEC 的新纠删码 I/O 路径，可通过 `allow_ec_optimizations` 标志按池启用。FastEC 为 EC 池增加了部分读取和部分写入功能，显著提升了小块随机 I/O 的性能，而这是虚拟机磁盘 I/O 的主要访问模式。上游建议将其用于由 RBD 和 CephFS 支持的存储 [\[7\]](#note-91ded4b9-7)。
 
-FastEC has four requirements that the Ceph monitor enforces:
+FastEC 有四项要求，由 Ceph 监视器强制执行：
 
-- the pool must be erasure coded;
-- the cluster must be at `require_osd_release` tentacle or later;
-- the erasure code profile must use a plugin and technique combination that supports the optimized EC path:
+- 池必须是纠删码池；
+- 集群必须处于 `require_osd_release` tentacle 或更高版本；
+- 纠删码配置文件必须使用支持优化 EC 路径的插件和技术组合：
 
   <table>
 
@@ -162,8 +143,8 @@ FastEC has four requirements that the Ceph monitor enforces:
 
   <thead>
   <tr>
-  <th>Plugin</th>
-  <th>Technique</th>
+  <th>插件</th>
+  <th>技术</th>
   <th>FastEC</th>
   </tr>
   </thead>
@@ -171,167 +152,186 @@ FastEC has four requirements that the Ceph monitor enforces:
   <tr>
   <td><p><code>isa</code></p></td>
   <td><p><code>reed_sol_van</code></p></td>
-  <td><p>yes</p></td>
+  <td><p>是</p></td>
   </tr>
   <tr>
   <td><p><code>isa</code></p></td>
   <td><p><code>cauchy</code></p></td>
-  <td><p>no</p></td>
+  <td><p>否</p></td>
   </tr>
   <tr>
   <td><p><code>jerasure</code></p></td>
   <td><p><code>reed_sol_van</code></p></td>
-  <td><p>yes</p></td>
+  <td><p>是</p></td>
   </tr>
   <tr>
   <td><p><code>jerasure</code></p></td>
-  <td><p>all others</p></td>
-  <td><p>no</p></td>
+  <td><p>所有其他</p></td>
+  <td><p>否</p></td>
   </tr>
   <tr>
   <td><p><code>lrc</code></p></td>
-  <td><p>(any)</p></td>
-  <td><p>no</p></td>
+  <td><p>（任意）</p></td>
+  <td><p>否</p></td>
   </tr>
   <tr>
   <td><p><code>shec</code></p></td>
-  <td><p>(any)</p></td>
-  <td><p>no</p></td>
+  <td><p>（任意）</p></td>
+  <td><p>否</p></td>
   </tr>
   <tr>
   <td><p><code>clay</code></p></td>
-  <td><p>(any)</p></td>
-  <td><p>no</p></td>
+  <td><p>（任意）</p></td>
+  <td><p>否</p></td>
   </tr>
   </tbody>
   </table>
-- the pool’s stripe unit must be a multiple of 4096 bytes. The default stripe unit satisfies this, so this is only relevant for pools created with a custom `stripe_unit` in their erasure code profile.
+- 池的条带单元必须是 4096 字节的倍数。默认条带单元满足此要求，因此，只有纠删码配置文件中使用了自定义 `stripe_unit` 的池才需要关注这一点。
 
-If any precondition is not met, `ceph osd pool set <pool>-data allow_ec_optimizations 1` fails with a descriptive error — no silent degradation.
+如果任何前提条件未满足，`ceph osd pool set <pool>-data allow_ec_optimizations 1` 都会失败并给出描述性错误信息，不会静默降级。
 
-`pveceph` does not set the plugin or technique explicitly when creating an EC profile — both are seeded from the monitor’s `osd_pool_default_erasure_code_profile` option (`reed_sol_van` by default on both Squid and Tentacle). The technique requirement is therefore satisfied out of the box unless the operator has overridden this setting. Verify with:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+`pveceph` 在创建 EC 配置文件时不会显式设置插件或技术，两者均取自监视器的 `osd_pool_default_erasure_code_profile` 选项（在 Squid 和 Tentacle 上默认均为 `reed_sol_van`）。因此，除非运维人员覆盖了此设置，否则默认即可满足技术要求。可使用以下命令验证：
 
 ```text
 ceph config get mon osd_pool_default_erasure_code_profile
 ```
 
-If the output shows a technique other than `reed_sol_van`, either update the cluster-wide default or create a compatible profile explicitly and pass it via the `profile` property when creating the pool (see above).
+如果输出显示的技术不是 `reed_sol_van`，请更新集群范围的默认设置，或者显式创建一个兼容的配置文件，并在创建池时通过 `profile` 属性传入该配置文件（见上文）。
 
-Check the cluster release with:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+使用以下命令检查集群版本：
 
 ```text
 ceph osd dump | grep require_osd_release
 ```
 
-If this reports a release older than `tentacle`, run `ceph osd require-osd-release tentacle` after all OSDs have been upgraded.
+如果此处报告的版本低于 `tentacle`，请在所有 OSD 完成升级后运行 `ceph osd require-osd-release tentacle`。
 
 {% hint style="warning" %}
-`allow_ec_optimizations` is a one-way switch. Once enabled on a pool, the Ceph monitor refuses to clear the flag again, so rolling back requires draining and recreating the pool. Enable it only after validating that FastEC works for your workload on a test pool.
+`allow_ec_optimizations` 是一个单向开关。在池上启用后，Ceph 监视器会拒绝再次清除该标志，因此回滚需要清空并重新创建池。请仅在测试池上验证 FastEC 适用于您的工作负载后再启用它。
 {% endhint %}
 
 #### Enabling FastEC on a pool <a href="#_enabling_fastec_on_a_pool" id="_enabling_fastec_on_a_pool"></a>
 
-FastEC is enabled per pool via the `ceph` CLI. It can be set on both new and existing (populated) pools. No data migration or re-encoding takes place; only pool metadata changes.
+FastEC 通过 `ceph` 命令行按池启用。它既可以设置在新池上，也可以设置在现有（已有数据）的池上。不会发生数据迁移或重新编码，仅会更改池元数据。
 
-To enable FastEC on a pool, run the following command against the data pool (typically named `<pool-name>-data`):
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+要在池上启用 FastEC，请对数据池（通常命名为 `<pool-name>-data`）运行以下命令：
 
 ```text
 ceph osd pool set <pool-name>-data allow_ec_optimizations 1
 ```
 
-Verify the result with:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+使用以下命令验证结果：
 
 ```text
 ceph osd pool get <pool-name>-data allow_ec_optimizations
 ```
 
-The same command reports the current state for any EC pool, which is useful when auditing a cluster.
+同一命令还会报告任何 EC 池的当前状态，这在审计集群时非常有用。
 
-When the flag is set on a populated pool, be aware of the following:
+在已有数据的池上设置该标志时，请注意以下事项：
 
 - **Primary re-election.** FastEC marks data shards 1 through k-1 as non-primary, so PGs whose primary was on one of those shards will re-peer. This is a normal peering event and causes a brief I/O pause per affected PG.
 - **Scrub interaction.** Re-peering cancels any in-flight scrub on affected PGs. Those PGs will need to be re-scrubbed after peering completes.
 
 ### Adding EC Pools as Storage <a href="#_adding_ec_pools_as_storage" id="_adding_ec_pools_as_storage"></a>
 
-You can add an already existing EC pool as storage to Proxmox VE. It works the same way as adding an `RBD` pool but requires the extra `data-pool` option.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+您可以将现有的 EC 池作为存储添加到 Proxmox VE。其操作方式与添加 `RBD` 池相同，但需要额外的 `data-pool` 选项。
 
 ```text
 pvesm add rbd <storage-name> --pool <replicated-pool> --data-pool <ec-pool>
 ```
 
 {% hint style="success" %}
-Do not forget to add the `keyring` and `monhost` option for any external Ceph clusters, not managed by the local Proxmox VE cluster.
+对于不受本地 Proxmox VE 集群管理的任何外部 Ceph 集群，请不要忘记添加 `keyring` 和 `monhost` 选项。
 {% endhint %}
 
 ## 8.9.3. Destroy Pools <a href="#_destroy_pools" id="_destroy_pools"></a>
 
-To destroy a pool via the GUI, select a node in the tree view and go to the **Ceph → Pools** panel. Select the pool to destroy and click the **Destroy** button. To confirm the destruction of the pool, you need to enter the pool name.
+要通过 GUI 销毁池，请在树状视图中选择一个节点，然后转到 **Ceph → Pools** 面板。选择要销毁的池，然后点击 **Destroy** 按钮。要确认销毁该池，您需要输入池名称。
 
-Run the following command to destroy a pool. Specify the *-remove\_storages* to also remove the associated storage.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+运行以下命令销毁池。指定 *-remove\_storages* 以同时删除关联的存储。
 
 ```text
 pveceph pool destroy <name>
 ```
 
 {% hint style="info" %}
-Pool deletion runs in the background and can take some time. You will notice the data usage in the cluster decreasing throughout this process.
+池删除会在后台运行，并且可能需要一些时间。在此过程中，您会注意到集群中的数据使用量逐渐减少。
 {% endhint %}
 
 ## 8.9.4. PG Autoscaler <a href="#_pg_autoscaler" id="_pg_autoscaler"></a>
 
-The PG autoscaler allows the cluster to consider the amount of (expected) data stored in each pool and to choose the appropriate pg\_num values automatically. It is available since Ceph Nautilus.
+PG 自动缩放器使集群能够考虑每个池中存储的（预期）数据量，并自动选择合适的 pg\_num 值。该功能自 Ceph Nautilus 起可用。
 
-You may need to activate the PG autoscaler module before adjustments can take effect.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+您可能需要先激活 PG 自动缩放器模块，调整才能生效。
 
 ```text
 ceph mgr module enable pg_autoscaler
 ```
 
-The autoscaler is configured on a per pool basis and has the following modes:
+自动缩放器按池进行配置，具有以下模式：
 
 <table>
 <tr>
-<td>warn <br/></td>
+<td>warn <br/>
+</td>
 <td>
-<p>A health warning is issued if the suggested <code>pg_num</code> value differs too much from the current value.</p>
+<p>如果建议的 <code>pg_num</code> 值与当前值相差过大，将发出健康警告。</p>
 </td>
 </tr>
 <tr>
-<td>on <br/></td>
+<td>on <br/>
+</td>
 <td>
-<p>The <code>pg_num</code> is adjusted automatically with no need for any manual interaction.</p>
+<p><code>pg_num</code> 会自动调整，无需任何手动干预。</p>
 </td>
 </tr>
 <tr>
-<td>off <br/></td>
+<td>off <br/>
+</td>
 <td>
-<p>No automatic <code>pg_num</code> adjustments are made, and no warning will be issued if the PG count is not optimal.</p>
+<p>不会自动调整 <code>pg_num</code>，并且即使 PG 数量不是最佳值，也不会发出警告。</p>
 </td>
 </tr>
 </table>
 
-The scaling factor can be adjusted to facilitate future data storage with the `target_size`, `target_size_ratio` and the `pg_num_min` options.
+可以使用 `target_size`、`target_size_ratio` 和 `pg_num_min` 选项调整缩放因子，以便满足未来的数据存储需求。
 
 {% hint style="warning" %}
-By default, the autoscaler considers tuning the PG count of a pool if it is off by a factor of 3\. This will lead to a considerable shift in data placement and might introduce a high load on the cluster.
+默认情况下，如果池的 PG 数量偏差达到 3 倍，自动缩放器就会考虑对其进行调整。这将导致数据放置发生显著变化，并可能给集群带来高负载。
 {% endhint %}
 
-You can find a more in-depth introduction to the PG autoscaler on Ceph’s Blog \- [New in Nautilus: PG merging and autotuning](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/).
+您可以在 Ceph 博客中找到对 PG 自动缩放器更深入的介绍——[Nautilus 新功能：PG 合并和自动调优](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/)。
+
+## 注释
+
+### 注释 1 <a href="#note-91ded4b9-1" id="note-91ded4b9-1"></a>
+
+PG 计算器 [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)
+
+### 注释 placement\_groups <a href="#_footnote_placement_groups" id="_footnote_placement_groups"></a>
+
+归置组 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)
+
+### 注释 autoscaler <a href="#_footnote_autoscaler" id="_footnote_autoscaler"></a>
+
+自动缩放 [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)
+
+### 注释 4 <a href="#note-91ded4b9-4" id="note-91ded4b9-4"></a>
+
+Ceph 池操作 [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)
+
+### 注释 5 <a href="#note-91ded4b9-5" id="note-91ded4b9-5"></a>
+
+Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)
+
+### 注释 6 <a href="#note-91ded4b9-6" id="note-91ded4b9-6"></a>
+
+Ceph 纠删码配置文件 [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)
+
+### 注释 7 <a href="#note-91ded4b9-7" id="note-91ded4b9-7"></a>
+
+Ceph 纠删码 [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)
 
 ---
 

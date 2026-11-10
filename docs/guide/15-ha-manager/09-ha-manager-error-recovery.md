@@ -13,7 +13,7 @@
 - 使资源恢复到安全且一致的状态（例如：如果无法停止服务，则终止其进程）
 - 禁用资源以清除错误标志
 - 修复导致这些故障的错误
-- **在**修复所有错误后，可以请求重新启动该服务
+- **after** you fixed all errors you may request that the service starts again
 
 ---
 

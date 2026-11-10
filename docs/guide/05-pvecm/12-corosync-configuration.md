@@ -1,109 +1,87 @@
 # 5.12. Corosync Configuration <a href="#_corosync_configuration" id="_corosync_configuration"></a>
 
-The `/etc/pve/corosync.conf` file plays a central role in a Proxmox VE cluster. It controls the cluster membership and its network. For further information about it, check the corosync.conf man page:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+`/etc/pve/corosync.conf` 文件在 Proxmox VE 集群中起着核心作用。它控制集群成员关系及其网络。有关更多信息，请查看 corosync.conf 手册页：
 
 ```text
 man corosync.conf
 ```
 
-For node membership, you should always use the `pvecm` tool provided by Proxmox VE. You may have to edit the configuration file manually for other changes. Here are a few best practice tips for doing this.
+对于节点成员关系，您应始终使用 Proxmox VE 提供的 `pvecm` 工具。对于其他更改，您可能需要手动编辑配置文件。以下是一些执行此操作的最佳实践建议。
 
 ## 5.12.1. Edit corosync.conf <a href="#pvecm_edit_corosync_conf" id="pvecm_edit_corosync_conf"></a>
 
-Editing the corosync.conf file is not always very straightforward. There are two on each cluster node, one in `/etc/pve/corosync.conf` and the other in `/etc/corosync/corosync.conf`. Editing the one in our cluster file system will propagate the changes to the local one, but not vice versa.
+编辑 corosync.conf 文件并不总是很简单直接。每个集群节点上都有两个该文件，一个位于 `/etc/pve/corosync.conf`，另一个位于 `/etc/corosync/corosync.conf`。编辑集群文件系统中的文件会将更改传播到本地文件，但反之则不会。
 
-The configuration will get updated automatically, as soon as the file changes. This means that changes which can be integrated in a running corosync will take effect immediately. Thus, you should always make a copy and edit that instead, to avoid triggering unintended changes when saving the file while editing.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+文件一旦发生更改，配置就会自动更新。这意味着，可在正在运行的 corosync 中集成的更改会立即生效。因此，您应始终先创建一个副本并编辑该副本，以避免在编辑过程中保存文件时触发意外更改。
 
 ```text
 cp /etc/pve/corosync.conf /etc/pve/corosync.conf.new
 ```
 
-Then, open the config file with your favorite editor, such as `nano` or `vim.tiny`, which come pre-installed on every Proxmox VE node.
+然后，使用您喜欢的编辑器打开配置文件，例如每个 Proxmox VE 节点上都预装的 `nano` 或 `vim.tiny`。
 
 {% hint style="info" %}
-Always increment the *config\_version* number after configuration changes; omitting this can lead to problems.
+配置更改后，务必递增 *config\_version* 编号；省略此操作可能会导致问题。
 {% endhint %}
 
-After making the necessary changes, create another copy of the current working configuration file. This serves as a backup if the new configuration fails to apply or causes other issues.
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+完成必要的更改后，再创建一份当前工作配置文件的副本。如果新配置无法应用或引发其他问题，此副本可用作备份。
 
 ```text
 cp /etc/pve/corosync.conf /etc/pve/corosync.conf.bak
 ```
 
-Then replace the old configuration file with the new one:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+然后，用新配置文件替换旧配置文件：
 
 ```text
 mv /etc/pve/corosync.conf.new /etc/pve/corosync.conf
 ```
 
-You can check if the changes could be applied automatically, using the following commands:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+您可以使用以下命令检查更改是否可以自动应用：
 
 ```text
 systemctl status corosync
 journalctl -b -u corosync
 ```
 
-If the changes could not be applied automatically, you may have to restart the corosync service via:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果更改无法自动应用，您可能需要通过以下命令重启 corosync 服务：
 
 ```text
 systemctl restart corosync
 ```
 
-On errors, check the troubleshooting section below.
+出现错误时，请查看下面的故障排除部分。
 
 ## 5.12.2. Changing the Token Coefficient <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
 
 The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
 
-corosync uses the token coefficient to calculate several timeouts in relation to the cluster size   
-\[`token_coefficient` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token\_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)\]  
-, most importantly the token timeout and consensus timeout. corosync implements a token-passing protocol. The token timeout specifies how long a node waits for the token until it declares the token to be lost   
-\[`token` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)\]  
-. The consensus timeout   
-\[`consensus` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)\]  
- specifies the time nodes wait for a consensus on a new cluster membership. The sum of token and consensus timeouts defines the minimum time needed to reestablish a new cluster membership after a node goes offline.
+corosync 使用令牌系数，根据集群规模计算多个超时时间[\[1\]](#note-92024276-1)，其中最重要的是令牌超时和共识超时。corosync 实现了令牌传递协议。令牌超时指定节点等待令牌多长时间后会声明令牌丢失[\[2\]](#note-92024276-2)。共识超时[\[3\]](#note-92024276-3)指定节点就新的集群成员关系达成共识的等待时间。令牌超时与共识超时之和，定义了节点离线后重新建立新集群成员关系所需的最短时间。
 
-Keeping the sum of token and consensus timeouts below 30 seconds reduces the time needed for reestablishing a new cluster membership after a node failure. When HA is enabled, it is especially important that this time stays below 45 seconds to ensure that a new cluster membership is formed before the [watchdog timeout](../15-ha-manager/04-how-it-works-2.md#ha_manager_crm) of 60 seconds expires, which would trigger a node fence. A safety margin below this 45 second limit is advisable so that transient timing variations do not push the cluster past the watchdog threshold. The recommended mechanism for lowering the token and consensus timeouts is lowering the token coefficient as explained below.
+将令牌超时与共识超时之和保持在 30 秒以下，可缩短节点故障后重新建立新集群成员关系所需的时间。启用 HA 时，尤其重要的是将此时间保持在 45 秒以下，以确保在 60 秒的[看门狗超时](../15-ha-manager/04-how-it-works-2.md#ha_manager_crm)到期之前形成新的集群成员关系，否则会触发节点隔离。建议在此 45 秒限制以下留出安全余量，以免短暂的时间波动使集群超过看门狗阈值。如下面所述，降低令牌和共识超时的推荐机制是降低令牌系数。
 
-You can check the current token and consensus timeouts (in milliseconds) with the following command:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+您可以使用以下命令检查当前的令牌超时和共识超时（以毫秒为单位）：
 
 ```text
 corosync-cmapctl | grep -Ew 'runtime.config.totem.token|runtime.config.totem.consensus'
 ```
 
-For example:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+例如：
 
 ```text
 runtime.config.totem.consensus (u32) = 5940
 runtime.config.totem.token (u32) = 4950
 ```
 
-The sum of these two values (10.89 seconds in the example) defines the minimum time needed to reestablish a new cluster membership after a node goes offline. Lowering the token coefficient is
+这两个值之和（示例中为 10.89 秒）定义了节点离线后重新建立新集群成员关系所需的最短时间。降低令牌系数是
 
-- a suggested optimization if this value exceeds 30 seconds,
-- recommended if it exceeds 40 seconds,
-- strongly recommended if it exceeds 45 seconds.
+- 如果该值超过 30 秒，建议进行的一项优化，
+- 如果超过 40 秒，则建议这样做，
+- 如果超过 45 秒，则强烈建议这样做。
 
-To lower the token coefficient, first make sure your setup adheres [to the network requirements](08-pvecm-cluster-network.md#pvecm_cluster_network_requirements), especially with regards to latency. Then:
+要降低令牌系数，首先请确保您的设置符合[网络要求](08-pvecm-cluster-network.md#pvecm_cluster_network_requirements)，尤其是在延迟方面。然后：
 
 - If the `token_coefficient` is not yet set explicitly to 125 milliseconds in corosync.conf, [edit corosync.conf](#pvecm_edit_corosync_conf) and add `token_coefficient: 125` to the `totem` section. Do not forget to [increase the `config_version`](#pvecm_edit_corosync_conf).
-- Otherwise, if 125 milliseconds is not low enough to keep the timeouts within the limits above, select a `token_coefficient` with which the token and consensus timeouts sum up to at most 45 seconds. By default, corosync computes the token and consensus timeouts (in milliseconds) according to the following formula:
+- 否则，如果 125 毫秒仍不足以将超时时间保持在上述限制内，请选择一个 `token_coefficient`，使令牌超时与共识超时之和最多为 45 秒。默认情况下，corosync 按以下公式计算令牌超时和共识超时（以毫秒为单位）：
 
   ```text
   token = 3000 + (number_of_nodes - 2) * token_coefficient
@@ -118,7 +96,7 @@ After adjusting the `token_coefficient` in `corosync.conf`, recent corosync vers
 
 ### Issue: *quorum.expected\_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
-When corosync starts to fail and you get the following message in the system log:
+当 corosync 启动失败并且您在系统日志中收到以下消息时：
 
 ```text
 [...]
@@ -128,27 +106,39 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 [...]
 ```
 
-It means that the hostname you set for a corosync *ringX\_addr* in the configuration could not be resolved.
+这意味着配置中为 corosync *ringX\_addr* 设置的主机名无法解析。
 
 ### Write Configuration When Not Quorate <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
 
-If you need to change */etc/pve/corosync.conf* on a node with no quorum, and you understand what you are doing, use:
-
-Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
+如果您需要在无仲裁的节点上更改 */etc/pve/corosync.conf*，并且了解自己在做什么，请使用：
 
 ```text
 pvecm expected 1
 ```
 
-This sets the expected vote count to 1 and makes the cluster quorate. You can then fix your configuration, or revert it back to the last working backup.
+这会将预期票数设置为 1，并使集群达到仲裁。然后，您可以修复配置，或将其恢复为最后一个可用的备份。
 
-This is not enough if corosync cannot start anymore. In that case, it is best to edit the local copy of the corosync configuration in */etc/corosync/corosync.conf*, so that corosync can start again. Ensure that on all nodes, this configuration has the same content to avoid split-brain situations.
+如果 corosync 已无法启动，仅这样做还不够。在这种情况下，最好编辑 */etc/corosync/corosync.conf* 中 corosync 配置的本地副本，以便 corosync 能够再次启动。确保所有节点上的此配置内容相同，以避免脑裂。
 
 ## 5.12.4. Corosync Configuration Glossary <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
 
 **ringX\_addr**
 
-This names the different link addresses for the Kronosnet connections between nodes.
+此项为节点之间 Kronosnet 连接的不同链路地址命名。
+
+## 注释
+
+### 注释 1 <a href="#note-92024276-1" id="note-92024276-1"></a>
+
+`token_coefficient`（见 corosync 手册页）[https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token\_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)
+
+### 注释 2 <a href="#note-92024276-2" id="note-92024276-2"></a>
+
+`token`（见 corosync 手册页）[https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)
+
+### 注释 3 <a href="#note-92024276-3" id="note-92024276-3"></a>
+
+`consensus`（见 corosync 手册页）[https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)
 
 ---
 

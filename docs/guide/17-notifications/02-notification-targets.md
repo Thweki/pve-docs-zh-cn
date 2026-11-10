@@ -89,7 +89,7 @@ The configuration for Gotify target plugins has the following options:
 - `comment`: Comment for this target
 
 {% hint style="info" %}
-The Gotify target plugin will respect the HTTP proxy settings from the [datacenter configuration](../24-configuration-files-2/02-datacenter-configuration-file.md#datacenter_configuration_file)
+The Gotify target plugin will respect the HTTP proxy settings from the [datacenter configuration](../24-configuration-files-2/02-datacenter-configuration-file.md)
 {% endhint %}
 
 Example configuration (`/etc/pve/notifications.cfg`):
@@ -126,7 +126,7 @@ For configuration options that support templating, the [Handlebars](https://hand
 - `{{ message }}`: The rendered notification body
 - `{{ severity }}`: The severity of the notification (`info`, `notice`, `warning`, `error`, `unknown`)
 - `{{ timestamp }}`: The notification’s timestamp as a UNIX epoch (in seconds).
-- `{{ fields.<name> }}`: Sub-namespace for any metadata fields of the notification. For instance, `fields.type` contains the notification type \- for all available fields refer to [Notification Events](04-notification-events.md#notification_events).
+- `{{ fields.<name> }}`: Sub-namespace for any metadata fields of the notification. For instance, `fields.type` contains the notification type \- for all available fields refer to [Notification Events](04-notification-events.md).
 - `{{ secrets.<name> }}`: Sub-namespace for secrets. For instance, a secret named `token` is accessible via `secrets.token`.
 
 For convenience, the following helpers are available:

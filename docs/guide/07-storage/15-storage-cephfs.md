@@ -1,48 +1,48 @@
 # 7.15. Ceph Filesystem (CephFS) <a href="#storage_cephfs" id="storage_cephfs"></a>
 
-Storage pool type: `cephfs`
+存储池类型：`cephfs`
 
-CephFS implements a POSIX-compliant filesystem, using a [Ceph](https://ceph.com) storage cluster to store its data. As CephFS builds upon Ceph, it shares most of its properties. This includes redundancy, scalability, self-healing, and high availability.
+CephFS 实现了一个符合 POSIX 标准的文件系统，使用 [Ceph](https://ceph.com) 存储集群来存储数据。由于 CephFS 构建于 Ceph 之上，因此它继承了 Ceph 的大部分特性，包括冗余性、可扩展性、自我修复和高可用性。
 
 {% hint style="success" %}
-Proxmox VE can [manage Ceph setups](../08-pveceph/README.md#chapter_pveceph), which makes configuring a CephFS storage easier. As modern hardware offers a lot of processing power and RAM, running storage services and VMs on same node is possible without a significant performance impact.
+Proxmox VE 可以[管理 Ceph 部署](../08-pveceph/README.md)，这使 CephFS 存储的配置更加容易。由于现代硬件具备强大的处理能力和充足的内存，在同一节点上运行存储服务和虚拟机是可行的，且不会对性能产生显著影响。
 {% endhint %}
 
-To use the CephFS storage plugin, you must replace the stock Debian Ceph client, by adding our [Ceph repository](../03-system-administration/01-sysadmin-package-repositories.md#sysadmin_package_repositories_ceph). Once added, run `apt update`, followed by `apt dist-upgrade`, in order to get the newest packages.
+要使用 CephFS 存储插件，必须通过添加我们的 [Ceph 软件仓库](../03-system-administration/01-sysadmin-package-repositories.md#sysadmin_package_repositories_ceph) 来替换 Debian 自带的 Ceph 客户端。添加后，运行 `apt update`，然后运行 `apt dist-upgrade`，以获取最新软件包。
 
 {% hint style="warning" %}
-Please ensure that there are no other Ceph repositories configured. Otherwise the installation will fail or there will be mixed package versions on the node, leading to unexpected behavior.
+请确保未配置其他 Ceph 软件仓库。否则安装将失败，或者节点上会存在混合版本的软件包，从而导致意外行为。
 {% endhint %}
 
 ## 7.15.1. Configuration <a href="#storage_cephfs_config" id="storage_cephfs_config"></a>
 
-This backend supports the common storage properties `nodes`, `disable`, `content`, as well as the following `cephfs` specific properties:
+此后端支持通用存储属性 `nodes`、`disable`、`content`，以及以下 `cephfs` 特有属性：
 
 **fs-name**
 
-Name of the Ceph FS.
+Ceph 文件系统名称。
 
 **monhost**
 
-List of monitor daemon addresses. Optional, only needed if Ceph is not running on the Proxmox VE cluster. With `monhost` set, Proxmox VE treats the cluster as external and keeps a separate key copy for this storage, even if the monitors belong to the Ceph cluster of this Proxmox VE cluster.
+监视器守护进程地址列表。可选，仅当 Ceph 未在 Proxmox VE 集群上运行时才需要。设置 `monhost` 后，Proxmox VE 会将该集群视为外部集群，并为此存储保留单独的密钥副本，即使这些监视器属于此 Proxmox VE 集群的 Ceph 集群也是如此。
 
 **path**
 
-The local mount point. Optional, defaults to `/mnt/pve/<STORAGE_ID>/`.
+本地挂载点。可选，默认为 `/mnt/pve/<STORAGE_ID>/`。
 
 **username**
 
-Ceph client ID. Optional, defaults to `admin`. Use only the ID without the `client.` prefix.
+Ceph 客户端 ID。可选，默认为 `admin`。仅使用不带 `client.` 前缀的 ID。
 
 **subdir**
 
-CephFS subdirectory to mount. Optional, defaults to `/`.
+要挂载的 CephFS 子目录。可选，默认为 `/`。
 
 **fuse**
 
-Access CephFS through FUSE, instead of the kernel client. Optional, defaults to `0`.
+通过 FUSE 而非内核客户端访问 CephFS。可选，默认为 `0`。
 
-**Configuration example for an external Ceph cluster (`/etc/pve/storage.cfg`)**
+**外部 Ceph 集群的配置示例（`/etc/pve/storage.cfg`）**
 
 ```text
 cephfs: cephfs-external
@@ -54,27 +54,27 @@ cephfs: cephfs-external
 ```
 
 {% hint style="info" %}
-Don’t forget to set up the client’s secret key file, if cephx was not disabled.
+如果未禁用 cephx，请不要忘记设置客户端的密钥文件。
 {% endhint %}
 
 ## 7.15.2. Authentication <a href="#storage_cephfs_auth" id="storage_cephfs_auth"></a>
 
 {% hint style="info" %}
-If Ceph is installed locally on the Proxmox VE cluster, the following is done automatically when adding the storage.
+如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
 {% endhint %}
 
-If you use `cephx` authentication, which is enabled by default, provide the secret of a dedicated identity with only the capabilities required for this storage. Obtain or create the identity as described in Ceph User Management.  
+如果使用默认启用的 `cephx` 身份验证，请提供一个专用身份的密钥，该身份仅具有此存储所需的权限。按照 Ceph 用户管理中的说明获取或创建该身份。  
 [\[cephusermgmt\]](14-ceph-rados-block-devices.md#_footnote_cephusermgmt)  
- The example below uses `client.pve-cephfs`; do not use `client.admin` for a storage client.
+ 以下示例使用 `client.pve-cephfs`；不要将 `client.admin` 用于存储客户端。
 
-Export the bare key through SSH to one Proxmox VE node:
+通过 SSH 将密钥本身导出到一个 Proxmox VE 节点：
 
 ```text
 # ssh root@<external-ceph-server> \
     'ceph auth get-key client.pve-cephfs' > /root/cephfs.secret
 ```
 
-Then pass that file and the identity without its `client.` prefix to `pvesm`:
+然后将该文件和不带 `client.` 前缀的身份传递给 `pvesm`：
 
 ```text
 # pvesm add cephfs <name> --monhost "10.1.1.20 10.1.1.21 10.1.1.22" \
@@ -82,18 +82,18 @@ Then pass that file and the identity without its `client.` prefix to `pvesm`:
     --keyring /root/cephfs.secret
 ```
 
-After `pvesm` succeeds, remove `/root/cephfs.secret` because it contains the key in plain text.
+`pvesm` 成功后，删除 `/root/cephfs.secret`，因为其中包含明文密钥。
 
-When configuring an external CephFS storage in the web interface, paste the secret into the appropriate field. CephFS uses the bare key, not the RBD keyring format with a `[client.<USER>]` section. Proxmox VE stores the secret at `/etc/pve/priv/ceph/<STORAGE_ID>.secret`.
+在 Web 界面中配置外部 CephFS 存储时，请将密钥粘贴到相应字段中。CephFS 使用密钥本身，而不是带有 `[client.<USER>]` 节的 RBD 密钥环格式。Proxmox VE 将密钥存储在 `/etc/pve/priv/ceph/<STORAGE_ID>.secret`。
 
-If the external cluster rotates this identity, replace the stored secret before remounting the storage. The local cephx migration helper never rotates keys of external clusters.
+如果外部集群轮换此身份，请在重新挂载存储之前替换已存储的密钥。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
 ## 7.15.3. Storage Features <a href="#_storage_features_11" id="_storage_features_11"></a>
 
-The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
+`cephfs` 后端是一个基于 Ceph 集群、符合 POSIX 标准的文件系统。
 
 <table>
-<caption>Table 14. Storage features for backend <code>cephfs</code></caption>
+<caption>表 14. 后端 <code>cephfs</code> 的存储功能</caption>
 
 
 
@@ -101,25 +101,25 @@ The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
 
 <thead>
 <tr>
-<th>Content types</th>
-<th>Image formats</th>
-<th>Shared</th>
-<th>Snapshots</th>
-<th>Clones</th>
+<th>内容类型</th>
+<th>镜像格式</th>
+<th>共享</th>
+<th>快照</th>
+<th>克隆</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><p>vztmpl iso backup snippets</p></td>
 <td><p>none</p></td>
-<td><p>yes</p></td>
-<td><p>yes<sup>[1]</sup></p></td>
-<td><p>no</p></td>
+<td><p>是</p></td>
+<td><p>是<sup>[1]</sup></p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
 
-\[1\] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
+\[1\] 尽管目前没有已知缺陷，但快照尚不能保证稳定，因为它们缺乏充分测试。
 
 ---
 

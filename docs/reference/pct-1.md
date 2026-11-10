@@ -1,10 +1,10 @@
 # pct(1)
 
-## 名称 <a href="#chapter_pct" id="chapter_pct"></a>
+## NAME <a href="#chapter_pct" id="chapter_pct"></a>
 
 pct \- 用于管理 Proxmox VE 上 Linux 容器（LXC）的工具
 
-## 概要 <a href="#_synopsis" id="_synopsis"></a>
+## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pct"></a>
 
@@ -28,7 +28,7 @@ VM 的唯一 ID。
 
 克隆的 VMID。
 
-**`--bwlimit` `<number> (0 - N)`（*默认 \=* `clone limit from datacenter or storage config`）**
+**`--bwlimit` `<number> (0 - N)` (*default \=* `clone limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -72,7 +72,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>`（*默认 \=* `0`）**
+**`--current` `<boolean>` (*default \=* `0`)**
 
 获取当前值（而非待生效值）。
 
@@ -92,7 +92,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--escape` `\^?[a-z]`（*默认 \=* `^a`）**
+**`--escape` `\^?[a-z]` (*default \=* `^a`)**
 
 转义序列前缀。例如，要将 \<Ctrl\+b q\> 用作转义序列，请传递 *^b*。
 
@@ -120,19 +120,19 @@ VM 的唯一 ID。
 
 操作系统模板或备份文件。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
 
 操作系统架构类型。
 
-**`--bwlimit` `<number> (0 - N)`（*默认 \=* `restore limit from datacenter or storage config`）**
+**`--bwlimit` `<number> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
+**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>`（*默认 \=* `1`）**
+**`--console` `<boolean>` (*default \=* `1`)**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -140,7 +140,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
+**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
 
 CPU 使用限制。
 
@@ -148,11 +148,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -164,7 +164,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -180,7 +180,7 @@ CPU 使用限制。
 
 允许覆盖现有容器。
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>` (*default \=* `0`)**
 
 创建后，将 CT 添加为 HA 资源。
 
@@ -200,7 +200,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
+**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
 
 容器的内存量，单位为 MB。
 
@@ -216,7 +216,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 指定容器是否在系统启动时启动。
 
@@ -232,7 +232,7 @@ CPU 使用限制。
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -252,7 +252,7 @@ CPU 使用限制。
 
 设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 成功完成创建后启动 CT。
 
@@ -260,11 +260,11 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--storage` `<storage ID>`（*默认 \=* `local`）**
+**`--storage` `<storage ID>` (*default \=* `local`)**
 
 默认存储。
 
-**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
+**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -272,7 +272,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -280,7 +280,7 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
+**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
 
 指定容器可用的 tty 数量
 
@@ -292,7 +292,7 @@ CPU 使用限制。
 需要选项：`restore`
 {% endhint %}
 
-**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
+**`--unprivileged` `<boolean>` (*default \=* `0`)**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -336,11 +336,11 @@ VM 的唯一 ID。
 
 如果设置，还会从所有已启用的存储中销毁具有该 VMID 但未在配置中引用的所有磁盘。
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 强制销毁，即使正在运行。
 
-**`--purge` `<boolean>` (*默认 \=* `0`)**
+**`--purge` `<boolean>` (*default \=* `0`)**
 
 从所有相关配置中移除容器。例如，备份任务、复制任务或 HA。相关 ACL 和防火墙条目**始终**会被移除。
 
@@ -368,7 +368,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--keep-env` `<boolean>` (*默认 \=* `1`)**
+**`--keep-env` `<boolean>` (*default \=* `1`)**
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
@@ -388,7 +388,7 @@ VM 的唯一 ID。
 
 以数组形式提供的额外参数
 
-**`--keep-env` `<boolean>` (*默认 \=* `1`)**
+**`--keep-env` `<boolean>` (*default \=* `1`)**
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
@@ -408,7 +408,7 @@ VM 的唯一 ID。
 
 要对其运行文件系统检查的卷
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>` (*default \=* `0`)**
 
 即使文件系统看起来干净，也强制检查
 
@@ -480,7 +480,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<number> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -496,7 +496,7 @@ VM 的唯一 ID。
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer>` (*默认 \=* `180`)**
+**`--timeout` `<integer>` (*default \=* `180`)**
 
 重启迁移时等待关机的超时时间（秒）
 
@@ -540,11 +540,11 @@ VM 的唯一 ID。
 
 卷将移动到的配置键。默认为源卷的配置键。
 
-**`--bwlimit` `<number> (0 - N)`（*默认 \=* `clone limit from datacenter or storage config`）**
+**`--bwlimit` `<number> (0 - N)` (*default \=* `clone limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (*default \=* `0`)**
 
 成功复制后删除原始卷。默认情况下，原始卷会作为未使用的卷条目保留。
 
@@ -676,11 +676,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (*default \=* `0`)**
 
 成功迁移后删除原始 CT 及相关数据。默认情况下，原始 CT 会以停止状态保留在源集群上。
 
@@ -700,7 +700,7 @@ VM 的唯一 ID。
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer>` (*默认 \=* `180`)**
+**`--timeout` `<integer>` (*default \=* `180`)**
 
 重启迁移时等待关机的超时时间（秒）
 
@@ -712,7 +712,7 @@ VM 的唯一 ID。
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*默认 \=* `0`)**
+**`--dryrun` `<boolean>` (*default \=* `0`)**
 
 不实际将更改写入配置。
 
@@ -760,19 +760,19 @@ VM 的唯一 ID。
 
 操作系统模板或备份文件。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
 
 操作系统架构类型。
 
-**`--bwlimit` `<number> (0 - N)`（*默认 \=* `restore limit from datacenter or storage config`）**
+**`--bwlimit` `<number> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
+**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>`（*默认 \=* `1`）**
+**`--console` `<boolean>` (*default \=* `1`)**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -780,7 +780,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
+**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
 
 CPU 使用限制。
 
@@ -788,11 +788,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -804,7 +804,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -820,7 +820,7 @@ CPU 使用限制。
 
 允许覆盖现有容器。
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>` (*default \=* `0`)**
 
 创建后，将 CT 添加为 HA 资源。
 
@@ -840,7 +840,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
+**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
 
 容器的内存量，单位为 MB。
 
@@ -856,7 +856,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 指定容器是否在系统启动时启动。
 
@@ -872,7 +872,7 @@ CPU 使用限制。
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -888,7 +888,7 @@ CPU 使用限制。
 
 设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 成功完成创建后启动 CT。
 
@@ -896,11 +896,11 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--storage` `<storage ID>`（*默认 \=* `local`）**
+**`--storage` `<storage ID>` (*default \=* `local`)**
 
 默认存储。
 
-**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
+**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -908,7 +908,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -916,7 +916,7 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
+**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
 
 指定容器可用的 tty 数量
 
@@ -928,7 +928,7 @@ CPU 使用限制。
 需要选项：`restore`
 {% endhint %}
 
-**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
+**`--unprivileged` `<boolean>` (*default \=* `0`)**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -964,7 +964,7 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>` (*default \=* `0`)**
 
 成功回滚后是否应启动容器
 
@@ -980,15 +980,15 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
 
 操作系统架构类型。
 
-**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
+**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>`（*默认 \=* `1`）**
+**`--console` `<boolean>` (*default \=* `1`)**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -996,7 +996,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
+**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
 
 CPU 使用限制。
 
@@ -1004,11 +1004,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -1028,7 +1028,7 @@ CPU 使用限制。
 
 如果当前配置文件的 SHA1 摘要不同，则阻止更改。这可用于防止并发修改。
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -1052,7 +1052,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
+**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
 
 容器的内存量，单位为 MB。
 
@@ -1068,7 +1068,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>` (*default \=* `0`)**
 
 指定容器是否在系统启动时启动。
 
@@ -1076,7 +1076,7 @@ CPU 使用限制。
 
 操作系统类型。用于在容器内设置配置，并对应于 /usr/share/lxc/config/\<ostype\>.common.conf 中的 lxc 设置脚本。可使用值 *unmanaged* 跳过特定于操作系统的设置。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>` (*default \=* `0`)**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -1096,7 +1096,7 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
+**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -1104,7 +1104,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -1112,11 +1112,11 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
+**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
 
 指定容器可用的 tty 数量
 
-**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
+**`--unprivileged` `<boolean>` (*default \=* `0`)**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -1136,11 +1136,11 @@ CPU 使用限制。
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*默认 \=* `0`)**
+**`--forceStop` `<boolean>` (*default \=* `0`)**
 
 确保容器停止。
 
-**`--timeout` `<integer> (0 - N)` (*默认 \=* `60`)**
+**`--timeout` `<integer> (0 - N)` (*default \=* `60`)**
 
 最多等待 timeout 秒。
 
@@ -1176,7 +1176,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>` (*default \=* `0`)**
 
 如果设置，启动时会启用非常详细的调试日志级别。
 
@@ -1212,7 +1212,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
+**`--overrule-shutdown` `<boolean>` (*default \=* `0`)**
 
 停止前尝试中止正在运行的 *vzshutdown* 任务。
 
@@ -1268,7 +1268,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-## 描述 <a href="#_description" id="_description"></a>
+## DESCRIPTION <a href="#_description" id="_description"></a>
 
 容器是完全虚拟机（VM）的轻量级替代方案。它们使用所运行宿主机系统的内核，而不是模拟完整的操作系统（OS）。这意味着容器可以直接访问宿主机系统上的资源。
 
@@ -1289,21 +1289,21 @@ Proxmox VE 使用 [Linux Containers (LXC)](https://linuxcontainers.org/lxc/intro
 
 尽管直接运行轻量级“应用容器”相比完整 VM 具有显著优势，但对于要求最大隔离性和在线迁移能力的用例，将容器嵌套在 Proxmox QEMU VM 内仍是推荐做法。
 
-## 技术概述 <a href="#_technology_overview" id="_technology_overview"></a>
+## Technology Overview <a href="#_technology_overview" id="_technology_overview"></a>
 
 - LXC（[https://linuxcontainers.org/](https://linuxcontainers.org/)）
 - 集成到 Proxmox VE 图形化 Web 用户界面（GUI）中
-- 易于使用的命令行工具 `pct`
+- Easy to use command-line tool `pct`
 - 通过 Proxmox VE REST API 访问
-- *lxcfs* 用于提供容器化的 /proc 文件系统
+- *lxcfs* to provide containerized /proc file system
 - 控制组（*cgroups*），用于资源隔离和限制
-- *AppArmor* 和 *seccomp*，用于提高安全性
+- *AppArmor* and *seccomp* to improve security
 - 现代 Linux 内核
 - 基于镜像的部署（[templates](#pct_supported_distributions)）
-- 使用 Proxmox VE [storage library](pvesm-1.md#chapter_storage)
+- Uses Proxmox VE [storage library](pvesm-1.md#chapter_storage)
 - 从宿主机配置容器（网络、DNS、存储等）
 
-## 支持的发行版 <a href="#pct_supported_distributions" id="pct_supported_distributions"></a>
+## Supported Distributions <a href="#pct_supported_distributions" id="pct_supported_distributions"></a>
 
 官方支持的发行版列表如下。
 
@@ -1419,7 +1419,7 @@ Ubuntu 是面向企业服务器、桌面、云和 IoT 的现代化 Linux 开源�
 
 [https://wiki.ubuntu.com/Releases](https://wiki.ubuntu.com/Releases)
 
-## 容器镜像 <a href="#pct_container_images" id="pct_container_images"></a>
+## Container Images <a href="#pct_container_images" id="pct_container_images"></a>
 
 容器镜像有时也称为“模板”或“应用设备”，是包含运行容器所需一切的 `tar` 归档文件。Proxmox VE 可以使用两种主要类型的镜像：用于创建完整虚拟环境的 **System Container Templates**，以及基于 OCI 标准、用于运行特定应用的 **Application Container Images**。
 
@@ -1506,7 +1506,7 @@ Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用�
 
 模板位于存储中后，您可以使用 `pct create` 创建容器，或使用 Web 界面中的向导。
 
-## 容器设置 <a href="#pct_settings" id="pct_settings"></a>
+## Container Settings <a href="#pct_settings" id="pct_settings"></a>
 
 ### General Settings <a href="#pct_general" id="pct_general"></a>
 
@@ -1516,14 +1516,14 @@ Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用�
 
 - **Node**：容器将在其上运行的物理服务器
 - **CT ID**：此 Proxmox VE 安装中用于标识容器的唯一编号
-- **Hostname**：容器的主机名
-- **Resource Pool**：容器和 VM 的逻辑组
-- **Password**：容器的 root 密码
-- **SSH Public Key**：用于通过 SSH 连接 root 账户的公钥
-- **Unprivileged container**：此选项允许您在创建时选择要创建特权容器还是非特权容器。
-- **Nesting**：暴露 procfs 和 sysfs 以允许嵌套容器。请注意，systemd 也使用此功能来隔离服务。
+- **Hostname**: the hostname of the container
+- **Resource Pool**: a logical group of containers and VMs
+- **Password**: the root password of the container
+- **SSH Public Key**: a public key for connecting to the root account over SSH
+- **Unprivileged container**: this option allows to choose at creation time if you want to create a privileged or unprivileged container.
+- **Nesting**: expose procfs and sysfs to allow nested containers. Note that systemd also uses this to isolate services.
 
-#### 非特权容器 <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
+#### Unprivileged Containers <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
 
 非特权容器使用一种称为用户命名空间的新内核功能。容器内的 root UID 0 会映射到容器外的非特权用户。这意味着，这些容器中的大多数安全问题（容器逃逸、资源滥用等）将影响某个随机的非特权用户，并且属于通用内核安全漏洞，而不是 LXC 问题。LXC 团队认为，非特权容器在设计上就是安全的。
 
@@ -1533,7 +1533,7 @@ Proxmox VE 还可以使用 OCI 镜像创建容器，包括系统容器和应用�
 如果容器使用 systemd 作为 init 系统，请注意，容器内运行的 systemd 版本应等于或高于 220。
 {% endhint %}
 
-#### 特权容器 <a href="#_privileged_containers" id="_privileged_containers"></a>
+#### Privileged Containers <a href="#_privileged_containers" id="_privileged_containers"></a>
 
 容器中的安全性通过使用强制访问控制 *AppArmor* 限制、*seccomp* 过滤器和 Linux 内核命名空间来实现。LXC 团队认为这种容器不安全，并且不会将新的容器逃逸漏洞视为值得分配 CVE 并快速修复的安全问题。因此，特权容器只应在受信任的环境中使用。
 
@@ -1580,7 +1580,7 @@ cpulimit: 0.5</pre>
 </tr>
 </table>
 
-### 内存 <a href="#pct_memory" id="pct_memory"></a>
+### Memory <a href="#pct_memory" id="pct_memory"></a>
 
 [![screenshot/gui-create-ct-memory.png](../assets/screenshot-gui-create-ct-memory-png-c79b942688af.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-memory.png)
 
@@ -1607,7 +1607,7 @@ cpulimit: 0.5</pre>
 </tr>
 </table>
 
-### 挂载点 <a href="#pct_mount_points" id="pct_mount_points"></a>
+### Mount Points <a href="#pct_mount_points" id="pct_mount_points"></a>
 
 [![screenshot/gui-create-ct-root-disk.png](../assets/screenshot-gui-create-ct-root-disk-png-02418851db73.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-root-disk.png)
 
@@ -1649,7 +1649,7 @@ cpulimit: 0.5</pre>
 
 示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，这意味着容器内的 ID 将与磁盘上的 ID 一致。
 
-**`keepattrs`\=`<boolean>`（*默认 \=* `0`）**
+**`keepattrs`\=`<boolean>` (*default \=* `0`)**
 
 如果挂载点目录已存在，则继承该目录的 UID、GID 和访问模式。
 
@@ -1669,7 +1669,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 会将此卷包含到存储复制作业中。
 
@@ -1677,7 +1677,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -1701,7 +1701,7 @@ rootfs/mps 的额外挂载选项。
 rootfs: thin1:base-100-disk-1,size=8G
 ```
 
-#### 存储支持的挂载点 <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
+#### Storage Backed Mount Points <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
 
 存储支持的挂载点由 Proxmox VE 存储子系统管理，并有三种不同形式：
 
@@ -1719,7 +1719,7 @@ pct set 100 -mp0 thin1:10,mp=/path/in/container
 
 将在存储 `thin1` 上分配一个 10GB 的卷，用分配的卷 ID 替换卷 ID 占位符 `10`，并在容器中的 `/path/in/container` 处设置挂载点
 
-#### 绑定挂载点 <a href="#_bind_mount_points" id="_bind_mount_points"></a>
+#### Bind Mount Points <a href="#_bind_mount_points" id="_bind_mount_points"></a>
 
 绑定挂载允许您在容器内访问 Proxmox VE 宿主机上的任意目录。一些潜在的用例包括：
 
@@ -1757,7 +1757,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 
 以达到相同的结果。
 
-#### 设备挂载点 <a href="#_device_mount_points" id="_device_mount_points"></a>
+#### Device Mount Points <a href="#_device_mount_points" id="_device_mount_points"></a>
 
 设备挂载点允许将宿主机的块设备直接挂载到容器中。与绑定挂载类似，设备挂载不受 Proxmox VE 存储子系统管理，但 `quota` 和 `acl` 选项会生效。
 
@@ -1769,7 +1769,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 使用 `vzdump` 时，不会备份设备挂载点的内容。
 {% endhint %}
 
-### 网络 <a href="#pct_container_network" id="pct_container_network"></a>
+### Network <a href="#pct_container_network" id="pct_container_network"></a>
 
 [![screenshot/gui-create-ct-network.png](../assets/screenshot-gui-create-ct-network-png-0b934631b465.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-ct-network.png)
 
@@ -1839,7 +1839,7 @@ CIDR 格式的 IPv6 地址。
 
 网络接口类型。
 
-### 容器的自动启动和关闭 <a href="#pct_startup_and_shutdown" id="pct_startup_and_shutdown"></a>
+### Automatic Start and Shutdown of Containers <a href="#pct_startup_and_shutdown" id="pct_startup_and_shutdown"></a>
 
 要在宿主机系统启动时自动启动容器，请选择 *启动时启动* 选项，该选项位于 Web 界面的容器 *选项* 面板中，也可以运行以下命令：
 
@@ -1853,15 +1853,15 @@ CIDR 格式的 IPv6 地址。
 
 如果您想微调容器的启动顺序，可以使用以下参数：
 
-- **启动/关闭顺序**：定义启动顺序优先级。例如，如果希望 CT 最先启动，请将其设置为 1。（关闭时我们采用相反的启动顺序，因此启动顺序为 1 的容器将最后关闭）
-- **启动延迟**：定义此容器启动与后续容器启动之间的间隔。例如，如果希望在启动其他容器之前等待 240 秒，请将其设置为 240。
-- **关闭超时**：定义 Proxmox VE 在发出关闭命令后等待容器离线的时长（秒）。默认情况下，此值设置为 60，这意味着 Proxmox VE 将发出关闭请求，等待 60s 让机器离线；如果 60s 后机器仍在线，则会通知关闭操作失败。
+- **Start/Shutdown order**: Defines the start order priority. For example, set it to 1 if you want the CT to be the first to be started. (We use the reverse startup order for shutdown, so a container with a start order of 1 would be the last to be shut down)
+- **Startup delay**: Defines the interval between this container start and subsequent containers starts. For example, set it to 240 if you want to wait 240 seconds before starting other containers.
+- **Shutdown timeout**: Defines the duration in seconds Proxmox VE should wait for the container to be offline after issuing a shutdown command. By default this value is set to 60, which means that Proxmox VE will issue a shutdown request, wait 60s for the machine to be offline, and if after 60s the machine is still online will notify that the shutdown action failed.
 
 请注意，未设置启动/关闭顺序参数的容器将始终在设置了该参数的容器之后启动，并且此参数仅对宿主机上本地运行的机器之间有意义，在整个集群范围内没有意义。
 
 如果需要在宿主机启动与第一个容器启动之间设置延迟，请参阅“Proxmox VE 节点管理”一节。
 
-### 钩子脚本 <a href="#_hookscripts" id="_hookscripts"></a>
+### Hookscripts <a href="#_hookscripts" id="_hookscripts"></a>
 
 您可以通过配置属性 `hookscript` 为 CT 添加钩子脚本。
 
@@ -1871,7 +1871,7 @@ CIDR 格式的 IPv6 地址。
 
 它将在客户机生命周期的各个阶段被调用。有关示例和文档，请参阅 `/usr/share/pve-docs/examples/guest-example-hookscript.pl` 下的示例脚本。
 
-## 安全注意事项 <a href="#_security_considerations" id="_security_considerations"></a>
+## Security Considerations <a href="#_security_considerations" id="_security_considerations"></a>
 
 容器使用宿主机系统的内核。这会为恶意用户暴露攻击面。一般来说，完整的虚拟机可以提供更好的隔离性。如果向未知或不受信任的人员提供容器，应考虑这一点。
 
@@ -1899,7 +1899,7 @@ lxc.apparmor.profile = unconfined
 请注意，不建议在生产环境中这样做。
 {% endhint %}
 
-### 控制组（*cgroup*） <a href="#pct_cgroup" id="pct_cgroup"></a>
+### Control Groups (*cgroup*) <a href="#pct_cgroup" id="pct_cgroup"></a>
 
 *cgroup* 是一种内核机制，用于按层次组织进程并分配系统资源。
 
@@ -1907,17 +1907,13 @@ lxc.apparmor.profile = unconfined
 
 *cgroups* 的当前版本是 [*cgroupv2*](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v2.html)。随着 Proxmox VE 7.0 的发布，cgroup 子系统的 [v1 版本](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v1/index.html)已被弃用，并在 Proxmox VE 9.0 中被完全移除。在 Proxmox VE 7.0 之前，默认使用“混合”模式。
 
-#### CGroup 版本兼容性 <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
+#### CGroup Version Compatibility <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
 
 就 Proxmox VE 而言，纯 *cgroupv2* 与旧混合环境的主要区别在于，使用 *cgroupv2* 时，内存和交换空间现在可以独立控制。容器的内存和交换空间设置可以直接映射到这些值，而以前只能限制内存上限以及内存与交换空间**总和**的上限。
 
 另一个重要区别是 *devices* 控制器的配置方式完全不同。因此，纯 *cgroupv2* 环境目前不支持文件系统配额。
 
-*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2*   
-\[this includes all newest major versions of container templates shipped by Proxmox VE\]  
-, as do containers not using *systemd* as init system   
-\[for example Alpine Linux\]  
-.
+*cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2* [\[1\]](#note-265637e0-1), as do containers not using *systemd* as init system [\[2\]](#note-265637e0-2).
 
 {% hint style="info" %}
 CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *systemd* 版本太旧，无法在 *cgroupv2* 环境中运行。您可以：
@@ -1927,7 +1923,7 @@ CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *system
 - 将容器或其服务迁移到虚拟机。虚拟机与宿主机的交互要少得多，因此可以在其中顺利安装几十年前的操作系统版本。
 {% endhint %}
 
-#### 更改 CGroup 版本 <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
+#### Changing CGroup Version <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
 
 在 Proxmox VE 9.0 之前，您可以使用以下内核命令行参数切换回以前的版本：
 
@@ -1937,7 +1933,7 @@ systemd.unified_cgroup_hierarchy=0
 
 有关应在何处添加该参数，请参阅编辑内核启动命令行一节。
 
-## 客户机操作系统配置 <a href="#_guest_operating_system_configuration" id="_guest_operating_system_configuration"></a>
+## Guest Operating System Configuration <a href="#_guest_operating_system_configuration" id="_guest_operating_system_configuration"></a>
 
 Proxmox VE 会尝试检测容器中的 Linux 发行版，并修改一些文件。以下是容器启动时所执行操作的简要列表：
 
@@ -1991,9 +1987,7 @@ Proxmox VE 所做的更改会用注释标记括起来：
 
 大多数修改取决于操作系统，因此会因发行版和版本而异。您可以通过手动将 `ostype` 设置为 `unmanaged` 来完全禁用这些修改。
 
-操作系统类型检测通过测试容器内的特定文件来完成。Proxmox VE 首先检查 `/etc/os-release` 文件  
-\[/etc/os-release 取代了众多的各发行版专用版本文件 [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)\]  
-。如果该文件不存在，或者其中不包含清晰可辨的发行版标识符，则会检查以下发行版专用的版本文件。
+操作系统类型检测通过测试容器内的特定文件来完成。Proxmox VE 首先检查 `/etc/os-release` 文件[\[3\]](#note-265637e0-3)。如果该文件不存在，或者其中不包含清晰可辨的发行版标识符，则会检查以下发行版专用的版本文件。
 
 **Ubuntu**
 
@@ -2027,7 +2021,7 @@ Proxmox VE 所做的更改会用注释标记括起来：
 如果配置的 `ostype` 与自动检测到的类型不同，容器将无法启动。
 {% endhint %}
 
-## 容器存储 <a href="#pct_container_storage" id="pct_container_storage"></a>
+## Container Storage <a href="#pct_container_storage" id="pct_container_storage"></a>
 
 Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一个容器可以有多个挂载点。这样就可以为每个应用程序使用最合适的存储。
 
@@ -2037,7 +2031,7 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 
 此外，可以使用*绑定挂载*直接挂载本地设备或本地目录。这使容器内几乎可以零开销地访问本地资源。绑定挂载可以作为在容器之间共享数据的一种简便方式。
 
-### FUSE 挂载 <a href="#_fuse_mounts" id="_fuse_mounts"></a>
+### FUSE Mounts <a href="#_fuse_mounts" id="_fuse_mounts"></a>
 
 {% hint style="warning" %}
 由于 Linux 内核的 freezer 子系统存在已知问题，强烈建议不要在容器内使用 FUSE 挂载，因为在挂起或快照模式备份时需要冻结容器。
@@ -2045,7 +2039,7 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 
 如果无法用其他挂载机制或存储技术替代 FUSE 挂载，可以在 Proxmox 宿主机上建立 FUSE 挂载，并使用绑定挂载点使其在容器内可访问。
 
-### 在容器内使用配额 <a href="#_using_quotas_inside_containers" id="_using_quotas_inside_containers"></a>
+### Using Quotas Inside Containers <a href="#_using_quotas_inside_containers" id="_using_quotas_inside_containers"></a>
 
 配额允许在容器内为每个用户可使用的磁盘空间量设置限制。
 
@@ -2072,11 +2066,11 @@ Proxmox VE LXC 容器存储模型比传统的容器存储模型更灵活。一�
 您需要为每个挂载点运行上述命令，并传入挂载点的路径，而不是只传入 `/`。
 {% endhint %}
 
-### 在容器内使用 ACL <a href="#_using_acls_inside_containers" id="_using_acls_inside_containers"></a>
+### Using ACLs Inside Containers <a href="#_using_acls_inside_containers" id="_using_acls_inside_containers"></a>
 
 标准 Posix **访问****控制****列表**在容器内也可用。ACL 允许您设置比传统的用户/组/其他用户模型更细致的文件所有权。
 
-### 容器挂载点备份 <a href="#_backup_of_container_mount_points" id="_backup_of_container_mount_points"></a>
+### Backup of Container mount points <a href="#_backup_of_container_mount_points" id="_backup_of_container_mount_points"></a>
 
 要在备份中包含挂载点，请在容器配置中为其启用 `backup` 选项。对于现有挂载点 `mp0`
 
@@ -2096,17 +2090,17 @@ mp0: guests:subvol-100-disk-1,mp=/root/files,size=8G,backup=1
 
 要禁用挂载点备份，请按上述方式添加 `backup=0`，或在 GUI 中取消选中**备份**复选框。
 
-### 容器挂载点复制 <a href="#_replication_of_containers_mount_points" id="_replication_of_containers_mount_points"></a>
+### Replication of Containers mount points <a href="#_replication_of_containers_mount_points" id="_replication_of_containers_mount_points"></a>
 
 默认情况下，复制根磁盘时也会复制其他挂载点。如果希望 Proxmox VE 存储复制机制跳过某个挂载点，可以为该挂载点设置**跳过复制**选项。自 Proxmox VE 5.0 起，复制需要类型为 `zfspool` 的存储。当容器已配置复制时，如果要将挂载点添加到其他类型的存储，则必须为该挂载点启用**跳过复制**。
 
-## 备份与恢复 <a href="#_backup_and_restore" id="_backup_and_restore"></a>
+## Backup and Restore <a href="#_backup_and_restore" id="_backup_and_restore"></a>
 
-### 容器备份 <a href="#_container_backup" id="_container_backup"></a>
+### Container Backup <a href="#_container_backup" id="_container_backup"></a>
 
 可以使用 `vzdump` 工具进行容器备份。有关详细信息，请参阅 `vzdump` 手册页。
 
-### 恢复容器备份 <a href="#_restoring_container_backups" id="_restoring_container_backups"></a>
+### Restoring Container Backups <a href="#_restoring_container_backups" id="_restoring_container_backups"></a>
 
 Restoring container backups made with `vzdump` is possible using the `pct
 restore` command. By default, `pct restore` will attempt to restore as much of the backed up container configuration as possible. It is possible to override the backed up configuration by manually setting container options on the command line (see the `pct` manual page for details).
@@ -2117,7 +2111,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 有两种基本恢复模式，它们的区别仅在于对挂载点的处理方式：
 
-#### “简单”恢复模式 <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
+#### “Simple” Restore Mode <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
 
 如果既未明确设置 `rootfs` 参数，也未明确设置任何可选的 `mpX` 参数，则将通过以下步骤从备份的配置文件中恢复挂载点配置：
 
@@ -2132,7 +2126,7 @@ restore` command. By default, `pct restore` will attempt to restore as much of t
 
 Web 界面中的容器恢复操作也使用这种简单模式。
 
-#### “高级”恢复模式 <a href="#_8220_advanced_8221_restore_mode" id="_8220_advanced_8221_restore_mode"></a>
+#### “Advanced” Restore Mode <a href="#_8220_advanced_8221_restore_mode" id="_8220_advanced_8221_restore_mode"></a>
 
 通过设置 `rootfs` 参数（以及可选的任意 `mpX` 参数组合），`pct restore` 命令会自动切换到高级模式。该高级模式会完全忽略备份归档中包含的 `rootfs` 和 `mpX` 配置选项，而仅使用显式作为参数提供的选项。
 
@@ -2142,11 +2136,11 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 - 根据新的挂载点方案重新分配已备份的文件
 - 恢复到设备和/或绑定挂载点（仅限 root 用户）
 
-## 使用 `pct` 管理容器 <a href="#_managing_containers_with_span_class_monospaced_pct_span" id="_managing_containers_with_span_class_monospaced_pct_span"></a>
+## Managing Containers with `pct` <a href="#_managing_containers_with_span_class_monospaced_pct_span" id="_managing_containers_with_span_class_monospaced_pct_span"></a>
 
 “Proxmox Container Toolkit”（`pct`）是用于管理 Proxmox VE 容器的命令行工具。它可用于创建或销毁容器，以及控制容器的运行（启动、停止、重启、迁移等）。它还可用于设置容器配置文件中的参数，例如网络配置或内存限制。
 
-### CLI 使用示例 <a href="#_cli_usage_examples" id="_cli_usage_examples"></a>
+### CLI Usage Examples <a href="#_cli_usage_examples" id="_cli_usage_examples"></a>
 
 基于 Debian 模板创建容器（前提是你已通过 Web 界面下载该模板）
 
@@ -2212,7 +2206,7 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 #  pct move-volume 100 mp0 --target-vmid 200 --target-volume mp1
 ```
 
-### 获取调试日志 <a href="#_obtaining_debugging_logs" id="_obtaining_debugging_logs"></a>
+### Obtaining Debugging Logs <a href="#_obtaining_debugging_logs" id="_obtaining_debugging_logs"></a>
 
 如果 `pct start` 无法启动特定容器，可以通过传递 `--debug` 标志来收集调试输出（将 `CTID` 替换为容器的 CTID），这可能会有所帮助：
 
@@ -2234,7 +2228,7 @@ Web 界面中的容器恢复操作也使用这种简单模式。
 如果自上次使用 `pct start` 尝试启动以来，你更改了容器配置，则需要至少运行一次 `pct start`，以同时更新 `lxc-start` 使用的配置。
 {% endhint %}
 
-## 迁移 <a href="#pct_migration" id="pct_migration"></a>
+## Migration <a href="#pct_migration" id="pct_migration"></a>
 
 如果你有集群，可以使用以下命令迁移容器
 
@@ -2250,7 +2244,7 @@ A restart migration can be done through the web interface or by using the `--res
 
 重启迁移会关闭容器，并在指定的超时时间（默认为 180 秒）后强制终止它。随后会像离线迁移一样迁移容器，完成后在目标节点上启动容器。
 
-## 配置 <a href="#pct_configuration" id="pct_configuration"></a>
+## Configuration <a href="#pct_configuration" id="pct_configuration"></a>
 
 `/etc/pve/lxc/<CTID>.conf` 文件存储容器配置，其中 `<CTID>` 是给定容器的数字 ID。与存储在 `/etc/pve/` 中的所有其他文件一样，这些文件会自动复制到所有其他集群节点。
 
@@ -2276,7 +2270,7 @@ rootfs: local:107/vm-107-disk-1.raw,size=7G
 
 如果某项更改无法热插拔，则会被登记为待处理更改（在 GUI 中以红色显示）。只有重启容器后，这些更改才会应用。
 
-### 文件格式 <a href="#_file_format" id="_file_format"></a>
+### File Format <a href="#_file_format" id="_file_format"></a>
 
 容器配置文件使用简单的以冒号分隔的键/值格式。每行的格式如下：
 
@@ -2301,7 +2295,7 @@ lxc.init_cmd = /sbin/my_own_init
 
 这些设置会直接传递给 LXC 底层工具。
 
-### 快照 <a href="#pct_snapshots" id="pct_snapshots"></a>
+### Snapshots <a href="#pct_snapshots" id="pct_snapshots"></a>
 
 创建快照时，`pct` 会将快照时的配置存储在同一配置文件中单独的快照部分。例如，创建名为“testsnapshot”的快照后，配置文件将如下所示：
 
@@ -2322,17 +2316,17 @@ snaptime: 1457170803
 
 有一些与快照相关的属性，例如 `parent` 和 `snaptime`。`parent` 属性用于存储快照之间的父/子关系。`snaptime` 是快照创建时间戳（Unix 纪元）。
 
-### 选项 <a href="#pct_options" id="pct_options"></a>
+### Options <a href="#pct_options" id="pct_options"></a>
 
-**`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*默认 \=* `amd64`)**
+**`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
 
 操作系统架构类型。
 
-**`cmode`: `<console | shell | tty>` (*默认 \=* `tty`)**
+**`cmode`: `<console | shell | tty>` (*default \=* `tty`)**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`console`: `<boolean>` (*默认 \=* `1`)**
+**`console`: `<boolean>` (*default \=* `1`)**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -2340,7 +2334,7 @@ snaptime: 1457170803
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`cpulimit`: `<number> (0 - 8192)` (*默认 \=* `0`)**
+**`cpulimit`: `<number> (0 - 8192)` (*default \=* `0`)**
 
 CPU 使用限制。
 
@@ -2348,11 +2342,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`cpuunits`: `<integer> (0 - 500000)` (*默认 \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`cpuunits`: `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
 容器的 CPU 权重。该参数用于内核公平调度器。数值越大，该容器获得的 CPU 时间就越多。该数值是相对于所有其他正在运行的客户机的权重而言的。
 
-**`debug`: `<boolean>` (*默认 \=* `0`)**
+**`debug`: `<boolean>` (*default \=* `0`)**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -2364,7 +2358,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`deny-write`\=`<boolean>` (*默认 \=* `0`)**
+**`deny-write`\=`<boolean>` (*default \=* `0`)**
 
 禁止容器写入设备
 
@@ -2384,7 +2378,7 @@ CPU 使用限制。
 
 要分配给设备节点的用户 ID
 
-**`entrypoint`: `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*默认 \=* `/sbin/init`)**
+**`entrypoint`: `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -2396,19 +2390,19 @@ CPU 使用限制。
 
 允许容器访问高级功能。
 
-**`force_rw_sys`\=`<boolean>` (*默认 \=* `0`)**
+**`force_rw_sys`\=`<boolean>` (*default \=* `0`)**
 
 在非特权容器中将 /sys 挂载为 `rw`，而不是 `mixed`。在使用较新版本（\>\= v245）的 systemd-network 时，这可能会破坏网络。
 
-**`fuse`\=`<boolean>` (*默认 \=* `0`)**
+**`fuse`\=`<boolean>` (*default \=* `0`)**
 
 允许在容器中使用 *fuse* 文件系统。请注意，fuse 与 freezer cgroup 之间的交互可能导致 I/O 死锁。
 
-**`keyctl`\=`<boolean>` (*默认 \=* `0`)**
+**`keyctl`\=`<boolean>` (*default \=* `0`)**
 
 仅限非特权容器：允许使用 keyctl() 系统调用。这是在容器内使用 docker 所必需的。默认情况下，非特权容器会将此系统调用视为不存在。这主要是针对 systemd-networkd 的变通方法，因为当某些 keyctl() 操作因权限不足被内核拒绝时，systemd-networkd 会将其视为致命错误。本质上，你可以在运行 systemd-networkd 和 docker 之间进行选择。
 
-**`mknod`\=`<boolean>` (*默认 \=* `0`)**
+**`mknod`\=`<boolean>` (*default \=* `0`)**
 
 允许非特权容器使用 mknod() 添加某些设备节点。这需要支持 seccomp 用户空间陷阱的内核（5.3 或更新版本）。这是实验性功能。
 
@@ -2416,7 +2410,7 @@ CPU 使用限制。
 
 允许挂载特定类型的文件系统。这应是 mount 命令所使用的文件系统类型列表。请注意，这可能对容器的安全产生负面影响。例如，如果能访问 loop 设备，挂载文件可以绕过 devices cgroup 的 mknod 权限；挂载 NFS 文件系统可能完全阻塞宿主机的 I/O，并使其无法重启，等等。
 
-**`nesting`\=`<boolean>` (*默认 \=* `0`)**
+**`nesting`\=`<boolean>` (*default \=* `0`)**
 
 允许嵌套。最好与具有额外 ID 映射的非特权容器一起使用。请注意，这会向客户机暴露宿主机的 procfs 和 sysfs 内容。systemd 隔离服务也需要此功能。
 
@@ -2432,7 +2426,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`memory`: `<integer> (16 - N)` (*默认 \=* `512`)**
+**`memory`: `<integer> (16 - N)` (*default \=* `512`)**
 
 容器的内存量，单位为 MB。
 
@@ -2468,7 +2462,7 @@ CPU 使用限制。
 
 示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，这意味着容器内的 ID 将与磁盘上的 ID 一致。
 
-**`keepattrs`\=`<boolean>`（*默认 \=* `0`）**
+**`keepattrs`\=`<boolean>` (*default \=* `0`)**
 
 如果挂载点目录已存在，则继承该目录的 UID、GID 和访问模式。
 
@@ -2488,7 +2482,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 会将此卷包含到存储复制作业中。
 
@@ -2496,7 +2490,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -2580,7 +2574,7 @@ CIDR 格式的 IPv6 地址。
 
 网络接口类型。
 
-**`onboot`: `<boolean>` (*默认 \=* `0`)**
+**`onboot`: `<boolean>` (*default \=* `0`)**
 
 指定容器是否在系统启动时启动。
 
@@ -2588,7 +2582,7 @@ CIDR 格式的 IPv6 地址。
 
 操作系统类型。用于在容器内设置配置，并对应于 /usr/share/lxc/config/\<ostype\>.common.conf 中的 lxc 设置脚本。可使用值 *unmanaged* 跳过特定于操作系统的设置。
 
-**`protection`: `<boolean>` (*默认 \=* `0`)**
+**`protection`: `<boolean>` (*default \=* `0`)**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -2628,7 +2622,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>` (*default \=* `1`)**
 
 会将此卷包含到存储复制作业中。
 
@@ -2636,7 +2630,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>` (*default \=* `0`)**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -2660,7 +2654,7 @@ rootfs/mps 的额外挂载选项。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`swap`: `<integer> (0 - N)` (*默认 \=* `512`)**
+**`swap`: `<integer> (0 - N)` (*default \=* `512`)**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -2668,7 +2662,7 @@ rootfs/mps 的额外挂载选项。
 
 容器的标签。这只是元信息。
 
-**`template`: `<boolean>` (*默认 \=* `0`)**
+**`template`: `<boolean>` (*default \=* `0`)**
 
 启用/禁用模板。
 
@@ -2676,11 +2670,11 @@ rootfs/mps 的额外挂载选项。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`tty`: `<integer> (0 - 6)` (*默认 \=* `2`)**
+**`tty`: `<integer> (0 - 6)` (*default \=* `2`)**
 
 指定容器可用的 tty 数量
 
-**`unprivileged`: `<boolean>` (*默认 \=* `0`)**
+**`unprivileged`: `<boolean>` (*default \=* `0`)**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -2692,7 +2686,7 @@ rootfs/mps 的额外挂载选项。
 
 当前未使用的卷。
 
-## 锁 <a href="#_locks" id="_locks"></a>
+## Locks <a href="#_locks" id="_locks"></a>
 
 容器迁移、快照和备份（`vzdump`）会设置锁，以防止在受影响的容器上并发执行不兼容的操作。有时你需要手动删除此类锁（例如，断电后）。
 
@@ -2704,13 +2698,13 @@ rootfs/mps 的额外挂载选项。
 只有确定设置该锁的操作已不再运行时，才能这样做。
 {% endhint %}
 
-## 文件 <a href="#_files" id="_files"></a>
+## Files <a href="#_files" id="_files"></a>
 
 **`/etc/pve/lxc/<CTID>.conf`**
 
 容器 *\<CTID\>* 的配置文件。
 
-## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 
@@ -2725,6 +2719,20 @@ rootfs/mps 的额外挂载选项。
 
 
 ---
+
+## 注释
+
+### 注释 1 <a href="#note-265637e0-1" id="note-265637e0-1"></a>
+
+this includes all newest major versions of container templates shipped by Proxmox VE
+
+### 注释 2 <a href="#note-265637e0-2" id="note-265637e0-2"></a>
+
+for example Alpine Linux
+
+### 注释 3 <a href="#note-265637e0-3" id="note-265637e0-3"></a>
+
+/etc/os-release 取代了众多的各发行版专用版本文件 [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)
 
 ---
 

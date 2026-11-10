@@ -1,4 +1,4 @@
-# 2.4. 无人值守安装 <a href="#installation_unattended" id="installation_unattended"></a>
+# 2.4. Unattended Installation <a href="#installation_unattended" id="installation_unattended"></a>
 
 自动化安装方法允许以无人值守方式安装 Proxmox VE。这使您能够在裸机上完全自动化设置过程。安装完成且宿主机启动后，可以使用 Ansible 等自动化工具进一步配置安装。
 

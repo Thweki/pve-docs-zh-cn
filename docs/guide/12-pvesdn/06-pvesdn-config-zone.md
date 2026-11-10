@@ -94,7 +94,7 @@ A list of IP addresses of each node in the VXLAN zone. This can be external node
 
 **SDN Fabric**
 
-Instead of manually defining all the peers, use a [Fabric](10-pvesdn-config-fabrics.md#pvesdn_config_fabrics) for automatically generating the peer list.
+Instead of manually defining all the peers, use a [Fabric](10-pvesdn-config-fabrics.md) for automatically generating the peer list.
 
 **MTU**
 

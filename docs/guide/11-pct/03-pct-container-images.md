@@ -4,7 +4,7 @@
 
 ## 11.3.1. System Container Templates <a href="#_system_container_templates" id="_system_container_templates"></a>
 
-Proxmox VE itself provides a variety of basic templates for the [most common Linux distributions](02-pct-supported-distributions.md#pct_supported_distributions). They can be downloaded using the GUI or the `pveam` (short for Proxmox VE Appliance Manager) command-line utility. Additionally, [TurnKey Linux](https://www.turnkeylinux.org/) container templates are also available to download.
+Proxmox VE itself provides a variety of basic templates for the [most common Linux distributions](02-pct-supported-distributions.md). They can be downloaded using the GUI or the `pveam` (short for Proxmox VE Appliance Manager) command-line utility. Additionally, [TurnKey Linux](https://www.turnkeylinux.org/) container templates are also available to download.
 
 可用模板列表通过 *pve-daily-update* 定时器每天更新。您也可以通过执行以下命令手动触发更新：
 

@@ -1,4 +1,4 @@
-# 1.2. 灵活的存储 <a href="#_flexible_storage" id="_flexible_storage"></a>
+# 1.2. Flexible Storage <a href="#_flexible_storage" id="_flexible_storage"></a>
 
 Proxmox VE 的存储模型非常灵活。虚拟机镜像可以存储在一个或多个本地存储上，也可以存储在 NFS 或 SAN 等共享存储上。您可以根据需要配置任意数量的存储定义，并使用 Debian GNU/Linux 可用的所有存储技术。
 

@@ -1,11 +1,40 @@
 """Check book completeness, source-code fidelity, images, links, and navigation."""
 from __future__ import annotations
-import argparse, collections, hashlib, json, re
+import argparse, collections, hashlib, json, re, struct, zlib
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from bs4 import BeautifulSoup
 from markdown_it import MarkdownIt
-from render import ROOT,DOCS,UNITS,TRANSLATIONS,translated_soup
+from render import ROOT,DOCS,UNITS,TRANSLATIONS,translated_soup,schema_translated
+
+def check_image(path,mime):
+    data=path.read_bytes()
+    if mime=='image/png':
+        if data[:8]!=b'\x89PNG\r\n\x1a\n':raise ValueError('invalid PNG signature')
+        pos=8;compressed=[];ended=False
+        while pos<len(data):
+            size=struct.unpack('>I',data[pos:pos+4])[0];kind=data[pos+4:pos+8]
+            chunk=data[pos+8:pos+8+size];crc=struct.unpack('>I',data[pos+8+size:pos+12+size])[0]
+            if zlib.crc32(kind+chunk)&0xffffffff!=crc:raise ValueError('invalid PNG chunk CRC')
+            if kind==b'IDAT':compressed.append(chunk)
+            if kind==b'IEND':ended=True;break
+            pos+=12+size
+        if not ended:raise ValueError('missing PNG IEND')
+        zlib.decompress(b''.join(compressed))
+        return dict(zip(('width','height'),struct.unpack('>II',data[16:24])))
+    if mime=='image/svg+xml':
+        from xml.etree import ElementTree
+        root=ElementTree.fromstring(data)
+        if not root.tag.endswith('svg'):raise ValueError('invalid SVG root')
+        return {'width':root.get('width'),'height':root.get('height')}
+    raise ValueError('unexpected image type '+mime)
+
+def technical_schema(x):
+    if isinstance(x,list):return [technical_schema(v) for v in x]
+    if not isinstance(x,dict):return x
+    return {k:technical_schema(v) for k,v in x.items()
+            if not (k.startswith('_') and k.endswith('_i18n'))
+            and not (k in {'description','verbose_description','title'} and isinstance(v,str))}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--allow-partial',action='store_true');args=p.parse_args()
@@ -69,10 +98,18 @@ def main():
     actual_images=len([x for x in image_links if 'guide' in x[0].parts or 'reference' in x[0].parts])
     if actual_images!=expected_images:errors.append(f'images: expected {expected_images}, found {actual_images}')
     asset_manifest=json.loads((ROOT/'source/assets-manifest.json').read_text())
+    decoded=[]
     for asset in asset_manifest:
         path=DOCS/asset['path']
         if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest()!=asset['sha256']:
             errors.append('asset missing or changed: '+asset['path'])
+        else:
+            try:decoded.append({'path':asset['path'],**check_image(path,asset['mime'])})
+            except Exception as e:errors.append('invalid image: '+asset['path']+': '+str(e))
+    (ROOT/'reports/images.json').write_text(json.dumps(decoded,ensure_ascii=False,indent=2))
+    api_schema=json.loads((ROOT/'source/api/schema.json').read_text())
+    if technical_schema(api_schema)!=technical_schema(schema_translated(api_schema)):
+        errors.append('API technical schema changed during translation')
     # Every book page must be reachable through the canonical GitBook summary.
     summary=(DOCS/'SUMMARY.md').read_text()
     for file in files:
