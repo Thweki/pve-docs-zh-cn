@@ -15,9 +15,7 @@
 **权限**
 
 ```text
-{
-  "user": "all"
-}
+{"user": "all"}
 ```
 
 **允许 API 令牌**
@@ -33,23 +31,7 @@
 #### 返回值 <a href="#api-access-ef531503-get-returns" id="api-access-ef531503-get-returns"></a>
 
 ```text
-{
-  "items": {
-    "properties": {
-      "subdir": {
-        "type": "string"
-      }
-    },
-    "type": "object"
-  },
-  "links": [
-    {
-      "href": "{subdir}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
-}
+{"items": {"properties": {"subdir": {"type": "string"}}, "type": "object"}, "links": [{"href": "{subdir}", "rel": "child"}], "type": "array"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access)。
@@ -99,19 +81,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "enabled": {
-      "description": "enable 属性的可选过滤条件。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "full": {
-      "default": 0,
-      "description": "包含组和令牌信息。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    }
+    "enabled": {"description": "enable 属性的可选过滤条件。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "full": {"default": 0, "description": "包含组和令牌信息。", "optional": 1, "type": "boolean", "typetext": "<boolean>"}
   }
 }
 ```
@@ -124,113 +95,34 @@
 {
   "items": {
     "properties": {
-      "comment": {
-        "maxLength": 2048,
-        "optional": 1,
-        "type": "string"
-      },
-      "email": {
-        "format": "email-opt",
-        "maxLength": 254,
-        "optional": 1,
-        "type": "string"
-      },
-      "enable": {
-        "default": 1,
-        "description": "启用账户（默认）。可设为 '0' 以禁用账户",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "expire": {
-        "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-        "minimum": 0,
-        "optional": 1,
-        "type": "integer"
-      },
-      "firstname": {
-        "maxLength": 1024,
-        "optional": 1,
-        "type": "string"
-      },
-      "groups": {
-        "format": "pve-groupid-list",
-        "optional": 1,
-        "type": "string"
-      },
-      "keys": {
-        "description": "双因素身份验证密钥（yubico）。",
-        "optional": 1,
-        "pattern": "[0-9a-zA-Z!=]{0,4096}",
-        "type": "string"
-      },
-      "lastname": {
-        "maxLength": 1024,
-        "optional": 1,
-        "type": "string"
-      },
-      "realm-type": {
-        "description": "用户所属认证域的类型",
-        "format": "pve-realm",
-        "optional": 1,
-        "type": "string"
-      },
-      "tfa-locked-until": {
-        "description": "包含用户第二因素锁定截止时间的时间戳。",
-        "optional": 1,
-        "type": "integer"
-      },
+      "comment": {"maxLength": 2048, "optional": 1, "type": "string"}, "email": {"format": "email-opt", "maxLength": 254, "optional": 1, "type": "string"},
+      "enable": {"default": 1, "description": "启用账户（默认）。可设为 '0' 以禁用账户", "optional": 1, "type": "boolean"},
+      "expire": {"description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"},
+      "firstname": {"maxLength": 1024, "optional": 1, "type": "string"}, "groups": {"format": "pve-groupid-list", "optional": 1, "type": "string"},
+      "keys": {"description": "双因素身份验证密钥（yubico）。", "optional": 1, "pattern": "[0-9a-zA-Z!=]{0,4096}", "type": "string"},
+      "lastname": {"maxLength": 1024, "optional": 1, "type": "string"},
+      "realm-type": {"description": "用户所属认证域的类型", "format": "pve-realm", "optional": 1, "type": "string"},
+      "tfa-locked-until": {"description": "包含用户第二因素锁定截止时间的时间戳。", "optional": 1, "type": "integer"},
       "tokens": {
         "items": {
           "properties": {
-            "comment": {
-              "optional": 1,
-              "type": "string"
-            },
+            "comment": {"optional": 1, "type": "string"},
             "expire": {
-              "default": "same as user",
-              "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-              "minimum": 0,
-              "optional": 1,
-              "type": "integer"
+              "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
             },
-            "privsep": {
-              "default": 1,
-              "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-              "optional": 1,
-              "type": "boolean"
-            },
-            "tokenid": {
-              "description": "用户特定的令牌标识符。",
-              "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-              "type": "string"
-            }
+            "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"},
+            "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"}
           },
           "type": "object"
         },
-        "optional": 1,
-        "type": "array"
+        "optional": 1, "type": "array"
       },
-      "totp-locked": {
-        "description": "如果用户当前被锁定而无法使用 TOTP 因素，则为 true。",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "userid": {
-        "description": "完整用户 ID，采用 `name@realm` 格式。",
-        "format": "pve-userid",
-        "maxLength": 64,
-        "type": "string"
-      }
+      "totp-locked": {"description": "如果用户当前被锁定而无法使用 TOTP 因素，则为 true。", "optional": 1, "type": "boolean"},
+      "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{userid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{userid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -244,21 +136,7 @@
 
 ```text
 {
-  "check": [
-    "and",
-    [
-      "userid-param",
-      "Realm.AllocateUser"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ],
-      "groups_param",
-      "create"
-    ]
-  ],
+  "check": ["and", ["userid-param", "Realm.AllocateUser"], ["userid-group", ["User.Modify"], "groups_param", "create"]],
   "description": "需要对用户 <userid> 所属认证域的 '/access/realm/<realm>' 具有 'Realm.AllocateUser' 权限，并且对任何指定组的 '/access/groups/<group>' 具有 'User.Modify' 权限（如果未传入任何组，则需要对 '/access/groups' 具有 'User.Modify' 权限。"
 }
 ```
@@ -297,72 +175,18 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "email": {
-      "format": "email-opt",
-      "maxLength": 254,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "enable": {
-      "default": 1,
-      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
+    "comment": {"maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
+    "email": {"format": "email-opt", "maxLength": 254, "optional": 1, "type": "string", "typetext": "<string>"},
+    "enable": {"default": 1, "description": "启用账户（默认）。可设为 '0' 以禁用账户", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
     "expire": {
-      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer",
-      "typetext": "<integer> (0 - N)"
+      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer", "typetext": "<integer> (0 - N)"
     },
-    "firstname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "groups": {
-      "format": "pve-groupid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "keys": {
-      "description": "双因素身份验证密钥（yubico）。",
-      "optional": 1,
-      "pattern": "[0-9a-zA-Z!=]{0,4096}",
-      "type": "string"
-    },
-    "lastname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "password": {
-      "description": "初始密码。",
-      "maxLength": 64,
-      "minLength": 8,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "firstname": {"maxLength": 1024, "optional": 1, "type": "string", "typetext": "<string>"},
+    "groups": {"format": "pve-groupid-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "keys": {"description": "双因素身份验证密钥（yubico）。", "optional": 1, "pattern": "[0-9a-zA-Z!=]{0,4096}", "type": "string"},
+    "lastname": {"maxLength": 1024, "optional": 1, "type": "string", "typetext": "<string>"},
+    "password": {"description": "初始密码。", "maxLength": 64, "minLength": 8, "optional": 1, "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -372,9 +196,7 @@
 #### 返回值 <a href="#api-access-users-ff4a891d-post-returns" id="api-access-users-ff4a891d-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users)。
@@ -392,21 +214,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "and",
-    [
-      "userid-param",
-      "Realm.AllocateUser"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["and", ["userid-param", "Realm.AllocateUser"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -434,13 +242,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -450,9 +252,7 @@
 #### 返回值 <a href="#api-access-users-userid-aad17cce-delete-returns" id="api-access-users-userid-aad17cce-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/users/{userid}` <a href="#api-access-users-userid-aad17cce-get" id="api-access-users-userid-aad17cce-get"></a>
@@ -464,15 +264,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "userid-group",
-    [
-      "User.Modify",
-      "Sys.Audit"
-    ]
-  ]
-}
+{"check": ["userid-group", ["User.Modify", "Sys.Audit"]]}
 ```
 
 **允许 API 令牌**
@@ -494,13 +286,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -513,78 +299,25 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string"
-    },
-    "email": {
-      "format": "email-opt",
-      "maxLength": 254,
-      "optional": 1,
-      "type": "string"
-    },
-    "enable": {
-      "default": 1,
-      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
-      "optional": 1,
-      "type": "boolean"
-    },
-    "expire": {
-      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer"
-    },
-    "firstname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string"
-    },
-    "groups": {
-      "items": {
-        "format": "pve-groupid",
-        "type": "string"
-      },
-      "optional": 1,
-      "type": "array"
-    },
-    "keys": {
-      "description": "双因素身份验证密钥（yubico）。",
-      "optional": 1,
-      "pattern": "[0-9a-zA-Z!=]{0,4096}",
-      "type": "string"
-    },
-    "lastname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string"
-    },
+    "comment": {"maxLength": 2048, "optional": 1, "type": "string"}, "email": {"format": "email-opt", "maxLength": 254, "optional": 1, "type": "string"},
+    "enable": {"default": 1, "description": "启用账户（默认）。可设为 '0' 以禁用账户", "optional": 1, "type": "boolean"},
+    "expire": {"description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"},
+    "firstname": {"maxLength": 1024, "optional": 1, "type": "string"},
+    "groups": {"items": {"format": "pve-groupid", "type": "string"}, "optional": 1, "type": "array"},
+    "keys": {"description": "双因素身份验证密钥（yubico）。", "optional": 1, "pattern": "[0-9a-zA-Z!=]{0,4096}", "type": "string"},
+    "lastname": {"maxLength": 1024, "optional": 1, "type": "string"},
     "tokens": {
       "additionalProperties": {
         "properties": {
-          "comment": {
-            "optional": 1,
-            "type": "string"
-          },
+          "comment": {"optional": 1, "type": "string"},
           "expire": {
-            "default": "same as user",
-            "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-            "minimum": 0,
-            "optional": 1,
-            "type": "integer"
+            "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
           },
-          "privsep": {
-            "default": 1,
-            "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-            "optional": 1,
-            "type": "boolean"
-          }
+          "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"}
         },
         "type": "object"
       },
-      "optional": 1,
-      "type": "object"
+      "optional": 1, "type": "object"
     }
   },
   "type": "object"
@@ -600,16 +333,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "userid-group",
-    [
-      "User.Modify"
-    ],
-    "groups_param",
-    "update"
-  ]
-}
+{"check": ["userid-group", ["User.Modify"], "groups_param", "update"]}
 ```
 
 **允许 API 令牌**
@@ -646,70 +370,18 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "append": {
-      "optional": 1,
-      "requires": "groups",
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "comment": {
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "email": {
-      "format": "email-opt",
-      "maxLength": 254,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "enable": {
-      "default": 1,
-      "description": "启用账户（默认）。可设为 '0' 以禁用账户",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
+    "append": {"optional": 1, "requires": "groups", "type": "boolean", "typetext": "<boolean>"},
+    "comment": {"maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
+    "email": {"format": "email-opt", "maxLength": 254, "optional": 1, "type": "string", "typetext": "<string>"},
+    "enable": {"default": 1, "description": "启用账户（默认）。可设为 '0' 以禁用账户", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
     "expire": {
-      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer",
-      "typetext": "<integer> (0 - N)"
+      "description": "账户到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer", "typetext": "<integer> (0 - N)"
     },
-    "firstname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "groups": {
-      "format": "pve-groupid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "keys": {
-      "description": "双因素身份验证密钥（yubico）。",
-      "optional": 1,
-      "pattern": "[0-9a-zA-Z!=]{0,4096}",
-      "type": "string"
-    },
-    "lastname": {
-      "maxLength": 1024,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "firstname": {"maxLength": 1024, "optional": 1, "type": "string", "typetext": "<string>"},
+    "groups": {"format": "pve-groupid-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "keys": {"description": "双因素身份验证密钥（yubico）。", "optional": 1, "pattern": "[0-9a-zA-Z!=]{0,4096}", "type": "string"},
+    "lastname": {"maxLength": 1024, "optional": 1, "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -719,9 +391,7 @@
 #### 返回值 <a href="#api-access-users-userid-aad17cce-put-returns" id="api-access-users-userid-aad17cce-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid})。
@@ -739,22 +409,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify",
-        "Sys.Audit"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
 **允许 API 令牌**
@@ -783,20 +438,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "multiple": {
-      "default": 0,
-      "description": "将所有条目作为数组请求。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "multiple": {"default": 0, "description": "将所有条目作为数组请求。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -809,40 +452,12 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "realm": {
-      "description": "用户所属认证域设置的 TFA 类型（如有）。",
-      "enum": [
-        "oath",
-        "yubico"
-      ],
-      "optional": 1,
-      "type": "string"
-    },
+    "realm": {"description": "用户所属认证域设置的 TFA 类型（如有）。", "enum": ["oath", "yubico"], "optional": 1, "type": "string"},
     "types": {
       "description": "用户配置的 TFA 类型数组（如有）。仅在未传入 'multiple' 时可用。",
-      "items": {
-        "description": "TFA 类型。",
-        "enum": [
-          "totp",
-          "u2f",
-          "yubico",
-          "webauthn",
-          "recovedry"
-        ],
-        "type": "string"
-      },
-      "optional": 1,
-      "type": "array"
+      "items": {"description": "TFA 类型。", "enum": ["totp", "u2f", "yubico", "webauthn", "recovedry"], "type": "string"}, "optional": 1, "type": "array"
     },
-    "user": {
-      "description": "用户设置的 TFA 类型（如有）。仅在未传入 'multiple' 时设置。",
-      "enum": [
-        "oath",
-        "u2f"
-      ],
-      "optional": 1,
-      "type": "string"
-    }
+    "user": {"description": "用户设置的 TFA 类型（如有）。仅在未传入 'multiple' 时设置。", "enum": ["oath", "u2f"], "optional": 1, "type": "string"}
   },
   "type": "object"
 }
@@ -863,14 +478,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "userid-group",
-    [
-      "User.Modify"
-    ]
-  ]
-}
+{"check": ["userid-group", ["User.Modify"]]}
 ```
 
 **允许 API 令牌**
@@ -898,13 +506,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -914,9 +516,7 @@
 #### 返回值 <a href="#api-access-users-userid-unlock-tfa-1b330aed-put-returns" id="api-access-users-userid-unlock-tfa-1b330aed-put-returns"></a>
 
 ```text
-{
-  "type": "boolean"
-}
+{"type": "boolean"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}/unlock-tfa)。
@@ -934,21 +534,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -970,13 +556,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -989,38 +569,16 @@
 {
   "items": {
     "properties": {
-      "comment": {
-        "optional": 1,
-        "type": "string"
-      },
+      "comment": {"optional": 1, "type": "string"},
       "expire": {
-        "default": "same as user",
-        "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-        "minimum": 0,
-        "optional": 1,
-        "type": "integer"
+        "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
       },
-      "privsep": {
-        "default": 1,
-        "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "tokenid": {
-        "description": "用户特定的令牌标识符。",
-        "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-        "type": "string"
-      }
+      "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"},
+      "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{tokenid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{tokenid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -1039,21 +597,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -1082,18 +626,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "tokenid": {
-      "description": "用户特定的令牌标识符。",
-      "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1103,9 +637,7 @@
 #### 返回值 <a href="#api-access-users-userid-token-tokenid-29a42318-delete-returns" id="api-access-users-userid-token-tokenid-29a42318-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/users/{userid}/token/{tokenid}` <a href="#api-access-users-userid-token-tokenid-29a42318-get" id="api-access-users-userid-token-tokenid-29a42318-get"></a>
@@ -1117,21 +649,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -1154,18 +672,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "tokenid": {
-      "description": "用户特定的令牌标识符。",
-      "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1177,23 +685,11 @@
 ```text
 {
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string"
-    },
+    "comment": {"optional": 1, "type": "string"},
     "expire": {
-      "default": "same as user",
-      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer"
+      "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
     },
-    "privsep": {
-      "default": 1,
-      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-      "optional": 1,
-      "type": "boolean"
-    }
+    "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"}
   },
   "type": "object"
 }
@@ -1208,21 +704,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -1254,38 +736,17 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
     "expire": {
-      "default": "same as user",
-      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer",
+      "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "privsep": {
-      "default": 1,
-      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-      "optional": 1,
-      "type": "boolean",
+      "default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean",
       "typetext": "<boolean>"
     },
-    "tokenid": {
-      "description": "用户特定的令牌标识符。",
-      "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1298,37 +759,18 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "full-tokenid": {
-      "description": "完整令牌 ID。",
-      "format_description": "<userid>!<tokenid>",
-      "type": "string"
-    },
+    "full-tokenid": {"description": "完整令牌 ID。", "format_description": "<userid>!<tokenid>", "type": "string"},
     "info": {
       "properties": {
-        "comment": {
-          "optional": 1,
-          "type": "string"
-        },
+        "comment": {"optional": 1, "type": "string"},
         "expire": {
-          "default": "same as user",
-          "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-          "minimum": 0,
-          "optional": 1,
-          "type": "integer"
+          "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
         },
-        "privsep": {
-          "default": 1,
-          "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-          "optional": 1,
-          "type": "boolean"
-        }
+        "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"}
       },
       "type": "object"
     },
-    "value": {
-      "description": "用于身份验证的 API 令牌值。",
-      "type": "string"
-    }
+    "value": {"description": "用于身份验证的 API 令牌值。", "type": "string"}
   },
   "type": "object"
 }
@@ -1343,21 +785,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -1391,52 +819,22 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "delete": {
-      "description": "要删除的设置列表。",
-      "format": "pve-configid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
+    "delete": {"description": "要删除的设置列表。", "format": "pve-configid-list", "optional": 1, "type": "string", "typetext": "<string>"},
     "expire": {
-      "default": "same as user",
-      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer",
+      "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer",
       "typetext": "<integer> (0 - N)"
     },
     "privsep": {
-      "default": 1,
-      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-      "optional": 1,
-      "type": "boolean",
+      "default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean",
       "typetext": "<boolean>"
     },
     "regenerate": {
-      "default": 0,
-      "description": "重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。",
-      "optional": 1,
-      "type": "boolean",
+      "default": 0, "description": "重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。", "optional": 1, "type": "boolean",
       "typetext": "<boolean>"
     },
-    "tokenid": {
-      "description": "用户特定的令牌标识符。",
-      "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "tokenid": {"description": "用户特定的令牌标识符。", "pattern": "(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1448,34 +846,15 @@
 ```text
 {
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string"
-    },
+    "comment": {"optional": 1, "type": "string"},
     "expire": {
-      "default": "same as user",
-      "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。",
-      "minimum": 0,
-      "optional": 1,
-      "type": "integer"
+      "default": "same as user", "description": "API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。", "minimum": 0, "optional": 1, "type": "integer"
     },
     "full-tokenid": {
-      "description": "完整令牌 ID。仅在设置了 'regenerate' 时设置。",
-      "format_description": "<userid>!<tokenid>",
-      "optional": 1,
-      "type": "string"
+      "description": "完整令牌 ID。仅在设置了 'regenerate' 时设置。", "format_description": "<userid>!<tokenid>", "optional": 1, "type": "string"
     },
-    "privsep": {
-      "default": 1,
-      "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。",
-      "optional": 1,
-      "type": "boolean"
-    },
-    "value": {
-      "description": "用于身份验证的 API 令牌值。仅在设置了 'regenerate' 时设置。",
-      "optional": 1,
-      "type": "string"
-    }
+    "privsep": {"default": 1, "description": "使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。", "optional": 1, "type": "boolean"},
+    "value": {"description": "用于身份验证的 API 令牌值。仅在设置了 'regenerate' 时设置。", "optional": 1, "type": "string"}
   },
   "type": "object"
 }
@@ -1496,10 +875,7 @@
 **权限**
 
 ```text
-{
-  "description": "返回列表仅限于您具有 'User.Modify'、'Sys.Audit'  或 'Group.Allocate' 权限（作用于 /access/groups/<group>）的组。",
-  "user": "all"
-}
+{"description": "返回列表仅限于您具有 'User.Modify'、'Sys.Audit'  或 'Group.Allocate' 权限（作用于 /access/groups/<group>）的组。", "user": "all"}
 ```
 
 **允许 API 令牌**
@@ -1518,30 +894,12 @@
 {
   "items": {
     "properties": {
-      "comment": {
-        "optional": 1,
-        "type": "string"
-      },
-      "groupid": {
-        "format": "pve-groupid",
-        "type": "string"
-      },
-      "users": {
-        "description": "组成此组的用户列表",
-        "format": "pve-userid-list",
-        "optional": 1,
-        "type": "string"
-      }
+      "comment": {"optional": 1, "type": "string"}, "groupid": {"format": "pve-groupid", "type": "string"},
+      "users": {"description": "组成此组的用户列表", "format": "pve-userid-list", "optional": 1, "type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{groupid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{groupid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -1554,15 +912,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/groups",
-    [
-      "Group.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -1591,16 +941,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "groupid": {
-      "format": "pve-groupid",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"}, "groupid": {"format": "pve-groupid", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1610,9 +951,7 @@
 #### 返回值 <a href="#api-access-groups-1301c828-post-returns" id="api-access-groups-1301c828-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups)。
@@ -1630,15 +969,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/groups",
-    [
-      "Group.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -1663,16 +994,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "groupid": {
-      "format": "pve-groupid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"groupid": {"format": "pve-groupid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -1680,9 +1002,7 @@
 #### 返回值 <a href="#api-access-groups-groupid-c31a6155-delete-returns" id="api-access-groups-groupid-c31a6155-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/groups/{groupid}` <a href="#api-access-groups-groupid-c31a6155-get" id="api-access-groups-groupid-c31a6155-get"></a>
@@ -1694,18 +1014,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/groups",
-    [
-      "Sys.Audit",
-      "Group.Allocate"
-    ],
-    "any",
-    1
-  ]
-}
+{"check": ["perm", "/access/groups", ["Sys.Audit", "Group.Allocate"], "any", 1]}
 ```
 
 **允许 API 令牌**
@@ -1724,16 +1033,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "groupid": {
-      "format": "pve-groupid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"groupid": {"format": "pve-groupid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -1744,19 +1044,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string"
-    },
-    "members": {
-      "items": {
-        "description": "完整用户 ID，采用 `name@realm` 格式。",
-        "format": "pve-userid",
-        "maxLength": 64,
-        "type": "string"
-      },
-      "type": "array"
-    }
+    "comment": {"optional": 1, "type": "string"},
+    "members": {"items": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string"}, "type": "array"}
   },
   "type": "object"
 }
@@ -1771,15 +1060,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/groups",
-    [
-      "Group.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -1808,16 +1089,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "groupid": {
-      "format": "pve-groupid",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"}, "groupid": {"format": "pve-groupid", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1827,9 +1099,7 @@
 #### 返回值 <a href="#api-access-groups-groupid-c31a6155-put-returns" id="api-access-groups-groupid-c31a6155-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid})。
@@ -1847,9 +1117,7 @@
 **权限**
 
 ```text
-{
-  "user": "all"
-}
+{"user": "all"}
 ```
 
 **允许 API 令牌**
@@ -1868,30 +1136,12 @@
 {
   "items": {
     "properties": {
-      "privs": {
-        "format": "pve-priv-list",
-        "optional": 1,
-        "type": "string"
-      },
-      "roleid": {
-        "format": "pve-roleid",
-        "type": "string"
-      },
-      "special": {
-        "default": 0,
-        "optional": 1,
-        "type": "boolean"
-      }
+      "privs": {"format": "pve-priv-list", "optional": 1, "type": "string"}, "roleid": {"format": "pve-roleid", "type": "string"},
+      "special": {"default": 0, "optional": 1, "type": "boolean"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{roleid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{roleid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -1904,15 +1154,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access",
-    [
-      "Sys.Modify"
-    ]
-  ]
-}
+{"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
 **允许 API 令牌**
@@ -1941,17 +1183,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "privs": {
-      "format": "pve-priv-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "roleid": {
-      "format": "pve-roleid",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "privs": {"format": "pve-priv-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "roleid": {"format": "pve-roleid", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -1961,9 +1194,7 @@
 #### 返回值 <a href="#api-access-roles-664f9b93-post-returns" id="api-access-roles-664f9b93-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles)。
@@ -1981,15 +1212,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access",
-    [
-      "Sys.Modify"
-    ]
-  ]
-}
+{"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
 **允许 API 令牌**
@@ -2014,16 +1237,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "roleid": {
-      "format": "pve-roleid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"roleid": {"format": "pve-roleid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -2031,9 +1245,7 @@
 #### 返回值 <a href="#api-access-roles-roleid-d4beb42c-delete-returns" id="api-access-roles-roleid-d4beb42c-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/roles/{roleid}` <a href="#api-access-roles-roleid-d4beb42c-get" id="api-access-roles-roleid-d4beb42c-get"></a>
@@ -2045,9 +1257,7 @@
 **权限**
 
 ```text
-{
-  "user": "all"
-}
+{"user": "all"}
 ```
 
 **允许 API 令牌**
@@ -2066,16 +1276,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "roleid": {
-      "format": "pve-roleid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"roleid": {"format": "pve-roleid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -2086,194 +1287,27 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "Datastore.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Datastore.AllocateSpace": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Datastore.AllocateTemplate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Datastore.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Group.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Mapping.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Mapping.Modify": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Mapping.Use": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Permissions.Modify": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Pool.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Pool.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Realm.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Realm.AllocateUser": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "SDN.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "SDN.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "SDN.Use": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.AccessNetwork": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.Console": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.Incoming": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.Modify": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.PowerMgmt": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "Sys.Syslog": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "User.Modify": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Allocate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Backup": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Clone": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.CDROM": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.CPU": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.Cloudinit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.Disk": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.HWType": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.Memory": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.Network": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Config.Options": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Console": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.GuestAgent.Audit": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.GuestAgent.FileRead": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.GuestAgent.FileSystemMgmt": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.GuestAgent.FileWrite": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.GuestAgent.Unrestricted": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Migrate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.PowerMgmt": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Replicate": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Snapshot": {
-      "optional": 1,
-      "type": "boolean"
-    },
-    "VM.Snapshot.Rollback": {
-      "optional": 1,
-      "type": "boolean"
-    }
+    "Datastore.Allocate": {"optional": 1, "type": "boolean"}, "Datastore.AllocateSpace": {"optional": 1, "type": "boolean"},
+    "Datastore.AllocateTemplate": {"optional": 1, "type": "boolean"}, "Datastore.Audit": {"optional": 1, "type": "boolean"},
+    "Group.Allocate": {"optional": 1, "type": "boolean"}, "Mapping.Audit": {"optional": 1, "type": "boolean"},
+    "Mapping.Modify": {"optional": 1, "type": "boolean"}, "Mapping.Use": {"optional": 1, "type": "boolean"},
+    "Permissions.Modify": {"optional": 1, "type": "boolean"}, "Pool.Allocate": {"optional": 1, "type": "boolean"},
+    "Pool.Audit": {"optional": 1, "type": "boolean"}, "Realm.Allocate": {"optional": 1, "type": "boolean"},
+    "Realm.AllocateUser": {"optional": 1, "type": "boolean"}, "SDN.Allocate": {"optional": 1, "type": "boolean"},
+    "SDN.Audit": {"optional": 1, "type": "boolean"}, "SDN.Use": {"optional": 1, "type": "boolean"}, "Sys.AccessNetwork": {"optional": 1, "type": "boolean"},
+    "Sys.Audit": {"optional": 1, "type": "boolean"}, "Sys.Console": {"optional": 1, "type": "boolean"}, "Sys.Incoming": {"optional": 1, "type": "boolean"},
+    "Sys.Modify": {"optional": 1, "type": "boolean"}, "Sys.PowerMgmt": {"optional": 1, "type": "boolean"}, "Sys.Syslog": {"optional": 1, "type": "boolean"},
+    "User.Modify": {"optional": 1, "type": "boolean"}, "VM.Allocate": {"optional": 1, "type": "boolean"}, "VM.Audit": {"optional": 1, "type": "boolean"},
+    "VM.Backup": {"optional": 1, "type": "boolean"}, "VM.Clone": {"optional": 1, "type": "boolean"}, "VM.Config.CDROM": {"optional": 1, "type": "boolean"},
+    "VM.Config.CPU": {"optional": 1, "type": "boolean"}, "VM.Config.Cloudinit": {"optional": 1, "type": "boolean"},
+    "VM.Config.Disk": {"optional": 1, "type": "boolean"}, "VM.Config.HWType": {"optional": 1, "type": "boolean"},
+    "VM.Config.Memory": {"optional": 1, "type": "boolean"}, "VM.Config.Network": {"optional": 1, "type": "boolean"},
+    "VM.Config.Options": {"optional": 1, "type": "boolean"}, "VM.Console": {"optional": 1, "type": "boolean"},
+    "VM.GuestAgent.Audit": {"optional": 1, "type": "boolean"}, "VM.GuestAgent.FileRead": {"optional": 1, "type": "boolean"},
+    "VM.GuestAgent.FileSystemMgmt": {"optional": 1, "type": "boolean"}, "VM.GuestAgent.FileWrite": {"optional": 1, "type": "boolean"},
+    "VM.GuestAgent.Unrestricted": {"optional": 1, "type": "boolean"}, "VM.Migrate": {"optional": 1, "type": "boolean"},
+    "VM.PowerMgmt": {"optional": 1, "type": "boolean"}, "VM.Replicate": {"optional": 1, "type": "boolean"}, "VM.Snapshot": {"optional": 1, "type": "boolean"},
+    "VM.Snapshot.Rollback": {"optional": 1, "type": "boolean"}
   },
   "type": "object"
 }
@@ -2288,15 +1322,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access",
-    [
-      "Sys.Modify"
-    ]
-  ]
-}
+{"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
 **允许 API 令牌**
@@ -2326,23 +1352,9 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "append": {
-      "optional": 1,
-      "requires": "privs",
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "privs": {
-      "format": "pve-priv-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "roleid": {
-      "format": "pve-roleid",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "append": {"optional": 1, "requires": "privs", "type": "boolean", "typetext": "<boolean>"},
+    "privs": {"format": "pve-priv-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "roleid": {"format": "pve-roleid", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -2352,9 +1364,7 @@
 #### 返回值 <a href="#api-access-roles-roleid-d4beb42c-put-returns" id="api-access-roles-roleid-d4beb42c-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid})。
@@ -2372,10 +1382,7 @@
 **权限**
 
 ```text
-{
-  "description": "返回列表仅限于您有权修改其权限的对象。",
-  "user": "all"
-}
+{"description": "返回列表仅限于您有权修改其权限的对象。", "user": "all"}
 ```
 
 **允许 API 令牌**
@@ -2395,30 +1402,9 @@
   "items": {
     "additionalProperties": 0,
     "properties": {
-      "path": {
-        "description": "访问控制路径",
-        "type": "string"
-      },
-      "propagate": {
-        "default": 1,
-        "description": "允许传播（继承）权限。",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "roleid": {
-        "type": "string"
-      },
-      "type": {
-        "enum": [
-          "user",
-          "group",
-          "token"
-        ],
-        "type": "string"
-      },
-      "ugid": {
-        "type": "string"
-      }
+      "path": {"description": "访问控制路径", "type": "string"},
+      "propagate": {"default": 1, "description": "允许传播（继承）权限。", "optional": 1, "type": "boolean"}, "roleid": {"type": "string"},
+      "type": {"enum": ["user", "group", "token"], "type": "string"}, "ugid": {"type": "string"}
     },
     "type": "object"
   },
@@ -2435,12 +1421,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm-modify",
-    "{path}"
-  ]
-}
+{"check": ["perm-modify", "{path}"]}
 ```
 
 **允许 API 令牌**
@@ -2474,51 +1455,13 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "delete": {
-      "description": "移除权限（而非添加）。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "groups": {
-      "description": "组列表。",
-      "format": "pve-groupid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "path": {
-      "description": "访问控制路径",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "propagate": {
-      "default": 1,
-      "description": "允许传播（继承）权限。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "roles": {
-      "description": "角色列表。",
-      "format": "pve-roleid-list",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "tokens": {
-      "description": "API 令牌列表。",
-      "format": "pve-tokenid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "users": {
-      "description": "用户列表。",
-      "format": "pve-userid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "delete": {"description": "移除权限（而非添加）。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "groups": {"description": "组列表。", "format": "pve-groupid-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "path": {"description": "访问控制路径", "type": "string", "typetext": "<string>"},
+    "propagate": {"default": 1, "description": "允许传播（继承）权限。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "roles": {"description": "角色列表。", "format": "pve-roleid-list", "type": "string", "typetext": "<string>"},
+    "tokens": {"description": "API 令牌列表。", "format": "pve-tokenid-list", "optional": 1, "type": "string", "typetext": "<string>"},
+    "users": {"description": "用户列表。", "format": "pve-userid-list", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -2528,9 +1471,7 @@
 #### 返回值 <a href="#api-access-acl-26eff873-put-returns" id="api-access-acl-26eff873-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl)。
@@ -2548,10 +1489,7 @@
 **权限**
 
 ```text
-{
-  "description": "任何人均可访问，因为登录框在用户通过身份验证之前就需要此列表。",
-  "user": "world"
-}
+{"description": "任何人均可访问，因为登录框在用户通过身份验证之前就需要此列表。", "user": "world"}
 ```
 
 **允许 API 令牌**
@@ -2570,36 +1508,12 @@
 {
   "items": {
     "properties": {
-      "comment": {
-        "description": "注释。在登录窗口中选择域（认证域）时，GUI 使用此文本。",
-        "optional": 1,
-        "type": "string"
-      },
-      "realm": {
-        "type": "string"
-      },
-      "tfa": {
-        "description": "双因素身份验证提供程序。",
-        "enum": [
-          "yubico",
-          "oath"
-        ],
-        "optional": 1,
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      }
+      "comment": {"description": "注释。在登录窗口中选择域（认证域）时，GUI 使用此文本。", "optional": 1, "type": "string"}, "realm": {"type": "string"},
+      "tfa": {"description": "双因素身份验证提供程序。", "enum": ["yubico", "oath"], "optional": 1, "type": "string"}, "type": {"type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{realm}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{realm}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -2612,15 +1526,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/realm",
-    [
-      "Realm.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -2691,315 +1597,83 @@
   "additionalProperties": 0,
   "properties": {
     "acr-values": {
-      "description": "指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。",
-      "optional": 1,
-      "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
+      "description": "指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。", "optional": 1, "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
       "type": "string"
     },
     "audiences": {
-      "description": "除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。",
-      "optional": 1,
-      "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
-      "type": "string"
+      "description": "除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。", "optional": 1, "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$", "type": "string"
     },
-    "autocreate": {
-      "default": 0,
-      "description": "如果用户不存在，则自动创建。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "base_dn": {
-      "description": "LDAP 基础域名",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "bind_dn": {
-      "description": "LDAP 绑定域名",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "capath": {
-      "default": "/etc/ssl/certs",
-      "description": "CA 证书存储路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "case-sensitive": {
-      "default": 1,
-      "description": "用户名区分大小写",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "cert": {
-      "description": "客户端证书路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "certkey": {
-      "description": "客户端证书密钥路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "check-connection": {
-      "default": 0,
-      "description": "检查到服务器的绑定连接。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "client-id": {
-      "description": "OpenID 客户端 ID",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "client-key": {
-      "description": "OpenID 客户端密钥",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "comment": {
-      "description": "描述。",
-      "maxLength": 4096,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "default": {
-      "description": "将此认证域用作默认认证域",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "domain": {
-      "description": "AD 域名",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "\\S+",
-      "type": "string"
-    },
-    "filter": {
-      "description": "用户同步的 LDAP 过滤器。",
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "autocreate": {"default": 0, "description": "如果用户不存在，则自动创建。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "base_dn": {"description": "LDAP 基础域名", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "bind_dn": {"description": "LDAP 绑定域名", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "capath": {"default": "/etc/ssl/certs", "description": "CA 证书存储路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "case-sensitive": {"default": 1, "description": "用户名区分大小写", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "cert": {"description": "客户端证书路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "certkey": {"description": "客户端证书密钥路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "check-connection": {"default": 0, "description": "检查到服务器的绑定连接。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "client-id": {"description": "OpenID 客户端 ID", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "client-key": {"description": "OpenID 客户端密钥", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "comment": {"description": "描述。", "maxLength": 4096, "optional": 1, "type": "string", "typetext": "<string>"},
+    "default": {"description": "将此认证域用作默认认证域", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "domain": {"description": "AD 域名", "maxLength": 256, "optional": 1, "pattern": "\\S+", "type": "string"},
+    "filter": {"description": "用户同步的 LDAP 过滤器。", "maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
     "group_classes": {
-      "default": "groupOfNames, group, univentionGroup, ipausergroup",
-      "description": "组的 objectclass。",
-      "format": "ldap-simple-attr-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "default": "groupOfNames, group, univentionGroup, ipausergroup", "description": "组的 objectclass。", "format": "ldap-simple-attr-list", "optional": 1,
+      "type": "string", "typetext": "<string>"
     },
     "group_dn": {
-      "description": "组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "group_filter": {
-      "description": "组同步的 LDAP 过滤器。",
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "group_filter": {"description": "组同步的 LDAP 过滤器。", "maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
     "group_name_attr": {
-      "description": "表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。",
-      "format": "ldap-simple-attr",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。", "format": "ldap-simple-attr", "maxLength": 256,
+      "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "groups-autocreate": {
-      "default": 0,
-      "description": "如果组不存在，则自动创建。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "groups-claim": {
-      "description": "用于获取组的 OpenID 声明。",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "(?^:[A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "groups-overwrite": {
-      "default": 0,
-      "description": "用户登录时将覆盖其所有组。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "issuer-url": {
-      "description": "OpenID 颁发者 URL",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "mode": {
-      "default": "ldap",
-      "description": "LDAP 协议模式。",
-      "enum": [
-        "ldap",
-        "ldaps",
-        "ldap+starttls"
-      ],
-      "optional": 1,
-      "type": "string"
-    },
-    "password": {
-      "description": "LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/<REALM>.pw'。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "port": {
-      "description": "服务器端口。",
-      "maximum": 65535,
-      "minimum": 1,
-      "optional": 1,
-      "type": "integer",
-      "typetext": "<integer> (1 - 65535)"
-    },
+    "groups-autocreate": {"default": 0, "description": "如果组不存在，则自动创建。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "groups-claim": {"description": "用于获取组的 OpenID 声明。", "maxLength": 256, "optional": 1, "pattern": "(?^:[A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "groups-overwrite": {"default": 0, "description": "用户登录时将覆盖其所有组。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "issuer-url": {"description": "OpenID 颁发者 URL", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "mode": {"default": "ldap", "description": "LDAP 协议模式。", "enum": ["ldap", "ldaps", "ldap+starttls"], "optional": 1, "type": "string"},
+    "password": {"description": "LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/<REALM>.pw'。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "port": {"description": "服务器端口。", "maximum": 65535, "minimum": 1, "optional": 1, "type": "integer", "typetext": "<integer> (1 - 65535)"},
     "prompt": {
-      "description": "指定授权服务器是否提示最终用户重新身份验证并表示同意。",
-      "optional": 1,
-      "pattern": "(?:none|login|consent|select_account|\\S+)",
+      "description": "指定授权服务器是否提示最终用户重新身份验证并表示同意。", "optional": 1, "pattern": "(?:none|login|consent|select_account|\\S+)",
       "type": "string"
     },
-    "query-userinfo": {
-      "default": 1,
-      "description": "启用查询 userinfo 端点以获取声明值。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "query-userinfo": {"default": 1, "description": "启用查询 userinfo 端点以获取声明值。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"},
     "scopes": {
-      "default": "email profile",
-      "description": "指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。",
-      "optional": 1,
-      "type": "string",
+      "default": "email profile", "description": "指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。", "optional": 1, "type": "string",
       "typetext": "<string>"
     },
-    "secure": {
-      "description": "使用安全的 LDAPS 协议。已弃用：请改用 'mode'。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "server1": {
-      "description": "服务器 IP 地址（或 DNS 名称）",
-      "format": "address",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "secure": {"description": "使用安全的 LDAPS 协议。已弃用：请改用 'mode'。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "server1": {"description": "服务器 IP 地址（或 DNS 名称）", "format": "address", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
     "server2": {
-      "description": "后备服务器 IP 地址（或 DNS 名称）",
-      "format": "address",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "后备服务器 IP 地址（或 DNS 名称）", "format": "address", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"
     },
     "sslversion": {
-      "description": "LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！",
-      "enum": [
-        "tlsv1",
-        "tlsv1_1",
-        "tlsv1_2",
-        "tlsv1_3"
-      ],
-      "optional": 1,
-      "type": "string"
+      "description": "LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！", "enum": ["tlsv1", "tlsv1_1", "tlsv1_2", "tlsv1_3"], "optional": 1, "type": "string"
     },
     "sync-defaults-options": {
-      "description": "同步行为的默认选项。",
-      "format": "realm-sync-options",
-      "optional": 1,
-      "type": "string",
+      "description": "同步行为的默认选项。", "format": "realm-sync-options", "optional": 1, "type": "string",
       "typetext": "[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]"
     },
     "sync_attributes": {
       "description": "以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。",
-      "optional": 1,
-      "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*",
-      "type": "string"
+      "optional": 1, "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*", "type": "string"
     },
     "tfa": {
-      "description": "使用双因素身份验证。",
-      "format": "pve-tfa-config",
-      "maxLength": 128,
-      "optional": 1,
-      "type": "string",
+      "description": "使用双因素身份验证。", "format": "pve-tfa-config", "maxLength": 128, "optional": 1, "type": "string",
       "typetext": "type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]"
     },
-    "type": {
-      "description": "认证域类型。",
-      "enum": [
-        "ad",
-        "ldap",
-        "openid",
-        "pam",
-        "pve"
-      ],
-      "type": "string"
-    },
-    "user_attr": {
-      "description": "LDAP 用户属性名称",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "\\S{2,}",
-      "type": "string"
-    },
+    "type": {"description": "认证域类型。", "enum": ["ad", "ldap", "openid", "pam", "pve"], "type": "string"},
+    "user_attr": {"description": "LDAP 用户属性名称", "maxLength": 256, "optional": 1, "pattern": "\\S{2,}", "type": "string"},
     "user_classes": {
-      "default": "inetorgperson, posixaccount, person, user",
-      "description": "用户的 objectclass。",
-      "format": "ldap-simple-attr-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "default": "inetorgperson, posixaccount, person, user", "description": "用户的 objectclass。", "format": "ldap-simple-attr-list", "optional": 1,
+      "type": "string", "typetext": "<string>"
     },
-    "username-claim": {
-      "description": "用于生成唯一用户名的 OpenID 声明。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "verify": {
-      "default": 0,
-      "description": "验证服务器的 SSL 证书",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    }
+    "username-claim": {"description": "用于生成唯一用户名的 OpenID 声明。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "verify": {"default": 0, "description": "验证服务器的 SSL 证书", "optional": 1, "type": "boolean", "typetext": "<boolean>"}
   },
   "type": "object"
 }
@@ -3010,9 +1684,7 @@
 #### 返回值 <a href="#api-access-domains-bb4462c8-post-returns" id="api-access-domains-bb4462c8-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)。
@@ -3030,15 +1702,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/realm",
-    [
-      "Realm.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -3065,15 +1729,7 @@
 ```text
 {
   "additionalProperties": 0,
-  "properties": {
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
+  "properties": {"realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"}}
 }
 ```
 
@@ -3082,9 +1738,7 @@
 #### 返回值 <a href="#api-access-domains-realm-0f82ea36-delete-returns" id="api-access-domains-realm-0f82ea36-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/domains/{realm}` <a href="#api-access-domains-realm-0f82ea36-get" id="api-access-domains-realm-0f82ea36-get"></a>
@@ -3096,18 +1750,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/realm",
-    [
-      "Realm.Allocate",
-      "Sys.Audit"
-    ],
-    "any",
-    1
-  ]
-}
+{"check": ["perm", "/access/realm", ["Realm.Allocate", "Sys.Audit"], "any", 1]}
 ```
 
 **允许 API 令牌**
@@ -3128,15 +1771,7 @@
 ```text
 {
   "additionalProperties": 0,
-  "properties": {
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
+  "properties": {"realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"}}
 }
 ```
 
@@ -3157,15 +1792,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/access/realm",
-    [
-      "Realm.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -3236,313 +1863,86 @@
   "additionalProperties": 0,
   "properties": {
     "acr-values": {
-      "description": "指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。",
-      "optional": 1,
-      "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
+      "description": "指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。", "optional": 1, "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
       "type": "string"
     },
     "audiences": {
-      "description": "除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。",
-      "optional": 1,
-      "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$",
-      "type": "string"
+      "description": "除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。", "optional": 1, "pattern": "^[^\\x00-\\x1F\\x7F <>#\"]*$", "type": "string"
     },
-    "autocreate": {
-      "default": 0,
-      "description": "如果用户不存在，则自动创建。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "base_dn": {
-      "description": "LDAP 基础域名",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "bind_dn": {
-      "description": "LDAP 绑定域名",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "capath": {
-      "default": "/etc/ssl/certs",
-      "description": "CA 证书存储路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "case-sensitive": {
-      "default": 1,
-      "description": "用户名区分大小写",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "cert": {
-      "description": "客户端证书路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "certkey": {
-      "description": "客户端证书密钥路径",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "check-connection": {
-      "default": 0,
-      "description": "检查到服务器的绑定连接。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "client-id": {
-      "description": "OpenID 客户端 ID",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "client-key": {
-      "description": "OpenID 客户端密钥",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "comment": {
-      "description": "描述。",
-      "maxLength": 4096,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "default": {
-      "description": "将此认证域用作默认认证域",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "delete": {
-      "description": "要删除的设置列表。",
-      "format": "pve-configid-list",
-      "maxLength": 4096,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "autocreate": {"default": 0, "description": "如果用户不存在，则自动创建。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "base_dn": {"description": "LDAP 基础域名", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "bind_dn": {"description": "LDAP 绑定域名", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "capath": {"default": "/etc/ssl/certs", "description": "CA 证书存储路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "case-sensitive": {"default": 1, "description": "用户名区分大小写", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "cert": {"description": "客户端证书路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "certkey": {"description": "客户端证书密钥路径", "optional": 1, "type": "string", "typetext": "<string>"},
+    "check-connection": {"default": 0, "description": "检查到服务器的绑定连接。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "client-id": {"description": "OpenID 客户端 ID", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "client-key": {"description": "OpenID 客户端密钥", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "comment": {"description": "描述。", "maxLength": 4096, "optional": 1, "type": "string", "typetext": "<string>"},
+    "default": {"description": "将此认证域用作默认认证域", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "delete": {"description": "要删除的设置列表。", "format": "pve-configid-list", "maxLength": 4096, "optional": 1, "type": "string", "typetext": "<string>"},
     "digest": {
-      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。",
-      "maxLength": 64,
-      "optional": 1,
-      "type": "string",
+      "description": "如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。", "maxLength": 64, "optional": 1, "type": "string",
       "typetext": "<string>"
     },
-    "domain": {
-      "description": "AD 域名",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "\\S+",
-      "type": "string"
-    },
-    "filter": {
-      "description": "用户同步的 LDAP 过滤器。",
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "domain": {"description": "AD 域名", "maxLength": 256, "optional": 1, "pattern": "\\S+", "type": "string"},
+    "filter": {"description": "用户同步的 LDAP 过滤器。", "maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
     "group_classes": {
-      "default": "groupOfNames, group, univentionGroup, ipausergroup",
-      "description": "组的 objectclass。",
-      "format": "ldap-simple-attr-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "default": "groupOfNames, group, univentionGroup, ipausergroup", "description": "组的 objectclass。", "format": "ldap-simple-attr-list", "optional": 1,
+      "type": "string", "typetext": "<string>"
     },
     "group_dn": {
-      "description": "组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "group_filter": {
-      "description": "组同步的 LDAP 过滤器。",
-      "maxLength": 2048,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "group_filter": {"description": "组同步的 LDAP 过滤器。", "maxLength": 2048, "optional": 1, "type": "string", "typetext": "<string>"},
     "group_name_attr": {
-      "description": "表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。",
-      "format": "ldap-simple-attr",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。", "format": "ldap-simple-attr", "maxLength": 256,
+      "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "groups-autocreate": {
-      "default": 0,
-      "description": "如果组不存在，则自动创建。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "groups-claim": {
-      "description": "用于获取组的 OpenID 声明。",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "(?^:[A-Za-z0-9\\.\\-_]+)",
-      "type": "string"
-    },
-    "groups-overwrite": {
-      "default": 0,
-      "description": "用户登录时将覆盖其所有组。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "issuer-url": {
-      "description": "OpenID 颁发者 URL",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "mode": {
-      "default": "ldap",
-      "description": "LDAP 协议模式。",
-      "enum": [
-        "ldap",
-        "ldaps",
-        "ldap+starttls"
-      ],
-      "optional": 1,
-      "type": "string"
-    },
-    "password": {
-      "description": "LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/<REALM>.pw'。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "port": {
-      "description": "服务器端口。",
-      "maximum": 65535,
-      "minimum": 1,
-      "optional": 1,
-      "type": "integer",
-      "typetext": "<integer> (1 - 65535)"
-    },
+    "groups-autocreate": {"default": 0, "description": "如果组不存在，则自动创建。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "groups-claim": {"description": "用于获取组的 OpenID 声明。", "maxLength": 256, "optional": 1, "pattern": "(?^:[A-Za-z0-9\\.\\-_]+)", "type": "string"},
+    "groups-overwrite": {"default": 0, "description": "用户登录时将覆盖其所有组。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "issuer-url": {"description": "OpenID 颁发者 URL", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
+    "mode": {"default": "ldap", "description": "LDAP 协议模式。", "enum": ["ldap", "ldaps", "ldap+starttls"], "optional": 1, "type": "string"},
+    "password": {"description": "LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/<REALM>.pw'。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "port": {"description": "服务器端口。", "maximum": 65535, "minimum": 1, "optional": 1, "type": "integer", "typetext": "<integer> (1 - 65535)"},
     "prompt": {
-      "description": "指定授权服务器是否提示最终用户重新身份验证并表示同意。",
-      "optional": 1,
-      "pattern": "(?:none|login|consent|select_account|\\S+)",
+      "description": "指定授权服务器是否提示最终用户重新身份验证并表示同意。", "optional": 1, "pattern": "(?:none|login|consent|select_account|\\S+)",
       "type": "string"
     },
-    "query-userinfo": {
-      "default": 1,
-      "description": "启用查询 userinfo 端点以获取声明值。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "query-userinfo": {"default": 1, "description": "启用查询 userinfo 端点以获取声明值。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"},
     "scopes": {
-      "default": "email profile",
-      "description": "指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。",
-      "optional": 1,
-      "type": "string",
+      "default": "email profile", "description": "指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。", "optional": 1, "type": "string",
       "typetext": "<string>"
     },
-    "secure": {
-      "description": "使用安全的 LDAPS 协议。已弃用：请改用 'mode'。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "server1": {
-      "description": "服务器 IP 地址（或 DNS 名称）",
-      "format": "address",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "secure": {"description": "使用安全的 LDAPS 协议。已弃用：请改用 'mode'。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "server1": {"description": "服务器 IP 地址（或 DNS 名称）", "format": "address", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"},
     "server2": {
-      "description": "后备服务器 IP 地址（或 DNS 名称）",
-      "format": "address",
-      "maxLength": 256,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "后备服务器 IP 地址（或 DNS 名称）", "format": "address", "maxLength": 256, "optional": 1, "type": "string", "typetext": "<string>"
     },
     "sslversion": {
-      "description": "LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！",
-      "enum": [
-        "tlsv1",
-        "tlsv1_1",
-        "tlsv1_2",
-        "tlsv1_3"
-      ],
-      "optional": 1,
-      "type": "string"
+      "description": "LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！", "enum": ["tlsv1", "tlsv1_1", "tlsv1_2", "tlsv1_3"], "optional": 1, "type": "string"
     },
     "sync-defaults-options": {
-      "description": "同步行为的默认选项。",
-      "format": "realm-sync-options",
-      "optional": 1,
-      "type": "string",
+      "description": "同步行为的默认选项。", "format": "realm-sync-options", "optional": 1, "type": "string",
       "typetext": "[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]"
     },
     "sync_attributes": {
       "description": "以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。",
-      "optional": 1,
-      "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*",
-      "type": "string"
+      "optional": 1, "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*", "type": "string"
     },
     "tfa": {
-      "description": "使用双因素身份验证。",
-      "format": "pve-tfa-config",
-      "maxLength": 128,
-      "optional": 1,
-      "type": "string",
+      "description": "使用双因素身份验证。", "format": "pve-tfa-config", "maxLength": 128, "optional": 1, "type": "string",
       "typetext": "type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]"
     },
-    "user_attr": {
-      "description": "LDAP 用户属性名称",
-      "maxLength": 256,
-      "optional": 1,
-      "pattern": "\\S{2,}",
-      "type": "string"
-    },
+    "user_attr": {"description": "LDAP 用户属性名称", "maxLength": 256, "optional": 1, "pattern": "\\S{2,}", "type": "string"},
     "user_classes": {
-      "default": "inetorgperson, posixaccount, person, user",
-      "description": "用户的 objectclass。",
-      "format": "ldap-simple-attr-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "default": "inetorgperson, posixaccount, person, user", "description": "用户的 objectclass。", "format": "ldap-simple-attr-list", "optional": 1,
+      "type": "string", "typetext": "<string>"
     },
-    "verify": {
-      "default": 0,
-      "description": "验证服务器的 SSL 证书",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    }
+    "verify": {"default": 0, "description": "验证服务器的 SSL 证书", "optional": 1, "type": "boolean", "typetext": "<boolean>"}
   },
   "type": "object"
 }
@@ -3553,9 +1953,7 @@
 #### 返回值 <a href="#api-access-domains-realm-0f82ea36-put-returns" id="api-access-domains-realm-0f82ea36-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm})。
@@ -3574,23 +1972,7 @@
 
 ```text
 {
-  "check": [
-    "and",
-    [
-      "perm",
-      "/access/realm/{realm}",
-      [
-        "Realm.AllocateUser"
-      ]
-    ],
-    [
-      "perm",
-      "/access/groups",
-      [
-        "User.Modify"
-      ]
-    ]
-  ],
+  "check": ["and", ["perm", "/access/realm/{realm}", ["Realm.AllocateUser"]], ["perm", "/access/groups", ["User.Modify"]]],
   "description": "需要对 '/access/realm/<realm>' 具有 'Realm.AllocateUser' 权限，以及  对 '/access/groups/' 具有 'User.Modify' 权限。"
 }
 ```
@@ -3626,57 +2008,23 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "dry-run": {
-      "default": 0,
-      "description": "如果设置，则不写入任何内容。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "enable-new": {
-      "default": "1",
-      "description": "立即启用新同步的用户。",
-      "optional": "1",
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
+    "dry-run": {"default": 0, "description": "如果设置，则不写入任何内容。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "enable-new": {"default": "1", "description": "立即启用新同步的用户。", "optional": "1", "type": "boolean", "typetext": "<boolean>"},
     "full": {
       "description": "已弃用：请改用 'remove-vanished'。如果设置，则将 LDAP 目录视为权威来源，删除同步未返回的用户或组，并移除同步用户的所有本地修改属性。如果未设置，则仅同步同步数据中存在的信息，不会删除或修改其他任何内容。",
-      "optional": "1",
-      "type": "boolean",
-      "typetext": "<boolean>"
+      "optional": "1", "type": "boolean", "typetext": "<boolean>"
     },
     "purge": {
-      "description": "已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。",
-      "optional": "1",
-      "type": "boolean",
-      "typetext": "<boolean>"
+      "description": "已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。", "optional": "1", "type": "boolean", "typetext": "<boolean>"
     },
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"},
     "remove-vanished": {
       "default": "none",
       "description": "以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。",
-      "optional": "1",
-      "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none",
-      "type": "string",
+      "optional": "1", "pattern": "(?:(?:(?:acl|properties|entry);)*(?:acl|properties|entry))|none", "type": "string",
       "typetext": "([acl];[properties];[entry])|none"
     },
-    "scope": {
-      "description": "选择要同步的内容。",
-      "enum": [
-        "users",
-        "groups",
-        "both"
-      ],
-      "optional": "1",
-      "type": "string"
-    }
+    "scope": {"description": "选择要同步的内容。", "enum": ["users", "groups", "both"], "optional": "1", "type": "string"}
   }
 }
 ```
@@ -3686,10 +2034,7 @@
 #### 返回值 <a href="#api-access-domains-realm-sync-388cb8d1-post-returns" id="api-access-domains-realm-sync-388cb8d1-post-returns"></a>
 
 ```text
-{
-  "description": "工作任务 UPID",
-  "type": "string"
-}
+{"description": "工作任务 UPID", "type": "string"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}/sync)。
@@ -3707,9 +2052,7 @@
 **权限**
 
 ```text
-{
-  "user": "all"
-}
+{"user": "all"}
 ```
 
 **允许 API 令牌**
@@ -3725,23 +2068,7 @@
 #### 返回值 <a href="#api-access-openid-12c1d0b0-get-returns" id="api-access-openid-12c1d0b0-get-returns"></a>
 
 ```text
-{
-  "items": {
-    "properties": {
-      "subdir": {
-        "type": "string"
-      }
-    },
-    "type": "object"
-  },
-  "links": [
-    {
-      "href": "{subdir}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
-}
+{"items": {"properties": {"subdir": {"type": "string"}}, "type": "object"}, "links": [{"href": "{subdir}", "rel": "child"}], "type": "array"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid)。
@@ -3759,9 +2086,7 @@
 **权限**
 
 ```text
-{
-  "user": "world"
-}
+{"user": "world"}
 ```
 
 **允许 API 令牌**
@@ -3790,18 +2115,9 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "realm": {
-      "description": "认证域 ID",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "realm": {"description": "认证域 ID", "format": "pve-realm", "maxLength": 32, "type": "string", "typetext": "<string>"},
     "redirect-url": {
-      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。",
-      "maxLength": 255,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。", "maxLength": 255, "type": "string", "typetext": "<string>"
     }
   }
 }
@@ -3812,10 +2128,7 @@
 #### 返回值 <a href="#api-access-openid-auth-url-ec28351f-post-returns" id="api-access-openid-auth-url-ec28351f-post-returns"></a>
 
 ```text
-{
-  "description": "重定向 URL。",
-  "type": "string"
-}
+{"description": "重定向 URL。", "type": "string"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url)。
@@ -3833,9 +2146,7 @@
 **权限**
 
 ```text
-{
-  "user": "world"
-}
+{"user": "world"}
 ```
 
 **允许 API 令牌**
@@ -3865,24 +2176,11 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "code": {
-      "description": "OpenID 授权码。",
-      "maxLength": 4096,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "code": {"description": "OpenID 授权码。", "maxLength": 4096, "type": "string", "typetext": "<string>"},
     "redirect-url": {
-      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。",
-      "maxLength": 255,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。", "maxLength": 255, "type": "string", "typetext": "<string>"
     },
-    "state": {
-      "description": "OpenID 状态。",
-      "maxLength": 1024,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "state": {"description": "OpenID 状态。", "maxLength": 1024, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -3894,22 +2192,8 @@
 ```text
 {
   "properties": {
-    "CSRFPreventionToken": {
-      "type": "string"
-    },
-    "cap": {
-      "type": "object"
-    },
-    "clustername": {
-      "optional": 1,
-      "type": "string"
-    },
-    "ticket": {
-      "type": "string"
-    },
-    "username": {
-      "type": "string"
-    }
+    "CSRFPreventionToken": {"type": "string"}, "cap": {"type": "object"}, "clustername": {"optional": 1, "type": "string"}, "ticket": {"type": "string"},
+    "username": {"type": "string"}
   }
 }
 ```
@@ -3929,10 +2213,7 @@
 **权限**
 
 ```text
-{
-  "description": "根据权限返回所有用户或仅已登录用户。",
-  "user": "all"
-}
+{"description": "根据权限返回所有用户或仅已登录用户。", "user": "all"}
 ```
 
 **允许 API 令牌**
@@ -3962,64 +2243,23 @@
         "items": {
           "description": "TFA 条目。",
           "properties": {
-            "created": {
-              "description": "此条目的创建时间，以 UNIX 纪元时间表示。",
-              "type": "integer"
-            },
-            "description": {
-              "description": "用户为此条目选择的描述。",
-              "type": "string"
-            },
-            "enable": {
-              "default": 1,
-              "description": "此 TFA 条目当前是否已启用。",
-              "optional": 1,
-              "type": "boolean"
-            },
-            "id": {
-              "description": "用于引用此条目的 ID。",
-              "type": "string"
-            },
-            "type": {
-              "description": "TFA 条目类型。",
-              "enum": [
-                "totp",
-                "u2f",
-                "webauthn",
-                "recovery",
-                "yubico"
-              ],
-              "type": "string"
-            }
+            "created": {"description": "此条目的创建时间，以 UNIX 纪元时间表示。", "type": "integer"},
+            "description": {"description": "用户为此条目选择的描述。", "type": "string"},
+            "enable": {"default": 1, "description": "此 TFA 条目当前是否已启用。", "optional": 1, "type": "boolean"},
+            "id": {"description": "用于引用此条目的 ID。", "type": "string"},
+            "type": {"description": "TFA 条目类型。", "enum": ["totp", "u2f", "webauthn", "recovery", "yubico"], "type": "string"}
           },
           "type": "object"
         },
         "type": "array"
       },
-      "tfa-locked-until": {
-        "description": "包含用户第二因素锁定截止时间的时间戳。",
-        "optional": 1,
-        "type": "integer"
-      },
-      "totp-locked": {
-        "description": "如果用户当前被锁定而无法使用 TOTP 因素，则为 true。",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "userid": {
-        "description": "此条目所属的用户。",
-        "type": "string"
-      }
+      "tfa-locked-until": {"description": "包含用户第二因素锁定截止时间的时间戳。", "optional": 1, "type": "integer"},
+      "totp-locked": {"description": "如果用户当前被锁定而无法使用 TOTP 因素，则为 true。", "optional": 1, "type": "boolean"},
+      "userid": {"description": "此条目所属的用户。", "type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{userid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{userid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -4038,22 +2278,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify",
-        "Sys.Audit"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
 **允许 API 令牌**
@@ -4081,13 +2306,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4102,45 +2321,15 @@
   "items": {
     "description": "TFA 条目。",
     "properties": {
-      "created": {
-        "description": "此条目的创建时间，以 UNIX 纪元时间表示。",
-        "type": "integer"
-      },
-      "description": {
-        "description": "用户为此条目选择的描述。",
-        "type": "string"
-      },
-      "enable": {
-        "default": 1,
-        "description": "此 TFA 条目当前是否已启用。",
-        "optional": 1,
-        "type": "boolean"
-      },
-      "id": {
-        "description": "用于引用此条目的 ID。",
-        "type": "string"
-      },
-      "type": {
-        "description": "TFA 条目类型。",
-        "enum": [
-          "totp",
-          "u2f",
-          "webauthn",
-          "recovery",
-          "yubico"
-        ],
-        "type": "string"
-      }
+      "created": {"description": "此条目的创建时间，以 UNIX 纪元时间表示。", "type": "integer"},
+      "description": {"description": "用户为此条目选择的描述。", "type": "string"},
+      "enable": {"default": 1, "description": "此 TFA 条目当前是否已启用。", "optional": 1, "type": "boolean"},
+      "id": {"description": "用于引用此条目的 ID。", "type": "string"},
+      "type": {"description": "TFA 条目类型。", "enum": ["totp", "u2f", "webauthn", "recovery", "yubico"], "type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{id}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{id}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -4153,21 +2342,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -4201,57 +2376,13 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "challenge": {
-      "description": "响应 U2F 质询时：原始质询字符串",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "description": {
-      "description": "用于区分多个条目的描述",
-      "maxLength": 255,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "password": {
-      "description": "执行更改的用户的当前密码。",
-      "maxLength": 64,
-      "minLength": 5,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "totp": {
-      "description": "TOTP URI。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "type": {
-      "description": "TFA 条目类型。",
-      "enum": [
-        "totp",
-        "u2f",
-        "webauthn",
-        "recovery",
-        "yubico"
-      ],
-      "type": "string"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "value": {
-      "description": "提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "challenge": {"description": "响应 U2F 质询时：原始质询字符串", "optional": 1, "type": "string", "typetext": "<string>"},
+    "description": {"description": "用于区分多个条目的描述", "maxLength": 255, "optional": 1, "type": "string", "typetext": "<string>"},
+    "password": {"description": "执行更改的用户的当前密码。", "maxLength": 64, "minLength": 5, "optional": 1, "type": "string", "typetext": "<string>"},
+    "totp": {"description": "TOTP URI。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "type": {"description": "TFA 条目类型。", "enum": ["totp", "u2f", "webauthn", "recovery", "yubico"], "type": "string"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"},
+    "value": {"description": "提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4263,23 +2394,10 @@
 ```text
 {
   "properties": {
-    "challenge": {
-      "description": "添加 U2F 条目时，此项包含用户必须响应以完成注册的质询。",
-      "optional": 1,
-      "type": "string"
-    },
-    "id": {
-      "description": "新添加的 TFA 条目的 ID。",
-      "type": "string"
-    },
+    "challenge": {"description": "添加 U2F 条目时，此项包含用户必须响应以完成注册的质询。", "optional": 1, "type": "string"},
+    "id": {"description": "新添加的 TFA 条目的 ID。", "type": "string"},
     "recovery": {
-      "description": "添加恢复码时，此项包含要向用户显示的恢复码列表",
-      "items": {
-        "description": "恢复条目。",
-        "type": "string"
-      },
-      "optional": 1,
-      "type": "array"
+      "description": "添加恢复码时，此项包含要向用户显示的恢复码列表", "items": {"description": "恢复条目。", "type": "string"}, "optional": 1, "type": "array"
     }
   },
   "type": "object"
@@ -4301,21 +2419,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -4345,26 +2449,9 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "id": {
-      "description": "TFA 条目 ID。",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "password": {
-      "description": "执行更改的用户的当前密码。",
-      "maxLength": 64,
-      "minLength": 5,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "id": {"description": "TFA 条目 ID。", "type": "string", "typetext": "<string>"},
+    "password": {"description": "执行更改的用户的当前密码。", "maxLength": 64, "minLength": 5, "optional": 1, "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4374,9 +2461,7 @@
 #### 返回值 <a href="#api-access-tfa-userid-id-2f4086eb-delete-returns" id="api-access-tfa-userid-id-2f4086eb-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/access/tfa/{userid}/{id}` <a href="#api-access-tfa-userid-id-2f4086eb-get" id="api-access-tfa-userid-id-2f4086eb-get"></a>
@@ -4388,22 +2473,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify",
-        "Sys.Audit"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
 **允许 API 令牌**
@@ -4432,18 +2502,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "id": {
-      "description": "TFA 条目 ID。",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "id": {"description": "TFA 条目 ID。", "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4456,35 +2516,11 @@
 {
   "description": "TFA 条目。",
   "properties": {
-    "created": {
-      "description": "此条目的创建时间，以 UNIX 纪元时间表示。",
-      "type": "integer"
-    },
-    "description": {
-      "description": "用户为此条目选择的描述。",
-      "type": "string"
-    },
-    "enable": {
-      "default": 1,
-      "description": "此 TFA 条目当前是否已启用。",
-      "optional": 1,
-      "type": "boolean"
-    },
-    "id": {
-      "description": "用于引用此条目的 ID。",
-      "type": "string"
-    },
-    "type": {
-      "description": "TFA 条目类型。",
-      "enum": [
-        "totp",
-        "u2f",
-        "webauthn",
-        "recovery",
-        "yubico"
-      ],
-      "type": "string"
-    }
+    "created": {"description": "此条目的创建时间，以 UNIX 纪元时间表示。", "type": "integer"},
+    "description": {"description": "用户为此条目选择的描述。", "type": "string"},
+    "enable": {"default": 1, "description": "此 TFA 条目当前是否已启用。", "optional": 1, "type": "boolean"},
+    "id": {"description": "用于引用此条目的 ID。", "type": "string"},
+    "type": {"description": "TFA 条目类型。", "enum": ["totp", "u2f", "webauthn", "recovery", "yubico"], "type": "string"}
   },
   "type": "object"
 }
@@ -4499,21 +2535,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "userid-group",
-      [
-        "User.Modify"
-      ]
-    ]
-  ]
-}
+{"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
 **允许 API 令牌**
@@ -4545,39 +2567,11 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "description": {
-      "description": "用于区分多个条目的描述",
-      "maxLength": 255,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "enable": {
-      "description": "是否应启用此条目用于登录。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "id": {
-      "description": "TFA 条目 ID。",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "password": {
-      "description": "执行更改的用户的当前密码。",
-      "maxLength": 64,
-      "minLength": 5,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "description": {"description": "用于区分多个条目的描述", "maxLength": 255, "optional": 1, "type": "string", "typetext": "<string>"},
+    "enable": {"description": "是否应启用此条目用于登录。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "id": {"description": "TFA 条目 ID。", "type": "string", "typetext": "<string>"},
+    "password": {"description": "执行更改的用户的当前密码。", "maxLength": 64, "minLength": 5, "optional": 1, "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4587,9 +2581,7 @@
 #### 返回值 <a href="#api-access-tfa-userid-id-2f4086eb-put-returns" id="api-access-tfa-userid-id-2f4086eb-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa/{userid}/{id})。
@@ -4607,9 +2599,7 @@
 **权限**
 
 ```text
-{
-  "user": "world"
-}
+{"user": "world"}
 ```
 
 **允许 API 令牌**
@@ -4625,9 +2615,7 @@
 #### 返回值 <a href="#api-access-ticket-bbd93e48-get-returns" id="api-access-ticket-bbd93e48-get-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### POST `/access/ticket` <a href="#api-access-ticket-bbd93e48-post" id="api-access-ticket-bbd93e48-post"></a>
@@ -4639,10 +2627,7 @@
 **权限**
 
 ```text
-{
-  "description": "需要传入有效凭据。",
-  "user": "world"
-}
+{"description": "需要传入有效凭据。", "user": "world"}
 ```
 
 **允许 API 令牌**
@@ -4677,61 +2662,23 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "new-format": {
-      "default": 1,
-      "description": "此参数现在被忽略，并假定为 1。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "otp": {
-      "description": "双因素身份验证的一次性密码。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "password": {
-      "description": "秘密密码。也可以是有效票据。",
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "new-format": {"default": 1, "description": "此参数现在被忽略，并假定为 1。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "otp": {"description": "双因素身份验证的一次性密码。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "password": {"description": "秘密密码。也可以是有效票据。", "type": "string", "typetext": "<string>"},
     "path": {
-      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
-      "maxLength": 64,
-      "optional": 1,
-      "requires": "privs",
-      "type": "string",
+      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限", "maxLength": 64, "optional": 1, "requires": "privs", "type": "string",
       "typetext": "<string>"
     },
     "privs": {
-      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
-      "format": "pve-priv-list",
-      "maxLength": 64,
-      "optional": 1,
-      "requires": "path",
-      "type": "string",
-      "typetext": "<string>"
+      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限", "format": "pve-priv-list", "maxLength": 64, "optional": 1, "requires": "path",
+      "type": "string", "typetext": "<string>"
     },
     "realm": {
-      "description": "可以选择使用此参数传入认证域。通常只需将认证域添加到用户名后，形式为 <username>@<realm>。",
-      "format": "pve-realm",
-      "maxLength": 32,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "可以选择使用此参数传入认证域。通常只需将认证域添加到用户名后，形式为 <username>@<realm>。", "format": "pve-realm", "maxLength": 32,
+      "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "tfa-challenge": {
-      "description": "用户要响应的已签名 TFA 质询字符串。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "username": {
-      "description": "用户名",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "tfa-challenge": {"description": "用户要响应的已签名 TFA 质询字符串。", "optional": 1, "type": "string", "typetext": "<string>"},
+    "username": {"description": "用户名", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4743,21 +2690,8 @@
 ```text
 {
   "properties": {
-    "CSRFPreventionToken": {
-      "optional": 1,
-      "type": "string"
-    },
-    "clustername": {
-      "optional": 1,
-      "type": "string"
-    },
-    "ticket": {
-      "optional": 1,
-      "type": "string"
-    },
-    "username": {
-      "type": "string"
-    }
+    "CSRFPreventionToken": {"optional": 1, "type": "string"}, "clustername": {"optional": 1, "type": "string"}, "ticket": {"optional": 1, "type": "string"},
+    "username": {"type": "string"}
   },
   "type": "object"
 }
@@ -4778,10 +2712,7 @@
 **权限**
 
 ```text
-{
-  "description": "需要传入有效凭据。",
-  "user": "world"
-}
+{"description": "需要传入有效凭据。", "user": "world"}
 ```
 
 **允许 API 令牌**
@@ -4813,36 +2744,14 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "authid": {
-      "description": "UserId 或令牌",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "path": {
-      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "port": {
-      "description": "验证票据对此端口是否有效。",
-      "optional": 1,
-      "type": "integer",
-      "typetext": "<integer>"
-    },
+    "authid": {"description": "UserId 或令牌", "maxLength": 64, "type": "string", "typetext": "<string>"},
+    "path": {"description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限", "maxLength": 64, "type": "string", "typetext": "<string>"},
+    "port": {"description": "验证票据对此端口是否有效。", "optional": 1, "type": "integer", "typetext": "<integer>"},
     "privs": {
-      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限",
-      "format": "pve-priv-list",
-      "maxLength": 64,
-      "type": "string",
+      "description": "验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限", "format": "pve-priv-list", "maxLength": 64, "type": "string",
       "typetext": "<string>"
     },
-    "vncticket": {
-      "description": "VNC 票据。",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "vncticket": {"description": "VNC 票据。", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4852,9 +2761,7 @@
 #### 返回值 <a href="#api-access-vncticket-d992db8d-post-returns" id="api-access-vncticket-d992db8d-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/vncticket)。
@@ -4873,26 +2780,7 @@
 
 ```text
 {
-  "check": [
-    "or",
-    [
-      "userid-param",
-      "self"
-    ],
-    [
-      "and",
-      [
-        "userid-param",
-        "Realm.AllocateUser"
-      ],
-      [
-        "userid-group",
-        [
-          "User.Modify"
-        ]
-      ]
-    ]
-  ],
+  "check": ["or", ["userid-param", "self"], ["and", ["userid-param", "Realm.AllocateUser"], ["userid-group", ["User.Modify"]]]],
   "description": "每个用户都可以更改自己的密码。如果用户具有 'Realm.AllocateUser' 权限（作用于用户 <userid> 所属认证域），且对用户 <userid> 所属的某组的 /access/groups/<group> 具有 'User.Modify' 权限，则可以更改该用户的密码。对于 PAM 认证域，密码更改不会在  整个集群生效，仅适用于本地节点。"
 }
 ```
@@ -4925,27 +2813,10 @@
   "additionalProperties": 0,
   "properties": {
     "confirmation-password": {
-      "description": "执行更改的用户的当前密码。",
-      "maxLength": 64,
-      "minLength": 5,
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "执行更改的用户的当前密码。", "maxLength": 64, "minLength": 5, "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "password": {
-      "description": "新密码。",
-      "maxLength": 64,
-      "minLength": 8,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "userid": {
-      "description": "完整用户 ID，采用 `name@realm` 格式。",
-      "format": "pve-userid",
-      "maxLength": 64,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "password": {"description": "新密码。", "maxLength": 64, "minLength": 8, "type": "string", "typetext": "<string>"},
+    "userid": {"description": "完整用户 ID，采用 `name@realm` 格式。", "format": "pve-userid", "maxLength": 64, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -4955,9 +2826,7 @@
 #### 返回值 <a href="#api-access-password-d9022417-put-returns" id="api-access-password-d9022417-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password)。
@@ -5001,17 +2870,10 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "path": {
-      "description": "仅导出此特定路径，而非整棵树。",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "path": {"description": "仅导出此特定路径，而非整棵树。", "optional": 1, "type": "string", "typetext": "<string>"},
     "userid": {
-      "description": "用户 ID 或完整 API 令牌 ID",
-      "optional": 1,
-      "pattern": "(?^:^(?^:[^\\s:/]+)\\@(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)(?:!(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+))?$)",
-      "type": "string"
+      "description": "用户 ID 或完整 API 令牌 ID", "optional": 1,
+      "pattern": "(?^:^(?^:[^\\s:/]+)\\@(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+)(?:!(?^:[A-Za-z][A-Za-z0-9\\.\\-_]+))?$)", "type": "string"
     }
   }
 }
@@ -5022,10 +2884,7 @@
 #### 返回值 <a href="#api-access-permissions-f180524f-get-returns" id="api-access-permissions-f180524f-get-returns"></a>
 
 ```text
-{
-  "description": "\"path\" =>（\"privilege\" => \"propagate boolean\" 的映射）的映射。",
-  "type": "object"
-}
+{"description": "\"path\" =>（\"privilege\" => \"propagate boolean\" 的映射）的映射。", "type": "object"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions)。

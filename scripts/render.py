@@ -1,6 +1,6 @@
 """Render translated, structurally preserved HTML into GitBook-native Markdown."""
 from __future__ import annotations
-import argparse, collections, copy, hashlib, html, json, os, re
+import argparse, collections, copy, hashlib, html, json, os, re, unicodedata
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
 from bs4 import BeautifulSoup, NavigableString
@@ -248,6 +248,44 @@ def write(path,text):
 def cell(value):
     return html.escape(str(value),quote=False).replace('|',r'\|').replace('\r','').replace('\n','<br>')
 
+def api_json(value,max_width=160):
+    """Format generated API JSON compactly without changing any JSON token.
+
+    Keep larger containers indented, but fit small containers and adjacent simple
+    fields on one line. Count CJK characters as two columns. A single long key or
+    string stays intact even when it exceeds the preferred width.
+    """
+    def width(text):
+        return sum(0 if unicodedata.combining(char) or unicodedata.category(char)=='Cf'
+                   else 2 if unicodedata.east_asian_width(char) in 'WF' else 1
+                   for char in text)
+    def emit(node,depth,prefix,trailing=False):
+        comma=',' if trailing else ''
+        flat=json.dumps(node,ensure_ascii=False,separators=(', ',': '))
+        if width(prefix+flat+comma)<=max_width or not isinstance(node,(dict,list)) or not node:
+            return [prefix+flat+comma]
+        is_object=isinstance(node,dict)
+        lines=[prefix+('{' if is_object else '[')]
+        entries=list(node.items()) if is_object else list(enumerate(node))
+        indent='  '*(depth+1);pending=''
+        for index,(key,child) in enumerate(entries):
+            child_prefix=indent+(json.dumps(key,ensure_ascii=False)+': ' if is_object else '')
+            child_lines=emit(child,depth+1,child_prefix,index<len(entries)-1)
+            if len(child_lines)==1:
+                addition=child_lines[0].lstrip()
+                if pending and width(pending+' '+addition)<=max_width:
+                    pending+=' '+addition
+                else:
+                    if pending:lines.append(pending)
+                    pending=child_lines[0]
+            else:
+                if pending:lines.append(pending);pending=''
+                lines.extend(child_lines)
+        if pending:lines.append(pending)
+        lines.append('  '*depth+('}' if is_object else ']')+comma)
+        return lines
+    return '\n'.join(emit(value,0,''))
+
 def api_pages():
     # Plain code blocks keep full JSON readable without expensive token highlighting in GitBook.
     schema=json.loads((ROOT/'source/api/schema.json').read_text());groups=[];operations=0
@@ -268,7 +306,7 @@ def api_pages():
                     if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
-                            body += [f'**{label}**\n', '```text\n'+json.dumps(info[field],ensure_ascii=False,indent=2)+'\n```\n']
+                            body += [f'**{label}**\n', '```text\n'+api_json(info[field])+'\n```\n']
                     params=info.get('parameters',{});props=params.get('properties',{})
                     body.append(f'#### 请求参数 <a href="#{method_anchor}-parameters" id="{method_anchor}-parameters"></a>\n')
                     if props:
@@ -279,11 +317,11 @@ def api_pages():
                             desc=v.get('verbose_description') or v.get('description','')
                             if v.get('enum') is not None:desc+='；可选值：'+', '.join('`'+str(z)+'`' for z in v['enum'])
                             body.append('| '+' | '.join([f'`{key}`',cell(typ),'是' if required else '否',cell(json.dumps(v['default'],ensure_ascii=False)) if 'default' in v else '—',cell(desc)])+' |')
-                        body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```text\n'+json.dumps(params,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
+                        body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```text\n'+api_json(params)+'\n```\n','</details>\n']
                     else:body+=['此操作没有请求参数。\n']
-                    body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```text\n'+json.dumps(info.get('returns',{}),ensure_ascii=False,indent=2)+'\n```\n']
+                    body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```text\n'+api_json(info.get('returns',{}))+'\n```\n']
                     extras={k:v for k,v in info.items() if k not in {'method','name','description','parameters','returns','permissions','allowtoken','protected','proxyto'}}
-                    if extras:body+=['<details>\n<summary>其他接口元数据</summary>\n','```text\n'+json.dumps(extras,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
+                    if extras:body+=['<details>\n<summary>其他接口元数据</summary>\n','```text\n'+api_json(extras)+'\n```\n','</details>\n']
                 body.append(f'来源：[官方 API 浏览器]({BASE}api-viewer/index.html#{path})。')
                 groups[-1]['body'].append('\n'.join(body));groups[-1]['pages'].append((path,target,anchor))
             walk(n.get('children',[]),path)

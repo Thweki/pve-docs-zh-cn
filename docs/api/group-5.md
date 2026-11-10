@@ -15,16 +15,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Allocate"
-    ]
-  ],
-  "description": "只能删除空资源池（无成员）。"
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "只能删除空资源池（无成员）。"}
 ```
 
 **允许 API 令牌**
@@ -49,16 +40,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -66,9 +48,7 @@
 #### 返回值 <a href="#api-pools-4eb15ae6-delete-returns" id="api-pools-4eb15ae6-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/pools` <a href="#api-pools-4eb15ae6-get" id="api-pools-4eb15ae6-get"></a>
@@ -80,10 +60,7 @@
 **权限**
 
 ```text
-{
-  "description": "列出您对 /pool/<pool> 具有 Pool.Audit 权限的所有资源池，或使用 {poolid} 指定的资源池",
-  "user": "all"
-}
+{"description": "列出您对 /pool/<pool> 具有 Pool.Audit 权限的所有资源池，或使用 {poolid} 指定的资源池", "user": "all"}
 ```
 
 **允许 API 令牌**
@@ -106,22 +83,8 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "poolid": {
-      "format": "pve-poolid",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "type": {
-      "enum": [
-        "qemu",
-        "lxc",
-        "storage"
-      ],
-      "optional": 1,
-      "requires": "poolid",
-      "type": "string"
-    }
+    "poolid": {"format": "pve-poolid", "optional": 1, "type": "string", "typetext": "<string>"},
+    "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "requires": "poolid", "type": "string"}
   }
 }
 ```
@@ -134,56 +97,23 @@
 {
   "items": {
     "properties": {
-      "comment": {
-        "optional": 1,
-        "type": "string"
-      },
+      "comment": {"optional": 1, "type": "string"},
       "members": {
         "items": {
           "additionalProperties": 1,
           "properties": {
-            "id": {
-              "type": "string"
-            },
-            "node": {
-              "type": "string"
-            },
-            "storage": {
-              "optional": 1,
-              "type": "string"
-            },
-            "type": {
-              "enum": [
-                "qemu",
-                "lxc",
-                "openvz",
-                "storage"
-              ],
-              "type": "string"
-            },
-            "vmid": {
-              "optional": 1,
-              "type": "integer"
-            }
+            "id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"},
+            "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}
           },
           "type": "object"
         },
-        "optional": 1,
-        "type": "array"
+        "optional": 1, "type": "array"
       },
-      "poolid": {
-        "type": "string"
-      }
+      "poolid": {"type": "string"}
     },
     "type": "object"
   },
-  "links": [
-    {
-      "href": "{poolid}",
-      "rel": "child"
-    }
-  ],
-  "type": "array"
+  "links": [{"href": "{poolid}", "rel": "child"}], "type": "array"
 }
 ```
 
@@ -196,15 +126,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Allocate"
-    ]
-  ]
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]]}
 ```
 
 **允许 API 令牌**
@@ -233,16 +155,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"}, "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -252,9 +165,7 @@
 #### 返回值 <a href="#api-pools-4eb15ae6-post-returns" id="api-pools-4eb15ae6-post-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### PUT `/pools` <a href="#api-pools-4eb15ae6-put" id="api-pools-4eb15ae6-put"></a>
@@ -266,16 +177,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Allocate"
-    ]
-  ],
-  "description": "还需要有权修改所添加/删除的任何对象的权限。"
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "还需要有权修改所添加/删除的任何对象的权限。"}
 ```
 
 **允许 API 令牌**
@@ -309,43 +211,16 @@
   "additionalProperties": 0,
   "properties": {
     "allow-move": {
-      "default": 0,
-      "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。",
-      "optional": 1,
-      "type": "boolean",
+      "default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean",
       "typetext": "<boolean>"
     },
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "delete": {
-      "default": 0,
-      "description": "移除传入的 VMID 和/或存储 ID，而非添加。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
+    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
     "storage": {
-      "description": "要添加到此资源池或从中移除的存储 ID 列表。",
-      "format": "pve-storage-id-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "vms": {
-      "description": "要添加到此资源池或从中移除的客户机 VMID 列表。",
-      "format": "pve-vmid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "vms": {"description": "要添加到此资源池或从中移除的客户机 VMID 列表。", "format": "pve-vmid-list", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -355,9 +230,7 @@
 #### 返回值 <a href="#api-pools-4eb15ae6-put-returns" id="api-pools-4eb15ae6-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools)。
@@ -375,16 +248,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Allocate"
-    ]
-  ],
-  "description": "只能删除空资源池（无成员）。"
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "只能删除空资源池（无成员）。"}
 ```
 
 **允许 API 令牌**
@@ -409,16 +273,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    }
-  }
-}
+{"additionalProperties": 0, "properties": {"poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -426,9 +281,7 @@
 #### 返回值 <a href="#api-pools-poolid-654b0ce2-delete-returns" id="api-pools-poolid-654b0ce2-delete-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 ### GET `/pools/{poolid}` <a href="#api-pools-poolid-654b0ce2-get" id="api-pools-poolid-654b0ce2-get"></a>
@@ -440,15 +293,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Audit"
-    ]
-  ]
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Audit"]]}
 ```
 
 **允许 API 令牌**
@@ -471,20 +316,7 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "type": {
-      "enum": [
-        "qemu",
-        "lxc",
-        "storage"
-      ],
-      "optional": 1,
-      "type": "string"
-    }
+    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}, "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "type": "string"}
   }
 }
 ```
@@ -497,37 +329,13 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "comment": {
-      "optional": 1,
-      "type": "string"
-    },
+    "comment": {"optional": 1, "type": "string"},
     "members": {
       "items": {
         "additionalProperties": 1,
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "node": {
-            "type": "string"
-          },
-          "storage": {
-            "optional": 1,
-            "type": "string"
-          },
-          "type": {
-            "enum": [
-              "qemu",
-              "lxc",
-              "openvz",
-              "storage"
-            ],
-            "type": "string"
-          },
-          "vmid": {
-            "optional": 1,
-            "type": "integer"
-          }
+          "id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"},
+          "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}
         },
         "type": "object"
       },
@@ -547,16 +355,7 @@
 **权限**
 
 ```text
-{
-  "check": [
-    "perm",
-    "/pool/{poolid}",
-    [
-      "Pool.Allocate"
-    ]
-  ],
-  "description": "还需要有权修改所添加/删除的任何对象的权限。"
-}
+{"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "还需要有权修改所添加/删除的任何对象的权限。"}
 ```
 
 **允许 API 令牌**
@@ -590,43 +389,16 @@
   "additionalProperties": 0,
   "properties": {
     "allow-move": {
-      "default": 0,
-      "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。",
-      "optional": 1,
-      "type": "boolean",
+      "default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean",
       "typetext": "<boolean>"
     },
-    "comment": {
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    },
-    "delete": {
-      "default": 0,
-      "description": "移除传入的 VMID 和/或存储 ID，而非添加。",
-      "optional": 1,
-      "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "poolid": {
-      "format": "pve-poolid",
-      "type": "string",
-      "typetext": "<string>"
-    },
+    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
+    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
+    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
     "storage": {
-      "description": "要添加到此资源池或从中移除的存储 ID 列表。",
-      "format": "pve-storage-id-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
+      "description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"
     },
-    "vms": {
-      "description": "要添加到此资源池或从中移除的客户机 VMID 列表。",
-      "format": "pve-vmid-list",
-      "optional": 1,
-      "type": "string",
-      "typetext": "<string>"
-    }
+    "vms": {"description": "要添加到此资源池或从中移除的客户机 VMID 列表。", "format": "pve-vmid-list", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }
 ```
@@ -636,9 +408,7 @@
 #### 返回值 <a href="#api-pools-poolid-654b0ce2-put-returns" id="api-pools-poolid-654b0ce2-put-returns"></a>
 
 ```text
-{
-  "type": "null"
-}
+{"type": "null"}
 ```
 
 来源：[官方 API 浏览器](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid})。
