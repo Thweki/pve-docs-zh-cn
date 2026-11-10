@@ -3,7 +3,11 @@
   "organization_id": "wiJoRIFpgRKiwFWMk7SG",
   "site_id": "site_oMGIm",
   "editor_url": "https://app.gitbook.com/o/wiJoRIFpgRKiwFWMk7SG/sites/site_oMGIm",
-  "status": "draft-synced",
+  "status": "published",
   "space_id": "7oTzNREsSIKL4vP8w6Pk",
-  "repository_url": "https://github.com/Thweki/pve-docs-zh-cn"
+  "repository_url": "https://github.com/Thweki/pve-docs-zh-cn",
+  "public_url": "https://thweki.gitbook.io/pve-docs-zh-cn/",
+  "repository_visibility": "public",
+  "release_repository_url": "https://github.com/Thweki/pve-docs-zh-cn-releases",
+  "release_tag": "v9.2.13-zh.1"
 }

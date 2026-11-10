@@ -34,7 +34,8 @@ SNAPSHOT_MANIFEST = 'SOURCE-SNAPSHOT-MANIFEST.json'
 INPUT_DIRS = ('source/html', 'source/api', 'source/prepared', 'source/raw-assets')
 SOURCE_DIRS = ('docs', 'scripts', 'export-assets', 'fonts', 'LICENSES', '.github')
 REPORTS = ('images.json', 'verification.json', 'render.json',
-           'translation-progress.json', 'independent-review.json')
+           'translation-progress.json', 'independent-review.json',
+           'export-verification.json')
 IGNORED_NAMES = {'.DS_Store', '__pycache__', '.git', '.venv', 'node_modules'}
 SECRET_PATTERNS = {
     'private-key': rb'-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP )?PRIVATE KEY(?: BLOCK)?-----',

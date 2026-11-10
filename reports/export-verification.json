@@ -1,0 +1,95 @@
+{
+  "version": "9.2.13",
+  "release": "v9.2.13-zh.1",
+  "layout": "Each handbook chapter, reference manual and API resource group includes all subsections on the same page.",
+  "translation": {
+    "passed": true,
+    "mode": "release",
+    "pages": 72,
+    "translation_units": 11508,
+    "valid_translations": 11508,
+    "missing_translations": 0,
+    "original_code_blocks": 1249,
+    "rendered_original_code_blocks": 1249,
+    "tables": 429,
+    "hints": 751,
+    "image_occurrences": 164,
+    "unique_original_assets": 108,
+    "local_links_checked": 6318,
+    "errors": [],
+    "warnings": [],
+    "english_prose_for_review": []
+  },
+  "web_epub": {
+    "source_content": {
+      "all_content_pages_included": true,
+      "full_text_matches_markdown": true,
+      "code_blocks_exact": true,
+      "pages": 71,
+      "code_blocks": 4671,
+      "images": 164,
+      "tables": 1043,
+      "asset_files_copied_byte_for_byte": 108
+    },
+    "html": {
+      "chapters": 71,
+      "headings": 5048,
+      "ids": 5092,
+      "internal_links": 6168,
+      "images": 164,
+      "tables": 1043,
+      "code_blocks": 4671,
+      "hints": 751
+    },
+    "epub": {
+      "documents": 72,
+      "book_chapters": 71,
+      "images": 103,
+      "fonts": 4,
+      "internal_links_valid": true,
+      "full_text_matches_html": true,
+      "text_characters_without_whitespace": 2155581
+    }
+  },
+  "pdf": {
+    "source_sha256": "f03d992bfc81af1325e796d3160b235a60dc1862aa759651c9a475b3a4f6d704",
+    "source_characters_without_whitespace": 2155581,
+    "source_text_preserved_in_order": true,
+    "chapters": 71,
+    "images": 164,
+    "tables_as_paginated_records": 7,
+    "rendered_pages": 2801,
+    "printable_area_text_overflow_count": 0,
+    "embedded_fonts": [
+      "/GFVMWW+Noto-Sans-CJK-SC-Bold",
+      "/NFAGST+Noto-Sans-CJK-SC",
+      "/OYUPRD+Noto-Sans-Mono-CJK-SC"
+    ],
+    "unembedded_fonts": [],
+    "pdf_bytes": 21165231
+  },
+  "assets": [
+    {
+      "name": "Proxmox-VE-9.2.13-zh-CN.epub",
+      "bytes": 49120734,
+      "sha256": "4b4d57646eb55d02a5cf459830d842aa66e1d516b39080ada77854016e651ec4"
+    },
+    {
+      "name": "Proxmox-VE-9.2.13-zh-CN.pdf",
+      "bytes": 21165231,
+      "sha256": "da8cc9a91d338218229573bf0692b139992bcdf23dba645989e0ed29873c2f97"
+    },
+    {
+      "name": "Proxmox-VE-9.2.13-zh-CN-html.zip",
+      "bytes": 48918786,
+      "sha256": "5b8ab91bff24c0b0b53c184b18606fd2212696c29158369198399497bee33ab4"
+    }
+  ],
+  "html_archive": {
+    "files": 123,
+    "safe_relative_paths": true,
+    "symlinks": 0,
+    "crc_valid": true,
+    "files_byte_identical_to_build": true
+  }
+}

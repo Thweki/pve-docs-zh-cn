@@ -1,5 +1,5 @@
 {
-  "status": "snapshot-ready",
+  "status": "passed",
   "snapshot": {
     "path": "source/upstream-snapshot.tar.gz",
     "bytes": 8635861,
@@ -1355,30 +1355,10 @@
       }
     ]
   },
-  "source_zip": "not built; final source selection happens at package run time",
-  "preflight": {
-    "translations": {
-      "source_units": 11508,
-      "translations": 11508,
-      "validation_errors": 0
-    },
-    "licenses": {
-      "agpl": {
-        "path": "LICENSES/AGPL-3.0.txt",
-        "source_url": "https://www.gnu.org/licenses/agpl-3.0.txt",
-        "bytes": 34523,
-        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
-      },
-      "fonts": {
-        "files_verified": 4,
-        "manifest": "export-assets/fonts/FONT-SOURCES.json",
-        "license": "SIL Open Font License 1.1"
-      }
-    },
-    "runtime_selected_files_at_preflight": 215,
-    "secret_pattern_findings": [],
-    "unsafe_archive_name_rejection_cases": 6,
-    "final_zip": "not built; awaiting SOURCE_PACKAGE_READY and final runtime file selection"
+  "translations": {
+    "source_units": 11508,
+    "translations": 11508,
+    "validation_errors": 0
   },
   "licenses": {
     "agpl": {
@@ -1415,6 +1395,15 @@
       ]
     }
   },
+  "package": {
+    "path": "builds/Proxmox-VE-9.2.13-zh-CN-source.zip",
+    "bytes": 58773133,
+    "sha256": "17a665d537bc3a5ebbfe52112ae4e4b38644524178afd4f121f8fe74c3e8d824",
+    "file_count": 224,
+    "crc_verified": true,
+    "manifest_path": "Proxmox-VE-9.2.13-zh-CN-source/SOURCE-PACKAGE-MANIFEST.json"
+  },
+  "package_findings": [],
   "cold_rebuild": {
     "status": "passed",
     "root": "tmp/source-rebuild",
@@ -1476,11 +1465,15 @@
     "main_docs_byte_identical": true,
     "markdown_differences": []
   },
-  "source_selection_preflight": {
-    "selected_files": 221,
-    "Brewfile_included": true,
-    "export_requirements_included": true,
-    "secret_pattern_findings": [],
-    "final_source_zip": "not built; awaiting SOURCE_PACKAGE_READY"
+  "archive_verification": {
+    "zip_entries": 224,
+    "outer_file_hashes_verified": 223,
+    "nested_source_hashes_verified": 267,
+    "crc_verified": true,
+    "unsafe_or_excluded_entries": 0,
+    "source_publication_excluded": true,
+    "public_gitbook_url_in_readme": true,
+    "runtime_source_files_unchanged_after_packaging": true,
+    "sha256": "17a665d537bc3a5ebbfe52112ae4e4b38644524178afd4f121f8fe74c3e8d824"
   }
 }
