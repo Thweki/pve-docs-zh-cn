@@ -1,4 +1,4 @@
-# 9.2. Schedule Format <a href="#pvesr_schedule_time_format" id="pvesr_schedule_time_format"></a>
+# 9.2. 计划格式 <a href="#pvesr_schedule_time_format" id="pvesr_schedule_time_format"></a>
 
 复制使用 [日历事件](../25-calendar-events/01-chapter-calendar-events.md) 来配置计划。
 

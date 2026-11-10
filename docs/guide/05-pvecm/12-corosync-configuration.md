@@ -1,4 +1,4 @@
-# 5.12. Corosync Configuration <a href="#_corosync_configuration" id="_corosync_configuration"></a>
+# 5.12. Corosync 配置 <a href="#_corosync_configuration" id="_corosync_configuration"></a>
 
 `/etc/pve/corosync.conf` 文件在 Proxmox VE 集群中起着核心作用。它控制集群成员关系及其网络。有关更多信息，请查看 corosync.conf 手册页：
 
@@ -8,7 +8,7 @@ man corosync.conf
 
 对于节点成员关系，您应始终使用 Proxmox VE 提供的 `pvecm` 工具。对于其他更改，您可能需要手动编辑配置文件。以下是一些执行此操作的最佳实践建议。
 
-## 5.12.1. Edit corosync.conf <a href="#pvecm_edit_corosync_conf" id="pvecm_edit_corosync_conf"></a>
+## 5.12.1. 编辑 corosync.conf <a href="#pvecm_edit_corosync_conf" id="pvecm_edit_corosync_conf"></a>
 
 编辑 corosync.conf 文件并不总是很简单直接。每个集群节点上都有两个该文件，一个位于 `/etc/pve/corosync.conf`，另一个位于 `/etc/corosync/corosync.conf`。编辑集群文件系统中的文件会将更改传播到本地文件，但反之则不会。
 
@@ -51,7 +51,7 @@ systemctl restart corosync
 
 出现错误时，请查看下面的故障排除部分。
 
-## 5.12.2. Changing the Token Coefficient <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
+## 5.12.2. 更改令牌系数 <a href="#pvecm_changing_token_coefficient" id="pvecm_changing_token_coefficient"></a>
 
 The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
 
@@ -92,9 +92,9 @@ runtime.config.totem.token (u32) = 4950
 
 After adjusting the `token_coefficient` in `corosync.conf`, recent corosync versions will automatically adopt the new value for the cluster. For corosync versions below `3.1.10-pve1`, corosync needs to be restarted on all nodes for the change to take effect.
 
-## 5.12.3. Troubleshooting <a href="#_troubleshooting" id="_troubleshooting"></a>
+## 5.12.3. 故障排除 <a href="#_troubleshooting" id="_troubleshooting"></a>
 
-### Issue: *quorum.expected\_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
+### 问题：*quorum.expected\_votes 必须进行配置* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
 当 corosync 启动失败并且您在系统日志中收到以下消息时：
 
@@ -108,7 +108,7 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 
 这意味着配置中为 corosync *ringX\_addr* 设置的主机名无法解析。
 
-### Write Configuration When Not Quorate <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
+### 无仲裁时写入配置 <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
 
 如果您需要在无仲裁的节点上更改 */etc/pve/corosync.conf*，并且了解自己在做什么，请使用：
 
@@ -120,7 +120,7 @@ pvecm expected 1
 
 如果 corosync 已无法启动，仅这样做还不够。在这种情况下，最好编辑 */etc/corosync/corosync.conf* 中 corosync 配置的本地副本，以便 corosync 能够再次启动。确保所有节点上的此配置内容相同，以避免脑裂。
 
-## 5.12.4. Corosync Configuration Glossary <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
+## 5.12.4. Corosync 配置术语表 <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
 
 **ringX\_addr**
 

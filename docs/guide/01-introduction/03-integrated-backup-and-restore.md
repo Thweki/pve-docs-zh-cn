@@ -1,4 +1,4 @@
-# 1.3. Integrated Backup and Restore <a href="#_integrated_backup_and_restore" id="_integrated_backup_and_restore"></a>
+# 1.3. 集成备份与恢复 <a href="#_integrated_backup_and_restore" id="_integrated_backup_and_restore"></a>
 
 集成的备份工具（`vzdump`）可为运行中的容器和 KVM 客户机创建一致性快照。它会创建包含虚拟机或容器数据（包括配置文件）的归档文件。
 

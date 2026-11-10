@@ -1,4 +1,4 @@
-# 7.5. Directory Backend <a href="#storage_directory" id="storage_directory"></a>
+# 7.5. 目录后端 <a href="#storage_directory" id="storage_directory"></a>
 
 存储池类型：`dir`
 
@@ -54,7 +54,7 @@ Proxmox VE 可以使用本地目录或本地挂载的共享目录进行存储。
 </tbody>
 </table>
 
-## 7.5.1. Configuration <a href="#_configuration_2" id="_configuration_2"></a>
+## 7.5.1. 配置 <a href="#_configuration_2" id="_configuration_2"></a>
 
 此后端支持所有通用存储属性，并增加了两个附加属性。`path` 属性用于指定目录。该目录必须是绝对文件系统路径。
 
@@ -79,7 +79,7 @@ dir: backup
 
 上述配置定义了一个名为 `backup` 的存储池。该池可用于为每个 VM 存储最多 7 个常规备份（`keep-last=7`）和 3 个受保护备份。备份文件的实际路径为 `/mnt/backup/custom/backup/dir/...`。
 
-## 7.5.2. File naming conventions <a href="#_file_naming_conventions" id="_file_naming_conventions"></a>
+## 7.5.2. 文件命名约定 <a href="#_file_naming_conventions" id="_file_naming_conventions"></a>
 
 此后端为 VM 镜像使用明确定义的命名方案：
 
@@ -109,7 +109,7 @@ base-<VMID>-<NAME>.<FORMAT>
 此类基础镜像用于生成克隆镜像。因此，必须确保这些文件为只读且永远不会被修改。后端会将访问模式更改为 `0444`，并在存储支持的情况下设置不可变标志（`chattr +i`）。
 {% endhint %}
 
-## 7.5.3. Storage Features <a href="#_storage_features" id="_storage_features"></a>
+## 7.5.3. 存储功能 <a href="#_storage_features" id="_storage_features"></a>
 
 如上所述，大多数文件系统本身并不支持快照。为解决此问题，此后端能够使用 `qcow2` 的内部快照功能。
 
@@ -142,7 +142,7 @@ base-<VMID>-<NAME>.<FORMAT>
 </tbody>
 </table>
 
-## 7.5.4. Examples <a href="#_examples_2" id="_examples_2"></a>
+## 7.5.4. 示例 <a href="#_examples_2" id="_examples_2"></a>
 
 请使用以下命令在存储 `local` 上分配一个 4GB 镜像：
 

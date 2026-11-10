@@ -1,4 +1,4 @@
-# 1.11. Project History <a href="#intro_project_history" id="intro_project_history"></a>
+# 1.11. 项目历史 <a href="#intro_project_history" id="intro_project_history"></a>
 
 该项目于 2007 年启动，随后于 2008 年发布了第一个稳定版本。当时，它使用 OpenVZ 实现容器，使用 KVM 实现虚拟机。集群功能有限，用户界面也很简单（由服务器生成的网页）。
 

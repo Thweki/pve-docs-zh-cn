@@ -140,7 +140,7 @@ Add an authentication server.
 | `server2` | string | 否 | — | Fallback Server IP address (or DNS name) |
 | `sslversion` | string | 否 | — | LDAPS TLS/SSL version. It's not recommended to use version older than 1.2!；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
 | `sync-defaults-options` | string | 否 | — | The default options for behavior of synchronizations. |
-| `sync_attributes` | string | 否 | — | Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write 'email=mail'. By default, each PVE user field is represented by an LDAP attribute of the same name. |
+| `sync_attributes` | string | 否 | — | Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write  'email=mail'. By default, each PVE user field is represented  by an LDAP attribute of the same name. |
 | `tfa` | string | 否 | — | Use Two-factor authentication. |
 | `type` | string | 是 | — | Realm type.；可选值：`ad`, `ldap`, `openid`, `pam`, `pve` |
 | `user_attr` | string | 否 | — | LDAP user attribute name |
@@ -413,7 +413,7 @@ Add an authentication server.
       "typetext": "[enable-new=<1|0>] [,full=<1|0>] [,purge=<1|0>] [,remove-vanished=([acl];[properties];[entry])|none] [,scope=<users|groups|both>]"
     },
     "sync_attributes": {
-      "description": "Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write 'email=mail'. By default, each PVE user field is represented by an LDAP attribute of the same name.",
+      "description": "Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute 'mail' to PVEs 'email', write  'email=mail'. By default, each PVE user field is represented  by an LDAP attribute of the same name.",
       "optional": 1,
       "pattern": "\\w+=[^,]+(,\\s*\\w+=[^,]+)*",
       "type": "string"

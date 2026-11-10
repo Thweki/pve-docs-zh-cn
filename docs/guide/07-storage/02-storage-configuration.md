@@ -1,10 +1,10 @@
-# 7.2. Storage Configuration <a href="#_storage_configuration" id="_storage_configuration"></a>
+# 7.2. 存储配置 <a href="#_storage_configuration" id="_storage_configuration"></a>
 
 所有与 Proxmox VE 相关的存储配置都存储在 `/etc/pve/storage.cfg` 处的单个文本文件中。由于该文件位于 `/etc/pve/` 中，因此会自动分发到所有集群节点。所以，所有节点共享相同的存储配置。
 
 共享存储配置对于共享存储非常有意义，因为所有节点都可以访问同一个“共享”存储。但它对本地存储类型也很有用。在这种情况下，此类本地存储在所有节点上都可用，但它们在物理上并不相同，并且可以包含完全不同的内容。
 
-## 7.2.1. Storage Pools <a href="#_storage_pools" id="_storage_pools"></a>
+## 7.2.1. 存储池 <a href="#_storage_pools" id="_storage_pools"></a>
 
 每个存储池都有一个 `<type>`，并通过其 `<STORAGE_ID>` 进行唯一标识。池配置如下所示：
 
@@ -44,7 +44,7 @@ zfspool: local-zfs
 让多个存储配置指向完全相同的底层存储会产生问题。此类*别名*存储配置可能导致两个不同的卷 ID（*volid*）指向完全相同的磁盘镜像。Proxmox VE 要求镜像的卷 ID 所指向的位置是唯一的。为*别名*存储配置选择不同的内容类型或许可行，但不建议这样做。
 {% endhint %}
 
-## 7.2.2. Common Storage Properties <a href="#_common_storage_properties" id="_common_storage_properties"></a>
+## 7.2.2. 通用存储属性 <a href="#_common_storage_properties" id="_common_storage_properties"></a>
 
 一些存储属性为不同存储类型所共有。
 

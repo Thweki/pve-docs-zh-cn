@@ -270,7 +270,7 @@ Allow adding a guest even if already in another pool. The guest will be removed 
 
 no description available
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Remove the passed VMIDs and/or storage IDs instead of adding them.
 

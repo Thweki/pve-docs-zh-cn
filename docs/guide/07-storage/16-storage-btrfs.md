@@ -1,4 +1,4 @@
-# 7.16. BTRFS Backend <a href="#storage_btrfs" id="storage_btrfs"></a>
+# 7.16. BTRFS 后端 <a href="#storage_btrfs" id="storage_btrfs"></a>
 
 存储池类型：`btrfs`
 
@@ -10,7 +10,7 @@
 BTRFS 在打开文件时会遵循 `O_DIRECT` 标志，这意味着虚拟机不应使用缓存模式 `none`，否则会出现校验和错误。
 {% endhint %}
 
-## 7.16.1. Configuration <a href="#_configuration_10" id="_configuration_10"></a>
+## 7.16.1. 配置 <a href="#_configuration_10" id="_configuration_10"></a>
 
 此后端的配置方式与目录存储类似。请注意，将本身并非挂载点的目录添加为 BTRFS 存储时，强烈建议通过 `is_mountpoint` 选项指定实际挂载点。
 
@@ -23,7 +23,7 @@ btrfs: data2
         is_mountpoint /mnt/data2
 ```
 
-## 7.16.2. Snapshots <a href="#_snapshots" id="_snapshots"></a>
+## 7.16.2. 快照 <a href="#_snapshots" id="_snapshots"></a>
 
 为子卷或 `raw` 文件创建快照时，快照将创建为只读子卷，其路径为原路径后接 `@` 和快照名称。
 

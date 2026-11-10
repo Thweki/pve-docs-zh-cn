@@ -42,7 +42,7 @@ Stop all VMs and Containers.
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `force-stop` | boolean | 否 | 1 | Force a hard-stop after the timeout. |
-| `max-workers` | integer | 否 | — | Defines the maximum number of tasks running concurrently. If not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used. |
+| `max-workers` | integer | 否 | — | Defines the maximum number of tasks running concurrently. If  not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used. |
 | `node` | string | 是 | — | The cluster node name. |
 | `timeout` | integer | 否 | 180 | Timeout for each guest shutdown task. Depending on `force-stop`, the shutdown gets then simply aborted or a hard-stop is forced. |
 | `vms` | string | 否 | — | Only consider Guests with these IDs. |
@@ -62,7 +62,7 @@ Stop all VMs and Containers.
       "typetext": "<boolean>"
     },
     "max-workers": {
-      "description": "Defines the maximum number of tasks running concurrently. If not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used.",
+      "description": "Defines the maximum number of tasks running concurrently. If  not set, uses 'max_workers' from datacenter.cfg, and if that's not set, the available CPU threads, clamped to a maximum of 8, are used.",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,

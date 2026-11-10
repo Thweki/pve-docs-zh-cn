@@ -1,4 +1,4 @@
-# 8.8. Ceph Configuration <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
+# 8.8. Ceph 配置 <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
 
 Ceph 守护进程和客户端从一个或多个配置源 [\[1\]](#note-02fbf917-1) 获取其配置。在 Proxmox VE 中，使用一个最小的 ceph.conf 文件来保存引导设置。大多数配置保存在由 MON 服务维护的中央配置数据库中。
 

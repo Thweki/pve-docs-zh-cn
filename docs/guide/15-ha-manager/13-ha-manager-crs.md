@@ -10,15 +10,15 @@ In every HA Manager round, the scheduler goes through every HA resource and chec
 
 CRS 调度模式控制 CRS 如何计算集群的使用情况信息。这些使用情况信息将作为调度决策的依据。可以在 Web 界面（`Datacenter` → `Options` → `Cluster Resource Scheduling`）中更改 CRS 模式。默认模式为 `basic`。更改将从下一轮 HA Manager 开始生效，这应不超过 10 秒。
 
-### Basic Scheduler <a href="#ha_manager_crs_basic_scheduler" id="ha_manager_crs_basic_scheduler"></a>
+### 基本调度器 <a href="#ha_manager_crs_basic_scheduler" id="ha_manager_crs_basic_scheduler"></a>
 
 根据每个节点上活动客户机的数量，为 HA 资源选择最合适的节点。
 
-### Static-Load Scheduler <a href="#ha_manager_crs_static_scheduler" id="ha_manager_crs_static_scheduler"></a>
+### 静态负载调度器 <a href="#ha_manager_crs_static_scheduler" id="ha_manager_crs_static_scheduler"></a>
 
 使用每个节点上活动客户机的静态使用情况信息，为 HA 资源选择最合适的节点。这包括为活动客户机配置的 CPU 和内存配额。
 
-### Dynamic-Load Scheduler <a href="#ha_manager_crs_dynamic_scheduler" id="ha_manager_crs_dynamic_scheduler"></a>
+### 动态负载调度器 <a href="#ha_manager_crs_dynamic_scheduler" id="ha_manager_crs_dynamic_scheduler"></a>
 
 使用每个节点上活动客户机的动态使用情况信息，为 HA 资源选择最合适的节点。这包括活动客户机的平均 CPU 和内存使用量，以及为其配置的 CPU 和内存配额。
 
@@ -26,11 +26,11 @@ CRS 调度模式控制 CRS 如何计算集群的使用情况信息。这些使�
 
 在每一轮 HA Manager 中，CRS 都会检查是否有 HA 资源需要新的节点安置位置，这可能由以下任一调度点触发：
 
-### HA resource recovery (always active) <a href="#_ha_resource_recovery_always_active" id="_ha_resource_recovery_always_active"></a>
+### HA 资源恢复（始终启用） <a href="#_ha_resource_recovery_always_active" id="_ha_resource_recovery_always_active"></a>
 
 当具有活动 HA 资源的节点发生故障时，其所有 HA 资源都需要恢复到其他节点。此处将使用 CRS 算法，在其余节点之间均衡分配这些恢复任务。
 
-### HA rule config changes (always active) <a href="#_ha_rule_config_changes_always_active" id="_ha_rule_config_changes_always_active"></a>
+### HA 规则配置更改（始终启用） <a href="#_ha_rule_config_changes_always_active" id="_ha_rule_config_changes_always_active"></a>
 
 如果规则对 HA 资源施加了不同的约束，HA 栈将根据新规则的类型，使用 CRS 算法为受这些规则影响的 HA 资源查找新的目标节点：
 
@@ -38,7 +38,7 @@ CRS 调度模式控制 CRS 如何计算集群的使用情况信息。这些使�
 - 正向资源亲和性规则：如果创建了正向资源亲和性规则，或向现有正向资源亲和性规则添加了 HA 资源，HA 栈将使用 CRS 算法，确保将这些 HA 资源移动到同一节点。
 - 负向资源亲和性规则：如果创建了负向资源亲和性规则，或向现有负向资源亲和性规则添加了 HA 资源，HA 栈将使用 CRS 算法，确保将这些 HA 资源移动到不同节点。
 
-### HA resource rebalance on start (opt-in) <a href="#_ha_resource_rebalance_on_start_opt_in" id="_ha_resource_rebalance_on_start_opt_in"></a>
+### 启动时重新均衡 HA 资源（需主动启用） <a href="#_ha_resource_rebalance_on_start_opt_in" id="_ha_resource_rebalance_on_start_opt_in"></a>
 
 启动已启用“启动时重新均衡”的 HA 资源时，CRS 将选择最适合该 HA 资源的节点。如果所选节点不是当前节点，则将该 HA 资源迁移到所选节点。
 

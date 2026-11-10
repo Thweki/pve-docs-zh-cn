@@ -1,4 +1,4 @@
-# 8.10. Ceph CRUSH \& Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
+# 8.10. Ceph CRUSH 与设备类别 <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
 
 [![screenshot/gui-ceph-config.png](../../assets/screenshot-gui-ceph-config-png-b4544eca3b00.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-config.png)
 

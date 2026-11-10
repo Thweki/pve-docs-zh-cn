@@ -1,12 +1,12 @@
-# 10.10. Hookscripts <a href="#_hookscripts" id="_hookscripts"></a>
+# 10.10. 钩子脚本 <a href="#_hookscripts" id="_hookscripts"></a>
 
-You can add a hook script to VMs with the config property `hookscript`.
+可以通过配置属性 `hookscript` 为虚拟机添加钩子脚本。
 
 ```text
 # qm set 100 --hookscript local:snippets/hookscript.pl
 ```
 
-It will be called during various phases of the guests lifetime. For an example and documentation see the example script under `/usr/share/pve-docs/examples/guest-example-hookscript.pl`.
+它将在客户机生命周期的各个阶段被调用。有关示例和文档，请参阅 `/usr/share/pve-docs/examples/guest-example-hookscript.pl` 下的示例脚本。
 
 ---
 

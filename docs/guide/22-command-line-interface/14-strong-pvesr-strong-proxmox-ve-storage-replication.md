@@ -58,7 +58,7 @@ Mark replication job for removal.
 
 Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Will remove the jobconfig entry, but will not cleanup.
 
@@ -150,7 +150,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 The list of volume IDs to consider.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Allow to remove all existion volumes (empty volume list).
 
@@ -194,7 +194,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 Send an email notification in case of a failure.
 
-**`--verbose` `<boolean>` (*default \=* `0`)**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Print more verbose logs to stdout.
 

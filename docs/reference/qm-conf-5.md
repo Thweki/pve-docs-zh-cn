@@ -1,14 +1,14 @@
 # qm.conf(5)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 qm.conf \- Proxmox VE Virtual Machine Configuration
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 */etc/pve/qemu-server/\<VMID\>.conf*
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 The `/etc/pve/qemu-server/<VMID>.conf` files stores VM configuration, where "VMID" is the numeric ID of the given VM.
 
@@ -16,7 +16,7 @@ The `/etc/pve/qemu-server/<VMID>.conf` files stores VM configuration, where "VMI
 ID \< 100 保留供内部使用。
 {% endhint %}
 
-## File Format <a href="#_file_format" id="_file_format"></a>
+## 文件格式 <a href="#_file_format" id="_file_format"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -28,177 +28,177 @@ OPTION: value
 
 One can use the `qm` command to generate and modify those files.
 
-## Options <a href="#_options" id="_options"></a>
+## 选项 <a href="#_options" id="_options"></a>
 
-**`acpi`: `<boolean>` (*default \=* `1`)**
+**`acpi`：`<boolean>`（*默认值 \=* `1`）**
 
-Enable/disable ACPI.
+启用/禁用 ACPI。
 
 **`affinity`: `<string>`**
 
-List of host cores used to execute guest processes, for example: 0,5,8-11
+用于执行客户机进程的宿主机核心列表，例如：0,5,8-11
 
 **`agent`: `[enabled=]<1|0> [,freeze-fs=<1|0>] [,fstrim_cloned_disks=<1|0>] [,type=<virtio|isa>]`**
 
-Enable/disable communication with the QEMU Guest Agent and its properties.
+启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
-**`enabled`\=`<boolean>` (*default \=* `0`)**
+**`enabled`\=`<boolean>`（*默认值 \=* `0`）**
 
-Enable/disable communication with a QEMU Guest Agent (QGA) running in the VM.
+启用/禁用与 VM 中运行的 QEMU Guest Agent（QGA）的通信。
 
-**`freeze-fs`\=`<boolean>` (*default \=* `1`)**
+**`freeze-fs`\=`<boolean>`（*默认值 \=* `1`）**
 
-Whether to issue the guest-fsfreeze-freeze and guest-fsfreeze-thaw QEMU guest agent commands. Backups in snapshot mode, clones, snapshots without RAM, importing disks from a running guest, and replications normally issue a guest-fsfreeze-freeze and a respective thaw command when the QEMU Guest agent option is enabled in the guest’s configuration and the agent is running inside of the guest.
+是否发出 guest-fsfreeze-freeze 和 guest-fsfreeze-thaw QEMU 客户机代理命令。当客户机配置中启用了 QEMU Guest Agent 选项且代理正在客户机内运行时，快照模式备份、克隆、不含 RAM 的快照、从正在运行的客户机导入磁盘以及复制，通常会发出 guest-fsfreeze-freeze 和相应的 thaw 命令。
 
-The deprecated *freeze-fs-on-backup* setting is treated as an alias for this setting.
+已弃用的 *freeze-fs-on-backup* 设置被视为此设置的别名。
 
-**`fstrim_cloned_disks`\=`<boolean>` (*default \=* `0`)**
+**`fstrim_cloned_disks`\=`<boolean>`（*默认值 \=* `0`）**
 
-Run fstrim after moving a disk or migrating the VM.
+移动磁盘或迁移 VM 后运行 fstrim。
 
-**`type`\=`<isa | virtio>` (*default \=* `virtio`)**
+**`type`\=`<isa | virtio>`（*默认值 \=* `virtio`）**
 
-Select the agent type
+选择代理类型
 
-**`allow-ksm`: `<boolean>` (*default \=* `1`)**
+**`allow-ksm`：`<boolean>`（*默认值 \=* `1`）**
 
-Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
+允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
 **`amd-sev`: `[type=]<sev-type> [,allow-smt=<1|0>] [,kernel-hashes=<1|0>] [,no-debug=<1|0>] [,no-key-sharing=<1|0>]`**
 
-Secure Encrypted Virtualization (SEV) features by AMD CPUs
+AMD CPU 的安全加密虚拟化（SEV）功能
 
-**`allow-smt`\=`<boolean>` (*default \=* `1`)**
+**`allow-smt`\=`<boolean>`（*默认值 \=* `1`）**
 
-Sets policy bit to allow Simultaneous Multi Threading (SMT) (Ignored unless for SEV-SNP)
+设置策略位以允许同时多线程（SMT）（除非针对 SEV-SNP，否则会被忽略）
 
-**`kernel-hashes`\=`<boolean>` (*default \=* `0`)**
+**`kernel-hashes`\=`<boolean>`（*默认值 \=* `0`）**
 
-Add kernel hashes to guest firmware for measured linux kernel launch
+将内核哈希添加到客户机固件，以实现可度量的 Linux 内核启动
 
-**`no-debug`\=`<boolean>` (*default \=* `0`)**
+**`no-debug`\=`<boolean>`（*默认值 \=* `0`）**
 
-Sets policy bit to disallow debugging of guest
+设置策略位以禁止调试客户机
 
-**`no-key-sharing`\=`<boolean>` (*default \=* `0`)**
+**`no-key-sharing`\=`<boolean>`（*默认值 \=* `0`）**
 
-Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP)
+设置策略位以禁止与其他客户机共享密钥（对于 SEV-SNP 会被忽略）
 
 **`type`\=`<sev-type>`**
 
-Enable standard SEV with type\=*std* or enable experimental SEV-ES with the *es* option or enable experimental SEV-SNP with the *snp* option.
+使用 type\=*std* 启用标准 SEV，或使用 *es* 选项启用实验性 SEV-ES，或使用 *snp* 选项启用实验性 SEV-SNP。
 
 **`arch`: `<aarch64 | x86_64>`**
 
-Virtual processor architecture. Defaults to the host architecture.
+虚拟处理器架构。默认为宿主机架构。
 
 **`args`: `<string>`**
 
-Arbitrary arguments passed to kvm, for example:
+传递给 kvm 的任意参数，例如：
 
 args: -no-reboot -smbios *type\=0,vendor\=FOO*
 
 {% hint style="info" %}
-this option is for experts only.
+此选项仅供专家使用。
 {% endhint %}
 
 **`audio0`: `device=<ich9-intel-hda|intel-hda|AC97> [,driver=<spice|none>]`**
 
-Configure a audio device, useful in combination with QXL/Spice.
+配置音频设备，与 QXL/Spice 结合使用时很有用。
 
 **`device`\=`<AC97 | ich9-intel-hda | intel-hda>`**
 
-Configure an audio device.
+配置音频设备。
 
-**`driver`\=`<none | spice>` (*default \=* `spice`)**
+**`driver`\=`<none | spice>`（*默认值 \=* `spice`）**
 
-Driver backend for the audio device.
+音频设备的驱动程序后端。
 
-**`autostart`: `<boolean>` (*default \=* `0`)**
+**`autostart`：`<boolean>`（*默认值 \=* `0`）**
 
-Automatic restart after crash (currently ignored).
+崩溃后自动重启（目前被忽略）。
 
 **`balloon`: `<integer> (0 - N)`**
 
-Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
+VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
-**`bios`: `<ovmf | seabios>` (*default \=* `seabios`)**
+**`bios`：`<ovmf | seabios>`（*默认值 \=* `seabios`）**
 
-Select BIOS implementation.
+选择 BIOS 实现。
 
 **`boot`: `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
+指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
 
-**`legacy`\=`<[acdn]{1,4}>` (*default \=* `cdn`)**
+**`legacy`\=`<[acdn]{1,4}>`（*默认值 \=* `cdn`）**
 
-Boot on floppy (a), hard disk (c), CD-ROM (d), or network (n). Deprecated, use *order\=* instead.
+从软盘（a）、硬盘（c）、CD-ROM（d）或网络（n）启动。已弃用，请改用 *order\=*。
 
 **`order`\=`<device[;device...]>`**
 
-The guest will attempt to boot from devices in the order they appear here.
+客户机将尝试按照此处列出的顺序从设备启动。
 
-Disks, optical drives and passed-through storage USB devices will be directly booted from, NICs will load PXE, and PCIe devices will either behave like disks (e.g. NVMe) or load an option ROM (e.g. RAID controller, hardware NIC).
+磁盘、光驱和直通的 USB 存储设备将直接用于启动，NIC 将加载 PXE，PCIe 设备则将表现得像磁盘（例如 NVMe），或者加载选项 ROM（例如 RAID 控制器、硬件 NIC）。
 
-Note that only devices in this list will be marked as bootable and thus loaded by the guest firmware (BIOS/UEFI). If you require multiple disks for booting (e.g. software-raid), you need to specify all of them here.
+请注意，只有此列表中的设备才会被标记为可启动，并因此由客户机固件（BIOS/UEFI）加载。如果需要使用多个磁盘启动（例如软件 RAID），则需要在此处指定所有这些磁盘。
 
-Overrides the deprecated *legacy\=\[acdn\]\** value when given.
+如果指定了此选项，将覆盖已弃用的 *legacy\=\[acdn\]\** 值。
 
 **`bootdisk`: `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
+启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
 
 **`cdrom`: `<volume>`**
 
-This is an alias for option -ide2
+这是选项 -ide2 的别名
 
 **`cicustom`: `[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]`**
 
-cloud-init: Specify custom files to replace the automatically generated ones at start.
+cloud-init：指定自定义文件，以在启动时替换自动生成的文件。
 
 **`meta`\=`<volume>`**
 
-Specify a custom file containing all meta data passed to the VM via cloud-init. This is provider specific meaning configdrive2 and nocloud differ.
+指定一个自定义文件，其中包含通过 cloud-init 传递给虚拟机的所有元数据。这是特定于提供商的，也就是说 configdrive2 和 nocloud 有所不同。
 
 **`network`\=`<volume>`**
 
-To pass a custom file containing all network data to the VM via cloud-init.
+用于通过 cloud-init 将包含所有网络数据的自定义文件传递给虚拟机。
 
 **`user`\=`<volume>`**
 
-To pass a custom file containing all user data to the VM via cloud-init.
+用于通过 cloud-init 将包含所有用户数据的自定义文件传递给虚拟机。
 
 **`vendor`\=`<volume>`**
 
-To pass a custom file containing all vendor data to the VM via cloud-init.
+用于通过 cloud-init 将包含所有供应商数据的自定义文件传递给虚拟机。
 
 **`cipassword`: `<string>`**
 
-cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.
+cloud-init：分配给用户的密码。通常不建议使用此选项，请改用 ssh 密钥。另请注意，较旧版本的 cloud-init 不支持哈希密码。
 
 **`citype`: `<configdrive2 | nocloud | opennebula>`**
 
-Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
+指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`ciupgrade`: `<boolean>` (*default \=* `1`)**
+**`ciupgrade`：`<boolean>`（*默认值 \=* `1`）**
 
-cloud-init: do an automatic package upgrade after the first boot.
+cloud-init：首次启动后自动执行软件包升级。
 
 **`ciuser`: `<string>`**
 
-cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
+cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
-**`cores`: `<integer> (1 - N)` (*default \=* `1`)**
+**`cores`: `<integer> (1 - N)` (*默认值 \=* `1`)**
 
-The number of cores per socket.
+每个 CPU 插槽的核心数。
 
 **`cpu`: `[[cputype=]<string>] [,flags=<+FLAG[;-FLAG...]>] [,guest-phys-bits=<integer>] [,hidden=<1|0>] [,hv-vendor-id=<vendor-id>] [,level=<integer>] [,phys-bits=<8-64|host>] [,reported-model=<enum>]`**
 
-Emulated CPU type.
+模拟的 CPU 类型。
 
-**`cputype`\=`<string>` (*default \=* `kvm64`)**
+**`cputype`\=`<string>` (*默认值 \=* `kvm64`)**
 
-Emulated CPU type. Can be default or custom name (custom model names must be prefixed with *custom-*).
+模拟的 CPU 类型。可以是默认类型或自定义名称（自定义型号名称必须以 *custom-* 为前缀）。
 
 **`flags`\=`<+FLAG[;-FLAG...]>`**
 
@@ -208,7 +208,7 @@ Emulated CPU type. Can be default or custom name (custom model names must be pre
 
 客户机可用的物理地址位数。
 
-**`hidden`\=`<boolean>` (*default \=* `0`)**
+**`hidden`\=`<boolean>` (*默认值 \=* `0`)**
 
 不要标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。
 
@@ -224,342 +224,342 @@ Hyper-V 供应商 ID。Windows 客户机中的某些驱动程序或程序需要�
 
 报告给客户机操作系统的物理内存地址位数。应小于或等于宿主机的位数。设置为 *host* 可使用宿主机 CPU 的值，但请注意，这样会导致无法在线迁移到该值不同的 CPU。
 
-**`reported-model`\=`<486 | Broadwell | Broadwell-IBRS | Broadwell-noTSX | Broadwell-noTSX-IBRS | Cascadelake-Server | Cascadelake-Server-noTSX | Cascadelake-Server-v2 | Cascadelake-Server-v4 | Cascadelake-Server-v5 | ClearwaterForest | ClearwaterForest-v2 | ClearwaterForest-v3 | Conroe | Cooperlake | Cooperlake-v2 | DiamondRapids | EPYC | EPYC-Genoa | EPYC-Genoa-v2 | EPYC-IBPB | EPYC-Milan | EPYC-Milan-v2 | EPYC-Milan-v3 | EPYC-Rome | EPYC-Rome-v2 | EPYC-Rome-v3 | EPYC-Rome-v4 | EPYC-Rome-v5 | EPYC-Turin | EPYC-v3 | EPYC-v4 | EPYC-v5 | GraniteRapids | GraniteRapids-v2 | GraniteRapids-v3 | GraniteRapids-v4 | GraniteRapids-v5 | Haswell | Haswell-IBRS | Haswell-noTSX | Haswell-noTSX-IBRS | Icelake-Client | Icelake-Client-noTSX | Icelake-Server | Icelake-Server-noTSX | Icelake-Server-v3 | Icelake-Server-v4 | Icelake-Server-v5 | Icelake-Server-v6 | Icelake-Server-v7 | IvyBridge | IvyBridge-IBRS | KnightsMill | Nehalem | Nehalem-IBRS | Opteron_G1 | Opteron_G2 | Opteron_G3 | Opteron_G4 | Opteron_G5 | Penryn | SandyBridge | SandyBridge-IBRS | SapphireRapids | SapphireRapids-v2 | SapphireRapids-v3 | SapphireRapids-v4 | SapphireRapids-v5 | SapphireRapids-v6 | SierraForest | SierraForest-v2 | SierraForest-v3 | SierraForest-v4 | SierraForest-v5 | Skylake-Client | Skylake-Client-IBRS | Skylake-Client-noTSX-IBRS | Skylake-Client-v4 | Skylake-Server | Skylake-Server-IBRS | Skylake-Server-noTSX-IBRS | Skylake-Server-v4 | Skylake-Server-v5 | Westmere | Westmere-IBRS | a64fx | athlon | core2duo | coreduo | cortex-a35 | cortex-a53 | cortex-a55 | cortex-a57 | cortex-a710 | cortex-a72 | cortex-a76 | cortex-a78ae | host | kvm32 | kvm64 | max | neoverse-n1 | neoverse-n2 | neoverse-v1 | pentium | pentium2 | pentium3 | phenom | qemu32 | qemu64>` (*default \=* `kvm64`)**
+**`reported-model`\=`<486 | Broadwell | Broadwell-IBRS | Broadwell-noTSX | Broadwell-noTSX-IBRS | Cascadelake-Server | Cascadelake-Server-noTSX | Cascadelake-Server-v2 | Cascadelake-Server-v4 | Cascadelake-Server-v5 | ClearwaterForest | ClearwaterForest-v2 | ClearwaterForest-v3 | Conroe | Cooperlake | Cooperlake-v2 | DiamondRapids | EPYC | EPYC-Genoa | EPYC-Genoa-v2 | EPYC-IBPB | EPYC-Milan | EPYC-Milan-v2 | EPYC-Milan-v3 | EPYC-Rome | EPYC-Rome-v2 | EPYC-Rome-v3 | EPYC-Rome-v4 | EPYC-Rome-v5 | EPYC-Turin | EPYC-v3 | EPYC-v4 | EPYC-v5 | GraniteRapids | GraniteRapids-v2 | GraniteRapids-v3 | GraniteRapids-v4 | GraniteRapids-v5 | Haswell | Haswell-IBRS | Haswell-noTSX | Haswell-noTSX-IBRS | Icelake-Client | Icelake-Client-noTSX | Icelake-Server | Icelake-Server-noTSX | Icelake-Server-v3 | Icelake-Server-v4 | Icelake-Server-v5 | Icelake-Server-v6 | Icelake-Server-v7 | IvyBridge | IvyBridge-IBRS | KnightsMill | Nehalem | Nehalem-IBRS | Opteron_G1 | Opteron_G2 | Opteron_G3 | Opteron_G4 | Opteron_G5 | Penryn | SandyBridge | SandyBridge-IBRS | SapphireRapids | SapphireRapids-v2 | SapphireRapids-v3 | SapphireRapids-v4 | SapphireRapids-v5 | SapphireRapids-v6 | SierraForest | SierraForest-v2 | SierraForest-v3 | SierraForest-v4 | SierraForest-v5 | Skylake-Client | Skylake-Client-IBRS | Skylake-Client-noTSX-IBRS | Skylake-Client-v4 | Skylake-Server | Skylake-Server-IBRS | Skylake-Server-noTSX-IBRS | Skylake-Server-v4 | Skylake-Server-v5 | Westmere | Westmere-IBRS | a64fx | athlon | core2duo | coreduo | cortex-a35 | cortex-a53 | cortex-a55 | cortex-a57 | cortex-a710 | cortex-a72 | cortex-a76 | cortex-a78ae | host | kvm32 | kvm64 | max | neoverse-n1 | neoverse-n2 | neoverse-v1 | pentium | pentium2 | pentium3 | phenom | qemu32 | qemu64>` (*默认值 \=* `kvm64`)**
 
 报告给客户机的 CPU 模型和供应商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效；默认模型始终会向客户机操作系统报告其自身。
 
-**`cpulimit`: `<number> (0 - 128)` (*default \=* `0`)**
+**`cpulimit`: `<number> (0 - 128)` (*默认值 \=* `0`)**
 
 CPU 使用限制。
 
 {% hint style="info" %}
-If the computer has 2 CPUs, it has total of *2* CPU time. Value *0* indicates no CPU limit.
+如果计算机有 2 个 CPU，则 CPU 时间总计为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`cpuunits`: `<integer> (1 - 262144)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`cpuunits`: `<integer> (1 - 262144)` (*默认值 \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
-CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+虚拟机的 CPU 权重。该参数用于内核公平调度器。数值越大，此虚拟机获得的 CPU 时间就越多。该数值是相对于所有其他正在运行的虚拟机的权重而言的。
 
 **`description`: `<string>`**
 
-Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
+虚拟机的描述。显示在 Web 界面的虚拟机摘要中。此描述会作为注释保存在配置文件内。
 
 **`efidisk0`: `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-Configure a disk for storing EFI vars.
+配置用于存储 EFI 变量的磁盘。
 
-**`efitype`\=`<2m | 4m>` (*default \=* `2m`)**
+**`efitype`\=`<2m | 4m>` (*默认值 \=* `2m`)**
 
-Size and type of the OVMF EFI vars. *4m* is newer and recommended, and required for Secure Boot. For backwards compatibility, *2m* is used if not otherwise specified. Ignored for VMs with arch\=aarch64 (ARM).
+OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全启动所必需的。为保持向后兼容，如果未另行指定，则使用 *2m*。对于 arch\=aarch64 (ARM) 的虚拟机，此设置会被忽略。
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<cloop | qcow | qcow2 | qed | raw | vmdk>`**
 
-The drive’s backing file’s data format.
+驱动器后端文件的数据格式。
 
-**`ms-cert`\=`<2011 | 2023 | 2023k | 2023w>` (*default \=* `2011`)**
+**`ms-cert`\=`<2011 | 2023 | 2023k | 2023w>` (*默认值 \=* `2011`)**
 
-Informational marker indicating the version of the latest Microsoft UEFI certificates that have been enrolled by Proxmox VE. The value *2023k* means that the *Microsoft UEFI CA 2023*, the *Windows UEFI CA 2023* and the *Microsoft Corporation KEK 2K CA 2023* certificates are included. The values *2023* and *2023w* are deprecated and for compatibility only.
+信息性标记，指示 Proxmox VE 已注册的最新 Microsoft UEFI 证书的版本。值 *2023k* 表示包含 *Microsoft UEFI CA 2023*、*Windows UEFI CA 2023* 和 *Microsoft Corporation KEK 2K CA 2023* 证书。值 *2023* 和 *2023w* 已弃用，仅为兼容性保留。
 
-**`pre-enrolled-keys`\=`<boolean>` (*default \=* `0`)**
+**`pre-enrolled-keys`\=`<boolean>` (*默认值 \=* `0`)**
 
-Use am EFI vars template with distribution-specific and Microsoft Standard keys enrolled, if used with *efitype\=4m*. Note that this will enable Secure Boot by default, though it can still be turned off from within the VM.
+与 *efitype\=4m* 一起使用时，使用已注册特定发行版密钥和 Microsoft 标准密钥的 EFI 变量模板。请注意，这将默认启用安全启动，但仍可在虚拟机内将其关闭。
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`freeze`: `<boolean>`**
 
-Freeze CPU at startup (use *c* monitor command to start execution).
+启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
 
 **`hookscript`: `<string>`**
 
-Script that will be executed during various steps in the vms lifetime.
+在虚拟机生命周期的各个阶段执行的脚本。
 
 **`hostpci[n]`: `[[host=]<HOSTPCIID[;HOSTPCIID2...]>] [,device-id=<hex id>] [,driver=<vfio|keep>] [,legacy-igd=<1|0>] [,mapping=<mapping-id>] [,mdev=<string>] [,pcie=<1|0>] [,rombar=<1|0>] [,romfile=<string>] [,sub-device-id=<hex id>] [,sub-vendor-id=<hex id>] [,vendor-id=<hex id>] [,x-vga=<1|0>]`**
 
-Map host PCI devices into guest.
+将宿主机 PCI 设备映射到客户机中。
 
 {% hint style="info" %}
-This option allows direct access to host hardware. So it is no longer possible to migrate such machines \- use with special care.
+此选项允许直接访问宿主机硬件。因此，此类机器将无法再迁移——请特别谨慎使用。
 {% endhint %}
 
 {% hint style="danger" %}
-Experimental! User reported problems with this option.
+实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
 **`device-id`\=`<hex id>`**
 
-Override PCI device ID visible to guest
+覆盖对客户机可见的 PCI 设备 ID
 
-**`driver`\=`<keep | vfio>` (*default \=* `vfio`)**
+**`driver`\=`<keep | vfio>` (*默认值 \=* `vfio`)**
 
-If set to *keep* the device will neither be reset nor bound to the *vfio-pci* driver. Useful for devices that already have the correct driver loaded.
+如果设置为 *keep*，设备既不会重置，也不会绑定到 *vfio-pci* 驱动程序。适用于已加载正确驱动程序的设备。
 
 **`host`\=`<HOSTPCIID[;HOSTPCIID2...]>`**
 
-Host PCI device pass through. The PCI ID of a host’s PCI device or a list of PCI virtual functions of the host. HOSTPCIID syntax is:
+宿主机 PCI 设备直通。宿主机 PCI 设备的 PCI ID，或宿主机的 PCI 虚拟功能列表。HOSTPCIID 语法为：
 
-*bus:dev.func* (hexadecimal numbers)
+*bus:dev.func*（十六进制数字）
 
-You can use the *lspci* command to list existing PCI devices.
+可以使用 *lspci* 命令列出现有 PCI 设备。
 
-Either this or the *mapping* key must be set.
+必须设置此项或 *mapping* 键。
 
-**`legacy-igd`\=`<boolean>` (*default \=* `0`)**
+**`legacy-igd`\=`<boolean>` (*默认值 \=* `0`)**
 
-Pass this device in legacy IGD mode, making it the primary and exclusive graphics device in the VM. Requires *pc-i440fx* machine type and VGA set to *none*.
+以传统 IGD 模式直通此设备，使其成为虚拟机中的主显卡和唯一显卡。需要 *pc-i440fx* 机器类型，并将 VGA 设置为 *none*。
 
 **`mapping`\=`<mapping-id>`**
 
-The ID of a cluster wide mapping. Either this or the default-key *host* must be set.
+集群范围映射的 ID。必须设置此项或默认键 *host*。
 
 **`mdev`\=`<string>`**
 
-The type of mediated device to use. An instance of this type will be created on startup of the VM and will be cleaned up when the VM stops.
+要使用的中介设备类型。虚拟机启动时将创建此类型的一个实例，并在虚拟机停止时清理该实例。
 
-**`pcie`\=`<boolean>` (*default \=* `0`)**
+**`pcie`\=`<boolean>` (*默认值 \=* `0`)**
 
-Choose the PCI-express bus (needs the *q35* machine model).
+选择 PCI-express 总线（需要 *q35* 机器型号）。
 
-**`rombar`\=`<boolean>` (*default \=* `1`)**
+**`rombar`\=`<boolean>` (*默认值 \=* `1`)**
 
-Specify whether or not the device’s ROM will be visible in the guest’s memory map.
+指定设备的 ROM 是否在客户机的内存映射中可见。
 
 **`romfile`\=`<string>`**
 
-Custom pci device rom filename (must be located in /usr/share/kvm/).
+自定义 PCI 设备 ROM 文件名（必须位于 /usr/share/kvm/ 中）。
 
 **`sub-device-id`\=`<hex id>`**
 
-Override PCI subsystem device ID visible to guest
+覆盖对客户机可见的 PCI 子系统设备 ID
 
 **`sub-vendor-id`\=`<hex id>`**
 
-Override PCI subsystem vendor ID visible to guest
+覆盖对客户机可见的 PCI 子系统供应商 ID
 
 **`vendor-id`\=`<hex id>`**
 
-Override PCI vendor ID visible to guest
+覆盖对客户机可见的 PCI 供应商 ID
 
-**`x-vga`\=`<boolean>` (*default \=* `0`)**
+**`x-vga`\=`<boolean>` (*默认值 \=* `0`)**
 
-Enable vfio-vga device support.
+启用 vfio-vga 设备支持。
 
-**`hotplug`: `<string>` (*default \=* `network,disk,usb`)**
+**`hotplug`: `<string>` (*默认值 \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`hugepages`: `<1024 | 2 | any>`**
 
-Enables hugepages memory.
+启用大页内存。
 
-Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.
+设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`ide[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as IDE hard disk or CD-ROM (n is 0 to 3).
+将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。
 
 **`aio`\=`<io_uring | native | threads>`**
 
-AIO type to use.
+要使用的 AIO 类型。
 
 **`backup`\=`<boolean>`**
 
-Whether the drive should be included when making backups.
+备份时是否应包含该驱动器。
 
 **`bps`\=`<bps>`**
 
-Maximum r/w speed in bytes per second.
+最大读写速度，单位为字节/秒。
 
 **`bps_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`bps_rd`\=`<bps>`**
 
-Maximum read speed in bytes per second.
+最大读取速度，单位为字节/秒。
 
 **`bps_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`bps_wr`\=`<bps>`**
 
-Maximum write speed in bytes per second.
+最大写入速度，单位为字节/秒。
 
 **`bps_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`cache`\=`<directsync | none | unsafe | writeback | writethrough>`**
 
-The drive’s cache mode
+驱动器的缓存模式
 
 **`detect_zeroes`\=`<boolean>`**
 
-Controls whether to detect and try to optimize writes of zeroes.
+控制是否检测并尝试优化零值写入。
 
 **`discard`\=`<ignore | on>`**
 
-Controls whether to pass discard/trim requests to the underlying storage.
+控制是否将 discard/trim 请求传递给底层存储。
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<cloop | qcow | qcow2 | qed | raw | vmdk>`**
 
-The drive’s backing file’s data format.
+驱动器后端文件的数据格式。
 
 **`iops`\=`<iops>`**
 
-Maximum r/w I/O in operations per second.
+每秒最大读写 I/O 操作数。
 
 **`iops_max`\=`<iops>`**
 
-Maximum unthrottled r/w I/O pool in operations per second.
+最大未限速读写 I/O 池，单位为每秒操作数。
 
 **`iops_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`iops_rd`\=`<iops>`**
 
-Maximum read I/O in operations per second.
+每秒最大读取 I/O 操作数。
 
 **`iops_rd_max`\=`<iops>`**
 
-Maximum unthrottled read I/O pool in operations per second.
+最大未限速读取 I/O 池，单位为每秒操作数。
 
 **`iops_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`iops_wr`\=`<iops>`**
 
-Maximum write I/O in operations per second.
+每秒最大写入 I/O 操作数。
 
 **`iops_wr_max`\=`<iops>`**
 
-Maximum unthrottled write I/O pool in operations per second.
+最大未限速写入 I/O 池，单位为每秒操作数。
 
 **`iops_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`mbps`\=`<mbps>`**
 
-Maximum r/w speed in megabytes per second.
+最大读写速度，单位为 MB/秒。
 
 **`mbps_max`\=`<mbps>`**
 
-Maximum unthrottled r/w pool in megabytes per second.
+最大未限速读写池，单位为 MB/秒。
 
 **`mbps_rd`\=`<mbps>`**
 
-Maximum read speed in megabytes per second.
+最大读取速度，单位为 MB/秒。
 
 **`mbps_rd_max`\=`<mbps>`**
 
-Maximum unthrottled read pool in megabytes per second.
+最大未限速读取池，单位为 MB/秒。
 
 **`mbps_wr`\=`<mbps>`**
 
-Maximum write speed in megabytes per second.
+最大写入速度，单位为 MB/秒。
 
 **`mbps_wr_max`\=`<mbps>`**
 
-Maximum unthrottled write pool in megabytes per second.
+最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*default \=* `disk`)**
+**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
 
-The drive’s media type.
+驱动器的介质类型。
 
 **`model`\=`<model>`**
 
-The drive’s reported model name, url-encoded, up to 40 bytes long.
+驱动器报告的型号名称，采用 URL 编码，最长 40 字节。
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
-Whether the drive should considered for replication jobs.
+是否应将驱动器纳入复制作业。
 
 **`rerror`\=`<ignore | report | stop>`**
 
-Read error action.
+读取错误时的操作。
 
 **`serial`\=`<serial>`**
 
-The drive’s reported serial number, url-encoded, up to 20 bytes long.
+驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
-Mark this locally-managed volume as available on all nodes.
+将此本地管理的卷标记为在所有节点上可用。
 
 {% hint style="warning" %}
-This option does not share the volume automatically, it assumes it is shared already!
+此选项不会自动共享卷，而是假定该卷已经共享！
 {% endhint %}
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`snapshot`\=`<boolean>`**
 
-Controls qemu’s snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.
+控制 qemu 的快照模式功能。激活后，对磁盘所做的更改是临时的，并将在虚拟机关机时丢弃。
 
 **`ssd`\=`<boolean>`**
 
-Whether to expose this drive as an SSD, rather than a rotational hard disk.
+是否将此驱动器呈现为 SSD，而非旋转式硬盘。
 
 **`werror`\=`<enospc | ignore | report | stop>`**
 
-Write error action.
+写入错误时的操作。
 
 **`wwn`\=`<wwn>`**
 
-The drive’s worldwide name, encoded as 16 bytes hex string, prefixed by *0x*.
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
 
 **`intel-tdx`: `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
-Trusted Domain Extension (TDX) features by Intel CPUs
+Intel CPU 的信任域扩展（TDX）功能
 
-**`attestation`\=`<boolean>` (*default \=* `1`)**
+**`attestation`\=`<boolean>` (*默认值 \=* `1`)**
 
-Enable TDX attestation by including quote-generation-socket
+通过包含 quote-generation-socket 启用 TDX 证明
 
 **`type`\=`<tdx-type>`**
 
-Enable TDX
+启用 TDX
 
-**`vsock-cid`\=`<integer> (2 - N)` (*default \=* `2`)**
+**`vsock-cid`\=`<integer> (2 - N)` (*默认值 \=* `2`)**
 
-CID for vsock of Quote Generation Service
+Quote Generation Service 的 vsock CID
 
-**`vsock-port`\=`<integer> (0 - N)` (*default \=* `4050`)**
+**`vsock-port`\=`<integer> (0 - N)` (*默认值 \=* `4050`)**
 
-Port for vsock of Quote Generation Service
+Quote Generation Service 的 vsock 端口
 
 **`ipconfig[n]`: `[gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,ip=<IPv4Format/CIDR>] [,ip6=<IPv6Format/CIDR>]`**
 
-cloud-init: Specify IP addresses and gateways for the corresponding interface.
+cloud-init：为相应接口指定 IP 地址和网关。
 
-IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.
+IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-The special string *dhcp* can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string *auto* can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.
+IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
-If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.
+如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
 **`gw`\=`<GatewayIPv4>`**
 
 IPv4 流量的默认网关。
 
 {% hint style="info" %}
-Requires option(s): `ip`
+需要选项：`ip`
 {% endhint %}
 
 **`gw6`\=`<GatewayIPv6>`**
@@ -567,28 +567,28 @@ Requires option(s): `ip`
 IPv6 流量的默认网关。
 
 {% hint style="info" %}
-Requires option(s): `ip6`
+需要选项：`ip6`
 {% endhint %}
 
-**`ip`\=`<IPv4Format/CIDR>` (*default \=* `dhcp`)**
+**`ip`\=`<IPv4Format/CIDR>`（*默认值 \=* `dhcp`）**
 
 CIDR 格式的 IPv4 地址。
 
-**`ip6`\=`<IPv6Format/CIDR>` (*default \=* `dhcp`)**
+**`ip6`\=`<IPv6Format/CIDR>`（*默认值 \=* `dhcp`）**
 
 CIDR 格式的 IPv6 地址。
 
 **`ivshmem`: `size=<integer> [,name=<string>]`**
 
-Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
+虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
 **`name`\=`<string>`**
 
-The name of the file. Will be prefixed with *pve-shm-*. Default is the VMID. Will be deleted when the VM is stopped.
+文件名。将以 *pve-shm-* 为前缀。默认为 VMID。该文件将在虚拟机停止时删除。
 
 **`size`\=`<integer> (1 - N)`**
 
-The size of the file in MB.
+文件大小，单位为 MB。
 
 **`keephugepages`: `<boolean>` (*default \=* `0`)**
 
@@ -742,7 +742,7 @@ Amount of memory this NUMA node provides.
 
 NUMA allocation policy.
 
-**`onboot`: `<boolean>` (*default \=* `0`)**
+**`onboot`: `<boolean>` (*默认 \=* `0`)**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -752,15 +752,13 @@ Specify guest operating system. This is used to enable special optimization/feat
 
 <table>
 <tr>
-<td>other <br/>
-</td>
+<td>other <br/></td>
 <td>
 <p>unspecified OS</p>
 </td>
 </tr>
 <tr>
-<td>wxp <br/>
-</td>
+<td>wxp <br/></td>
 <td>
 <p>Microsoft Windows XP</p>
 </td>
@@ -793,36 +791,31 @@ w2k8
 </td>
 </tr>
 <tr>
-<td>wvista <br/>
-</td>
+<td>wvista <br/></td>
 <td>
 <p>Microsoft Windows Vista</p>
 </td>
 </tr>
 <tr>
-<td>win7 <br/>
-</td>
+<td>win7 <br/></td>
 <td>
 <p>Microsoft Windows 7</p>
 </td>
 </tr>
 <tr>
-<td>win8 <br/>
-</td>
+<td>win8 <br/></td>
 <td>
 <p>Microsoft Windows 8/2012/2012r2</p>
 </td>
 </tr>
 <tr>
-<td>win10 <br/>
-</td>
+<td>win10 <br/></td>
 <td>
 <p>Microsoft Windows 10/2016/2019</p>
 </td>
 </tr>
 <tr>
-<td>win11 <br/>
-</td>
+<td>win11 <br/></td>
 <td>
 <p>Microsoft Windows 11/2022/2025</p>
 </td>
@@ -846,8 +839,7 @@ l26
 </td>
 </tr>
 <tr>
-<td>solaris <br/>
-</td>
+<td>solaris <br/></td>
 <td>
 <p>Solaris/OpenSolaris/OpenIndiania kernel</p>
 </td>
@@ -863,10 +855,10 @@ This option allows direct access to host hardware. So it is no longer possible t
 {% endhint %}
 
 {% hint style="danger" %}
-Experimental! User reported problems with this option.
+实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
-**`protection`: `<boolean>` (*default \=* `0`)**
+**`protection`: `<boolean>` (*默认 \=* `0`)**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -896,159 +888,159 @@ Use volume as SATA hard disk or CD-ROM (n is 0 to 5).
 
 **`aio`\=`<io_uring | native | threads>`**
 
-AIO type to use.
+要使用的 AIO 类型。
 
 **`backup`\=`<boolean>`**
 
-Whether the drive should be included when making backups.
+备份时是否应包含该驱动器。
 
 **`bps`\=`<bps>`**
 
-Maximum r/w speed in bytes per second.
+最大读写速度，单位为字节/秒。
 
 **`bps_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`bps_rd`\=`<bps>`**
 
-Maximum read speed in bytes per second.
+最大读取速度，单位为字节/秒。
 
 **`bps_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`bps_wr`\=`<bps>`**
 
-Maximum write speed in bytes per second.
+最大写入速度，单位为字节/秒。
 
 **`bps_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`cache`\=`<directsync | none | unsafe | writeback | writethrough>`**
 
-The drive’s cache mode
+驱动器的缓存模式
 
 **`detect_zeroes`\=`<boolean>`**
 
-Controls whether to detect and try to optimize writes of zeroes.
+控制是否检测并尝试优化零值写入。
 
 **`discard`\=`<ignore | on>`**
 
-Controls whether to pass discard/trim requests to the underlying storage.
+控制是否将 discard/trim 请求传递给底层存储。
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<cloop | qcow | qcow2 | qed | raw | vmdk>`**
 
-The drive’s backing file’s data format.
+驱动器后端文件的数据格式。
 
 **`iops`\=`<iops>`**
 
-Maximum r/w I/O in operations per second.
+每秒最大读写 I/O 操作数。
 
 **`iops_max`\=`<iops>`**
 
-Maximum unthrottled r/w I/O pool in operations per second.
+最大未限速读写 I/O 池，单位为每秒操作数。
 
 **`iops_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`iops_rd`\=`<iops>`**
 
-Maximum read I/O in operations per second.
+每秒最大读取 I/O 操作数。
 
 **`iops_rd_max`\=`<iops>`**
 
-Maximum unthrottled read I/O pool in operations per second.
+最大未限速读取 I/O 池，单位为每秒操作数。
 
 **`iops_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`iops_wr`\=`<iops>`**
 
-Maximum write I/O in operations per second.
+每秒最大写入 I/O 操作数。
 
 **`iops_wr_max`\=`<iops>`**
 
-Maximum unthrottled write I/O pool in operations per second.
+最大未限速写入 I/O 池，单位为每秒操作数。
 
 **`iops_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`mbps`\=`<mbps>`**
 
-Maximum r/w speed in megabytes per second.
+最大读写速度，单位为 MB/秒。
 
 **`mbps_max`\=`<mbps>`**
 
-Maximum unthrottled r/w pool in megabytes per second.
+最大未限速读写池，单位为 MB/秒。
 
 **`mbps_rd`\=`<mbps>`**
 
-Maximum read speed in megabytes per second.
+最大读取速度，单位为 MB/秒。
 
 **`mbps_rd_max`\=`<mbps>`**
 
-Maximum unthrottled read pool in megabytes per second.
+最大未限速读取池，单位为 MB/秒。
 
 **`mbps_wr`\=`<mbps>`**
 
-Maximum write speed in megabytes per second.
+最大写入速度，单位为 MB/秒。
 
 **`mbps_wr_max`\=`<mbps>`**
 
-Maximum unthrottled write pool in megabytes per second.
+最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*default \=* `disk`)**
+**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
 
-The drive’s media type.
+驱动器的介质类型。
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
-Whether the drive should considered for replication jobs.
+是否应将驱动器纳入复制作业。
 
 **`rerror`\=`<ignore | report | stop>`**
 
-Read error action.
+读取错误时的操作。
 
 **`serial`\=`<serial>`**
 
-The drive’s reported serial number, url-encoded, up to 20 bytes long.
+驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
-Mark this locally-managed volume as available on all nodes.
+将此本地管理的卷标记为在所有节点上可用。
 
 {% hint style="warning" %}
-This option does not share the volume automatically, it assumes it is shared already!
+此选项不会自动共享卷，而是假定该卷已经共享！
 {% endhint %}
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`snapshot`\=`<boolean>`**
 
-Controls qemu’s snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.
+控制 qemu 的快照模式功能。激活后，对磁盘所做的更改是临时的，并将在虚拟机关机时丢弃。
 
 **`ssd`\=`<boolean>`**
 
-Whether to expose this drive as an SSD, rather than a rotational hard disk.
+是否将此驱动器呈现为 SSD，而非旋转式硬盘。
 
 **`werror`\=`<enospc | ignore | report | stop>`**
 
-Write error action.
+写入错误时的操作。
 
 **`wwn`\=`<wwn>`**
 
-The drive’s worldwide name, encoded as 16 bytes hex string, prefixed by *0x*.
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
 
 **`scsi[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -1056,91 +1048,91 @@ Use volume as SCSI hard disk or CD-ROM (n is 0 to 30).
 
 **`aio`\=`<io_uring | native | threads>`**
 
-AIO type to use.
+要使用的 AIO 类型。
 
 **`backup`\=`<boolean>`**
 
-Whether the drive should be included when making backups.
+备份时是否应包含该驱动器。
 
 **`bps`\=`<bps>`**
 
-Maximum r/w speed in bytes per second.
+最大读写速度，单位为字节/秒。
 
 **`bps_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`bps_rd`\=`<bps>`**
 
-Maximum read speed in bytes per second.
+最大读取速度，单位为字节/秒。
 
 **`bps_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`bps_wr`\=`<bps>`**
 
-Maximum write speed in bytes per second.
+最大写入速度，单位为字节/秒。
 
 **`bps_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`cache`\=`<directsync | none | unsafe | writeback | writethrough>`**
 
-The drive’s cache mode
+驱动器的缓存模式
 
 **`detect_zeroes`\=`<boolean>`**
 
-Controls whether to detect and try to optimize writes of zeroes.
+控制是否检测并尝试优化零值写入。
 
 **`discard`\=`<ignore | on>`**
 
-Controls whether to pass discard/trim requests to the underlying storage.
+控制是否将 discard/trim 请求传递给底层存储。
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<cloop | qcow | qcow2 | qed | raw | vmdk>`**
 
-The drive’s backing file’s data format.
+驱动器后端文件的数据格式。
 
 **`iops`\=`<iops>`**
 
-Maximum r/w I/O in operations per second.
+每秒最大读写 I/O 操作数。
 
 **`iops_max`\=`<iops>`**
 
-Maximum unthrottled r/w I/O pool in operations per second.
+最大未限速读写 I/O 池，单位为每秒操作数。
 
 **`iops_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`iops_rd`\=`<iops>`**
 
-Maximum read I/O in operations per second.
+每秒最大读取 I/O 操作数。
 
 **`iops_rd_max`\=`<iops>`**
 
-Maximum unthrottled read I/O pool in operations per second.
+最大未限速读取 I/O 池，单位为每秒操作数。
 
 **`iops_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`iops_wr`\=`<iops>`**
 
-Maximum write I/O in operations per second.
+每秒最大写入 I/O 操作数。
 
 **`iops_wr_max`\=`<iops>`**
 
-Maximum unthrottled write I/O pool in operations per second.
+最大未限速写入 I/O 池，单位为每秒操作数。
 
 **`iops_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`iothread`\=`<boolean>`**
 
@@ -1148,31 +1140,31 @@ Whether to use iothreads for this drive
 
 **`mbps`\=`<mbps>`**
 
-Maximum r/w speed in megabytes per second.
+最大读写速度，单位为 MB/秒。
 
 **`mbps_max`\=`<mbps>`**
 
-Maximum unthrottled r/w pool in megabytes per second.
+最大未限速读写池，单位为 MB/秒。
 
 **`mbps_rd`\=`<mbps>`**
 
-Maximum read speed in megabytes per second.
+最大读取速度，单位为 MB/秒。
 
 **`mbps_rd_max`\=`<mbps>`**
 
-Maximum unthrottled read pool in megabytes per second.
+最大未限速读取池，单位为 MB/秒。
 
 **`mbps_wr`\=`<mbps>`**
 
-Maximum write speed in megabytes per second.
+最大写入速度，单位为 MB/秒。
 
 **`mbps_wr_max`\=`<mbps>`**
 
-Maximum unthrottled write pool in megabytes per second.
+最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*default \=* `disk`)**
+**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
 
-The drive’s media type.
+驱动器的介质类型。
 
 **`product`\=`<product>`**
 
@@ -1182,13 +1174,13 @@ The drive’s product name, up to 16 bytes long.
 
 Number of queues.
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
-Whether the drive should considered for replication jobs.
+是否应将驱动器纳入复制作业。
 
 **`rerror`\=`<ignore | report | stop>`**
 
-Read error action.
+读取错误时的操作。
 
 **`ro`\=`<boolean>`**
 
@@ -1204,27 +1196,27 @@ can lead to I/O errors in combination with low memory or high memory fragmentati
 
 **`serial`\=`<serial>`**
 
-The drive’s reported serial number, url-encoded, up to 20 bytes long.
+驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
-Mark this locally-managed volume as available on all nodes.
+将此本地管理的卷标记为在所有节点上可用。
 
 {% hint style="warning" %}
-This option does not share the volume automatically, it assumes it is shared already!
+此选项不会自动共享卷，而是假定该卷已经共享！
 {% endhint %}
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`snapshot`\=`<boolean>`**
 
-Controls qemu’s snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.
+控制 qemu 的快照模式功能。激活后，对磁盘所做的更改是临时的，并将在虚拟机关机时丢弃。
 
 **`ssd`\=`<boolean>`**
 
-Whether to expose this drive as an SSD, rather than a rotational hard disk.
+是否将此驱动器呈现为 SSD，而非旋转式硬盘。
 
 **`vendor`\=`<vendor>`**
 
@@ -1232,11 +1224,11 @@ The drive’s vendor name, up to 8 bytes long.
 
 **`werror`\=`<enospc | ignore | report | stop>`**
 
-Write error action.
+写入错误时的操作。
 
 **`wwn`\=`<wwn>`**
 
-The drive’s worldwide name, encoded as 16 bytes hex string, prefixed by *0x*.
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
 
 **`scsihw`: `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default \=* `lsi`)**
 
@@ -1255,7 +1247,7 @@ If you pass through a host serial device, it is no longer possible to migrate su
 {% endhint %}
 
 {% hint style="danger" %}
-Experimental! User reported problems with this option.
+实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
 **`shares`: `<integer> (0 - 50000)` (*default \=* `1000`)**
@@ -1342,7 +1334,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`template`: `<boolean>` (*default \=* `0`)**
+**`template`: `<boolean>` (*默认 \=* `0`)**
 
 启用/禁用模板。
 
@@ -1352,7 +1344,7 @@ Configure a Disk for storing TPM state. The format is fixed to *raw*.
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<qcow2 | raw | vmdk>`**
 
@@ -1360,7 +1352,7 @@ Format of the image.
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`version`\=`<v1.2 | v2.0>` (*default \=* `v1.2`)**
 
@@ -1372,7 +1364,7 @@ The TPM interface version. v2.0 is newer and should be preferred. Note that this
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`usb[n]`: `[[host=]<HOSTUSBDEVICE|spice>] [,mapping=<mapping-id>] [,usb3=<1|0>]`**
 
@@ -1396,11 +1388,11 @@ This option allows direct access to host hardware. So it is no longer possible t
 
 The value *spice* can be used to add a usb redirection devices for spice.
 
-Either this or the *mapping* key must be set.
+必须设置此项或 *mapping* 键。
 
 **`mapping`\=`<mapping-id>`**
 
-The ID of a cluster wide mapping. Either this or the default-key *host* must be set.
+集群范围映射的 ID。必须设置此项或默认键 *host*。
 
 **`usb3`\=`<boolean>` (*default \=* `0`)**
 
@@ -1432,91 +1424,91 @@ Use volume as VIRTIO hard disk (n is 0 to 15).
 
 **`aio`\=`<io_uring | native | threads>`**
 
-AIO type to use.
+要使用的 AIO 类型。
 
 **`backup`\=`<boolean>`**
 
-Whether the drive should be included when making backups.
+备份时是否应包含该驱动器。
 
 **`bps`\=`<bps>`**
 
-Maximum r/w speed in bytes per second.
+最大读写速度，单位为字节/秒。
 
 **`bps_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`bps_rd`\=`<bps>`**
 
-Maximum read speed in bytes per second.
+最大读取速度，单位为字节/秒。
 
 **`bps_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`bps_wr`\=`<bps>`**
 
-Maximum write speed in bytes per second.
+最大写入速度，单位为字节/秒。
 
 **`bps_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`cache`\=`<directsync | none | unsafe | writeback | writethrough>`**
 
-The drive’s cache mode
+驱动器的缓存模式
 
 **`detect_zeroes`\=`<boolean>`**
 
-Controls whether to detect and try to optimize writes of zeroes.
+控制是否检测并尝试优化零值写入。
 
 **`discard`\=`<ignore | on>`**
 
-Controls whether to pass discard/trim requests to the underlying storage.
+控制是否将 discard/trim 请求传递给底层存储。
 
 **`file`\=`<volume>`**
 
-The drive’s backing volume.
+驱动器的后端卷。
 
 **`format`\=`<cloop | qcow | qcow2 | qed | raw | vmdk>`**
 
-The drive’s backing file’s data format.
+驱动器后端文件的数据格式。
 
 **`iops`\=`<iops>`**
 
-Maximum r/w I/O in operations per second.
+每秒最大读写 I/O 操作数。
 
 **`iops_max`\=`<iops>`**
 
-Maximum unthrottled r/w I/O pool in operations per second.
+最大未限速读写 I/O 池，单位为每秒操作数。
 
 **`iops_max_length`\=`<seconds>`**
 
-Maximum length of I/O bursts in seconds.
+I/O 突发的最大持续时间，单位为秒。
 
 **`iops_rd`\=`<iops>`**
 
-Maximum read I/O in operations per second.
+每秒最大读取 I/O 操作数。
 
 **`iops_rd_max`\=`<iops>`**
 
-Maximum unthrottled read I/O pool in operations per second.
+最大未限速读取 I/O 池，单位为每秒操作数。
 
 **`iops_rd_max_length`\=`<seconds>`**
 
-Maximum length of read I/O bursts in seconds.
+读取 I/O 突发的最大持续时间，单位为秒。
 
 **`iops_wr`\=`<iops>`**
 
-Maximum write I/O in operations per second.
+每秒最大写入 I/O 操作数。
 
 **`iops_wr_max`\=`<iops>`**
 
-Maximum unthrottled write I/O pool in operations per second.
+最大未限速写入 I/O 池，单位为每秒操作数。
 
 **`iops_wr_max_length`\=`<seconds>`**
 
-Maximum length of write I/O bursts in seconds.
+写入 I/O 突发的最大持续时间，单位为秒。
 
 **`iothread`\=`<boolean>`**
 
@@ -1524,39 +1516,39 @@ Whether to use iothreads for this drive
 
 **`mbps`\=`<mbps>`**
 
-Maximum r/w speed in megabytes per second.
+最大读写速度，单位为 MB/秒。
 
 **`mbps_max`\=`<mbps>`**
 
-Maximum unthrottled r/w pool in megabytes per second.
+最大未限速读写池，单位为 MB/秒。
 
 **`mbps_rd`\=`<mbps>`**
 
-Maximum read speed in megabytes per second.
+最大读取速度，单位为 MB/秒。
 
 **`mbps_rd_max`\=`<mbps>`**
 
-Maximum unthrottled read pool in megabytes per second.
+最大未限速读取池，单位为 MB/秒。
 
 **`mbps_wr`\=`<mbps>`**
 
-Maximum write speed in megabytes per second.
+最大写入速度，单位为 MB/秒。
 
 **`mbps_wr_max`\=`<mbps>`**
 
-Maximum unthrottled write pool in megabytes per second.
+最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*default \=* `disk`)**
+**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
 
-The drive’s media type.
+驱动器的介质类型。
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
-Whether the drive should considered for replication jobs.
+是否应将驱动器纳入复制作业。
 
 **`rerror`\=`<ignore | report | stop>`**
 
-Read error action.
+读取错误时的操作。
 
 **`ro`\=`<boolean>`**
 
@@ -1564,27 +1556,27 @@ Whether the drive is read-only.
 
 **`serial`\=`<serial>`**
 
-The drive’s reported serial number, url-encoded, up to 20 bytes long.
+驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
-Mark this locally-managed volume as available on all nodes.
+将此本地管理的卷标记为在所有节点上可用。
 
 {% hint style="warning" %}
-This option does not share the volume automatically, it assumes it is shared already!
+此选项不会自动共享卷，而是假定该卷已经共享！
 {% endhint %}
 
 **`size`\=`<DiskSize>`**
 
-Disk size. This is purely informational and has no effect.
+磁盘大小。这仅供参考，不会产生任何影响。
 
 **`snapshot`\=`<boolean>`**
 
-Controls qemu’s snapshot mode feature. If activated, changes made to the disk are temporary and will be discarded when the VM is shutdown.
+控制 qemu 的快照模式功能。激活后，对磁盘所做的更改是临时的，并将在虚拟机关机时丢弃。
 
 **`werror`\=`<enospc | ignore | report | stop>`**
 
-Write error action.
+写入错误时的操作。
 
 **`virtiofs[n]`: `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
@@ -1630,7 +1622,7 @@ The action to perform if after activation the guest fails to poll the watchdog i
 
 Watchdog type to emulate.
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

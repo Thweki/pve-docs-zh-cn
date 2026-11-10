@@ -18,6 +18,7 @@ BLOCKS = {'p','h1','h2','h3','h4','h5','h6','dt','dd','li','td','th','caption'}
 SKIP = {'script','style','pre','code','svg','math'}
 TOKEN = re.compile(r'⟦\d+⟧')
 LITERALS = re.compile(r'https?://[^\s<>]+|(?<![\w])/(?:[\w.{}+@%:-]+/)*[\w.{}+@%:-]+|--[A-Za-z][\w-]*|\b[\w+-]+\.(?:conf|cfg|json|yaml|yml|service|socket|timer|iso|img|qcow2|vmdk|raw|sh|pem|key|crt|po)\b|\b[A-Za-z][A-Za-z0-9]*_[A-Za-z0-9_]+\b|`[^`]+`')
+API_LITERALS = re.compile(LITERALS.pattern+r'|[ \t]{2,}|\t')
 
 def digest(s):
     return hashlib.sha256(s.encode()).hexdigest()[:20]
@@ -69,19 +70,19 @@ def download_asset(src):
 
 def protect_element(el):
     """Serialize inline content, with markup and literal/code values protected."""
-    fragments=[]
+    fragments=[];preserve_lines=bool(el.get('data-preserve-lines'))
     def token(value):
         marker=f'⟦{len(fragments)}⟧';fragments.append(value);return marker
     def visit(n):
         if isinstance(n,Comment):return ''
         if isinstance(n,NavigableString):
-            pieces=re.split('(\n)',str(n)) if el.get('data-preserve-lines') else [str(n)]
+            pieces=re.split('(\n)',str(n)) if preserve_lines else [str(n)]
             out=[]
             for piece in pieces:
-                if piece=='\n':out.append(token('\n'));continue
-                text=re.sub(r'\s+',' ',piece)
+                if preserve_lines and piece=='\n':out.append(token('\n'));continue
+                text=piece if preserve_lines else re.sub(r'\s+',' ',piece)
                 # Bare links and technical literals are not translator-editable.
-                out.append(LITERALS.sub(lambda m:token(html.escape(m[0],quote=False)),text))
+                out.append((API_LITERALS if preserve_lines else LITERALS).sub(lambda m:token(html.escape(m[0],quote=False)),text))
             return ''.join(out)
         if not isinstance(n,Tag):return ''
         if n.name in {'code','tt','kbd','samp','img','br','sup'} or 'monospaced' in n.get('class',[]):

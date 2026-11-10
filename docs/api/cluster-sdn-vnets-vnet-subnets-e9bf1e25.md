@@ -116,7 +116,7 @@ Create a new sdn subnet object.
 | --- | --- | --- | --- | --- |
 | `dhcp-dns-server` | string | 否 | — | IP address for the DNS server |
 | `dhcp-range` | array | 否 | — | A list of DHCP ranges for this subnet |
-| `dnszoneprefix` | string | 否 | — | dns domain zone prefix ex: 'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
+| `dnszoneprefix` | string | 否 | — | dns domain zone prefix  ex: 'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
 | `gateway` | string | 否 | — | Subnet Gateway: Will be assign on vnet for layer3 zones |
 | `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
 | `snat` | boolean | 否 | — | enable masquerade for this subnet if pve-firewall |
@@ -149,7 +149,7 @@ Create a new sdn subnet object.
       "typetext": "<array>"
     },
     "dnszoneprefix": {
-      "description": "dns domain zone prefix ex: 'adm' -> <hostname>.adm.mydomain.com",
+      "description": "dns domain zone prefix  ex: 'adm' -> <hostname>.adm.mydomain.com",
       "format": "dns-name",
       "optional": 1,
       "type": "string",

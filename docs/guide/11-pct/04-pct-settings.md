@@ -8,14 +8,14 @@
 
 - **Node**：容器将在其上运行的物理服务器
 - **CT ID**：此 Proxmox VE 安装中用于标识容器的唯一编号
-- **Hostname**: the hostname of the container
-- **Resource Pool**: a logical group of containers and VMs
-- **Password**: the root password of the container
-- **SSH Public Key**: a public key for connecting to the root account over SSH
-- **Unprivileged container**: this option allows to choose at creation time if you want to create a privileged or unprivileged container.
-- **Nesting**: expose procfs and sysfs to allow nested containers. Note that systemd also uses this to isolate services.
+- **Hostname**：容器的主机名
+- **Resource Pool**：容器和 VM 的逻辑组
+- **Password**：容器的 root 密码
+- **SSH Public Key**：用于通过 SSH 连接 root 账户的公钥
+- **Unprivileged container**：此选项允许您在创建时选择要创建特权容器还是非特权容器。
+- **Nesting**：暴露 procfs 和 sysfs 以允许嵌套容器。请注意，systemd 也使用此功能来隔离服务。
 
-### Unprivileged Containers <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
+### 非特权容器 <a href="#_unprivileged_containers" id="_unprivileged_containers"></a>
 
 非特权容器使用一种称为用户命名空间的新内核功能。容器内的 root UID 0 会映射到容器外的非特权用户。这意味着，这些容器中的大多数安全问题（容器逃逸、资源滥用等）将影响某个随机的非特权用户，并且属于通用内核安全漏洞，而不是 LXC 问题。LXC 团队认为，非特权容器在设计上就是安全的。
 
@@ -25,7 +25,7 @@
 如果容器使用 systemd 作为 init 系统，请注意，容器内运行的 systemd 版本应等于或高于 220。
 {% endhint %}
 
-### Privileged Containers <a href="#_privileged_containers" id="_privileged_containers"></a>
+### 特权容器 <a href="#_privileged_containers" id="_privileged_containers"></a>
 
 容器中的安全性通过使用强制访问控制 *AppArmor* 限制、*seccomp* 过滤器和 Linux 内核命名空间来实现。LXC 团队认为这种容器不安全，并且不会将新的容器逃逸漏洞视为值得分配 CVE 并快速修复的安全问题。因此，特权容器只应在受信任的环境中使用。
 
@@ -141,7 +141,7 @@ cpulimit: 0.5</pre>
 
 示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，这意味着容器内的 ID 将与磁盘上的 ID 一致。
 
-**`keepattrs`\=`<boolean>` (*default \=* `0`)**
+**`keepattrs`\=`<boolean>`（*默认 \=* `0`）**
 
 如果挂载点目录已存在，则继承该目录的 UID、GID 和访问模式。
 
@@ -161,7 +161,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
 会将此卷包含到存储复制作业中。
 
@@ -169,7 +169,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -193,7 +193,7 @@ rootfs/mps 的额外挂载选项。
 rootfs: thin1:base-100-disk-1,size=8G
 ```
 
-### Storage Backed Mount Points <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
+### 存储支持的挂载点 <a href="#_storage_backed_mount_points" id="_storage_backed_mount_points"></a>
 
 存储支持的挂载点由 Proxmox VE 存储子系统管理，并有三种不同形式：
 
@@ -211,7 +211,7 @@ pct set 100 -mp0 thin1:10,mp=/path/in/container
 
 将在存储 `thin1` 上分配一个 10GB 的卷，用分配的卷 ID 替换卷 ID 占位符 `10`，并在容器中的 `/path/in/container` 处设置挂载点
 
-### Bind Mount Points <a href="#_bind_mount_points" id="_bind_mount_points"></a>
+### 绑定挂载点 <a href="#_bind_mount_points" id="_bind_mount_points"></a>
 
 绑定挂载允许您在容器内访问 Proxmox VE 宿主机上的任意目录。一些潜在的用例包括：
 
@@ -249,7 +249,7 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 
 以达到相同的结果。
 
-### Device Mount Points <a href="#_device_mount_points" id="_device_mount_points"></a>
+### 设备挂载点 <a href="#_device_mount_points" id="_device_mount_points"></a>
 
 设备挂载点允许将宿主机的块设备直接挂载到容器中。与绑定挂载类似，设备挂载不受 Proxmox VE 存储子系统管理，但 `quota` 和 `acl` 选项会生效。
 
@@ -345,9 +345,9 @@ CIDR 格式的 IPv6 地址。
 
 如果您想微调容器的启动顺序，可以使用以下参数：
 
-- **Start/Shutdown order**: Defines the start order priority. For example, set it to 1 if you want the CT to be the first to be started. (We use the reverse startup order for shutdown, so a container with a start order of 1 would be the last to be shut down)
-- **Startup delay**: Defines the interval between this container start and subsequent containers starts. For example, set it to 240 if you want to wait 240 seconds before starting other containers.
-- **Shutdown timeout**: Defines the duration in seconds Proxmox VE should wait for the container to be offline after issuing a shutdown command. By default this value is set to 60, which means that Proxmox VE will issue a shutdown request, wait 60s for the machine to be offline, and if after 60s the machine is still online will notify that the shutdown action failed.
+- **启动/关闭顺序**：定义启动顺序优先级。例如，如果希望 CT 最先启动，请将其设置为 1。（关闭时我们采用相反的启动顺序，因此启动顺序为 1 的容器将最后关闭）
+- **启动延迟**：定义此容器启动与后续容器启动之间的间隔。例如，如果希望在启动其他容器之前等待 240 秒，请将其设置为 240。
+- **关闭超时**：定义 Proxmox VE 在发出关闭命令后等待容器离线的时长（秒）。默认情况下，此值设置为 60，这意味着 Proxmox VE 将发出关闭请求，等待 60s 让机器离线；如果 60s 后机器仍在线，则会通知关闭操作失败。
 
 请注意，未设置启动/关闭顺序参数的容器将始终在设置了该参数的容器之后启动，并且此参数仅对宿主机上本地运行的机器之间有意义，在整个集群范围内没有意义。
 

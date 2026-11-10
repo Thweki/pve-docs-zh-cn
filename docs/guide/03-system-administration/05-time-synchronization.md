@@ -1,4 +1,4 @@
-# 3.5. Time Synchronization <a href="#_time_synchronization" id="_time_synchronization"></a>
+# 3.5. 时间同步 <a href="#_time_synchronization" id="_time_synchronization"></a>
 
 Proxmox VE 集群软件栈本身高度依赖于所有节点的时间都精确同步。如果所有节点的本地时间不同步，Ceph 等其他一些组件也无法正常工作。
 
@@ -8,11 +8,11 @@ Proxmox VE 集群软件栈本身高度依赖于所有节点的时间都精确同
 如果将系统升级到 Proxmox VE 7，建议您手动安装 `chrony`、`ntp` 或 `openntpd`。
 {% endhint %}
 
-## 3.5.1. Using Custom NTP Servers <a href="#_using_custom_ntp_servers" id="_using_custom_ntp_servers"></a>
+## 3.5.1. 使用自定义 NTP 服务器 <a href="#_using_custom_ntp_servers" id="_using_custom_ntp_servers"></a>
 
 在某些情况下，可能需要使用非默认的 NTP 服务器。例如，如果您的 Proxmox VE 节点由于严格的防火墙规则而无法访问公共互联网，则需要设置本地 NTP 服务器，并告知 NTP 守护进程使用它们。
 
-### For systems using chrony: <a href="#_for_systems_using_chrony" id="_for_systems_using_chrony"></a>
+### 对于使用 chrony 的系统： <a href="#_for_systems_using_chrony" id="_for_systems_using_chrony"></a>
 
 在 `chrony` 的配置文件 `/etc/chrony/chrony.conf` 中指定应使用哪些服务器：
 
@@ -42,7 +42,7 @@ Aug 26 13:00:15 node1 chronyd[4873]: System clock TAI offset set to 37 seconds
 ...
 ```
 
-### For systems using systemd-timesyncd: <a href="#_for_systems_using_systemd_timesyncd" id="_for_systems_using_systemd_timesyncd"></a>
+### 对于使用 systemd-timesyncd 的系统： <a href="#_for_systems_using_systemd_timesyncd" id="_for_systems_using_systemd_timesyncd"></a>
 
 在 `systemd-timesyncd` 的配置文件 `/etc/systemd/timesyncd.conf` 中指定应使用哪些服务器：
 

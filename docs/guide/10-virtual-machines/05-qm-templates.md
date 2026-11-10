@@ -1,9 +1,9 @@
-# 10.5. Virtual Machine Templates <a href="#qm_templates" id="qm_templates"></a>
+# 10.5. 虚拟机模板 <a href="#qm_templates" id="qm_templates"></a>
 
-One can convert a VM into a Template. Such templates are read-only, and you can use them to create linked clones.
+可以将 VM 转换为模板。此类模板是只读的，您可以使用它们创建链接克隆。
 
 {% hint style="info" %}
-It is not possible to start templates, because this would modify the disk images. If you want to change the template, create a linked clone and modify that.
+无法启动模板，因为这会修改磁盘映像。如果要更改模板，请创建一个链接克隆并对其进行修改。
 {% endhint %}
 
 ---

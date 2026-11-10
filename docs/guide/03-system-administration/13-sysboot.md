@@ -1,10 +1,10 @@
-# 3.13. Host Bootloader <a href="#sysboot" id="sysboot"></a>
+# 3.13. 宿主机引导加载程序 <a href="#sysboot" id="sysboot"></a>
 
 Proxmox VE 目前会根据安装程序中选择的磁盘设置，使用两种引导加载程序中的一种。
 
 对于以 ZFS 作为根文件系统安装的 EFI 系统，除非启用了 Secure Boot，否则使用 `systemd-boot`。所有其他部署都使用标准的 GRUB 引导加载程序（这通常也适用于在 Debian 之上安装的系统）。
 
-## 3.13.1. Partitioning Scheme Used by the Installer <a href="#sysboot_installer_part_scheme" id="sysboot_installer_part_scheme"></a>
+## 3.13.1. 安装程序使用的分区方案 <a href="#sysboot_installer_part_scheme" id="sysboot_installer_part_scheme"></a>
 
 Proxmox VE 安装程序会在所有选定用于安装的磁盘上创建 3 个分区。
 
@@ -22,7 +22,7 @@ Proxmox VE 安装程序会在所有选定用于安装的磁盘上创建 3 个分
 这适用于 x86 宿主机。在 arm64 上，Proxmox VE 仅通过 UEFI 引导，因此没有 BIOS 引导分区，也没有 `i386-pc` GRUB 目标；GRUB 会以 EFI 模式安装，并改用 `arm64-efi` 目标。
 {% endhint %}
 
-## 3.13.2. Synchronizing the content of the ESP with `proxmox-boot-tool` <a href="#sysboot_proxmox_boot_tool" id="sysboot_proxmox_boot_tool"></a>
+## 3.13.2. 使用 `proxmox-boot-tool` 同步 ESP 的内容 <a href="#sysboot_proxmox_boot_tool" id="sysboot_proxmox_boot_tool"></a>
 
 `proxmox-boot-tool` 是一个实用程序，用于保持 EFI 系统分区的内容配置正确并同步。它将特定的内核版本复制到所有 ESP，并配置相应的引导加载程序，以便从采用 `vfat` 格式的 ESP 引导。在 ZFS 作为根文件系统的情况下，这意味着您可以在根池上使用所有可选功能，而不必局限于 GRUB 中 ZFS 实现也支持的功能子集，也不必创建一个独立的小型引导池 [\[2\]](#note-dbd1308e-2)。
 
@@ -84,7 +84,7 @@ To format and initialize a partition as synced ESP, e.g., after replacing a fail
 
 **更新所有 ESP 上的配置**
 
-To copy and configure all bootable kernels and keep all ESPs listed in `/etc/kernel/proxmox-boot-uuids` in sync you just need to run:
+要复制并配置所有可引导的内核，并保持 `/etc/kernel/proxmox-boot-uuids` 中列出的所有 ESP 同步，您只需运行：
 
 ```text
 # proxmox-boot-tool refresh
@@ -140,7 +140,7 @@ Automatically selected kernels:
 在上述手动添加或移除内核之后，必须运行 `proxmox-boot-tool refresh` 来更新所有 EFI 系统分区（ESP）。
 {% endhint %}
 
-## 3.13.3. Determine which Bootloader is Used <a href="#sysboot_determine_bootloader_used" id="sysboot_determine_bootloader_used"></a>
+## 3.13.3. 确定使用的引导加载程序 <a href="#sysboot_determine_bootloader_used" id="sysboot_determine_bootloader_used"></a>
 
 [![screenshot/boot-grub.png](../../assets/screenshot-boot-grub-png-a99b5d180a67.png)](https://pve.proxmox.com/pve-docs/images/screenshot/boot-grub.png)
 
@@ -192,7 +192,7 @@ Boot0006* Linux Boot Manager    [...] File(\EFI\systemd\systemd-bootx64.efi)
 
 多年来，GRUB 一直是引导 Linux 系统事实上的标准，并且具有相当完善的文档 [\[3\]](#note-dbd1308e-3)。
 
-### Configuration <a href="#_configuration" id="_configuration"></a>
+### 配置 <a href="#_configuration" id="_configuration"></a>
 
 对 GRUB 配置的更改通过默认文件 `/etc/default/grub` 或 `/etc/default/grub.d` 中的配置片段完成。更改配置后，运行以下命令重新生成配置文件：[\[4\]](#note-dbd1308e-4)
 
@@ -204,7 +204,7 @@ Boot0006* Linux Boot Manager    [...] File(\EFI\systemd\systemd-bootx64.efi)
 
 `systemd-boot` 是一个轻量级 EFI 引导加载程序。它直接从其安装所在的 EFI 系统分区（ESP）读取内核和 initrd 镜像。直接从 ESP 加载内核的主要优势是无需重新实现用于访问存储的驱动程序。在 Proxmox VE 中，使用 [`proxmox-boot-tool`](#sysboot_proxmox_boot_tool) 来保持 ESP 上的配置同步。
 
-### Configuration <a href="#sysboot_systemd_boot_config" id="sysboot_systemd_boot_config"></a>
+### 配置 <a href="#sysboot_systemd_boot_config" id="sysboot_systemd_boot_config"></a>
 
 `systemd-boot` 通过 EFI 系统分区（ESP）根目录中的文件 `loader/loader.conf` 进行配置。详情请参阅 `loader.conf(5)` 手册页。
 
@@ -220,7 +220,7 @@ linux    /EFI/proxmox/5.0.15-1-pve/vmlinuz-5.0.15-1-pve
 initrd   /EFI/proxmox/5.0.15-1-pve/initrd.img-5.0.15-1-pve
 ```
 
-## 3.13.6. Editing the Kernel Commandline <a href="#sysboot_edit_kernel_cmdline" id="sysboot_edit_kernel_cmdline"></a>
+## 3.13.6. 编辑内核命令行 <a href="#sysboot_edit_kernel_cmdline" id="sysboot_edit_kernel_cmdline"></a>
 
 您可以在以下位置修改内核命令行，具体取决于所使用的引导加载程序：
 
@@ -242,7 +242,7 @@ initrd   /EFI/proxmox/5.0.15-1-pve/initrd.img-5.0.15-1-pve
 
 使用输出开头的两个数字。
 
-## 3.13.7. Override the Kernel-Version for next Boot <a href="#sysboot_kernel_pin" id="sysboot_kernel_pin"></a>
+## 3.13.7. 覆盖下次引导的内核版本 <a href="#sysboot_kernel_pin" id="sysboot_kernel_pin"></a>
 
 要选择当前并非默认内核的内核，您可以：
 
@@ -295,10 +295,10 @@ initrd   /EFI/proxmox/5.0.15-1-pve/initrd.img-5.0.15-1-pve
 
 要使 Secure Boot 正常工作，需要以下软件包。您可以使用 ‘proxmox-secure-boot-support’ 元软件包一次性安装它们。
 
-- `shim-signed` (shim bootloader signed by Microsoft)
-- `shim-helpers-amd64-signed` (fallback bootloader and MOKManager, signed by Proxmox)
-- `grub-efi-amd64-signed` (GRUB EFI bootloader, signed by Proxmox)
-- `proxmox-kernel-6.X.Y-Z-pve-signed` (Kernel image, signed by Proxmox)
+- `shim-signed`（由 Microsoft 签名的 shim 引导加载程序）
+- `shim-helpers-amd64-signed`（回退引导加载程序和 MOKManager，由 Proxmox 签名）
+- `grub-efi-amd64-signed`（GRUB EFI 引导加载程序，由 Proxmox 签名）
+- `proxmox-kernel-6.X.Y-Z-pve-signed`（由 Proxmox 签名的内核镜像）
 
 {% hint style="info" %}
 `shim-helpers-amd64-signed` 和 `grub-efi-amd64-signed` 软件包名称适用于 x86 宿主机。在 arm64 上，对应的软件包为 `shim-helpers-arm64-signed` 和 `grub-efi-arm64-signed`。
@@ -310,7 +310,7 @@ Proxmox VE 的任何全新安装都会自动包含上述所有软件包。
 
 有关安全启动的工作原理以及如何自定义设置的更多详细信息，请参阅[我们的 Wiki](https://pve.proxmox.com/wiki/Secure_Boot_Setup)。
 
-### Switching an Existing Installation to Secure Boot <a href="#_switching_an_existing_installation_to_secure_boot" id="_switching_an_existing_installation_to_secure_boot"></a>
+### 将现有安装切换到安全启动 <a href="#_switching_an_existing_installation_to_secure_boot" id="_switching_an_existing_installation_to_secure_boot"></a>
 
 {% hint style="warning" %}
 如果操作不正确，在某些情况下可能会导致安装无法启动。如果可用，重新安装宿主机将自动设置安全启动，无需任何额外交互。**请确保您拥有 Proxmox VE 宿主机的可用且经过充分测试的备份！**
@@ -397,7 +397,7 @@ Boot0009* proxmox       HD(2,GPT,..,0x800,0x100000)/File(\EFI\proxmox\shimx64.ef
 要注册自定义密钥，请参阅相关的[安全启动 Wiki 页面](https://pve.proxmox.com/wiki/Secure_Boot_Setup#Setup_instructions_for_db_key_variant)。
 {% endhint %}
 
-### Using DKMS/Third Party Modules With Secure Boot <a href="#_using_dkms_third_party_modules_with_secure_boot" id="_using_dkms_third_party_modules_with_secure_boot"></a>
+### 在安全启动中使用 DKMS/第三方模块 <a href="#_using_dkms_third_party_modules_with_secure_boot" id="_using_dkms_third_party_modules_with_secure_boot"></a>
 
 在启用安全启动的系统上，内核将拒绝加载未经可信密钥签名的模块。内核软件包随附的默认模块集使用嵌入内核镜像中的临时密钥签名，该密钥受该特定版本内核镜像信任。
 

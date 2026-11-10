@@ -30,7 +30,7 @@ Exclude certain files/directories (shell globs). Paths starting with */* are anc
 
 Options for backup fleecing (VM only).
 
-**`enabled`\=`<boolean>` (*default \=* `0`)**
+**`enabled`\=`<boolean>`（*默认值 \=* `0`）**
 
 Enable backup fleecing. Cache backup data from blocks where new guest writes happen on specified storage instead of copying them directly to the backup target. This can help guest IO performance and even prevent hangs, at the cost of requiring more storage space.
 

@@ -18,7 +18,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 它以资源类型开头，后跟资源特定名称，两者之间用冒号分隔。它们共同构成 HA 资源 ID，所有 `ha-manager` 命令都使用该 ID 唯一标识资源（例如：`vm:100` 或 `ct:101`）。接下来的行包含其他属性：
 
-**`auto-rebalance`: `<boolean>` (*default \=* `1`)**
+**`auto-rebalance`：`<boolean>`（*默认值 \=* `1`）**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -26,7 +26,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 描述。
 
-**`failback`: `<boolean>` (*default \=* `1`)**
+**`failback`：`<boolean>`（*默认值 \=* `1`）**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -34,15 +34,15 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 HA 组标识符。
 
-**`max_relocate`: `<integer> (0 - N)` (*default \=* `1`)**
+**`max_relocate`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`max_restart`: `<integer> (0 - N)` (*default \=* `1`)**
+**`max_restart`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`state`: `<disabled | enabled | ignored | started | stopped>` (*default \=* `started`)**
+**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 \=* `started`）**
 
 请求的资源状态。CRM 读取此状态并采取相应操作。请注意，`enabled` 只是 `started` 的别名。
 
@@ -109,11 +109,11 @@ group: <group>
 
 集群节点成员列表，可以为每个节点指定优先级。资源将在具有最高优先级的可用节点上运行。如果最高优先级类别中有多个节点，资源将分布到这些节点上。优先级只有相对意义。数值越大，优先级越高。
 
-**`nofailback`: `<boolean>` (*default \=* `0`)**
+**`nofailback`：`<boolean>`（*默认值 \=* `0`）**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`restricted`: `<boolean>` (*default \=* `0`)**
+**`restricted`：`<boolean>`（*默认值 \=* `0`）**
 
 绑定到受限组的资源只能在组定义的节点上运行。如果没有组节点成员在线，资源将被置于停止状态。非受限组上的资源可以在所有组成员离线时运行于任何集群节点，但一旦组成员上线，它们就会迁移回去。使用只有一个成员的非受限组，可以实现*首选节点*行为。
 
@@ -205,7 +205,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 </tbody>
 </table>
 
-### Node Affinity Rules <a href="#ha_manager_node_affinity_rules" id="ha_manager_node_affinity_rules"></a>
+### 节点亲和性规则 <a href="#ha_manager_node_affinity_rules" id="ha_manager_node_affinity_rules"></a>
 
 默认情况下，HA 资源可以在任何集群节点上运行，但一个常见需求是 HA 资源应在特定节点上运行。可以通过定义 HA 节点亲和性规则，使 HA 资源 `vm:100` 优先选择节点 `node1` 来实现这一点：
 
@@ -257,9 +257,9 @@ node-affinity: priority-cascade
         resources vm:400,ct:500
 ```
 
-#### Node Affinity Rule Properties <a href="#_node_affinity_rule_properties" id="_node_affinity_rule_properties"></a>
+#### 节点亲和性规则属性 <a href="#_node_affinity_rule_properties" id="_node_affinity_rule_properties"></a>
 
-**`affinity`: `<negative | positive>` (*default \=* `positive`)**
+**`affinity`: `<negative | positive>` (*默认值 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -271,7 +271,7 @@ node-affinity: priority-cascade
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`strict`: `<boolean>` (*default \=* `0`)**
+**`strict`: `<boolean>` (*默认值 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -279,7 +279,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 严格节点亲和性规则将资源限制在定义的节点上。如果定义的节点均不可用，资源将被停止。
 
-### Resource Affinity Rules <a href="#ha_manager_resource_affinity_rules" id="ha_manager_resource_affinity_rules"></a>
+### 资源亲和性规则 <a href="#ha_manager_resource_affinity_rules" id="ha_manager_resource_affinity_rules"></a>
 
 另一个常见需求是，两个或更多 HA 资源应在同一节点上运行，或者应分布在不同节点上。这些通常也称为“亲和性/反亲和性约束”。
 
@@ -321,7 +321,7 @@ resource-affinity: keep-separate
         resources vm:200,ct:300
 ```
 
-#### Interactions between Positive and Negative Resource Affinity Rules <a href="#_interactions_between_positive_and_negative_resource_affinity_rules" id="_interactions_between_positive_and_negative_resource_affinity_rules"></a>
+#### 正向与负向资源亲和性规则之间的相互作用 <a href="#_interactions_between_positive_and_negative_resource_affinity_rules" id="_interactions_between_positive_and_negative_resource_affinity_rules"></a>
 
 如果某些 HA 资源位于一条正向资源亲和性规则中，同时也属于一条负向资源亲和性规则，那么该正向资源亲和性规则中的所有其他 HA 资源，也与这些负向资源亲和性规则中的 HA 资源具有负向亲和性。
 
@@ -329,7 +329,7 @@ resource-affinity: keep-separate
 
 Note that if there are two or more HA resources in both a positive and negative resource affinity rule, then those will be disabled as they cause a conflict: Two or more HA resources cannot be kept on the same node and separated on different nodes at the same time. For more information on these cases, see the section about [rule conflicts and errors](#ha_manager_rule_conflicts) below.
 
-#### Interactions between Node and Positive Resource Affinity Rules <a href="#_interactions_between_node_and_positive_resource_affinity_rules" id="_interactions_between_node_and_positive_resource_affinity_rules"></a>
+#### 节点亲和性规则与正向资源亲和性规则之间的相互作用 <a href="#_interactions_between_node_and_positive_resource_affinity_rules" id="_interactions_between_node_and_positive_resource_affinity_rules"></a>
 
 如果节点亲和性规则中的某些 HA 资源同时属于一条正向资源亲和性规则，那么该正向资源亲和性规则中的所有其他 HA 资源也会继承该节点亲和性规则。
 
@@ -337,7 +337,7 @@ Note that if there are two or more HA resources in both a positive and negative 
 
 Please note that if there are two or more HA resources in a positive resource affinity rule and in different node affinity rules, then those rules will cause an error and will be disabled as this is currently not supported. For more information on these cases, see the section about [rule conflicts and errors](#ha_manager_rule_conflicts) below.
 
-#### Resource Affinity Rule Properties <a href="#_resource_affinity_rule_properties" id="_resource_affinity_rule_properties"></a>
+#### 资源亲和性规则属性 <a href="#_resource_affinity_rule_properties" id="_resource_affinity_rule_properties"></a>
 
 **`affinity`: `<negative | positive>`**
 

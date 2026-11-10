@@ -1,4 +1,4 @@
-# 7.10. LVM Backend <a href="#storage_lvm" id="storage_lvm"></a>
+# 7.10. LVM 后端 <a href="#storage_lvm" id="storage_lvm"></a>
 
 存储池类型：`lvm`
 
@@ -6,7 +6,7 @@ LVM 是位于硬盘和分区之上的轻量级软件层。它可用于将可用�
 
 另一种用例是在大型 iSCSI LUN（逻辑单元号）或通过光纤通道连接的 SAN（存储区域网络）之上部署 LVM。这样，您就可以轻松管理 iSCSI LUN 上的空间；否则这将无法实现，因为 iSCSI 规范未定义用于空间分配的管理接口。
 
-## 7.10.1. Configuration <a href="#pvesm_lvm_config" id="pvesm_lvm_config"></a>
+## 7.10.1. 配置 <a href="#pvesm_lvm_config" id="pvesm_lvm_config"></a>
 
 LVM 后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 LVM 特定属性：
 
@@ -60,7 +60,7 @@ lvm: myspace
         content rootdir,images
 ```
 
-## 7.10.2. File naming conventions <a href="#_file_naming_conventions_3" id="_file_naming_conventions_3"></a>
+## 7.10.2. 文件命名约定 <a href="#_file_naming_conventions_3" id="_file_naming_conventions_3"></a>
 
 该后端基本上使用与 ZFS 池后端相同的命名约定。
 
@@ -68,7 +68,7 @@ lvm: myspace
 vm-<VMID>-<NAME>      // normal VM images
 ```
 
-## 7.10.3. Storage Features <a href="#_storage_features_6" id="_storage_features_6"></a>
+## 7.10.3. 存储功能 <a href="#_storage_features_6" id="_storage_features_6"></a>
 
 LVM 是典型的块存储系统。遗憾的是，常规 LVM 快照效率低下，因为在快照处于活动状态时，它们会干扰整个卷组内的所有写操作，导致 I/O 性能显著下降。这就是 LVM 不支持链接克隆的原因，也是 Proxmox VE 增加卷链快照支持的原因。此功能通过存储插件管理快照卷，并使用 qcow2 将各个独立卷分层组成后备链。这会创建向客户机公开的单一磁盘状态。
 
@@ -110,7 +110,7 @@ LVM 的一个优点是可以与共享存储配合使用，例如 iSCSI LUN。如
 
 1：自 Proxmox VE 9 起，VM 已支持卷链快照，详情请参阅“[LVM 配置](#pvesm_lvm_config)”一节。
 
-## 7.10.4. Examples <a href="#_examples_6" id="_examples_6"></a>
+## 7.10.4. 示例 <a href="#_examples_6" id="_examples_6"></a>
 
 可以使用以下命令获取可用 LVM 卷组的列表：
 

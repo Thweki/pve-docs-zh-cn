@@ -1,40 +1,40 @@
-# 10.4. Copies and Clones <a href="#qm_copy_and_clone" id="qm_copy_and_clone"></a>
+# 10.4. 副本与克隆 <a href="#qm_copy_and_clone" id="qm_copy_and_clone"></a>
 
 [![screenshot/gui-qemu-full-clone.png](../../assets/screenshot-gui-qemu-full-clone-png-cd406793042e.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-qemu-full-clone.png)
 
-VM installation is usually done using an installation media (CD-ROM) from the operating system vendor. Depending on the OS, this can be a time consuming task one might want to avoid.
+VM 安装通常使用操作系统供应商提供的安装介质 (CD-ROM) 完成。根据操作系统的不同，这可能是一项耗时的工作，人们可能希望避免。
 
-An easy way to deploy many VMs of the same type is to copy an existing VM. We use the term *clone* for such copies, and distinguish between *linked* and *full* clones.
+部署许多同类型 VM 的一种简便方法是复制现有 VM。我们将此类副本称为 *克隆*，并区分 *链接* 克隆和 *完整* 克隆。
 
-**Full Clone**
+**完整克隆**
 
-The result of such copy is an independent VM. The new VM does not share any storage resources with the original.
+这种复制的结果是一个独立的 VM。新 VM 不与原始 VM 共享任何存储资源。
 
-It is possible to select a **Target Storage**, so one can use this to migrate a VM to a totally different storage. You can also change the disk image **Format** if the storage driver supports several formats.
-
-{% hint style="info" %}
-A full clone needs to read and copy all VM image data. This is usually much slower than creating a linked clone.
-{% endhint %}
-
-Some storage types allows to copy a specific **Snapshot**, which defaults to the *current* VM data. This also means that the final copy never includes any additional snapshots from the original VM.
-
-**Linked Clone**
-
-Modern storage drivers support a way to generate fast linked clones. Such a clone is a writable copy whose initial contents are the same as the original data. Creating a linked clone is nearly instantaneous, and initially consumes no additional space.
-
-They are called *linked* because the new image still refers to the original. Unmodified data blocks are read from the original image, but modification are written (and afterwards read) from a new location. This technique is called *Copy-on-write*.
-
-This requires that the original volume is read-only. With Proxmox VE one can convert any VM into a read-only [Template](05-qm-templates.md)). Such templates can later be used to create linked clones efficiently.
+可以选择 **目标存储**，因此可以利用此功能将 VM 迁移到完全不同的存储。如果存储驱动程序支持多种格式，还可以更改磁盘映像的 **格式**。
 
 {% hint style="info" %}
-You cannot delete an original template while linked clones exist.
+完整克隆需要读取并复制所有 VM 映像数据。这通常比创建链接克隆慢得多。
 {% endhint %}
 
-It is not possible to change the **Target storage** for linked clones, because this is a storage internal feature.
+某些存储类型允许复制特定的 **快照**，默认复制 *当前* VM 数据。这也意味着最终副本绝不会包含原始 VM 的任何其他快照。
 
-The **Target node** option allows you to create the new VM on a different node. The only restriction is that the VM is on shared storage, and that storage is also available on the target node.
+**链接克隆**
 
-To avoid resource conflicts, all network interface MAC addresses get randomized, and we generate a new *UUID* for the VM BIOS (smbios1) setting.
+现代存储驱动程序支持一种快速生成链接克隆的方法。此类克隆是可写副本，其初始内容与原始数据相同。创建链接克隆几乎是即时的，并且最初不会占用额外空间。
+
+它们之所以称为 *链接*，是因为新映像仍引用原始映像。未修改的数据块从原始映像读取，而修改会写入新位置（之后也从新位置读取）。这种技术称为 *写时复制*。
+
+这要求原始卷为只读。使用 Proxmox VE，可以将任何 VM 转换为只读 [模板](05-qm-templates.md)）。以后可以使用此类模板高效地创建链接克隆。
+
+{% hint style="info" %}
+存在链接克隆时，无法删除原始模板。
+{% endhint %}
+
+无法更改链接克隆的 **目标存储**，因为这是存储内部的功能。
+
+**目标节点** 选项允许您在不同的节点上创建新 VM。唯一的限制是 VM 必须位于共享存储上，并且该存储在目标节点上也必须可用。
+
+为避免资源冲突，所有网络接口的 MAC 地址都会被随机化，并且我们会为 VM BIOS (smbios1) 设置生成新的 *UUID*。
 
 ---
 

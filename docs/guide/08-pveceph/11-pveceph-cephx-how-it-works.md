@@ -1,4 +1,4 @@
-# 8.11. Cephx Authentication <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
+# 8.11. Cephx 身份验证 <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
 
 Cephx [\[1\]](#note-997034e4-1)用于保护对 Ceph 集群的访问。
 
@@ -35,13 +35,13 @@ Cephx [\[1\]](#note-997034e4-1)用于保护对 Ceph 集群的访问。
 
 运行中的客户端通常仅在启动时读取其用户密钥。更新已保存的密钥或密钥环文件并不会更新该进程。现有票据和连接也可能在一段时间内继续可用。因此，密钥轮换必须考虑正在运行以及暂时断开连接的客户端。
 
-## 8.11.1. Keyring Locations <a href="#pveceph_keyrings" id="pveceph_keyrings"></a>
+## 8.11.1. 密钥环位置 <a href="#pveceph_keyrings" id="pveceph_keyrings"></a>
 
 在 Proxmox VE Ceph 集群中，权威的 `client.admin` 密钥环是 `/etc/pve/priv/ceph.client.admin.keyring`，而不是 `/etc/ceph` 中的副本。[Proxmox 集群文件系统（pmxcfs）](../06-pmxcfs/README.md)会将其同步到每个节点。受管 Ceph 存储的凭据位于 `/etc/pve/priv/ceph/` 下。
 
 `/var/lib/ceph` 下方的密钥环属于一个 Ceph 服务，并且仅位于其所在节点本地。`/etc/pve/priv/ceph.mon.keyring` 同时包含共享的 `mon.` 密钥和 `client.admin`。请始终将更新合并到此文件中，而不是覆盖该文件。`pveceph mon create` 在初始化监视器时会使用其 `mon.` 条目。
 
-## 8.11.2. Encrypted OSD Lockbox Keys <a href="#pveceph_cephx_lockbox" id="pveceph_cephx_lockbox"></a>
+## 8.11.2. 加密 OSD 锁箱密钥 <a href="#pveceph_cephx_lockbox" id="pveceph_cephx_lockbox"></a>
 
 每个加密 OSD 都使用一个名为 `client.osd-lockbox.<UUID>` 的专用 Ceph 用户。其身份验证密钥称为锁箱密钥。它不是磁盘加密密钥本身：它使 OSD 能够从 Ceph 检索该密钥，并在启动时解锁其存储。Ceph 和 OSD 的块设备中必须包含相匹配的锁箱密钥副本。
 

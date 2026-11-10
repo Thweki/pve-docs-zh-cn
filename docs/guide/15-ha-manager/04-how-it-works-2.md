@@ -11,9 +11,9 @@
 集群资源管理器（CRM），负责制定集群范围的决策。它向 LRM 发送命令、处理结果，并在发生故障时将资源移动到其他节点。CRM 还负责节点隔离。
 
 {% hint style="info" %}
-**Locks in the LRM \& CRM**
+**LRM 和 CRM 中的锁**
 
-Locks are provided by our distributed configuration file system (pmxcfs). They are used to guarantee that each LRM is active once and working. As an LRM only executes actions when it holds its lock, we can mark a failed node as fenced if we can acquire its lock. This then lets us recover any failed HA services securely without any interference from the now unknown failed node. This all gets supervised by the CRM which currently holds the manager master lock.
+锁由我们的分布式配置文件系统（pmxcfs）提供。它们用于确保每个 LRM 只有一个活动实例并正常工作。由于 LRM 只有持有自己的锁时才会执行操作，因此，如果我们能够获取其锁，就可以将故障节点标记为已隔离。随后，这让我们能够安全地恢复任何发生故障的 HA 服务，而不会受到当前状态未知的故障节点的任何干扰。这一切都由当前持有管理器主锁的 CRM 监督。
 {% endhint %}
 
 ## 15.4.1. Service States <a href="#ha_manager_service_states" id="ha_manager_service_states"></a>
@@ -82,7 +82,7 @@ Service is disabled because of LRM errors. Needs manual intervention (see [Error
 
 **disabled**
 
-Service is stopped and marked as `disabled`
+服务已停止并标记为 `disabled`
 
 ## 15.4.2. Local Resource Manager <a href="#ha_manager_lrm" id="ha_manager_lrm"></a>
 
@@ -105,9 +105,9 @@ LRM 丢失了锁，这意味着发生了故障并且失去了仲裁。
 LRM 进入活动状态后，会读取 `/etc/pve/ha/manager_status` 中的管理器状态文件，并确定必须为其拥有的服务执行的命令。每个命令都会启动一个工作进程，这些工作进程并行运行，默认最多限制为 4 个。可以通过数据中心配置键 `max_worker` 更改此默认设置。工作进程完成后会被回收，其结果会被保存以供 CRM 使用。
 
 {% hint style="info" %}
-**Maximum Concurrent Worker Adjustment Tips**
+**最大并发工作进程数调整提示**
 
-The default value of at most 4 concurrent workers may be unsuited for a specific setup. For example, 4 live migrations may occur at the same time, which can lead to network congestions with slower networks and/or big (memory wise) services. Also, ensure that in the worst case, congestion is at a minimum, even if this means lowering the `max_worker` value. On the contrary, if you have a particularly powerful, high-end setup you may also want to increase it.
+默认的最多 4 个并发工作进程可能不适合特定环境。例如，可能同时发生 4 次在线迁移，在网络较慢和/或服务（内存方面）较大时，这可能导致网络拥塞。此外，即使在最坏情况下，也要确保将拥塞降至最低，即使这意味着降低 `max_worker` 的值。相反，如果您拥有性能特别强大的高端环境，可能还希望提高该值。
 {% endhint %}
 
 CRM 请求的每个命令都可以通过 UID 唯一标识。工作进程完成后，其结果会被处理并写入 LRM 状态文件 `/etc/pve/nodes/<nodename>/lrm_status`。CRM 可以在该文件中收集结果，并根据命令输出让其状态机执行相应操作。
@@ -115,9 +115,9 @@ CRM 请求的每个命令都可以通过 UID 唯一标识。工作进程完成�
 CRM 和 LRM 之间针对每个服务的操作通常始终保持同步。这意味着 CRM 请求一个由 UID 唯一标记的状态，然后 LRM 执行此操作**一次**并写回结果，该结果同样可以通过相同的 UID 标识。这样做是为了确保 LRM 不会执行过时的命令。此行为的唯一例外是 `stop` 和 `error` 命令；这两个命令不依赖于生成的结果，在停止状态下总是执行，在错误状态下执行一次。
 
 {% hint style="info" %}
-**Read the Logs**
+**阅读日志**
 
-The HA Stack logs every action it makes. This helps to understand what and also why something happens in the cluster. Here its important to see what both daemons, the LRM and the CRM, did. You may use `journalctl -u pve-ha-lrm` on the node(s) where the service is and the same command for the pve-ha-crm on the node which is the current master.
+HA 栈会记录其执行的每个操作。这有助于了解集群中发生了什么以及为什么会发生。此处重要的是查看 LRM 和 CRM 这两个守护进程分别做了什么。您可以在服务所在的节点上使用 `journalctl -u pve-ha-lrm`，并在当前主节点上对 pve-ha-crm 使用相同的命令。
 {% endhint %}
 
 ## 15.4.3. Cluster Resource Manager <a href="#ha_manager_crm" id="ha_manager_crm"></a>

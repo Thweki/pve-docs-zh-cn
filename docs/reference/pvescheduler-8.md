@@ -1,10 +1,10 @@
 # pvescheduler(8)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 pvescheduler \- PVE Scheduler Daemon
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvescheduler"></a>
 
@@ -44,7 +44,7 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 Debug mode \- stay in foreground
 
@@ -64,13 +64,13 @@ Get daemon status.
 
 Stop the daemon.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 This daemon is responsible for starting jobs according to the schedule, such as replication and vzdump jobs.
 
 For vzdump jobs, it gets its configuration from the file `/etc/pve/jobs.cfg`
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

@@ -1,4 +1,4 @@
-# 7.1. Storage Types <a href="#_storage_types" id="_storage_types"></a>
+# 7.1. 存储类型 <a href="#_storage_types" id="_storage_types"></a>
 
 基本上有两类不同的存储类型：
 
@@ -156,7 +156,7 @@
 
 6 Fibre Channel（FC）和 SAS 块存储由宿主机直接处理，无需专用存储插件。
 
-## 7.1.1. Thin Provisioning <a href="#_thin_provisioning" id="_thin_provisioning"></a>
+## 7.1.1. 精简置备 <a href="#_thin_provisioning" id="_thin_provisioning"></a>
 
 许多存储以及 QEMU 镜像格式 `qcow2` 都支持 *精简置备*。启用精简置备后，只有客户机系统实际使用的块才会写入存储。
 

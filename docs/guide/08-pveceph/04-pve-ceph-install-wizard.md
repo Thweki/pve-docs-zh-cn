@@ -1,6 +1,6 @@
-# 8.4. Initial Ceph Installation \& Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
+# 8.4. Ceph 初始安装与配置 <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
 
-## 8.4.1. Using the Web-based Wizard <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
+## 8.4.1. 使用基于 Web 的向导 <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
 
 [![screenshot/gui-node-ceph-install.png](../../assets/screenshot-gui-node-ceph-install-png-146fee5f8339.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install.png)
 
@@ -22,18 +22,18 @@
 
 
 
-- **Public Network:** This network will be used for public storage communication (e.g., for virtual machines using a Ceph RBD backed disk, or a CephFS mount), and communication between the different Ceph services. This setting is required.   
-   Separating your Ceph traffic from the Proxmox VE cluster communication (corosync), and possibly the front-facing (public) networks of your virtual guests, is highly recommended. Otherwise, Ceph’s high-bandwidth IO-traffic could cause interference with other low-latency dependent services.
-- **Cluster Network:** Specify to separate the [OSD](07-pve-ceph-osds.md) replication and heartbeat traffic as well. This setting is optional.   
-   Using a physically separated network is recommended, as it will relieve the Ceph public and the virtual guests network, while also providing a significant Ceph performance improvements.   
-   The Ceph cluster network can be configured and moved to another physically separated network at a later time.
+- **公共网络：** 此网络将用于公共存储通信（例如，使用以 Ceph RBD 为后端的磁盘的虚拟机或 CephFS 挂载），以及不同 Ceph 服务之间的通信。此设置为必填项。  
+   强烈建议将 Ceph 流量与 Proxmox VE 集群通信（corosync）以及虚拟客户机可能使用的前端（公共）网络分开。否则，Ceph 的高带宽 IO 流量可能会干扰其他依赖低延迟的服务。
+- **集群网络：** 指定此网络还可分离 [OSD](07-pve-ceph-osds.md) 复制和心跳流量。此设置可选。  
+   建议使用物理隔离的网络，因为这不仅可以减轻 Ceph 公共网络和虚拟客户机网络的负担，还能显著提升 Ceph 性能。  
+   Ceph 集群网络可在稍后配置并迁移到另一个物理隔离的网络。
 
 [![screenshot/gui-node-ceph-install-wizard-step2.png](../../assets/screenshot-gui-node-ceph-install-wizard-step2-png-8fdd1bc317bd.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-ceph-install-wizard-step2.png)
 
 另外两个选项属于高级选项，因此只有在您清楚自己的操作时才应更改。
 
-- **Number of replicas**: Defines how often an object is replicated.
-- **Minimum replicas**: Defines the minimum number of required replicas for I/O to be marked as complete.
+- **副本数量**：定义对象的复制次数。
+- **最小副本数**：定义将 I/O 标记为完成所需的最小副本数。
 
 此外，您需要选择第一个监视器节点。此步骤为必需步骤。
 
@@ -41,7 +41,7 @@
 
 本章其余部分将指导您充分利用基于 Proxmox VE 的 Ceph 部署。这包括上述提示及更多内容，例如 [CephFS](13-pveceph-fs.md)，它是新 Ceph 集群的有用补充。
 
-## 8.4.2. CLI Installation of Ceph Packages <a href="#pve_ceph_install" id="pve_ceph_install"></a>
+## 8.4.2. 通过 CLI 安装 Ceph 软件包 <a href="#pve_ceph_install" id="pve_ceph_install"></a>
 
 除了使用 Web 界面中推荐的 Proxmox VE Ceph 安装向导外，您还可以在每个节点上使用以下 CLI 命令：
 
@@ -51,7 +51,7 @@ pveceph install
 
 This sets up an `apt` package repository in `/etc/apt/sources.list.d/ceph.sources` and installs the required software.
 
-## 8.4.3. Initial Ceph configuration via CLI <a href="#_initial_ceph_configuration_via_cli" id="_initial_ceph_configuration_via_cli"></a>
+## 8.4.3. 通过 CLI 进行 Ceph 初始配置 <a href="#_initial_ceph_configuration_via_cli" id="_initial_ceph_configuration_via_cli"></a>
 
 使用 Proxmox VE Ceph 安装向导（推荐），或在其中一个节点上运行以下命令：
 

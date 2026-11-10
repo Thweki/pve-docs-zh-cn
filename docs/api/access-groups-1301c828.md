@@ -14,7 +14,7 @@ Group index.
 
 ```json
 {
-  "description": "The returned list is restricted to groups where you have 'User.Modify', 'Sys.Audit' or 'Group.Allocate' permissions on /access/groups/<group>.",
+  "description": "The returned list is restricted to groups where you have 'User.Modify', 'Sys.Audit'  or 'Group.Allocate' permissions on /access/groups/<group>.",
   "user": "all"
 }
 ```

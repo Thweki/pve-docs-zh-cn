@@ -6,7 +6,7 @@ Ceph 还提供一种文件系统，它运行在与 RADOS 块设备相同的对�
 
 Proxmox VE 既支持创建超融合 CephFS，也支持使用现有的 [CephFS 作为存储](../07-storage/15-storage-cephfs.md) 来保存备份、ISO 文件和容器模板。
 
-## 8.13.1. Metadata Server (MDS) <a href="#pveceph_fs_mds" id="pveceph_fs_mds"></a>
+## 8.13.1. 元数据服务器（MDS） <a href="#pveceph_fs_mds" id="pveceph_fs_mds"></a>
 
 CephFS 需要至少配置并运行一个元数据服务器才能正常工作。您可以通过 Proxmox VE Web GUI 的 `Node
 -> CephFS` 面板创建 MDS，也可以使用以下命令从命令行创建：
@@ -31,16 +31,16 @@ mds standby replay = true
 
 自 Luminous（12.2.x）起，您可以同时运行多个活动元数据服务器，但通常只有在并行运行大量客户端时才有用。否则，`MDS` 很少会成为系统瓶颈。如果要进行此设置，请参阅 Ceph 文档。[\[1\]](#note-88da87b0-1)
 
-## 8.13.2. Create CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
+## 8.13.2. 创建 CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
 
 借助 Proxmox VE 对 CephFS 的集成，您可以轻松通过 Web 界面、CLI 或外部 API 接口创建 CephFS。要实现这一点，需要满足一些先决条件：
 
 **成功设置 CephFS 的先决条件：**
 
-- [Install Ceph packages](04-pve-ceph-install-wizard.md#pve_ceph_install) \- if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
-- [Setup Monitors](05-pve-ceph-monitors.md)
-- [Setup your OSDs](05-pve-ceph-monitors.md)
-- [Setup at least one MDS](#pveceph_fs_mds)
+- [安装 Ceph 软件包](04-pve-ceph-install-wizard.md#pve_ceph_install)——如果之前已经安装过，您可能需要在已更新到最新状态的系统上重新运行，以确保安装所有与 CephFS 相关的软件包。
+- [设置监视器](05-pve-ceph-monitors.md)
+- [设置您的 OSD](05-pve-ceph-monitors.md)
+- [设置至少一个 MDS](#pveceph_fs_mds)
 
 完成上述步骤后，您只需通过 Web GUI 的 `Node -> CephFS` 面板或命令行工具 `pveceph` 即可创建 CephFS，例如：
 
@@ -52,7 +52,7 @@ This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_d
 [\[placement\_groups\]](09-pve-ceph-pools.md#_footnote_placement_groups)  
 . Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
 
-## 8.13.3. Destroy CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
+## 8.13.3. 销毁 CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
 
 {% hint style="warning" %}
 销毁 CephFS 将使其中的所有数据无法使用。此操作无法撤销！

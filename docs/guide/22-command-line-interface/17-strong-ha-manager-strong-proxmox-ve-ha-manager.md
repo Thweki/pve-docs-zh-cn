@@ -18,7 +18,7 @@
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*default \=* `1`)**
+**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -26,7 +26,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 描述。
 
-**`--failback` `<boolean>` (*default \=* `1`)**
+**`--failback` `<boolean>` (*默认 \=* `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -34,15 +34,15 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*default \=* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*default \=* `1`)**
+**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*default \=* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
 
 请求的资源状态。
 
@@ -174,11 +174,11 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*default \=* `0`)**
+**`--nofailback` `<boolean>` (*默认 \=* `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*default \=* `0`)**
+**`--restricted` `<boolean>` (*默认 \=* `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
@@ -234,11 +234,11 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*default \=* `0`)**
+**`--nofailback` `<boolean>` (*默认 \=* `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*default \=* `0`)**
+**`--restricted` `<boolean>` (*默认 \=* `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
@@ -286,7 +286,7 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--purge` `<boolean>` (*default \=* `1`)**
+**`--purge` `<boolean>` (*默认 \=* `1`)**
 
 从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则
 
@@ -310,7 +310,7 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*default \=* `positive`)**
+**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -330,7 +330,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*default \=* `0`)**
+**`--strict` `<boolean>` (*默认 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -424,7 +424,7 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*default \=* `positive`)**
+**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -444,7 +444,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*default \=* `0`)**
+**`--strict` `<boolean>` (*默认 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -478,7 +478,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*default \=* `1`)**
+**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -494,7 +494,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 如果当前配置文件的摘要不同，则阻止更改。这可用于防止并发修改。
 
-**`--failback` `<boolean>` (*default \=* `1`)**
+**`--failback` `<boolean>` (*默认 \=* `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -502,15 +502,15 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*default \=* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*default \=* `1`)**
+**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*default \=* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
 
 请求的资源状态。
 
@@ -522,7 +522,7 @@ HA 组标识符。
 
 显示 HA 管理器状态。
 
-**`--verbose` `<boolean>` (*default \=* `0`)**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 详细输出。包含完整的 CRM 和 LRM 状态（JSON）。
 

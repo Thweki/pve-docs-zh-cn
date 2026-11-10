@@ -22,7 +22,7 @@ VM 的唯一 ID。
 
 克隆的 VMID。
 
-**`--bwlimit` `<number> (0 - N)` (*default \=* `clone limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)`（*默认 \=* `clone limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -66,7 +66,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>` (*default \=* `0`)**
+**`--current` `<boolean>`（*默认 \=* `0`）**
 
 获取当前值（而非待生效值）。
 
@@ -86,7 +86,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--escape` `\^?[a-z]` (*default \=* `^a`)**
+**`--escape` `\^?[a-z]`（*默认 \=* `^a`）**
 
 转义序列前缀。例如，要将 \<Ctrl\+b q\> 用作转义序列，请传递 *^b*。
 
@@ -114,19 +114,19 @@ VM 的唯一 ID。
 
 操作系统模板或备份文件。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
 
 操作系统架构类型。
 
-**`--bwlimit` `<number> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)`（*默认 \=* `restore limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
+**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>` (*default \=* `1`)**
+**`--console` `<boolean>`（*默认 \=* `1`）**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -134,7 +134,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
+**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
 
 CPU 使用限制。
 
@@ -142,11 +142,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -158,7 +158,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -174,7 +174,7 @@ CPU 使用限制。
 
 允许覆盖现有容器。
 
-**`--ha-managed` `<boolean>` (*default \=* `0`)**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 创建后，将 CT 添加为 HA 资源。
 
@@ -194,7 +194,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
+**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
 
 容器的内存量，单位为 MB。
 
@@ -210,7 +210,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 指定容器是否在系统启动时启动。
 
@@ -226,7 +226,7 @@ CPU 使用限制。
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -246,7 +246,7 @@ CPU 使用限制。
 
 设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 成功完成创建后启动 CT。
 
@@ -254,11 +254,11 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--storage` `<storage ID>` (*default \=* `local`)**
+**`--storage` `<storage ID>`（*默认 \=* `local`）**
 
 默认存储。
 
-**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
+**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -266,7 +266,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -274,7 +274,7 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
+**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
 
 指定容器可用的 tty 数量
 
@@ -286,7 +286,7 @@ CPU 使用限制。
 需要选项：`restore`
 {% endhint %}
 
-**`--unprivileged` `<boolean>` (*default \=* `0`)**
+**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -330,11 +330,11 @@ VM 的唯一 ID。
 
 如果设置，还会从所有已启用的存储中销毁具有该 VMID 但未在配置中引用的所有磁盘。
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 强制销毁，即使正在运行。
 
-**`--purge` `<boolean>` (*default \=* `0`)**
+**`--purge` `<boolean>` (*默认 \=* `0`)**
 
 从所有相关配置中移除容器。例如，备份任务、复制任务或 HA。相关 ACL 和防火墙条目**始终**会被移除。
 
@@ -362,7 +362,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--keep-env` `<boolean>` (*default \=* `1`)**
+**`--keep-env` `<boolean>` (*默认 \=* `1`)**
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
@@ -382,7 +382,7 @@ VM 的唯一 ID。
 
 以数组形式提供的额外参数
 
-**`--keep-env` `<boolean>` (*default \=* `1`)**
+**`--keep-env` `<boolean>` (*默认 \=* `1`)**
 
 保留当前环境。在 PVE 9 中，此选项将默认禁用。如果您依赖保留的环境，请使用此选项，以确保与未来版本兼容。
 
@@ -402,7 +402,7 @@ VM 的唯一 ID。
 
 要对其运行文件系统检查的卷
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 即使文件系统看起来干净，也强制检查
 
@@ -474,7 +474,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<number> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -490,7 +490,7 @@ VM 的唯一 ID。
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer>` (*default \=* `180`)**
+**`--timeout` `<integer>` (*默认 \=* `180`)**
 
 重启迁移时等待关机的超时时间（秒）
 
@@ -534,11 +534,11 @@ VM 的唯一 ID。
 
 卷将移动到的配置键。默认为源卷的配置键。
 
-**`--bwlimit` `<number> (0 - N)` (*default \=* `clone limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)`（*默认 \=* `clone limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 成功复制后删除原始卷。默认情况下，原始卷会作为未使用的卷条目保留。
 
@@ -670,11 +670,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 成功迁移后删除原始 CT 及相关数据。默认情况下，原始 CT 会以停止状态保留在源集群上。
 
@@ -694,7 +694,7 @@ VM 的唯一 ID。
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer>` (*default \=* `180`)**
+**`--timeout` `<integer>` (*默认 \=* `180`)**
 
 重启迁移时等待关机的超时时间（秒）
 
@@ -706,7 +706,7 @@ VM 的唯一 ID。
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*default \=* `0`)**
+**`--dryrun` `<boolean>` (*默认 \=* `0`)**
 
 不实际将更改写入配置。
 
@@ -754,19 +754,19 @@ VM 的唯一 ID。
 
 操作系统模板或备份文件。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
 
 操作系统架构类型。
 
-**`--bwlimit` `<number> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
+**`--bwlimit` `<number> (0 - N)`（*默认 \=* `restore limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
+**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>` (*default \=* `1`)**
+**`--console` `<boolean>`（*默认 \=* `1`）**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -774,7 +774,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
+**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
 
 CPU 使用限制。
 
@@ -782,11 +782,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -798,7 +798,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -814,7 +814,7 @@ CPU 使用限制。
 
 允许覆盖现有容器。
 
-**`--ha-managed` `<boolean>` (*default \=* `0`)**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 创建后，将 CT 添加为 HA 资源。
 
@@ -834,7 +834,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
+**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
 
 容器的内存量，单位为 MB。
 
@@ -850,7 +850,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 指定容器是否在系统启动时启动。
 
@@ -866,7 +866,7 @@ CPU 使用限制。
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -882,7 +882,7 @@ CPU 使用限制。
 
 设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 成功完成创建后启动 CT。
 
@@ -890,11 +890,11 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--storage` `<storage ID>` (*default \=* `local`)**
+**`--storage` `<storage ID>`（*默认 \=* `local`）**
 
 默认存储。
 
-**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
+**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -902,7 +902,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -910,7 +910,7 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
+**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
 
 指定容器可用的 tty 数量
 
@@ -922,7 +922,7 @@ CPU 使用限制。
 需要选项：`restore`
 {% endhint %}
 
-**`--unprivileged` `<boolean>` (*default \=* `0`)**
+**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -958,7 +958,7 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 成功回滚后是否应启动容器
 
@@ -974,15 +974,15 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
+**`--arch` `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>`（*默认 \=* `amd64`）**
 
 操作系统架构类型。
 
-**`--cmode` `<console | shell | tty>` (*default \=* `tty`)**
+**`--cmode` `<console | shell | tty>`（*默认 \=* `tty`）**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`--console` `<boolean>` (*default \=* `1`)**
+**`--console` `<boolean>`（*默认 \=* `1`）**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -990,7 +990,7 @@ VM 的唯一 ID。
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`--cpulimit` `<number> (0 - 8192)` (*default \=* `0`)**
+**`--cpulimit` `<number> (0 - 8192)`（*默认 \=* `0`）**
 
 CPU 使用限制。
 
@@ -998,11 +998,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`--cpuunits` `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (0 - 500000)`（*默认 \=* `cgroup v1: 1024, cgroup v2: 100`）**
 
 容器的 CPU 权重，在 cgroup v2 中会被限制在 \[1, 10000\] 范围内。
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -1022,7 +1022,7 @@ CPU 使用限制。
 
 如果当前配置文件的 SHA1 摘要不同，则阻止更改。这可用于防止并发修改。
 
-**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
+**`--entrypoint` `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)`（*默认 \=* `/sbin/init`）**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -1046,7 +1046,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`--memory` `<integer> (16 - N)` (*default \=* `512`)**
+**`--memory` `<integer> (16 - N)`（*默认 \=* `512`）**
 
 容器的内存量，单位为 MB。
 
@@ -1062,7 +1062,7 @@ CPU 使用限制。
 
 指定容器的网络接口。
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 指定容器是否在系统启动时启动。
 
@@ -1070,7 +1070,7 @@ CPU 使用限制。
 
 操作系统类型。用于在容器内设置配置，并对应于 /usr/share/lxc/config/\<ostype\>.common.conf 中的 lxc 设置脚本。可使用值 *unmanaged* 跳过特定于操作系统的设置。
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -1090,7 +1090,7 @@ CPU 使用限制。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--swap` `<integer> (0 - N)` (*default \=* `512`)**
+**`--swap` `<integer> (0 - N)`（*默认 \=* `512`）**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -1098,7 +1098,7 @@ CPU 使用限制。
 
 容器的标签。这只是元信息。
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -1106,11 +1106,11 @@ CPU 使用限制。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`--tty` `<integer> (0 - 6)` (*default \=* `2`)**
+**`--tty` `<integer> (0 - 6)`（*默认 \=* `2`）**
 
 指定容器可用的 tty 数量
 
-**`--unprivileged` `<boolean>` (*default \=* `0`)**
+**`--unprivileged` `<boolean>`（*默认 \=* `0`）**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -1130,11 +1130,11 @@ CPU 使用限制。
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*default \=* `0`)**
+**`--forceStop` `<boolean>` (*默认 \=* `0`)**
 
 确保容器停止。
 
-**`--timeout` `<integer> (0 - N)` (*default \=* `60`)**
+**`--timeout` `<integer> (0 - N)` (*默认 \=* `60`)**
 
 最多等待 timeout 秒。
 
@@ -1170,7 +1170,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 如果设置，启动时会启用非常详细的调试日志级别。
 
@@ -1206,7 +1206,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--overrule-shutdown` `<boolean>` (*default \=* `0`)**
+**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
 
 停止前尝试中止正在运行的 *vzshutdown* 任务。
 

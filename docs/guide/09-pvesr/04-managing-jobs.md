@@ -1,4 +1,4 @@
-# 9.4. Managing Jobs <a href="#_managing_jobs" id="_managing_jobs"></a>
+# 9.4. 管理作业 <a href="#_managing_jobs" id="_managing_jobs"></a>
 
 [![screenshot/gui-qemu-add-replication-job.png](../../assets/screenshot-gui-qemu-add-replication-job-png-8a556dc3f050.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-qemu-add-replication-job.png)
 

@@ -1,4 +1,4 @@
-# 3.4. Network Configuration <a href="#sysadmin_network_configuration" id="sysadmin_network_configuration"></a>
+# 3.4. 网络配置 <a href="#sysadmin_network_configuration" id="sysadmin_network_configuration"></a>
 
 Proxmox VE 使用 Linux 网络协议栈。这为在 Proxmox VE 节点上设置网络提供了很大的灵活性。可以通过图形用户界面进行配置，也可以手动编辑包含完整网络配置的文件 `/etc/network/interfaces`。`interfaces(5)` 手册页包含完整的格式说明。所有 Proxmox VE 工具都会尽力保留用户的直接修改，但仍建议优先使用图形用户界面，因为它可以防止您出错。
 
@@ -10,11 +10,11 @@ Proxmox VE 使用 Linux 网络协议栈。这为在 Proxmox VE 节点上设置�
 如果不确定，不建议使用传统的 Debian 工具 `ifup` 和 `ifdown`，因为它们存在一些隐患，例如在 `ifdown vmbrX` 时中断所有客户机流量，但之后在同一网桥上执行 `ifup` 时却不会重新连接这些客户机。
 {% endhint %}
 
-## 3.4.1. Apply Network Changes <a href="#_apply_network_changes" id="_apply_network_changes"></a>
+## 3.4.1. 应用网络更改 <a href="#_apply_network_changes" id="_apply_network_changes"></a>
 
 Proxmox VE 不会将更改直接写入 `/etc/network/interfaces`。相反，我们会写入一个名为 `/etc/network/interfaces.new` 的临时文件，这样您可以一次进行多项相关更改。这还允许您在应用之前确保更改正确，因为错误的网络配置可能会导致节点无法访问。
 
-### Live-Reload Network with ifupdown2 <a href="#_live_reload_network_with_ifupdown2" id="_live_reload_network_with_ifupdown2"></a>
+### 使用 ifupdown2 实时重新加载网络 <a href="#_live_reload_network_with_ifupdown2" id="_live_reload_network_with_ifupdown2"></a>
 
 使用推荐的 *ifupdown2* 软件包（自 Proxmox VE 7.0 起新安装的默认软件包），无需重启即可应用网络配置更改。如果通过图形用户界面更改网络配置，可以单击 *应用配置* 按钮。这会将更改从暂存的 `interfaces.new` 文件移至 `/etc/network/interfaces` 并实时应用。
 
@@ -25,11 +25,11 @@ Proxmox VE 不会将更改直接写入 `/etc/network/interfaces`。相反，我�
 ifupdown2`
 {% endhint %}
 
-### Reboot Node to Apply <a href="#_reboot_node_to_apply" id="_reboot_node_to_apply"></a>
+### 重启节点以应用 <a href="#_reboot_node_to_apply" id="_reboot_node_to_apply"></a>
 
 Another way to apply a new network configuration is to reboot the node. In that case the systemd service `pvenetcommit` will activate the staging `interfaces.new` file before the `networking` service will apply that configuration.
 
-## 3.4.2. Naming Conventions <a href="#_naming_conventions" id="_naming_conventions"></a>
+## 3.4.2. 命名约定 <a href="#_naming_conventions" id="_naming_conventions"></a>
 
 我们目前对设备名称采用以下命名约定：
 
@@ -41,19 +41,19 @@ Another way to apply a new network configuration is to reboot the node. In that 
 
 这样可以更轻松地调试网络问题，因为设备名称表明了设备类型。
 
-### Systemd Network Interface Names <a href="#systemd_network_interface_names" id="systemd_network_interface_names"></a>
+### Systemd 网络接口名称 <a href="#systemd_network_interface_names" id="systemd_network_interface_names"></a>
 
 Systemd 为网络设备名称定义了带版本的命名方案。该方案对以太网网络设备使用双字符前缀 `en`。后续字符取决于设备驱动程序、设备位置和其他属性。一些可能的模式如下：
 
-- `o<index>[n<phys_port_name>|d<dev_port>]` — devices on board
-- `s<slot>[f<function>][n<phys_port_name>|d<dev_port>]` — devices by hotplug id
-- `[P<domain>]p<bus>s<slot>[f<function>][n<phys_port_name>|d<dev_port>]` — devices by bus id
-- `x<MAC>` — devices by MAC address
+- `o<index>[n<phys_port_name>|d<dev_port>]` — 板载设备
+- `s<slot>[f<function>][n<phys_port_name>|d<dev_port>]` — 按热插拔 ID 标识的设备
+- `[P<domain>]p<bus>s<slot>[f<function>][n<phys_port_name>|d<dev_port>]` — 按总线 ID 标识的设备
+- `x<MAC>` — 按 MAC 地址标识的设备
 
 最常见模式的一些示例如下：
 
-- `eno1` — is the first on-board NIC
-- `enp3s0f1` — is function 1 of the NIC on PCI bus 3, slot 0
+- `eno1` — 第一块板载 NIC
+- `enp3s0f1` — PCI 总线 3、插槽 0 上 NIC 的功能 1
 
 有关可能的设备名称模式的完整列表，请参阅 [systemd.net-naming-scheme(7) 手册页](https://manpages.debian.org/stable/systemd/systemd.net-naming-scheme.7.en.html)。
 
@@ -63,7 +63,7 @@ Systemd 为网络设备名称定义了带版本的命名方案。该方案对以
 
 有关网络接口名称的更多信息，请参阅[可预测的网络接口名称](https://systemd.io/PREDICTABLE_INTERFACE_NAMES/)。
 
-### Pinning a specific naming scheme version <a href="#network_pin_naming_scheme_version" id="network_pin_naming_scheme_version"></a>
+### 固定特定的命名方案版本 <a href="#network_pin_naming_scheme_version" id="network_pin_naming_scheme_version"></a>
 
 您可以通过将 `net.naming-scheme=<version>` 参数添加到[内核命令行](13-sysboot.md#sysboot_edit_kernel_cmdline)，来固定网络设备命名方案的特定版本。有关命名方案版本的列表，请参阅[systemd.net-naming-scheme(7) 手册页](https://manpages.debian.org/stable/systemd/systemd.net-naming-scheme.7.en.html)。
 
@@ -75,9 +75,9 @@ net.naming-scheme=v252
 
 另请参阅[本节](13-sysboot.md#sysboot_edit_kernel_cmdline)中有关编辑内核命令行的内容。您需要重启才能使更改生效。
 
-### Overriding Network Device Names <a href="#network_override_device_names" id="network_override_device_names"></a>
+### 覆盖网络设备名称 <a href="#network_override_device_names" id="network_override_device_names"></a>
 
-#### Using the pve-network-interface-pinning Tool <a href="#_using_the_pve_network_interface_pinning_tool" id="_using_the_pve_network_interface_pinning_tool"></a>
+#### 使用 pve-network-interface-pinning 工具 <a href="#_using_the_pve_network_interface_pinning_tool" id="_using_the_pve_network_interface_pinning_tool"></a>
 
 Proxmox VE 提供了一个用于自动生成 .link 文件的工具，以覆盖网络设备名称。它还会自动替换以下文件中出现的旧接口名称：
 
@@ -124,7 +124,7 @@ pve-network-interface-pinning generate --interface enp1s0 --target-name if42
 
 要应用 `pve-network-interface-pinning` 对网络配置所做的更改，需要重启节点。
 
-#### Manually Creating .Link Files <a href="#_manually_creating_link_files" id="_manually_creating_link_files"></a>
+#### 手动创建 .Link 文件 <a href="#_manually_creating_link_files" id="_manually_creating_link_files"></a>
 
 您可以使用自定义的[systemd.link 文件](https://manpages.debian.org/stable/udev/systemd.link.5.en.html)，手动为特定网络设备分配名称。这会覆盖根据最新网络设备命名方案本应分配的名称。这样，您可以避免因内核更新、驱动程序更新或较新版本的命名方案而导致的命名更改。
 
@@ -161,25 +161,25 @@ Name=enwan0
 
 有关 link 文件的更多信息，请参阅[systemd.link(5) 手册页](https://manpages.debian.org/stable/udev/systemd.link.5.en.html)。
 
-## 3.4.3. Choosing a network configuration <a href="#_choosing_a_network_configuration" id="_choosing_a_network_configuration"></a>
+## 3.4.3. 选择网络配置 <a href="#_choosing_a_network_configuration" id="_choosing_a_network_configuration"></a>
 
 根据您当前的网络组织方式和资源，您可以选择桥接、路由或伪装网络设置。
 
-### Proxmox VE server in a private LAN, using an external gateway to reach the internet <a href="#_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet" id="_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet"></a>
+### 位于私有 LAN 中的 Proxmox VE 服务器，使用外部网关访问互联网 <a href="#_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet" id="_proxmox_ve_server_in_a_private_lan_using_an_external_gateway_to_reach_the_internet"></a>
 
 在这种情况下，**桥接**模型最合理，这也是新安装 Proxmox VE 时的默认模式。每个客户机系统都将有一个连接到 Proxmox VE 网桥的虚拟接口。其效果类似于将客户机网卡直接连接到 LAN 上的新交换机，而 Proxmox VE 宿主机充当交换机的角色。
 
-### Proxmox VE server at hosting provider, with public IP ranges for Guests <a href="#_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests" id="_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests"></a>
+### 托管服务提供商处的 Proxmox VE 服务器，具有供客户机使用的公有 IP 地址范围 <a href="#_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests" id="_proxmox_ve_server_at_hosting_provider_with_public_ip_ranges_for_guests"></a>
 
 对于这种设置，您可以使用**桥接**或**路由**模型，具体取决于您的提供商允许的方式。
 
-### Proxmox VE server at hosting provider, with a single public IP address <a href="#_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address" id="_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address"></a>
+### 托管服务提供商处的 Proxmox VE 服务器，仅有一个公有 IP 地址 <a href="#_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address" id="_proxmox_ve_server_at_hosting_provider_with_a_single_public_ip_address"></a>
 
 在这种情况下，让客户机系统获得出站网络访问的唯一方法是使用**伪装**。对于到客户机的入站网络访问，您需要配置**端口转发**。
 
 为了获得更大的灵活性，您可以配置 VLAN（IEEE 802.1q）和网络绑定（也称为“链路聚合”）。这样可以构建复杂而灵活的虚拟网络。
 
-## 3.4.4. Default Configuration Using a Bridge <a href="#_default_configuration_using_a_bridge" id="_default_configuration_using_a_bridge"></a>
+## 3.4.4. 使用网桥的默认配置 <a href="#_default_configuration_using_a_bridge" id="_default_configuration_using_a_bridge"></a>
 
 [![default-network-setup-bridge.svg](../../assets/default-network-setup-bridge-svg-a8f40ccd7839.svg)](https://pve.proxmox.com/pve-docs/images/default-network-setup-bridge.svg)
 
@@ -204,7 +204,7 @@ iface vmbr0 inet static
 
 虚拟机的行为就好像它们直接连接到物理网络一样。反过来，网络会将每台虚拟机视为拥有自己的 MAC 地址，即使只有一根网线将所有这些 VM 连接到网络。
 
-## 3.4.5. Routed Configuration <a href="#sysadmin_network_routed" id="sysadmin_network_routed"></a>
+## 3.4.5. 路由配置 <a href="#sysadmin_network_routed" id="sysadmin_network_routed"></a>
 
 大多数托管服务提供商不支持上述设置。出于安全原因，一旦他们在单个接口上检测到多个 MAC 地址，就会禁用网络。
 
@@ -240,7 +240,7 @@ iface vmbr0 inet static
 
 `vmbr0` 地址 `203.0.113.17` 是 `203.0.113.16/28` 地址块的第一个可用主机地址；该地址块的网络地址 `203.0.113.16` 不能分配给接口。
 
-## 3.4.6. Masquerading (NAT) with `iptables` <a href="#sysadmin_network_masquerading" id="sysadmin_network_masquerading"></a>
+## 3.4.6. 使用 `iptables` 进行伪装（NAT） <a href="#sysadmin_network_masquerading" id="sysadmin_network_masquerading"></a>
 
 伪装允许仅有私有 IP 地址的客户机通过使用宿主机 IP 地址进行出站通信来访问网络。每个出站数据包都会被 `iptables` 重写，使其看起来源自宿主机，响应也会相应地被重写，以路由到原始发送方。
 
@@ -286,7 +286,7 @@ post-down iptables -t raw -D PREROUTING -i fwbr+ -j CT --zone 1
 
 [一篇通过在 raw 表中使用 TRACE 给出清晰解释的博客文章](https://web.archive.org/web/20220610151210/https://blog.lobraun.de/2019/05/19/prox/)
 
-## 3.4.7. Linux Bond <a href="#sysadmin_network_bond" id="sysadmin_network_bond"></a>
+## 3.4.7. Linux 绑定 <a href="#sysadmin_network_bond" id="sysadmin_network_bond"></a>
 
 绑定（也称为 NIC 组队或链路聚合）是一种将多个 NIC 绑定到单个网络设备的技术。它可以实现不同的目标，例如使网络具备容错能力、提高性能，或同时实现两者。
 
@@ -296,13 +296,13 @@ Fibre Channel 等高速硬件及相关交换硬件可能相当昂贵。通过链
 
 绑定有 7 种模式：
 
-- **Round-robin (balance-rr):** Transmit network packets in sequential order from the first available network interface (NIC) slave through the last. This mode provides load balancing and fault tolerance.
-- **Active-backup (active-backup):** Only one NIC slave in the bond is active. A different slave becomes active if, and only if, the active slave fails. The single logical bonded interface’s MAC address is externally visible on only one NIC (port) to avoid distortion in the network switch. This mode provides fault tolerance.
-- **XOR (balance-xor):** Transmit network packets based on \[(source MAC address XOR’d with destination MAC address) modulo NIC slave count\]. This selects the same NIC slave for each destination MAC address. This mode provides load balancing and fault tolerance.
-- **Broadcast (broadcast):** Transmit network packets on all slave network interfaces. This mode provides fault tolerance.
-- **IEEE 802.3ad Dynamic link aggregation (802.3ad)(LACP):** Creates aggregation groups that share the same speed and duplex settings. Utilizes all slave network interfaces in the active aggregator group according to the 802.3ad specification.
-- **Adaptive transmit load balancing (balance-tlb):** Linux bonding driver mode that does not require any special network-switch support. The outgoing network packet traffic is distributed according to the current load (computed relative to the speed) on each network interface slave. Incoming traffic is received by one currently designated slave network interface. If this receiving slave fails, another slave takes over the MAC address of the failed receiving slave.
-- **Adaptive load balancing (balance-alb):** Includes balance-tlb plus receive load balancing (rlb) for IPV4 traffic, and does not require any special network switch support. The receive load balancing is achieved by ARP negotiation. The bonding driver intercepts the ARP Replies sent by the local system on their way out and overwrites the source hardware address with the unique hardware address of one of the NIC slaves in the single logical bonded interface such that different network-peers use different MAC addresses for their network packet traffic.
+- **轮询（balance-rr）：**按顺序通过第一个至最后一个可用的从属网络接口（NIC）传输网络数据包。此模式提供负载均衡和容错能力。
+- **主备（active-backup）：**绑定中只有一个 NIC 从接口处于活动状态。当且仅当活动从接口发生故障时，另一个从接口才会变为活动状态。单个逻辑绑定接口的 MAC 地址在外部仅在一个 NIC（端口）上可见，以避免网络交换机中出现混乱。此模式提供容错能力。
+- **XOR（balance-xor）：**根据\[（源 MAC 地址与目标 MAC 地址的 XOR 结果）对 NIC 从接口数量取模\]来传输网络数据包。这会为每个目标 MAC 地址选择相同的 NIC 从接口。此模式提供负载均衡和容错能力。
+- **广播（broadcast）：**在所有从属网络接口上传输网络数据包。此模式提供容错能力。
+- **IEEE 802.3ad 动态链路聚合（802.3ad）（LACP）：**创建具有相同速率和双工设置的聚合组。根据 802.3ad 规范，利用活动聚合器组中的所有从属网络接口。
+- **自适应传输负载均衡（balance-tlb）：**Linux 绑定驱动程序模式，无需网络交换机的任何特殊支持。根据各从属网络接口的当前负载（相对于其速度计算）分配传出网络数据包流量。传入流量由当前指定的一个从属网络接口接收。如果此接收从接口发生故障，另一个从接口将接管发生故障的接收从接口的 MAC 地址。
+- **自适应负载均衡（balance-alb）：**包括 balance-tlb 和针对 IPV4 流量的接收负载均衡（rlb），无需网络交换机的任何特殊支持。接收负载均衡通过 ARP 协商实现。绑定驱动程序在本地系统发出的 ARP 应答发送途中将其拦截，并将源硬件地址覆盖为单一逻辑绑定接口中某个 NIC 从接口的唯一硬件地址，从而使不同的网络对等端在其网络数据包流量中使用不同的 MAC 地址。
 
 如果您的交换机支持 LACP（IEEE 802.3ad）协议，我们建议使用相应的绑定模式（802.3ad）。否则，通常应使用 active-backup 模式。
 
@@ -379,16 +379,16 @@ iface vmbr0 inet static
 
 每个 VLAN 网络都由一个通常称为 *标签* 的编号标识。然后对网络数据包进行 *标记*，以标识它们属于哪个虚拟网络。
 
-### VLAN for Guest Networks <a href="#_vlan_for_guest_networks" id="_vlan_for_guest_networks"></a>
+### 客户机网络的 VLAN <a href="#_vlan_for_guest_networks" id="_vlan_for_guest_networks"></a>
 
 Proxmox VE 开箱即用地支持此配置。您可以在创建 VM 时指定 VLAN 标签。VLAN 标签是客户机网络配置的一部分。网络层支持不同的 VLAN 实现模式，具体取决于网桥配置：
 
-- **VLAN awareness on the Linux bridge:** In this case, each guest’s virtual network card is assigned to a VLAN tag, which is transparently supported by the Linux bridge. Trunk mode is also possible, but that makes configuration in the guest necessary.
-- **"traditional" VLAN on the Linux bridge:** In contrast to the VLAN awareness method, this method is not transparent and creates a VLAN device with associated bridge for each VLAN. That is, creating a guest on VLAN 5 for example, would create two interfaces eno1.5 and vmbr0v5, which would remain until a reboot occurs.
-- **Open vSwitch VLAN:** This mode uses the OVS VLAN feature.
-- **Guest configured VLAN:** VLANs are assigned inside the guest. In this case, the setup is completely done inside the guest and can not be influenced from the outside. The benefit is that you can use more than one VLAN on a single virtual NIC.
+- **Linux 网桥上的 VLAN 感知：**在这种情况下，每个客户机的虚拟网卡都会分配一个 VLAN 标签，Linux 网桥会透明地支持该标签。也可以使用 Trunk 模式，但这需要在客户机中进行配置。
+- **Linux 网桥上的“传统”VLAN：**与 VLAN 感知方法不同，此方法不是透明的，并会为每个 VLAN 创建一个 VLAN 设备和关联的网桥。也就是说，例如，在 VLAN 5 上创建客户机将创建 eno1.5 和 vmbr0v5 两个接口，它们会一直保留到系统重启。
+- **Open vSwitch VLAN：**此模式使用 OVS VLAN 功能。
+- **客户机配置的 VLAN：**VLAN 在客户机内部分配。在这种情况下，配置完全在客户机内部完成，无法从外部进行干预。其好处是可以在单个虚拟 NIC 上使用多个 VLAN。
 
-### VLAN on the Host <a href="#_vlan_on_the_host" id="_vlan_on_the_host"></a>
+### 宿主机上的 VLAN <a href="#_vlan_on_the_host" id="_vlan_on_the_host"></a>
 
 为允许宿主机与隔离网络通信，可以将 VLAN 标签应用于任何网络设备（NIC、Bond、Bridge）。通常，应在自身与物理 NIC 之间抽象层最少的接口上配置 VLAN。
 
@@ -478,7 +478,7 @@ iface vmbr0 inet manual
         bridge-fd 0
 ```
 
-## 3.4.9. Disabling IPv6 on the Node <a href="#_disabling_ipv6_on_the_node" id="_disabling_ipv6_on_the_node"></a>
+## 3.4.9. 在节点上禁用 IPv6 <a href="#_disabling_ipv6_on_the_node" id="_disabling_ipv6_on_the_node"></a>
 
 无论是否部署 IPv6，Proxmox VE 都能在所有环境中正常工作。我们建议将所有设置保留为提供的默认值。
 
@@ -491,7 +491,7 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 此方法比在 [内核命令行](https://www.kernel.org/doc/Documentation/networking/ipv6.rst) 上禁用 IPv6 模块加载更为可取。
 
-## 3.4.10. Disabling MAC Learning on a Bridge <a href="#_disabling_mac_learning_on_a_bridge" id="_disabling_mac_learning_on_a_bridge"></a>
+## 3.4.10. 在网桥上禁用 MAC 学习 <a href="#_disabling_mac_learning_on_a_bridge" id="_disabling_mac_learning_on_a_bridge"></a>
 
 默认情况下，网桥上会启用 MAC 学习，以确保虚拟客户机及其网络的使用体验顺畅。
 

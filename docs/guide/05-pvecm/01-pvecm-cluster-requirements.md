@@ -1,4 +1,4 @@
-# 5.1. Requirements <a href="#pvecm_cluster_requirements" id="pvecm_cluster_requirements"></a>
+# 5.1. 要求 <a href="#pvecm_cluster_requirements" id="pvecm_cluster_requirements"></a>
 
 - 所有节点必须能够通过 UDP 端口 5405-5412 相互连接，corosync 才能正常工作。
 - 日期和时间必须保持同步。

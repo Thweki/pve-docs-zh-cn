@@ -1,8 +1,8 @@
-# 5.8. Cluster Network <a href="#pvecm_cluster_network" id="pvecm_cluster_network"></a>
+# 5.8. 集群网络 <a href="#pvecm_cluster_network" id="pvecm_cluster_network"></a>
 
 集群网络是集群的核心。通过它发送的所有消息都必须按照各自的顺序可靠地传递到所有节点。在 Proxmox VE 中，这部分由 corosync 完成，它是一种高性能、低开销的高可用性开发工具包的实现。它服务于我们的去中心化配置文件系统（`pmxcfs`）。
 
-## 5.8.1. Network Requirements <a href="#pvecm_cluster_network_requirements" id="pvecm_cluster_network_requirements"></a>
+## 5.8.1. 网络要求 <a href="#pvecm_cluster_network_requirements" id="pvecm_cluster_network_requirements"></a>
 
 Proxmox VE 集群栈要求所有节点之间具有延迟低于 5 毫秒的可靠网络（LAN 性能），才能稳定运行。虽然在节点数量较少的配置中，延迟较高的网络*可能*也能正常工作，但这并无保证；当节点超过三个且延迟高于约 10 ms 时，能正常工作的可能性就相当低。
 
@@ -13,24 +13,24 @@ Proxmox VE 集群栈要求所有节点之间具有延迟低于 5 毫秒的可靠
 如果启用了 Proxmox VE 防火墙，将自动生成 corosync 的 ACCEPT 规则，无需手动操作。
 
 {% hint style="info" %}
-Corosync used Multicast before version 3.0 (introduced in Proxmox VE 6.0). Modern versions rely on [Kronosnet](https://kronosnet.org/) for cluster communication, which, for now, only supports regular UDP unicast.
+Corosync 在 3.0 版之前使用组播（该版本随 Proxmox VE 6.0 引入）。新版本依赖 [Kronosnet](https://kronosnet.org/) 进行集群通信，而目前它仅支持常规 UDP 单播。
 {% endhint %}
 
 {% hint style="danger" %}
 您仍然可以通过将传输方式设置为 `udp` 或 `udpu`，在 [corosync.conf](12-corosync-configuration.md#pvecm_edit_corosync_conf) 中启用组播或传统单播，但请注意，这将禁用所有加密和冗余支持。因此不建议这样做。
 {% endhint %}
 
-## 5.8.2. Corosync Over Bonds <a href="#pvecm_corosync_over_bonds" id="pvecm_corosync_over_bonds"></a>
+## 5.8.2. 在绑定接口上运行 Corosync <a href="#pvecm_corosync_over_bonds" id="pvecm_corosync_over_bonds"></a>
 
-### Recommendations <a href="#_recommendations" id="_recommendations"></a>
+### 建议 <a href="#_recommendations" id="_recommendations"></a>
 
 我们建议为主要 Corosync 链路至少使用一个专用物理 NIC，请参阅[要求](01-pvecm-cluster-requirements.md)。[绑定](../03-system-administration/04-sysadmin-network-configuration.md#sysadmin_network_bond)可用作附加链路，以提高冗余性。**每当将绑定用于 Corosync 流量时**，都适用以下注意事项：
 
 - 在某些故障场景中，绑定模式 **active-backup** 可能无法提供预期的冗余，详情请见下文。
 - 我们**不建议**将绑定模式 **balance-rr**、**balance-xor**、**balance-tlb** 或 **balance-alb** 用于 Corosync 流量。已知它们在某些故障场景中会引发问题，详情请见下文。
-- **IEEE 802.3ad (LACP)**: If LACP bonds are used for corosync traffic, we strongly recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! With the default setting `bond-lacp-rate slow`, this mode is known to be problematic in certain failure scenarios, see below for details.
+- **IEEE 802.3ad (LACP)**：如果将 LACP 绑定用于 corosync 流量，我们强烈建议设置 `bond-lacp-rate fast`，并且 **Proxmox VE** 节点和**交换机**两端都要设置！使用默认设置 `bond-lacp-rate slow` 时，已知此模式在某些故障场景中会引发问题，详情请见下文。
 
-### Background <a href="#_background" id="_background"></a>
+### 背景 <a href="#_background" id="_background"></a>
 
 在某些故障场景中，使用 [绑定](../03-system-administration/04-sysadmin-network-configuration.md#sysadmin_network_bond) 作为 Corosync 链路可能会引发问题。考虑这样一种故障场景：绑定中的一个接口发生故障并停止传输数据包，但其链路状态仍为 up，并且没有其他可用的 Corosync 链路。在这种情况下，某些绑定模式可能导致非对称连接状态，使集群节点只能与不同的其他节点子集通信。受影响的是提供负载均衡的绑定模式，因为这些模式可能仍会尝试通过故障接口发送一部分数据包。在非对称连接的情况下，Corosync 可能无法在集群中形成稳定的仲裁。如果这种状态持续存在且启用了 HA，即使绑定没有任何问题的节点也可能自我隔离。在最坏的情况下，整个集群都可能自我隔离。
 
@@ -40,15 +40,15 @@ Corosync used Multicast before version 3.0 (introduced in Proxmox VE 6.0). Moder
 
 Bond mode **IEEE 802.3ad (LACP)** can cause asymmetric connectivity in the failure scenario above, but it can recover from this state, as each side of the bond (Proxmox VE node and switch) can stop using a bonded interface if it has not received three LACPDUs in a row on it. However, with default settings, LACPDUs are only sent every 30 seconds, yielding a failover time of 90 seconds. This is too long, as nodes with HA resources will fence themselves already after roughly one minute without a stable quorum. If LACP bonds are used for corosync traffic, we recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! Setting this option on one side requests the other side to send an LACPDU every second. Setting this option on both sides can reduce the failover time in the scenario above to 3 seconds and thus prevent fencing.
 
-## 5.8.3. Separate Cluster Network <a href="#_separate_cluster_network" id="_separate_cluster_network"></a>
+## 5.8.3. 独立集群网络 <a href="#_separate_cluster_network" id="_separate_cluster_network"></a>
 
 创建集群时不指定任何参数，corosync 集群网络通常会与 Web 界面和虚拟机的网络共用。根据您的设置，甚至存储流量也可能通过同一网络发送。建议更改这种情况，因为 corosync 是对时间要求严格的实时应用程序。
 
-### Setting Up a New Network <a href="#_setting_up_a_new_network" id="_setting_up_a_new_network"></a>
+### 设置新网络 <a href="#_setting_up_a_new_network" id="_setting_up_a_new_network"></a>
 
 首先，您必须设置一个新的网络接口。该接口应位于物理上独立的网络中。请确保您的网络符合[集群网络要求](#pvecm_cluster_network_requirements)。
 
-### Separate On Cluster Creation <a href="#_separate_on_cluster_creation" id="_separate_on_cluster_creation"></a>
+### 在创建集群时分离 <a href="#_separate_on_cluster_creation" id="_separate_on_cluster_creation"></a>
 
 这可以通过 *linkX* 参数实现，该参数属于用于创建新集群的 *pvecm create* 命令。
 
@@ -66,7 +66,7 @@ systemctl status corosync
 
 然后，按照上述说明[添加使用独立集群网络的节点](04-pvecm-join-node-to-cluster.md#pvecm_adding_nodes_with_separated_cluster_network)。
 
-### Separate After Cluster Creation <a href="#pvecm_separate_cluster_net_after_creation" id="pvecm_separate_cluster_net_after_creation"></a>
+### 创建集群后分离 <a href="#pvecm_separate_cluster_net_after_creation" id="pvecm_separate_cluster_net_after_creation"></a>
 
 如果您已经创建了集群，并希望在不重建整个集群的情况下将其通信切换到另一个网络，可以执行此操作。此更改可能导致集群短暂失去仲裁，因为各节点必须重启 corosync，并逐一在新网络上启动。
 
@@ -202,12 +202,12 @@ systemctl status corosync
 
 如果 corosync 重新开始工作，也请在所有其他节点上重启它。随后，这些节点将在新网络上逐一加入集群成员关系。
 
-## 5.8.4. Corosync Addresses <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
+## 5.8.4. Corosync 地址 <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
 
 corosync 链路地址（为保持向后兼容，使用 *ringX\_addr* 在 `corosync.conf` 中表示）可通过两种方式指定：
 
-- **IPv4/v6 addresses** can be used directly. They are recommended, since they are static and usually not changed carelessly.
-- **Hostnames** will be resolved using `getaddrinfo`, which means that by default, IPv6 addresses will be used first, if available (see also `man gai.conf`). Keep this in mind, especially when upgrading an existing cluster to IPv6.
+- **IPv4/v6 地址**可直接使用。建议使用这种方式，因为此类地址是静态的，通常不会被随意更改。
+- **主机名**将通过 `getaddrinfo` 解析，这意味着默认情况下，如果 IPv6 地址可用，将优先使用它们（另请参阅 `man gai.conf`）。将现有集群升级到 IPv6 时，尤其要记住这一点。
 
 {% hint style="danger" %}
 应谨慎使用主机名，因为无需改动 corosync 或其所在节点，就可以更改主机名解析到的地址；这可能导致在更改地址时未考虑其对 corosync 的影响。

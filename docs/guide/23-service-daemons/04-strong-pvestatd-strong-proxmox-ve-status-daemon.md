@@ -38,7 +38,7 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 Debug mode \- stay in foreground
 

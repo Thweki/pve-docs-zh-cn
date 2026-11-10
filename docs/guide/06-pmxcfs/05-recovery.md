@@ -1,14 +1,14 @@
-# 6.5. Recovery <a href="#_recovery" id="_recovery"></a>
+# 6.5. 恢复 <a href="#_recovery" id="_recovery"></a>
 
 如果您的 Proxmox VE 宿主机出现严重问题，例如硬件故障，复制 pmxcfs 数据库文件 `/var/lib/pve-cluster/config.db` 并将其移动到新的 Proxmox VE 宿主机可能会有所帮助。在新宿主机上（未运行任何内容），您需要停止 `pve-cluster` 服务并替换 `config.db` 文件（所需权限为 `0600`）。随后，根据丢失的 Proxmox VE 宿主机调整 `/etc/hostname` 和 `/etc/hosts`，然后重新启动并检查（也不要忘记您的 VM/CT 数据）。
 
-## 6.5.1. Remove Cluster Configuration <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
+## 6.5.1. 移除集群配置 <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
 
 建议的方法是在将节点从集群中移除后重新安装该节点。这可确保所有集群/SSH 密钥以及任何共享配置数据均被销毁。
 
 在某些情况下，您可能希望在不重新安装的情况下将节点恢复为本地模式，[无需重新安装即可分离节点](../05-pvecm/06-pvecm-separate-node-without-reinstall.md)中对此进行了说明
 
-## 6.5.2. Recovering/Moving Guests from Failed Nodes <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
+## 6.5.2. 从故障节点恢复/移动客户机 <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
 
 对于 `nodes/<NAME>/qemu-server/`（VM）和 `nodes/<NAME>/lxc/`（容器）中的客户机配置文件，Proxmox VE 将包含这些文件的节点 `<NAME>` 视为相应客户机的所有者。这一概念使得我们可以使用本地锁，而不是开销较大的集群范围锁，以防止并发更改客户机配置。
 

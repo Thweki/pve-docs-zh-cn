@@ -32,7 +32,7 @@ Execute multiple commands in order, root only.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `commands` | string | 是 | — | JSON encoded array of commands, where each command is an object with the following properties:<br> args: &lt;object&gt;<br> A set of parameter names and their values.<br><br> method: (GET\|POST\|PUT\|DELETE)<br> A method related to the API endpoint (GET, POST etc.).<br><br> path: &lt;string&gt;<br> A relative path to an API endpoint on this node.<br><br> |
+| `commands` | string | 是 | — | JSON encoded array of commands, where each command is an object with the following properties:<br>  args:      &lt;object&gt;<br>	     A set of parameter names and their values.<br><br>  method:    (GET\|POST\|PUT\|DELETE)<br>	     A method related to the API endpoint (GET, POST etc.).<br><br>  path:      &lt;string&gt;<br>	     A relative path to an API endpoint on this node.<br><br> |
 | `node` | string | 是 | — | The cluster node name. |
 
 <details>
@@ -47,7 +47,7 @@ Execute multiple commands in order, root only.
       "format": "pve-command-batch",
       "type": "string",
       "typetext": "<string>",
-      "verbose_description": "JSON encoded array of commands, where each command is an object with the following properties:\n args: <object>\n A set of parameter names and their values.\n\n method: (GET|POST|PUT|DELETE)\n A method related to the API endpoint (GET, POST etc.).\n\n path: <string>\n A relative path to an API endpoint on this node.\n\n"
+      "verbose_description": "JSON encoded array of commands, where each command is an object with the following properties:\n  args:      <object>\n\t     A set of parameter names and their values.\n\n  method:    (GET|POST|PUT|DELETE)\n\t     A method related to the API endpoint (GET, POST etc.).\n\n  path:      <string>\n\t     A relative path to an API endpoint on this node.\n\n"
     },
     "node": {
       "description": "The cluster node name.",

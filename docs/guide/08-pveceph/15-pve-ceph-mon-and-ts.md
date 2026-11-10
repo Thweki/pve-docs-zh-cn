@@ -1,4 +1,4 @@
-# 8.15. Ceph Monitoring and Troubleshooting <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
+# 8.15. Ceph 监控与故障排除 <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
 
 从一开始就持续监控 Ceph 部署的健康状况非常重要，可以使用 Ceph 工具，也可以通过 Proxmox VE [API](../../api/README.md) 访问状态。
 
@@ -16,7 +16,7 @@ watch ceph --status
 ceph --watch
 ```
 
-## 8.15.1. Troubleshooting <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
+## 8.15.1. 故障排除 <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
 
 本节包含常用的故障排除信息。更多信息可在 Ceph 官方网站的“故障排除”下找到 [\[1\]](#note-90fb47b2-1)。
 
@@ -26,8 +26,8 @@ ceph --watch
 
 **受影响节点上的相关日志**
 
-- [Disk Health Monitoring](../03-system-administration/07-disk-health-monitoring.md)
-- *System → System Log* or via the CLI, for example of the last 2 days:
+- [磁盘健康监控](../03-system-administration/07-disk-health-monitoring.md)
+- *系统 → 系统日志*，或通过 CLI，例如查看最近 2 天的日志：
 
   ```text
   journalctl --since "2 days ago"

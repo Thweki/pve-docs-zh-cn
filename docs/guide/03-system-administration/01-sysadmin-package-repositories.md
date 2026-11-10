@@ -1,10 +1,10 @@
-# 3.1. Package Repositories <a href="#sysadmin_package_repositories" id="sysadmin_package_repositories"></a>
+# 3.1. 软件包仓库 <a href="#sysadmin_package_repositories" id="sysadmin_package_repositories"></a>
 
 与其他基于 Debian 的系统一样，Proxmox VE 使用 [APT](http://en.wikipedia.org/wiki/Advanced_Packaging_Tool) 作为软件包管理工具。
 
 Proxmox VE 每天自动检查软件包更新。`root@pam` 用户会通过电子邮件收到有关可用更新的通知。在 GUI 中，可以使用 *Changelog* 按钮查看所选更新的更多详情。
 
-## 3.1.1. Repositories in Proxmox VE <a href="#_repositories_in_proxmox_ve" id="_repositories_in_proxmox_ve"></a>
+## 3.1.1. Proxmox VE 中的软件仓库 <a href="#_repositories_in_proxmox_ve" id="_repositories_in_proxmox_ve"></a>
 
 软件仓库是软件包的集合，可用于安装新软件，也对获取新更新非常重要。
 
@@ -14,7 +14,7 @@ Proxmox VE 每天自动检查软件包更新。`root@pam` 用户会通过电子�
 
 APT 软件仓库的旧式单行格式定义在文件 `/etc/apt/sources.list` 中，现代 deb822 多行格式定义在 `.sources` 文件中，这些文件位于 `/etc/apt/sources.list.d/`；详情请参阅[软件仓库格式](#sysadmin_apt_repo_formats)。
 
-### Repository Management <a href="#_repository_management" id="_repository_management"></a>
+### 软件仓库管理 <a href="#_repository_management" id="_repository_management"></a>
 
 [![screenshot/gui-node-repositories.png](../../assets/screenshot-gui-node-repositories-png-994a4b8cedfd.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-node-repositories.png)
 
@@ -24,7 +24,7 @@ APT 软件仓库的旧式单行格式定义在文件 `/etc/apt/sources.list` 中
 
 通过运行 `apt update` 获取软件仓库中的可用软件包。可以直接使用 `apt` 安装更新，也可以通过 GUI（节点 → 更新）安装。
 
-### Repository Formats <a href="#sysadmin_apt_repo_formats" id="sysadmin_apt_repo_formats"></a>
+### 软件仓库格式 <a href="#sysadmin_apt_repo_formats" id="sysadmin_apt_repo_formats"></a>
 
 软件包仓库可以在源列表 */etc/apt/sources.list* 以及 */etc/apt/sources.list.d/* 中包含的文件中进行配置。
 
@@ -39,11 +39,11 @@ modernize-sources` 命令自动迁移大多数软件仓库。
 
 在多行格式 `repo.sources` 文件中，每个条目由多行键值对组成。一个文件可以通过用空行分隔各组来包含多个条目。这是现代格式。
 
-### Available Repositories <a href="#_available_repositories" id="_available_repositories"></a>
+### 可用的软件仓库 <a href="#_available_repositories" id="_available_repositories"></a>
 
 除了需要基础 Debian 软件仓库外，Proxmox VE 还提供三个不同的软件包仓库。
 
-## 3.1.2. Debian Base Repositories <a href="#_debian_base_repositories" id="_debian_base_repositories"></a>
+## 3.1.2. Debian 基础软件仓库 <a href="#_debian_base_repositories" id="_debian_base_repositories"></a>
 
 **文件 `/etc/apt/sources.list.d/debian.sources`**
 
@@ -61,7 +61,7 @@ Components: main non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 ```
 
-## 3.1.3. Proxmox VE Enterprise Repository <a href="#sysadmin_enterprise_repo" id="sysadmin_enterprise_repo"></a>
+## 3.1.3. Proxmox VE 企业版软件仓库 <a href="#sysadmin_enterprise_repo" id="sysadmin_enterprise_repo"></a>
 
 这是推荐的软件仓库，面向所有 Proxmox VE 订阅用户开放。它包含最稳定的软件包，适合生产环境使用。默认启用 `pve-enterprise` 软件仓库：
 
@@ -85,7 +85,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 您可以通过在文件中相关条目添加一行 `Enabled: no` 来禁用此软件仓库。如果您的宿主机没有订阅密钥，这将防止出现错误消息。在这种情况下，请配置 `pve-no-subscription` 软件仓库。
 {% endhint %}
 
-## 3.1.4. Proxmox VE No-Subscription Repository <a href="#sysadmin_no_subscription_repo" id="sysadmin_no_subscription_repo"></a>
+## 3.1.4. Proxmox VE 无订阅软件仓库 <a href="#sysadmin_no_subscription_repo" id="sysadmin_no_subscription_repo"></a>
 
 顾名思义，访问此软件仓库无需订阅密钥。它可用于测试和非生产环境。不建议在生产服务器上使用它，因为这些软件包并非总是经过同样充分的测试和验证。
 
@@ -105,7 +105,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 请记住，除了 Proxmox VE Proxmox 软件仓库之外，您始终还需要基础 Debian 软件仓库。
 {% endhint %}
 
-## 3.1.5. Proxmox VE Test Repository <a href="#sysadmin_test_repo" id="sysadmin_test_repo"></a>
+## 3.1.5. Proxmox VE 测试软件仓库 <a href="#sysadmin_test_repo" id="sysadmin_test_repo"></a>
 
 此软件仓库包含最新的软件包，主要由开发人员用于测试新功能。要配置它，请将以下配置节添加到文件 `/etc/apt/sources.list.d/proxmox.sources`：
 
@@ -123,7 +123,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 `pve-test` 软件仓库应（顾名思义）仅用于测试新功能或错误修复。
 {% endhint %}
 
-## 3.1.6. Proxmox VE Debug Symbol Repository <a href="#sysadmin_dbgsym_repo" id="sysadmin_dbgsym_repo"></a>
+## 3.1.6. Proxmox VE 调试符号软件仓库 <a href="#sysadmin_dbgsym_repo" id="sysadmin_dbgsym_repo"></a>
 
 调试符号软件包名为 `<package>-dbgsym`，包含与相应二进制软件包匹配的分离调试信息。正常运行不需要它们，但在分析崩溃或挂起时，它们能让 `gdb`、`systemd-coredump` 或 `crash` 等工具生成有用的回溯信息。对于基于 Debian Bookworm 和 Trixie 的 Proxmox VE 版本（及更新版本），这些软件包在一个独立于常规软件仓库的专用软件仓库中提供。
 
@@ -139,7 +139,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 
 启用软件仓库后，安装与要调试的二进制文件相匹配的 `-dbgsym` 软件包。
 
-## 3.1.7. Ceph Repositories <a href="#sysadmin_package_repositories_ceph" id="sysadmin_package_repositories_ceph"></a>
+## 3.1.7. Ceph 软件仓库 <a href="#sysadmin_package_repositories_ceph" id="sysadmin_package_repositories_ceph"></a>
 
 Ceph 相关软件包通过预配置的 Ceph 企业版软件仓库保持最新。预装的软件包支持连接外部 Ceph 集群，并将其 [RBD](../07-storage/14-ceph-rados-block-devices.md) 或 [CephFS](../07-storage/15-storage-cephfs.md) 池添加为存储。您还可以构建 [超融合基础设施 (HCI)](../01-introduction/07-chapter-hyper-converged-infrastructure.md)，方法是在 Proxmox VE 集群之上运行 [Ceph](../08-pveceph/README.md)。
 
@@ -167,7 +167,7 @@ Ceph 相关软件包通过预配置的 Ceph 企业版软件仓库保持最新。
 
 **Proxmox VE 9 中可用的 Ceph 版本**
 
-To read the latest version of the admin guide for your Proxmox VE release, make sure that all system updates are installed and that this page has been reloaded.
+要阅读适用于您 Proxmox VE 版本的最新版管理指南，请确保已安装所有系统更新，并已重新加载此页面。
 
 <table>
 
@@ -252,7 +252,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 Ceph **`test`** 存储库应（顾名思义）仅用于测试新功能或错误修复。
 {% endhint %}
 
-## 3.1.8. Debian Firmware Repository <a href="#sysadmin_debian_firmware_repo" id="sysadmin_debian_firmware_repo"></a>
+## 3.1.8. Debian 固件存储库 <a href="#sysadmin_debian_firmware_repo" id="sysadmin_debian_firmware_repo"></a>
 
 从 Debian Bookworm（Proxmox VE 8）开始，非自由固件（按 [DFSG](https://www.debian.org/social_contract#guidelines) 的定义）已移至新创建的 Debian 存储库组件 `non-free-firmware`。
 

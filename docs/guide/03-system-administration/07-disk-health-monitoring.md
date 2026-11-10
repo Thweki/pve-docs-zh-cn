@@ -1,4 +1,4 @@
-# 3.7. Disk Health Monitoring <a href="#disk_health_monitoring" id="disk_health_monitoring"></a>
+# 3.7. 磁盘健康监控 <a href="#disk_health_monitoring" id="disk_health_monitoring"></a>
 
 虽然建议使用稳健且冗余的存储，但监控本地磁盘的健康状况也非常有帮助。
 
@@ -31,7 +31,7 @@ SMART support is: Disabled
 - `/dev/sd[a-z]`
 - `/dev/sd[a-z][a-z]`
 - `/dev/hd[a-t]`
-- or `/dev/nvme[0-99]`
+- 或 `/dev/nvme[0-99]`
 
 每 30 分钟检查一次错误和警告，如果检测到问题，则向 root 发送电子邮件。
 

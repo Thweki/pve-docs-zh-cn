@@ -1,4 +1,4 @@
-# 5.3. Create a Cluster <a href="#pvecm_create_cluster" id="pvecm_create_cluster"></a>
+# 5.3. 创建集群 <a href="#pvecm_create_cluster" id="pvecm_create_cluster"></a>
 
 您可以在控制台上（通过 `ssh` 登录）创建集群，也可以通过 Proxmox VE Web 界面（*数据中心 → 集群*）使用 API 创建集群。
 
@@ -6,7 +6,7 @@
 为集群使用唯一名称。此名称以后无法更改。集群名称遵循与节点名称相同的规则。
 {% endhint %}
 
-## 5.3.1. Create via Web GUI <a href="#pvecm_cluster_create_via_gui" id="pvecm_cluster_create_via_gui"></a>
+## 5.3.1. 通过 Web GUI 创建 <a href="#pvecm_cluster_create_via_gui" id="pvecm_cluster_create_via_gui"></a>
 
 [![screenshot/gui-cluster-create.png](../../assets/screenshot-gui-cluster-create-png-7f6db200d48f.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-create.png)
 
@@ -18,7 +18,7 @@
 确保为集群通信选择的网络不用于任何高流量用途，例如网络存储或在线迁移。虽然集群网络本身产生的数据量很小，但它对延迟非常敏感。请查看完整的[集群网络要求](08-pvecm-cluster-network.md#pvecm_cluster_network_requirements)。
 {% endhint %}
 
-## 5.3.2. Create via the Command Line <a href="#pvecm_cluster_create_via_cli" id="pvecm_cluster_create_via_cli"></a>
+## 5.3.2. 通过命令行创建 <a href="#pvecm_cluster_create_via_cli" id="pvecm_cluster_create_via_cli"></a>
 
 通过 `ssh` 登录第一个 Proxmox VE 节点，然后运行以下命令：
 
@@ -32,7 +32,7 @@
  hp1# pvecm status
 ```
 
-## 5.3.3. Multiple Clusters in the Same Network <a href="#_multiple_clusters_in_the_same_network" id="_multiple_clusters_in_the_same_network"></a>
+## 5.3.3. 同一网络中的多个集群 <a href="#_multiple_clusters_in_the_same_network" id="_multiple_clusters_in_the_same_network"></a>
 
 可以在同一物理或逻辑网络中创建多个集群。在这种情况下，每个集群必须具有唯一名称，以避免集群通信栈中可能发生的冲突。此外，这还能使集群清晰可辨，从而有助于避免人为混淆。
 

@@ -6,7 +6,7 @@
 
 ## DELETE `/nodes/{node}/qemu/{vmid}`
 
-Destroy the VM and all used/owned volumes. Removes any VM specific permissions and firewall rules
+Destroy the VM and  all used/owned volumes. Removes any VM specific permissions and firewall rules
 
 **方法标识：** `destroy_vm`
 

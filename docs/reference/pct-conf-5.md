@@ -1,14 +1,14 @@
 # pct.conf(5)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 pct.conf \- Proxmox VE 容器配置
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 `/etc/pve/lxc/<CTID>.conf`
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 `/etc/pve/lxc/<CTID>.conf` 文件存储容器配置，其中 `CTID` 是给定容器的数字 ID。
 
@@ -16,7 +16,7 @@ pct.conf \- Proxmox VE 容器配置
 ID \< 100 保留供内部使用。
 {% endhint %}
 
-## File Format <a href="#_file_format" id="_file_format"></a>
+## 文件格式 <a href="#_file_format" id="_file_format"></a>
 
 该文件采用简单的冒号分隔键/值格式。每行的格式如下：
 
@@ -42,17 +42,17 @@ lxc.init_cmd = /sbin/my_own_init
 
 这些设置会直接传递给 LXC 底层工具。
 
-## Options <a href="#_options" id="_options"></a>
+## 选项 <a href="#_options" id="_options"></a>
 
-**`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*default \=* `amd64`)**
+**`arch`: `<amd64 | arm64 | armhf | i386 | riscv32 | riscv64>` (*默认 \=* `amd64`)**
 
 操作系统架构类型。
 
-**`cmode`: `<console | shell | tty>` (*default \=* `tty`)**
+**`cmode`: `<console | shell | tty>` (*默认 \=* `tty`)**
 
 控制台模式。默认情况下，console 命令会尝试连接到一个可用的 tty 设备。将 cmode 设置为 *console* 时，它会尝试改为连接到 /dev/console。如果将 cmode 设置为 *shell*，它只会在容器内调用一个 shell（无需登录）。
 
-**`console`: `<boolean>` (*default \=* `1`)**
+**`console`: `<boolean>` (*默认 \=* `1`)**
 
 将控制台设备（/dev/console）连接到容器。
 
@@ -60,7 +60,7 @@ lxc.init_cmd = /sbin/my_own_init
 
 分配给容器的核心数。默认情况下，容器可以使用所有可用核心。
 
-**`cpulimit`: `<number> (0 - 8192)` (*default \=* `0`)**
+**`cpulimit`: `<number> (0 - 8192)` (*默认 \=* `0`)**
 
 CPU 使用限制。
 
@@ -68,11 +68,11 @@ CPU 使用限制。
 如果计算机有 2 个 CPU，则 CPU 时间总量为 *2*。值 *0* 表示不限制 CPU。
 {% endhint %}
 
-**`cpuunits`: `<integer> (0 - 500000)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`cpuunits`: `<integer> (0 - 500000)` (*默认 \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
 容器的 CPU 权重。该参数用于内核公平调度器。数值越大，该容器获得的 CPU 时间就越多。该数值是相对于所有其他正在运行的客户机的权重而言的。
 
-**`debug`: `<boolean>` (*default \=* `0`)**
+**`debug`: `<boolean>` (*默认 \=* `0`)**
 
 尽量输出更详细的信息。目前仅在启动时启用调试日志级别。
 
@@ -84,7 +84,7 @@ CPU 使用限制。
 
 要直通给容器的设备
 
-**`deny-write`\=`<boolean>` (*default \=* `0`)**
+**`deny-write`\=`<boolean>` (*默认 \=* `0`)**
 
 禁止容器写入设备
 
@@ -104,7 +104,7 @@ CPU 使用限制。
 
 要分配给设备节点的用户 ID
 
-**`entrypoint`: `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*default \=* `/sbin/init`)**
+**`entrypoint`: `(?^:[^\x00-\x08\x0a-\x1F\x7F]+)` (*默认 \=* `/sbin/init`)**
 
 作为 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制文件开头。
 
@@ -116,19 +116,19 @@ CPU 使用限制。
 
 允许容器访问高级功能。
 
-**`force_rw_sys`\=`<boolean>` (*default \=* `0`)**
+**`force_rw_sys`\=`<boolean>` (*默认 \=* `0`)**
 
 在非特权容器中将 /sys 挂载为 `rw`，而不是 `mixed`。在使用较新版本（\>\= v245）的 systemd-network 时，这可能会破坏网络。
 
-**`fuse`\=`<boolean>` (*default \=* `0`)**
+**`fuse`\=`<boolean>` (*默认 \=* `0`)**
 
 允许在容器中使用 *fuse* 文件系统。请注意，fuse 与 freezer cgroup 之间的交互可能导致 I/O 死锁。
 
-**`keyctl`\=`<boolean>` (*default \=* `0`)**
+**`keyctl`\=`<boolean>` (*默认 \=* `0`)**
 
 仅限非特权容器：允许使用 keyctl() 系统调用。这是在容器内使用 docker 所必需的。默认情况下，非特权容器会将此系统调用视为不存在。这主要是针对 systemd-networkd 的变通方法，因为当某些 keyctl() 操作因权限不足被内核拒绝时，systemd-networkd 会将其视为致命错误。本质上，你可以在运行 systemd-networkd 和 docker 之间进行选择。
 
-**`mknod`\=`<boolean>` (*default \=* `0`)**
+**`mknod`\=`<boolean>` (*默认 \=* `0`)**
 
 允许非特权容器使用 mknod() 添加某些设备节点。这需要支持 seccomp 用户空间陷阱的内核（5.3 或更新版本）。这是实验性功能。
 
@@ -136,7 +136,7 @@ CPU 使用限制。
 
 允许挂载特定类型的文件系统。这应是 mount 命令所使用的文件系统类型列表。请注意，这可能对容器的安全产生负面影响。例如，如果能访问 loop 设备，挂载文件可以绕过 devices cgroup 的 mknod 权限；挂载 NFS 文件系统可能完全阻塞宿主机的 I/O，并使其无法重启，等等。
 
-**`nesting`\=`<boolean>` (*default \=* `0`)**
+**`nesting`\=`<boolean>` (*默认 \=* `0`)**
 
 允许嵌套。最好与具有额外 ID 映射的非特权容器一起使用。请注意，这会向客户机暴露宿主机的 procfs 和 sysfs 内容。systemd 隔离服务也需要此功能。
 
@@ -152,7 +152,7 @@ CPU 使用限制。
 
 锁定/解锁容器。
 
-**`memory`: `<integer> (16 - N)` (*default \=* `512`)**
+**`memory`: `<integer> (16 - N)` (*默认 \=* `512`)**
 
 容器的内存量，单位为 MB。
 
@@ -188,7 +188,7 @@ CPU 使用限制。
 
 示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，这意味着容器内的 ID 将与磁盘上的 ID 一致。
 
-**`keepattrs`\=`<boolean>` (*default \=* `0`)**
+**`keepattrs`\=`<boolean>`（*默认 \=* `0`）**
 
 如果挂载点目录已存在，则继承该目录的 UID、GID 和访问模式。
 
@@ -208,7 +208,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
 会将此卷包含到存储复制作业中。
 
@@ -216,7 +216,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -300,7 +300,7 @@ CIDR 格式的 IPv6 地址。
 
 网络接口类型。
 
-**`onboot`: `<boolean>` (*default \=* `0`)**
+**`onboot`: `<boolean>` (*默认 \=* `0`)**
 
 指定容器是否在系统启动时启动。
 
@@ -308,7 +308,7 @@ CIDR 格式的 IPv6 地址。
 
 操作系统类型。用于在容器内设置配置，并对应于 /usr/share/lxc/config/\<ostype\>.common.conf 中的 lxc 设置脚本。可使用值 *unmanaged* 跳过特定于操作系统的设置。
 
-**`protection`: `<boolean>` (*default \=* `0`)**
+**`protection`: `<boolean>` (*默认 \=* `0`)**
 
 设置容器的保护标志。这将阻止对 CT 或 CT 磁盘执行删除/更新操作。
 
@@ -348,7 +348,7 @@ rootfs/mps 的额外挂载选项。
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`\=`<boolean>` (*default \=* `1`)**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
 会将此卷包含到存储复制作业中。
 
@@ -356,7 +356,7 @@ rootfs/mps 的额外挂载选项。
 
 只读挂载点
 
-**`shared`\=`<boolean>` (*default \=* `0`)**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -380,7 +380,7 @@ rootfs/mps 的额外挂载选项。
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`swap`: `<integer> (0 - N)` (*default \=* `512`)**
+**`swap`: `<integer> (0 - N)` (*默认 \=* `512`)**
 
 容器的 SWAP 大小，单位为 MB。
 
@@ -388,7 +388,7 @@ rootfs/mps 的额外挂载选项。
 
 容器的标签。这只是元信息。
 
-**`template`: `<boolean>` (*default \=* `0`)**
+**`template`: `<boolean>` (*默认 \=* `0`)**
 
 启用/禁用模板。
 
@@ -396,11 +396,11 @@ rootfs/mps 的额外挂载选项。
 
 容器中使用的时区。如果未设置此选项，则不执行任何操作。可以设置为 *host* 以与宿主机时区匹配，也可以设置为 /usr/share/zoneinfo/zone.tab 中的任意时区选项。
 
-**`tty`: `<integer> (0 - 6)` (*default \=* `2`)**
+**`tty`: `<integer> (0 - 6)` (*默认 \=* `2`)**
 
 指定容器可用的 tty 数量
 
-**`unprivileged`: `<boolean>` (*default \=* `0`)**
+**`unprivileged`: `<boolean>` (*默认 \=* `0`)**
 
 使容器以非特权用户身份运行。创建时，默认值为 1。恢复时，默认值为备份中的值。（不应手动修改。）
 
@@ -412,7 +412,7 @@ rootfs/mps 的额外挂载选项。
 
 当前未使用的卷。
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

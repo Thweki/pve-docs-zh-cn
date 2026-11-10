@@ -45,7 +45,7 @@ Get status for all datastores.
 | `enabled` | boolean | 否 | 0 | Only list stores which are enabled (not disabled in config). |
 | `format` | boolean | 否 | 0 | Include information about formats |
 | `node` | string | 是 | — | The cluster node name. |
-| `storage` | string | 否 | — | Only list status for specified storage |
+| `storage` | string | 否 | — | Only list status for  specified storage |
 | `target` | string | 否 | — | If target is different to 'node', we only lists shared storages which content is accessible on this 'node' and the specified 'target' node. |
 
 <details>
@@ -83,7 +83,7 @@ Get status for all datastores.
       "typetext": "<string>"
     },
     "storage": {
-      "description": "Only list status for specified storage",
+      "description": "Only list status for  specified storage",
       "format": "pve-storage-id",
       "format_description": "storage ID",
       "optional": 1,

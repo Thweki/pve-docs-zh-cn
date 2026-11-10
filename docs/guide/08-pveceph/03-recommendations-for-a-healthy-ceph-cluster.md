@@ -1,4 +1,4 @@
-# 8.3. Recommendations for a Healthy Ceph Cluster <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
+# 8.3. 健康 Ceph 集群的建议 <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
 
 要构建超融合 Proxmox \+ Ceph 集群，部署时必须至少使用三台（最好完全相同的）服务器。
 
@@ -14,7 +14,7 @@
 
 **CPU**
 
-Ceph services can be classified into two categories:
+Ceph 服务可分为两类：
 
 - CPU 使用率高，受益于较高的 CPU 基础频率和多个核心。此类服务包括：
 
@@ -37,7 +37,7 @@ Ceph services can be classified into two categories:
 
 **内存**
 
-Especially in a hyper-converged setup, the memory consumption needs to be carefully planned out and monitored. In addition to the predicted memory usage of virtual machines and containers, you must also account for having enough memory available for Ceph to provide excellent and stable performance.
+尤其是在超融合部署中，需要仔细规划并监控内存消耗。除了虚拟机和容器的预计内存使用量外，您还必须确保为 Ceph 留出足够的内存，以提供出色且稳定的性能。
 
 虽然正常情况下内存使用量可能较少，但在恢复、重新平衡或回填等关键操作期间，内存消耗会增加。这意味着您应避免在常规运行时就耗尽所有可用内存，而应留出一些余量，以应对服务中断。
 
@@ -53,7 +53,7 @@ Especially in a hyper-converged setup, the memory consumption needs to be carefu
 
 **网络**
 
-We recommend a network bandwidth of at least 10 Gbps, or more, to be used exclusively for Ceph traffic. A meshed network setup [\[1\]](#note-c8a7a90b-1) is also an option for three to five node clusters, if there are no 10\+ Gbps switches available.
+我们建议至少使用 10 Gbps 或更高带宽的网络，专用于 Ceph 流量。如果没有可用的 10\+ Gbps 交换机，对于三到五个节点的集群，网状网络部署 [\[1\]](#note-c8a7a90b-1) 也是一种选择。
 
 {% hint style="warning" %}
 流量，尤其是在恢复期间产生的流量，会干扰同一网络上的其他服务，尤其是对延迟敏感的 Proxmox VE corosync 集群协议栈可能会受到影响，从而可能导致集群失去仲裁。将 Ceph 流量迁移到专用的物理隔离网络可以避免此类干扰，不仅可避免对 corosync 的干扰，也可避免对任何虚拟客户机提供的网络服务的干扰。
@@ -75,7 +75,7 @@ We recommend a network bandwidth of at least 10 Gbps, or more, to be used exclus
 
 **磁盘**
 
-When planning the size of your Ceph cluster, it is important to take the recovery time into consideration. Especially with small clusters, recovery might take long. It is recommended that you use SSDs instead of HDDs in small setups to reduce recovery time, minimizing the likelihood of a subsequent failure event during recovery.
+规划 Ceph 集群规模时，必须考虑恢复时间。尤其是对于小型集群，恢复可能耗时很长。建议在小型部署中使用 SSD 而非 HDD，以缩短恢复时间，并最大程度降低恢复期间发生后续故障事件的可能性。
 
 一般而言，SSD 提供的 IOPS 高于机械磁盘。考虑到这一点，尽管成本较高，但实施基于 [class](10-pve-ceph-device-classes.md) 的池分离可能仍有意义。另一种提高 OSD 速度的方法是使用更快的磁盘作为日志或 DB/**W**rite-**A**head-**L**og 设备，请参阅 [创建 Ceph OSD](07-pve-ceph-osds.md)。如果将一块更快的磁盘用于多个 OSD，必须在 OSD 与 WAL / DB（或日志）磁盘之间选择适当的平衡，否则这块更快的磁盘会成为所有关联 OSD 的瓶颈。
 
@@ -89,7 +89,7 @@ When planning the size of your Ceph cluster, it is important to take the recover
 
 **避免使用 RAID**
 
-As Ceph handles data object redundancy and multiple parallel writes to disks (OSDs) on its own, using a RAID controller normally doesn’t improve performance or availability. On the contrary, Ceph is designed to handle whole disks on its own, without any abstraction in between. RAID controllers are not designed for the Ceph workload and may complicate things and sometimes even reduce performance, as their write and caching algorithms may interfere with the ones from Ceph.
+由于 Ceph 自行处理数据对象冗余以及对磁盘（OSD）的多次并行写入，使用 RAID 控制器通常不会提升性能或可用性。相反，Ceph 旨在自行管理整块磁盘，中间不需要任何抽象层。RAID 控制器并非针对 Ceph 工作负载而设计，可能会使情况复杂化，有时甚至降低性能，因为其写入和缓存算法可能会干扰 Ceph 的相应算法。
 
 {% hint style="warning" %}
 避免使用 RAID 控制器，改用主机总线适配器（HBA）。
@@ -99,7 +99,7 @@ As Ceph handles data object redundancy and multiple parallel writes to disks (OS
 
 ### 注释 1 <a href="#note-c8a7a90b-1" id="note-c8a7a90b-1"></a>
 
-Full Mesh Network for Ceph [https://pve.proxmox.com/wiki/Full\_Mesh\_Network\_for\_Ceph\_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)
+Ceph 全网状网络 [https://pve.proxmox.com/wiki/Full\_Mesh\_Network\_for\_Ceph\_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)
 
 ---
 

@@ -1,4 +1,4 @@
-# 9.5. Network <a href="#_network" id="_network"></a>
+# 9.5. 网络 <a href="#_network" id="_network"></a>
 
 默认情况下，复制流量与客户机迁移流量使用同一网络。如果未设置迁移网络，则复制流量会转而默认使用管理网络。
 

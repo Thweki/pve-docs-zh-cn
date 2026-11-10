@@ -1,10 +1,10 @@
 # pveam(1)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 pveam \- Proxmox VE Appliance Manager
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pveam"></a>
 
@@ -88,11 +88,11 @@ The template to remove.
 
 Update Container Template Database.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Command line tool to manage container images. See `man pct` for usage examples.
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

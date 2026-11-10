@@ -1,4 +1,4 @@
-# 4\. Graphical User Interface <a href="#chapter_gui" id="chapter_gui"></a>
+# 4\. 图形用户界面 <a href="#chapter_gui" id="chapter_gui"></a>
 
 Proxmox VE 简单易用。无需安装单独的管理工具，一切均可通过 Web 浏览器完成（建议使用最新版本的 Firefox 或 Google Chrome）。内置 HTML5 控制台用于访问客户机控制台。作为替代方案，也可以使用[SPICE](https://www.spice-space.org/)。
 
@@ -10,12 +10,12 @@ Proxmox VE 简单易用。无需安装单独的管理工具，一切均可通过
 
 ## 本章内容
 
-- [4.1. Features](01-features.md)
-- [4.2. Login](02-login.md)
-- [4.3. GUI Overview](03-gui-overview.md)
-- [4.4. Content Panels](04-content-panels.md)
-- [4.5. Tags](05-gui-tags.md)
-- [4.6. Consent Banner](06-gui-consent-banner.md)
+- [4.1. 功能](01-features.md)
+- [4.2. 登录](02-login.md)
+- [4.3. GUI 概述](03-gui-overview.md)
+- [4.4. 内容面板](04-content-panels.md)
+- [4.5. 标签](05-gui-tags.md)
+- [4.6. 同意横幅](06-gui-consent-banner.md)
 
 ---
 

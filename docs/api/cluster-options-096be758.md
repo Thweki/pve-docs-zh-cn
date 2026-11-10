@@ -304,7 +304,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
       "verbose_description": "Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).\n \nNote that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.\n Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.\n\nFor publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins."
     },
     "max_workers": {
-      "description": "Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.",
+      "description": "Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager.",
       "minimum": 1,
       "optional": 1,
       "type": "integer"
@@ -383,7 +383,7 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
+          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be  production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
         },
         "replication": {
           "description": "UNUSED - Use datacenter notification settings instead.",
@@ -621,7 +621,7 @@ Set datacenter options.
 | `language` | string | 否 | — | Default GUI language.；可选值：`ar`, `ca`, `da`, `de`, `en`, `es`, `eu`, `fa`, `fr`, `hr`, `he`, `it`, `ja`, `ka`, `kr`, `nb`, `nl`, `nn`, `pl`, `pt_BR`, `ru`, `sl`, `sv`, `tr`, `ukr`, `zh_CN`, `zh_TW` |
 | `location` | string | 否 | — | The location of the cluster. |
 | `mac_prefix` | string | 否 | "BC:24:11" | Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).<br> <br>Note that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.<br> Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.<br><br>For publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins. |
-| `max_workers` | integer | 否 | — | Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager. |
+| `max_workers` | integer | 否 | — | Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager. |
 | `migration` | string | 否 | — | For cluster wide migration settings. |
 | `migration_unsecure` | boolean | 否 | — | Migration is secure using SSH tunnel by default. For secure private networks you can disable it to speed up migration. Deprecated, use the 'migration' property instead! |
 | `next-id` | string | 否 | — | Control the range for the free VMID auto-selection pool. |
@@ -911,7 +911,7 @@ Set datacenter options.
       "verbose_description": "Prefix for the auto-generated MAC addresses of virtual guests. The default `BC:24:11` is the Organizationally Unique Identifier (OUI) assigned by the IEEE to Proxmox Server Solutions GmbH for a MAC Address Block Large (MA-L). You're allowed to use this in local networks, i.e., those not directly reachable by the public (e.g., in a LAN or NAT/Masquerading).\n \nNote that when you run multiple cluster that (partially) share the networks of their virtual guests, it's highly recommended that you extend the default MAC prefix, or generate a custom (valid) one, to reduce the chance of MAC collisions. For example, add a separate extra hexadecimal to the Proxmox OUI for each cluster, like `BC:24:11:0` for the first, `BC:24:11:1` for the second, and so on.\n Alternatively, you can also separate the networks of the guests logically, e.g., by using VLANs.\n\nFor publicly accessible guests it's recommended that you get your own https://standards.ieee.org/products-programs/regauth/[OUI from the IEEE] registered or coordinate with your, or your hosting providers, network admins."
     },
     "max_workers": {
-      "description": "Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.",
+      "description": "Defines how many workers (per node) are maximal started  on actions like 'stopall VMs' or task from the ha-manager.",
       "minimum": 1,
       "optional": 1,
       "type": "integer",
@@ -994,7 +994,7 @@ Set datacenter options.
           ],
           "optional": 1,
           "type": "string",
-          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
+          "verbose_description": "DEPRECATED: Use datacenter notification settings instead.\nControl how often the daily update job should send out notifications:\n* 'auto' daily for systems with a valid subscription, as those are assumed to be  production-ready and thus should know about pending updates.\n* 'always' every update, if there are new pending updates.\n* 'never' never send a notification for new pending updates.\n"
         },
         "replication": {
           "description": "UNUSED - Use datacenter notification settings instead.",

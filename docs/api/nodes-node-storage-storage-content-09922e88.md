@@ -115,7 +115,7 @@ List storage content.
         "type": "integer"
       },
       "encrypted": {
-        "description": "If whole backup is encrypted, value is the fingerprint or '1' if encrypted. Only useful for the Proxmox Backup Server storage type.",
+        "description": "If whole backup is encrypted, value is the fingerprint or '1'  if encrypted. Only useful for the Proxmox Backup Server storage type.",
         "optional": 1,
         "type": "string"
       },

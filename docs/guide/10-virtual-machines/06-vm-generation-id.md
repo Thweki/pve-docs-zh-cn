@@ -1,11 +1,10 @@
-# 10.6. VM Generation ID <a href="#_vm_generation_id" id="_vm_generation_id"></a>
+# 10.6. VM 生成 ID <a href="#_vm_generation_id" id="_vm_generation_id"></a>
 
-Proxmox VE supports Virtual Machine Generation ID (*vmgenid*) [\[1\]](#note-bccd999c-1) for virtual machines. This can be used by the guest operating system to detect any event resulting in a time shift event, for example, restoring a backup or a snapshot rollback.
+Proxmox VE 支持虚拟机的虚拟机生成 ID (*vmgenid*) [\[1\]](#note-bccd999c-1)。客户机操作系统可用它来检测任何导致时间偏移的事件，例如恢复备份或回滚快照。
 
-When creating new VMs, a *vmgenid* will be automatically generated and saved in its configuration file.
+创建新 VM 时，会自动生成 *vmgenid* 并将其保存在该 VM 的配置文件中。
 
-To create and add a *vmgenid* to an already existing VM one can pass the special value ‘1’ to let Proxmox VE autogenerate one or manually set the *UUID*
-[\[2\]](#note-bccd999c-2) by using it as value, for example:
+要为现有的 VM 创建并添加 *vmgenid*，可以传入特殊值“1”，让 Proxmox VE 自动生成一个；也可以将 *UUID* [\[2\]](#note-bccd999c-2) 用作值，手动进行设置，例如：
 
 ```text
 # qm set VMID -vmgenid 1
@@ -13,26 +12,26 @@ To create and add a *vmgenid* to an already existing VM one can pass the special
 ```
 
 {% hint style="info" %}
-The initial addition of a *vmgenid* device to an existing VM, may result in the same effects as a change on snapshot rollback, backup restore, etc., has as the VM can interpret this as generation change.
+首次向现有 VM 添加 *vmgenid* 设备，可能会产生与快照回滚、备份恢复等操作中的变更相同的影响，因为 VM 可能会将其解释为代际变更。
 {% endhint %}
 
-In the rare case the *vmgenid* mechanism is not wanted one can pass ‘0’ for its value on VM creation, or retroactively delete the property in the configuration with:
+在极少数不需要 *vmgenid* 机制的情况下，可以在创建 VM 时将其值设为“0”，或者使用以下命令在配置中事后删除该属性：
 
 ```text
 # qm set VMID -delete vmgenid
 ```
 
-The most prominent use case for *vmgenid* are newer Microsoft Windows operating systems, which use it to avoid problems in time sensitive or replicate services (such as databases or domain controller [\[3\]](#note-bccd999c-3)) on snapshot rollback, backup restore or a whole VM clone operation.
+*vmgenid* 最主要的用例是较新的 Microsoft Windows 操作系统，它们利用该机制避免在快照回滚、备份恢复或完整 VM 克隆操作时，时间敏感型服务或复制服务（例如数据库或域控制器 [\[3\]](#note-bccd999c-3)）出现问题。
 
 ## 注释
 
 ### 注释 1 <a href="#note-bccd999c-1" id="note-bccd999c-1"></a>
 
-Official *vmgenid* Specification [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)
+官方 *vmgenid* 规范 [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)
 
 ### 注释 2 <a href="#note-bccd999c-2" id="note-bccd999c-2"></a>
 
-Online GUID generator [http://guid.one/](http://guid.one/)
+在线 GUID 生成器 [http://guid.one/](http://guid.one/)
 
 ### 注释 3 <a href="#note-bccd999c-3" id="note-bccd999c-3"></a>
 

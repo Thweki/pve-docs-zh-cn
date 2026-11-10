@@ -1,10 +1,10 @@
 # pve-firewall(8)
 
-## NAME <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
+## 名称 <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
 
 pve-firewall \- PVE Firewall Daemon
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pve-firewall"></a>
 
@@ -88,7 +88,7 @@ Source port.
 
 Destination zone.
 
-**`--verbose` `<boolean>` (*default \=* `0`)**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Verbose output.
 
@@ -100,7 +100,7 @@ Verbose output.
 
 Start the Proxmox VE firewall service.
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 Debug mode \- stay in foreground
 
@@ -120,7 +120,7 @@ Get firewall status.
 
 Stop the Proxmox VE firewall service. Note, stopping actively removes all Proxmox VE related iptable rules rendering the host potentially unprotected.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Proxmox VE Firewall provides an easy way to protect your IT infrastructure. You can setup firewall rules for all hosts inside a cluster, or define rules for virtual machines and containers. Features like firewall macros, security groups, IP sets and aliases help to make that task easier.
 
@@ -1028,10 +1028,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Amanda</em>
-<br/>
-</td>
+<td><em>Amanda</em> <br/></td>
 <td>
 <p>Amanda Backup</p>
 </td>
@@ -1069,10 +1066,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Auth</em>
-<br/>
-</td>
+<td><em>Auth</em> <br/></td>
 <td>
 <p>Auth (identd) traffic</p>
 </td>
@@ -1104,10 +1098,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>BGP</em>
-<br/>
-</td>
+<td><em>BGP</em> <br/></td>
 <td>
 <p>Border Gateway Protocol traffic</p>
 </td>
@@ -1139,10 +1130,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>BitTorrent</em>
-<br/>
-</td>
+<td><em>BitTorrent</em> <br/></td>
 <td>
 <p>BitTorrent traffic for BitTorrent 3.1 and earlier</p>
 </td>
@@ -1180,10 +1168,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>BitTorrent32</em>
-<br/>
-</td>
+<td><em>BitTorrent32</em> <br/></td>
 <td>
 <p>BitTorrent traffic for BitTorrent 3.2 and later</p>
 </td>
@@ -1221,10 +1206,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>CVS</em>
-<br/>
-</td>
+<td><em>CVS</em> <br/></td>
 <td>
 <p>Concurrent Versions System pserver traffic</p>
 </td>
@@ -1256,10 +1238,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Ceph</em>
-<br/>
-</td>
+<td><em>Ceph</em> <br/></td>
 <td>
 <p>Ceph Storage Cluster traffic (Ceph Monitors, OSD &amp; MDS Daemons)</p>
 </td>
@@ -1303,10 +1282,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Citrix</em>
-<br/>
-</td>
+<td><em>Citrix</em> <br/></td>
 <td>
 <p>Citrix/ICA traffic (ICA, ICA Browser, CGP)</p>
 </td>
@@ -1350,10 +1326,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>DAAP</em>
-<br/>
-</td>
+<td><em>DAAP</em> <br/></td>
 <td>
 <p>Digital Audio Access Protocol traffic (iTunes, Rythmbox daemons)</p>
 </td>
@@ -1391,10 +1364,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>DCC</em>
-<br/>
-</td>
+<td><em>DCC</em> <br/></td>
 <td>
 <p>Distributed Checksum Clearinghouse spam filtering mechanism</p>
 </td>
@@ -1426,10 +1396,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>DHCPfwd</em>
-<br/>
-</td>
+<td><em>DHCPfwd</em> <br/></td>
 <td>
 <p>Forwarded DHCP traffic</p>
 </td>
@@ -1461,10 +1428,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>DHCPv6</em>
-<br/>
-</td>
+<td><em>DHCPv6</em> <br/></td>
 <td>
 <p>DHCPv6 traffic</p>
 </td>
@@ -1496,10 +1460,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>DNS</em>
-<br/>
-</td>
+<td><em>DNS</em> <br/></td>
 <td>
 <p>Domain Name System traffic (upd and tcp)</p>
 </td>
@@ -1537,10 +1498,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Distcc</em>
-<br/>
-</td>
+<td><em>Distcc</em> <br/></td>
 <td>
 <p>Distributed Compiler service</p>
 </td>
@@ -1572,10 +1530,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>FTP</em>
-<br/>
-</td>
+<td><em>FTP</em> <br/></td>
 <td>
 <p>File Transfer Protocol</p>
 </td>
@@ -1607,10 +1562,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Finger</em>
-<br/>
-</td>
+<td><em>Finger</em> <br/></td>
 <td>
 <p>Finger protocol (RFC 742)</p>
 </td>
@@ -1642,10 +1594,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>GNUnet</em>
-<br/>
-</td>
+<td><em>GNUnet</em> <br/></td>
 <td>
 <p>GNUnet secure peer-to-peer networking traffic</p>
 </td>
@@ -1695,10 +1644,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>GRE</em>
-<br/>
-</td>
+<td><em>GRE</em> <br/></td>
 <td>
 <p>Generic Routing Encapsulation tunneling protocol</p>
 </td>
@@ -1730,10 +1676,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Git</em>
-<br/>
-</td>
+<td><em>Git</em> <br/></td>
 <td>
 <p>Git distributed revision control traffic</p>
 </td>
@@ -1765,10 +1708,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>HKP</em>
-<br/>
-</td>
+<td><em>HKP</em> <br/></td>
 <td>
 <p>OpenPGP HTTP key server protocol traffic</p>
 </td>
@@ -1800,10 +1740,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>HTTP</em>
-<br/>
-</td>
+<td><em>HTTP</em> <br/></td>
 <td>
 <p>Hypertext Transfer Protocol (WWW)</p>
 </td>
@@ -1835,10 +1772,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>HTTPS</em>
-<br/>
-</td>
+<td><em>HTTPS</em> <br/></td>
 <td>
 <p>Hypertext Transfer Protocol (WWW) over SSL</p>
 </td>
@@ -1870,10 +1804,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>ICPV2</em>
-<br/>
-</td>
+<td><em>ICPV2</em> <br/></td>
 <td>
 <p>Internet Cache Protocol V2 (Squid) traffic</p>
 </td>
@@ -1905,10 +1836,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>ICQ</em>
-<br/>
-</td>
+<td><em>ICQ</em> <br/></td>
 <td>
 <p>AOL Instant Messenger traffic</p>
 </td>
@@ -1940,10 +1868,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IMAP</em>
-<br/>
-</td>
+<td><em>IMAP</em> <br/></td>
 <td>
 <p>Internet Message Access Protocol</p>
 </td>
@@ -1975,10 +1900,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IMAPS</em>
-<br/>
-</td>
+<td><em>IMAPS</em> <br/></td>
 <td>
 <p>Internet Message Access Protocol over SSL</p>
 </td>
@@ -2010,10 +1932,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IPIP</em>
-<br/>
-</td>
+<td><em>IPIP</em> <br/></td>
 <td>
 <p>IPIP capsulation traffic</p>
 </td>
@@ -2045,10 +1964,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IPsec</em>
-<br/>
-</td>
+<td><em>IPsec</em> <br/></td>
 <td>
 <p>IPsec traffic</p>
 </td>
@@ -2086,10 +2002,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IPsecah</em>
-<br/>
-</td>
+<td><em>IPsecah</em> <br/></td>
 <td>
 <p>IPsec authentication (AH) traffic</p>
 </td>
@@ -2127,10 +2040,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IPsecnat</em>
-<br/>
-</td>
+<td><em>IPsecnat</em> <br/></td>
 <td>
 <p>IPsec traffic and Nat-Traversal</p>
 </td>
@@ -2174,10 +2084,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>IRC</em>
-<br/>
-</td>
+<td><em>IRC</em> <br/></td>
 <td>
 <p>Internet Relay Chat traffic</p>
 </td>
@@ -2209,10 +2116,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Jetdirect</em>
-<br/>
-</td>
+<td><em>Jetdirect</em> <br/></td>
 <td>
 <p>HP Jetdirect printing</p>
 </td>
@@ -2244,10 +2148,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>L2TP</em>
-<br/>
-</td>
+<td><em>L2TP</em> <br/></td>
 <td>
 <p>Layer 2 Tunneling Protocol traffic</p>
 </td>
@@ -2279,10 +2180,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>LDAP</em>
-<br/>
-</td>
+<td><em>LDAP</em> <br/></td>
 <td>
 <p>Lightweight Directory Access Protocol traffic</p>
 </td>
@@ -2314,10 +2212,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>LDAPS</em>
-<br/>
-</td>
+<td><em>LDAPS</em> <br/></td>
 <td>
 <p>Secure Lightweight Directory Access Protocol traffic</p>
 </td>
@@ -2349,10 +2244,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>MDNS</em>
-<br/>
-</td>
+<td><em>MDNS</em> <br/></td>
 <td>
 <p>Multicast DNS</p>
 </td>
@@ -2384,10 +2276,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>MSNP</em>
-<br/>
-</td>
+<td><em>MSNP</em> <br/></td>
 <td>
 <p>Microsoft Notification Protocol</p>
 </td>
@@ -2419,10 +2308,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>MSSQL</em>
-<br/>
-</td>
+<td><em>MSSQL</em> <br/></td>
 <td>
 <p>Microsoft SQL Server</p>
 </td>
@@ -2454,10 +2340,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Mail</em>
-<br/>
-</td>
+<td><em>Mail</em> <br/></td>
 <td>
 <p>Mail traffic (SMTP, SMTPS, Submission)</p>
 </td>
@@ -2501,10 +2384,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Munin</em>
-<br/>
-</td>
+<td><em>Munin</em> <br/></td>
 <td>
 <p>Munin networked resource monitoring traffic</p>
 </td>
@@ -2536,10 +2416,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>MySQL</em>
-<br/>
-</td>
+<td><em>MySQL</em> <br/></td>
 <td>
 <p>MySQL server</p>
 </td>
@@ -2571,10 +2448,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>NNTP</em>
-<br/>
-</td>
+<td><em>NNTP</em> <br/></td>
 <td>
 <p>NNTP traffic (Usenet).</p>
 </td>
@@ -2606,10 +2480,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>NNTPS</em>
-<br/>
-</td>
+<td><em>NNTPS</em> <br/></td>
 <td>
 <p>Encrypted NNTP traffic (Usenet)</p>
 </td>
@@ -2641,10 +2512,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>NTP</em>
-<br/>
-</td>
+<td><em>NTP</em> <br/></td>
 <td>
 <p>Network Time Protocol (ntpd)</p>
 </td>
@@ -2676,10 +2544,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>NeighborDiscovery</em>
-<br/>
-</td>
+<td><em>NeighborDiscovery</em> <br/></td>
 <td>
 <p>IPv6 neighbor solicitation, neighbor and router advertisement</p>
 </td>
@@ -2729,10 +2594,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>OSPF</em>
-<br/>
-</td>
+<td><em>OSPF</em> <br/></td>
 <td>
 <p>OSPF multicast traffic</p>
 </td>
@@ -2764,10 +2626,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>OpenVPN</em>
-<br/>
-</td>
+<td><em>OpenVPN</em> <br/></td>
 <td>
 <p>OpenVPN traffic</p>
 </td>
@@ -2799,10 +2658,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>PCA</em>
-<br/>
-</td>
+<td><em>PCA</em> <br/></td>
 <td>
 <p>Symantec PCAnywere (tm)</p>
 </td>
@@ -2840,10 +2696,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>PMG</em>
-<br/>
-</td>
+<td><em>PMG</em> <br/></td>
 <td>
 <p>Proxmox Mail Gateway web interface</p>
 </td>
@@ -2875,10 +2728,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>POP3</em>
-<br/>
-</td>
+<td><em>POP3</em> <br/></td>
 <td>
 <p>POP3 traffic</p>
 </td>
@@ -2910,10 +2760,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>POP3S</em>
-<br/>
-</td>
+<td><em>POP3S</em> <br/></td>
 <td>
 <p>Encrypted POP3 traffic</p>
 </td>
@@ -2945,10 +2792,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>PPtP</em>
-<br/>
-</td>
+<td><em>PPtP</em> <br/></td>
 <td>
 <p>Point-to-Point Tunneling Protocol</p>
 </td>
@@ -2986,10 +2830,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Ping</em>
-<br/>
-</td>
+<td><em>Ping</em> <br/></td>
 <td>
 <p>ICMP echo request</p>
 </td>
@@ -3021,10 +2862,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>PostgreSQL</em>
-<br/>
-</td>
+<td><em>PostgreSQL</em> <br/></td>
 <td>
 <p>PostgreSQL server</p>
 </td>
@@ -3056,10 +2894,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Printer</em>
-<br/>
-</td>
+<td><em>Printer</em> <br/></td>
 <td>
 <p>Line Printer protocol printing</p>
 </td>
@@ -3091,10 +2926,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>RDP</em>
-<br/>
-</td>
+<td><em>RDP</em> <br/></td>
 <td>
 <p>Microsoft Remote Desktop Protocol traffic</p>
 </td>
@@ -3126,10 +2958,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>RIP</em>
-<br/>
-</td>
+<td><em>RIP</em> <br/></td>
 <td>
 <p>Routing Information Protocol (bidirectional)</p>
 </td>
@@ -3161,10 +2990,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>RNDC</em>
-<br/>
-</td>
+<td><em>RNDC</em> <br/></td>
 <td>
 <p>BIND remote management protocol</p>
 </td>
@@ -3196,10 +3022,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Razor</em>
-<br/>
-</td>
+<td><em>Razor</em> <br/></td>
 <td>
 <p>Razor Antispam System</p>
 </td>
@@ -3231,10 +3054,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Rdate</em>
-<br/>
-</td>
+<td><em>Rdate</em> <br/></td>
 <td>
 <p>Remote time retrieval (rdate)</p>
 </td>
@@ -3266,10 +3086,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Rsync</em>
-<br/>
-</td>
+<td><em>Rsync</em> <br/></td>
 <td>
 <p>Rsync server</p>
 </td>
@@ -3301,10 +3118,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SANE</em>
-<br/>
-</td>
+<td><em>SANE</em> <br/></td>
 <td>
 <p>SANE network scanning</p>
 </td>
@@ -3336,10 +3150,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SMB</em>
-<br/>
-</td>
+<td><em>SMB</em> <br/></td>
 <td>
 <p>Microsoft SMB traffic</p>
 </td>
@@ -3389,10 +3200,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SMBswat</em>
-<br/>
-</td>
+<td><em>SMBswat</em> <br/></td>
 <td>
 <p>Samba Web Administration Tool</p>
 </td>
@@ -3424,10 +3232,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SMTP</em>
-<br/>
-</td>
+<td><em>SMTP</em> <br/></td>
 <td>
 <p>Simple Mail Transfer Protocol</p>
 </td>
@@ -3459,10 +3264,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SMTPS</em>
-<br/>
-</td>
+<td><em>SMTPS</em> <br/></td>
 <td>
 <p>Encrypted Simple Mail Transfer Protocol</p>
 </td>
@@ -3494,10 +3296,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SNMP</em>
-<br/>
-</td>
+<td><em>SNMP</em> <br/></td>
 <td>
 <p>Simple Network Management Protocol</p>
 </td>
@@ -3535,10 +3334,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SPAMD</em>
-<br/>
-</td>
+<td><em>SPAMD</em> <br/></td>
 <td>
 <p>Spam Assassin SPAMD traffic</p>
 </td>
@@ -3570,10 +3366,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SPICEproxy</em>
-<br/>
-</td>
+<td><em>SPICEproxy</em> <br/></td>
 <td>
 <p>Proxmox VE SPICE display proxy traffic</p>
 </td>
@@ -3605,10 +3398,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SSH</em>
-<br/>
-</td>
+<td><em>SSH</em> <br/></td>
 <td>
 <p>Secure shell traffic</p>
 </td>
@@ -3640,10 +3430,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SVN</em>
-<br/>
-</td>
+<td><em>SVN</em> <br/></td>
 <td>
 <p>Subversion server (svnserve)</p>
 </td>
@@ -3675,10 +3462,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>SixXS</em>
-<br/>
-</td>
+<td><em>SixXS</em> <br/></td>
 <td>
 <p>SixXS IPv6 Deployment and Tunnel Broker</p>
 </td>
@@ -3728,10 +3512,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Squid</em>
-<br/>
-</td>
+<td><em>Squid</em> <br/></td>
 <td>
 <p>Squid web proxy traffic</p>
 </td>
@@ -3763,10 +3544,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Submission</em>
-<br/>
-</td>
+<td><em>Submission</em> <br/></td>
 <td>
 <p>Mail message submission traffic</p>
 </td>
@@ -3798,10 +3576,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Syslog</em>
-<br/>
-</td>
+<td><em>Syslog</em> <br/></td>
 <td>
 <p>Syslog protocol (RFC 5424) traffic</p>
 </td>
@@ -3839,10 +3614,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>TFTP</em>
-<br/>
-</td>
+<td><em>TFTP</em> <br/></td>
 <td>
 <p>Trivial File Transfer Protocol traffic</p>
 </td>
@@ -3874,10 +3646,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Telnet</em>
-<br/>
-</td>
+<td><em>Telnet</em> <br/></td>
 <td>
 <p>Telnet traffic</p>
 </td>
@@ -3909,10 +3678,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Telnets</em>
-<br/>
-</td>
+<td><em>Telnets</em> <br/></td>
 <td>
 <p>Telnet over SSL</p>
 </td>
@@ -3944,10 +3710,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Time</em>
-<br/>
-</td>
+<td><em>Time</em> <br/></td>
 <td>
 <p>RFC 868 Time protocol</p>
 </td>
@@ -3979,10 +3742,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Trcrt</em>
-<br/>
-</td>
+<td><em>Trcrt</em> <br/></td>
 <td>
 <p>Traceroute (for up to 30 hops) traffic</p>
 </td>
@@ -4020,10 +3780,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>VNC</em>
-<br/>
-</td>
+<td><em>VNC</em> <br/></td>
 <td>
 <p>VNC traffic for VNC display’s 0 - 99</p>
 </td>
@@ -4055,10 +3812,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>VNCL</em>
-<br/>
-</td>
+<td><em>VNCL</em> <br/></td>
 <td>
 <p>VNC traffic from Vncservers to Vncviewers in listen mode</p>
 </td>
@@ -4090,10 +3844,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Web</em>
-<br/>
-</td>
+<td><em>Web</em> <br/></td>
 <td>
 <p>WWW traffic (HTTP and HTTPS)</p>
 </td>
@@ -4131,10 +3882,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Webcache</em>
-<br/>
-</td>
+<td><em>Webcache</em> <br/></td>
 <td>
 <p>Web Cache/Proxy traffic (port 8080)</p>
 </td>
@@ -4166,10 +3914,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Webmin</em>
-<br/>
-</td>
+<td><em>Webmin</em> <br/></td>
 <td>
 <p>Webmin traffic</p>
 </td>
@@ -4201,10 +3946,7 @@ nft delete table bridge tracebridge
 
 <table>
 <tr>
-<td>
-<em>Whois</em>
-<br/>
-</td>
+<td><em>Whois</em> <br/></td>
 <td>
 <p>Whois (nicname, RFC 3912) traffic</p>
 </td>
@@ -4234,7 +3976,7 @@ nft delete table bridge tracebridge
 </tbody>
 </table>
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

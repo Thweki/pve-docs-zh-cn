@@ -1,4 +1,4 @@
-# 7.15. Ceph Filesystem (CephFS) <a href="#storage_cephfs" id="storage_cephfs"></a>
+# 7.15. Ceph 文件系统 (CephFS) <a href="#storage_cephfs" id="storage_cephfs"></a>
 
 存储池类型：`cephfs`
 
@@ -14,7 +14,7 @@ Proxmox VE 可以[管理 Ceph 部署](../08-pveceph/README.md)，这使 CephFS �
 请确保未配置其他 Ceph 软件仓库。否则安装将失败，或者节点上会存在混合版本的软件包，从而导致意外行为。
 {% endhint %}
 
-## 7.15.1. Configuration <a href="#storage_cephfs_config" id="storage_cephfs_config"></a>
+## 7.15.1. 配置 <a href="#storage_cephfs_config" id="storage_cephfs_config"></a>
 
 此后端支持通用存储属性 `nodes`、`disable`、`content`，以及以下 `cephfs` 特有属性：
 
@@ -57,7 +57,7 @@ cephfs: cephfs-external
 如果未禁用 cephx，请不要忘记设置客户端的密钥文件。
 {% endhint %}
 
-## 7.15.2. Authentication <a href="#storage_cephfs_auth" id="storage_cephfs_auth"></a>
+## 7.15.2. 身份验证 <a href="#storage_cephfs_auth" id="storage_cephfs_auth"></a>
 
 {% hint style="info" %}
 如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
@@ -88,7 +88,7 @@ cephfs: cephfs-external
 
 如果外部集群轮换此身份，请在重新挂载存储之前替换已存储的密钥。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
-## 7.15.3. Storage Features <a href="#_storage_features_11" id="_storage_features_11"></a>
+## 7.15.3. 存储功能 <a href="#_storage_features_11" id="_storage_features_11"></a>
 
 `cephfs` 后端是一个基于 Ceph 集群、符合 POSIX 标准的文件系统。
 

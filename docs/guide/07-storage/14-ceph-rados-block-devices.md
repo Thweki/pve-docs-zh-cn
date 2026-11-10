@@ -1,4 +1,4 @@
-# 7.14. Ceph RADOS Block Devices (RBD) <a href="#ceph_rados_block_devices" id="ceph_rados_block_devices"></a>
+# 7.14. Ceph RADOS 块设备（RBD） <a href="#ceph_rados_block_devices" id="ceph_rados_block_devices"></a>
 
 存储池类型：`rbd`
 
@@ -17,7 +17,7 @@
 对于较小规模的部署，也可以直接在 Proxmox VE 节点上运行 Ceph 服务。现代硬件拥有充足的 CPU 性能和内存，因此可以在同一节点上运行存储服务和虚拟机。
 {% endhint %}
 
-## 7.14.1. Configuration <a href="#storage_rbd_config" id="storage_rbd_config"></a>
+## 7.14.1. 配置 <a href="#storage_rbd_config" id="storage_rbd_config"></a>
 
 此后端支持通用存储属性 `nodes`、`disable`、`content`，以及以下 `rbd` 特有属性：
 
@@ -55,7 +55,7 @@ rbd: ceph-external
 您可以使用 `rbd` 实用程序执行底层管理任务。
 {% endhint %}
 
-## 7.14.2. Authentication <a href="#storage_rbd_auth" id="storage_rbd_auth"></a>
+## 7.14.2. 身份验证 <a href="#storage_rbd_auth" id="storage_rbd_auth"></a>
 
 {% hint style="info" %}
 如果 Ceph 本地安装在 Proxmox VE 集群上，添加存储时会自动完成以下操作。
@@ -89,7 +89,7 @@ rbd: ceph-external
 
 如果外部集群轮换此身份，请在刷新其使用者之前替换已存储的密钥环。本地 cephx 迁移辅助程序绝不会轮换外部集群的密钥。
 
-## 7.14.3. Ceph client configuration (optional) <a href="#_ceph_client_configuration_optional" id="_ceph_client_configuration_optional"></a>
+## 7.14.3. Ceph 客户端配置（可选） <a href="#_ceph_client_configuration_optional" id="_ceph_client_configuration_optional"></a>
 
 连接外部 Ceph 存储时，并不总能在外部集群的配置数据库中设置客户端特定选项。您可以在 Ceph 密钥环旁添加一个 `ceph.conf`，以更改该存储的 Ceph 客户端配置。
 
@@ -105,7 +105,7 @@ ceph.conf 必须与存储同名。
 请勿轻易更改这些设置。Proxmox VE 会将 \<STORAGE\_ID\>.conf 与存储配置合并。
 {% endhint %}
 
-## 7.14.4. Storage Features <a href="#_storage_features_10" id="_storage_features_10"></a>
+## 7.14.4. 存储功能 <a href="#_storage_features_10" id="_storage_features_10"></a>
 
 `rbd` 后端是块级存储，实现了完整的快照和克隆功能。
 

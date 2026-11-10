@@ -1,13 +1,13 @@
-# 8.14. Ceph Maintenance <a href="#_ceph_maintenance" id="_ceph_maintenance"></a>
+# 8.14. Ceph 维护 <a href="#_ceph_maintenance" id="_ceph_maintenance"></a>
 
-## 8.14.1. Replace OSDs <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
+## 8.14.1. 替换 OSD <a href="#pve_ceph_osd_replace" id="pve_ceph_osd_replace"></a>
 
 通过以下步骤，您可以替换 OSD 的磁盘，这是 Ceph 中最常见的维护任务之一。如果 OSD 出现问题，但其磁盘看起来仍然正常，请先阅读 [故障排除](15-pve-ceph-mon-and-ts.md) 部分。
 
 1. 如果磁盘发生故障，请准备一块 [推荐](03-recommendations-for-a-healthy-ceph-cluster.md#pve_ceph_recommendation_disk) 的、类型和大小相同的替换磁盘。
-2. [Destroy](07-pve-ceph-osds.md#pve_ceph_osd_destroy) the OSD in question.
+2. [销毁](07-pve-ceph-osds.md#pve_ceph_osd_destroy) 相关 OSD。
 3. 从服务器上卸下旧磁盘并安装新磁盘。
-4. [Create](07-pve-ceph-osds.md#pve_ceph_osd_create) the OSD again.
+4. [重新创建](07-pve-ceph-osds.md#pve_ceph_osd_create) 该 OSD。
 5. 自动重新平衡后，集群状态应恢复为 `HEALTH_OK`。对于仍列出的任何崩溃记录，可以运行以下命令予以确认：
 
 ```text
@@ -18,11 +18,11 @@ ceph crash archive-all
 
 定期在虚拟机和容器中运行 *fstrim*（discard）是一种良好做法。这会释放文件系统不再使用的数据块，从而减少数据占用和资源负载。大多数现代操作系统都会定期向其磁盘发出此类 discard 命令。您只需确保虚拟机启用 [磁盘丢弃选项](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_hard_disk_discard)。
 
-## 8.14.3. Scrub \& Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
+## 8.14.3. 擦洗与深度擦洗 <a href="#pveceph_scrub" id="pveceph_scrub"></a>
 
 Ceph 通过对归置组进行 *擦洗* 来确保数据完整性。Ceph 会检查 PG 中每个对象的健康状况。擦洗分为两种形式：每天进行的低成本元数据检查和每周进行的深度数据检查。每周深度擦洗会读取对象并使用校验和来确保数据完整性。如果正在运行的擦洗干扰业务（性能）需求，您可以调整执行擦洗 [\[1\]](#note-4de62a9e-1) 的时间。
 
-## 8.14.4. Mute a Health Check <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
+## 8.14.4. 将健康检查静音 <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
 
 将健康检查静音后，它仍然可见，但会被排除在总体健康状态之外，从而更容易发现新问题。Ceph 会继续评估该检查。请设置一个持续时间，以便被暂缓的警告自动恢复，例如两周后：
 
@@ -38,17 +38,17 @@ ceph health mute <CHECK> 2w
 静音并不能解决该状况。在静音持续期间，即表示您接受其风险。
 {% endhint %}
 
-## 8.14.5. Migrate Cephx Keys from `aes` to `aes256k` <a href="#pveceph_cephx_migration" id="pveceph_cephx_migration"></a>
+## 8.14.5. 将 Cephx 密钥从 `aes` 迁移到 `aes256k` <a href="#pveceph_cephx_migration" id="pveceph_cephx_migration"></a>
 
 本节介绍如何将集群拥有的密钥和兼容 Ceph 用户的密钥从 `aes` 迁移到 `aes256k`。有关 Ceph 用户、票据和密钥存储的说明，请参阅 [Cephx 身份验证](11-pveceph-cephx-how-it-works.md)。
 
-### Why the Health Checks Appear <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
+### 为什么会出现这些健康检查 <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
 
 Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法的密钥和临时访问凭据新增了健康检查。因此，即使集群在升级前运行时没有警告，这些检查也可能在升级后立即出现。较旧的方法受 [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156) 影响。有关背景信息，请参阅上游发布公告 [\[2\]](#note-4de62a9e-2)。
 
 两项检查会将集群状态设置为 *HEALTH\_ERR*。这并不意味着存储访问或某个 Ceph 服务发生故障。请按照以下步骤迁移到 `aes256k`，并在所有客户端都支持后，禁用这种易受攻击的方法。
 
-### Migration Steps <a href="#pveceph_cephx_migration_helper" id="pveceph_cephx_migration_helper"></a>
+### 迁移步骤 <a href="#pveceph_cephx_migration_helper" id="pveceph_cephx_migration_helper"></a>
 
 迁移辅助工具会检查集群、轮换密钥，并继续中断的工作。在应用计划之前，请检查每次试运行的结果；添加 `--verbose` 可获取完整的节点、密钥环和设备清单以及检查诊断信息。
 
@@ -62,7 +62,7 @@ Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法
 - 仅以 `root` 身份在一个节点上运行辅助工具。在其运行期间，不要启动另一次迁移或滚动重启，也不要使用其他工具更改 Ceph 密钥。辅助工具的锁不会阻止直接执行 Ceph 身份验证命令。
 - 如果此集群禁用了 Cephx，请改为按照 [禁用 Cephx 的集群](#pveceph_cephx_disabled) 中的说明操作。
 
-#### 1\. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
+#### 1\. 迁移集群拥有的密钥 <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
 
 在默认试运行模式下检查集群拥有的密钥迁移计划：
 
@@ -80,7 +80,7 @@ Ceph Squid 19.2.6 和 Ceph Tentacle 20.2.4 针对使用较旧 `aes` 加密方法
 
 Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的轮换密钥过期期间，有关轮换服务密钥的警告可能会持续几个小时。继续迁移之前，无需等待此警告清除。
 
-#### 2\. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
+#### 2\. 迁移兼容 Ceph 用户的密钥 <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
 <a id="pveceph_cipher_support"></a>
 
@@ -88,7 +88,7 @@ Ceph 更新其健康状态后，两项错误级别的检查会清除。在旧的
 
 **检查兼容性**
 
-Several workloads can share one Ceph user. Migrate its key only when every client supports `aes256k`, including disconnected and external clients. Ceph programs from the updated Proxmox VE packages support it; kernel clients require a **running** kernel version 7.0 or newer.
+多个工作负载可以共享一个 Ceph 用户。仅当所有客户端（包括已断开连接的客户端和外部客户端）都支持 `aes256k` 时，才迁移其密钥。更新后的 Proxmox VE 软件包中的 Ceph 程序支持该功能；内核客户端要求 **正在运行** 的内核版本为 7.0 或更新。
 
 <table>
 
@@ -147,7 +147,7 @@ Several workloads can share one Ceph user. Migrate its key only when every clien
 
 辅助程序会报告可能仍持有旧密钥的会话。客户端提示涵盖整个宿主机，并非会话归属信息或完整的工作负载清单。没有所属进程的套接字会单独列出。请自行检查已断开连接的客户端和外部密钥副本。
 
-#### 3\. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
+#### 3\. 完成或暂停迁移 <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
 
 执行最后一次试运行，检查是否仍有使用旧密钥的会话。当其观察到的检查全部通过时，它会提供确认命令，但无法为您验证已断开连接的客户端或外部密钥副本。
 
@@ -170,9 +170,9 @@ Several workloads can share one Ceph user. Migrate its key only when every clien
 `/etc/pve/priv/cephx-key-migration.json` 会记录进度，并包含保密的旧密钥。请妥善保护它，并一直保留到迁移完成且每个客户端都已刷新。过早删除它会丢失恢复迁移所需的记录。
 {% endhint %}
 
-### Additional Migration Details <a href="#_additional_migration_details" id="_additional_migration_details"></a>
+### 其他迁移详情 <a href="#_additional_migration_details" id="_additional_migration_details"></a>
 
-#### Health Check Reference <a href="#pveceph_cephx_health_check_reference" id="pveceph_cephx_health_check_reference"></a>
+#### 健康检查参考 <a href="#pveceph_cephx_health_check_reference" id="pveceph_cephx_health_check_reference"></a>
 
 <table>
 
@@ -219,7 +219,7 @@ Several workloads can share one Ceph user. Migrate its key only when every clien
 </tbody>
 </table>
 
-#### Clusters with Cephx Disabled <a href="#pveceph_cephx_disabled" id="pveceph_cephx_disabled"></a>
+#### 禁用 Cephx 的集群 <a href="#pveceph_cephx_disabled" id="pveceph_cephx_disabled"></a>
 
 Ceph 会根据存储的密钥和加密算法设置评估这些健康检查，即使禁用了 Cephx 也是如此，也就是当 `auth_cluster_required`、`auth_service_required` 和 `auth_client_required` 设置为 `none` 时。因此，禁用 Cephx 并不会清除这些检查，而更改身份验证方法会中断现有客户端，之后需要重启或重新挂载这些客户端。
 
@@ -239,7 +239,7 @@ Ceph 会根据存储的密钥和加密算法设置评估这些健康检查，即
 
 在重新启用 Cephx 之前，请取消这些检查的静音，并确保每个监视器、Ceph 服务和客户端仍具有与身份验证数据库匹配的密钥文件。先重启监视器，然后重启所有其他 Ceph 服务，并重启或重新挂载客户端。随后按照[迁移步骤](#pveceph_cephx_migration_helper)中的说明运行迁移。
 
-#### Staged Keys and Confirmation <a href="#pveceph_cephx_staged_keys" id="pveceph_cephx_staged_keys"></a>
+#### 暂存密钥与确认 <a href="#pveceph_cephx_staged_keys" id="pveceph_cephx_staged_keys"></a>
 
 辅助程序会禁用待处理客户端密钥的自动提升，以便监视器让两个凭据都保持有效。较旧的监视器会在暂存密钥首次使用时将其提升，并终止整个集群的宽限期。因此，只有在每个监视器都支持该功能时，辅助程序才会进行暂存，并且每次运行时都会再次检查这一点。
 
@@ -247,13 +247,13 @@ Ceph 会根据存储的密钥和加密算法设置评估这些健康检查，即
 
 Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个会话的密钥，从而让已刷新的客户端在正向确认或回滚确认期间保持连接。请升级并重启较旧的监视器以使用此功能。如果没有密钥识别功能，该用户的每个可见客户端都必须在确认前断开连接；对于 `client.admin` 这类共享用户，最好进行升级。
 
-#### Key Copies for External Clients <a href="#pveceph_cephx_external_copies" id="pveceph_cephx_external_copies"></a>
+#### 外部客户端的密钥副本 <a href="#pveceph_cephx_external_copies" id="pveceph_cephx_external_copies"></a>
 
 对于本地集群的外部客户端，请从其 Ceph 用户的托管文件中复制暂存凭据：
 
-- RBD keyring: `/etc/pve/priv/ceph/<STORAGE_ID>.keyring`
-- CephFS bare secret: `/etc/pve/priv/ceph/<STORAGE_ID>.secret`
-- Administrative keyring: `/etc/pve/priv/ceph.client.admin.keyring`
+- RBD 密钥环：`/etc/pve/priv/ceph/<STORAGE_ID>.keyring`
+- CephFS 原始密钥：`/etc/pve/priv/ceph/<STORAGE_ID>.secret`
+- 管理密钥环：`/etc/pve/priv/ceph.client.admin.keyring`
 
 请使用该用户的凭据，不要用 `client.admin` 代替。请安全地传输凭据，并在刷新客户端之前更新每个已保存的副本。由外部集群提供后端的存储则有所不同：辅助程序绝不会轮换该集群的密钥。请遵循其管理员的密钥轮换流程。
 
@@ -261,7 +261,7 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 
 辅助程序会单独列出不受 Proxmox VE 管理的本地用户。请遵循其客户端支持的轮换流程，或者保持其密钥不变并继续启用旧加密算法。
 
-#### Roll Back a Staged Client Key <a href="#pveceph_cephx_rollback" id="pveceph_cephx_rollback"></a>
+#### 回滚暂存的客户端密钥 <a href="#pveceph_cephx_rollback" id="pveceph_cephx_rollback"></a>
 
 要将已暂存密钥的用户恢复为其当前密钥：
 
@@ -269,13 +269,13 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 2. 将所有客户端刷新回该密钥，包括已断开连接的客户端和外部密钥副本。辅助程序会像正向迁移期间一样重试托管的 CephFS 挂载。
 3. 使用 `--confirm-abort-clients-refreshed <USER> --apply` 运行辅助程序以停用暂存密钥。如果监视器会话收集不完整、某个可见会话使用了暂存密钥、其密钥未知，或者某个存储密钥副本仍保存着暂存密钥，辅助程序会拒绝执行。
 
-#### Emergency Cipher Override <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
+#### 紧急加密算法覆盖 <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
 
 监视器通常使用 MonMap 中存储的 `auth_allowed_ciphers` 列表来决定允许哪些密钥加密算法通过身份验证。本地启动选项 `mon_auth_emergency_allowed_ciphers` 会为某个监视器替换该列表。在错误的限制导致管理员无法访问后，它可以临时允许现有管理密钥所使用的加密算法 [\[3\]](#note-4de62a9e-3)。
 
 配置此覆盖后，Ceph 会触发 `AUTH_EMERGENCY_CIPHERS_SET`。辅助程序会拒绝最终限制，因为更改 MonMap 不会生效。请仅使用此覆盖来恢复访问，然后修复正常配置，将其从 `/etc/pve/ceph.conf` 中移除，并在最后一次试运行之前重启每个监视器。
 
-#### Interrupted Runs and Manual Fallback <a href="#_interrupted_runs_and_manual_fallback" id="_interrupted_runs_and_manual_fallback"></a>
+#### 中断的运行与手动回退 <a href="#_interrupted_runs_and_manual_fallback" id="_interrupted_runs_and_manual_fallback"></a>
 
 发生中断后，待受影响的节点可以访问时，运行不带选项的辅助程序。未完成的密钥更新可以在其守护进程停止期间恢复。请保持日志不变，并遵循打印出的后续步骤，而不要开始手动轮换。请检查受影响的节点和服务日志，而不要假定已停止守护进程的密钥需要修复。
 
@@ -288,7 +288,7 @@ Ceph 19.2.6-pve4 和 20.2.4-pve4 或更新版本的监视器可以识别每个�
 
 只有在具备涵盖上述每一项的完整且经过测试的恢复计划时，才能使用手动密钥轮换或加密算法限制命令。
 
-## 8.14.6. Shutdown Proxmox VE \+ Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
+## 8.14.6. 关闭 Proxmox VE \+ Ceph HCI 集群 <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
 
 要关闭整个 Proxmox VE \+ Ceph 集群，请先停止所有 Ceph 客户端。这些客户端主要是虚拟机和容器。如果您有其他可能访问 Ceph FS 或已安装的 RADOS GW 的客户端，也请停止它们。通过 Proxmox VE 工具关机时，高可用性客户机会将其状态切换为 *stopped*。
 
@@ -314,7 +314,7 @@ ceph osd unset noout
 
 现在可以启动客户机了。高可用性客户机开机时，会将其状态更改为 *started*。
 
-## 8.14.7. Network Changes <a href="#pveceph_network_change" id="pveceph_network_change"></a>
+## 8.14.7. 网络更改 <a href="#pveceph_network_change" id="pveceph_network_change"></a>
 
 如果**可以同时配置旧网络和新网络**，则可以在 HCI 部署中更改 Ceph 使用的网络，而不会造成任何停机。
 
@@ -334,15 +334,13 @@ ceph osd unset noout
 
 <table>
 <tr>
-<td>IPv4 <br/>
-</td>
+<td>IPv4 <br/></td>
 <td>
 <p>IP 和 ICMP 的开销为 <em>28</em> 字节；因此 ping 最终的数据包大小为 <em>8972</em> 字节。</p>
 </td>
 </tr>
 <tr>
-<td>IPv6 <br/>
-</td>
+<td>IPv6 <br/></td>
 <td>
 <p>开销为 <em>48</em> 字节，最终数据包大小为 <em>8952</em> 字节。</p>
 </td>
@@ -362,7 +360,7 @@ ms_bind_ipv4 = true
 ms_bind_ipv6 = false
 ```
 
-### Change the Ceph Public Network <a href="#pveceph_network_change_public" id="pveceph_network_change_public"></a>
+### 更改 Ceph 公共网络 <a href="#pveceph_network_change_public" id="pveceph_network_change_public"></a>
 
 Ceph 公共网络是 Ceph 集群中不同服务与客户端（例如 VM）之间的主要通信通道。将其更改为其他网络并不像更改 Ceph 集群网络那样简单。主要原因是，除了在 `ceph.conf` 文件中的配置外，Ceph MON（监视器）还有一项内部配置，用于跟踪属于集群的所有其他 MON，即 *monmap*。
 
@@ -370,12 +368,12 @@ Ceph 公共网络是 Ceph 集群中不同服务与客户端（例如 VM）之间
 
 1. 更改 `public_network`（在 `/etc/pve/ceph.conf` 文件中，不要更改任何其他值）
 2. 重启一台宿主机上的非 MON 服务：OSD、MGR 和 MDS
-3. Wait until Ceph is back to *HEALTH\_OK*
+3. 等待 Ceph 恢复 *HEALTH\_OK* 状态
 4. 验证服务是否正在使用新网络
 5. 继续在下一台宿主机上重启服务
 6. 销毁一个 MON
 7. 重新创建 MON
-8. Wait until Ceph is back to *HEALTH\_OK*
+8. 等待 Ceph 恢复 *HEALTH\_OK* 状态
 9. 继续销毁并重新创建 MON
 
 首先需要编辑 `/etc/pve/ceph.conf` 文件。更改 `public_network` 行，使其与新子网匹配。
@@ -432,7 +430,7 @@ ss -tulpn | grep ceph
 
 最后再运行一次 `ss -tulpn | grep ceph`，应显示任何 Ceph 服务都不再使用旧网络。
 
-### Change the Ceph Cluster Network <a href="#pveceph_network_change_cluster" id="pveceph_network_change_cluster"></a>
+### 更改 Ceph 集群网络 <a href="#pveceph_network_change_cluster" id="pveceph_network_change_cluster"></a>
 
 Ceph 集群网络用于 OSD 之间的复制流量。因此，将其放置在独立的高速物理网络上可能会有所帮助。
 
@@ -440,7 +438,7 @@ Ceph 集群网络用于 OSD 之间的复制流量。因此，将其放置在独�
 
 1. 更改 `cluster_network`（位于 `/etc/pve/ceph.conf` 文件中）
 2. 重启一台宿主机上的 OSD
-3. Wait until Ceph is back to *HEALTH\_OK*
+3. 等待 Ceph 恢复 *HEALTH\_OK* 状态
 4. 验证 OSD 是否正在使用新网络
 5. 继续在下一台宿主机上重启 OSD
 

@@ -70,7 +70,7 @@ A signed subscription info blob
 
 Update subscription info.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Always connect to server, even if local cache is still valid.
 

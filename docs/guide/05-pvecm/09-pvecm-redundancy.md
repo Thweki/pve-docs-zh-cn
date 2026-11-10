@@ -1,4 +1,4 @@
-# 5.9. Corosync Redundancy <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
+# 5.9. Corosync 冗余 <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
 
 Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/udpu 传输不支持此功能）。要启用该功能，可以通过 *--linkX* 参数（属于 `pvecm`）、在 GUI 中设置为 **Link 1**（创建集群或添加新节点时），或者通过指定多个 *ringX\_addr*（位于 `corosync.conf` 中）来指定多个链路地址。
 
@@ -22,7 +22,7 @@ Corosync 默认通过其集成的 Kronosnet 层支持冗余网络（旧版 udp/u
 
 由于除非所有更高优先级的链路都发生故障，否则较低优先级的链路不会承载流量，因此，将用于其他任务（虚拟机、存储等）的网络指定为低优先级链路是一种有用的策略。在最坏的情况下，延迟较高或较为拥塞的连接可能也比完全没有连接要好。
 
-## 5.9.1. Adding Redundant Links To An Existing Cluster <a href="#_adding_redundant_links_to_an_existing_cluster" id="_adding_redundant_links_to_an_existing_cluster"></a>
+## 5.9.1. 向现有集群添加冗余链路 <a href="#_adding_redundant_links_to_an_existing_cluster" id="_adding_redundant_links_to_an_existing_cluster"></a>
 
 要向运行中的配置添加新链路，首先请查看如何[编辑 corosync.conf 文件](12-corosync-configuration.md#pvecm_edit_corosync_conf)。
 

@@ -1,4 +1,4 @@
-# 9\. Storage Replication <a href="#chapter_pvesr" id="chapter_pvesr"></a>
+# 9\. 存储复制 <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
 `pvesr` 命令行工具用于管理 Proxmox VE 存储复制框架。存储复制为使用本地存储的客户机提供冗余，并缩短迁移时间。
 
@@ -22,12 +22,12 @@
 
 ## 本章内容
 
-- [9.1. Supported Storage Types](01-supported-storage-types.md)
-- [9.2. Schedule Format](02-pvesr-schedule-time-format.md)
-- [9.3. Error Handling](03-error-handling.md)
-- [9.4. Managing Jobs](04-managing-jobs.md)
-- [9.5. Network](05-network.md)
-- [9.6. Command-line Interface Examples](06-command-line-interface-examples.md)
+- [9.1. 支持的存储类型](01-supported-storage-types.md)
+- [9.2. 计划格式](02-pvesr-schedule-time-format.md)
+- [9.3. 错误处理](03-error-handling.md)
+- [9.4. 管理作业](04-managing-jobs.md)
+- [9.5. 网络](05-network.md)
+- [9.6. 命令行界面示例](06-command-line-interface-examples.md)
 
 ---
 

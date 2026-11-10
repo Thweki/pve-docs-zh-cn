@@ -1,10 +1,10 @@
 # pvesm(1)
 
-## NAME <a href="#chapter_storage" id="chapter_storage"></a>
+## 名称 <a href="#chapter_storage" id="chapter_storage"></a>
 
 pvesm \- Proxmox VE Storage Manager
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesm"></a>
 
@@ -924,7 +924,7 @@ If target is different to *node*, we only lists shared storages which content is
 
 An alias for *pvesm scan zfs*.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多个本地存储上，也可以存储在 NFS 或 iSCSI（NAS、SAN）等共享存储上。没有任何限制，您可以根据需要配置任意数量的存储池。您可以使用 Debian Linux 可用的所有存储技术。
 
@@ -2596,7 +2596,7 @@ btrfs: data2
         is_mountpoint /mnt/data2
 ```
 
-### Snapshots <a href="#_snapshots" id="_snapshots"></a>
+### 快照 <a href="#_snapshots" id="_snapshots"></a>
 
 为子卷或 `raw` 文件创建快照时，快照将创建为只读子卷，其路径为原路径后接 `@` 和快照名称。
 
@@ -2741,7 +2741,7 @@ ZFS over iSCSI 插件提供支持快照的共享存储。您需要确保 ZFS 设
 </tbody>
 </table>
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

@@ -1,4 +1,4 @@
-# 3.9. ZFS on Linux <a href="#chapter_zfs" id="chapter_zfs"></a>
+# 3.9. Linux 上的 ZFS <a href="#chapter_zfs" id="chapter_zfs"></a>
 
 ZFS 是由 Sun Microsystems 设计的文件系统与逻辑卷管理器的结合体。从 Proxmox VE 3.4 开始，引入了 ZFS 文件系统的原生 Linux 内核移植版本，可作为可选文件系统，也可作为根文件系统的额外选择。无需手动编译 ZFS 模块——所有软件包均已包含。
 
@@ -22,7 +22,7 @@ ZFS 是由 Sun Microsystems 设计的文件系统与逻辑卷管理器的结合�
 - 加密
 - …
 
-## 3.9.1. Hardware <a href="#_hardware_2" id="_hardware_2"></a>
+## 3.9.1. 硬件 <a href="#_hardware_2" id="_hardware_2"></a>
 
 ZFS 对内存依赖很大，因此至少需要 8GB 才能开始使用。实践中，应在硬件/预算允许的范围内尽可能多配置内存。为防止数据损坏，我们建议使用高品质的 ECC RAM。
 
@@ -34,49 +34,43 @@ ZFS 对内存依赖很大，因此至少需要 8GB 才能开始使用。实践�
 
 如果您尝试在 VM 内安装 Proxmox VE（嵌套虚拟化），请勿为该 VM 的磁盘使用 `virtio`，因为 ZFS 不支持它们。请改用 IDE 或 SCSI（也适用于 `virtio` SCSI 控制器类型）。
 
-## 3.9.2. Installation as Root File System <a href="#_installation_as_root_file_system" id="_installation_as_root_file_system"></a>
+## 3.9.2. 安装为根文件系统 <a href="#_installation_as_root_file_system" id="_installation_as_root_file_system"></a>
 
 使用 Proxmox VE 安装程序进行安装时，可以选择 ZFS 作为根文件系统。您需要在安装时选择 RAID 类型：
 
 <table>
 <tr>
-<td>RAID0 <br/>
-</td>
+<td>RAID0 <br/></td>
 <td>
 <p>也称为“条带化”。这种卷的容量是所有磁盘容量之和。但 RAID0 不提供任何冗余，因此单块磁盘发生故障就会导致整个卷不可用。</p>
 </td>
 </tr>
 <tr>
-<td>RAID1 <br/>
-</td>
+<td>RAID1 <br/></td>
 <td>
 <p>也称为“镜像”。相同的数据会写入所有磁盘。这种模式至少需要 2 块大小相同的磁盘。最终容量相当于单块磁盘的容量。</p>
 </td>
 </tr>
 <tr>
-<td>RAID10 <br/>
-</td>
+<td>RAID10 <br/></td>
 <td>
 <p>RAID0 和 RAID1 的组合。至少需要 4 块磁盘。</p>
 </td>
 </tr>
 <tr>
-<td>RAIDZ-1 <br/>
-</td>
+<td>RAIDZ-1 <br/></td>
 <td>
 <p>RAID-5 的变体，采用单奇偶校验。至少需要 3 块磁盘。</p>
 </td>
 </tr>
 <tr>
-<td>RAIDZ-2 <br/>
-</td>
+<td>RAIDZ-2 <br/></td>
 <td>
 <p>RAID-5 的变体，采用双奇偶校验。至少需要 4 块磁盘。</p>
 </td>
 </tr>
 <tr>
-<td>RAIDZ-3 <br/>
-</td>
+<td>RAIDZ-3 <br/></td>
 <td>
 <p>RAID-5 的变体，采用三奇偶校验。至少需要 5 块磁盘。</p>
 </td>
@@ -127,11 +121,11 @@ rpool/data          96K  7.68T    96K  /rpool/data
 rpool/swap        4.25G  7.69T    64K  -
 ```
 
-## 3.9.3. ZFS RAID Level Considerations <a href="#sysadmin_zfs_raid_considerations" id="sysadmin_zfs_raid_considerations"></a>
+## 3.9.3. ZFS RAID 级别注意事项 <a href="#sysadmin_zfs_raid_considerations" id="sysadmin_zfs_raid_considerations"></a>
 
 选择 ZFS 池的布局时，需要考虑几个因素。ZFS 池的基本构建块是虚拟设备，即 `vdev`。池中的所有 vdev 都会被均等使用，数据在它们之间进行条带化（RAID0）。有关 vdev 的更多详细信息，请查看 `zpoolconcepts(7)` 手册页。
 
-### Performance <a href="#sysadmin_zfs_raid_performance" id="sysadmin_zfs_raid_performance"></a>
+### 性能 <a href="#sysadmin_zfs_raid_performance" id="sysadmin_zfs_raid_performance"></a>
 
 每种 `vdev` 类型都有不同的性能表现。需要关注的两个参数是 IOPS（每秒输入/输出操作次数）以及数据写入或读取的带宽。
 
@@ -145,7 +139,7 @@ rpool/swap        4.25G  7.69T    64K  -
 
 对于运行中的 VM，在大多数情况下，IOPS 是更重要的指标。
 
-### Size, Space usage and Redundancy <a href="#sysadmin_zfs_raid_size_space_usage_redundancy" id="sysadmin_zfs_raid_size_space_usage_redundancy"></a>
+### 大小、空间使用情况和冗余 <a href="#sysadmin_zfs_raid_size_space_usage_redundancy" id="sysadmin_zfs_raid_size_space_usage_redundancy"></a>
 
 由 *mirror* vdev 组成的池虽然具有最佳性能特性，但可用空间仅为所有磁盘容量的 50%。如果一个镜像 vdev 包含超过 2 块磁盘，例如三向镜像，可用空间还会更少。每个镜像至少需要一块健康磁盘，池才能保持正常运行。
 
@@ -156,8 +150,8 @@ rpool/swap        4.25G  7.69T    64K  -
 检查 ZVOL 的以下属性时，可以观察到这种行为：
 
 - `volsize`
-- `refreservation` (if the pool is not thin provisioned)
-- `used` (if the pool is thin provisioned and without snapshots present)
+- `refreservation`（如果池未采用精简置备）
+- `used`（如果池采用精简置备且不存在快照）
 
 ```text
 # zfs get volsize,refreservation,used <pool>/vm-<vmid>-disk-X
@@ -168,7 +162,7 @@ rpool/swap        4.25G  7.69T    64K  -
 有几种方法可以减少由此增加的空间占用：
 
 - 增大 `volblocksize`，以提高数据与奇偶校验数据的比例
-- Use *mirror* vdevs instead of *RAIDZ*
+- 使用 *mirror* vdev 替代 *RAIDZ*
 - 使用 `ashift=9`（块大小为 512 bytes）
 
 `volblocksize` 属性只能在创建 ZVOL 时设置。其默认值可在存储配置中更改。执行此操作时，需要相应调整客户机；并且根据使用场景，写放大问题可能只是从 ZFS 层转移到了客户机。
@@ -189,9 +183,9 @@ dRAID 适用于包含超过 10-15 块磁盘的 dRAID。在大多数使用场景�
 GUI 要求比最低磁盘数多一块磁盘（即 dRAID1 需要 3 块）。它预期还会添加一块备用磁盘。
 {% endhint %}
 
-- `dRAID1` or `dRAID`: requires at least 2 disks, one can fail before data is lost
-- `dRAID2`: requires at least 3 disks, two can fail before data is lost
-- `dRAID3`: requires at least 4 disks, three can fail before data is lost
+- `dRAID1` 或 `dRAID`：至少需要 2 块磁盘，在数据丢失前允许 1 块磁盘发生故障
+- `dRAID2`：至少需要 3 块磁盘，在数据丢失前允许 2 块磁盘发生故障
+- `dRAID3`：至少需要 4 块磁盘，在数据丢失前允许 3 块磁盘发生故障
 
 更多信息请参阅手册页：
 
@@ -199,17 +193,17 @@ GUI 要求比最低磁盘数多一块磁盘（即 dRAID1 需要 3 块）。它�
 # man zpoolconcepts
 ```
 
-### Spares and Data <a href="#_spares_and_data" id="_spares_and_data"></a>
+### 备用磁盘和数据 <a href="#_spares_and_data" id="_spares_and_data"></a>
 
 `spares` 的数量告知系统应准备多少块磁盘以应对磁盘故障。默认值为 0 `spares`。没有备用磁盘，重建就不会获得任何速度优势。
 
 `data` 定义冗余组中的设备数量。默认值为 8。但如果 `disks - parity - spares` 等于某个小于 8 的值，则使用较小的数值。一般来说，`data` 设备数量越少，IOPS 越高、压缩率越好、重同步速度越快，但定义较少的数据设备会减少池的可用存储容量。
 
-## 3.9.5. Bootloader <a href="#_bootloader_2" id="_bootloader_2"></a>
+## 3.9.5. 引导加载程序 <a href="#_bootloader_2" id="_bootloader_2"></a>
 
 Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool) 管理引导加载程序配置。有关详细信息，请参阅 [Proxmox VE 宿主机引导加载程序](13-sysboot.md) 一章。
 
-## 3.9.6. ZFS Administration <a href="#_zfs_administration" id="_zfs_administration"></a>
+## 3.9.6. ZFS 管理 <a href="#_zfs_administration" id="_zfs_administration"></a>
 
 本节提供一些常见任务的使用示例。ZFS 本身功能非常强大，并提供了许多选项。管理 ZFS 的主要命令是 `zfs` 和 `zpool`。这两个命令都配有详尽的手册页，可以使用以下命令阅读：
 
@@ -218,7 +212,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # man zfs
 ```
 
-### Create a new zpool <a href="#sysadmin_zfs_create_new_zpool" id="sysadmin_zfs_create_new_zpool"></a>
+### 创建新的 zpool <a href="#sysadmin_zfs_create_new_zpool" id="sysadmin_zfs_create_new_zpool"></a>
 
 要创建新池，至少需要一块磁盘。`ashift` 的扇区大小（2 的 `ashift` 次幂）应与底层磁盘的扇区大小相同或更大。
 
@@ -231,8 +225,8 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 
 - 以字母（a-z 或 A-Z）开头
 - 只能包含字母数字、`-`、`_`、`.`、`:` 或 \` \`（空格）字符
-- must **not begin** with one of `mirror`, `raidz`, `draid` or `spare`
-- must not be `log`
+- **不得**以 `mirror`、`raidz`、`draid` 或 `spare` 之一开头
+- 不得为 `log`
 {% endhint %}
 
 要启用压缩（请参阅 [ZFS 中的压缩](#zfs_compression) 一节）：
@@ -241,7 +235,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zfs set compression=lz4 <pool>
 ```
 
-### Create a new pool with RAID-0 <a href="#sysadmin_zfs_create_new_zpool_raid0" id="sysadmin_zfs_create_new_zpool_raid0"></a>
+### 使用 RAID-0 创建新池 <a href="#sysadmin_zfs_create_new_zpool_raid0" id="sysadmin_zfs_create_new_zpool_raid0"></a>
 
 最少 1 块磁盘
 
@@ -249,7 +243,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zpool create -f -o ashift=12 <pool> <device1> <device2>
 ```
 
-### Create a new pool with RAID-1 <a href="#sysadmin_zfs_create_new_zpool_raid1" id="sysadmin_zfs_create_new_zpool_raid1"></a>
+### 使用 RAID-1 创建新池 <a href="#sysadmin_zfs_create_new_zpool_raid1" id="sysadmin_zfs_create_new_zpool_raid1"></a>
 
 最少 2 块磁盘
 
@@ -257,7 +251,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zpool create -f -o ashift=12 <pool> mirror <device1> <device2>
 ```
 
-### Create a new pool with RAID-10 <a href="#sysadmin_zfs_create_new_zpool_raid10" id="sysadmin_zfs_create_new_zpool_raid10"></a>
+### 使用 RAID-10 创建新池 <a href="#sysadmin_zfs_create_new_zpool_raid10" id="sysadmin_zfs_create_new_zpool_raid10"></a>
 
 最少 4 块磁盘
 
@@ -265,7 +259,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zpool create -f -o ashift=12 <pool> mirror <device1> <device2> mirror <device3> <device4>
 ```
 
-### Create a new pool with RAIDZ-1 <a href="#sysadmin_zfs_create_new_zpool_raidz1" id="sysadmin_zfs_create_new_zpool_raidz1"></a>
+### 使用 RAIDZ-1 创建新池 <a href="#sysadmin_zfs_create_new_zpool_raidz1" id="sysadmin_zfs_create_new_zpool_raidz1"></a>
 
 最少 3 块磁盘
 
@@ -273,7 +267,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 # zpool create -f -o ashift=12 <pool> raidz1 <device1> <device2> <device3>
 ```
 
-### Create a new pool with RAIDZ-2 <a href="#_create_a_new_pool_with_raidz_2" id="_create_a_new_pool_with_raidz_2"></a>
+### 使用 RAIDZ-2 创建新池 <a href="#_create_a_new_pool_with_raidz_2" id="_create_a_new_pool_with_raidz_2"></a>
 
 最少 4 块磁盘
 
@@ -283,7 +277,7 @@ Proxmox VE 使用 [`proxmox-boot-tool`](13-sysboot.md#sysboot_proxmox_boot_tool)
 
 请阅读 [ZFS RAID 级别注意事项](#sysadmin_zfs_raid_considerations) 一节，以便在设置池之前对 IOPS 和带宽预期进行粗略估算，尤其是在希望使用 RAID-Z 模式时。
 
-### Extend RAIDZ-N <a href="#sysadmin_zfs_extend_raidz" id="sysadmin_zfs_extend_raidz"></a>
+### 扩展 RAIDZ-N <a href="#sysadmin_zfs_extend_raidz" id="sysadmin_zfs_extend_raidz"></a>
 
 {% hint style="info" %}
 此功能仅适用于 Proxmox VE 9（ZFS 2.3.3）及更高版本。
@@ -297,7 +291,7 @@ zpool attach <pool> <raidzN-M> <device>
 
 你可以通过运行 `zpool status <pool>` 验证总体是否成功，并通过运行 `zpool list <pool> -v` 获取所有已连接磁盘的详细输出。要检查池的新容量，请运行 `zfs list <pool>`。
 
-### Create a new pool with cache (L2ARC) <a href="#sysadmin_zfs_create_new_zpool_with_cache" id="sysadmin_zfs_create_new_zpool_with_cache"></a>
+### 创建带有缓存（L2ARC）的新池 <a href="#sysadmin_zfs_create_new_zpool_with_cache" id="sysadmin_zfs_create_new_zpool_with_cache"></a>
 
 可以使用专用设备或分区作为二级缓存来提高性能。此类缓存设备尤其有助于读取大多为静态的数据时的随机读取工作负载。由于它充当实际存储与内存中的 ARC 之间的附加缓存层，因此在因内存限制而必须缩减 ARC 时，它也能提供帮助。
 
@@ -313,7 +307,7 @@ zpool attach <pool> <raidzN-M> <device>
 
 如果任何缓存设备在读取时产生错误，ZFS 会透明地将该请求转到底层存储层。
 
-### Create a new pool with log (ZIL) <a href="#sysadmin_zfs_create_new_zpool_with_log" id="sysadmin_zfs_create_new_zpool_with_log"></a>
+### 创建带有日志（ZIL）的新池 <a href="#sysadmin_zfs_create_new_zpool_with_log" id="sysadmin_zfs_create_new_zpool_with_log"></a>
 
 可以使用专用驱动器或分区作为 ZFS 意图日志（ZIL），它主要用于提供安全的同步事务，因此常用于数据库或其他更频繁发出 `fsync` 操作的程序等性能关键路径。
 
@@ -336,7 +330,7 @@ zpool attach <pool> <raidzN-M> <device>
 
 如果所有日志设备都发生故障，则会再次使用 ZFS 主池本身，直到更换日志设备。
 
-### Add cache and log to an existing pool <a href="#sysadmin_zfs_add_cache_and_log_dev" id="sysadmin_zfs_add_cache_and_log_dev"></a>
+### 向现有池添加缓存和日志 <a href="#sysadmin_zfs_add_cache_and_log_dev" id="sysadmin_zfs_add_cache_and_log_dev"></a>
 
 如果你的池没有缓存和日志，仍然可以随时添加两者，或只添加其中之一。
 
@@ -364,7 +358,7 @@ zpool attach <pool> <raidzN-M> <device>
 # zpool add <pool> log <log-device>
 ```
 
-### Changing a failed device <a href="#sysadmin_zfs_change_failed_dev" id="sysadmin_zfs_change_failed_dev"></a>
+### 更换故障设备 <a href="#sysadmin_zfs_change_failed_dev" id="sysadmin_zfs_change_failed_dev"></a>
 
 ```text
 # zpool replace -f <pool> <old-device> <new-device>
@@ -415,7 +409,7 @@ Make sure to pass *grub* as mode to `proxmox-boot-tool init` if `proxmox-boot-to
 只有使用 Proxmox VE 6.3 或更早版本安装且尚未手动迁移为使用 `proxmox-boot-tool` 的系统才直接使用 GRUB。
 {% endhint %}
 
-## 3.9.7. Configure E-Mail Notification <a href="#_configure_e_mail_notification" id="_configure_e_mail_notification"></a>
+## 3.9.7. 配置电子邮件通知 <a href="#_configure_e_mail_notification" id="_configure_e_mail_notification"></a>
 
 ZFS 附带一个事件守护进程 `ZED`，用于监视 ZFS 内核模块生成的事件。该守护进程还可以针对池错误等 ZFS 事件发送电子邮件。较新的 ZFS 软件包将该守护进程放在独立的 `zfs-zed` 软件包中，在 Proxmox VE 中默认应已安装该软件包。
 
@@ -427,7 +421,7 @@ ZED_EMAIL_ADDR="root"
 
 请注意，Proxmox VE 会将发送到 `root` 的邮件转发到为 root 用户配置的电子邮件地址。
 
-## 3.9.8. Limit ZFS Memory Usage <a href="#sysadmin_zfs_limit_memory_usage" id="sysadmin_zfs_limit_memory_usage"></a>
+## 3.9.8. 限制 ZFS 内存使用量 <a href="#sysadmin_zfs_limit_memory_usage" id="sysadmin_zfs_limit_memory_usage"></a>
 
 默认情况下，ZFS 使用宿主机内存的 *10 %*，上限为 `16 GiB`，用于自适应替换缓存（**A**daptive **R**eplacement **C**ache，ARC）。安装期间会将此值写入 `/etc/modprobe.d/zfs.conf`。有关 ZFS 内核模块参数的更多信息，请参阅手册 `man 4 zfs`。
 
@@ -473,7 +467,7 @@ echo "$[8 * 1024*1024*1024]" >/sys/module/zfs/parameters/zfs_arc_max
 你**必须重启**才能激活这些更改。
 {% endhint %}
 
-## 3.9.9. SWAP on ZFS <a href="#zfs_swap" id="zfs_swap"></a>
+## 3.9.9. ZFS 上的 SWAP <a href="#zfs_swap" id="zfs_swap"></a>
 
 在 zvol 上创建的交换空间可能会引发一些问题，例如阻塞服务器或产生较高的 I/O 负载，这些问题通常在开始向外部存储进行备份时出现。
 
@@ -523,7 +517,7 @@ vm.swappiness = 10
 </tbody>
 </table>
 
-## 3.9.10. Encrypted ZFS Datasets <a href="#zfs_encryption" id="zfs_encryption"></a>
+## 3.9.10. 加密的 ZFS 数据集 <a href="#zfs_encryption" id="zfs_encryption"></a>
 
 {% hint style="warning" %}
 Proxmox VE 中的原生 ZFS 加密是实验性功能。已知的限制和问题包括加密数据集的复制 [\[3\]](#note-769d32f3-3)，以及使用快照或 ZVOL 时的校验和错误。[\[4\]](#note-769d32f3-4)
@@ -591,7 +585,7 @@ Enter passphrase for 'tank/encrypted_data':
 See the `encryptionroot`, `encryption`, `keylocation`, `keyformat` and `keystatus` properties, the `zfs load-key`, `zfs unload-key` and `zfs
 change-key` commands and the `Encryption` section from `man zfs` for more details and advanced usage.
 
-## 3.9.11. Compression in ZFS <a href="#zfs_compression" id="zfs_compression"></a>
+## 3.9.11. ZFS 中的压缩 <a href="#zfs_compression" id="zfs_compression"></a>
 
 在数据集上启用压缩后，ZFS 会尝试在写入前压缩所有**新**数据块，并在读取时将其解压缩。已有数据不会被追溯压缩。
 
@@ -611,7 +605,7 @@ change-key` commands and the `Encryption` section from `man zfs` for more detail
 
 同样，此更改只会影响新数据块。
 
-## 3.9.12. ZFS Special Device <a href="#sysadmin_zfs_special_device" id="sysadmin_zfs_special_device"></a>
+## 3.9.12. ZFS 特殊设备 <a href="#sysadmin_zfs_special_device" id="sysadmin_zfs_special_device"></a>
 
 自 0.8.0 版起，ZFS 支持`special`设备。池中的`special`设备用于存储元数据、去重表，以及可选的小文件块。
 
@@ -663,7 +657,7 @@ ZFS 数据集公开 `special_small_blocks=<size>` 属性。`size` 可以设为 `
 # zfs set special_small_blocks=0 <pool>/<filesystem>
 ```
 
-## 3.9.13. ZFS Pool Features <a href="#sysadmin_zfs_features" id="sysadmin_zfs_features"></a>
+## 3.9.13. ZFS 池功能 <a href="#sysadmin_zfs_features" id="sysadmin_zfs_features"></a>
 
 ZFS 磁盘格式的更改仅在主版本变更时进行，并通过**功能**来指定。所有功能以及总体机制均在 `zpool-features(5)` 手册页中有详细说明。
 

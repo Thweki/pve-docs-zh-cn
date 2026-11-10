@@ -41,7 +41,7 @@ Suspend all VMs.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | — | Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'<br> .' CPU threads, clamped to a maximum of 8, are used. |
+| `max-workers` | integer | 否 | — | Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'<br>                    .' CPU threads, clamped to a maximum of 8, are used. |
 | `node` | string | 是 | — | The cluster node name. |
 | `vms` | string | 否 | — | Only consider Guests with these IDs. |
 
@@ -53,7 +53,7 @@ Suspend all VMs.
   "additionalProperties": 0,
   "properties": {
     "max-workers": {
-      "description": "Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'\n .' CPU threads, clamped to a maximum of 8, are used.",
+      "description": "Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg, and if that's not set the available'\n                    .' CPU threads, clamped to a maximum of 8, are used.",
       "maximum": 64,
       "minimum": 1,
       "optional": 1,

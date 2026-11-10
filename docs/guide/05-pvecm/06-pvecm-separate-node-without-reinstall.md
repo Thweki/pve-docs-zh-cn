@@ -1,4 +1,4 @@
-# 5.6. Separate a Node Without Reinstalling <a href="#pvecm_separate_node_without_reinstall" id="pvecm_separate_node_without_reinstall"></a>
+# 5.6. 在不重新安装的情况下分离节点 <a href="#pvecm_separate_node_without_reinstall" id="pvecm_separate_node_without_reinstall"></a>
 
 {% hint style="danger" %}
 这**不是**推荐的方法，请谨慎操作。如果不确定，请使用前一种方法。

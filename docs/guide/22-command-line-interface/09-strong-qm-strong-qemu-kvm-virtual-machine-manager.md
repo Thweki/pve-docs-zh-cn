@@ -138,7 +138,7 @@ Get the virtual machine configuration with pending configuration changes applied
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>` (*default \=* `0`)**
+**`--current` `<boolean>`（*默认 \=* `0`）**
 
 获取当前值（而非待生效值）。
 
@@ -160,27 +160,27 @@ VM 的唯一 ID。
 
 **`--acpi` `<boolean>` (*default \=* `1`)**
 
-Enable/disable ACPI.
+启用/禁用 ACPI。
 
 **`--affinity` `<string>`**
 
-List of host cores used to execute guest processes, for example: 0,5,8-11
+用于执行客户机进程的宿主机核心列表，例如：0,5,8-11
 
 **`--agent` `[enabled=]<1|0> [,freeze-fs=<1|0>] [,fstrim_cloned_disks=<1|0>] [,type=<virtio|isa>]`**
 
-Enable/disable communication with the QEMU Guest Agent and its properties.
+启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
 **`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
-Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
+允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
 **`--amd-sev` `[type=]<sev-type> [,allow-smt=<1|0>] [,kernel-hashes=<1|0>] [,no-debug=<1|0>] [,no-key-sharing=<1|0>]`**
 
-Secure Encrypted Virtualization (SEV) features by AMD CPUs
+AMD CPU 的安全加密虚拟化（SEV）功能
 
 **`--arch` `<aarch64 | x86_64>`**
 
-Virtual processor architecture. Defaults to the host architecture.
+虚拟处理器架构。默认为宿主机架构。
 
 **`--archive` `<string>`**
 
@@ -192,27 +192,27 @@ Arbitrary arguments passed to kvm.
 
 **`--audio0` `device=<ich9-intel-hda|intel-hda|AC97> [,driver=<spice|none>]`**
 
-Configure a audio device, useful in combination with QXL/Spice.
+配置音频设备，与 QXL/Spice 结合使用时很有用。
 
 **`--autostart` `<boolean>` (*default \=* `0`)**
 
-Automatic restart after crash (currently ignored).
+崩溃后自动重启（目前被忽略）。
 
 **`--balloon` `<integer> (0 - N)`**
 
-Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
+VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
 **`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
-Select BIOS implementation.
+选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
+指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
+启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
 
 **`--bwlimit` `<integer> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
 
@@ -220,35 +220,35 @@ Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* inste
 
 **`--cdrom` `<volume>`**
 
-This is an alias for option -ide2
+这是选项 -ide2 的别名
 
 **`--cicustom` `[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]`**
 
-cloud-init: Specify custom files to replace the automatically generated ones at start.
+cloud-init：指定自定义文件，以在启动时替换自动生成的文件。
 
 **`--cipassword` `<password>`**
 
-cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.
+cloud-init：分配给用户的密码。通常不建议使用此选项，请改用 ssh 密钥。另请注意，较旧版本的 cloud-init 不支持哈希密码。
 
 **`--citype` `<configdrive2 | nocloud | opennebula>`**
 
-Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
+指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
 **`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
-cloud-init: do an automatic package upgrade after the first boot.
+cloud-init：首次启动后自动执行软件包升级。
 
 **`--ciuser` `<string>`**
 
-cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
+cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
 **`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
-The number of cores per socket.
+每个 CPU 插槽的核心数。
 
 **`--cpu` `[[cputype=]<string>] [,flags=<+FLAG[;-FLAG...]>] [,guest-phys-bits=<integer>] [,hidden=<1|0>] [,hv-vendor-id=<vendor-id>] [,level=<integer>] [,phys-bits=<8-64|host>] [,reported-model=<enum>]`**
 
-Emulated CPU type.
+模拟的 CPU 类型。
 
 **`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
@@ -260,7 +260,7 @@ CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--description` `<string>`**
 
-Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
+虚拟机的描述。显示在 Web 界面的虚拟机摘要中。此描述会作为注释保存在配置文件内。
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
@@ -276,29 +276,29 @@ Requires option(s): `archive`
 
 **`--freeze` `<boolean>`**
 
-Freeze CPU at startup (use *c* monitor command to start execution).
+启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
 
-**`--ha-managed` `<boolean>` (*default \=* `0`)**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 Add the VM as a HA resource after it was created.
 
 **`--hookscript` `<string>`**
 
-Script that will be executed during various steps in the vms lifetime.
+在虚拟机生命周期的各个阶段执行的脚本。
 
 **`--hostpci[n]` `[[host=]<HOSTPCIID[;HOSTPCIID2...]>] [,device-id=<hex id>] [,driver=<vfio|keep>] [,legacy-igd=<1|0>] [,mapping=<mapping-id>] [,mdev=<string>] [,pcie=<1|0>] [,rombar=<1|0>] [,romfile=<string>] [,sub-device-id=<hex id>] [,sub-vendor-id=<hex id>] [,vendor-id=<hex id>] [,x-vga=<1|0>]`**
 
-Map host PCI devices into guest.
+将宿主机 PCI 设备映射到客户机中。
 
 **`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
-Enables hugepages memory.
+启用大页内存。
 
-Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.
+设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -310,21 +310,21 @@ A file-based storage with *images* content-type enabled, which is used as an int
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
-Trusted Domain Extension (TDX) features by Intel CPUs
+Intel CPU 的信任域扩展（TDX）功能
 
 **`--ipconfig[n]` `[gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,ip=<IPv4Format/CIDR>] [,ip6=<IPv6Format/CIDR>]`**
 
-cloud-init: Specify IP addresses and gateways for the corresponding interface.
+cloud-init：为相应接口指定 IP 地址和网关。
 
-IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.
+IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-The special string *dhcp* can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string *auto* can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.
+IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
-If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.
+如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
 **`--ivshmem` `size=<integer> [,name=<string>]`**
 
-Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
+虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
 **`--keephugepages` `<boolean>` (*default \=* `0`)**
 
@@ -386,7 +386,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -402,7 +402,7 @@ Map host parallel devices (n is 0 to 2).
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -458,7 +458,7 @@ Configure additional enhancements for SPICE.
 
 cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Start VM after it was created successfully.
 
@@ -486,7 +486,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -634,7 +634,7 @@ Target storage.
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Delete the original disk after successful copy. By default the original disk is kept as unused disk.
 
@@ -666,7 +666,7 @@ VM 的唯一 ID。
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*default \=* `0`)**
+**`--dryrun` `<boolean>` (*默认 \=* `0`)**
 
 Do not actually write changes out to VM config(s).
 
@@ -848,27 +848,27 @@ The import source volume id.
 
 **`--acpi` `<boolean>` (*default \=* `1`)**
 
-Enable/disable ACPI.
+启用/禁用 ACPI。
 
 **`--affinity` `<string>`**
 
-List of host cores used to execute guest processes, for example: 0,5,8-11
+用于执行客户机进程的宿主机核心列表，例如：0,5,8-11
 
 **`--agent` `[enabled=]<1|0> [,freeze-fs=<1|0>] [,fstrim_cloned_disks=<1|0>] [,type=<virtio|isa>]`**
 
-Enable/disable communication with the QEMU Guest Agent and its properties.
+启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
 **`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
-Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
+允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
 **`--amd-sev` `[type=]<sev-type> [,allow-smt=<1|0>] [,kernel-hashes=<1|0>] [,no-debug=<1|0>] [,no-key-sharing=<1|0>]`**
 
-Secure Encrypted Virtualization (SEV) features by AMD CPUs
+AMD CPU 的安全加密虚拟化（SEV）功能
 
 **`--arch` `<aarch64 | x86_64>`**
 
-Virtual processor architecture. Defaults to the host architecture.
+虚拟处理器架构。默认为宿主机架构。
 
 **`--args` `<string>`**
 
@@ -876,59 +876,59 @@ Arbitrary arguments passed to kvm.
 
 **`--audio0` `device=<ich9-intel-hda|intel-hda|AC97> [,driver=<spice|none>]`**
 
-Configure a audio device, useful in combination with QXL/Spice.
+配置音频设备，与 QXL/Spice 结合使用时很有用。
 
 **`--autostart` `<boolean>` (*default \=* `0`)**
 
-Automatic restart after crash (currently ignored).
+崩溃后自动重启（目前被忽略）。
 
 **`--balloon` `<integer> (0 - N)`**
 
-Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
+VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
 **`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
-Select BIOS implementation.
+选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
+指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
+启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
 
 **`--cdrom` `<volume>`**
 
-This is an alias for option -ide2
+这是选项 -ide2 的别名
 
 **`--cicustom` `[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]`**
 
-cloud-init: Specify custom files to replace the automatically generated ones at start.
+cloud-init：指定自定义文件，以在启动时替换自动生成的文件。
 
 **`--cipassword` `<string>`**
 
-cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.
+cloud-init：分配给用户的密码。通常不建议使用此选项，请改用 ssh 密钥。另请注意，较旧版本的 cloud-init 不支持哈希密码。
 
 **`--citype` `<configdrive2 | nocloud | opennebula>`**
 
-Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
+指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
 **`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
-cloud-init: do an automatic package upgrade after the first boot.
+cloud-init：首次启动后自动执行软件包升级。
 
 **`--ciuser` `<string>`**
 
-cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
+cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
 **`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
-The number of cores per socket.
+每个 CPU 插槽的核心数。
 
 **`--cpu` `[[cputype=]<string>] [,flags=<+FLAG[;-FLAG...]>] [,guest-phys-bits=<integer>] [,hidden=<1|0>] [,hv-vendor-id=<vendor-id>] [,level=<integer>] [,phys-bits=<8-64|host>] [,reported-model=<enum>]`**
 
-Emulated CPU type.
+模拟的 CPU 类型。
 
 **`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
@@ -944,9 +944,9 @@ CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--description` `<string>`**
 
-Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
+虚拟机的描述。显示在 Web 界面的虚拟机摘要中。此描述会作为注释保存在配置文件内。
 
-**`--dryrun` `<boolean>` (*default \=* `0`)**
+**`--dryrun` `<boolean>` (*默认 \=* `0`)**
 
 Show the create command and exit without doing anything.
 
@@ -960,25 +960,25 @@ Target format
 
 **`--freeze` `<boolean>`**
 
-Freeze CPU at startup (use *c* monitor command to start execution).
+启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
 
 **`--hookscript` `<string>`**
 
-Script that will be executed during various steps in the vms lifetime.
+在虚拟机生命周期的各个阶段执行的脚本。
 
 **`--hostpci[n]` `[[host=]<HOSTPCIID[;HOSTPCIID2...]>] [,device-id=<hex id>] [,driver=<vfio|keep>] [,legacy-igd=<1|0>] [,mapping=<mapping-id>] [,mdev=<string>] [,pcie=<1|0>] [,rombar=<1|0>] [,romfile=<string>] [,sub-device-id=<hex id>] [,sub-vendor-id=<hex id>] [,vendor-id=<hex id>] [,x-vga=<1|0>]`**
 
-Map host PCI devices into guest.
+将宿主机 PCI 设备映射到客户机中。
 
 **`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
-Enables hugepages memory.
+启用大页内存。
 
-Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.
+设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -986,21 +986,21 @@ Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STOR
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
-Trusted Domain Extension (TDX) features by Intel CPUs
+Intel CPU 的信任域扩展（TDX）功能
 
 **`--ipconfig[n]` `[gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,ip=<IPv4Format/CIDR>] [,ip6=<IPv6Format/CIDR>]`**
 
-cloud-init: Specify IP addresses and gateways for the corresponding interface.
+cloud-init：为相应接口指定 IP 地址和网关。
 
-IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.
+IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-The special string *dhcp* can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string *auto* can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.
+IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
-If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.
+如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
 **`--ivshmem` `size=<integer> [,name=<string>]`**
 
-Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
+虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
 **`--keephugepages` `<boolean>` (*default \=* `0`)**
 
@@ -1062,7 +1062,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -1074,7 +1074,7 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1154,7 +1154,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -1274,7 +1274,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -1402,11 +1402,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*default \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Delete the original VM and related data after successful migration. By default the original VM is kept on the source cluster in a stopped state.
 
@@ -1490,7 +1490,7 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Whether the VM should get started after rolling back successfully. (Note: VMs will be automatically started if the snapshot includes RAM.)
 
@@ -1528,27 +1528,27 @@ VM 的唯一 ID。
 
 **`--acpi` `<boolean>` (*default \=* `1`)**
 
-Enable/disable ACPI.
+启用/禁用 ACPI。
 
 **`--affinity` `<string>`**
 
-List of host cores used to execute guest processes, for example: 0,5,8-11
+用于执行客户机进程的宿主机核心列表，例如：0,5,8-11
 
 **`--agent` `[enabled=]<1|0> [,freeze-fs=<1|0>] [,fstrim_cloned_disks=<1|0>] [,type=<virtio|isa>]`**
 
-Enable/disable communication with the QEMU Guest Agent and its properties.
+启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
 **`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
-Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
+允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
 **`--amd-sev` `[type=]<sev-type> [,allow-smt=<1|0>] [,kernel-hashes=<1|0>] [,no-debug=<1|0>] [,no-key-sharing=<1|0>]`**
 
-Secure Encrypted Virtualization (SEV) features by AMD CPUs
+AMD CPU 的安全加密虚拟化（SEV）功能
 
 **`--arch` `<aarch64 | x86_64>`**
 
-Virtual processor architecture. Defaults to the host architecture.
+虚拟处理器架构。默认为宿主机架构。
 
 **`--args` `<string>`**
 
@@ -1556,59 +1556,59 @@ Arbitrary arguments passed to kvm.
 
 **`--audio0` `device=<ich9-intel-hda|intel-hda|AC97> [,driver=<spice|none>]`**
 
-Configure a audio device, useful in combination with QXL/Spice.
+配置音频设备，与 QXL/Spice 结合使用时很有用。
 
 **`--autostart` `<boolean>` (*default \=* `0`)**
 
-Automatic restart after crash (currently ignored).
+崩溃后自动重启（目前被忽略）。
 
 **`--balloon` `<integer> (0 - N)`**
 
-Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
+VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
 **`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
-Select BIOS implementation.
+选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
+指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
+启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
 
 **`--cdrom` `<volume>`**
 
-This is an alias for option -ide2
+这是选项 -ide2 的别名
 
 **`--cicustom` `[meta=<volume>] [,network=<volume>] [,user=<volume>] [,vendor=<volume>]`**
 
-cloud-init: Specify custom files to replace the automatically generated ones at start.
+cloud-init：指定自定义文件，以在启动时替换自动生成的文件。
 
 **`--cipassword` `<password>`**
 
-cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.
+cloud-init：分配给用户的密码。通常不建议使用此选项，请改用 ssh 密钥。另请注意，较旧版本的 cloud-init 不支持哈希密码。
 
 **`--citype` `<configdrive2 | nocloud | opennebula>`**
 
-Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
+指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
 **`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
-cloud-init: do an automatic package upgrade after the first boot.
+cloud-init：首次启动后自动执行软件包升级。
 
 **`--ciuser` `<string>`**
 
-cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
+cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
 **`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
-The number of cores per socket.
+每个 CPU 插槽的核心数。
 
 **`--cpu` `[[cputype=]<string>] [,flags=<+FLAG[;-FLAG...]>] [,guest-phys-bits=<integer>] [,hidden=<1|0>] [,hv-vendor-id=<vendor-id>] [,level=<integer>] [,phys-bits=<8-64|host>] [,reported-model=<enum>]`**
 
-Emulated CPU type.
+模拟的 CPU 类型。
 
 **`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
@@ -1624,7 +1624,7 @@ CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--description` `<string>`**
 
-Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
+虚拟机的描述。显示在 Web 界面的虚拟机摘要中。此描述会作为注释保存在配置文件内。
 
 **`--digest` `<string>`**
 
@@ -1644,25 +1644,25 @@ Requires option(s): `delete`
 
 **`--freeze` `<boolean>`**
 
-Freeze CPU at startup (use *c* monitor command to start execution).
+启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
 
 **`--hookscript` `<string>`**
 
-Script that will be executed during various steps in the vms lifetime.
+在虚拟机生命周期的各个阶段执行的脚本。
 
 **`--hostpci[n]` `[[host=]<HOSTPCIID[;HOSTPCIID2...]>] [,device-id=<hex id>] [,driver=<vfio|keep>] [,legacy-igd=<1|0>] [,mapping=<mapping-id>] [,mdev=<string>] [,pcie=<1|0>] [,rombar=<1|0>] [,romfile=<string>] [,sub-device-id=<hex id>] [,sub-vendor-id=<hex id>] [,vendor-id=<hex id>] [,x-vga=<1|0>]`**
 
-Map host PCI devices into guest.
+将宿主机 PCI 设备映射到客户机中。
 
 **`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
-Enables hugepages memory.
+启用大页内存。
 
-Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.
+设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -1670,21 +1670,21 @@ Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STOR
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
-Trusted Domain Extension (TDX) features by Intel CPUs
+Intel CPU 的信任域扩展（TDX）功能
 
 **`--ipconfig[n]` `[gw=<GatewayIPv4>] [,gw6=<GatewayIPv6>] [,ip=<IPv4Format/CIDR>] [,ip6=<IPv6Format/CIDR>]`**
 
-cloud-init: Specify IP addresses and gateways for the corresponding interface.
+cloud-init：为相应接口指定 IP 地址和网关。
 
-IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.
+IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-The special string *dhcp* can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string *auto* can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.
+IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
-If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.
+如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
 **`--ivshmem` `size=<integer> [,name=<string>]`**
 
-Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
+虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
 **`--keephugepages` `<boolean>` (*default \=* `0`)**
 
@@ -1742,7 +1742,7 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>` (*default \=* `0`)**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
@@ -1754,7 +1754,7 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>` (*default \=* `0`)**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
@@ -1838,7 +1838,7 @@ Tags of the VM. This is only meta information.
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>` (*default \=* `0`)**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
@@ -1914,7 +1914,7 @@ Shutdown virtual machine. This is similar to pressing the power button on a phys
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*default \=* `0`)**
+**`--forceStop` `<boolean>` (*默认 \=* `0`)**
 
 Make sure the VM stops.
 
@@ -2046,7 +2046,7 @@ Do not deactivate storage volumes.
 
 集群节点名称。
 
-**`--overrule-shutdown` `<boolean>` (*default \=* `0`)**
+**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
 
 Try to abort active *qmshutdown* tasks before stopping.
 

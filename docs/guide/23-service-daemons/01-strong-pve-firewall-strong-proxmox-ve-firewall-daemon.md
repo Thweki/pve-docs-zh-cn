@@ -82,7 +82,7 @@ Source port.
 
 Destination zone.
 
-**`--verbose` `<boolean>` (*default \=* `0`)**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Verbose output.
 
@@ -94,7 +94,7 @@ Verbose output.
 
 Start the Proxmox VE firewall service.
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 Debug mode \- stay in foreground
 

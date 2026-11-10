@@ -1,10 +1,10 @@
-# 8.7. Ceph OSDs <a href="#pve_ceph_osds" id="pve_ceph_osds"></a>
+# 8.7. Ceph OSD <a href="#pve_ceph_osds" id="pve_ceph_osds"></a>
 
 [![screenshot/gui-ceph-osd-status.png](../../assets/screenshot-gui-ceph-osd-status-png-eb5fb509c420.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-osd-status.png)
 
 Ceph 对象存储守护进程（**O**bject **S**torage **D**aemons）通过网络为 Ceph 存储对象。建议每块物理磁盘使用一个 OSD。
 
-## 8.7.1. Create OSDs <a href="#pve_ceph_osd_create" id="pve_ceph_osd_create"></a>
+## 8.7.1. 创建 OSD <a href="#pve_ceph_osd_create" id="pve_ceph_osd_create"></a>
 
 您可以通过 Proxmox VE Web 界面或 CLI 使用 `pveceph` 创建 OSD。例如：
 
@@ -46,10 +46,10 @@ pveceph osd create /dev/sd[X] -db_dev /dev/sd[Y] -wal_dev /dev/sd[Z]
 
 - bluestore\_block\_{db,wal}\_size，来自 Ceph 配置……
 
-  - … database, section *osd*
-  - … database, section *global*
-  - … file, section *osd*
-  - … file, section *global*
+  - ……数据库中的 *osd* 部分
+  - ……数据库中的 *global* 部分
+  - ……文件中的 *osd* 部分
+  - ……文件中的 *global* 部分
 - OSD 大小的 10%（DB）/1%（WAL）
 
 {% hint style="info" %}
@@ -64,7 +64,7 @@ DB 存储 BlueStore 的内部元数据，WAL 是 BlueStore 的内部日志或预
 ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
 ```
 
-## 8.7.2. Destroy OSDs <a href="#pve_ceph_osd_destroy" id="pve_ceph_osd_destroy"></a>
+## 8.7.2. 销毁 OSD <a href="#pve_ceph_osd_destroy" id="pve_ceph_osd_destroy"></a>
 
 如果 OSD 或其磁盘出现问题，请先尝试对其进行 [故障排除](15-pve-ceph-mon-and-ts.md)，以确定是否需要 [更换](14-ceph-maintenance.md#pve_ceph_osd_replace)。
 

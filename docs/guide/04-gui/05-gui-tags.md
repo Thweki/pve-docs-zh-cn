@@ -1,4 +1,4 @@
-# 4.5. Tags <a href="#gui_tags" id="gui_tags"></a>
+# 4.5. 标签 <a href="#gui_tags" id="gui_tags"></a>
 
 [![screenshot/gui-qemu-summary-tags-edit.png](../../assets/screenshot-gui-qemu-summary-tags-edit-png-c6e85f4f644b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-qemu-summary-tags-edit.png)
 
@@ -12,7 +12,7 @@
 # qm set ID --tags 'myfirsttag;mysecondtag'
 ```
 
-## 4.5.1. Style Configuration <a href="#_style_configuration" id="_style_configuration"></a>
+## 4.5.1. 样式配置 <a href="#_style_configuration" id="_style_configuration"></a>
 
 [![screenshot/gui-datacenter-tag-style.png](../../assets/screenshot-gui-datacenter-tag-style-png-f3ff2cf9dfd8.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-tag-style.png)
 
@@ -24,16 +24,16 @@
 
 将标签 `example` 的背景颜色设置为黑色（#000000），文本颜色设置为白色（#FFFFFF）。
 
-## 4.5.2. Permissions <a href="#_permissions" id="_permissions"></a>
+## 4.5.2. 权限 <a href="#_permissions" id="_permissions"></a>
 
 [![screenshot/gui-datacenter-options.png](../../assets/screenshot-gui-datacenter-options-png-535789a52e69.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-options.png)
 
 By default, users with the privilege `VM.Config.Options` on a guest (`/vms/ID`) can set any tags they want (see [Permission Management](../14-user-management/07-pveum-permission-management.md)). If you want to restrict this behavior, appropriate permissions can be set under *Datacenter → Options → User Tag Access*:
 
-- `free`: users are not restricted in setting tags (Default)
-- `list`: users can set tags based on a predefined list of tags
-- `existing`: like list but users can also use already existing tags
-- `none`: users are restricted from using tags
+- `free`：用户在设置标签时不受限制（默认）
+- `list`：用户可以根据预定义的标签列表设置标签
+- `existing`：与 list 类似，但用户还可以使用已存在的标签
+- `none`：用户不能使用标签
 
 同样也可以通过 CLI 完成此操作。
 

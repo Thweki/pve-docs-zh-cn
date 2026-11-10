@@ -1,10 +1,10 @@
-# 7.9. Local ZFS Pool Backend <a href="#storage_zfspool" id="storage_zfspool"></a>
+# 7.9. 本地 ZFS 池后端 <a href="#storage_zfspool" id="storage_zfspool"></a>
 
 存储池类型：`zfspool`
 
 该后端允许您访问本地 ZFS 池（或此类池中的 ZFS 文件系统）。
 
-## 7.9.1. Configuration <a href="#_configuration_6" id="_configuration_6"></a>
+## 7.9.1. 配置 <a href="#_configuration_6" id="_configuration_6"></a>
 
 该后端支持通用存储属性 `content`、`nodes`、`disable`，以及以下 ZFS 特有属性：
 
@@ -33,7 +33,7 @@ zfspool: vmdata
         sparse
 ```
 
-## 7.9.2. File naming conventions <a href="#_file_naming_conventions_2" id="_file_naming_conventions_2"></a>
+## 7.9.2. 文件命名约定 <a href="#_file_naming_conventions_2" id="_file_naming_conventions_2"></a>
 
 后端对 VM 镜像使用以下命名方案：
 
@@ -51,7 +51,7 @@ subvol-<VMID>-<NAME>  // subvolumes (ZFS filesystem for containers)
 
 这可以是不含空白的任意名称（`ascii`）。后端默认使用 `disk[N]`，其中 `[N]` 会替换为一个整数，以确保名称唯一。
 
-## 7.9.3. Storage Features <a href="#_storage_features_5" id="_storage_features_5"></a>
+## 7.9.3. 存储功能 <a href="#_storage_features_5" id="_storage_features_5"></a>
 
 就快照和克隆而言，ZFS 可能是最先进的存储类型。后端同时将 ZFS 数据集用于 VM 镜像（格式为 `raw`）和容器数据（格式为 `subvol`）。ZFS 属性会从父数据集继承，因此您可以直接在父数据集上设置默认值。
 
@@ -82,7 +82,7 @@ subvol-<VMID>-<NAME>  // subvolumes (ZFS filesystem for containers)
 </tbody>
 </table>
 
-## 7.9.4. Encryption <a href="#_encryption" id="_encryption"></a>
+## 7.9.4. 加密 <a href="#_encryption" id="_encryption"></a>
 
 ZFS 支持对数据集层级结构进行加密。每个加密数据集要么是 `encryption_root`，自身存储加密属性，要么是其 `encryption_root` 的后代——详情请参阅 `zfs-load-key(8)` 手册页。
 
@@ -92,7 +92,7 @@ ZFS 支持对数据集层级结构进行加密。每个加密数据集要么是 
 
 如果要发送和接收加密的 ZFS 数据集，需要确保所有节点上所有涉及的存储均已加密。
 
-## 7.9.5. Examples <a href="#_examples_5" id="_examples_5"></a>
+## 7.9.5. 示例 <a href="#_examples_5" id="_examples_5"></a>
 
 建议额外创建一个 ZFS 文件系统来存储 VM 镜像：
 

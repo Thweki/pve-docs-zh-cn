@@ -1,10 +1,10 @@
 # spiceproxy(8)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 spiceproxy \- SPICE Proxy Service
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_spiceproxy"></a>
 
@@ -44,7 +44,7 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>` (*default \=* `0`)**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
 Debug mode \- stay in foreground
 
@@ -64,7 +64,7 @@ Get daemon status.
 
 Stop the daemon.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 [SPICE](http://www.spice-space.org) (the Simple Protocol for Independent Computing Environments) is an open remote computing solution, providing client access to remote displays and devices (e.g. keyboard, mouse, audio). The main use case is to get remote access to virtual machines and container.
 
@@ -74,7 +74,7 @@ This daemon listens on TCP port 3128, and implements an HTTP proxy to forward *C
 
 It is possible to configure "apache2" like access control lists. Values are read from file `/etc/default/pveproxy`. See `pveproxy` documentation for details.
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

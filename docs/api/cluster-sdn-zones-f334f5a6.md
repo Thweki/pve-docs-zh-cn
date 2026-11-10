@@ -451,7 +451,7 @@ Create a new sdn zone object.
 | `dhcp` | string | 否 | — | Type of the DHCP backend for this zone；可选值：`dnsmasq` |
 | `disable-arp-nd-suppression` | boolean | 否 | — | Suppress IPv4 ARP &amp;&amp; IPv6 Neighbour Discovery messages. |
 | `dns` | string | 否 | — | dns api server |
-| `dnszone` | string | 否 | — | dns domain zone ex: mydomain.com |
+| `dnszone` | string | 否 | — | dns domain zone  ex: mydomain.com |
 | `dp-id` | integer | 否 | — | Faucet dataplane id |
 | `exitnodes` | string | 否 | — | List of cluster node names. |
 | `exitnodes-local-routing` | boolean | 否 | — | Allow exitnodes to connect to EVPN guests. |
@@ -525,7 +525,7 @@ Create a new sdn zone object.
       "typetext": "<string>"
     },
     "dnszone": {
-      "description": "dns domain zone ex: mydomain.com",
+      "description": "dns domain zone  ex: mydomain.com",
       "format": "dns-name",
       "optional": 1,
       "type": "string",

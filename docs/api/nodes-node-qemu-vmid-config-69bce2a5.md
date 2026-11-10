@@ -917,7 +917,7 @@ Get the virtual machine configuration with pending configuration changes applied
       "description": "Specify network devices.",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2 Gateway\n 10.0.2.3 DNS Server\n 10.0.2.4 SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
+          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2   Gateway\n 10.0.2.3   DNS Server\n 10.0.2.4   SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
           "format": "pve-bridge-id",
           "format_description": "bridge",
           "optional": 1,
@@ -3515,7 +3515,7 @@ Set virtual machine options (asynchronous API).
       "description": "Specify network devices.",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2 Gateway\n 10.0.2.3 DNS Server\n 10.0.2.4 SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
+          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2   Gateway\n 10.0.2.3   DNS Server\n 10.0.2.4   SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
           "format": "pve-bridge-id",
           "format_description": "bridge",
           "optional": 1,
@@ -6114,7 +6114,7 @@ Set virtual machine options (synchronous API) - You should consider using the PO
       "description": "Specify network devices.",
       "format": {
         "bridge": {
-          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2 Gateway\n 10.0.2.3 DNS Server\n 10.0.2.4 SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
+          "description": "Bridge to attach the network device to. The Proxmox VE standard bridge\nis called 'vmbr0'.\n\nIf you do not specify a bridge, we create a kvm user (NATed) network\ndevice, which provides DHCP and DNS services. The following addresses\nare used:\n\n 10.0.2.2   Gateway\n 10.0.2.3   DNS Server\n 10.0.2.4   SMB Server\n\nThe DHCP server assign addresses to the guest starting from 10.0.2.15.\n",
           "format": "pve-bridge-id",
           "format_description": "bridge",
           "optional": 1,

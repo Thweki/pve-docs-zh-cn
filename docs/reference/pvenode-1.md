@@ -1,10 +1,10 @@
 # pvenode(1)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 pvenode \- Proxmox VE Node Management
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvenode"></a>
 
@@ -88,7 +88,7 @@ Contact email addresses.
 
 Order a new certificate from ACME-compatible CA.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Overwrite existing custom certificate.
 
@@ -100,7 +100,7 @@ Overwrite existing custom certificate.
 
 Renew existing certificate from CA.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Force renewal even if expiry is more than 30 days away.
 
@@ -260,7 +260,7 @@ PEM encoded certificate (chain).
 
 PEM encoded private key.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Overwrite existing custom or ACME certificate files.
 
@@ -504,7 +504,7 @@ Try to wake a node via *wake on LAN* network packet.
 
 target node for wake on LAN packet
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Proxmox VE 节点管理工具（`pvenode`）允许你控制节点特定的设置和资源。
 
@@ -654,7 +654,7 @@ The target percentage for [automatic memory allocation](qm-1.md#qm_ballooning) d
 pvenode config set --ballooning-target 90
 ```
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

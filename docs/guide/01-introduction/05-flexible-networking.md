@@ -1,4 +1,4 @@
-# 1.5. Flexible Networking <a href="#_flexible_networking" id="_flexible_networking"></a>
+# 1.5. 灵活的网络 <a href="#_flexible_networking" id="_flexible_networking"></a>
 
 Proxmox VE 使用网桥网络模型。所有虚拟机都可以共享一个网桥，就好像每台客户机的虚拟网线都插入了同一台交换机。为将虚拟机连接到外部网络，可将网桥接入物理网卡，并为其分配 TCP/IP 配置。
 

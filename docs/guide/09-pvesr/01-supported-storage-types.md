@@ -1,4 +1,4 @@
-# 9.1. Supported Storage Types <a href="#_supported_storage_types" id="_supported_storage_types"></a>
+# 9.1. 支持的存储类型 <a href="#_supported_storage_types" id="_supported_storage_types"></a>
 
 <table>
 <caption>表 16. 存储类型</caption>

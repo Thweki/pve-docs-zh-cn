@@ -1,4 +1,4 @@
-# 5.13. Cluster Cold Start <a href="#_cluster_cold_start" id="_cluster_cold_start"></a>
+# 5.13. 集群冷启动 <a href="#_cluster_cold_start" id="_cluster_cold_start"></a>
 
 显然，当所有节点都离线时，集群不具备仲裁。这是断电后的常见情况。
 

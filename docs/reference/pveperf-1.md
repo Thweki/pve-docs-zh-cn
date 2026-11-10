@@ -1,14 +1,14 @@
 # pveperf(1)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 pveperf \- the Proxmox benchmark
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 **pveperf** `[PATH]`
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Tries to gather some CPU/hard disk performance data on the hard disk mounted at `PATH` (`/` is used as default):
 

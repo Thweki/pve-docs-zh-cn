@@ -1,8 +1,6 @@
 # 16.3. Backup File Compression <a href="#_backup_file_compression" id="_backup_file_compression"></a>
 
-The backup file can be compressed with one of the following algorithms: `lzo`
-[\[1\]](#note-18fb615f-1), `gzip` [\[2\]](#note-18fb615f-2) or `zstd`
-[\[3\]](#note-18fb615f-3).
+The backup file can be compressed with one of the following algorithms: `lzo` [\[1\]](#note-18fb615f-1), `gzip` [\[2\]](#note-18fb615f-2) or `zstd` [\[3\]](#note-18fb615f-3).
 
 Currently, Zstandard (zstd) is the fastest of these three algorithms. Multi-threading is another advantage of zstd over lzo and gzip. Lzo and gzip are more widely used and often installed by default.
 

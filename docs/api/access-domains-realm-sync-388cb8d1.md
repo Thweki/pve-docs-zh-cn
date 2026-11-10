@@ -31,7 +31,7 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
       ]
     ]
   ],
-  "description": "'Realm.AllocateUser' on '/access/realm/<realm>' and 'User.Modify' permissions to '/access/groups/'."
+  "description": "'Realm.AllocateUser' on '/access/realm/<realm>' and  'User.Modify' permissions to '/access/groups/'."
 }
 ```
 

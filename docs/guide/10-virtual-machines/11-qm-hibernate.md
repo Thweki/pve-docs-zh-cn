@@ -1,25 +1,25 @@
-# 10.11. Hibernation <a href="#qm_hibernate" id="qm_hibernate"></a>
+# 10.11. 休眠 <a href="#qm_hibernate" id="qm_hibernate"></a>
 
-You can suspend a VM to disk with the GUI option `Hibernate` or with
+可以使用 GUI 选项 `Hibernate` 或通过以下命令将虚拟机休眠到磁盘：
 
 ```text
 # qm suspend ID --todisk
 ```
 
-That means that the current content of the memory will be saved onto disk and the VM gets stopped. On the next start, the memory content will be loaded and the VM can continue where it was left off.
+这意味着当前内存内容将保存到磁盘，并且虚拟机会停止。下次启动时，将加载内存内容，虚拟机可以从中断处继续运行。
 
 <a id="qm_vmstatestorage"></a>
 
 
 
-**State storage selection**
+**状态存储选择**
 
-If no target storage for the memory is given, it will be automatically chosen, the first of:
+如果未指定内存的目标存储，将自动选择以下第一项：
 
-1. The storage `vmstatestorage` from the VM config.
-2. The first shared storage from any VM disk.
-3. The first non-shared storage from any VM disk.
-4. The storage `local` as a fallback.
+1. 虚拟机配置中的存储 `vmstatestorage`。
+2. 任意虚拟机磁盘的第一个共享存储。
+3. 任意虚拟机磁盘的第一个非共享存储。
+4. 作为回退的存储 `local`。
 
 ---
 

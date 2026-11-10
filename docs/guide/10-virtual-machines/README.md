@@ -1,4 +1,4 @@
-# 10\. QEMU/KVM Virtual Machines <a href="#chapter_virtual_machines" id="chapter_virtual_machines"></a>
+# 10\. QEMU/KVM 虚拟机 <a href="#chapter_virtual_machines" id="chapter_virtual_machines"></a>
 
 QEMU（Quick Emulator 的缩写）是一种开源虚拟机监控程序，用于模拟物理计算机。从运行 QEMU 的宿主系统的角度来看，QEMU 是一个用户程序，可以访问分区、文件、网卡等多种本地资源，然后将这些资源传递给模拟计算机，后者将它们视为真实设备。
 
@@ -14,20 +14,20 @@ Proxmox VE 内部的 QEMU 以 root 进程运行，因为访问块设备和 PCI �
 
 ## 本章内容
 
-- [10.1. Emulated devices and paravirtualized devices](01-emulated-devices-and-paravirtualized-devices.md)
-- [10.2. Virtual Machines Settings](02-qm-virtual-machines-settings.md)
-- [10.3. Migration](03-qm-migration.md)
-- [10.4. Copies and Clones](04-qm-copy-and-clone.md)
-- [10.5. Virtual Machine Templates](05-qm-templates.md)
-- [10.6. VM Generation ID](06-vm-generation-id.md)
-- [10.7. Importing Virtual Machines](07-qm-import-virtual-machines.md)
-- [10.8. Cloud-Init Support](08-qm-cloud-init.md)
-- [10.9. PCI(e) Passthrough](09-qm-pci-passthrough.md)
-- [10.10. Hookscripts](10-hookscripts.md)
-- [10.11. Hibernation](11-qm-hibernate.md)
-- [10.12. Resource Mapping](12-resource-mapping.md)
-- [10.13. Managing Virtual Machines with qm](13-managing-virtual-machines-with-span-class-monospaced-qm-span.md)
-- [10.14. Configuration](14-qm-configuration.md)
+- [10.1. 模拟设备和半虚拟化设备](01-emulated-devices-and-paravirtualized-devices.md)
+- [10.2. 虚拟机设置](02-qm-virtual-machines-settings.md)
+- [10.3. 迁移](03-qm-migration.md)
+- [10.4. 副本与克隆](04-qm-copy-and-clone.md)
+- [10.5. 虚拟机模板](05-qm-templates.md)
+- [10.6. VM 生成 ID](06-vm-generation-id.md)
+- [10.7. 导入虚拟机](07-qm-import-virtual-machines.md)
+- [10.8. Cloud-Init 支持](08-qm-cloud-init.md)
+- [10.9. PCI(e) 直通](09-qm-pci-passthrough.md)
+- [10.10. 钩子脚本](10-hookscripts.md)
+- [10.11. 休眠](11-qm-hibernate.md)
+- [10.12. 资源映射](12-resource-mapping.md)
+- [10.13. 使用 qm 管理虚拟机](13-managing-virtual-machines-with-span-class-monospaced-qm-span.md)
+- [10.14. 配置](14-qm-configuration.md)
 - [10.15. Locks](15-locks.md)
 
 ---

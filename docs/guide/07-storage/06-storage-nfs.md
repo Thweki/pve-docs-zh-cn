@@ -1,10 +1,10 @@
-# 7.6. NFS Backend <a href="#storage_nfs" id="storage_nfs"></a>
+# 7.6. NFS 后端 <a href="#storage_nfs" id="storage_nfs"></a>
 
 存储池类型：`nfs`
 
 NFS 后端基于目录后端，因此二者共享大多数属性。目录布局和文件命名约定相同。主要优势在于，您可以直接配置 NFS 服务器属性，使后端能够自动挂载共享。无需修改 `/etc/fstab`。后端还可以测试服务器是否在线，并提供查询服务器所导出共享的方法。
 
-## 7.6.1. Configuration <a href="#_configuration_3" id="_configuration_3"></a>
+## 7.6.1. 配置 <a href="#_configuration_3" id="_configuration_3"></a>
 
 该后端支持除 shared 标志以外的所有通用存储属性，shared 标志始终处于设置状态。此外，以下属性用于配置 NFS 服务器：
 
@@ -45,7 +45,7 @@ nfs: iso-templates
 NFS 请求超时后，默认会无限期重试 NFS 请求。这可能导致客户端出现意外挂起。对于只读内容，值得考虑使用 NFS 的 `soft` 选项，该选项将重试次数限制为三次。
 {% endhint %}
 
-## 7.6.2. Storage Features <a href="#_storage_features_2" id="_storage_features_2"></a>
+## 7.6.2. 存储功能 <a href="#_storage_features_2" id="_storage_features_2"></a>
 
 NFS 不支持快照，但后端利用 `qcow2` 的功能来实现快照和克隆。
 
@@ -76,7 +76,7 @@ NFS 不支持快照，但后端利用 `qcow2` 的功能来实现快照和克隆�
 </tbody>
 </table>
 
-## 7.6.3. Examples <a href="#_examples_3" id="_examples_3"></a>
+## 7.6.3. 示例 <a href="#_examples_3" id="_examples_3"></a>
 
 可以通过以下命令获取已导出的 NFS 共享列表：
 

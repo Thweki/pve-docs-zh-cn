@@ -1,4 +1,4 @@
-# 7.17. ZFS over ISCSI Backend <a href="#storage_zfs" id="storage_zfs"></a>
+# 7.17. ISCSI 上的 ZFS 后端 <a href="#storage_zfs" id="storage_zfs"></a>
 
 存储池类型：`zfs`
 
@@ -15,7 +15,7 @@
 此插件需要支持 ZFS 的远程存储设备，不能用它在我现在继续...普通存储设备/SAN 上创建 ZFS 池
 {% endhint %}
 
-## 7.17.1. Configuration <a href="#_configuration_11" id="_configuration_11"></a>
+## 7.17.1. 配置 <a href="#_configuration_11" id="_configuration_11"></a>
 
 要使用 ZFS over iSCSI 插件，需要配置远程机器（目标），使其接受来自 Proxmox VE 节点的 `ssh` 连接。Proxmox VE 连接到目标以创建 ZVOL，并通过 iSCSI 将其导出。身份验证通过存储在 `/etc/pve/priv/zfs/<target_ip>_id_rsa` 中的 SSH 密钥（无密码保护）完成。
 
@@ -108,7 +108,7 @@ zfs: iet
    content images
 ```
 
-## 7.17.2. Storage Features <a href="#_storage_features_12" id="_storage_features_12"></a>
+## 7.17.2. 存储功能 <a href="#_storage_features_12" id="_storage_features_12"></a>
 
 ZFS over iSCSI 插件提供支持快照的共享存储。您需要确保 ZFS 设备不会成为部署中的单点故障。
 

@@ -1,10 +1,10 @@
 # qmrestore(1)
 
-## NAME <a href="#_name" id="_name"></a>
+## 名称 <a href="#_name" id="_name"></a>
 
 qmrestore \- Restore QemuServer `vzdump` Backups
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_qmrestore_help"></a>
 
@@ -36,7 +36,7 @@ VM 的唯一 ID。
 
 Allow to overwrite existing VM.
 
-**`--ha-managed` `<boolean>` (*default \=* `0`)**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 Add the VM as a HA resource after it was restored.
 
@@ -48,7 +48,7 @@ Start the VM immediately from the backup and restore in background. PBS only.
 
 将 VM 添加到指定池。
 
-**`--start` `<boolean>` (*default \=* `0`)**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Start VM after it was restored successfully.
 
@@ -60,11 +60,11 @@ Default storage.
 
 分配唯一的随机以太网地址。
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Restore the QemuServer vzdump backup `archive` to virtual machine `vmid`. Volumes are allocated on the original storage if there is no `storage` specified.
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

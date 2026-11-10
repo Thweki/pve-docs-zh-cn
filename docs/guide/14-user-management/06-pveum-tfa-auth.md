@@ -111,8 +111,7 @@ webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.ex
 It is recommended to use WebAuthn instead.
 {% endhint %}
 
-To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId*
-[\[1\]](#note-f8fe8903-1) needs to be configured.
+To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId* [\[1\]](#note-f8fe8903-1) needs to be configured.
 
 {% hint style="info" %}
 Changing the *AppId* will render all existing *U2F* registrations unusable!
@@ -126,8 +125,7 @@ u2f: appid=https://mypve.example.com:8006
 
 For a single node, the *AppId* can simply be the address of the web interface, exactly as it is used in the browser, including the *https://* and the port, as shown above. Please note that some browsers may be more strict than others when matching *AppIds*.
 
-When using multiple nodes, it is best to have a separate `https` server providing an `appid.json`
-[\[2\]](#note-f8fe8903-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
+When using multiple nodes, it is best to have a separate `https` server providing an `appid.json` [\[2\]](#note-f8fe8903-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
 
 {% hint style="info" %}
 A bad *AppId* will usually produce an error, but we have encountered situations when this does not happen, particularly when using a top level domain *AppId* for a node that is accessed via a subdomain in Chromium. For this reason it is recommended to test the configuration with multiple browsers, as changing the *AppId* later will render existing *U2F* registrations unusable.

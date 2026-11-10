@@ -1,4 +1,4 @@
-# 4.2. Login <a href="#_login" id="_login"></a>
+# 4.2. 登录 <a href="#_login" id="_login"></a>
 
 [![screenshot/gui-login-window.png](../../assets/screenshot-gui-login-window-png-9cd1c28376f9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-login-window.png)
 

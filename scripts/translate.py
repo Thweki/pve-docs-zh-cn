@@ -4,7 +4,7 @@ Uses documented --prompt/--output-format stream-json; no credentials are read.
 Each validated unit is cached immediately, and interrupted runs are resumable.
 """
 from __future__ import annotations
-import argparse, collections, concurrent.futures, json, os, re, subprocess, time
+import argparse, calendar, collections, concurrent.futures, json, os, re, subprocess, time
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -30,7 +30,9 @@ def numeric_error(source,target):
         if chinese[number]<count:return True
     for number,count in (b-a).items():
         if number.isdigit() and int(number)<len(NUMBER_WORDS):
-            if len(re.findall(r'\b'+NUMBER_WORDS[int(number)]+r'\b',source,re.I))>=count:continue
+            n=int(number);terms=[NUMBER_WORDS[n]]
+            if 1<=n<=12:terms.append(calendar.month_name[n])
+            if sum(len(re.findall(r'\b'+word+r'\b',source,re.I)) for word in terms)>=count:continue
         return True
     return False
 SYSTEM='''你是精通 Proxmox VE、Linux、KVM、LXC、Ceph、ZFS、网络、虚拟化的中文技术文档译者。
@@ -105,7 +107,7 @@ def main():
         batch.append(u);size+=n
     if batch:batches.append(batch)
     print(f'{len(translated)}/{len(units)} cached; {len(pending)} units in {len(batches)} batches; {args.workers} workers',flush=True)
-    errors=[]
+    errors=[];quota_hit=None
     with cache.open('a') as output, concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures={pool.submit(run_batch,b,i): (i,b,0) for i,b in enumerate(batches)}
         while futures:
@@ -119,11 +121,16 @@ def main():
                     print(f'batch {i} attempt {a}: +{len(good)}, retry {len(bad)}; {elapsed}s; total {len(translated)}/{len(units)}',flush=True)
                     retry=[u for u,e in bad]
                     if retry:
-                        if a<3:futures[pool.submit(run_batch,retry,i,a+1)]=(i,retry,a+1)
+                        if a<3 and not quota_hit:futures[pool.submit(run_batch,retry,i,a+1)]=(i,retry,a+1)
                         else:errors.extend({'id':u['id'],'error':e} for u,e in bad)
                 except Exception as e:
                     print(f'batch {i} attempt {a} ERROR: {e}',flush=True)
-                    if a<2:futures[pool.submit(run_batch,b,i,a+1)]=(i,b,a+1)
+                    if 'usage limit' in str(e) and 'quota' in str(e):
+                        quota_hit=str(e)
+                        for future in list(futures):
+                            if future.cancel():futures.pop(future)
+                        errors.append({'type':'quota','error':quota_hit})
+                    elif a<2 and not quota_hit:futures[pool.submit(run_batch,b,i,a+1)]=(i,b,a+1)
                     else:errors.extend({'id':u['id'],'error':str(e)} for u in b)
     report={'total':len(units),'translated':len(translated),'missing':[k for k in units if k not in translated],'errors':errors}
     (ROOT/'reports/translation-progress.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))

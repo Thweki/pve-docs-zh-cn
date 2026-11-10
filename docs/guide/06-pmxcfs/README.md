@@ -1,4 +1,4 @@
-# 6\. Proxmox Cluster File System (pmxcfs) <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
+# 6\. Proxmox 集群文件系统（pmxcfs） <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
 
 Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系统，用于存储配置文件，并通过 `corosync` 实时复制到所有集群节点。我们使用它来存储所有与 Proxmox VE 相关的配置文件。
 
@@ -14,11 +14,11 @@ Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系
 
 ## 本章内容
 
-- [6.1. POSIX Compatibility](01-posix-compatibility.md)
-- [6.2. File Access Rights](02-file-access-rights.md)
-- [6.3. Technology](03-technology.md)
-- [6.4. File System Layout](04-file-system-layout.md)
-- [6.5. Recovery](05-recovery.md)
+- [6.1. POSIX 兼容性](01-posix-compatibility.md)
+- [6.2. 文件访问权限](02-file-access-rights.md)
+- [6.3. 技术](03-technology.md)
+- [6.4. 文件系统布局](04-file-system-layout.md)
+- [6.5. 恢复](05-recovery.md)
 
 ---
 

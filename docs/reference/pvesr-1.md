@@ -1,10 +1,10 @@
 # pvesr(1)
 
-## NAME <a href="#chapter_pvesr" id="chapter_pvesr"></a>
+## 名称 <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
 pvesr \- Proxmox VE Storage Replication
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pvesr"></a>
 
@@ -64,7 +64,7 @@ Mark replication job for removal.
 
 Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Will remove the jobconfig entry, but will not cleanup.
 
@@ -156,7 +156,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 The list of volume IDs to consider.
 
-**`--force` `<boolean>` (*default \=* `0`)**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Allow to remove all existion volumes (empty volume list).
 
@@ -200,7 +200,7 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 Send an email notification in case of a failure.
 
-**`--verbose` `<boolean>` (*default \=* `0`)**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Print more verbose logs to stdout.
 
@@ -288,7 +288,7 @@ Storage replication schedule. The format is a subset of `systemd` calendar event
 
 For internal use, to detect if the guest was stolen.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 `pvesr` 命令行工具用于管理 Proxmox VE 存储复制框架。存储复制为使用本地存储的客户机提供冗余，并缩短迁移时间。
 
@@ -446,7 +446,7 @@ replication: secure,network=10.1.2.0/24
 # pvesr update 100-0 --schedule '*/00'
 ```
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

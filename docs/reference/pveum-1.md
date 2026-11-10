@@ -1,10 +1,10 @@
 # pveum(1)
 
-## NAME <a href="#chapter_user_management" id="chapter_user_management"></a>
+## 名称 <a href="#chapter_user_management" id="chapter_user_management"></a>
 
 pveum \- Proxmox VE User Manager
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_pveum"></a>
 
@@ -276,7 +276,7 @@ Allow adding a guest even if already in another pool. The guest will be removed 
 
 no description available
 
-**`--delete` `<boolean>` (*default \=* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Remove the passed VMIDs and/or storage IDs instead of adding them.
 
@@ -1160,7 +1160,7 @@ An alias for *pveum user delete*.
 
 An alias for *pveum user modify*.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Proxmox VE supports multiple authentication sources, for example Linux PAM, an integrated Proxmox VE authentication server, LDAP, Microsoft Active Directory and OpenID Connect.
 
@@ -1570,8 +1570,7 @@ webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.ex
 It is recommended to use WebAuthn instead.
 {% endhint %}
 
-To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId*
-[\[1\]](#note-f5682feb-1) needs to be configured.
+To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId* [\[1\]](#note-f5682feb-1) needs to be configured.
 
 {% hint style="info" %}
 Changing the *AppId* will render all existing *U2F* registrations unusable!
@@ -1585,8 +1584,7 @@ u2f: appid=https://mypve.example.com:8006
 
 For a single node, the *AppId* can simply be the address of the web interface, exactly as it is used in the browser, including the *https://* and the port, as shown above. Please note that some browsers may be more strict than others when matching *AppIds*.
 
-When using multiple nodes, it is best to have a separate `https` server providing an `appid.json`
-[\[2\]](#note-f5682feb-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
+When using multiple nodes, it is best to have a separate `https` server providing an `appid.json` [\[2\]](#note-f5682feb-2) file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
 
 {% hint style="info" %}
 A bad *AppId* will usually produce an error, but we have encountered situations when this does not happen, particularly when using a top level domain *AppId* for a node that is accessed via a subdomain in Chromium. For this reason it is recommended to test the configuration with multiple browsers, as changing the *AppId* later will render existing *U2F* registrations unusable.
@@ -1951,7 +1949,7 @@ Finally, we can assign permissions to that pool:
 
 Our software developers can now administer the resources assigned to that pool.
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

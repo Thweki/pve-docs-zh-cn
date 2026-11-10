@@ -50,7 +50,7 @@ OPTION: value
 
 集群资源调度设置。
 
-**`ha`\=`<basic | dynamic | static>` (*default \=* `basic`)**
+**`ha`\=`<basic | dynamic | static>` (*默认值 \=* `basic`)**
 
 配置 HA Manager 应如何选择用于启动或恢复服务的节点：
 
@@ -58,11 +58,11 @@ OPTION: value
 - 使用 *static* 时，会考虑服务的静态 CPU 和内存配置，
 - 使用 *dynamic* 时，会考虑服务的静态和动态 CPU 及内存使用情况。
 
-**`ha-auto-rebalance`\=`<boolean>` (*default \=* `0`)**
+**`ha-auto-rebalance`\=`<boolean>` (*默认值 \=* `0`)**
 
 是否根据当前节点的不均衡程度，使用 CRS 自动均衡 HA 资源。
 
-**`ha-auto-rebalance-hold-duration`\=`<number> (0 - N)` (*default \=* `3`)**
+**`ha-auto-rebalance-hold-duration`\=`<number> (0 - N)` (*默认值 \=* `3`)**
 
 在触发自动资源均衡迁移之前，集群节点不均衡程度必须连续超过阈值的 HA 轮数。
 
@@ -70,7 +70,7 @@ OPTION: value
 需要选项：`ha-auto-rebalance`
 {% endhint %}
 
-**`ha-auto-rebalance-margin`\=`<number> (0 - 100)` (*default \=* `10`)**
+**`ha-auto-rebalance-margin`\=`<number> (0 - 100)` (*默认值 \=* `10`)**
 
 为执行资源均衡迁移，集群节点不均衡程度必须达到的最小相对改善百分比。
 
@@ -78,7 +78,7 @@ OPTION: value
 需要选项：`ha-auto-rebalance`
 {% endhint %}
 
-**`ha-auto-rebalance-method`\=`<bruteforce | topsis>` (*default \=* `bruteforce`)**
+**`ha-auto-rebalance-method`\=`<bruteforce | topsis>` (*默认值 \=* `bruteforce`)**
 
 用于为均衡迁移评分的方法。
 
@@ -86,7 +86,7 @@ OPTION: value
 需要选项：`ha-auto-rebalance`
 {% endhint %}
 
-**`ha-auto-rebalance-threshold`\=`<number> (0 - 100)` (*default \=* `30`)**
+**`ha-auto-rebalance-threshold`\=`<number> (0 - 100)` (*默认值 \=* `30`)**
 
 集群节点不均衡百分比，超过该值将触发自动资源均衡系统。
 
@@ -94,7 +94,7 @@ OPTION: value
 需要选项：`ha-auto-rebalance`
 {% endhint %}
 
-**`ha-rebalance-on-start`\=`<boolean>` (*default \=* `0`)**
+**`ha-rebalance-on-start`\=`<boolean>` (*默认值 \=* `0`)**
 
 设置为在 HA 服务的请求状态从 stop 变为 start 时，使用 CRS 选择合适的节点。
 
@@ -106,7 +106,7 @@ OPTION: value
 
 指定用于发送通知的电子邮件地址（默认为 root@$hostname）
 
-**`fencing`: `<both | hardware | watchdog>` (*default \=* `watchdog`)**
+**`fencing`: `<both | hardware | watchdog>` (*默认值 \=* `watchdog`)**
 
 设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中对隔离设备进行有效配置。使用 both 时，会同时采用两种模式。
 
@@ -118,7 +118,7 @@ OPTION: value
 
 集群范围的高可用性设置。
 
-**`shutdown_policy`\=`<conditional | failover | freeze | migrate>` (*default \=* `conditional`)**
+**`shutdown_policy`\=`<conditional | failover | freeze | migrate>` (*默认值 \=* `conditional`)**
 
 描述节点关机或重启时处理 HA 服务的策略。Freeze 将始终在节点关闭时冻结仍位于该节点上的服务，HA Manager 不会恢复这些服务。Failover 不会将服务标记为冻结，因此，如果关机的节点未快速（\< 1 分钟）恢复运行，服务将被恢复到其他节点。*conditional* 会根据关机类型自动选择，即重启时服务将被冻结，而关机时服务将保持原状，因此会在约 2 分钟后被恢复。Migrate 会尝试在触发重启或关机时，将所有正在运行的服务迁移到另一个节点。只有当节点上不再有任何正在运行的服务时，关机过程才会继续。如果节点再次启动，服务将被迁回之前关机的节点，至少在没有发生其他迁移、重定位或恢复的情况下会如此。
 
@@ -150,7 +150,7 @@ VNC 服务器的默认键盘布局。
 
 此节点所在位置的名称
 
-**`mac_prefix`: `<string>` (*default \=* `BC:24:11`)**
+**`mac_prefix`: `<string>` (*默认值 \=* `BC:24:11`)**
 
 虚拟客户机自动生成的 MAC 地址的前缀。默认的 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），用于大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 或 NAT/伪装网络中）。
 
@@ -170,7 +170,7 @@ VNC 服务器的默认键盘布局。
 
 用于迁移的（子）网络的 CIDR。如果未设置复制网络设置，则将其用作复制作业的回退设置
 
-**`type`\=`<insecure | secure>` (*default \=* `secure`)**
+**`type`\=`<insecure | secure>` (*默认值 \=* `secure`)**
 
 默认情况下，迁移流量使用 SSH 隧道加密。在安全的完全私有网络中，可以禁用此加密以提高性能。
 
@@ -182,11 +182,11 @@ VNC 服务器的默认键盘布局。
 
 控制空闲 VMID 自动选择池的范围。
 
-**`lower`\=`<integer>` (*default \=* `100`)**
+**`lower`\=`<integer>` (*默认值 \=* `100`)**
 
 空闲 next-id API 范围的下限（包含下限）。
 
-**`upper`\=`<integer>` (*default \=* `1000000`)**
+**`upper`\=`<integer>` (*默认值 \=* `1000000`)**
 
 空闲 next-id API 范围的上限（不包含上限）。
 
@@ -198,13 +198,13 @@ VNC 服务器的默认键盘布局。
 
 未使用——请改用数据中心通知设置。
 
-**`package-updates`\=`<always | auto | never>` (*default \=* `auto`)**
+**`package-updates`\=`<always | auto | never>` (*默认值 \=* `auto`)**
 
 已弃用：请改用数据中心通知设置。控制每日更新作业发送通知的频率：
 
-- *auto* daily for systems with a valid subscription, as those are assumed to be production-ready and thus should know about pending updates.
-- *always* every update, if there are new pending updates.
-- *never* never send a notification for new pending updates.
+- *auto*：对具有有效订阅的系统每日发送通知，因为这些系统被视为已可用于生产环境，因此应了解待处理的更新。
+- *always*：每次更新时，只要存在新的待处理更新就发送通知。
+- *never*：从不为新的待处理更新发送通知。
 
 **`replication`\=`<always | never>`**
 
@@ -234,7 +234,7 @@ A list of tags that require a `Sys.Modify` on */* to set and delete. Tags set he
 
 用于复制作业的（子）网络的 CIDR。
 
-**`type`\=`<insecure | secure>` (*default \=* `secure`)**
+**`type`\=`<insecure | secure>` (*默认值 \=* `secure`)**
 
 默认情况下，复制流量使用 SSH 隧道加密。在安全的完全私有网络中，可以禁用此加密以提高性能。
 
@@ -242,7 +242,7 @@ A list of tags that require a `Sys.Modify` on */* to set and delete. Tags set he
 
 标签样式选项。
 
-**`case-sensitive`\=`<boolean>` (*default \=* `0`)**
+**`case-sensitive`\=`<boolean>` (*默认 \=* `0`)**
 
 控制更新时过滤唯一标签是否应区分大小写。
 
@@ -250,11 +250,11 @@ A list of tags that require a `Sys.Modify` on */* to set and delete. Tags set he
 
 标签的手动颜色映射（以分号分隔）。
 
-**`ordering`\=`<alphabetical | config>` (*default \=* `alphabetical`)**
+**`ordering`\=`<alphabetical | config>` (*默认 \=* `alphabetical`)**
 
 控制 Web 界面和 API 更新中的标签排序。
 
-**`shape`\=`<circle | dense | full | none>` (*default \=* `circle`)**
+**`shape`\=`<circle | dense | full | none>` (*默认 \=* `circle`)**
 
 Web UI 树中的标签形状。*full* 绘制完整标签。*circle* 仅绘制一个使用背景色的圆形。*dense* 仅绘制一个小矩形（当为每个客户机分配许多标签时很有用）。*none* 禁用标签显示。
 
@@ -274,14 +274,14 @@ U2F Origin 覆盖。主要用于只有一个 URL 的单节点。
 
 用户可设置标签的权限选项
 
-**`user-allow`\=`<existing | free | list | none>` (*default \=* `free`)**
+**`user-allow`\=`<existing | free | list | none>` (*默认 \=* `free`)**
 
 控制用户可对其控制的资源（如客户机）设置或删除哪些标签。拥有 `Sys.Modify` 权限且权限范围为 `/` 的用户始终不受限制。
 
-- *none* no tags are usable.
-- *list* tags from *user-allow-list* are usable.
-- *existing* like list, but already existing tags of resources are also usable.
-- *free* no tag restrictions.
+- *none* 不允许使用任何标签。
+- *list* 可使用 *user-allow-list* 中的标签。
+- *existing* 与 list 类似，但资源上已经存在的标签也可使用。
+- *free* 不限制标签。
 
 **`user-allow-list`\=`<tag>[;<tag>...]`**
 
@@ -291,7 +291,7 @@ U2F Origin 覆盖。主要用于只有一个 URL 的单节点。
 
 webauthn 配置
 
-**`allow-subdomains`\=`<boolean>` (*default \=* `1`)**
+**`allow-subdomains`\=`<boolean>` (*默认 \=* `1`)**
 
 是否允许源为子域名，而不是必须与 URL 完全匹配。
 

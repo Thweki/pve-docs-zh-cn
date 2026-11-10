@@ -87,7 +87,7 @@ ha: shutdown_policy=<value>
 
 The LRM tells the CRM that it wants to restart, and waits until the CRM puts all resources into the `freeze` state (same mechanism is used for [Package Updates](10-ha-manager-package-updates.md)). This prevents those resources from being moved to other nodes. Instead, the CRM starts the resources after the reboot on the same node.
 
-### Manual Resource Movement <a href="#_manual_resource_movement" id="_manual_resource_movement"></a>
+### 手动移动资源 <a href="#_manual_resource_movement" id="_manual_resource_movement"></a>
 
 最后同样重要的是，您还可以在关闭或重启节点之前，手动将资源移动到其他节点。其优势在于您拥有完全的控制权，并且可以决定是否使用在线迁移。
 

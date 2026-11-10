@@ -1,4 +1,4 @@
-# 5.14. Guest VMID Auto-Selection <a href="#pvecm_next_id_range" id="pvecm_next_id_range"></a>
+# 5.14. 客户机 VMID 自动选择 <a href="#pvecm_next_id_range" id="pvecm_next_id_range"></a>
 
 创建新客户机时，Web 界面会自动向后端请求一个空闲的 VMID。默认搜索范围为 `100` 到 `1000000`（低于由模式定义强制规定的最大允许 VMID）。
 

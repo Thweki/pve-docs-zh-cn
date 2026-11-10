@@ -1,10 +1,10 @@
 # vzdump(1)
 
-## NAME <a href="#chapter_vzdump" id="chapter_vzdump"></a>
+## 名称 <a href="#chapter_vzdump" id="chapter_vzdump"></a>
 
 vzdump \- Backup Utility for VMs and Containers
 
-## SYNOPSIS <a href="#_synopsis" id="_synopsis"></a>
+## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
 <a id="cli_vzdump_help"></a>
 
@@ -160,7 +160,7 @@ Store temporary files to specified directory.
 
 Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
 
-## DESCRIPTION <a href="#_description" id="_description"></a>
+## 描述 <a href="#_description" id="_description"></a>
 
 Backups are a requirement for any sensible IT deployment, and Proxmox VE provides a fully integrated solution, using the capabilities of each storage and each guest system type. This allows the system administrator to fine tune via the `mode` option between consistency of the backups and downtime of the guest system.
 
@@ -303,9 +303,7 @@ That way it is possible to store several backup in the same directory. You can l
 
 ## Backup File Compression <a href="#_backup_file_compression" id="_backup_file_compression"></a>
 
-The backup file can be compressed with one of the following algorithms: `lzo`
-[\[1\]](#note-6c818b60-1), `gzip` [\[2\]](#note-6c818b60-2) or `zstd`
-[\[3\]](#note-6c818b60-3).
+The backup file can be compressed with one of the following algorithms: `lzo` [\[1\]](#note-6c818b60-1), `gzip` [\[2\]](#note-6c818b60-2) or `zstd` [\[3\]](#note-6c818b60-3).
 
 Currently, Zstandard (zstd) is the fastest of these three algorithms. Multi-threading is another advantage of zstd over lzo and gzip. Lzo and gzip are more widely used and often installed by default.
 
@@ -523,7 +521,7 @@ To enable secure access to VM images, which might contain untrusted data, a temp
 For troubleshooting purposes, each temporary VM instance generates a log file in `/var/log/proxmox-backup/file-restore/`. The log file might contain additional information in case an attempt to restore individual files or accessing file systems contained in a backup archive fails.
 {% endhint %}
 
-## Configuration <a href="#vzdump_configuration" id="vzdump_configuration"></a>
+## 配置 <a href="#vzdump_configuration" id="vzdump_configuration"></a>
 
 Global configuration is stored in `/etc/vzdump.conf`. The file uses a simple colon separated key/value format. Each line has the following format:
 
@@ -555,7 +553,7 @@ Exclude certain files/directories (shell globs). Paths starting with */* are anc
 
 Options for backup fleecing (VM only).
 
-**`enabled`\=`<boolean>` (*default \=* `0`)**
+**`enabled`\=`<boolean>`（*默认值 \=* `0`）**
 
 Enable backup fleecing. Cache backup data from blocks where new guest writes happen on specified storage instead of copying them directly to the backup target. This can help guest IO performance and even prevent hangs, at the cost of requiring more storage space.
 
@@ -792,7 +790,7 @@ Clone an existing container 101 to a new container 300 with a 4GB root file syst
 # vzdump 101 --stdout | pct restore --rootfs 4 300 -
 ```
 
-## Copyright and Disclaimer <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
+## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>
 
 版权所有 © 2007-2022 Proxmox Server Solutions GmbH
 

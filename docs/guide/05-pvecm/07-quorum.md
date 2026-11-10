@@ -1,4 +1,4 @@
-# 5.7. Quorum <a href="#_quorum" id="_quorum"></a>
+# 5.7. 仲裁 <a href="#_quorum" id="_quorum"></a>
 
 Proxmox VE 使用基于仲裁的技术，在所有集群节点之间提供一致的状态。
 

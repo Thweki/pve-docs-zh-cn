@@ -1,4 +1,4 @@
-# 8.12. Ceph Client <a href="#_ceph_client" id="_ceph_client"></a>
+# 8.12. Ceph 客户端 <a href="#_ceph_client" id="_ceph_client"></a>
 
 [![screenshot/gui-ceph-log.png](../../assets/screenshot-gui-ceph-log-png-45dce0bd0f84.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-log.png)
 
