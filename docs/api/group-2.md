@@ -18,11 +18,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-44ba66f3-get-parameters" id="api-nodes-44ba66f3-get-parameters"></a>
 
@@ -67,17 +63,13 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-819d1a23-get-parameters" id="api-nodes-node-819d1a23-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -112,30 +104,18 @@
 {"description": "仅列出您对 /vms/<vmid> 具有 VM.Audit 权限的虚拟机。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-b1d304cd-get-parameters" id="api-nodes-node-qemu-b1d304cd-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `full` | boolean | 否 | — | 确定活动虚拟机的完整状态。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `full` | 类型：boolean；必填：否；默认值：—<br>确定活动虚拟机的完整状态。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -215,121 +195,109 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-b1d304cd-post-parameters" id="api-nodes-node-qemu-b1d304cd-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acpi` | boolean | 否 | 1 | 启用/禁用 ACPI。 |
-| `affinity` | string | 否 | — | 用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
-| `agent` | string | 否 | — | 启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
-| `allow-ksm` | boolean | 否 | 1 | 允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
-| `amd-sev` | string | 否 | — | AMD CPU 的安全加密虚拟化（SEV）功能 |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `archive` | string | 否 | — | 备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 '-' 从 stdin 管道输入数据），或 Proxmox 存储备份卷标识符。 |
-| `args` | string | 否 | — | 传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
-| `audio0` | string | 否 | — | 配置音频设备，与 QXL/Spice 配合使用很有用。 |
-| `autostart` | boolean | 否 | 0 | 崩溃后自动重启（当前忽略）。 |
-| `balloon` | integer | 否 | — | 虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
-| `bios` | string | 否 | "seabios" | 选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
-| `boot` | string | 否 | — | 指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
-| `bootdisk` | string | 否 | — | 允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
-| `bwlimit` | integer | 否 | "restore limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `cdrom` | string | 否 | — | 这是 -ide2 选项的别名 |
-| `cicustom` | string | 否 | — | cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
-| `cipassword` | string | 否 | — | cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
-| `citype` | string | 否 | — | 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
-| `ciupgrade` | boolean | 否 | 1 | cloud-init：在首次启动后自动升级软件包。 |
-| `ciuser` | string | 否 | — | cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
-| `cores` | integer | 否 | 1 | 每个插槽的核心数。 |
-| `cpu` | string | 否 | — | 模拟的 CPU 类型。 |
-| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
-| `description` | string | 否 | — | 虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
-| `efidisk0` | string | 否 | — | 配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `force` | boolean | 否 | — | 允许覆盖现有虚拟机。 |
-| `freeze` | boolean | 否 | — | 启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
-| `ha-managed` | boolean | 否 | 0 | 创建后将虚拟机添加为 HA 资源。 |
-| `hookscript` | string | 否 | — | 在虚拟机生命周期各个阶段执行的脚本。 |
-| `hostpci[n]` | string | 否 | — | 将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `hotplug` | string | 否 | "network,disk,usb" | 选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
-| `hugepages` | string | 否 | — | 启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
-| `ide[n]` | string | 否 | — | 将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `import-working-storage` | string | 否 | — | 启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。 |
-| `intel-tdx` | string | 否 | — | Intel CPU 的可信域扩展（TDX）功能 |
-| `ipconfig[n]` | string | 否 | — | cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
-| `ivshmem` | string | 否 | — | 虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
-| `keephugepages` | boolean | 否 | 0 | 与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
-| `keyboard` | string | 否 | null | VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `kvm` | boolean | 否 | 1 | 启用/禁用 KVM 硬件虚拟化。 |
-| `live-restore` | boolean | 否 | — | 立即启动虚拟机，同时在后台导入或还原。 |
-| `localtime` | boolean | 否 | — | 将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
-| `lock` | string | 否 | — | 锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
-| `machine` | string | 否 | — | 指定 QEMU 机器。 |
-| `memory` | string | 否 | — | 内存属性。 |
-| `migrate_downtime` | number | 否 | 0.1 | 设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
-| `migrate_speed` | integer | 否 | 0 | 设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
-| `name` | string | 否 | — | 为虚拟机设置名称。仅在配置 Web 界面中使用。 |
-| `nameserver` | string | 否 | — | cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `net[n]` | string | 否 | — | 指定网络设备。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `numa` | boolean | 否 | 0 | 启用/禁用 NUMA。 |
-| `numa[n]` | string | 否 | — | NUMA 拓扑。 |
-| `onboot` | boolean | 否 | 0 | 指定虚拟机是否在系统启动时启动。 |
-| `ostype` | string | 否 | "other" | 指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
-| `parallel[n]` | string | 否 | — | 映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `pool` | string | 否 | — | 将虚拟机添加到指定资源池。 |
-| `protection` | boolean | 否 | 0 | 设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
-| `reboot` | boolean | 否 | 1 | 允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
-| `rng0` | string | 否 | — | 配置基于 VirtIO 的随机数生成器。 |
-| `sata[n]` | string | 否 | — | 将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsi[n]` | string | 否 | — | 将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsihw` | string | 否 | "lsi" | SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
-| `searchdomain` | string | 否 | — | cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `serial[n]` | string | 否 | — | 在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `shares` | integer | 否 | 1000 | 自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
-| `smbios1` | string | 否 | — | 指定 SMBIOS type 1 字段。 |
-| `smp` | integer | 否 | 1 | CPU 数量。请改用 -sockets 选项。 |
-| `sockets` | integer | 否 | 1 | CPU 插槽数量。 |
-| `spice_enhancements` | string | 否 | — | 配置 SPICE 的附加增强功能。 |
-| `sshkeys` | string | 否 | — | cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
-| `start` | boolean | 否 | 0 | 成功创建后启动虚拟机。 |
-| `startdate` | string | 否 | "now" | 设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
-| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
-| `storage` | string | 否 | — | 默认存储。 |
-| `tablet` | boolean | 否 | 1 | 启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
-| `tags` | string | 否 | — | 虚拟机标签。此项仅为元信息。 |
-| `tdf` | boolean | 否 | 0 | 启用/禁用时间漂移修正。 |
-| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
-| `tpmstate0` | string | 否 | — | 配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `unique` | boolean | 否 | — | 分配唯一的随机以太网地址。 |
-| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
-| `usb[n]` | string | 否 | — | 配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
-| `vcpus` | integer | 否 | 0 | 热插拔的 vcpu 数量。 |
-| `vga` | string | 否 | — | 配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
-| `virtio[n]` | string | 否 | — | 将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `virtiofs[n]` | string | 否 | — | 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
-| `vmgenid` | string | 否 | "1 (autogenerated)" | 虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vmstatestorage` | string | 否 | — | 虚拟机状态卷/文件的默认存储。 |
-| `watchdog` | string | 否 | — | 创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acpi` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 ACPI。 |
+| `affinity` | 类型：string；必填：否；默认值：—<br>用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
+| `agent` | 类型：string；必填：否；默认值：—<br>启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
+| `allow-ksm` | 类型：boolean；必填：否；默认值：1<br>允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
+| `amd-sev` | 类型：string；必填：否；默认值：—<br>AMD CPU 的安全加密虚拟化（SEV）功能 |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `archive` | 类型：string；必填：否；默认值：—<br>备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 '-' 从 stdin 管道输入数据），或 Proxmox 存储备份卷标识符。 |
+| `args` | 类型：string；必填：否；默认值：—<br>传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
+| `audio0` | 类型：string；必填：否；默认值：—<br>配置音频设备，与 QXL/Spice 配合使用很有用。 |
+| `autostart` | 类型：boolean；必填：否；默认值：0<br>崩溃后自动重启（当前忽略）。 |
+| `balloon` | 类型：integer；必填：否；默认值：—<br>虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
+| `bios` | 类型：string；必填：否；默认值："seabios"<br>选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
+| `boot` | 类型：string；必填：否；默认值：—<br>指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
+| `bootdisk` | 类型：string；必填：否；默认值：—<br>允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
+| `bwlimit` | 类型：integer；必填：否；默认值："restore limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `cdrom` | 类型：string；必填：否；默认值：—<br>这是 -ide2 选项的别名 |
+| `cicustom` | 类型：string；必填：否；默认值：—<br>cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
+| `cipassword` | 类型：string；必填：否；默认值：—<br>cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
+| `citype` | 类型：string；必填：否；默认值：—<br>指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
+| `ciupgrade` | 类型：boolean；必填：否；默认值：1<br>cloud-init：在首次启动后自动升级软件包。 |
+| `ciuser` | 类型：string；必填：否；默认值：—<br>cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
+| `cores` | 类型：integer；必填：否；默认值：1<br>每个插槽的核心数。 |
+| `cpu` | 类型：string；必填：否；默认值：—<br>模拟的 CPU 类型。 |
+| `cpulimit` | 类型：number；必填：否；默认值：0<br>CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | 类型：integer；必填：否；默认值："cgroup v1: 1024, cgroup v2: 100"<br>虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
+| `description` | 类型：string；必填：否；默认值：—<br>虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
+| `efidisk0` | 类型：string；必填：否；默认值：—<br>配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>允许覆盖现有虚拟机。 |
+| `freeze` | 类型：boolean；必填：否；默认值：—<br>启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
+| `ha-managed` | 类型：boolean；必填：否；默认值：0<br>创建后将虚拟机添加为 HA 资源。 |
+| `hookscript` | 类型：string；必填：否；默认值：—<br>在虚拟机生命周期各个阶段执行的脚本。 |
+| `hostpci[n]` | 类型：string；必填：否；默认值：—<br>将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `hotplug` | 类型：string；必填：否；默认值："network,disk,usb"<br>选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
+| `hugepages` | 类型：string；必填：否；默认值：—<br>启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
+| `ide[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `import-working-storage` | 类型：string；必填：否；默认值：—<br>启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。 |
+| `intel-tdx` | 类型：string；必填：否；默认值：—<br>Intel CPU 的可信域扩展（TDX）功能 |
+| `ipconfig[n]` | 类型：string；必填：否；默认值：—<br>cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
+| `ivshmem` | 类型：string；必填：否；默认值：—<br>虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
+| `keephugepages` | 类型：boolean；必填：否；默认值：0<br>与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
+| `keyboard` | 类型：string；必填：否；默认值：null<br>VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `kvm` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 KVM 硬件虚拟化。 |
+| `live-restore` | 类型：boolean；必填：否；默认值：—<br>立即启动虚拟机，同时在后台导入或还原。 |
+| `localtime` | 类型：boolean；必填：否；默认值：—<br>将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
+| `lock` | 类型：string；必填：否；默认值：—<br>锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
+| `machine` | 类型：string；必填：否；默认值：—<br>指定 QEMU 机器。 |
+| `memory` | 类型：string；必填：否；默认值：—<br>内存属性。 |
+| `migrate_downtime` | 类型：number；必填：否；默认值：0.1<br>设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
+| `migrate_speed` | 类型：integer；必填：否；默认值：0<br>设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
+| `name` | 类型：string；必填：否；默认值：—<br>为虚拟机设置名称。仅在配置 Web 界面中使用。 |
+| `nameserver` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `net[n]` | 类型：string；必填：否；默认值：—<br>指定网络设备。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `numa` | 类型：boolean；必填：否；默认值：0<br>启用/禁用 NUMA。 |
+| `numa[n]` | 类型：string；必填：否；默认值：—<br>NUMA 拓扑。 |
+| `onboot` | 类型：boolean；必填：否；默认值：0<br>指定虚拟机是否在系统启动时启动。 |
+| `ostype` | 类型：string；必填：否；默认值："other"<br>指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
+| `parallel[n]` | 类型：string；必填：否；默认值：—<br>映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `pool` | 类型：string；必填：否；默认值：—<br>将虚拟机添加到指定资源池。 |
+| `protection` | 类型：boolean；必填：否；默认值：0<br>设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
+| `reboot` | 类型：boolean；必填：否；默认值：1<br>允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
+| `rng0` | 类型：string；必填：否；默认值：—<br>配置基于 VirtIO 的随机数生成器。 |
+| `sata[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsi[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsihw` | 类型：string；必填：否；默认值："lsi"<br>SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
+| `searchdomain` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `serial[n]` | 类型：string；必填：否；默认值：—<br>在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `shares` | 类型：integer；必填：否；默认值：1000<br>自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
+| `smbios1` | 类型：string；必填：否；默认值：—<br>指定 SMBIOS type 1 字段。 |
+| `smp` | 类型：integer；必填：否；默认值：1<br>CPU 数量。请改用 -sockets 选项。 |
+| `sockets` | 类型：integer；必填：否；默认值：1<br>CPU 插槽数量。 |
+| `spice_enhancements` | 类型：string；必填：否；默认值：—<br>配置 SPICE 的附加增强功能。 |
+| `sshkeys` | 类型：string；必填：否；默认值：—<br>cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
+| `start` | 类型：boolean；必填：否；默认值：0<br>成功创建后启动虚拟机。 |
+| `startdate` | 类型：string；必填：否；默认值："now"<br>设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
+| `startup` | 类型：string；必填：否；默认值：—<br>启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>默认存储。 |
+| `tablet` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
+| `tags` | 类型：string；必填：否；默认值：—<br>虚拟机标签。此项仅为元信息。 |
+| `tdf` | 类型：boolean；必填：否；默认值：0<br>启用/禁用时间漂移修正。 |
+| `template` | 类型：boolean；必填：否；默认值：0<br>启用/禁用模板。 |
+| `tpmstate0` | 类型：string；必填：否；默认值：—<br>配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `unique` | 类型：boolean；必填：否；默认值：—<br>分配唯一的随机以太网地址。 |
+| `unused[n]` | 类型：string；必填：否；默认值：—<br>对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `usb[n]` | 类型：string；必填：否；默认值：—<br>配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
+| `vcpus` | 类型：integer；必填：否；默认值：0<br>热插拔的 vcpu 数量。 |
+| `vga` | 类型：string；必填：否；默认值：—<br>配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
+| `virtio[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `virtiofs[n]` | 类型：string；必填：否；默认值：—<br>使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
+| `vmgenid` | 类型：string；必填：否；默认值："1 (autogenerated)"<br>虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmstatestorage` | 类型：string；必填：否；默认值：—<br>虚拟机状态卷/文件的默认存储。 |
+| `watchdog` | 类型：string；必填：否；默认值：—<br>创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1170,33 +1138,21 @@
 {"check": ["perm", "/vms/{vmid}", ["VM.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-e7da942c-delete-parameters" id="api-nodes-node-qemu-vmid-e7da942c-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `destroy-unreferenced-disks` | boolean | 否 | 0 | 如果设置，还将销毁所有已启用存储中未在配置中引用但 VMID 匹配的磁盘。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `purge` | boolean | 否 | — | 从备份、复制作业及 HA 等配置中移除 VMID。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `destroy-unreferenced-disks` | 类型：boolean；必填：否；默认值：0<br>如果设置，还将销毁所有已启用存储中未在配置中引用但 VMID 匹配的磁盘。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `purge` | 类型：boolean；必填：否；默认值：—<br>从备份、复制作业及 HA 等配置中移除 VMID。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1240,24 +1196,16 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-e7da942c-get-parameters" id="api-nodes-node-qemu-vmid-e7da942c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1301,18 +1249,14 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-943dff87-get-parameters" id="api-nodes-node-qemu-vmid-firewall-943dff87-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1356,24 +1300,16 @@
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-get-parameters" id="api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1433,45 +1369,33 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-post-parameters" id="api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1560,32 +1484,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-delete-parameters" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1628,25 +1540,17 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-get-parameters" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1704,47 +1608,35 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-put-parameters" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1835,18 +1727,14 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-get-parameters" id="api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1894,27 +1782,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-post-parameters" id="api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1961,26 +1841,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-delete-parameters" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2023,19 +1895,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-get-parameters" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2074,29 +1942,21 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-put-parameters" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `rename` | string | 否 | — | 重命名现有别名。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有别名。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2148,18 +2008,14 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-get-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2207,28 +2063,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-post-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `rename` | string | 否 | — | 重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2282,26 +2130,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-delete-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 删除 IPSet 中的所有成员（如有）。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>删除 IPSet 中的所有成员（如有）。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2341,19 +2181,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-get-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2402,28 +2238,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-post-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nomatch` | boolean | 否 | — |  |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2471,27 +2299,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-delete-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2535,26 +2355,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-get-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2594,29 +2406,21 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-put-parameters" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nomatch` | boolean | 否 | — |  |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2668,24 +2472,16 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-options-132e577f-get-parameters" id="api-nodes-node-qemu-vmid-firewall-options-132e577f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2746,42 +2542,30 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-options-132e577f-put-parameters" id="api-nodes-node-qemu-vmid-firewall-options-132e577f-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dhcp` | boolean | 否 | 0 | 启用 DHCP。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `enable` | boolean | 否 | 0 | 启用/禁用防火墙规则。 |
-| `ipfilter` | boolean | 否 | — | 启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net&lt;id&gt; IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。 |
-| `log_level_in` | string | 否 | — | 传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_level_out` | string | 否 | — | 传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macfilter` | boolean | 否 | 1 | 启用/禁用 MAC 地址过滤器。 |
-| `ndp` | boolean | 否 | 1 | 启用 NDP（邻居发现协议）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `policy_in` | string | 否 | — | 输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `policy_out` | string | 否 | — | 输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `radv` | boolean | 否 | — | 允许发送路由器通告。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dhcp` | 类型：boolean；必填：否；默认值：0<br>启用 DHCP。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | 类型：boolean；必填：否；默认值：0<br>启用/禁用防火墙规则。 |
+| `ipfilter` | 类型：boolean；必填：否；默认值：—<br>启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net&lt;id&gt; IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。 |
+| `log_level_in` | 类型：string；必填：否；默认值：—<br>传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_level_out` | 类型：string；必填：否；默认值：—<br>传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macfilter` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 MAC 地址过滤器。 |
+| `ndp` | 类型：boolean；必填：否；默认值：1<br>启用 NDP（邻居发现协议）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `policy_in` | 类型：string；必填：否；默认值：—<br>输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `policy_out` | 类型：string；必填：否；默认值：—<br>输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `radv` | 类型：boolean；必填：否；默认值：—<br>允许发送路由器通告。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2849,34 +2633,22 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-log-192953b1-get-parameters" id="api-nodes-node-qemu-vmid-firewall-log-192953b1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `since` | integer | 否 | — | 显示从此 UNIX 时间戳开始的日志。 |
-| `start` | integer | 否 | — |  |
-| `until` | integer | 否 | — | 显示截至此 UNIX 时间戳的日志。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `limit` | 类型：integer；必填：否；默认值：—<br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `since` | 类型：integer；必填：否；默认值：—<br>显示从此 UNIX 时间戳开始的日志。 |
+| `start` | 类型：integer；必填：否；默认值：—<br> |
+| `until` | 类型：integer；必填：否；默认值：—<br>显示截至此 UNIX 时间戳的日志。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2927,19 +2699,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-firewall-refs-093ba3ae-get-parameters" id="api-nodes-node-qemu-vmid-firewall-refs-093ba3ae-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `type` | string | 否 | — | 仅列出指定类型的引用。；可选值：`alias`, `ipset` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出指定类型的引用。；可选值：`alias`, `ipset` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2993,24 +2761,16 @@ QEMU Guest Agent 命令索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-f2a52e0e-get-parameters" id="api-nodes-node-qemu-vmid-agent-f2a52e0e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3048,31 +2808,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Unrestricted", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-f2a52e0e-post-parameters" id="api-nodes-node-qemu-vmid-agent-f2a52e0e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `command` | string | 是 | — | QGA 命令。；可选值：`fsfreeze-freeze`, `fsfreeze-status`, `fsfreeze-thaw`, `fstrim`, `get-fsinfo`, `get-host-name`, `get-memory-block-info`, `get-memory-blocks`, `get-osinfo`, `get-time`, `get-timezone`, `get-users`, `get-vcpus`, `info`, `network-get-interfaces`, `ping`, `shutdown`, `suspend-disk`, `suspend-hybrid`, `suspend-ram` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `command` | 类型：string；必填：是；默认值：—<br>QGA 命令。；可选值：`fsfreeze-freeze`, `fsfreeze-status`, `fsfreeze-thaw`, `fstrim`, `get-fsinfo`, `get-host-name`, `get-memory-block-info`, `get-memory-blocks`, `get-osinfo`, `get-time`, `get-timezone`, `get-users`, `get-vcpus`, `info`, `network-get-interfaces`, `ping`, `shutdown`, `suspend-disk`, `suspend-hybrid`, `suspend-ram` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3125,30 +2873,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.FileSystemMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-freeze-e1a83d9b-post-parameters" id="api-nodes-node-qemu-vmid-agent-fsfreeze-freeze-e1a83d9b-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3192,30 +2928,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.FileSystemMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-status-f6bf9d39-post-parameters" id="api-nodes-node-qemu-vmid-agent-fsfreeze-status-f6bf9d39-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3259,30 +2983,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.FileSystemMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-thaw-988aecca-post-parameters" id="api-nodes-node-qemu-vmid-agent-fsfreeze-thaw-988aecca-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3326,30 +3038,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.FileSystemMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-fstrim-d736e96e-post-parameters" id="api-nodes-node-qemu-vmid-agent-fstrim-d736e96e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3393,30 +3093,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-fsinfo-2b947553-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-fsinfo-2b947553-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3460,30 +3148,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-host-name-2961f26b-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-host-name-2961f26b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3527,30 +3203,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-memory-block-info-a79aa266-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-memory-block-info-a79aa266-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3594,30 +3258,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-memory-blocks-203c67ee-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-memory-blocks-203c67ee-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3661,30 +3313,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-osinfo-33f5e516-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-osinfo-33f5e516-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3728,30 +3368,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-time-2cd6fcf0-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-time-2cd6fcf0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3795,30 +3423,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-timezone-bd8fcacb-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-timezone-bd8fcacb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3862,30 +3478,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-users-e9e24edd-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-users-e9e24edd-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3929,30 +3533,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-get-vcpus-68f1c56c-get-parameters" id="api-nodes-node-qemu-vmid-agent-get-vcpus-68f1c56c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3996,30 +3588,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-info-d9aa05da-get-parameters" id="api-nodes-node-qemu-vmid-agent-info-d9aa05da-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4063,30 +3643,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-network-get-interfaces-05590478-get-parameters" id="api-nodes-node-qemu-vmid-agent-network-get-interfaces-05590478-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4130,30 +3698,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Audit", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-ping-246341c8-post-parameters" id="api-nodes-node-qemu-vmid-agent-ping-246341c8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4197,30 +3753,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-shutdown-62332199-post-parameters" id="api-nodes-node-qemu-vmid-agent-shutdown-62332199-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4264,30 +3808,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-suspend-disk-81ed256c-post-parameters" id="api-nodes-node-qemu-vmid-agent-suspend-disk-81ed256c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4331,30 +3863,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-suspend-hybrid-0400f904-post-parameters" id="api-nodes-node-qemu-vmid-agent-suspend-hybrid-0400f904-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4398,30 +3918,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-suspend-ram-a79384f8-post-parameters" id="api-nodes-node-qemu-vmid-agent-suspend-ram-a79384f8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4465,33 +3973,21 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Unrestricted"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-set-user-password-8b484ab0-post-parameters" id="api-nodes-node-qemu-vmid-agent-set-user-password-8b484ab0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `crypted` | boolean | 否 | 0 | 如果密码已经过 crypt() 处理，则设为 1 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `password` | string | 是 | — | 新密码。 |
-| `username` | string | 是 | — | 要设置密码的用户。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `crypted` | 类型：boolean；必填：否；默认值：0<br>如果密码已经过 crypt() 处理，则设为 1 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `password` | 类型：string；必填：是；默认值：—<br>新密码。 |
+| `username` | 类型：string；必填：是；默认值：—<br>要设置密码的用户。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4538,32 +4034,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Unrestricted"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-exec-1798a390-post-parameters" id="api-nodes-node-qemu-vmid-agent-exec-1798a390-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `command` | array | 是 | — | 命令，以程序及参数列表形式提供。 |
-| `input-data` | string | 否 | — | 作为 'input-data' 传递给客户机的数据。通常作为 'command' 的 STDIN。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `command` | 类型：array；必填：是；默认值：—<br>命令，以程序及参数列表形式提供。 |
+| `input-data` | 类型：string；必填：否；默认值：—<br>作为 'input-data' 传递给客户机的数据。通常作为 'command' 的 STDIN。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4615,31 +4099,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.Unrestricted"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-exec-status-f5e9c1c1-get-parameters" id="api-nodes-node-qemu-vmid-agent-exec-status-f5e9c1c1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pid` | integer | 是 | — | 要查询的 PID |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pid` | 类型：integer；必填：是；默认值：—<br>要查询的 PID |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4694,34 +4166,22 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.FileRead", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-file-read-91f96854-get-parameters" id="api-nodes-node-qemu-vmid-agent-file-read-91f96854-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `count` | integer | 否 | "16777216" | 要读取的字节数。 |
-| `decode` | boolean | 否 | 1 | 从 QEMU Guest-Agent 接收的数据采用 base64 编码。如果设为 true，则解码数据。否则以 base64 编码转发内容。默认为 true。 |
-| `file` | string | 是 | — | 文件路径 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `offset` | integer | 否 | 0 | 开始读取的偏移量 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `count` | 类型：integer；必填：否；默认值："16777216"<br>要读取的字节数。 |
+| `decode` | 类型：boolean；必填：否；默认值：1<br>从 QEMU Guest-Agent 接收的数据采用 base64 编码。如果设为 true，则解码数据。否则以 base64 编码转发内容。默认为 true。 |
+| `file` | 类型：string；必填：是；默认值：—<br>文件路径 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `offset` | 类型：integer；必填：否；默认值：0<br>开始读取的偏移量 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4782,33 +4242,21 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.GuestAgent.FileWrite", "VM.GuestAgent.Unrestricted"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-agent-file-write-ac5505f6-post-parameters" id="api-nodes-node-qemu-vmid-agent-file-write-ac5505f6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `content` | string | 是 | — | 要写入文件的内容。 |
-| `encode` | boolean | 否 | 1 | 如果设置，内容将编码为 base64（QEMU 要求）。否则内容需要预先编码——默认为 true。 |
-| `file` | string | 是 | — | 文件路径。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `content` | 类型：string；必填：是；默认值：—<br>要写入文件的内容。 |
+| `encode` | 类型：boolean；必填：否；默认值：1<br>如果设置，内容将编码为 base64（QEMU 要求）。否则内容需要预先编码——默认为 true。 |
+| `file` | 类型：string；必填：是；默认值：—<br>文件路径。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4858,27 +4306,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-rrd-2b242500-get-parameters" id="api-nodes-node-qemu-vmid-rrd-2b242500-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `ds` | string | 是 | — | 要显示的数据源列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `ds` | 类型：string；必填：是；默认值：—<br>要显示的数据源列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4925,26 +4365,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-rrddata-3763a4bb-get-parameters" id="api-nodes-node-qemu-vmid-rrddata-3763a4bb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4990,26 +4422,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-get-parameters" id="api-nodes-node-qemu-vmid-config-69bce2a5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `current` | boolean | 否 | 0 | 获取当前值（而非待应用值）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapshot` | string | 否 | — | 从给定快照获取配置值。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `current` | 类型：boolean；必填：否；默认值：0<br>获取当前值（而非待应用值）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapshot` | 类型：string；必填：否；默认值：—<br>从给定快照获取配置值。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5805,118 +5229,106 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-post-parameters" id="api-nodes-node-qemu-vmid-config-69bce2a5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acpi` | boolean | 否 | 1 | 启用/禁用 ACPI。 |
-| `affinity` | string | 否 | — | 用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
-| `agent` | string | 否 | — | 启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
-| `allow-ksm` | boolean | 否 | 1 | 允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
-| `amd-sev` | string | 否 | — | AMD CPU 的安全加密虚拟化（SEV）功能 |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `args` | string | 否 | — | 传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
-| `audio0` | string | 否 | — | 配置音频设备，与 QXL/Spice 配合使用很有用。 |
-| `autostart` | boolean | 否 | 0 | 崩溃后自动重启（当前忽略）。 |
-| `background_delay` | integer | 否 | — | 等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。 |
-| `balloon` | integer | 否 | — | 虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
-| `bios` | string | 否 | "seabios" | 选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
-| `boot` | string | 否 | — | 指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
-| `bootdisk` | string | 否 | — | 允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
-| `cdrom` | string | 否 | — | 这是 -ide2 选项的别名 |
-| `cicustom` | string | 否 | — | cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
-| `cipassword` | string | 否 | — | cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
-| `citype` | string | 否 | — | 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
-| `ciupgrade` | boolean | 否 | 1 | cloud-init：在首次启动后自动升级软件包。 |
-| `ciuser` | string | 否 | — | cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
-| `cores` | integer | 否 | 1 | 每个插槽的核心数。 |
-| `cpu` | string | 否 | — | 模拟的 CPU 类型。 |
-| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `efidisk0` | string | 否 | — | 配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `force` | boolean | 否 | — | 强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
-| `freeze` | boolean | 否 | — | 启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
-| `hookscript` | string | 否 | — | 在虚拟机生命周期各个阶段执行的脚本。 |
-| `hostpci[n]` | string | 否 | — | 将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `hotplug` | string | 否 | "network,disk,usb" | 选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
-| `hugepages` | string | 否 | — | 启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
-| `ide[n]` | string | 否 | — | 将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `import-working-storage` | string | 否 | — | 启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。 |
-| `intel-tdx` | string | 否 | — | Intel CPU 的可信域扩展（TDX）功能 |
-| `ipconfig[n]` | string | 否 | — | cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
-| `ivshmem` | string | 否 | — | 虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
-| `keephugepages` | boolean | 否 | 0 | 与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
-| `keyboard` | string | 否 | null | VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `kvm` | boolean | 否 | 1 | 启用/禁用 KVM 硬件虚拟化。 |
-| `localtime` | boolean | 否 | — | 将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
-| `lock` | string | 否 | — | 锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
-| `machine` | string | 否 | — | 指定 QEMU 机器。 |
-| `memory` | string | 否 | — | 内存属性。 |
-| `migrate_downtime` | number | 否 | 0.1 | 设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
-| `migrate_speed` | integer | 否 | 0 | 设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
-| `name` | string | 否 | — | 为虚拟机设置名称。仅在配置 Web 界面中使用。 |
-| `nameserver` | string | 否 | — | cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `net[n]` | string | 否 | — | 指定网络设备。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `numa` | boolean | 否 | 0 | 启用/禁用 NUMA。 |
-| `numa[n]` | string | 否 | — | NUMA 拓扑。 |
-| `onboot` | boolean | 否 | 0 | 指定虚拟机是否在系统启动时启动。 |
-| `ostype` | string | 否 | "other" | 指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
-| `parallel[n]` | string | 否 | — | 映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `protection` | boolean | 否 | 0 | 设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
-| `reboot` | boolean | 否 | 1 | 允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
-| `revert` | string | 否 | — | 撤销待应用的更改。 |
-| `rng0` | string | 否 | — | 配置基于 VirtIO 的随机数生成器。 |
-| `sata[n]` | string | 否 | — | 将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsi[n]` | string | 否 | — | 将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsihw` | string | 否 | "lsi" | SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
-| `searchdomain` | string | 否 | — | cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `serial[n]` | string | 否 | — | 在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `shares` | integer | 否 | 1000 | 自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `smbios1` | string | 否 | — | 指定 SMBIOS type 1 字段。 |
-| `smp` | integer | 否 | 1 | CPU 数量。请改用 -sockets 选项。 |
-| `sockets` | integer | 否 | 1 | CPU 插槽数量。 |
-| `spice_enhancements` | string | 否 | — | 配置 SPICE 的附加增强功能。 |
-| `sshkeys` | string | 否 | — | cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
-| `startdate` | string | 否 | "now" | 设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
-| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
-| `tablet` | boolean | 否 | 1 | 启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
-| `tags` | string | 否 | — | 虚拟机标签。此项仅为元信息。 |
-| `tdf` | boolean | 否 | 0 | 启用/禁用时间漂移修正。 |
-| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
-| `tpmstate0` | string | 否 | — | 配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
-| `usb[n]` | string | 否 | — | 配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
-| `vcpus` | integer | 否 | 0 | 热插拔的 vcpu 数量。 |
-| `vga` | string | 否 | — | 配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
-| `virtio[n]` | string | 否 | — | 将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `virtiofs[n]` | string | 否 | — | 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
-| `vmgenid` | string | 否 | "1 (autogenerated)" | 虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vmstatestorage` | string | 否 | — | 虚拟机状态卷/文件的默认存储。 |
-| `watchdog` | string | 否 | — | 创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acpi` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 ACPI。 |
+| `affinity` | 类型：string；必填：否；默认值：—<br>用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
+| `agent` | 类型：string；必填：否；默认值：—<br>启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
+| `allow-ksm` | 类型：boolean；必填：否；默认值：1<br>允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
+| `amd-sev` | 类型：string；必填：否；默认值：—<br>AMD CPU 的安全加密虚拟化（SEV）功能 |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `args` | 类型：string；必填：否；默认值：—<br>传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
+| `audio0` | 类型：string；必填：否；默认值：—<br>配置音频设备，与 QXL/Spice 配合使用很有用。 |
+| `autostart` | 类型：boolean；必填：否；默认值：0<br>崩溃后自动重启（当前忽略）。 |
+| `background_delay` | 类型：integer；必填：否；默认值：—<br>等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。 |
+| `balloon` | 类型：integer；必填：否；默认值：—<br>虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
+| `bios` | 类型：string；必填：否；默认值："seabios"<br>选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
+| `boot` | 类型：string；必填：否；默认值：—<br>指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
+| `bootdisk` | 类型：string；必填：否；默认值：—<br>允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
+| `cdrom` | 类型：string；必填：否；默认值：—<br>这是 -ide2 选项的别名 |
+| `cicustom` | 类型：string；必填：否；默认值：—<br>cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
+| `cipassword` | 类型：string；必填：否；默认值：—<br>cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
+| `citype` | 类型：string；必填：否；默认值：—<br>指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
+| `ciupgrade` | 类型：boolean；必填：否；默认值：1<br>cloud-init：在首次启动后自动升级软件包。 |
+| `ciuser` | 类型：string；必填：否；默认值：—<br>cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
+| `cores` | 类型：integer；必填：否；默认值：1<br>每个插槽的核心数。 |
+| `cpu` | 类型：string；必填：否；默认值：—<br>模拟的 CPU 类型。 |
+| `cpulimit` | 类型：number；必填：否；默认值：0<br>CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | 类型：integer；必填：否；默认值："cgroup v1: 1024, cgroup v2: 100"<br>虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `efidisk0` | 类型：string；必填：否；默认值：—<br>配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
+| `freeze` | 类型：boolean；必填：否；默认值：—<br>启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
+| `hookscript` | 类型：string；必填：否；默认值：—<br>在虚拟机生命周期各个阶段执行的脚本。 |
+| `hostpci[n]` | 类型：string；必填：否；默认值：—<br>将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `hotplug` | 类型：string；必填：否；默认值："network,disk,usb"<br>选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
+| `hugepages` | 类型：string；必填：否；默认值：—<br>启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
+| `ide[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `import-working-storage` | 类型：string；必填：否；默认值：—<br>启用了 'images' 内容类型的文件型存储，用作导入期间的中间解压存储。默认为源存储。 |
+| `intel-tdx` | 类型：string；必填：否；默认值：—<br>Intel CPU 的可信域扩展（TDX）功能 |
+| `ipconfig[n]` | 类型：string；必填：否；默认值：—<br>cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
+| `ivshmem` | 类型：string；必填：否；默认值：—<br>虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
+| `keephugepages` | 类型：boolean；必填：否；默认值：0<br>与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
+| `keyboard` | 类型：string；必填：否；默认值：null<br>VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `kvm` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 KVM 硬件虚拟化。 |
+| `localtime` | 类型：boolean；必填：否；默认值：—<br>将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
+| `lock` | 类型：string；必填：否；默认值：—<br>锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
+| `machine` | 类型：string；必填：否；默认值：—<br>指定 QEMU 机器。 |
+| `memory` | 类型：string；必填：否；默认值：—<br>内存属性。 |
+| `migrate_downtime` | 类型：number；必填：否；默认值：0.1<br>设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
+| `migrate_speed` | 类型：integer；必填：否；默认值：0<br>设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
+| `name` | 类型：string；必填：否；默认值：—<br>为虚拟机设置名称。仅在配置 Web 界面中使用。 |
+| `nameserver` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `net[n]` | 类型：string；必填：否；默认值：—<br>指定网络设备。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `numa` | 类型：boolean；必填：否；默认值：0<br>启用/禁用 NUMA。 |
+| `numa[n]` | 类型：string；必填：否；默认值：—<br>NUMA 拓扑。 |
+| `onboot` | 类型：boolean；必填：否；默认值：0<br>指定虚拟机是否在系统启动时启动。 |
+| `ostype` | 类型：string；必填：否；默认值："other"<br>指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
+| `parallel[n]` | 类型：string；必填：否；默认值：—<br>映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `protection` | 类型：boolean；必填：否；默认值：0<br>设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
+| `reboot` | 类型：boolean；必填：否；默认值：1<br>允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
+| `revert` | 类型：string；必填：否；默认值：—<br>撤销待应用的更改。 |
+| `rng0` | 类型：string；必填：否；默认值：—<br>配置基于 VirtIO 的随机数生成器。 |
+| `sata[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsi[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsihw` | 类型：string；必填：否；默认值："lsi"<br>SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
+| `searchdomain` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `serial[n]` | 类型：string；必填：否；默认值：—<br>在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `shares` | 类型：integer；必填：否；默认值：1000<br>自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `smbios1` | 类型：string；必填：否；默认值：—<br>指定 SMBIOS type 1 字段。 |
+| `smp` | 类型：integer；必填：否；默认值：1<br>CPU 数量。请改用 -sockets 选项。 |
+| `sockets` | 类型：integer；必填：否；默认值：1<br>CPU 插槽数量。 |
+| `spice_enhancements` | 类型：string；必填：否；默认值：—<br>配置 SPICE 的附加增强功能。 |
+| `sshkeys` | 类型：string；必填：否；默认值：—<br>cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
+| `startdate` | 类型：string；必填：否；默认值："now"<br>设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
+| `startup` | 类型：string；必填：否；默认值：—<br>启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `tablet` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
+| `tags` | 类型：string；必填：否；默认值：—<br>虚拟机标签。此项仅为元信息。 |
+| `tdf` | 类型：boolean；必填：否；默认值：0<br>启用/禁用时间漂移修正。 |
+| `template` | 类型：boolean；必填：否；默认值：0<br>启用/禁用模板。 |
+| `tpmstate0` | 类型：string；必填：否；默认值：—<br>配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `unused[n]` | 类型：string；必填：否；默认值：—<br>对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `usb[n]` | 类型：string；必填：否；默认值：—<br>配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
+| `vcpus` | 类型：integer；必填：否；默认值：0<br>热插拔的 vcpu 数量。 |
+| `vga` | 类型：string；必填：否；默认值：—<br>配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
+| `virtio[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `virtiofs[n]` | 类型：string；必填：否；默认值：—<br>使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
+| `vmgenid` | 类型：string；必填：否；默认值："1 (autogenerated)"<br>虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmstatestorage` | 类型：string；必填：否；默认值：—<br>虚拟机状态卷/文件的默认存储。 |
+| `watchdog` | 类型：string；必填：否；默认值：—<br>创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6758,116 +6170,104 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-put-parameters" id="api-nodes-node-qemu-vmid-config-69bce2a5-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acpi` | boolean | 否 | 1 | 启用/禁用 ACPI。 |
-| `affinity` | string | 否 | — | 用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
-| `agent` | string | 否 | — | 启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
-| `allow-ksm` | boolean | 否 | 1 | 允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
-| `amd-sev` | string | 否 | — | AMD CPU 的安全加密虚拟化（SEV）功能 |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `args` | string | 否 | — | 传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
-| `audio0` | string | 否 | — | 配置音频设备，与 QXL/Spice 配合使用很有用。 |
-| `autostart` | boolean | 否 | 0 | 崩溃后自动重启（当前忽略）。 |
-| `balloon` | integer | 否 | — | 虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
-| `bios` | string | 否 | "seabios" | 选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
-| `boot` | string | 否 | — | 指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
-| `bootdisk` | string | 否 | — | 允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
-| `cdrom` | string | 否 | — | 这是 -ide2 选项的别名 |
-| `cicustom` | string | 否 | — | cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
-| `cipassword` | string | 否 | — | cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
-| `citype` | string | 否 | — | 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
-| `ciupgrade` | boolean | 否 | 1 | cloud-init：在首次启动后自动升级软件包。 |
-| `ciuser` | string | 否 | — | cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
-| `cores` | integer | 否 | 1 | 每个插槽的核心数。 |
-| `cpu` | string | 否 | — | 模拟的 CPU 类型。 |
-| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `efidisk0` | string | 否 | — | 配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `force` | boolean | 否 | — | 强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
-| `freeze` | boolean | 否 | — | 启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
-| `hookscript` | string | 否 | — | 在虚拟机生命周期各个阶段执行的脚本。 |
-| `hostpci[n]` | string | 否 | — | 将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `hotplug` | string | 否 | "network,disk,usb" | 选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
-| `hugepages` | string | 否 | — | 启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
-| `ide[n]` | string | 否 | — | 将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `intel-tdx` | string | 否 | — | Intel CPU 的可信域扩展（TDX）功能 |
-| `ipconfig[n]` | string | 否 | — | cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
-| `ivshmem` | string | 否 | — | 虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
-| `keephugepages` | boolean | 否 | 0 | 与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
-| `keyboard` | string | 否 | null | VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `kvm` | boolean | 否 | 1 | 启用/禁用 KVM 硬件虚拟化。 |
-| `localtime` | boolean | 否 | — | 将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
-| `lock` | string | 否 | — | 锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
-| `machine` | string | 否 | — | 指定 QEMU 机器。 |
-| `memory` | string | 否 | — | 内存属性。 |
-| `migrate_downtime` | number | 否 | 0.1 | 设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
-| `migrate_speed` | integer | 否 | 0 | 设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
-| `name` | string | 否 | — | 为虚拟机设置名称。仅在配置 Web 界面中使用。 |
-| `nameserver` | string | 否 | — | cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `net[n]` | string | 否 | — | 指定网络设备。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `numa` | boolean | 否 | 0 | 启用/禁用 NUMA。 |
-| `numa[n]` | string | 否 | — | NUMA 拓扑。 |
-| `onboot` | boolean | 否 | 0 | 指定虚拟机是否在系统启动时启动。 |
-| `ostype` | string | 否 | "other" | 指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
-| `parallel[n]` | string | 否 | — | 映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `protection` | boolean | 否 | 0 | 设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
-| `reboot` | boolean | 否 | 1 | 允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
-| `revert` | string | 否 | — | 撤销待应用的更改。 |
-| `rng0` | string | 否 | — | 配置基于 VirtIO 的随机数生成器。 |
-| `sata[n]` | string | 否 | — | 将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsi[n]` | string | 否 | — | 将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `scsihw` | string | 否 | "lsi" | SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
-| `searchdomain` | string | 否 | — | cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
-| `serial[n]` | string | 否 | — | 在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
-| `shares` | integer | 否 | 1000 | 自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `smbios1` | string | 否 | — | 指定 SMBIOS type 1 字段。 |
-| `smp` | integer | 否 | 1 | CPU 数量。请改用 -sockets 选项。 |
-| `sockets` | integer | 否 | 1 | CPU 插槽数量。 |
-| `spice_enhancements` | string | 否 | — | 配置 SPICE 的附加增强功能。 |
-| `sshkeys` | string | 否 | — | cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
-| `startdate` | string | 否 | "now" | 设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
-| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
-| `tablet` | boolean | 否 | 1 | 启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
-| `tags` | string | 否 | — | 虚拟机标签。此项仅为元信息。 |
-| `tdf` | boolean | 否 | 0 | 启用/禁用时间漂移修正。 |
-| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
-| `tpmstate0` | string | 否 | — | 配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
-| `usb[n]` | string | 否 | — | 配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
-| `vcpus` | integer | 否 | 0 | 热插拔的 vcpu 数量。 |
-| `vga` | string | 否 | — | 配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
-| `virtio[n]` | string | 否 | — | 将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
-| `virtiofs[n]` | string | 否 | — | 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
-| `vmgenid` | string | 否 | "1 (autogenerated)" | 虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vmstatestorage` | string | 否 | — | 虚拟机状态卷/文件的默认存储。 |
-| `watchdog` | string | 否 | — | 创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acpi` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 ACPI。 |
+| `affinity` | 类型：string；必填：否；默认值：—<br>用于执行客户机进程的宿主机核心列表，例如：0,5,8-11 |
+| `agent` | 类型：string；必填：否；默认值：—<br>启用/禁用与 QEMU Guest Agent 的通信及其属性。 |
+| `allow-ksm` | 类型：boolean；必填：否；默认值：1<br>允许通过 KSM（内核同页合并）合并此客户机的内存页。 |
+| `amd-sev` | 类型：string；必填：否；默认值：—<br>AMD CPU 的安全加密虚拟化（SEV）功能 |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `args` | 类型：string；必填：否；默认值：—<br>传递给 kvm 的任意参数，例如：<br><br>args: -no-reboot -smbios 'type=0,vendor=FOO'<br><br>注意：此选项仅供专家使用。<br> |
+| `audio0` | 类型：string；必填：否；默认值：—<br>配置音频设备，与 QXL/Spice 配合使用很有用。 |
+| `autostart` | 类型：boolean；必填：否；默认值：0<br>崩溃后自动重启（当前忽略）。 |
+| `balloon` | 类型：integer；必填：否；默认值：—<br>虚拟机的目标 RAM 容量，单位为 MiB。默认启用 balloon 驱动，除非将此值显式设为零以禁用。 |
+| `bios` | 类型：string；必填：否；默认值："seabios"<br>选择 BIOS 实现。；可选值：`seabios`, `ovmf` |
+| `boot` | 类型：string；必填：否；默认值：—<br>指定客户机启动顺序。请使用 'order=' 子属性，无键形式或 'legacy=' 的用法已弃用。 |
+| `bootdisk` | 类型：string；必填：否；默认值：—<br>允许从指定磁盘启动。已弃用：请改用 'boot: order=foo;bar'。 |
+| `cdrom` | 类型：string；必填：否；默认值：—<br>这是 -ide2 选项的别名 |
+| `cicustom` | 类型：string；必填：否；默认值：—<br>cloud-init：指定自定义文件，以替换启动时自动生成的文件。 |
+| `cipassword` | 类型：string；必填：否；默认值：—<br>cloud-init：要分配给用户的密码。通常不建议使用此项，请改用 SSH 密钥。另请注意，旧版 cloud-init 不支持哈希密码。 |
+| `citype` | 类型：string；必填：否；默认值：—<br>指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。；可选值：`configdrive2`, `nocloud`, `opennebula` |
+| `ciupgrade` | 类型：boolean；必填：否；默认值：1<br>cloud-init：在首次启动后自动升级软件包。 |
+| `ciuser` | 类型：string；必填：否；默认值：—<br>cloud-init：要更改 SSH 密钥和密码的用户名，以替代镜像中配置的默认用户。 |
+| `cores` | 类型：integer；必填：否；默认值：1<br>每个插槽的核心数。 |
+| `cpu` | 类型：string；必填：否；默认值：—<br>模拟的 CPU 类型。 |
+| `cpulimit` | 类型：number；必填：否；默认值：0<br>CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | 类型：integer；必填：否；默认值："cgroup v1: 1024, cgroup v2: 100"<br>虚拟机的 CPU 权重。内核公平调度器使用此参数。数值越大，此虚拟机获得的 CPU 时间越多。该数值相对于其他所有正在运行的虚拟机的权重而言。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>虚拟机描述。显示在 Web 界面的虚拟机摘要中。作为注释保存在配置文件中。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `efidisk0` | 类型：string；必填：否；默认值：—<br>配置用于存放 EFI 变量的磁盘。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，转而将默认 EFI 变量复制到卷中。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
+| `freeze` | 类型：boolean；必填：否；默认值：—<br>启动时冻结 CPU（使用监视器命令 'c' 开始执行）。 |
+| `hookscript` | 类型：string；必填：否；默认值：—<br>在虚拟机生命周期各个阶段执行的脚本。 |
+| `hostpci[n]` | 类型：string；必填：否；默认值：—<br>将宿主机 PCI 设备映射到客户机。<br><br>注意：此选项允许直接访问宿主机硬件。因此将不再<br>能够迁移此类虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `hotplug` | 类型：string；必填：否；默认值："network,disk,usb"<br>选择性启用热插拔功能。支持的热插拔功能以逗号分隔：'network'、'disk'、'cpu'、'memory'、'usb' 和 'cloudinit'。使用 '0' 完全禁用热插拔。值 '1' 是默认值 `network,disk,usb` 的别名。USB 热插拔适用于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机。 |
+| `hugepages` | 类型：string；必填：否；默认值：—<br>启用大页内存。<br><br>设置大页大小，单位为 MiB。如果值为 'any'，则尽可能使用 1 GiB 大页，否则回退到 2 MiB。；可选值：`any`, `2`, `1024` |
+| `ide[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `intel-tdx` | 类型：string；必填：否；默认值：—<br>Intel CPU 的可信域扩展（TDX）功能 |
+| `ipconfig[n]` | 类型：string；必填：否；默认值：—<br>cloud-init：为相应接口指定 IP 地址和网关。<br><br>IP 地址使用 CIDR 表示法，网关可选，但需要指定相同类型的 IP 地址。<br><br>IP 地址可使用特殊字符串 'dhcp' 以启用 DHCP，此时不应显式<br>提供网关。<br>对于 IPv6，可使用特殊字符串 'auto' 启用无状态自动配置。这需要<br>cloud-init 19.4 或更新版本。<br><br>如果启用了 cloud-init，但既未指定 IPv4 地址也未指定 IPv6 地址，则默认在<br>IPv4 上使用 DHCP。<br> |
+| `ivshmem` | 类型：string；必填：否；默认值：—<br>虚拟机间共享内存。适用于虚拟机之间或与宿主机直接通信。 |
+| `keephugepages` | 类型：boolean；必填：否；默认值：0<br>与大页一同使用。如果启用，虚拟机关闭后不会删除大页，可用于后续启动。 |
+| `keyboard` | 类型：string；必填：否；默认值：null<br>VNC 服务器的键盘布局。通常不需要此选项，一般在客户机操作系统内处理更好。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `kvm` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 KVM 硬件虚拟化。 |
+| `localtime` | 类型：boolean；必填：否；默认值：—<br>将实时时钟（RTC）设为本地时间。如果 `ostype` 表明操作系统为 Microsoft Windows，则默认启用。 |
+| `lock` | 类型：string；必填：否；默认值：—<br>锁定/解锁虚拟机。；可选值：`backup`, `clone`, `create`, `migrate`, `rollback`, `snapshot`, `snapshot-delete`, `suspending`, `suspended` |
+| `machine` | 类型：string；必填：否；默认值：—<br>指定 QEMU 机器。 |
+| `memory` | 类型：string；必填：否；默认值：—<br>内存属性。 |
+| `migrate_downtime` | 类型：number；必填：否；默认值：0.1<br>设置迁移期间可容忍的最长停机时间（秒）。如果迁移在最后阶段因为需要传输的新脏 RAM 过多而无法收敛，则会逐步自动提高此限制，直到迁移可以收敛。上限为 2000 秒（QEMU 的最大值）。 |
+| `migrate_speed` | 类型：integer；必填：否；默认值：0<br>设置迁移的最大速度（MB/s）。值 0 表示不限制。 |
+| `name` | 类型：string；必填：否；默认值：—<br>为虚拟机设置名称。仅在配置 Web 界面中使用。 |
+| `nameserver` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `net[n]` | 类型：string；必填：否；默认值：—<br>指定网络设备。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `numa` | 类型：boolean；必填：否；默认值：0<br>启用/禁用 NUMA。 |
+| `numa[n]` | 类型：string；必填：否；默认值：—<br>NUMA 拓扑。 |
+| `onboot` | 类型：boolean；必填：否；默认值：0<br>指定虚拟机是否在系统启动时启动。 |
+| `ostype` | 类型：string；必填：否；默认值："other"<br>指定客户机操作系统。用于为特定操作系统启用专门的<br>优化/功能：<br><br>[horizontal]<br>other;; 未指定操作系统<br>wxp;; Microsoft Windows XP<br>w2k;; Microsoft Windows 2000<br>w2k3;; Microsoft Windows 2003<br>w2k8;; Microsoft Windows 2008<br>wvista;; Microsoft Windows Vista<br>win7;; Microsoft Windows 7<br>win8;; Microsoft Windows 8/2012/2012r2<br>win10;; Microsoft Windows 10/2016/2019<br>win11;; Microsoft Windows 11/2022/2025<br>l24;; Linux 2.4 内核<br>l26;; Linux 2.6 - 7.X 内核<br>solaris;; Solaris/OpenSolaris/OpenIndiania 内核<br>；可选值：`other`, `wxp`, `w2k`, `w2k3`, `w2k8`, `wvista`, `win7`, `win8`, `win10`, `win11`, `l24`, `l26`, `solaris` |
+| `parallel[n]` | 类型：string；必填：否；默认值：—<br>映射宿主机并行设备（n 为 0 到 2）。<br><br>注意：此选项允许直接访问宿主机硬件。因此将无法再迁移此类<br>虚拟机——请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `protection` | 类型：boolean；必填：否；默认值：0<br>设置虚拟机的保护标志。这将禁用移除虚拟机和移除磁盘操作。 |
+| `reboot` | 类型：boolean；必填：否；默认值：1<br>允许重启。如果设为 '0'，虚拟机将在重启时退出。 |
+| `revert` | 类型：string；必填：否；默认值：—<br>撤销待应用的更改。 |
+| `rng0` | 类型：string；必填：否；默认值：—<br>配置基于 VirtIO 的随机数生成器。 |
+| `sata[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsi[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `scsihw` | 类型：string；必填：否；默认值："lsi"<br>SCSI 控制器型号；可选值：`lsi`, `lsi53c810`, `virtio-scsi-pci`, `virtio-scsi-single`, `megasas`, `pvscsi` |
+| `searchdomain` | 类型：string；必填：否；默认值：—<br>cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 均未设置，创建时将自动使用宿主机的设置。 |
+| `serial[n]` | 类型：string；必填：否；默认值：—<br>在虚拟机内创建串行设备（n 为 0 到 3），并直通<br>宿主机串行设备（即 /dev/ttyS0），或在<br>宿主机侧创建 UNIX 套接字（使用 'qm terminal' 打开终端连接）。<br><br>注意：如果直通宿主机串行设备，将无法再迁移此类虚拟机——<br>请格外谨慎。<br><br>警告：实验性功能！有用户报告此选项存在问题。<br> |
+| `shares` | 类型：integer；必填：否；默认值：1000<br>自动 ballooning 的内存份额。数值越大，此虚拟机获得的内存越多。数值相对于其他所有运行中虚拟机的权重而言。设为零可禁用自动 ballooning。自动 ballooning 由 pvestatd 执行。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `smbios1` | 类型：string；必填：否；默认值：—<br>指定 SMBIOS type 1 字段。 |
+| `smp` | 类型：integer；必填：否；默认值：1<br>CPU 数量。请改用 -sockets 选项。 |
+| `sockets` | 类型：integer；必填：否；默认值：1<br>CPU 插槽数量。 |
+| `spice_enhancements` | 类型：string；必填：否；默认值：—<br>配置 SPICE 的附加增强功能。 |
+| `sshkeys` | 类型：string；必填：否；默认值：—<br>cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
+| `startdate` | 类型：string；必填：否；默认值："now"<br>设置实时时钟的初始日期。有效日期格式为：'now'、'2006-06-17T16:01:21' 或 '2006-06-17'。 |
+| `startup` | 类型：string；必填：否；默认值：—<br>启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `tablet` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 USB 数位板设备。此设备通常用于在 VNC 中实现鼠标绝对定位。否则，鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行大量仅使用控制台的客户机，可考虑禁用此设备以减少上下文切换。如果使用 spice（`qm set &lt;vmid&gt; --vga qxl`），则默认关闭此项。 |
+| `tags` | 类型：string；必填：否；默认值：—<br>虚拟机标签。此项仅为元信息。 |
+| `tdf` | 类型：boolean；必填：否；默认值：0<br>启用/禁用时间漂移修正。 |
+| `template` | 类型：boolean；必填：否；默认值：0<br>启用/禁用模板。 |
+| `tpmstate0` | 类型：string；必填：否；默认值：—<br>配置用于存放 TPM 状态的磁盘。格式固定为 'raw'。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。注意，此处忽略 SIZE_IN_GiB，改用 4 MiB。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `unused[n]` | 类型：string；必填：否；默认值：—<br>对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `usb[n]` | 类型：string；必填：否；默认值：—<br>配置 USB 设备（n 为 0 到 4；对于机器版本 &gt;= 7.1 且 ostype 为 l26 或 windows &gt; 7 的客户机，n 最大可为 14）。 |
+| `vcpus` | 类型：integer；必填：否；默认值：0<br>热插拔的 vcpu 数量。 |
+| `vga` | 类型：string；必填：否；默认值：—<br>配置 VGA 硬件。如果要使用高分辨率模式（&gt;= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 起，除使用 'cirrus' 的某些 Windows 版本（XP 及更早版本）外，所有操作系统类型的默认 VGA 显示类型均为 'std'。'qxl' 选项启用 SPICE 显示服务器。对于 win* 操作系统，可以选择所需的独立显示器数量，Linux 客户机可自行添加显示器。<br>也可以不使用任何显卡，而使用串行设备作为终端。 |
+| `virtio[n]` | 类型：string；必填：否；默认值：—<br>将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。使用 STORAGE_ID:0 和 'import-from' 参数从现有卷导入。 |
+| `virtiofs[n]` | 类型：string；必填：否；默认值：—<br>使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。 |
+| `vmgenid` | 类型：string；必填：否；默认值："1 (autogenerated)"<br>虚拟机生成 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数标识符。这可在虚拟机以不同配置执行时（例如执行快照或从模板创建）通知客户机操作系统。客户机操作系统察觉变化后，即可相应地将其分布式数据库副本标记为脏、重新初始化随机数生成器等。<br>注意，只有通过 API/CLI 创建或更新方法操作时才会自动创建，手动编辑配置文件时不会。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmstatestorage` | 类型：string；必填：否；默认值：—<br>虚拟机状态卷/文件的默认存储。 |
+| `watchdog` | 类型：string；必填：否；默认值：—<br>创建虚拟硬件看门狗设备。一旦启用（由客户机操作），客户机内的代理必须定期轮询看门狗，否则看门狗将重置客户机（或执行指定的相应操作） |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7698,24 +7098,16 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-pending-bf07e315-get-parameters" id="api-nodes-node-qemu-vmid-pending-bf07e315-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7769,24 +7161,16 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-cloudinit-89a87e25-get-parameters" id="api-nodes-node-qemu-vmid-cloudinit-89a87e25-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7834,30 +7218,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Cloudinit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-cloudinit-89a87e25-put-parameters" id="api-nodes-node-qemu-vmid-cloudinit-89a87e25-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7901,25 +7273,17 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-cloudinit-dump-74d6ff98-get-parameters" id="api-nodes-node-qemu-vmid-cloudinit-dump-74d6ff98-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `type` | string | 是 | — | 配置类型。；可选值：`user`, `network`, `meta` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `type` | 类型：string；必填：是；默认值：—<br>配置类型。；可选值：`user`, `network`, `meta` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7964,32 +7328,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Disk"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-unlink-25dd9774-put-parameters" id="api-nodes-node-qemu-vmid-unlink-25dd9774-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
-| `idlist` | string | 是 | — | 要删除的磁盘 ID 列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>强制物理移除。若不启用，则仅从配置文件中移除磁盘，并创建名为 'unused[n]' 的附加配置条目，其中包含卷 ID。解除 unused[n] 链接总会导致物理移除。 |
+| `idlist` | 类型：string；必填：是；默认值：—<br>要删除的磁盘 ID 列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8038,26 +7390,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-vncproxy-94a7f76d-post-parameters" id="api-nodes-node-qemu-vmid-vncproxy-94a7f76d-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `generate-password` | boolean | 否 | 0 | 已弃用，请勿使用。需要时会生成密码。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `websocket` | boolean | 否 | — | 准备 websocket 升级（仅使用串行终端时需要，否则始终可升级）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `generate-password` | 类型：boolean；必填：否；默认值：0<br>已弃用，请勿使用。需要时会生成密码。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `websocket` | 类型：boolean；必填：否；默认值：—<br>准备 websocket 升级（仅使用串行终端时需要，否则始终可升级）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8110,25 +7454,17 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-termproxy-40185689-post-parameters" id="api-nodes-node-qemu-vmid-termproxy-40185689-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `serial` | string | 否 | — | 打开串行终端（默认为 display）；可选值：`serial0`, `serial1`, `serial2`, `serial3` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `serial` | 类型：string；必填：否；默认值：—<br>打开串行终端（默认为 display）；可选值：`serial0`, `serial1`, `serial2`, `serial3` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8173,20 +7509,16 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]], "description": "还需要传入有效票据（vncticket）。"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-vncwebsocket-ab051aeb-get-parameters" id="api-nodes-node-qemu-vmid-vncwebsocket-ab051aeb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `port` | integer | 是 | — | 上次 vncproxy 调用返回的端口号。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vncticket` | string | 是 | — | 上次 vncproxy 调用的票据。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `port` | 类型：integer；必填：是；默认值：—<br>上次 vncproxy 调用返回的端口号。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vncticket` | 类型：string；必填：是；默认值：—<br>上次 vncproxy 调用的票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8232,31 +7564,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-spiceproxy-72d96e5f-post-parameters" id="api-nodes-node-qemu-vmid-spiceproxy-72d96e5f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `proxy` | string | 否 | — | SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `proxy` | 类型：string；必填：否；默认值：—<br>SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8309,24 +7629,16 @@ QEMU Guest Agent 命令索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-8a64188d-get-parameters" id="api-nodes-node-qemu-vmid-status-8a64188d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8370,30 +7682,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-current-0a89a5d8-get-parameters" id="api-nodes-node-qemu-vmid-status-current-0a89a5d8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8479,41 +7779,29 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-start-4fff0f5e-post-parameters" id="api-nodes-node-qemu-vmid-status-start-4fff0f5e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force-cpu` | string | 否 | — | 使用给定字符串覆盖 QEMU 的 -cpu 参数。 |
-| `machine` | string | 否 | — | 指定 QEMU 机器。 |
-| `migratedfrom` | string | 否 | — | 集群节点名称。 |
-| `migration_network` | string | 否 | — | 用于迁移的（子）网络的 CIDR。 |
-| `migration_type` | string | 否 | — | 迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。；可选值：`secure`, `insecure` |
-| `nets-host-mtu` | string | 否 | — | 用于迁移兼容性。VirtIO 网络设备及其生效的 host_mtu 设置列表，依据迁移源端的 QEMU 对象模型。值为 0 表示应避免为相应设备使用 host_mtu 参数。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `stateuri` | string | 否 | — | 某些命令从此位置保存/还原状态。 |
-| `targetstorage` | string | 否 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
-| `timeout` | integer | 否 | "max(30, vm memory in GiB)" | 最多等待 timeout 秒。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `with-conntrack-state` | boolean | 否 | 0 | 是否为运行中的虚拟机迁移 conntrack 条目。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force-cpu` | 类型：string；必填：否；默认值：—<br>使用给定字符串覆盖 QEMU 的 -cpu 参数。 |
+| `machine` | 类型：string；必填：否；默认值：—<br>指定 QEMU 机器。 |
+| `migratedfrom` | 类型：string；必填：否；默认值：—<br>集群节点名称。 |
+| `migration_network` | 类型：string；必填：否；默认值：—<br>用于迁移的（子）网络的 CIDR。 |
+| `migration_type` | 类型：string；必填：否；默认值：—<br>迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。；可选值：`secure`, `insecure` |
+| `nets-host-mtu` | 类型：string；必填：否；默认值：—<br>用于迁移兼容性。VirtIO 网络设备及其生效的 host_mtu 设置列表，依据迁移源端的 QEMU 对象模型。值为 0 表示应避免为相应设备使用 host_mtu 参数。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `stateuri` | 类型：string；必填：否；默认值：—<br>某些命令从此位置保存/还原状态。 |
+| `targetstorage` | 类型：string；必填：否；默认值：—<br>从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `timeout` | 类型：integer；必填：否；默认值："max(30, vm memory in GiB)"<br>最多等待 timeout 秒。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `with-conntrack-state` | 类型：boolean；必填：否；默认值：0<br>是否为运行中的虚拟机迁移 conntrack 条目。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8601,35 +7889,23 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-stop-920bbc17-post-parameters" id="api-nodes-node-qemu-vmid-status-stop-920bbc17-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `keepActive` | boolean | 否 | 0 | 不停用存储卷。 |
-| `migratedfrom` | string | 否 | — | 集群节点名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `overrule-shutdown` | boolean | 否 | 0 | 停止前尝试中止活动的 'qmshutdown' 任务。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `timeout` | integer | 否 | — | 最多等待 timeout 秒。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `keepActive` | 类型：boolean；必填：否；默认值：0<br>不停用存储卷。 |
+| `migratedfrom` | 类型：string；必填：否；默认值：—<br>集群节点名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `overrule-shutdown` | 类型：boolean；必填：否；默认值：0<br>停止前尝试中止活动的 'qmshutdown' 任务。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `timeout` | 类型：integer；必填：否；默认值：—<br>最多等待 timeout 秒。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8678,31 +7954,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-reset-2ff5eb35-post-parameters" id="api-nodes-node-qemu-vmid-status-reset-2ff5eb35-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8747,34 +8011,22 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-shutdown-f494aaf2-post-parameters" id="api-nodes-node-qemu-vmid-status-shutdown-f494aaf2-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `forceStop` | boolean | 否 | 0 | 确保虚拟机停止。 |
-| `keepActive` | boolean | 否 | 0 | 不停用存储卷。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `timeout` | integer | 否 | — | 最多等待 timeout 秒。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `forceStop` | 类型：boolean；必填：否；默认值：0<br>确保虚拟机停止。 |
+| `keepActive` | 类型：boolean；必填：否；默认值：0<br>不停用存储卷。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `timeout` | 类型：integer；必填：否；默认值：—<br>最多等待 timeout 秒。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8822,31 +8074,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-reboot-f1464ddf-post-parameters" id="api-nodes-node-qemu-vmid-status-reboot-f1464ddf-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeout` | integer | 否 | — | 最多等待 timeout 秒以完成关闭。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeout` | 类型：integer；必填：否；默认值：—<br>最多等待 timeout 秒以完成关闭。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8894,33 +8134,21 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-suspend-fa1cbf82-post-parameters" id="api-nodes-node-qemu-vmid-status-suspend-fa1cbf82-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `statestorage` | string | 否 | — | 存放虚拟机状态的存储 |
-| `todisk` | boolean | 否 | 0 | 如果设置，则将虚拟机挂起到磁盘。下次启动虚拟机时将恢复。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `statestorage` | 类型：string；必填：否；默认值：—<br>存放虚拟机状态的存储 |
+| `todisk` | 类型：boolean；必填：否；默认值：0<br>如果设置，则将虚拟机挂起到磁盘。下次启动虚拟机时将恢复。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8972,32 +8200,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-status-resume-2a99b6b3-post-parameters" id="api-nodes-node-qemu-vmid-status-resume-2a99b6b3-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `nocheck` | boolean | 否 | — | 不检查虚拟机是否正在运行，在迁移期间内部使用。仅 root 可使用此选项。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `nocheck` | 类型：boolean；必填：否；默认值：—<br>不检查虚拟机是否正在运行，在迁移期间内部使用。仅 root 可使用此选项。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9045,32 +8261,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-sendkey-6a5b597f-put-parameters" id="api-nodes-node-qemu-vmid-sendkey-6a5b597f-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `key` | string | 是 | — | 按键（qemu 监视器编码）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `key` | 类型：string；必填：是；默认值：—<br>按键（qemu 监视器编码）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9116,32 +8320,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-feature-7445274c-get-parameters" id="api-nodes-node-qemu-vmid-feature-7445274c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `feature` | string | 是 | — | 要检查的功能。；可选值：`snapshot`, `clone`, `copy` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 否 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `feature` | 类型：string；必填：是；默认值：—<br>要检查的功能。；可选值：`snapshot`, `clone`, `copy` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：否；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9193,40 +8385,28 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-clone-66080389-post-parameters" id="api-nodes-node-qemu-vmid-clone-66080389-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "clone limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `description` | string | 否 | — | 新虚拟机的描述。 |
-| `format` | string | 否 | — | 目标磁盘格式。仅适用于完整克隆。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
-| `full` | boolean | 否 | — | 创建所有磁盘的完整副本。克隆普通虚拟机时始终执行完整复制。对于虚拟机模板，默认尝试创建链接克隆。 |
-| `name` | string | 否 | — | 为新虚拟机设置名称。 |
-| `newid` | integer | 是 | — | 克隆的 VMID。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pool` | string | 否 | — | 将新虚拟机添加到指定资源池。 |
-| `snapname` | string | 否 | — | 快照名称。 |
-| `storage` | string | 否 | — | 完整克隆的目标存储。 |
-| `target` | string | 否 | — | 目标节点。仅当原始虚拟机位于共享存储上时允许。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：integer；必填：否；默认值："clone limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `description` | 类型：string；必填：否；默认值：—<br>新虚拟机的描述。 |
+| `format` | 类型：string；必填：否；默认值：—<br>目标磁盘格式。仅适用于完整克隆。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
+| `full` | 类型：boolean；必填：否；默认值：—<br>创建所有磁盘的完整副本。克隆普通虚拟机时始终执行完整复制。对于虚拟机模板，默认尝试创建链接克隆。 |
+| `name` | 类型：string；必填：否；默认值：—<br>为新虚拟机设置名称。 |
+| `newid` | 类型：integer；必填：是；默认值：—<br>克隆的 VMID。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>将新虚拟机添加到指定资源池。 |
+| `snapname` | 类型：string；必填：否；默认值：—<br>快照名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>完整克隆的目标存储。 |
+| `target` | 类型：string；必填：否；默认值：—<br>目标节点。仅当原始虚拟机位于共享存储上时允许。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9297,39 +8477,27 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-move-disk-cabfdd7c-post-parameters" id="api-nodes-node-qemu-vmid-move-disk-cabfdd7c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "move limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `delete` | boolean | 否 | 0 | 成功复制后删除原始磁盘。默认将原始磁盘保留为未使用磁盘。 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `disk` | string | 是 | — | 要移动的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
-| `format` | string | 否 | — | 目标磁盘格式。仅在移动到不同存储时使用。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 目标存储。 |
-| `target-digest` | string | 否 | — | 如果目标虚拟机当前配置文件的 SHA1 摘要不同，则阻止更改。可用于检测并发修改。 |
-| `target-disk` | string | 否 | — | 磁盘在目标虚拟机上要移至的配置键（例如 ide0 或 scsi1）。默认为源磁盘键。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
-| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：integer；必填：否；默认值："move limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>成功复制后删除原始磁盘。默认将原始磁盘保留为未使用磁盘。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `disk` | 类型：string；必填：是；默认值：—<br>要移动的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| `format` | 类型：string；必填：否；默认值：—<br>目标磁盘格式。仅在移动到不同存储时使用。如果目标存储不支持该格式，则改用存储的默认格式。；可选值：`raw`, `qcow2`, `vmdk` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>目标存储。 |
+| `target-digest` | 类型：string；必填：否；默认值：—<br>如果目标虚拟机当前配置文件的 SHA1 摘要不同，则阻止更改。可用于检测并发修改。 |
+| `target-disk` | 类型：string；必填：否；默认值：—<br>磁盘在目标虚拟机上要移至的配置键（例如 ide0 或 scsi1）。默认为源磁盘键。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| `target-vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9465,31 +8633,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-migrate-e7f9d538-get-parameters" id="api-nodes-node-qemu-vmid-migrate-e7f9d538-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `target` | string | 否 | — | 目标节点。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `target` | 类型：string；必填：否；默认值：—<br>目标节点。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9576,39 +8732,27 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-migrate-e7f9d538-post-parameters" id="api-nodes-node-qemu-vmid-migrate-e7f9d538-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `force` | boolean | 否 | — | 允许迁移使用本地设备的虚拟机。仅 root 可使用此选项。 |
-| `migration_network` | string | 否 | — | 用于迁移的（子）网络的 CIDR。 |
-| `migration_type` | string | 否 | — | 迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。；可选值：`secure`, `insecure` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `online` | boolean | 否 | — | 如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
-| `target` | string | 是 | — | 目标节点。 |
-| `targetstorage` | string | 否 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `with-conntrack-state` | boolean | 否 | 0 | 是否为运行中的虚拟机迁移 conntrack 条目。 |
-| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：integer；必填：否；默认值："migrate limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>允许迁移使用本地设备的虚拟机。仅 root 可使用此选项。 |
+| `migration_network` | 类型：string；必填：否；默认值：—<br>用于迁移的（子）网络的 CIDR。 |
+| `migration_type` | 类型：string；必填：否；默认值：—<br>迁移流量默认通过 SSH 隧道加密。在安全且完全私有的网络上，可禁用此功能以提高性能。；可选值：`secure`, `insecure` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `online` | 类型：boolean；必填：否；默认值：—<br>如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `targetstorage` | 类型：string；必填：否；默认值：—<br>从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `with-conntrack-state` | 类型：boolean；必填：否；默认值：0<br>是否为运行中的虚拟机迁移 conntrack 条目。 |
+| `with-local-disks` | 类型：boolean；必填：否；默认值：—<br>为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9672,37 +8816,25 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-remote-migrate-21853f6e-post-parameters" id="api-nodes-node-qemu-vmid-remote-migrate-21853f6e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | integer | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `delete` | boolean | 否 | 0 | 成功迁移后删除原始虚拟机及相关数据。默认将原始虚拟机以停止状态保留在源集群中。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `online` | boolean | 否 | — | 如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
-| `target-bridge` | string | 是 | — | 从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。 |
-| `target-endpoint` | string | 是 | — | 远程目标端点 |
-| `target-storage` | string | 是 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
-| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：integer；必填：否；默认值："migrate limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>成功迁移后删除原始虚拟机及相关数据。默认将原始虚拟机以停止状态保留在源集群中。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `online` | 类型：boolean；必填：否；默认值：—<br>如果虚拟机正在运行，则使用在线迁移。如果虚拟机已停止，则忽略。 |
+| `target-bridge` | 类型：string；必填：是；默认值：—<br>从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。 |
+| `target-endpoint` | 类型：string；必填：是；默认值：—<br>远程目标端点 |
+| `target-storage` | 类型：string；必填：是；默认值：—<br>从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `target-vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9774,31 +8906,19 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-monitor-dffdafc1-post-parameters" id="api-nodes-node-qemu-vmid-monitor-dffdafc1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `command` | string | 是 | — | 监视器命令。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `command` | 类型：string；必填：是；默认值：—<br>监视器命令。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9843,34 +8963,22 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Disk"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-resize-27ed6163-put-parameters" id="api-nodes-node-qemu-vmid-resize-27ed6163-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `disk` | string | 是 | — | 要调整大小的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `size` | string | 是 | — | 新大小。带 `+` 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `disk` | 类型：string；必填：是；默认值：—<br>要调整大小的磁盘。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `size` | 类型：string；必填：是；默认值：—<br>新大小。带 `+` 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9933,30 +9041,18 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-a49a4536-get-parameters" id="api-nodes-node-qemu-vmid-snapshot-a49a4536-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10005,33 +9101,21 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-a49a4536-post-parameters" id="api-nodes-node-qemu-vmid-snapshot-a49a4536-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 文本描述或注释。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vmstate` | boolean | 否 | — | 保存 vmstate |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>文本描述或注释。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vmstate` | 类型：boolean；必填：否；默认值：—<br>保存 vmstate |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10078,32 +9162,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-delete-parameters" id="api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 即使移除磁盘快照失败，也从配置文件中移除。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>即使移除磁盘快照失败，也从配置文件中移除。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10143,19 +9215,15 @@ QEMU Guest Agent 命令索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-get-parameters" id="api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10200,25 +9268,17 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot", "VM.Snapshot.Rollback", "VM.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-get-parameters" id="api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10257,32 +9317,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-put-parameters" id="api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 文本描述或注释。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>文本描述或注释。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10328,32 +9376,20 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot", "VM.Snapshot.Rollback"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-rollback-ea6a2fae-post-parameters" id="api-nodes-node-qemu-vmid-snapshot-snapname-rollback-ea6a2fae-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `start` | boolean | 否 | 0 | 成功回滚后是否应启动虚拟机。（注意：如果快照包含 RAM，虚拟机会自动启动。） |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `start` | 类型：boolean；必填：否；默认值：0<br>成功回滚后是否应启动虚拟机。（注意：如果快照包含 RAM，虚拟机会自动启动。） |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10402,31 +9438,19 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Allocate"]], "description": "需要对 /vms/{vmid} 具有 'VM.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-template-e1fe1f74-post-parameters" id="api-nodes-node-qemu-vmid-template-e1fe1f74-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `disk` | string | 否 | — | 如果只想将 1 个磁盘转换为基础镜像。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `disk` | 类型：string；必填：否；默认值：—<br>如果只想将 1 个磁盘转换为基础镜像。；可选值：`ide0`, `ide1`, `ide2`, `ide3`, `scsi0`, `scsi1`, `scsi2`, `scsi3`, `scsi4`, `scsi5`, `scsi6`, `scsi7`, `scsi8`, `scsi9`, `scsi10`, `scsi11`, `scsi12`, `scsi13`, `scsi14`, `scsi15`, `scsi16`, `scsi17`, `scsi18`, `scsi19`, `scsi20`, `scsi21`, `scsi22`, `scsi23`, `scsi24`, `scsi25`, `scsi26`, `scsi27`, `scsi28`, `scsi29`, `scsi30`, `virtio0`, `virtio1`, `virtio2`, `virtio3`, `virtio4`, `virtio5`, `virtio6`, `virtio7`, `virtio8`, `virtio9`, `virtio10`, `virtio11`, `virtio12`, `virtio13`, `virtio14`, `virtio15`, `sata0`, `sata1`, `sata2`, `sata3`, `sata4`, `sata5`, `efidisk0`, `tpmstate0` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10483,26 +9507,18 @@ QEMU Guest Agent 命令索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-mtunnel-699b1ed0-post-parameters" id="api-nodes-node-qemu-vmid-mtunnel-699b1ed0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bridges` | string | 否 | — | 要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storages` | string | 否 | — | 要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bridges` | 类型：string；必填：否；默认值：—<br>要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storages` | 类型：string；必填：否；默认值：—<br>要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10554,20 +9570,16 @@ QEMU Guest Agent 命令索引。
 {"description": "需要传入对所选套接字有效的票据。可通过 mtunnel API 调用创建票据，该调用会相应检查权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-mtunnelwebsocket-7dcf252d-get-parameters" id="api-nodes-node-qemu-vmid-mtunnelwebsocket-7dcf252d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `socket` | string | 是 | — | 要转发到的 UNIX 套接字 |
-| `ticket` | string | 是 | — | 初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `socket` | 类型：string；必填：是；默认值：—<br>要转发到的 UNIX 套接字 |
+| `ticket` | 类型：string；必填：是；默认值：—<br>初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10613,25 +9625,17 @@ QEMU Guest Agent 命令索引。
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-qemu-vmid-dbus-vmstate-592031a5-post-parameters" id="api-nodes-node-qemu-vmid-dbus-vmstate-592031a5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 对 DBus VMState 辅助程序执行的操作。；可选值：`start`, `stop` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>对 DBus VMState 辅助程序执行的操作。；可选值：`start`, `stop` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10676,29 +9680,17 @@ LXC 容器索引（按节点）。
 {"description": "仅列出您对 /vms/<vmid> 具有 VM.Audit 权限的容器。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-84658ade-get-parameters" id="api-nodes-node-lxc-84658ade-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10764,74 +9756,62 @@ LXC 容器索引（按节点）。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-84658ade-post-parameters" id="api-nodes-node-lxc-84658ade-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `arch` | string | 否 | "amd64" | 操作系统架构类型。；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
-| `bwlimit` | number | 否 | "restore limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `cmode` | string | 否 | "tty" | 控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。；可选值：`shell`, `console`, `tty` |
-| `console` | boolean | 否 | 1 | 将控制台设备（/dev/console）连接到容器。 |
-| `cores` | integer | 否 | — | 分配给容器的核心数。默认情况下，容器可使用所有可用核心。 |
-| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。 |
-| `debug` | boolean | 否 | 0 | 尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。 |
-| `description` | string | 否 | — | 容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。 |
-| `dev[n]` | string | 否 | — | 要直通到容器的设备 |
-| `entrypoint` | string | 否 | "/sbin/init" | 用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。 |
-| `env` | string | 否 | — | 容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。 |
-| `features` | string | 否 | — | 允许容器访问高级功能。 |
-| `force` | boolean | 否 | — | 允许覆盖现有容器。 |
-| `ha-managed` | boolean | 否 | 0 | 创建后将容器添加为 HA 资源。 |
-| `hookscript` | string | 否 | — | 在容器生命周期各个阶段执行的脚本。 |
-| `hostname` | string | 否 | — | 为容器设置主机名。 |
-| `ignore-unpack-errors` | boolean | 否 | — | 解压模板时忽略错误。 |
-| `lock` | string | 否 | — | 锁定/解锁容器。；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
-| `memory` | integer | 否 | 512 | 容器的 RAM 容量，单位为 MB。 |
-| `mp[n]` | string | 否 | — | 将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。 |
-| `nameserver` | string | 否 | — | 设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
-| `net[n]` | string | 否 | — | 指定容器的网络接口。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `onboot` | boolean | 否 | 0 | 指定容器是否在系统启动时启动。 |
-| `ostemplate` | string | 是 | — | 操作系统模板或备份文件。 |
-| `ostype` | string | 否 | — | 操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/&lt;ostype&gt;.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
-| `password` | string | 否 | — | 设置容器内的 root 密码。 |
-| `pool` | string | 否 | — | 将虚拟机添加到指定资源池。 |
-| `protection` | boolean | 否 | 0 | 设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。 |
-| `restore` | boolean | 否 | — | 将此任务标记为还原任务。 |
-| `rootfs` | string | 否 | — | 将卷用作容器根目录。 |
-| `searchdomain` | string | 否 | — | 设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
-| `ssh-public-keys` | string | 否 | — | 设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
-| `start` | boolean | 否 | 0 | 成功创建后启动容器。 |
-| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
-| `storage` | string | 否 | "local" | 默认存储。 |
-| `swap` | integer | 否 | 512 | 容器的 SWAP 容量，单位为 MB。 |
-| `tags` | string | 否 | — | 容器标签。此项仅为元信息。 |
-| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
-| `timezone` | string | 否 | — | 容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项 |
-| `tty` | integer | 否 | 2 | 指定容器可用的 tty 数量 |
-| `unique` | boolean | 否 | — | 分配唯一的随机以太网地址。 |
-| `unprivileged` | boolean | 否 | 0 | 使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。） |
-| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `arch` | 类型：string；必填：否；默认值："amd64"<br>操作系统架构类型。；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
+| `bwlimit` | 类型：number；必填：否；默认值："restore limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `cmode` | 类型：string；必填：否；默认值："tty"<br>控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。；可选值：`shell`, `console`, `tty` |
+| `console` | 类型：boolean；必填：否；默认值：1<br>将控制台设备（/dev/console）连接到容器。 |
+| `cores` | 类型：integer；必填：否；默认值：—<br>分配给容器的核心数。默认情况下，容器可使用所有可用核心。 |
+| `cpulimit` | 类型：number；必填：否；默认值：0<br>CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | 类型：integer；必填：否；默认值："cgroup v1: 1024, cgroup v2: 100"<br>容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。 |
+| `debug` | 类型：boolean；必填：否；默认值：0<br>尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。 |
+| `description` | 类型：string；必填：否；默认值：—<br>容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。 |
+| `dev[n]` | 类型：string；必填：否；默认值：—<br>要直通到容器的设备 |
+| `entrypoint` | 类型：string；必填：否；默认值："/sbin/init"<br>用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。 |
+| `env` | 类型：string；必填：否；默认值：—<br>容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。 |
+| `features` | 类型：string；必填：否；默认值：—<br>允许容器访问高级功能。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>允许覆盖现有容器。 |
+| `ha-managed` | 类型：boolean；必填：否；默认值：0<br>创建后将容器添加为 HA 资源。 |
+| `hookscript` | 类型：string；必填：否；默认值：—<br>在容器生命周期各个阶段执行的脚本。 |
+| `hostname` | 类型：string；必填：否；默认值：—<br>为容器设置主机名。 |
+| `ignore-unpack-errors` | 类型：boolean；必填：否；默认值：—<br>解压模板时忽略错误。 |
+| `lock` | 类型：string；必填：否；默认值：—<br>锁定/解锁容器。；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
+| `memory` | 类型：integer；必填：否；默认值：512<br>容器的 RAM 容量，单位为 MB。 |
+| `mp[n]` | 类型：string；必填：否；默认值：—<br>将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。 |
+| `nameserver` | 类型：string；必填：否；默认值：—<br>设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `net[n]` | 类型：string；必填：否；默认值：—<br>指定容器的网络接口。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `onboot` | 类型：boolean；必填：否；默认值：0<br>指定容器是否在系统启动时启动。 |
+| `ostemplate` | 类型：string；必填：是；默认值：—<br>操作系统模板或备份文件。 |
+| `ostype` | 类型：string；必填：否；默认值：—<br>操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/&lt;ostype&gt;.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
+| `password` | 类型：string；必填：否；默认值：—<br>设置容器内的 root 密码。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>将虚拟机添加到指定资源池。 |
+| `protection` | 类型：boolean；必填：否；默认值：0<br>设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。 |
+| `restore` | 类型：boolean；必填：否；默认值：—<br>将此任务标记为还原任务。 |
+| `rootfs` | 类型：string；必填：否；默认值：—<br>将卷用作容器根目录。 |
+| `searchdomain` | 类型：string；必填：否；默认值：—<br>设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `ssh-public-keys` | 类型：string；必填：否；默认值：—<br>设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。 |
+| `start` | 类型：boolean；必填：否；默认值：0<br>成功创建后启动容器。 |
+| `startup` | 类型：string；必填：否；默认值：—<br>启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `storage` | 类型：string；必填：否；默认值："local"<br>默认存储。 |
+| `swap` | 类型：integer；必填：否；默认值：512<br>容器的 SWAP 容量，单位为 MB。 |
+| `tags` | 类型：string；必填：否；默认值：—<br>容器标签。此项仅为元信息。 |
+| `template` | 类型：boolean；必填：否；默认值：0<br>启用/禁用模板。 |
+| `timezone` | 类型：string；必填：否；默认值：—<br>容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项 |
+| `tty` | 类型：integer；必填：否；默认值：2<br>指定容器可用的 tty 数量 |
+| `unique` | 类型：boolean；必填：否；默认值：—<br>分配唯一的随机以太网地址。 |
+| `unprivileged` | 类型：boolean；必填：否；默认值：0<br>使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。） |
+| `unused[n]` | 类型：string；必填：否；默认值：—<br>对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11138,33 +10118,21 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-c754c372-delete-parameters" id="api-nodes-node-lxc-vmid-c754c372-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `destroy-unreferenced-disks` | boolean | 否 | — | 如果设置，还将销毁所有已启用存储中具有该 VMID 且未在配置中引用的磁盘。 |
-| `force` | boolean | 否 | 0 | 强制销毁，即使正在运行。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `purge` | boolean | 否 | 0 | 从所有相关配置中移除容器，例如备份作业、复制作业或 HA。相关 ACL 和防火墙条目始终会被移除。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `destroy-unreferenced-disks` | 类型：boolean；必填：否；默认值：—<br>如果设置，还将销毁所有已启用存储中具有该 VMID 且未在配置中引用的磁盘。 |
+| `force` | 类型：boolean；必填：否；默认值：0<br>强制销毁，即使正在运行。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `purge` | 类型：boolean；必填：否；默认值：0<br>从所有相关配置中移除容器，例如备份作业、复制作业或 HA。相关 ACL 和防火墙条目始终会被移除。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11210,24 +10178,16 @@ LXC 容器索引（按节点）。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-c754c372-get-parameters" id="api-nodes-node-lxc-vmid-c754c372-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11271,26 +10231,18 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-config-4d3fd75c-get-parameters" id="api-nodes-node-lxc-vmid-config-4d3fd75c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `current` | boolean | 否 | 0 | 获取当前值（而非待应用值）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapshot` | string | 否 | — | 从给定快照获取配置值。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `current` | 类型：boolean；必填：否；默认值：0<br>获取当前值（而非待应用值）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapshot` | 类型：string；必填：否；默认值：—<br>从给定快照获取配置值。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11568,65 +10520,53 @@ LXC 容器索引（按节点）。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-config-4d3fd75c-put-parameters" id="api-nodes-node-lxc-vmid-config-4d3fd75c-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `arch` | string | 否 | "amd64" | 操作系统架构类型。；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
-| `cmode` | string | 否 | "tty" | 控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。；可选值：`shell`, `console`, `tty` |
-| `console` | boolean | 否 | 1 | 将控制台设备（/dev/console）连接到容器。 |
-| `cores` | integer | 否 | — | 分配给容器的核心数。默认情况下，容器可使用所有可用核心。 |
-| `cpulimit` | number | 否 | 0 | CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
-| `cpuunits` | integer | 否 | "cgroup v1: 1024, cgroup v2: 100" | 容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。 |
-| `debug` | boolean | 否 | 0 | 尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。 |
-| `dev[n]` | string | 否 | — | 要直通到容器的设备 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `entrypoint` | string | 否 | "/sbin/init" | 用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。 |
-| `env` | string | 否 | — | 容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。 |
-| `features` | string | 否 | — | 允许容器访问高级功能。 |
-| `hookscript` | string | 否 | — | 在容器生命周期各个阶段执行的脚本。 |
-| `hostname` | string | 否 | — | 为容器设置主机名。 |
-| `lock` | string | 否 | — | 锁定/解锁容器。；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
-| `memory` | integer | 否 | 512 | 容器的 RAM 容量，单位为 MB。 |
-| `mp[n]` | string | 否 | — | 将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。 |
-| `nameserver` | string | 否 | — | 设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
-| `net[n]` | string | 否 | — | 指定容器的网络接口。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `onboot` | boolean | 否 | 0 | 指定容器是否在系统启动时启动。 |
-| `ostype` | string | 否 | — | 操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/&lt;ostype&gt;.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
-| `protection` | boolean | 否 | 0 | 设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。 |
-| `revert` | string | 否 | — | 撤销待应用的更改。 |
-| `rootfs` | string | 否 | — | 将卷用作容器根目录。 |
-| `searchdomain` | string | 否 | — | 设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
-| `startup` | string | 否 | — | 启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
-| `swap` | integer | 否 | 512 | 容器的 SWAP 容量，单位为 MB。 |
-| `tags` | string | 否 | — | 容器标签。此项仅为元信息。 |
-| `template` | boolean | 否 | 0 | 启用/禁用模板。 |
-| `timezone` | string | 否 | — | 容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项 |
-| `tty` | integer | 否 | 2 | 指定容器可用的 tty 数量 |
-| `unprivileged` | boolean | 否 | 0 | 使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。） |
-| `unused[n]` | string | 否 | — | 对未使用卷的引用。此项供内部使用，不应手动修改。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `arch` | 类型：string；必填：否；默认值："amd64"<br>操作系统架构类型。；可选值：`amd64`, `i386`, `arm64`, `armhf`, `riscv32`, `riscv64` |
+| `cmode` | 类型：string；必填：否；默认值："tty"<br>控制台模式。默认情况下，console 命令尝试连接到一个可用的 tty 设备。将 cmode 设为 'console' 时，会改为尝试连接到 /dev/console。如果将 cmode 设为 'shell'，则直接在容器内调用 shell（无需登录）。；可选值：`shell`, `console`, `tty` |
+| `console` | 类型：boolean；必填：否；默认值：1<br>将控制台设备（/dev/console）连接到容器。 |
+| `cores` | 类型：integer；必填：否；默认值：—<br>分配给容器的核心数。默认情况下，容器可使用所有可用核心。 |
+| `cpulimit` | 类型：number；必填：否；默认值：0<br>CPU 使用量限制。<br><br>注意：如果计算机有 2 个 CPU，则 CPU 时间总量为 '2'。值 '0' 表示不限制 CPU。 |
+| `cpuunits` | 类型：integer；必填：否；默认值："cgroup v1: 1024, cgroup v2: 100"<br>容器的 CPU 权重。内核公平调度器使用此参数。数值越大，此容器获得的 CPU 时间越多。该数值相对于其他所有运行中客户机的权重而言。 |
+| `debug` | 类型：boolean；必填：否；默认值：0<br>尝试输出更详细的信息。目前仅在启动时启用 debug 日志级别。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>容器描述。显示在 Web 界面的容器摘要中。作为注释保存在配置文件中。 |
+| `dev[n]` | 类型：string；必填：否；默认值：—<br>要直通到容器的设备 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `entrypoint` | 类型：string；必填：否；默认值："/sbin/init"<br>用作 init 运行的命令，可带参数；可以以绝对路径、相对路径或 $PATH 中的二进制程序开头。 |
+| `env` | 类型：string；必填：否；默认值：—<br>容器运行时环境，以 NUL 分隔的列表表示。替换配置中的所有 lxc.environment.runtime 条目。 |
+| `features` | 类型：string；必填：否；默认值：—<br>允许容器访问高级功能。 |
+| `hookscript` | 类型：string；必填：否；默认值：—<br>在容器生命周期各个阶段执行的脚本。 |
+| `hostname` | 类型：string；必填：否；默认值：—<br>为容器设置主机名。 |
+| `lock` | 类型：string；必填：否；默认值：—<br>锁定/解锁容器。；可选值：`backup`, `create`, `destroyed`, `disk`, `fstrim`, `migrate`, `mounted`, `rollback`, `snapshot`, `snapshot-delete` |
+| `memory` | 类型：integer；必填：否；默认值：512<br>容器的 RAM 容量，单位为 MB。 |
+| `mp[n]` | 类型：string；必填：否；默认值：—<br>将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 分配新卷。 |
+| `nameserver` | 类型：string；必填：否；默认值：—<br>设置容器的 DNS 服务器 IP 地址。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `net[n]` | 类型：string；必填：否；默认值：—<br>指定容器的网络接口。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `onboot` | 类型：boolean；必填：否；默认值：0<br>指定容器是否在系统启动时启动。 |
+| `ostype` | 类型：string；必填：否；默认值：—<br>操作系统类型。用于在容器内设置配置，对应 /usr/share/lxc/config/&lt;ostype&gt;.common.conf 中的 LXC 设置脚本。值 'unmanaged' 可用于跳过所有操作系统特定设置。；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
+| `protection` | 类型：boolean；必填：否；默认值：0<br>设置容器的保护标志。此项将阻止容器或容器磁盘的移除/更新操作。 |
+| `revert` | 类型：string；必填：否；默认值：—<br>撤销待应用的更改。 |
+| `rootfs` | 类型：string；必填：否；默认值：—<br>将卷用作容器根目录。 |
+| `searchdomain` | 类型：string；必填：否；默认值：—<br>设置容器的 DNS 搜索域。如果既未设置 searchdomain 也未设置 nameserver，创建时将自动使用宿主机的设置。 |
+| `startup` | 类型：string；必填：否；默认值：—<br>启动和关闭行为。Order 是非负数，定义总体启动顺序。关闭按相反顺序执行。另外可设置以秒为单位的 'up' 或 'down' 延迟，指定启动或停止下一个虚拟机前等待的时间。 |
+| `swap` | 类型：integer；必填：否；默认值：512<br>容器的 SWAP 容量，单位为 MB。 |
+| `tags` | 类型：string；必填：否；默认值：—<br>容器标签。此项仅为元信息。 |
+| `template` | 类型：boolean；必填：否；默认值：0<br>启用/禁用模板。 |
+| `timezone` | 类型：string；必填：否；默认值：—<br>容器内使用的时区。如果未设置此选项，则不做任何操作。可设为 'host' 以匹配宿主机时区，或设为 /usr/share/zoneinfo/zone.tab 中的任意时区选项 |
+| `tty` | 类型：integer；必填：否；默认值：2<br>指定容器可用的 tty 数量 |
+| `unprivileged` | 类型：boolean；必填：否；默认值：0<br>使容器以非特权用户身份运行。创建时默认为 1。还原时默认为备份中的值。（不应手动修改。） |
+| `unused[n]` | 类型：string；必填：否；默认值：—<br>对未使用卷的引用。此项供内部使用，不应手动修改。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11921,24 +10861,16 @@ LXC 容器索引（按节点）。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-79202e07-get-parameters" id="api-nodes-node-lxc-vmid-status-79202e07-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11982,30 +10914,18 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-current-8518f8bd-get-parameters" id="api-nodes-node-lxc-vmid-status-current-8518f8bd-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12080,32 +11000,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-start-371b47a4-post-parameters" id="api-nodes-node-lxc-vmid-status-start-371b47a4-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `debug` | boolean | 否 | 0 | 如果设置，则在启动时启用非常详细的 debug 日志级别。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `debug` | 类型：boolean；必填：否；默认值：0<br>如果设置，则在启动时启用非常详细的 debug 日志级别。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12151,32 +11059,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-stop-499f3609-post-parameters" id="api-nodes-node-lxc-vmid-status-stop-499f3609-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `overrule-shutdown` | boolean | 否 | 0 | 停止前尝试中止活动的 'vzshutdown' 任务。 |
-| `skiplock` | boolean | 否 | — | 忽略锁——仅 root 可使用此选项。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `overrule-shutdown` | 类型：boolean；必填：否；默认值：0<br>停止前尝试中止活动的 'vzshutdown' 任务。 |
+| `skiplock` | 类型：boolean；必填：否；默认值：—<br>忽略锁——仅 root 可使用此选项。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12222,32 +11118,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-shutdown-60abada8-post-parameters" id="api-nodes-node-lxc-vmid-status-shutdown-60abada8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `forceStop` | boolean | 否 | 0 | 确保容器停止。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeout` | integer | 否 | 60 | 最多等待 timeout 秒。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `forceStop` | 类型：boolean；必填：否；默认值：0<br>确保容器停止。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeout` | 类型：integer；必填：否；默认值：60<br>最多等待 timeout 秒。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12293,30 +11177,18 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-suspend-ac2bf135-post-parameters" id="api-nodes-node-lxc-vmid-status-suspend-ac2bf135-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12360,30 +11232,18 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-resume-89380b28-post-parameters" id="api-nodes-node-lxc-vmid-status-resume-89380b28-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12427,31 +11287,19 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-status-reboot-43e691b5-post-parameters" id="api-nodes-node-lxc-vmid-status-reboot-43e691b5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeout` | integer | 否 | — | 最多等待 timeout 秒以完成关闭。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeout` | 类型：integer；必填：否；默认值：—<br>最多等待 timeout 秒以完成关闭。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12496,30 +11344,18 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-b830cdef-get-parameters" id="api-nodes-node-lxc-vmid-snapshot-b830cdef-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12567,32 +11403,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-b830cdef-post-parameters" id="api-nodes-node-lxc-vmid-snapshot-b830cdef-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 文本描述或注释。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>文本描述或注释。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12638,32 +11462,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-delete-parameters" id="api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 即使移除磁盘快照失败，也从配置文件中移除。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>即使移除磁盘快照失败，也从配置文件中移除。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12703,19 +11515,15 @@ LXC 容器索引（按节点）。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-get-parameters" id="api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12760,32 +11568,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot", "VM.Snapshot.Rollback"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-rollback-a80aae0b-post-parameters" id="api-nodes-node-lxc-vmid-snapshot-snapname-rollback-a80aae0b-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `start` | boolean | 否 | 0 | 成功回滚后是否应启动容器 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `start` | 类型：boolean；必填：否；默认值：0<br>成功回滚后是否应启动容器 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12831,25 +11627,17 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot", "VM.Snapshot.Rollback", "VM.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-get-parameters" id="api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12888,32 +11676,20 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Snapshot"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-put-parameters" id="api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 文本描述或注释。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 是 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>文本描述或注释。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：是；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12959,18 +11735,14 @@ LXC 容器索引（按节点）。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-8e38cb47-get-parameters" id="api-nodes-node-lxc-vmid-firewall-8e38cb47-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13014,24 +11786,16 @@ LXC 容器索引（按节点）。
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-rules-62340537-get-parameters" id="api-nodes-node-lxc-vmid-firewall-rules-62340537-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13091,45 +11855,33 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-rules-62340537-post-parameters" id="api-nodes-node-lxc-vmid-firewall-rules-62340537-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13218,32 +11970,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-delete-parameters" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13286,25 +12026,17 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-get-parameters" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13362,47 +12094,35 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-put-parameters" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13493,18 +12213,14 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-get-parameters" id="api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13552,27 +12268,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-post-parameters" id="api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13619,26 +12327,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-delete-parameters" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13681,19 +12381,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-get-parameters" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13732,29 +12428,21 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-put-parameters" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `rename` | string | 否 | — | 重命名现有别名。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有别名。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13806,18 +12494,14 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-get-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13865,28 +12549,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-post-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `rename` | string | 否 | — | 重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13940,26 +12616,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-delete-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 删除 IPSet 中的所有成员（如有）。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>删除 IPSet 中的所有成员（如有）。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13999,19 +12667,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-get-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14060,28 +12724,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-post-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nomatch` | boolean | 否 | — |  |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14129,27 +12785,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-delete-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14193,26 +12841,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-get-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14252,29 +12892,21 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-put-parameters" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nomatch` | boolean | 否 | — |  |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14326,24 +12958,16 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-get-parameters" id="api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14404,42 +13028,30 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Network"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-put-parameters" id="api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dhcp` | boolean | 否 | 0 | 启用 DHCP。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `enable` | boolean | 否 | 0 | 启用/禁用防火墙规则。 |
-| `ipfilter` | boolean | 否 | — | 启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net&lt;id&gt; IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。 |
-| `log_level_in` | string | 否 | — | 传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_level_out` | string | 否 | — | 传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macfilter` | boolean | 否 | 1 | 启用/禁用 MAC 地址过滤器。 |
-| `ndp` | boolean | 否 | 1 | 启用 NDP（邻居发现协议）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `policy_in` | string | 否 | — | 输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `policy_out` | string | 否 | — | 输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `radv` | boolean | 否 | — | 允许发送路由器通告。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dhcp` | 类型：boolean；必填：否；默认值：0<br>启用 DHCP。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | 类型：boolean；必填：否；默认值：0<br>启用/禁用防火墙规则。 |
+| `ipfilter` | 类型：boolean；必填：否；默认值：—<br>启用默认 IP 过滤器。这相当于为每个接口添加一个空的 ipfilter-net&lt;id&gt; IP 集合。此类 IP 集合隐含包含合理的默认限制，例如将 IPv6 链路本地地址限制为由接口 MAC 地址派生的地址。对于容器，还会隐式添加已配置的 IP 地址。 |
+| `log_level_in` | 类型：string；必填：否；默认值：—<br>传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_level_out` | 类型：string；必填：否；默认值：—<br>传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macfilter` | 类型：boolean；必填：否；默认值：1<br>启用/禁用 MAC 地址过滤器。 |
+| `ndp` | 类型：boolean；必填：否；默认值：1<br>启用 NDP（邻居发现协议）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `policy_in` | 类型：string；必填：否；默认值：—<br>输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `policy_out` | 类型：string；必填：否；默认值：—<br>输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `radv` | 类型：boolean；必填：否；默认值：—<br>允许发送路由器通告。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14507,34 +13119,22 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-log-91c9938b-get-parameters" id="api-nodes-node-lxc-vmid-firewall-log-91c9938b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `since` | integer | 否 | — | 显示从此 UNIX 时间戳开始的日志。 |
-| `start` | integer | 否 | — |  |
-| `until` | integer | 否 | — | 显示截至此 UNIX 时间戳的日志。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `limit` | 类型：integer；必填：否；默认值：—<br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `since` | 类型：integer；必填：否；默认值：—<br>显示从此 UNIX 时间戳开始的日志。 |
+| `start` | 类型：integer；必填：否；默认值：—<br> |
+| `until` | 类型：integer；必填：否；默认值：—<br>显示截至此 UNIX 时间戳的日志。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14585,19 +13185,15 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-firewall-refs-e099a4ab-get-parameters" id="api-nodes-node-lxc-vmid-firewall-refs-e099a4ab-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `type` | string | 否 | — | 仅列出指定类型的引用。；可选值：`alias`, `ipset` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出指定类型的引用。；可选值：`alias`, `ipset` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14651,27 +13247,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-rrd-30f0caee-get-parameters" id="api-nodes-node-lxc-vmid-rrd-30f0caee-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `ds` | string | 是 | — | 要显示的数据源列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `ds` | 类型：string；必填：是；默认值：—<br>要显示的数据源列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14718,26 +13306,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-rrddata-34b9b1a4-get-parameters" id="api-nodes-node-lxc-vmid-rrddata-34b9b1a4-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14783,27 +13363,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-vncproxy-bcb09d73-post-parameters" id="api-nodes-node-lxc-vmid-vncproxy-bcb09d73-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `height` | integer | 否 | — | 设置控制台高度，单位为像素。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `websocket` | boolean | 否 | — | 使用 websocket 代替标准 VNC。 |
-| `width` | integer | 否 | — | 设置控制台宽度，单位为像素。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `height` | 类型：integer；必填：否；默认值：—<br>设置控制台高度，单位为像素。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `websocket` | 类型：boolean；必填：否；默认值：—<br>使用 websocket 代替标准 VNC。 |
+| `width` | 类型：integer；必填：否；默认值：—<br>设置控制台宽度，单位为像素。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14861,24 +13433,16 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-termproxy-bb452949-post-parameters" id="api-nodes-node-lxc-vmid-termproxy-bb452949-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14922,20 +13486,16 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]], "description": "还需要传入有效票据（vncticket）。"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-vncwebsocket-8fcf1db4-get-parameters" id="api-nodes-node-lxc-vmid-vncwebsocket-8fcf1db4-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `port` | integer | 是 | — | 上次 vncproxy 调用返回的端口号。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `vncticket` | string | 是 | — | 上次 vncproxy 调用的票据。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `port` | 类型：integer；必填：是；默认值：—<br>上次 vncproxy 调用返回的端口号。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vncticket` | 类型：string；必填：是；默认值：—<br>上次 vncproxy 调用的票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14981,31 +13541,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-spiceproxy-45ceb235-post-parameters" id="api-nodes-node-lxc-vmid-spiceproxy-45ceb235-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `proxy` | string | 否 | — | SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `proxy` | 类型：string；必填：否；默认值：—<br>SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15058,39 +13606,27 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-remote-migrate-5f40b688-post-parameters" id="api-nodes-node-lxc-vmid-remote-migrate-5f40b688-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | number | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `delete` | boolean | 否 | 0 | 成功迁移后删除原始容器及相关数据。默认将原始容器以停止状态保留在源集群中。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `online` | boolean | 否 | — | 使用在线迁移。 |
-| `restart` | boolean | 否 | — | 使用重启迁移 |
-| `target-bridge` | string | 是 | — | 从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。 |
-| `target-endpoint` | string | 是 | — | 远程目标端点 |
-| `target-storage` | string | 是 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
-| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
-| `timeout` | integer | 否 | 180 | 重启迁移的关闭超时时间，单位为秒 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：number；必填：否；默认值："migrate limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>成功迁移后删除原始容器及相关数据。默认将原始容器以停止状态保留在源集群中。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `online` | 类型：boolean；必填：否；默认值：—<br>使用在线迁移。 |
+| `restart` | 类型：boolean；必填：否；默认值：—<br>使用重启迁移 |
+| `target-bridge` | 类型：string；必填：是；默认值：—<br>从源网桥到目标网桥的映射。仅提供单个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 '1' 会将每个源网桥映射到其自身。 |
+| `target-endpoint` | 类型：string；必填：是；默认值：—<br>远程目标端点 |
+| `target-storage` | 类型：string；必填：是；默认值：—<br>从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `target-vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
+| `timeout` | 类型：integer；必填：否；默认值：180<br>重启迁移的关闭超时时间，单位为秒 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15161,31 +13697,19 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-migrate-a1062fde-get-parameters" id="api-nodes-node-lxc-vmid-migrate-a1062fde-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `target` | string | 否 | — | 目标节点。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `target` | 类型：string；必填：否；默认值：—<br>目标节点。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15252,36 +13776,24 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Migrate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-migrate-a1062fde-post-parameters" id="api-nodes-node-lxc-vmid-migrate-a1062fde-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | number | 否 | "migrate limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `online` | boolean | 否 | — | 使用在线迁移。 |
-| `restart` | boolean | 否 | — | 使用重启迁移 |
-| `target` | string | 是 | — | 目标节点。 |
-| `target-storage` | string | 否 | — | 从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
-| `timeout` | integer | 否 | 180 | 重启迁移的关闭超时时间，单位为秒 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：number；必填：否；默认值："migrate limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `online` | 类型：boolean；必填：否；默认值：—<br>使用在线迁移。 |
+| `restart` | 类型：boolean；必填：否；默认值：—<br>使用重启迁移 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `target-storage` | 类型：string；必填：否；默认值：—<br>从源存储到目标存储的映射。仅提供单个存储 ID 会将所有源存储映射到该存储。提供特殊值 '1' 会将每个源存储映射到其自身。 |
+| `timeout` | 类型：integer；必填：否；默认值：180<br>重启迁移的关闭超时时间，单位为秒 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15337,32 +13849,20 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-feature-fa8be513-get-parameters" id="api-nodes-node-lxc-vmid-feature-fa8be513-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `feature` | string | 是 | — | 要检查的功能。；可选值：`snapshot`, `clone`, `copy` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `snapname` | string | 否 | — | 快照名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `feature` | 类型：string；必填：是；默认值：—<br>要检查的功能。；可选值：`snapshot`, `clone`, `copy` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `snapname` | 类型：string；必填：否；默认值：—<br>快照名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15408,30 +13908,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Allocate"]], "description": "需要对 /vms/{vmid} 具有 'VM.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-template-3c89ee20-post-parameters" id="api-nodes-node-lxc-vmid-template-3c89ee20-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15481,39 +13969,27 @@ null
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-clone-c6355ef1-post-parameters" id="api-nodes-node-lxc-vmid-clone-c6355ef1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | number | 否 | "clone limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `description` | string | 否 | — | 新容器的描述。 |
-| `full` | boolean | 否 | — | 创建所有磁盘的完整副本。克隆普通容器时始终执行完整复制。对于容器模板，默认尝试创建链接克隆。 |
-| `hostname` | string | 否 | — | 为新容器设置主机名。 |
-| `newid` | integer | 是 | — | 克隆的 VMID。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pool` | string | 否 | — | 将新容器添加到指定资源池。 |
-| `snapname` | string | 否 | — | 快照名称。 |
-| `storage` | string | 否 | — | 完整克隆的目标存储。 |
-| `target` | string | 否 | — | 目标节点。仅当原始虚拟机位于共享存储上时允许。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：number；必填：否；默认值："clone limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `description` | 类型：string；必填：否；默认值：—<br>新容器的描述。 |
+| `full` | 类型：boolean；必填：否；默认值：—<br>创建所有磁盘的完整副本。克隆普通容器时始终执行完整复制。对于容器模板，默认尝试创建链接克隆。 |
+| `hostname` | 类型：string；必填：否；默认值：—<br>为新容器设置主机名。 |
+| `newid` | 类型：integer；必填：是；默认值：—<br>克隆的 VMID。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>将新容器添加到指定资源池。 |
+| `snapname` | 类型：string；必填：否；默认值：—<br>快照名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>完整克隆的目标存储。 |
+| `target` | 类型：string；必填：否；默认值：—<br>目标节点。仅当原始虚拟机位于共享存储上时允许。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15577,33 +14053,21 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Config.Disk"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-resize-eabbfad8-put-parameters" id="api-nodes-node-lxc-vmid-resize-eabbfad8-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `disk` | string | 是 | — | 要调整大小的磁盘。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `size` | string | 是 | — | 新大小。带 '+' 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `disk` | 类型：string；必填：是；默认值：—<br>要调整大小的磁盘。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `size` | 类型：string；必填：是；默认值：—<br>新大小。带 '+' 符号时，将此值加到卷的实际大小上；不带时，将此值视为绝对大小。不支持缩小磁盘。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15679,38 +14143,26 @@ null
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-move-volume-0982dfe9-post-parameters" id="api-nodes-node-lxc-vmid-move-volume-0982dfe9-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | number | 否 | "clone limit from datacenter or storage config" | 覆盖 I/O 带宽限制（KiB/s）。 |
-| `delete` | boolean | 否 | 0 | 成功复制后删除原始卷。默认将原始卷保留为未使用卷条目。 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 " .<br>		    "摘要不同，则阻止更改。可用于防止并发修改。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 目标存储。 |
-| `target-digest` | string | 否 | — | 如果目标 " .<br>		    "容器当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止 " .<br>		    "并发修改。 |
-| `target-vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
-| `target-volume` | string | 否 | — | 卷要移至的配置键。默认为源卷键。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
-| `volume` | string | 是 | — | 要移动的卷。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：number；必填：否；默认值："clone limit from datacenter or storage config"<br>覆盖 I/O 带宽限制（KiB/s）。 |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>成功复制后删除原始卷。默认将原始卷保留为未使用卷条目。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 " .<br>		    "摘要不同，则阻止更改。可用于防止并发修改。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>目标存储。 |
+| `target-digest` | 类型：string；必填：否；默认值：—<br>如果目标 " .<br>		    "容器当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止 " .<br>		    "并发修改。 |
+| `target-vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
+| `target-volume` | 类型：string；必填：否；默认值：—<br>卷要移至的配置键。默认为源卷键。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>要移动的卷。；可选值：`rootfs`, `mp0`, `mp1`, `mp2`, `mp3`, `mp4`, `mp5`, `mp6`, `mp7`, `mp8`, `mp9`, `mp10`, `mp11`, `mp12`, `mp13`, `mp14`, `mp15`, `mp16`, `mp17`, `mp18`, `mp19`, `mp20`, `mp21`, `mp22`, `mp23`, `mp24`, `mp25`, `mp26`, `mp27`, `mp28`, `mp29`, `mp30`, `mp31`, `mp32`, `mp33`, `mp34`, `mp35`, `mp36`, `mp37`, `mp38`, `mp39`, `mp40`, `mp41`, `mp42`, `mp43`, `mp44`, `mp45`, `mp46`, `mp47`, `mp48`, `mp49`, `mp50`, `mp51`, `mp52`, `mp53`, `mp54`, `mp55`, `mp56`, `mp57`, `mp58`, `mp59`, `mp60`, `mp61`, `mp62`, `mp63`, `mp64`, `mp65`, `mp66`, `mp67`, `mp68`, `mp69`, `mp70`, `mp71`, `mp72`, `mp73`, `mp74`, `mp75`, `mp76`, `mp77`, `mp78`, `mp79`, `mp80`, `mp81`, `mp82`, `mp83`, `mp84`, `mp85`, `mp86`, `mp87`, `mp88`, `mp89`, `mp90`, `mp91`, `mp92`, `mp93`, `mp94`, `mp95`, `mp96`, `mp97`, `mp98`, `mp99`, `mp100`, `mp101`, `mp102`, `mp103`, `mp104`, `mp105`, `mp106`, `mp107`, `mp108`, `mp109`, `mp110`, `mp111`, `mp112`, `mp113`, `mp114`, `mp115`, `mp116`, `mp117`, `mp118`, `mp119`, `mp120`, `mp121`, `mp122`, `mp123`, `mp124`, `mp125`, `mp126`, `mp127`, `mp128`, `mp129`, `mp130`, `mp131`, `mp132`, `mp133`, `mp134`, `mp135`, `mp136`, `mp137`, `mp138`, `mp139`, `mp140`, `mp141`, `mp142`, `mp143`, `mp144`, `mp145`, `mp146`, `mp147`, `mp148`, `mp149`, `mp150`, `mp151`, `mp152`, `mp153`, `mp154`, `mp155`, `mp156`, `mp157`, `mp158`, `mp159`, `mp160`, `mp161`, `mp162`, `mp163`, `mp164`, `mp165`, `mp166`, `mp167`, `mp168`, `mp169`, `mp170`, `mp171`, `mp172`, `mp173`, `mp174`, `mp175`, `mp176`, `mp177`, `mp178`, `mp179`, `mp180`, `mp181`, `mp182`, `mp183`, `mp184`, `mp185`, `mp186`, `mp187`, `mp188`, `mp189`, `mp190`, `mp191`, `mp192`, `mp193`, `mp194`, `mp195`, `mp196`, `mp197`, `mp198`, `mp199`, `mp200`, `mp201`, `mp202`, `mp203`, `mp204`, `mp205`, `mp206`, `mp207`, `mp208`, `mp209`, `mp210`, `mp211`, `mp212`, `mp213`, `mp214`, `mp215`, `mp216`, `mp217`, `mp218`, `mp219`, `mp220`, `mp221`, `mp222`, `mp223`, `mp224`, `mp225`, `mp226`, `mp227`, `mp228`, `mp229`, `mp230`, `mp231`, `mp232`, `mp233`, `mp234`, `mp235`, `mp236`, `mp237`, `mp238`, `mp239`, `mp240`, `mp241`, `mp242`, `mp243`, `mp244`, `mp245`, `mp246`, `mp247`, `mp248`, `mp249`, `mp250`, `mp251`, `mp252`, `mp253`, `mp254`, `mp255`, `unused0`, `unused1`, `unused2`, `unused3`, `unused4`, `unused5`, `unused6`, `unused7`, `unused8`, `unused9`, `unused10`, `unused11`, `unused12`, `unused13`, `unused14`, `unused15`, `unused16`, `unused17`, `unused18`, `unused19`, `unused20`, `unused21`, `unused22`, `unused23`, `unused24`, `unused25`, `unused26`, `unused27`, `unused28`, `unused29`, `unused30`, `unused31`, `unused32`, `unused33`, `unused34`, `unused35`, `unused36`, `unused37`, `unused38`, `unused39`, `unused40`, `unused41`, `unused42`, `unused43`, `unused44`, `unused45`, `unused46`, `unused47`, `unused48`, `unused49`, `unused50`, `unused51`, `unused52`, `unused53`, `unused54`, `unused55`, `unused56`, `unused57`, `unused58`, `unused59`, `unused60`, `unused61`, `unused62`, `unused63`, `unused64`, `unused65`, `unused66`, `unused67`, `unused68`, `unused69`, `unused70`, `unused71`, `unused72`, `unused73`, `unused74`, `unused75`, `unused76`, `unused77`, `unused78`, `unused79`, `unused80`, `unused81`, `unused82`, `unused83`, `unused84`, `unused85`, `unused86`, `unused87`, `unused88`, `unused89`, `unused90`, `unused91`, `unused92`, `unused93`, `unused94`, `unused95`, `unused96`, `unused97`, `unused98`, `unused99`, `unused100`, `unused101`, `unused102`, `unused103`, `unused104`, `unused105`, `unused106`, `unused107`, `unused108`, `unused109`, `unused110`, `unused111`, `unused112`, `unused113`, `unused114`, `unused115`, `unused116`, `unused117`, `unused118`, `unused119`, `unused120`, `unused121`, `unused122`, `unused123`, `unused124`, `unused125`, `unused126`, `unused127`, `unused128`, `unused129`, `unused130`, `unused131`, `unused132`, `unused133`, `unused134`, `unused135`, `unused136`, `unused137`, `unused138`, `unused139`, `unused140`, `unused141`, `unused142`, `unused143`, `unused144`, `unused145`, `unused146`, `unused147`, `unused148`, `unused149`, `unused150`, `unused151`, `unused152`, `unused153`, `unused154`, `unused155`, `unused156`, `unused157`, `unused158`, `unused159`, `unused160`, `unused161`, `unused162`, `unused163`, `unused164`, `unused165`, `unused166`, `unused167`, `unused168`, `unused169`, `unused170`, `unused171`, `unused172`, `unused173`, `unused174`, `unused175`, `unused176`, `unused177`, `unused178`, `unused179`, `unused180`, `unused181`, `unused182`, `unused183`, `unused184`, `unused185`, `unused186`, `unused187`, `unused188`, `unused189`, `unused190`, `unused191`, `unused192`, `unused193`, `unused194`, `unused195`, `unused196`, `unused197`, `unused198`, `unused199`, `unused200`, `unused201`, `unused202`, `unused203`, `unused204`, `unused205`, `unused206`, `unused207`, `unused208`, `unused209`, `unused210`, `unused211`, `unused212`, `unused213`, `unused214`, `unused215`, `unused216`, `unused217`, `unused218`, `unused219`, `unused220`, `unused221`, `unused222`, `unused223`, `unused224`, `unused225`, `unused226`, `unused227`, `unused228`, `unused229`, `unused230`, `unused231`, `unused232`, `unused233`, `unused234`, `unused235`, `unused236`, `unused237`, `unused238`, `unused239`, `unused240`, `unused241`, `unused242`, `unused243`, `unused244`, `unused245`, `unused246`, `unused247`, `unused248`, `unused249`, `unused250`, `unused251`, `unused252`, `unused253`, `unused254`, `unused255` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15862,24 +14314,16 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-pending-8aafe4d1-get-parameters" id="api-nodes-node-lxc-vmid-pending-8aafe4d1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15933,30 +14377,18 @@ null
 {"check": ["perm", "/vms/{vmid}", ["VM.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-interfaces-329fdb50-get-parameters" id="api-nodes-node-lxc-vmid-interfaces-329fdb50-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16027,26 +14459,18 @@ null
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-mtunnel-48c19595-post-parameters" id="api-nodes-node-lxc-vmid-mtunnel-48c19595-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bridges` | string | 否 | — | 要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storages` | string | 否 | — | 要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bridges` | 类型：string；必填：否；默认值：—<br>要检查可用性的网络网桥列表。迁移期间将对实际使用的网桥再次检查。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storages` | 类型：string；必填：否；默认值：—<br>要检查权限和可用性的存储列表。迁移期间将对所有实际使用的存储再次检查。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16098,20 +14522,16 @@ null
 {"description": "需要传入对所选套接字有效的票据。可通过 mtunnel API 调用创建票据，该调用会相应检查权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-lxc-vmid-mtunnelwebsocket-328b1664-get-parameters" id="api-nodes-node-lxc-vmid-mtunnelwebsocket-328b1664-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `socket` | string | 是 | — | 要转发到的 UNIX 套接字 |
-| `ticket` | string | 是 | — | 初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据 |
-| `vmid` | integer | 是 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `socket` | 类型：string；必填：是；默认值：—<br>要转发到的 UNIX 套接字 |
+| `ticket` | 类型：string；必填：是；默认值：—<br>初始 'mtunnel' API 调用返回的票据，或通过 'ticket' 隧道命令获取的票据 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16157,17 +14577,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-1cc84764-get-parameters" id="api-nodes-node-ceph-1cc84764-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16202,17 +14618,13 @@ null
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-cfg-16ded747-get-parameters" id="api-nodes-node-ceph-cfg-16ded747-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16247,23 +14659,15 @@ null
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-cfg-raw-0e0c9446-get-parameters" id="api-nodes-node-ceph-cfg-raw-0e0c9446-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16298,29 +14702,17 @@ null
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-cfg-db-f3baea30-get-parameters" id="api-nodes-node-ceph-cfg-db-f3baea30-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16377,30 +14769,18 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-cfg-value-a08bf211-get-parameters" id="api-nodes-node-ceph-cfg-value-a08bf211-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `config-keys` | string | 是 | — | 以分号、逗号或空格分隔的 &lt;section&gt;:&lt;config key&gt; 项目列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `config-keys` | 类型：string；必填：是；默认值：—<br>以分号、逗号或空格分隔的 &lt;section&gt;:&lt;config key&gt; 项目列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16445,29 +14825,17 @@ null
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-9a2ad79f-get-parameters" id="api-nodes-node-ceph-osd-9a2ad79f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16501,37 +14869,25 @@ null
 
 **方法标识：** `createosd`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-9a2ad79f-post-parameters" id="api-nodes-node-ceph-osd-9a2ad79f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `crush-device-class` | string | 否 | — | 在 CRUSH 中设置 OSD 的设备类别。 |
-| `db_dev` | string | 否 | — | block.db 的块设备名称。 |
-| `db_dev_size` | number | 否 | — | 如果请求 block.db 但未给出大小，将依次从 ceph 数据库（osd 或 global 配置节）或配置（osd 或 global 配置节）中的 bluestore_block_db_size 自动选择。如果不可用，则大小设为 OSD 设备大小的 10%。如果可用空间不足则失败。 |
-| `dev` | string | 是 | — | 块设备名称。 |
-| `encrypted` | boolean | 否 | 0 | 启用 OSD 加密。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osds-per-device` | integer | 否 | — | 每个物理设备的 OSD 服务数。仅对高速 NVMe 设备有用，以更充分地利用性能。与 'db_dev' 和 'wal_dev' 互斥。 |
-| `wal_dev` | string | 否 | — | block.wal 的块设备名称。 |
-| `wal_dev_size` | number | 否 | — | 如果请求 block.wal 但未给出大小，将依次从 ceph 数据库（osd 或 global 配置节）或配置（osd 或 global 配置节）中的 bluestore_block_wal_size 自动选择。如果不可用，则大小设为 OSD 设备大小的 1%。如果可用空间不足则失败。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `crush-device-class` | 类型：string；必填：否；默认值：—<br>在 CRUSH 中设置 OSD 的设备类别。 |
+| `db_dev` | 类型：string；必填：否；默认值：—<br>block.db 的块设备名称。 |
+| `db_dev_size` | 类型：number；必填：否；默认值：—<br>如果请求 block.db 但未给出大小，将依次从 ceph 数据库（osd 或 global 配置节）或配置（osd 或 global 配置节）中的 bluestore_block_db_size 自动选择。如果不可用，则大小设为 OSD 设备大小的 10%。如果可用空间不足则失败。 |
+| `dev` | 类型：string；必填：是；默认值：—<br>块设备名称。 |
+| `encrypted` | 类型：boolean；必填：否；默认值：0<br>启用 OSD 加密。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osds-per-device` | 类型：integer；必填：否；默认值：—<br>每个物理设备的 OSD 服务数。仅对高速 NVMe 设备有用，以更充分地利用性能。与 'db_dev' 和 'wal_dev' 互斥。 |
+| `wal_dev` | 类型：string；必填：否；默认值：—<br>block.wal 的块设备名称。 |
+| `wal_dev_size` | 类型：number；必填：否；默认值：—<br>如果请求 block.wal 但未给出大小，将依次从 ceph 数据库（osd 或 global 配置节）或配置（osd 或 global 配置节）中的 bluestore_block_wal_size 自动选择。如果不可用，则大小设为 OSD 设备大小的 1%。如果可用空间不足则失败。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16582,31 +14938,19 @@ null
 
 **方法标识：** `destroyosd`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-658df167-delete-parameters" id="api-nodes-node-ceph-osd-osdid-658df167-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cleanup` | boolean | 否 | 0 | 如果设置，还将通过 'ceph-volume lvm zap --destroy' 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的所有 journal/block.db/block.wal 分区。未设置此标志时，保留逻辑卷和分区以供检查。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cleanup` | 类型：boolean；必填：否；默认值：0<br>如果设置，还将通过 'ceph-volume lvm zap --destroy' 销毁底层逻辑卷，使用 pvremove 移除卷组的物理卷，并擦除 filestore OSD 遗留的所有 journal/block.db/block.wal 分区。未设置此标志时，保留逻辑卷和分区以供检查。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16646,18 +14990,14 @@ OSD 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-658df167-get-parameters" id="api-nodes-node-ceph-osd-osdid-658df167-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16698,30 +15038,18 @@ OSD 索引。
 {"check": ["perm", "/", ["Sys.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-metadata-35427019-get-parameters" id="api-nodes-node-ceph-osd-osdid-metadata-35427019-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16797,31 +15125,19 @@ OSD 索引。
 {"check": ["perm", "/", ["Sys.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-lv-info-1bb72299-get-parameters" id="api-nodes-node-ceph-osd-osdid-lv-info-1bb72299-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
-| `type` | string | 否 | "block" | OSD 设备类型；可选值：`block`, `db`, `wal` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
+| `type` | 类型：string；必填：否；默认值："block"<br>OSD 设备类型；可选值：`block`, `db`, `wal` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16870,30 +15186,18 @@ ceph osd in
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-in-ee6f277c-post-parameters" id="api-nodes-node-ceph-osd-osdid-in-ee6f277c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16934,30 +15238,18 @@ ceph osd out
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-out-1ac6d595-post-parameters" id="api-nodes-node-ceph-osd-osdid-out-1ac6d595-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16998,31 +15290,19 @@ ceph osd out
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-osd-osdid-scrub-279b1cd8-post-parameters" id="api-nodes-node-ceph-osd-osdid-scrub-279b1cd8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `deep` | boolean | 否 | 0 | 如果设置，则指示执行深度清理检查，而非普通清理检查。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `osdid` | integer | 是 | — | OSD ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `deep` | 类型：boolean；必填：否；默认值：0<br>如果设置，则指示执行深度清理检查，而非普通清理检查。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `osdid` | 类型：integer；必填：是；默认值：—<br>OSD ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17064,29 +15344,17 @@ MDS 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mds-037e9900-get-parameters" id="api-nodes-node-ceph-mds-037e9900-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17141,30 +15409,18 @@ MDS 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mds-name-c30f2776-delete-parameters" id="api-nodes-node-ceph-mds-name-c30f2776-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | MDS 的名称（ID） |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>MDS 的名称（ID） |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17199,31 +15455,19 @@ MDS 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mds-name-c30f2776-post-parameters" id="api-nodes-node-ceph-mds-name-c30f2776-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `hotstandby` | boolean | 否 | 0 | 确定 ceph-mds 守护进程是否轮询并重放活动 MDS 的日志。可在 MDS 故障时更快切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。 |
-| `name` | string | 否 | "nodename" | MDS 的 ID，省略时与节点名称相同 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `hotstandby` | 类型：boolean；必填：否；默认值：0<br>确定 ceph-mds 守护进程是否轮询并重放活动 MDS 的日志。可在 MDS 故障时更快切换，但需要更多空闲资源。已弃用：此设置已在 Ceph 14.1.1 中移除。 |
+| `name` | 类型：string；必填：否；默认值："nodename"<br>MDS 的 ID，省略时与节点名称相同 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17272,29 +15516,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mgr-e49aaf56-get-parameters" id="api-nodes-node-ceph-mgr-e49aaf56-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17346,30 +15578,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mgr-id-06b79f36-delete-parameters" id="api-nodes-node-ceph-mgr-id-06b79f36-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 管理器的 ID |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>管理器的 ID |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17404,30 +15624,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mgr-id-06b79f36-post-parameters" id="api-nodes-node-ceph-mgr-id-06b79f36-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 否 | "nodename" | 管理器的 ID，省略时与节点名称相同。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：否；默认值："nodename"<br>管理器的 ID，省略时与节点名称相同。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17471,29 +15679,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mon-c1367920-get-parameters" id="api-nodes-node-ceph-mon-c1367920-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17551,30 +15747,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mon-monid-a72b81a5-delete-parameters" id="api-nodes-node-ceph-mon-monid-a72b81a5-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `monid` | string | 是 | — | 监视器 ID |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `monid` | 类型：string；必填：是；默认值：—<br>监视器 ID |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17609,31 +15793,19 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-mon-monid-a72b81a5-post-parameters" id="api-nodes-node-ceph-mon-monid-a72b81a5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `mon-address` | string | 否 | — | 覆盖自动检测到的监视器 IP 地址。必须位于 Ceph 的公共网络中。 |
-| `monid` | string | 否 | "nodename" | 监视器的 ID，省略时与节点名称相同。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `mon-address` | 类型：string；必填：否；默认值：—<br>覆盖自动检测到的监视器 IP 地址。必须位于 Ceph 的公共网络中。 |
+| `monid` | 类型：string；必填：否；默认值："nodename"<br>监视器的 ID，省略时与节点名称相同。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17681,29 +15853,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-fs-61e7e99c-get-parameters" id="api-nodes-node-ceph-fs-61e7e99c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17757,32 +15917,20 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-fs-name-618f4540-delete-parameters" id="api-nodes-node-ceph-fs-name-618f4540-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | Ceph 文件系统名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `remove-pools` | boolean | 否 | 0 | 移除此文件系统使用的元数据池和数据池。 |
-| `remove-storages` | boolean | 否 | 0 | 移除为此文件系统配置的、由 pveceph 管理的存储。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>Ceph 文件系统名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `remove-pools` | 类型：boolean；必填：否；默认值：0<br>移除此文件系统使用的元数据池和数据池。 |
+| `remove-storages` | 类型：boolean；必填：否；默认值：0<br>移除为此文件系统配置的、由 pveceph 管理的存储。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17821,32 +15969,20 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-fs-name-618f4540-post-parameters" id="api-nodes-node-ceph-fs-name-618f4540-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add-storage` | boolean | 否 | 0 | 将创建的 CephFS 配置为此集群的存储。 |
-| `name` | string | 否 | "cephfs" | Ceph 文件系统名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pg_num` | integer | 否 | 128 | 底层数据池的归置组数量。元数据池将使用此数量的四分之一。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add-storage` | 类型：boolean；必填：否；默认值：0<br>将创建的 CephFS 配置为此集群的存储。 |
+| `name` | 类型：string；必填：否；默认值："cephfs"<br>Ceph 文件系统名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pg_num` | 类型：integer；必填：否；默认值：128<br>底层数据池的归置组数量。元数据池将使用此数量的四分之一。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17892,29 +16028,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-3986facc-get-parameters" id="api-nodes-node-ceph-pool-3986facc-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17981,41 +16105,29 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-3986facc-post-parameters" id="api-nodes-node-ceph-pool-3986facc-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add_storages` | boolean | 否 | 0 | 使用新池配置虚拟机和容器存储。复制池默认为 false，纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。 |
-| `application` | string | 否 | "rbd" | 池的应用。；可选值：`rbd`, `cephfs`, `rgw` |
-| `crush_rule` | string | 否 | — | 用于映射集群中对象放置位置的规则。 |
-| `erasure-coding` | string | 否 | — | 为 RBD 创建纠删码池，并附带用于存储元数据的复制池。使用 EC 时，常用 ceph 选项 'size'、'min_size' 和 'crush_rule' 参数将应用于元数据池。 |
-| `min_size` | integer | 否 | 2 | 每个对象的最小副本数 |
-| `name` | string | 是 | — | 池名称。必须唯一。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pg_autoscale_mode` | string | 否 | "warn" | 池的自动 PG 扩缩模式。；可选值：`on`, `off`, `warn` |
-| `pg_num` | integer | 否 | 128 | 归置组数量。 |
-| `pg_num_min` | integer | 否 | — | 最小归置组数量。 |
-| `size` | integer | 否 | 3 | 每个对象的副本数 |
-| `target_size` | string | 否 | — | PG 自动扩缩器使用的池预估目标大小。 |
-| `target_size_ratio` | number | 否 | — | PG 自动扩缩器使用的池预估目标比例。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add_storages` | 类型：boolean；必填：否；默认值：0<br>使用新池配置虚拟机和容器存储。复制池默认为 false，纠删码池默认为 true（因为 EC 池通常只有连接到存储后才有用）。 |
+| `application` | 类型：string；必填：否；默认值："rbd"<br>池的应用。；可选值：`rbd`, `cephfs`, `rgw` |
+| `crush_rule` | 类型：string；必填：否；默认值：—<br>用于映射集群中对象放置位置的规则。 |
+| `erasure-coding` | 类型：string；必填：否；默认值：—<br>为 RBD 创建纠删码池，并附带用于存储元数据的复制池。使用 EC 时，常用 ceph 选项 'size'、'min_size' 和 'crush_rule' 参数将应用于元数据池。 |
+| `min_size` | 类型：integer；必填：否；默认值：2<br>每个对象的最小副本数 |
+| `name` | 类型：string；必填：是；默认值：—<br>池名称。必须唯一。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pg_autoscale_mode` | 类型：string；必填：否；默认值："warn"<br>池的自动 PG 扩缩模式。；可选值：`on`, `off`, `warn` |
+| `pg_num` | 类型：integer；必填：否；默认值：128<br>归置组数量。 |
+| `pg_num_min` | 类型：integer；必填：否；默认值：—<br>最小归置组数量。 |
+| `size` | 类型：integer；必填：否；默认值：3<br>每个对象的副本数 |
+| `target_size` | 类型：string；必填：否；默认值：—<br>PG 自动扩缩器使用的池预估目标大小。 |
+| `target_size_ratio` | 类型：number；必填：否；默认值：—<br>PG 自动扩缩器使用的池预估目标比例。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18104,33 +16216,21 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-delete-parameters" id="api-nodes-node-ceph-pool-name-6b4d9bfd-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 如果为 true，则即使池正在使用也销毁 |
-| `name` | string | 是 | — | 池名称。必须唯一。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `remove_ecprofile` | boolean | 否 | 1 | 移除纠删码配置文件。如果适用，默认为 true。 |
-| `remove_storages` | boolean | 否 | 0 | 移除为此池配置的所有由 pveceph 管理的存储 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>如果为 true，则即使池正在使用也销毁 |
+| `name` | 类型：string；必填：是；默认值：—<br>池名称。必须唯一。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `remove_ecprofile` | 类型：boolean；必填：否；默认值：1<br>移除纠删码配置文件。如果适用，默认为 true。 |
+| `remove_storages` | 类型：boolean；必填：否；默认值：0<br>移除为此池配置的所有由 pveceph 管理的存储 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18168,18 +16268,14 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-get-parameters" id="api-nodes-node-ceph-pool-name-6b4d9bfd-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 池名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>池名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18214,39 +16310,27 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-put-parameters" id="api-nodes-node-ceph-pool-name-6b4d9bfd-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `application` | string | 否 | — | 池的应用。；可选值：`rbd`, `cephfs`, `rgw` |
-| `crush_rule` | string | 否 | — | 用于映射集群中对象放置位置的规则。 |
-| `min_size` | integer | 否 | — | 每个对象的最小副本数 |
-| `name` | string | 是 | — | 池名称。必须唯一。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pg_autoscale_mode` | string | 否 | — | 池的自动 PG 扩缩模式。；可选值：`on`, `off`, `warn` |
-| `pg_num` | integer | 否 | — | 归置组数量。 |
-| `pg_num_min` | integer | 否 | — | 最小归置组数量。 |
-| `size` | integer | 否 | — | 每个对象的副本数 |
-| `target_size` | string | 否 | — | PG 自动扩缩器使用的池预估目标大小。 |
-| `target_size_ratio` | number | 否 | — | PG 自动扩缩器使用的池预估目标比例。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `application` | 类型：string；必填：否；默认值：—<br>池的应用。；可选值：`rbd`, `cephfs`, `rgw` |
+| `crush_rule` | 类型：string；必填：否；默认值：—<br>用于映射集群中对象放置位置的规则。 |
+| `min_size` | 类型：integer；必填：否；默认值：—<br>每个对象的最小副本数 |
+| `name` | 类型：string；必填：是；默认值：—<br>池名称。必须唯一。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pg_autoscale_mode` | 类型：string；必填：否；默认值：—<br>池的自动 PG 扩缩模式。；可选值：`on`, `off`, `warn` |
+| `pg_num` | 类型：integer；必填：否；默认值：—<br>归置组数量。 |
+| `pg_num_min` | 类型：integer；必填：否；默认值：—<br>最小归置组数量。 |
+| `size` | 类型：integer；必填：否；默认值：—<br>每个对象的副本数 |
+| `target_size` | 类型：string；必填：否；默认值：—<br>PG 自动扩缩器使用的池预估目标大小。 |
+| `target_size_ratio` | 类型：number；必填：否；默认值：—<br>PG 自动扩缩器使用的池预估目标比例。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18307,31 +16391,19 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-pool-name-status-f3f1b84c-get-parameters" id="api-nodes-node-ceph-pool-name-status-f3f1b84c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 池名称。必须唯一。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `verbose` | boolean | 否 | 0 | 如果启用，将显示附加数据（例如统计信息）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>池名称。必须唯一。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `verbose` | 类型：boolean；必填：否；默认值：0<br>如果启用，将显示附加数据（例如统计信息）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18411,23 +16483,15 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-releases-fb926f34-get-parameters" id="api-nodes-node-ceph-releases-fb926f34-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18474,35 +16538,23 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-init-cad4cde4-post-parameters" id="api-nodes-node-ceph-init-cad4cde4-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cluster-network` | string | 否 | — | 声明单独的集群网络，OSD 将通过该网络传输心跳、对象复制和恢复流量 |
-| `disable_cephx` | boolean | 否 | 0 | 禁用 cephx 身份验证。<br><br>警告：cephx 是防范中间人攻击的安全功能。仅在网络为私有网络时才考虑禁用 cephx！ |
-| `min_size` | integer | 否 | 2 | 允许 I/O 所需的每个对象的最小可用副本数 |
-| `network` | string | 否 | — | 为所有 ceph 相关流量使用指定网络 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pg_bits` | integer | 否 | 6 | 归置组位数，用于指定默认归置组数量。<br><br>已弃用。此设置已在近期 Ceph 版本中弃用。 |
-| `size` | integer | 否 | 3 | 每个对象的目标副本数 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cluster-network` | 类型：string；必填：否；默认值：—<br>声明单独的集群网络，OSD 将通过该网络传输心跳、对象复制和恢复流量 |
+| `disable_cephx` | 类型：boolean；必填：否；默认值：0<br>禁用 cephx 身份验证。<br><br>警告：cephx 是防范中间人攻击的安全功能。仅在网络为私有网络时才考虑禁用 cephx！ |
+| `min_size` | 类型：integer；必填：否；默认值：2<br>允许 I/O 所需的每个对象的最小可用副本数 |
+| `network` | 类型：string；必填：否；默认值：—<br>为所有 ceph 相关流量使用指定网络 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pg_bits` | 类型：integer；必填：否；默认值：6<br>归置组位数，用于指定默认归置组数量。<br><br>已弃用。此设置已在近期 Ceph 版本中弃用。 |
+| `size` | 类型：integer；必填：否；默认值：3<br>每个对象的目标副本数 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18560,30 +16612,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-stop-0e8e8d15-post-parameters" id="api-nodes-node-ceph-stop-0e8e8d15-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 否 | "ceph.target" | Ceph 服务名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：否；默认值："ceph.target"<br>Ceph 服务名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18627,30 +16667,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-start-798848c7-post-parameters" id="api-nodes-node-ceph-start-798848c7-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 否 | "ceph.target" | Ceph 服务名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：否；默认值："ceph.target"<br>Ceph 服务名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18694,30 +16722,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-restart-70fa970a-post-parameters" id="api-nodes-node-ceph-restart-70fa970a-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 否 | "ceph.target" | Ceph 服务名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：否；默认值："ceph.target"<br>Ceph 服务名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18761,36 +16777,24 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-restart-bulk-223a3362-post-parameters" id="api-nodes-node-ceph-restart-bulk-223a3362-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dry-run` | boolean | 否 | 0 | 记录计划（将重启哪些 OSD 及其顺序），但不执行实际操作。 |
-| `force` | boolean | 否 | 0 | 对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `only-outdated` | boolean | 否 | 0 | 只重启运行版本与本地安装的 ceph-osd 二进制程序不同的 OSD。适用于升级后仅针对需要重启的守护进程执行滚动重启。如果无法确定本地二进制版本，则拒绝操作。恢复执行时忽略此选项（原样使用保存的计划）。 |
-| `resume` | boolean | 否 | 0 | 从 Ceph config-key 存储中的检查点恢复已中止的批量重启。沿用上次运行的计划和 noout 决定；忽略 'set-noout'。为 false（默认值）时，如果此节点存在检查点，端点将拒绝启动，避免静默覆盖正在进行的工作。 |
-| `service-type` | string | 是 | — | 要重启的 Ceph 守护进程类型。只有 OSD 可按节点滚动重启。；可选值：`osd` |
-| `set-noout` | boolean | 否 | 1 | 在滚动重启期间，为本次运行针对的每个 OSD 设置 'noout' 标志，并在完成时取消设置。采用每个 OSD 而非集群范围的设置，使其他节点上不相关 OSD 的故障仍能正常触发回填。 |
-| `timeout` | integer | 否 | 600 | 每个 OSD 的超时时间（秒）。同时限制等待重启的 OSD 恢复上线的时间，以及等待恢复活动足够平静、使 Ceph 报告下一个 OSD 可安全停止的时间。默认值适用于繁忙集群，其中包含大量 PG 的多 TB OSD 在重启后可能需要数分钟才能完成对等互联；对于非常大或负载很高的 OSD，请增大此值。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dry-run` | 类型：boolean；必填：否；默认值：0<br>记录计划（将重启哪些 OSD 及其顺序），但不执行实际操作。 |
+| `force` | 类型：boolean；必填：否；默认值：0<br>对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `only-outdated` | 类型：boolean；必填：否；默认值：0<br>只重启运行版本与本地安装的 ceph-osd 二进制程序不同的 OSD。适用于升级后仅针对需要重启的守护进程执行滚动重启。如果无法确定本地二进制版本，则拒绝操作。恢复执行时忽略此选项（原样使用保存的计划）。 |
+| `resume` | 类型：boolean；必填：否；默认值：0<br>从 Ceph config-key 存储中的检查点恢复已中止的批量重启。沿用上次运行的计划和 noout 决定；忽略 'set-noout'。为 false（默认值）时，如果此节点存在检查点，端点将拒绝启动，避免静默覆盖正在进行的工作。 |
+| `service-type` | 类型：string；必填：是；默认值：—<br>要重启的 Ceph 守护进程类型。只有 OSD 可按节点滚动重启。；可选值：`osd` |
+| `set-noout` | 类型：boolean；必填：否；默认值：1<br>在滚动重启期间，为本次运行针对的每个 OSD 设置 'noout' 标志，并在完成时取消设置。采用每个 OSD 而非集群范围的设置，使其他节点上不相关 OSD 的故障仍能正常触发回填。 |
+| `timeout` | 类型：integer；必填：否；默认值：600<br>每个 OSD 的超时时间（秒）。同时限制等待重启的 OSD 恢复上线的时间，以及等待恢复活动足够平静、使 Ceph 报告下一个 OSD 可安全停止的时间。默认值适用于繁忙集群，其中包含大量 PG 的多 TB OSD 在重启后可能需要数分钟才能完成对等互联；对于非常大或负载很高的 OSD，请增大此值。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18859,29 +16863,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-status-e63faf2d-get-parameters" id="api-nodes-node-ceph-status-e63faf2d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18916,29 +16908,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-crush-c88f9291-get-parameters" id="api-nodes-node-ceph-crush-c88f9291-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18973,31 +16953,19 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Syslog"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-log-0c630570-get-parameters" id="api-nodes-node-ceph-log-0c630570-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — | 返回日志行的最大数量。省略时默认为 dump_logfile 的限制（通常为 50）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `start` | integer | 否 | — | 返回的首个日志行的偏移量（从 0 开始）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `limit` | 类型：integer；必填：否；默认值：—<br>返回日志行的最大数量。省略时默认为 dump_logfile 的限制（通常为 50）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `start` | 类型：integer；必填：否；默认值：—<br>返回的首个日志行的偏移量（从 0 开始）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19048,29 +17016,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-rules-01a2d5ea-get-parameters" id="api-nodes-node-ceph-rules-01a2d5ea-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19108,32 +17064,20 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-ceph-cmd-safety-0496bca8-get-parameters" id="api-nodes-node-ceph-cmd-safety-0496bca8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 要检查的操作；可选值：`stop`, `destroy` |
-| `id` | string | 是 | — | 服务 ID |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务类型；可选值：`osd`, `mon`, `mds` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>要检查的操作；可选值：`stop`, `destroy` |
+| `id` | 类型：string；必填：是；默认值：—<br>服务 ID |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务类型；可选值：`osd`, `mon`, `mds` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19186,61 +17130,49 @@ MGR 目录索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-vzdump-81ddfad1-post-parameters" id="api-nodes-node-vzdump-81ddfad1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `all` | boolean | 否 | 0 | 备份此宿主机上所有已知的客户机系统。 |
-| `bwlimit` | integer | 否 | 0 | 限制 I/O 带宽（单位为 KiB/s）。 |
-| `compress` | string | 否 | "0" | 压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
-| `dumpdir` | string | 否 | — | 将生成的文件保存到指定目录。 |
-| `exclude` | string | 否 | — | 排除指定客户机系统（假定 --all） |
-| `exclude-path` | array | 否 | — | 排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
-| `fleecing` | string | 否 | — | 备份 fleecing 选项（仅适用于虚拟机）。 |
-| `ionice` | integer | 否 | 7 | 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
-| `job-id` | string | 否 | — | 备份作业 ID。如果设置，备份通知中的 'backup-job' 元数据字段将设为此值。仅 root@pam 可设置此参数。 |
-| `lockwait` | integer | 否 | 180 | 等待全局锁的最长时间（分钟）。 |
-| `mailnotification` | string | 否 | "always" | 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
-| `mailto` | string | 否 | — | 已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
-| `mode` | string | 否 | "snapshot" | 备份模式。；可选值：`snapshot`, `suspend`, `stop` |
-| `node` | string | 否 | — | 仅在此节点上执行时运行。 |
-| `notes-template` | string | 否 | — | 用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
-| `notification-mode` | string | 否 | "auto" | 确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
-| `pbs-change-detection-mode` | string | 否 | — | 用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
-| `performance` | string | 否 | — | 其他性能相关设置。 |
-| `pigz` | integer | 否 | 0 | 当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
-| `pool` | string | 否 | — | 备份指定池中包含的所有已知客户机系统。 |
-| `protected` | boolean | 否 | — | 如果为 true，则将备份标记为受保护。 |
-| `prune-backups` | string | 否 | "keep-all=1" | 使用这些保留选项，而非存储配置中的选项。 |
-| `quiet` | boolean | 否 | 0 | 静默运行。 |
-| `remove` | boolean | 否 | 1 | 根据 'prune-backups' 清理旧备份。 |
-| `script` | string | 否 | — | 使用指定的钩子脚本。 |
-| `stdexcludes` | boolean | 否 | 1 | 排除临时文件和日志。 |
-| `stdout` | boolean | 否 | — | 将 tar 写入 stdout，而非文件。 |
-| `stop` | boolean | 否 | 0 | 停止此宿主机上正在运行的备份作业。 |
-| `stopwait` | integer | 否 | 10 | 等待客户机系统停止的最长时间（分钟）。 |
-| `storage` | string | 否 | — | 将生成的文件保存到此存储。 |
-| `tmpdir` | string | 否 | — | 将临时文件保存到指定目录。 |
-| `vmid` | string | 否 | — | 要备份的客户机系统 ID。 |
-| `zstd` | integer | 否 | 1 | Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `all` | 类型：boolean；必填：否；默认值：0<br>备份此宿主机上所有已知的客户机系统。 |
+| `bwlimit` | 类型：integer；必填：否；默认值：0<br>限制 I/O 带宽（单位为 KiB/s）。 |
+| `compress` | 类型：string；必填：否；默认值："0"<br>压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
+| `dumpdir` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到指定目录。 |
+| `exclude` | 类型：string；必填：否；默认值：—<br>排除指定客户机系统（假定 --all） |
+| `exclude-path` | 类型：array；必填：否；默认值：—<br>排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
+| `fleecing` | 类型：string；必填：否；默认值：—<br>备份 fleecing 选项（仅适用于虚拟机）。 |
+| `ionice` | 类型：integer；必填：否；默认值：7<br>使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
+| `job-id` | 类型：string；必填：否；默认值：—<br>备份作业 ID。如果设置，备份通知中的 'backup-job' 元数据字段将设为此值。仅 root@pam 可设置此参数。 |
+| `lockwait` | 类型：integer；必填：否；默认值：180<br>等待全局锁的最长时间（分钟）。 |
+| `mailnotification` | 类型：string；必填：否；默认值："always"<br>已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
+| `mailto` | 类型：string；必填：否；默认值：—<br>已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
+| `mode` | 类型：string；必填：否；默认值："snapshot"<br>备份模式。；可选值：`snapshot`, `suspend`, `stop` |
+| `node` | 类型：string；必填：否；默认值：—<br>仅在此节点上执行时运行。 |
+| `notes-template` | 类型：string；必填：否；默认值：—<br>用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
+| `notification-mode` | 类型：string；必填：否；默认值："auto"<br>确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
+| `pbs-change-detection-mode` | 类型：string；必填：否；默认值：—<br>用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
+| `performance` | 类型：string；必填：否；默认值：—<br>其他性能相关设置。 |
+| `pigz` | 类型：integer；必填：否；默认值：0<br>当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>备份指定池中包含的所有已知客户机系统。 |
+| `protected` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则将备份标记为受保护。 |
+| `prune-backups` | 类型：string；必填：否；默认值："keep-all=1"<br>使用这些保留选项，而非存储配置中的选项。 |
+| `quiet` | 类型：boolean；必填：否；默认值：0<br>静默运行。 |
+| `remove` | 类型：boolean；必填：否；默认值：1<br>根据 'prune-backups' 清理旧备份。 |
+| `script` | 类型：string；必填：否；默认值：—<br>使用指定的钩子脚本。 |
+| `stdexcludes` | 类型：boolean；必填：否；默认值：1<br>排除临时文件和日志。 |
+| `stdout` | 类型：boolean；必填：否；默认值：—<br>将 tar 写入 stdout，而非文件。 |
+| `stop` | 类型：boolean；必填：否；默认值：0<br>停止此宿主机上正在运行的备份作业。 |
+| `stopwait` | 类型：integer；必填：否；默认值：10<br>等待客户机系统停止的最长时间（分钟）。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到此存储。 |
+| `tmpdir` | 类型：string；必填：否；默认值：—<br>将临时文件保存到指定目录。 |
+| `vmid` | 类型：string；必填：否；默认值：—<br>要备份的客户机系统 ID。 |
+| `zstd` | 类型：integer；必填：否；默认值：1<br>Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19363,24 +17295,16 @@ MGR 目录索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-vzdump-defaults-edb1213e-get-parameters" id="api-nodes-node-vzdump-defaults-edb1213e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19482,30 +17406,18 @@ MGR 目录索引。
 {"description": "用户需要对所备份的客户机 ID 具有 'VM.Backup' 权限，以及对备份存储具有 'Datastore.AllocateSpace' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-vzdump-extractconfig-c7f17d12-get-parameters" id="api-nodes-node-vzdump-extractconfig-c7f17d12-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `volume` | string | 是 | — | 卷标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19546,29 +17458,17 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-4ccf308b-get-parameters" id="api-nodes-node-services-4ccf308b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19633,18 +17533,14 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-db1b7a0b-get-parameters" id="api-nodes-node-services-service-db1b7a0b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19693,30 +17589,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-state-b3093d6d-get-parameters" id="api-nodes-node-services-service-state-b3093d6d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19792,30 +17676,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-start-c27d4c8e-post-parameters" id="api-nodes-node-services-service-start-c27d4c8e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19864,30 +17736,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-stop-15008e03-post-parameters" id="api-nodes-node-services-service-stop-15008e03-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -19936,30 +17796,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-restart-fa165fd0-post-parameters" id="api-nodes-node-services-service-restart-fa165fd0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20008,30 +17856,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-services-service-reload-4ec41915-post-parameters" id="api-nodes-node-services-service-reload-4ec41915-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 是 | — | 服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：是；默认值：—<br>服务 ID；可选值：`chrony`, `corosync`, `cron`, `ksmtuned`, `lxcfs`, `postfix`, `proxmox-firewall`, `pve-cluster`, `pve-firewall`, `pve-ha-crm`, `pve-ha-lrm`, `pve-lxc-syscalld`, `pvedaemon`, `pvefw-logger`, `pveproxy`, `pvescheduler`, `pvestatd`, `qmeventd`, `spiceproxy`, `sshd`, `syslog`, `systemd-journald`, `systemd-timesyncd` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20080,29 +17916,17 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-subscription-1e96f57a-delete-parameters" id="api-nodes-node-subscription-1e96f57a-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20131,23 +17955,15 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-subscription-1e96f57a-get-parameters" id="api-nodes-node-subscription-1e96f57a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20193,30 +18009,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-subscription-1e96f57a-post-parameters" id="api-nodes-node-subscription-1e96f57a-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 始终连接服务器，即使本地缓存仍然有效。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>始终连接服务器，即使本地缓存仍然有效。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20251,30 +18055,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-subscription-1e96f57a-put-parameters" id="api-nodes-node-subscription-1e96f57a-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `key` | string | 是 | — | Proxmox VE 订阅密钥 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `key` | 类型：string；必填：是；默认值：—<br>Proxmox VE 订阅密钥 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20315,29 +18107,17 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-09b544b1-delete-parameters" id="api-nodes-node-network-09b544b1-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20366,24 +18146,16 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-09b544b1-get-parameters" id="api-nodes-node-network-09b544b1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `type` | string | 否 | — | 仅列出指定接口类型。；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `any_bridge`, `any_local_bridge`, `include_sdn` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出指定接口类型。；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `any_bridge`, `any_local_bridge`, `include_sdn` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20497,57 +18269,45 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-09b544b1-post-parameters" id="api-nodes-node-network-09b544b1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `address` | string | 否 | — | IP 地址。 |
-| `address6` | string | 否 | — | IP 地址。 |
-| `autostart` | boolean | 否 | — | 启动时自动启用接口。 |
-| `bond-primary` | string | 否 | — | 为 active-backup 绑定指定主接口。 |
-| `bond_mode` | string | 否 | — | 绑定模式。；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
-| `bond_xmit_hash_policy` | string | 否 | — | 选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。；可选值：`layer2`, `layer2+3`, `layer3+4` |
-| `bridge_ports` | string | 否 | — | 指定要加入网桥的接口。 |
-| `bridge_vids` | string | 否 | — | 指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。 |
-| `bridge_vlan_aware` | boolean | 否 | — | 启用网桥 VLAN 支持。 |
-| `cidr` | string | 否 | — | IPv4 CIDR。 |
-| `cidr6` | string | 否 | — | IPv6 CIDR。 |
-| `comments` | string | 否 | — | 注释 |
-| `comments6` | string | 否 | — | 注释 |
-| `gateway` | string | 否 | — | 默认网关地址。 |
-| `gateway6` | string | 否 | — | 默认 IPv6 网关地址。 |
-| `iface` | string | 是 | — | 网络接口名称。 |
-| `mtu` | integer | 否 | — | MTU。 |
-| `netmask` | string | 否 | — | 网络掩码。 |
-| `netmask6` | integer | 否 | — | 网络掩码。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `ovs_bonds` | string | 否 | — | 指定绑定设备使用的接口。 |
-| `ovs_bridge` | string | 否 | — | 与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。 |
-| `ovs_options` | string | 否 | — | OVS 接口选项。 |
-| `ovs_ports` | string | 否 | — | 指定要加入网桥的接口。 |
-| `ovs_tag` | integer | 否 | — | 指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond） |
-| `slaves` | string | 否 | — | 指定绑定设备使用的接口。 |
-| `type` | string | 是 | — | 网络接口类型；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
-| `vlan-id` | integer | 否 | — | 自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。 |
-| `vlan-raw-device` | string | 否 | — | 指定 VLAN 接口的原始接口。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `address` | 类型：string；必填：否；默认值：—<br>IP 地址。 |
+| `address6` | 类型：string；必填：否；默认值：—<br>IP 地址。 |
+| `autostart` | 类型：boolean；必填：否；默认值：—<br>启动时自动启用接口。 |
+| `bond-primary` | 类型：string；必填：否；默认值：—<br>为 active-backup 绑定指定主接口。 |
+| `bond_mode` | 类型：string；必填：否；默认值：—<br>绑定模式。；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
+| `bond_xmit_hash_policy` | 类型：string；必填：否；默认值：—<br>选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。；可选值：`layer2`, `layer2+3`, `layer3+4` |
+| `bridge_ports` | 类型：string；必填：否；默认值：—<br>指定要加入网桥的接口。 |
+| `bridge_vids` | 类型：string；必填：否；默认值：—<br>指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。 |
+| `bridge_vlan_aware` | 类型：boolean；必填：否；默认值：—<br>启用网桥 VLAN 支持。 |
+| `cidr` | 类型：string；必填：否；默认值：—<br>IPv4 CIDR。 |
+| `cidr6` | 类型：string；必填：否；默认值：—<br>IPv6 CIDR。 |
+| `comments` | 类型：string；必填：否；默认值：—<br>注释 |
+| `comments6` | 类型：string；必填：否；默认值：—<br>注释 |
+| `gateway` | 类型：string；必填：否；默认值：—<br>默认网关地址。 |
+| `gateway6` | 类型：string；必填：否；默认值：—<br>默认 IPv6 网关地址。 |
+| `iface` | 类型：string；必填：是；默认值：—<br>网络接口名称。 |
+| `mtu` | 类型：integer；必填：否；默认值：—<br>MTU。 |
+| `netmask` | 类型：string；必填：否；默认值：—<br>网络掩码。 |
+| `netmask6` | 类型：integer；必填：否；默认值：—<br>网络掩码。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `ovs_bonds` | 类型：string；必填：否；默认值：—<br>指定绑定设备使用的接口。 |
+| `ovs_bridge` | 类型：string；必填：否；默认值：—<br>与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。 |
+| `ovs_options` | 类型：string；必填：否；默认值：—<br>OVS 接口选项。 |
+| `ovs_ports` | 类型：string；必填：否；默认值：—<br>指定要加入网桥的接口。 |
+| `ovs_tag` | 类型：integer；必填：否；默认值：—<br>指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond） |
+| `slaves` | 类型：string；必填：否；默认值：—<br>指定绑定设备使用的接口。 |
+| `type` | 类型：string；必填：是；默认值：—<br>网络接口类型；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
+| `vlan-id` | 类型：integer；必填：否；默认值：—<br>自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。 |
+| `vlan-raw-device` | 类型：string；必填：否；默认值：—<br>指定 VLAN 接口的原始接口。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20635,30 +18395,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-09b544b1-put-parameters" id="api-nodes-node-network-09b544b1-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `regenerate-frr` | boolean | 否 | 0 | 是否应跳过 FRR 配置生成。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `regenerate-frr` | 类型：boolean；必填：否；默认值：0<br>是否应跳过 FRR 配置生成。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20699,30 +18447,18 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-iface-9692d22a-delete-parameters" id="api-nodes-node-network-iface-9692d22a-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `iface` | string | 是 | — | 网络接口名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `iface` | 类型：string；必填：是；默认值：—<br>网络接口名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20757,24 +18493,16 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-iface-9692d22a-get-parameters" id="api-nodes-node-network-iface-9692d22a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `iface` | string | 是 | — | 网络接口名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `iface` | 类型：string；必填：是；默认值：—<br>网络接口名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20809,58 +18537,46 @@ MGR 目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-network-iface-9692d22a-put-parameters" id="api-nodes-node-network-iface-9692d22a-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `address` | string | 否 | — | IP 地址。 |
-| `address6` | string | 否 | — | IP 地址。 |
-| `autostart` | boolean | 否 | — | 启动时自动启用接口。 |
-| `bond-primary` | string | 否 | — | 为 active-backup 绑定指定主接口。 |
-| `bond_mode` | string | 否 | — | 绑定模式。；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
-| `bond_xmit_hash_policy` | string | 否 | — | 选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。；可选值：`layer2`, `layer2+3`, `layer3+4` |
-| `bridge_ports` | string | 否 | — | 指定要加入网桥的接口。 |
-| `bridge_vids` | string | 否 | — | 指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。 |
-| `bridge_vlan_aware` | boolean | 否 | — | 启用网桥 VLAN 支持。 |
-| `cidr` | string | 否 | — | IPv4 CIDR。 |
-| `cidr6` | string | 否 | — | IPv6 CIDR。 |
-| `comments` | string | 否 | — | 注释 |
-| `comments6` | string | 否 | — | 注释 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `gateway` | string | 否 | — | 默认网关地址。 |
-| `gateway6` | string | 否 | — | 默认 IPv6 网关地址。 |
-| `iface` | string | 是 | — | 网络接口名称。 |
-| `mtu` | integer | 否 | — | MTU。 |
-| `netmask` | string | 否 | — | 网络掩码。 |
-| `netmask6` | integer | 否 | — | 网络掩码。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `ovs_bonds` | string | 否 | — | 指定绑定设备使用的接口。 |
-| `ovs_bridge` | string | 否 | — | 与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。 |
-| `ovs_options` | string | 否 | — | OVS 接口选项。 |
-| `ovs_ports` | string | 否 | — | 指定要加入网桥的接口。 |
-| `ovs_tag` | integer | 否 | — | 指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond） |
-| `slaves` | string | 否 | — | 指定绑定设备使用的接口。 |
-| `type` | string | 是 | — | 网络接口类型；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
-| `vlan-id` | integer | 否 | — | 自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。 |
-| `vlan-raw-device` | string | 否 | — | 指定 VLAN 接口的原始接口。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `address` | 类型：string；必填：否；默认值：—<br>IP 地址。 |
+| `address6` | 类型：string；必填：否；默认值：—<br>IP 地址。 |
+| `autostart` | 类型：boolean；必填：否；默认值：—<br>启动时自动启用接口。 |
+| `bond-primary` | 类型：string；必填：否；默认值：—<br>为 active-backup 绑定指定主接口。 |
+| `bond_mode` | 类型：string；必填：否；默认值：—<br>绑定模式。；可选值：`balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`, `balance-slb`, `lacp-balance-slb`, `lacp-balance-tcp` |
+| `bond_xmit_hash_policy` | 类型：string；必填：否；默认值：—<br>选择 balance-xor 和 802.3ad 模式中用于选择从接口的发送哈希策略。；可选值：`layer2`, `layer2+3`, `layer3+4` |
+| `bridge_ports` | 类型：string；必填：否；默认值：—<br>指定要加入网桥的接口。 |
+| `bridge_vids` | 类型：string；必填：否；默认值：—<br>指定允许的 VLAN。例如：'2 4 100-200'。仅在网桥支持 VLAN 感知时使用。 |
+| `bridge_vlan_aware` | 类型：boolean；必填：否；默认值：—<br>启用网桥 VLAN 支持。 |
+| `cidr` | 类型：string；必填：否；默认值：—<br>IPv4 CIDR。 |
+| `cidr6` | 类型：string；必填：否；默认值：—<br>IPv6 CIDR。 |
+| `comments` | 类型：string；必填：否；默认值：—<br>注释 |
+| `comments6` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `gateway` | 类型：string；必填：否；默认值：—<br>默认网关地址。 |
+| `gateway6` | 类型：string；必填：否；默认值：—<br>默认 IPv6 网关地址。 |
+| `iface` | 类型：string；必填：是；默认值：—<br>网络接口名称。 |
+| `mtu` | 类型：integer；必填：否；默认值：—<br>MTU。 |
+| `netmask` | 类型：string；必填：否；默认值：—<br>网络掩码。 |
+| `netmask6` | 类型：integer；必填：否；默认值：—<br>网络掩码。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `ovs_bonds` | 类型：string；必填：否；默认值：—<br>指定绑定设备使用的接口。 |
+| `ovs_bridge` | 类型：string；必填：否；默认值：—<br>与 OVS 端口关联的 OVS 网桥。创建 OVS 端口时需要此项。 |
+| `ovs_options` | 类型：string；必填：否；默认值：—<br>OVS 接口选项。 |
+| `ovs_ports` | 类型：string；必填：否；默认值：—<br>指定要加入网桥的接口。 |
+| `ovs_tag` | 类型：integer；必填：否；默认值：—<br>指定 VLAN 标签（用于 OVSPort、OVSIntPort、OVSBond） |
+| `slaves` | 类型：string；必填：否；默认值：—<br>指定绑定设备使用的接口。 |
+| `type` | 类型：string；必填：是；默认值：—<br>网络接口类型；可选值：`bridge`, `bond`, `eth`, `alias`, `vlan`, `fabric`, `OVSBridge`, `OVSBond`, `OVSPort`, `OVSIntPort`, `vnet`, `unknown` |
+| `vlan-id` | 类型：integer；必填：否；默认值：—<br>自定义名称的 VLAN 接口的 vlan-id（仅限 ifupdown2）。 |
+| `vlan-raw-device` | 类型：string；必填：否；默认值：—<br>指定 VLAN 接口的原始接口。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -20955,33 +18671,25 @@ MGR 目录索引。
 {"description": "列出与当前用户关联的任务，或用户对 /nodes/<node>（任务运行所在的 <node>）具有 'Sys.Audit' 权限的所有任务。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-tasks-e180b4b0-get-parameters" id="api-nodes-node-tasks-e180b4b0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `errors` | boolean | 否 | 0 | 仅列出状态为 ERROR 的任务。 |
-| `limit` | integer | 否 | 50 | 仅列出此数量的任务。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `since` | integer | 否 | — | 仅列出此 UNIX 时间戳之后的任务。 |
-| `source` | string | 否 | "archive" | 列出已归档、活动或所有任务。；可选值：`archive`, `active`, `all` |
-| `start` | integer | 否 | 0 | 从此偏移量开始列出任务。 |
-| `statusfilter` | string | 否 | — | 应返回的任务状态列表。 |
-| `typefilter` | string | 否 | — | 仅列出此类型的任务（例如 vzstart、vzdump）。 |
-| `until` | integer | 否 | — | 仅列出截至此 UNIX 时间戳的任务。 |
-| `userfilter` | string | 否 | — | 仅列出此用户的任务。 |
-| `vmid` | integer | 否 | — | 仅列出此虚拟机的任务。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `errors` | 类型：boolean；必填：否；默认值：0<br>仅列出状态为 ERROR 的任务。 |
+| `limit` | 类型：integer；必填：否；默认值：50<br>仅列出此数量的任务。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `since` | 类型：integer；必填：否；默认值：—<br>仅列出此 UNIX 时间戳之后的任务。 |
+| `source` | 类型：string；必填：否；默认值："archive"<br>列出已归档、活动或所有任务。；可选值：`archive`, `active`, `all` |
+| `start` | 类型：integer；必填：否；默认值：0<br>从此偏移量开始列出任务。 |
+| `statusfilter` | 类型：string；必填：否；默认值：—<br>应返回的任务状态列表。 |
+| `typefilter` | 类型：string；必填：否；默认值：—<br>仅列出此类型的任务（例如 vzstart、vzdump）。 |
+| `until` | 类型：integer；必填：否；默认值：—<br>仅列出截至此 UNIX 时间戳的任务。 |
+| `userfilter` | 类型：string；必填：否；默认值：—<br>仅列出此用户的任务。 |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>仅列出此虚拟机的任务。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21045,30 +18753,18 @@ MGR 目录索引。
 {"description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Modify' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-tasks-upid-ab1e476b-delete-parameters" id="api-nodes-node-tasks-upid-ab1e476b-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `upid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `upid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21103,18 +18799,14 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-tasks-upid-ab1e476b-get-parameters" id="api-nodes-node-tasks-upid-ab1e476b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `upid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `upid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21155,33 +18847,21 @@ MGR 目录索引。
 {"description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-tasks-upid-log-1971fd45-get-parameters" id="api-nodes-node-tasks-upid-log-1971fd45-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `download` | boolean | 否 | — | 是否下载任务日志文件。此参数不能与其他参数一起使用 |
-| `limit` | integer | 否 | 50 | 从任务日志读取的行数。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `start` | integer | 否 | 0 | 读取任务日志时从此行开始 |
-| `upid` | string | 是 | — | 任务的唯一 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `download` | 类型：boolean；必填：否；默认值：—<br>是否下载任务日志文件。此参数不能与其他参数一起使用 |
+| `limit` | 类型：integer；必填：否；默认值：50<br>从任务日志读取的行数。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `start` | 类型：integer；必填：否；默认值：0<br>读取任务日志时从此行开始 |
+| `upid` | 类型：string；必填：是；默认值：—<br>任务的唯一 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21237,30 +18917,18 @@ MGR 目录索引。
 {"description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-tasks-upid-status-7d793759-get-parameters" id="api-nodes-node-tasks-upid-status-7d793759-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `upid` | string | 是 | — | 任务的唯一 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `upid` | 类型：string；必填：是；默认值：—<br>任务的唯一 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21308,17 +18976,13 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-scan-030e9433-get-parameters" id="api-nodes-node-scan-030e9433-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21353,30 +19017,18 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-nfs-475447a2-get-parameters" id="api-nodes-node-scan-nfs-475447a2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器地址（名称或 IP）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21422,33 +19074,21 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-cifs-02bcf20e-get-parameters" id="api-nodes-node-scan-cifs-02bcf20e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `domain` | string | 否 | — | SMB 域（工作组）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `password` | string | 否 | — | 用户密码。 |
-| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
-| `username` | string | 否 | — | 用户名。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `domain` | 类型：string；必填：否；默认值：—<br>SMB 域（工作组）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `password` | 类型：string；必填：否；默认值：—<br>用户密码。 |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器地址（名称或 IP）。 |
+| `username` | 类型：string；必填：否；默认值：—<br>用户名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21498,34 +19138,22 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-pbs-50e243a8-get-parameters" id="api-nodes-node-scan-pbs-50e243a8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `password` | string | 是 | — | 用户密码或 API 令牌密钥。 |
-| `port` | integer | 否 | 8007 | 可选端口。 |
-| `server` | string | 是 | — | 服务器地址（名称或 IP）。 |
-| `username` | string | 是 | — | 用户名或 API 令牌 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `password` | 类型：string；必填：是；默认值：—<br>用户密码或 API 令牌密钥。 |
+| `port` | 类型：integer；必填：否；默认值：8007<br>可选端口。 |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器地址（名称或 IP）。 |
+| `username` | 类型：string；必填：是；默认值：—<br>用户名或 API 令牌 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21580,30 +19208,18 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-iscsi-64358b17-get-parameters" id="api-nodes-node-scan-iscsi-64358b17-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `portal` | string | 是 | — | iSCSI 门户（IP 或 DNS 名称，可带端口）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `portal` | 类型：string；必填：是；默认值：—<br>iSCSI 门户（IP 或 DNS 名称，可带端口）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21650,29 +19266,17 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-lvm-43f11c98-get-parameters" id="api-nodes-node-scan-lvm-43f11c98-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21707,30 +19311,18 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-lvmthin-65365b18-get-parameters" id="api-nodes-node-scan-lvmthin-65365b18-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vg` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vg` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21771,29 +19363,17 @@ MGR 目录索引。
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-scan-zfs-04d93f02-get-parameters" id="api-nodes-node-scan-zfs-04d93f02-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21828,17 +19408,13 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-hardware-a755e283-get-parameters" id="api-nodes-node-hardware-a755e283-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21873,31 +19449,19 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Sys.Modify"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-hardware-pci-f3d25e65-get-parameters" id="api-nodes-node-hardware-pci-f3d25e65-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pci-class-blacklist` | string | 否 | "05;06;0b" | PCI 类别黑名单列表，所列类别不会返回。默认过滤以下类别：内存控制器（05）、桥（06）和处理器（0b）。 |
-| `verbose` | boolean | 否 | 1 | 如果禁用，则仅输出 PCI ID。否则还会返回供应商、设备等附加信息。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pci-class-blacklist` | 类型：string；必填：否；默认值："05;06;0b"<br>PCI 类别黑名单列表，所列类别不会返回。默认过滤以下类别：内存控制器（05）、桥（06）和处理器（0b）。 |
+| `verbose` | 类型：boolean；必填：否；默认值：1<br>如果禁用，则仅输出 PCI ID。否则还会返回供应商、设备等附加信息。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -21958,18 +19522,14 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-hardware-pci-pci-id-or-mapping-01e6e4af-get-parameters" id="api-nodes-node-hardware-pci-pci-id-or-mapping-01e6e4af-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pci-id-or-mapping` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pci-id-or-mapping` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22010,30 +19570,18 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Audit", "Sys.Modify"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-hardware-pci-pci-id-or-mapping-mdev-dfa9e29a-get-parameters" id="api-nodes-node-hardware-pci-pci-id-or-mapping-mdev-dfa9e29a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pci-id-or-mapping` | string | 是 | — | 要列出其 mdev 类型的 PCI ID 或映射。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pci-id-or-mapping` | 类型：string；必填：是；默认值：—<br>要列出其 mdev 类型的 PCI ID 或映射。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22086,29 +19634,17 @@ MGR 目录索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-hardware-usb-2ee72390-get-parameters" id="api-nodes-node-hardware-usb-2ee72390-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22154,23 +19690,15 @@ MGR 目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-a3f3cbe2-get-parameters" id="api-nodes-node-capabilities-a3f3cbe2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22205,23 +19733,15 @@ QEMU 能力索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-qemu-0ed6895d-get-parameters" id="api-nodes-node-capabilities-qemu-0ed6895d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22259,18 +19779,14 @@ QEMU 能力索引。
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-qemu-cpu-3a9cecad-get-parameters" id="api-nodes-node-capabilities-qemu-cpu-3a9cecad-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22325,19 +19841,15 @@ QEMU 能力索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-qemu-cpu-flags-d6e48149-get-parameters" id="api-nodes-node-capabilities-qemu-cpu-flags-d6e48149-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `accel` | string | 否 | "kvm" | 要检查节点兼容性的加速类型。；可选值：`kvm`, `tcg` |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `accel` | 类型：string；必填：否；默认值："kvm"<br>要检查节点兼容性的加速类型。；可选值：`kvm`, `tcg` |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22391,24 +19903,16 @@ QEMU 能力索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-qemu-machines-0639cbbf-get-parameters" id="api-nodes-node-capabilities-qemu-machines-0639cbbf-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22460,23 +19964,15 @@ QEMU 能力索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-capabilities-qemu-migration-1e238848-get-parameters" id="api-nodes-node-capabilities-qemu-migration-1e238848-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22514,34 +20010,22 @@ QEMU 能力索引。
 {"description": "仅列出您对 '/storage/<storage>' 具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-c95c7241-get-parameters" id="api-nodes-node-storage-c95c7241-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `content` | string | 否 | — | 仅列出支持此内容类型的存储。 |
-| `enabled` | boolean | 否 | 0 | 仅列出已启用的存储（在配置中未禁用）。 |
-| `format` | boolean | 否 | 0 | 包含格式信息 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 仅列出  指定存储的状态 |
-| `target` | string | 否 | — | 如果 target 与 'node' 不同，则仅列出内容可同时在此 'node' 和指定 'target' 节点上访问的共享存储。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `content` | 类型：string；必填：否；默认值：—<br>仅列出支持此内容类型的存储。 |
+| `enabled` | 类型：boolean；必填：否；默认值：0<br>仅列出已启用的存储（在配置中未禁用）。 |
+| `format` | 类型：boolean；必填：否；默认值：0<br>包含格式信息 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>仅列出  指定存储的状态 |
+| `target` | 类型：string；必填：否；默认值：—<br>如果 target 与 'node' 不同，则仅列出内容可同时在此 'node' 和指定 'target' 节点上访问的共享存储。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22618,18 +20102,14 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-15e1d0da-get-parameters" id="api-nodes-node-storage-storage-15e1d0da-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22673,33 +20153,21 @@ QEMU 能力索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-prunebackups-b95263fa-delete-parameters" id="api-nodes-node-storage-storage-prunebackups-b95263fa-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `prune-backups` | string | 否 | — | 使用这些保留选项，而非存储配置中的选项。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `type` | string | 否 | — | 'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
-| `vmid` | integer | 否 | — | 仅清理此虚拟机的备份。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `prune-backups` | 类型：string；必填：否；默认值：—<br>使用这些保留选项，而非存储配置中的选项。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `type` | 类型：string；必填：否；默认值：—<br>'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>仅清理此虚拟机的备份。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22743,33 +20211,21 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-prunebackups-b95263fa-get-parameters" id="api-nodes-node-storage-storage-prunebackups-b95263fa-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `prune-backups` | string | 否 | — | 使用这些保留选项，而非存储配置中的选项。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `type` | string | 否 | — | 'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
-| `vmid` | integer | 否 | — | 仅考虑此客户机的备份。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `prune-backups` | 类型：string；必填：否；默认值：—<br>使用这些保留选项，而非存储配置中的选项。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `type` | 类型：string；必填：否；默认值：—<br>'qemu' 或 'lxc'。仅考虑此类型客户机的备份。；可选值：`qemu`, `lxc` |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>仅考虑此客户机的备份。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22833,32 +20289,20 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-09922e88-get-parameters" id="api-nodes-node-storage-storage-content-09922e88-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `content` | string | 否 | — | 仅列出此类型的内容。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `vmid` | integer | 否 | — | 仅列出此虚拟机的镜像 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `content` | 类型：string；必填：否；默认值：—<br>仅列出此类型的内容。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>仅列出此虚拟机的镜像 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -22925,34 +20369,22 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.AllocateSpace"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-09922e88-post-parameters" id="api-nodes-node-storage-storage-content-09922e88-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `filename` | string | 是 | — | 要创建的文件名称。 |
-| `format` | string | 否 | — | 镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `size` | string | 是 | — | 大小，单位为千字节（1024 字节）。可选后缀 'M'（兆字节，1024K）和 'G'（吉字节，1024M） |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `vmid` | integer | 是 | — | 指定所有者虚拟机 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `filename` | 类型：string；必填：是；默认值：—<br>要创建的文件名称。 |
+| `format` | 类型：string；必填：否；默认值：—<br>镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `size` | 类型：string；必填：是；默认值：—<br>大小，单位为千字节（1024 字节）。可选后缀 'M'（兆字节，1024K）和 'G'（吉字节，1024M） |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `vmid` | 类型：integer；必填：是；默认值：—<br>指定所有者虚拟机 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23000,32 +20432,20 @@ QEMU 能力索引。
 {"description": "需要对存储具有 'Datastore.Allocate' 权限（如果对虚拟机具有 VM.Backup 权限，则对备份卷具有 'Datastore.AllocateSpace' 即可）。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-delete-parameters" id="api-nodes-node-storage-storage-content-volume-722e1106-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delay` | integer | 否 | — | 等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 存储标识符。 |
-| `volume` | string | 是 | — | 卷标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delay` | 类型：integer；必填：否；默认值：—<br>等待任务完成的时间。如果任务在此时间内完成，则返回 'null'。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>存储标识符。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23067,31 +20487,19 @@ QEMU 能力索引。
 {"description": "需要具有卷的读取访问权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-get-parameters" id="api-nodes-node-storage-storage-content-volume-722e1106-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 存储标识符。 |
-| `volume` | string | 是 | — | 卷标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>存储标识符。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23132,33 +20540,21 @@ QEMU 能力索引。
 
 **方法标识：** `copy`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-post-parameters" id="api-nodes-node-storage-storage-content-volume-722e1106-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 否 | — | 存储标识符。 |
-| `target` | string | 是 | — | 目标卷标识符 |
-| `target_node` | string | 否 | — | 目标节点。默认为本地节点。 |
-| `volume` | string | 是 | — | 源卷标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>存储标识符。 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标卷标识符 |
+| `target_node` | 类型：string；必填：否；默认值：—<br>目标节点。默认为本地节点。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>源卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23198,33 +20594,21 @@ QEMU 能力索引。
 {"description": "需要具有卷的读取访问权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-put-parameters" id="api-nodes-node-storage-storage-content-volume-722e1106-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `notes` | string | 否 | — | 新备注。 |
-| `protected` | boolean | 否 | — | 保护状态。目前仅支持备份。 |
-| `storage` | string | 否 | — | 存储标识符。 |
-| `volume` | string | 是 | — | 卷标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `notes` | 类型：string；必填：否；默认值：—<br>新备注。 |
+| `protected` | 类型：boolean；必填：否；默认值：—<br>保护状态。目前仅支持备份。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>存储标识符。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>卷标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23270,32 +20654,20 @@ QEMU 能力索引。
 {"description": "需要具有卷的读取访问权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-file-restore-list-f0b421f6-get-parameters" id="api-nodes-node-storage-storage-file-restore-list-f0b421f6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `filepath` | string | 是 | — | 要列出的目录或文件的 base64 路径，或 "/"。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `volume` | string | 是 | — | 备份卷 ID 或名称。目前仅支持 PBS 快照。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `filepath` | 类型：string；必填：是；默认值：—<br>要列出的目录或文件的 base64 路径，或 "/"。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>备份卷 ID 或名称。目前仅支持 PBS 快照。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23349,33 +20721,21 @@ QEMU 能力索引。
 {"description": "需要具有卷的读取访问权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-file-restore-download-d9158035-get-parameters" id="api-nodes-node-storage-storage-file-restore-download-d9158035-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `filepath` | string | 是 | — | 要下载的目录或文件的 base64 路径。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `tar` | boolean | 否 | 0 | 将目录下载为 'tar.zst' 而非 'zip'。 |
-| `volume` | string | 是 | — | 备份卷 ID 或名称。目前仅支持 PBS 快照。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `filepath` | 类型：string；必填：是；默认值：—<br>要下载的目录或文件的 base64 路径。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `tar` | 类型：boolean；必填：否；默认值：0<br>将目录下载为 'tar.zst' 而非 'zip'。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>备份卷 ID 或名称。目前仅支持 PBS 快照。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23428,30 +20788,18 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-status-a527dfdc-get-parameters" id="api-nodes-node-storage-storage-status-a527dfdc-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23504,33 +20852,21 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-rrd-48a58707-get-parameters" id="api-nodes-node-storage-storage-rrd-48a58707-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `ds` | string | 是 | — | 要显示的数据源列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `ds` | 类型：string；必填：是；默认值：—<br>要显示的数据源列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23574,32 +20910,20 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-rrddata-99070a7b-get-parameters" id="api-nodes-node-storage-storage-rrddata-99070a7b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23642,29 +20966,21 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.AllocateTemplate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-upload-535e4f55-post-parameters" id="api-nodes-node-storage-storage-upload-535e4f55-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `checksum` | string | 否 | — | 文件的预期校验和。 |
-| `checksum-algorithm` | string | 否 | — | 计算文件校验和的算法。；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
-| `content` | string | 是 | — | 内容类型。；可选值：`iso`, `vztmpl`, `import` |
-| `filename` | string | 是 | — | 要创建的文件名称。注意：此名称将被规范化！ |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `tmpfilename` | string | 否 | — | 源文件名。此参数通常由 REST 处理程序设置。仅在连接到 localhost 的受信任端口时才能覆盖。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `checksum` | 类型：string；必填：否；默认值：—<br>文件的预期校验和。 |
+| `checksum-algorithm` | 类型：string；必填：否；默认值：—<br>计算文件校验和的算法。；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
+| `content` | 类型：string；必填：是；默认值：—<br>内容类型。；可选值：`iso`, `vztmpl`, `import` |
+| `filename` | 类型：string；必填：是；默认值：—<br>要创建的文件名称。注意：此名称将被规范化！ |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `tmpfilename` | 类型：string；必填：否；默认值：—<br>源文件名。此参数通常由 REST 处理程序设置。仅在连接到 localhost 的受信任端口时才能覆盖。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23722,37 +21038,25 @@ QEMU 能力索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-download-url-fb450738-post-parameters" id="api-nodes-node-storage-storage-download-url-fb450738-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `checksum` | string | 否 | — | 文件的预期校验和。 |
-| `checksum-algorithm` | string | 否 | — | 计算文件校验和的算法。；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
-| `compression` | string | 否 | — | 使用指定压缩算法解压下载的文件。 |
-| `content` | string | 是 | — | 内容类型。；可选值：`iso`, `vztmpl`, `import` |
-| `filename` | string | 是 | — | 要创建的文件名称。注意：此名称将被规范化！ |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `url` | string | 是 | — | 下载文件的 URL。 |
-| `verify-certificates` | boolean | 否 | 1 | 如果为 false，则不验证任何 SSL/TLS 证书。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `checksum` | 类型：string；必填：否；默认值：—<br>文件的预期校验和。 |
+| `checksum-algorithm` | 类型：string；必填：否；默认值：—<br>计算文件校验和的算法。；可选值：`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512` |
+| `compression` | 类型：string；必填：否；默认值：—<br>使用指定压缩算法解压下载的文件。 |
+| `content` | 类型：string；必填：是；默认值：—<br>内容类型。；可选值：`iso`, `vztmpl`, `import` |
+| `filename` | 类型：string；必填：是；默认值：—<br>要创建的文件名称。注意：此名称将被规范化！ |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `url` | 类型：string；必填：是；默认值：—<br>下载文件的 URL。 |
+| `verify-certificates` | 类型：boolean；必填：否；默认值：1<br>如果为 false，则不验证任何 SSL/TLS 证书。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23803,32 +21107,20 @@ QEMU 能力索引。
 {"check": ["and", ["perm", "/storage/{storage}", ["Datastore.AllocateTemplate"]], ["perm", "/nodes/{node}", ["Sys.AccessNetwork"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-oci-registry-pull-3302e1c4-post-parameters" id="api-nodes-node-storage-storage-oci-registry-pull-3302e1c4-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `filename` | string | 否 | — | OCI 镜像的自定义目标文件名。注意：此名称将被规范化！ |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `reference` | string | 是 | — | 要下载的 OCI 镜像的引用。 |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `filename` | 类型：string；必填：否；默认值：—<br>OCI 镜像的自定义目标文件名。注意：此名称将被规范化！ |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `reference` | 类型：string；必填：是；默认值：—<br>要下载的 OCI 镜像的引用。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23878,31 +21170,19 @@ QEMU 能力索引。
 {"description": "需要具有卷的读取访问权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-import-metadata-b9d89575-get-parameters" id="api-nodes-node-storage-storage-import-metadata-b9d89575-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `volume` | string | 是 | — | 客户机归档/条目的卷标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `volume` | 类型：string；必填：是；默认值：—<br>客户机归档/条目的卷标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -23974,30 +21254,18 @@ QEMU 能力索引。
 {"check": ["perm", "/storage/{storage}", ["Datastore.Audit", "Datastore.AllocateSpace"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-storage-storage-identity-284407c3-get-parameters" id="api-nodes-node-storage-storage-identity-284407c3-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24047,23 +21315,15 @@ QEMU 能力索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-2325b373-get-parameters" id="api-nodes-node-disks-2325b373-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24098,29 +21358,17 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvm-2c5fff28-get-parameters" id="api-nodes-node-disks-lvm-2c5fff28-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24175,32 +21423,20 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvm-2c5fff28-post-parameters" id="api-nodes-node-disks-lvm-2c5fff28-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | 使用卷组配置存储 |
-| `device` | string | 是 | — | 要在其上创建卷组的块设备 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add_storage` | 类型：boolean；必填：否；默认值：0<br>使用卷组配置存储 |
+| `device` | 类型：string；必填：是；默认值：—<br>要在其上创建卷组的块设备 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24243,32 +21479,20 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "设置 'cleanup-config' 时，还需要对 /storage 具有 'Datastore.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvm-name-67e41b86-delete-parameters" id="api-nodes-node-disks-lvm-name-67e41b86-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cleanup-config` | boolean | 否 | 0 | 将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
-| `cleanup-disks` | boolean | 否 | 0 | 同时擦除磁盘，以便后续改作他用。 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cleanup-config` | 类型：boolean；必填：否；默认值：0<br>将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
+| `cleanup-disks` | 类型：boolean；必填：否；默认值：0<br>同时擦除磁盘，以便后续改作他用。 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24314,29 +21538,17 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvmthin-adb10980-get-parameters" id="api-nodes-node-disks-lvmthin-adb10980-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24376,32 +21588,20 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvmthin-adb10980-post-parameters" id="api-nodes-node-disks-lvmthin-adb10980-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | 使用精简池配置存储。 |
-| `device` | string | 是 | — | 要在其上创建精简池的块设备。 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add_storage` | 类型：boolean；必填：否；默认值：0<br>使用精简池配置存储。 |
+| `device` | 类型：string；必填：是；默认值：—<br>要在其上创建精简池的块设备。 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24444,33 +21644,21 @@ QEMU 能力索引。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "设置 'cleanup-config' 时，还需要对 /storage 具有 'Datastore.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-lvmthin-name-35a5d325-delete-parameters" id="api-nodes-node-disks-lvmthin-name-35a5d325-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cleanup-config` | boolean | 否 | 0 | 将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
-| `cleanup-disks` | boolean | 否 | 0 | 同时擦除磁盘，以便后续改作他用。 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `volume-group` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cleanup-config` | 类型：boolean；必填：否；默认值：0<br>将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
+| `cleanup-disks` | 类型：boolean；必填：否；默认值：0<br>同时擦除磁盘，以便后续改作他用。 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `volume-group` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24519,29 +21707,17 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-directory-b701379c-get-parameters" id="api-nodes-node-disks-directory-b701379c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24580,33 +21756,21 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-directory-b701379c-post-parameters" id="api-nodes-node-disks-directory-b701379c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | 使用目录配置存储。 |
-| `device` | string | 是 | — | 要在其上创建文件系统的块设备。 |
-| `filesystem` | string | 否 | "ext4" | 所需的文件系统。；可选值：`ext4`, `xfs` |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add_storage` | 类型：boolean；必填：否；默认值：0<br>使用目录配置存储。 |
+| `device` | 类型：string；必填：是；默认值：—<br>要在其上创建文件系统的块设备。 |
+| `filesystem` | 类型：string；必填：否；默认值："ext4"<br>所需的文件系统。；可选值：`ext4`, `xfs` |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24650,32 +21814,20 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "设置 'cleanup-config' 时，还需要对 /storage 具有 'Datastore.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-directory-name-b40f6bc9-delete-parameters" id="api-nodes-node-disks-directory-name-b40f6bc9-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cleanup-config` | boolean | 否 | 0 | 将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
-| `cleanup-disks` | boolean | 否 | 0 | 同时擦除磁盘，以便后续改作他用。 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cleanup-config` | 类型：boolean；必填：否；默认值：0<br>将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
+| `cleanup-disks` | 类型：boolean；必填：否；默认值：0<br>同时擦除磁盘，以便后续改作他用。 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24721,29 +21873,17 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-zfs-c109c61c-get-parameters" id="api-nodes-node-disks-zfs-c109c61c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24782,36 +21922,24 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "还需要对 /storage 具有 'Datastore.Allocate' 权限（设置 'add_storage' 时）"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-zfs-c109c61c-post-parameters" id="api-nodes-node-disks-zfs-c109c61c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `add_storage` | boolean | 否 | 0 | 使用 zpool 配置存储。 |
-| `ashift` | integer | 否 | 12 | 池扇区大小指数。 |
-| `compression` | string | 否 | "on" | 要使用的压缩算法。；可选值：`on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd` |
-| `devices` | string | 是 | — | 要在其上创建 zpool 的块设备。 |
-| `draid-config` | string | 否 | — |  |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `raidlevel` | string | 是 | — | 要使用的 RAID 级别。；可选值：`single`, `mirror`, `raid10`, `raidz`, `raidz2`, `raidz3`, `draid`, `draid2`, `draid3` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `add_storage` | 类型：boolean；必填：否；默认值：0<br>使用 zpool 配置存储。 |
+| `ashift` | 类型：integer；必填：否；默认值：12<br>池扇区大小指数。 |
+| `compression` | 类型：string；必填：否；默认值："on"<br>要使用的压缩算法。；可选值：`on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd` |
+| `devices` | 类型：string；必填：是；默认值：—<br>要在其上创建 zpool 的块设备。 |
+| `draid-config` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `raidlevel` | 类型：string；必填：是；默认值：—<br>要使用的 RAID 级别。；可选值：`single`, `mirror`, `raid10`, `raidz`, `raidz2`, `raidz3`, `draid`, `draid2`, `draid3` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24870,32 +21998,20 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "设置 'cleanup-config' 时，还需要对 /storage 具有 'Datastore.Allocate' 权限"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-zfs-name-51463f9e-delete-parameters" id="api-nodes-node-disks-zfs-name-51463f9e-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cleanup-config` | boolean | 否 | 0 | 将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
-| `cleanup-disks` | boolean | 否 | 0 | 同时擦除磁盘，以便后续改作他用。 |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cleanup-config` | 类型：boolean；必填：否；默认值：0<br>将关联存储标记为在此节点上不再可用，或从配置中移除（如果仅为此节点配置）。 |
+| `cleanup-disks` | 类型：boolean；必填：否；默认值：0<br>同时擦除磁盘，以便后续改作他用。 |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -24935,30 +22051,18 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-zfs-name-51463f9e-get-parameters" id="api-nodes-node-disks-zfs-name-51463f9e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 存储标识符。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25019,32 +22123,20 @@ PVE 管理的目录存储。
 {"check": ["or", ["perm", "/", ["Sys.Audit"]], ["perm", "/nodes/{node}", ["Sys.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-list-cd86e696-get-parameters" id="api-nodes-node-disks-list-cd86e696-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `include-partitions` | boolean | 否 | 0 | 同时包含分区。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `skipsmart` | boolean | 否 | 0 | 跳过 SMART 检查。 |
-| `type` | string | 否 | — | 仅列出指定类型的磁盘。；可选值：`unused`, `journal_disks` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `include-partitions` | 类型：boolean；必填：否；默认值：0<br>同时包含分区。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `skipsmart` | 类型：boolean；必填：否；默认值：0<br>跳过 SMART 检查。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出指定类型的磁盘。；可选值：`unused`, `journal_disks` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25100,31 +22192,19 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-smart-7cda3089-get-parameters" id="api-nodes-node-disks-smart-7cda3089-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | 块设备名称 |
-| `healthonly` | boolean | 否 | — | 如果为 true，则仅返回健康状态 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `disk` | 类型：string；必填：是；默认值：—<br>块设备名称 |
+| `healthonly` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则仅返回健康状态 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25172,31 +22252,19 @@ PVE 管理的目录存储。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-initgpt-5c24ea68-post-parameters" id="api-nodes-node-disks-initgpt-5c24ea68-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | 块设备名称 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `uuid` | string | 否 | — | GPT 表的 UUID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `disk` | 类型：string；必填：是；默认值：—<br>块设备名称 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `uuid` | 类型：string；必填：否；默认值：—<br>GPT 表的 UUID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25232,30 +22300,18 @@ PVE 管理的目录存储。
 
 **方法标识：** `wipe_disk`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-disks-wipedisk-ae5e91b0-put-parameters" id="api-nodes-node-disks-wipedisk-ae5e91b0-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `disk` | string | 是 | — | 块设备名称 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `disk` | 类型：string；必填：是；默认值：—<br>块设备名称 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25296,17 +22352,13 @@ APT（高级软件包工具）的目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-apt-9cfeeb1d-get-parameters" id="api-nodes-node-apt-9cfeeb1d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25341,29 +22393,17 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-update-555c9d2d-get-parameters" id="api-nodes-node-apt-update-555c9d2d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25406,31 +22446,19 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-update-555c9d2d-post-parameters" id="api-nodes-node-apt-update-555c9d2d-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `notify` | boolean | 否 | 0 | 发送新软件包通知。 |
-| `quiet` | boolean | 否 | 0 | 仅生成适合日志记录的输出，省略进度指示器。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `notify` | 类型：boolean；必填：否；默认值：0<br>发送新软件包通知。 |
+| `quiet` | 类型：boolean；必填：否；默认值：0<br>仅生成适合日志记录的输出，省略进度指示器。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25472,25 +22500,17 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-changelog-53b13010-get-parameters" id="api-nodes-node-apt-changelog-53b13010-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 软件包名称。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `version` | string | 否 | — | 软件包版本。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>软件包名称。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `version` | 类型：string；必填：否；默认值：—<br>软件包版本。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25532,23 +22552,15 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-repositories-2ddb8531-get-parameters" id="api-nodes-node-apt-repositories-2ddb8531-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25647,33 +22659,21 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-repositories-2ddb8531-post-parameters" id="api-nodes-node-apt-repositories-2ddb8531-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 用于检测修改的摘要。 |
-| `enabled` | boolean | 否 | — | 是否应启用仓库。 |
-| `index` | integer | 是 | — | 文件内的索引（从 0 开始）。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `path` | string | 是 | — | 所在文件的路径。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>用于检测修改的摘要。 |
+| `enabled` | 类型：boolean；必填：否；默认值：—<br>是否应启用仓库。 |
+| `index` | 类型：integer；必填：是；默认值：—<br>文件内的索引（从 0 开始）。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `path` | 类型：string；必填：是；默认值：—<br>所在文件的路径。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25711,31 +22711,19 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-repositories-2ddb8531-put-parameters" id="api-nodes-node-apt-repositories-2ddb8531-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 用于检测修改的摘要。 |
-| `handle` | string | 是 | — | 标识仓库的句柄。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>用于检测修改的摘要。 |
+| `handle` | 类型：string；必填：是；默认值：—<br>标识仓库的句柄。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25777,23 +22765,15 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-apt-versions-f11bf1a5-get-parameters" id="api-nodes-node-apt-versions-f11bf1a5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25849,17 +22829,13 @@ APT（高级软件包工具）的目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-9019f1f1-get-parameters" id="api-nodes-node-firewall-9019f1f1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25894,23 +22870,15 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-rules-cb56872b-get-parameters" id="api-nodes-node-firewall-rules-cb56872b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -25961,44 +22929,32 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-rules-cb56872b-post-parameters" id="api-nodes-node-firewall-rules-cb56872b-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26083,31 +23039,19 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-delete-parameters" id="api-nodes-node-firewall-rules-pos-297a4a77-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26146,24 +23090,16 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-get-parameters" id="api-nodes-node-firewall-rules-pos-297a4a77-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26217,46 +23153,34 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-put-parameters" id="api-nodes-node-firewall-rules-pos-297a4a77-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26343,23 +23267,15 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-options-2e196e08-get-parameters" id="api-nodes-node-firewall-options-2e196e08-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26433,50 +23349,38 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-options-2e196e08-put-parameters" id="api-nodes-node-firewall-options-2e196e08-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `enable` | boolean | 否 | 1 | 启用宿主机防火墙规则。 |
-| `log_level_forward` | string | 否 | — | 转发流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_level_in` | string | 否 | — | 传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_level_out` | string | 否 | — | 传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `log_nf_conntrack` | boolean | 否 | 0 | 启用 conntrack 信息日志记录。 |
-| `ndp` | boolean | 否 | 1 | 启用 NDP（邻居发现协议）。 |
-| `nf_conntrack_allow_invalid` | boolean | 否 | 0 | 在连接跟踪中允许无效数据包。 |
-| `nf_conntrack_helpers` | string | 否 | "" | 为特定协议启用 conntrack 辅助模块。支持的协议：amanda、ftp、irc、netbios-ns、pptp、sane、sip、snmp、tftp |
-| `nf_conntrack_max` | integer | 否 | 262144 | 跟踪连接的最大数量。 |
-| `nf_conntrack_tcp_timeout_established` | integer | 否 | 432000 | Conntrack established 超时时间。 |
-| `nf_conntrack_tcp_timeout_syn_recv` | integer | 否 | 60 | Conntrack syn recv 超时时间。 |
-| `nftables` | boolean | 否 | 0 | 启用基于 nftables 的防火墙（技术预览） |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nosmurfs` | boolean | 否 | — | 启用 SMURFS 过滤器。 |
-| `protection_synflood` | boolean | 否 | 0 | 启用 SYN 洪泛防护 |
-| `protection_synflood_burst` | integer | 否 | 1000 | 按源 IP 的 SYN 洪泛防护突发速率。 |
-| `protection_synflood_rate` | integer | 否 | 200 | 按源 IP 的 SYN 洪泛防护速率，单位为 syn/sec。 |
-| `smurf_log_level` | string | 否 | — | SMURFS 过滤器的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `tcp_flags_log_level` | string | 否 | — | 非法 TCP 标志过滤器的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `tcpflags` | boolean | 否 | 0 | 过滤 TCP 标志的非法组合。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | 类型：boolean；必填：否；默认值：1<br>启用宿主机防火墙规则。 |
+| `log_level_forward` | 类型：string；必填：否；默认值：—<br>转发流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_level_in` | 类型：string；必填：否；默认值：—<br>传入流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_level_out` | 类型：string；必填：否；默认值：—<br>传出流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `log_nf_conntrack` | 类型：boolean；必填：否；默认值：0<br>启用 conntrack 信息日志记录。 |
+| `ndp` | 类型：boolean；必填：否；默认值：1<br>启用 NDP（邻居发现协议）。 |
+| `nf_conntrack_allow_invalid` | 类型：boolean；必填：否；默认值：0<br>在连接跟踪中允许无效数据包。 |
+| `nf_conntrack_helpers` | 类型：string；必填：否；默认值：""<br>为特定协议启用 conntrack 辅助模块。支持的协议：amanda、ftp、irc、netbios-ns、pptp、sane、sip、snmp、tftp |
+| `nf_conntrack_max` | 类型：integer；必填：否；默认值：262144<br>跟踪连接的最大数量。 |
+| `nf_conntrack_tcp_timeout_established` | 类型：integer；必填：否；默认值：432000<br>Conntrack established 超时时间。 |
+| `nf_conntrack_tcp_timeout_syn_recv` | 类型：integer；必填：否；默认值：60<br>Conntrack syn recv 超时时间。 |
+| `nftables` | 类型：boolean；必填：否；默认值：0<br>启用基于 nftables 的防火墙（技术预览） |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nosmurfs` | 类型：boolean；必填：否；默认值：—<br>启用 SMURFS 过滤器。 |
+| `protection_synflood` | 类型：boolean；必填：否；默认值：0<br>启用 SYN 洪泛防护 |
+| `protection_synflood_burst` | 类型：integer；必填：否；默认值：1000<br>按源 IP 的 SYN 洪泛防护突发速率。 |
+| `protection_synflood_rate` | 类型：integer；必填：否；默认值：200<br>按源 IP 的 SYN 洪泛防护速率，单位为 syn/sec。 |
+| `smurf_log_level` | 类型：string；必填：否；默认值：—<br>SMURFS 过滤器的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `tcp_flags_log_level` | 类型：string；必填：否；默认值：—<br>非法 TCP 标志过滤器的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `tcpflags` | 类型：boolean；必填：否；默认值：0<br>过滤 TCP 标志的非法组合。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26570,33 +23474,21 @@ APT（高级软件包工具）的目录索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Syslog"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-firewall-log-f54d4ca1-get-parameters" id="api-nodes-node-firewall-log-f54d4ca1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `since` | integer | 否 | — | 显示从此 UNIX 时间戳开始的日志。 |
-| `start` | integer | 否 | — |  |
-| `until` | integer | 否 | — | 显示截至此 UNIX 时间戳的日志。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `limit` | 类型：integer；必填：否；默认值：—<br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `since` | 类型：integer；必填：否；默认值：—<br>显示从此 UNIX 时间戳开始的日志。 |
+| `start` | 类型：integer；必填：否；默认值：—<br> |
+| `until` | 类型：integer；必填：否；默认值：—<br>显示截至此 UNIX 时间戳的日志。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26643,30 +23535,18 @@ APT（高级软件包工具）的目录索引。
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-replication-a0e57fd8-get-parameters" id="api-nodes-node-replication-a0e57fd8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `guest` | integer | 否 | — | 仅列出此客户机的复制作业。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `guest` | 类型：integer；必填：否；默认值：—<br>仅列出此客户机的复制作业。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26710,18 +23590,14 @@ APT（高级软件包工具）的目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-replication-id-1c9d32c5-get-parameters" id="api-nodes-node-replication-id-1c9d32c5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26765,30 +23641,18 @@ APT（高级软件包工具）的目录索引。
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-replication-id-status-3a1bb288-get-parameters" id="api-nodes-node-replication-id-status-3a1bb288-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26832,32 +23696,20 @@ APT（高级软件包工具）的目录索引。
 {"description": "需要对 /vms/<vmid> 具有 VM.Audit 权限，或对 '/nodes/<node>' 具有 'Sys.Audit' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-replication-id-log-e0cf7067-get-parameters" id="api-nodes-node-replication-id-log-e0cf7067-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `start` | integer | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `limit` | 类型：integer；必填：否；默认值：—<br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `start` | 类型：integer；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26906,30 +23758,18 @@ APT（高级软件包工具）的目录索引。
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-replication-id-schedule-now-ad2bf972-post-parameters" id="api-nodes-node-replication-id-schedule-now-ad2bf972-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -26973,17 +23813,13 @@ APT（高级软件包工具）的目录索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-322ab2f5-get-parameters" id="api-nodes-node-certificates-322ab2f5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27018,17 +23854,13 @@ ACME 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-acme-ef4fc921-get-parameters" id="api-nodes-node-certificates-acme-ef4fc921-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27063,29 +23895,17 @@ ACME 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-delete-parameters" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27114,30 +23934,18 @@ ACME 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-post-parameters" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 覆盖现有自定义证书。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>覆盖现有自定义证书。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27172,30 +23980,18 @@ ACME 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-put-parameters" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 即使距到期时间超过 30 天也强制续期。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>即使距到期时间超过 30 天也强制续期。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27236,23 +24032,15 @@ ACME 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-info-0a704380-get-parameters" id="api-nodes-node-certificates-info-0a704380-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27304,30 +24092,18 @@ ACME 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-custom-734af0d5-delete-parameters" id="api-nodes-node-certificates-custom-734af0d5-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `restart` | boolean | 否 | 0 | 重启 pveproxy。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `restart` | 类型：boolean；必填：否；默认值：0<br>重启 pveproxy。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27362,33 +24138,21 @@ ACME 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-certificates-custom-734af0d5-post-parameters" id="api-nodes-node-certificates-custom-734af0d5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `certificates` | string | 是 | — | PEM 编码的证书（链）。 |
-| `force` | boolean | 否 | 0 | 覆盖现有自定义证书或 ACME 证书文件。 |
-| `key` | string | 否 | — | PEM 编码的私钥。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `restart` | boolean | 否 | 0 | 重启 pveproxy。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `certificates` | 类型：string；必填：是；默认值：—<br>PEM 编码的证书（链）。 |
+| `force` | 类型：boolean；必填：否；默认值：0<br>覆盖现有自定义证书或 ACME 证书文件。 |
+| `key` | 类型：string；必填：否；默认值：—<br>PEM 编码的私钥。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `restart` | 类型：boolean；必填：否；默认值：0<br>重启 pveproxy。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27446,24 +24210,16 @@ ACME 索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-config-82004e58-get-parameters" id="api-nodes-node-config-82004e58-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `property` | string | 否 | "all" | 仅返回节点配置中的特定属性。；可选值：`acme`, `acmedomain0`, `acmedomain1`, `acmedomain2`, `acmedomain3`, `acmedomain4`, `acmedomain5`, `ballooning-target`, `description`, `location`, `startall-onboot-delay`, `wakeonlan` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `property` | 类型：string；必填：否；默认值："all"<br>仅返回节点配置中的特定属性。；可选值：`acme`, `acmedomain0`, `acmedomain1`, `acmedomain2`, `acmedomain3`, `acmedomain4`, `acmedomain5`, `ballooning-target`, `description`, `location`, `startall-onboot-delay`, `wakeonlan` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27562,38 +24318,26 @@ ACME 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-config-82004e58-put-parameters" id="api-nodes-node-config-82004e58-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acme` | string | 否 | — | 节点特定 ACME 设置。 |
-| `acmedomain[n]` | string | 否 | — | ACME 域名和验证插件 |
-| `ballooning-target` | integer | 否 | 80 | ballooning 的 RAM 使用目标（占总内存的百分比） |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 节点描述。显示在 Web 界面的节点备注面板中。作为注释保存在配置文件中。 |
-| `digest` | string | 否 | — | 如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
-| `location` | string | 否 | — | 节点位置。覆盖数据中心配置中的默认值。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `startall-onboot-delay` | integer | 否 | 0 | 启动所有启用了 on-boot 的虚拟客户机前的初始延迟，单位为秒。 |
-| `wakeonlan` | string | 否 | — | 节点特定的局域网唤醒设置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acme` | 类型：string；必填：否；默认值：—<br>节点特定 ACME 设置。 |
+| `acmedomain[n]` | 类型：string；必填：否；默认值：—<br>ACME 域名和验证插件 |
+| `ballooning-target` | 类型：integer；必填：否；默认值：80<br>ballooning 的 RAM 使用目标（占总内存的百分比） |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>节点描述。显示在 Web 界面的节点备注面板中。作为注释保存在配置文件中。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件的 SHA1 摘要不同，则阻止更改。可用于防止并发修改。 |
+| `location` | 类型：string；必填：否；默认值：—<br>节点位置。覆盖数据中心配置中的默认值。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `startall-onboot-delay` | 类型：integer；必填：否；默认值：0<br>启动所有启用了 on-boot 的虚拟客户机前的初始延迟，单位为秒。 |
+| `wakeonlan` | 类型：string；必填：否；默认值：—<br>节点特定的局域网唤醒设置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27696,23 +24440,15 @@ SDN 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-d90c97b0-get-parameters" id="api-nodes-node-sdn-d90c97b0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27747,18 +24483,14 @@ SDN fabric 状态的目录索引。
 {"check": ["perm", "/sdn/fabrics/{fabric}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-fabrics-fabric-159342c2-get-parameters" id="api-nodes-node-sdn-fabrics-fabric-159342c2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | SDN fabric 的标识符 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27802,30 +24534,18 @@ SDN fabric 状态的目录索引。
 {"check": ["perm", "/sdn/fabrics/{fabric}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-fabrics-fabric-routes-ddecafee-get-parameters" id="api-nodes-node-sdn-fabrics-fabric-routes-ddecafee-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | SDN fabric 的标识符 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27878,30 +24598,18 @@ SDN fabric 状态的目录索引。
 {"check": ["perm", "/sdn/fabrics/{fabric}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-fabrics-fabric-neighbors-5852cb90-get-parameters" id="api-nodes-node-sdn-fabrics-fabric-neighbors-5852cb90-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | SDN fabric 的标识符 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -27954,30 +24662,18 @@ SDN fabric 状态的目录索引。
 {"check": ["perm", "/sdn/fabrics/{fabric}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-fabrics-fabric-interfaces-3624f43f-get-parameters" id="api-nodes-node-sdn-fabrics-fabric-interfaces-3624f43f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric` | string | 是 | — | SDN fabric 的标识符 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28030,29 +24726,17 @@ SDN fabric 状态的目录索引。
 {"description": "仅列出您具有 'SDN.Audit' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-zones-c9bc90b4-get-parameters" id="api-nodes-node-sdn-zones-c9bc90b4-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28096,18 +24780,14 @@ SDN 区域状态的目录索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-zones-zone-2d692bca-get-parameters" id="api-nodes-node-sdn-zones-zone-2d692bca-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28148,30 +24828,18 @@ SDN 区域状态的目录索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-zones-zone-content-2cc6aa3f-get-parameters" id="api-nodes-node-sdn-zones-zone-content-2cc6aa3f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28221,30 +24889,18 @@ SDN 区域状态的目录索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-zones-zone-bridges-96476f62-get-parameters" id="api-nodes-node-sdn-zones-zone-bridges-96476f62-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `zone` | string | 是 | — | 区域名称或 "localnetwork" |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>区域名称或 "localnetwork" |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28313,30 +24969,18 @@ SDN 区域状态的目录索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-zones-zone-ip-vrf-29682b34-get-parameters" id="api-nodes-node-sdn-zones-zone-ip-vrf-29682b34-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `zone` | string | 是 | — | EVPN 区域名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>EVPN 区域名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28388,18 +25032,14 @@ SDN 区域状态的目录索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-vnets-vnet-31145ca1-get-parameters" id="api-nodes-node-sdn-vnets-vnet-31145ca1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28440,30 +25080,18 @@ SDN 区域状态的目录索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-sdn-vnets-vnet-mac-vrf-38e8fec9-get-parameters" id="api-nodes-node-sdn-vnets-vnet-mac-vrf-38e8fec9-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28515,23 +25143,15 @@ API 版本详情
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-version-022e3acb-get-parameters" id="api-nodes-node-version-022e3acb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28573,23 +25193,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-status-e94e98b1-get-parameters" id="api-nodes-node-status-e94e98b1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28665,30 +25277,18 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-status-e94e98b1-post-parameters" id="api-nodes-node-status-e94e98b1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `command` | string | 是 | — | 指定命令。；可选值：`reboot`, `shutdown` |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `command` | 类型：string；必填：是；默认值：—<br>指定命令。；可选值：`reboot`, `shutdown` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28729,23 +25329,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-netstat-6ec4113f-get-parameters" id="api-nodes-node-netstat-6ec4113f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28774,30 +25366,18 @@ API 版本详情
 
 **方法标识：** `execute`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-execute-9b8240ca-post-parameters" id="api-nodes-node-execute-9b8240ca-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `commands` | string | 是 | — | JSON 编码的命令数组，其中每条命令都是具有以下属性的对象：<br>  args:      &lt;object&gt;<br>	     参数名称及其值的集合。<br><br>  method:    (GET\|POST\|PUT\|DELETE)<br>	     与 API 端点相关的方法（GET、POST 等）。<br><br>  path:      &lt;string&gt;<br>	     此节点上 API 端点的相对路径。<br><br> |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `commands` | 类型：string；必填：是；默认值：—<br>JSON 编码的命令数组，其中每条命令都是具有以下属性的对象：<br>  args:      &lt;object&gt;<br>	     参数名称及其值的集合。<br><br>  method:    (GET\|POST\|PUT\|DELETE)<br>	     与 API 端点相关的方法（GET、POST 等）。<br><br>  path:      &lt;string&gt;<br>	     此节点上 API 端点的相对路径。<br><br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28841,23 +25421,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.PowerMgmt"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-wakeonlan-e5c81160-post-parameters" id="api-nodes-node-wakeonlan-e5c81160-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 局域网唤醒数据包的目标节点 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>局域网唤醒数据包的目标节点 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28895,26 +25467,18 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-rrd-3780813c-get-parameters" id="api-nodes-node-rrd-3780813c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `ds` | string | 是 | — | 要显示的数据源列表。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year`, `decade` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `ds` | 类型：string；必填：是；默认值：—<br>要显示的数据源列表。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year`, `decade` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -28957,25 +25521,17 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-rrddata-43a25147-get-parameters" id="api-nodes-node-rrddata-43a25147-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cf` | string | 否 | — | RRD 合并函数；可选值：`AVERAGE`, `MAX` |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeframe` | string | 是 | — | 指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year`, `decade` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cf` | 类型：string；必填：否；默认值：—<br>RRD 合并函数；可选值：`AVERAGE`, `MAX` |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeframe` | 类型：string；必填：是；默认值：—<br>指定您关注的时间范围。；可选值：`hour`, `day`, `week`, `month`, `year`, `decade` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29017,34 +25573,22 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Syslog"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-syslog-32dfc57b-get-parameters" id="api-nodes-node-syslog-32dfc57b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `limit` | integer | 否 | — |  |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `service` | string | 否 | — | 服务 ID |
-| `since` | string | 否 | — | 显示从此日期时间字符串开始的所有日志。 |
-| `start` | integer | 否 | — |  |
-| `until` | string | 否 | — | 显示截至此日期时间字符串的所有日志。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `limit` | 类型：integer；必填：否；默认值：—<br> |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `service` | 类型：string；必填：否；默认值：—<br>服务 ID |
+| `since` | 类型：string；必填：否；默认值：—<br>显示从此日期时间字符串开始的所有日志。 |
+| `start` | 类型：integer；必填：否；默认值：—<br> |
+| `until` | 类型：string；必填：否；默认值：—<br>显示截至此日期时间字符串的所有日志。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29096,41 +25640,29 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Syslog"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-journal-7d3d3bb2-get-parameters" id="api-nodes-node-journal-7d3d3bb2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `endcursor` | string | 否 | — | 在给定 Cursor 之前结束。与 'until' 冲突 |
-| `identifiers` | boolean | 否 | 0 | 同时返回一条记录，列出存在的不同 syslog 标识符，用于过滤器补全。仅与 'structured' 一同使用时生效。 |
-| `kernel` | boolean | 否 | 0 | 仅输出内核消息。 |
-| `lastentries` | integer | 否 | — | 限制为最后 X 行。与范围设置冲突。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `priority` | string | 否 | — | 仅输出此 syslog 优先级的消息：可以是 0（emerg）到 7（debug）之间的单个级别，选择该级别及所有更严重的级别，或 'LOW..HIGH' 范围。留空表示不按优先级过滤。 |
-| `service` | string | 否 | — | 仅输出 syslog 标识符匹配此通配模式的消息，例如 'pve*' 或 'postfix/*'。 |
-| `since` | integer | 否 | — | 显示从此 UNIX 时间戳开始的所有日志。与 'startcursor' 冲突。 |
-| `startcursor` | string | 否 | — | 在给定 Cursor 之后开始。与 'since' 冲突 |
-| `structured` | boolean | 否 | 0 | 每个条目返回一个具有独立字段（timestamp、identifier、message、priority 等）的 JSON 对象，而非预先渲染的文本行。 |
-| `unit` | string | 否 | — | 仅输出此 systemd 单元的消息（隐含 .service 后缀）。 |
-| `units` | boolean | 否 | 0 | 同时返回一条记录，列出存在的不同 systemd 单元，用于过滤器补全。仅与 'structured' 一同使用时生效。 |
-| `until` | integer | 否 | — | 显示截至此 UNIX 时间戳的所有日志。与 'endcursor' 冲突。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `endcursor` | 类型：string；必填：否；默认值：—<br>在给定 Cursor 之前结束。与 'until' 冲突 |
+| `identifiers` | 类型：boolean；必填：否；默认值：0<br>同时返回一条记录，列出存在的不同 syslog 标识符，用于过滤器补全。仅与 'structured' 一同使用时生效。 |
+| `kernel` | 类型：boolean；必填：否；默认值：0<br>仅输出内核消息。 |
+| `lastentries` | 类型：integer；必填：否；默认值：—<br>限制为最后 X 行。与范围设置冲突。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `priority` | 类型：string；必填：否；默认值：—<br>仅输出此 syslog 优先级的消息：可以是 0（emerg）到 7（debug）之间的单个级别，选择该级别及所有更严重的级别，或 'LOW..HIGH' 范围。留空表示不按优先级过滤。 |
+| `service` | 类型：string；必填：否；默认值：—<br>仅输出 syslog 标识符匹配此通配模式的消息，例如 'pve*' 或 'postfix/*'。 |
+| `since` | 类型：integer；必填：否；默认值：—<br>显示从此 UNIX 时间戳开始的所有日志。与 'startcursor' 冲突。 |
+| `startcursor` | 类型：string；必填：否；默认值：—<br>在给定 Cursor 之后开始。与 'since' 冲突 |
+| `structured` | 类型：boolean；必填：否；默认值：0<br>每个条目返回一个具有独立字段（timestamp、identifier、message、priority 等）的 JSON 对象，而非预先渲染的文本行。 |
+| `unit` | 类型：string；必填：否；默认值：—<br>仅输出此 systemd 单元的消息（隐含 .service 后缀）。 |
+| `units` | 类型：boolean；必填：否；默认值：0<br>同时返回一条记录，列出存在的不同 systemd 单元，用于过滤器补全。仅与 'structured' 一同使用时生效。 |
+| `until` | 类型：integer；必填：否；默认值：—<br>显示截至此 UNIX 时间戳的所有日志。与 'endcursor' 冲突。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29213,28 +25745,20 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-vncshell-42537f59-post-parameters" id="api-nodes-node-vncshell-42537f59-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cmd` | string | 否 | "login" | 运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
-| `cmd-opts` | string | 否 | "" | 向命令添加参数。编码为以空字符结尾的字符串。 |
-| `height` | integer | 否 | — | 设置控制台高度，单位为像素。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `websocket` | boolean | 否 | — | 使用 websocket 代替标准 VNC。 |
-| `width` | integer | 否 | — | 设置控制台宽度，单位为像素。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cmd` | 类型：string；必填：否；默认值："login"<br>运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
+| `cmd-opts` | 类型：string；必填：否；默认值：""<br>向命令添加参数。编码为以空字符结尾的字符串。 |
+| `height` | 类型：integer；必填：否；默认值：—<br>设置控制台高度，单位为像素。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `websocket` | 类型：boolean；必填：否；默认值：—<br>使用 websocket 代替标准 VNC。 |
+| `width` | 类型：integer；必填：否；默认值：—<br>设置控制台宽度，单位为像素。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29295,25 +25819,17 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-termproxy-ffd16fe6-post-parameters" id="api-nodes-node-termproxy-ffd16fe6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cmd` | string | 否 | "login" | 运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
-| `cmd-opts` | string | 否 | "" | 向命令添加参数。编码为以空字符结尾的字符串。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cmd` | 类型：string；必填：否；默认值："login"<br>运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
+| `cmd-opts` | 类型：string；必填：否；默认值：""<br>向命令添加参数。编码为以空字符结尾的字符串。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29367,19 +25883,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Console"]], "description": "还需要传入有效票据（vncticket）。"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-nodes-node-vncwebsocket-c264b329-get-parameters" id="api-nodes-node-vncwebsocket-c264b329-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `port` | integer | 是 | — | 上次 'vncshell' 调用返回的端口号。 |
-| `vncticket` | string | 是 | — | 上次 'vncshell' 调用的票据。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `port` | 类型：integer；必填：是；默认值：—<br>上次 'vncshell' 调用返回的端口号。 |
+| `vncticket` | 类型：string；必填：是；默认值：—<br>上次 'vncshell' 调用的票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29421,32 +25933,20 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-spiceshell-fee34732-post-parameters" id="api-nodes-node-spiceshell-fee34732-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cmd` | string | 否 | "login" | 运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
-| `cmd-opts` | string | 否 | "" | 向命令添加参数。编码为以空字符结尾的字符串。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `proxy` | string | 否 | — | SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cmd` | 类型：string；必填：否；默认值："login"<br>运行特定命令，默认为 login（需要 'root@pam'）；可选值：`ceph_install`, `login`, `upgrade` |
+| `cmd-opts` | 类型：string；必填：否；默认值：""<br>向命令添加参数。编码为以空字符结尾的字符串。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `proxy` | 类型：string；必填：否；默认值：—<br>SPICE 代理服务器。客户端可用此项指定代理服务器。集群中所有节点均运行 'spiceproxy'，因此由客户端选择使用哪个。默认返回虚拟机当前运行所在的节点。一种合理设置是使用连接 API 时所用的同一节点（在 JS GUI 中即 window.location.hostname）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29502,23 +26002,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-dns-f6f932ee-get-parameters" id="api-nodes-node-dns-f6f932ee-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29556,33 +26048,21 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-dns-f6f932ee-put-parameters" id="api-nodes-node-dns-f6f932ee-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dns1` | string | 否 | — | 第一个名称服务器 IP 地址。 |
-| `dns2` | string | 否 | — | 第二个名称服务器 IP 地址。 |
-| `dns3` | string | 否 | — | 第三个名称服务器 IP 地址。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `search` | string | 是 | — | 主机名查找的搜索域。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dns1` | 类型：string；必填：否；默认值：—<br>第一个名称服务器 IP 地址。 |
+| `dns2` | 类型：string；必填：否；默认值：—<br>第二个名称服务器 IP 地址。 |
+| `dns3` | 类型：string；必填：否；默认值：—<br>第三个名称服务器 IP 地址。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `search` | 类型：string；必填：是；默认值：—<br>主机名查找的搜索域。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29626,23 +26106,15 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-time-dd3f02c6-get-parameters" id="api-nodes-node-time-dd3f02c6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29679,30 +26151,18 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-time-dd3f02c6-put-parameters" id="api-nodes-node-time-dd3f02c6-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timezone` | string | 是 | — | 时区。文件 '/usr/share/zoneinfo/zone.tab' 包含有效名称列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timezone` | 类型：string；必填：是；默认值：—<br>时区。文件 '/usr/share/zoneinfo/zone.tab' 包含有效名称列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29743,23 +26203,15 @@ API 版本详情
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-aplinfo-121beed6-get-parameters" id="api-nodes-node-aplinfo-121beed6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29788,31 +26240,19 @@ API 版本详情
 {"check": ["perm", "/storage/{storage}", ["Datastore.AllocateTemplate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-aplinfo-121beed6-post-parameters" id="api-nodes-node-aplinfo-121beed6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `storage` | string | 是 | — | 用于保存模板的存储 |
-| `template` | string | 是 | — | 要下载的模板 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `storage` | 类型：string；必填：是；默认值：—<br>用于保存模板的存储 |
+| `template` | 类型：string；必填：是；默认值：—<br>要下载的模板 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29856,24 +26296,16 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.AccessNetwork"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-query-oci-repo-tags-e97442c2-get-parameters" id="api-nodes-node-query-oci-repo-tags-e97442c2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `reference` | string | 是 | — | 要查询其标签的仓库引用。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `reference` | 类型：string；必填：是；默认值：—<br>要查询其标签的仓库引用。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29918,25 +26350,17 @@ API 版本详情
 {"check": ["or", ["perm", "/", ["Sys.Audit", "Sys.Modify"]], ["perm", "/nodes/{node}", ["Sys.AccessNetwork"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-query-url-metadata-e8816b06-get-parameters" id="api-nodes-node-query-url-metadata-e8816b06-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `url` | string | 是 | — | 要查询元数据的 URL。 |
-| `verify-certificates` | boolean | 否 | 1 | 如果为 false，则不验证任何 SSL/TLS 证书。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `url` | 类型：string；必填：是；默认值：—<br>要查询元数据的 URL。 |
+| `verify-certificates` | 类型：boolean；必填：否；默认值：1<br>如果为 false，则不验证任何 SSL/TLS 证书。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -29984,29 +26408,17 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-report-710cec2a-get-parameters" id="api-nodes-node-report-710cec2a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30041,32 +26453,20 @@ API 版本详情
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-startall-976bb62c-post-parameters" id="api-nodes-node-startall-976bb62c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | "off" | 即使虚拟客户机未设置 'onboot' 或将其设为关闭，也发出启动命令。 |
-| `max-workers` | integer | 否 | — | 定义并发运行的最大任务数。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vms` | string | 否 | — | 仅考虑此逗号分隔的 VMID 列表中的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值："off"<br>即使虚拟客户机未设置 'onboot' 或将其设为关闭，也发出启动命令。 |
+| `max-workers` | 类型：integer；必填：否；默认值：—<br>定义并发运行的最大任务数。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>仅考虑此逗号分隔的 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30115,33 +26515,21 @@ API 版本详情
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-stopall-b5950ba1-post-parameters" id="api-nodes-node-stopall-b5950ba1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force-stop` | boolean | 否 | 1 | 超时后强制硬停止。 |
-| `max-workers` | integer | 否 | — | 定义并发运行的最大任务数。如果  未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `timeout` | integer | 否 | 180 | 每个客户机关机任务的超时时间。根据 `force-stop` 的设置，超时后仅中止关机或强制硬停止。 |
-| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force-stop` | 类型：boolean；必填：否；默认值：1<br>超时后强制硬停止。 |
+| `max-workers` | 类型：integer；必填：否；默认值：—<br>定义并发运行的最大任务数。如果  未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用 CPU 线程数，最大限制为 8。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `timeout` | 类型：integer；必填：否；默认值：180<br>每个客户机关机任务的超时时间。根据 `force-stop` 的设置，超时后仅中止关机或强制硬停止。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>仅考虑具有这些 ID 的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30194,31 +26582,19 @@ API 版本详情
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-suspendall-e28b8f4f-post-parameters" id="api-nodes-node-suspendall-e28b8f4f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用的 '<br>                    .' CPU 线程数，最大限制为 8。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max-workers` | 类型：integer；必填：否；默认值：—<br>并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）；如果该项也未设置，则使用可用的 '<br>                    .' CPU 线程数，最大限制为 8。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>仅考虑具有这些 ID 的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30263,34 +26639,22 @@ API 版本详情
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-migrateall-149c6f73-post-parameters" id="api-nodes-node-migrateall-149c6f73-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！ |
-| `maxworkers` | integer | 否 | — | 并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！已弃用，请改用 'max-workers'。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `target` | string | 是 | — | 目标节点。 |
-| `vms` | string | 否 | — | 仅考虑具有这些 ID 的客户机。 |
-| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max-workers` | 类型：integer；必填：否；默认值：—<br>并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！ |
+| `maxworkers` | 类型：integer；必填：否；默认值：—<br>并行迁移作业的最大数量。如果未设置，则使用 'max_workers'（来自 datacenter.cfg）。两者必须至少设置一个！已弃用，请改用 'max-workers'。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>仅考虑具有这些 ID 的客户机。 |
+| `with-local-disks` | 类型：boolean；必填：否；默认值：—<br>为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30341,29 +26705,17 @@ API 版本详情
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-hosts-4129b399-get-parameters" id="api-nodes-node-hosts-4129b399-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -30398,31 +26750,19 @@ API 版本详情
 {"check": ["perm", "/nodes/{node}", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-nodes-node-hosts-4129b399-post-parameters" id="api-nodes-node-hosts-4129b399-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `data` | string | 是 | — | /etc/hosts. 的目标内容 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `data` | 类型：string；必填：是；默认值：—<br>/etc/hosts. 的目标内容 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>

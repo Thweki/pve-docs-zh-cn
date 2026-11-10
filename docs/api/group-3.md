@@ -18,17 +18,13 @@
 {"description": "仅列出您对 '/storage/<storage>' 具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-storage-3718024f-get-parameters" id="api-storage-3718024f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出特定类型的存储；可选值：`btrfs`, `cephfs`, `cifs`, `dir`, `esxi`, `iscsi`, `iscsidirect`, `lvm`, `lvmthin`, `nfs`, `pbs`, `rbd`, `zfs`, `zfspool` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的存储；可选值：`btrfs`, `cephfs`, `cifs`, `dir`, `esxi`, `iscsi`, `iscsidirect`, `lvm`, `lvmthin`, `nfs`, `pbs`, `rbd`, `zfs`, `zfspool` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -66,83 +62,75 @@
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-storage-3718024f-post-parameters" id="api-storage-3718024f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `authsupported` | string | 否 | — | Authsupported。 |
-| `base` | string | 否 | — | 基础卷。此卷会自动激活。 |
-| `blocksize` | string | 否 | — | ZFS 块大小 |
-| `bwlimit` | string | 否 | — | 为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
-| `comstar_hg` | string | 否 | — | comstar 视图的主机组 |
-| `comstar_tg` | string | 否 | — | comstar 视图的目标组 |
-| `content` | string | 否 | — | 允许的内容类型。<br><br>注意：值 'rootdir' 用于容器，值 'images' 用于虚拟机。<br> |
-| `content-dirs` | string | 否 | — | 覆盖默认内容类型目录。 |
-| `create-base-path` | boolean | 否 | "yes" | 如果基础目录不存在，则创建。 |
-| `create-subdirs` | boolean | 否 | "yes" | 使用默认结构填充目录。 |
-| `data-pool` | string | 否 | — | 数据池（仅用于纠删码） |
-| `datastore` | string | 否 | — | Proxmox Backup Server 数据存储名称。 |
-| `disable` | boolean | 否 | — | 用于禁用存储的标志。 |
-| `domain` | string | 否 | — | CIFS 域。 |
-| `encryption-key` | string | 否 | — | 加密密钥。使用 'autogen' 自动生成不带口令的密钥。 |
-| `export` | string | 否 | — | NFS 导出路径。 |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `format` | string | 否 | — | 默认镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
-| `fs-name` | string | 否 | — | Ceph 文件系统名称。 |
-| `fuse` | boolean | 否 | — | 通过 FUSE 挂载 CephFS。 |
-| `is_mountpoint` | string | 否 | "no" | 将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是将目标路径填入此字段的简写方式。 |
-| `iscsiprovider` | string | 否 | — | iSCSI 提供程序 |
-| `keyring` | string | 否 | — | 客户端密钥环内容（用于外部集群）。 |
-| `krbd` | boolean | 否 | 0 | 始终通过 krbd 内核模块访问 RBD。 |
-| `lio_tpg` | string | 否 | — | Linux LIO 目标的目标门户组 |
-| `master-pubkey` | string | 否 | — | Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。 |
-| `max-protected-backups` | integer | 否 | "Unlimited for users with Datastore.Allocate privilege, 5 for other users" | 每个客户机的最大受保护备份数。使用 '-1' 表示无限制。 |
-| `mkdir` | boolean | 否 | "yes" | 如果目录不存在，则创建并填充默认子目录。注意：已弃用，请改用 'create-base-path' 和 'create-subdirs' 选项。 |
-| `monhost` | string | 否 | — | 监视器的 IP 地址（用于外部集群）。 |
-| `mountpoint` | string | 否 | — | 挂载点 |
-| `namespace` | string | 否 | — | 命名空间。 |
-| `nocow` | boolean | 否 | 0 | 为文件设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。仅当数据安全性要求不高于未使用底层 RAID 系统的单个 ext4 格式磁盘时，才使用此选项。 |
-| `nodes` | string | 否 | — | 存储配置适用的节点列表。 |
-| `nowritecache` | boolean | 否 | — | 禁用目标上的写缓存 |
-| `options` | string | 否 | — | NFS/CIFS 挂载选项（参见 'man nfs' 或 'man mount.cifs'） |
-| `password` | string | 否 | — | 访问共享/数据存储的密码。 |
-| `path` | string | 否 | — | 文件系统路径。 |
-| `pool` | string | 否 | — | 池。 |
-| `port` | integer | 否 | — | 使用此端口代替默认端口连接存储（例如 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 'options' 选项通过挂载选项配置端口。 |
-| `portal` | string | 否 | — | iSCSI 门户（IP 或 DNS 名称，可带端口）。 |
-| `preallocation` | string | 否 | "metadata" | raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 'metadata' 将产生 preallocation=off 的效果。；可选值：`off`, `metadata`, `falloc`, `full` |
-| `prune-backups` | string | 否 | — | 优先处理时间间隔较短的保留选项，其中 --keep-last 最先处理。每个选项覆盖特定时间段。我们称此时间段内的备份被此选项覆盖。下一个选项不会处理已被覆盖的备份，只考虑更旧的备份。 |
-| `saferemove` | boolean | 否 | — | 移除逻辑卷时将数据清零。 |
-| `saferemove-stepsize` | integer | 否 | 32 | 擦除步长，单位为 MiB。上限为存储支持的最大值。；可选值：`1`, `2`, `4`, `8`, `16`, `32` |
-| `saferemove_throughput` | string | 否 | — | 擦除吞吐量（cstream -t 参数值）。 |
-| `server` | string | 否 | — | 服务器 IP 或 DNS 名称。 |
-| `share` | string | 否 | — | CIFS 共享。 |
-| `shared` | boolean | 否 | — | 表明这是在所有节点（或 'nodes' 选项列出的所有节点）上具有相同内容的单一存储。此项不会使其他节点自动访问本地存储内容，只是将已经共享的存储标记为共享！ |
-| `skip-cert-verification` | boolean | 否 | "false" | 禁用 TLS 证书验证，仅在完全可信的网络中启用！ |
-| `smbversion` | string | 否 | "default" | SMB 协议版本。未设置时为 'default'，协商客户端与服务器共同支持的最高 SMB2+ 版本。；可选值：`default`, `2.0`, `2.1`, `3`, `3.0`, `3.11` |
-| `snapshot-as-volume-chain` | boolean | 否 | 0 | 启用通过卷后端链创建与存储供应商无关的快照的支持。 |
-| `sparse` | boolean | 否 | — | 使用稀疏卷 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `subdir` | string | 否 | — | 要挂载的子目录。 |
-| `tagged_only` | boolean | 否 | — | 仅列出带有 'pve-vm-ID' 标签的逻辑卷。 |
-| `target` | string | 否 | — | iSCSI 目标。 |
-| `thinpool` | string | 否 | — | LVM 精简池逻辑卷名称。 |
-| `type` | string | 是 | — | 存储类型。；可选值：`btrfs`, `cephfs`, `cifs`, `dir`, `esxi`, `iscsi`, `iscsidirect`, `lvm`, `lvmthin`, `nfs`, `pbs`, `rbd`, `zfs`, `zfspool` |
-| `username` | string | 否 | — | RBD ID。 |
-| `vgname` | string | 否 | — | 卷组名称。 |
-| `zfs-base-path` | string | 否 | — | 查找创建的 ZFS 块设备的基础路径。如果未指定，则在创建时自动设置。通常为 '/dev/zvol'。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `authsupported` | 类型：string；必填：否；默认值：—<br>Authsupported。 |
+| `base` | 类型：string；必填：否；默认值：—<br>基础卷。此卷会自动激活。 |
+| `blocksize` | 类型：string；必填：否；默认值：—<br>ZFS 块大小 |
+| `bwlimit` | 类型：string；必填：否；默认值：—<br>为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
+| `comstar_hg` | 类型：string；必填：否；默认值：—<br>comstar 视图的主机组 |
+| `comstar_tg` | 类型：string；必填：否；默认值：—<br>comstar 视图的目标组 |
+| `content` | 类型：string；必填：否；默认值：—<br>允许的内容类型。<br><br>注意：值 'rootdir' 用于容器，值 'images' 用于虚拟机。<br> |
+| `content-dirs` | 类型：string；必填：否；默认值：—<br>覆盖默认内容类型目录。 |
+| `create-base-path` | 类型：boolean；必填：否；默认值："yes"<br>如果基础目录不存在，则创建。 |
+| `create-subdirs` | 类型：boolean；必填：否；默认值："yes"<br>使用默认结构填充目录。 |
+| `data-pool` | 类型：string；必填：否；默认值：—<br>数据池（仅用于纠删码） |
+| `datastore` | 类型：string；必填：否；默认值：—<br>Proxmox Backup Server 数据存储名称。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用存储的标志。 |
+| `domain` | 类型：string；必填：否；默认值：—<br>CIFS 域。 |
+| `encryption-key` | 类型：string；必填：否；默认值：—<br>加密密钥。使用 'autogen' 自动生成不带口令的密钥。 |
+| `export` | 类型：string；必填：否；默认值：—<br>NFS 导出路径。 |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `format` | 类型：string；必填：否；默认值：—<br>默认镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
+| `fs-name` | 类型：string；必填：否；默认值：—<br>Ceph 文件系统名称。 |
+| `fuse` | 类型：boolean；必填：否；默认值：—<br>通过 FUSE 挂载 CephFS。 |
+| `is_mountpoint` | 类型：string；必填：否；默认值："no"<br>将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是将目标路径填入此字段的简写方式。 |
+| `iscsiprovider` | 类型：string；必填：否；默认值：—<br>iSCSI 提供程序 |
+| `keyring` | 类型：string；必填：否；默认值：—<br>客户端密钥环内容（用于外部集群）。 |
+| `krbd` | 类型：boolean；必填：否；默认值：0<br>始终通过 krbd 内核模块访问 RBD。 |
+| `lio_tpg` | 类型：string；必填：否；默认值：—<br>Linux LIO 目标的目标门户组 |
+| `master-pubkey` | 类型：string；必填：否；默认值：—<br>Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。 |
+| `max-protected-backups` | 类型：integer；必填：否；默认值："Unlimited for users with Datastore.Allocate privilege, 5 for other users"<br>每个客户机的最大受保护备份数。使用 '-1' 表示无限制。 |
+| `mkdir` | 类型：boolean；必填：否；默认值："yes"<br>如果目录不存在，则创建并填充默认子目录。注意：已弃用，请改用 'create-base-path' 和 'create-subdirs' 选项。 |
+| `monhost` | 类型：string；必填：否；默认值：—<br>监视器的 IP 地址（用于外部集群）。 |
+| `mountpoint` | 类型：string；必填：否；默认值：—<br>挂载点 |
+| `namespace` | 类型：string；必填：否；默认值：—<br>命名空间。 |
+| `nocow` | 类型：boolean；必填：否；默认值：0<br>为文件设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。仅当数据安全性要求不高于未使用底层 RAID 系统的单个 ext4 格式磁盘时，才使用此选项。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>存储配置适用的节点列表。 |
+| `nowritecache` | 类型：boolean；必填：否；默认值：—<br>禁用目标上的写缓存 |
+| `options` | 类型：string；必填：否；默认值：—<br>NFS/CIFS 挂载选项（参见 'man nfs' 或 'man mount.cifs'） |
+| `password` | 类型：string；必填：否；默认值：—<br>访问共享/数据存储的密码。 |
+| `path` | 类型：string；必填：否；默认值：—<br>文件系统路径。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>池。 |
+| `port` | 类型：integer；必填：否；默认值：—<br>使用此端口代替默认端口连接存储（例如 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 'options' 选项通过挂载选项配置端口。 |
+| `portal` | 类型：string；必填：否；默认值：—<br>iSCSI 门户（IP 或 DNS 名称，可带端口）。 |
+| `preallocation` | 类型：string；必填：否；默认值："metadata"<br>raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 'metadata' 将产生 preallocation=off 的效果。；可选值：`off`, `metadata`, `falloc`, `full` |
+| `prune-backups` | 类型：string；必填：否；默认值：—<br>优先处理时间间隔较短的保留选项，其中 --keep-last 最先处理。每个选项覆盖特定时间段。我们称此时间段内的备份被此选项覆盖。下一个选项不会处理已被覆盖的备份，只考虑更旧的备份。 |
+| `saferemove` | 类型：boolean；必填：否；默认值：—<br>移除逻辑卷时将数据清零。 |
+| `saferemove-stepsize` | 类型：integer；必填：否；默认值：32<br>擦除步长，单位为 MiB。上限为存储支持的最大值。；可选值：`1`, `2`, `4`, `8`, `16`, `32` |
+| `saferemove_throughput` | 类型：string；必填：否；默认值：—<br>擦除吞吐量（cstream -t 参数值）。 |
+| `server` | 类型：string；必填：否；默认值：—<br>服务器 IP 或 DNS 名称。 |
+| `share` | 类型：string；必填：否；默认值：—<br>CIFS 共享。 |
+| `shared` | 类型：boolean；必填：否；默认值：—<br>表明这是在所有节点（或 'nodes' 选项列出的所有节点）上具有相同内容的单一存储。此项不会使其他节点自动访问本地存储内容，只是将已经共享的存储标记为共享！ |
+| `skip-cert-verification` | 类型：boolean；必填：否；默认值："false"<br>禁用 TLS 证书验证，仅在完全可信的网络中启用！ |
+| `smbversion` | 类型：string；必填：否；默认值："default"<br>SMB 协议版本。未设置时为 'default'，协商客户端与服务器共同支持的最高 SMB2+ 版本。；可选值：`default`, `2.0`, `2.1`, `3`, `3.0`, `3.11` |
+| `snapshot-as-volume-chain` | 类型：boolean；必填：否；默认值：0<br>启用通过卷后端链创建与存储供应商无关的快照的支持。 |
+| `sparse` | 类型：boolean；必填：否；默认值：—<br>使用稀疏卷 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `subdir` | 类型：string；必填：否；默认值：—<br>要挂载的子目录。 |
+| `tagged_only` | 类型：boolean；必填：否；默认值：—<br>仅列出带有 'pve-vm-ID' 标签的逻辑卷。 |
+| `target` | 类型：string；必填：否；默认值：—<br>iSCSI 目标。 |
+| `thinpool` | 类型：string；必填：否；默认值：—<br>LVM 精简池逻辑卷名称。 |
+| `type` | 类型：string；必填：是；默认值：—<br>存储类型。；可选值：`btrfs`, `cephfs`, `cifs`, `dir`, `esxi`, `iscsi`, `iscsidirect`, `lvm`, `lvmthin`, `nfs`, `pbs`, `rbd`, `zfs`, `zfspool` |
+| `username` | 类型：string；必填：否；默认值：—<br>RBD ID。 |
+| `vgname` | 类型：string；必填：否；默认值：—<br>卷组名称。 |
+| `zfs-base-path` | 类型：string；必填：否；默认值：—<br>查找创建的 ZFS 块设备的基础路径。如果未指定，则在创建时自动设置。通常为 '/dev/zvol'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -326,23 +314,15 @@
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-storage-storage-fcefaab1-delete-parameters" id="api-storage-storage-fcefaab1-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -376,17 +356,13 @@
 {"check": ["perm", "/storage/{storage}", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-storage-storage-fcefaab1-get-parameters" id="api-storage-storage-fcefaab1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `storage` | string | 是 | — | 存储标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -420,73 +396,65 @@
 {"check": ["perm", "/storage", ["Datastore.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-storage-storage-fcefaab1-put-parameters" id="api-storage-storage-fcefaab1-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `blocksize` | string | 否 | — | ZFS 块大小 |
-| `bwlimit` | string | 否 | — | 为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
-| `comstar_hg` | string | 否 | — | comstar 视图的主机组 |
-| `comstar_tg` | string | 否 | — | comstar 视图的目标组 |
-| `content` | string | 否 | — | 允许的内容类型。<br><br>注意：值 'rootdir' 用于容器，值 'images' 用于虚拟机。<br> |
-| `content-dirs` | string | 否 | — | 覆盖默认内容类型目录。 |
-| `create-base-path` | boolean | 否 | "yes" | 如果基础目录不存在，则创建。 |
-| `create-subdirs` | boolean | 否 | "yes" | 使用默认结构填充目录。 |
-| `data-pool` | string | 否 | — | 数据池（仅用于纠删码） |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | — | 用于禁用存储的标志。 |
-| `domain` | string | 否 | — | CIFS 域。 |
-| `encryption-key` | string | 否 | — | 加密密钥。使用 'autogen' 自动生成不带口令的密钥。 |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `format` | string | 否 | — | 默认镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
-| `fs-name` | string | 否 | — | Ceph 文件系统名称。 |
-| `fuse` | boolean | 否 | — | 通过 FUSE 挂载 CephFS。 |
-| `is_mountpoint` | string | 否 | "no" | 将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是将目标路径填入此字段的简写方式。 |
-| `keyring` | string | 否 | — | 客户端密钥环内容（用于外部集群）。 |
-| `krbd` | boolean | 否 | 0 | 始终通过 krbd 内核模块访问 RBD。 |
-| `lio_tpg` | string | 否 | — | Linux LIO 目标的目标门户组 |
-| `master-pubkey` | string | 否 | — | Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。 |
-| `max-protected-backups` | integer | 否 | "Unlimited for users with Datastore.Allocate privilege, 5 for other users" | 每个客户机的最大受保护备份数。使用 '-1' 表示无限制。 |
-| `mkdir` | boolean | 否 | "yes" | 如果目录不存在，则创建并填充默认子目录。注意：已弃用，请改用 'create-base-path' 和 'create-subdirs' 选项。 |
-| `monhost` | string | 否 | — | 监视器的 IP 地址（用于外部集群）。 |
-| `mountpoint` | string | 否 | — | 挂载点 |
-| `namespace` | string | 否 | — | 命名空间。 |
-| `nocow` | boolean | 否 | 0 | 为文件设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。仅当数据安全性要求不高于未使用底层 RAID 系统的单个 ext4 格式磁盘时，才使用此选项。 |
-| `nodes` | string | 否 | — | 存储配置适用的节点列表。 |
-| `nowritecache` | boolean | 否 | — | 禁用目标上的写缓存 |
-| `options` | string | 否 | — | NFS/CIFS 挂载选项（参见 'man nfs' 或 'man mount.cifs'） |
-| `password` | string | 否 | — | 访问共享/数据存储的密码。 |
-| `pool` | string | 否 | — | 池。 |
-| `port` | integer | 否 | — | 使用此端口代替默认端口连接存储（例如 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 'options' 选项通过挂载选项配置端口。 |
-| `preallocation` | string | 否 | "metadata" | raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 'metadata' 将产生 preallocation=off 的效果。；可选值：`off`, `metadata`, `falloc`, `full` |
-| `prune-backups` | string | 否 | — | 优先处理时间间隔较短的保留选项，其中 --keep-last 最先处理。每个选项覆盖特定时间段。我们称此时间段内的备份被此选项覆盖。下一个选项不会处理已被覆盖的备份，只考虑更旧的备份。 |
-| `saferemove` | boolean | 否 | — | 移除逻辑卷时将数据清零。 |
-| `saferemove-stepsize` | integer | 否 | 32 | 擦除步长，单位为 MiB。上限为存储支持的最大值。；可选值：`1`, `2`, `4`, `8`, `16`, `32` |
-| `saferemove_throughput` | string | 否 | — | 擦除吞吐量（cstream -t 参数值）。 |
-| `server` | string | 否 | — | 服务器 IP 或 DNS 名称。 |
-| `shared` | boolean | 否 | — | 表明这是在所有节点（或 'nodes' 选项列出的所有节点）上具有相同内容的单一存储。此项不会使其他节点自动访问本地存储内容，只是将已经共享的存储标记为共享！ |
-| `skip-cert-verification` | boolean | 否 | "false" | 禁用 TLS 证书验证，仅在完全可信的网络中启用！ |
-| `smbversion` | string | 否 | "default" | SMB 协议版本。未设置时为 'default'，协商客户端与服务器共同支持的最高 SMB2+ 版本。；可选值：`default`, `2.0`, `2.1`, `3`, `3.0`, `3.11` |
-| `snapshot-as-volume-chain` | boolean | 否 | 0 | 启用通过卷后端链创建与存储供应商无关的快照的支持。 |
-| `sparse` | boolean | 否 | — | 使用稀疏卷 |
-| `storage` | string | 是 | — | 存储标识符。 |
-| `subdir` | string | 否 | — | 要挂载的子目录。 |
-| `tagged_only` | boolean | 否 | — | 仅列出带有 'pve-vm-ID' 标签的逻辑卷。 |
-| `username` | string | 否 | — | RBD ID。 |
-| `zfs-base-path` | string | 否 | — | 查找创建的 ZFS 块设备的基础路径。如果未指定，则在创建时自动设置。通常为 '/dev/zvol'。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `blocksize` | 类型：string；必填：否；默认值：—<br>ZFS 块大小 |
+| `bwlimit` | 类型：string；必填：否；默认值：—<br>为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
+| `comstar_hg` | 类型：string；必填：否；默认值：—<br>comstar 视图的主机组 |
+| `comstar_tg` | 类型：string；必填：否；默认值：—<br>comstar 视图的目标组 |
+| `content` | 类型：string；必填：否；默认值：—<br>允许的内容类型。<br><br>注意：值 'rootdir' 用于容器，值 'images' 用于虚拟机。<br> |
+| `content-dirs` | 类型：string；必填：否；默认值：—<br>覆盖默认内容类型目录。 |
+| `create-base-path` | 类型：boolean；必填：否；默认值："yes"<br>如果基础目录不存在，则创建。 |
+| `create-subdirs` | 类型：boolean；必填：否；默认值："yes"<br>使用默认结构填充目录。 |
+| `data-pool` | 类型：string；必填：否；默认值：—<br>数据池（仅用于纠删码） |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用存储的标志。 |
+| `domain` | 类型：string；必填：否；默认值：—<br>CIFS 域。 |
+| `encryption-key` | 类型：string；必填：否；默认值：—<br>加密密钥。使用 'autogen' 自动生成不带口令的密钥。 |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `format` | 类型：string；必填：否；默认值：—<br>默认镜像格式。；可选值：`raw`, `qcow2`, `subvol`, `vmdk` |
+| `fs-name` | 类型：string；必填：否；默认值：—<br>Ceph 文件系统名称。 |
+| `fuse` | 类型：boolean；必填：否；默认值：—<br>通过 FUSE 挂载 CephFS。 |
+| `is_mountpoint` | 类型：string；必填：否；默认值："no"<br>将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是将目标路径填入此字段的简写方式。 |
+| `keyring` | 类型：string；必填：否；默认值：—<br>客户端密钥环内容（用于外部集群）。 |
+| `krbd` | 类型：boolean；必填：否；默认值：0<br>始终通过 krbd 内核模块访问 RBD。 |
+| `lio_tpg` | 类型：string；必填：否；默认值：—<br>Linux LIO 目标的目标门户组 |
+| `master-pubkey` | 类型：string；必填：否；默认值：—<br>Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。 |
+| `max-protected-backups` | 类型：integer；必填：否；默认值："Unlimited for users with Datastore.Allocate privilege, 5 for other users"<br>每个客户机的最大受保护备份数。使用 '-1' 表示无限制。 |
+| `mkdir` | 类型：boolean；必填：否；默认值："yes"<br>如果目录不存在，则创建并填充默认子目录。注意：已弃用，请改用 'create-base-path' 和 'create-subdirs' 选项。 |
+| `monhost` | 类型：string；必填：否；默认值：—<br>监视器的 IP 地址（用于外部集群）。 |
+| `mountpoint` | 类型：string；必填：否；默认值：—<br>挂载点 |
+| `namespace` | 类型：string；必填：否；默认值：—<br>命名空间。 |
+| `nocow` | 类型：boolean；必填：否；默认值：0<br>为文件设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。仅当数据安全性要求不高于未使用底层 RAID 系统的单个 ext4 格式磁盘时，才使用此选项。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>存储配置适用的节点列表。 |
+| `nowritecache` | 类型：boolean；必填：否；默认值：—<br>禁用目标上的写缓存 |
+| `options` | 类型：string；必填：否；默认值：—<br>NFS/CIFS 挂载选项（参见 'man nfs' 或 'man mount.cifs'） |
+| `password` | 类型：string；必填：否；默认值：—<br>访问共享/数据存储的密码。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>池。 |
+| `port` | 类型：integer；必填：否；默认值：—<br>使用此端口代替默认端口连接存储（例如 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 'options' 选项通过挂载选项配置端口。 |
+| `preallocation` | 类型：string；必填：否；默认值："metadata"<br>raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 'metadata' 将产生 preallocation=off 的效果。；可选值：`off`, `metadata`, `falloc`, `full` |
+| `prune-backups` | 类型：string；必填：否；默认值：—<br>优先处理时间间隔较短的保留选项，其中 --keep-last 最先处理。每个选项覆盖特定时间段。我们称此时间段内的备份被此选项覆盖。下一个选项不会处理已被覆盖的备份，只考虑更旧的备份。 |
+| `saferemove` | 类型：boolean；必填：否；默认值：—<br>移除逻辑卷时将数据清零。 |
+| `saferemove-stepsize` | 类型：integer；必填：否；默认值：32<br>擦除步长，单位为 MiB。上限为存储支持的最大值。；可选值：`1`, `2`, `4`, `8`, `16`, `32` |
+| `saferemove_throughput` | 类型：string；必填：否；默认值：—<br>擦除吞吐量（cstream -t 参数值）。 |
+| `server` | 类型：string；必填：否；默认值：—<br>服务器 IP 或 DNS 名称。 |
+| `shared` | 类型：boolean；必填：否；默认值：—<br>表明这是在所有节点（或 'nodes' 选项列出的所有节点）上具有相同内容的单一存储。此项不会使其他节点自动访问本地存储内容，只是将已经共享的存储标记为共享！ |
+| `skip-cert-verification` | 类型：boolean；必填：否；默认值："false"<br>禁用 TLS 证书验证，仅在完全可信的网络中启用！ |
+| `smbversion` | 类型：string；必填：否；默认值："default"<br>SMB 协议版本。未设置时为 'default'，协商客户端与服务器共同支持的最高 SMB2+ 版本。；可选值：`default`, `2.0`, `2.1`, `3`, `3.0`, `3.11` |
+| `snapshot-as-volume-chain` | 类型：boolean；必填：否；默认值：0<br>启用通过卷后端链创建与存储供应商无关的快照的支持。 |
+| `sparse` | 类型：boolean；必填：否；默认值：—<br>使用稀疏卷 |
+| `storage` | 类型：string；必填：是；默认值：—<br>存储标识符。 |
+| `subdir` | 类型：string；必填：否；默认值：—<br>要挂载的子目录。 |
+| `tagged_only` | 类型：boolean；必填：否；默认值：—<br>仅列出带有 'pve-vm-ID' 标签的逻辑卷。 |
+| `username` | 类型：string；必填：否；默认值：—<br>RBD ID。 |
+| `zfs-base-path` | 类型：string；必填：否；默认值：—<br>查找创建的 ZFS 块设备的基础路径。如果未指定，则在创建时自动设置。通常为 '/dev/zvol'。 |
 
 <details>
 <summary>完整请求参数结构</summary>

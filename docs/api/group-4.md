@@ -18,11 +18,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-ef531503-get-parameters" id="api-access-ef531503-get-parameters"></a>
 
@@ -55,24 +51,16 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-ff4a891d-get-parameters" id="api-access-users-ff4a891d-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `enabled` | boolean | 否 | — | enable 属性的可选过滤条件。 |
-| `full` | boolean | 否 | 0 | 包含组和令牌信息。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `enabled` | 类型：boolean；必填：否；默认值：—<br>enable 属性的可选过滤条件。 |
+| `full` | 类型：boolean；必填：否；默认值：0<br>包含组和令牌信息。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -141,32 +129,24 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-ff4a891d-post-parameters" id="api-access-users-ff4a891d-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `email` | string | 否 | — |  |
-| `enable` | boolean | 否 | 1 | 启用账户（默认）。可设为 '0' 以禁用账户 |
-| `expire` | integer | 否 | — | 账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
-| `firstname` | string | 否 | — |  |
-| `groups` | string | 否 | — |  |
-| `keys` | string | 否 | — | 双因素身份验证密钥（yubico）。 |
-| `lastname` | string | 否 | — |  |
-| `password` | string | 否 | — | 初始密码。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `email` | 类型：string；必填：否；默认值：—<br> |
+| `enable` | 类型：boolean；必填：否；默认值：1<br>启用账户（默认）。可设为 '0' 以禁用账户 |
+| `expire` | 类型：integer；必填：否；默认值：—<br>账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `firstname` | 类型：string；必填：否；默认值：—<br> |
+| `groups` | 类型：string；必填：否；默认值：—<br> |
+| `keys` | 类型：string；必填：否；默认值：—<br>双因素身份验证密钥（yubico）。 |
+| `lastname` | 类型：string；必填：否；默认值：—<br> |
+| `password` | 类型：string；必填：否；默认值：—<br>初始密码。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -217,23 +197,15 @@
 {"check": ["and", ["userid-param", "Realm.AllocateUser"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-aad17cce-delete-parameters" id="api-access-users-userid-aad17cce-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -267,17 +239,13 @@
 {"check": ["userid-group", ["User.Modify", "Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-aad17cce-get-parameters" id="api-access-users-userid-aad17cce-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -336,32 +304,24 @@
 {"check": ["userid-group", ["User.Modify"], "groups_param", "update"]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-aad17cce-put-parameters" id="api-access-users-userid-aad17cce-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `append` | boolean | 否 | — |  |
-| `comment` | string | 否 | — |  |
-| `email` | string | 否 | — |  |
-| `enable` | boolean | 否 | 1 | 启用账户（默认）。可设为 '0' 以禁用账户 |
-| `expire` | integer | 否 | — | 账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
-| `firstname` | string | 否 | — |  |
-| `groups` | string | 否 | — |  |
-| `keys` | string | 否 | — | 双因素身份验证密钥（yubico）。 |
-| `lastname` | string | 否 | — |  |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `append` | 类型：boolean；必填：否；默认值：—<br> |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `email` | 类型：string；必填：否；默认值：—<br> |
+| `enable` | 类型：boolean；必填：否；默认值：1<br>启用账户（默认）。可设为 '0' 以禁用账户 |
+| `expire` | 类型：integer；必填：否；默认值：—<br>账户到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `firstname` | 类型：string；必填：否；默认值：—<br> |
+| `groups` | 类型：string；必填：否；默认值：—<br> |
+| `keys` | 类型：string；必填：否；默认值：—<br>双因素身份验证密钥（yubico）。 |
+| `lastname` | 类型：string；必填：否；默认值：—<br> |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -412,24 +372,16 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-tfa-9dcb2591-get-parameters" id="api-access-users-userid-tfa-9dcb2591-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `multiple` | boolean | 否 | 0 | 将所有条目作为数组请求。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `multiple` | 类型：boolean；必填：否；默认值：0<br>将所有条目作为数组请求。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -481,23 +433,15 @@
 {"check": ["userid-group", ["User.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-unlock-tfa-1b330aed-put-parameters" id="api-access-users-userid-unlock-tfa-1b330aed-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -537,17 +481,13 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-token-ad96dab5-get-parameters" id="api-access-users-userid-token-ad96dab5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -600,24 +540,16 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-token-tokenid-29a42318-delete-parameters" id="api-access-users-userid-token-tokenid-29a42318-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `tokenid` | 类型：string；必填：是；默认值：—<br>用户特定的令牌标识符。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -652,18 +584,14 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-token-tokenid-29a42318-get-parameters" id="api-access-users-userid-token-tokenid-29a42318-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `tokenid` | 类型：string；必填：是；默认值：—<br>用户特定的令牌标识符。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -707,27 +635,19 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-token-tokenid-29a42318-post-parameters" id="api-access-users-userid-token-tokenid-29a42318-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `expire` | integer | 否 | "same as user" | API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
-| `privsep` | boolean | 否 | 1 | 使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
-| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `expire` | 类型：integer；必填：否；默认值："same as user"<br>API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `privsep` | 类型：boolean；必填：否；默认值：1<br>使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
+| `tokenid` | 类型：string；必填：是；默认值：—<br>用户特定的令牌标识符。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -788,29 +708,21 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-users-userid-token-tokenid-29a42318-put-parameters" id="api-access-users-userid-token-tokenid-29a42318-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `expire` | integer | 否 | "same as user" | API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
-| `privsep` | boolean | 否 | 1 | 使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
-| `regenerate` | boolean | 否 | 0 | 重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。 |
-| `tokenid` | string | 是 | — | 用户特定的令牌标识符。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `expire` | 类型：integer；必填：否；默认值："same as user"<br>API 令牌到期日期（自纪元起的秒数）。'0' 表示永不过期。 |
+| `privsep` | 类型：boolean；必填：否；默认值：1<br>使用单独的 ACL 限制 API 令牌权限（默认），或授予相应用户的全部权限。 |
+| `regenerate` | 类型：boolean；必填：否；默认值：0<br>重新生成令牌的密钥值。此操作后，所有使用旧密钥的使用方都将失去访问权限。 |
+| `tokenid` | 类型：string；必填：是；默认值：—<br>用户特定的令牌标识符。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -878,11 +790,7 @@
 {"description": "返回列表仅限于您具有 'User.Modify'、'Sys.Audit'  或 'Group.Allocate' 权限（作用于 /access/groups/<group>）的组。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-groups-1301c828-get-parameters" id="api-access-groups-1301c828-get-parameters"></a>
 
@@ -915,24 +823,16 @@
 {"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-groups-1301c828-post-parameters" id="api-access-groups-1301c828-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `groupid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `groupid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -972,23 +872,15 @@
 {"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-groups-groupid-c31a6155-delete-parameters" id="api-access-groups-groupid-c31a6155-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `groupid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `groupid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1017,17 +909,13 @@
 {"check": ["perm", "/access/groups", ["Sys.Audit", "Group.Allocate"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-groups-groupid-c31a6155-get-parameters" id="api-access-groups-groupid-c31a6155-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `groupid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `groupid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1063,24 +951,16 @@
 {"check": ["perm", "/access/groups", ["Group.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-groups-groupid-c31a6155-put-parameters" id="api-access-groups-groupid-c31a6155-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `groupid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `groupid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1120,11 +1000,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-roles-664f9b93-get-parameters" id="api-access-roles-664f9b93-get-parameters"></a>
 
@@ -1157,24 +1033,16 @@
 {"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-roles-664f9b93-post-parameters" id="api-access-roles-664f9b93-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `privs` | string | 否 | — |  |
-| `roleid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `privs` | 类型：string；必填：否；默认值：—<br> |
+| `roleid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1215,23 +1083,15 @@
 {"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-roles-roleid-d4beb42c-delete-parameters" id="api-access-roles-roleid-d4beb42c-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `roleid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `roleid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1260,17 +1120,13 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-roles-roleid-d4beb42c-get-parameters" id="api-access-roles-roleid-d4beb42c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `roleid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `roleid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1325,25 +1181,17 @@
 {"check": ["perm", "/access", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-roles-roleid-d4beb42c-put-parameters" id="api-access-roles-roleid-d4beb42c-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `append` | boolean | 否 | — |  |
-| `privs` | string | 否 | — |  |
-| `roleid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `append` | 类型：boolean；必填：否；默认值：—<br> |
+| `privs` | 类型：string；必填：否；默认值：—<br> |
+| `roleid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1385,11 +1233,7 @@
 {"description": "返回列表仅限于您有权修改其权限的对象。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-acl-26eff873-get-parameters" id="api-access-acl-26eff873-get-parameters"></a>
 
@@ -1424,29 +1268,21 @@
 {"check": ["perm-modify", "{path}"]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-acl-26eff873-put-parameters" id="api-access-acl-26eff873-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | boolean | 否 | — | 移除权限（而非添加）。 |
-| `groups` | string | 否 | — | 组列表。 |
-| `path` | string | 是 | — | 访问控制路径 |
-| `propagate` | boolean | 否 | 1 | 允许传播（继承）权限。 |
-| `roles` | string | 是 | — | 角色列表。 |
-| `tokens` | string | 否 | — | API 令牌列表。 |
-| `users` | string | 否 | — | 用户列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：boolean；必填：否；默认值：—<br>移除权限（而非添加）。 |
+| `groups` | 类型：string；必填：否；默认值：—<br>组列表。 |
+| `path` | 类型：string；必填：是；默认值：—<br>访问控制路径 |
+| `propagate` | 类型：boolean；必填：否；默认值：1<br>允许传播（继承）权限。 |
+| `roles` | 类型：string；必填：是；默认值：—<br>角色列表。 |
+| `tokens` | 类型：string；必填：否；默认值：—<br>API 令牌列表。 |
+| `users` | 类型：string；必填：否；默认值：—<br>用户列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1492,11 +1328,7 @@
 {"description": "任何人均可访问，因为登录框在用户通过身份验证之前就需要此列表。", "user": "world"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-domains-bb4462c8-get-parameters" id="api-access-domains-bb4462c8-get-parameters"></a>
 
@@ -1529,65 +1361,57 @@
 {"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-domains-bb4462c8-post-parameters" id="api-access-domains-bb4462c8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acr-values` | string | 否 | — | 指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。 |
-| `audiences` | string | 否 | — | 除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。 |
-| `autocreate` | boolean | 否 | 0 | 如果用户不存在，则自动创建。 |
-| `base_dn` | string | 否 | — | LDAP 基础域名 |
-| `bind_dn` | string | 否 | — | LDAP 绑定域名 |
-| `capath` | string | 否 | "/etc/ssl/certs" | CA 证书存储路径 |
-| `case-sensitive` | boolean | 否 | 1 | 用户名区分大小写 |
-| `cert` | string | 否 | — | 客户端证书路径 |
-| `certkey` | string | 否 | — | 客户端证书密钥路径 |
-| `check-connection` | boolean | 否 | 0 | 检查到服务器的绑定连接。 |
-| `client-id` | string | 否 | — | OpenID 客户端 ID |
-| `client-key` | string | 否 | — | OpenID 客户端密钥 |
-| `comment` | string | 否 | — | 描述。 |
-| `default` | boolean | 否 | — | 将此认证域用作默认认证域 |
-| `domain` | string | 否 | — | AD 域名 |
-| `filter` | string | 否 | — | 用户同步的 LDAP 过滤器。 |
-| `group_classes` | string | 否 | "groupOfNames, group, univentionGroup, ipausergroup" | 组的 objectclass。 |
-| `group_dn` | string | 否 | — | 组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。 |
-| `group_filter` | string | 否 | — | 组同步的 LDAP 过滤器。 |
-| `group_name_attr` | string | 否 | — | 表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。 |
-| `groups-autocreate` | boolean | 否 | 0 | 如果组不存在，则自动创建。 |
-| `groups-claim` | string | 否 | — | 用于获取组的 OpenID 声明。 |
-| `groups-overwrite` | boolean | 否 | 0 | 用户登录时将覆盖其所有组。 |
-| `issuer-url` | string | 否 | — | OpenID 颁发者 URL |
-| `mode` | string | 否 | "ldap" | LDAP 协议模式。；可选值：`ldap`, `ldaps`, `ldap+starttls` |
-| `password` | string | 否 | — | LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/&lt;REALM&gt;.pw'。 |
-| `port` | integer | 否 | — | 服务器端口。 |
-| `prompt` | string | 否 | — | 指定授权服务器是否提示最终用户重新身份验证并表示同意。 |
-| `query-userinfo` | boolean | 否 | 1 | 启用查询 userinfo 端点以获取声明值。 |
-| `realm` | string | 是 | — | 认证域 ID |
-| `scopes` | string | 否 | "email profile" | 指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。 |
-| `secure` | boolean | 否 | — | 使用安全的 LDAPS 协议。已弃用：请改用 'mode'。 |
-| `server1` | string | 否 | — | 服务器 IP 地址（或 DNS 名称） |
-| `server2` | string | 否 | — | 后备服务器 IP 地址（或 DNS 名称） |
-| `sslversion` | string | 否 | — | LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
-| `sync-defaults-options` | string | 否 | — | 同步行为的默认选项。 |
-| `sync_attributes` | string | 否 | — | 以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。 |
-| `tfa` | string | 否 | — | 使用双因素身份验证。 |
-| `type` | string | 是 | — | 认证域类型。；可选值：`ad`, `ldap`, `openid`, `pam`, `pve` |
-| `user_attr` | string | 否 | — | LDAP 用户属性名称 |
-| `user_classes` | string | 否 | "inetorgperson, posixaccount, person, user" | 用户的 objectclass。 |
-| `username-claim` | string | 否 | — | 用于生成唯一用户名的 OpenID 声明。 |
-| `verify` | boolean | 否 | 0 | 验证服务器的 SSL 证书 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acr-values` | 类型：string；必填：否；默认值：—<br>指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。 |
+| `audiences` | 类型：string；必填：否；默认值：—<br>除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。 |
+| `autocreate` | 类型：boolean；必填：否；默认值：0<br>如果用户不存在，则自动创建。 |
+| `base_dn` | 类型：string；必填：否；默认值：—<br>LDAP 基础域名 |
+| `bind_dn` | 类型：string；必填：否；默认值：—<br>LDAP 绑定域名 |
+| `capath` | 类型：string；必填：否；默认值："/etc/ssl/certs"<br>CA 证书存储路径 |
+| `case-sensitive` | 类型：boolean；必填：否；默认值：1<br>用户名区分大小写 |
+| `cert` | 类型：string；必填：否；默认值：—<br>客户端证书路径 |
+| `certkey` | 类型：string；必填：否；默认值：—<br>客户端证书密钥路径 |
+| `check-connection` | 类型：boolean；必填：否；默认值：0<br>检查到服务器的绑定连接。 |
+| `client-id` | 类型：string；必填：否；默认值：—<br>OpenID 客户端 ID |
+| `client-key` | 类型：string；必填：否；默认值：—<br>OpenID 客户端密钥 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `default` | 类型：boolean；必填：否；默认值：—<br>将此认证域用作默认认证域 |
+| `domain` | 类型：string；必填：否；默认值：—<br>AD 域名 |
+| `filter` | 类型：string；必填：否；默认值：—<br>用户同步的 LDAP 过滤器。 |
+| `group_classes` | 类型：string；必填：否；默认值："groupOfNames, group, univentionGroup, ipausergroup"<br>组的 objectclass。 |
+| `group_dn` | 类型：string；必填：否；默认值：—<br>组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。 |
+| `group_filter` | 类型：string；必填：否；默认值：—<br>组同步的 LDAP 过滤器。 |
+| `group_name_attr` | 类型：string；必填：否；默认值：—<br>表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。 |
+| `groups-autocreate` | 类型：boolean；必填：否；默认值：0<br>如果组不存在，则自动创建。 |
+| `groups-claim` | 类型：string；必填：否；默认值：—<br>用于获取组的 OpenID 声明。 |
+| `groups-overwrite` | 类型：boolean；必填：否；默认值：0<br>用户登录时将覆盖其所有组。 |
+| `issuer-url` | 类型：string；必填：否；默认值：—<br>OpenID 颁发者 URL |
+| `mode` | 类型：string；必填：否；默认值："ldap"<br>LDAP 协议模式。；可选值：`ldap`, `ldaps`, `ldap+starttls` |
+| `password` | 类型：string；必填：否；默认值：—<br>LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/&lt;REALM&gt;.pw'。 |
+| `port` | 类型：integer；必填：否；默认值：—<br>服务器端口。 |
+| `prompt` | 类型：string；必填：否；默认值：—<br>指定授权服务器是否提示最终用户重新身份验证并表示同意。 |
+| `query-userinfo` | 类型：boolean；必填：否；默认值：1<br>启用查询 userinfo 端点以获取声明值。 |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
+| `scopes` | 类型：string；必填：否；默认值："email profile"<br>指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。 |
+| `secure` | 类型：boolean；必填：否；默认值：—<br>使用安全的 LDAPS 协议。已弃用：请改用 'mode'。 |
+| `server1` | 类型：string；必填：否；默认值：—<br>服务器 IP 地址（或 DNS 名称） |
+| `server2` | 类型：string；必填：否；默认值：—<br>后备服务器 IP 地址（或 DNS 名称） |
+| `sslversion` | 类型：string；必填：否；默认值：—<br>LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
+| `sync-defaults-options` | 类型：string；必填：否；默认值：—<br>同步行为的默认选项。 |
+| `sync_attributes` | 类型：string；必填：否；默认值：—<br>以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。 |
+| `tfa` | 类型：string；必填：否；默认值：—<br>使用双因素身份验证。 |
+| `type` | 类型：string；必填：是；默认值：—<br>认证域类型。；可选值：`ad`, `ldap`, `openid`, `pam`, `pve` |
+| `user_attr` | 类型：string；必填：否；默认值：—<br>LDAP 用户属性名称 |
+| `user_classes` | 类型：string；必填：否；默认值："inetorgperson, posixaccount, person, user"<br>用户的 objectclass。 |
+| `username-claim` | 类型：string；必填：否；默认值：—<br>用于生成唯一用户名的 OpenID 声明。 |
+| `verify` | 类型：boolean；必填：否；默认值：0<br>验证服务器的 SSL 证书 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1705,23 +1529,15 @@
 {"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-domains-realm-0f82ea36-delete-parameters" id="api-access-domains-realm-0f82ea36-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `realm` | string | 是 | — | 认证域 ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1753,17 +1569,13 @@
 {"check": ["perm", "/access/realm", ["Realm.Allocate", "Sys.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-domains-realm-0f82ea36-get-parameters" id="api-access-domains-realm-0f82ea36-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `realm` | string | 是 | — | 认证域 ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1795,65 +1607,57 @@
 {"check": ["perm", "/access/realm", ["Realm.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-domains-realm-0f82ea36-put-parameters" id="api-access-domains-realm-0f82ea36-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `acr-values` | string | 否 | — | 指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。 |
-| `audiences` | string | 否 | — | 除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。 |
-| `autocreate` | boolean | 否 | 0 | 如果用户不存在，则自动创建。 |
-| `base_dn` | string | 否 | — | LDAP 基础域名 |
-| `bind_dn` | string | 否 | — | LDAP 绑定域名 |
-| `capath` | string | 否 | "/etc/ssl/certs" | CA 证书存储路径 |
-| `case-sensitive` | boolean | 否 | 1 | 用户名区分大小写 |
-| `cert` | string | 否 | — | 客户端证书路径 |
-| `certkey` | string | 否 | — | 客户端证书密钥路径 |
-| `check-connection` | boolean | 否 | 0 | 检查到服务器的绑定连接。 |
-| `client-id` | string | 否 | — | OpenID 客户端 ID |
-| `client-key` | string | 否 | — | OpenID 客户端密钥 |
-| `comment` | string | 否 | — | 描述。 |
-| `default` | boolean | 否 | — | 将此认证域用作默认认证域 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `domain` | string | 否 | — | AD 域名 |
-| `filter` | string | 否 | — | 用户同步的 LDAP 过滤器。 |
-| `group_classes` | string | 否 | "groupOfNames, group, univentionGroup, ipausergroup" | 组的 objectclass。 |
-| `group_dn` | string | 否 | — | 组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。 |
-| `group_filter` | string | 否 | — | 组同步的 LDAP 过滤器。 |
-| `group_name_attr` | string | 否 | — | 表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。 |
-| `groups-autocreate` | boolean | 否 | 0 | 如果组不存在，则自动创建。 |
-| `groups-claim` | string | 否 | — | 用于获取组的 OpenID 声明。 |
-| `groups-overwrite` | boolean | 否 | 0 | 用户登录时将覆盖其所有组。 |
-| `issuer-url` | string | 否 | — | OpenID 颁发者 URL |
-| `mode` | string | 否 | "ldap" | LDAP 协议模式。；可选值：`ldap`, `ldaps`, `ldap+starttls` |
-| `password` | string | 否 | — | LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/&lt;REALM&gt;.pw'。 |
-| `port` | integer | 否 | — | 服务器端口。 |
-| `prompt` | string | 否 | — | 指定授权服务器是否提示最终用户重新身份验证并表示同意。 |
-| `query-userinfo` | boolean | 否 | 1 | 启用查询 userinfo 端点以获取声明值。 |
-| `realm` | string | 是 | — | 认证域 ID |
-| `scopes` | string | 否 | "email profile" | 指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。 |
-| `secure` | boolean | 否 | — | 使用安全的 LDAPS 协议。已弃用：请改用 'mode'。 |
-| `server1` | string | 否 | — | 服务器 IP 地址（或 DNS 名称） |
-| `server2` | string | 否 | — | 后备服务器 IP 地址（或 DNS 名称） |
-| `sslversion` | string | 否 | — | LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
-| `sync-defaults-options` | string | 否 | — | 同步行为的默认选项。 |
-| `sync_attributes` | string | 否 | — | 以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。 |
-| `tfa` | string | 否 | — | 使用双因素身份验证。 |
-| `user_attr` | string | 否 | — | LDAP 用户属性名称 |
-| `user_classes` | string | 否 | "inetorgperson, posixaccount, person, user" | 用户的 objectclass。 |
-| `verify` | boolean | 否 | 0 | 验证服务器的 SSL 证书 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `acr-values` | 类型：string；必填：否；默认值：—<br>指定请求授权服务器在身份验证请求中使用的身份验证上下文类引用值。 |
+| `audiences` | 类型：string；必填：否；默认值：—<br>除 'client-id' 外，也接受 OpenID 颁发者可能包含的受众列表。 |
+| `autocreate` | 类型：boolean；必填：否；默认值：0<br>如果用户不存在，则自动创建。 |
+| `base_dn` | 类型：string；必填：否；默认值：—<br>LDAP 基础域名 |
+| `bind_dn` | 类型：string；必填：否；默认值：—<br>LDAP 绑定域名 |
+| `capath` | 类型：string；必填：否；默认值："/etc/ssl/certs"<br>CA 证书存储路径 |
+| `case-sensitive` | 类型：boolean；必填：否；默认值：1<br>用户名区分大小写 |
+| `cert` | 类型：string；必填：否；默认值：—<br>客户端证书路径 |
+| `certkey` | 类型：string；必填：否；默认值：—<br>客户端证书密钥路径 |
+| `check-connection` | 类型：boolean；必填：否；默认值：0<br>检查到服务器的绑定连接。 |
+| `client-id` | 类型：string；必填：否；默认值：—<br>OpenID 客户端 ID |
+| `client-key` | 类型：string；必填：否；默认值：—<br>OpenID 客户端密钥 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `default` | 类型：boolean；必填：否；默认值：—<br>将此认证域用作默认认证域 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `domain` | 类型：string；必填：否；默认值：—<br>AD 域名 |
+| `filter` | 类型：string；必填：否；默认值：—<br>用户同步的 LDAP 过滤器。 |
+| `group_classes` | 类型：string；必填：否；默认值："groupOfNames, group, univentionGroup, ipausergroup"<br>组的 objectclass。 |
+| `group_dn` | 类型：string；必填：否；默认值：—<br>组同步的 LDAP 基础域名。如果未设置，将使用 base_dn。 |
+| `group_filter` | 类型：string；必填：否；默认值：—<br>组同步的 LDAP 过滤器。 |
+| `group_name_attr` | 类型：string；必填：否；默认值：—<br>表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。 |
+| `groups-autocreate` | 类型：boolean；必填：否；默认值：0<br>如果组不存在，则自动创建。 |
+| `groups-claim` | 类型：string；必填：否；默认值：—<br>用于获取组的 OpenID 声明。 |
+| `groups-overwrite` | 类型：boolean；必填：否；默认值：0<br>用户登录时将覆盖其所有组。 |
+| `issuer-url` | 类型：string；必填：否；默认值：—<br>OpenID 颁发者 URL |
+| `mode` | 类型：string；必填：否；默认值："ldap"<br>LDAP 协议模式。；可选值：`ldap`, `ldaps`, `ldap+starttls` |
+| `password` | 类型：string；必填：否；默认值：—<br>LDAP 绑定密码。将保存于 '/etc/pve/priv/realm/&lt;REALM&gt;.pw'。 |
+| `port` | 类型：integer；必填：否；默认值：—<br>服务器端口。 |
+| `prompt` | 类型：string；必填：否；默认值：—<br>指定授权服务器是否提示最终用户重新身份验证并表示同意。 |
+| `query-userinfo` | 类型：boolean；必填：否；默认值：1<br>启用查询 userinfo 端点以获取声明值。 |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
+| `scopes` | 类型：string；必填：否；默认值："email profile"<br>指定应授权并返回的作用域（用户详细信息），例如 'email' 或 'profile'。 |
+| `secure` | 类型：boolean；必填：否；默认值：—<br>使用安全的 LDAPS 协议。已弃用：请改用 'mode'。 |
+| `server1` | 类型：string；必填：否；默认值：—<br>服务器 IP 地址（或 DNS 名称） |
+| `server2` | 类型：string；必填：否；默认值：—<br>后备服务器 IP 地址（或 DNS 名称） |
+| `sslversion` | 类型：string；必填：否；默认值：—<br>LDAPS TLS/SSL 版本。不建议使用早于 1.2 的版本！；可选值：`tlsv1`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
+| `sync-defaults-options` | 类型：string；必填：否；默认值：—<br>同步行为的默认选项。 |
+| `sync_attributes` | 类型：string；必填：否；默认值：—<br>以逗号分隔的 key=value 对列表，指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 'mail' 映射到 PVE 的 'email'，请填写  'email=mail'。默认情况下，每个 PVE 用户字段均由  同名 LDAP 属性表示。 |
+| `tfa` | 类型：string；必填：否；默认值：—<br>使用双因素身份验证。 |
+| `user_attr` | 类型：string；必填：否；默认值：—<br>LDAP 用户属性名称 |
+| `user_classes` | 类型：string；必填：否；默认值："inetorgperson, posixaccount, person, user"<br>用户的 objectclass。 |
+| `verify` | 类型：boolean；必填：否；默认值：0<br>验证服务器的 SSL 证书 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1977,29 +1781,21 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-domains-realm-sync-388cb8d1-post-parameters" id="api-access-domains-realm-sync-388cb8d1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dry-run` | boolean | 否 | 0 | 如果设置，则不写入任何内容。 |
-| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
-| `full` | boolean | 否 | — | 已弃用：请改用 'remove-vanished'。如果设置，则将 LDAP 目录视为权威来源，删除同步未返回的用户或组，并移除同步用户的所有本地修改属性。如果未设置，则仅同步同步数据中存在的信息，不会删除或修改其他任何内容。 |
-| `purge` | boolean | 否 | — | 已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。 |
-| `realm` | string | 是 | — | 认证域 ID |
-| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
-| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dry-run` | 类型：boolean；必填：否；默认值：0<br>如果设置，则不写入任何内容。 |
+| `enable-new` | 类型：boolean；必填：否；默认值："1"<br>立即启用新同步的用户。 |
+| `full` | 类型：boolean；必填：否；默认值：—<br>已弃用：请改用 'remove-vanished'。如果设置，则将 LDAP 目录视为权威来源，删除同步未返回的用户或组，并移除同步用户的所有本地修改属性。如果未设置，则仅同步同步数据中存在的信息，不会删除或修改其他任何内容。 |
+| `purge` | 类型：boolean；必填：否；默认值：—<br>已弃用：请改用 'remove-vanished'。移除同步期间从配置中移除的用户或组的 ACL。 |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
+| `remove-vanished` | 类型：string；必填：否；默认值："none"<br>以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `scope` | 类型：string；必填：否；默认值：—<br>选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2055,11 +1851,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-openid-12c1d0b0-get-parameters" id="api-access-openid-12c1d0b0-get-parameters"></a>
 
@@ -2089,24 +1881,16 @@
 {"user": "world"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-openid-auth-url-ec28351f-post-parameters" id="api-access-openid-auth-url-ec28351f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `realm` | string | 是 | — | 认证域 ID |
-| `redirect-url` | string | 是 | — | 重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `realm` | 类型：string；必填：是；默认值：—<br>认证域 ID |
+| `redirect-url` | 类型：string；必填：是；默认值：—<br>重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2149,25 +1933,17 @@
 {"user": "world"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-openid-login-b04e60dc-post-parameters" id="api-access-openid-login-b04e60dc-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `code` | string | 是 | — | OpenID 授权码。 |
-| `redirect-url` | string | 是 | — | 重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
-| `state` | string | 是 | — | OpenID 状态。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `code` | 类型：string；必填：是；默认值：—<br>OpenID 授权码。 |
+| `redirect-url` | 类型：string；必填：是；默认值：—<br>重定向 URL。客户端应将其设为所用服务器的 URL（location.origin）。 |
+| `state` | 类型：string；必填：是；默认值：—<br>OpenID 状态。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2216,17 +1992,9 @@
 {"description": "根据权限返回所有用户或仅已登录用户。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-e9e0bb9f-get-parameters" id="api-access-tfa-e9e0bb9f-get-parameters"></a>
 
@@ -2281,23 +2049,15 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-userid-4f95baa5-get-parameters" id="api-access-tfa-userid-4f95baa5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2345,29 +2105,21 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `0`
 
-```text
-0
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-userid-4f95baa5-post-parameters" id="api-access-tfa-userid-4f95baa5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `challenge` | string | 否 | — | 响应 U2F 质询时：原始质询字符串 |
-| `description` | string | 否 | — | 用于区分多个条目的描述 |
-| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
-| `totp` | string | 否 | — | TOTP URI。 |
-| `type` | string | 是 | — | TFA 条目类型。；可选值：`totp`, `u2f`, `webauthn`, `recovery`, `yubico` |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
-| `value` | string | 否 | — | 提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `challenge` | 类型：string；必填：否；默认值：—<br>响应 U2F 质询时：原始质询字符串 |
+| `description` | 类型：string；必填：否；默认值：—<br>用于区分多个条目的描述 |
+| `password` | 类型：string；必填：否；默认值：—<br>执行更改的用户的当前密码。 |
+| `totp` | 类型：string；必填：否；默认值：—<br>TOTP URI。 |
+| `type` | 类型：string；必填：是；默认值：—<br>TFA 条目类型。；可选值：`totp`, `u2f`, `webauthn`, `recovery`, `yubico` |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
+| `value` | 类型：string；必填：否；默认值：—<br>提供的 TOTP URI 的当前值，或 Webauthn/U2F 质询响应 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2422,25 +2174,17 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `0`
 
-```text
-0
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-userid-id-2f4086eb-delete-parameters" id="api-access-tfa-userid-id-2f4086eb-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | TFA 条目 ID。 |
-| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>TFA 条目 ID。 |
+| `password` | 类型：string；必填：否；默认值：—<br>执行更改的用户的当前密码。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2476,24 +2220,16 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify", "Sys.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-userid-id-2f4086eb-get-parameters" id="api-access-tfa-userid-id-2f4086eb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | TFA 条目 ID。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>TFA 条目 ID。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2538,27 +2274,19 @@
 {"check": ["or", ["userid-param", "self"], ["userid-group", ["User.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `0`
 
-```text
-0
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-tfa-userid-id-2f4086eb-put-parameters" id="api-access-tfa-userid-id-2f4086eb-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 用于区分多个条目的描述 |
-| `enable` | boolean | 否 | — | 是否应启用此条目用于登录。 |
-| `id` | string | 是 | — | TFA 条目 ID。 |
-| `password` | string | 否 | — | 执行更改的用户的当前密码。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>用于区分多个条目的描述 |
+| `enable` | 类型：boolean；必填：否；默认值：—<br>是否应启用此条目用于登录。 |
+| `id` | 类型：string；必填：是；默认值：—<br>TFA 条目 ID。 |
+| `password` | 类型：string；必填：否；默认值：—<br>执行更改的用户的当前密码。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2602,11 +2330,7 @@
 {"user": "world"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-ticket-bbd93e48-get-parameters" id="api-access-ticket-bbd93e48-get-parameters"></a>
 
@@ -2630,30 +2354,22 @@
 {"description": "需要传入有效凭据。", "user": "world"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `0`
 
-```text
-0
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-ticket-bbd93e48-post-parameters" id="api-access-ticket-bbd93e48-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `new-format` | boolean | 否 | 1 | 此参数现在被忽略，并假定为 1。 |
-| `otp` | string | 否 | — | 双因素身份验证的一次性密码。 |
-| `password` | string | 是 | — | 秘密密码。也可以是有效票据。 |
-| `path` | string | 否 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
-| `privs` | string | 否 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
-| `realm` | string | 否 | — | 可以选择使用此参数传入认证域。通常只需将认证域添加到用户名后，形式为 &lt;username&gt;@&lt;realm&gt;。 |
-| `tfa-challenge` | string | 否 | — | 用户要响应的已签名 TFA 质询字符串。 |
-| `username` | string | 是 | — | 用户名 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `new-format` | 类型：boolean；必填：否；默认值：1<br>此参数现在被忽略，并假定为 1。 |
+| `otp` | 类型：string；必填：否；默认值：—<br>双因素身份验证的一次性密码。 |
+| `password` | 类型：string；必填：是；默认值：—<br>秘密密码。也可以是有效票据。 |
+| `path` | 类型：string；必填：否；默认值：—<br>验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `privs` | 类型：string；必填：否；默认值：—<br>验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `realm` | 类型：string；必填：否；默认值：—<br>可以选择使用此参数传入认证域。通常只需将认证域添加到用户名后，形式为 &lt;username&gt;@&lt;realm&gt;。 |
+| `tfa-challenge` | 类型：string；必填：否；默认值：—<br>用户要响应的已签名 TFA 质询字符串。 |
+| `username` | 类型：string；必填：是；默认值：—<br>用户名 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2715,27 +2431,19 @@
 {"description": "需要传入有效凭据。", "user": "world"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-vncticket-d992db8d-post-parameters" id="api-access-vncticket-d992db8d-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `authid` | string | 是 | — | UserId 或令牌 |
-| `path` | string | 是 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
-| `port` | integer | 否 | — | 验证票据对此端口是否有效。 |
-| `privs` | string | 是 | — | 验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
-| `vncticket` | string | 是 | — | VNC 票据。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `authid` | 类型：string；必填：是；默认值：—<br>UserId 或令牌 |
+| `path` | 类型：string；必填：是；默认值：—<br>验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `port` | 类型：integer；必填：否；默认值：—<br>验证票据对此端口是否有效。 |
+| `privs` | 类型：string；必填：是；默认值：—<br>验证票据，并检查用户在 'path' 上是否具有 'privs' 访问权限 |
+| `vncticket` | 类型：string；必填：是；默认值：—<br>VNC 票据。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2785,25 +2493,17 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `0`
 
-```text
-0
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-access-password-d9022417-put-parameters" id="api-access-password-d9022417-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `confirmation-password` | string | 否 | — | 执行更改的用户的当前密码。 |
-| `password` | string | 是 | — | 新密码。 |
-| `userid` | string | 是 | — | 完整用户 ID，采用 `name@realm` 格式。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `confirmation-password` | 类型：string；必填：否；默认值：—<br>执行更改的用户的当前密码。 |
+| `password` | 类型：string；必填：是；默认值：—<br>新密码。 |
+| `userid` | 类型：string；必填：是；默认值：—<br>完整用户 ID，采用 `name@realm` 格式。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2850,18 +2550,14 @@
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-access-permissions-f180524f-get-parameters" id="api-access-permissions-f180524f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `path` | string | 否 | — | 仅导出此特定路径，而非整棵树。 |
-| `userid` | string | 否 | — | 用户 ID 或完整 API 令牌 ID |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `path` | 类型：string；必填：否；默认值：—<br>仅导出此特定路径，而非整棵树。 |
+| `userid` | 类型：string；必填：否；默认值：—<br>用户 ID 或完整 API 令牌 ID |
 
 <details>
 <summary>完整请求参数结构</summary>

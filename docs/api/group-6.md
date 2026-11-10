@@ -18,11 +18,7 @@ API 版本详情，包括部分全局数据中心配置。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-version-c77d9d7f-get-parameters" id="api-version-c77d9d7f-get-parameters"></a>
 

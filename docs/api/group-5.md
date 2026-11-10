@@ -18,23 +18,15 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "只能删除空资源池（无成员）。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-pools-4eb15ae6-delete-parameters" id="api-pools-4eb15ae6-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `poolid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -63,18 +55,14 @@
 {"description": "列出您对 /pool/<pool> 具有 Pool.Audit 权限的所有资源池，或使用 {poolid} 指定的资源池", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-pools-4eb15ae6-get-parameters" id="api-pools-4eb15ae6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `poolid` | string | 否 | — |  |
-| `type` | string | 否 | — | ；可选值：`qemu`, `lxc`, `storage` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `poolid` | 类型：string；必填：否；默认值：—<br> |
+| `type` | 类型：string；必填：否；默认值：—<br>；可选值：`qemu`, `lxc`, `storage` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -129,24 +117,16 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-pools-4eb15ae6-post-parameters" id="api-pools-4eb15ae6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `poolid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -180,28 +160,20 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "还需要有权修改所添加/删除的任何对象的权限。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-pools-4eb15ae6-put-parameters" id="api-pools-4eb15ae6-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `allow-move` | boolean | 否 | 0 | 即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。 |
-| `comment` | string | 否 | — |  |
-| `delete` | boolean | 否 | 0 | 移除传入的 VMID 和/或存储 ID，而非添加。 |
-| `poolid` | string | 是 | — |  |
-| `storage` | string | 否 | — | 要添加到此资源池或从中移除的存储 ID 列表。 |
-| `vms` | string | 否 | — | 要添加到此资源池或从中移除的客户机 VMID 列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `allow-move` | 类型：boolean；必填：否；默认值：0<br>即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>移除传入的 VMID 和/或存储 ID，而非添加。 |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
+| `storage` | 类型：string；必填：否；默认值：—<br>要添加到此资源池或从中移除的存储 ID 列表。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>要添加到此资源池或从中移除的客户机 VMID 列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -251,23 +223,15 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "只能删除空资源池（无成员）。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-pools-poolid-654b0ce2-delete-parameters" id="api-pools-poolid-654b0ce2-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `poolid` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -296,18 +260,14 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-pools-poolid-654b0ce2-get-parameters" id="api-pools-poolid-654b0ce2-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `poolid` | string | 是 | — |  |
-| `type` | string | 否 | — | ；可选值：`qemu`, `lxc`, `storage` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
+| `type` | 类型：string；必填：否；默认值：—<br>；可选值：`qemu`, `lxc`, `storage` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -358,28 +318,20 @@
 {"check": ["perm", "/pool/{poolid}", ["Pool.Allocate"]], "description": "还需要有权修改所添加/删除的任何对象的权限。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-pools-poolid-654b0ce2-put-parameters" id="api-pools-poolid-654b0ce2-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `allow-move` | boolean | 否 | 0 | 即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。 |
-| `comment` | string | 否 | — |  |
-| `delete` | boolean | 否 | 0 | 移除传入的 VMID 和/或存储 ID，而非添加。 |
-| `poolid` | string | 是 | — |  |
-| `storage` | string | 否 | — | 要添加到此资源池或从中移除的存储 ID 列表。 |
-| `vms` | string | 否 | — | 要添加到此资源池或从中移除的客户机 VMID 列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `allow-move` | 类型：boolean；必填：否；默认值：0<br>即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `delete` | 类型：boolean；必填：否；默认值：0<br>移除传入的 VMID 和/或存储 ID，而非添加。 |
+| `poolid` | 类型：string；必填：是；默认值：—<br> |
+| `storage` | 类型：string；必填：否；默认值：—<br>要添加到此资源池或从中移除的存储 ID 列表。 |
+| `vms` | 类型：string；必填：否；默认值：—<br>要添加到此资源池或从中移除的客户机 VMID 列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>

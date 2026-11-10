@@ -18,11 +18,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-76d574b0-get-parameters" id="api-cluster-76d574b0-get-parameters"></a>
 
@@ -52,11 +48,7 @@
 {"description": "仅返回调用用户在 /vms/<vmid> 上拥有 VM.Audit 权限的复制任务。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-replication-92d583d9-get-parameters" id="api-cluster-replication-92d583d9-get-parameters"></a>
 
@@ -106,31 +98,23 @@
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-replication-92d583d9-post-parameters" id="api-cluster-replication-92d583d9-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 描述。 |
-| `disable` | boolean | 否 | — | 用于禁用/停用条目的标志。 |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `rate` | number | 否 | — | 速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。 |
-| `remove_job` | string | 否 | — | 将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。；可选值：`local`, `full` |
-| `schedule` | string | 否 | "*/15" | 存储复制计划。其格式是 `systemd` 日历事件的一个子集。 |
-| `source` | string | 否 | — | 供内部使用，用于检测客户机是否被接管。 |
-| `target` | string | 是 | — | 目标节点。 |
-| `type` | string | 是 | — | 节类型。；可选值：`local` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用/停用条目的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `rate` | 类型：number；必填：否；默认值：—<br>速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。 |
+| `remove_job` | 类型：string；必填：否；默认值：—<br>将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。；可选值：`local`, `full` |
+| `schedule` | 类型：string；必填：否；默认值："*/15"<br>存储复制计划。其格式是 `systemd` 日历事件的一个子集。 |
+| `source` | 类型：string；必填：否；默认值：—<br>供内部使用，用于检测客户机是否被接管。 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `type` | 类型：string；必填：是；默认值：—<br>节类型。；可选值：`local` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -190,25 +174,17 @@
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-replication-id-46e95f47-delete-parameters" id="api-cluster-replication-id-46e95f47-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 将移除 jobconfig 条目，但不执行清理。 |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `keep` | boolean | 否 | 0 | 保留目标上的复制数据（不移除）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>将移除 jobconfig 条目，但不执行清理。 |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `keep` | 类型：boolean；必填：否；默认值：0<br>保留目标上的复制数据（不移除）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -247,17 +223,13 @@
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-replication-id-46e95f47-get-parameters" id="api-cluster-replication-id-46e95f47-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -318,31 +290,23 @@
 {"description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-replication-id-46e95f47-put-parameters" id="api-cluster-replication-id-46e95f47-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 描述。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | — | 用于禁用/停用条目的标志。 |
-| `id` | string | 是 | — | 复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
-| `rate` | number | 否 | — | 速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。 |
-| `remove_job` | string | 否 | — | 将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。；可选值：`local`, `full` |
-| `schedule` | string | 否 | "*/15" | 存储复制计划。其格式是 `systemd` 日历事件的一个子集。 |
-| `source` | string | 否 | — | 供内部使用，用于检测客户机是否被接管。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用/停用条目的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 '&lt;GUEST&gt;-&lt;JOBNUM&gt;'。 |
+| `rate` | 类型：number；必填：否；默认值：—<br>速率限制，单位为 mbps（每秒兆字节），使用浮点数表示。 |
+| `remove_job` | 类型：string；必填：否；默认值：—<br>将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 'full'，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。；可选值：`local`, `full` |
+| `schedule` | 类型：string；必填：否；默认值："*/15"<br>存储复制计划。其格式是 `systemd` 日历事件的一个子集。 |
+| `source` | 类型：string；必填：否；默认值：—<br>供内部使用，用于检测客户机是否被接管。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -405,11 +369,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-c2310197-get-parameters" id="api-cluster-metrics-c2310197-get-parameters"></a>
 
@@ -439,11 +399,7 @@
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-server-cdd8f7b0-get-parameters" id="api-cluster-metrics-server-cdd8f7b0-get-parameters"></a>
 
@@ -483,23 +439,15 @@
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-server-id-368f49a1-delete-parameters" id="api-cluster-metrics-server-id-368f49a1-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -528,17 +476,13 @@
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-server-id-368f49a1-get-parameters" id="api-cluster-metrics-server-id-368f49a1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -567,46 +511,38 @@
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-server-id-368f49a1-post-parameters" id="api-cluster-metrics-server-id-368f49a1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | 插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
-| `bucket` | string | 否 | — | InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
-| `disable` | boolean | 否 | — | 用于禁用插件的标志。 |
-| `id` | string | 是 | — | 条目的 ID。 |
-| `influxdbproto` | string | 否 | "udp" | ；可选值：`udp`, `http`, `https` |
-| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
-| `mtu` | integer | 否 | 1500 | 通过 UDP 传输指标的 MTU |
-| `organization` | string | 否 | — | InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
-| `otel-compression` | string | 否 | "gzip" | 请求的压缩算法；可选值：`none`, `gzip` |
-| `otel-headers` | string | 否 | — | 自定义 HTTP 标头（JSON 格式，base64 编码） |
-| `otel-max-body-size` | integer | 否 | 10000000 | 最大请求正文大小，单位为字节 |
-| `otel-path` | string | 否 | "/v1/metrics" | OTLP 端点路径 |
-| `otel-protocol` | string | 否 | "https" | HTTP 协议；可选值：`http`, `https` |
-| `otel-resource-attributes` | string | 否 | — | JSON 形式的额外资源属性，采用 base64 编码 |
-| `otel-timeout` | integer | 否 | 5 | HTTP 请求超时时间，单位为秒 |
-| `otel-verify-ssl` | boolean | 否 | 1 | 验证 SSL 证书 |
-| `path` | string | 否 | — | graphite 根路径（例如：proxmox.mycluster.mykey） |
-| `port` | integer | 是 | — | 服务器网络端口 |
-| `proto` | string | 否 | — | 发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
-| `server` | string | 是 | — | 服务器 DNS 名称或 IP 地址 |
-| `timeout` | integer | 否 | 1 | graphite TCP 套接字超时时间（默认值=1） |
-| `token` | string | 否 | — | InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
-| `type` | string | 是 | — | 插件类型。；可选值：`graphite`, `influxdb`, `opentelemetry` |
-| `verify-certificate` | boolean | 否 | 1 | 设置为 0 可禁用 https 端点的证书验证。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `api-path-prefix` | 类型：string；必填：否；默认值：—<br>插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
+| `bucket` | 类型：string；必填：否；默认值：—<br>InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用插件的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>条目的 ID。 |
+| `influxdbproto` | 类型：string；必填：否；默认值："udp"<br>；可选值：`udp`, `http`, `https` |
+| `max-body-size` | 类型：integer；必填：否；默认值：25000000<br>InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
+| `mtu` | 类型：integer；必填：否；默认值：1500<br>通过 UDP 传输指标的 MTU |
+| `organization` | 类型：string；必填：否；默认值：—<br>InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
+| `otel-compression` | 类型：string；必填：否；默认值："gzip"<br>请求的压缩算法；可选值：`none`, `gzip` |
+| `otel-headers` | 类型：string；必填：否；默认值：—<br>自定义 HTTP 标头（JSON 格式，base64 编码） |
+| `otel-max-body-size` | 类型：integer；必填：否；默认值：10000000<br>最大请求正文大小，单位为字节 |
+| `otel-path` | 类型：string；必填：否；默认值："/v1/metrics"<br>OTLP 端点路径 |
+| `otel-protocol` | 类型：string；必填：否；默认值："https"<br>HTTP 协议；可选值：`http`, `https` |
+| `otel-resource-attributes` | 类型：string；必填：否；默认值：—<br>JSON 形式的额外资源属性，采用 base64 编码 |
+| `otel-timeout` | 类型：integer；必填：否；默认值：5<br>HTTP 请求超时时间，单位为秒 |
+| `otel-verify-ssl` | 类型：boolean；必填：否；默认值：1<br>验证 SSL 证书 |
+| `path` | 类型：string；必填：否；默认值：—<br>graphite 根路径（例如：proxmox.mycluster.mykey） |
+| `port` | 类型：integer；必填：是；默认值：—<br>服务器网络端口 |
+| `proto` | 类型：string；必填：否；默认值：—<br>发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器 DNS 名称或 IP 地址 |
+| `timeout` | 类型：integer；必填：否；默认值：1<br>graphite TCP 套接字超时时间（默认值=1） |
+| `token` | 类型：string；必填：否；默认值：—<br>InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
+| `type` | 类型：string；必填：是；默认值：—<br>插件类型。；可选值：`graphite`, `influxdb`, `opentelemetry` |
+| `verify-certificate` | 类型：boolean；必填：否；默认值：1<br>设置为 0 可禁用 https 端点的证书验证。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -689,47 +625,39 @@
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-server-id-368f49a1-put-parameters" id="api-cluster-metrics-server-id-368f49a1-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | 插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
-| `bucket` | string | 否 | — | InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | — | 用于禁用插件的标志。 |
-| `id` | string | 是 | — | 条目的 ID。 |
-| `influxdbproto` | string | 否 | "udp" | ；可选值：`udp`, `http`, `https` |
-| `max-body-size` | integer | 否 | 25000000 | InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
-| `mtu` | integer | 否 | 1500 | 通过 UDP 传输指标的 MTU |
-| `organization` | string | 否 | — | InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
-| `otel-compression` | string | 否 | "gzip" | 请求的压缩算法；可选值：`none`, `gzip` |
-| `otel-headers` | string | 否 | — | 自定义 HTTP 标头（JSON 格式，base64 编码） |
-| `otel-max-body-size` | integer | 否 | 10000000 | 最大请求正文大小，单位为字节 |
-| `otel-path` | string | 否 | "/v1/metrics" | OTLP 端点路径 |
-| `otel-protocol` | string | 否 | "https" | HTTP 协议；可选值：`http`, `https` |
-| `otel-resource-attributes` | string | 否 | — | JSON 形式的额外资源属性，采用 base64 编码 |
-| `otel-timeout` | integer | 否 | 5 | HTTP 请求超时时间，单位为秒 |
-| `otel-verify-ssl` | boolean | 否 | 1 | 验证 SSL 证书 |
-| `path` | string | 否 | — | graphite 根路径（例如：proxmox.mycluster.mykey） |
-| `port` | integer | 是 | — | 服务器网络端口 |
-| `proto` | string | 否 | — | 发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
-| `server` | string | 是 | — | 服务器 DNS 名称或 IP 地址 |
-| `timeout` | integer | 否 | 1 | graphite TCP 套接字超时时间（默认值=1） |
-| `token` | string | 否 | — | InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
-| `verify-certificate` | boolean | 否 | 1 | 设置为 0 可禁用 https 端点的证书验证。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `api-path-prefix` | 类型：string；必填：否；默认值：—<br>插入在 '&lt;host&gt;:&lt;port&gt;/' 和 '/api2/' 之间的 API 路径前缀。如果 InfluxDB 服务运行在反向代理之后，此选项可能很有用。 |
+| `bucket` | 类型：string；必填：否；默认值：—<br>InfluxDB 存储桶/数据库。仅在使用 http v2 api 时需要。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用插件的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>条目的 ID。 |
+| `influxdbproto` | 类型：string；必填：否；默认值："udp"<br>；可选值：`udp`, `http`, `https` |
+| `max-body-size` | 类型：integer；必填：否；默认值：25000000<br>InfluxDB max-body-size，单位为字节。请求按批次合并，最大达到此大小。 |
+| `mtu` | 类型：integer；必填：否；默认值：1500<br>通过 UDP 传输指标的 MTU |
+| `organization` | 类型：string；必填：否；默认值：—<br>InfluxDB 组织。仅在使用 http v2 api 时需要。使用 v2 兼容 api 时无意义。 |
+| `otel-compression` | 类型：string；必填：否；默认值："gzip"<br>请求的压缩算法；可选值：`none`, `gzip` |
+| `otel-headers` | 类型：string；必填：否；默认值：—<br>自定义 HTTP 标头（JSON 格式，base64 编码） |
+| `otel-max-body-size` | 类型：integer；必填：否；默认值：10000000<br>最大请求正文大小，单位为字节 |
+| `otel-path` | 类型：string；必填：否；默认值："/v1/metrics"<br>OTLP 端点路径 |
+| `otel-protocol` | 类型：string；必填：否；默认值："https"<br>HTTP 协议；可选值：`http`, `https` |
+| `otel-resource-attributes` | 类型：string；必填：否；默认值：—<br>JSON 形式的额外资源属性，采用 base64 编码 |
+| `otel-timeout` | 类型：integer；必填：否；默认值：5<br>HTTP 请求超时时间，单位为秒 |
+| `otel-verify-ssl` | 类型：boolean；必填：否；默认值：1<br>验证 SSL 证书 |
+| `path` | 类型：string；必填：否；默认值：—<br>graphite 根路径（例如：proxmox.mycluster.mykey） |
+| `port` | 类型：integer；必填：是；默认值：—<br>服务器网络端口 |
+| `proto` | 类型：string；必填：否；默认值：—<br>发送 graphite 数据的协议。TCP 或 UDP（默认）；可选值：`udp`, `tcp` |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器 DNS 名称或 IP 地址 |
+| `timeout` | 类型：integer；必填：否；默认值：1<br>graphite TCP 套接字超时时间（默认值=1） |
+| `token` | 类型：string；必填：否；默认值：—<br>InfluxDB 访问令牌。仅在使用 http v2 api 时需要。如果使用 v2 兼容 api，则改用 'user:password'。 |
+| `verify-certificate` | 类型：boolean；必填：否；默认值：1<br>设置为 0 可禁用 https 端点的证书验证。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -822,20 +750,16 @@
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-metrics-export-8d34a581-get-parameters" id="api-cluster-metrics-export-8d34a581-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `history` | boolean | 否 | 0 | 还返回历史值。除非同时设置 `start-time`，否则返回所有可用的指标历史记录 |
-| `local-only` | boolean | 否 | 0 | 仅返回当前节点的指标，而不是整个集群的指标 |
-| `node-list` | string | 否 | — | 仅返回以逗号分隔列表传入的节点的指标 |
-| `start-time` | integer | 否 | 0 | 仅包含时间戳 &gt; start-time 的指标。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `history` | 类型：boolean；必填：否；默认值：0<br>还返回历史值。除非同时设置 `start-time`，否则返回所有可用的指标历史记录 |
+| `local-only` | 类型：boolean；必填：否；默认值：0<br>仅返回当前节点的指标，而不是整个集群的指标 |
+| `node-list` | 类型：string；必填：否；默认值：—<br>仅返回以逗号分隔列表传入的节点的指标 |
+| `start-time` | 类型：integer；必填：否；默认值：0<br>仅包含时间戳 &gt; start-time 的指标。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -909,11 +833,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-4311ac17-get-parameters" id="api-cluster-notifications-4311ac17-get-parameters"></a>
 
@@ -943,17 +863,9 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-0
-```
+**受保护接口：** `0`
 
 #### 请求参数 <a href="#api-cluster-notifications-matcher-fields-265de9d8-get-parameters" id="api-cluster-notifications-matcher-fields-265de9d8-get-parameters"></a>
 
@@ -986,17 +898,9 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matcher-field-values-62224854-get-parameters" id="api-cluster-notifications-matcher-field-values-62224854-get-parameters"></a>
 
@@ -1035,11 +939,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-1e456d97-get-parameters" id="api-cluster-notifications-endpoints-1e456d97-get-parameters"></a>
 
@@ -1069,17 +969,9 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-sendmail-bd1bbd85-get-parameters" id="api-cluster-notifications-endpoints-sendmail-bd1bbd85-get-parameters"></a>
 
@@ -1121,29 +1013,21 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-sendmail-bd1bbd85-post-parameters" id="api-cluster-notifications-endpoints-sendmail-bd1bbd85-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | 邮件作者 |
-| `comment` | string | 否 | — | 注释 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
-| `mailto` | array | 否 | — | 电子邮件收件人列表 |
-| `mailto-user` | array | 否 | — | 用户列表 |
-| `name` | string | 是 | — | 端点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `author` | 类型：string；必填：否；默认值：—<br>邮件作者 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `from-address` | 类型：string；必填：否；默认值：—<br>邮件的 `From` 地址 |
+| `mailto` | 类型：array；必填：否；默认值：—<br>电子邮件收件人列表 |
+| `mailto-user` | 类型：array；必填：否；默认值：—<br>用户列表 |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1191,23 +1075,15 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-delete-parameters" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1236,23 +1112,15 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-get-parameters" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1296,31 +1164,23 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-put-parameters" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | 邮件作者 |
-| `comment` | string | 否 | — | 注释 |
-| `delete` | array | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
-| `mailto` | array | 否 | — | 电子邮件收件人列表 |
-| `mailto-user` | array | 否 | — | 用户列表 |
-| `name` | string | 是 | — | 端点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `author` | 类型：string；必填：否；默认值：—<br>邮件作者 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：array；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `from-address` | 类型：string；必填：否；默认值：—<br>邮件的 `From` 地址 |
+| `mailto` | 类型：array；必填：否；默认值：—<br>电子邮件收件人列表 |
+| `mailto-user` | 类型：array；必填：否；默认值：—<br>用户列表 |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1375,17 +1235,9 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-gotify-3afd73f8-get-parameters" id="api-cluster-notifications-endpoints-gotify-3afd73f8-get-parameters"></a>
 
@@ -1425,27 +1277,19 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-gotify-3afd73f8-post-parameters" id="api-cluster-notifications-endpoints-gotify-3afd73f8-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 注释 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `name` | string | 是 | — | 端点名称。 |
-| `server` | string | 是 | — | 服务器 URL |
-| `token` | string | 是 | — | 秘密令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `server` | 类型：string；必填：是；默认值：—<br>服务器 URL |
+| `token` | 类型：string；必填：是；默认值：—<br>秘密令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1489,23 +1333,15 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-delete-parameters" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1534,23 +1370,15 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-get-parameters" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 端点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1591,29 +1419,21 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-put-parameters" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 注释 |
-| `delete` | array | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `name` | string | 是 | — | 端点名称。 |
-| `server` | string | 否 | — | 服务器 URL |
-| `token` | string | 否 | — | 秘密令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：array；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `server` | 类型：string；必填：否；默认值：—<br>服务器 URL |
+| `token` | 类型：string；必填：否；默认值：—<br>秘密令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1664,17 +1484,9 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-smtp-69d956eb-get-parameters" id="api-cluster-notifications-endpoints-smtp-69d956eb-get-parameters"></a>
 
@@ -1723,34 +1535,26 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-smtp-69d956eb-post-parameters" id="api-cluster-notifications-endpoints-smtp-69d956eb-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | 邮件作者。默认为 'Proxmox VE'。 |
-| `comment` | string | 否 | — | 注释 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `from-address` | string | 是 | — | 邮件的 `From` 地址 |
-| `mailto` | array | 否 | — | 电子邮件收件人列表 |
-| `mailto-user` | array | 否 | — | 用户列表 |
-| `mode` | string | 否 | "tls" | 确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
-| `name` | string | 是 | — | 端点名称。 |
-| `password` | string | 否 | — | SMTP 认证的密码 |
-| `port` | integer | 否 | — | 使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
-| `server` | string | 是 | — | SMTP 服务器地址。 |
-| `username` | string | 否 | — | SMTP 认证的用户名 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `author` | 类型：string；必填：否；默认值：—<br>邮件作者。默认为 'Proxmox VE'。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `from-address` | 类型：string；必填：是；默认值：—<br>邮件的 `From` 地址 |
+| `mailto` | 类型：array；必填：否；默认值：—<br>电子邮件收件人列表 |
+| `mailto-user` | 类型：array；必填：否；默认值：—<br>用户列表 |
+| `mode` | 类型：string；必填：否；默认值："tls"<br>确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `password` | 类型：string；必填：否；默认值：—<br>SMTP 认证的密码 |
+| `port` | 类型：integer；必填：否；默认值：—<br>使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
+| `server` | 类型：string；必填：是；默认值：—<br>SMTP 服务器地址。 |
+| `username` | 类型：string；必填：否；默认值：—<br>SMTP 认证的用户名 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1806,23 +1610,15 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-delete-parameters" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1851,23 +1647,15 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-get-parameters" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -1918,36 +1706,28 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-put-parameters" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `author` | string | 否 | — | 邮件作者。默认为 'Proxmox VE'。 |
-| `comment` | string | 否 | — | 注释 |
-| `delete` | array | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `from-address` | string | 否 | — | 邮件的 `From` 地址 |
-| `mailto` | array | 否 | — | 电子邮件收件人列表 |
-| `mailto-user` | array | 否 | — | 用户列表 |
-| `mode` | string | 否 | "tls" | 确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
-| `name` | string | 是 | — | 端点名称。 |
-| `password` | string | 否 | — | SMTP 认证的密码 |
-| `port` | integer | 否 | — | 使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
-| `server` | string | 否 | — | SMTP 服务器地址。 |
-| `username` | string | 否 | — | SMTP 认证的用户名 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `author` | 类型：string；必填：否；默认值：—<br>邮件作者。默认为 'Proxmox VE'。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：array；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `from-address` | 类型：string；必填：否；默认值：—<br>邮件的 `From` 地址 |
+| `mailto` | 类型：array；必填：否；默认值：—<br>电子邮件收件人列表 |
+| `mailto-user` | 类型：array；必填：否；默认值：—<br>用户列表 |
+| `mode` | 类型：string；必填：否；默认值："tls"<br>确定连接应使用哪种加密方法。；可选值：`insecure`, `starttls`, `tls` |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `password` | 类型：string；必填：否；默认值：—<br>SMTP 认证的密码 |
+| `port` | 类型：integer；必填：否；默认值：—<br>使用的端口。基于 TLS 的连接默认为 465，基于 STARTTLS 的连接默认为 587，不安全的纯文本连接默认为端口 25。 |
+| `server` | 类型：string；必填：否；默认值：—<br>SMTP 服务器地址。 |
+| `username` | 类型：string；必填：否；默认值：—<br>SMTP 认证的用户名 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2010,17 +1790,9 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-webhook-4dcdce7f-get-parameters" id="api-cluster-notifications-endpoints-webhook-4dcdce7f-get-parameters"></a>
 
@@ -2070,30 +1842,22 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-webhook-4dcdce7f-post-parameters" id="api-cluster-notifications-endpoints-webhook-4dcdce7f-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `body` | string | 否 | — | HTTP 正文，采用 base64 编码 |
-| `comment` | string | 否 | — | 注释 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `header` | array | 否 | — | 要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `method` | string | 是 | — | HTTP 方法；可选值：`post`, `put`, `get` |
-| `name` | string | 是 | — | 端点名称。 |
-| `secret` | array | 否 | — | 要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `url` | string | 是 | — | 服务器 URL |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `body` | 类型：string；必填：否；默认值：—<br>HTTP 正文，采用 base64 编码 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `header` | 类型：array；必填：否；默认值：—<br>要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `method` | 类型：string；必填：是；默认值：—<br>HTTP 方法；可选值：`post`, `put`, `get` |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `secret` | 类型：array；必填：否；默认值：—<br>要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `url` | 类型：string；必填：是；默认值：—<br>服务器 URL |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2146,23 +1910,15 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-delete-parameters" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2191,23 +1947,15 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-get-parameters" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 端点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2259,32 +2007,24 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-put-parameters" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `body` | string | 否 | — | HTTP 正文，采用 base64 编码 |
-| `comment` | string | 否 | — | 注释 |
-| `delete` | array | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | 0 | 禁用此目标 |
-| `header` | array | 否 | — | 要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `method` | string | 否 | — | HTTP 方法；可选值：`post`, `put`, `get` |
-| `name` | string | 是 | — | 端点名称。 |
-| `secret` | array | 否 | — | 要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
-| `url` | string | 否 | — | 服务器 URL |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `body` | 类型：string；必填：否；默认值：—<br>HTTP 正文，采用 base64 编码 |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：array；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此目标 |
+| `header` | 类型：array；必填：否；默认值：—<br>要设置的 HTTP 标头。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `method` | 类型：string；必填：否；默认值：—<br>HTTP 方法；可选值：`post`, `put`, `get` |
+| `name` | 类型：string；必填：是；默认值：—<br>端点名称。 |
+| `secret` | 类型：array；必填：否；默认值：—<br>要设置的秘密信息。必须采用属性字符串格式：name=&lt;name&gt;,value=&lt;base64 of value&gt; |
+| `url` | 类型：string；必填：否；默认值：—<br>服务器 URL |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2349,17 +2089,9 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-targets-44cf3da5-get-parameters" id="api-cluster-notifications-targets-44cf3da5-get-parameters"></a>
 
@@ -2406,23 +2138,15 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-targets-name-test-4406e6d7-post-parameters" id="api-cluster-notifications-targets-name-test-4406e6d7-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 目标名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>目标名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2462,17 +2186,9 @@
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matchers-d91fc9d7-get-parameters" id="api-cluster-notifications-matchers-d91fc9d7-get-parameters"></a>
 
@@ -2516,31 +2232,23 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matchers-d91fc9d7-post-parameters" id="api-cluster-notifications-matchers-d91fc9d7-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 注释 |
-| `disable` | boolean | 否 | 0 | 禁用此匹配器 |
-| `invert-match` | boolean | 否 | — | 反转整个匹配器的匹配结果 |
-| `match-calendar` | array | 否 | — | 匹配通知时间戳 |
-| `match-field` | array | 否 | — | 要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex\|exact):&lt;field&gt;=&lt;value&gt; |
-| `match-severity` | array | 否 | — | 要匹配的通知严重性 |
-| `mode` | string | 否 | "all" | 指定多个属性时，在 'all' 和 'any' 之间选择；可选值：`all`, `any` |
-| `name` | string | 是 | — | 匹配器名称。 |
-| `target` | array | 否 | — | 匹配时要通知的目标 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此匹配器 |
+| `invert-match` | 类型：boolean；必填：否；默认值：—<br>反转整个匹配器的匹配结果 |
+| `match-calendar` | 类型：array；必填：否；默认值：—<br>匹配通知时间戳 |
+| `match-field` | 类型：array；必填：否；默认值：—<br>要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex\|exact):&lt;field&gt;=&lt;value&gt; |
+| `match-severity` | 类型：array；必填：否；默认值：—<br>要匹配的通知严重性 |
+| `mode` | 类型：string；必填：否；默认值："all"<br>指定多个属性时，在 'all' 和 'any' 之间选择；可选值：`all`, `any` |
+| `name` | 类型：string；必填：是；默认值：—<br>匹配器名称。 |
+| `target` | 类型：array；必填：否；默认值：—<br>匹配时要通知的目标 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2593,23 +2301,15 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matchers-name-c6629c60-delete-parameters" id="api-cluster-notifications-matchers-name-c6629c60-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2638,23 +2338,15 @@
 {"check": ["or", ["perm", "/mapping/notifications", ["Mapping.Modify"]], ["perm", "/mapping/notifications", ["Mapping.Audit"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matchers-name-c6629c60-get-parameters" id="api-cluster-notifications-matchers-name-c6629c60-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2700,33 +2392,25 @@
 {"check": ["perm", "/mapping/notifications", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-notifications-matchers-name-c6629c60-put-parameters" id="api-cluster-notifications-matchers-name-c6629c60-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 注释 |
-| `delete` | array | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | 0 | 禁用此匹配器 |
-| `invert-match` | boolean | 否 | — | 反转整个匹配器的匹配结果 |
-| `match-calendar` | array | 否 | — | 匹配通知时间戳 |
-| `match-field` | array | 否 | — | 要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex\|exact):&lt;field&gt;=&lt;value&gt; |
-| `match-severity` | array | 否 | — | 要匹配的通知严重性 |
-| `mode` | string | 否 | "all" | 指定多个属性时，在 'all' 和 'any' 之间选择；可选值：`all`, `any` |
-| `name` | string | 是 | — | 匹配器名称。 |
-| `target` | array | 否 | — | 匹配时要通知的目标 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>注释 |
+| `delete` | 类型：array；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：0<br>禁用此匹配器 |
+| `invert-match` | 类型：boolean；必填：否；默认值：—<br>反转整个匹配器的匹配结果 |
+| `match-calendar` | 类型：array；必填：否；默认值：—<br>匹配通知时间戳 |
+| `match-field` | 类型：array；必填：否；默认值：—<br>要匹配的元数据字段（正则表达式或精确匹配）。必须采用格式 (regex\|exact):&lt;field&gt;=&lt;value&gt; |
+| `match-severity` | 类型：array；必填：否；默认值：—<br>要匹配的通知严重性 |
+| `mode` | 类型：string；必填：否；默认值："all"<br>指定多个属性时，在 'all' 和 'any' 之间选择；可选值：`all`, `any` |
+| `name` | 类型：string；必填：是；默认值：—<br>匹配器名称。 |
+| `target` | 类型：array；必填：否；默认值：—<br>匹配时要通知的目标 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2786,11 +2470,7 @@
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-6a09d254-get-parameters" id="api-cluster-qemu-6a09d254-get-parameters"></a>
 
@@ -2820,18 +2500,14 @@
 {"check": ["or", ["perm", "/nodes", ["Sys.Audit"]], ["perm", "/mapping/cpu", ["Mapping.Audit", "Mapping.Use", "Mapping.Modify"], "any", 1]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-cpu-flags-7542d748-get-parameters" id="api-cluster-qemu-cpu-flags-7542d748-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `accel` | string | 否 | "kvm" | 要检查节点兼容性的加速类型。；可选值：`kvm`, `tcg` |
-| `arch` | string | 否 | — | 虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `accel` | 类型：string；必填：否；默认值："kvm"<br>要检查节点兼容性的加速类型。；可选值：`kvm`, `tcg` |
+| `arch` | 类型：string；必填：否；默认值：—<br>虚拟处理器架构。默认为宿主机架构。；可选值：`x86_64`, `aarch64` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -2884,11 +2560,7 @@
 {"description": "仅列出用户在 '/mapping/cpu/<name>' 上拥有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-custom-cpu-models-9d4cf523-get-parameters" id="api-cluster-qemu-custom-cpu-models-9d4cf523-get-parameters"></a>
 
@@ -2963,30 +2635,22 @@
 {"check": ["perm", "/mapping/cpu", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-custom-cpu-models-9d4cf523-post-parameters" id="api-cluster-qemu-custom-cpu-models-9d4cf523-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cputype` | string | 是 | — | 自定义 CPU 模型名称。'custom-' 前缀可选。 |
-| `flags` | string | 否 | — | 以 ';' 分隔的额外 CPU 标志列表。使用 '+FLAG' 启用标志，使用 '-FLAG' 禁用标志。有一个特殊的 'nested-virt' 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 为 'svm'，Intel 为 'vmx'）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，虚拟机特定标志必须来自以下集合：aes, amd-no-ssb, amd-ssbd, hv-evmcs, hv-tlbflush, ibpb, md-clear, nested-virt, pcid, pdpe1gb, spec-ctrl, ssbd, virt-ssbd |
-| `guest-phys-bits` | integer | 否 | — | 客户机可用的物理地址位数。 |
-| `hidden` | boolean | 否 | 0 | 不标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。 |
-| `hv-vendor-id` | string | 否 | — | Hyper-V 厂商 ID。Windows 客户机中的某些驱动程序或程序需要特定 ID。 |
-| `level` | integer | 否 | — | 客户机可查询的基本 CPUID 叶的最大输入值，即厂商（叶 0）、系列/型号/步进及特性位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶会被隐藏。在较新的 Intel 宿主机上运行的 Windows 客户机中，将其设置为 '30' 是解决 Hyper-V 启动失败的常见方法。仅在 vCPU 架构为 x86_64 时适用。 |
-| `phys-bits` | string | 否 | — | 向客户机操作系统报告的物理内存地址位数。应小于或等于宿主机的值。设置为 'host' 可使用宿主机 CPU 的值，但请注意，这样做会导致无法在线迁移到具有其他值的 CPU。 |
-| `reported-model` | string | 是 | "kvm64" | 向客户机报告的 CPU 模型和厂商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效，默认模型始终向客户机操作系统报告自身。；可选值：`486`, `a64fx`, `athlon`, `Broadwell`, `Broadwell-IBRS`, `Broadwell-noTSX`, `Broadwell-noTSX-IBRS`, `Cascadelake-Server`, `Cascadelake-Server-noTSX`, `Cascadelake-Server-v2`, `Cascadelake-Server-v4`, `Cascadelake-Server-v5`, `ClearwaterForest`, `ClearwaterForest-v2`, `ClearwaterForest-v3`, `Conroe`, `Cooperlake`, `Cooperlake-v2`, `core2duo`, `coreduo`, `cortex-a35`, `cortex-a53`, `cortex-a55`, `cortex-a57`, `cortex-a710`, `cortex-a72`, `cortex-a76`, `cortex-a78ae`, `DiamondRapids`, `EPYC`, `EPYC-Genoa`, `EPYC-Genoa-v2`, `EPYC-IBPB`, `EPYC-Milan`, `EPYC-Milan-v2`, `EPYC-Milan-v3`, `EPYC-Rome`, `EPYC-Rome-v2`, `EPYC-Rome-v3`, `EPYC-Rome-v4`, `EPYC-Rome-v5`, `EPYC-Turin`, `EPYC-v3`, `EPYC-v4`, `EPYC-v5`, `GraniteRapids`, `GraniteRapids-v2`, `GraniteRapids-v3`, `GraniteRapids-v4`, `GraniteRapids-v5`, `Haswell`, `Haswell-IBRS`, `Haswell-noTSX`, `Haswell-noTSX-IBRS`, `host`, `Icelake-Client`, `Icelake-Client-noTSX`, `Icelake-Server`, `Icelake-Server-noTSX`, `Icelake-Server-v3`, `Icelake-Server-v4`, `Icelake-Server-v5`, `Icelake-Server-v6`, `Icelake-Server-v7`, `IvyBridge`, `IvyBridge-IBRS`, `KnightsMill`, `kvm32`, `kvm64`, `max`, `Nehalem`, `Nehalem-IBRS`, `neoverse-n1`, `neoverse-n2`, `neoverse-v1`, `Opteron_G1`, `Opteron_G2`, `Opteron_G3`, `Opteron_G4`, `Opteron_G5`, `Penryn`, `pentium`, `pentium2`, `pentium3`, `phenom`, `qemu32`, `qemu64`, `SandyBridge`, `SandyBridge-IBRS`, `SapphireRapids`, `SapphireRapids-v2`, `SapphireRapids-v3`, `SapphireRapids-v4`, `SapphireRapids-v5`, `SapphireRapids-v6`, `SierraForest`, `SierraForest-v2`, `SierraForest-v3`, `SierraForest-v4`, `SierraForest-v5`, `Skylake-Client`, `Skylake-Client-IBRS`, `Skylake-Client-noTSX-IBRS`, `Skylake-Client-v4`, `Skylake-Server`, `Skylake-Server-IBRS`, `Skylake-Server-noTSX-IBRS`, `Skylake-Server-v4`, `Skylake-Server-v5`, `Westmere`, `Westmere-IBRS` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cputype` | 类型：string；必填：是；默认值：—<br>自定义 CPU 模型名称。'custom-' 前缀可选。 |
+| `flags` | 类型：string；必填：否；默认值：—<br>以 ';' 分隔的额外 CPU 标志列表。使用 '+FLAG' 启用标志，使用 '-FLAG' 禁用标志。有一个特殊的 'nested-virt' 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 为 'svm'，Intel 为 'vmx'）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，虚拟机特定标志必须来自以下集合：aes, amd-no-ssb, amd-ssbd, hv-evmcs, hv-tlbflush, ibpb, md-clear, nested-virt, pcid, pdpe1gb, spec-ctrl, ssbd, virt-ssbd |
+| `guest-phys-bits` | 类型：integer；必填：否；默认值：—<br>客户机可用的物理地址位数。 |
+| `hidden` | 类型：boolean；必填：否；默认值：0<br>不标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。 |
+| `hv-vendor-id` | 类型：string；必填：否；默认值：—<br>Hyper-V 厂商 ID。Windows 客户机中的某些驱动程序或程序需要特定 ID。 |
+| `level` | 类型：integer；必填：否；默认值：—<br>客户机可查询的基本 CPUID 叶的最大输入值，即厂商（叶 0）、系列/型号/步进及特性位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶会被隐藏。在较新的 Intel 宿主机上运行的 Windows 客户机中，将其设置为 '30' 是解决 Hyper-V 启动失败的常见方法。仅在 vCPU 架构为 x86_64 时适用。 |
+| `phys-bits` | 类型：string；必填：否；默认值：—<br>向客户机操作系统报告的物理内存地址位数。应小于或等于宿主机的值。设置为 'host' 可使用宿主机 CPU 的值，但请注意，这样做会导致无法在线迁移到具有其他值的 CPU。 |
+| `reported-model` | 类型：string；必填：是；默认值："kvm64"<br>向客户机报告的 CPU 模型和厂商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效，默认模型始终向客户机操作系统报告自身。；可选值：`486`, `a64fx`, `athlon`, `Broadwell`, `Broadwell-IBRS`, `Broadwell-noTSX`, `Broadwell-noTSX-IBRS`, `Cascadelake-Server`, `Cascadelake-Server-noTSX`, `Cascadelake-Server-v2`, `Cascadelake-Server-v4`, `Cascadelake-Server-v5`, `ClearwaterForest`, `ClearwaterForest-v2`, `ClearwaterForest-v3`, `Conroe`, `Cooperlake`, `Cooperlake-v2`, `core2duo`, `coreduo`, `cortex-a35`, `cortex-a53`, `cortex-a55`, `cortex-a57`, `cortex-a710`, `cortex-a72`, `cortex-a76`, `cortex-a78ae`, `DiamondRapids`, `EPYC`, `EPYC-Genoa`, `EPYC-Genoa-v2`, `EPYC-IBPB`, `EPYC-Milan`, `EPYC-Milan-v2`, `EPYC-Milan-v3`, `EPYC-Rome`, `EPYC-Rome-v2`, `EPYC-Rome-v3`, `EPYC-Rome-v4`, `EPYC-Rome-v5`, `EPYC-Turin`, `EPYC-v3`, `EPYC-v4`, `EPYC-v5`, `GraniteRapids`, `GraniteRapids-v2`, `GraniteRapids-v3`, `GraniteRapids-v4`, `GraniteRapids-v5`, `Haswell`, `Haswell-IBRS`, `Haswell-noTSX`, `Haswell-noTSX-IBRS`, `host`, `Icelake-Client`, `Icelake-Client-noTSX`, `Icelake-Server`, `Icelake-Server-noTSX`, `Icelake-Server-v3`, `Icelake-Server-v4`, `Icelake-Server-v5`, `Icelake-Server-v6`, `Icelake-Server-v7`, `IvyBridge`, `IvyBridge-IBRS`, `KnightsMill`, `kvm32`, `kvm64`, `max`, `Nehalem`, `Nehalem-IBRS`, `neoverse-n1`, `neoverse-n2`, `neoverse-v1`, `Opteron_G1`, `Opteron_G2`, `Opteron_G3`, `Opteron_G4`, `Opteron_G5`, `Penryn`, `pentium`, `pentium2`, `pentium3`, `phenom`, `qemu32`, `qemu64`, `SandyBridge`, `SandyBridge-IBRS`, `SapphireRapids`, `SapphireRapids-v2`, `SapphireRapids-v3`, `SapphireRapids-v4`, `SapphireRapids-v5`, `SapphireRapids-v6`, `SierraForest`, `SierraForest-v2`, `SierraForest-v3`, `SierraForest-v4`, `SierraForest-v5`, `Skylake-Client`, `Skylake-Client-IBRS`, `Skylake-Client-noTSX-IBRS`, `Skylake-Client-v4`, `Skylake-Server`, `Skylake-Server-IBRS`, `Skylake-Server-noTSX-IBRS`, `Skylake-Server-v4`, `Skylake-Server-v5`, `Westmere`, `Westmere-IBRS` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3069,23 +2733,15 @@
 {"check": ["perm", "/mapping/cpu/{cputype}", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-delete-parameters" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cputype` | string | 是 | — | 要删除的自定义模型。'custom-' 前缀可选。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cputype` | 类型：string；必填：是；默认值：—<br>要删除的自定义模型。'custom-' 前缀可选。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3119,17 +2775,13 @@
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-get-parameters" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cputype` | string | 是 | — | 要查询的 CPU 模型名称。'custom-' 前缀可选。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cputype` | 类型：string；必填：是；默认值：—<br>要查询的 CPU 模型名称。'custom-' 前缀可选。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3206,32 +2858,24 @@
 {"check": ["perm", "/mapping/cpu/{cputype}", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-put-parameters" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cputype` | string | 是 | — | 自定义 CPU 模型名称。'custom-' 前缀可选。 |
-| `delete` | string | 否 | — | 要删除的属性列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `flags` | string | 否 | — | 以 ';' 分隔的额外 CPU 标志列表。使用 '+FLAG' 启用标志，使用 '-FLAG' 禁用标志。有一个特殊的 'nested-virt' 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 为 'svm'，Intel 为 'vmx'）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，虚拟机特定标志必须来自以下集合：aes, amd-no-ssb, amd-ssbd, hv-evmcs, hv-tlbflush, ibpb, md-clear, nested-virt, pcid, pdpe1gb, spec-ctrl, ssbd, virt-ssbd |
-| `guest-phys-bits` | integer | 否 | — | 客户机可用的物理地址位数。 |
-| `hidden` | boolean | 否 | 0 | 不标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。 |
-| `hv-vendor-id` | string | 否 | — | Hyper-V 厂商 ID。Windows 客户机中的某些驱动程序或程序需要特定 ID。 |
-| `level` | integer | 否 | — | 客户机可查询的基本 CPUID 叶的最大输入值，即厂商（叶 0）、系列/型号/步进及特性位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶会被隐藏。在较新的 Intel 宿主机上运行的 Windows 客户机中，将其设置为 '30' 是解决 Hyper-V 启动失败的常见方法。仅在 vCPU 架构为 x86_64 时适用。 |
-| `phys-bits` | string | 否 | — | 向客户机操作系统报告的物理内存地址位数。应小于或等于宿主机的值。设置为 'host' 可使用宿主机 CPU 的值，但请注意，这样做会导致无法在线迁移到具有其他值的 CPU。 |
-| `reported-model` | string | 否 | "kvm64" | 向客户机报告的 CPU 模型和厂商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效，默认模型始终向客户机操作系统报告自身。；可选值：`486`, `a64fx`, `athlon`, `Broadwell`, `Broadwell-IBRS`, `Broadwell-noTSX`, `Broadwell-noTSX-IBRS`, `Cascadelake-Server`, `Cascadelake-Server-noTSX`, `Cascadelake-Server-v2`, `Cascadelake-Server-v4`, `Cascadelake-Server-v5`, `ClearwaterForest`, `ClearwaterForest-v2`, `ClearwaterForest-v3`, `Conroe`, `Cooperlake`, `Cooperlake-v2`, `core2duo`, `coreduo`, `cortex-a35`, `cortex-a53`, `cortex-a55`, `cortex-a57`, `cortex-a710`, `cortex-a72`, `cortex-a76`, `cortex-a78ae`, `DiamondRapids`, `EPYC`, `EPYC-Genoa`, `EPYC-Genoa-v2`, `EPYC-IBPB`, `EPYC-Milan`, `EPYC-Milan-v2`, `EPYC-Milan-v3`, `EPYC-Rome`, `EPYC-Rome-v2`, `EPYC-Rome-v3`, `EPYC-Rome-v4`, `EPYC-Rome-v5`, `EPYC-Turin`, `EPYC-v3`, `EPYC-v4`, `EPYC-v5`, `GraniteRapids`, `GraniteRapids-v2`, `GraniteRapids-v3`, `GraniteRapids-v4`, `GraniteRapids-v5`, `Haswell`, `Haswell-IBRS`, `Haswell-noTSX`, `Haswell-noTSX-IBRS`, `host`, `Icelake-Client`, `Icelake-Client-noTSX`, `Icelake-Server`, `Icelake-Server-noTSX`, `Icelake-Server-v3`, `Icelake-Server-v4`, `Icelake-Server-v5`, `Icelake-Server-v6`, `Icelake-Server-v7`, `IvyBridge`, `IvyBridge-IBRS`, `KnightsMill`, `kvm32`, `kvm64`, `max`, `Nehalem`, `Nehalem-IBRS`, `neoverse-n1`, `neoverse-n2`, `neoverse-v1`, `Opteron_G1`, `Opteron_G2`, `Opteron_G3`, `Opteron_G4`, `Opteron_G5`, `Penryn`, `pentium`, `pentium2`, `pentium3`, `phenom`, `qemu32`, `qemu64`, `SandyBridge`, `SandyBridge-IBRS`, `SapphireRapids`, `SapphireRapids-v2`, `SapphireRapids-v3`, `SapphireRapids-v4`, `SapphireRapids-v5`, `SapphireRapids-v6`, `SierraForest`, `SierraForest-v2`, `SierraForest-v3`, `SierraForest-v4`, `SierraForest-v5`, `Skylake-Client`, `Skylake-Client-IBRS`, `Skylake-Client-noTSX-IBRS`, `Skylake-Client-v4`, `Skylake-Server`, `Skylake-Server-IBRS`, `Skylake-Server-noTSX-IBRS`, `Skylake-Server-v4`, `Skylake-Server-v5`, `Westmere`, `Westmere-IBRS` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cputype` | 类型：string；必填：是；默认值：—<br>自定义 CPU 模型名称。'custom-' 前缀可选。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的属性列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `flags` | 类型：string；必填：否；默认值：—<br>以 ';' 分隔的额外 CPU 标志列表。使用 '+FLAG' 启用标志，使用 '-FLAG' 禁用标志。有一个特殊的 'nested-virt' 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 为 'svm'，Intel 为 'vmx'）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，虚拟机特定标志必须来自以下集合：aes, amd-no-ssb, amd-ssbd, hv-evmcs, hv-tlbflush, ibpb, md-clear, nested-virt, pcid, pdpe1gb, spec-ctrl, ssbd, virt-ssbd |
+| `guest-phys-bits` | 类型：integer；必填：否；默认值：—<br>客户机可用的物理地址位数。 |
+| `hidden` | 类型：boolean；必填：否；默认值：0<br>不标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。 |
+| `hv-vendor-id` | 类型：string；必填：否；默认值：—<br>Hyper-V 厂商 ID。Windows 客户机中的某些驱动程序或程序需要特定 ID。 |
+| `level` | 类型：integer；必填：否；默认值：—<br>客户机可查询的基本 CPUID 叶的最大输入值，即厂商（叶 0）、系列/型号/步进及特性位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶会被隐藏。在较新的 Intel 宿主机上运行的 Windows 客户机中，将其设置为 '30' 是解决 Hyper-V 启动失败的常见方法。仅在 vCPU 架构为 x86_64 时适用。 |
+| `phys-bits` | 类型：string；必填：否；默认值：—<br>向客户机操作系统报告的物理内存地址位数。应小于或等于宿主机的值。设置为 'host' 可使用宿主机 CPU 的值，但请注意，这样做会导致无法在线迁移到具有其他值的 CPU。 |
+| `reported-model` | 类型：string；必填：否；默认值："kvm64"<br>向客户机报告的 CPU 模型和厂商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效，默认模型始终向客户机操作系统报告自身。；可选值：`486`, `a64fx`, `athlon`, `Broadwell`, `Broadwell-IBRS`, `Broadwell-noTSX`, `Broadwell-noTSX-IBRS`, `Cascadelake-Server`, `Cascadelake-Server-noTSX`, `Cascadelake-Server-v2`, `Cascadelake-Server-v4`, `Cascadelake-Server-v5`, `ClearwaterForest`, `ClearwaterForest-v2`, `ClearwaterForest-v3`, `Conroe`, `Cooperlake`, `Cooperlake-v2`, `core2duo`, `coreduo`, `cortex-a35`, `cortex-a53`, `cortex-a55`, `cortex-a57`, `cortex-a710`, `cortex-a72`, `cortex-a76`, `cortex-a78ae`, `DiamondRapids`, `EPYC`, `EPYC-Genoa`, `EPYC-Genoa-v2`, `EPYC-IBPB`, `EPYC-Milan`, `EPYC-Milan-v2`, `EPYC-Milan-v3`, `EPYC-Rome`, `EPYC-Rome-v2`, `EPYC-Rome-v3`, `EPYC-Rome-v4`, `EPYC-Rome-v5`, `EPYC-Turin`, `EPYC-v3`, `EPYC-v4`, `EPYC-v5`, `GraniteRapids`, `GraniteRapids-v2`, `GraniteRapids-v3`, `GraniteRapids-v4`, `GraniteRapids-v5`, `Haswell`, `Haswell-IBRS`, `Haswell-noTSX`, `Haswell-noTSX-IBRS`, `host`, `Icelake-Client`, `Icelake-Client-noTSX`, `Icelake-Server`, `Icelake-Server-noTSX`, `Icelake-Server-v3`, `Icelake-Server-v4`, `Icelake-Server-v5`, `Icelake-Server-v6`, `Icelake-Server-v7`, `IvyBridge`, `IvyBridge-IBRS`, `KnightsMill`, `kvm32`, `kvm64`, `max`, `Nehalem`, `Nehalem-IBRS`, `neoverse-n1`, `neoverse-n2`, `neoverse-v1`, `Opteron_G1`, `Opteron_G2`, `Opteron_G3`, `Opteron_G4`, `Opteron_G5`, `Penryn`, `pentium`, `pentium2`, `pentium3`, `phenom`, `qemu32`, `qemu64`, `SandyBridge`, `SandyBridge-IBRS`, `SapphireRapids`, `SapphireRapids-v2`, `SapphireRapids-v3`, `SapphireRapids-v4`, `SapphireRapids-v5`, `SapphireRapids-v6`, `SierraForest`, `SierraForest-v2`, `SierraForest-v3`, `SierraForest-v4`, `SierraForest-v5`, `Skylake-Client`, `Skylake-Client-IBRS`, `Skylake-Client-noTSX-IBRS`, `Skylake-Client-v4`, `Skylake-Server`, `Skylake-Server-IBRS`, `Skylake-Server-noTSX-IBRS`, `Skylake-Server-v4`, `Skylake-Server-v5`, `Westmere`, `Westmere-IBRS` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3319,11 +2963,7 @@
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-0e41d22c-get-parameters" id="api-cluster-config-0e41d22c-get-parameters"></a>
 
@@ -3341,27 +2981,19 @@
 
 **方法标识：** `create`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-0e41d22c-post-parameters" id="api-cluster-config-0e41d22c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `clustername` | string | 是 | — | 集群名称。 |
-| `link[n]` | string | 否 | — | 单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
-| `nodeid` | integer | 否 | — | 此节点的节点 ID。 |
-| `token-coefficient` | integer | 否 | 125 | 用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。 |
-| `votes` | integer | 否 | — | 此节点的票数。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `clustername` | 类型：string；必填：是；默认值：—<br>集群名称。 |
+| `link[n]` | 类型：string；必填：否；默认值：—<br>单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
+| `nodeid` | 类型：integer；必填：否；默认值：—<br>此节点的节点 ID。 |
+| `token-coefficient` | 类型：integer；必填：否；默认值：125<br>用于确定 Corosync 令牌超时时间的系数。详情请参阅 corosync.conf(5) 手册。 |
+| `votes` | 类型：integer；必填：否；默认值：—<br>此节点的票数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3420,11 +3052,7 @@
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-apiversion-11d00179-get-parameters" id="api-cluster-config-apiversion-11d00179-get-parameters"></a>
 
@@ -3454,11 +3082,7 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-nodes-20707639-get-parameters" id="api-cluster-config-nodes-20707639-get-parameters"></a>
 
@@ -3482,23 +3106,15 @@ Corosync 节点列表。
 
 **方法标识：** `delnode`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-nodes-node-637ac634-delete-parameters" id="api-cluster-config-nodes-node-637ac634-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3521,29 +3137,21 @@ Corosync 节点列表。
 
 **方法标识：** `addnode`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-nodes-node-637ac634-post-parameters" id="api-cluster-config-nodes-node-637ac634-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `apiversion` | integer | 否 | — | 新节点的 JOIN_API_VERSION。 |
-| `force` | boolean | 否 | — | 如果节点已存在，则不抛出错误。 |
-| `link[n]` | string | 否 | — | 单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
-| `new_node_ip` | string | 否 | — | 要添加节点的 IP 地址。未提供链路时用作回退值。 |
-| `node` | string | 是 | — | 集群节点名称。 |
-| `nodeid` | integer | 否 | — | 此节点的节点 ID。 |
-| `votes` | integer | 否 | — | 此节点的票数 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `apiversion` | 类型：integer；必填：否；默认值：—<br>新节点的 JOIN_API_VERSION。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>如果节点已存在，则不抛出错误。 |
+| `link[n]` | 类型：string；必填：否；默认值：—<br>单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
+| `new_node_ip` | 类型：string；必填：否；默认值：—<br>要添加节点的 IP 地址。未提供链路时用作回退值。 |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
+| `nodeid` | 类型：integer；必填：否；默认值：—<br>此节点的节点 ID。 |
+| `votes` | 类型：integer；必填：否；默认值：—<br>此节点的票数 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3604,17 +3212,13 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-join-75bce18b-get-parameters" id="api-cluster-config-join-75bce18b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 否 | "current connected node" | 加入者要获取其 nodeinfo 的节点。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：否；默认值："current connected node"<br>加入者要获取其 nodeinfo 的节点。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3678,29 +3282,21 @@ Corosync 节点列表。
 
 **方法标识：** `join`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-join-75bce18b-post-parameters" id="api-cluster-config-join-75bce18b-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fingerprint` | string | 是 | — | 证书 SHA 256 指纹。 |
-| `force` | boolean | 否 | — | 如果节点已存在，则不抛出错误。 |
-| `hostname` | string | 是 | — | 现有集群成员的主机名（或 IP）。 |
-| `link[n]` | string | 否 | — | 单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
-| `nodeid` | integer | 否 | — | 此节点的节点 ID。 |
-| `password` | string | 是 | — | 对端节点的超级用户（root）密码。 |
-| `votes` | integer | 否 | — | 此节点的票数 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fingerprint` | 类型：string；必填：是；默认值：—<br>证书 SHA 256 指纹。 |
+| `force` | 类型：boolean；必填：否；默认值：—<br>如果节点已存在，则不抛出错误。 |
+| `hostname` | 类型：string；必填：是；默认值：—<br>现有集群成员的主机名（或 IP）。 |
+| `link[n]` | 类型：string；必填：否；默认值：—<br>单个 corosync 链路的地址和优先级信息。（最多支持 8 条链路；link0..link7） |
+| `nodeid` | 类型：integer；必填：否；默认值：—<br>此节点的节点 ID。 |
+| `password` | 类型：string；必填：是；默认值：—<br>对端节点的超级用户（root）密码。 |
+| `votes` | 类型：integer；必填：否；默认值：—<br>此节点的票数 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3758,11 +3354,7 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-totem-4cf727f7-get-parameters" id="api-cluster-config-totem-4cf727f7-get-parameters"></a>
 
@@ -3792,17 +3384,9 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-config-qdevice-316ec3f3-get-parameters" id="api-cluster-config-qdevice-316ec3f3-get-parameters"></a>
 
@@ -3832,11 +3416,7 @@ Corosync 节点列表。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-f1f6b12c-get-parameters" id="api-cluster-firewall-f1f6b12c-get-parameters"></a>
 
@@ -3866,11 +3446,7 @@ Corosync 节点列表。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-033bedae-get-parameters" id="api-cluster-firewall-groups-033bedae-get-parameters"></a>
 
@@ -3904,26 +3480,18 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-033bedae-post-parameters" id="api-cluster-firewall-groups-033bedae-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `group` | string | 是 | — | 安全组名称。 |
-| `rename` | string | 否 | — | 重命名/更新现有安全组。可以将 'rename' 设为与 'name' 相同的值，以更新现有组的 'comment'。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名/更新现有安全组。可以将 'rename' 设为与 'name' 相同的值，以更新现有组的 'comment'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -3972,23 +3540,15 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-b1883633-delete-parameters" id="api-cluster-firewall-groups-group-b1883633-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `group` | string | 是 | — | 安全组名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4020,23 +3580,15 @@ Corosync 节点列表。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-b1883633-get-parameters" id="api-cluster-firewall-groups-group-b1883633-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `group` | string | 是 | — | 安全组名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4090,44 +3642,32 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-b1883633-post-parameters" id="api-cluster-firewall-groups-group-b1883633-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `group` | string | 是 | — | 安全组名称。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4212,31 +3752,19 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-delete-parameters" id="api-cluster-firewall-groups-group-pos-f899a8db-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `group` | string | 是 | — | 安全组名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4275,24 +3803,16 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-get-parameters" id="api-cluster-firewall-groups-group-pos-f899a8db-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `group` | string | 是 | — | 安全组名称。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4346,46 +3866,34 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-put-parameters" id="api-cluster-firewall-groups-group-pos-f899a8db-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `group` | string | 是 | — | 安全组名称。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `group` | 类型：string；必填：是；默认值：—<br>安全组名称。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4472,17 +3980,9 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-rules-959883a1-get-parameters" id="api-cluster-firewall-rules-959883a1-get-parameters"></a>
 
@@ -4528,43 +4028,31 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-rules-959883a1-post-parameters" id="api-cluster-firewall-rules-959883a1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4648,30 +4136,18 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-rules-pos-c553646f-delete-parameters" id="api-cluster-firewall-rules-pos-c553646f-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4709,23 +4185,15 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-rules-pos-c553646f-get-parameters" id="api-cluster-firewall-rules-pos-c553646f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4776,45 +4244,33 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-firewall-rules-pos-c553646f-put-parameters" id="api-cluster-firewall-rules-pos-c553646f-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -4900,11 +4356,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-e989b25a-get-parameters" id="api-cluster-firewall-ipset-e989b25a-get-parameters"></a>
 
@@ -4938,26 +4390,18 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-e989b25a-post-parameters" id="api-cluster-firewall-ipset-e989b25a-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `rename` | string | 否 | — | 重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有 IPSet。可以将 'rename' 设为与 'name' 相同的值，以更新现有 IPSet 的 'comment'。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5006,24 +4450,16 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-0423135e-delete-parameters" id="api-cluster-firewall-ipset-name-0423135e-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | — | 删除 IPSet 中的所有成员（如有）。 |
-| `name` | string | 是 | — | IP 集合名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：—<br>删除 IPSet 中的所有成员（如有）。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5058,17 +4494,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-0423135e-get-parameters" id="api-cluster-firewall-ipset-name-0423135e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | IP 集合名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5110,26 +4542,18 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-0423135e-post-parameters" id="api-cluster-firewall-ipset-name-0423135e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `nomatch` | boolean | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5172,25 +4596,17 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-delete-parameters" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5229,24 +4645,16 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-get-parameters" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `name` | string | 是 | — | IP 集合名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5281,27 +4689,19 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-put-parameters" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | IP 集合名称。 |
-| `nomatch` | boolean | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>IP 集合名称。 |
+| `nomatch` | 类型：boolean；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5348,11 +4748,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-aliases-8ded026b-get-parameters" id="api-cluster-firewall-aliases-8ded026b-get-parameters"></a>
 
@@ -5386,25 +4782,17 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-aliases-8ded026b-post-parameters" id="api-cluster-firewall-aliases-8ded026b-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `name` | string | 是 | — | 别名名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5446,24 +4834,16 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-aliases-name-bd4edefe-delete-parameters" id="api-cluster-firewall-aliases-name-bd4edefe-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5501,17 +4881,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-aliases-name-bd4edefe-get-parameters" id="api-cluster-firewall-aliases-name-bd4edefe-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 是 | — | 别名名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5543,27 +4919,19 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-aliases-name-bd4edefe-put-parameters" id="api-cluster-firewall-aliases-name-bd4edefe-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `cidr` | string | 是 | — | CIDR 格式的网络/IP 规范。 |
-| `comment` | string | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `name` | string | 是 | — | 别名名称。 |
-| `rename` | string | 否 | — | 重命名现有别名。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `cidr` | 类型：string；必填：是；默认值：—<br>CIDR 格式的网络/IP 规范。 |
+| `comment` | 类型：string；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `name` | 类型：string；必填：是；默认值：—<br>别名名称。 |
+| `rename` | 类型：string；必填：否；默认值：—<br>重命名现有别名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5610,11 +4978,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-options-ba499b8b-get-parameters" id="api-cluster-firewall-options-ba499b8b-get-parameters"></a>
 
@@ -5659,30 +5023,22 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-options-ba499b8b-put-parameters" id="api-cluster-firewall-options-ba499b8b-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `ebtables` | boolean | 否 | 1 | 在整个集群中启用 ebtables 规则。 |
-| `enable` | integer | 否 | 0 | 在整个集群中启用或禁用防火墙。 |
-| `log_ratelimit` | string | 否 | — | 日志速率限制设置 |
-| `policy_forward` | string | 否 | — | 转发策略。；可选值：`ACCEPT`, `DROP` |
-| `policy_in` | string | 否 | — | 输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
-| `policy_out` | string | 否 | — | 输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `ebtables` | 类型：boolean；必填：否；默认值：1<br>在整个集群中启用 ebtables 规则。 |
+| `enable` | 类型：integer；必填：否；默认值：0<br>在整个集群中启用或禁用防火墙。 |
+| `log_ratelimit` | 类型：string；必填：否；默认值：—<br>日志速率限制设置 |
+| `policy_forward` | 类型：string；必填：否；默认值：—<br>转发策略。；可选值：`ACCEPT`, `DROP` |
+| `policy_in` | 类型：string；必填：否；默认值：—<br>输入策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
+| `policy_out` | 类型：string；必填：否；默认值：—<br>输出策略。；可选值：`ACCEPT`, `REJECT`, `DROP` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5743,11 +5099,7 @@ null
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-macros-588dda87-get-parameters" id="api-cluster-firewall-macros-588dda87-get-parameters"></a>
 
@@ -5783,17 +5135,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-firewall-refs-4c8d1da9-get-parameters" id="api-cluster-firewall-refs-4c8d1da9-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出指定类型的引用。；可选值：`alias`, `ipset` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出指定类型的引用。；可选值：`alias`, `ipset` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -5838,11 +5186,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-904ad991-get-parameters" id="api-cluster-backup-904ad991-get-parameters"></a>
 
@@ -5988,60 +5332,52 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "'tmpdir'、'dumpdir' 和 'script' 参数另外限制为仅 'root@pam' 用户可用。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-904ad991-post-parameters" id="api-cluster-backup-904ad991-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `all` | boolean | 否 | 0 | 备份此宿主机上所有已知的客户机系统。 |
-| `bwlimit` | integer | 否 | 0 | 限制 I/O 带宽（单位为 KiB/s）。 |
-| `comment` | string | 否 | — | 作业描述。 |
-| `compress` | string | 否 | "0" | 压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
-| `dow` | string | 否 | "mon,tue,wed,thu,fri,sat,sun" | 已弃用：请改用 'schedule'。选择星期几。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
-| `dumpdir` | string | 否 | — | 将生成的文件保存到指定目录。 |
-| `enabled` | boolean | 否 | "1" | 启用或禁用此作业。 |
-| `exclude` | string | 否 | — | 排除指定客户机系统（假定 --all） |
-| `exclude-path` | array | 否 | — | 排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
-| `fleecing` | string | 否 | — | 备份 fleecing 选项（仅适用于虚拟机）。 |
-| `id` | string | 否 | — | 作业 ID（将自动生成）。 |
-| `ionice` | integer | 否 | 7 | 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
-| `lockwait` | integer | 否 | 180 | 等待全局锁的最长时间（分钟）。 |
-| `mailnotification` | string | 否 | "always" | 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
-| `mailto` | string | 否 | — | 已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
-| `mode` | string | 否 | "snapshot" | 备份模式。；可选值：`snapshot`, `suspend`, `stop` |
-| `node` | string | 否 | — | 仅在此节点上执行时运行。 |
-| `notes-template` | string | 否 | — | 用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
-| `notification-mode` | string | 否 | "auto" | 确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
-| `pbs-change-detection-mode` | string | 否 | — | 用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
-| `performance` | string | 否 | — | 其他性能相关设置。 |
-| `pigz` | integer | 否 | 0 | 当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
-| `pool` | string | 否 | — | 备份指定池中包含的所有已知客户机系统。 |
-| `protected` | boolean | 否 | — | 如果为 true，则将备份标记为受保护。 |
-| `prune-backups` | string | 否 | "keep-all=1" | 使用这些保留选项，而非存储配置中的选项。 |
-| `quiet` | boolean | 否 | 0 | 静默运行。 |
-| `remove` | boolean | 否 | 1 | 根据 'prune-backups' 清理旧备份。 |
-| `repeat-missed` | boolean | 否 | 0 | 如果为 true，则在调度器未运行期间错过的作业将尽快补执行。 |
-| `schedule` | string | 否 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
-| `script` | string | 否 | — | 使用指定的钩子脚本。 |
-| `starttime` | string | 否 | — | 已弃用：请改用 'schedule'。作业开始时间。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
-| `stdexcludes` | boolean | 否 | 1 | 排除临时文件和日志。 |
-| `stop` | boolean | 否 | 0 | 停止此宿主机上正在运行的备份作业。 |
-| `stopwait` | integer | 否 | 10 | 等待客户机系统停止的最长时间（分钟）。 |
-| `storage` | string | 否 | — | 将生成的文件保存到此存储。 |
-| `tmpdir` | string | 否 | — | 将临时文件保存到指定目录。 |
-| `vmid` | string | 否 | — | 要备份的客户机系统 ID。 |
-| `zstd` | integer | 否 | 1 | Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `all` | 类型：boolean；必填：否；默认值：0<br>备份此宿主机上所有已知的客户机系统。 |
+| `bwlimit` | 类型：integer；必填：否；默认值：0<br>限制 I/O 带宽（单位为 KiB/s）。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>作业描述。 |
+| `compress` | 类型：string；必填：否；默认值："0"<br>压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
+| `dow` | 类型：string；必填：否；默认值："mon,tue,wed,thu,fri,sat,sun"<br>已弃用：请改用 'schedule'。选择星期几。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
+| `dumpdir` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到指定目录。 |
+| `enabled` | 类型：boolean；必填：否；默认值："1"<br>启用或禁用此作业。 |
+| `exclude` | 类型：string；必填：否；默认值：—<br>排除指定客户机系统（假定 --all） |
+| `exclude-path` | 类型：array；必填：否；默认值：—<br>排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
+| `fleecing` | 类型：string；必填：否；默认值：—<br>备份 fleecing 选项（仅适用于虚拟机）。 |
+| `id` | 类型：string；必填：否；默认值：—<br>作业 ID（将自动生成）。 |
+| `ionice` | 类型：integer；必填：否；默认值：7<br>使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
+| `lockwait` | 类型：integer；必填：否；默认值：180<br>等待全局锁的最长时间（分钟）。 |
+| `mailnotification` | 类型：string；必填：否；默认值："always"<br>已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
+| `mailto` | 类型：string；必填：否；默认值：—<br>已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
+| `mode` | 类型：string；必填：否；默认值："snapshot"<br>备份模式。；可选值：`snapshot`, `suspend`, `stop` |
+| `node` | 类型：string；必填：否；默认值：—<br>仅在此节点上执行时运行。 |
+| `notes-template` | 类型：string；必填：否；默认值：—<br>用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
+| `notification-mode` | 类型：string；必填：否；默认值："auto"<br>确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
+| `pbs-change-detection-mode` | 类型：string；必填：否；默认值：—<br>用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
+| `performance` | 类型：string；必填：否；默认值：—<br>其他性能相关设置。 |
+| `pigz` | 类型：integer；必填：否；默认值：0<br>当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>备份指定池中包含的所有已知客户机系统。 |
+| `protected` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则将备份标记为受保护。 |
+| `prune-backups` | 类型：string；必填：否；默认值："keep-all=1"<br>使用这些保留选项，而非存储配置中的选项。 |
+| `quiet` | 类型：boolean；必填：否；默认值：0<br>静默运行。 |
+| `remove` | 类型：boolean；必填：否；默认值：1<br>根据 'prune-backups' 清理旧备份。 |
+| `repeat-missed` | 类型：boolean；必填：否；默认值：0<br>如果为 true，则在调度器未运行期间错过的作业将尽快补执行。 |
+| `schedule` | 类型：string；必填：否；默认值：—<br>备份计划。格式是 `systemd` 日历事件的子集。 |
+| `script` | 类型：string；必填：否；默认值：—<br>使用指定的钩子脚本。 |
+| `starttime` | 类型：string；必填：否；默认值：—<br>已弃用：请改用 'schedule'。作业开始时间。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
+| `stdexcludes` | 类型：boolean；必填：否；默认值：1<br>排除临时文件和日志。 |
+| `stop` | 类型：boolean；必填：否；默认值：0<br>停止此宿主机上正在运行的备份作业。 |
+| `stopwait` | 类型：integer；必填：否；默认值：10<br>等待客户机系统停止的最长时间（分钟）。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到此存储。 |
+| `tmpdir` | 类型：string；必填：否；默认值：—<br>将临时文件保存到指定目录。 |
+| `vmid` | 类型：string；必填：否；默认值：—<br>要备份的客户机系统 ID。 |
+| `zstd` | 类型：integer；必填：否；默认值：1<br>Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6174,23 +5510,15 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-id-8eee5aec-delete-parameters" id="api-cluster-backup-id-8eee5aec-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 作业 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6219,17 +5547,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-id-8eee5aec-get-parameters" id="api-cluster-backup-id-8eee5aec-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 作业 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6376,61 +5700,53 @@ null
 {"check": ["perm", "/", ["Sys.Modify"]], "description": "'tmpdir'、'dumpdir' 和 'script' 参数另外限制为仅 'root@pam' 用户可用。"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-id-8eee5aec-put-parameters" id="api-cluster-backup-id-8eee5aec-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `all` | boolean | 否 | 0 | 备份此宿主机上所有已知的客户机系统。 |
-| `bwlimit` | integer | 否 | 0 | 限制 I/O 带宽（单位为 KiB/s）。 |
-| `comment` | string | 否 | — | 作业描述。 |
-| `compress` | string | 否 | "0" | 压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dow` | string | 否 | — | 已弃用：请改用 'schedule'。选择星期几。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
-| `dumpdir` | string | 否 | — | 将生成的文件保存到指定目录。 |
-| `enabled` | boolean | 否 | "1" | 启用或禁用此作业。 |
-| `exclude` | string | 否 | — | 排除指定客户机系统（假定 --all） |
-| `exclude-path` | array | 否 | — | 排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
-| `fleecing` | string | 否 | — | 备份 fleecing 选项（仅适用于虚拟机）。 |
-| `id` | string | 是 | — | 作业 ID。 |
-| `ionice` | integer | 否 | 7 | 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
-| `lockwait` | integer | 否 | 180 | 等待全局锁的最长时间（分钟）。 |
-| `mailnotification` | string | 否 | "always" | 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
-| `mailto` | string | 否 | — | 已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
-| `mode` | string | 否 | "snapshot" | 备份模式。；可选值：`snapshot`, `suspend`, `stop` |
-| `node` | string | 否 | — | 仅在此节点上执行时运行。 |
-| `notes-template` | string | 否 | — | 用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
-| `notification-mode` | string | 否 | "auto" | 确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
-| `pbs-change-detection-mode` | string | 否 | — | 用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
-| `performance` | string | 否 | — | 其他性能相关设置。 |
-| `pigz` | integer | 否 | 0 | 当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
-| `pool` | string | 否 | — | 备份指定池中包含的所有已知客户机系统。 |
-| `protected` | boolean | 否 | — | 如果为 true，则将备份标记为受保护。 |
-| `prune-backups` | string | 否 | "keep-all=1" | 使用这些保留选项，而非存储配置中的选项。 |
-| `quiet` | boolean | 否 | 0 | 静默运行。 |
-| `remove` | boolean | 否 | 1 | 根据 'prune-backups' 清理旧备份。 |
-| `repeat-missed` | boolean | 否 | 0 | 如果为 true，则在调度器未运行期间错过的作业将尽快补执行。 |
-| `schedule` | string | 否 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
-| `script` | string | 否 | — | 使用指定的钩子脚本。 |
-| `starttime` | string | 否 | — | 已弃用：请改用 'schedule'。作业开始时间。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
-| `stdexcludes` | boolean | 否 | 1 | 排除临时文件和日志。 |
-| `stop` | boolean | 否 | 0 | 停止此宿主机上正在运行的备份作业。 |
-| `stopwait` | integer | 否 | 10 | 等待客户机系统停止的最长时间（分钟）。 |
-| `storage` | string | 否 | — | 将生成的文件保存到此存储。 |
-| `tmpdir` | string | 否 | — | 将临时文件保存到指定目录。 |
-| `vmid` | string | 否 | — | 要备份的客户机系统 ID。 |
-| `zstd` | integer | 否 | 1 | Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `all` | 类型：boolean；必填：否；默认值：0<br>备份此宿主机上所有已知的客户机系统。 |
+| `bwlimit` | 类型：integer；必填：否；默认值：0<br>限制 I/O 带宽（单位为 KiB/s）。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>作业描述。 |
+| `compress` | 类型：string；必填：否；默认值："0"<br>压缩转储文件。；可选值：`0`, `1`, `gzip`, `lzo`, `zstd` |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dow` | 类型：string；必填：否；默认值：—<br>已弃用：请改用 'schedule'。选择星期几。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
+| `dumpdir` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到指定目录。 |
+| `enabled` | 类型：boolean；必填：否；默认值："1"<br>启用或禁用此作业。 |
+| `exclude` | 类型：string；必填：否；默认值：—<br>排除指定客户机系统（假定 --all） |
+| `exclude-path` | 类型：array；必填：否；默认值：—<br>排除特定文件/目录（shell 通配模式）。以 '/' 开头的路径相对于容器根目录定位，其他路径相对于每个子目录匹配。 |
+| `fleecing` | 类型：string；必填：否；默认值：—<br>备份 fleecing 选项（仅适用于虚拟机）。 |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
+| `ionice` | 类型：integer；必填：否；默认值：7<br>使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，此设置仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用指定值的尽力而为优先级。 |
+| `lockwait` | 类型：integer；必填：否；默认值：180<br>等待全局锁的最长时间（分钟）。 |
+| `mailnotification` | 类型：string；必填：否；默认值："always"<br>已弃用：请改用通知目标/匹配器。指定何时发送通知邮件；可选值：`always`, `failure` |
+| `mailto` | 类型：string；必填：否；默认值：—<br>已弃用：请改用通知目标/匹配器。应接收邮件通知的电子邮件地址或用户列表，以逗号分隔。 |
+| `mode` | 类型：string；必填：否；默认值："snapshot"<br>备份模式。；可选值：`snapshot`, `suspend`, `stop` |
+| `node` | 类型：string；必填：否；默认值：—<br>仅在此节点上执行时运行。 |
+| `notes-template` | 类型：string；必填：否；默认值：—<br>用于生成备份备注的模板字符串。可以包含将被替换为相应值的变量。目前支持 {{cluster}}、{{guestname}}、{{node}} 和 {{vmid}}，将来可能增加更多变量。必须为单行，换行符和反斜杠需要分别转义为 '\n' 和 '\\'。 |
+| `notification-mode` | 类型：string；必填：否；默认值："auto"<br>确定使用哪种通知系统。如果设为 'legacy-sendmail'，vzdump 将使用 mailto/mailnotification 参数，并通过 'sendmail' 命令向指定地址发送邮件。如果设为 'notification-system'，将通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 'auto'（默认设置），则在设置了 mailto 时发送邮件，否则使用通知系统。；可选值：`auto`, `legacy-sendmail`, `notification-system` |
+| `pbs-change-detection-mode` | 类型：string；必填：否；默认值：—<br>用于检测文件更改并切换容器备份编码格式的 PBS 模式。；可选值：`legacy`, `data`, `metadata` |
+| `performance` | 类型：string；必填：否；默认值：—<br>其他性能相关设置。 |
+| `pigz` | 类型：integer；必填：否；默认值：0<br>当 N&gt;0 时，使用 pigz 代替 gzip。N=1 使用一半核心，N&gt;1 则将 N 用作线程数。 |
+| `pool` | 类型：string；必填：否；默认值：—<br>备份指定池中包含的所有已知客户机系统。 |
+| `protected` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则将备份标记为受保护。 |
+| `prune-backups` | 类型：string；必填：否；默认值："keep-all=1"<br>使用这些保留选项，而非存储配置中的选项。 |
+| `quiet` | 类型：boolean；必填：否；默认值：0<br>静默运行。 |
+| `remove` | 类型：boolean；必填：否；默认值：1<br>根据 'prune-backups' 清理旧备份。 |
+| `repeat-missed` | 类型：boolean；必填：否；默认值：0<br>如果为 true，则在调度器未运行期间错过的作业将尽快补执行。 |
+| `schedule` | 类型：string；必填：否；默认值：—<br>备份计划。格式是 `systemd` 日历事件的子集。 |
+| `script` | 类型：string；必填：否；默认值：—<br>使用指定的钩子脚本。 |
+| `starttime` | 类型：string；必填：否；默认值：—<br>已弃用：请改用 'schedule'。作业开始时间。使用 'starttime' 和 'dow' 时会将其转换为 'schedule'。 |
+| `stdexcludes` | 类型：boolean；必填：否；默认值：1<br>排除临时文件和日志。 |
+| `stop` | 类型：boolean；必填：否；默认值：0<br>停止此宿主机上正在运行的备份作业。 |
+| `stopwait` | 类型：integer；必填：否；默认值：10<br>等待客户机系统停止的最长时间（分钟）。 |
+| `storage` | 类型：string；必填：否；默认值：—<br>将生成的文件保存到此存储。 |
+| `tmpdir` | 类型：string；必填：否；默认值：—<br>将临时文件保存到指定目录。 |
+| `vmid` | 类型：string；必填：否；默认值：—<br>要备份的客户机系统 ID。 |
+| `zstd` | 类型：integer；必填：否；默认值：1<br>Zstd 线程数。N=0 使用一半可用核心；如果 N 设为大于 0 的值，则将 N 用作线程数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6564,23 +5880,15 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-id-included-volumes-5a3fa353-get-parameters" id="api-cluster-backup-id-included-volumes-5a3fa353-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | 作业 ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6635,11 +5943,7 @@ null
 
 **方法标识：** `index`
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-info-1b57f5f1-get-parameters" id="api-cluster-backup-info-1b57f5f1-get-parameters"></a>
 
@@ -6672,17 +5976,9 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-backup-info-not-backed-up-24dcc746-get-parameters" id="api-cluster-backup-info-not-backed-up-24dcc746-get-parameters"></a>
 
@@ -6722,11 +6018,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-5c97873a-get-parameters" id="api-cluster-ha-5c97873a-get-parameters"></a>
 
@@ -6756,17 +6048,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-88692530-get-parameters" id="api-cluster-ha-resources-88692530-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出特定类型的资源；可选值：`ct`, `vm` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的资源；可选值：`ct`, `vm` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6795,31 +6083,23 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-88692530-post-parameters" id="api-cluster-ha-resources-88692530-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `auto-rebalance` | boolean | 否 | 1 | HA 资源可以在自动重新均衡期间迁移 |
-| `comment` | string | 否 | — | 描述。 |
-| `failback` | boolean | 否 | 1 | 如果优先级高于当前节点的节点上线，则根据节点亲和性  规则，将 HA 资源自动迁移到优先级最高的节点。 |
-| `group` | string | 否 | — | HA 组标识符。 |
-| `max_relocate` | integer | 否 | 1 | 资源启动失败时尝试重新安置资源的最大次数。 |
-| `max_restart` | integer | 否 | 1 | 资源启动失败后在节点上尝试重新启动资源的最大次数。达到此次数后，HA 管理器将尝试将资源重新安置到符合条件的节点。 |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
-| `state` | string | 否 | "started" | 请求的资源状态。CRM 读取此状态并据此采取操作。<br>请注意，`enabled` 只是 `started` 的别名。<br><br>`started`;;<br><br>CRM 尝试启动资源。服务状态<br>在成功启动后设为 `started`。发生节点故障或启动<br>失败时，它会尝试恢复资源。  如果所有尝试均失败，服务<br>状态将设为 `error`。<br><br>`stopped`;;<br><br>CRM 尝试使资源保持 `stopped` 状态，但<br>在节点故障时仍会尝试重新安置资源。<br><br>`disabled`;;<br><br>CRM 尝试将资源置于 `stopped` 状态，但不会尝试<br>在节点故障时重新安置资源。此<br>状态主要用于错误恢复，因为这是使资源脱离<br>`error` 状态的唯一方式。<br><br>`ignored`;;<br><br>资源会从管理器状态中移除，因此 CRM 和 LRM 将<br>不再操作此资源。所有影响此资源的 {pve} API 调用<br>都将直接执行，绕过 HA 栈。此资源处于此状态时，CRM 命令将被丢<br>弃。发生节点故障时，此资源不会被重新安置<br>。<br><br>；可选值：`started`, `stopped`, `enabled`, `disabled`, `ignored` |
-| `type` | string | 否 | — | 资源类型。；可选值：`ct`, `vm` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `auto-rebalance` | 类型：boolean；必填：否；默认值：1<br>HA 资源可以在自动重新均衡期间迁移 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `failback` | 类型：boolean；必填：否；默认值：1<br>如果优先级高于当前节点的节点上线，则根据节点亲和性  规则，将 HA 资源自动迁移到优先级最高的节点。 |
+| `group` | 类型：string；必填：否；默认值：—<br>HA 组标识符。 |
+| `max_relocate` | 类型：integer；必填：否；默认值：1<br>资源启动失败时尝试重新安置资源的最大次数。 |
+| `max_restart` | 类型：integer；必填：否；默认值：1<br>资源启动失败后在节点上尝试重新启动资源的最大次数。达到此次数后，HA 管理器将尝试将资源重新安置到符合条件的节点。 |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| `state` | 类型：string；必填：否；默认值："started"<br>请求的资源状态。CRM 读取此状态并据此采取操作。<br>请注意，`enabled` 只是 `started` 的别名。<br><br>`started`;;<br><br>CRM 尝试启动资源。服务状态<br>在成功启动后设为 `started`。发生节点故障或启动<br>失败时，它会尝试恢复资源。  如果所有尝试均失败，服务<br>状态将设为 `error`。<br><br>`stopped`;;<br><br>CRM 尝试使资源保持 `stopped` 状态，但<br>在节点故障时仍会尝试重新安置资源。<br><br>`disabled`;;<br><br>CRM 尝试将资源置于 `stopped` 状态，但不会尝试<br>在节点故障时重新安置资源。此<br>状态主要用于错误恢复，因为这是使资源脱离<br>`error` 状态的唯一方式。<br><br>`ignored`;;<br><br>资源会从管理器状态中移除，因此 CRM 和 LRM 将<br>不再操作此资源。所有影响此资源的 {pve} API 调用<br>都将直接执行，绕过 HA 栈。此资源处于此状态时，CRM 命令将被丢<br>弃。发生节点故障时，此资源不会被重新安置<br>。<br><br>；可选值：`started`, `stopped`, `enabled`, `disabled`, `ignored` |
+| `type` | 类型：string；必填：否；默认值：—<br>资源类型。；可选值：`ct`, `vm` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6883,24 +6163,16 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-sid-ae318576-delete-parameters" id="api-cluster-ha-resources-sid-ae318576-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `purge` | boolean | 否 | 1 | 从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则 |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `purge` | 类型：boolean；必填：否；默认值：1<br>从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则 |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -6941,17 +6213,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-sid-ae318576-get-parameters" id="api-cluster-ha-resources-sid-ae318576-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7007,32 +6275,24 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-sid-ae318576-put-parameters" id="api-cluster-ha-resources-sid-ae318576-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `auto-rebalance` | boolean | 否 | 1 | HA 资源可以在自动重新均衡期间迁移 |
-| `comment` | string | 否 | — | 描述。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `failback` | boolean | 否 | 1 | 如果优先级高于当前节点的节点上线，则根据节点亲和性  规则，将 HA 资源自动迁移到优先级最高的节点。 |
-| `group` | string | 否 | — | HA 组标识符。 |
-| `max_relocate` | integer | 否 | 1 | 资源启动失败时尝试重新安置资源的最大次数。 |
-| `max_restart` | integer | 否 | 1 | 资源启动失败后在节点上尝试重新启动资源的最大次数。达到此次数后，HA 管理器将尝试将资源重新安置到符合条件的节点。 |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
-| `state` | string | 否 | "started" | 请求的资源状态。CRM 读取此状态并据此采取操作。<br>请注意，`enabled` 只是 `started` 的别名。<br><br>`started`;;<br><br>CRM 尝试启动资源。服务状态<br>在成功启动后设为 `started`。发生节点故障或启动<br>失败时，它会尝试恢复资源。  如果所有尝试均失败，服务<br>状态将设为 `error`。<br><br>`stopped`;;<br><br>CRM 尝试使资源保持 `stopped` 状态，但<br>在节点故障时仍会尝试重新安置资源。<br><br>`disabled`;;<br><br>CRM 尝试将资源置于 `stopped` 状态，但不会尝试<br>在节点故障时重新安置资源。此<br>状态主要用于错误恢复，因为这是使资源脱离<br>`error` 状态的唯一方式。<br><br>`ignored`;;<br><br>资源会从管理器状态中移除，因此 CRM 和 LRM 将<br>不再操作此资源。所有影响此资源的 {pve} API 调用<br>都将直接执行，绕过 HA 栈。此资源处于此状态时，CRM 命令将被丢<br>弃。发生节点故障时，此资源不会被重新安置<br>。<br><br>；可选值：`started`, `stopped`, `enabled`, `disabled`, `ignored` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `auto-rebalance` | 类型：boolean；必填：否；默认值：1<br>HA 资源可以在自动重新均衡期间迁移 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `failback` | 类型：boolean；必填：否；默认值：1<br>如果优先级高于当前节点的节点上线，则根据节点亲和性  规则，将 HA 资源自动迁移到优先级最高的节点。 |
+| `group` | 类型：string；必填：否；默认值：—<br>HA 组标识符。 |
+| `max_relocate` | 类型：integer；必填：否；默认值：1<br>资源启动失败时尝试重新安置资源的最大次数。 |
+| `max_restart` | 类型：integer；必填：否；默认值：1<br>资源启动失败后在节点上尝试重新启动资源的最大次数。达到此次数后，HA 管理器将尝试将资源重新安置到符合条件的节点。 |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| `state` | 类型：string；必填：否；默认值："started"<br>请求的资源状态。CRM 读取此状态并据此采取操作。<br>请注意，`enabled` 只是 `started` 的别名。<br><br>`started`;;<br><br>CRM 尝试启动资源。服务状态<br>在成功启动后设为 `started`。发生节点故障或启动<br>失败时，它会尝试恢复资源。  如果所有尝试均失败，服务<br>状态将设为 `error`。<br><br>`stopped`;;<br><br>CRM 尝试使资源保持 `stopped` 状态，但<br>在节点故障时仍会尝试重新安置资源。<br><br>`disabled`;;<br><br>CRM 尝试将资源置于 `stopped` 状态，但不会尝试<br>在节点故障时重新安置资源。此<br>状态主要用于错误恢复，因为这是使资源脱离<br>`error` 状态的唯一方式。<br><br>`ignored`;;<br><br>资源会从管理器状态中移除，因此 CRM 和 LRM 将<br>不再操作此资源。所有影响此资源的 {pve} API 调用<br>都将直接执行，绕过 HA 栈。此资源处于此状态时，CRM 命令将被丢<br>弃。发生节点故障时，此资源不会被重新安置<br>。<br><br>；可选值：`started`, `stopped`, `enabled`, `disabled`, `ignored` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7100,24 +6360,16 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-sid-migrate-94224403-post-parameters" id="api-cluster-ha-resources-sid-migrate-94224403-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 目标节点。 |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7180,24 +6432,16 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-resources-sid-relocate-1125a342-post-parameters" id="api-cluster-ha-resources-sid-relocate-1125a342-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 目标节点。 |
-| `sid` | string | 是 | — | HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `sid` | 类型：string；必填：是；默认值：—<br>HA 资源 ID。由资源类型和资源特定名称组成，以冒号分隔（例如 vm:100 / ct:100）。对于虚拟机和容器，可直接使用 VM 或 CT ID 作为简写（例如 100）。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7263,11 +6507,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-groups-04915cfc-get-parameters" id="api-cluster-ha-groups-04915cfc-get-parameters"></a>
 
@@ -7291,28 +6531,20 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-groups-04915cfc-post-parameters" id="api-cluster-ha-groups-04915cfc-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 描述。 |
-| `group` | string | 是 | — | HA 组标识符。 |
-| `nodes` | string | 是 | — | 集群节点成员列表，可为每个节点指定优先级。资源将在可用节点中优先级最高的节点上运行。如果最高优先级有多个节点，则资源将分布到这些节点上。优先级仅具有相对意义。数值越大，优先级越高。 |
-| `nofailback` | boolean | 否 | 0 | CRM 尝试在优先级最高的节点上运行服务。如果更高优先级的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。 |
-| `restricted` | boolean | 否 | 0 | 绑定到受限组的资源只能在该组定义的节点上运行。如果没有组成员节点在线，资源将进入停止状态。非受限组中的资源在所有组成员离线时可在任意集群节点上运行，但一旦有组成员上线就会迁回。使用仅含一个成员的非受限组，可实现“首选节点”行为。 |
-| `type` | string | 否 | — | 组类型。；可选值：`group` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `group` | 类型：string；必填：是；默认值：—<br>HA 组标识符。 |
+| `nodes` | 类型：string；必填：是；默认值：—<br>集群节点成员列表，可为每个节点指定优先级。资源将在可用节点中优先级最高的节点上运行。如果最高优先级有多个节点，则资源将分布到这些节点上。优先级仅具有相对意义。数值越大，优先级越高。 |
+| `nofailback` | 类型：boolean；必填：否；默认值：0<br>CRM 尝试在优先级最高的节点上运行服务。如果更高优先级的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。 |
+| `restricted` | 类型：boolean；必填：否；默认值：0<br>绑定到受限组的资源只能在该组定义的节点上运行。如果没有组成员节点在线，资源将进入停止状态。非受限组中的资源在所有组成员离线时可在任意集群节点上运行，但一旦有组成员上线就会迁回。使用仅含一个成员的非受限组，可实现“首选节点”行为。 |
+| `type` | 类型：string；必填：否；默认值：—<br>组类型。；可选值：`group` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7368,23 +6600,15 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-groups-group-8889ce37-delete-parameters" id="api-cluster-ha-groups-group-8889ce37-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `group` | string | 是 | — | HA 组标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `group` | 类型：string；必填：是；默认值：—<br>HA 组标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7413,17 +6637,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-groups-group-8889ce37-get-parameters" id="api-cluster-ha-groups-group-8889ce37-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `group` | string | 是 | — | HA 组标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `group` | 类型：string；必填：是；默认值：—<br>HA 组标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7452,29 +6672,21 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-groups-group-8889ce37-put-parameters" id="api-cluster-ha-groups-group-8889ce37-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 描述。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `group` | string | 是 | — | HA 组标识符。 |
-| `nodes` | string | 否 | — | 集群节点成员列表，可为每个节点指定优先级。资源将在可用节点中优先级最高的节点上运行。如果最高优先级有多个节点，则资源将分布到这些节点上。优先级仅具有相对意义。数值越大，优先级越高。 |
-| `nofailback` | boolean | 否 | 0 | CRM 尝试在优先级最高的节点上运行服务。如果更高优先级的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。 |
-| `restricted` | boolean | 否 | 0 | 绑定到受限组的资源只能在该组定义的节点上运行。如果没有组成员节点在线，资源将进入停止状态。非受限组中的资源在所有组成员离线时可在任意集群节点上运行，但一旦有组成员上线就会迁回。使用仅含一个成员的非受限组，可实现“首选节点”行为。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `group` | 类型：string；必填：是；默认值：—<br>HA 组标识符。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点成员列表，可为每个节点指定优先级。资源将在可用节点中优先级最高的节点上运行。如果最高优先级有多个节点，则资源将分布到这些节点上。优先级仅具有相对意义。数值越大，优先级越高。 |
+| `nofailback` | 类型：boolean；必填：否；默认值：0<br>CRM 尝试在优先级最高的节点上运行服务。如果更高优先级的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。 |
+| `restricted` | 类型：boolean；必填：否；默认值：0<br>绑定到受限组的资源只能在该组定义的节点上运行。如果没有组成员节点在线，资源将进入停止状态。非受限组中的资源在所有组成员离线时可在任意集群节点上运行，但一旦有组成员上线就会迁回。使用仅含一个成员的非受限组，可实现“首选节点”行为。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7534,18 +6746,14 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-rules-59e5af64-get-parameters" id="api-cluster-ha-rules-59e5af64-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `resource` | string | 否 | — | 将返回列表限制为影响指定资源的规则。 |
-| `type` | string | 否 | — | 将返回列表限制为指定规则类型。；可选值：`node-affinity`, `resource-affinity` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `resource` | 类型：string；必填：否；默认值：—<br>将返回列表限制为影响指定资源的规则。 |
+| `type` | 类型：string；必填：否；默认值：—<br>将返回列表限制为指定规则类型。；可选值：`node-affinity`, `resource-affinity` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7580,17 +6788,9 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-rules-59e5af64-post-parameters" id="api-cluster-ha-rules-59e5af64-post-parameters"></a>
 
@@ -7620,23 +6820,15 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-rules-rule-cc218e5b-delete-parameters" id="api-cluster-ha-rules-rule-cc218e5b-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `rule` | string | 是 | — | HA 规则标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `rule` | 类型：string；必填：是；默认值：—<br>HA 规则标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7665,17 +6857,13 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-rules-rule-cc218e5b-get-parameters" id="api-cluster-ha-rules-rule-cc218e5b-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `rule` | string | 是 | — | HA 规则标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `rule` | 类型：string；必填：是；默认值：—<br>HA 规则标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7710,17 +6898,9 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-rules-rule-cc218e5b-put-parameters" id="api-cluster-ha-rules-rule-cc218e5b-put-parameters"></a>
 
@@ -7750,11 +6930,7 @@ null
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-status-6803f961-get-parameters" id="api-cluster-ha-status-6803f961-get-parameters"></a>
 
@@ -7784,11 +6960,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-status-current-aa0de642-get-parameters" id="api-cluster-ha-status-current-aa0de642-get-parameters"></a>
 
@@ -7847,11 +7019,7 @@ null
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-status-manager-status-2de56102-get-parameters" id="api-cluster-ha-status-manager-status-2de56102-get-parameters"></a>
 
@@ -7881,23 +7049,15 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-status-disarm-ha-bafece41-post-parameters" id="api-cluster-ha-status-disarm-ha-bafece41-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `resource-mode` | string | 是 | — | 控制解除后如何处理 HA 管理的资源。资源的当前状态不受影响。'freeze'：不应用新命令和状态更改。'ignore'：将资源移出 HA 跟踪，此后可按未受 HA 管理的资源进行管理。；可选值：`freeze`, `ignore` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `resource-mode` | 类型：string；必填：是；默认值：—<br>控制解除后如何处理 HA 管理的资源。资源的当前状态不受影响。'freeze'：不应用新命令和状态更改。'ignore'：将资源移出 HA 跟踪，此后可按未受 HA 管理的资源进行管理。；可选值：`freeze`, `ignore` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -7940,17 +7100,9 @@ null
 {"check": ["perm", "/", ["Sys.Console"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ha-status-arm-ha-fd3fb558-post-parameters" id="api-cluster-ha-status-arm-ha-fd3fb558-post-parameters"></a>
 
@@ -7980,11 +7132,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-7e2ce7e3-get-parameters" id="api-cluster-acme-7e2ce7e3-get-parameters"></a>
 
@@ -8014,23 +7162,15 @@ ACME 插件索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-plugins-aa24154c-get-parameters" id="api-cluster-acme-plugins-aa24154c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出特定类型的 ACME 插件；可选值：`dns`, `standalone` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的 ACME 插件；可选值：`dns`, `standalone` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8097,29 +7237,21 @@ ACME 插件索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-plugins-aa24154c-post-parameters" id="api-cluster-acme-plugins-aa24154c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `api` | string | 否 | — | API 插件名称；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
-| `data` | string | 否 | — | DNS 插件数据。（base64 编码） |
-| `disable` | boolean | 否 | — | 用于禁用此配置的标志。 |
-| `id` | string | 是 | — | ACME 插件 ID 名称 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `type` | string | 是 | — | ACME 质询类型。；可选值：`dns`, `standalone` |
-| `validation-delay` | integer | 否 | 30 | 请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `api` | 类型：string；必填：否；默认值：—<br>API 插件名称；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
+| `data` | 类型：string；必填：否；默认值：—<br>DNS 插件数据。（base64 编码） |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用此配置的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>ACME 插件 ID 名称 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `type` | 类型：string；必填：是；默认值：—<br>ACME 质询类型。；可选值：`dns`, `standalone` |
+| `validation-delay` | 类型：integer；必填：否；默认值：30<br>请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8186,23 +7318,15 @@ ACME 插件索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-plugins-id-eb72844a-delete-parameters" id="api-cluster-acme-plugins-id-eb72844a-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | ACME 插件实例的唯一标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>ACME 插件实例的唯一标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8234,23 +7358,15 @@ ACME 插件索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-plugins-id-eb72844a-get-parameters" id="api-cluster-acme-plugins-id-eb72844a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | ACME 插件实例的唯一标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>ACME 插件实例的唯一标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8314,30 +7430,22 @@ ACME 插件索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-plugins-id-eb72844a-put-parameters" id="api-cluster-acme-plugins-id-eb72844a-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `api` | string | 否 | — | API 插件名称；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
-| `data` | string | 否 | — | DNS 插件数据。（base64 编码） |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable` | boolean | 否 | — | 用于禁用此配置的标志。 |
-| `id` | string | 是 | — | ACME 插件 ID 名称 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `validation-delay` | integer | 否 | 30 | 请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `api` | 类型：string；必填：否；默认值：—<br>API 插件名称；可选值：`1984hosting`, `acmedns`, `acmeproxy`, `active24`, `ad`, `ali`, `alviy`, `anx`, `artfiles`, `arvan`, `aurora`, `autodns`, `aws`, `azion`, `azure`, `beget`, `bookmyname`, `bunny`, `cf`, `clouddns`, `cloudns`, `cn`, `conoha`, `constellix`, `cpanel`, `curanet`, `cyon`, `da`, `ddnss`, `desec`, `df`, `dgon`, `dnsexit`, `dnshome`, `dnsimple`, `dnsservices`, `doapi`, `domeneshop`, `dp`, `dpi`, `dreamhost`, `duckdns`, `durabledns`, `dyn`, `dynu`, `dynv6`, `easydns`, `edgecenter`, `edgedns`, `euserv`, `exoscale`, `fornex`, `freedns`, `freemyip`, `gandi_livedns`, `gcloud`, `gcore`, `gd`, `geoscaling`, `googledomains`, `he`, `he_ddns`, `hetzner`, `hetznercloud`, `hexonet`, `hostingde`, `huaweicloud`, `infoblox`, `infomaniak`, `internetbs`, `inwx`, `ionos`, `ionos_cloud`, `ipv64`, `ispconfig`, `jd`, `joker`, `kappernet`, `kas`, `kinghost`, `knot`, `la`, `leaseweb`, `lexicon`, `limacity`, `linode`, `linode_v4`, `loopia`, `lua`, `maradns`, `me`, `miab`, `mijnhost`, `misaka`, `myapi`, `mydevil`, `mydnsjp`, `mythic_beasts`, `namecheap`, `namecom`, `namesilo`, `nanelo`, `nederhost`, `neodigit`, `netcup`, `netlify`, `nic`, `njalla`, `nm`, `nsd`, `nsone`, `nsupdate`, `nw`, `oci`, `omglol`, `one`, `online`, `openprovider`, `openprovider_rest`, `openstack`, `opnsense`, `ovh`, `pdns`, `pleskxml`, `pointhq`, `porkbun`, `rackcorp`, `rackspace`, `rage4`, `rcode0`, `regru`, `scaleway`, `schlundtech`, `selectel`, `selfhost`, `servercow`, `simply`, `spaceship`, `technitium`, `tele3`, `tencent`, `timeweb`, `transip`, `udr`, `ultra`, `unoeuro`, `variomedia`, `veesp`, `vercel`, `vscale`, `vultr`, `websupport`, `west_cn`, `world4you`, `yandex360`, `yc`, `zilore`, `zone`, `zoneedit`, `zonomi` |
+| `data` | 类型：string；必填：否；默认值：—<br>DNS 插件数据。（base64 编码） |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable` | 类型：boolean；必填：否；默认值：—<br>用于禁用此配置的标志。 |
+| `id` | 类型：string；必填：是；默认值：—<br>ACME 插件 ID 名称 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `validation-delay` | 类型：integer；必填：否；默认值：30<br>请求验证前额外等待的秒数。用于应对 DNS 记录 TTL 较长的情况。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8408,17 +7516,9 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-account-cc4d64ad-get-parameters" id="api-cluster-acme-account-cc4d64ad-get-parameters"></a>
 
@@ -8436,28 +7536,20 @@ ACMEAccount 索引。
 
 **方法标识：** `register_account`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-account-cc4d64ad-post-parameters" id="api-cluster-acme-account-cc4d64ad-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `contact` | string | 是 | — | 联系电子邮件地址。 |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
-| `eab-hmac-key` | string | 否 | — | 外部账户绑定的 HMAC 密钥。 |
-| `eab-kid` | string | 否 | — | 外部账户绑定的密钥标识符。 |
-| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
-| `tos_url` | string | 否 | — | CA 服务条款的 URL——设置此项表示同意条款。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `contact` | 类型：string；必填：是；默认值：—<br>联系电子邮件地址。 |
+| `directory` | 类型：string；必填：否；默认值："https://acme-v02.api.letsencrypt.org/directory"<br>ACME CA 目录端点的 URL。 |
+| `eab-hmac-key` | 类型：string；必填：否；默认值：—<br>外部账户绑定的 HMAC 密钥。 |
+| `eab-kid` | 类型：string；必填：否；默认值：—<br>外部账户绑定的密钥标识符。 |
+| `name` | 类型：string；必填：否；默认值："default"<br>ACME 账户配置文件名。 |
+| `tos_url` | 类型：string；必填：否；默认值：—<br>CA 服务条款的 URL——设置此项表示同意条款。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8502,23 +7594,15 @@ ACMEAccount 索引。
 
 **方法标识：** `deactivate_account`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-account-name-9ef4bf1c-delete-parameters" id="api-cluster-acme-account-name-9ef4bf1c-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：否；默认值："default"<br>ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8549,23 +7633,15 @@ ACMEAccount 索引。
 
 **方法标识：** `get_account`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-account-name-9ef4bf1c-get-parameters" id="api-cluster-acme-account-name-9ef4bf1c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `name` | 类型：string；必填：否；默认值："default"<br>ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8604,24 +7680,16 @@ ACMEAccount 索引。
 
 **方法标识：** `update_account`
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-account-name-9ef4bf1c-put-parameters" id="api-cluster-acme-account-name-9ef4bf1c-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `contact` | string | 否 | — | 联系电子邮件地址。 |
-| `name` | string | 否 | "default" | ACME 账户配置文件名。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `contact` | 类型：string；必填：否；默认值：—<br>联系电子邮件地址。 |
+| `name` | 类型：string；必填：否；默认值："default"<br>ACME 账户配置文件名。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8665,17 +7733,13 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-tos-55372fea-get-parameters" id="api-cluster-acme-tos-55372fea-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `directory` | 类型：string；必填：否；默认值："https://acme-v02.api.letsencrypt.org/directory"<br>ACME CA 目录端点的 URL。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8718,17 +7782,13 @@ ACMEAccount 索引。
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-meta-2e3ea328-get-parameters" id="api-cluster-acme-meta-2e3ea328-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `directory` | string | 否 | "https://acme-v02.api.letsencrypt.org/directory" | ACME CA 目录端点的 URL。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `directory` | 类型：string；必填：否；默认值："https://acme-v02.api.letsencrypt.org/directory"<br>ACME CA 目录端点的 URL。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -8780,11 +7840,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-directories-97ae9688-get-parameters" id="api-cluster-acme-directories-97ae9688-get-parameters"></a>
 
@@ -8821,11 +7877,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-acme-challenge-schema-3a19ea02-get-parameters" id="api-cluster-acme-challenge-schema-3a19ea02-get-parameters"></a>
 
@@ -8865,11 +7917,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-64b903a5-get-parameters" id="api-cluster-ceph-64b903a5-get-parameters"></a>
 
@@ -8899,23 +7947,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-metadata-87462e1f-get-parameters" id="api-cluster-ceph-metadata-87462e1f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `scope` | string | 否 | "all" | 要返回的元数据类别：'all' 在每个守护进程的元数据中加入 PVE 端的服务状态（单元、数据目录是否存在）；'versions' 仅收集各节点的 Ceph 二进制程序版本数据。；可选值：`all`, `versions` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `scope` | 类型：string；必填：否；默认值："all"<br>要返回的元数据类别：'all' 在每个守护进程的元数据中加入 PVE 端的服务状态（单元、数据目录是否存在）；'versions' 仅收集各节点的 Ceph 二进制程序版本数据。；可选值：`all`, `versions` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9052,17 +8092,9 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-status-a80fb0bc-get-parameters" id="api-cluster-ceph-status-a80fb0bc-get-parameters"></a>
 
@@ -9092,27 +8124,19 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-restart-bulk-c7351887-post-parameters" id="api-cluster-ceph-restart-bulk-c7351887-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dry-run` | boolean | 否 | 0 | 记录计划（将重启哪些守护进程及其顺序），但不执行实际操作。 |
-| `force` | boolean | 否 | 0 | 对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。 |
-| `only-outdated` | boolean | 否 | 0 | 仅适用于 OSD：只重启运行版本与其宿主机本地安装的 ceph-osd 二进制程序版本不同的 OSD。此选项会传递到每个节点级子任务，以使用各宿主机安装的版本（可正确处理某个宿主机采用较新构建版本的部分升级情形）。 |
-| `service-type` | string | 是 | — | 要在整个集群中重启的 Ceph 守护进程类型。；可选值：`mon`, `mgr`, `mds`, `osd` |
-| `timeout` | integer | 否 | 600 | 每个守护进程等待上线阶段的超时时间（秒）。注意：对于远程节点上的守护进程，同一超时时间也会约束远程重启任务，因此每个守护进程的总时间预算可达此值的 2 倍。默认值考虑了繁忙集群中缓慢的 MDS 日志重放或 MON paxos 稳定过程；如果集群在守护进程重启后通常需要更长时间才能稳定，请增大此值。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dry-run` | 类型：boolean；必填：否；默认值：0<br>记录计划（将重启哪些守护进程及其顺序），但不执行实际操作。 |
+| `force` | 类型：boolean；必填：否；默认值：0<br>对于带有非良性检查的 HEALTH_WARN，例如 PG_DEGRADED、SLOW_OPS 或 MON_DOWN，继续执行。无论此标志如何，阻塞性 HEALTH_ERR 都是致命错误。ceph 报告为已静默的检查以及已知对滚动重启无害的检查永远不会阻塞操作，并会在任务日志中列明。集群范围的 OSD 映射标志仅在重启 OSD 时才会评估，因为重启 mon、mgr 或 mds 不会涉及其控制的内容。操作人员有责任确认集群足够稳定，能够承受滚动重启。 |
+| `only-outdated` | 类型：boolean；必填：否；默认值：0<br>仅适用于 OSD：只重启运行版本与其宿主机本地安装的 ceph-osd 二进制程序版本不同的 OSD。此选项会传递到每个节点级子任务，以使用各宿主机安装的版本（可正确处理某个宿主机采用较新构建版本的部分升级情形）。 |
+| `service-type` | 类型：string；必填：是；默认值：—<br>要在整个集群中重启的 Ceph 守护进程类型。；可选值：`mon`, `mgr`, `mds`, `osd` |
+| `timeout` | 类型：integer；必填：否；默认值：600<br>每个守护进程等待上线阶段的超时时间（秒）。注意：对于远程节点上的守护进程，同一超时时间也会约束远程重启任务，因此每个守护进程的总时间预算可达此值的 2 倍。默认值考虑了繁忙集群中缓慢的 MDS 日志重放或 MON paxos 稳定过程；如果集群在守护进程重启后通常需要更长时间才能稳定，请增大此值。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9179,17 +8203,9 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-flags-3d19a402-get-parameters" id="api-cluster-ceph-flags-3d19a402-get-parameters"></a>
 
@@ -9228,33 +8244,25 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-flags-3d19a402-put-parameters" id="api-cluster-ceph-flags-3d19a402-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `nobackfill` | boolean | 否 | — | 暂停 PG 回填。 |
-| `nodeep-scrub` | boolean | 否 | — | 禁用深度清理检查。 |
-| `nodown` | boolean | 否 | — | 忽略 OSD 故障报告，因此监视器不会将 OSD 标记为 down。 |
-| `noin` | boolean | 否 | — | 先前标记为 out 的 OSD 在启动时不会重新标记为 in。 |
-| `noout` | boolean | 否 | — | OSD 不会在配置的时间间隔后自动标记为 out。 |
-| `norebalance` | boolean | 否 | — | 暂停 PG 重新均衡。 |
-| `norecover` | boolean | 否 | — | 暂停 PG 恢复。 |
-| `noscrub` | boolean | 否 | — | 禁用清理检查。 |
-| `notieragent` | boolean | 否 | — | 暂停缓存分层活动。 |
-| `noup` | boolean | 否 | — | 不允许 OSD 启动。 |
-| `pause` | boolean | 否 | — | 暂停读写。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `nobackfill` | 类型：boolean；必填：否；默认值：—<br>暂停 PG 回填。 |
+| `nodeep-scrub` | 类型：boolean；必填：否；默认值：—<br>禁用深度清理检查。 |
+| `nodown` | 类型：boolean；必填：否；默认值：—<br>忽略 OSD 故障报告，因此监视器不会将 OSD 标记为 down。 |
+| `noin` | 类型：boolean；必填：否；默认值：—<br>先前标记为 out 的 OSD 在启动时不会重新标记为 in。 |
+| `noout` | 类型：boolean；必填：否；默认值：—<br>OSD 不会在配置的时间间隔后自动标记为 out。 |
+| `norebalance` | 类型：boolean；必填：否；默认值：—<br>暂停 PG 重新均衡。 |
+| `norecover` | 类型：boolean；必填：否；默认值：—<br>暂停 PG 恢复。 |
+| `noscrub` | 类型：boolean；必填：否；默认值：—<br>禁用清理检查。 |
+| `notieragent` | 类型：boolean；必填：否；默认值：—<br>暂停缓存分层活动。 |
+| `noup` | 类型：boolean；必填：否；默认值：—<br>不允许 OSD 启动。 |
+| `pause` | 类型：boolean；必填：否；默认值：—<br>暂停读写。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9304,23 +8312,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-flags-flag-16233181-get-parameters" id="api-cluster-ceph-flags-flag-16233181-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `flag` | string | 是 | — | 要获取的标志名称。；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `flag` | 类型：string；必填：是；默认值：—<br>要获取的标志名称。；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9357,24 +8357,16 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-flags-flag-16233181-put-parameters" id="api-cluster-ceph-flags-flag-16233181-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `flag` | string | 是 | — | 要更新的 ceph 标志；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
-| `value` | boolean | 是 | — | 标志的新值 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `flag` | 类型：string；必填：是；默认值：—<br>要更新的 ceph 标志；可选值：`nobackfill`, `nodeep-scrub`, `nodown`, `noin`, `noout`, `norebalance`, `norecover`, `noscrub`, `notieragent`, `noup`, `pause` |
+| `value` | 类型：boolean；必填：是；默认值：—<br>标志的新值 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9418,17 +8410,9 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit", "Datastore.Audit"], "any", 1]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-health-mute-285ae4b0-get-parameters" id="api-cluster-ceph-health-mute-285ae4b0-get-parameters"></a>
 
@@ -9468,26 +8452,18 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-ceph-health-mute-code-6c051ab6-put-parameters" id="api-cluster-ceph-health-mute-code-6c051ab6-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `code` | string | 是 | — | 要静默的健康检查，使用 'ceph health' 报告的名称，例如 'AUTH_INSECURE_CLIENT_KEY_TYPE'。 |
-| `sticky` | boolean | 否 | 0 | 即使检查情况恶化也保持静默。若不启用，则受影响条目数量一旦增加，静默便会自动解除，使该检查重新引起注意。仅在静默时使用。 |
-| `ttl` | string | 否 | — | 静默持续时间，例如 '2h'、'3d' 或 '1w'。省略则静默永不过期。仅在静默时使用。 |
-| `value` | boolean | 是 | — | 是静默（true）还是取消静默（false）此检查。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `code` | 类型：string；必填：是；默认值：—<br>要静默的健康检查，使用 'ceph health' 报告的名称，例如 'AUTH_INSECURE_CLIENT_KEY_TYPE'。 |
+| `sticky` | 类型：boolean；必填：否；默认值：0<br>即使检查情况恶化也保持静默。若不启用，则受影响条目数量一旦增加，静默便会自动解除，使该检查重新引起注意。仅在静默时使用。 |
+| `ttl` | 类型：string；必填：否；默认值：—<br>静默持续时间，例如 '2h'、'3d' 或 '1w'。省略则静默永不过期。仅在静默时使用。 |
+| `value` | 类型：boolean；必填：是；默认值：—<br>是静默（true）还是取消静默（false）此检查。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9540,11 +8516,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-7f6abac7-get-parameters" id="api-cluster-jobs-7f6abac7-get-parameters"></a>
 
@@ -9577,11 +8549,7 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-realm-sync-3a48aec7-get-parameters" id="api-cluster-jobs-realm-sync-3a48aec7-get-parameters"></a>
 
@@ -9631,23 +8599,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-delete-parameters" id="api-cluster-jobs-realm-sync-id-2c5d49d5-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9676,17 +8636,13 @@ ACMEAccount 索引。
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-get-parameters" id="api-cluster-jobs-realm-sync-id-2c5d49d5-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9718,30 +8674,22 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-post-parameters" id="api-cluster-jobs-realm-sync-id-2c5d49d5-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 作业描述。 |
-| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
-| `enabled` | boolean | 否 | 1 | 确定是否启用作业。 |
-| `id` | string | 是 | — | 作业 ID。 |
-| `realm` | string | 否 | — | 认证域 ID |
-| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
-| `schedule` | string | 是 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
-| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>作业描述。 |
+| `enable-new` | 类型：boolean；必填：否；默认值："1"<br>立即启用新同步的用户。 |
+| `enabled` | 类型：boolean；必填：否；默认值：1<br>确定是否启用作业。 |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
+| `realm` | 类型：string；必填：否；默认值：—<br>认证域 ID |
+| `remove-vanished` | 类型：string；必填：否；默认值："none"<br>以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `schedule` | 类型：string；必填：是；默认值：—<br>备份计划。格式是 `systemd` 日历事件的子集。 |
+| `scope` | 类型：string；必填：否；默认值：—<br>选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9793,30 +8741,22 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-put-parameters" id="api-cluster-jobs-realm-sync-id-2c5d49d5-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `comment` | string | 否 | — | 作业描述。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `enable-new` | boolean | 否 | "1" | 立即启用新同步的用户。 |
-| `enabled` | boolean | 否 | 1 | 确定是否启用作业。 |
-| `id` | string | 是 | — | 作业 ID。 |
-| `remove-vanished` | string | 否 | "none" | 以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
-| `schedule` | string | 是 | — | 备份计划。格式是 `systemd` 日历事件的子集。 |
-| `scope` | string | 否 | — | 选择要同步的内容。；可选值：`users`, `groups`, `both` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `comment` | 类型：string；必填：否；默认值：—<br>作业描述。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `enable-new` | 类型：boolean；必填：否；默认值："1"<br>立即启用新同步的用户。 |
+| `enabled` | 类型：boolean；必填：否；默认值：1<br>确定是否启用作业。 |
+| `id` | 类型：string；必填：是；默认值：—<br>作业 ID。 |
+| `remove-vanished` | 类型：string；必填：否；默认值："none"<br>以分号分隔的移除项目列表，指定当项目本身或用户在同步期间消失时移除哪些内容。可用值如下：'entry' 在同步未返回用户/组时移除该用户/组。'properties' 移除现有用户/组中已设置但源中不存在的属性（包括自定义属性）。'acl' 在同步未返回用户/组时移除 acl。也可以使用 'none'（默认值）代替列表。 |
+| `schedule` | 类型：string；必填：是；默认值：—<br>备份计划。格式是 `systemd` 日历事件的子集。 |
+| `scope` | 类型：string；必填：否；默认值：—<br>选择要同步的内容。；可选值：`users`, `groups`, `both` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9871,19 +8811,15 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-jobs-schedule-analyze-1c086080-get-parameters" id="api-cluster-jobs-schedule-analyze-1c086080-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `iterations` | integer | 否 | 10 | 要模拟并返回的事件迭代次数。 |
-| `schedule` | string | 是 | — | 作业计划。格式是 `systemd` 日历事件的子集。 |
-| `starttime` | integer | 否 | — | 计算起始时间的 UNIX 时间戳。默认为当前时间。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `iterations` | 类型：integer；必填：否；默认值：10<br>要模拟并返回的事件迭代次数。 |
+| `schedule` | 类型：string；必填：是；默认值：—<br>作业计划。格式是 `systemd` 日历事件的子集。 |
+| `starttime` | 类型：integer；必填：否；默认值：—<br>计算起始时间的 UNIX 时间戳。默认为当前时间。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -9939,11 +8875,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-3795482f-get-parameters" id="api-cluster-mapping-3795482f-get-parameters"></a>
 
@@ -9973,17 +8905,13 @@ ACMEAccount 索引。
 {"description": "仅列出您对 '/mapping/dir/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-dir-be5cae7e-get-parameters" id="api-cluster-mapping-dir-be5cae7e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将与该目录相关的诊断信息加入响应。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `check-node` | 类型：string；必填：否；默认值：—<br>如果指定，则检查给定节点上的配置是否正确，并将与该目录相关的诊断信息加入响应。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10040,25 +8968,17 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/dir", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-dir-be5cae7e-post-parameters" id="api-cluster-mapping-dir-be5cae7e-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 目录映射的描述 |
-| `id` | string | 是 | — | 目录映射的 ID |
-| `map` | array | 是 | — | 集群节点的映射列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>目录映射的描述 |
+| `id` | 类型：string；必填：是；默认值：—<br>目录映射的 ID |
+| `map` | 类型：array；必填：是；默认值：—<br>集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10111,23 +9031,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/dir", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-dir-id-e3e8b099-delete-parameters" id="api-cluster-mapping-dir-id-e3e8b099-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10160,23 +9072,15 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-dir-id-e3e8b099-get-parameters" id="api-cluster-mapping-dir-id-e3e8b099-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10205,27 +9109,19 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/dir/{id}", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-dir-id-e3e8b099-put-parameters" id="api-cluster-mapping-dir-id-e3e8b099-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 目录映射的描述 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `id` | string | 是 | — | 目录映射的 ID |
-| `map` | array | 否 | — | 集群节点的映射列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>目录映射的描述 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `id` | 类型：string；必填：是；默认值：—<br>目录映射的 ID |
+| `map` | 类型：array；必填：否；默认值：—<br>集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10283,17 +9179,13 @@ ACMEAccount 索引。
 {"description": "仅列出您对 '/mapping/pci/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-pci-a7aadf85-get-parameters" id="api-cluster-mapping-pci-a7aadf85-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将与设备相关的诊断信息加入响应。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `check-node` | 类型：string；必填：否；默认值：—<br>如果指定，则检查给定节点上的配置是否正确，并将与设备相关的诊断信息加入响应。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10350,27 +9242,19 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/pci", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-pci-a7aadf85-post-parameters" id="api-cluster-mapping-pci-a7aadf85-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 逻辑 PCI 设备的描述。 |
-| `id` | string | 是 | — | 逻辑 PCI 映射的 ID。 |
-| `live-migration-capable` | boolean | 否 | 0 | 将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。 |
-| `map` | array | 是 | — | 集群节点的映射列表。 |
-| `mdev` | boolean | 否 | 0 | 将设备标记为能够提供中介设备。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>逻辑 PCI 设备的描述。 |
+| `id` | 类型：string；必填：是；默认值：—<br>逻辑 PCI 映射的 ID。 |
+| `live-migration-capable` | 类型：boolean；必填：否；默认值：0<br>将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。 |
+| `map` | 类型：array；必填：是；默认值：—<br>集群节点的映射列表。 |
+| `mdev` | 类型：boolean；必填：否；默认值：0<br>将设备标记为能够提供中介设备。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10436,23 +9320,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/pci", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-pci-id-80b107bb-delete-parameters" id="api-cluster-mapping-pci-id-80b107bb-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10485,23 +9361,15 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-pci-id-80b107bb-get-parameters" id="api-cluster-mapping-pci-id-80b107bb-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10530,29 +9398,21 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/pci/{id}", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-pci-id-80b107bb-put-parameters" id="api-cluster-mapping-pci-id-80b107bb-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 逻辑 PCI 设备的描述。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `id` | string | 是 | — | 逻辑 PCI 映射的 ID。 |
-| `live-migration-capable` | boolean | 否 | 0 | 将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。 |
-| `map` | array | 否 | — | 集群节点的映射列表。 |
-| `mdev` | boolean | 否 | 0 | 将设备标记为能够提供中介设备。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>逻辑 PCI 设备的描述。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `id` | 类型：string；必填：是；默认值：—<br>逻辑 PCI 映射的 ID。 |
+| `live-migration-capable` | 类型：boolean；必填：否；默认值：0<br>将设备标记为支持在线迁移（实验性）。此功能需要硬件和驱动支持。 |
+| `map` | 类型：array；必填：否；默认值：—<br>集群节点的映射列表。 |
+| `mdev` | 类型：boolean；必填：否；默认值：0<br>将设备标记为能够提供中介设备。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10623,17 +9483,13 @@ ACMEAccount 索引。
 {"description": "仅列出您对 '/mapping/usb/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-usb-677dac0a-get-parameters" id="api-cluster-mapping-usb-677dac0a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `check-node` | string | 否 | — | 如果指定，则检查给定节点上的配置是否正确，并将相关错误加入设备。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `check-node` | 类型：string；必填：否；默认值：—<br>如果指定，则检查给定节点上的配置是否正确，并将相关错误加入设备。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10687,25 +9543,17 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/usb", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-usb-677dac0a-post-parameters" id="api-cluster-mapping-usb-677dac0a-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `description` | string | 否 | — | 逻辑 USB 设备的描述。 |
-| `id` | string | 是 | — | 逻辑 USB 映射的 ID。 |
-| `map` | array | 是 | — | 集群节点的映射列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `description` | 类型：string；必填：否；默认值：—<br>逻辑 USB 设备的描述。 |
+| `id` | 类型：string；必填：是；默认值：—<br>逻辑 USB 映射的 ID。 |
+| `map` | 类型：array；必填：是；默认值：—<br>集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10763,23 +9611,15 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/usb", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-delete-parameters" id="api-cluster-mapping-usb-id-2ec5bd1f-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10812,23 +9652,15 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-get-parameters" id="api-cluster-mapping-usb-id-2ec5bd1f-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10857,27 +9689,19 @@ ACMEAccount 索引。
 {"check": ["perm", "/mapping/usb/{id}", ["Mapping.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-put-parameters" id="api-cluster-mapping-usb-id-2ec5bd1f-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 逻辑 USB 设备的描述。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `id` | string | 是 | — | 逻辑 USB 映射的 ID。 |
-| `map` | array | 是 | — | 集群节点的映射列表。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>逻辑 USB 设备的描述。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `id` | 类型：string；必填：是；默认值：—<br>逻辑 USB 映射的 ID。 |
+| `map` | 类型：array；必填：是；默认值：—<br>集群节点的映射列表。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -10940,11 +9764,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-9ecda72c-get-parameters" id="api-cluster-bulk-action-9ecda72c-get-parameters"></a>
 
@@ -10974,11 +9794,7 @@ ACMEAccount 索引。
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-guest-4e0ad08a-get-parameters" id="api-cluster-bulk-action-guest-4e0ad08a-get-parameters"></a>
 
@@ -11008,26 +9824,18 @@ ACMEAccount 索引。
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-guest-start-9c3d3d17-post-parameters" id="api-cluster-bulk-action-guest-start-9c3d3d17-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | 4 | 定义并发运行的最大任务数。 |
-| `maxworkers` | integer | 否 | 4 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
-| `timeout` | integer | 否 | — | 默认启动超时时间，单位为秒。仅适用于虚拟机。（默认值取决于客户机配置）。 |
-| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max-workers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。 |
+| `maxworkers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `timeout` | 类型：integer；必填：否；默认值：—<br>默认启动超时时间，单位为秒。仅适用于虚拟机。（默认值取决于客户机配置）。 |
+| `vms` | 类型：array；必填：否；默认值：—<br>仅考虑此 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11090,27 +9898,19 @@ ACMEAccount 索引。
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-guest-shutdown-2b6d3381-post-parameters" id="api-cluster-bulk-action-guest-shutdown-2b6d3381-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force-stop` | boolean | 否 | 1 | 确保客户机在超时后停止。 |
-| `max-workers` | integer | 否 | 4 | 定义并发运行的最大任务数。 |
-| `maxworkers` | integer | 否 | 4 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
-| `timeout` | integer | 否 | 180 | 客户机未配置时使用的默认关机超时时间，单位为秒。 |
-| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force-stop` | 类型：boolean；必填：否；默认值：1<br>确保客户机在超时后停止。 |
+| `max-workers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。 |
+| `maxworkers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `timeout` | 类型：integer；必填：否；默认值：180<br>客户机未配置时使用的默认关机超时时间，单位为秒。 |
+| `vms` | 类型：array；必填：否；默认值：—<br>仅考虑此 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11175,27 +9975,19 @@ ACMEAccount 索引。
 }
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-guest-suspend-06b42be1-post-parameters" id="api-cluster-bulk-action-guest-suspend-06b42be1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | 4 | 定义并发运行的最大任务数。 |
-| `maxworkers` | integer | 否 | 4 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
-| `statestorage` | string | 否 | — | 存放虚拟机状态的存储。 |
-| `to-disk` | boolean | 否 | 0 | 如果设置，则将客户机挂起到磁盘。下次启动时将恢复。 |
-| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max-workers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。 |
+| `maxworkers` | 类型：integer；必填：否；默认值：4<br>定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `statestorage` | 类型：string；必填：否；默认值：—<br>存放虚拟机状态的存储。 |
+| `to-disk` | 类型：boolean；必填：否；默认值：0<br>如果设置，则将客户机挂起到磁盘。下次启动时将恢复。 |
+| `vms` | 类型：array；必填：否；默认值：—<br>仅考虑此 VMID 列表中的客户机。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11260,28 +10052,20 @@ ACMEAccount 索引。
 {"description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-bulk-action-guest-migrate-62d741d7-post-parameters" id="api-cluster-bulk-action-guest-migrate-62d741d7-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max-workers` | integer | 否 | 1 | 定义并发运行的最大任务数。 |
-| `maxworkers` | integer | 否 | 1 | 定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
-| `online` | boolean | 否 | — | 为虚拟机启用在线迁移，为容器启用重启迁移。 |
-| `target` | string | 是 | — | 目标节点。 |
-| `vms` | array | 否 | — | 仅考虑此 VMID 列表中的客户机。 |
-| `with-local-disks` | boolean | 否 | — | 为本地磁盘启用在线存储迁移 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max-workers` | 类型：integer；必填：否；默认值：1<br>定义并发运行的最大任务数。 |
+| `maxworkers` | 类型：integer；必填：否；默认值：1<br>定义并发运行的最大任务数。已弃用，请改用 'max-workers'。 |
+| `online` | 类型：boolean；必填：否；默认值：—<br>为虚拟机启用在线迁移，为容器启用重启迁移。 |
+| `target` | 类型：string；必填：是；默认值：—<br>目标节点。 |
+| `vms` | 类型：array；必填：否；默认值：—<br>仅考虑此 VMID 列表中的客户机。 |
+| `with-local-disks` | 类型：boolean；必填：否；默认值：—<br>为本地磁盘启用在线存储迁移 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11344,11 +10128,7 @@ ACMEAccount 索引。
 {"check": ["perm", "/sdn", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-a5d61349-get-parameters" id="api-cluster-sdn-a5d61349-get-parameters"></a>
 
@@ -11372,24 +10152,16 @@ ACMEAccount 索引。
 {"check": ["perm", "/sdn", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-a5d61349-put-parameters" id="api-cluster-sdn-a5d61349-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `release-lock` | boolean | 否 | 1 | 提供 lock-token 且配置成功提交后，自动释放锁 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `release-lock` | 类型：boolean；必填：否；默认值：1<br>提供 lock-token 且配置成功提交后，自动释放锁 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11430,18 +10202,14 @@ SDN vnet 索引。
 {"description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-dcadb0c4-get-parameters" id="api-cluster-sdn-vnets-dcadb0c4-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11509,30 +10277,22 @@ SDN vnet 索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-dcadb0c4-post-parameters" id="api-cluster-sdn-vnets-dcadb0c4-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `alias` | string | 否 | — | VNet 的别名。 |
-| `isolate-ports` | boolean | 否 | — | 如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `tag` | integer | 否 | — | VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。 |
-| `type` | string | 否 | — | VNet 的类型。；可选值：`vnet` |
-| `vlanaware` | boolean | 否 | — | 允许 VLAN 穿过此 vnet。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
-| `zone` | string | 是 | — | 此 VNet 所属区域的名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `alias` | 类型：string；必填：否；默认值：—<br>VNet 的别名。 |
+| `isolate-ports` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `tag` | 类型：integer；必填：否；默认值：—<br>VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。 |
+| `type` | 类型：string；必填：否；默认值：—<br>VNet 的类型。；可选值：`vnet` |
+| `vlanaware` | 类型：boolean；必填：否；默认值：—<br>允许 VLAN 穿过此 vnet。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>此 VNet 所属区域的名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11585,24 +10345,16 @@ SDN vnet 索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-delete-parameters" id="api-cluster-sdn-vnets-vnet-afce4b42-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11637,19 +10389,15 @@ SDN vnet 索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-get-parameters" id="api-cluster-sdn-vnets-vnet-afce4b42-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11714,31 +10462,23 @@ SDN vnet 索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-put-parameters" id="api-cluster-sdn-vnets-vnet-afce4b42-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `alias` | string | 否 | — | VNet 的别名。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `isolate-ports` | boolean | 否 | — | 如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `tag` | integer | 否 | — | VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。 |
-| `vlanaware` | boolean | 否 | — | 允许 VLAN 穿过此 vnet。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
-| `zone` | string | 否 | — | 此 VNet 所属区域的名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `alias` | 类型：string；必填：否；默认值：—<br>VNet 的别名。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `isolate-ports` | 类型：boolean；必填：否；默认值：—<br>如果为 true，则为此 VNet 网桥上的所有接口设置 isolated 属性。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `tag` | 类型：integer；必填：否；默认值：—<br>VLAN 标签（用于 VLAN 或 QinQ 区域）或 VXLAN VNI（用于 VXLAN 或 EVPN 区域）。 |
+| `vlanaware` | 类型：boolean；必填：否；默认值：—<br>允许 VLAN 穿过此 vnet。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
+| `zone` | 类型：string；必填：否；默认值：—<br>此 VNet 所属区域的名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11789,17 +10529,13 @@ SDN vnet 索引。
 
 **方法标识：** `index`
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-187c85cd-get-parameters" id="api-cluster-sdn-vnets-vnet-firewall-187c85cd-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11839,23 +10575,15 @@ SDN vnet 索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-get-parameters" id="api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -11911,44 +10639,32 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-post-parameters" id="api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 是 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：是；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12033,31 +10749,19 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-delete-parameters" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12096,24 +10800,16 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-get-parameters" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12167,46 +10863,34 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-null
-```
+**代理目标：** `null`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-put-parameters" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
-| `comment` | string | 否 | — | 描述性注释。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dest` | string | 否 | — | 限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dport` | string | 否 | — | 限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `enable` | integer | 否 | — | 用于启用/禁用规则的标志。 |
-| `icmp-type` | string | 否 | — | 指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
-| `iface` | string | 否 | — | 网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
-| `log` | string | 否 | — | 防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `macro` | string | 否 | — | 使用预定义的标准宏。 |
-| `moveto` | integer | 否 | — | 将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
-| `pos` | integer | 否 | — | 更新位置 &lt;pos&gt; 处的规则。 |
-| `proto` | string | 否 | — | IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
-| `source` | string | 否 | — | 限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
-| `sport` | string | 否 | — | 限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
-| `type` | string | 否 | — | 规则类型。；可选值：`in`, `out`, `forward`, `group` |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>规则动作（'ACCEPT'、'DROP'、'REJECT'）或安全组名称。 |
+| `comment` | 类型：string；必填：否；默认值：—<br>描述性注释。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dest` | 类型：string；必填：否；默认值：—<br>限制数据包目标地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 目标端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `enable` | 类型：integer；必填：否；默认值：—<br>用于启用/禁用规则的标志。 |
+| `icmp-type` | 类型：string；必填：否；默认值：—<br>指定 icmp-type。仅当 proto 为 'icmp' 或 'icmpv6'/'ipv6-icmp' 时有效。 |
+| `iface` | 类型：string；必填：否；默认值：—<br>网络接口名称。虚拟机和容器必须使用网络配置键名（'net\d+'）。宿主机相关规则可使用任意字符串。 |
+| `log` | 类型：string；必填：否；默认值：—<br>防火墙规则的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `macro` | 类型：string；必填：否；默认值：—<br>使用预定义的标准宏。 |
+| `moveto` | 类型：integer；必填：否；默认值：—<br>将规则移至新位置 &lt;moveto&gt;。其他参数将被忽略。 |
+| `pos` | 类型：integer；必填：否；默认值：—<br>更新位置 &lt;pos&gt; 处的规则。 |
+| `proto` | 类型：string；必填：否；默认值：—<br>IP 协议。可以使用协议名称（'tcp'/'udp'）或 '/etc/protocols' 中定义的数字。 |
+| `source` | 类型：string；必填：否；默认值：—<br>限制数据包源地址。可以指定单个 IP 地址、IP 集合（'+ipsetname'）或 IP 别名定义。也可以指定地址范围，例如 '20.34.101.207-201.3.9.99'，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混用 IPv4 和 IPv6 地址。 |
+| `sport` | 类型：string；必填：否；默认值：—<br>限制 TCP/UDP 源端口。可以使用服务名称或 '/etc/services' 中定义的数字（0-65535）。端口范围可使用 '\d+:\d+' 指定，例如 '80:85'，也可使用逗号分隔的列表匹配多个端口或范围。 |
+| `type` | 类型：string；必填：否；默认值：—<br>规则类型。；可选值：`in`, `out`, `forward`, `group` |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12293,17 +10977,13 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-get-parameters" id="api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12347,28 +11027,20 @@ null
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-put-parameters" id="api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `enable` | boolean | 否 | 0 | 启用/禁用防火墙规则。 |
-| `log_level_forward` | string | 否 | — | 转发流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
-| `policy_forward` | string | 否 | — | 转发策略。；可选值：`ACCEPT`, `DROP` |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `enable` | 类型：boolean；必填：否；默认值：0<br>启用/禁用防火墙规则。 |
+| `log_level_forward` | 类型：string；必填：否；默认值：—<br>转发流量的日志级别。；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
+| `policy_forward` | 类型：string；必填：否；默认值：—<br>转发策略。；可选值：`ACCEPT`, `DROP` |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12419,19 +11091,15 @@ SDN 子网索引。
 {"description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-get-parameters" id="api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12467,31 +11135,23 @@ SDN 子网索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-post-parameters" id="api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dhcp-dns-server` | string | 否 | — | DNS 服务器的 IP 地址 |
-| `dhcp-range` | array | 否 | — | 此子网的 DHCP 地址范围列表 |
-| `dnszoneprefix` | string | 否 | — | DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
-| `gateway` | string | 否 | — | 子网网关：对于 layer3 区域，将分配在 vnet 上 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `snat` | boolean | 否 | — | 使用 pve-firewall 时为此子网启用地址伪装 |
-| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
-| `type` | string | 是 | — | ；可选值：`subnet` |
-| `vnet` | string | 是 | — | 关联的 vnet |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dhcp-dns-server` | 类型：string；必填：否；默认值：—<br>DNS 服务器的 IP 地址 |
+| `dhcp-range` | 类型：array；必填：否；默认值：—<br>此子网的 DHCP 地址范围列表 |
+| `dnszoneprefix` | 类型：string；必填：否；默认值：—<br>DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
+| `gateway` | 类型：string；必填：否；默认值：—<br>子网网关：对于 layer3 区域，将分配在 vnet 上 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `snat` | 类型：boolean；必填：否；默认值：—<br>使用 pve-firewall 时为此子网启用地址伪装 |
+| `subnet` | 类型：string；必填：是；默认值：—<br>SDN 子网对象标识符。 |
+| `type` | 类型：string；必填：是；默认值：—<br>；可选值：`subnet` |
+| `vnet` | 类型：string；必填：是；默认值：—<br>关联的 vnet |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12544,25 +11204,17 @@ SDN 子网索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-delete-parameters" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `subnet` | 类型：string；必填：是；默认值：—<br>SDN 子网对象标识符。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12598,20 +11250,16 @@ SDN 子网索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-get-parameters" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `subnet` | 类型：string；必填：是；默认值：—<br>SDN 子网对象标识符。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12648,32 +11296,24 @@ SDN 子网索引。
 {"description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-put-parameters" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dhcp-dns-server` | string | 否 | — | DNS 服务器的 IP 地址 |
-| `dhcp-range` | array | 否 | — | 此子网的 DHCP 地址范围列表 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dnszoneprefix` | string | 否 | — | DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
-| `gateway` | string | 否 | — | 子网网关：对于 layer3 区域，将分配在 vnet 上 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `snat` | boolean | 否 | — | 使用 pve-firewall 时为此子网启用地址伪装 |
-| `subnet` | string | 是 | — | SDN 子网对象标识符。 |
-| `vnet` | string | 否 | — | 关联的 vnet |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dhcp-dns-server` | 类型：string；必填：否；默认值：—<br>DNS 服务器的 IP 地址 |
+| `dhcp-range` | 类型：array；必填：否；默认值：—<br>此子网的 DHCP 地址范围列表 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dnszoneprefix` | 类型：string；必填：否；默认值：—<br>DNS 域区域前缀  例如：'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
+| `gateway` | 类型：string；必填：否；默认值：—<br>子网网关：对于 layer3 区域，将分配在 vnet 上 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `snat` | 类型：boolean；必填：否；默认值：—<br>使用 pve-firewall 时为此子网启用地址伪装 |
+| `subnet` | 类型：string；必填：是；默认值：—<br>SDN 子网对象标识符。 |
+| `vnet` | 类型：string；必填：否；默认值：—<br>关联的 vnet |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12731,26 +11371,18 @@ SDN 子网索引。
 {"check": ["perm", "/sdn/zones/{zone}/{vnet}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-delete-parameters" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | 要删除的 IP 地址 |
-| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ip` | 类型：string；必填：是；默认值：—<br>要删除的 IP 地址 |
+| `mac` | 类型：string；必填：否；默认值：—<br>未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12790,26 +11422,18 @@ SDN 子网索引。
 {"check": ["perm", "/sdn/zones/{zone}/{vnet}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-post-parameters" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | 要与给定 MAC 地址关联的 IP 地址 |
-| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ip` | 类型：string；必填：是；默认值：—<br>要与给定 MAC 地址关联的 IP 地址 |
+| `mac` | 类型：string；必填：否；默认值：—<br>未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12849,27 +11473,19 @@ SDN 子网索引。
 {"check": ["perm", "/sdn/zones/{zone}/{vnet}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-put-parameters" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ip` | string | 是 | — | 要与给定 MAC 地址关联的 IP 地址 |
-| `mac` | string | 否 | — | 未设置 I/G（个体/组）位的普通 MAC 地址。 |
-| `vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
-| `vnet` | string | 是 | — | SDN vnet 对象标识符。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ip` | 类型：string；必填：是；默认值：—<br>要与给定 MAC 地址关联的 IP 地址 |
+| `mac` | 类型：string；必填：否；默认值：—<br>未设置 I/G（个体/组）位的普通 MAC 地址。 |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
+| `vnet` | 类型：string；必填：是；默认值：—<br>SDN vnet 对象标识符。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -12919,19 +11535,15 @@ SDN 区域索引。
 {"description": "仅列出您对 '/sdn/zones/<zone>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-zones-f334f5a6-get-parameters" id="api-cluster-sdn-zones-f334f5a6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `type` | string | 否 | — | 仅列出特定类型的 SDN 区域；可选值：`evpn`, `faucet`, `qinq`, `simple`, `vlan`, `vxlan` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的 SDN 区域；可选值：`evpn`, `faucet`, `qinq`, `simple`, `vlan`, `vxlan` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13064,50 +11676,42 @@ SDN 区域索引。
 {"check": ["perm", "/sdn/zones", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-zones-f334f5a6-post-parameters" id="api-cluster-sdn-zones-f334f5a6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `advertise-subnets` | boolean | 否 | — | 通告 IP 前缀（Type-5 路由），而非 MAC/IP 对（Type-2 路由）。 |
-| `bridge` | string | 否 | — | 要管理其 VLAN 的网桥。 |
-| `bridge-disable-mac-learning` | boolean | 否 | — | 禁用自动 MAC 学习。 |
-| `controller` | string | 否 | — | 此区域的控制器。 |
-| `dhcp` | string | 否 | — | 此区域的 DHCP 后端类型；可选值：`dnsmasq` |
-| `disable-arp-nd-suppression` | boolean | 否 | — | 抑制 IPv4 ARP 和 IPv6 邻居发现消息。 |
-| `dns` | string | 否 | — | DNS API 服务器 |
-| `dnszone` | string | 否 | — | DNS 域区域  例如：mydomain.com |
-| `dp-id` | integer | 否 | — | Faucet 数据平面 ID |
-| `exitnodes` | string | 否 | — | 集群节点名称列表。 |
-| `exitnodes-local-routing` | boolean | 否 | — | 允许出口节点连接 EVPN 客户机。 |
-| `exitnodes-primary` | string | 否 | — | 强制流量首先经过此出口节点。 |
-| `fabric` | string | 否 | — | 此 VXLAN 区域用作底层网络的 SDN fabric。 |
-| `ipam` | string | 否 | — | 使用指定的 ipam |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `mac` | string | 否 | — | 任播逻辑路由器 MAC 地址。 |
-| `mtu` | integer | 否 | — | 区域的 MTU，将用于创建的 VNet 网桥。 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `peers` | string | 否 | — | 属于 VXLAN 区域的对等端列表，以逗号分隔。通常为节点的 IP 地址。 |
-| `reversedns` | string | 否 | — | 反向 DNS API 服务器 |
-| `rt-import` | string | 否 | — | 应导入此区域 VRF 的 Route Target 列表。 |
-| `secondary-controllers` | array | 否 | — | 附加控制器。 |
-| `tag` | integer | 否 | — | Service-VLAN 标签（外层 VLAN） |
-| `type` | string | 是 | — | 插件类型。；可选值：`evpn`, `faucet`, `qinq`, `simple`, `vlan`, `vxlan` |
-| `vlan-protocol` | string | 否 | "802.1q" | 创建 QinQ 区域应使用的 VLAN 协议。；可选值：`802.1q`, `802.1ad` |
-| `vrf-vxlan` | integer | 否 | — | 区域 VRF 的 VNI。 |
-| `vxlan-port` | integer | 否 | 4789 | VXLAN 隧道应使用的 UDP 端口（默认 4789）。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `advertise-subnets` | 类型：boolean；必填：否；默认值：—<br>通告 IP 前缀（Type-5 路由），而非 MAC/IP 对（Type-2 路由）。 |
+| `bridge` | 类型：string；必填：否；默认值：—<br>要管理其 VLAN 的网桥。 |
+| `bridge-disable-mac-learning` | 类型：boolean；必填：否；默认值：—<br>禁用自动 MAC 学习。 |
+| `controller` | 类型：string；必填：否；默认值：—<br>此区域的控制器。 |
+| `dhcp` | 类型：string；必填：否；默认值：—<br>此区域的 DHCP 后端类型；可选值：`dnsmasq` |
+| `disable-arp-nd-suppression` | 类型：boolean；必填：否；默认值：—<br>抑制 IPv4 ARP 和 IPv6 邻居发现消息。 |
+| `dns` | 类型：string；必填：否；默认值：—<br>DNS API 服务器 |
+| `dnszone` | 类型：string；必填：否；默认值：—<br>DNS 域区域  例如：mydomain.com |
+| `dp-id` | 类型：integer；必填：否；默认值：—<br>Faucet 数据平面 ID |
+| `exitnodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `exitnodes-local-routing` | 类型：boolean；必填：否；默认值：—<br>允许出口节点连接 EVPN 客户机。 |
+| `exitnodes-primary` | 类型：string；必填：否；默认值：—<br>强制流量首先经过此出口节点。 |
+| `fabric` | 类型：string；必填：否；默认值：—<br>此 VXLAN 区域用作底层网络的 SDN fabric。 |
+| `ipam` | 类型：string；必填：否；默认值：—<br>使用指定的 ipam |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `mac` | 类型：string；必填：否；默认值：—<br>任播逻辑路由器 MAC 地址。 |
+| `mtu` | 类型：integer；必填：否；默认值：—<br>区域的 MTU，将用于创建的 VNet 网桥。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `peers` | 类型：string；必填：否；默认值：—<br>属于 VXLAN 区域的对等端列表，以逗号分隔。通常为节点的 IP 地址。 |
+| `reversedns` | 类型：string；必填：否；默认值：—<br>反向 DNS API 服务器 |
+| `rt-import` | 类型：string；必填：否；默认值：—<br>应导入此区域 VRF 的 Route Target 列表。 |
+| `secondary-controllers` | 类型：array；必填：否；默认值：—<br>附加控制器。 |
+| `tag` | 类型：integer；必填：否；默认值：—<br>Service-VLAN 标签（外层 VLAN） |
+| `type` | 类型：string；必填：是；默认值：—<br>插件类型。；可选值：`evpn`, `faucet`, `qinq`, `simple`, `vlan`, `vxlan` |
+| `vlan-protocol` | 类型：string；必填：否；默认值："802.1q"<br>创建 QinQ 区域应使用的 VLAN 协议。；可选值：`802.1q`, `802.1ad` |
+| `vrf-vxlan` | 类型：integer；必填：否；默认值：—<br>区域 VRF 的 VNI。 |
+| `vxlan-port` | 类型：integer；必填：否；默认值：4789<br>VXLAN 隧道应使用的 UDP 端口（默认 4789）。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13193,24 +11797,16 @@ SDN 区域索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-zones-zone-972e538e-delete-parameters" id="api-cluster-sdn-zones-zone-972e538e-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13245,19 +11841,15 @@ SDN 区域索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-zones-zone-972e538e-get-parameters" id="api-cluster-sdn-zones-zone-972e538e-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13383,51 +11975,43 @@ SDN 区域索引。
 {"check": ["perm", "/sdn/zones/{zone}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-zones-zone-972e538e-put-parameters" id="api-cluster-sdn-zones-zone-972e538e-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `advertise-subnets` | boolean | 否 | — | 通告 IP 前缀（Type-5 路由），而非 MAC/IP 对（Type-2 路由）。 |
-| `bridge` | string | 否 | — | 要管理其 VLAN 的网桥。 |
-| `bridge-disable-mac-learning` | boolean | 否 | — | 禁用自动 MAC 学习。 |
-| `controller` | string | 否 | — | 此区域的控制器。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `dhcp` | string | 否 | — | 此区域的 DHCP 后端类型；可选值：`dnsmasq` |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `disable-arp-nd-suppression` | boolean | 否 | — | 抑制 IPv4 ARP 和 IPv6 邻居发现消息。 |
-| `dns` | string | 否 | — | DNS API 服务器 |
-| `dnszone` | string | 否 | — | DNS 域区域  例如：mydomain.com |
-| `dp-id` | integer | 否 | — | Faucet 数据平面 ID |
-| `exitnodes` | string | 否 | — | 集群节点名称列表。 |
-| `exitnodes-local-routing` | boolean | 否 | — | 允许出口节点连接 EVPN 客户机。 |
-| `exitnodes-primary` | string | 否 | — | 强制流量首先经过此出口节点。 |
-| `fabric` | string | 否 | — | 此 VXLAN 区域用作底层网络的 SDN fabric。 |
-| `ipam` | string | 否 | — | 使用指定的 ipam |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `mac` | string | 否 | — | 任播逻辑路由器 MAC 地址。 |
-| `mtu` | integer | 否 | — | 区域的 MTU，将用于创建的 VNet 网桥。 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `peers` | string | 否 | — | 属于 VXLAN 区域的对等端列表，以逗号分隔。通常为节点的 IP 地址。 |
-| `reversedns` | string | 否 | — | 反向 DNS API 服务器 |
-| `rt-import` | string | 否 | — | 应导入此区域 VRF 的 Route Target 列表。 |
-| `secondary-controllers` | array | 否 | — | 附加控制器。 |
-| `tag` | integer | 否 | — | Service-VLAN 标签（外层 VLAN） |
-| `vlan-protocol` | string | 否 | "802.1q" | 创建 QinQ 区域应使用的 VLAN 协议。；可选值：`802.1q`, `802.1ad` |
-| `vrf-vxlan` | integer | 否 | — | 区域 VRF 的 VNI。 |
-| `vxlan-port` | integer | 否 | 4789 | VXLAN 隧道应使用的 UDP 端口（默认 4789）。 |
-| `zone` | string | 是 | — | SDN 区域对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `advertise-subnets` | 类型：boolean；必填：否；默认值：—<br>通告 IP 前缀（Type-5 路由），而非 MAC/IP 对（Type-2 路由）。 |
+| `bridge` | 类型：string；必填：否；默认值：—<br>要管理其 VLAN 的网桥。 |
+| `bridge-disable-mac-learning` | 类型：boolean；必填：否；默认值：—<br>禁用自动 MAC 学习。 |
+| `controller` | 类型：string；必填：否；默认值：—<br>此区域的控制器。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `dhcp` | 类型：string；必填：否；默认值：—<br>此区域的 DHCP 后端类型；可选值：`dnsmasq` |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `disable-arp-nd-suppression` | 类型：boolean；必填：否；默认值：—<br>抑制 IPv4 ARP 和 IPv6 邻居发现消息。 |
+| `dns` | 类型：string；必填：否；默认值：—<br>DNS API 服务器 |
+| `dnszone` | 类型：string；必填：否；默认值：—<br>DNS 域区域  例如：mydomain.com |
+| `dp-id` | 类型：integer；必填：否；默认值：—<br>Faucet 数据平面 ID |
+| `exitnodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `exitnodes-local-routing` | 类型：boolean；必填：否；默认值：—<br>允许出口节点连接 EVPN 客户机。 |
+| `exitnodes-primary` | 类型：string；必填：否；默认值：—<br>强制流量首先经过此出口节点。 |
+| `fabric` | 类型：string；必填：否；默认值：—<br>此 VXLAN 区域用作底层网络的 SDN fabric。 |
+| `ipam` | 类型：string；必填：否；默认值：—<br>使用指定的 ipam |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `mac` | 类型：string；必填：否；默认值：—<br>任播逻辑路由器 MAC 地址。 |
+| `mtu` | 类型：integer；必填：否；默认值：—<br>区域的 MTU，将用于创建的 VNet 网桥。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `peers` | 类型：string；必填：否；默认值：—<br>属于 VXLAN 区域的对等端列表，以逗号分隔。通常为节点的 IP 地址。 |
+| `reversedns` | 类型：string；必填：否；默认值：—<br>反向 DNS API 服务器 |
+| `rt-import` | 类型：string；必填：否；默认值：—<br>应导入此区域 VRF 的 Route Target 列表。 |
+| `secondary-controllers` | 类型：array；必填：否；默认值：—<br>附加控制器。 |
+| `tag` | 类型：integer；必填：否；默认值：—<br>Service-VLAN 标签（外层 VLAN） |
+| `vlan-protocol` | 类型：string；必填：否；默认值："802.1q"<br>创建 QinQ 区域应使用的 VLAN 协议。；可选值：`802.1q`, `802.1ad` |
+| `vrf-vxlan` | 类型：integer；必填：否；默认值：—<br>区域 VRF 的 VNI。 |
+| `vxlan-port` | 类型：integer；必填：否；默认值：4789<br>VXLAN 隧道应使用的 UDP 端口（默认 4789）。 |
+| `zone` | 类型：string；必填：是；默认值：—<br>SDN 区域对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13517,19 +12101,15 @@ SDN 控制器索引。
 {"description": "仅列出您对 '/sdn/controllers/<controller>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-controllers-169ade17-get-parameters" id="api-cluster-sdn-controllers-169ade17-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `type` | string | 否 | — | 仅列出特定类型的 SDN 控制器；可选值：`bgp`, `evpn`, `faucet`, `isis` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的 SDN 控制器；可选值：`bgp`, `evpn`, `faucet`, `isis` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13613,41 +12193,33 @@ SDN 控制器索引。
 {"check": ["perm", "/sdn/controllers", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-controllers-169ade17-post-parameters" id="api-cluster-sdn-controllers-169ade17-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `asn` | integer | 否 | — | 自治系统编号 |
-| `bgp-mode` | string | 否 | "auto" | 使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。；可选值：`auto`, `external`, `internal` |
-| `bgp-multipath-as-path-relax` | boolean | 否 | — | 在多路径计算中考虑长度相等的不同 AS 路径。 |
-| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
-| `ebgp` | boolean | 否 | — | 启用 eBGP（remote-as external）。 |
-| `ebgp-multihop` | integer | 否 | — | 设置 eBGP 对等端的最大跳数。 |
-| `fabric` | string | 否 | — | 此 EVPN 控制器用作底层网络的 SDN fabric。 |
-| `isis-domain` | string | 否 | — | IS-IS 域的名称。 |
-| `isis-ifaces` | string | 否 | — | 应启用 IS-IS 的接口列表，以逗号分隔。 |
-| `isis-net` | string | 否 | — | 此节点在 IS-IS 网络中的网络实体名称。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `loopback` | string | 否 | — | 提供 Router-IP 的 loopback/dummy 接口名称。 |
-| `node` | string | 否 | — | 集群节点名称。 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `peer-group-name` | string | 否 | "VTEP" | 此 EVPN 控制器的对等组名称 |
-| `peers` | string | 否 | — | 对等端地址列表。 |
-| `route-map-in` | string | 否 | — | 应对传入路由应用的 Route Map |
-| `route-map-out` | string | 否 | — | 应对传出路由应用的 Route Map |
-| `type` | string | 是 | — | 插件类型。；可选值：`bgp`, `evpn`, `faucet`, `isis` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `asn` | 类型：integer；必填：否；默认值：—<br>自治系统编号 |
+| `bgp-mode` | 类型：string；必填：否；默认值："auto"<br>使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。；可选值：`auto`, `external`, `internal` |
+| `bgp-multipath-as-path-relax` | 类型：boolean；必填：否；默认值：—<br>在多路径计算中考虑长度相等的不同 AS 路径。 |
+| `controller` | 类型：string；必填：是；默认值：—<br>SDN 控制器对象标识符。 |
+| `ebgp` | 类型：boolean；必填：否；默认值：—<br>启用 eBGP（remote-as external）。 |
+| `ebgp-multihop` | 类型：integer；必填：否；默认值：—<br>设置 eBGP 对等端的最大跳数。 |
+| `fabric` | 类型：string；必填：否；默认值：—<br>此 EVPN 控制器用作底层网络的 SDN fabric。 |
+| `isis-domain` | 类型：string；必填：否；默认值：—<br>IS-IS 域的名称。 |
+| `isis-ifaces` | 类型：string；必填：否；默认值：—<br>应启用 IS-IS 的接口列表，以逗号分隔。 |
+| `isis-net` | 类型：string；必填：否；默认值：—<br>此节点在 IS-IS 网络中的网络实体名称。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `loopback` | 类型：string；必填：否；默认值：—<br>提供 Router-IP 的 loopback/dummy 接口名称。 |
+| `node` | 类型：string；必填：否；默认值：—<br>集群节点名称。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `peer-group-name` | 类型：string；必填：否；默认值："VTEP"<br>此 EVPN 控制器的对等组名称 |
+| `peers` | 类型：string；必填：否；默认值：—<br>对等端地址列表。 |
+| `route-map-in` | 类型：string；必填：否；默认值：—<br>应对传入路由应用的 Route Map |
+| `route-map-out` | 类型：string；必填：否；默认值：—<br>应对传出路由应用的 Route Map |
+| `type` | 类型：string；必填：是；默认值：—<br>插件类型。；可选值：`bgp`, `evpn`, `faucet`, `isis` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13718,24 +12290,16 @@ SDN 控制器索引。
 {"check": ["perm", "/sdn/controllers", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-controllers-controller-945537d7-delete-parameters" id="api-cluster-sdn-controllers-controller-945537d7-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `controller` | 类型：string；必填：是；默认值：—<br>SDN 控制器对象标识符。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13770,19 +12334,15 @@ SDN 控制器索引。
 {"check": ["perm", "/sdn/controllers/{controller}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-controllers-controller-945537d7-get-parameters" id="api-cluster-sdn-controllers-controller-945537d7-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `controller` | 类型：string；必填：是；默认值：—<br>SDN 控制器对象标识符。 |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13862,42 +12422,34 @@ SDN 控制器索引。
 {"check": ["perm", "/sdn/controllers", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-controllers-controller-945537d7-put-parameters" id="api-cluster-sdn-controllers-controller-945537d7-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `asn` | integer | 否 | — | 自治系统编号 |
-| `bgp-mode` | string | 否 | "auto" | 使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。；可选值：`auto`, `external`, `internal` |
-| `bgp-multipath-as-path-relax` | boolean | 否 | — | 在多路径计算中考虑长度相等的不同 AS 路径。 |
-| `controller` | string | 是 | — | SDN 控制器对象标识符。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `ebgp` | boolean | 否 | — | 启用 eBGP（remote-as external）。 |
-| `ebgp-multihop` | integer | 否 | — | 设置 eBGP 对等端的最大跳数。 |
-| `fabric` | string | 否 | — | 此 EVPN 控制器用作底层网络的 SDN fabric。 |
-| `isis-domain` | string | 否 | — | IS-IS 域的名称。 |
-| `isis-ifaces` | string | 否 | — | 应启用 IS-IS 的接口列表，以逗号分隔。 |
-| `isis-net` | string | 否 | — | 此节点在 IS-IS 网络中的网络实体名称。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `loopback` | string | 否 | — | 提供 Router-IP 的 loopback/dummy 接口名称。 |
-| `node` | string | 否 | — | 集群节点名称。 |
-| `nodes` | string | 否 | — | 集群节点名称列表。 |
-| `peer-group-name` | string | 否 | "VTEP" | 此 EVPN 控制器的对等组名称 |
-| `peers` | string | 否 | — | 对等端地址列表。 |
-| `route-map-in` | string | 否 | — | 应对传入路由应用的 Route Map |
-| `route-map-out` | string | 否 | — | 应对传出路由应用的 Route Map |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `asn` | 类型：integer；必填：否；默认值：—<br>自治系统编号 |
+| `bgp-mode` | 类型：string；必填：否；默认值："auto"<br>使用 eBGP 还是 iBGP。自动模式根据 BGP 控制器选择，否则回退到 iBGP。；可选值：`auto`, `external`, `internal` |
+| `bgp-multipath-as-path-relax` | 类型：boolean；必填：否；默认值：—<br>在多路径计算中考虑长度相等的不同 AS 路径。 |
+| `controller` | 类型：string；必填：是；默认值：—<br>SDN 控制器对象标识符。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `ebgp` | 类型：boolean；必填：否；默认值：—<br>启用 eBGP（remote-as external）。 |
+| `ebgp-multihop` | 类型：integer；必填：否；默认值：—<br>设置 eBGP 对等端的最大跳数。 |
+| `fabric` | 类型：string；必填：否；默认值：—<br>此 EVPN 控制器用作底层网络的 SDN fabric。 |
+| `isis-domain` | 类型：string；必填：否；默认值：—<br>IS-IS 域的名称。 |
+| `isis-ifaces` | 类型：string；必填：否；默认值：—<br>应启用 IS-IS 的接口列表，以逗号分隔。 |
+| `isis-net` | 类型：string；必填：否；默认值：—<br>此节点在 IS-IS 网络中的网络实体名称。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `loopback` | 类型：string；必填：否；默认值：—<br>提供 Router-IP 的 loopback/dummy 接口名称。 |
+| `node` | 类型：string；必填：否；默认值：—<br>集群节点名称。 |
+| `nodes` | 类型：string；必填：否；默认值：—<br>集群节点名称列表。 |
+| `peer-group-name` | 类型：string；必填：否；默认值："VTEP"<br>此 EVPN 控制器的对等组名称 |
+| `peers` | 类型：string；必填：否；默认值：—<br>对等端地址列表。 |
+| `route-map-in` | 类型：string；必填：否；默认值：—<br>应对传入路由应用的 Route Map |
+| `route-map-out` | 类型：string；必填：否；默认值：—<br>应对传出路由应用的 Route Map |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -13972,17 +12524,13 @@ SDN ipam 索引。
 {"description": "仅列出您对 '/sdn/ipams/<ipam>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-8dacb8c6-get-parameters" id="api-cluster-sdn-ipams-8dacb8c6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出特定类型的 SDN ipam；可选值：`netbox`, `phpipam`, `pve` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的 SDN ipam；可选值：`netbox`, `phpipam`, `pve` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14017,29 +12565,21 @@ SDN ipam 索引。
 {"check": ["perm", "/sdn/ipams", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-8dacb8c6-post-parameters" id="api-cluster-sdn-ipams-8dacb8c6-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `section` | integer | 否 | — |  |
-| `token` | string | 否 | — |  |
-| `type` | string | 是 | — | 插件类型。；可选值：`netbox`, `phpipam`, `pve` |
-| `url` | string | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `ipam` | 类型：string；必填：是；默认值：—<br>SDN ipam 对象标识符。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `section` | 类型：integer；必填：否；默认值：—<br> |
+| `token` | 类型：string；必填：否；默认值：—<br> |
+| `type` | 类型：string；必填：是；默认值：—<br>插件类型。；可选值：`netbox`, `phpipam`, `pve` |
+| `url` | 类型：string；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14085,24 +12625,16 @@ SDN ipam 索引。
 {"check": ["perm", "/sdn/ipams", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-delete-parameters" id="api-cluster-sdn-ipams-ipam-57c7d4f6-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ipam` | 类型：string；必填：是；默认值：—<br>SDN ipam 对象标识符。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14137,17 +12669,13 @@ SDN ipam 索引。
 {"check": ["perm", "/sdn/ipams/{ipam}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-get-parameters" id="api-cluster-sdn-ipams-ipam-57c7d4f6-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ipam` | 类型：string；必填：是；默认值：—<br>SDN ipam 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14179,30 +12707,22 @@ SDN ipam 索引。
 {"check": ["perm", "/sdn/ipams", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-put-parameters" id="api-cluster-sdn-ipams-ipam-57c7d4f6-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `section` | integer | 否 | — |  |
-| `token` | string | 否 | — |  |
-| `url` | string | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `ipam` | 类型：string；必填：是；默认值：—<br>SDN ipam 对象标识符。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `section` | 类型：integer；必填：否；默认值：—<br> |
+| `token` | 类型：string；必填：否；默认值：—<br> |
+| `url` | 类型：string；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14252,23 +12772,15 @@ SDN ipam 索引。
 {"description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-ipams-ipam-status-5f7a96e8-get-parameters" id="api-cluster-sdn-ipams-ipam-status-5f7a96e8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `ipam` | string | 是 | — | SDN ipam 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `ipam` | 类型：string；必填：是；默认值：—<br>SDN ipam 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14306,17 +12818,13 @@ SDN DNS 索引。
 {"description": "仅列出您对 '/sdn/dns/<dns>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-dns-205d876c-get-parameters" id="api-cluster-sdn-dns-205d876c-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 仅列出特定类型的 SDN DNS；可选值：`powerdns` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>仅列出特定类型的 SDN DNS；可选值：`powerdns` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14348,31 +12856,23 @@ SDN DNS 索引。
 {"check": ["perm", "/sdn/dns", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-dns-205d876c-post-parameters" id="api-cluster-sdn-dns-205d876c-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dns` | string | 是 | — | SDN DNS 对象标识符。 |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `key` | string | 是 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `reversemaskv6` | integer | 否 | — |  |
-| `reversev6mask` | integer | 否 | — |  |
-| `ttl` | integer | 否 | — |  |
-| `type` | string | 是 | — | 插件类型。；可选值：`powerdns` |
-| `url` | string | 是 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dns` | 类型：string；必填：是；默认值：—<br>SDN DNS 对象标识符。 |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `key` | 类型：string；必填：是；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `reversemaskv6` | 类型：integer；必填：否；默认值：—<br> |
+| `reversev6mask` | 类型：integer；必填：否；默认值：—<br> |
+| `ttl` | 类型：integer；必填：否；默认值：—<br> |
+| `type` | 类型：string；必填：是；默认值：—<br>插件类型。；可选值：`powerdns` |
+| `url` | 类型：string；必填：是；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14420,24 +12920,16 @@ SDN DNS 索引。
 {"check": ["perm", "/sdn/dns", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-dns-dns-4dd13de3-delete-parameters" id="api-cluster-sdn-dns-dns-4dd13de3-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dns` | string | 是 | — | SDN DNS 对象标识符。 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dns` | 类型：string；必填：是；默认值：—<br>SDN DNS 对象标识符。 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14472,17 +12964,13 @@ SDN DNS 索引。
 {"check": ["perm", "/sdn/dns/{dns}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-dns-dns-4dd13de3-get-parameters" id="api-cluster-sdn-dns-dns-4dd13de3-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `dns` | string | 是 | — | SDN DNS 对象标识符。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `dns` | 类型：string；必填：是；默认值：—<br>SDN DNS 对象标识符。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14514,31 +13002,23 @@ SDN DNS 索引。
 {"check": ["perm", "/sdn/dns", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-dns-dns-4dd13de3-put-parameters" id="api-cluster-sdn-dns-dns-4dd13de3-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `dns` | string | 是 | — | SDN DNS 对象标识符。 |
-| `fingerprint` | string | 否 | — | 证书 SHA 256 指纹。 |
-| `key` | string | 否 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `reversemaskv6` | integer | 否 | — |  |
-| `ttl` | integer | 否 | — |  |
-| `url` | string | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `dns` | 类型：string；必填：是；默认值：—<br>SDN DNS 对象标识符。 |
+| `fingerprint` | 类型：string；必填：否；默认值：—<br>证书 SHA 256 指纹。 |
+| `key` | 类型：string；必填：否；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `reversemaskv6` | 类型：integer；必填：否；默认值：—<br> |
+| `ttl` | 类型：integer；必填：否；默认值：—<br> |
+| `url` | 类型：string；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14589,11 +13069,7 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-49112f80-get-parameters" id="api-cluster-sdn-fabrics-49112f80-get-parameters"></a>
 
@@ -14623,18 +13099,14 @@ SDN Fabric 索引
 {"description": "仅列出您对 '/sdn/fabrics/<fabric>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-fabric-9f29add0-get-parameters" id="api-cluster-sdn-fabrics-fabric-9f29add0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14735,34 +13207,26 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-fabric-9f29add0-post-parameters" id="api-cluster-sdn-fabrics-fabric-9f29add0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `area` | string | 否 | — | OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。 |
-| `csnp_interval` | number | 否 | — | Openfabric 的 csnp_interval 属性 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `hello_interval` | number | 否 | — | Openfabric 的 hello_interval 属性 |
-| `id` | string | 是 | — | SDN fabric 的标识符 |
-| `ip6_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
-| `ip_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `persistent_keepalive` | number | 否 | — | 发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用 |
-| `protocol` | string | 是 | — | SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
-| `redistribute` | array | 是 | — |  |
-| `route_filter` | string | 否 | — | 用于过滤将安装到内核路由表中的路由的前缀列表 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `area` | 类型：string；必填：否；默认值：—<br>OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。 |
+| `csnp_interval` | 类型：number；必填：否；默认值：—<br>Openfabric 的 csnp_interval 属性 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `hello_interval` | 类型：number；必填：否；默认值：—<br>Openfabric 的 hello_interval 属性 |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `ip6_prefix` | 类型：string；必填：否；默认值：—<br>节点 IP 的 IP 前缀 |
+| `ip_prefix` | 类型：string；必填：否；默认值：—<br>节点 IP 的 IP 前缀 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `persistent_keepalive` | 类型：number；必填：否；默认值：—<br>发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用 |
+| `protocol` | 类型：string；必填：是；默认值：—<br>SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
+| `redistribute` | 类型：array；必填：是；默认值：—<br> |
+| `route_filter` | 类型：string；必填：否；默认值：—<br>用于过滤将安装到内核路由表中的路由的前缀列表 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14860,23 +13324,15 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-delete-parameters" id="api-cluster-sdn-fabrics-fabric-id-d3231122-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN fabric 的标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -14912,17 +13368,13 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics/{id}", ["SDN.Audit", "SDN.Allocate"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-get-parameters" id="api-cluster-sdn-fabrics-fabric-id-d3231122-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN fabric 的标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15018,35 +13470,27 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-put-parameters" id="api-cluster-sdn-fabrics-fabric-id-d3231122-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `area` | string | 否 | — | OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。 |
-| `csnp_interval` | number | 否 | — | Openfabric 的 csnp_interval 属性 |
-| `delete` | array | 是 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `hello_interval` | number | 否 | — | Openfabric 的 hello_interval 属性 |
-| `id` | string | 是 | — | SDN fabric 的标识符 |
-| `ip6_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
-| `ip_prefix` | string | 否 | — | 节点 IP 的 IP 前缀 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `persistent_keepalive` | number | 否 | — | 发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用 |
-| `protocol` | string | 是 | — | SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
-| `redistribute` | array | 是 | — |  |
-| `route_filter` | string | 否 | — | 用于过滤将安装到内核路由表中的路由的前缀列表 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `area` | 类型：string；必填：否；默认值：—<br>OSPF 区域。可以是 IPv4 地址或 32 位数字。在 rust 中验证。 |
+| `csnp_interval` | 类型：number；必填：否；默认值：—<br>Openfabric 的 csnp_interval 属性 |
+| `delete` | 类型：array；必填：是；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `hello_interval` | 类型：number；必填：否；默认值：—<br>Openfabric 的 hello_interval 属性 |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `ip6_prefix` | 类型：string；必填：否；默认值：—<br>节点 IP 的 IP 前缀 |
+| `ip_prefix` | 类型：string；必填：否；默认值：—<br>节点 IP 的 IP 前缀 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `persistent_keepalive` | 类型：number；必填：否；默认值：—<br>发送经过身份验证的空数据包给对等端的间隔，单位为秒，范围为 1 到 65535（含边界），用于持续保持有状态防火墙或 NAT 映射有效。例如，如果接口很少发送流量，但可能随时接收其他节点的流量，并且位于 NAT 后方，则设置 25 秒的持久保活间隔可能有帮助。未设置或设为 0 时禁用 |
+| `protocol` | 类型：string；必填：是；默认值：—<br>SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
+| `redistribute` | 类型：array；必填：是；默认值：—<br> |
+| `route_filter` | 类型：string；必填：否；默认值：—<br>用于过滤将安装到内核路由表中的路由的前缀列表 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15163,18 +13607,14 @@ SDN Fabric 索引
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-a9fc4070-get-parameters" id="api-cluster-sdn-fabrics-node-a9fc4070-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15297,19 +13737,15 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/fabrics/{fabric_id}", ["SDN.Audit"]], "description": "仅返回您具有 'Sys.Audit' 或 'Sys.Modify' 权限的节点。"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-get-parameters" id="api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric_id` | string | 是 | — | SDN fabric 的标识符 |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15430,35 +13866,27 @@ SDN Fabric 索引
 {"check": ["and", ["perm", "/sdn/fabrics/{fabric_id}", ["SDN.Allocate"]], ["perm", "/nodes/{node_id}", ["Sys.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-post-parameters" id="api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `allowed_ips` | array | 否 | — | WireGuard fabric 中可经由此节点路由的 IP 列表。 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `endpoint` | string | 否 | — | 用于连接此节点的端点。 |
-| `fabric_id` | string | 是 | — | SDN fabric 的标识符 |
-| `interfaces` | array | 是 | — |  |
-| `ip` | string | 否 | — | 此节点的 IPv4 地址 |
-| `ip6` | string | 否 | — | 此节点的 IPv6 地址 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `node_id` | string | 是 | — | SDN fabric 中节点的标识符 |
-| `peers` | array | 否 | — |  |
-| `protocol` | string | 是 | — | SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
-| `public_key` | string | 否 | — | 外部节点的公钥。 |
-| `role` | string | 否 | — | 此节点在 WireGuard fabric 中的角色。；可选值：`internal`, `external` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `allowed_ips` | 类型：array；必填：否；默认值：—<br>WireGuard fabric 中可经由此节点路由的 IP 列表。 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `endpoint` | 类型：string；必填：否；默认值：—<br>用于连接此节点的端点。 |
+| `fabric_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `interfaces` | 类型：array；必填：是；默认值：—<br> |
+| `ip` | 类型：string；必填：否；默认值：—<br>此节点的 IPv4 地址 |
+| `ip6` | 类型：string；必填：否；默认值：—<br>此节点的 IPv6 地址 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `node_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 中节点的标识符 |
+| `peers` | 类型：array；必填：否；默认值：—<br> |
+| `protocol` | 类型：string；必填：是；默认值：—<br>SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
+| `public_key` | 类型：string；必填：否；默认值：—<br>外部节点的公钥。 |
+| `role` | 类型：string；必填：否；默认值：—<br>此节点在 WireGuard fabric 中的角色。；可选值：`internal`, `external` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15580,24 +14008,16 @@ SDN Fabric 索引
 {"check": ["and", ["perm", "/sdn/fabrics/{fabric_id}", ["SDN.Allocate"]], ["perm", "/nodes/{node_id}", ["Sys.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-delete-parameters" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric_id` | string | 是 | — | SDN fabric 的标识符 |
-| `node_id` | string | 是 | — | SDN fabric 中节点的标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 中节点的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15638,18 +14058,14 @@ SDN Fabric 索引
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-get-parameters" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `fabric_id` | string | 是 | — | SDN fabric 的标识符 |
-| `node_id` | string | 是 | — | SDN fabric 中节点的标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `fabric_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `node_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 中节点的标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15765,36 +14181,28 @@ SDN Fabric 索引
 {"check": ["and", ["perm", "/sdn/fabrics/{fabric_id}", ["SDN.Allocate"]], ["perm", "/nodes/{node_id}", ["Sys.Modify"]]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-put-parameters" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `allowed_ips` | array | 否 | — | WireGuard fabric 中可经由此节点路由的 IP 列表。 |
-| `delete` | array | 是 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `endpoint` | string | 否 | — | 用于连接此节点的端点。 |
-| `fabric_id` | string | 是 | — | SDN fabric 的标识符 |
-| `interfaces` | array | 是 | — |  |
-| `ip` | string | 否 | — | 此节点的 IPv4 地址 |
-| `ip6` | string | 否 | — | 此节点的 IPv6 地址 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `node_id` | string | 是 | — | SDN fabric 中节点的标识符 |
-| `peers` | array | 否 | — |  |
-| `protocol` | string | 是 | — | SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
-| `public_key` | string | 否 | — | 外部节点的公钥。 |
-| `role` | string | 否 | — | 此节点在 WireGuard fabric 中的角色。；可选值：`internal`, `external` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `allowed_ips` | 类型：array；必填：否；默认值：—<br>WireGuard fabric 中可经由此节点路由的 IP 列表。 |
+| `delete` | 类型：array；必填：是；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `endpoint` | 类型：string；必填：否；默认值：—<br>用于连接此节点的端点。 |
+| `fabric_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 的标识符 |
+| `interfaces` | 类型：array；必填：是；默认值：—<br> |
+| `ip` | 类型：string；必填：否；默认值：—<br>此节点的 IPv4 地址 |
+| `ip6` | 类型：string；必填：否；默认值：—<br>此节点的 IPv6 地址 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `node_id` | 类型：string；必填：是；默认值：—<br>SDN fabric 中节点的标识符 |
+| `peers` | 类型：array；必填：否；默认值：—<br> |
+| `protocol` | 类型：string；必填：是；默认值：—<br>SDN Fabric 配置节中配置条目的类型；可选值：`openfabric`, `ospf`, `wireguard`, `bgp` |
+| `public_key` | 类型：string；必填：否；默认值：—<br>外部节点的公钥。 |
+| `role` | 类型：string；必填：否；默认值：—<br>此节点在 WireGuard fabric 中的角色。；可选值：`internal`, `external` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -15930,18 +14338,14 @@ SDN Fabric 索引
 }
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-fabrics-all-c756e6c1-get-parameters" id="api-cluster-sdn-fabrics-all-c756e6c1-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16137,19 +14541,15 @@ SDN Fabric 索引
 {"description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的前缀列表条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-13d00bf0-get-parameters" id="api-cluster-sdn-prefix-lists-13d00bf0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
-| `verbose` | boolean | 否 | — | 如果为 0，则仅返回 id；否则返回所有属性。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
+| `verbose` | 类型：boolean；必填：否；默认值：—<br>如果为 0，则仅返回 id；否则返回所有属性。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16184,26 +14584,18 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-13d00bf0-post-parameters" id="api-cluster-sdn-prefix-lists-13d00bf0-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `entries` | array | 否 | — |  |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `entries` | 类型：array；必填：否；默认值：—<br> |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16258,24 +14650,16 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-delete-parameters" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16309,17 +14693,13 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-get-parameters" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16348,27 +14728,19 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-put-parameters" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `delete` | array | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `entries` | array | 否 | — |  |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `delete` | 类型：array；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `entries` | 类型：array；必填：否；默认值：—<br> |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16424,17 +14796,13 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-entries-91d4d496-get-parameters" id="api-cluster-sdn-prefix-lists-id-entries-91d4d496-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16463,29 +14831,21 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-entries-91d4d496-post-parameters" id="api-cluster-sdn-prefix-lists-id-entries-91d4d496-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | ；可选值：`permit`, `deny` |
-| `ge` | integer | 否 | — |  |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
-| `le` | integer | 否 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `prefix` | string | 是 | — |  |
-| `seq` | integer | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>；可选值：`permit`, `deny` |
+| `ge` | 类型：integer；必填：否；默认值：—<br> |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
+| `le` | 类型：integer；必填：否；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `prefix` | 类型：string；必填：是；默认值：—<br> |
+| `seq` | 类型：integer；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16530,24 +14890,16 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-delete-parameters" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16581,17 +14933,13 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Audit"]]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-get-parameters" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | SDN 前缀列表标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `id` | 类型：string；必填：是；默认值：—<br>SDN 前缀列表标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16620,30 +14968,22 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/prefix-lists/{id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-put-parameters" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | ；可选值：`permit`, `deny` |
-| `delete` | array | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `ge` | integer | 否 | — |  |
-| `le` | integer | 否 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `prefix` | string | 否 | — |  |
-| `seq` | integer | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>；可选值：`permit`, `deny` |
+| `delete` | 类型：array；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `ge` | 类型：integer；必填：否；默认值：—<br> |
+| `le` | 类型：integer；必填：否；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `prefix` | 类型：string；必填：否；默认值：—<br> |
+| `seq` | 类型：integer；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16692,17 +15032,13 @@ SDN Fabric 索引
 {"description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-97fc73e0-get-parameters" id="api-cluster-sdn-route-maps-97fc73e0-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16740,18 +15076,14 @@ SDN Fabric 索引
 {"description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射条目。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-f6225287-get-parameters" id="api-cluster-sdn-route-maps-entries-f6225287-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16836,31 +15168,23 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/route-maps", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-f6225287-post-parameters" id="api-cluster-sdn-route-maps-entries-f6225287-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 是 | — | 路由映射条目的匹配策略。；可选值：`permit`, `deny` |
-| `call` | string | 否 | — | SDN 路由映射标识符 |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `exit-action` | string | 否 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `match` | array | 否 | — |  |
-| `order` | integer | 是 | — | 此路由映射条目的索引 |
-| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
-| `set` | array | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：是；默认值：—<br>路由映射条目的匹配策略。；可选值：`permit`, `deny` |
+| `call` | 类型：string；必填：否；默认值：—<br>SDN 路由映射标识符 |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `exit-action` | 类型：string；必填：否；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `match` | 类型：array；必填：否；默认值：—<br> |
+| `order` | 类型：integer；必填：是；默认值：—<br>此路由映射条目的索引 |
+| `route-map-id` | 类型：string；必填：是；默认值：—<br>SDN 路由映射标识符 |
+| `set` | 类型：array；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -16946,19 +15270,15 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/route-maps/{route-map-id}", ["SDN.Audit", "SDN.Allocate"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-44340de7-get-parameters" id="api-cluster-sdn-route-maps-entries-route-map-id-44340de7-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `pending` | boolean | 否 | — | 显示待应用的配置。 |
-| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
-| `running` | boolean | 否 | — | 显示运行中的配置。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `pending` | 类型：boolean；必填：否；默认值：—<br>显示待应用的配置。 |
+| `route-map-id` | 类型：string；必填：是；默认值：—<br>SDN 路由映射标识符 |
+| `running` | 类型：boolean；必填：否；默认值：—<br>显示运行中的配置。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17050,25 +15370,17 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/route-maps/{route-map-id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-delete-parameters" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `order` | integer | 是 | — | 此路由映射条目的索引 |
-| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `order` | 类型：integer；必填：是；默认值：—<br>此路由映射条目的索引 |
+| `route-map-id` | 类型：string；必填：是；默认值：—<br>SDN 路由映射标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17103,18 +15415,14 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/route-maps/{route-map-id}", ["SDN.Audit", "SDN.Allocate"], "any", 1]}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-get-parameters" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `order` | integer | 是 | — | 此路由映射条目的索引 |
-| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `order` | 类型：integer；必填：是；默认值：—<br>此路由映射条目的索引 |
+| `route-map-id` | 类型：string；必填：是；默认值：—<br>SDN 路由映射标识符 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17196,32 +15504,24 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn/route-maps/{route-map-id}", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-put-parameters" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `action` | string | 否 | — | 路由映射条目的匹配策略。；可选值：`permit`, `deny` |
-| `call` | string | 否 | — | SDN 路由映射标识符 |
-| `delete` | array | 否 | — |  |
-| `digest` | string | 否 | — | 如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
-| `exit-action` | string | 否 | — |  |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `match` | array | 否 | — |  |
-| `order` | integer | 是 | — | 此路由映射条目的索引 |
-| `route-map-id` | string | 是 | — | SDN 路由映射标识符 |
-| `set` | array | 否 | — |  |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `action` | 类型：string；必填：否；默认值：—<br>路由映射条目的匹配策略。；可选值：`permit`, `deny` |
+| `call` | 类型：string；必填：否；默认值：—<br>SDN 路由映射标识符 |
+| `delete` | 类型：array；必填：否；默认值：—<br> |
+| `digest` | 类型：string；必填：否；默认值：—<br>如果当前配置文件具有不同的摘要，则阻止更改。这可用于防止并发修改。 |
+| `exit-action` | 类型：string；必填：否；默认值：—<br> |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `match` | 类型：array；必填：否；默认值：—<br> |
+| `order` | 类型：integer；必填：是；默认值：—<br>此路由映射条目的索引 |
+| `route-map-id` | 类型：string；必填：是；默认值：—<br>SDN 路由映射标识符 |
+| `set` | 类型：array；必填：否；默认值：—<br> |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17308,24 +15608,16 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-lock-64a794f1-delete-parameters" id="api-cluster-sdn-lock-64a794f1-delete-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `force` | boolean | 否 | 0 | 如果为 true，则允许在未提供令牌的情况下释放锁 |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `force` | 类型：boolean；必填：否；默认值：0<br>如果为 true，则允许在未提供令牌的情况下释放锁 |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17360,23 +15652,15 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-lock-64a794f1-post-parameters" id="api-cluster-sdn-lock-64a794f1-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `allow-pending` | boolean | 否 | 0 | 如果为 true，则即使有待应用的更改，也允许获取锁 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `allow-pending` | 类型：boolean；必填：否；默认值：0<br>如果为 true，则即使有待应用的更改，也允许获取锁 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17416,24 +15700,16 @@ SDN Fabric 索引
 {"check": ["perm", "/sdn", ["SDN.Allocate"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-sdn-rollback-c78eeaa9-post-parameters" id="api-cluster-sdn-rollback-c78eeaa9-post-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `lock-token` | string | 否 | — | 用于解锁全局 SDN 配置的令牌 |
-| `release-lock` | boolean | 否 | 1 | 提供 lock-token 且配置成功回滚后，自动释放锁 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `lock-token` | 类型：string；必填：否；默认值：—<br>用于解锁全局 SDN 配置的令牌 |
+| `release-lock` | 类型：boolean；必填：否；默认值：1<br>提供 lock-token 且配置成功回滚后，自动释放锁 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17474,29 +15750,17 @@ SDN Fabric 索引
 {"check": ["perm", "/nodes/{node}", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
+**受保护接口：** `1`
 
-**受保护接口**
-
-```text
-1
-```
-
-**代理目标**
-
-```text
-"node"
-```
+**代理目标：** `"node"`
 
 #### 请求参数 <a href="#api-cluster-sdn-dry-run-4c0d2322-get-parameters" id="api-cluster-sdn-dry-run-4c0d2322-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `node` | string | 是 | — | 集群节点名称。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `node` | 类型：string；必填：是；默认值：—<br>集群节点名称。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17537,17 +15801,13 @@ SDN Fabric 索引
 {"description": "用户需要对 '/' 具有 'Sys.Syslog' 权限，才能获取所有日志。", "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-log-8cac6725-get-parameters" id="api-cluster-log-8cac6725-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `max` | integer | 否 | — | 最大条目数。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `max` | 类型：integer；必填：否；默认值：—<br>最大条目数。 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17585,17 +15845,13 @@ SDN Fabric 索引
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-resources-ec05b307-get-parameters" id="api-cluster-resources-ec05b307-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `type` | string | 否 | — | 资源类型。；可选值：`vm`, `storage`, `node`, `sdn` |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `type` | 类型：string；必填：否；默认值：—<br>资源类型。；可选值：`vm`, `storage`, `node`, `sdn` |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -17698,11 +15954,7 @@ SDN Fabric 索引
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-tasks-9bc8e199-get-parameters" id="api-cluster-tasks-9bc8e199-get-parameters"></a>
 
@@ -17732,11 +15984,7 @@ SDN Fabric 索引
 {"check": ["perm", "/", ["Sys.Audit"]], "user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-options-096be758-get-parameters" id="api-cluster-options-096be758-get-parameters"></a>
 
@@ -17986,47 +16234,39 @@ SDN Fabric 索引
 {"check": ["perm", "/", ["Sys.Modify"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-options-096be758-put-parameters" id="api-cluster-options-096be758-put-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `bwlimit` | string | 否 | — | 为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
-| `consent-text` | string | 否 | — | 登录前显示的同意文本。 |
-| `console` | string | 否 | — | 选择默认控制台查看器。可以使用内置 java applet（VNC；已弃用，会映射到 html5）、与外部 virt-viewer 兼容的应用程序（SPICE）、基于 HTML5 的 VNC 查看器（noVNC），或基于 HTML5 的控制台客户端（xtermjs）。如果所选查看器不可用（例如虚拟机未启用 SPICE），则回退到 noVNC。；可选值：`applet`, `vv`, `html5`, `xtermjs` |
-| `crs` | string | 否 | — | 集群资源调度设置。 |
-| `delete` | string | 否 | — | 要删除的设置列表。 |
-| `description` | string | 否 | — | 数据中心描述。显示在 Web 界面的数据中心备注面板中。作为注释保存在配置文件中。 |
-| `email_from` | string | 否 | — | 指定发送通知所用的电子邮件发件地址（默认为 root@$hostname） |
-| `fencing` | string | 否 | "watchdog" | 设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中正确配置隔离设备。both 模式同时使用这两种模式。<br><br>警告：'hardware' 和 'both' 均为实验性功能，仍在开发中；可选值：`watchdog`, `hardware`, `both` |
-| `ha` | string | 否 | — | 集群范围的 HA 设置。 |
-| `http_proxy` | string | 否 | — | 指定用于下载的外部 HTTP 代理（例如：'http://username:password@host:port/') |
-| `keyboard` | string | 否 | — | VNC 服务器的默认键盘布局。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
-| `language` | string | 否 | — | 默认 GUI 语言。；可选值：`ar`, `ca`, `da`, `de`, `en`, `es`, `eu`, `fa`, `fr`, `hr`, `he`, `it`, `ja`, `ka`, `kr`, `nb`, `nl`, `nn`, `pl`, `pt_BR`, `ru`, `sl`, `sv`, `tr`, `ukr`, `zh_CN`, `zh_TW` |
-| `location` | string | 否 | — | 集群位置。 |
-| `mac_prefix` | string | 否 | "BC:24:11" | 虚拟客户机自动生成的 MAC 地址前缀。默认值 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），对应大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT/地址伪装后方）。<br> <br>请注意，当运行多个客户机网络部分或全部共享的集群时，强烈建议扩展默认 MAC 前缀，或生成自定义的有效前缀，以减少 MAC 冲突概率。例如，为每个集群在 Proxmox OUI 后添加不同的额外十六进制位，如第一个集群使用 `BC:24:11:0`，第二个使用 `BC:24:11:1`，依此类推。<br> 也可以在逻辑上分隔客户机网络，例如使用 VLAN。<br><br>对于可公开访问的客户机，建议向 IEEE 注册自己的 https://standards.ieee.org/products-programs/regauth/[OUI]，或与您自身或托管服务提供商的网络管理员协调。 |
-| `max_workers` | integer | 否 | — | 定义执行 'stopall VMs' 等操作或 HA 管理器任务时，每个节点最多启动的工作任务数  。 |
-| `migration` | string | 否 | — | 用于集群范围的迁移设置。 |
-| `migration_unsecure` | boolean | 否 | — | 默认使用 SSH 隧道保障迁移安全。在安全的私有网络上，可禁用此功能以加快迁移。已弃用，请改用 'migration' 属性！ |
-| `next-id` | string | 否 | — | 控制空闲 VMID 自动选择池的范围。 |
-| `notify` | string | 否 | — | 集群范围的通知设置。 |
-| `registered-tags` | string | 否 | — | 设置和删除时需要对 '/' 具有 `Sys.Modify` 权限的标签列表。此处设置且同时位于 'user-tag-access' 中的标签也需要 `Sys.Modify`。 |
-| `replication` | string | 否 | — | 用于集群范围的复制设置。 |
-| `tag-style` | string | 否 | — | 标签样式选项。 |
-| `u2f` | string | 否 | — | u2f |
-| `user-tag-access` | string | 否 | — | 用户可设置标签的权限选项 |
-| `webauthn` | string | 否 | — | webauthn 配置 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `bwlimit` | 类型：string；必填：否；默认值：—<br>为各类操作设置 I/O 带宽限制（单位为 KiB/s）。 |
+| `consent-text` | 类型：string；必填：否；默认值：—<br>登录前显示的同意文本。 |
+| `console` | 类型：string；必填：否；默认值：—<br>选择默认控制台查看器。可以使用内置 java applet（VNC；已弃用，会映射到 html5）、与外部 virt-viewer 兼容的应用程序（SPICE）、基于 HTML5 的 VNC 查看器（noVNC），或基于 HTML5 的控制台客户端（xtermjs）。如果所选查看器不可用（例如虚拟机未启用 SPICE），则回退到 noVNC。；可选值：`applet`, `vv`, `html5`, `xtermjs` |
+| `crs` | 类型：string；必填：否；默认值：—<br>集群资源调度设置。 |
+| `delete` | 类型：string；必填：否；默认值：—<br>要删除的设置列表。 |
+| `description` | 类型：string；必填：否；默认值：—<br>数据中心描述。显示在 Web 界面的数据中心备注面板中。作为注释保存在配置文件中。 |
+| `email_from` | 类型：string；必填：否；默认值：—<br>指定发送通知所用的电子邮件发件地址（默认为 root@$hostname） |
+| `fencing` | 类型：string；必填：否；默认值："watchdog"<br>设置 HA 集群的隔离模式。硬件模式需要在 /etc/pve/ha/fence.cfg. 中正确配置隔离设备。both 模式同时使用这两种模式。<br><br>警告：'hardware' 和 'both' 均为实验性功能，仍在开发中；可选值：`watchdog`, `hardware`, `both` |
+| `ha` | 类型：string；必填：否；默认值：—<br>集群范围的 HA 设置。 |
+| `http_proxy` | 类型：string；必填：否；默认值：—<br>指定用于下载的外部 HTTP 代理（例如：'http://username:password@host:port/') |
+| `keyboard` | 类型：string；必填：否；默认值：—<br>VNC 服务器的默认键盘布局。；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |
+| `language` | 类型：string；必填：否；默认值：—<br>默认 GUI 语言。；可选值：`ar`, `ca`, `da`, `de`, `en`, `es`, `eu`, `fa`, `fr`, `hr`, `he`, `it`, `ja`, `ka`, `kr`, `nb`, `nl`, `nn`, `pl`, `pt_BR`, `ru`, `sl`, `sv`, `tr`, `ukr`, `zh_CN`, `zh_TW` |
+| `location` | 类型：string；必填：否；默认值：—<br>集群位置。 |
+| `mac_prefix` | 类型：string；必填：否；默认值："BC:24:11"<br>虚拟客户机自动生成的 MAC 地址前缀。默认值 `BC:24:11` 是 IEEE 分配给 Proxmox Server Solutions GmbH 的组织唯一标识符（OUI），对应大型 MAC 地址块（MA-L）。您可以在本地网络中使用它，即公众无法直接访问的网络（例如 LAN 内或 NAT/地址伪装后方）。<br> <br>请注意，当运行多个客户机网络部分或全部共享的集群时，强烈建议扩展默认 MAC 前缀，或生成自定义的有效前缀，以减少 MAC 冲突概率。例如，为每个集群在 Proxmox OUI 后添加不同的额外十六进制位，如第一个集群使用 `BC:24:11:0`，第二个使用 `BC:24:11:1`，依此类推。<br> 也可以在逻辑上分隔客户机网络，例如使用 VLAN。<br><br>对于可公开访问的客户机，建议向 IEEE 注册自己的 https://standards.ieee.org/products-programs/regauth/[OUI]，或与您自身或托管服务提供商的网络管理员协调。 |
+| `max_workers` | 类型：integer；必填：否；默认值：—<br>定义执行 'stopall VMs' 等操作或 HA 管理器任务时，每个节点最多启动的工作任务数  。 |
+| `migration` | 类型：string；必填：否；默认值：—<br>用于集群范围的迁移设置。 |
+| `migration_unsecure` | 类型：boolean；必填：否；默认值：—<br>默认使用 SSH 隧道保障迁移安全。在安全的私有网络上，可禁用此功能以加快迁移。已弃用，请改用 'migration' 属性！ |
+| `next-id` | 类型：string；必填：否；默认值：—<br>控制空闲 VMID 自动选择池的范围。 |
+| `notify` | 类型：string；必填：否；默认值：—<br>集群范围的通知设置。 |
+| `registered-tags` | 类型：string；必填：否；默认值：—<br>设置和删除时需要对 '/' 具有 `Sys.Modify` 权限的标签列表。此处设置且同时位于 'user-tag-access' 中的标签也需要 `Sys.Modify`。 |
+| `replication` | 类型：string；必填：否；默认值：—<br>用于集群范围的复制设置。 |
+| `tag-style` | 类型：string；必填：否；默认值：—<br>标签样式选项。 |
+| `u2f` | 类型：string；必填：否；默认值：—<br>u2f |
+| `user-tag-access` | 类型：string；必填：否；默认值：—<br>用户可设置标签的权限选项 |
+| `webauthn` | 类型：string；必填：否；默认值：—<br>webauthn 配置 |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -18298,17 +16538,9 @@ SDN Fabric 索引
 {"check": ["perm", "/", ["Sys.Audit"]]}
 ```
 
-**允许 API 令牌**
+**允许 API 令牌：** `1`
 
-```text
-1
-```
-
-**受保护接口**
-
-```text
-1
-```
+**受保护接口：** `1`
 
 #### 请求参数 <a href="#api-cluster-status-46dab962-get-parameters" id="api-cluster-status-46dab962-get-parameters"></a>
 
@@ -18358,17 +16590,13 @@ SDN Fabric 索引
 {"user": "all"}
 ```
 
-**允许 API 令牌**
-
-```text
-1
-```
+**允许 API 令牌：** `1`
 
 #### 请求参数 <a href="#api-cluster-nextid-f730d537-get-parameters" id="api-cluster-nextid-f730d537-get-parameters"></a>
 
-| 参数 | 类型 | 必填 | 默认值 | 说明 |
-| --- | --- | --- | --- | --- |
-| `vmid` | integer | 否 | — | 虚拟机的（唯一）ID。 |
+| 参数 | 定义与说明 |
+| --- | --- |
+| `vmid` | 类型：integer；必填：否；默认值：—<br>虚拟机的（唯一）ID。 |
 
 <details>
 <summary>完整请求参数结构</summary>

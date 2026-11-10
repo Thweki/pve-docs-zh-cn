@@ -286,6 +286,23 @@ def api_json(value,max_width=160):
         return lines
     return '\n'.join(emit(value,0,''))
 
+def api_inline_json(value):
+    """Keep scalar JSON literal text intact inside a Markdown code span."""
+    literal=json.dumps(value,ensure_ascii=False)
+    fence='`'*max(1,max((len(match[0])+1 for match in re.finditer(r'`+',literal)),default=1))
+    return fence+literal+fence
+
+def api_parameter_row(key,value):
+    """Retain every former five-column field in a two-column API row."""
+    typ=cell(value.get('type',''))
+    required='是' if not value.get('optional',False) else '否'
+    default=cell(json.dumps(value['default'],ensure_ascii=False)) if 'default' in value else '—'
+    description=value.get('verbose_description') or value.get('description','')
+    if value.get('enum') is not None:
+        description+='；可选值：'+', '.join('`'+str(item)+'`' for item in value['enum'])
+    definition=f'类型：{typ}；必填：{required}；默认值：{default}<br>'+cell(description)
+    return f'| `{key}` | {definition} |'
+
 def api_pages():
     # Plain code blocks keep full JSON readable without expensive token highlighting in GitBook.
     schema=json.loads((ROOT/'source/api/schema.json').read_text());groups=[];operations=0
@@ -306,17 +323,16 @@ def api_pages():
                     if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
-                            body += [f'**{label}**\n', '```text\n'+api_json(info[field])+'\n```\n']
+                            if isinstance(info[field],(dict,list)):
+                                body += [f'**{label}**\n', '```text\n'+api_json(info[field])+'\n```\n']
+                            else:
+                                body.append(f'**{label}：** '+api_inline_json(info[field])+'\n')
                     params=info.get('parameters',{});props=params.get('properties',{})
                     body.append(f'#### 请求参数 <a href="#{method_anchor}-parameters" id="{method_anchor}-parameters"></a>\n')
                     if props:
-                        body+=['| 参数 | 类型 | 必填 | 默认值 | 说明 |','| --- | --- | --- | --- | --- |']
+                        body+=['| 参数 | 定义与说明 |','| --- | --- |']
                         for key,v in props.items():
-                            typ=v.get('type','')
-                            required=not v.get('optional',False)
-                            desc=v.get('verbose_description') or v.get('description','')
-                            if v.get('enum') is not None:desc+='；可选值：'+', '.join('`'+str(z)+'`' for z in v['enum'])
-                            body.append('| '+' | '.join([f'`{key}`',cell(typ),'是' if required else '否',cell(json.dumps(v['default'],ensure_ascii=False)) if 'default' in v else '—',cell(desc)])+' |')
+                            body.append(api_parameter_row(key,v))
                         body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```text\n'+api_json(params)+'\n```\n','</details>\n']
                     else:body+=['此操作没有请求参数。\n']
                     body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```text\n'+api_json(info.get('returns',{}))+'\n```\n']
