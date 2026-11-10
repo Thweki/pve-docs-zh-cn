@@ -9,12 +9,12 @@ BTRFS is a modern copy on write file system natively supported by the Linux kern
 **General BTRFS advantages**
 
 - Main system setup almost identical to the traditional ext4 based setup
-- Snapshots
-- Data compression on file system level
-- Copy-on-write clone
+- 快照
+- 文件系统级数据压缩
+- 写时复制克隆
 - RAID0, RAID1 and RAID10
-- Protection against data corruption
-- Self healing
+- 防止数据损坏
+- 自我修复
 - Natively supported by the Linux kernel
 
 **Caveats**
@@ -29,19 +29,19 @@ When you install using the Proxmox VE installer, you can choose BTRFS for the ro
 <tr>
 <td>RAID0 <br/></td>
 <td>
-<p>Also called “striping”. The capacity of such volume is the sum of the capacities of all disks. But RAID0 does not add any redundancy, so the failure of a single drive makes the volume unusable.</p>
+<p>也称为“条带化”。这种卷的容量是所有磁盘容量之和。但 RAID0 不提供任何冗余，因此单块磁盘发生故障就会导致整个卷不可用。</p>
 </td>
 </tr>
 <tr>
 <td>RAID1 <br/></td>
 <td>
-<p>Also called “mirroring”. Data is written identically to all disks. This mode requires at least 2 disks with the same size. The resulting capacity is that of a single disk.</p>
+<p>也称为“镜像”。相同的数据会写入所有磁盘。这种模式至少需要 2 块大小相同的磁盘。最终容量相当于单块磁盘的容量。</p>
 </td>
 </tr>
 <tr>
 <td>RAID10 <br/></td>
 <td>
-<p>A combination of RAID0 and RAID1. Requires at least 4 disks.</p>
+<p>RAID0 和 RAID1 的组合。至少需要 4 块磁盘。</p>
 </td>
 </tr>
 </table>

@@ -8,6 +8,8 @@
 
 Get the status of a specific ceph flag.
 
+**方法标识：** `get_flag`
+
 **权限**
 
 ```json
@@ -81,6 +83,8 @@ Get the status of a specific ceph flag.
 ## PUT `/cluster/ceph/flags/{flag}`
 
 Set or clear (unset) a specific Ceph flag. Runs synchronously (unlike the bulk PUT /cluster/ceph/flags endpoint, which forks a worker task).
+
+**方法标识：** `update_flag`
 
 **权限**
 

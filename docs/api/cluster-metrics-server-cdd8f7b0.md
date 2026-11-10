@@ -8,6 +8,8 @@
 
 List configured metric servers.
 
+**方法标识：** `server_index`
+
 **权限**
 
 ```json

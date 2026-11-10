@@ -1,6 +1,6 @@
 # 9.6. Command-line Interface Examples <a href="#_command_line_interface_examples" id="_command_line_interface_examples"></a>
 
-Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100.
+Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100\.
 
 ```text
 # pvesr create-local-job 100-0 pve1 --schedule "*/5" --rate 10

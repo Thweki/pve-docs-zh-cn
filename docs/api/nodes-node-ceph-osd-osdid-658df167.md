@@ -8,6 +8,8 @@
 
 Destroy OSD
 
+**方法标识：** `destroyosd`
+
 **允许 API 令牌**
 
 ```json
@@ -76,6 +78,8 @@ Destroy OSD
 ## GET `/nodes/{node}/ceph/osd/{osdid}`
 
 OSD index.
+
+**方法标识：** `osdindex`
 
 **权限**
 

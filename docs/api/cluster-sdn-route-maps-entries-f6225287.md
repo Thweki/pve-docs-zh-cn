@@ -8,6 +8,8 @@
 
 Lists all route map entries.
 
+**方法标识：** `list_route_map_entries`
+
 **权限**
 
 ```json
@@ -192,6 +194,8 @@ Lists all route map entries.
 ## POST `/cluster/sdn/route-maps/entries`
 
 Create Route Map entry
+
+**方法标识：** `create_route_map_entry`
 
 **权限**
 

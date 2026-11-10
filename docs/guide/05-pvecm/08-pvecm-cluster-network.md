@@ -10,7 +10,7 @@ The network should not be used heavily by other members, as while corosync does 
 
 Before setting up a cluster, it is good practice to check if the network is fit for that purpose. To ensure that the nodes can connect to each other on the cluster network, you can test the connectivity between them with the `ping` tool.
 
-If the Proxmox VE firewall is enabled, ACCEPT rules for corosync will automatically be generated - no manual action is required.
+If the Proxmox VE firewall is enabled, ACCEPT rules for corosync will automatically be generated \- no manual action is required.
 
 {% hint style="info" %}
 Corosync used Multicast before version 3.0 (introduced in Proxmox VE 6.0). Modern versions rely on [Kronosnet](https://kronosnet.org/) for cluster communication, which, for now, only supports regular UDP unicast.
@@ -36,7 +36,7 @@ Using a [bond](../03-system-administration/04-sysadmin-network-configuration.md#
 
 The bond mode **active-backup** will **not** cause asymmetric connectivity in the failure scenario described above. However, the bond with the interface failure may not switch over to the backup link. The node may lose connection to the cluster and, if HA is enabled, fence itself.
 
-Bond modes **balance-rr**, **balance-xor**, **balance_tlb**, or **balance-alb** may cause asymmetric connectivity in the failure scenario above, which can lead to unexpected fencing if HA is enabled.
+Bond modes **balance-rr**, **balance-xor**, **balance\_tlb**, or **balance-alb** may cause asymmetric connectivity in the failure scenario above, which can lead to unexpected fencing if HA is enabled.
 
 Bond mode **IEEE 802.3ad (LACP)** can cause asymmetric connectivity in the failure scenario above, but it can recover from this state, as each side of the bond (Proxmox VE node and switch) can stop using a bonded interface if it has not received three LACPDUs in a row on it. However, with default settings, LACPDUs are only sent every 30 seconds, yielding a failover time of 90 seconds. This is too long, as nodes with HA resources will fence themselves already after roughly one minute without a stable quorum. If LACP bonds are used for corosync traffic, we recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! Setting this option on one side requests the other side to send an LACPDU every second. Setting this option on both sides can reduce the failover time in the scenario above to 3 seconds and thus prevent fencing.
 
@@ -130,15 +130,15 @@ totem {
 
 The first thing you want to do is add the *name* properties in the node entries, if you do not see them already. Those **must** match the node name.
 
-Then replace all addresses from the *ring0_addr* properties of all nodes with the new addresses. You may use plain IP addresses or hostnames here. If you use hostnames, ensure that they are resolvable from all nodes (see also [Link Address Types](#pvecm_corosync_addresses)).
+Then replace all addresses from the *ring0\_addr* properties of all nodes with the new addresses. You may use plain IP addresses or hostnames here. If you use hostnames, ensure that they are resolvable from all nodes (see also [Link Address Types](#pvecm_corosync_addresses)).
 
-In this example, we want to switch cluster communication to the 10.10.10.0/25 network, so we change the *ring0_addr* of each node respectively.
+In this example, we want to switch cluster communication to the 10.10.10.0/25 network, so we change the *ring0\_addr* of each node respectively.
 
 {% hint style="info" %}
-The exact same procedure can be used to change other *ringX_addr* values as well. However, we recommend only changing one link address at a time, so that it’s easier to recover if something goes wrong.
+The exact same procedure can be used to change other *ringX\_addr* values as well. However, we recommend only changing one link address at a time, so that it’s easier to recover if something goes wrong.
 {% endhint %}
 
-After we increase the *config_version* property, the new configuration file should look like:
+After we increase the *config\_version* property, the new configuration file should look like:
 
 ```text
 logging {
@@ -212,13 +212,13 @@ If corosync begins to work again, restart it on all other nodes too. They will t
 
 ## 5.8.4. Corosync Addresses <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
 
-A corosync link address (for backwards compatibility denoted by *ringX_addr* in `corosync.conf`) can be specified in two ways:
+A corosync link address (for backwards compatibility denoted by *ringX\_addr* in `corosync.conf`) can be specified in two ways:
 
 - **IPv4/v6 addresses** can be used directly. They are recommended, since they are static and usually not changed carelessly.
 - **Hostnames** will be resolved using `getaddrinfo`, which means that by default, IPv6 addresses will be used first, if available (see also `man gai.conf`). Keep this in mind, especially when upgrading an existing cluster to IPv6.
 
 {% hint style="danger" %}
-Hostnames should be used with care, since the addresses they resolve to can be changed without touching corosync or the node it runs on - which may lead to a situation where an address is changed without thinking about implications for corosync.
+Hostnames should be used with care, since the addresses they resolve to can be changed without touching corosync or the node it runs on \- which may lead to a situation where an address is changed without thinking about implications for corosync.
 {% endhint %}
 
 A separate, static hostname specifically for corosync is recommended, if hostnames are preferred. Also, make sure that every node in the cluster can resolve all hostnames correctly.

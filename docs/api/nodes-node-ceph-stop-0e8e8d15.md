@@ -8,6 +8,8 @@
 
 Stop ceph services.
 
+**方法标识：** `stop`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Get information needed to join this cluster over the connected node.
 
+**方法标识：** `join_info`
+
 **权限**
 
 ```json
@@ -135,6 +137,8 @@ Get information needed to join this cluster over the connected node.
 ## POST `/cluster/config/join`
 
 Joins this node into an existing cluster. If no links are given, default to IP resolved by node's hostname on single link (fallback fails for clusters with multiple links).
+
+**方法标识：** `join`
 
 **允许 API 令牌**
 

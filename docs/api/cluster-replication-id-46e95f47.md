@@ -8,6 +8,8 @@
 
 Mark replication job for removal.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -34,7 +36,7 @@ Mark replication job for removal.
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `force` | boolean | 否 | 0 | Will remove the jobconfig entry, but will not cleanup. |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'. |
+| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
 | `keep` | boolean | 否 | 0 | Keep replicated data at target (do not remove). |
 
 <details>
@@ -82,6 +84,8 @@ Mark replication job for removal.
 
 Read replication job configuration.
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -101,7 +105,7 @@ Read replication job configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'. |
+| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -209,6 +213,8 @@ Read replication job configuration.
 
 Update replication job configuration.
 
+**方法标识：** `update`
+
 **权限**
 
 ```json
@@ -238,7 +244,7 @@ Update replication job configuration.
 | `delete` | string | 否 | — | A list of settings you want to delete. |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
 | `disable` | boolean | 否 | — | Flag to disable/deactivate the entry. |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'. |
+| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
 | `rate` | number | 否 | — | Rate limit in mbps (megabytes per second) as floating point number. |
 | `remove_job` | string | 否 | — | Mark the replication job for removal. The job will remove all local replication snapshots. When set to 'full', it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.；可选值：`local`, `full` |
 | `schedule` | string | 否 | "*/15" | Storage replication schedule. The format is a subset of `systemd` calendar events. |

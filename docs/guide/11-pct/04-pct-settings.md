@@ -111,17 +111,17 @@ cpulimit: 0.5</pre>
 
 **`mp[n]`: `[volume=]<volume> ,mp=<Path> [,acl=<1|0>] [,backup=<1|0>] [,idmap=<type:container:disk:range-size[;type:container:disk:range-size;...]>] [,keepattrs=<1|0>] [,mountoptions=<opt[;opt...]>] [,quota=<1|0>] [,replicate=<1|0>] [,ro=<1|0>] [,shared=<1|0>] [,size=<DiskSize>]`**
 
-将卷用作容器挂载点。使用特殊语法 STORAGE_ID:SIZE_IN_GiB 可分配新卷。
+将卷用作容器挂载点。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 可分配新卷。
 
-**`acl`=`<boolean>`**
+**`acl`\=`<boolean>`**
 
 显式启用或禁用 ACL 支持。
 
-**`backup`=`<boolean>`**
+**`backup`\=`<boolean>`**
 
 是否将挂载点包含在备份中（仅用于卷挂载点）。
 
-**`idmap`=`<type:container:disk:range-size[;type:container:disk:range-size;...]>`**
+**`idmap`\=`<type:container:disk:range-size[;type:container:disk:range-size;...]>`**
 
 自定义 UID/GID 映射，针对此挂载点覆盖容器的 `lxc.idmap`。接受以分号分隔的 `type:container:disk:range-size` 条目列表。
 
@@ -141,15 +141,15 @@ cpulimit: 0.5</pre>
 
 示例 3：`passthrough` 对所有 UID 和 GID 进行恒等映射，这意味着容器内的 ID 将与磁盘上的 ID 一致。
 
-**`keepattrs`=`<boolean>`（*默认 =* `0`）**
+**`keepattrs`\=`<boolean>`（*默认 \=* `0`）**
 
 如果挂载点目录已存在，则继承该目录的 UID、GID 和访问模式。
 
-**`mountoptions`=`<opt[;opt...]>`**
+**`mountoptions`\=`<opt[;opt...]>`**
 
 rootfs/mps 的额外挂载选项。
 
-**`mp`=`<Path>`**
+**`mp`\=`<Path>`**
 
 从容器内部看到的挂载点路径。
 
@@ -157,19 +157,19 @@ rootfs/mps 的额外挂载选项。
 出于安全原因，不得包含任何符号链接。
 {% endhint %}
 
-**`quota`=`<boolean>`**
+**`quota`\=`<boolean>`**
 
 启用容器内的用户配额（zfs 子卷不支持）
 
-**`replicate`=`<boolean>`（*默认 =* `1`）**
+**`replicate`\=`<boolean>`（*默认 \=* `1`）**
 
 会将此卷包含到存储复制作业中。
 
-**`ro`=`<boolean>`**
+**`ro`\=`<boolean>`**
 
 只读挂载点
 
-**`shared`=`<boolean>`（*默认 =* `0`）**
+**`shared`\=`<boolean>`（*默认 \=* `0`）**
 
 将此非卷挂载点标记为在所有节点上可用。
 
@@ -177,11 +177,11 @@ rootfs/mps 的额外挂载选项。
 此选项不会自动共享挂载点，它假定挂载点已被共享！
 {% endhint %}
 
-**`size`=`<DiskSize>`**
+**`size`\=`<DiskSize>`**
 
 卷大小（只读值）。
 
-**`volume`=`<volume>`**
+**`volume`\=`<volume>`**
 
 要挂载到容器中的卷、设备或目录。
 
@@ -271,63 +271,63 @@ pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
 
 指定容器的网络接口。
 
-**`bridge`=`<bridge>`**
+**`bridge`\=`<bridge>`**
 
 网络设备要连接到的网桥。
 
-**`firewall`=`<boolean>`**
+**`firewall`\=`<boolean>`**
 
 控制是否应使用此接口的防火墙规则。
 
-**`gw`=`<GatewayIPv4>`**
+**`gw`\=`<GatewayIPv4>`**
 
 IPv4 流量的默认网关。
 
-**`gw6`=`<GatewayIPv6>`**
+**`gw6`\=`<GatewayIPv6>`**
 
 IPv6 流量的默认网关。
 
-**`host-managed`=`<boolean>`**
+**`host-managed`\=`<boolean>`**
 
 此接口的 IP 配置是否应由宿主机管理。启用后，由宿主机（而非容器）负责该接口的 IP 配置。容器不应在此接口上运行自己的 DHCP 客户端或网络管理器。这对于缺少内部网络管理堆栈的容器（例如许多应用程序容器）非常有用。
 
-**`hwaddr`=`<XX:XX:XX:XX:XX:XX>`**
+**`hwaddr`\=`<XX:XX:XX:XX:XX:XX>`**
 
 I/G（Individual/Group，个体/组）位未设置的常见 MAC 地址。
 
-**`ip`=`<(IPv4/CIDR|dhcp|manual)>`**
+**`ip`\=`<(IPv4/CIDR|dhcp|manual)>`**
 
 CIDR 格式的 IPv4 地址。
 
-**`ip6`=`<(IPv6/CIDR|auto|dhcp|manual)>`**
+**`ip6`\=`<(IPv6/CIDR|auto|dhcp|manual)>`**
 
 CIDR 格式的 IPv6 地址。
 
-**`link_down`=`<boolean>`**
+**`link_down`\=`<boolean>`**
 
 是否应断开此接口的连接（类似拔掉插头）。
 
-**`mtu`=`<integer> (64 - 65535)`**
+**`mtu`\=`<integer> (64 - 65535)`**
 
 接口的最大传输单元。（lxc.network.mtu）
 
-**`name`=`<string>`**
+**`name`\=`<string>`**
 
 从容器内部看到的网络设备名称。（lxc.network.name）
 
-**`rate`=`<mbps>`**
+**`rate`\=`<mbps>`**
 
 对接口应用速率限制
 
-**`tag`=`<integer> (1 - 4094)`**
+**`tag`\=`<integer> (1 - 4094)`**
 
 此接口的 VLAN 标签。
 
-**`trunks`=`<vlanid[;vlanid...]>`**
+**`trunks`\=`<vlanid[;vlanid...]>`**
 
 允许通过此接口的 VLAN ID
 
-**`type`=`<veth>`**
+**`type`\=`<veth>`**
 
 网络接口类型。
 

@@ -8,6 +8,8 @@
 
 Verify OpenID authorization code and create a ticket.
 
+**方法标识：** `login`
+
 **权限**
 
 ```json

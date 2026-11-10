@@ -11,7 +11,7 @@ Ceph is a distributed object store and file system designed to provide excellent
 - Easy setup and management via CLI and GUI
 - Thin provisioning
 - Snapshot support
-- Self healing
+- 自我修复
 - Scalable to the exabyte level
 - Provides block, file system, and object storage
 - Setup pools with different performance and redundancy characteristics

@@ -1,4 +1,4 @@
-# 13.1. Directions & Zones <a href="#_directions_amp_zones" id="_directions_amp_zones"></a>
+# 13.1. Directions \& Zones <a href="#_directions_amp_zones" id="_directions_amp_zones"></a>
 
 The Proxmox VE firewall groups the network into multiple logical zones. You can define rules for each zone independently. Depending on the zone, you can define rules for incoming, outgoing or forwarded traffic.
 

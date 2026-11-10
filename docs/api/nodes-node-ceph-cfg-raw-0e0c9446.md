@@ -8,6 +8,8 @@
 
 Get the Ceph configuration file.
 
+**方法标识：** `raw`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 List USB Hardware Mappings
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -103,6 +105,8 @@ List USB Hardware Mappings
 ## POST `/cluster/mapping/usb`
 
 Create a new hardware mapping.
+
+**方法标识：** `create`
 
 **权限**
 

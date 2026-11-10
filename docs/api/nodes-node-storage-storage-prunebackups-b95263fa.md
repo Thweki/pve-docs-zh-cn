@@ -8,6 +8,8 @@
 
 Prune backups. Only those using the standard naming scheme are considered.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -107,6 +109,8 @@ Prune backups. Only those using the standard naming scheme are considered.
 ## GET `/nodes/{node}/storage/{storage}/prunebackups`
 
 Get prune information for backups. NOTE: this is only a preview and might not be what a subsequent prune call does if backups are removed/added in the meantime.
+
+**方法标识：** `dryrun`
 
 **权限**
 

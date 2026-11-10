@@ -8,6 +8,8 @@
 
 Execute shutdown.
 
+**方法标识：** `shutdown`
+
 **权限**
 
 ```json

@@ -152,7 +152,7 @@ Allows you to import a list of external EVPN route targets. Used for cross-DC or
 
 **MTU**
 
-Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes less than the maximal MTU of the outgoing physical interface. Optional, defaults to 1450.
+Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes less than the maximal MTU of the outgoing physical interface. Optional, defaults to 1450\.
 
 ---
 

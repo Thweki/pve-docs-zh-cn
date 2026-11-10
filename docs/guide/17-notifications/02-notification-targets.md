@@ -11,7 +11,7 @@ The sendmail binary is a program commonly found on Unix-like operating systems t
 The sendmail notification target uses the `sendmail` binary to send emails to a list of configured users or email addresses. If a user is selected as a recipient, the email address configured in user’s settings will be used. For the `root@pam` user, this is the email address entered during installation. A user’s email address can be configured in `Datacenter → Permissions → Users`. If a user has no associated email address, no email will be sent.
 
 {% hint style="info" %}
-In standard Proxmox VE installations, the `sendmail` binary is provided by Postfix. It may be necessary to configure Postfix so that it can deliver mails correctly - for example by setting an external mail relay (smart host). In case of failed delivery, check the system logs for messages logged by the Postfix daemon.
+In standard Proxmox VE installations, the `sendmail` binary is provided by Postfix. It may be necessary to configure Postfix so that it can deliver mails correctly \- for example by setting an external mail relay (smart host). In case of failed delivery, check the system logs for messages logged by the Postfix daemon.
 {% endhint %}
 
 The configuration for Sendmail target plugins has the following options:
@@ -126,7 +126,7 @@ For configuration options that support templating, the [Handlebars](https://hand
 - `{{ message }}`: The rendered notification body
 - `{{ severity }}`: The severity of the notification (`info`, `notice`, `warning`, `error`, `unknown`)
 - `{{ timestamp }}`: The notification’s timestamp as a UNIX epoch (in seconds).
-- `{{ fields.<name> }}`: Sub-namespace for any metadata fields of the notification. For instance, `fields.type` contains the notification type - for all available fields refer to [Notification Events](04-notification-events.md#notification_events).
+- `{{ fields.<name> }}`: Sub-namespace for any metadata fields of the notification. For instance, `fields.type` contains the notification type \- for all available fields refer to [Notification Events](04-notification-events.md#notification_events).
 - `{{ secrets.<name> }}`: Sub-namespace for secrets. For instance, a secret named `token` is accessible via `secrets.token`.
 
 For convenience, the following helpers are available:

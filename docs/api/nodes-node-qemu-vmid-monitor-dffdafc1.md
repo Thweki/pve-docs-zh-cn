@@ -8,6 +8,8 @@
 
 Execute QEMU monitor commands.
 
+**方法标识：** `monitor`
+
 **权限**
 
 ```json

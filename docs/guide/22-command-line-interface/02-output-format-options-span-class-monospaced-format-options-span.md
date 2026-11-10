@@ -9,19 +9,19 @@ It is possible to specify the output format using the `--output-format` paramete
 
 You can also completely suppress output using option `--quiet`.
 
-**`--human-readable` `<boolean>` (*default =* `1`)**
+**`--human-readable` `<boolean>` (*default \=* `1`)**
 
 Call output rendering functions to produce human readable text.
 
-**`--noborder` `<boolean>` (*default =* `0`)**
+**`--noborder` `<boolean>` (*default \=* `0`)**
 
 Do not draw borders (for *text* format).
 
-**`--noheader` `<boolean>` (*default =* `0`)**
+**`--noheader` `<boolean>` (*default \=* `0`)**
 
 Do not show column headers (for *text* format).
 
-**`--output-format` `<json | json-pretty | text | yaml>` (*default =* `text`)**
+**`--output-format` `<json | json-pretty | text | yaml>` (*default \=* `text`)**
 
 Output format.
 

@@ -8,6 +8,8 @@
 
 Get the Ceph configuration database.
 
+**方法标识：** `db`
+
 **权限**
 
 ```json

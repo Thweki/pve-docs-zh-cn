@@ -8,6 +8,8 @@
 
 List IPSets
 
+**方法标识：** `ipset_index`
+
 **权限**
 
 ```json
@@ -101,6 +103,8 @@ List IPSets
 ## POST `/nodes/{node}/qemu/{vmid}/firewall/ipset`
 
 Create new IPSet
+
+**方法标识：** `create_ipset`
 
 **权限**
 

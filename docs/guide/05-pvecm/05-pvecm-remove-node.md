@@ -22,7 +22,7 @@ If your configuration contains a QDevice, you will need to remove it before remo
 - Ensure that the remaining Ceph cluster has sufficient storage space and that the OSDs are running (i.e. `up` and `in`). The destruction of any OSD, especially the last one on a node, will trigger a data rebalance in Ceph.
 
   {% hint style="info" %}
-  Make sure that there are still enough nodes with OSDs available to satisfy the `size/min_size` parameters configured for the Ceph pools. If there are fewer than `size` (default: 3) nodes available, data redundancy will be degraded. If there are fewer than `min_size` (default: 2) nodes available, the I/O of the pools will be blocked until there are enough replicas available. Affected guests may crash if their I/O is blocked.
+  Make sure that there are still enough nodes with OSDs available to satisfy the `size/min_size` parameters configured for the Ceph pools. If there are fewer than `size` (default: 3\) nodes available, data redundancy will be degraded. If there are fewer than `min_size` (default: 2\) nodes available, the I/O of the pools will be blocked until there are enough replicas available. Affected guests may crash if their I/O is blocked.
   {% endhint %}
 - Ensure that sufficient [monitors](../08-pveceph/05-pve-ceph-monitors.md#pve_ceph_monitors), [managers](../08-pveceph/06-pve-ceph-manager.md#pve_ceph_manager) and, if using CephFS, [metadata servers](../08-pveceph/13-pveceph-fs.md#pveceph_fs_mds) remain available in the Ceph cluster.
 
@@ -90,10 +90,10 @@ Membership information
 ## 5.5.3. Cleanup Steps After Node Removal <a href="#_cleanup_steps_after_node_removal" id="_cleanup_steps_after_node_removal"></a>
 
 - The configuration files of the removed node will still reside in */etc/pve/nodes/node4* in the cluster filesystem. Recover any configuration you still need and remove the directory afterwards.
-- The SSH fingerprint of the removed node will still reside in the *known_hosts* file on the other nodes. If you receive an SSH error after rejoining a node with the same IP or hostname, run `pvecm
+- The SSH fingerprint of the removed node will still reside in the *known\_hosts* file on the other nodes. If you receive an SSH error after rejoining a node with the same IP or hostname, run `pvecm
     updatecerts` once on the re-added node to update its fingerprint cluster wide.
 - Existing [high availability rules](../15-ha-manager/06-configuration-15.md#ha_manager_rules) will still reference the deleted node, therefore remove the node from any existing rules.
-- The public key of the removed node will still be listed in */etc/pve/priv/authorized_keys* and should be deleted if it is no longer needed.
+- The public key of the removed node will still be listed in */etc/pve/priv/authorized\_keys* and should be deleted if it is no longer needed.
 
 **Rejoin the same node again:**
 

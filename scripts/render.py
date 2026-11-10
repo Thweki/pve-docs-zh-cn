@@ -16,7 +16,7 @@ if (ROOT/'work/translations.jsonl').exists():
     for line in (ROOT/'work/translations.jsonl').read_text().splitlines():
         if line.strip():TRANSLATIONS.update(json.loads(line))
 TRANSLATIONS={k:v for k,v in TRANSLATIONS.items() if k in UNITS and not validate(UNITS[k]['text'],v)}
-PAGES=[];ANCHORS={};FILE_DEFAULTS={};CHAPTER_DEFAULTS={}
+PAGES=[];ANCHORS={};FILE_DEFAULTS={};CHAPTER_DEFAULTS={};API_LINKS={}
 
 def restore(key):
     u=UNITS[key];text=TRANSLATIONS.get(key,u['text'])
@@ -61,6 +61,10 @@ def link(href,current,source):
     if target.startswith('assets/'):
         return relpath(Path(target),current)+(('#'+fragment) if fragment else '')
     target=target.removeprefix('./')
+    if target in {'api-viewer/','api-viewer/index.html'}:
+        if not fragment:return relpath(Path('api/README.md'),current)
+        if fragment in API_LINKS:return relpath(API_LINKS[fragment],current)
+        return urljoin(BASE,href)
     if fragment:
         match=ANCHORS.get((target,fragment))
         if not match and target.startswith('chapter-'):
@@ -78,7 +82,7 @@ def link(href,current,source):
 class GitBookMarkdown(MarkdownConverter):
     def __init__(self,page):
         self.page=page
-        super().__init__(heading_style='ATX',bullets='-',escape_underscores=False,escape_asterisks=False,autolinks=False,table_infer_header=True)
+        super().__init__(heading_style='ATX',bullets='-',escape_misc=True,escape_underscores=True,escape_asterisks=True,autolinks=False,table_infer_header=True)
     def convert_hN(self,n,el,text,parent_tags):
         n=max(1,min(6,n+self.page['shift']))
         title=re.sub(r'\s+',' ',text.strip())
@@ -181,7 +185,7 @@ def write(path,text):
     full=DOCS/path;full.parent.mkdir(parents=True,exist_ok=True);full.write_text(text.rstrip()+'\n')
 
 def cell(value):
-    return str(value).replace('|',r'\|').replace('\r','').replace('\n','<br>')
+    return html.escape(str(value),quote=False).replace('|',r'\|').replace('\r','').replace('\n','<br>')
 
 def api_pages():
     schema=json.loads((ROOT/'source/api/schema.json').read_text());groups=[];operations=0
@@ -192,10 +196,12 @@ def api_pages():
             if n.get('info'):
                 methods=n['info'];slug=re.sub('[^a-zA-Z0-9-]+','-',path).strip('-').lower() or 'root'
                 target=Path('api')/f'{slug}-{hashlib.sha256(path.encode()).hexdigest()[:8]}.md'
+                API_LINKS[path]=target
                 body=[f'# `{path}`\n',f'原始接口路径：`{path}`。\n','方法、参数名、类型、默认值和枚举值与官方规范一致。\n']
                 for method,original in methods.items():
                     operations+=1;info=schema_translated(original)
-                    body += [f'## {method} `{path}`\n',info.get('description','')+'\n']
+                    body += [f'## {method} `{path}`\n',html.escape(info.get('description',''),quote=False)+'\n']
+                    if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
                             body += [f'**{label}**\n', '```json\n'+json.dumps(info[field],ensure_ascii=False,indent=2)+'\n```\n']
@@ -232,6 +238,7 @@ def main():
     missing=set(UNITS)-set(TRANSLATIONS)
     if missing and not args.allow_partial:raise SystemExit(f'{len(missing)} untranslated units; refusing release render')
     chapters=guide_pages();manuals=manual_pages()
+    groups,operations=api_pages()
     for page in PAGES:
         text=GitBookMarkdown(page).convert(str(page['node'])).strip()
         if not text.startswith('# '):text='# '+page['title']+'\n\n'+text
@@ -239,7 +246,6 @@ def main():
             text+='\n\n## 本章内容\n\n'+'\n'.join(f'- [{c["title"]}]({relpath(c["path"],page["path"])})' for c in page['children'])
         text+='\n\n---\n\n来源：[Proxmox VE 官方文档]('+BASE+page['source']+') · 版本 9.2.13 · 非官方中文翻译。'
         write(page['path'],text)
-    groups,operations=api_pages()
     state='翻译校验预览：仍含未完成翻译的原文。' if missing else '中文译文已完成自动完整性与格式校验。'
     intro=f'''# Proxmox VE 中文文档
 

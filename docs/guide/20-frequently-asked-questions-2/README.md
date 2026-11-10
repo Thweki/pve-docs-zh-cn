@@ -1,4 +1,4 @@
-# 20. Frequently Asked Questions <a href="#_frequently_asked_questions_2" id="_frequently_asked_questions_2"></a>
+# 20\. Frequently Asked Questions <a href="#_frequently_asked_questions_2" id="_frequently_asked_questions_2"></a>
 
 {% hint style="info" %}
 New FAQs are appended to the bottom of this section.
@@ -9,10 +9,10 @@ New FAQs are appended to the bottom of this section.
    Proxmox VE is based on [Debian GNU/Linux](https://www.debian.org)
 2. *What license does the Proxmox VE project use?*
 
-   Proxmox VE code is licensed under the GNU Affero General Public License, version 3.
+   Proxmox VE code is licensed under the GNU Affero General Public License, version 3\.
 3. *Will Proxmox VE run on a 32bit processor?*
 
-   Proxmox VE works only on 64-bit CPUs. The supported architectures are x86_64 (AMD64 or Intel 64) and aarch64 on the NVIDIA Grace Hopper and NVIDIA Vera platforms. There is no plan to support 32-bit hosts.
+   Proxmox VE works only on 64-bit CPUs. The supported architectures are x86\_64 (AMD64 or Intel 64\) and aarch64 on the NVIDIA Grace Hopper and NVIDIA Vera platforms. There is no plan to support 32-bit hosts.
 
    {% hint style="info" %}
    VMs and Containers can be both 32-bit and 64-bit.

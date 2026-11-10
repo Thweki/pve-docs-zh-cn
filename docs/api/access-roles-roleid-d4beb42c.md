@@ -8,6 +8,8 @@
 
 Delete role.
 
+**方法标识：** `delete_role`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Delete role.
 ## GET `/access/roles/{roleid}`
 
 Get role configuration.
+
+**方法标识：** `read_role`
 
 **权限**
 
@@ -310,6 +314,8 @@ Get role configuration.
 ## PUT `/access/roles/{roleid}`
 
 Update an existing role.
+
+**方法标识：** `update_role`
 
 **权限**
 

@@ -20,11 +20,11 @@ The configuration can contain the following sections:
 
 This is used to set cluster-wide firewall options.
 
-**`ebtables`: `<boolean>` (*default =* `1`)**
+**`ebtables`: `<boolean>` (*default \=* `1`)**
 
 Enable ebtables rules cluster wide.
 
-**`enable`: `<integer> (0 - N)` (*default =* `0`)**
+**`enable`: `<integer> (0 - N)` (*default \=* `0`)**
 
 Enable or disable the firewall cluster wide.
 
@@ -32,15 +32,15 @@ Enable or disable the firewall cluster wide.
 
 Log ratelimiting settings
 
-**`burst`=`<integer> (0 - N)` (*default =* `5`)**
+**`burst`\=`<integer> (0 - N)` (*default \=* `5`)**
 
 Initial burst of packages which will always get logged before the rate is applied
 
-**`enable`=`<boolean>` (*default =* `1`)**
+**`enable`\=`<boolean>` (*default \=* `1`)**
 
 Enable or disable log rate limiting
 
-**`rate`=`<rate>` (*default =* `1/second`)**
+**`rate`\=`<rate>` (*default \=* `1/second`)**
 
 Frequency with which the burst bucket gets refilled
 
@@ -83,7 +83,7 @@ enable: 1
 ```
 
 {% hint style="warning" %}
-If you enable the firewall, traffic to all hosts will be blocked by default - with some exceptions for traffic coming from the local network to the WebUI, SSH and other important services. A full list of the default firewall rules can be found at xref:pve_firewall_default_rules.
+If you enable the firewall, traffic to all hosts will be blocked by default \- with some exceptions for traffic coming from the local network to the WebUI, SSH and other important services. A full list of the default firewall rules can be found at xref:pve\_firewall\_default\_rules.
 {% endhint %}
 
 Should you have other services running which communicate over the network, you will have to allow them seperately. For some common services there are `macros` available.
@@ -110,7 +110,7 @@ This is useful if you want to overwrite rules from `cluster.fw` config. You can 
 
 This is used to set host related firewall options.
 
-**`enable`: `<boolean>` (*default =* `1`)**
+**`enable`: `<boolean>` (*default \=* `1`)**
 
 Enable host firewall rules.
 
@@ -126,35 +126,35 @@ Log level for incoming traffic.
 
 Log level for outgoing traffic.
 
-**`log_nf_conntrack`: `<boolean>` (*default =* `0`)**
+**`log_nf_conntrack`: `<boolean>` (*default \=* `0`)**
 
 Enable logging of conntrack information.
 
-**`ndp`: `<boolean>` (*default =* `1`)**
+**`ndp`: `<boolean>` (*default \=* `1`)**
 
 Enable NDP (Neighbor Discovery Protocol).
 
-**`nf_conntrack_allow_invalid`: `<boolean>` (*default =* `0`)**
+**`nf_conntrack_allow_invalid`: `<boolean>` (*default \=* `0`)**
 
 Allow invalid packets on connection tracking.
 
-**`nf_conntrack_helpers`: `<string>` (*default =* ``)**
+**`nf_conntrack_helpers`: `<string>` (*default \=* \`\`)**
 
 Enable conntrack helpers for specific protocols. Supported protocols: amanda, ftp, irc, netbios-ns, pptp, sane, sip, snmp, tftp
 
-**`nf_conntrack_max`: `<integer> (32768 - N)` (*default =* `262144`)**
+**`nf_conntrack_max`: `<integer> (32768 - N)` (*default \=* `262144`)**
 
 Maximum number of tracked connections.
 
-**`nf_conntrack_tcp_timeout_established`: `<integer> (7875 - N)` (*default =* `432000`)**
+**`nf_conntrack_tcp_timeout_established`: `<integer> (7875 - N)` (*default \=* `432000`)**
 
 Conntrack established timeout.
 
-**`nf_conntrack_tcp_timeout_syn_recv`: `<integer> (30 - 60)` (*default =* `60`)**
+**`nf_conntrack_tcp_timeout_syn_recv`: `<integer> (30 - 60)` (*default \=* `60`)**
 
 Conntrack syn recv timeout.
 
-**`nftables`: `<boolean>` (*default =* `0`)**
+**`nftables`: `<boolean>` (*default \=* `0`)**
 
 Enable nftables based firewall (tech preview)
 
@@ -162,15 +162,15 @@ Enable nftables based firewall (tech preview)
 
 Enable SMURFS filter.
 
-**`protection_synflood`: `<boolean>` (*default =* `0`)**
+**`protection_synflood`: `<boolean>` (*default \=* `0`)**
 
 Enable synflood protection
 
-**`protection_synflood_burst`: `<integer>` (*default =* `1000`)**
+**`protection_synflood_burst`: `<integer>` (*default \=* `1000`)**
 
 Synflood protection rate burst by ip src.
 
-**`protection_synflood_rate`: `<integer>` (*default =* `200`)**
+**`protection_synflood_rate`: `<integer>` (*default \=* `200`)**
 
 Synflood protection rate syn/sec by ip src.
 
@@ -182,7 +182,7 @@ Log level for SMURFS filter.
 
 Log level for illegal tcp flags filter.
 
-**`tcpflags`: `<boolean>` (*default =* `0`)**
+**`tcpflags`: `<boolean>` (*default \=* `0`)**
 
 Filter illegal combinations of TCP flags.
 
@@ -204,17 +204,17 @@ and contains the following data:
 
 This is used to set VM/Container related firewall options.
 
-**`dhcp`: `<boolean>` (*default =* `0`)**
+**`dhcp`: `<boolean>` (*default \=* `0`)**
 
 Enable DHCP.
 
-**`enable`: `<boolean>` (*default =* `0`)**
+**`enable`: `<boolean>` (*default \=* `0`)**
 
 Enable/disable firewall rules.
 
 **`ipfilter`: `<boolean>`**
 
-Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface’s MAC address. For containers the configured IP addresses will be implicitly added.
+Enable default IP filters. This is equivalent to adding an empty ipfilter-net\<id\> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface’s MAC address. For containers the configured IP addresses will be implicitly added.
 
 **`log_level_in`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
@@ -224,11 +224,11 @@ Log level for incoming traffic.
 
 Log level for outgoing traffic.
 
-**`macfilter`: `<boolean>` (*default =* `1`)**
+**`macfilter`: `<boolean>` (*default \=* `1`)**
 
 Enable/disable MAC address filter.
 
-**`ndp`: `<boolean>` (*default =* `1`)**
+**`ndp`: `<boolean>` (*default \=* `1`)**
 
 Enable NDP (Neighbor Discovery Protocol).
 
@@ -285,7 +285,7 @@ FORWARD ACCEPT -source 10.0.0.1 -sport 80
 
 This is used to set VNet related firewall options.
 
-**`enable`: `<boolean>` (*default =* `0`)**
+**`enable`: `<boolean>` (*default \=* `0`)**
 
 Enable/disable firewall rules.
 

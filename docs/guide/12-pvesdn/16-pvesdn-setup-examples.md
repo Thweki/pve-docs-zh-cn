@@ -286,7 +286,7 @@ In this example the Proxmox nodes as well as the external peer will be connected
 
 [![screenshot/gui-datacenter-create-fabric-wireguard.png](../../assets/screenshot-gui-datacenter-create-fabric-wireguard-png-a9b9ae75c98b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-create-fabric-wireguard.png)
 
-Click on *Datacenter* in the left-hand resource tree then navigate to *SDN* > *Fabrics* and create a new WireGuard fabric by clicking *Create* and selecting *WireGuard*.
+Click on *Datacenter* in the left-hand resource tree then navigate to *SDN* \> *Fabrics* and create a new WireGuard fabric by clicking *Create* and selecting *WireGuard*.
 
 Choose a name for the fabric, in this case *example* has been chosen.
 
@@ -304,7 +304,7 @@ Create a new WireGuard interface, `wg0`, and configure the IP address that shoul
 
 [![screenshot/gui-datacenter-create-external-node-wireguard.png](../../assets/screenshot-gui-datacenter-create-external-node-wireguard-png-4da4203f662b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-create-external-node-wireguard.png)
 
-In order to add an external node, add another node to the WireGuard fabric, but select type *External* in the node creation dialog. Enter the public key of the interface of the external node, as well as the IP/hostname + port that can be used to reach this external peer (`192.0.2.10:51820` in this example). Add the IP of the node, `198.51.100.10/32`, as well as the `203.0.113.0/24` subnet to the allowed IPs field.
+In order to add an external node, add another node to the WireGuard fabric, but select type *External* in the node creation dialog. Enter the public key of the interface of the external node, as well as the IP/hostname \+ port that can be used to reach this external peer (`192.0.2.10:51820` in this example). Add the IP of the node, `198.51.100.10/32`, as well as the `203.0.113.0/24` subnet to the allowed IPs field.
 
 ### Set Up WireGuard Peerings <a href="#_set_up_wireguard_peerings" id="_set_up_wireguard_peerings"></a>
 

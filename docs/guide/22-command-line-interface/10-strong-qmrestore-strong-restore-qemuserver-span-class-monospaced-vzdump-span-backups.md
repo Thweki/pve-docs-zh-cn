@@ -1,4 +1,4 @@
-# 22.10. **qmrestore** - Restore QemuServer `vzdump` Backups <a href="#_strong_qmrestore_strong_restore_qemuserver_span_class_monospaced_vzdump_span_backups" id="_strong_qmrestore_strong_restore_qemuserver_span_class_monospaced_vzdump_span_backups"></a>
+# 22.10. **qmrestore** \- Restore QemuServer `vzdump` Backups <a href="#_strong_qmrestore_strong_restore_qemuserver_span_class_monospaced_vzdump_span_backups" id="_strong_qmrestore_strong_restore_qemuserver_span_class_monospaced_vzdump_span_backups"></a>
 
 <a id="cli_qmrestore_help"></a>
 
@@ -16,7 +16,7 @@ Restore QemuServer vzdump backups.
 
 **`<archive>`: `<string>`**
 
-The backup file. You can pass *-* to read from standard input.
+The backup file. You can pass *\-* to read from standard input.
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
@@ -30,7 +30,7 @@ VM 的唯一 ID。
 
 Allow to overwrite existing VM.
 
-**`--ha-managed` `<boolean>`（*默认 =* `0`）**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 Add the VM as a HA resource after it was restored.
 
@@ -42,7 +42,7 @@ Start the VM immediately from the backup and restore in background. PBS only.
 
 将 VM 添加到指定池。
 
-**`--start` `<boolean>`（*默认 =* `0`）**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Start VM after it was restored successfully.
 

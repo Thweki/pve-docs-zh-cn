@@ -8,6 +8,8 @@
 
 Get preconditions for migration.
 
+**方法标识：** `migrate_vm_precondition`
+
 **权限**
 
 ```json
@@ -205,6 +207,8 @@ Get preconditions for migration.
 ## POST `/nodes/{node}/qemu/{vmid}/migrate`
 
 Migrate virtual machine. Creates a new migration task.
+
+**方法标识：** `migrate_vm`
 
 **权限**
 

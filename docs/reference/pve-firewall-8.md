@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
 
-pve-firewall - PVE Firewall Daemon
+pve-firewall \- PVE Firewall Daemon
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -68,11 +68,11 @@ Destination IP address.
 
 Destination port.
 
-**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default =* `outside`)**
+**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `outside`)**
 
 Source zone.
 
-**`--protocol` `(tcp|udp)` (*default =* `tcp`)**
+**`--protocol` `(tcp|udp)` (*default \=* `tcp`)**
 
 Protocol.
 
@@ -84,11 +84,11 @@ Source IP address.
 
 Source port.
 
-**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default =* `host`)**
+**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `host`)**
 
 Destination zone.
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Verbose output.
 
@@ -100,9 +100,9 @@ Verbose output.
 
 Start the Proxmox VE firewall service.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pve-firewall_status"></a>
 
@@ -128,7 +128,7 @@ While all configuration is stored on the cluster file system, the `iptables`-bas
 
 The firewall has full support for IPv4 and IPv6. IPv6 support is fully transparent, and we filter traffic for both protocols by default. So there is no need to maintain a different set of rules for IPv6.
 
-## Directions & Zones <a href="#_directions_amp_zones" id="_directions_amp_zones"></a>
+## Directions \& Zones <a href="#_directions_amp_zones" id="_directions_amp_zones"></a>
 
 The Proxmox VE firewall groups the network into multiple logical zones. You can define rules for each zone independently. Depending on the zone, you can define rules for incoming, outgoing or forwarded traffic.
 
@@ -194,11 +194,11 @@ The configuration can contain the following sections:
 
 This is used to set cluster-wide firewall options.
 
-**`ebtables`: `<boolean>` (*default =* `1`)**
+**`ebtables`: `<boolean>` (*default \=* `1`)**
 
 Enable ebtables rules cluster wide.
 
-**`enable`: `<integer> (0 - N)` (*default =* `0`)**
+**`enable`: `<integer> (0 - N)` (*default \=* `0`)**
 
 Enable or disable the firewall cluster wide.
 
@@ -206,15 +206,15 @@ Enable or disable the firewall cluster wide.
 
 Log ratelimiting settings
 
-**`burst`=`<integer> (0 - N)` (*default =* `5`)**
+**`burst`\=`<integer> (0 - N)` (*default \=* `5`)**
 
 Initial burst of packages which will always get logged before the rate is applied
 
-**`enable`=`<boolean>` (*default =* `1`)**
+**`enable`\=`<boolean>` (*default \=* `1`)**
 
 Enable or disable log rate limiting
 
-**`rate`=`<rate>` (*default =* `1/second`)**
+**`rate`\=`<rate>` (*default \=* `1/second`)**
 
 Frequency with which the burst bucket gets refilled
 
@@ -257,7 +257,7 @@ enable: 1
 ```
 
 {% hint style="warning" %}
-If you enable the firewall, traffic to all hosts will be blocked by default - with some exceptions for traffic coming from the local network to the WebUI, SSH and other important services. A full list of the default firewall rules can be found at xref:pve_firewall_default_rules.
+If you enable the firewall, traffic to all hosts will be blocked by default \- with some exceptions for traffic coming from the local network to the WebUI, SSH and other important services. A full list of the default firewall rules can be found at xref:pve\_firewall\_default\_rules.
 {% endhint %}
 
 Should you have other services running which communicate over the network, you will have to allow them seperately. For some common services there are `macros` available.
@@ -284,7 +284,7 @@ This is useful if you want to overwrite rules from `cluster.fw` config. You can 
 
 This is used to set host related firewall options.
 
-**`enable`: `<boolean>` (*default =* `1`)**
+**`enable`: `<boolean>` (*default \=* `1`)**
 
 Enable host firewall rules.
 
@@ -300,35 +300,35 @@ Log level for incoming traffic.
 
 Log level for outgoing traffic.
 
-**`log_nf_conntrack`: `<boolean>` (*default =* `0`)**
+**`log_nf_conntrack`: `<boolean>` (*default \=* `0`)**
 
 Enable logging of conntrack information.
 
-**`ndp`: `<boolean>` (*default =* `1`)**
+**`ndp`: `<boolean>` (*default \=* `1`)**
 
 Enable NDP (Neighbor Discovery Protocol).
 
-**`nf_conntrack_allow_invalid`: `<boolean>` (*default =* `0`)**
+**`nf_conntrack_allow_invalid`: `<boolean>` (*default \=* `0`)**
 
 Allow invalid packets on connection tracking.
 
-**`nf_conntrack_helpers`: `<string>` (*default =* ``)**
+**`nf_conntrack_helpers`: `<string>` (*default \=* \`\`)**
 
 Enable conntrack helpers for specific protocols. Supported protocols: amanda, ftp, irc, netbios-ns, pptp, sane, sip, snmp, tftp
 
-**`nf_conntrack_max`: `<integer> (32768 - N)` (*default =* `262144`)**
+**`nf_conntrack_max`: `<integer> (32768 - N)` (*default \=* `262144`)**
 
 Maximum number of tracked connections.
 
-**`nf_conntrack_tcp_timeout_established`: `<integer> (7875 - N)` (*default =* `432000`)**
+**`nf_conntrack_tcp_timeout_established`: `<integer> (7875 - N)` (*default \=* `432000`)**
 
 Conntrack established timeout.
 
-**`nf_conntrack_tcp_timeout_syn_recv`: `<integer> (30 - 60)` (*default =* `60`)**
+**`nf_conntrack_tcp_timeout_syn_recv`: `<integer> (30 - 60)` (*default \=* `60`)**
 
 Conntrack syn recv timeout.
 
-**`nftables`: `<boolean>` (*default =* `0`)**
+**`nftables`: `<boolean>` (*default \=* `0`)**
 
 Enable nftables based firewall (tech preview)
 
@@ -336,15 +336,15 @@ Enable nftables based firewall (tech preview)
 
 Enable SMURFS filter.
 
-**`protection_synflood`: `<boolean>` (*default =* `0`)**
+**`protection_synflood`: `<boolean>` (*default \=* `0`)**
 
 Enable synflood protection
 
-**`protection_synflood_burst`: `<integer>` (*default =* `1000`)**
+**`protection_synflood_burst`: `<integer>` (*default \=* `1000`)**
 
 Synflood protection rate burst by ip src.
 
-**`protection_synflood_rate`: `<integer>` (*default =* `200`)**
+**`protection_synflood_rate`: `<integer>` (*default \=* `200`)**
 
 Synflood protection rate syn/sec by ip src.
 
@@ -356,7 +356,7 @@ Log level for SMURFS filter.
 
 Log level for illegal tcp flags filter.
 
-**`tcpflags`: `<boolean>` (*default =* `0`)**
+**`tcpflags`: `<boolean>` (*default \=* `0`)**
 
 Filter illegal combinations of TCP flags.
 
@@ -378,17 +378,17 @@ and contains the following data:
 
 This is used to set VM/Container related firewall options.
 
-**`dhcp`: `<boolean>` (*default =* `0`)**
+**`dhcp`: `<boolean>` (*default \=* `0`)**
 
 Enable DHCP.
 
-**`enable`: `<boolean>` (*default =* `0`)**
+**`enable`: `<boolean>` (*default \=* `0`)**
 
 Enable/disable firewall rules.
 
 **`ipfilter`: `<boolean>`**
 
-Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface’s MAC address. For containers the configured IP addresses will be implicitly added.
+Enable default IP filters. This is equivalent to adding an empty ipfilter-net\<id\> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface’s MAC address. For containers the configured IP addresses will be implicitly added.
 
 **`log_level_in`: `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
@@ -398,11 +398,11 @@ Log level for incoming traffic.
 
 Log level for outgoing traffic.
 
-**`macfilter`: `<boolean>` (*default =* `1`)**
+**`macfilter`: `<boolean>` (*default \=* `1`)**
 
 Enable/disable MAC address filter.
 
-**`ndp`: `<boolean>` (*default =* `1`)**
+**`ndp`: `<boolean>` (*default \=* `1`)**
 
 Enable NDP (Neighbor Discovery Protocol).
 
@@ -459,7 +459,7 @@ FORWARD ACCEPT -source 10.0.0.1 -sport 80
 
 This is used to set VNet related firewall options.
 
-**`enable`: `<boolean>` (*default =* `0`)**
+**`enable`: `<boolean>` (*default \=* `0`)**
 
 Enable/disable firewall rules.
 
@@ -494,11 +494,11 @@ The following options can be used to refine rule matches.
 
 **`--dest` `<string>`**
 
-Restrict packet destination address. This can refer to a single IP address, an IP set (*+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
+Restrict packet destination address. This can refer to a single IP address, an IP set (*\+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
 
 **`--dport` `<string>`**
 
-Restrict TCP/UDP destination port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\d+:\d+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
+Restrict TCP/UDP destination port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\\d\+:\\d\+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
 
 **`--icmp-type` `<string>`**
 
@@ -506,7 +506,7 @@ Specify icmp-type. Only valid if proto equals *icmp* or *icmpv6*/*ipv6-icmp*.
 
 **`--iface` `<string>`**
 
-Network interface name. You have to use network configuration key names for VMs and containers (*net\d+*). Host related rules can use arbitrary strings.
+Network interface name. You have to use network configuration key names for VMs and containers (*net\\d\+*). Host related rules can use arbitrary strings.
 
 **`--log` `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
@@ -518,11 +518,11 @@ IP protocol. You can use protocol names (*tcp*/*udp*) or simple numbers, as defi
 
 **`--source` `<string>`**
 
-Restrict packet source address. This can refer to a single IP address, an IP set (*+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
+Restrict packet source address. This can refer to a single IP address, an IP set (*\+ipsetname*) or an IP alias definition. You can also specify an address range like *20.34.101.207-201.3.9.99*, or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists.
 
 **`--sport` `<string>`**
 
-Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\d+:\d+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
+Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in */etc/services*. Port ranges can be specified with *\\d\+:\\d\+*, for example *80:85*, and you can use comma separated list to match several ports or ranges.
 
 Here are some examples:
 
@@ -594,7 +594,7 @@ local_network 1.2.3.4 # use the single IP address
 
 ## IP Sets <a href="#pve_firewall_ip_sets" id="pve_firewall_ip_sets"></a>
 
-IP sets can be used to define groups of networks and hosts. You can refer to them with ‘+name` in the firewall rules’ `source` and `dest` properties.
+IP sets can be used to define groups of networks and hosts. You can refer to them with ‘\+name\` in the firewall rules’ `source` and `dest` properties.
 
 The following example allows HTTP traffic from the `management` IP set.
 
@@ -786,7 +786,7 @@ A typical firewall log output looks like this:
 VMID LOGID CHAIN TIMESTAMP POLICY: PACKET_DETAILS
 ```
 
-In case of the host firewall, `VMID` is equal to 0.
+In case of the host firewall, `VMID` is equal to 0\.
 
 ### Logging of user defined firewall rules <a href="#_logging_of_user_defined_firewall_rules" id="_logging_of_user_defined_firewall_rules"></a>
 
@@ -815,7 +815,7 @@ produces a log output flagged with the `debug` level.
 
 ### How to allow FTP <a href="#_how_to_allow_ftp" id="_how_to_allow_ftp"></a>
 
-FTP is an old style protocol which uses port 21 and several other dynamic ports. So you need a rule to accept port 21. In addition, you need to load the `ip_conntrack_ftp` module. So please run:
+FTP is an old style protocol which uses port 21 and several other dynamic ports. So you need a rule to accept port 21\. In addition, you need to load the `ip_conntrack_ftp` module. So please run:
 
 ```text
 modprobe ip_conntrack_ftp
@@ -903,7 +903,7 @@ Install the `proxmox-firewall` package:
 apt install proxmox-firewall
 ```
 
-Enable the nftables backend via the Web UI on your hosts (Host > Firewall > Options > nftables), or by enabling it in the configuration file for your hosts (`/etc/pve/nodes/<node_name>/host.fw`):
+Enable the nftables backend via the Web UI on your hosts (Host \> Firewall \> Options \> nftables), or by enabling it in the configuration file for your hosts (`/etc/pve/nodes/<node_name>/host.fw`):
 
 ```text
 [OPTIONS]
@@ -952,7 +952,7 @@ You can check the generated ruleset via the following command:
 nft list ruleset
 ```
 
-If you want to debug `proxmox-firewall` you can dump the commands generated by the firewall via the `compile` subcommand. Additionally, setting the PVE_LOG environment variable will print log output to STDERR, which can be useful for debugging issues during the generation of the nftables ruleset:
+If you want to debug `proxmox-firewall` you can dump the commands generated by the firewall via the `compile` subcommand. Additionally, setting the PVE\_LOG environment variable will print log output to STDERR, which can be useful for debugging issues during the generation of the nftables ruleset:
 
 ```text
 PVE_LOG=trace /usr/libexec/proxmox/proxmox-firewall compile > firewall.json
@@ -1010,7 +1010,7 @@ table bridge tracebridge {
 }
 ```
 
-Saving this file, making it executable, and then running it once will create the respective tracing chains. You can then inspect the tracing output via the Proxmox VE Web UI (Firewall > Log) or via `nft monitor trace`.
+Saving this file, making it executable, and then running it once will create the respective tracing chains. You can then inspect the tracing output via the Proxmox VE Web UI (Firewall \> Log) or via `nft monitor trace`.
 
 The above example traces traffic on all bridges, which is usually where guest traffic flows through. If you want to examine host traffic, create those chains in the `inet` table instead of the `bridge` table.
 

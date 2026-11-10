@@ -8,6 +8,8 @@
 
 Execute get-host-name.
 
+**方法标识：** `get-host-name`
+
 **权限**
 
 ```json

@@ -33,7 +33,7 @@ The above command will destroy all data on the disk!
 **Ceph Bluestore**
 
 Starting with the Ceph Kraken release, a new Ceph OSD storage type was introduced called Bluestore   
-[Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)]  
+\[Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)\]  
 . This is the default when creating OSDs since Ceph Luminous.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
@@ -44,7 +44,7 @@ pveceph osd create /dev/sd[X]
 
 **Block.db and block.wal**
 
-If you want to use a separate DB/WAL device for your OSDs, you can specify it through the *-db_dev* and *-wal_dev* options. The WAL is placed with the DB, if not specified separately.
+If you want to use a separate DB/WAL device for your OSDs, you can specify it through the *-db\_dev* and *-wal\_dev* options. The WAL is placed with the DB, if not specified separately.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
@@ -52,9 +52,9 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 pveceph osd create /dev/sd[X] -db_dev /dev/sd[Y] -wal_dev /dev/sd[Z]
 ```
 
-You can directly choose the size of those with the *-db_size* and *-wal_size* parameters respectively. If they are not given, the following values (in order) will be used:
+You can directly choose the size of those with the *-db\_size* and *-wal\_size* parameters respectively. If they are not given, the following values (in order) will be used:
 
-- bluestore_block_{db,wal}_size from Ceph configuration…
+- bluestore\_block\_{db,wal}\_size from Ceph configuration…
 
   - … database, section *osd*
   - … database, section *global*
@@ -80,7 +80,7 @@ ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
 
 If you experience problems with an OSD or its disk, try to [troubleshoot](15-pve-ceph-mon-and-ts.md#pve_ceph_mon_and_ts) them first to decide if a [replacement](14-ceph-maintenance.md#pve_ceph_osd_replace) is needed.
 
-To destroy an OSD, navigate to the *<Node> → Ceph → OSD* panel or use the mentioned CLI commands on the node where the OSD is located.
+To destroy an OSD, navigate to the *\<Node\> → Ceph → OSD* panel or use the mentioned CLI commands on the node where the OSD is located.
 
 1. Make sure the cluster has enough space to handle the removal of the OSD. In the *Ceph → OSD* panel,if the to-be destroyed OSD is still `up` and `in` (non-zero value at `AVAIL`), make sure that all OSDs have their `Used (%)` value well below the `nearfull_ratio` of default `85%`.
 

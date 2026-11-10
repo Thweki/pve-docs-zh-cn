@@ -8,6 +8,8 @@
 
 Get OSD crush map
 
+**方法标识：** `crush`
+
 **权限**
 
 ```json

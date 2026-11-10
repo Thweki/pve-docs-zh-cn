@@ -8,6 +8,8 @@
 
 Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name 'name-$realm', so make sure those groups do not exist to prevent overwriting.
 
+**方法标识：** `sync`
+
 **权限**
 
 ```json

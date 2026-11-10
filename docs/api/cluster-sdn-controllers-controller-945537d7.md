@@ -8,6 +8,8 @@
 
 Delete sdn controller object configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@ Delete sdn controller object configuration.
 ## GET `/cluster/sdn/controllers/{controller}`
 
 Read sdn controller configuration.
+
+**方法标识：** `read`
 
 **权限**
 
@@ -339,6 +343,8 @@ Read sdn controller configuration.
 ## PUT `/cluster/sdn/controllers/{controller}`
 
 Update sdn controller object configuration.
+
+**方法标识：** `update`
 
 **权限**
 

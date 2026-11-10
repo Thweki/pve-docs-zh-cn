@@ -8,6 +8,8 @@
 
 Bulk migrate all guests on the cluster.
 
+**方法标识：** `migrate`
+
 **权限**
 
 ```json

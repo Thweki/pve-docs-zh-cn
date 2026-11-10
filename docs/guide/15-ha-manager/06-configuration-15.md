@@ -18,7 +18,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 它以资源类型开头，后跟资源特定名称，两者之间用冒号分隔。它们共同构成 HA 资源 ID，所有 `ha-manager` 命令都使用该 ID 唯一标识资源（例如：`vm:100` 或 `ct:101`）。接下来的行包含其他属性：
 
-**`auto-rebalance`：`<boolean>`（*默认值 =* `1`）**
+**`auto-rebalance`：`<boolean>`（*默认值 \=* `1`）**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -26,7 +26,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 描述。
 
-**`failback`：`<boolean>`（*默认值 =* `1`）**
+**`failback`：`<boolean>`（*默认值 \=* `1`）**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -34,15 +34,15 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 HA 组标识符。
 
-**`max_relocate`：`<integer> (0 - N)`（*默认值 =* `1`）**
+**`max_relocate`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`max_restart`：`<integer> (0 - N)`（*默认值 =* `1`）**
+**`max_restart`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 =* `started`）**
+**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 \=* `started`）**
 
 请求的资源状态。CRM 读取此状态并采取相应操作。请注意，`enabled` 只是 `started` 的别名。
 
@@ -109,11 +109,11 @@ group: <group>
 
 集群节点成员列表，可以为每个节点指定优先级。资源将在具有最高优先级的可用节点上运行。如果最高优先级类别中有多个节点，资源将分布到这些节点上。优先级只有相对意义。数值越大，优先级越高。
 
-**`nofailback`：`<boolean>`（*默认值 =* `0`）**
+**`nofailback`：`<boolean>`（*默认值 \=* `0`）**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`restricted`：`<boolean>`（*默认值 =* `0`）**
+**`restricted`：`<boolean>`（*默认值 \=* `0`）**
 
 绑定到受限组的资源只能在组定义的节点上运行。如果没有组节点成员在线，资源将被置于停止状态。非受限组上的资源可以在所有组成员离线时运行于任何集群节点，但一旦组成员上线，它们就会迁移回去。使用只有一个成员的非受限组，可以实现*首选节点*行为。
 
@@ -259,7 +259,7 @@ node-affinity: priority-cascade
 
 #### 节点亲和性规则属性 <a href="#_node_affinity_rule_properties" id="_node_affinity_rule_properties"></a>
 
-**`affinity`: `<negative | positive>` (*默认值 =* `positive`)**
+**`affinity`: `<negative | positive>` (*默认值 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -271,7 +271,7 @@ node-affinity: priority-cascade
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`strict`: `<boolean>` (*默认值 =* `0`)**
+**`strict`: `<boolean>` (*默认值 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 

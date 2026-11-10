@@ -8,6 +8,8 @@
 
 ceph osd out
 
+**方法标识：** `out`
+
 **权限**
 
 ```json

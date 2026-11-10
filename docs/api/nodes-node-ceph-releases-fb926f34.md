@@ -8,6 +8,8 @@
 
 List all known Ceph releases, marking which ones can be installed on this node.
 
+**方法标识：** `releases`
+
 **权限**
 
 ```json

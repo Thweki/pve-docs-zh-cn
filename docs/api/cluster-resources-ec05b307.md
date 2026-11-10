@@ -8,6 +8,8 @@
 
 Resources index (cluster wide).
 
+**方法标识：** `resources`
+
 **权限**
 
 ```json

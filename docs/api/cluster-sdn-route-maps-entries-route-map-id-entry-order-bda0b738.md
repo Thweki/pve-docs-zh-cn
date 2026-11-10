@@ -8,6 +8,8 @@
 
 Delete Route Map Entry
 
+**方法标识：** `delete_route_map_entry`
+
 **权限**
 
 ```json
@@ -84,6 +86,8 @@ Delete Route Map Entry
 ## GET `/cluster/sdn/route-maps/entries/{route-map-id}/entry/{order}`
 
 Get Route Map Entry
+
+**方法标识：** `get_route_map_entry`
 
 **权限**
 
@@ -269,6 +273,8 @@ Get Route Map Entry
 ## PUT `/cluster/sdn/route-maps/entries/{route-map-id}/entry/{order}`
 
 Update Route Map Entry
+
+**方法标识：** `update_route_map_entry`
 
 **权限**
 

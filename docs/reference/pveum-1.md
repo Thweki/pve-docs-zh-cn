@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_user_management" id="chapter_user_management"></a>
 
-pveum - Proxmox VE User Manager
+pveum \- Proxmox VE User Manager
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -28,7 +28,7 @@ Access control path
 
 List of groups.
 
-**`--propagate` `<boolean>` (*default =* `1`)**
+**`--propagate` `<boolean>` (*default \=* `1`)**
 
 Allow to propagate (inherit) permissions.
 
@@ -68,7 +68,7 @@ Access control path
 
 List of groups.
 
-**`--propagate` `<boolean>` (*default =* `1`)**
+**`--propagate` `<boolean>` (*default \=* `1`)**
 
 Allow to propagate (inherit) permissions.
 
@@ -268,7 +268,7 @@ Update pool.
 
 no description available
 
-**`--allow-move` `<boolean>` (*default =* `0`)**
+**`--allow-move` `<boolean>` (*default \=* `0`)**
 
 Allow adding a guest even if already in another pool. The guest will be removed from its current pool and added to this one.
 
@@ -276,7 +276,7 @@ Allow adding a guest even if already in another pool. The guest will be removed 
 
 no description available
 
-**`--delete` `<boolean>` (*默认 =* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Remove the passed VMIDs and/or storage IDs instead of adding them.
 
@@ -308,7 +308,7 @@ Specifies the Authentication Context Class Reference values that theAuthorizatio
 
 A list of audiences that the OpenID Issuer may include that are accepted in addition to *client-id*.
 
-**`--autocreate` `<boolean>` (*default =* `0`)**
+**`--autocreate` `<boolean>` (*default \=* `0`)**
 
 Automatically create users if they do not exist.
 
@@ -320,11 +320,11 @@ LDAP base domain name
 
 LDAP bind domain name
 
-**`--capath` `<string>` (*default =* `/etc/ssl/certs`)**
+**`--capath` `<string>` (*default \=* `/etc/ssl/certs`)**
 
 Path to the CA certificate store
 
-**`--case-sensitive` `<boolean>` (*default =* `1`)**
+**`--case-sensitive` `<boolean>` (*default \=* `1`)**
 
 username is case-sensitive
 
@@ -336,7 +336,7 @@ Path to the client certificate
 
 Path to the client certificate key
 
-**`--check-connection` `<boolean>` (*default =* `0`)**
+**`--check-connection` `<boolean>` (*default \=* `0`)**
 
 Check bind connection to the server.
 
@@ -364,13 +364,13 @@ AD domain name
 
 LDAP filter for user sync.
 
-**`--group_classes` `<string>` (*default =* `groupOfNames, group, univentionGroup, ipausergroup`)**
+**`--group_classes` `<string>` (*default \=* `groupOfNames, group, univentionGroup, ipausergroup`)**
 
 The objectclasses for groups.
 
 **`--group_dn` `<string>`**
 
-LDAP base domain name for group sync. If not set, the base_dn will be used.
+LDAP base domain name for group sync. If not set, the base\_dn will be used.
 
 **`--group_filter` `<string>`**
 
@@ -380,7 +380,7 @@ LDAP filter for group sync.
 
 LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name.
 
-**`--groups-autocreate` `<boolean>` (*default =* `0`)**
+**`--groups-autocreate` `<boolean>` (*default \=* `0`)**
 
 Automatically create groups if they do not exist.
 
@@ -388,7 +388,7 @@ Automatically create groups if they do not exist.
 
 OpenID claim used to retrieve groups with.
 
-**`--groups-overwrite` `<boolean>` (*default =* `0`)**
+**`--groups-overwrite` `<boolean>` (*default \=* `0`)**
 
 All groups will be overwritten for the user on login.
 
@@ -396,13 +396,13 @@ All groups will be overwritten for the user on login.
 
 OpenID Issuer Url
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` (*default =* `ldap`)**
+**`--mode` `<ldap | ldap+starttls | ldaps>` (*default \=* `ldap`)**
 
 LDAP protocol mode.
 
 **`--password` `<string>`**
 
-LDAP bind password. Will be stored in */etc/pve/priv/realm/<REALM>.pw*.
+LDAP bind password. Will be stored in */etc/pve/priv/realm/\<REALM\>.pw*.
 
 **`--port` `<integer> (1 - 65535)`**
 
@@ -412,11 +412,11 @@ Server port.
 
 Specifies whether the Authorization Server prompts the End-User for reauthentication and consent.
 
-**`--query-userinfo` `<boolean>` (*default =* `1`)**
+**`--query-userinfo` `<boolean>` (*default \=* `1`)**
 
 Enables querying the userinfo endpoint for claims values.
 
-**`--scopes` `<string>` (*default =* `email profile`)**
+**`--scopes` `<string>` (*default \=* `email profile`)**
 
 Specifies the scopes (user details) that should be authorized and returned, for example *email* or *profile*.
 
@@ -442,7 +442,7 @@ The default options for behavior of synchronizations.
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
+Comma separated list of key\=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email\=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
@@ -456,7 +456,7 @@ Realm type.
 
 LDAP user attribute name
 
-**`--user_classes` `<string>` (*default =* `inetorgperson, posixaccount, person, user`)**
+**`--user_classes` `<string>` (*default \=* `inetorgperson, posixaccount, person, user`)**
 
 The objectclasses for users.
 
@@ -464,7 +464,7 @@ The objectclasses for users.
 
 OpenID claim used to generate the unique username.
 
-**`--verify` `<boolean>` (*default =* `0`)**
+**`--verify` `<boolean>` (*default \=* `0`)**
 
 Verify the server’s SSL certificate
 
@@ -508,7 +508,7 @@ Specifies the Authentication Context Class Reference values that theAuthorizatio
 
 A list of audiences that the OpenID Issuer may include that are accepted in addition to *client-id*.
 
-**`--autocreate` `<boolean>` (*default =* `0`)**
+**`--autocreate` `<boolean>` (*default \=* `0`)**
 
 Automatically create users if they do not exist.
 
@@ -520,11 +520,11 @@ LDAP base domain name
 
 LDAP bind domain name
 
-**`--capath` `<string>` (*default =* `/etc/ssl/certs`)**
+**`--capath` `<string>` (*default \=* `/etc/ssl/certs`)**
 
 Path to the CA certificate store
 
-**`--case-sensitive` `<boolean>` (*default =* `1`)**
+**`--case-sensitive` `<boolean>` (*default \=* `1`)**
 
 username is case-sensitive
 
@@ -536,7 +536,7 @@ Path to the client certificate
 
 Path to the client certificate key
 
-**`--check-connection` `<boolean>` (*default =* `0`)**
+**`--check-connection` `<boolean>` (*default \=* `0`)**
 
 Check bind connection to the server.
 
@@ -572,13 +572,13 @@ AD domain name
 
 LDAP filter for user sync.
 
-**`--group_classes` `<string>` (*default =* `groupOfNames, group, univentionGroup, ipausergroup`)**
+**`--group_classes` `<string>` (*default \=* `groupOfNames, group, univentionGroup, ipausergroup`)**
 
 The objectclasses for groups.
 
 **`--group_dn` `<string>`**
 
-LDAP base domain name for group sync. If not set, the base_dn will be used.
+LDAP base domain name for group sync. If not set, the base\_dn will be used.
 
 **`--group_filter` `<string>`**
 
@@ -588,7 +588,7 @@ LDAP filter for group sync.
 
 LDAP attribute representing a groups name. If not set or found, the first value of the DN will be used as name.
 
-**`--groups-autocreate` `<boolean>` (*default =* `0`)**
+**`--groups-autocreate` `<boolean>` (*default \=* `0`)**
 
 Automatically create groups if they do not exist.
 
@@ -596,7 +596,7 @@ Automatically create groups if they do not exist.
 
 OpenID claim used to retrieve groups with.
 
-**`--groups-overwrite` `<boolean>` (*default =* `0`)**
+**`--groups-overwrite` `<boolean>` (*default \=* `0`)**
 
 All groups will be overwritten for the user on login.
 
@@ -604,13 +604,13 @@ All groups will be overwritten for the user on login.
 
 OpenID Issuer Url
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` (*default =* `ldap`)**
+**`--mode` `<ldap | ldap+starttls | ldaps>` (*default \=* `ldap`)**
 
 LDAP protocol mode.
 
 **`--password` `<string>`**
 
-LDAP bind password. Will be stored in */etc/pve/priv/realm/<REALM>.pw*.
+LDAP bind password. Will be stored in */etc/pve/priv/realm/\<REALM\>.pw*.
 
 **`--port` `<integer> (1 - 65535)`**
 
@@ -620,11 +620,11 @@ Server port.
 
 Specifies whether the Authorization Server prompts the End-User for reauthentication and consent.
 
-**`--query-userinfo` `<boolean>` (*default =* `1`)**
+**`--query-userinfo` `<boolean>` (*default \=* `1`)**
 
 Enables querying the userinfo endpoint for claims values.
 
-**`--scopes` `<string>` (*default =* `email profile`)**
+**`--scopes` `<string>` (*default \=* `email profile`)**
 
 Specifies the scopes (user details) that should be authorized and returned, for example *email* or *profile*.
 
@@ -650,7 +650,7 @@ The default options for behavior of synchronizations.
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-Comma separated list of key=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
+Comma separated list of key\=value pairs for specifying which LDAP attributes map to which PVE user field. For example, to map the LDAP attribute *mail* to PVEs *email*, write *email\=mail*. By default, each PVE user field is represented by an LDAP attribute of the same name.
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
@@ -660,11 +660,11 @@ Use Two-factor authentication.
 
 LDAP user attribute name
 
-**`--user_classes` `<string>` (*default =* `inetorgperson, posixaccount, person, user`)**
+**`--user_classes` `<string>` (*default \=* `inetorgperson, posixaccount, person, user`)**
 
 The objectclasses for users.
 
-**`--verify` `<boolean>` (*default =* `0`)**
+**`--verify` `<boolean>` (*default \=* `0`)**
 
 Verify the server’s SSL certificate
 
@@ -680,11 +680,11 @@ Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced gro
 
 Authentication domain ID
 
-**`--dry-run` `<boolean>` (*default =* `0`)**
+**`--dry-run` `<boolean>` (*default \=* `0`)**
 
 If set, does not write anything.
 
-**`--enable-new` `<boolean>` (*default =* `1`)**
+**`--enable-new` `<boolean>` (*default \=* `1`)**
 
 Enable newly synced users immediately.
 
@@ -696,7 +696,7 @@ DEPRECATED: use *remove-vanished* instead. If set, uses the LDAP Directory as so
 
 DEPRECATED: use *remove-vanished* instead. Remove ACLs for users or groups which were removed from the config during a sync.
 
-**`--remove-vanished` `([acl];[properties];[entry])|none` (*default =* `none`)**
+**`--remove-vanished` `([acl];[properties];[entry])|none` (*default \=* `none`)**
 
 A semicolon-separated list of things to remove when they or the user vanishes during a sync. The following values are possible: *entry* removes the user/group when not returned from the sync. *properties* removes the set properties on existing user/group that do not appear in the source (even custom ones). *acl* removes acls when the user/group is not returned from the sync. Instead of a list it also can be *none* (the default).
 
@@ -800,9 +800,9 @@ Create or verify authentication ticket.
 
 User name
 
-**`--new-format` `<boolean>` (*default =* `1`)**
+**`--new-format` `<boolean>` (*default \=* `1`)**
 
-This parameter is now ignored and assumed to be 1.
+This parameter is now ignored and assumed to be 1\.
 
 **`--otp` `<string>`**
 
@@ -826,7 +826,7 @@ Requires option(s): `path`
 
 **`--realm` `<string>`**
 
-You can optionally pass the realm using this parameter. Normally the realm is simply added to the username <username>@<realm>.
+You can optionally pass the realm using this parameter. Normally the realm is simply added to the username \<username\>@\<realm\>.
 
 **`--tfa-challenge` `<string>`**
 
@@ -852,7 +852,7 @@ no description available
 
 no description available
 
-**`--enable` `<boolean>` (*default =* `1`)**
+**`--enable` `<boolean>` (*default \=* `1`)**
 
 Enable the account (default). You can set this to *0* to disable the account
 
@@ -904,7 +904,7 @@ User index.
 
 Optional filter for enable property.
 
-**`--full` `<boolean>` (*default =* `0`)**
+**`--full` `<boolean>` (*default \=* `0`)**
 
 Include group and token information.
 
@@ -936,7 +936,7 @@ no description available
 
 no description available
 
-**`--enable` `<boolean>` (*default =* `1`)**
+**`--enable` `<boolean>` (*default \=* `1`)**
 
 Enable the account (default). You can set this to *0* to disable the account
 
@@ -1036,11 +1036,11 @@ User-specific token identifier.
 
 no description available
 
-**`--expire` `<integer> (0 - N)` (*default =* `same as user`)**
+**`--expire` `<integer> (0 - N)` (*default \=* `same as user`)**
 
 API token expiration date (seconds since epoch). *0* means no expiration date.
 
-**`--privsep` `<boolean>` (*default =* `1`)**
+**`--privsep` `<boolean>` (*default \=* `1`)**
 
 Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
 
@@ -1096,15 +1096,15 @@ no description available
 
 要删除的设置列表。
 
-**`--expire` `<integer> (0 - N)` (*default =* `same as user`)**
+**`--expire` `<integer> (0 - N)` (*default \=* `same as user`)**
 
 API token expiration date (seconds since epoch). *0* means no expiration date.
 
-**`--privsep` `<boolean>` (*default =* `1`)**
+**`--privsep` `<boolean>` (*default \=* `1`)**
 
 Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
 
-**`--regenerate` `<boolean>` (*default =* `0`)**
+**`--regenerate` `<boolean>` (*default \=* `0`)**
 
 Regenerate the token’s secret value. All users of the previous secret will lose access after this operation.
 
@@ -1318,7 +1318,7 @@ Microsoft AD normally checks values like usernames without case sensitivity. To 
 
 [![screenshot/gui-datacenter-realm-add-ldap.png](../assets/screenshot-gui-datacenter-realm-add-ldap-png-c2ca43be55a3.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-realm-add-ldap.png)
 
-It’s possible to automatically sync users and groups for LDAP-based realms (LDAP & Microsoft Active Directory), rather than having to add them to Proxmox VE manually. You can access the sync options from the Add/Edit window of the web interface’s `Authentication` panel or via the `pveum realm add/modify` commands. You can then carry out the sync operation from the `Authentication` panel of the GUI or using the following command:
+It’s possible to automatically sync users and groups for LDAP-based realms (LDAP \& Microsoft Active Directory), rather than having to add them to Proxmox VE manually. You can access the sync options from the Add/Edit window of the web interface’s `Authentication` panel or via the `pveum realm add/modify` commands. You can then carry out the sync operation from the `Authentication` panel of the GUI or using the following command:
 
 ```text
 pveum realm sync <realm>
@@ -1341,7 +1341,7 @@ The configuration options for syncing LDAP-based realms can be found in the `Syn
 The configuration options are as follows:
 
 - `Bind User` (`bind_dn`): Refers to the LDAP account used to query users and groups. This account needs access to all desired entries. If it’s set, the search will be carried out via binding; otherwise, the search will be carried out anonymously. The user must be a complete LDAP formatted distinguished name (DN), for example, `cn=admin,dc=example,dc=com`.
-- Groupname attr. (group_name_attr): Represents the users' groups. Only entries which adhere to the usual character limitations of the `user.cfg` are synced. Groups are synced with `-$realm` attached to the name, in order to avoid naming conflicts. Please ensure that a sync does not overwrite manually created groups.
+- Groupname attr. (group\_name\_attr): Represents the users' groups. Only entries which adhere to the usual character limitations of the `user.cfg` are synced. Groups are synced with `-$realm` attached to the name, in order to avoid naming conflicts. Please ensure that a sync does not overwrite manually created groups.
 - `User classes` (`user_classes`): Objects classes associated with users.
 - `Group classes` (`group_classes`): Objects classes associated with groups.
 - `E-Mail attribute`: If the LDAP-based server specifies user email addresses, these can also be included in the sync by setting the associated attribute here. From the command line, this is achievable through the `--sync_attributes` parameter.
@@ -1573,7 +1573,7 @@ It is recommended to use WebAuthn instead.
 {% endhint %}
 
 To allow users to use *U2F* authentication, it may be necessary to use a valid domain with a valid SSL certificate, otherwise, some browsers may print a warning or reject U2F usage altogether. Initially, an *AppId*   
-[AppId [https://developers.yubico.com/U2F/App_ID.html](https://developers.yubico.com/U2F/App_ID.html)]  
+\[AppId [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)\]  
  needs to be configured.
 
 {% hint style="info" %}
@@ -1589,7 +1589,7 @@ u2f: appid=https://mypve.example.com:8006
 For a single node, the *AppId* can simply be the address of the web interface, exactly as it is used in the browser, including the *https://* and the port, as shown above. Please note that some browsers may be more strict than others when matching *AppIds*.
 
 When using multiple nodes, it is best to have a separate `https` server providing an `appid.json`   
-[Multi-facet apps: [https://developers.yubico.com/U2F/App_ID.html](https://developers.yubico.com/U2F/App_ID.html)]  
+\[Multi-facet apps: [https://developers.yubico.com/U2F/App\_ID.html](https://developers.yubico.com/U2F/App_ID.html)\]  
  file, as it seems to be compatible with most browsers. If all nodes use subdomains of the same top level domain, it may be enough to use the TLD as *AppId*. It should however be noted that some browsers may not accept this.
 
 {% hint style="info" %}
@@ -1757,7 +1757,7 @@ Pools can be used to group a set of virtual machines and datastores. You can the
 
 ### Which Permissions Do I Need? <a href="#_which_permissions_do_i_need" id="_which_permissions_do_i_need"></a>
 
-The required API permissions are documented for each individual method, and can be found at [https://pve.proxmox.com/pve-docs/api-viewer/](https://pve.proxmox.com/pve-docs/api-viewer/).
+The required API permissions are documented for each individual method, and can be found at [https://pve.proxmox.com/pve-docs/api-viewer/](../api/README.md).
 
 The permissions are specified as a list, which can be interpreted as a tree of logic and access-check functions:
 
@@ -1788,9 +1788,9 @@ The user needs `Realm.AllocateUser` access to `/access/realm/<realm>`, with `<re
 
 The `path` is a templated parameter (see [Objects and Paths](#pveum_templated_paths)). The user needs either the `Permissions.Modify` privilege or, depending on the path, the following privileges as a possible substitute:
 
-- `/storage/...`: requires 'Datastore.Allocate`
-- `/vms/...`: requires 'VM.Allocate`
-- `/pool/...`: requires 'Pool.Allocate`
+- `/storage/...`: requires 'Datastore.Allocate\`
+- `/vms/...`: requires 'VM.Allocate\`
+- `/pool/...`: requires 'Pool.Allocate\`
 
   If the path is empty, `Permissions.Modify` on `/access` is required.
 

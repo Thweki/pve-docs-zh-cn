@@ -3,7 +3,7 @@
 [![screenshot/gui-ceph-monitor.png](../../assets/screenshot-gui-ceph-monitor-png-5183f95d9815.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-monitor.png)
 
 The Ceph Monitor (MON)   
-[Ceph Monitor [https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/](https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/)]  
+\[Ceph Monitor [https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/](https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/)\]  
  maintains a master copy of the cluster map. For high availability, you need at least 3 monitors. One monitor will already be installed if you used the installation wizard. You won’t need more than 3 monitors, as long as your cluster is small to medium-sized. Only really large clusters will require more than this.
 
 ## 8.5.1. Create Monitors <a href="#pveceph_create_mon" id="pveceph_create_mon"></a>

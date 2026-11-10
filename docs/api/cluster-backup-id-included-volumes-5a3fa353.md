@@ -8,6 +8,8 @@
 
 Returns included guests and the backup status of their disks. Optimized to be used in ExtJS tree views.
 
+**方法标识：** `get_volume_backup_included`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Download templates, ISO images, OVAs and VM images by using an URL.
 
+**方法标识：** `download_url`
+
 **权限**
 
 ```json

@@ -46,15 +46,15 @@ iSCSI target.
 
 The iSCSI target implementation used on the remote machine
 
-**comstar_tg**
+**comstar\_tg**
 
 target group for comstar views.
 
-**comstar_hg**
+**comstar\_hg**
 
 host group for comstar views.
 
-**lio_tpg**
+**lio\_tpg**
 
 target portal group for Linux LIO targets
 

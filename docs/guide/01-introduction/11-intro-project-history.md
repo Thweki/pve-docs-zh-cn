@@ -1,34 +1,34 @@
-# 1.11. Project History <a href="#intro_project_history" id="intro_project_history"></a>
+# 1.11. 项目历史 <a href="#intro_project_history" id="intro_project_history"></a>
 
-The project started in 2007, followed by a first stable version in 2008. At the time, it used OpenVZ for containers and KVM for virtual machines. The clustering features were limited, and the user interface was simple (a server-generated web page).
+该项目于 2007 年启动，随后于 2008 年发布了第一个稳定版本。当时，它使用 OpenVZ 实现容器，使用 KVM 实现虚拟机。集群功能有限，用户界面也很简单（由服务器生成的网页）。
 
-The project quickly developed new features using the [Corosync](https://corosync.github.io/corosync/) cluster stack, and the introduction of the Proxmox Cluster File System (pmxcfs) was a big step forward, because it completely hides the cluster complexity from the user. Managing a cluster of 16 nodes is as simple as managing a single node.
+该项目使用[Corosync](https://corosync.github.io/corosync/)集群堆栈快速开发了新功能，而 Proxmox 集群文件系统（pmxcfs）的引入是向前迈出的一大步，因为它向用户完全隐藏了集群的复杂性。管理一个包含 16 个节点的集群与管理单个节点一样简单。
 
-The introduction of the REST API, with a complete declarative specification written in JSON Schema, enabled other people to integrate Proxmox VE into their infrastructure and made it easy to provide additional services.
+REST API 的引入及其使用 JSON Schema 编写的完整声明式规范，使其他人能够将 Proxmox VE 集成到自己的基础设施中，也让提供附加服务变得容易。
 
-The REST API also made it possible to replace the original user interface with a modern client-side single-page application using JavaScript. The old Java-based VNC console code was replaced with [noVNC](https://novnc.com/info.html), so only a web browser is needed to manage VMs.
+REST API 还使使用 JavaScript 编写的现代客户端单页应用程序取代原有用户界面成为可能。旧的基于 Java 的 VNC 控制台代码被[noVNC](https://novnc.com/info.html)取代，因此只需 Web 浏览器即可管理虚拟机。
 
-The support for various storage types is another big achievement. Notably, Proxmox VE was the first distribution to ship [ZFS on Linux](https://zfsonlinux.org/) by default in 2014. Another milestone was the ability to run and manage [Ceph](https://ceph.com/) storage on the hypervisor nodes. Such setups are extremely cost effective.
+对各种存储类型的支持是另一项重大成就。值得一提的是，Proxmox VE 于 2014 年成为第一个默认附带[ZFS on Linux](https://zfsonlinux.org/)的发行版。另一个里程碑是能够在虚拟化管理程序节点上运行和管理[Ceph](https://ceph.com/)存储。这种部署方式极具成本效益。
 
-When the project started, Proxmox was among the first companies providing commercial support for KVM. The KVM project itself continuously evolved and is now a widely used hypervisor. New features arrive with each release. The KVM live backup feature, developed by Proxmox, makes it possible to create snapshot backups on any storage type.
+项目启动时，Proxmox 是首批为 KVM 提供商业支持的公司之一。KVM 项目本身不断发展，现已成为广泛使用的虚拟化管理程序。每个版本都会带来新功能。由 Proxmox 开发的 KVM 在线备份功能使在任何存储类型上创建快照备份成为可能。
 
-The most notable change with version 4.0 was the move from OpenVZ to [LXC](https://linuxcontainers.org/). Containers are now deeply integrated, and they can use the same storage and network features as virtual machines. At the same time, the easy-to-use [High Availability (HA) manager](../15-ha-manager/README.md#chapter_ha_manager) was introduced, simplifying the configuration and management of highly available setups.
+4.0 版本最显著的变化是从 OpenVZ 转向[LXC](https://linuxcontainers.org/)。容器现已深度集成，可以使用与虚拟机相同的存储和网络功能。与此同时，还引入了易于使用的[高可用性（HA）管理器](../15-ha-manager/README.md#chapter_ha_manager)，简化了高可用性部署的配置和管理。
 
-During the development of Proxmox VE 5, asynchronous [storage replication](../09-pvesr/README.md#chapter_pvesr) as well as automated [certificate management](../03-system-administration/12-sysadmin-certificate-management.md#sysadmin_certificate_management) using ACME/Let’s Encrypt were introduced, among many other features.
+在 Proxmox VE 5 的开发过程中，引入了异步[存储复制](../09-pvesr/README.md#chapter_pvesr)以及使用 ACME/Let’s Encrypt 的自动化[证书管理](../03-system-administration/12-sysadmin-certificate-management.md#sysadmin_certificate_management)等诸多功能。
 
-The [Software Defined Network (SDN)](../12-pvesdn/README.md#chapter_pvesdn) stack was developed in cooperation with the community. It was integrated into the web interface as an experimental feature in version 6.2, simplifying the management of sophisticated network configurations. Since version 8.1, the SDN integration is fully supported and installed by default.
+[软件定义网络（SDN）](../12-pvesdn/README.md#chapter_pvesdn)堆栈是与社区合作开发的。它在 6.2 版本中作为实验性功能集成到 Web 界面中，简化了复杂网络配置的管理。自 8.1 版本起，SDN 集成已获得全面支持，并默认安装。
 
-2020 marked the release of a new project, the [Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview), written in the Rust programming language. Proxmox Backup Server is deeply integrated with Proxmox VE and significantly improves backup capabilities by implementing incremental backups, deduplication, and much more.
+2020 年，一个使用 Rust 编程语言编写的新项目[Proxmox Backup Server](https://www.proxmox.com/en/products/proxmox-backup-server/overview)发布。Proxmox Backup Server 与 Proxmox VE 深度集成，通过实现增量备份、去重等功能，显著增强了备份能力。
 
-Another new tool, the [Proxmox Offline Mirror](https://pom.proxmox.com), was released in 2022, enabling subscriptions for systems which have no connection to the public internet.
+另一个新工具[Proxmox Offline Mirror](https://pom.proxmox.com)于 2022 年发布，使无法连接公共互联网的系统也能使用订阅。
 
-The highly requested dark theme for the web interface was introduced in 2023. Later that year, version 8.0 integrated access to the Ceph enterprise repository. Access to the most stable Ceph repository is included with any Proxmox VE subscription.
+2023 年，Web 界面引入了备受期待的深色主题。同年晚些时候，8.0 版集成了对 Ceph 企业仓库的访问。任何 Proxmox VE 订阅均包含对最稳定 Ceph 仓库的访问权限。
 
-Automated and unattended installation for the official [ISO installer](../02-installation/03-installation-installer.md#installation_installer) was introduced in version 8.2, significantly simplifying large deployments of Proxmox VE.
+8.2 版引入了适用于官方 [ISO 安装程序](../02-installation/03-installation-installer.md#installation_installer) 的自动化无人值守安装，显著简化了 Proxmox VE 的大规模部署。
 
-With the [import wizard](../10-virtual-machines/07-qm-import-virtual-machines.md#qm_import_virtual_machines), equally introduced in version 8.2, users can easily and efficiently migrate guests directly from other hypervisors like VMware ESXi   
-[Migrate to Proxmox VE [https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE](https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE)]  
-. Additionally, archives in Open Virtualization Format (OVF/OVA) can now be directly imported from file-based storages in the web interface.
+[导入向导](../10-virtual-machines/07-qm-import-virtual-machines.md#qm_import_virtual_machines)同样在 8.2 版中引入，用户可以通过它轻松高效地将客户机直接从 VMware ESXi 等其他虚拟机监控程序迁移过来   
+\[迁移到 Proxmox VE [https://pve.proxmox.com/wiki/Migrate\_to\_Proxmox\_VE](https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE)\]  
+。此外，现在还可以在 Web 界面中直接从基于文件的存储导入开放虚拟化格式（OVF/OVA）归档文件。
 
 ---
 

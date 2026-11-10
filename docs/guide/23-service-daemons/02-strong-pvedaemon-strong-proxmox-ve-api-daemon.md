@@ -1,4 +1,4 @@
-# 23.2. **pvedaemon** - Proxmox VE API Daemon <a href="#_strong_pvedaemon_strong_proxmox_ve_api_daemon" id="_strong_pvedaemon_strong_proxmox_ve_api_daemon"></a>
+# 23.2. **pvedaemon** \- Proxmox VE API Daemon <a href="#_strong_pvedaemon_strong_proxmox_ve_api_daemon" id="_strong_pvedaemon_strong_proxmox_ve_api_daemon"></a>
 
 <a id="cli_pvedaemon"></a>
 
@@ -38,9 +38,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pvedaemon_status"></a>
 

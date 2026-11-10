@@ -47,7 +47,7 @@ WATCHDOG_MODULE=iTCO_wdt
 发生节点故障时，CRM 会将服务分配给其余节点。这会增加这些节点上的服务数量，并可能导致高负载，尤其是在小型集群中。请合理设计集群，使其能够应对此类最坏情况。
 {% endhint %}
 
-## 15.7.4. Fencing & Watchdog Status <a href="#ha_manager_fencing_status" id="ha_manager_fencing_status"></a>
+## 15.7.4. Fencing \& Watchdog Status <a href="#ha_manager_fencing_status" id="ha_manager_fencing_status"></a>
 
 `ha-manager status` 的输出包含一个 fencing 条目，其中显示 CRM 看门狗状态。每个 LRM 条目还会显示其自身的看门狗状态。
 

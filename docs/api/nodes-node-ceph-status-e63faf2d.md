@@ -8,6 +8,8 @@
 
 Get the Ceph cluster status (raw 'ceph status' output). The response is cluster-wide and identical to /cluster/ceph/status; this node-level alias exists for operator convenience.
 
+**方法标识：** `status`
+
 **权限**
 
 ```json

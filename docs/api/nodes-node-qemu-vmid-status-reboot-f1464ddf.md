@@ -8,6 +8,8 @@
 
 Reboot the VM by shutting it down, and starting it again. Applies pending changes.
 
+**方法标识：** `vm_reboot`
+
 **权限**
 
 ```json

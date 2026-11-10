@@ -8,6 +8,8 @@
 
 Read cluster log
 
+**方法标识：** `log`
+
 **权限**
 
 ```json

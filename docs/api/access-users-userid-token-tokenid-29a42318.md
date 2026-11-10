@@ -8,6 +8,8 @@
 
 Remove API token for a specific user.
 
+**方法标识：** `remove_token`
+
 **权限**
 
 ```json
@@ -83,6 +85,8 @@ Remove API token for a specific user.
 ## GET `/access/users/{userid}/token/{tokenid}`
 
 Get specific API token information.
+
+**方法标识：** `read_token`
 
 **权限**
 
@@ -172,6 +176,8 @@ Get specific API token information.
 ## POST `/access/users/{userid}/token/{tokenid}`
 
 Generate a new API token for a specific user. NOTE: returns API token value, which needs to be stored as it cannot be retrieved afterwards!
+
+**方法标识：** `generate_token`
 
 **权限**
 
@@ -305,6 +311,8 @@ Generate a new API token for a specific user. NOTE: returns API token value, whi
 ## PUT `/access/users/{userid}/token/{tokenid}`
 
 Update API token for a specific user. NOTE: when 'regenerate' is set, the returned token value needs to be stored as it cannot be retrieved afterwards!
+
+**方法标识：** `update_token_info`
 
 **权限**
 

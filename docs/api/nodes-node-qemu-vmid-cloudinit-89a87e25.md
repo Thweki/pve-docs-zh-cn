@@ -8,6 +8,8 @@
 
 Get the cloudinit configuration with both current and pending values.
 
+**方法标识：** `cloudinit_pending`
+
 **权限**
 
 ```json
@@ -105,6 +107,8 @@ Get the cloudinit configuration with both current and pending values.
 ## PUT `/nodes/{node}/qemu/{vmid}/cloudinit`
 
 Regenerate and change cloudinit config drive.
+
+**方法标识：** `cloudinit_update`
 
 **权限**
 

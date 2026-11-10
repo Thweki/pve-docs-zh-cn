@@ -8,6 +8,8 @@
 
 List local LVM Thin Pools.
 
+**方法标识：** `lvmthinscan`
+
 **权限**
 
 ```json

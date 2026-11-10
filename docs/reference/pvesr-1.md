@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
-pvesr - Proxmox VE Storage Replication
+pvesr \- Proxmox VE Storage Replication
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -22,7 +22,7 @@ Create a new replication job
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 **`<target>`: `<string>`**
 
@@ -44,7 +44,7 @@ Rate limit in mbps (megabytes per second) as floating point number.
 
 Mark the replication job for removal. The job will remove all local replication snapshots. When set to *full*, it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.
 
-**`--schedule` `<string>` (*default =* `*/15`)**
+**`--schedule` `<string>` (*default \=* `*/15`)**
 
 Storage replication schedule. The format is a subset of `systemd` calendar events.
 
@@ -62,13 +62,13 @@ Mark replication job for removal.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Will remove the jobconfig entry, but will not cleanup.
 
-**`--keep` `<boolean>` (*default =* `0`)**
+**`--keep` `<boolean>` (*default \=* `0`)**
 
 Keep replicated data at target (do not remove).
 
@@ -82,7 +82,7 @@ Disable a replication job.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 <a id="cli_pvesr_enable"></a>
 
@@ -94,7 +94,7 @@ Enable a replication job.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 <a id="cli_pvesr_finalize-local-job"></a>
 
@@ -102,11 +102,11 @@ Replication Job ID. The ID is composed of a Guest ID and a job number, separated
 
 **pvesr finalize-local-job** `<id> [<extra-args>]` `[OPTIONS]`
 
-Finalize a replication job. This removes all replications snapshots with timestamps different than <last_sync>.
+Finalize a replication job. This removes all replications snapshots with timestamps different than \<last\_sync\>.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 **`<extra-args>`: `<array>`**
 
@@ -146,17 +146,17 @@ List replication jobs.
 
 **pvesr prepare-local-job** `<id> [<extra-args>]` `[OPTIONS]`
 
-Prepare for starting a replication job. This is called on the target node before replication starts. This call is for internal use, and return a JSON object on stdout. The method first test if VM <vmid> reside on the local node. If so, stop immediately. After that the method scans all volume IDs for snapshots, and removes all replications snapshots with timestamps different than <last_sync>. It also removes any unused volumes. Returns a hash with boolean markers for all volumes with existing replication snapshots.
+Prepare for starting a replication job. This is called on the target node before replication starts. This call is for internal use, and return a JSON object on stdout. The method first test if VM \<vmid\> reside on the local node. If so, stop immediately. After that the method scans all volume IDs for snapshots, and removes all replications snapshots with timestamps different than \<last\_sync\>. It also removes any unused volumes. Returns a hash with boolean markers for all volumes with existing replication snapshots.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 **`<extra-args>`: `<array>`**
 
 The list of volume IDs to consider.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Allow to remove all existion volumes (empty volume list).
 
@@ -182,7 +182,7 @@ Read replication job configuration.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 <a id="cli_pvesr_run"></a>
 
@@ -194,13 +194,13 @@ This method is called by the systemd-timer and executes all (or a specific) sync
 
 **`--id` `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
-**`--mail` `<boolean>` (*default =* `0`)**
+**`--mail` `<boolean>` (*default \=* `0`)**
 
 Send an email notification in case of a failure.
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Print more verbose logs to stdout.
 
@@ -214,7 +214,7 @@ Schedule replication job to start as soon as possible.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 <a id="cli_pvesr_set-state"></a>
 
@@ -254,7 +254,7 @@ Update replication job configuration.
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *<GUEST>-<JOBNUM>*.
+Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. *\<GUEST\>-\<JOBNUM\>*.
 
 **`--comment` `<string>`**
 
@@ -280,7 +280,7 @@ Rate limit in mbps (megabytes per second) as floating point number.
 
 Mark the replication job for removal. The job will remove all local replication snapshots. When set to *full*, it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.
 
-**`--schedule` `<string>` (*default =* `*/15`)**
+**`--schedule` `<string>` (*default \=* `*/15`)**
 
 Storage replication schedule. The format is a subset of `systemd` calendar events.
 
@@ -362,7 +362,7 @@ In the case of a grave error, a virtual guest may get stuck on a failed node. Yo
 
 ### Example <a href="#_example" id="_example"></a>
 
-Let’s assume that you have two guests (VM 100 and CT 200) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
+Let’s assume that you have two guests (VM 100 and CT 200\) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
 
 - connect to node B over ssh or open its shell via the web UI
 - check if that the cluster is quorate
@@ -422,7 +422,7 @@ replication: secure,network=10.1.2.0/24
 
 ## Command-line Interface Examples <a href="#_command_line_interface_examples" id="_command_line_interface_examples"></a>
 
-Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100.
+Create a replication job which runs every 5 minutes with a limited bandwidth of 10 Mbps (megabytes per second) for the guest with ID 100\.
 
 ```text
 # pvesr create-local-job 100-0 pve1 --schedule "*/5" --rate 10

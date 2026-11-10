@@ -8,6 +8,8 @@
 
 Authentication domain index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Authentication domain index.
 
 Add an authentication server.
 
+**方法标识：** `create`
+
 **权限**
 
 ```json
@@ -125,7 +129,7 @@ Add an authentication server.
 | `groups-overwrite` | boolean | 否 | 0 | All groups will be overwritten for the user on login. |
 | `issuer-url` | string | 否 | — | OpenID Issuer Url |
 | `mode` | string | 否 | "ldap" | LDAP protocol mode.；可选值：`ldap`, `ldaps`, `ldap+starttls` |
-| `password` | string | 否 | — | LDAP bind password. Will be stored in '/etc/pve/priv/realm/<REALM>.pw'. |
+| `password` | string | 否 | — | LDAP bind password. Will be stored in '/etc/pve/priv/realm/&lt;REALM&gt;.pw'. |
 | `port` | integer | 否 | — | Server port. |
 | `prompt` | string | 否 | — | Specifies whether the Authorization Server prompts the End-User for reauthentication and consent. |
 | `query-userinfo` | boolean | 否 | 1 | Enables querying the userinfo endpoint for claims values. |

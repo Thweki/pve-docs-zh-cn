@@ -8,6 +8,8 @@
 
 Mute or unmute a Ceph health check. A muted check no longer counts towards the cluster status, but stays visible and keeps being evaluated.
 
+**方法标识：** `health_mute`
+
 **权限**
 
 ```json

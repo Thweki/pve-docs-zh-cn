@@ -8,6 +8,8 @@
 
 Execute ping.
 
+**方法标识：** `ping`
+
 **权限**
 
 ```json

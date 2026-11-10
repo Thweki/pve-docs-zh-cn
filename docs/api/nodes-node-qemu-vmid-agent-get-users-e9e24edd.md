@@ -8,6 +8,8 @@
 
 Execute get-users.
 
+**方法标识：** `get-users`
+
 **权限**
 
 ```json

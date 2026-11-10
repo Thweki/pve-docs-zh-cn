@@ -8,6 +8,8 @@
 
 Return the version of the cluster join API available on this node.
 
+**方法标识：** `join_api_version`
+
 **权限**
 
 ```json

@@ -1,4 +1,4 @@
-# 10. QEMU/KVM Virtual Machines <a href="#chapter_virtual_machines" id="chapter_virtual_machines"></a>
+# 10\. QEMU/KVM Virtual Machines <a href="#chapter_virtual_machines" id="chapter_virtual_machines"></a>
 
 QEMU (short form for Quick Emulator) is an open source hypervisor that emulates a physical computer. From the perspective of the host system where QEMU is running, QEMU is a user program which has access to a number of local resources like partitions, files, network cards which are then passed to an emulated computer which sees them as if they were real devices.
 

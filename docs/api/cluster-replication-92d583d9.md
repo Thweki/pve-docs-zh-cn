@@ -8,6 +8,8 @@
 
 List replication jobs.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -117,6 +119,8 @@ List replication jobs.
 
 Create a new replication job
 
+**方法标识：** `create`
+
 **权限**
 
 ```json
@@ -144,7 +148,7 @@ Create a new replication job
 | --- | --- | --- | --- | --- |
 | `comment` | string | 否 | — | Description. |
 | `disable` | boolean | 否 | — | Flag to disable/deactivate the entry. |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'. |
+| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
 | `rate` | number | 否 | — | Rate limit in mbps (megabytes per second) as floating point number. |
 | `remove_job` | string | 否 | — | Mark the replication job for removal. The job will remove all local replication snapshots. When set to 'full', it also tries to remove replicated volumes on the target. The job then removes itself from the configuration file.；可选值：`local`, `full` |
 | `schedule` | string | 否 | "*/15" | Storage replication schedule. The format is a subset of `systemd` calendar events. |

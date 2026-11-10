@@ -8,6 +8,8 @@
 
 Directory index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -56,7 +58,9 @@ Directory index.
 
 ## PUT `/cluster/sdn`
 
-Apply sdn controller changes && reload.
+Apply sdn controller changes &amp;&amp; reload.
+
+**方法标识：** `reload`
 
 **权限**
 

@@ -12,7 +12,7 @@ To enable the EVPN controller, you need to enable FRR on every node, see [instal
 
 EVPN controller configuration options:
 
-**ASN #**
+**ASN \#**
 
 A unique BGP ASN number. It’s highly recommended to use a private ASN number (64512 – 65534, 4200000000 – 4294967294), as otherwise you could end up breaking global routing by mistake. Every EVPN controller configured on a node must have the same ASN configured.
 
@@ -34,7 +34,7 @@ EVPN controllers use the peer group name *VTEP* by default. When defining multip
 
 **BGP Mode**
 
-Allows configuring the type of BGP session manually. The *auto* mode preserves the old behavior of the SDN stack: EVPN controllers were iBGP, unless there was a BGP controller configured. In that case the EVPN controller re-used the BGP session from the BGP controller. With this option, the type of BGP session can be overridden manually - allowing for explicitly configuring the type of BGP session that should be established with the EVPN controller.
+Allows configuring the type of BGP session manually. The *auto* mode preserves the old behavior of the SDN stack: EVPN controllers were iBGP, unless there was a BGP controller configured. In that case the EVPN controller re-used the BGP session from the BGP controller. With this option, the type of BGP session can be overridden manually \- allowing for explicitly configuring the type of BGP session that should be established with the EVPN controller.
 
 **ebgp-multihop**
 
@@ -50,7 +50,7 @@ If only a BGP or EVPN controller exists (but not both), then the respective ASN 
 
 For backwards-compatibility reasons, the SDN stack checks if there are any EVPN controllers in auto mode. If a BGP controller exists, then the ASN from the BGP controller will be used in any case.
 
-Otherwise, if an EVPN controller is configured, then the ASN from the EVPN controller is used - otherwise the ASN from the BGP controller.
+Otherwise, if an EVPN controller is configured, then the ASN from the EVPN controller is used \- otherwise the ASN from the BGP controller.
 
 The SDN stack utilizes the local-as directive together with the `no-prepend
 replace-as` option in the FRR configuration for handling multiple ASN numbers in the configuration. This is the case when the BGP and EVPN controller have different ASNs configured and auto mode is disabled.
@@ -81,9 +81,9 @@ BGP controller configuration options:
 
 The node of this BGP controller
 
-**ASN #**
+**ASN \#**
 
-A unique BGP ASN number. It’s highly recommended to use a private ASN number in the range (64512 - 65534) or (4200000000 - 4294967294), as otherwise you could break global routing by mistake.
+A unique BGP ASN number. It’s highly recommended to use a private ASN number in the range (64512 \- 65534\) or (4200000000 \- 4294967294), as otherwise you could break global routing by mistake.
 
 **Peer**
 

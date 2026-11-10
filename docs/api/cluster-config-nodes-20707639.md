@@ -8,6 +8,8 @@
 
 Corosync node list.
 
+**方法标识：** `nodes`
+
 **权限**
 
 ```json

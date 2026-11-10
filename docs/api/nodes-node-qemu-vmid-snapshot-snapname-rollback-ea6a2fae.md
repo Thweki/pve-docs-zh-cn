@@ -8,6 +8,8 @@
 
 Rollback VM state to specified snapshot.
 
+**方法标识：** `rollback`
+
 **权限**
 
 ```json

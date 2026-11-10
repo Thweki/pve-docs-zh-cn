@@ -1,6 +1,6 @@
 # 16.13. Examples <a href="#_examples_10" id="_examples_10"></a>
 
-Simply dump guest 777 - no snapshot, just archive the guest private area and configuration files to the default dump directory (usually `/var/lib/vz/dump/`).
+Simply dump guest 777 \- no snapshot, just archive the guest private area and configuration files to the default dump directory (usually `/var/lib/vz/dump/`).
 
 ```text
 # vzdump 777

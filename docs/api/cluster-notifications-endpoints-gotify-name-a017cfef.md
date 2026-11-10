@@ -8,6 +8,8 @@
 
 Remove gotify endpoint
 
+**方法标识：** `delete_gotify_endpoint`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove gotify endpoint
 ## GET `/cluster/notifications/endpoints/gotify/{name}`
 
 Return a specific gotify endpoint
+
+**方法标识：** `get_gotify_endpoint`
 
 **权限**
 
@@ -170,6 +174,8 @@ Return a specific gotify endpoint
 ## PUT `/cluster/notifications/endpoints/gotify/{name}`
 
 Update existing gotify endpoint
+
+**方法标识：** `update_gotify_endpoint`
 
 **权限**
 

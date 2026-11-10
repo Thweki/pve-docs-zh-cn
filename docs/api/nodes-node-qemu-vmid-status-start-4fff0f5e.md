@@ -8,6 +8,8 @@
 
 Start virtual machine.
 
+**方法标识：** `vm_start`
+
 **权限**
 
 ```json

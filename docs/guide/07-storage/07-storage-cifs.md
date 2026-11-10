@@ -13,7 +13,7 @@ The backend supports all common storage properties, except the shared flag, whic
 Server IP or DNS name. Required.
 
 {% hint style="success" %}
-To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name - unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
 {% endhint %}
 
 **share**
@@ -34,7 +34,7 @@ Sets the user domain (workgroup) for this storage. Optional.
 
 **smbversion**
 
-SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2+ version supported by both the client and server. SMB1 is not supported due to security issues.
+SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2\+ version supported by both the client and server. SMB1 is not supported due to security issues.
 
 **path**
 

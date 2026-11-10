@@ -8,6 +8,8 @@
 
 Request resource relocation to another node. This stops the service on the old node, and restarts it on the target node.
 
+**方法标识：** `relocate`
+
 **权限**
 
 ```json

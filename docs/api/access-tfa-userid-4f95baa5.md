@@ -8,6 +8,8 @@
 
 List TFA configurations of users.
 
+**方法标识：** `list_user_tfa`
+
 **权限**
 
 ```json
@@ -120,6 +122,8 @@ List TFA configurations of users.
 ## POST `/access/tfa/{userid}`
 
 Add a TFA entry for a user.
+
+**方法标识：** `add_tfa_entry`
 
 **权限**
 

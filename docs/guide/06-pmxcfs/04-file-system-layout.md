@@ -1,6 +1,6 @@
 # 6.4. File System Layout <a href="#_file_system_layout" id="_file_system_layout"></a>
 
-The file system is mounted at:
+该文件系统挂载于：
 
 ```text
 /etc/pve
@@ -14,162 +14,162 @@ The file system is mounted at:
 <tbody>
 <tr>
 <td><p><code>authkey.pub</code></p></td>
-<td><p>Public key used by the ticket system</p></td>
+<td><p>票据系统使用的公钥</p></td>
 </tr>
 <tr>
 <td><p><code>ceph.conf</code></p></td>
-<td><p>Ceph configuration file (note: /etc/ceph/ceph.conf is a symbolic link to this)</p></td>
+<td><p>Ceph 配置文件（注意：/etc/ceph/ceph.conf 是指向此文件的符号链接）</p></td>
 </tr>
 <tr>
 <td><p><code>corosync.conf</code></p></td>
-<td><p>Corosync cluster configuration file (prior to Proxmox VE 4.x, this file was called cluster.conf)</p></td>
+<td><p>Corosync 集群配置文件（在 Proxmox VE 4.x 之前，此文件称为 cluster.conf）</p></td>
 </tr>
 <tr>
 <td><p><code>datacenter.cfg</code></p></td>
-<td><p>Proxmox VE datacenter-wide configuration (keyboard layout, proxy, …)</p></td>
+<td><p>Proxmox VE 全数据中心范围的配置（键盘布局、代理等）</p></td>
 </tr>
 <tr>
 <td><p><code>domains.cfg</code></p></td>
-<td><p>Proxmox VE authentication domains</p></td>
+<td><p>Proxmox VE 身份验证域</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/cluster.fw</code></p></td>
-<td><p>Firewall configuration applied to all nodes</p></td>
+<td><p>应用于所有节点的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/&lt;NAME&gt;.fw</code></p></td>
-<td><p>Firewall configuration for individual nodes</p></td>
+<td><p>各个节点的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/&lt;VMID&gt;.fw</code></p></td>
-<td><p>Firewall configuration for VMs and containers</p></td>
+<td><p>VM 和容器的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>ha/crm_commands</code></p></td>
-<td><p>Displays HA operations that are currently being carried out by the CRM</p></td>
+<td><p>显示 CRM 当前正在执行的 HA 操作</p></td>
 </tr>
 <tr>
 <td><p><code>ha/manager_status</code></p></td>
-<td><p>JSON-formatted information regarding HA services on the cluster</p></td>
+<td><p>有关集群中 HA 服务的 JSON 格式信息</p></td>
 </tr>
 <tr>
 <td><p><code>ha/resources.cfg</code></p></td>
-<td><p>Resources managed by high availability, and their current state</p></td>
+<td><p>高可用性管理的资源及其当前状态</p></td>
 </tr>
 <tr>
 <td><p><code>ha/rules.cfg</code></p></td>
-<td><p>Rules putting constraints on the HA manager’s scheduling of HA resources</p></td>
+<td><p>用于约束 HA 管理器调度 HA 资源的规则</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/config</code></p></td>
-<td><p>Node-specific configuration</p></td>
+<td><p>节点特定配置</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/lxc/&lt;VMID&gt;.conf</code></p></td>
-<td><p>VM configuration data for LXC containers</p></td>
+<td><p>LXC 容器的 VM 配置数据</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/openvz/</code></p></td>
-<td><p>Prior to Proxmox VE 4.0, used for container configuration data (deprecated, removed soon)</p></td>
+<td><p>在 Proxmox VE 4.0 之前，用于容器配置数据（已弃用，即将移除）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pve-ssl.key</code></p></td>
-<td><p>Private SSL key for <code>pve-ssl.pem</code></p></td>
+<td><p><code>pve-ssl.pem</code> 的 SSL 私钥</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pve-ssl.pem</code></p></td>
-<td><p>Public SSL certificate for web server (signed by cluster CA)</p></td>
+<td><p>Web 服务器的 SSL 公共证书（由集群 CA 签名）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pveproxy-ssl.key</code></p></td>
-<td><p>Private SSL key for <code>pveproxy-ssl.pem</code> (optional)</p></td>
+<td><p><code>pveproxy-ssl.pem</code> 的 SSL 私钥（可选）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pveproxy-ssl.pem</code></p></td>
-<td><p>Public SSL certificate (chain) for web server (optional override for <code>pve-ssl.pem</code>)</p></td>
+<td><p>Web 服务器的 SSL 公共证书（链）（可选，用于覆盖 <code>pve-ssl.pem</code>）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/qemu-server/&lt;VMID&gt;.conf</code></p></td>
-<td><p>VM configuration data for KVM VMs</p></td>
+<td><p>KVM VM 的 VM 配置数据</p></td>
 </tr>
 <tr>
 <td><p><code>priv/authkey.key</code></p></td>
-<td><p>Private key used by ticket system</p></td>
+<td><p>票据系统使用的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/authorized_keys</code></p></td>
-<td><p>SSH keys of cluster members for authentication</p></td>
+<td><p>用于身份验证的集群成员 SSH 密钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/ceph*</code></p></td>
-<td><p>Ceph authentication keys and associated capabilities</p></td>
+<td><p>Ceph 身份验证密钥及相关权限</p></td>
 </tr>
 <tr>
 <td><p><code>priv/known_hosts</code></p></td>
-<td><p>SSH keys of the cluster members for verification</p></td>
+<td><p>用于验证的集群成员 SSH 密钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/lock/*</code></p></td>
-<td><p>Lock files used by various services to ensure safe cluster-wide operations</p></td>
+<td><p>各种服务使用的锁文件，以确保集群范围操作的安全</p></td>
 </tr>
 <tr>
 <td><p><code>priv/pve-root-ca.key</code></p></td>
-<td><p>Private key of cluster CA</p></td>
+<td><p>集群 CA 的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/shadow.cfg</code></p></td>
-<td><p>Shadow password file for PVE Realm users</p></td>
+<td><p>PVE Realm 用户的 shadow 密码文件</p></td>
 </tr>
 <tr>
 <td><p><code>priv/storage/&lt;STORAGE-ID&gt;.pw</code></p></td>
-<td><p>Contains the password of a storage in plain text</p></td>
+<td><p>以明文形式包含某个存储的密码</p></td>
 </tr>
 <tr>
 <td><p><code>priv/tfa.cfg</code></p></td>
-<td><p>Base64-encoded two-factor authentication configuration</p></td>
+<td><p>Base64 编码的双因素身份验证配置</p></td>
 </tr>
 <tr>
 <td><p><code>priv/token.cfg</code></p></td>
-<td><p>API token secrets of all tokens</p></td>
+<td><p>所有 API 令牌的密钥</p></td>
 </tr>
 <tr>
 <td><p><code>pve-root-ca.pem</code></p></td>
-<td><p>Public certificate of cluster CA</p></td>
+<td><p>集群 CA 的公共证书</p></td>
 </tr>
 <tr>
 <td><p><code>pve-www.key</code></p></td>
-<td><p>Private key used for generating CSRF tokens</p></td>
+<td><p>用于生成 CSRF 令牌的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>sdn/*</code></p></td>
-<td><p>Shared configuration files for Software Defined Networking (SDN)</p></td>
+<td><p>软件定义网络（SDN）的共享配置文件</p></td>
 </tr>
 <tr>
 <td><p><code>status.cfg</code></p></td>
-<td><p>Proxmox VE external metrics server configuration</p></td>
+<td><p>Proxmox VE 外部指标服务器配置</p></td>
 </tr>
 <tr>
 <td><p><code>storage.cfg</code></p></td>
-<td><p>Proxmox VE storage configuration</p></td>
+<td><p>Proxmox VE 存储配置</p></td>
 </tr>
 <tr>
 <td><p><code>user.cfg</code></p></td>
-<td><p>Proxmox VE access control configuration (users/groups/…)</p></td>
+<td><p>Proxmox VE 访问控制配置（用户/组/……）</p></td>
 </tr>
 <tr>
 <td><p><code>virtual-guest/cpu-models.conf</code></p></td>
-<td><p>For storing custom CPU models</p></td>
+<td><p>用于存储自定义 CPU 模型</p></td>
 </tr>
 <tr>
 <td><p><code>vzdump.cron</code></p></td>
-<td><p>Cluster-wide vzdump backup-job schedule</p></td>
+<td><p>集群范围的 vzdump 备份任务计划</p></td>
 </tr>
 </tbody>
 </table>
 
 ## 6.4.2. Symbolic links <a href="#_symbolic_links" id="_symbolic_links"></a>
 
-Certain directories within the cluster file system use symbolic links, in order to point to a node’s own configuration files. Thus, the files pointed to in the table below refer to different files on each node of the cluster.
+集群文件系统中的某些目录使用符号链接，以指向节点自身的配置文件。因此，下表中所指向的文件在集群的每个节点上分别对应不同的文件。
 
 <table>
 
@@ -202,36 +202,36 @@ Certain directories within the cluster file system use symbolic links, in order 
 <tbody>
 <tr>
 <td><p><code>.version</code></p></td>
-<td><p>File versions (to detect file modifications)</p></td>
+<td><p>文件版本（用于检测文件修改）</p></td>
 </tr>
 <tr>
 <td><p><code>.members</code></p></td>
-<td><p>Info about cluster members</p></td>
+<td><p>集群成员信息</p></td>
 </tr>
 <tr>
 <td><p><code>.vmlist</code></p></td>
-<td><p>List of all VMs</p></td>
+<td><p>所有 VM 的列表</p></td>
 </tr>
 <tr>
 <td><p><code>.clusterlog</code></p></td>
-<td><p>Cluster log (last 50 entries)</p></td>
+<td><p>集群日志（最后 50 条）</p></td>
 </tr>
 <tr>
 <td><p><code>.rrd</code></p></td>
-<td><p>RRD data (most recent entries)</p></td>
+<td><p>RRD 数据（最新条目）</p></td>
 </tr>
 </tbody>
 </table>
 
 ## 6.4.4. Enable/Disable debugging <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
 
-You can enable verbose syslog messages with:
+可以使用以下命令启用详细的 syslog 消息：
 
 ```text
 echo "1" >/etc/pve/.debug
 ```
 
-And disable verbose syslog messages with:
+并使用以下命令禁用详细的 syslog 消息：
 
 ```text
 echo "0" >/etc/pve/.debug

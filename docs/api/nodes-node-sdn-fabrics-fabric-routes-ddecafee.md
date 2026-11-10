@@ -8,6 +8,8 @@
 
 Get all routes for a fabric.
 
+**方法标识：** `routes`
+
 **权限**
 
 ```json

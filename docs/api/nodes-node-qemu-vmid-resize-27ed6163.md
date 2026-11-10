@@ -8,6 +8,8 @@
 
 Extend volume size.
 
+**方法标识：** `resize_vm`
+
 **权限**
 
 ```json

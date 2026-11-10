@@ -8,6 +8,8 @@
 
 Get the OpenId Authorization Url for the specified realm.
 
+**方法标识：** `auth_url`
+
 **权限**
 
 ```json

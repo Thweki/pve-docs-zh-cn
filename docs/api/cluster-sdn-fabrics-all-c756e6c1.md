@@ -8,6 +8,8 @@
 
 SDN Fabrics Index
 
+**方法标识：** `list_all`
+
 **权限**
 
 ```json

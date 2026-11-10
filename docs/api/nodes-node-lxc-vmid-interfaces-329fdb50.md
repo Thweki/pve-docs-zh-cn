@@ -8,6 +8,8 @@
 
 Get IP addresses of the specified container interface.
 
+**方法标识：** `ip`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Scan remote CIFS server.
 
+**方法标识：** `cifsscan`
+
 **权限**
 
 ```json

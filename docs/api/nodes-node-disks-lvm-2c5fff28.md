@@ -8,6 +8,8 @@
 
 List LVM Volume Groups
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -129,6 +131,8 @@ List LVM Volume Groups
 ## POST `/nodes/{node}/disks/lvm`
 
 Create an LVM Volume Group
+
+**方法标识：** `create`
 
 **权限**
 

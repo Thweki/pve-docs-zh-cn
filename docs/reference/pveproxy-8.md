@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pveproxy - PVE API Proxy Daemon
+pveproxy \- PVE API Proxy Daemon
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -44,9 +44,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pveproxy_status"></a>
 
@@ -161,7 +161,7 @@ Unlike `reload`, a `restart` of the pveproxy service can interrupt some long-run
 
 ## SSL Cipher Suite <a href="#_ssl_cipher_suite" id="_ssl_cipher_suite"></a>
 
-You can define the cipher list in `/etc/default/pveproxy` via the `CIPHERS` (TLS ⇐ 1.2) and `CIPHERSUITES` (TLS >= 1.3) keys. For example
+You can define the cipher list in `/etc/default/pveproxy` via the `CIPHERS` (TLS ⇐ 1.2) and `CIPHERSUITES` (TLS \>\= 1.3) keys. For example
 
 ```text
 CIPHERS="ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
@@ -270,7 +270,7 @@ IP addresses can be specified using any syntax understood by `Net::IP`. The name
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128.
+Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
 
 The same setting exists for [pvedaemon](pvedaemon-8.md#pvedaemon_max_workers).
 

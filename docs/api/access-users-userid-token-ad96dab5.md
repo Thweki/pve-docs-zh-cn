@@ -8,6 +8,8 @@
 
 Get user API tokens.
 
+**方法标识：** `token_index`
+
 **权限**
 
 ```json

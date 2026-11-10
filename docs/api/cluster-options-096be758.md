@@ -8,6 +8,8 @@
 
 Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
 
+**方法标识：** `get_options`
+
 **权限**
 
 ```json
@@ -573,6 +575,8 @@ Get datacenter options. Without 'Sys.Audit' on '/' not all options are returned.
 
 Set datacenter options.
 
+**方法标识：** `set_options`
+
 **权限**
 
 ```json
@@ -610,7 +614,7 @@ Set datacenter options.
 | `delete` | string | 否 | — | A list of settings you want to delete. |
 | `description` | string | 否 | — | Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file. |
 | `email_from` | string | 否 | — | Specify email address to send notification from (default is root@$hostname) |
-| `fencing` | string | 否 | "watchdog" | Set the fencing mode of the HA cluster. Hardware mode needs a valid configuration of fence devices in /etc/pve/ha/fence.cfg. With both all two modes are used. WARNING: 'hardware' and 'both' are EXPERIMENTAL & WIP；可选值：`watchdog`, `hardware`, `both` |
+| `fencing` | string | 否 | "watchdog" | Set the fencing mode of the HA cluster. Hardware mode needs a valid configuration of fence devices in /etc/pve/ha/fence.cfg. With both all two modes are used. WARNING: 'hardware' and 'both' are EXPERIMENTAL &amp; WIP；可选值：`watchdog`, `hardware`, `both` |
 | `ha` | string | 否 | — | Cluster wide HA settings. |
 | `http_proxy` | string | 否 | — | Specify external http proxy which is used for downloads (example: 'http://username:password@host:port/') |
 | `keyboard` | string | 否 | — | Default keybord layout for vnc server.；可选值：`de`, `de-ch`, `da`, `en-gb`, `en-us`, `es`, `fi`, `fr`, `fr-be`, `fr-ca`, `fr-ch`, `hu`, `is`, `it`, `ja`, `lt`, `mk`, `nl`, `no`, `pl`, `pt`, `pt-br`, `sv`, `sl`, `tr` |

@@ -8,6 +8,8 @@
 
 Execute fsfreeze-status.
 
+**方法标识：** `fsfreeze-status`
+
 **权限**
 
 ```json

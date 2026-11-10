@@ -1,29 +1,29 @@
-# 1.7. Hyper-converged Infrastructure <a href="#chapter_hyper_converged_infrastructure" id="chapter_hyper_converged_infrastructure"></a>
+# 1.7. 超融合基础设施 <a href="#chapter_hyper_converged_infrastructure" id="chapter_hyper_converged_infrastructure"></a>
 
-Proxmox VE is a virtualization platform that tightly integrates compute, storage and networking resources, manages highly available clusters, backup/restore as well as disaster recovery. All components are software-defined and compatible with one another.
+Proxmox VE 是一个紧密集成计算、存储和网络资源的虚拟化平台，可管理高可用性集群、备份/恢复以及灾难恢复。所有组件均由软件定义，并且彼此兼容。
 
-Therefore it is possible to administrate them like a single system via the centralized web management interface. These capabilities make Proxmox VE an ideal choice to deploy and manage an open source [hyper-converged infrastructure](https://en.wikipedia.org/wiki/Hyper-converged_infrastructure).
+因此，可以通过集中式 Web 管理界面像管理单个系统一样管理这些组件。这些功能使 Proxmox VE 成为部署和管理开源[超融合基础设施](https://en.wikipedia.org/wiki/Hyper-converged_infrastructure)的理想选择。
 
-## 1.7.1. Benefits of a Hyper-Converged Infrastructure (HCI) with Proxmox VE <a href="#_benefits_of_a_hyper_converged_infrastructure_hci_with_proxmox_ve" id="_benefits_of_a_hyper_converged_infrastructure_hci_with_proxmox_ve"></a>
+## 1.7.1. 使用 Proxmox VE 构建超融合基础设施（HCI）的优势 <a href="#_benefits_of_a_hyper_converged_infrastructure_hci_with_proxmox_ve" id="_benefits_of_a_hyper_converged_infrastructure_hci_with_proxmox_ve"></a>
 
-A hyper-converged infrastructure (HCI) is especially useful for deployments in which a high infrastructure demand meets a low administration budget, for distributed setups such as remote and branch office environments or for virtual private and public clouds.
+超融合基础设施（HCI）特别适用于基础设施需求高但管理预算有限的部署、远程和分支机构环境等分布式部署，以及虚拟私有云和公有云。
 
-HCI provides the following advantages:
+HCI 具有以下优势：
 
-- Scalability: seamless expansion of compute, network and storage devices (i.e. scale up servers and storage quickly and independently from each other).
-- Low cost: Proxmox VE is open source and integrates all components you need such as compute, storage, networking, backup, and management center. It can replace an expensive compute/storage infrastructure.
-- Data protection and efficiency: services such as backup and disaster recovery are integrated.
-- Simplicity: easy configuration and centralized administration.
-- Open Source: No vendor lock-in.
+- 可扩展性：无缝扩展计算、网络和存储设备（即快速且彼此独立地扩展服务器和存储）。
+- 低成本：Proxmox VE 是开源软件，集成了您所需的所有组件，如计算、存储、网络、备份和管理中心。它可以取代昂贵的计算/存储基础设施。
+- 数据保护与效率：集成了备份和灾难恢复等服务。
+- 简单性：配置简便，管理集中。
+- 开源：无供应商锁定。
 
-## 1.7.2. Hyper-Converged Infrastructure: Storage <a href="#_hyper_converged_infrastructure_storage" id="_hyper_converged_infrastructure_storage"></a>
+## 1.7.2. 超融合基础设施：存储 <a href="#_hyper_converged_infrastructure_storage" id="_hyper_converged_infrastructure_storage"></a>
 
-Proxmox VE has tightly integrated support for deploying a hyper-converged storage infrastructure. You can, for example, deploy and manage the following two storage technologies by using the web interface only:
+Proxmox VE 紧密集成了部署超融合存储基础设施的支持。例如，您可以仅通过 Web 界面部署和管理以下两种存储技术：
 
-- **Ceph**: a self-healing and self-managing shared, reliable and highly scalable storage system. Check out [how to manage Ceph services on Proxmox VE nodes](../08-pveceph/README.md#chapter_pveceph)
-- **ZFS**: a combined file system and logical volume manager with extensive protection against data corruption, various RAID modes, fast and cheap snapshots - among other features. Find out [how to leverage the power of ZFS on Proxmox VE nodes](../03-system-administration/09-chapter-zfs.md#chapter_zfs).
+- **Ceph**：一种自愈、自管理的共享存储系统，可靠且高度可扩展。了解[如何在 Proxmox VE 节点上管理 Ceph 服务](../08-pveceph/README.md#chapter_pveceph)
+- **ZFS**：集文件系统与逻辑卷管理器于一体，可全面防止数据损坏，支持多种 RAID 模式以及快速、低成本的快照等功能。了解[如何在 Proxmox VE 节点上发挥 ZFS 的强大功能](../03-system-administration/09-chapter-zfs.md#chapter_zfs)。
 
-Besides above, Proxmox VE has support to integrate a wide range of additional storage technologies. You can find out about them in the [Storage Manager chapter](../07-storage/README.md#chapter_storage).
+除上述技术外，Proxmox VE 还支持集成多种其他存储技术。您可以在[“存储管理器”一章](../07-storage/README.md#chapter_storage)中了解这些技术。
 
 ---
 

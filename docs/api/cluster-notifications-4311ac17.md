@@ -8,6 +8,8 @@
 
 Index for notification-related API endpoints.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

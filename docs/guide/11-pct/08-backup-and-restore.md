@@ -2,7 +2,7 @@
 
 ## 11.8.1. Container Backup <a href="#_container_backup" id="_container_backup"></a>
 
-It is possible to use the `vzdump` tool for container backup. Please refer to the `vzdump` manual page for details.
+可以使用 `vzdump` 工具进行容器备份。有关详细信息，请参阅 `vzdump` 手册页。
 
 ## 11.8.2. Restoring Container Backups <a href="#_restoring_container_backups" id="_restoring_container_backups"></a>
 
@@ -10,19 +10,19 @@ Restoring container backups made with `vzdump` is possible using the `pct
 restore` command. By default, `pct restore` will attempt to restore as much of the backed up container configuration as possible. It is possible to override the backed up configuration by manually setting container options on the command line (see the `pct` manual page for details).
 
 {% hint style="info" %}
-`pvesm extractconfig` can be used to view the backed up configuration contained in a vzdump archive.
+`pvesm extractconfig` 可用于查看 vzdump 归档中包含的已备份配置。
 {% endhint %}
 
-There are two basic restore modes, only differing by their handling of mount points:
+有两种基本恢复模式，它们的区别仅在于对挂载点的处理方式：
 
-### “Simple” Restore Mode <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
+### “简单”恢复模式 <a href="#_8220_simple_8221_restore_mode" id="_8220_simple_8221_restore_mode"></a>
 
-If neither the `rootfs` parameter nor any of the optional `mpX` parameters are explicitly set, the mount point configuration from the backed up configuration file is restored using the following steps:
+如果既未明确设置 `rootfs` 参数，也未明确设置任何可选的 `mpX` 参数，则将通过以下步骤从备份的配置文件中恢复挂载点配置：
 
-1. Extract mount points and their options from backup
-2. Create volumes for storage backed mount points on the storage provided with the `storage` parameter (default: `local`).
-3. Extract files from backup archive
-4. Add bind and device mount points to restored configuration (limited to root user)
+1. 从备份中提取挂载点及其选项
+2. 在通过 `storage` 参数指定的存储上，为基于存储的挂载点创建卷（默认值：`local`）。
+3. 从备份归档中提取文件
+4. 将绑定挂载点和设备挂载点添加到恢复的配置中（仅限 root 用户）
 
 {% hint style="info" %}
 由于绑定挂载点和设备挂载点从不备份，最后一步不会恢复任何文件，而只会恢复配置选项。这里假定此类挂载点要么通过其他机制备份（例如，通过绑定挂载到许多容器中的 NFS 空间），要么根本不打算备份。

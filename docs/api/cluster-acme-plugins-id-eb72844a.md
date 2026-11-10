@@ -8,6 +8,8 @@
 
 Delete ACME plugin configuration.
 
+**方法标识：** `delete_plugin`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Delete ACME plugin configuration.
 ## GET `/cluster/acme/plugins/{id}`
 
 Get ACME plugin configuration.
+
+**方法标识：** `get_plugin_config`
 
 **权限**
 
@@ -345,6 +349,8 @@ Get ACME plugin configuration.
 ## PUT `/cluster/acme/plugins/{id}`
 
 Update ACME plugin configuration.
+
+**方法标识：** `update_plugin`
 
 **权限**
 

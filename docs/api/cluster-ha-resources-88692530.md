@@ -8,6 +8,8 @@
 
 列出 HA 资源。
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -81,6 +83,8 @@
 ## POST `/cluster/ha/resources`
 
 创建新的 HA 资源。
+
+**方法标识：** `create`
 
 **权限**
 

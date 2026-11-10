@@ -8,6 +8,8 @@
 
 Start service.
 
+**方法标识：** `service_start`
+
 **权限**
 
 ```json

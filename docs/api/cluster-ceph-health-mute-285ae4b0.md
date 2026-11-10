@@ -8,6 +8,8 @@
 
 Get the currently muted Ceph health checks.
 
+**方法标识：** `health_mute_index`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Get list of appliances.
 
+**方法标识：** `aplinfo`
+
 **权限**
 
 ```json
@@ -68,6 +70,8 @@ Get list of appliances.
 ## POST `/nodes/{node}/aplinfo`
 
 Download appliance templates.
+
+**方法标识：** `apl_download`
 
 **权限**
 

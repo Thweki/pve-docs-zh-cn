@@ -8,6 +8,8 @@
 
 Schedule replication job to start as soon as possible.
 
+**方法标识：** `schedule_now`
+
 **权限**
 
 ```json
@@ -39,7 +41,7 @@ Schedule replication job to start as soon as possible.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'. |
+| `id` | string | 是 | — | Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '&lt;GUEST&gt;-&lt;JOBNUM&gt;'. |
 | `node` | string | 是 | — | The cluster node name. |
 
 <details>

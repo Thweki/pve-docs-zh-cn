@@ -8,6 +8,8 @@
 
 Group index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -63,6 +65,8 @@ Group index.
 ## POST `/access/groups`
 
 Create new group.
+
+**方法标识：** `create_group`
 
 **权限**
 

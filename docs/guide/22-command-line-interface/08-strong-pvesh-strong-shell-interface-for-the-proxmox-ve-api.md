@@ -1,4 +1,4 @@
-# 22.8. **pvesh** - Shell interface for the Proxmox VE API <a href="#_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api" id="_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api"></a>
+# 22.8. **pvesh** \- Shell interface for the Proxmox VE API <a href="#_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api" id="_strong_pvesh_strong_shell_interface_for_the_proxmox_ve_api"></a>
 
 <a id="cli_pvesh"></a>
 
@@ -12,7 +12,7 @@
 
 **pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API POST on <api_path>.
+Call API POST on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -28,7 +28,7 @@ Disable automatic proxying.
 
 **pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API DELETE on <api_path>.
+Call API DELETE on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -44,7 +44,7 @@ Disable automatic proxying.
 
 **pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API GET on <api_path>.
+Call API GET on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -76,7 +76,7 @@ Disable automatic proxying.
 
 **pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-List child objects on <api_path>.
+List child objects on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -92,7 +92,7 @@ Disable automatic proxying.
 
 **pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API PUT on <api_path>.
+Call API PUT on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -108,7 +108,7 @@ Disable automatic proxying.
 
 **pvesh usage** `<api_path>` `[OPTIONS]`
 
-print API usage information for <api_path>.
+print API usage information for \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 

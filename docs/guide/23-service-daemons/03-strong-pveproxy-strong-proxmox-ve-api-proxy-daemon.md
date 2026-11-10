@@ -1,4 +1,4 @@
-# 23.3. **pveproxy** - Proxmox VE API Proxy Daemon <a href="#_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon" id="_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon"></a>
+# 23.3. **pveproxy** \- Proxmox VE API Proxy Daemon <a href="#_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon" id="_strong_pveproxy_strong_proxmox_ve_api_proxy_daemon"></a>
 
 <a id="cli_pveproxy"></a>
 
@@ -38,9 +38,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pveproxy_status"></a>
 

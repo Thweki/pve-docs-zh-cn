@@ -34,7 +34,7 @@ This active polling will have an additional performance impact on your system an
 **Multiple Active MDS**
 
 Since Luminous (12.2.x) you can have multiple active metadata servers running at once, but this is normally only useful if you have a high amount of clients running in parallel. Otherwise the `MDS` is rarely the bottleneck in a system. If you want to set this up, please refer to the Ceph documentation.   
-[Configuring multiple active MDS daemons [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)]
+\[Configuring multiple active MDS daemons [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)\]
 
 ## 8.13.2. Create CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
 
@@ -42,7 +42,7 @@ With Proxmox VE’s integration of CephFS, you can easily create a CephFS using 
 
 **Prerequisites for a successful CephFS setup:**
 
-- [Install Ceph packages](04-pve-ceph-install-wizard.md#pve_ceph_install) - if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
+- [Install Ceph packages](04-pve-ceph-install-wizard.md#pve_ceph_install) \- if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
 - [Setup Monitors](05-pve-ceph-monitors.md#pve_ceph_monitors)
 - [Setup your OSDs](05-pve-ceph-monitors.md#pve_ceph_monitors)
 - [Setup at least one MDS](#pveceph_fs_mds)
@@ -55,8 +55,8 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 pveceph fs create --pg_num 128 --add-storage
 ```
 
-This creates a CephFS named *cephfs*, using a pool for its data named *cephfs_data* with *128* placement groups and a pool for its metadata named *cephfs_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](09-pve-ceph-pools.md#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
-[[placement_groups]](09-pve-ceph-pools.md#_footnote_placement_groups)  
+This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](09-pve-ceph-pools.md#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
+[\[placement\_groups\]](09-pve-ceph-pools.md#_footnote_placement_groups)  
 . Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
 
 ## 8.13.3. Destroy CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>

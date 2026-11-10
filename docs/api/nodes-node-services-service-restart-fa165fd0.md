@@ -8,6 +8,8 @@
 
 Hard restart service. Use reload if you want to reduce interruptions.
 
+**方法标识：** `service_restart`
+
 **权限**
 
 ```json

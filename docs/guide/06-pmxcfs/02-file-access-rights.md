@@ -1,6 +1,6 @@
 # 6.2. File Access Rights <a href="#_file_access_rights" id="_file_access_rights"></a>
 
-All files and directories are owned by user `root` and have group `www-data`. Only root has write permissions, but group `www-data` can read most files. Files below the following paths are only accessible by root:
+所有文件和目录的所有者均为用户 `root`，所属组均为 `www-data`。只有 root 拥有写权限，但 `www-data` 组可以读取大多数文件。以下路径下的文件只能由 root 访问：
 
 ```text
 /etc/pve/priv/

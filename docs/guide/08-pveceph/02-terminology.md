@@ -9,11 +9,11 @@
 
 {% hint style="success" %}
 We highly recommend to get familiar with Ceph   
-[Ceph intro [https://docs.ceph.com/en/tentacle/start/](https://docs.ceph.com/en/tentacle/start/)]  
+\[Ceph intro [https://docs.ceph.com/en/tentacle/start/](https://docs.ceph.com/en/tentacle/start/)\]  
 , its architecture   
-[Ceph architecture [https://docs.ceph.com/en/tentacle/architecture/](https://docs.ceph.com/en/tentacle/architecture/)]  
+\[Ceph architecture [https://docs.ceph.com/en/tentacle/architecture/](https://docs.ceph.com/en/tentacle/architecture/)\]  
  and vocabulary   
-[Ceph glossary [https://docs.ceph.com/en/tentacle/glossary](https://docs.ceph.com/en/tentacle/glossary)]  
+\[Ceph glossary [https://docs.ceph.com/en/tentacle/glossary](https://docs.ceph.com/en/tentacle/glossary)\]  
 .
 {% endhint %}
 

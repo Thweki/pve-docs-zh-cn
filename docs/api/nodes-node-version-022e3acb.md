@@ -8,6 +8,8 @@
 
 API version details
 
+**方法标识：** `version`
+
 **权限**
 
 ```json

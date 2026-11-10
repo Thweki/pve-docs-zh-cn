@@ -23,10 +23,10 @@ To avoid this you can set bandwidth limits for a backup job. Proxmox VE implemen
 
 The read limit indirectly affects the write limit, as we cannot write more than we read. A smaller per-job limit will overwrite a bigger per-storage limit. A bigger per-job limit will only overwrite the per-storage limit if you have ‘Data.Allocate’ permissions on the affected storage.
 
-You can use the ‘--bwlimit <integer>` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing `10240’ will limit the read speed of the backup to 10 MiB/s, ensuring that the rest of the possible storage bandwidth is available for the already running virtual guests, and thus the backup does not impact their operations.
+You can use the ‘--bwlimit \<integer\>\` option from the restore CLI commands to set up a restore job specific bandwidth limit. KiB/s is used as unit for the limit, this means passing \`10240’ will limit the read speed of the backup to 10 MiB/s, ensuring that the rest of the possible storage bandwidth is available for the already running virtual guests, and thus the backup does not impact their operations.
 
 {% hint style="info" %}
-You can use ‘0` for the `bwlimit` parameter to disable all limits for a specific restore job. This can be helpful if you need to restore a very important virtual guest as fast as possible. (Needs `Data.Allocate’ permissions on storage)
+You can use ‘0\` for the `bwlimit` parameter to disable all limits for a specific restore job. This can be helpful if you need to restore a very important virtual guest as fast as possible. (Needs \`Data.Allocate’ permissions on storage)
 {% endhint %}
 
 Most times your storage’s generally available bandwidth stays the same over time, thus we implemented the possibility to set a default bandwidth limit per configured storage, this can be done with:
@@ -44,9 +44,9 @@ Enabling live-restore via either the checkbox in the GUI or the `--live-restore`
 Note that this comes with two caveats:
 
 - During live-restore, the VM will operate with limited disk read speeds, as data has to be loaded from the backup server (once loaded, it is immediately available on the destination storage however, so accessing data twice only incurs the penalty the first time). Write speeds are largely unaffected.
-- If the live-restore fails for any reason, the VM will be left in an undefined state - that is, not all data might have been copied from the backup, and it is *most likely* not possible to keep any data that was written during the failed restore operation.
+- If the live-restore fails for any reason, the VM will be left in an undefined state \- that is, not all data might have been copied from the backup, and it is *most likely* not possible to keep any data that was written during the failed restore operation.
 
-This mode of operation is especially useful for large VMs, where only a small amount of data is required for initial operation, e.g. web servers - once the OS and necessary services have been started, the VM is operational, while the background task continues copying seldom used data.
+This mode of operation is especially useful for large VMs, where only a small amount of data is required for initial operation, e.g. web servers \- once the OS and necessary services have been started, the VM is operational, while the background task continues copying seldom used data.
 
 ## 16.9.3. Single File Restore <a href="#_single_file_restore" id="_single_file_restore"></a>
 

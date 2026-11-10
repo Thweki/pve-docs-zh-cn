@@ -8,6 +8,8 @@
 
 Get all neighbors for a fabric.
 
+**方法标识：** `neighbors`
+
 **权限**
 
 ```json

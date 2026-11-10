@@ -6,7 +6,9 @@
 
 ## GET `/nodes/{node}/capabilities/qemu/migration`
 
-Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Audit' permission on '/nodes/<node>'.
+Get node-specific QEMU migration capabilities of the node. Requires the 'Sys.Audit' permission on '/nodes/&lt;node&gt;'.
+
+**方法标识：** `capabilities`
 
 **权限**
 

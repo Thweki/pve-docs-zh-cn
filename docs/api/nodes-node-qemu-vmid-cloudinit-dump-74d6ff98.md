@@ -8,6 +8,8 @@
 
 Get automatically generated cloudinit config.
 
+**方法标识：** `cloudinit_generated_config_dump`
+
 **权限**
 
 ```json

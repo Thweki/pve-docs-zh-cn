@@ -8,6 +8,8 @@
 
 QEMU capabilities index.
 
+**方法标识：** `qemu_caps_index`
+
 **权限**
 
 ```json

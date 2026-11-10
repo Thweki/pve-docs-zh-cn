@@ -8,6 +8,8 @@
 
 Get the content of /etc/hosts.
 
+**方法标识：** `get_etc_hosts`
+
 **权限**
 
 ```json
@@ -88,6 +90,8 @@ Get the content of /etc/hosts.
 ## POST `/nodes/{node}/hosts`
 
 Write /etc/hosts.
+
+**方法标识：** `write_etc_hosts`
 
 **权限**
 

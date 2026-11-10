@@ -8,6 +8,8 @@
 
 Delete a custom CPU model definition.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Delete a custom CPU model definition.
 ## GET `/cluster/qemu/custom-cpu-models/{cputype}`
 
 Retrieve details about a specific custom CPU model.
+
+**方法标识：** `info`
 
 **权限**
 
@@ -318,6 +322,8 @@ Retrieve details about a specific custom CPU model.
 ## PUT `/cluster/qemu/custom-cpu-models/{cputype}`
 
 Update a custom CPU model definition.
+
+**方法标识：** `update`
 
 **权限**
 

@@ -21,7 +21,7 @@ To view the configuration of an SDN fabric users need SDN.Audit or SDN.Allocate 
 
 ## 12.10.3. Configuration <a href="#_configuration_13" id="_configuration_13"></a>
 
-To create a Fabric, head over to Datacenter→SDN→Fabrics and click "Add Fabric". After selecting the preferred protocol, the fabric is created. With the "+" button you can select the nodes which you want to add to the fabric, you also have to select the interfaces used to communicate with the other nodes.
+To create a Fabric, head over to Datacenter→SDN→Fabrics and click "Add Fabric". After selecting the preferred protocol, the fabric is created. With the "\+" button you can select the nodes which you want to add to the fabric, you also have to select the interfaces used to communicate with the other nodes.
 
 ### Loopback Prefix <a href="#_loopback_prefix" id="_loopback_prefix"></a>
 
@@ -119,7 +119,7 @@ A IPv6 that should get automatically configured on this interface. Must include 
 
 **Hello Multiplier**
 
-Defines how many missed hello packets constitute a failed connection. Higher values make the connection more resilient to packet loss but slow down failure detection. The default value is 10.
+Defines how many missed hello packets constitute a failed connection. Higher values make the connection more resilient to packet loss but slow down failure detection. The default value is 10\.
 
 {% hint style="warning" %}
 When you remove an interface with an entry in `/etc/network/interfaces` that has `manual` set, then the IP will not get removed on applying the SDN configuration.
@@ -253,7 +253,7 @@ The listening port for this interface.
 
 **Peers**
 
-A list of peers that should be configured for that interface. All nodes that are part of the fabric can be selected as peers - the peer definition will be auto-generated from the configuration in the node.
+A list of peers that should be configured for that interface. All nodes that are part of the fabric can be selected as peers \- the peer definition will be auto-generated from the configuration in the node.
 
 When defining an interface, Proxmox VE automatically generates a private key for it in `/etc/pve/priv/wg-keys.cfg` upon saving the interface, and stores the matching public key alongside the interface in the fabric configuration so it can be shown in the Web UI when editing the node. Removing an interface from a node removes the corresponding private key from `wg-keys.cfg` as part of the same API call.
 

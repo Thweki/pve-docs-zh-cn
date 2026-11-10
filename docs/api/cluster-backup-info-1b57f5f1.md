@@ -8,6 +8,8 @@
 
 Index for backup info related endpoints
 
+**方法标识：** `index`
+
 **允许 API 令牌**
 
 ```json

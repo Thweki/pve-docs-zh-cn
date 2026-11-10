@@ -8,6 +8,8 @@
 
 Query metadata of an URL: file size, file name and mime type.
 
+**方法标识：** `query_url_metadata`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 QEMU Guest Agent command index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -84,6 +86,8 @@ QEMU Guest Agent command index.
 ## POST `/nodes/{node}/qemu/{vmid}/agent`
 
 Execute QEMU Guest Agent commands.
+
+**方法标识：** `agent`
 
 **权限**
 

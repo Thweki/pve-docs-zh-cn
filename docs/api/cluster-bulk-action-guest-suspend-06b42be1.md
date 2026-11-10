@@ -8,6 +8,8 @@
 
 Bulk suspend all guests on the cluster.
 
+**方法标识：** `suspend`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 verify VNC authentication ticket.
 
+**方法标识：** `verify_vnc_ticket`
+
 **权限**
 
 ```json

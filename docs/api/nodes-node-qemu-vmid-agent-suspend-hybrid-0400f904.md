@@ -8,6 +8,8 @@
 
 Execute suspend-hybrid.
 
+**方法标识：** `suspend-hybrid`
+
 **权限**
 
 ```json

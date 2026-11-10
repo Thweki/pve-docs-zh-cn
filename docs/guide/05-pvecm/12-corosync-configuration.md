@@ -25,7 +25,7 @@ cp /etc/pve/corosync.conf /etc/pve/corosync.conf.new
 Then, open the config file with your favorite editor, such as `nano` or `vim.tiny`, which come pre-installed on every Proxmox VE node.
 
 {% hint style="info" %}
-Always increment the *config_version* number after configuration changes; omitting this can lead to problems.
+Always increment the *config\_version* number after configuration changes; omitting this can lead to problems.
 {% endhint %}
 
 After making the necessary changes, create another copy of the current working configuration file. This serves as a backup if the new configuration fails to apply or causes other issues.
@@ -68,11 +68,11 @@ On errors, check the troubleshooting section below.
 The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
 
 corosync uses the token coefficient to calculate several timeouts in relation to the cluster size   
-[`token_coefficient` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)]  
+\[`token_coefficient` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token\_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)\]  
 , most importantly the token timeout and consensus timeout. corosync implements a token-passing protocol. The token timeout specifies how long a node waits for the token until it declares the token to be lost   
-[`token` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)]  
+\[`token` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)\]  
 . The consensus timeout   
-[`consensus` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)]  
+\[`consensus` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)\]  
  specifies the time nodes wait for a consensus on a new cluster membership. The sum of token and consensus timeouts defines the minimum time needed to reestablish a new cluster membership after a node goes offline.
 
 Keeping the sum of token and consensus timeouts below 30 seconds reduces the time needed for reestablishing a new cluster membership after a node failure. When HA is enabled, it is especially important that this time stays below 45 seconds to ensure that a new cluster membership is formed before the [watchdog timeout](../15-ha-manager/04-how-it-works-2.md#ha_manager_crm) of 60 seconds expires, which would trigger a node fence. A safety margin below this 45 second limit is advisable so that transient timing variations do not push the cluster past the watchdog threshold. The recommended mechanism for lowering the token and consensus timeouts is lowering the token coefficient as explained below.
@@ -116,7 +116,7 @@ After adjusting the `token_coefficient` in `corosync.conf`, recent corosync vers
 
 ## 5.12.3. Troubleshooting <a href="#_troubleshooting" id="_troubleshooting"></a>
 
-### Issue: *quorum.expected_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
+### Issue: *quorum.expected\_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
 When corosync starts to fail and you get the following message in the system log:
 
@@ -128,7 +128,7 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 [...]
 ```
 
-It means that the hostname you set for a corosync *ringX_addr* in the configuration could not be resolved.
+It means that the hostname you set for a corosync *ringX\_addr* in the configuration could not be resolved.
 
 ### Write Configuration When Not Quorate <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
 
@@ -146,7 +146,7 @@ This is not enough if corosync cannot start anymore. In that case, it is best to
 
 ## 5.12.4. Corosync Configuration Glossary <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
 
-**ringX_addr**
+**ringX\_addr**
 
 This names the different link addresses for the Kronosnet connections between nodes.
 

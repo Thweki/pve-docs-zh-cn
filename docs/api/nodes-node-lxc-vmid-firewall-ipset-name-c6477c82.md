@@ -8,6 +8,8 @@
 
 Delete IPSet
 
+**方法标识：** `delete_ipset`
+
 **权限**
 
 ```json
@@ -94,6 +96,8 @@ Delete IPSet
 ## GET `/nodes/{node}/lxc/{vmid}/firewall/ipset/{name}`
 
 List IPSet content
+
+**方法标识：** `get_ipset`
 
 **权限**
 
@@ -196,6 +200,8 @@ List IPSet content
 ## POST `/nodes/{node}/lxc/{vmid}/firewall/ipset/{name}`
 
 Add IP or Network to IPSet.
+
+**方法标识：** `create_ip`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Try to wake a node via 'wake on LAN' network packet.
 
+**方法标识：** `wakeonlan`
+
 **权限**
 
 ```json

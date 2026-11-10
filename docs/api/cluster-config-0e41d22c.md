@@ -8,6 +8,8 @@
 
 Directory index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -53,6 +55,8 @@ Directory index.
 ## POST `/cluster/config`
 
 Generate new cluster configuration. If no links given, default to local IP address as link0.
+
+**方法标识：** `create`
 
 **允许 API 令牌**
 

@@ -8,6 +8,8 @@
 
 DELETE custom certificate chain and key.
 
+**方法标识：** `remove_custom_cert`
+
 **权限**
 
 ```json
@@ -84,6 +86,8 @@ DELETE custom certificate chain and key.
 ## POST `/nodes/{node}/certificates/custom`
 
 Upload or update custom certificate chain and key.
+
+**方法标识：** `upload_custom_cert`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Execute get-memory-block-info.
 
+**方法标识：** `get-memory-block-info`
+
 **权限**
 
 ```json

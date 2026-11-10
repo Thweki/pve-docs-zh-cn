@@ -1,81 +1,81 @@
-# 3.3. Firmware Updates <a href="#chapter_firmware_updates" id="chapter_firmware_updates"></a>
+# 3.3. 固件更新 <a href="#chapter_firmware_updates" id="chapter_firmware_updates"></a>
 
-Firmware updates from this chapter should be applied when running Proxmox VE on a bare-metal server. Whether configuring firmware updates is appropriate within guests, e.g. when using device pass-through, depends strongly on your setup and is therefore out of scope.
+在裸机服务器上运行 Proxmox VE 时，应应用本章中的固件更新。是否适合在客户机内配置固件更新（例如使用设备直通时）在很大程度上取决于您的具体设置，因此不在本章讨论范围内。
 
-In addition to regular software updates, firmware updates are also important for reliable and secure operation.
+除了定期软件更新外，固件更新对于可靠、安全的运行也很重要。
 
-When obtaining and applying firmware updates, a combination of available options is recommended to get them as early as possible or at all.
+在获取和应用固件更新时，建议结合使用可用的选项，以便尽早获取更新，或确保能够获取更新。
 
-The term firmware is usually divided linguistically into microcode (for CPUs) and firmware (for other devices).
+固件一词通常在语言上分为微码（用于 CPU）和固件（用于其他设备）。
 
-## 3.3.1. Persistent Firmware <a href="#sysadmin_firmware_persistent" id="sysadmin_firmware_persistent"></a>
+## 3.3.1. 持久化固件 <a href="#sysadmin_firmware_persistent" id="sysadmin_firmware_persistent"></a>
 
-This section is suitable for all devices. Updated microcode, which is usually included in a BIOS/UEFI update, is stored on the motherboard, whereas other firmware is stored on the respective device. This persistent method is especially important for the CPU, as it enables the earliest possible regular loading of the updated microcode at boot time.
+本节适用于所有设备。更新后的微码通常包含在 BIOS/UEFI 更新中，并存储在主板上，而其他固件则存储在相应设备上。这种持久化方法对 CPU 尤其重要，因为它能够在启动时尽早正常加载更新后的微码。
 
 {% hint style="danger" %}
-With some updates, such as for BIOS/UEFI or storage controller, the device configuration could be reset. Please follow the vendor’s instructions carefully and back up the current configuration.
+对于某些更新（例如 BIOS/UEFI 或存储控制器更新），设备配置可能会被重置。请仔细遵循供应商的说明，并备份当前配置。
 {% endhint %}
 
-Please check with your vendor which update methods are available.
+请向您的供应商确认有哪些可用的更新方法。
 
-- Convenient update methods for servers can include Dell’s Lifecycle Manager or Service Packs from HPE.
-- Sometimes there are Linux utilities available as well. Examples are [*mlxup*](https://network.nvidia.com/support/firmware/mlxup-mft/) for NVIDIA ConnectX or [*bnxtnvm*/*niccli*](https://techdocs.broadcom.com/us/en/storage-and-ethernet-connectivity/ethernet-nic-controllers/bcm957xxx/adapters/software-installation/updating-the-firmware/manually-updating-the-adapter-firmware-on-linuxesx.html) for Broadcom network cards.
-- [LVFS](https://fwupd.org) is also an option if there is a cooperation with the [hardware vendor](https://fwupd.org/lvfs/vendors/) and [supported hardware](https://fwupd.org/lvfs/devices/) in use. The technical requirement for this is that the system was manufactured after 2014 and is booted via UEFI.
+- 适用于服务器的便捷更新方法包括 Dell 的 Lifecycle Manager 或 HPE 的 Service Packs。
+- 有时也有可用的 Linux 实用工具。例如，适用于 NVIDIA ConnectX 的 [*mlxup*](https://network.nvidia.com/support/firmware/mlxup-mft/)，或适用于 Broadcom 网卡的 [*bnxtnvm*/*niccli*](https://techdocs.broadcom.com/us/en/storage-and-ethernet-connectivity/ethernet-nic-controllers/bcm957xxx/adapters/software-installation/updating-the-firmware/manually-updating-the-adapter-firmware-on-linuxesx.html)。
+- [LVFS](https://fwupd.org) 也是一种选择，前提是与 [硬件供应商](https://fwupd.org/lvfs/vendors/) 有合作，并且使用的是 [受支持的硬件](https://fwupd.org/lvfs/devices/)。其技术要求是系统在 2014 年之后制造，并通过 UEFI 启动。
 
-Proxmox VE ships its own version of the `fwupd` package to enable Secure Boot Support with the Proxmox signing key. This package consciously dropped the dependency recommendation for the `udisks2` package, due to observed issues with its use on hypervisors.
+Proxmox VE 随附自己的 `fwupd` 软件包版本，以使用 Proxmox 签名密钥启用安全启动支持。由于在虚拟机监控程序上使用该软件包时观察到问题，此软件包有意取消了对 `udisks2` 软件包的推荐依赖。
 
 {% hint style="success" %}
-If the update instructions require a host reboot, make sure that it can be done safely. See also [Node Maintenance](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance).
+如果更新说明要求重启宿主机，请确保可以安全地执行重启。另请参阅 [节点维护](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance)。
 {% endhint %}
 
-## 3.3.2. Runtime Firmware Files <a href="#sysadmin_firmware_runtime_files" id="sysadmin_firmware_runtime_files"></a>
+## 3.3.2. 运行时固件文件 <a href="#sysadmin_firmware_runtime_files" id="sysadmin_firmware_runtime_files"></a>
 
-This method stores firmware on the Proxmox VE operating system and will pass it to a device if its [persisted firmware](#sysadmin_firmware_persistent) is less recent. It is supported by devices such as network and graphics cards, but not by those that rely on persisted firmware such as the motherboard and hard disks.
+此方法将固件存储在 Proxmox VE 操作系统上，并在设备的 [持久化固件](#sysadmin_firmware_persistent) 版本较旧时将其传递给设备。网卡和显卡等设备支持此方法，但主板和硬盘等依赖持久化固件的设备不支持。
 
-In Proxmox VE the package `pve-firmware` is already installed by default. Therefore, with the normal [system updates (APT)](02-system-software-updates.md#system_software_updates), included firmware of common hardware is automatically kept up to date.
+在 Proxmox VE 中，默认已安装 `pve-firmware` 软件包。因此，通过常规的 [系统更新（APT）](02-system-software-updates.md#system_software_updates)，其中包含的常见硬件固件会自动保持最新。
 
-An additional [Debian Firmware Repository](01-sysadmin-package-repositories.md#sysadmin_debian_firmware_repo) exists, but is not configured by default.
+还存在一个额外的 [Debian 固件存储库](01-sysadmin-package-repositories.md#sysadmin_debian_firmware_repo)，但默认未配置。
 
-If you try to install an additional firmware package but it conflicts, APT will abort the installation. Perhaps the particular firmware can be obtained in another way.
+如果您尝试安装额外的固件软件包但发生冲突，APT 将中止安装。或许可以通过其他方式获取该特定固件。
 
-## 3.3.3. CPU Microcode Updates <a href="#sysadmin_firmware_cpu" id="sysadmin_firmware_cpu"></a>
+## 3.3.3. CPU 微码更新 <a href="#sysadmin_firmware_cpu" id="sysadmin_firmware_cpu"></a>
 
 {% hint style="info" %}
-CPU microcode updates as described in this section are specific to x86 hosts. There is no equivalent operating-system-level microcode package for arm64.
+本节所述的 CPU 微码更新特定于 x86 宿主机。arm64 没有等效的操作系统级微码软件包。
 {% endhint %}
 
-Microcode updates are intended to fix found security vulnerabilities and other serious CPU bugs. While the CPU performance can be affected, a patched microcode is usually still more performant than an unpatched microcode where the kernel itself has to do mitigations. Depending on the CPU type, it is possible that performance results of the flawed factory state can no longer be achieved without knowingly running the CPU in an unsafe state.
+微码更新旨在修复已发现的安全漏洞和其他严重的 CPU 缺陷。虽然 CPU 性能可能会受到影响，但与未打补丁、需要内核自身采取缓解措施的微码相比，打补丁后的微码通常仍具有更高的性能。根据 CPU 类型，除非明知故犯地让 CPU 在不安全状态下运行，否则可能无法再达到存在缺陷的出厂状态下的性能水平。
 
-To get an overview of present CPU vulnerabilities and their mitigations, run `lscpu`. Current real-world known vulnerabilities can only show up if the Proxmox VE host is [up to date](02-system-software-updates.md#system_software_updates), its version not [end of life](../20-frequently-asked-questions-2/README.md#faq-support-table), and has at least been rebooted since the last kernel update.
+要概览当前 CPU 漏洞及其缓解措施，请运行 `lscpu`。只有当 Proxmox VE 宿主机处于 [最新状态](02-system-software-updates.md#system_software_updates)、其版本未处于 [生命周期结束](../20-frequently-asked-questions-2/README.md#faq-support-table) 状态，并且自上次内核更新以来至少重启过一次时，才会显示当前已知的实际漏洞。
 
-Besides the recommended microcode update via [persistent](#sysadmin_firmware_persistent) BIOS/UEFI updates, there is also an independent method via **Early OS Microcode Updates**. It is convenient to use and also quite helpful when the motherboard vendor no longer provides BIOS/UEFI updates. Regardless of the method in use, a reboot is always needed to apply a microcode update.
+除了通过 [持久化](#sysadmin_firmware_persistent) BIOS/UEFI 更新来更新微码的推荐方法外，还有一种通过 **操作系统早期微码更新** 的独立方法。它使用方便，在主板供应商不再提供 BIOS/UEFI 更新时也特别有帮助。无论使用哪种方法，应用微码更新都始终需要重启。
 
-### Set up Early OS Microcode Updates <a href="#_set_up_early_os_microcode_updates" id="_set_up_early_os_microcode_updates"></a>
+### 设置操作系统早期微码更新 <a href="#_set_up_early_os_microcode_updates" id="_set_up_early_os_microcode_updates"></a>
 
-To set up microcode updates that are applied early on boot by the Linux kernel, you need to:
+要配置由 Linux 内核在启动早期应用的微码更新，您需要：
 
-1. Enable the [Debian Firmware Repository](01-sysadmin-package-repositories.md#sysadmin_debian_firmware_repo)
-2. Get the latest available packages `apt update` (or use the web interface, under Node → Updates)
-3. Install the CPU-vendor specific microcode package:
+1. 启用 [Debian 固件存储库](01-sysadmin-package-repositories.md#sysadmin_debian_firmware_repo)
+2. 获取最新的可用软件包 `apt update`（或使用 Web 界面，在“节点 → 更新”下）
+3. 安装特定于 CPU 供应商的微码软件包：
 
-   - For Intel CPUs: `apt install intel-microcode`
-   - For AMD CPUs: `apt install amd64-microcode`
-4. Reboot the Proxmox VE host
+   - 对于 Intel CPU：`apt install intel-microcode`
+   - 对于 AMD CPU：`apt install amd64-microcode`
+4. 重启 Proxmox VE 宿主机
 
-Any future microcode update will also require a reboot to be loaded.
+今后的任何微码更新也需要重启才能加载。
 
-### Microcode Version <a href="#_microcode_version" id="_microcode_version"></a>
+### 微码版本 <a href="#_microcode_version" id="_microcode_version"></a>
 
-To get the current running microcode revision for comparison or debugging purposes:
+要获取当前运行的微码修订版本，以便进行比较或调试：
 
 ```text
 # grep microcode /proc/cpuinfo | uniq
 microcode       : 0xf0
 ```
 
-A microcode package has updates for many different CPUs. But updates specifically for your CPU might not come often. So, just looking at the date on the package won’t tell you when the company actually released an update for your specific CPU.
+一个微码软件包包含适用于许多不同 CPU 的更新。但专门针对您的 CPU 的更新可能并不常有。因此，仅查看软件包上的日期，无法得知该公司实际何时为您的特定 CPU 发布了更新。
 
-If you’ve installed a new microcode package and rebooted your Proxmox VE host, and this new microcode is newer than both, the version baked into the CPU and the one from the motherboard’s firmware, you’ll see a message in the system log saying "microcode updated early".
+如果您安装了新的微码软件包并重启了 Proxmox VE 宿主机，且此新微码比 CPU 内置的版本和主板固件中的版本都更新，您将在系统日志中看到一条显示 "microcode updated early" 的消息。
 
 ```text
 # dmesg | grep microcode
@@ -83,19 +83,19 @@ If you’ve installed a new microcode package and rebooted your Proxmox VE host,
 [    0.896580] microcode: Microcode Update Driver: v2.2.
 ```
 
-### Troubleshooting <a href="#sysadmin_firmware_troubleshooting" id="sysadmin_firmware_troubleshooting"></a>
+### 故障排除 <a href="#sysadmin_firmware_troubleshooting" id="sysadmin_firmware_troubleshooting"></a>
 
-For debugging purposes, the set up Early OS Microcode Update applied regularly at system boot can be temporarily disabled as follows:
+出于调试目的，可以按如下方式临时禁用已配置、通常在系统启动时应用的操作系统早期微码更新：
 
-1. make sure that the host can be rebooted [safely](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance)
-2. reboot the host to get to the GRUB menu (hold `SHIFT` if it is hidden)
-3. at the desired Proxmox VE boot entry press `E`
-4. go to the line which starts with `linux` and append separated by a space **`dis_ucode_ldr`**
-5. press `CTRL-X` to boot this time without an Early OS Microcode Update
+1. 确保宿主机可以 [安全地](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance) 重启
+2. 重启宿主机以进入 GRUB 菜单（如果菜单被隐藏，请按住 `SHIFT`）
+3. 在所需的 Proxmox VE 启动项上按 `E`
+4. 转到以 `linux` 开头的行，追加 **`dis_ucode_ldr`**，并用空格分隔
+5. 按 `CTRL-X` 启动，此次启动将不应用操作系统早期微码更新
 
-If a problem related to a recent microcode update is suspected, a package downgrade should be considered instead of package removal (`apt purge <intel-microcode|amd64-microcode>`). Otherwise, a too old [persisted](#sysadmin_firmware_persistent) microcode might be loaded, even though a more recent one would run without problems.
+如果怀疑问题与最近的微码更新有关，应考虑降级软件包，而不是移除软件包（`apt purge <intel-microcode|amd64-microcode>`）。否则，即使较新的微码可以正常运行，也可能会加载过旧的 [持久化](#sysadmin_firmware_persistent) 微码。
 
-A downgrade is possible if an earlier microcode package version is available in the Debian repository, as shown in this example:
+如果 Debian 存储库中有更早的微码软件包版本，则可以降级，如以下示例所示：
 
 ```text
 # apt list -a intel-microcode
@@ -115,10 +115,10 @@ intel-microcode: microcode will be updated at next boot
 ...
 ```
 
-Make sure (again) that the host can be rebooted [safely](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance). To apply an older microcode potentially included in the microcode package for your CPU type, reboot now.
+请（再次）确保宿主机可以 [安全地](../15-ha-manager/11-ha-manager-node-maintenance.md#ha_manager_node_maintenance) 重启。要立即应用微码软件包中可能包含的、适用于您的 CPU 类型的较旧微码，请现在重启。
 
 {% hint style="success" %}
-It makes sense to hold the downgraded package for a while and try more recent versions again at a later time. Even if the package version is the same in the future, system updates may have fixed the experienced problem in the meantime.
+最好将降级后的软件包锁定一段时间，并在稍后重试较新的版本。即使将来软件包版本相同，系统更新也可能在此期间已修复您遇到的问题。
 
 ```text
 # apt-mark hold intel-microcode

@@ -8,6 +8,8 @@
 
 Get OSD volume details
 
+**方法标识：** `osdvolume`
+
 **权限**
 
 ```json

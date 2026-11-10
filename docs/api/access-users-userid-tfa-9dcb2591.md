@@ -8,6 +8,8 @@
 
 Get user TFA types (Personal and Realm).
 
+**方法标识：** `read_user_tfa_type`
+
 **权限**
 
 ```json

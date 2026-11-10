@@ -8,6 +8,8 @@
 
 Release global lock for SDN configuration
 
+**方法标识：** `release_lock`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@ Release global lock for SDN configuration
 ## POST `/cluster/sdn/lock`
 
 Acquire global lock for SDN configuration
+
+**方法标识：** `lock`
 
 **权限**
 

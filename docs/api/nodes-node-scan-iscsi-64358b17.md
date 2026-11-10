@@ -8,6 +8,8 @@
 
 Scan remote iSCSI server.
 
+**方法标识：** `iscsiscan`
+
 **权限**
 
 ```json

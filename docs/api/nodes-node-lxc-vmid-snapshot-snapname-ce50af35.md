@@ -8,6 +8,8 @@
 
 删除 LXC 快照。
 
+**方法标识：** `delsnapshot`
+
 **权限**
 
 ```json
@@ -101,6 +103,8 @@
 ## GET `/nodes/{node}/lxc/{vmid}/snapshot/{snapname}`
 
 
+
+**方法标识：** `snapshot_cmd_idx`
 
 **权限**
 

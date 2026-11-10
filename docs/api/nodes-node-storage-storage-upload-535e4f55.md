@@ -8,6 +8,8 @@
 
 Upload templates, ISO images, OVAs and VM images.
 
+**方法标识：** `upload`
+
 **权限**
 
 ```json

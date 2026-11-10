@@ -8,6 +8,8 @@
 
 Read task status.
 
+**方法标识：** `read_task_status`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 List all custom and default CPU models.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

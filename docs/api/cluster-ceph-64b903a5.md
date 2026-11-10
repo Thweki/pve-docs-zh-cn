@@ -8,6 +8,8 @@
 
 Cluster ceph index.
 
+**方法标识：** `cephindex`
+
 **权限**
 
 ```json

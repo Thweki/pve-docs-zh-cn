@@ -8,6 +8,8 @@
 
 销毁容器（同时删除所有相关文件）。
 
+**方法标识：** `destroy_vm`
+
 **权限**
 
 ```json
@@ -108,6 +110,8 @@
 ## GET `/nodes/{node}/lxc/{vmid}`
 
 Directory index
+
+**方法标识：** `vmdiridx`
 
 **权限**
 

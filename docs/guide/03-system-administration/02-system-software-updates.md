@@ -1,6 +1,6 @@
-# 3.2. System Software Updates <a href="#system_software_updates" id="system_software_updates"></a>
+# 3.2. 系统软件更新 <a href="#system_software_updates" id="system_software_updates"></a>
 
-Proxmox provides updates on a regular basis for all repositories. To install updates use the web-based GUI or the following CLI commands:
+Proxmox 定期为所有存储库提供更新。要安装更新，请使用基于 Web 的图形用户界面或以下命令行命令：
 
 ```text
 # apt update
@@ -8,17 +8,17 @@ Proxmox provides updates on a regular basis for all repositories. To install upd
 ```
 
 {% hint style="warning" %}
-As Proxmox VE uses a rolling release model on top of Debian, performing an `apt upgrade` may result in a partially upgraded or broken package state. This is because `apt full-upgrade` can also remove existing packages to satisfy dependencies if needed, while `apt upgrade` cannot.
+由于 Proxmox VE 在 Debian 之上采用滚动发布模式，执行 `apt upgrade` 可能会导致软件包仅部分升级或处于损坏状态。这是因为 `apt full-upgrade` 在需要时也可以移除现有软件包以满足依赖关系，而 `apt upgrade` 则不能。
 {% endhint %}
 
-For occasionally upgrading Ceph to its succeeding major release, see [Ceph Repositories](01-sysadmin-package-repositories.md#sysadmin_package_repositories_ceph).
+有关偶尔将 Ceph 升级到下一个主要版本的信息，请参阅 [Ceph 存储库](01-sysadmin-package-repositories.md#sysadmin_package_repositories_ceph)。
 
 {% hint style="info" %}
-The APT package management system is very flexible and provides many features, see `man apt`, or [[Hertzog13]](../21-bibliography/README.md#Hertzog13) for additional information.
+APT 软件包管理系统非常灵活，并提供了许多功能，有关更多信息，请参阅 `man apt` 或 [\[Hertzog13\]](../21-bibliography/README.md#Hertzog13)。
 {% endhint %}
 
 {% hint style="success" %}
-Regular updates are essential to get the latest patches and security related fixes. Major system upgrades are announced in the [Proxmox VE Community Forum](https://forum.proxmox.com/).
+定期更新对于获取最新补丁和安全相关修复至关重要。主要系统升级会在 [Proxmox VE 社区论坛](https://forum.proxmox.com/) 中发布。
 {% endhint %}
 
 ---

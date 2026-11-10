@@ -8,6 +8,8 @@
 
 SDN Fabrics Index
 
+**方法标识：** `list_nodes_fabric`
+
 **权限**
 
 ```json
@@ -333,6 +335,8 @@ SDN Fabrics Index
 ## POST `/cluster/sdn/fabrics/node/{fabric_id}`
 
 Add a node
+
+**方法标识：** `add_node`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Execute get-fsinfo.
 
+**方法标识：** `get-fsinfo`
+
 **权限**
 
 ```json

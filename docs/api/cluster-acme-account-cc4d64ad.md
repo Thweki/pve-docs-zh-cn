@@ -8,6 +8,8 @@
 
 ACMEAccount index.
 
+**方法标识：** `account_index`
+
 **权限**
 
 ```json
@@ -53,6 +55,8 @@ ACMEAccount index.
 ## POST `/cluster/acme/account`
 
 Register a new ACME account with CA.
+
+**方法标识：** `register_account`
 
 **允许 API 令牌**
 

@@ -1,4 +1,4 @@
-# 18.2. pveproxy - Proxmox VE API Proxy Daemon <a href="#_pveproxy_proxmox_ve_api_proxy_daemon" id="_pveproxy_proxmox_ve_api_proxy_daemon"></a>
+# 18.2. pveproxy \- Proxmox VE API Proxy Daemon <a href="#_pveproxy_proxmox_ve_api_proxy_daemon" id="_pveproxy_proxmox_ve_api_proxy_daemon"></a>
 
 This daemon exposes the whole Proxmox VE API on TCP port 8006 using HTTPS. It runs as user `www-data` and has very limited permissions. Operation requiring more permissions are forwarded to the local `pvedaemon`.
 
@@ -95,7 +95,7 @@ Unlike `reload`, a `restart` of the pveproxy service can interrupt some long-run
 
 ## 18.2.3. SSL Cipher Suite <a href="#_ssl_cipher_suite" id="_ssl_cipher_suite"></a>
 
-You can define the cipher list in `/etc/default/pveproxy` via the `CIPHERS` (TLS ⇐ 1.2) and `CIPHERSUITES` (TLS >= 1.3) keys. For example
+You can define the cipher list in `/etc/default/pveproxy` via the `CIPHERS` (TLS ⇐ 1.2) and `CIPHERSUITES` (TLS \>\= 1.3) keys. For example
 
 ```text
 CIPHERS="ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
@@ -204,7 +204,7 @@ IP addresses can be specified using any syntax understood by `Net::IP`. The name
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128.
+Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
 
 The same setting exists for [pvedaemon](01-pvedaemon-proxmox-ve-api-daemon.md#pvedaemon_max_workers).
 

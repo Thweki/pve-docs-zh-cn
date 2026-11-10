@@ -1,4 +1,4 @@
-# 18.4. spiceproxy - SPICE Proxy Service <a href="#_spiceproxy_spice_proxy_service" id="_spiceproxy_spice_proxy_service"></a>
+# 18.4. spiceproxy \- SPICE Proxy Service <a href="#_spiceproxy_spice_proxy_service" id="_spiceproxy_spice_proxy_service"></a>
 
 [SPICE](http://www.spice-space.org) (the Simple Protocol for Independent Computing Environments) is an open remote computing solution, providing client access to remote displays and devices (e.g. keyboard, mouse, audio). The main use case is to get remote access to virtual machines and container.
 

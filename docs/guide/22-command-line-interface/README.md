@@ -1,4 +1,4 @@
-# 22. Appendix A: Command-line Interface <a href="#_command_line_interface" id="_command_line_interface"></a>
+# 22\. Appendix A: Command-line Interface <a href="#_command_line_interface" id="_command_line_interface"></a>
 
 ## 本章内容
 

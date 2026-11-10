@@ -8,6 +8,8 @@
 
 Read Journal
 
+**方法标识：** `journal`
+
 **权限**
 
 ```json

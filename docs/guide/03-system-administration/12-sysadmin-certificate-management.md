@@ -84,7 +84,7 @@ Renewal will happen [automatically](#sysadmin_certs_acme_automatic_renewal).
 
 ## 3.12.5. ACME HTTP Challenge Plugin <a href="#sysadmin_certs_acme_http_challenge" id="sysadmin_certs_acme_http_challenge"></a>
 
-There is always an implicitly configured `standalone` plugin for validating `http-01` challenges via the built-in webserver spawned on port 80.
+There is always an implicitly configured `standalone` plugin for validating `http-01` challenges via the built-in webserver spawned on port 80\.
 
 {% hint style="info" %}
 The name `standalone` means that it can provide the validation on it’s own, without any third party service. So, this plugin works also for cluster nodes.
@@ -94,7 +94,7 @@ There are a few prerequisites to use it for certificate management with Let’s 
 
 - You have to accept the ToS of Let’s Encrypt to register an account.
 - **Port 80** of the node needs to be reachable from the internet.
-- There **must** be no other listener on port 80.
+- There **must** be no other listener on port 80\.
 - The requested (sub)domain needs to resolve to a public IP of the Node.
 
 ## 3.12.6. ACME DNS API Challenge Plugin <a href="#sysadmin_certs_acme_dns_challenge" id="sysadmin_certs_acme_dns_challenge"></a>
@@ -104,7 +104,7 @@ On systems where external access for validation via the `http-01` method is not 
 ### Configuring ACME DNS APIs for validation <a href="#sysadmin_certs_acme_dns_api_config" id="sysadmin_certs_acme_dns_api_config"></a>
 
 Proxmox VE re-uses the DNS plugins developed for the `acme.sh`   
-[acme.sh [https://github.com/acmesh-official/acme.sh](https://github.com/acmesh-official/acme.sh)]  
+\[acme.sh [https://github.com/acmesh-official/acme.sh](https://github.com/acmesh-official/acme.sh)\]  
  project, please refer to its documentation for details on configuration of specific APIs.
 
 The easiest way to configure a new plugin with the DNS API is using the web interface (`Datacenter -> ACME`).
@@ -117,7 +117,7 @@ Choose `DNS` as challenge type. Then you can select your API provider, enter the
 See the acme.sh [How to use DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#how-to-use-dns-api) wiki for more detailed information about getting API credentials for your provider.
 {% endhint %}
 
-As there are many DNS providers and API endpoints Proxmox VE automatically generates the form for the credentials for some providers. For the others you will see a bigger text area, simply copy all the credentials `KEY`=`VALUE` pairs in there.
+As there are many DNS providers and API endpoints Proxmox VE automatically generates the form for the credentials for some providers. For the others you will see a bigger text area, simply copy all the credentials `KEY`\=`VALUE` pairs in there.
 
 ### DNS Validation through CNAME Alias <a href="#_dns_validation_through_cname_alias" id="_dns_validation_through_cname_alias"></a>
 

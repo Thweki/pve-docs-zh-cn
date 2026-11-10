@@ -8,6 +8,8 @@
 
 Remove IP or Network from IPSet.
 
+**方法标识：** `remove_ip`
+
 **权限**
 
 ```json
@@ -87,6 +89,8 @@ Remove IP or Network from IPSet.
 
 Read IP or Network settings from IPSet.
 
+**方法标识：** `read_ip`
+
 **权限**
 
 ```json
@@ -157,6 +161,8 @@ Read IP or Network settings from IPSet.
 ## PUT `/cluster/firewall/ipset/{name}/{cidr}`
 
 Update IP or Network settings
+
+**方法标识：** `update_ip`
 
 **权限**
 

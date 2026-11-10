@@ -1,7 +1,7 @@
 # 8.11. Cephx Authentication <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
 
 Cephx   
-[Cephx authorization and authentication protocol [https://docs.ceph.com/en/tentacle/dev/cephx_protocol/](https://docs.ceph.com/en/tentacle/dev/cephx_protocol/)]  
+\[Cephx authorization and authentication protocol [https://docs.ceph.com/en/tentacle/dev/cephx\_protocol/](https://docs.ceph.com/en/tentacle/dev/cephx_protocol/)\]  
  protects access to a Ceph cluster.
 
 Every Ceph service and client, including storage consumers and tools, authenticates to a monitor as a Ceph user, such as `client.admin` or `osd.3`, with that user’s long-term secret key. The monitor then issues temporary credentials called tickets:

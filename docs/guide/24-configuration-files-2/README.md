@@ -1,4 +1,4 @@
-# 24. Appendix C: Configuration Files <a href="#_configuration_files_2" id="_configuration_files_2"></a>
+# 24\. Appendix C: Configuration Files <a href="#_configuration_files_2" id="_configuration_files_2"></a>
 
 ## 本章内容
 

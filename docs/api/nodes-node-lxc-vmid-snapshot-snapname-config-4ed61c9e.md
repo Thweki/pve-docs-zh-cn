@@ -8,6 +8,8 @@
 
 Get snapshot configuration
 
+**方法标识：** `get_snapshot_config`
+
 **权限**
 
 ```json
@@ -91,6 +93,8 @@ Get snapshot configuration
 ## PUT `/nodes/{node}/lxc/{vmid}/snapshot/{snapname}/config`
 
 Update snapshot metadata.
+
+**方法标识：** `update_snapshot_config`
 
 **权限**
 

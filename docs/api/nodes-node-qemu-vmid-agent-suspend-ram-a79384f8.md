@@ -8,6 +8,8 @@
 
 Execute suspend-ram.
 
+**方法标识：** `suspend-ram`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 List available updates.
 
+**方法标识：** `list_updates`
+
 **权限**
 
 ```json
@@ -132,6 +134,8 @@ List available updates.
 ## POST `/nodes/{node}/apt/update`
 
 This is used to resynchronize the package index files from their sources (apt-get update).
+
+**方法标识：** `update_database`
 
 **权限**
 

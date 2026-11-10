@@ -8,6 +8,8 @@
 
 Read system log
 
+**方法标识：** `syslog`
+
 **权限**
 
 ```json

@@ -6,7 +6,9 @@
 
 ## POST `/nodes/{node}/ceph/restart-bulk`
 
-Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after Ceph reports the previous one is back up and the next one is safe to stop. For non-OSD Ceph daemons, use the cluster-wide endpoint at /cluster/ceph/restart-bulk. The 'noout' flag is applied only to the OSDs targeted by this run, so unrelated OSDs on other nodes that fail during the restart window still get out-marked normally. Aborting the resulting task (for example via 'pvesh task stop') triggers a SIGTERM handler that unsets the per-OSD 'noout' if this endpoint set it. Per-daemon progress is checkpointed in Ceph's config-key store ('pve/ceph-bulk-restart/node/<node>'), so an aborted run can be resumed by re-issuing this endpoint with 'resume=1'.
+Rolling restart of all Ceph OSDs on this node. Each OSD is restarted only after Ceph reports the previous one is back up and the next one is safe to stop. For non-OSD Ceph daemons, use the cluster-wide endpoint at /cluster/ceph/restart-bulk. The 'noout' flag is applied only to the OSDs targeted by this run, so unrelated OSDs on other nodes that fail during the restart window still get out-marked normally. Aborting the resulting task (for example via 'pvesh task stop') triggers a SIGTERM handler that unsets the per-OSD 'noout' if this endpoint set it. Per-daemon progress is checkpointed in Ceph's config-key store ('pve/ceph-bulk-restart/node/&lt;node&gt;'), so an aborted run can be resumed by re-issuing this endpoint with 'resume=1'.
+
+**方法标识：** `restart_bulk`
 
 **权限**
 

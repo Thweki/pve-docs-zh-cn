@@ -1,4 +1,4 @@
-# 22.6. **pveceph** - Manage CEPH Services on Proxmox VE Nodes <a href="#_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes" id="_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes"></a>
+# 22.6. **pveceph** \- Manage CEPH Services on Proxmox VE Nodes <a href="#_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes" id="_strong_pveceph_strong_manage_ceph_services_on_proxmox_ve_nodes"></a>
 
 <a id="cli_pveceph"></a>
 
@@ -86,15 +86,15 @@ An alias for *pveceph pool destroy*.
 
 Create a Ceph filesystem
 
-**`--add-storage` `<boolean>` (*default =* `0`)**
+**`--add-storage` `<boolean>` (*default \=* `0`)**
 
 Configure the created CephFS as storage for this cluster.
 
-**`--name` `(?^:^[^:/\s]+$)` (*default =* `cephfs`)**
+**`--name` `(?^:^[^:/\s]+$)` (*default \=* `cephfs`)**
 
 The ceph filesystem name.
 
-**`--pg_num` `<integer> (8 - 32768)` (*default =* `128`)**
+**`--pg_num` `<integer> (8 - 32768)` (*default \=* `128`)**
 
 Number of placement groups for the backing data pool. The metadata pool will use a quarter of this.
 
@@ -110,11 +110,11 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type *cephfs* sti
 
 The Ceph filesystem name.
 
-**`--remove-pools` `<boolean>` (*default =* `0`)**
+**`--remove-pools` `<boolean>` (*default \=* `0`)**
 
 Remove the metadata and data pools used by this filesystem.
 
-**`--remove-storages` `<boolean>` (*default =* `0`)**
+**`--remove-storages` `<boolean>` (*default \=* `0`)**
 
 Remove pveceph-managed storages configured for this filesystem.
 
@@ -140,7 +140,7 @@ Remove pveceph-managed storages configured for this filesystem.
 
 **pveceph init** `[OPTIONS]`
 
-Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a [global] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
+Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a \[global\] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
 
 **`--cluster-network` `<string>`**
 
@@ -150,7 +150,7 @@ Declare a separate cluster network, OSDs will route heartbeat, object replicatio
 Requires option(s): `network`
 {% endhint %}
 
-**`--disable_cephx` `<boolean>` (*default =* `0`)**
+**`--disable_cephx` `<boolean>` (*default \=* `0`)**
 
 Disable cephx authentication.
 
@@ -158,7 +158,7 @@ Disable cephx authentication.
 cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!
 {% endhint %}
 
-**`--min_size` `<integer> (1 - 7)` (*default =* `2`)**
+**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
 
 Minimum number of available replicas per object to allow I/O
 
@@ -166,13 +166,13 @@ Minimum number of available replicas per object to allow I/O
 
 Use specific network for all ceph related traffic
 
-**`--pg_bits` `<integer> (6 - 14)` (*default =* `6`)**
+**`--pg_bits` `<integer> (6 - 14)` (*default \=* `6`)**
 
 Placement group bits, used to specify the default number of placement groups.
 
 Depreacted. This setting was deprecated in recent Ceph versions.
 
-**`--size` `<integer> (1 - 7)` (*default =* `3`)**
+**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
 
 Targeted number of replicas per object
 
@@ -184,15 +184,15 @@ Targeted number of replicas per object
 
 Install ceph related packages.
 
-**`--allow-experimental` `<boolean>` (*default =* `0`)**
+**`--allow-experimental` `<boolean>` (*default \=* `0`)**
 
 Allow experimental versions. Use with care!
 
-**`--repository` `<enterprise | manual | no-subscription | test>` (*default =* `enterprise`)**
+**`--repository` `<enterprise | manual | no-subscription | test>` (*default \=* `enterprise`)**
 
 Ceph repository to use. The *manual* option will not configure any repositories. Use it if the host cannot access the public repositories, for example if Proxmox Offline Mirror is used. A repository that contains the Ceph packages for the version needs to be manually configured before starting the installation!
 
-**`--version` `<squid | tentacle>` (*default =* `tentacle`)**
+**`--version` `<squid | tentacle>` (*default \=* `tentacle`)**
 
 Ceph version to install.
 
@@ -212,11 +212,11 @@ An alias for *pveceph pool ls*.
 
 Create Ceph Metadata Server (MDS)
 
-**`--hotstandby` `<boolean>` (*default =* `0`)**
+**`--hotstandby` `<boolean>` (*default \=* `0`)**
 
 Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1.
 
-**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the mds, when omitted the same as the nodename
 
@@ -240,7 +240,7 @@ The name (ID) of the mds
 
 Create Ceph Manager
 
-**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the manager, when omitted the same as the nodename.
 
@@ -268,7 +268,7 @@ Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
 
 Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph.
 
-**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the monitor, when omitted the same as the nodename.
 
@@ -312,13 +312,13 @@ Size in GiB for block.db.
 Requires option(s): `db_dev`
 {% endhint %}
 
-**`--encrypted` `<boolean>` (*default =* `0`)**
+**`--encrypted` `<boolean>` (*default \=* `0`)**
 
 Enables encryption of the OSD.
 
 **`--osds-per-device` `<integer> (1 - N)`**
 
-OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db_dev* and *wal_dev*.
+OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db\_dev* and *wal\_dev*.
 
 **`--wal_dev` `<string>`**
 
@@ -344,7 +344,7 @@ Destroy OSD
 
 OSD ID
 
-**`--cleanup` `<boolean>` (*default =* `0`)**
+**`--cleanup` `<boolean>` (*default \=* `0`)**
 
 If set, also destroy the underlying logical volumes via *ceph-volume lvm zap --destroy*, remove the volume group’s physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection.
 
@@ -360,7 +360,7 @@ Get OSD details.
 
 ID of the OSD
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Print verbose information, same as json-pretty output format.
 
@@ -376,11 +376,11 @@ Create Ceph pool
 
 The name of the pool. It must be unique.
 
-**`--add_storages` `<boolean>` (*default =* `0`)**
+**`--add_storages` `<boolean>` (*default \=* `0`)**
 
 Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage).
 
-**`--application` `<cephfs | rbd | rgw>` (*default =* `rbd`)**
+**`--application` `<cephfs | rbd | rgw>` (*default \=* `rbd`)**
 
 The application of the pool.
 
@@ -390,17 +390,17 @@ The rule to use for mapping object placement in the cluster.
 
 **`--erasure-coding` `k=<integer> ,m=<integer> [,device-class=<class>] [,failure-domain=<domain>] [,profile=<profile>]`**
 
-Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min_size* and *crush_rule* parameters will be applied to the metadata pool.
+Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min\_size* and *crush\_rule* parameters will be applied to the metadata pool.
 
-**`--min_size` `<integer> (1 - 7)` (*default =* `2`)**
+**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
 
 Minimum number of replicas per object
 
-**`--pg_autoscale_mode` `<off | on | warn>` (*default =* `warn`)**
+**`--pg_autoscale_mode` `<off | on | warn>` (*default \=* `warn`)**
 
 The automatic PG scaling mode of the pool.
 
-**`--pg_num` `<integer> (1 - 32768)` (*default =* `128`)**
+**`--pg_num` `<integer> (1 - 32768)` (*default \=* `128`)**
 
 Number of placement groups.
 
@@ -408,7 +408,7 @@ Number of placement groups.
 
 Minimal number of placement groups.
 
-**`--size` `<integer> (1 - 7)` (*default =* `3`)**
+**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
 
 Number of replicas per object
 
@@ -432,15 +432,15 @@ Destroy pool
 
 The name of the pool. It must be unique.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 If true, destroys pool even if in use
 
-**`--remove_ecprofile` `<boolean>` (*default =* `1`)**
+**`--remove_ecprofile` `<boolean>` (*default \=* `1`)**
 
 Remove the erasure code profile. Defaults to true, if applicable.
 
-**`--remove_storages` `<boolean>` (*default =* `0`)**
+**`--remove_storages` `<boolean>` (*default \=* `0`)**
 
 Remove all pveceph-managed storages configured for this pool
 
@@ -456,7 +456,7 @@ Show the current pool status.
 
 The name of the pool. It must be unique.
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 If enabled, will display additional data(eg. statistics).
 
@@ -540,7 +540,7 @@ Additionally purge Ceph logs, /var/log/ceph.
 
 Start ceph services.
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default =* `ceph.target`)**
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
 
 Ceph service name.
 
@@ -560,7 +560,7 @@ Get Ceph Status.
 
 Stop ceph services.
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default =* `ceph.target`)**
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
 
 Ceph service name.
 

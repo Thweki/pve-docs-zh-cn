@@ -8,6 +8,8 @@
 
 Delete volume
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -96,6 +98,8 @@ Delete volume
 ## GET `/nodes/{node}/storage/{storage}/content/{volume}`
 
 Get volume attributes
+
+**方法标识：** `info`
 
 **权限**
 
@@ -206,6 +210,8 @@ Get volume attributes
 
 Copy a volume. This is experimental code - do not use.
 
+**方法标识：** `copy`
+
 **允许 API 令牌**
 
 ```json
@@ -289,6 +295,8 @@ Copy a volume. This is experimental code - do not use.
 ## PUT `/nodes/{node}/storage/{storage}/content/{volume}`
 
 Update volume attributes
+
+**方法标识：** `updateattributes`
 
 **权限**
 

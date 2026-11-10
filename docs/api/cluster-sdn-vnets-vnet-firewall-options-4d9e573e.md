@@ -8,6 +8,8 @@
 
 Get vnet firewall options.
 
+**方法标识：** `get_options`
+
 **权限**
 
 ```json
@@ -93,6 +95,8 @@ Get vnet firewall options.
 ## PUT `/cluster/sdn/vnets/{vnet}/firewall/options`
 
 Set Firewall options.
+
+**方法标识：** `set_options`
 
 **权限**
 

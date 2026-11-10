@@ -1,8 +1,8 @@
 # 8.15. Ceph Monitoring and Troubleshooting <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
 
-It is important to continuously monitor the health of a Ceph deployment from the beginning, either by using the Ceph tools or by accessing the status through the Proxmox VE [API](https://pve.proxmox.com/pve-docs/api-viewer/index.html).
+It is important to continuously monitor the health of a Ceph deployment from the beginning, either by using the Ceph tools or by accessing the status through the Proxmox VE [API](../../api/README.md).
 
-The following Ceph commands can be used to see if the cluster is healthy (*HEALTH_OK*), if there are warnings (*HEALTH_WARN*), or even errors (*HEALTH_ERR*). If the cluster is in an unhealthy state, the status commands below will also give you an overview of the current events and actions to take. To stop their execution, press CTRL-C.
+The following Ceph commands can be used to see if the cluster is healthy (*HEALTH\_OK*), if there are warnings (*HEALTH\_WARN*), or even errors (*HEALTH\_ERR*). If the cluster is in an unhealthy state, the status commands below will also give you an overview of the current events and actions to take. To stop their execution, press CTRL-C.
 
 Continuously watch the cluster status:
 
@@ -23,7 +23,7 @@ ceph --watch
 ## 8.15.1. Troubleshooting <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
 
 This section includes frequently used troubleshooting information. More information can be found on the official Ceph website under Troubleshooting   
-[Ceph troubleshooting [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)]  
+\[Ceph troubleshooting [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)\]  
 .
 
 <a id="pve_ceph_ts_logs"></a>
@@ -60,7 +60,7 @@ ceph crash archive-all
 ```
 
 To get a more detailed view, every Ceph service has a log file under `/var/log/ceph/`. If more detail is required, the log level can be adjusted   
-[Ceph log and debugging [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)]  
+\[Ceph log and debugging [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)\]  
 .
 
 <a id="pve_ceph_ts_causes"></a>

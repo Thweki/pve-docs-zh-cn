@@ -8,6 +8,8 @@
 
 Execute fstrim.
 
+**方法标识：** `fstrim`
+
 **权限**
 
 ```json

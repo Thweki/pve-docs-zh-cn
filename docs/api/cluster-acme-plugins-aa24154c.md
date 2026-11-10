@@ -8,6 +8,8 @@
 
 ACME plugin index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -294,6 +296,8 @@ ACME plugin index.
 ## POST `/cluster/acme/plugins`
 
 Add ACME plugin configuration.
+
+**方法标识：** `add_plugin`
 
 **权限**
 

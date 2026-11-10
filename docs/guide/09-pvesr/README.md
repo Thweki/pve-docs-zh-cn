@@ -1,4 +1,4 @@
-# 9. Storage Replication <a href="#chapter_pvesr" id="chapter_pvesr"></a>
+# 9\. Storage Replication <a href="#chapter_pvesr" id="chapter_pvesr"></a>
 
 The `pvesr` command-line tool manages the Proxmox VE storage replication framework. Storage replication brings redundancy for guests using local storage and reduces migration time.
 

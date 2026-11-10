@@ -8,6 +8,8 @@
 
 Read VM RRD statistics (returns PNG)
 
+**方法标识：** `rrd`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Get the currently configured vzdump defaults.
 
+**方法标识：** `defaults`
+
 **权限**
 
 ```json

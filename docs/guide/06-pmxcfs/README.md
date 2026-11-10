@@ -1,16 +1,16 @@
-# 6. Proxmox Cluster File System (pmxcfs) <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
+# 6\. Proxmox Cluster File System (pmxcfs) <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
 
-The Proxmox Cluster file system (“pmxcfs”) is a database-driven file system for storing configuration files, replicated in real time to all cluster nodes using `corosync`. We use this to store all Proxmox VE related configuration files.
+Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系统，用于存储配置文件，并通过 `corosync` 实时复制到所有集群节点。我们使用它来存储所有与 Proxmox VE 相关的配置文件。
 
-Although the file system stores all data inside a persistent database on disk, a copy of the data resides in RAM. This imposes restrictions on the maximum size, which is currently 128 MiB. This is still enough to store the configuration of several thousand virtual machines.
+尽管文件系统将所有数据存储在磁盘上的持久化数据库中，但 RAM 中也保留了一份数据副本。这限制了其最大容量，目前为 128 MiB。但这仍足以存储数千台虚拟机的配置。
 
-This system provides the following advantages:
+该系统具有以下优点：
 
-- Seamless replication of all configuration to all nodes in real time
-- Provides strong consistency checks to avoid duplicate VM IDs
-- Read-only when a node loses quorum
-- Automatic updates of the corosync cluster configuration to all nodes
-- Includes a distributed locking mechanism
+- 将所有配置实时无缝复制到所有节点
+- 提供强一致性检查，避免 VM ID 重复
+- 节点失去仲裁时为只读状态
+- 自动将 corosync 集群配置更新到所有节点
+- 包含分布式锁机制
 
 ## 本章内容
 

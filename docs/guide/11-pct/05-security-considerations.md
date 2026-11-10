@@ -1,62 +1,62 @@
 # 11.5. Security Considerations <a href="#_security_considerations" id="_security_considerations"></a>
 
-Containers use the kernel of the host system. This exposes an attack surface for malicious users. In general, full virtual machines provide better isolation. This should be considered if containers are provided to unknown or untrusted people.
+容器使用宿主机系统的内核。这会为恶意用户暴露攻击面。一般来说，完整的虚拟机可以提供更好的隔离性。如果向未知或不受信任的人员提供容器，应考虑这一点。
 
-To reduce the attack surface, LXC uses many security features like AppArmor, CGroups and kernel namespaces.
+为了减少攻击面，LXC 使用了 AppArmor、CGroups 和内核命名空间等许多安全功能。
 
 ## 11.5.1. AppArmor <a href="#_apparmor" id="_apparmor"></a>
 
-AppArmor profiles are used to restrict access to possibly dangerous actions. Some system calls, i.e. `mount`, are prohibited from execution.
+AppArmor 配置文件用于限制对可能危险的操作的访问。某些系统调用（即 `mount`）会被禁止执行。
 
-To trace AppArmor activity, use:
+要跟踪 AppArmor 活动，请使用：
 
 ```text
 # dmesg | grep apparmor
 ```
 
-Although it is not recommended, AppArmor can be disabled for a container. This brings security risks with it. Some syscalls can lead to privilege escalation when executed within a container if the system is misconfigured or if a LXC or Linux Kernel vulnerability exists.
+尽管不建议这样做，但可以为容器禁用 AppArmor。这会带来安全风险。如果系统配置不当，或者 LXC 或 Linux Kernel 存在漏洞，在容器内执行的某些系统调用可能会导致权限提升。
 
-To disable AppArmor for a container, add the following line to the container configuration file located at `/etc/pve/lxc/CTID.conf`:
+要为容器禁用 AppArmor，请将以下行添加到位于 `/etc/pve/lxc/CTID.conf` 的容器配置文件中：
 
 ```text
 lxc.apparmor.profile = unconfined
 ```
 
 {% hint style="warning" %}
-Please note that this is not recommended for production use.
+请注意，不建议在生产环境中这样做。
 {% endhint %}
 
 ## 11.5.2. Control Groups (*cgroup*) <a href="#pct_cgroup" id="pct_cgroup"></a>
 
-*cgroup* is a kernel mechanism used to hierarchically organize processes and distribute system resources.
+*cgroup* 是一种内核机制，用于按层次组织进程并分配系统资源。
 
-The main resources controlled via *cgroups* are CPU time, memory and swap limits, and access to device nodes. *cgroups* are also used to "freeze" a container before taking snapshots.
+通过 *cgroups* 控制的主要资源包括 CPU 时间、内存和交换空间限制，以及对设备节点的访问。*cgroups* 还用于在创建快照之前“冻结”容器。
 
-The current version of *cgroups* is [*cgroupv2*](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v2.html). The [v1 version](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v1/index.html) of the cgroup subsystem was deprecated with the release of Proxmox VE 7.0 and removed entirely with Proxmox VE 9.0. Before Proxmox VE 7.0, a "hybrid" mode was the default.
+*cgroups* 的当前版本是 [*cgroupv2*](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v2.html)。随着 Proxmox VE 7.0 的发布，cgroup 子系统的 [v1 版本](https://www.kernel.org/doc/html/v6.14/admin-guide/cgroup-v1/index.html)已被弃用，并在 Proxmox VE 9.0 中被完全移除。在 Proxmox VE 7.0 之前，默认使用“混合”模式。
 
-### CGroup Version Compatibility <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
+### CGroup 版本兼容性 <a href="#pct_cgroup_compat" id="pct_cgroup_compat"></a>
 
-The main difference between pure *cgroupv2* and the old hybrid environments regarding Proxmox VE is that with *cgroupv2* memory and swap are now controlled independently. The memory and swap settings for containers can map directly to these values, whereas previously only the memory limit and the limit of the **sum** of memory and swap could be limited.
+就 Proxmox VE 而言，纯 *cgroupv2* 与旧混合环境的主要区别在于，使用 *cgroupv2* 时，内存和交换空间现在可以独立控制。容器的内存和交换空间设置可以直接映射到这些值，而以前只能限制内存上限以及内存与交换空间**总和**的上限。
 
-Another important difference is that the *devices* controller is configured in a completely different way. Because of this, file system quotas are currently not supported in a pure *cgroupv2* environment.
+另一个重要区别是 *devices* 控制器的配置方式完全不同。因此，纯 *cgroupv2* 环境目前不支持文件系统配额。
 
 *cgroupv2* support by the container’s OS is needed to run in a pure *cgroupv2* environment. Containers running *systemd* version 231 or newer support *cgroupv2*   
-[this includes all newest major versions of container templates shipped by Proxmox VE]  
+\[this includes all newest major versions of container templates shipped by Proxmox VE\]  
 , as do containers not using *systemd* as init system   
-[for example Alpine Linux]  
+\[for example Alpine Linux\]  
 .
 
 {% hint style="info" %}
-CentOS 7 and Ubuntu 16.10 are two prominent Linux distributions releases, which have a *systemd* version that is too old to run in a *cgroupv2* environment, you can either
+CentOS 7 和 Ubuntu 16.10 是两个知名的 Linux 发行版版本，其 *systemd* 版本太旧，无法在 *cgroupv2* 环境中运行。您可以：
 
-- Upgrade the whole distribution to a newer release. For the examples above, that could be Ubuntu 18.04 or 20.04, and CentOS 8 (or RHEL/CentOS derivatives like AlmaLinux or Rocky Linux). This has the benefit to get the newest bug and security fixes, often also new features, and moving the EOL date in the future.
-- Upgrade the Containers systemd version. If the distribution provides a backports repository this can be an easy and quick stop-gap measurement.
-- Move the container, or its services, to a Virtual Machine. Virtual Machines have a much less interaction with the host, that’s why one can install decades old OS versions just fine there.
+- 将整个发行版升级到较新的版本。对于上述示例，可以升级到 Ubuntu 18.04 或 20.04，以及 CentOS 8（或 AlmaLinux、Rocky Linux 等 RHEL/CentOS 衍生版本）。这样做的好处是可以获得最新的缺陷修复和安全修复，通常还能获得新功能，并将 EOL 日期延后。
+- 升级容器中的 systemd 版本。如果发行版提供 backports 软件仓库，这可以是一种简单快捷的临时措施。
+- 将容器或其服务迁移到虚拟机。虚拟机与宿主机的交互要少得多，因此可以在其中顺利安装几十年前的操作系统版本。
 {% endhint %}
 
-### Changing CGroup Version <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
+### 更改 CGroup 版本 <a href="#pct_cgroup_change_version" id="pct_cgroup_change_version"></a>
 
-Before Proxmox VE 9.0, you could switch back to the previous version with the following kernel command-line parameter:
+在 Proxmox VE 9.0 之前，您可以使用以下内核命令行参数切换回以前的版本：
 
 ```text
 systemd.unified_cgroup_hierarchy=0

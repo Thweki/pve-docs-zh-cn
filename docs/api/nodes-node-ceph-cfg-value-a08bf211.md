@@ -8,6 +8,8 @@
 
 Get configured values from either ceph.conf or the mon config DB. Underscores in section and key names are normalised to hyphens in the response, regardless of how they're written in the source.
 
+**方法标识：** `value`
+
 **权限**
 
 ```json
@@ -44,7 +46,7 @@ Get configured values from either ceph.conf or the mon config DB. Underscores in
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `config-keys` | string | 是 | — | List of <section>:<config key> items separated by semicolon, comma or space. |
+| `config-keys` | string | 是 | — | List of &lt;section&gt;:&lt;config key&gt; items separated by semicolon, comma or space. |
 | `node` | string | 是 | — | The cluster node name. |
 
 <details>

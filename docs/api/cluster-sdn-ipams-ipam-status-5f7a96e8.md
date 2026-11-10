@@ -8,6 +8,8 @@
 
 List PVE IPAM Entries
 
+**方法标识：** `ipamindex`
+
 **权限**
 
 ```json

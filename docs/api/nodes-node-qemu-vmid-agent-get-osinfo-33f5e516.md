@@ -8,6 +8,8 @@
 
 Execute get-osinfo.
 
+**方法标识：** `get-osinfo`
+
 **权限**
 
 ```json

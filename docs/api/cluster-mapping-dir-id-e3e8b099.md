@@ -8,6 +8,8 @@
 
 Remove directory mapping.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove directory mapping.
 ## GET `/cluster/mapping/dir/{id}`
 
 Get directory mapping.
+
+**方法标识：** `get`
 
 **权限**
 
@@ -148,6 +152,8 @@ Get directory mapping.
 ## PUT `/cluster/mapping/dir/{id}`
 
 Update a directory mapping.
+
+**方法标识：** `update`
 
 **权限**
 

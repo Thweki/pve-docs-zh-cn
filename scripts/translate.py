@@ -28,6 +28,8 @@ def validate(source, translated):
     prose=TOKENS.sub('',source);target=TOKENS.sub('',translated)
     numbers=lambda s:collections.Counter(re.findall(r'\d+(?:[.,]\d+)*',s))
     if numbers(prose)!=numbers(target):return 'numeric values changed'
+    if collections.Counter(re.findall(r'<[A-Za-z][^<>]*>',prose))!=collections.Counter(re.findall(r'<[A-Za-z][^<>]*>',target)):
+        return 'literal angle-bracket values changed'
     if len(prose)>160 and len(target)<len(prose)*0.12:return 'too short'
     if re.search(r'[A-Za-z]{4}',prose) and len(prose)>90 and translated==source:return 'untranslated paragraph'
     return None

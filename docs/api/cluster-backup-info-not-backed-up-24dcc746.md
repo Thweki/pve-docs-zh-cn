@@ -8,6 +8,8 @@
 
 Shows all guests which are not covered by any backup job.
 
+**方法标识：** `get_guests_not_in_backup`
+
 **权限**
 
 ```json

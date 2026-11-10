@@ -24,7 +24,7 @@ Either `permit` or `deny`. There is an implicit `deny` at the end of each list.
 
 Destination network in CIDR notation, for example `192.0.2.0/24` or `2001:db8::/32`. The prefix `0.0.0.0/0` (and `::/0`) is allowed and matches the default route.
 
-**Prefix >= (`ge`)**
+**Prefix \>\= (`ge`)**
 
 Optional minimum prefix length. If set, the entry matches any subnet of `prefix` whose length is at least `ge`.
 

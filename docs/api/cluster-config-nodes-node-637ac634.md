@@ -8,6 +8,8 @@
 
 Removes a node from the cluster configuration.
 
+**方法标识：** `delnode`
+
 **允许 API 令牌**
 
 ```json
@@ -56,6 +58,8 @@ Removes a node from the cluster configuration.
 ## POST `/cluster/config/nodes/{node}`
 
 Adds a node to the cluster configuration. This call is for internal use.
+
+**方法标识：** `addnode`
 
 **允许 API 令牌**
 

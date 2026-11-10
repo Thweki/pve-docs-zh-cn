@@ -8,6 +8,8 @@
 
 Returns a list of all webhook endpoints
 
+**方法标识：** `get_webhook_endpoints`
+
 **权限**
 
 ```json
@@ -120,6 +122,8 @@ Returns a list of all webhook endpoints
 
 Create a new webhook endpoint
 
+**方法标识：** `create_webhook_endpoint`
+
 **权限**
 
 ```json
@@ -174,10 +178,10 @@ Create a new webhook endpoint
 | `body` | string | 否 | — | HTTP body, base64 encoded |
 | `comment` | string | 否 | — | Comment |
 | `disable` | boolean | 否 | 0 | Disable this target |
-| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value> |
+| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
 | `method` | string | 是 | — | HTTP method；可选值：`post`, `put`, `get` |
 | `name` | string | 是 | — | The name of the endpoint. |
-| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value> |
+| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
 | `url` | string | 是 | — | Server URL |
 
 <details>

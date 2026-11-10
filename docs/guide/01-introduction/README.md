@@ -1,26 +1,26 @@
-# 1. Introduction <a href="#chapter_introduction" id="chapter_introduction"></a>
+# 1\. 简介 <a href="#chapter_introduction" id="chapter_introduction"></a>
 
-Proxmox VE is a platform for running virtual machines and containers. It is based on Debian GNU/Linux and completely open source. For maximum flexibility, Proxmox VE provides two virtualization technologies—Kernel-based Virtual Machine (KVM) and Linux Containers (LXC).
+Proxmox VE 是一个用于运行虚拟机和容器的平台。它基于 Debian GNU/Linux，并且完全开源。为提供最大的灵活性，Proxmox VE 提供了两种虚拟化技术——基于内核的虚拟机（KVM）和 Linux 容器（LXC）。
 
-A core design goal is to make administration as easy as possible. You can use Proxmox VE on a single node, or assemble a cluster of many nodes. All management tasks can be done through the web-based management interface, and even a novice user can set up and install Proxmox VE within minutes.
+一个核心设计目标是使管理尽可能简单。您可以在单个节点上使用 Proxmox VE，也可以将多个节点组成集群。所有管理任务都可以通过基于 Web 的管理界面完成，即使是新手用户也可以在几分钟内完成 Proxmox VE 的设置和安装。
 
-![Proxmox Software Stack](../../assets/proxmox-software-stack-79043b73264a.svg)
+![Proxmox 软件栈](../../assets/proxmox-software-stack-79043b73264a.svg)
 
 ## 本章内容
 
-- [1.1. Central Management](01-intro-central-management.md)
-- [1.2. Flexible Storage](02-flexible-storage.md)
-- [1.3. Integrated Backup and Restore](03-integrated-backup-and-restore.md)
-- [1.4. High Availability Cluster](04-high-availability-cluster.md)
-- [1.5. Flexible Networking](05-flexible-networking.md)
-- [1.6. Integrated Firewall](06-integrated-firewall.md)
-- [1.7. Hyper-converged Infrastructure](07-chapter-hyper-converged-infrastructure.md)
-- [1.8. Why Open Source](08-why-open-source.md)
-- [1.9. Your Benefits with Proxmox VE](09-your-benefits-with-proxmox-ve.md)
-- [1.10. Getting Help](10-getting-help.md)
-- [1.11. Project History](11-intro-project-history.md)
-- [1.12. Improving the Proxmox VE Documentation](12-howto-improve-pve-docs.md)
-- [1.13. Translating Proxmox VE](13-translation.md)
+- [1.1. 集中管理](01-intro-central-management.md)
+- [1.2. 灵活的存储](02-flexible-storage.md)
+- [1.3. 集成备份与恢复](03-integrated-backup-and-restore.md)
+- [1.4. 高可用性集群](04-high-availability-cluster.md)
+- [1.5. 灵活的网络](05-flexible-networking.md)
+- [1.6. 集成防火墙](06-integrated-firewall.md)
+- [1.7. 超融合基础设施](07-chapter-hyper-converged-infrastructure.md)
+- [1.8. 为何选择开源](08-why-open-source.md)
+- [1.9. 使用 Proxmox VE 的优势](09-your-benefits-with-proxmox-ve.md)
+- [1.10. 获取帮助](10-getting-help.md)
+- [1.11. 项目历史](11-intro-project-history.md)
+- [1.12. 改进 Proxmox VE 文档](12-howto-improve-pve-docs.md)
+- [1.13. 翻译 Proxmox VE](13-translation.md)
 
 ---
 

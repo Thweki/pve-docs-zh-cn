@@ -8,6 +8,8 @@
 
 Execute multiple commands in order, root only.
 
+**方法标识：** `execute`
+
 **允许 API 令牌**
 
 ```json

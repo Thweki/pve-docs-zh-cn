@@ -8,6 +8,8 @@
 
 Initialize Disk with GPT
 
+**方法标识：** `initgpt`
+
 **权限**
 
 ```json

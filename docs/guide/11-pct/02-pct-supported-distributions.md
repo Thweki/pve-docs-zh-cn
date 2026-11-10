@@ -22,7 +22,7 @@ Arch Linux 是一个轻量级且灵活的 Linux® 发行版，力求保持简单
 
 Arch Linux 采用滚动发布模式，更多详细信息请参阅其 wiki：
 
-[https://wiki.archlinux.org/title/Arch_Linux](https://wiki.archlinux.org/title/Arch_Linux)
+[https://wiki.archlinux.org/title/Arch\_Linux](https://wiki.archlinux.org/title/Arch_Linux)
 
 ## 11.2.3. CentOS, Almalinux, Rocky Linux <a href="#_centos_almalinux_rocky_linux" id="_centos_almalinux_rocky_linux"></a>
 
@@ -34,7 +34,7 @@ CentOS Linux 发行版是一个稳定、可预测、可管理且可重现的平�
 
 有关当前支持的版本，请参阅：
 
-[https://en.wikipedia.org/wiki/CentOS#End-of-support_schedule](https://en.wikipedia.org/wiki/CentOS#End-of-support_schedule)
+[https://en.wikipedia.org/wiki/CentOS#End-of-support\_schedule](https://en.wikipedia.org/wiki/CentOS#End-of-support_schedule)
 
 ### Almalinux <a href="#_almalinux" id="_almalinux"></a>
 
@@ -54,7 +54,7 @@ Rocky Linux 是一个社区企业级操作系统，旨在在其下游合作伙�
 
 有关当前支持的版本，请参阅：
 
-[https://en.wikipedia.org/wiki/Rocky_Linux#Releases](https://en.wikipedia.org/wiki/Rocky_Linux#Releases)
+[https://en.wikipedia.org/wiki/Rocky\_Linux#Releases](https://en.wikipedia.org/wiki/Rocky_Linux#Releases)
 
 ## 11.2.4. Debian <a href="#_debian" id="_debian"></a>
 
@@ -68,7 +68,7 @@ Debian 是一个自由操作系统，由 Debian 项目开发和维护。它是�
 
 ## 11.2.5. Devuan <a href="#_devuan" id="_devuan"></a>
 
-Devuan GNU+Linux 是 Debian 的一个分支，不使用 systemd，使用户能够通过避免不必要的纠缠并确保初始化系统自由，重新掌控自己的系统。
+Devuan GNU\+Linux 是 Debian 的一个分支，不使用 systemd，使用户能够通过避免不必要的纠缠并确保初始化系统自由，重新掌控自己的系统。
 
 — [https://www.devuan.org](https://www.devuan.org)
 

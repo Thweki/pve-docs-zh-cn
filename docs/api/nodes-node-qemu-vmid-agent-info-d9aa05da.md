@@ -8,6 +8,8 @@
 
 Execute info.
 
+**方法标识：** `info`
+
 **权限**
 
 ```json

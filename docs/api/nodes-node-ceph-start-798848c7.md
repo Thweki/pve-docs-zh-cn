@@ -8,6 +8,8 @@
 
 Start ceph services.
 
+**方法标识：** `start`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 PVE Managed Directory storages.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -101,6 +103,8 @@ PVE Managed Directory storages.
 ## POST `/nodes/{node}/disks/directory`
 
 Create a Filesystem on an unused disk. Will be mounted under '/mnt/pve/NAME'.
+
+**方法标识：** `create`
 
 **权限**
 

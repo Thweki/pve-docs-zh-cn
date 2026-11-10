@@ -8,6 +8,8 @@
 
 Pull an OCI image from a registry.
 
+**方法标识：** `oci_registry_pull`
+
 **权限**
 
 ```json

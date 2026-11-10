@@ -8,6 +8,8 @@
 
 Suspend all VMs.
 
+**方法标识：** `suspendall`
+
 **权限**
 
 ```json

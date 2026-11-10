@@ -8,6 +8,8 @@
 
 Get status for all datastores.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

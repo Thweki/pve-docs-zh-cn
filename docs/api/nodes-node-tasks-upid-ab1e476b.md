@@ -8,6 +8,8 @@
 
 Stop a task.
 
+**方法标识：** `stop_task`
+
 **权限**
 
 ```json
@@ -76,6 +78,8 @@ Stop a task.
 ## GET `/nodes/{node}/tasks/{upid}`
 
 
+
+**方法标识：** `upid_index`
 
 **权限**
 

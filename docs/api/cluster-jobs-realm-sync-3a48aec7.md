@@ -8,6 +8,8 @@
 
 List configured realm-sync-jobs.
 
+**方法标识：** `syncjob_index`
+
 **权限**
 
 ```json

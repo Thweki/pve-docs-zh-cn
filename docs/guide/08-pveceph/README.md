@@ -1,4 +1,4 @@
-# 8. Deploy Hyper-Converged Ceph Cluster <a href="#chapter_pveceph" id="chapter_pveceph"></a>
+# 8\. Deploy Hyper-Converged Ceph Cluster <a href="#chapter_pveceph" id="chapter_pveceph"></a>
 
 ## 本章内容
 

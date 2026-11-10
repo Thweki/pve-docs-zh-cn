@@ -8,6 +8,8 @@
 
 List Prefix Lists
 
+**方法标识：** `list_prefix_lists`
+
 **权限**
 
 ```json
@@ -82,6 +84,8 @@ List Prefix Lists
 ## POST `/cluster/sdn/prefix-lists`
 
 Create Prefix List
+
+**方法标识：** `create_prefix_list_entry`
 
 **权限**
 

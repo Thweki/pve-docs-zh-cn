@@ -8,6 +8,8 @@
 
 Get Access Control List (ACLs).
 
+**方法标识：** `read_acl`
+
 **权限**
 
 ```json
@@ -68,6 +70,8 @@ Get Access Control List (ACLs).
 ## PUT `/access/acl`
 
 Update Access Control List (add or remove permissions).
+
+**方法标识：** `update_acl`
 
 **权限**
 

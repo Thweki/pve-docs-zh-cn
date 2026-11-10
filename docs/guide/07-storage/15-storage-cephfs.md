@@ -64,7 +64,7 @@ If Ceph is installed locally on the Proxmox VE cluster, the following is done au
 {% endhint %}
 
 If you use `cephx` authentication, which is enabled by default, provide the secret of a dedicated identity with only the capabilities required for this storage. Obtain or create the identity as described in Ceph User Management.  
-[[cephusermgmt]](14-ceph-rados-block-devices.md#_footnote_cephusermgmt)  
+[\[cephusermgmt\]](14-ceph-rados-block-devices.md#_footnote_cephusermgmt)  
  The example below uses `client.pve-cephfs`; do not use `client.admin` for a storage client.
 
 Export the bare key through SSH to one Proxmox VE node:
@@ -119,7 +119,7 @@ The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
 </tbody>
 </table>
 
-[1] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
+\[1\] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
 
 ---
 

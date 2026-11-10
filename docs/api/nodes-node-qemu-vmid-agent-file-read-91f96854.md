@@ -8,6 +8,8 @@
 
 Reads the given file via guest agent. Is limited to 16777216 bytes.
 
+**方法标识：** `file-read`
+
 **权限**
 
 ```json

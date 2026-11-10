@@ -8,6 +8,8 @@
 
 Retrieve metrics of the cluster.
 
+**方法标识：** `export`
+
 **权限**
 
 ```json
@@ -35,7 +37,7 @@ Retrieve metrics of the cluster.
 | `history` | boolean | 否 | 0 | Also return historic values. Returns full available metric history unless `start-time` is also set |
 | `local-only` | boolean | 否 | 0 | Only return metrics for the current node instead of the whole cluster |
 | `node-list` | string | 否 | — | Only return metrics from nodes passed as comma-separated list |
-| `start-time` | integer | 否 | 0 | Only include metrics with a timestamp > start-time. |
+| `start-time` | integer | 否 | 0 | Only include metrics with a timestamp &gt; start-time. |
 
 <details>
 <summary>完整请求参数结构</summary>

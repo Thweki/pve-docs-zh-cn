@@ -8,6 +8,8 @@
 
 Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' still references the filesystem and is not disabled. Optionally also removes the storage entries and/or the underlying metadata and data pools.
 
+**方法标识：** `destroyfs`
+
 **权限**
 
 ```json
@@ -98,6 +100,8 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type 'cephfs' sti
 ## POST `/nodes/{node}/ceph/fs/{name}`
 
 Create a Ceph filesystem
+
+**方法标识：** `createfs`
 
 **权限**
 

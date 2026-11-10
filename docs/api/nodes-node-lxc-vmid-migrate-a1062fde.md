@@ -8,6 +8,8 @@
 
 Get preconditions for migration.
 
+**方法标识：** `migrate_vm_precondition`
+
 **权限**
 
 ```json
@@ -147,6 +149,8 @@ Get preconditions for migration.
 ## POST `/nodes/{node}/lxc/{vmid}/migrate`
 
 将容器迁移到另一个节点。创建新的迁移任务。
+
+**方法标识：** `migrate_vm`
 
 **权限**
 

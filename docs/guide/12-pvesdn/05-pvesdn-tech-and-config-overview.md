@@ -1,4 +1,4 @@
-# 12.5. Technology & Configuration <a href="#pvesdn_tech_and_config_overview" id="pvesdn_tech_and_config_overview"></a>
+# 12.5. Technology \& Configuration <a href="#pvesdn_tech_and_config_overview" id="pvesdn_tech_and_config_overview"></a>
 
 The Proxmox VE Software-Defined Network implementation uses standard Linux networking as much as possible. The reason for this is that modern Linux networking provides almost all needs for a feature full SDN implementation and avoids adding external dependencies and reduces the overall amount of components that can break.
 

@@ -8,6 +8,8 @@
 
 SDN zones index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -410,6 +412,8 @@ SDN zones index.
 
 Create a new sdn zone object.
 
+**方法标识：** `create`
+
 **权限**
 
 ```json
@@ -445,7 +449,7 @@ Create a new sdn zone object.
 | `bridge-disable-mac-learning` | boolean | 否 | — | Disable auto mac learning. |
 | `controller` | string | 否 | — | Controller for this zone. |
 | `dhcp` | string | 否 | — | Type of the DHCP backend for this zone；可选值：`dnsmasq` |
-| `disable-arp-nd-suppression` | boolean | 否 | — | Suppress IPv4 ARP && IPv6 Neighbour Discovery messages. |
+| `disable-arp-nd-suppression` | boolean | 否 | — | Suppress IPv4 ARP &amp;&amp; IPv6 Neighbour Discovery messages. |
 | `dns` | string | 否 | — | dns api server |
 | `dnszone` | string | 否 | — | dns domain zone ex: mydomain.com |
 | `dp-id` | integer | 否 | — | Faucet dataplane id |

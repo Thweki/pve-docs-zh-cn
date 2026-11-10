@@ -8,6 +8,8 @@
 
 Destroy Ceph Metadata Server
 
+**方法标识：** `destroymds`
+
 **权限**
 
 ```json
@@ -82,6 +84,8 @@ Destroy Ceph Metadata Server
 ## POST `/nodes/{node}/ceph/mds/{name}`
 
 Create Ceph Metadata Server (MDS)
+
+**方法标识：** `createmds`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Revert network configuration changes.
 
+**方法标识：** `revert_network_changes`
+
 **权限**
 
 ```json
@@ -76,6 +78,8 @@ Revert network configuration changes.
 ## GET `/nodes/{node}/network`
 
 List available networks
+
+**方法标识：** `index`
 
 **权限**
 
@@ -501,6 +505,8 @@ List available networks
 
 Create network device configuration
 
+**方法标识：** `create_network`
+
 **权限**
 
 ```json
@@ -822,6 +828,8 @@ Create network device configuration
 ## PUT `/nodes/{node}/network`
 
 Reload network configuration
+
+**方法标识：** `reload_network_config`
 
 **权限**
 

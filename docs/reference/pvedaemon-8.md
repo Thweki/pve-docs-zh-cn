@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pvedaemon - PVE API Daemon
+pvedaemon \- PVE API Daemon
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -44,9 +44,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pvedaemon_status"></a>
 
@@ -80,7 +80,7 @@ The daemon listens to a local address only, so you cannot access it from outside
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128.
+Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
 
 The same setting exists for [pveproxy](pveproxy-8.md#pveproxy_max_workers).
 

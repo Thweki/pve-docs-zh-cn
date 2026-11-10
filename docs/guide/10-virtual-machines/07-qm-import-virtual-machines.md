@@ -59,7 +59,7 @@ Microsoft provides [Virtual Machines downloads](https://developer.microsoft.com/
 
 #### Download the Virtual Machine zip <a href="#_download_the_virtual_machine_zip" id="_download_the_virtual_machine_zip"></a>
 
-After getting informed about the user agreement, choose the *Windows 10 Enterprise (Evaluation - Build)* for the VMware platform, and download the zip.
+After getting informed about the user agreement, choose the *Windows 10 Enterprise (Evaluation \- Build)* for the VMware platform, and download the zip.
 
 #### Extract the disk image from the zip <a href="#_extract_the_disk_image_from_the_zip" id="_extract_the_disk_image_from_the_zip"></a>
 

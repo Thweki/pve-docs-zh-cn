@@ -8,6 +8,8 @@
 
 List Zpools.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -115,6 +117,8 @@ List Zpools.
 ## POST `/nodes/{node}/disks/zfs`
 
 Create a ZFS pool.
+
+**方法标识：** `create`
 
 **权限**
 

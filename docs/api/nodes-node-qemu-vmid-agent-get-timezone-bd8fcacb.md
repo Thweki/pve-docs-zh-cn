@@ -8,6 +8,8 @@
 
 Execute get-timezone.
 
+**方法标识：** `get-timezone`
+
 **权限**
 
 ```json

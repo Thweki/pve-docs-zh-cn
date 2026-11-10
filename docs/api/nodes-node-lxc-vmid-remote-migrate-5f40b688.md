@@ -8,6 +8,8 @@
 
 Migrate the container to another cluster. Creates a new migration task. EXPERIMENTAL feature!
 
+**方法标识：** `remote_migrate_vm`
+
 **权限**
 
 ```json

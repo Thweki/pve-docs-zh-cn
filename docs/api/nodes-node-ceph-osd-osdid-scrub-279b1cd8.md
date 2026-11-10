@@ -8,6 +8,8 @@
 
 Instruct the OSD to scrub.
 
+**方法标识：** `scrub`
+
 **权限**
 
 ```json

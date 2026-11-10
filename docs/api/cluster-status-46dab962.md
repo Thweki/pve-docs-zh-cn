@@ -8,6 +8,8 @@
 
 Get cluster status information.
 
+**方法标识：** `get_status`
+
 **权限**
 
 ```json

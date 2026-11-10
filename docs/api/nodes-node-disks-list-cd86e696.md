@@ -8,6 +8,8 @@
 
 List local disks.
 
+**方法标识：** `list`
+
 **权限**
 
 ```json

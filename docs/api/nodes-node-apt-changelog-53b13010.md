@@ -8,6 +8,8 @@
 
 Get package changelogs.
 
+**方法标识：** `changelog`
+
 **权限**
 
 ```json

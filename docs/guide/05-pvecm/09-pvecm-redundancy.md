@@ -1,6 +1,6 @@
 # 5.9. Corosync Redundancy <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
 
-Corosync supports redundant networking via its integrated Kronosnet layer by default (it is not supported on the legacy udp/udpu transports). It can be enabled by specifying more than one link address, either via the *--linkX* parameters of `pvecm`, in the GUI as **Link 1** (while creating a cluster or adding a new node) or by specifying more than one *ringX_addr* in `corosync.conf`.
+Corosync supports redundant networking via its integrated Kronosnet layer by default (it is not supported on the legacy udp/udpu transports). It can be enabled by specifying more than one link address, either via the *--linkX* parameters of `pvecm`, in the GUI as **Link 1** (while creating a cluster or adding a new node) or by specifying more than one *ringX\_addr* in `corosync.conf`.
 
 {% hint style="info" %}
 To provide useful failover, every link should be on its own physical network connection.
@@ -8,7 +8,7 @@ To provide useful failover, every link should be on its own physical network con
 
 The following examples assume that each cluster node has one static address in 10.10.10.0/25 and one static address in 10.20.20.0/25 configured.
 
-Links are used according to a priority setting. You can configure this priority by setting *knet_link_priority* in the corresponding interface section in `corosync.conf`, or, preferably, using the *priority* parameter when creating your cluster with `pvecm`:
+Links are used according to a priority setting. You can configure this priority by setting *knet\_link\_priority* in the corresponding interface section in `corosync.conf`, or, preferably, using the *priority* parameter when creating your cluster with `pvecm`:
 
 ```text
  # pvecm create CLUSTERNAME --link0 10.10.10.1,priority=15 --link1 10.20.20.1,priority=20
@@ -26,7 +26,7 @@ Since lower priority links will not see traffic unless all higher priorities hav
 
 To add a new link to a running configuration, first check how to [edit the corosync.conf file](12-corosync-configuration.md#pvecm_edit_corosync_conf).
 
-Then, add a new *ringX_addr* to every node in the `nodelist` section. Make sure that your *X* is the same for every node you add it to, and that it is unique for each node.
+Then, add a new *ringX\_addr* to every node in the `nodelist` section. Make sure that your *X* is the same for every node you add it to, and that it is unique for each node.
 
 Lastly, add a new *interface*, as shown below, to your `totem` section, replacing *X* with the link number chosen above.
 

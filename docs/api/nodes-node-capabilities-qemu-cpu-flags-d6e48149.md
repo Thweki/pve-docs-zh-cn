@@ -8,6 +8,8 @@
 
 List of available VM-specific CPU flags. Returns an empty list for 'aarch64' as no VM-specific flags are defined for it yet.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

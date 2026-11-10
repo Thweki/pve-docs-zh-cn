@@ -8,6 +8,8 @@
 
 List all custom CPU model definitions visible to the user.
 
+**方法标识：** `config`
+
 **权限**
 
 ```json
@@ -223,6 +225,8 @@ List all custom CPU model definitions visible to the user.
 ## POST `/cluster/qemu/custom-cpu-models`
 
 Add a custom CPU model definition.
+
+**方法标识：** `create`
 
 **权限**
 

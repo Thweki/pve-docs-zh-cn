@@ -8,6 +8,8 @@
 
 Deactivate existing ACME account at CA.
 
+**方法标识：** `deactivate_account`
+
 **允许 API 令牌**
 
 ```json
@@ -59,6 +61,8 @@ Deactivate existing ACME account at CA.
 ## GET `/cluster/acme/account/{name}`
 
 Return existing ACME account information.
+
+**方法标识：** `get_account`
 
 **允许 API 令牌**
 
@@ -133,6 +137,8 @@ Return existing ACME account information.
 ## PUT `/cluster/acme/account/{name}`
 
 Update existing ACME account information with CA. Note: not specifying any new account information triggers a refresh.
+
+**方法标识：** `update_account`
 
 **允许 API 令牌**
 

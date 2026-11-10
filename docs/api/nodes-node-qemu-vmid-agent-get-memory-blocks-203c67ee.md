@@ -8,6 +8,8 @@
 
 Execute get-memory-blocks.
 
+**方法标识：** `get-memory-blocks`
+
 **权限**
 
 ```json

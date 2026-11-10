@@ -26,7 +26,7 @@ pvesh set /cluster/sdn/vnets/<vnet>/subnets/<subnet>
  -dhcp-range start-address=10.0.2.100,end-address=10.0.2.200
 ```
 
-You also need to have a gateway configured for the subnet - otherwise automatic DHCP will not work.
+You also need to have a gateway configured for the subnet \- otherwise automatic DHCP will not work.
 
 The DHCP plugin will then allocate IPs in the IPAM only in the configured ranges.
 
@@ -64,7 +64,7 @@ This file configures the DHCP ranges for the dnsmasq instance.
 
 This file contains the MAC-address and IP mappings from the IPAM plugin. In order to override those mappings, please use the respective IPAM plugin rather than editing this file, as it will get overwritten by the dnsmasq plugin.
 
-You must not edit any of the above files, since they are managed by the DHCP plugin. In order to customize the dnsmasq configuration you can create additional files (e.g. `90-custom.conf`) in the configuration folder - they will not get changed by the dnsmasq DHCP plugin.
+You must not edit any of the above files, since they are managed by the DHCP plugin. In order to customize the dnsmasq configuration you can create additional files (e.g. `90-custom.conf`) in the configuration folder \- they will not get changed by the dnsmasq DHCP plugin.
 
 Configuration files are read in order, so you can control the order of the configuration directives by naming your custom configuration files appropriately.
 

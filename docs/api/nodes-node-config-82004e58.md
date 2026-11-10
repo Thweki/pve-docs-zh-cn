@@ -8,6 +8,8 @@
 
 Get node configuration options.
 
+**方法标识：** `get_config`
+
 **权限**
 
 ```json
@@ -208,6 +210,8 @@ Get node configuration options.
 ## PUT `/nodes/{node}/config`
 
 Set node configuration options.
+
+**方法标识：** `set_options`
 
 **权限**
 

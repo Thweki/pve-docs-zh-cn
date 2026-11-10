@@ -8,6 +8,8 @@
 
 Dry-run the SDN apply action and return the difference between the current configuration and the pending configuration
 
+**方法标识：** `dry-run`
+
 **权限**
 
 ```json

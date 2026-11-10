@@ -8,6 +8,8 @@
 
 List files and directories for single file restore under the given path.
 
+**方法标识：** `list`
+
 **权限**
 
 ```json

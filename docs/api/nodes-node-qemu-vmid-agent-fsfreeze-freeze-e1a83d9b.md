@@ -8,6 +8,8 @@
 
 Execute fsfreeze-freeze.
 
+**方法标识：** `fsfreeze-freeze`
+
 **权限**
 
 ```json

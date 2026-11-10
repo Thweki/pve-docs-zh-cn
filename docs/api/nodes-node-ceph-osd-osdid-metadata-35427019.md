@@ -8,6 +8,8 @@
 
 Get OSD details
 
+**方法标识：** `osddetails`
+
 **权限**
 
 ```json

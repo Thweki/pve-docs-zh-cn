@@ -7,7 +7,7 @@ For this to work, there are two services involved:
 - A QDevice daemon which runs on each Proxmox VE node
 - An external vote daemon which runs on an independent server
 
-As a result, you can achieve higher availability, even in smaller setups (for example 2+1 nodes).
+As a result, you can achieve higher availability, even in smaller setups (for example 2\+1 nodes).
 
 ## 5.11.1. QDevice Technical Overview <a href="#_qdevice_technical_overview" id="_qdevice_technical_overview"></a>
 
@@ -92,7 +92,7 @@ The status output of the QDevice, as seen above, will usually contain three colu
 - `A` / `NA`: Alive or Not Alive. Indicates if the communication to the external `corosync-qnetd` daemon works.
 - `V` / `NV`: If the QDevice will cast a vote for the node. In a split-brain situation, where the corosync connection between the nodes is down, but they both can still communicate with the external `corosync-qnetd` daemon, only one node will get the vote.
 - `MW` / `NMW`: Master wins (`MV`) or not (`NMW`). Default is `NMW`, see   
-  [`votequorum_qdevice_master_wins` manual page [https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html](https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html)]  
+  \[`votequorum_qdevice_master_wins` manual page [https://manpages.debian.org/stable/libvotequorum-dev/votequorum\_qdevice\_master\_wins.3.en.html](https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html)\]  
   .
 - `NR`: QDevice is not registered.
 

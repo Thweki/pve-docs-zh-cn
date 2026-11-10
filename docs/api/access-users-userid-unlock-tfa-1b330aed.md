@@ -8,6 +8,8 @@
 
 Unlock a user's TFA authentication.
 
+**方法标识：** `unlock_tfa`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Restart ceph services.
 
+**方法标识：** `restart`
+
 **权限**
 
 ```json

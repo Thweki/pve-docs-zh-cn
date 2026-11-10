@@ -1,7 +1,7 @@
 # 25.1. Schedule Format <a href="#chapter_calendar_events" id="chapter_calendar_events"></a>
 
 Proxmox VE has a very flexible scheduling configuration. It is based on the systemd time calendar event format.  
-[see `man 7 systemd.time` for more information]  
+\[see `man 7 systemd.time` for more information\]  
  Calendar events may be used to refer to one or more points in time in a single expression.
 
 Such a calendar event uses the following format:

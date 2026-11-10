@@ -1,4 +1,4 @@
-# 23.4. **pvestatd** - Proxmox VE Status Daemon <a href="#_strong_pvestatd_strong_proxmox_ve_status_daemon" id="_strong_pvestatd_strong_proxmox_ve_status_daemon"></a>
+# 23.4. **pvestatd** \- Proxmox VE Status Daemon <a href="#_strong_pvestatd_strong_proxmox_ve_status_daemon" id="_strong_pvestatd_strong_proxmox_ve_status_daemon"></a>
 
 <a id="cli_pvestatd"></a>
 
@@ -38,9 +38,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pvestatd_status"></a>
 

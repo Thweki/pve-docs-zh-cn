@@ -8,6 +8,8 @@
 
 Get the virtual machine configuration with both current and pending values.
 
+**方法标识：** `vm_pending`
+
 **权限**
 
 ```json

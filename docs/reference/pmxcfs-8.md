@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_pmxcfs" id="chapter_pmxcfs"></a>
 
-pmxcfs - Proxmox 集群文件系统
+pmxcfs \- Proxmox 集群文件系统
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -18,17 +18,17 @@ pmxcfs - Proxmox 集群文件系统
 
 **`-d`, `--debug`**
 
-Turn on debug messages
+启用调试消息
 
 **`-f`, `--foreground`**
 
-Do not daemonize server
+不要将服务器守护进程化
 
 **`-l`, `--local`**
 
-Force local mode (ignore corosync.conf, force quorum)
+强制使用本地模式（忽略 corosync.conf，强制仲裁）
 
-This service is usually started and managed using systemd toolset. The service is called *pve-cluster*.
+通常使用 systemd 工具集启动和管理此服务。该服务称为 *pve-cluster*。
 
 ```text
 systemctl start pve-cluster
@@ -44,50 +44,50 @@ systemctl status pve-cluster
 
 ## 描述 <a href="#_description" id="_description"></a>
 
-The Proxmox Cluster file system (“pmxcfs”) is a database-driven file system for storing configuration files, replicated in real time to all cluster nodes using `corosync`. We use this to store all Proxmox VE related configuration files.
+Proxmox 集群文件系统（“pmxcfs”）是一种数据库驱动的文件系统，用于存储配置文件，并通过 `corosync` 实时复制到所有集群节点。我们使用它来存储所有与 Proxmox VE 相关的配置文件。
 
-Although the file system stores all data inside a persistent database on disk, a copy of the data resides in RAM. This imposes restrictions on the maximum size, which is currently 128 MiB. This is still enough to store the configuration of several thousand virtual machines.
+尽管文件系统将所有数据存储在磁盘上的持久化数据库中，但 RAM 中也保留了一份数据副本。这限制了其最大容量，目前为 128 MiB。但这仍足以存储数千台虚拟机的配置。
 
-This system provides the following advantages:
+该系统具有以下优点：
 
-- Seamless replication of all configuration to all nodes in real time
-- Provides strong consistency checks to avoid duplicate VM IDs
-- Read-only when a node loses quorum
-- Automatic updates of the corosync cluster configuration to all nodes
-- Includes a distributed locking mechanism
+- 将所有配置实时无缝复制到所有节点
+- 提供强一致性检查，避免 VM ID 重复
+- 节点失去仲裁时为只读状态
+- 自动将 corosync 集群配置更新到所有节点
+- 包含分布式锁机制
 
-## POSIX Compatibility <a href="#_posix_compatibility" id="_posix_compatibility"></a>
+## POSIX 兼容性 <a href="#_posix_compatibility" id="_posix_compatibility"></a>
 
-The file system is based on FUSE, so the behavior is POSIX like. But some feature are simply not implemented, because we do not need them:
+该文件系统基于 FUSE，因此其行为类似于 POSIX。但有些功能并未实现，因为我们不需要它们：
 
-- You can just generate normal files and directories, but no symbolic links, …
-- You can’t rename non-empty directories (because this makes it easier to guarantee that VMIDs are unique).
-- You can’t change file permissions (permissions are based on paths)
-- `O_EXCL` creates were not atomic (like old NFS)
-- `O_TRUNC` creates are not atomic (FUSE restriction)
+- 只能创建普通文件和目录，不能创建符号链接，……
+- 不能重命名非空目录（因为这样可以更容易地保证 VMID 的唯一性）。
+- 不能更改文件权限（权限基于路径）
+- `O_EXCL` 创建操作不是原子的（与旧版 NFS 类似）
+- `O_TRUNC` 创建操作不是原子的（FUSE 限制）
 
-## File Access Rights <a href="#_file_access_rights" id="_file_access_rights"></a>
+## 文件访问权限 <a href="#_file_access_rights" id="_file_access_rights"></a>
 
-All files and directories are owned by user `root` and have group `www-data`. Only root has write permissions, but group `www-data` can read most files. Files below the following paths are only accessible by root:
+所有文件和目录的所有者均为用户 `root`，所属组均为 `www-data`。只有 root 拥有写权限，但 `www-data` 组可以读取大多数文件。以下路径下的文件只能由 root 访问：
 
 ```text
 /etc/pve/priv/
 /etc/pve/nodes/${NAME}/priv/
 ```
 
-## Technology <a href="#_technology" id="_technology"></a>
+## 技术 <a href="#_technology" id="_technology"></a>
 
-We use the [Corosync Cluster Engine](https://www.corosync.org) for cluster communication, and [SQlite](https://www.sqlite.org) for the database file. The file system is implemented in user space using [FUSE](https://github.com/libfuse/libfuse).
+我们使用 [Corosync Cluster Engine](https://www.corosync.org) 进行集群通信，并使用 [SQlite](https://www.sqlite.org) 作为数据库文件。该文件系统使用 [FUSE](https://github.com/libfuse/libfuse) 在用户空间中实现。
 
-## File System Layout <a href="#_file_system_layout" id="_file_system_layout"></a>
+## 文件系统布局 <a href="#_file_system_layout" id="_file_system_layout"></a>
 
-The file system is mounted at:
+该文件系统挂载于：
 
 ```text
 /etc/pve
 ```
 
-### Files <a href="#_files" id="_files"></a>
+### 文件 <a href="#_files" id="_files"></a>
 
 <table>
 
@@ -95,162 +95,162 @@ The file system is mounted at:
 <tbody>
 <tr>
 <td><p><code>authkey.pub</code></p></td>
-<td><p>Public key used by the ticket system</p></td>
+<td><p>票据系统使用的公钥</p></td>
 </tr>
 <tr>
 <td><p><code>ceph.conf</code></p></td>
-<td><p>Ceph configuration file (note: /etc/ceph/ceph.conf is a symbolic link to this)</p></td>
+<td><p>Ceph 配置文件（注意：/etc/ceph/ceph.conf 是指向此文件的符号链接）</p></td>
 </tr>
 <tr>
 <td><p><code>corosync.conf</code></p></td>
-<td><p>Corosync cluster configuration file (prior to Proxmox VE 4.x, this file was called cluster.conf)</p></td>
+<td><p>Corosync 集群配置文件（在 Proxmox VE 4.x 之前，此文件称为 cluster.conf）</p></td>
 </tr>
 <tr>
 <td><p><code>datacenter.cfg</code></p></td>
-<td><p>Proxmox VE datacenter-wide configuration (keyboard layout, proxy, …)</p></td>
+<td><p>Proxmox VE 全数据中心范围的配置（键盘布局、代理等）</p></td>
 </tr>
 <tr>
 <td><p><code>domains.cfg</code></p></td>
-<td><p>Proxmox VE authentication domains</p></td>
+<td><p>Proxmox VE 身份验证域</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/cluster.fw</code></p></td>
-<td><p>Firewall configuration applied to all nodes</p></td>
+<td><p>应用于所有节点的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/&lt;NAME&gt;.fw</code></p></td>
-<td><p>Firewall configuration for individual nodes</p></td>
+<td><p>各个节点的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>firewall/&lt;VMID&gt;.fw</code></p></td>
-<td><p>Firewall configuration for VMs and containers</p></td>
+<td><p>VM 和容器的防火墙配置</p></td>
 </tr>
 <tr>
 <td><p><code>ha/crm_commands</code></p></td>
-<td><p>Displays HA operations that are currently being carried out by the CRM</p></td>
+<td><p>显示 CRM 当前正在执行的 HA 操作</p></td>
 </tr>
 <tr>
 <td><p><code>ha/manager_status</code></p></td>
-<td><p>JSON-formatted information regarding HA services on the cluster</p></td>
+<td><p>有关集群中 HA 服务的 JSON 格式信息</p></td>
 </tr>
 <tr>
 <td><p><code>ha/resources.cfg</code></p></td>
-<td><p>Resources managed by high availability, and their current state</p></td>
+<td><p>高可用性管理的资源及其当前状态</p></td>
 </tr>
 <tr>
 <td><p><code>ha/rules.cfg</code></p></td>
-<td><p>Rules putting constraints on the HA manager’s scheduling of HA resources</p></td>
+<td><p>用于约束 HA 管理器调度 HA 资源的规则</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/config</code></p></td>
-<td><p>Node-specific configuration</p></td>
+<td><p>节点特定配置</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/lxc/&lt;VMID&gt;.conf</code></p></td>
-<td><p>VM configuration data for LXC containers</p></td>
+<td><p>LXC 容器的 VM 配置数据</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/openvz/</code></p></td>
-<td><p>Prior to Proxmox VE 4.0, used for container configuration data (deprecated, removed soon)</p></td>
+<td><p>在 Proxmox VE 4.0 之前，用于容器配置数据（已弃用，即将移除）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pve-ssl.key</code></p></td>
-<td><p>Private SSL key for <code>pve-ssl.pem</code></p></td>
+<td><p><code>pve-ssl.pem</code> 的 SSL 私钥</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pve-ssl.pem</code></p></td>
-<td><p>Public SSL certificate for web server (signed by cluster CA)</p></td>
+<td><p>Web 服务器的 SSL 公共证书（由集群 CA 签名）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pveproxy-ssl.key</code></p></td>
-<td><p>Private SSL key for <code>pveproxy-ssl.pem</code> (optional)</p></td>
+<td><p><code>pveproxy-ssl.pem</code> 的 SSL 私钥（可选）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/pveproxy-ssl.pem</code></p></td>
-<td><p>Public SSL certificate (chain) for web server (optional override for <code>pve-ssl.pem</code>)</p></td>
+<td><p>Web 服务器的 SSL 公共证书（链）（可选，用于覆盖 <code>pve-ssl.pem</code>）</p></td>
 </tr>
 <tr>
 <td><p><code>nodes/&lt;NAME&gt;/qemu-server/&lt;VMID&gt;.conf</code></p></td>
-<td><p>VM configuration data for KVM VMs</p></td>
+<td><p>KVM VM 的 VM 配置数据</p></td>
 </tr>
 <tr>
 <td><p><code>priv/authkey.key</code></p></td>
-<td><p>Private key used by ticket system</p></td>
+<td><p>票据系统使用的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/authorized_keys</code></p></td>
-<td><p>SSH keys of cluster members for authentication</p></td>
+<td><p>用于身份验证的集群成员 SSH 密钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/ceph*</code></p></td>
-<td><p>Ceph authentication keys and associated capabilities</p></td>
+<td><p>Ceph 身份验证密钥及相关权限</p></td>
 </tr>
 <tr>
 <td><p><code>priv/known_hosts</code></p></td>
-<td><p>SSH keys of the cluster members for verification</p></td>
+<td><p>用于验证的集群成员 SSH 密钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/lock/*</code></p></td>
-<td><p>Lock files used by various services to ensure safe cluster-wide operations</p></td>
+<td><p>各种服务使用的锁文件，以确保集群范围操作的安全</p></td>
 </tr>
 <tr>
 <td><p><code>priv/pve-root-ca.key</code></p></td>
-<td><p>Private key of cluster CA</p></td>
+<td><p>集群 CA 的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>priv/shadow.cfg</code></p></td>
-<td><p>Shadow password file for PVE Realm users</p></td>
+<td><p>PVE Realm 用户的 shadow 密码文件</p></td>
 </tr>
 <tr>
 <td><p><code>priv/storage/&lt;STORAGE-ID&gt;.pw</code></p></td>
-<td><p>Contains the password of a storage in plain text</p></td>
+<td><p>以明文形式包含某个存储的密码</p></td>
 </tr>
 <tr>
 <td><p><code>priv/tfa.cfg</code></p></td>
-<td><p>Base64-encoded two-factor authentication configuration</p></td>
+<td><p>Base64 编码的双因素身份验证配置</p></td>
 </tr>
 <tr>
 <td><p><code>priv/token.cfg</code></p></td>
-<td><p>API token secrets of all tokens</p></td>
+<td><p>所有 API 令牌的密钥</p></td>
 </tr>
 <tr>
 <td><p><code>pve-root-ca.pem</code></p></td>
-<td><p>Public certificate of cluster CA</p></td>
+<td><p>集群 CA 的公共证书</p></td>
 </tr>
 <tr>
 <td><p><code>pve-www.key</code></p></td>
-<td><p>Private key used for generating CSRF tokens</p></td>
+<td><p>用于生成 CSRF 令牌的私钥</p></td>
 </tr>
 <tr>
 <td><p><code>sdn/*</code></p></td>
-<td><p>Shared configuration files for Software Defined Networking (SDN)</p></td>
+<td><p>软件定义网络（SDN）的共享配置文件</p></td>
 </tr>
 <tr>
 <td><p><code>status.cfg</code></p></td>
-<td><p>Proxmox VE external metrics server configuration</p></td>
+<td><p>Proxmox VE 外部指标服务器配置</p></td>
 </tr>
 <tr>
 <td><p><code>storage.cfg</code></p></td>
-<td><p>Proxmox VE storage configuration</p></td>
+<td><p>Proxmox VE 存储配置</p></td>
 </tr>
 <tr>
 <td><p><code>user.cfg</code></p></td>
-<td><p>Proxmox VE access control configuration (users/groups/…)</p></td>
+<td><p>Proxmox VE 访问控制配置（用户/组/……）</p></td>
 </tr>
 <tr>
 <td><p><code>virtual-guest/cpu-models.conf</code></p></td>
-<td><p>For storing custom CPU models</p></td>
+<td><p>用于存储自定义 CPU 模型</p></td>
 </tr>
 <tr>
 <td><p><code>vzdump.cron</code></p></td>
-<td><p>Cluster-wide vzdump backup-job schedule</p></td>
+<td><p>集群范围的 vzdump 备份任务计划</p></td>
 </tr>
 </tbody>
 </table>
 
-### Symbolic links <a href="#_symbolic_links" id="_symbolic_links"></a>
+### 符号链接 <a href="#_symbolic_links" id="_symbolic_links"></a>
 
-Certain directories within the cluster file system use symbolic links, in order to point to a node’s own configuration files. Thus, the files pointed to in the table below refer to different files on each node of the cluster.
+集群文件系统中的某些目录使用符号链接，以指向节点自身的配置文件。因此，下表中所指向的文件在集群的每个节点上分别对应不同的文件。
 
 <table>
 
@@ -275,7 +275,7 @@ Certain directories within the cluster file system use symbolic links, in order 
 </tbody>
 </table>
 
-### Special status files for debugging (JSON) <a href="#_special_status_files_for_debugging_json" id="_special_status_files_for_debugging_json"></a>
+### 用于调试的特殊状态文件（JSON） <a href="#_special_status_files_for_debugging_json" id="_special_status_files_for_debugging_json"></a>
 
 <table>
 
@@ -283,71 +283,71 @@ Certain directories within the cluster file system use symbolic links, in order 
 <tbody>
 <tr>
 <td><p><code>.version</code></p></td>
-<td><p>File versions (to detect file modifications)</p></td>
+<td><p>文件版本（用于检测文件修改）</p></td>
 </tr>
 <tr>
 <td><p><code>.members</code></p></td>
-<td><p>Info about cluster members</p></td>
+<td><p>集群成员信息</p></td>
 </tr>
 <tr>
 <td><p><code>.vmlist</code></p></td>
-<td><p>List of all VMs</p></td>
+<td><p>所有 VM 的列表</p></td>
 </tr>
 <tr>
 <td><p><code>.clusterlog</code></p></td>
-<td><p>Cluster log (last 50 entries)</p></td>
+<td><p>集群日志（最后 50 条）</p></td>
 </tr>
 <tr>
 <td><p><code>.rrd</code></p></td>
-<td><p>RRD data (most recent entries)</p></td>
+<td><p>RRD 数据（最新条目）</p></td>
 </tr>
 </tbody>
 </table>
 
-### Enable/Disable debugging <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
+### 启用/禁用调试 <a href="#_enable_disable_debugging" id="_enable_disable_debugging"></a>
 
-You can enable verbose syslog messages with:
+可以使用以下命令启用详细的 syslog 消息：
 
 ```text
 echo "1" >/etc/pve/.debug
 ```
 
-And disable verbose syslog messages with:
+并使用以下命令禁用详细的 syslog 消息：
 
 ```text
 echo "0" >/etc/pve/.debug
 ```
 
-## Recovery <a href="#_recovery" id="_recovery"></a>
+## 恢复 <a href="#_recovery" id="_recovery"></a>
 
-If you have major problems with your Proxmox VE host, for example hardware issues, it could be helpful to copy the pmxcfs database file `/var/lib/pve-cluster/config.db`, and move it to a new Proxmox VE host. On the new host (with nothing running), you need to stop the `pve-cluster` service and replace the `config.db` file (required permissions `0600`). Following this, adapt `/etc/hostname` and `/etc/hosts` according to the lost Proxmox VE host, then reboot and check (and don’t forget your VM/CT data).
+如果您的 Proxmox VE 宿主机出现严重问题，例如硬件故障，复制 pmxcfs 数据库文件 `/var/lib/pve-cluster/config.db` 并将其移动到新的 Proxmox VE 宿主机可能会有所帮助。在新宿主机上（未运行任何内容），您需要停止 `pve-cluster` 服务并替换 `config.db` 文件（所需权限为 `0600`）。随后，根据丢失的 Proxmox VE 宿主机调整 `/etc/hostname` 和 `/etc/hosts`，然后重新启动并检查（也不要忘记您的 VM/CT 数据）。
 
-### Remove Cluster Configuration <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
+### 移除集群配置 <a href="#_remove_cluster_configuration" id="_remove_cluster_configuration"></a>
 
-The recommended way is to reinstall the node after you remove it from your cluster. This ensures that all secret cluster/ssh keys and any shared configuration data is destroyed.
+建议的方法是在将节点从集群中移除后重新安装该节点。这可确保所有集群/SSH 密钥以及任何共享配置数据均被销毁。
 
-In some cases, you might prefer to put a node back to local mode without reinstalling, which is described in [Separate A Node Without Reinstalling](pvecm-1.md#pvecm_separate_node_without_reinstall)
+在某些情况下，您可能希望在不重新安装的情况下将节点恢复为本地模式，[不重装而分离节点](pvecm-1.md#pvecm_separate_node_without_reinstall)中对此进行了说明
 
-### Recovering/Moving Guests from Failed Nodes <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
+### 从故障节点恢复/迁移客户机 <a href="#_recovering_moving_guests_from_failed_nodes" id="_recovering_moving_guests_from_failed_nodes"></a>
 
-For the guest configuration files in `nodes/<NAME>/qemu-server/` (VMs) and `nodes/<NAME>/lxc/` (containers), Proxmox VE sees the containing node `<NAME>` as the owner of the respective guest. This concept enables the usage of local locks instead of expensive cluster-wide locks for preventing concurrent guest configuration changes.
+对于 `nodes/<NAME>/qemu-server/`（VM）和 `nodes/<NAME>/lxc/`（容器）中的客户机配置文件，Proxmox VE 将包含这些文件的节点 `<NAME>` 视为相应客户机的所有者。这一概念使得我们可以使用本地锁，而不是开销较大的集群范围锁，以防止并发更改客户机配置。
 
-As a consequence, if the owning node of a guest fails (for example, due to a power outage, fencing event, etc.), a regular migration is not possible (even if all the disks are located on shared storage), because such a local lock on the (offline) owning node is unobtainable. This is not a problem for HA-managed guests, as Proxmox VE’s High Availability stack includes the necessary (cluster-wide) locking and watchdog functionality to ensure correct and automatic recovery of guests from fenced nodes.
+因此，如果客户机的所属节点发生故障（例如由于断电、隔离事件等），则无法进行常规迁移（即使所有磁盘都位于共享存储上），因为无法获得（离线）所属节点上的这种本地锁。对于由 HA 管理的客户机，这不是问题，因为 Proxmox VE 的高可用性栈包含必要的（集群范围）锁和看门狗功能，可确保客户机从被隔离的节点正确、自动地恢复。
 
-If a non-HA-managed guest has only shared disks (and no other local resources which are only available on the failed node), a manual recovery is possible by simply moving the guest configuration file from the failed node’s directory in `/etc/pve/` to an online node’s directory (which changes the logical owner or location of the guest).
+如果非 HA 管理的客户机只有共享磁盘（并且没有其他仅在故障节点上可用的本地资源），则只需将客户机配置文件从 `/etc/pve/` 中故障节点的目录移动到在线节点的目录，即可手动恢复（这会更改客户机的逻辑所有者或位置）。
 
-For example, recovering the VM with ID `100` from an offline `node1` to another node `node2` works by running the following command as root on any member node of the cluster:
+例如，在集群的任何成员节点上以 root 身份运行以下命令，即可将 ID 为 `100` 的 VM 从离线的 `node1` 恢复到另一个节点 `node2`：
 
 ```text
 mv /etc/pve/nodes/node1/qemu-server/100.conf /etc/pve/nodes/node2/qemu-server/
 ```
 
 {% hint style="warning" %}
-Before manually recovering a guest like this, make absolutely sure that the failed source node is really powered off/fenced. Otherwise Proxmox VE’s locking principles are violated by the `mv` command, which can have unexpected consequences.
+在以这种方式手动恢复客户机之前，请务必确保故障源节点确实已关机/隔离。否则，`mv` 命令会违反 Proxmox VE 的锁定原则，可能产生意想不到的后果。
 {% endhint %}
 
 {% hint style="warning" %}
-Guests with local disks (or other local resources which are only available on the offline node) are not recoverable like this. Either wait for the failed node to rejoin the cluster or restore such guests from backups.
+具有本地磁盘（或其他仅在离线节点上可用的本地资源）的客户机无法通过这种方式恢复。请等待故障节点重新加入集群，或从备份中恢复此类客户机。
 {% endhint %}
 
 ## 版权与免责声明 <a href="#_copyright_and_disclaimer" id="_copyright_and_disclaimer"></a>

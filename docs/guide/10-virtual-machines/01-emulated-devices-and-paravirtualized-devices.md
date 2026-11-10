@@ -8,7 +8,7 @@ QEMU relies on the virtio virtualization standard, and is thus able to present p
 
 {% hint style="success" %}
 It is **highly recommended** to use the virtio devices whenever you can, as they provide a big performance improvement and are generally better maintained. Using the virtio generic disk controller versus an emulated IDE controller will double the sequential write throughput, as measured with `bonnie++(8)`. Using the virtio network interface can deliver up to three times the throughput of an emulated Intel E1000 network card, as measured with `iperf(1)`.   
-[See this benchmark on the KVM wiki [https://www.linux-kvm.org/page/Using_VirtIO_NIC](https://www.linux-kvm.org/page/Using_VirtIO_NIC)]
+\[See this benchmark on the KVM wiki [https://www.linux-kvm.org/page/Using\_VirtIO\_NIC](https://www.linux-kvm.org/page/Using_VirtIO_NIC)\]
 {% endhint %}
 
 ---

@@ -8,6 +8,8 @@
 
 获取 HA 规则。
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -88,6 +90,8 @@
 ## POST `/cluster/ha/rules`
 
 创建 HA 规则。
+
+**方法标识：** `create_rule`
 
 **权限**
 

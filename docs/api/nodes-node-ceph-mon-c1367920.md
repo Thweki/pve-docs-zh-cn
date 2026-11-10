@@ -8,6 +8,8 @@
 
 Get Ceph monitor list.
 
+**方法标识：** `listmon`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 List of available CPU flags. Currently only implemented for x86_64, returns an empty list for aarch64.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Returns a list of future schedule runtimes.
 
+**方法标识：** `schedule-analyze`
+
 **权限**
 
 ```json

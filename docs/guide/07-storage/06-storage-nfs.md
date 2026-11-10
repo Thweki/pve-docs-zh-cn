@@ -10,7 +10,7 @@ The backend supports all common storage properties, except the shared flag, whic
 
 **server**
 
-Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name - unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
 
 **export**
 

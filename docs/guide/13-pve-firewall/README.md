@@ -1,4 +1,4 @@
-# 13. Proxmox VE Firewall <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
+# 13\. Proxmox VE Firewall <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
 
 Proxmox VE Firewall provides an easy way to protect your IT infrastructure. You can setup firewall rules for all hosts inside a cluster, or define rules for virtual machines and containers. Features like firewall macros, security groups, IP sets and aliases help to make that task easier.
 

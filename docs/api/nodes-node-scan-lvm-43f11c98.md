@@ -8,6 +8,8 @@
 
 List local LVM volume groups.
 
+**方法标识：** `lvmscan`
+
 **权限**
 
 ```json

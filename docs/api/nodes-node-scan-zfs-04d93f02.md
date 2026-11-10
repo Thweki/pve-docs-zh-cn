@@ -8,6 +8,8 @@
 
 Scan zfs pool list on local node.
 
+**方法标识：** `zfsscan`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 获取容器配置。
 
+**方法标识：** `vm_config`
+
 **权限**
 
 ```json
@@ -672,6 +674,8 @@
 
 设置容器选项。
 
+**方法标识：** `update_vm`
+
 **权限**
 
 ```json
@@ -738,7 +742,7 @@
 | `net[n]` | string | 否 | — | Specifies network interfaces for the container. |
 | `node` | string | 是 | — | The cluster node name. |
 | `onboot` | boolean | 否 | 0 | Specifies whether a container will be started during system bootup. |
-| `ostype` | string | 否 | — | OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/<ostype>.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
+| `ostype` | string | 否 | — | OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/&lt;ostype&gt;.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
 | `protection` | boolean | 否 | 0 | Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation. |
 | `revert` | string | 否 | — | Revert a pending change. |
 | `rootfs` | string | 否 | — | Use volume as container root. |

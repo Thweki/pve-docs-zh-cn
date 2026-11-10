@@ -1,4 +1,4 @@
-# 23.8. **pve-ha-lrm** - Local Resource Manager Daemon <a href="#_strong_pve_ha_lrm_strong_local_resource_manager_daemon" id="_strong_pve_ha_lrm_strong_local_resource_manager_daemon"></a>
+# 23.8. **pve-ha-lrm** \- Local Resource Manager Daemon <a href="#_strong_pve_ha_lrm_strong_local_resource_manager_daemon" id="_strong_pve_ha_lrm_strong_local_resource_manager_daemon"></a>
 
 <a id="cli_pve-ha-lrm"></a>
 
@@ -30,9 +30,9 @@
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pve-ha-lrm_status"></a>
 

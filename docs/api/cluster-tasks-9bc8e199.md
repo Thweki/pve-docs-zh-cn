@@ -8,6 +8,8 @@
 
 List recent tasks (cluster wide).
 
+**方法标识：** `tasks`
+
 **权限**
 
 ```json

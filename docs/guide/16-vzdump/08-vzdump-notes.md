@@ -6,7 +6,7 @@ You can add notes to backups using the *Edit Notes* button in the UI or via the 
 
 It is also possible to specify a template for generating notes dynamically for a backup job and for manual backup. The template string can contain variables, surrounded by two curly braces, which will be replaced by the corresponding value when the backup is executed.
 
-Currently supported are:
+目前支持：
 
 - `{{cluster}}` the cluster name, if any
 - `{{guestname}}` the virtual guest’s assigned name

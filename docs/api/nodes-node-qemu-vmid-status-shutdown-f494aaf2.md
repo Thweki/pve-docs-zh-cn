@@ -8,6 +8,8 @@
 
 Shutdown virtual machine. This is similar to pressing the power button on a physical machine. This will send an ACPI event for the guest OS, which should then proceed to a clean shutdown.
 
+**方法标识：** `vm_shutdown`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Get schema of ACME challenge types.
 
+**方法标识：** `challengeschema`
+
 **权限**
 
 ```json

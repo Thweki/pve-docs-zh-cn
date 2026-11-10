@@ -8,6 +8,8 @@
 
 Get the MAC VRF for a VNet in an EVPN zone.
 
+**方法标识：** `mac-vrf`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Delete pool (deprecated, no support for nested pools, use 'DELETE /pools/?poolid={poolid}').
 
+**方法标识：** `delete_pool_deprecated`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Delete pool (deprecated, no support for nested pools, use 'DELETE /pools/?poolid
 ## GET `/pools/{poolid}`
 
 Get pool configuration (deprecated, no support for nested pools, use 'GET /pools/?poolid={poolid}').
+
+**方法标识：** `read_pool`
 
 **权限**
 
@@ -175,6 +179,8 @@ Get pool configuration (deprecated, no support for nested pools, use 'GET /pools
 ## PUT `/pools/{poolid}`
 
 Update pool data (deprecated, no support for nested pools - use 'PUT /pools/?poolid={poolid}' instead).
+
+**方法标识：** `update_pool_deprecated`
 
 **权限**
 

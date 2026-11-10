@@ -17,7 +17,7 @@ This mode is provided for compatibility reason, and suspends the VM before calli
 This mode provides the lowest operation downtime, at the cost of a small inconsistency risk. It works by performing a Proxmox VE live backup, in which data blocks are copied while the VM is running. If the guest agent is enabled (`agent: 1`) and running, it calls `guest-fsfreeze-freeze` and `guest-fsfreeze-thaw` to improve consistency.
 
 {% hint style="info" %}
-On Windows guests it is necessary to configure the guest agent if another backup software is used within the guest. See [Freeze & Thaw](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_qga_fsfreeze) in the guest agent section for more details.
+On Windows guests it is necessary to configure the guest agent if another backup software is used within the guest. See [Freeze \& Thaw](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_qga_fsfreeze) in the guest agent section for more details.
 {% endhint %}
 
 A technical overview of the Proxmox VE live backup for QemuServer can be found online [here](https://git.proxmox.com/?p=pve-qemu.git;a=blob_plain;f=backup.txt).

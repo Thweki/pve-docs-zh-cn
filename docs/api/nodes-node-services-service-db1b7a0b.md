@@ -8,6 +8,8 @@
 
 Directory index
 
+**方法标识：** `srvcmdidx`
+
 **权限**
 
 ```json

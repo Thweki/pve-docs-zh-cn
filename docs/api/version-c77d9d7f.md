@@ -8,6 +8,8 @@
 
 API version details, including some parts of the global datacenter config.
 
+**方法标识：** `version`
+
 **权限**
 
 ```json

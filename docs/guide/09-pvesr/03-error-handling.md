@@ -20,7 +20,7 @@ In the case of a grave error, a virtual guest may get stuck on a failed node. Yo
 
 ## 9.3.3. Example <a href="#_example_2" id="_example_2"></a>
 
-Let’s assume that you have two guests (VM 100 and CT 200) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
+Let’s assume that you have two guests (VM 100 and CT 200\) running on node A and replicate to node B. Node A failed and can not get back online. Now you have to migrate the guest to Node B manually.
 
 - connect to node B over ssh or open its shell via the web UI
 - check if that the cluster is quorate

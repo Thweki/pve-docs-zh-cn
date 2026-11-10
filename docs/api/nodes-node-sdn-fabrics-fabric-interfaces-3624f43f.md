@@ -8,6 +8,8 @@
 
 Get all interfaces for a fabric.
 
+**方法标识：** `interfaces`
+
 **权限**
 
 ```json

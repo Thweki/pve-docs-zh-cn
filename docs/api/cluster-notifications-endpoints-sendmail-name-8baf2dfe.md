@@ -8,6 +8,8 @@
 
 Remove sendmail endpoint
 
+**方法标识：** `delete_sendmail_endpoint`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove sendmail endpoint
 ## GET `/cluster/notifications/endpoints/sendmail/{name}`
 
 Return a specific sendmail endpoint
+
+**方法标识：** `get_sendmail_endpoint`
 
 **权限**
 
@@ -193,6 +197,8 @@ Return a specific sendmail endpoint
 ## PUT `/cluster/notifications/endpoints/sendmail/{name}`
 
 Update existing sendmail endpoint
+
+**方法标识：** `update_sendmail_endpoint`
 
 **权限**
 

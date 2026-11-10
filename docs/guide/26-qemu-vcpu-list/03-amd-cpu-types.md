@@ -2,16 +2,16 @@
 
 [AMD processors](https://en.wikipedia.org/wiki/List_of_AMD_processors)
 
-- *Opteron_G3* : [K10](https://en.wikipedia.org/wiki/AMD_10h)
-- *Opteron_G4* : [Bulldozer](https://en.wikipedia.org/wiki/Bulldozer_(microarchitecture))
-- *Opteron_G5* : [Piledriver](https://en.wikipedia.org/wiki/Piledriver_(microarchitecture))
+- *Opteron\_G3* : [K10](https://en.wikipedia.org/wiki/AMD_10h)
+- *Opteron\_G4* : [Bulldozer](https://en.wikipedia.org/wiki/Bulldozer_(microarchitecture))
+- *Opteron\_G5* : [Piledriver](https://en.wikipedia.org/wiki/Piledriver_(microarchitecture))
 - *EPYC* : [1st generation of Zen processors](https://en.wikipedia.org/wiki/Zen_(first_generation))
-- *EPYC-IBPB (v2)* : add Spectre v1 protection (*+ibpb*)
-- *EPYC-v3* : add missing flags (*+perfctr-core*, *+clzero*, *+xsaveerptr*, *+xsaves*)
+- *EPYC-IBPB (v2)* : add Spectre v1 protection (*\+ibpb*)
+- *EPYC-v3* : add missing flags (*\+perfctr-core*, *\+clzero*, *\+xsaveerptr*, *\+xsaves*)
 - *EPYC-Rome* : [2nd generation of Zen processors](https://en.wikipedia.org/wiki/Zen_2)
-- *EPYC-Rome-v2* : add Spectre v2, v4 protection (*+ibrs*, *+amd-ssbd*)
+- *EPYC-Rome-v2* : add Spectre v2, v4 protection (*\+ibrs*, *\+amd-ssbd*)
 - *EPYC-Milan* : [3rd generation of Zen processors](https://en.wikipedia.org/wiki/Zen_3)
-- *EPYC-Milan-v2* : add missing flags (*+vaes*, *+vpclmulqdq*, *+stibp-always-on*, *+amd-psfd*, *+no-nested-data-bp*, *+lfence-always-serializing*, *+null-sel-clr-base*)
+- *EPYC-Milan-v2* : add missing flags (*\+vaes*, *\+vpclmulqdq*, *\+stibp-always-on*, *\+amd-psfd*, *\+no-nested-data-bp*, *\+lfence-always-serializing*, *\+null-sel-clr-base*)
 
 ---
 

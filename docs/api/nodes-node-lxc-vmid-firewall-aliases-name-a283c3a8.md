@@ -8,6 +8,8 @@
 
 Remove IP or Network alias.
 
+**方法标识：** `remove_alias`
+
 **权限**
 
 ```json
@@ -96,6 +98,8 @@ Remove IP or Network alias.
 
 Read alias.
 
+**方法标识：** `read_alias`
+
 **权限**
 
 ```json
@@ -169,6 +173,8 @@ Read alias.
 ## PUT `/nodes/{node}/lxc/{vmid}/firewall/aliases/{name}`
 
 Update IP or Network alias.
+
+**方法标识：** `update_alias`
 
 **权限**
 

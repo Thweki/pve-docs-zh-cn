@@ -8,6 +8,8 @@
 
 Shutdown the container. This will trigger a clean shutdown of the container, see lxc-stop(1) for details.
 
+**方法标识：** `vm_shutdown`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Returns a SPICE configuration to connect to the CT.
 
+**方法标识：** `spiceproxy`
+
 **权限**
 
 ```json

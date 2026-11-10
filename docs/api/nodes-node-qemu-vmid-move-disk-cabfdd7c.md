@@ -8,6 +8,8 @@
 
 Move volume to different storage or to a different VM.
 
+**方法标识：** `move_vm_disk`
+
 **权限**
 
 ```json

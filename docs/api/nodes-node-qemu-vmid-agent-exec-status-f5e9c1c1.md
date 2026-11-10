@@ -8,6 +8,8 @@
 
 Gets the status of the given pid started by the guest-agent
 
+**方法标识：** `exec-status`
+
 **权限**
 
 ```json

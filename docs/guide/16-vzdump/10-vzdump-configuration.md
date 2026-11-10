@@ -10,11 +10,11 @@ Blank lines in the file are ignored, and lines starting with a `#` character are
 
 We currently support the following options:
 
-**`bwlimit`: `<integer> (0 - N)` (*default =* `0`)**
+**`bwlimit`: `<integer> (0 - N)` (*default \=* `0`)**
 
 Limit I/O bandwidth (in KiB/s).
 
-**`compress`: `<0 | 1 | gzip | lzo | zstd>` (*default =* `0`)**
+**`compress`: `<0 | 1 | gzip | lzo | zstd>` (*default \=* `0`)**
 
 Compress dump file.
 
@@ -30,23 +30,23 @@ Exclude certain files/directories (shell globs). Paths starting with */* are anc
 
 Options for backup fleecing (VM only).
 
-**`enabled`=`<boolean>` (*default =* `0`)**
+**`enabled`\=`<boolean>` (*default \=* `0`)**
 
 Enable backup fleecing. Cache backup data from blocks where new guest writes happen on specified storage instead of copying them directly to the backup target. This can help guest IO performance and even prevent hangs, at the cost of requiring more storage space.
 
-**`storage`=`<storage ID>`**
+**`storage`\=`<storage ID>`**
 
 Use this storage to storage fleecing images. For efficient space usage, it’s best to use a local storage that supports discard and either thin provisioning or sparse files.
 
-**`ionice`: `<integer> (0 - 8)` (*default =* `7`)**
+**`ionice`: `<integer> (0 - 8)` (*default \=* `7`)**
 
 Set IO priority when using the BFQ scheduler. For snapshot and suspend mode backups of VMs, this only affects the compressor. A value of 8 means the idle priority is used, otherwise the best-effort priority is used with the specified value.
 
-**`lockwait`: `<integer> (0 - N)` (*default =* `180`)**
+**`lockwait`: `<integer> (0 - N)` (*default \=* `180`)**
 
 Maximal time to wait for the global lock (minutes).
 
-**`mailnotification`: `<always | failure>` (*default =* `always`)**
+**`mailnotification`: `<always | failure>` (*default \=* `always`)**
 
 Deprecated: use notification targets/matchers instead. Specify when to send a notification mail
 
@@ -54,19 +54,19 @@ Deprecated: use notification targets/matchers instead. Specify when to send a no
 
 Deprecated: Use notification targets/matchers instead. Comma-separated list of email addresses or users that should receive email notifications.
 
-**`mode`: `<snapshot | stop | suspend>` (*default =* `snapshot`)**
+**`mode`: `<snapshot | stop | suspend>` (*default \=* `snapshot`)**
 
 Backup mode.
 
 **`notes-template`: `<string>`**
 
-Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {\{\cluster}}, {\{\guestname}}, {\{\node}}, and {\{\vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as *\n* and *\\* respectively.
+Template string for generating notes for the backup(s). It can contain variables which will be replaced by their values. Currently supported are {\\{\\cluster}}, {\\{\\guestname}}, {\\{\\node}}, and {\\{\\vmid}}, but more might be added in the future. Needs to be a single line, newline and backslash need to be escaped as *\\n* and *\\\\* respectively.
 
 {% hint style="info" %}
 Requires option(s): `storage`
 {% endhint %}
 
-**`notification-mode`: `<auto | legacy-sendmail | notification-system>` (*default =* `auto`)**
+**`notification-mode`: `<auto | legacy-sendmail | notification-system>` (*default \=* `auto`)**
 
 Determine which notification system to use. If set to *legacy-sendmail*, vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the *sendmail* command. If set to *notification-system*, a notification will be sent via PVE’s notification system, and the mailto and mailnotification will be ignored. If set to *auto* (default setting), an email will be sent if mailto is set, and the notification system will be used if not.
 
@@ -78,17 +78,17 @@ PBS mode used to detect file changes and switch encoding format for container ba
 
 Other performance-related settings.
 
-**`max-workers`=`<integer> (1 - 256)` (*default =* `16`)**
+**`max-workers`\=`<integer> (1 - 256)` (*default \=* `16`)**
 
 Applies to VMs. Allow up to this many IO workers at the same time.
 
-**`pbs-entries-max`=`<integer> (1 - N)` (*default =* `1048576`)**
+**`pbs-entries-max`\=`<integer> (1 - N)` (*default \=* `1048576`)**
 
 Applies to container backups sent to PBS. Limits the number of entries allowed in memory at a given time to avoid unintended OOM situations. Increase it to enable backups of containers with a large amount of files.
 
-**`pigz`: `<integer>` (*default =* `0`)**
+**`pigz`: `<integer>` (*default \=* `0`)**
 
-Use pigz instead of gzip when N>0. N=1 uses half of cores, N>1 uses N as thread count.
+Use pigz instead of gzip when N\>0. N\=1 uses half of cores, N\>1 uses N as thread count.
 
 **`pool`: `<string>`**
 
@@ -102,39 +102,39 @@ If true, mark backup(s) as protected.
 Requires option(s): `storage`
 {% endhint %}
 
-**`prune-backups`: `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` (*default =* `keep-all=1`)**
+**`prune-backups`: `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` (*default \=* `keep-all=1`)**
 
 Use these retention options instead of those from the storage configuration.
 
-**`keep-all`=`<boolean>`**
+**`keep-all`\=`<boolean>`**
 
 Keep all backups. Conflicts with the other options when true.
 
-**`keep-daily`=`<N>`**
+**`keep-daily`\=`<N>`**
 
-Keep backups for the last <N> different days. If there is morethan one backup for a single day, only the latest one is kept.
+Keep backups for the last \<N\> different days. If there is morethan one backup for a single day, only the latest one is kept.
 
-**`keep-hourly`=`<N>`**
+**`keep-hourly`\=`<N>`**
 
-Keep backups for the last <N> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
+Keep backups for the last \<N\> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
 
-**`keep-last`=`<N>`**
+**`keep-last`\=`<N>`**
 
-Keep the last <N> backups.
+Keep the last \<N\> backups.
 
-**`keep-monthly`=`<N>`**
+**`keep-monthly`\=`<N>`**
 
-Keep backups for the last <N> different months. If there is morethan one backup for a single month, only the latest one is kept.
+Keep backups for the last \<N\> different months. If there is morethan one backup for a single month, only the latest one is kept.
 
-**`keep-weekly`=`<N>`**
+**`keep-weekly`\=`<N>`**
 
-Keep backups for the last <N> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
+Keep backups for the last \<N\> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
 
-**`keep-yearly`=`<N>`**
+**`keep-yearly`\=`<N>`**
 
-Keep backups for the last <N> different years. If there is morethan one backup for a single year, only the latest one is kept.
+Keep backups for the last \<N\> different years. If there is morethan one backup for a single year, only the latest one is kept.
 
-**`remove`: `<boolean>` (*default =* `1`)**
+**`remove`: `<boolean>` (*default \=* `1`)**
 
 Prune older backups according to *prune-backups*.
 
@@ -142,11 +142,11 @@ Prune older backups according to *prune-backups*.
 
 Use specified hook script.
 
-**`stdexcludes`: `<boolean>` (*default =* `1`)**
+**`stdexcludes`: `<boolean>` (*default \=* `1`)**
 
 Exclude temporary files and logs.
 
-**`stopwait`: `<integer> (0 - N)` (*default =* `10`)**
+**`stopwait`: `<integer> (0 - N)` (*default \=* `10`)**
 
 Maximal time to wait until a guest system is stopped (minutes).
 
@@ -158,9 +158,9 @@ Store resulting file to this storage.
 
 Store temporary files to specified directory.
 
-**`zstd`: `<integer>` (*default =* `1`)**
+**`zstd`: `<integer>` (*default \=* `1`)**
 
-Zstd threads. N=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
+Zstd threads. N\=0 uses half of the available cores, if N is set to a value bigger than 0, N is used as thread count.
 
 **Example `vzdump.conf` Configuration**
 

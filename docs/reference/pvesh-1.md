@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pvesh - Shell interface for the Proxmox VE API
+pvesh \- Shell interface for the Proxmox VE API
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -18,7 +18,7 @@ pvesh - Shell interface for the Proxmox VE API
 
 **pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API POST on <api_path>.
+Call API POST on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -34,7 +34,7 @@ Disable automatic proxying.
 
 **pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API DELETE on <api_path>.
+Call API DELETE on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -50,7 +50,7 @@ Disable automatic proxying.
 
 **pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API GET on <api_path>.
+Call API GET on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -82,7 +82,7 @@ Disable automatic proxying.
 
 **pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-List child objects on <api_path>.
+List child objects on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -98,7 +98,7 @@ Disable automatic proxying.
 
 **pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]`
 
-Call API PUT on <api_path>.
+Call API PUT on \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -114,7 +114,7 @@ Disable automatic proxying.
 
 **pvesh usage** `<api_path>` `[OPTIONS]`
 
-print API usage information for <api_path>.
+print API usage information for \<api\_path\>.
 
 **`<api_path>`: `<string>`**
 
@@ -140,7 +140,7 @@ The Proxmox VE management tool (`pvesh`) allows to directly invoke API function,
 Only *root* is allowed to do that.
 {% endhint %}
 
-## FORMAT_OPTIONS <a href="#_format_options" id="_format_options"></a>
+## FORMAT\_OPTIONS <a href="#_format_options" id="_format_options"></a>
 
 It is possible to specify the output format using the `--output-format` parameter. The default format *text* uses ASCII-art to draw nice borders around tables. It additionally transforms some values into human-readable text, for example:
 
@@ -151,19 +151,19 @@ It is possible to specify the output format using the `--output-format` paramete
 
 You can also completely suppress output using option `--quiet`.
 
-**`--human-readable` `<boolean>` (*default =* `1`)**
+**`--human-readable` `<boolean>` (*default \=* `1`)**
 
 Call output rendering functions to produce human readable text.
 
-**`--noborder` `<boolean>` (*default =* `0`)**
+**`--noborder` `<boolean>` (*default \=* `0`)**
 
 Do not draw borders (for *text* format).
 
-**`--noheader` `<boolean>` (*default =* `0`)**
+**`--noheader` `<boolean>` (*default \=* `0`)**
 
 Do not show column headers (for *text* format).
 
-**`--output-format` `<json | json-pretty | text | yaml>` (*default =* `text`)**
+**`--output-format` `<json | json-pretty | text | yaml>` (*default \=* `text`)**
 
 Output format.
 

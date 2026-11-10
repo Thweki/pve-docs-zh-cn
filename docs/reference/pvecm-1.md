@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_pvecm" id="chapter_pvecm"></a>
 
-pvecm - Proxmox VE Cluster Manager
+pvecm \- Proxmox VE Cluster Manager
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -62,7 +62,7 @@ Adds a node to the cluster configuration. This call is for internal use.
 
 **`--apiversion` `<integer>`**
 
-The JOIN_API_VERSION of the new node.
+The JOIN\_API\_VERSION of the new node.
 
 **`--force` `<boolean>`**
 
@@ -112,7 +112,7 @@ Address and priority information of a single corosync link. (up to 8 links suppo
 
 Node id for this node.
 
-**`--token-coefficient` `<integer> (0 - N)` (*default =* `125`)**
+**`--token-coefficient` `<integer> (0 - N)` (*default \=* `125`)**
 
 Coefficient used to determine Corosync’s token timeout. See the corosync.conf(5) manual for more details.
 
@@ -178,13 +178,13 @@ Output file name
 
 **pvecm mtunnel** `[<extra-args>]` `[OPTIONS]`
 
-Used by VM/CT migration - do not use manually.
+Used by VM/CT migration \- do not use manually.
 
 **`<extra-args>`: `<array>`**
 
 以数组形式提供的额外参数
 
-**`--get_migration_ip` `<boolean>` (*default =* `0`)**
+**`--get_migration_ip` `<boolean>` (*default \=* `0`)**
 
 return the migration IP, if configured
 
@@ -256,7 +256,7 @@ Force generation of new SSL certificate.
 
 Ignore errors (i.e. when cluster has no quorum).
 
-**`--unmerge-known-hosts` `<boolean>` (*default =* `0`)**
+**`--unmerge-known-hosts` `<boolean>` (*default \=* `0`)**
 
 Unmerge legacy SSH known hosts.
 
@@ -491,7 +491,7 @@ If your configuration contains a QDevice, you will need to remove it before remo
 - Ensure that the remaining Ceph cluster has sufficient storage space and that the OSDs are running (i.e. `up` and `in`). The destruction of any OSD, especially the last one on a node, will trigger a data rebalance in Ceph.
 
   {% hint style="info" %}
-  Make sure that there are still enough nodes with OSDs available to satisfy the `size/min_size` parameters configured for the Ceph pools. If there are fewer than `size` (default: 3) nodes available, data redundancy will be degraded. If there are fewer than `min_size` (default: 2) nodes available, the I/O of the pools will be blocked until there are enough replicas available. Affected guests may crash if their I/O is blocked.
+  Make sure that there are still enough nodes with OSDs available to satisfy the `size/min_size` parameters configured for the Ceph pools. If there are fewer than `size` (default: 3\) nodes available, data redundancy will be degraded. If there are fewer than `min_size` (default: 2\) nodes available, the I/O of the pools will be blocked until there are enough replicas available. Affected guests may crash if their I/O is blocked.
   {% endhint %}
 - Ensure that sufficient [monitors](pveceph-1.md#pve_ceph_monitors), [managers](pveceph-1.md#pve_ceph_manager) and, if using CephFS, [metadata servers](pveceph-1.md#pveceph_fs_mds) remain available in the Ceph cluster.
 
@@ -559,10 +559,10 @@ Membership information
 ### Cleanup Steps After Node Removal <a href="#_cleanup_steps_after_node_removal" id="_cleanup_steps_after_node_removal"></a>
 
 - The configuration files of the removed node will still reside in */etc/pve/nodes/node4* in the cluster filesystem. Recover any configuration you still need and remove the directory afterwards.
-- The SSH fingerprint of the removed node will still reside in the *known_hosts* file on the other nodes. If you receive an SSH error after rejoining a node with the same IP or hostname, run `pvecm
+- The SSH fingerprint of the removed node will still reside in the *known\_hosts* file on the other nodes. If you receive an SSH error after rejoining a node with the same IP or hostname, run `pvecm
     updatecerts` once on the re-added node to update its fingerprint cluster wide.
 - Existing [high availability rules](ha-manager-1.md#ha_manager_rules) will still reference the deleted node, therefore remove the node from any existing rules.
-- The public key of the removed node will still be listed in */etc/pve/priv/authorized_keys* and should be deleted if it is no longer needed.
+- The public key of the removed node will still be listed in */etc/pve/priv/authorized\_keys* and should be deleted if it is no longer needed.
 
 **Rejoin the same node again:**
 
@@ -653,7 +653,7 @@ rm /var/lib/corosync/*
 As the configuration files from the other nodes are still in the cluster file system, you may want to clean those up too. After making absolutely sure that you have the correct node name, you can simply remove the entire directory recursively from */etc/pve/nodes/NODENAME*.
 
 {% hint style="danger" %}
-The node’s SSH keys will remain in the *authorized_key* file. This means that the nodes can still connect to each other with public key authentication. You should fix this by removing the respective keys from the */etc/pve/priv/authorized_keys* file.
+The node’s SSH keys will remain in the *authorized\_key* file. This means that the nodes can still connect to each other with public key authentication. You should fix this by removing the respective keys from the */etc/pve/priv/authorized\_keys* file.
 {% endhint %}
 
 ## Quorum <a href="#_quorum" id="_quorum"></a>
@@ -683,7 +683,7 @@ The network should not be used heavily by other members, as while corosync does 
 
 Before setting up a cluster, it is good practice to check if the network is fit for that purpose. To ensure that the nodes can connect to each other on the cluster network, you can test the connectivity between them with the `ping` tool.
 
-If the Proxmox VE firewall is enabled, ACCEPT rules for corosync will automatically be generated - no manual action is required.
+If the Proxmox VE firewall is enabled, ACCEPT rules for corosync will automatically be generated \- no manual action is required.
 
 {% hint style="info" %}
 Corosync used Multicast before version 3.0 (introduced in Proxmox VE 6.0). Modern versions rely on [Kronosnet](https://kronosnet.org/) for cluster communication, which, for now, only supports regular UDP unicast.
@@ -709,7 +709,7 @@ Using a bond as a Corosync link can be problematic in certain failure scenarios.
 
 The bond mode **active-backup** will **not** cause asymmetric connectivity in the failure scenario described above. However, the bond with the interface failure may not switch over to the backup link. The node may lose connection to the cluster and, if HA is enabled, fence itself.
 
-Bond modes **balance-rr**, **balance-xor**, **balance_tlb**, or **balance-alb** may cause asymmetric connectivity in the failure scenario above, which can lead to unexpected fencing if HA is enabled.
+Bond modes **balance-rr**, **balance-xor**, **balance\_tlb**, or **balance-alb** may cause asymmetric connectivity in the failure scenario above, which can lead to unexpected fencing if HA is enabled.
 
 Bond mode **IEEE 802.3ad (LACP)** can cause asymmetric connectivity in the failure scenario above, but it can recover from this state, as each side of the bond (Proxmox VE node and switch) can stop using a bonded interface if it has not received three LACPDUs in a row on it. However, with default settings, LACPDUs are only sent every 30 seconds, yielding a failover time of 90 seconds. This is too long, as nodes with HA resources will fence themselves already after roughly one minute without a stable quorum. If LACP bonds are used for corosync traffic, we recommend setting `bond-lacp-rate fast` on the **Proxmox VE** node and the **switch**! Setting this option on one side requests the other side to send an LACPDU every second. Setting this option on both sides can reduce the failover time in the scenario above to 3 seconds and thus prevent fencing.
 
@@ -803,15 +803,15 @@ totem {
 
 The first thing you want to do is add the *name* properties in the node entries, if you do not see them already. Those **must** match the node name.
 
-Then replace all addresses from the *ring0_addr* properties of all nodes with the new addresses. You may use plain IP addresses or hostnames here. If you use hostnames, ensure that they are resolvable from all nodes (see also [Link Address Types](#pvecm_corosync_addresses)).
+Then replace all addresses from the *ring0\_addr* properties of all nodes with the new addresses. You may use plain IP addresses or hostnames here. If you use hostnames, ensure that they are resolvable from all nodes (see also [Link Address Types](#pvecm_corosync_addresses)).
 
-In this example, we want to switch cluster communication to the 10.10.10.0/25 network, so we change the *ring0_addr* of each node respectively.
+In this example, we want to switch cluster communication to the 10.10.10.0/25 network, so we change the *ring0\_addr* of each node respectively.
 
 {% hint style="info" %}
-The exact same procedure can be used to change other *ringX_addr* values as well. However, we recommend only changing one link address at a time, so that it’s easier to recover if something goes wrong.
+The exact same procedure can be used to change other *ringX\_addr* values as well. However, we recommend only changing one link address at a time, so that it’s easier to recover if something goes wrong.
 {% endhint %}
 
-After we increase the *config_version* property, the new configuration file should look like:
+After we increase the *config\_version* property, the new configuration file should look like:
 
 ```text
 logging {
@@ -885,13 +885,13 @@ If corosync begins to work again, restart it on all other nodes too. They will t
 
 ### Corosync Addresses <a href="#pvecm_corosync_addresses" id="pvecm_corosync_addresses"></a>
 
-A corosync link address (for backwards compatibility denoted by *ringX_addr* in `corosync.conf`) can be specified in two ways:
+A corosync link address (for backwards compatibility denoted by *ringX\_addr* in `corosync.conf`) can be specified in two ways:
 
 - **IPv4/v6 addresses** can be used directly. They are recommended, since they are static and usually not changed carelessly.
 - **Hostnames** will be resolved using `getaddrinfo`, which means that by default, IPv6 addresses will be used first, if available (see also `man gai.conf`). Keep this in mind, especially when upgrading an existing cluster to IPv6.
 
 {% hint style="danger" %}
-Hostnames should be used with care, since the addresses they resolve to can be changed without touching corosync or the node it runs on - which may lead to a situation where an address is changed without thinking about implications for corosync.
+Hostnames should be used with care, since the addresses they resolve to can be changed without touching corosync or the node it runs on \- which may lead to a situation where an address is changed without thinking about implications for corosync.
 {% endhint %}
 
 A separate, static hostname specifically for corosync is recommended, if hostnames are preferred. Also, make sure that every node in the cluster can resolve all hostnames correctly.
@@ -902,7 +902,7 @@ Nodes that joined the cluster on earlier versions likely still use their unresol
 
 ## Corosync Redundancy <a href="#pvecm_redundancy" id="pvecm_redundancy"></a>
 
-Corosync supports redundant networking via its integrated Kronosnet layer by default (it is not supported on the legacy udp/udpu transports). It can be enabled by specifying more than one link address, either via the *--linkX* parameters of `pvecm`, in the GUI as **Link 1** (while creating a cluster or adding a new node) or by specifying more than one *ringX_addr* in `corosync.conf`.
+Corosync supports redundant networking via its integrated Kronosnet layer by default (it is not supported on the legacy udp/udpu transports). It can be enabled by specifying more than one link address, either via the *--linkX* parameters of `pvecm`, in the GUI as **Link 1** (while creating a cluster or adding a new node) or by specifying more than one *ringX\_addr* in `corosync.conf`.
 
 {% hint style="info" %}
 To provide useful failover, every link should be on its own physical network connection.
@@ -910,7 +910,7 @@ To provide useful failover, every link should be on its own physical network con
 
 The following examples assume that each cluster node has one static address in 10.10.10.0/25 and one static address in 10.20.20.0/25 configured.
 
-Links are used according to a priority setting. You can configure this priority by setting *knet_link_priority* in the corresponding interface section in `corosync.conf`, or, preferably, using the *priority* parameter when creating your cluster with `pvecm`:
+Links are used according to a priority setting. You can configure this priority by setting *knet\_link\_priority* in the corresponding interface section in `corosync.conf`, or, preferably, using the *priority* parameter when creating your cluster with `pvecm`:
 
 ```text
  # pvecm create CLUSTERNAME --link0 10.10.10.1,priority=15 --link1 10.20.20.1,priority=20
@@ -928,7 +928,7 @@ Since lower priority links will not see traffic unless all higher priorities hav
 
 To add a new link to a running configuration, first check how to [edit the corosync.conf file](#pvecm_edit_corosync_conf).
 
-Then, add a new *ringX_addr* to every node in the `nodelist` section. Make sure that your *X* is the same for every node you add it to, and that it is unique for each node.
+Then, add a new *ringX\_addr* to every node in the `nodelist` section. Make sure that your *X* is the same for every node you add it to, and that it is unique for each node.
 
 Lastly, add a new *interface*, as shown below, to your `totem` section, replacing *X* with the link number chosen above.
 
@@ -1050,7 +1050,7 @@ For this to work, there are two services involved:
 - A QDevice daemon which runs on each Proxmox VE node
 - An external vote daemon which runs on an independent server
 
-As a result, you can achieve higher availability, even in smaller setups (for example 2+1 nodes).
+As a result, you can achieve higher availability, even in smaller setups (for example 2\+1 nodes).
 
 ### QDevice Technical Overview <a href="#_qdevice_technical_overview" id="_qdevice_technical_overview"></a>
 
@@ -1135,7 +1135,7 @@ The status output of the QDevice, as seen above, will usually contain three colu
 - `A` / `NA`: Alive or Not Alive. Indicates if the communication to the external `corosync-qnetd` daemon works.
 - `V` / `NV`: If the QDevice will cast a vote for the node. In a split-brain situation, where the corosync connection between the nodes is down, but they both can still communicate with the external `corosync-qnetd` daemon, only one node will get the vote.
 - `MW` / `NMW`: Master wins (`MV`) or not (`NMW`). Default is `NMW`, see   
-  [`votequorum_qdevice_master_wins` manual page [https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html](https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html)]  
+  \[`votequorum_qdevice_master_wins` manual page [https://manpages.debian.org/stable/libvotequorum-dev/votequorum\_qdevice\_master\_wins.3.en.html](https://manpages.debian.org/stable/libvotequorum-dev/votequorum_qdevice_master_wins.3.en.html)\]  
   .
 - `NR`: QDevice is not registered.
 
@@ -1192,7 +1192,7 @@ cp /etc/pve/corosync.conf /etc/pve/corosync.conf.new
 Then, open the config file with your favorite editor, such as `nano` or `vim.tiny`, which come pre-installed on every Proxmox VE node.
 
 {% hint style="info" %}
-Always increment the *config_version* number after configuration changes; omitting this can lead to problems.
+Always increment the *config\_version* number after configuration changes; omitting this can lead to problems.
 {% endhint %}
 
 After making the necessary changes, create another copy of the current working configuration file. This serves as a backup if the new configuration fails to apply or causes other issues.
@@ -1235,11 +1235,11 @@ On errors, check the troubleshooting section below.
 The token coefficient can be configured in the `totem` section in `/etc/pve/corosync.conf`. If the token coefficient is not explicitly set, it defaults to 650 milliseconds. Since Proxmox VE 9.2, new clusters are created with a lower token coefficient of 125 milliseconds explicitly set in `/etc/pve/corosync.conf`. This reduces the time needed for reestablishing a new cluster membership after a node failure.
 
 corosync uses the token coefficient to calculate several timeouts in relation to the cluster size   
-[`token_coefficient` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)]  
+\[`token_coefficient` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token\_coefficient](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token_coefficient)\]  
 , most importantly the token timeout and consensus timeout. corosync implements a token-passing protocol. The token timeout specifies how long a node waits for the token until it declares the token to be lost   
-[`token` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)]  
+\[`token` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#token)\]  
 . The consensus timeout   
-[`consensus` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)]  
+\[`consensus` in the corosync manual page [https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus](https://manpages.debian.org/stable/corosync/corosync.conf.5.en.html#consensus)\]  
  specifies the time nodes wait for a consensus on a new cluster membership. The sum of token and consensus timeouts defines the minimum time needed to reestablish a new cluster membership after a node goes offline.
 
 Keeping the sum of token and consensus timeouts below 30 seconds reduces the time needed for reestablishing a new cluster membership after a node failure. When HA is enabled, it is especially important that this time stays below 45 seconds to ensure that a new cluster membership is formed before the [watchdog timeout](ha-manager-1.md#ha_manager_crm) of 60 seconds expires, which would trigger a node fence. A safety margin below this 45 second limit is advisable so that transient timing variations do not push the cluster past the watchdog threshold. The recommended mechanism for lowering the token and consensus timeouts is lowering the token coefficient as explained below.
@@ -1283,7 +1283,7 @@ After adjusting the `token_coefficient` in `corosync.conf`, recent corosync vers
 
 ### Troubleshooting <a href="#_troubleshooting" id="_troubleshooting"></a>
 
-#### Issue: *quorum.expected_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
+#### Issue: *quorum.expected\_votes must be configured* <a href="#_issue_em_quorum_expected_votes_must_be_configured_em" id="_issue_em_quorum_expected_votes_must_be_configured_em"></a>
 
 When corosync starts to fail and you get the following message in the system log:
 
@@ -1295,7 +1295,7 @@ corosync[1647]:  [SERV  ] Service engine 'corosync_quorum' failed to load for re
 [...]
 ```
 
-It means that the hostname you set for a corosync *ringX_addr* in the configuration could not be resolved.
+It means that the hostname you set for a corosync *ringX\_addr* in the configuration could not be resolved.
 
 #### Write Configuration When Not Quorate <a href="#_write_configuration_when_not_quorate" id="_write_configuration_when_not_quorate"></a>
 
@@ -1313,7 +1313,7 @@ This is not enough if corosync cannot start anymore. In that case, it is best to
 
 ### Corosync Configuration Glossary <a href="#pvecm_corosync_conf_glossary" id="pvecm_corosync_conf_glossary"></a>
 
-**ringX_addr**
+**ringX\_addr**
 
 This names the different link addresses for the Kronosnet connections between nodes.
 

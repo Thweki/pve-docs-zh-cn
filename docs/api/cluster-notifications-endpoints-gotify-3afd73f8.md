@@ -8,6 +8,8 @@
 
 Returns a list of all gotify endpoints
 
+**方法标识：** `get_gotify_endpoints`
+
 **权限**
 
 ```json
@@ -89,6 +91,8 @@ Returns a list of all gotify endpoints
 ## POST `/cluster/notifications/endpoints/gotify`
 
 Create a new gotify endpoint
+
+**方法标识：** `create_gotify_endpoint`
 
 **权限**
 

@@ -1,4 +1,4 @@
-# 23.7. **pve-ha-crm** - Cluster Resource Manager Daemon <a href="#_strong_pve_ha_crm_strong_cluster_resource_manager_daemon" id="_strong_pve_ha_crm_strong_cluster_resource_manager_daemon"></a>
+# 23.7. **pve-ha-crm** \- Cluster Resource Manager Daemon <a href="#_strong_pve_ha_crm_strong_cluster_resource_manager_daemon" id="_strong_pve_ha_crm_strong_cluster_resource_manager_daemon"></a>
 
 <a id="cli_pve-ha-crm"></a>
 
@@ -30,9 +30,9 @@
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pve-ha-crm_status"></a>
 

@@ -8,6 +8,8 @@
 
 Revoke existing certificate from CA.
 
+**方法标识：** `revoke_certificate`
+
 **权限**
 
 ```json
@@ -76,6 +78,8 @@ Revoke existing certificate from CA.
 ## POST `/nodes/{node}/certificates/acme/certificate`
 
 Order a new certificate from ACME-compatible CA.
+
+**方法标识：** `new_certificate`
 
 **权限**
 
@@ -153,6 +157,8 @@ Order a new certificate from ACME-compatible CA.
 ## PUT `/nodes/{node}/certificates/acme/certificate`
 
 Renew existing certificate from CA.
+
+**方法标识：** `renew_certificate`
 
 **权限**
 

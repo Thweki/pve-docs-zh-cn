@@ -8,6 +8,8 @@
 
 Execute network-get-interfaces.
 
+**方法标识：** `network-get-interfaces`
+
 **权限**
 
 ```json

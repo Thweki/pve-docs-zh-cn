@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-qmeventd - PVE QEMU Eventd Daemon
+qmeventd \- PVE QEMU Eventd Daemon
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -14,7 +14,7 @@ Turn on verbose messages
 
 **`-f`**
 
-Do not daemonize server
+不要将服务器守护进程化
 
 **`PATH`**
 

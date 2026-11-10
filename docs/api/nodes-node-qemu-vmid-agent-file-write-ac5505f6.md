@@ -8,6 +8,8 @@
 
 Writes the given file via guest agent.
 
+**方法标识：** `file-write`
+
 **权限**
 
 ```json

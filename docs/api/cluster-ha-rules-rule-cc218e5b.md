@@ -8,6 +8,8 @@
 
 删除 HA 规则。
 
+**方法标识：** `delete_rule`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@
 ## GET `/cluster/ha/rules/{rule}`
 
 Read HA rule.
+
+**方法标识：** `read_rule`
 
 **权限**
 
@@ -142,6 +146,8 @@ Read HA rule.
 ## PUT `/cluster/ha/rules/{rule}`
 
 更新 HA 规则。
+
+**方法标识：** `update_rule`
 
 **权限**
 

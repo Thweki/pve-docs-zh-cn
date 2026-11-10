@@ -8,6 +8,8 @@
 
 Returns a SPICE configuration to connect to the VM.
 
+**方法标识：** `spiceproxy`
+
 **权限**
 
 ```json

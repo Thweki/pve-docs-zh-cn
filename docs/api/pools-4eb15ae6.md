@@ -8,6 +8,8 @@
 
 Delete pool.
 
+**方法标识：** `delete_pool`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Delete pool.
 ## GET `/pools`
 
 List pools or get pool configuration.
+
+**方法标识：** `index`
 
 **权限**
 
@@ -185,6 +189,8 @@ List pools or get pool configuration.
 
 Create new pool.
 
+**方法标识：** `create_pool`
+
 **权限**
 
 ```json
@@ -252,6 +258,8 @@ Create new pool.
 ## PUT `/pools`
 
 Update pool.
+
+**方法标识：** `update_pool`
 
 **权限**
 

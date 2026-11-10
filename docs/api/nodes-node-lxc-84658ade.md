@@ -8,6 +8,8 @@
 
 LXC 容器索引（按节点）。
 
+**方法标识：** `vmlist`
+
 **权限**
 
 ```json
@@ -215,6 +217,8 @@ LXC 容器索引（按节点）。
 
 创建或恢复容器。
 
+**方法标识：** `create_vm`
+
 **权限**
 
 ```json
@@ -272,7 +276,7 @@ LXC 容器索引（按节点）。
 | `node` | string | 是 | — | The cluster node name. |
 | `onboot` | boolean | 否 | 0 | Specifies whether a container will be started during system bootup. |
 | `ostemplate` | string | 是 | — | The OS template or backup file. |
-| `ostype` | string | 否 | — | OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/<ostype>.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
+| `ostype` | string | 否 | — | OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/&lt;ostype&gt;.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.；可选值：`debian`, `devuan`, `ubuntu`, `centos`, `fedora`, `opensuse`, `archlinux`, `alpine`, `gentoo`, `nixos`, `unmanaged` |
 | `password` | string | 否 | — | Sets root password inside container. |
 | `pool` | string | 否 | — | Add the VM to the specified pool. |
 | `protection` | boolean | 否 | 0 | Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation. |

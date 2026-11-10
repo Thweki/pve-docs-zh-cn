@@ -8,6 +8,8 @@
 
 Delete sdn vnet object configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -73,6 +75,8 @@ Delete sdn vnet object configuration.
 ## GET `/cluster/sdn/vnets/{vnet}`
 
 Read sdn vnet configuration.
+
+**方法标识：** `read`
 
 **权限**
 
@@ -234,6 +238,8 @@ Read sdn vnet configuration.
 ## PUT `/cluster/sdn/vnets/{vnet}`
 
 Update sdn vnet object configuration.
+
+**方法标识：** `update`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Storage index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -88,6 +90,8 @@ Storage index.
 ## POST `/storage`
 
 Create a new storage.
+
+**方法标识：** `create`
 
 **权限**
 

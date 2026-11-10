@@ -8,6 +8,8 @@
 
 Returns a list of all sendmail endpoints
 
+**方法标识：** `get_sendmail_endpoints`
+
 **权限**
 
 ```json
@@ -123,6 +125,8 @@ Returns a list of all sendmail endpoints
 ## POST `/cluster/notifications/endpoints/sendmail`
 
 Create a new sendmail endpoint
+
+**方法标识：** `create_sendmail_endpoint`
 
 **权限**
 

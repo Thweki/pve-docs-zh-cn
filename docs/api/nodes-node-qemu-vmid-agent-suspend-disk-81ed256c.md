@@ -8,6 +8,8 @@
 
 Execute suspend-disk.
 
+**方法标识：** `suspend-disk`
+
 **权限**
 
 ```json

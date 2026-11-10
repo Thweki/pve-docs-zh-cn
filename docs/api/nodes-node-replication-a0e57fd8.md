@@ -8,6 +8,8 @@
 
 List status of all replication jobs on this node.
 
+**方法标识：** `status`
+
 **权限**
 
 ```json

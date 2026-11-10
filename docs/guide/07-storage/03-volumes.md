@@ -26,7 +26,7 @@ pvesm path <VOLUME_ID>
 
 ## 7.3.1. Volume Ownership <a href="#_volume_ownership" id="_volume_ownership"></a>
 
-There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230. Most storage backends encodes this ownership information into the volume name.
+There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230\. Most storage backends encodes this ownership information into the volume name.
 
 When you remove a VM or Container, the system also removes all associated volumes which are owned by that VM or Container.
 

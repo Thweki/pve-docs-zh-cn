@@ -8,6 +8,8 @@
 
 Delete IP Mappings in a VNet
 
+**方法标识：** `ipdelete`
+
 **权限**
 
 ```json
@@ -97,6 +99,8 @@ Delete IP Mappings in a VNet
 
 Create IP Mapping in a VNet
 
+**方法标识：** `ipcreate`
+
 **权限**
 
 ```json
@@ -185,6 +189,8 @@ Create IP Mapping in a VNet
 ## PUT `/cluster/sdn/vnets/{vnet}/ips`
 
 Update IP Mapping in a VNet
+
+**方法标识：** `ipupdate`
 
 **权限**
 

@@ -1,45 +1,45 @@
-# 3.7. Disk Health Monitoring <a href="#disk_health_monitoring" id="disk_health_monitoring"></a>
+# 3.7. 磁盘健康监控 <a href="#disk_health_monitoring" id="disk_health_monitoring"></a>
 
-Although a robust and redundant storage is recommended, it can be very helpful to monitor the health of your local disks.
+虽然建议使用稳健且冗余的存储，但监控本地磁盘的健康状况也非常有帮助。
 
-Starting with Proxmox VE 4.3, the package smartmontools   
-[smartmontools homepage [https://www.smartmontools.org](https://www.smartmontools.org)]  
- is installed and required. This is a set of tools to monitor and control the S.M.A.R.T. system for local hard disks.
+从 Proxmox VE 4.3 开始，系统会安装并要求使用 smartmontools 软件包   
+\[smartmontools 主页 [https://www.smartmontools.org](https://www.smartmontools.org)\]  
+。这是一组用于监控和控制本地硬盘 S.M.A.R.T. 系统的工具。
 
-You can get the status of a disk by issuing the following command:
+您可以通过执行以下命令获取磁盘状态：
 
 ```text
 # smartctl -a /dev/sdX
 ```
 
-where /dev/sdX is the path to one of your local disks.
+其中 /dev/sdX 是您一块本地磁盘的路径。
 
-If the output says:
+如果输出显示：
 
 ```text
 SMART support is: Disabled
 ```
 
-you can enable it with the command:
+您可以使用以下命令启用它：
 
 ```text
 # smartctl -s on /dev/sdX
 ```
 
-For more information on how to use smartctl, please see `man smartctl`.
+有关如何使用 smartctl 的更多信息，请参阅 `man smartctl`。
 
-By default, the smartmontools daemon smartd is active and enabled, and scans any devices matching
+默认情况下，smartmontools 守护进程 smartd 处于活动状态并已启用，并扫描与以下内容匹配的任何设备
 
 - `/dev/sd[a-z]`
 - `/dev/sd[a-z][a-z]`
 - `/dev/hd[a-t]`
-- or `/dev/nvme[0-99]`
+- 或 `/dev/nvme[0-99]`
 
-every 30 minutes for errors and warnings, and sends an e-mail to root if it detects a problem.
+每 30 分钟检查一次错误和警告，如果检测到问题，则向 root 发送电子邮件。
 
-For more information about how to configure smartd, please see `man smartd` and `man smartd.conf`.
+有关如何配置 smartd 的更多信息，请参阅 `man smartd` 和 `man smartd.conf`。
 
-If you use your hard disks with a hardware raid controller, there are most likely tools to monitor the disks in the raid array and the array itself. For more information about this, please refer to the vendor of your raid controller.
+如果您将硬盘与硬件 RAID 控制器结合使用，很可能有相应的工具可监控 RAID 阵列中的磁盘及阵列本身。有关更多信息，请咨询您的 RAID 控制器供应商。
 
 ---
 

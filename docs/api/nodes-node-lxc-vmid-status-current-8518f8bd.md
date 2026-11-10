@@ -8,6 +8,8 @@
 
 Get virtual machine status.
 
+**方法标识：** `vm_status`
+
 **权限**
 
 ```json

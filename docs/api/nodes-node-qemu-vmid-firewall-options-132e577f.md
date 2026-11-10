@@ -8,6 +8,8 @@
 
 Get VM firewall options.
 
+**方法标识：** `get_options`
+
 **权限**
 
 ```json
@@ -168,6 +170,8 @@ Get VM firewall options.
 
 Set Firewall options.
 
+**方法标识：** `set_options`
+
 **权限**
 
 ```json
@@ -208,7 +212,7 @@ Set Firewall options.
 | `dhcp` | boolean | 否 | 0 | Enable DHCP. |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
 | `enable` | boolean | 否 | 0 | Enable/disable firewall rules. |
-| `ipfilter` | boolean | 否 | — | Enable default IP filters. This is equivalent to adding an empty ipfilter-net<id> ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface's MAC address. For containers the configured IP addresses will be implicitly added. |
+| `ipfilter` | boolean | 否 | — | Enable default IP filters. This is equivalent to adding an empty ipfilter-net&lt;id&gt; ipset for every interface. Such ipsets implicitly contain sane default restrictions such as restricting IPv6 link local addresses to the one derived from the interface's MAC address. For containers the configured IP addresses will be implicitly added. |
 | `log_level_in` | string | 否 | — | Log level for incoming traffic.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
 | `log_level_out` | string | 否 | — | Log level for outgoing traffic.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
 | `macfilter` | boolean | 否 | 1 | Enable/disable MAC address filter. |

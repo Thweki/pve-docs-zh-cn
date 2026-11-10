@@ -61,7 +61,7 @@ A typical firewall log output looks like this:
 VMID LOGID CHAIN TIMESTAMP POLICY: PACKET_DETAILS
 ```
 
-In case of the host firewall, `VMID` is equal to 0.
+In case of the host firewall, `VMID` is equal to 0\.
 
 ## 13.9.1. Logging of user defined firewall rules <a href="#_logging_of_user_defined_firewall_rules" id="_logging_of_user_defined_firewall_rules"></a>
 

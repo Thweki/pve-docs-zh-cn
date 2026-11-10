@@ -8,6 +8,8 @@
 
 Get a list of all bridges (vnets) that are part of a zone, as well as the ports that are members of that bridge.
 
+**方法标识：** `bridges`
+
 **权限**
 
 ```json

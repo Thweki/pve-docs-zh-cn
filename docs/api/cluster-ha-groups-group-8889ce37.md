@@ -8,6 +8,8 @@
 
 删除 HA 组配置。（已弃用，建议使用 HA 规则）
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -71,6 +73,8 @@
 
 Read ha group configuration. (deprecated in favor of HA rules)
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -125,6 +129,8 @@ Read ha group configuration. (deprecated in favor of HA rules)
 ## PUT `/cluster/ha/groups/{group}`
 
 更新 HA 组配置。（已弃用，建议使用 HA 规则）
+
+**方法标识：** `update`
 
 **权限**
 

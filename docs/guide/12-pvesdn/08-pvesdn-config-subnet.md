@@ -28,7 +28,7 @@ Enable Source NAT which allows VMs from inside a VNet to connect to the outside 
 
 **DNS Zone Prefix**
 
-Add a prefix to the domain registration, like <hostname>.prefix.<domain> Optional.
+Add a prefix to the domain registration, like \<hostname\>.prefix.\<domain\> Optional.
 
 ---
 

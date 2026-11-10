@@ -8,6 +8,8 @@
 
 Wipe a disk or partition.
 
+**方法标识：** `wipe_disk`
+
 **允许 API 令牌**
 
 ```json

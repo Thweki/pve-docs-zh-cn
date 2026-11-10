@@ -35,7 +35,7 @@ For Live Migration to work, there are some things required:
 - The hosts are located in the same Proxmox VE cluster.
 - The hosts have a working (and reliable) network connection between them.
 - The target host must have the same, or higher versions of the Proxmox VE packages. Although it can sometimes work the other way around, this cannot be guaranteed.
-- The hosts have CPUs from the same vendor with similar capabilities. Different vendor **might** work depending on the actual models and VMs CPU type configured, but it cannot be guaranteed - so please test before deploying such a setup in production.
+- The hosts have CPUs from the same vendor with similar capabilities. Different vendor **might** work depending on the actual models and VMs CPU type configured, but it cannot be guaranteed \- so please test before deploying such a setup in production.
 
 ### Conntrack State Migration <a href="#_conntrack_state_migration" id="_conntrack_state_migration"></a>
 

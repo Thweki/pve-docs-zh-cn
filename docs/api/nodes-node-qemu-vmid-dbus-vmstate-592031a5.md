@@ -8,6 +8,8 @@
 
 Control the dbus-vmstate helper for a given running VM.
 
+**方法标识：** `dbus_vmstate`
+
 **权限**
 
 ```json

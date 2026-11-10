@@ -8,20 +8,20 @@ A pool is a logical group for storing objects. It holds a collection of objects,
 
 You can create and edit pools from the command line or the web interface of any Proxmox VE host under **Ceph → Pools**.
 
-When no options are given, we set a default of **128 PGs**, a **size of 3 replicas** and a **min_size of 2 replicas**, to ensure no data loss occurs if any OSD fails.
+When no options are given, we set a default of **128 PGs**, a **size of 3 replicas** and a **min\_size of 2 replicas**, to ensure no data loss occurs if any OSD fails.
 
 {% hint style="warning" %}
-**Do not set a min_size of 1**. A replicated pool with min_size of 1 allows I/O on an object when it has only 1 replica, which could lead to data loss, incomplete PGs or unfound objects.
+**Do not set a min\_size of 1**. A replicated pool with min\_size of 1 allows I/O on an object when it has only 1 replica, which could lead to data loss, incomplete PGs or unfound objects.
 {% endhint %}
 
 It is advised that you either enable the PG-Autoscaler or calculate the PG number based on your setup. You can find the formula and the PG calculator   
-[PG calculator [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)]  
+\[PG calculator [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)\]  
  online. From Ceph Nautilus onward, you can change the number of PGs <a id="_footnote_placement_groups"></a>  
-[Placement Groups [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)]  
+\[Placement Groups [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)\]  
  after the setup.
 
 The PG autoscaler <a id="_footnote_autoscaler"></a>  
-[Automated Scaling [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)]  
+\[Automated Scaling [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)\]  
  can automatically scale the PG count for a pool in the background. Setting the `Target Size` or `Target Ratio` advanced parameters helps the PG-Autoscaler to make better decisions.
 
 **Example for creating a pool over the CLI**
@@ -33,7 +33,7 @@ pveceph pool create <pool-name> --add_storages
 ```
 
 {% hint style="success" %}
-If you would also like to automatically define a storage for your pool, keep the ‘Add as Storage’ checkbox checked in the web interface, or use the command-line option *--add_storages* at pool creation.
+If you would also like to automatically define a storage for your pool, keep the ‘Add as Storage’ checkbox checked in the web interface, or use the command-line option *--add\_storages* at pool creation.
 {% endhint %}
 
 ### Pool Options <a href="#_pool_options" id="_pool_options"></a>
@@ -53,7 +53,7 @@ The number of replicas per object. Ceph always tries to have this many copies of
 **PG Autoscale Mode**
 
 The automatic PG scaling mode   
-[[autoscaler]](#_footnote_autoscaler)  
+[\[autoscaler\]](#_footnote_autoscaler)  
  of the pool. If set to `warn`, it produces a warning message when a pool has a non-optimal PG count. Default: `warn`.
 
 **Add as Storage**
@@ -68,12 +68,12 @@ The minimum number of replicas per object. Ceph will reject I/O on the pool if a
 
 **Crush Rule**
 
-The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH & device classes](10-pve-ceph-device-classes.md#pve_ceph_device_classes) for information on device-based rules.
+The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH \& device classes](10-pve-ceph-device-classes.md#pve_ceph_device_classes) for information on device-based rules.
 
-**# of PGs**
+**\# of PGs**
 
 The number of placement groups   
-[[placement_groups]](#_footnote_placement_groups)  
+[\[placement\_groups\]](#_footnote_placement_groups)  
  that the pool should have at the beginning. Default: `128`.
 
 **Target Ratio**
@@ -84,12 +84,12 @@ The ratio of data that is expected in the pool. The PG autoscaler uses the ratio
 
 The estimated amount of data expected in the pool. The PG autoscaler uses this size to estimate the optimal PG count.
 
-**Min. # of PGs**
+**Min. \# of PGs**
 
 The minimum number of placement groups. This setting is used to fine-tune the lower bound of the PG count for that pool. The PG autoscaler will not merge PGs below this threshold.
 
 Further information on Ceph pool handling can be found in the Ceph pool operation   
-[Ceph pool operation [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)]  
+\[Ceph pool operation [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)\]  
  manual.
 
 ## 8.9.2. Erasure Coded Pools <a href="#pve_ceph_ec_pools" id="pve_ceph_ec_pools"></a>
@@ -105,7 +105,7 @@ The number of coding chunks, `m`, defines how many OSDs can be lost without losi
 Erasure coded (EC) pools can be created with the `pveceph` CLI tooling. Planning an EC pool needs to account for the fact, that they work differently than replicated pools.
 
 The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2`   
-[Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)]  
+\[Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)\]  
 .
 
 If there are less than `min_size` OSDs available, any IO to the pool will be blocked until there are enough OSDs available again.
@@ -133,7 +133,7 @@ The optional parameters `--size`, `--min_size` and `--crush_rule` will be used f
 {% endhint %}
 
 If there is a need to further customize the EC profile, you can do so by creating it with the Ceph tools directly   
-[Ceph Erasure Code Profile [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)]  
+\[Ceph Erasure Code Profile [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)\]  
 , and specify the profile to use with the `profile` parameter.
 
 For example:
@@ -147,7 +147,7 @@ pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
 ### FastEC (`allow_ec_optimizations`) <a href="#_fastec_span_class_monospaced_allow_ec_optimizations_span" id="_fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
 
 Ceph Tentacle introduces a new erasure coding I/O path called FastEC, enabled per pool via the `allow_ec_optimizations` flag. FastEC adds partial reads and partial writes on EC pools, substantially improving small random I/O performance — the dominant access pattern of virtual machine disk I/O. Upstream recommends it for RBD and CephFS backed storage   
-[Ceph Erasure Code [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)]  
+\[Ceph Erasure Code [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)\]  
 .
 
 FastEC has four requirements that the Ceph monitor enforces:
@@ -278,7 +278,7 @@ Do not forget to add the `keyring` and `monhost` option for any external Ceph cl
 
 To destroy a pool via the GUI, select a node in the tree view and go to the **Ceph → Pools** panel. Select the pool to destroy and click the **Destroy** button. To confirm the destruction of the pool, you need to enter the pool name.
 
-Run the following command to destroy a pool. Specify the *-remove_storages* to also remove the associated storage.
+Run the following command to destroy a pool. Specify the *-remove\_storages* to also remove the associated storage.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
@@ -292,7 +292,7 @@ Pool deletion runs in the background and can take some time. You will notice the
 
 ## 8.9.4. PG Autoscaler <a href="#_pg_autoscaler" id="_pg_autoscaler"></a>
 
-The PG autoscaler allows the cluster to consider the amount of (expected) data stored in each pool and to choose the appropriate pg_num values automatically. It is available since Ceph Nautilus.
+The PG autoscaler allows the cluster to consider the amount of (expected) data stored in each pool and to choose the appropriate pg\_num values automatically. It is available since Ceph Nautilus.
 
 You may need to activate the PG autoscaler module before adjustments can take effect.
 
@@ -328,10 +328,10 @@ The autoscaler is configured on a per pool basis and has the following modes:
 The scaling factor can be adjusted to facilitate future data storage with the `target_size`, `target_size_ratio` and the `pg_num_min` options.
 
 {% hint style="warning" %}
-By default, the autoscaler considers tuning the PG count of a pool if it is off by a factor of 3. This will lead to a considerable shift in data placement and might introduce a high load on the cluster.
+By default, the autoscaler considers tuning the PG count of a pool if it is off by a factor of 3\. This will lead to a considerable shift in data placement and might introduce a high load on the cluster.
 {% endhint %}
 
-You can find a more in-depth introduction to the PG autoscaler on Ceph’s Blog - [New in Nautilus: PG merging and autotuning](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/).
+You can find a more in-depth introduction to the PG autoscaler on Ceph’s Blog \- [New in Nautilus: PG merging and autotuning](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/).
 
 ---
 

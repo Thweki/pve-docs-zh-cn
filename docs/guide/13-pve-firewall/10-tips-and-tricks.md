@@ -2,7 +2,7 @@
 
 ## 13.10.1. How to allow FTP <a href="#_how_to_allow_ftp" id="_how_to_allow_ftp"></a>
 
-FTP is an old style protocol which uses port 21 and several other dynamic ports. So you need a rule to accept port 21. In addition, you need to load the `ip_conntrack_ftp` module. So please run:
+FTP is an old style protocol which uses port 21 and several other dynamic ports. So you need a rule to accept port 21\. In addition, you need to load the `ip_conntrack_ftp` module. So please run:
 
 ```text
 modprobe ip_conntrack_ftp

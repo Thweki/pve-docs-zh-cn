@@ -8,6 +8,8 @@
 
 Dummy. Useful for formatters which want to provide a login page.
 
+**方法标识：** `get_ticket`
+
 **权限**
 
 ```json
@@ -37,6 +39,8 @@ Dummy. Useful for formatters which want to provide a login page.
 ## POST `/access/ticket`
 
 Create or verify authentication ticket.
+
+**方法标识：** `create_ticket`
 
 **权限**
 
@@ -68,7 +72,7 @@ Create or verify authentication ticket.
 | `password` | string | 是 | — | The secret password. This can also be a valid ticket. |
 | `path` | string | 否 | — | Verify ticket, and check if user have access 'privs' on 'path' |
 | `privs` | string | 否 | — | Verify ticket, and check if user have access 'privs' on 'path' |
-| `realm` | string | 否 | — | You can optionally pass the realm using this parameter. Normally the realm is simply added to the username <username>@<realm>. |
+| `realm` | string | 否 | — | You can optionally pass the realm using this parameter. Normally the realm is simply added to the username &lt;username&gt;@&lt;realm&gt;. |
 | `tfa-challenge` | string | 否 | — | The signed TFA challenge string the user wants to respond to. |
 | `username` | string | 是 | — | User name |
 

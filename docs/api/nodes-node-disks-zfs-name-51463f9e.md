@@ -8,6 +8,8 @@
 
 Destroy a ZFS pool.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -101,6 +103,8 @@ Destroy a ZFS pool.
 ## GET `/nodes/{node}/disks/zfs/{name}`
 
 Get details about a zpool.
+
+**方法标识：** `detail`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Executes the given command in the vm via the guest-agent and returns an object with the pid.
 
+**方法标识：** `exec`
+
 **权限**
 
 ```json

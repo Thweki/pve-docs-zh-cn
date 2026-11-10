@@ -8,6 +8,8 @@
 
 User index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -181,6 +183,8 @@ User index.
 ## POST `/access/users`
 
 Create new user.
+
+**方法标识：** `create_user`
 
 **权限**
 

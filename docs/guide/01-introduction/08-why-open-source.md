@@ -1,10 +1,10 @@
-# 1.8. Why Open Source <a href="#_why_open_source" id="_why_open_source"></a>
+# 1.8. 为何选择开源 <a href="#_why_open_source" id="_why_open_source"></a>
 
-Proxmox VE uses a Linux kernel and is based on the Debian GNU/Linux distribution. The source code of Proxmox VE is released under the [GNU Affero General Public License, version 3](https://www.gnu.org/licenses/agpl-3.0.html). This means that you are free to inspect the source code at any time or contribute to the project yourself.
+Proxmox VE 使用 Linux 内核，并基于 Debian GNU/Linux 发行版。Proxmox VE 的源代码依据[GNU Affero 通用公共许可证第 3 版](https://www.gnu.org/licenses/agpl-3.0.html)发布。这意味着您可以随时自由查看源代码，或亲自为项目做出贡献。
 
-Proxmox is committed to using open source software whenever possible. Open source software guarantees full access to all functionality—as well as high security and reliability. Everybody should have the right to access the source code of software to run it, build on it, or submit changes back to the project. Everybody is encouraged to contribute while Proxmox ensures the product always meets professional quality criteria.
+Proxmox 致力于尽可能使用开源软件。开源软件保证用户可以完整访问所有功能，同时提供高安全性和可靠性。每个人都应有权访问软件源代码，以运行软件、在其基础上进行开发，或向项目提交更改。Proxmox 鼓励每个人做出贡献，同时确保产品始终符合专业质量标准。
 
-Open source software also helps to keep costs low and makes core infrastructure independent from a single vendor.
+开源软件还有助于降低成本，并使核心基础设施不依赖于单一供应商。
 
 ---
 

@@ -8,6 +8,8 @@
 
 Opens a websocket for VNC traffic.
 
+**方法标识：** `vncwebsocket`
+
 **权限**
 
 ```json

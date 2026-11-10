@@ -8,6 +8,8 @@
 
 Read DNS settings.
 
+**方法标识：** `dns`
+
 **权限**
 
 ```json
@@ -93,6 +95,8 @@ Read DNS settings.
 ## PUT `/nodes/{node}/dns`
 
 Write DNS settings.
+
+**方法标识：** `update_dns`
 
 **权限**
 

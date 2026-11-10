@@ -1,4 +1,4 @@
-# 15. High Availability <a href="#chapter_ha_manager" id="chapter_ha_manager"></a>
+# 15\. High Availability <a href="#chapter_ha_manager" id="chapter_ha_manager"></a>
 
 我们的现代社会高度依赖计算机通过网络提供的信息。移动设备加剧了这种依赖，因为人们可以随时随地访问网络。如果您提供此类服务，那么确保它们在绝大多数时间内可用就非常重要。
 

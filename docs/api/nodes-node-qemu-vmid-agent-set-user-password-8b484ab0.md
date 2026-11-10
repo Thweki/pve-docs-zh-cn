@@ -8,6 +8,8 @@
 
 Sets the password for the given user to the given password
 
+**方法标识：** `set-user-password`
+
 **权限**
 
 ```json

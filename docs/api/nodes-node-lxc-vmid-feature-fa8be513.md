@@ -8,6 +8,8 @@
 
 Check if feature for virtual machine is available.
 
+**方法标识：** `vm_feature`
+
 **权限**
 
 ```json

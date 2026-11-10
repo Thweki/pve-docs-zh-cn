@@ -1,4 +1,4 @@
-# 18.3. pvestatd - Proxmox VE Status Daemon <a href="#_pvestatd_proxmox_ve_status_daemon" id="_pvestatd_proxmox_ve_status_daemon"></a>
+# 18.3. pvestatd \- Proxmox VE Status Daemon <a href="#_pvestatd_proxmox_ve_status_daemon" id="_pvestatd_proxmox_ve_status_daemon"></a>
 
 This daemon queries the status of VMs, storages and containers at regular intervals. The result is sent to all nodes in the cluster.
 

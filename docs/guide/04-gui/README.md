@@ -1,4 +1,4 @@
-# 4. Graphical User Interface <a href="#chapter_gui" id="chapter_gui"></a>
+# 4\. Graphical User Interface <a href="#chapter_gui" id="chapter_gui"></a>
 
 Proxmox VE is simple. There is no need to install a separate management tool, and everything can be done through your web browser (Latest Firefox or Google Chrome is preferred). A built-in HTML5 console is used to access the guest console. As an alternative, [SPICE](https://www.spice-space.org/) can be used.
 

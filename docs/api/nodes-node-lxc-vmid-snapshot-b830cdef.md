@@ -8,6 +8,8 @@
 
 列出所有快照。
 
+**方法标识：** `list`
+
 **权限**
 
 ```json
@@ -115,6 +117,8 @@
 ## POST `/nodes/{node}/lxc/{vmid}/snapshot`
 
 为容器创建快照。
+
+**方法标识：** `snapshot`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Index of available pci methods
 
+**方法标识：** `pci_index`
+
 **权限**
 
 ```json

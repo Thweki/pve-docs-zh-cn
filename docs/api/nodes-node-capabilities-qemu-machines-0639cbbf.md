@@ -8,6 +8,8 @@
 
 Get available QEMU/KVM machine types.
 
+**方法标识：** `types`
+
 **权限**
 
 ```json

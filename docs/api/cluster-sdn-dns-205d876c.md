@@ -8,6 +8,8 @@
 
 SDN dns index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@ SDN dns index.
 ## POST `/cluster/sdn/dns`
 
 Create a new sdn dns object.
+
+**方法标识：** `create`
 
 **权限**
 

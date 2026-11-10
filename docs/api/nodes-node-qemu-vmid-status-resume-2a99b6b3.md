@@ -8,6 +8,8 @@
 
 Resume virtual machine.
 
+**方法标识：** `vm_resume`
+
 **权限**
 
 ```json

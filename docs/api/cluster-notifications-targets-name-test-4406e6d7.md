@@ -8,6 +8,8 @@
 
 Send a test notification to a provided target.
 
+**方法标识：** `test_target`
+
 **权限**
 
 ```json

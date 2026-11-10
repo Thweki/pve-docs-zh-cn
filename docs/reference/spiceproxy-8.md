@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-spiceproxy - SPICE Proxy Service
+spiceproxy \- SPICE Proxy Service
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -44,9 +44,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_spiceproxy_status"></a>
 

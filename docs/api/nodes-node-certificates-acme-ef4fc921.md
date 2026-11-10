@@ -8,6 +8,8 @@
 
 ACME index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json

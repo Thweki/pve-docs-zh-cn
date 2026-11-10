@@ -1,6 +1,6 @@
 # 8.3. Recommendations for a Healthy Ceph Cluster <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
 
-To build a hyper-converged Proxmox + Ceph Cluster, you must use at least three (preferably) identical servers for the setup.
+To build a hyper-converged Proxmox \+ Ceph Cluster, you must use at least three (preferably) identical servers for the setup.
 
 Check also the recommendations from [Ceph’s website](https://docs.ceph.com/en/tentacle/start/hardware-recommendations/).
 
@@ -54,19 +54,19 @@ Total memory consumption is primarily determined by the number of OSD daemons. H
 **Network**
 
 We recommend a network bandwidth of at least 10 Gbps, or more, to be used exclusively for Ceph traffic. A meshed network setup   
-[Full Mesh Network for Ceph [https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)]  
- is also an option for three to five node clusters, if there are no 10+ Gbps switches available.
+\[Full Mesh Network for Ceph [https://pve.proxmox.com/wiki/Full\_Mesh\_Network\_for\_Ceph\_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)\]  
+ is also an option for three to five node clusters, if there are no 10\+ Gbps switches available.
 
 {% hint style="warning" %}
 The volume of traffic, especially during recovery, will interfere with other services on the same network, especially the latency sensitive Proxmox VE corosync cluster stack can be affected, resulting in possible loss of cluster quorum. Moving the Ceph traffic to dedicated and physical separated networks will avoid such interference, not only for corosync, but also for the networking services provided by any virtual guests.
 {% endhint %}
 
-For estimating your bandwidth needs, you need to take the performance of your disks into account.. While a single HDD might not saturate a 1 Gb link, multiple HDD OSDs per node can already saturate 10 Gbps too. If modern NVMe-attached SSDs are used, a single one can already saturate 10 Gbps of bandwidth, or more. For such high-performance setups we recommend at least a 25 Gpbs, while even 40 Gbps or 100+ Gbps might be required to utilize the full performance potential of the underlying disks.
+For estimating your bandwidth needs, you need to take the performance of your disks into account.. While a single HDD might not saturate a 1 Gb link, multiple HDD OSDs per node can already saturate 10 Gbps too. If modern NVMe-attached SSDs are used, a single one can already saturate 10 Gbps of bandwidth, or more. For such high-performance setups we recommend at least a 25 Gpbs, while even 40 Gbps or 100\+ Gbps might be required to utilize the full performance potential of the underlying disks.
 
 If unsure, we recommend using three (physical) separate networks for high-performance setups:
 
-- one very high bandwidth (25+ Gbps) network for Ceph (internal) cluster traffic.
-- one high bandwidth (10+ Gpbs) network for Ceph (public) traffic between the ceph server and ceph client storage traffic. Depending on your needs this can also be used to host the virtual guest traffic and the VM live-migration traffic.
+- one very high bandwidth (25\+ Gbps) network for Ceph (internal) cluster traffic.
+- one high bandwidth (10\+ Gpbs) network for Ceph (public) traffic between the ceph server and ceph client storage traffic. Depending on your needs this can also be used to host the virtual guest traffic and the VM live-migration traffic.
 - one medium bandwidth (1 Gbps) exclusive for the latency sensitive corosync cluster communication.
 
 If a firewall is enabled you will have to open the ports used by Ceph, the easiest way to do this is to use a firewall `macro`.

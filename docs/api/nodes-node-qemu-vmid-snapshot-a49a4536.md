@@ -8,6 +8,8 @@
 
 列出所有快照。
 
+**方法标识：** `snapshot_list`
+
 **权限**
 
 ```json
@@ -120,6 +122,8 @@
 ## POST `/nodes/{node}/qemu/{vmid}/snapshot`
 
 Snapshot a VM.
+
+**方法标识：** `snapshot`
 
 **权限**
 

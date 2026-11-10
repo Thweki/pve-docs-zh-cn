@@ -8,6 +8,8 @@
 
 Delete network device configuration
 
+**方法标识：** `delete_network`
+
 **权限**
 
 ```json
@@ -85,6 +87,8 @@ Delete network device configuration
 ## GET `/nodes/{node}/network/{iface}`
 
 Read network device configuration
+
+**方法标识：** `network_config`
 
 **权限**
 
@@ -165,6 +169,8 @@ Read network device configuration
 ## PUT `/nodes/{node}/network/{iface}`
 
 Update network device configuration
+
+**方法标识：** `update_network`
 
 **权限**
 

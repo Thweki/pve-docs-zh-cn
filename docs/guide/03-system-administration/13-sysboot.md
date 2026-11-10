@@ -17,7 +17,7 @@ The created partitions are:
 Systems using ZFS as root filesystem are booted with a kernel and initrd image stored on the 512 MB EFI System Partition. For legacy BIOS systems, and EFI systems with Secure Boot enabled, GRUB is used, for EFI systems without Secure Boot, `systemd-boot` is used. Both are installed and configured to point to the ESPs.
 
 GRUB in BIOS mode (`--target i386-pc`) is installed onto the BIOS Boot Partition of all selected disks on all systems booted with GRUB   
-[These are all installs with root on `ext4` or `xfs` and installs with root on ZFS on non-EFI systems]  
+\[These are all installs with root on `ext4` or `xfs` and installs with root on ZFS on non-EFI systems\]  
 .
 
 {% hint style="info" %}
@@ -27,7 +27,7 @@ This applies to x86 hosts. On arm64, Proxmox VE boots through UEFI only, so ther
 ## 3.13.2. Synchronizing the content of the ESP with `proxmox-boot-tool` <a href="#sysboot_proxmox_boot_tool" id="sysboot_proxmox_boot_tool"></a>
 
 `proxmox-boot-tool` is a utility used to keep the contents of the EFI System Partitions properly configured and synchronized. It copies certain kernel versions to all ESPs and configures the respective bootloader to boot from the `vfat` formatted ESPs. In the context of ZFS as root filesystem this means that you can use all optional features on your root pool instead of the subset which is also present in the ZFS implementation in GRUB or having to create a separate small boot-pool   
-[Booting ZFS on root with GRUB [https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html](https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html)]  
+\[Booting ZFS on root with GRUB [https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html](https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Bookworm%20Root%20on%20ZFS.html)\]  
 .
 
 In setups with redundancy all disks are partitioned with an ESP, by the installer. This ensures the system boots even if the first boot device fails or if the BIOS can only boot from a particular disk.
@@ -195,14 +195,14 @@ you can find out if `proxmox-boot-tool` is configured, which is a good indicatio
 ## 3.13.4. GRUB <a href="#sysboot_grub" id="sysboot_grub"></a>
 
 GRUB has been the de-facto standard for booting Linux systems for many years and is quite well documented   
-[GRUB Manual [https://www.gnu.org/software/grub/manual/grub/grub.html](https://www.gnu.org/software/grub/manual/grub/grub.html)]  
+\[GRUB Manual [https://www.gnu.org/software/grub/manual/grub/grub.html](https://www.gnu.org/software/grub/manual/grub/grub.html)\]  
 .
 
 ### Configuration <a href="#_configuration" id="_configuration"></a>
 
 Changes to the GRUB configuration are done via the defaults file `/etc/default/grub` or config snippets in `/etc/default/grub.d`. To regenerate the configuration file after a change to the configuration run:   
-[Systems using `proxmox-boot-tool` will call `proxmox-boot-tool
-refresh` upon `update-grub`.]
+\[Systems using `proxmox-boot-tool` will call `proxmox-boot-tool
+refresh` upon `update-grub`.\]
 
 ```text
 # update-grub
@@ -240,7 +240,7 @@ The kernel commandline needs to be placed in the variable `GRUB_CMDLINE_LINUX_DE
 
 The kernel commandline needs to be placed as one line in `/etc/kernel/cmdline`. To apply your changes, run `proxmox-boot-tool refresh`, which sets it as the `option` line for all config files in `loader/entries/proxmox-*.conf`.
 
-A complete list of kernel parameters can be found at *https://www.kernel.org/doc/html/v<YOUR-KERNEL-VERSION>/admin-guide/kernel-parameters.html*. replace <YOUR-KERNEL-VERSION> with the major.minor version, for example, for kernels based on version 6.5 the URL would be: [https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html](https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html)
+A complete list of kernel parameters can be found at *https://www.kernel.org/doc/html/v\<YOUR-KERNEL-VERSION\>/admin-guide/kernel-parameters.html*. replace \<YOUR-KERNEL-VERSION\> with the major.minor version, for example, for kernels based on version 6.5 the URL would be: [https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html](https://www.kernel.org/doc/html/v6.5/admin-guide/kernel-parameters.html)
 
 You can find your kernel version by checking the web interface (*Node → Summary*), or by running
 

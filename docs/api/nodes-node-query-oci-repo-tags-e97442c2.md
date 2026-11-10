@@ -8,6 +8,8 @@
 
 List all tags for an OCI repository reference.
 
+**方法标识：** `query_oci_repo_tags`
+
 **权限**
 
 ```json

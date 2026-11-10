@@ -8,6 +8,8 @@
 
 Get the base parameters for creating a guest which imports data from a foreign importable guest, like an ESXi VM
 
+**方法标识：** `get_import_metadata`
+
 **权限**
 
 ```json

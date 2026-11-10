@@ -8,6 +8,8 @@
 
 Migration tunnel endpoint - only for internal use by VM migration.
 
+**方法标识：** `mtunnel`
+
 **权限**
 
 ```json

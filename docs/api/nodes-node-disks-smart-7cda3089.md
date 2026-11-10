@@ -8,6 +8,8 @@
 
 Get SMART Health of a disk.
 
+**方法标识：** `smart`
+
 **权限**
 
 ```json

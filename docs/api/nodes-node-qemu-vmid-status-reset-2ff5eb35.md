@@ -8,6 +8,8 @@
 
 Reset virtual machine.
 
+**方法标识：** `vm_reset`
+
 **权限**
 
 ```json

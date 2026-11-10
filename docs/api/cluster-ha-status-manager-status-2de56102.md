@@ -8,6 +8,8 @@
 
 Get full HA manager status, including LRM status.
 
+**方法标识：** `manager_status`
+
 **权限**
 
 ```json

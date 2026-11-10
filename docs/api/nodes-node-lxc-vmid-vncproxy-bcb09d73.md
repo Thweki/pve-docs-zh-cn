@@ -8,6 +8,8 @@
 
 Creates a TCP VNC proxy connections.
 
+**方法标识：** `vncproxy`
+
 **权限**
 
 ```json

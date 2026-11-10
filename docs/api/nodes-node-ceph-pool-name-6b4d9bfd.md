@@ -8,6 +8,8 @@
 
 Destroy pool
 
+**方法标识：** `destroypool`
+
 **权限**
 
 ```json
@@ -107,6 +109,8 @@ Destroy pool
 
 Pool index.
 
+**方法标识：** `poolindex`
+
 **权限**
 
 ```json
@@ -182,6 +186,8 @@ Pool index.
 ## PUT `/nodes/{node}/ceph/pool/{name}`
 
 Change POOL settings
+
+**方法标识：** `setpool`
 
 **权限**
 

@@ -1,253 +1,253 @@
-# 2.3. Using the Proxmox VE Installer <a href="#installation_installer" id="installation_installer"></a>
+# 2.3. 使用 Proxmox VE 安装程序 <a href="#installation_installer" id="installation_installer"></a>
 
-The installer ISO image includes the following:
+安装程序 ISO 镜像包含以下内容：
 
-- Complete operating system (Debian GNU/Linux, 64-bit)
-- The Proxmox VE installer, which partitions the local disk(s) with ext4, XFS, BTRFS (technology preview), or ZFS and installs the operating system
-- Proxmox VE Linux kernel with KVM and LXC support
-- Complete toolset for administering virtual machines, containers, the host system, clusters, and all necessary resources
-- Web-based management interface
+- 完整的操作系统（Debian GNU/Linux，64 位）
+- Proxmox VE 安装程序，使用 ext4、XFS、BTRFS（技术预览）或 ZFS 对本地磁盘进行分区，并安装操作系统
+- 支持 KVM 和 LXC 的 Proxmox VE Linux 内核
+- 用于管理虚拟机、容器、宿主机系统、集群及所有必要资源的完整工具集
+- 基于 Web 的管理界面
 
 {% hint style="info" %}
-All existing data on the selected drives will be removed during the installation process. The installer does not add boot menu entries for other operating systems.
+安装过程中，所选驱动器上的所有现有数据都将被删除。安装程序不会为其他操作系统添加启动菜单项。
 {% endhint %}
 
-Please insert the [prepared installation media](02-installation-prepare-media.md#installation_prepare_media) (for example, USB flash drive or CD-ROM) and boot from it.
+请插入[准备好的安装介质](02-installation-prepare-media.md#installation_prepare_media)（例如 USB 闪存盘或 CD-ROM），并从该介质启动。
 
 {% hint style="success" %}
-Make sure that booting from the installation medium (for example, USB) is enabled in your server’s firmware settings. Secure boot needs to be disabled when booting an installer prior to Proxmox VE version 8.1.
+请确保已在服务器的固件设置中启用从安装介质（例如 USB）启动。使用 Proxmox VE 8.1 之前版本的安装程序启动时，需要禁用安全启动。
 {% endhint %}
 
 [![screenshot/pve-grub-menu.png](../../assets/screenshot-pve-grub-menu-png-daaa98e42125.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-grub-menu.png)
 
-After choosing the correct entry (for example, *Boot from USB*), the Proxmox VE menu appears and you can select one of the following options:
+选择正确的条目（例如 *从 USB 启动*）后，将显示 Proxmox VE 菜单，您可以选择以下选项之一：
 
-**Install Proxmox VE (Graphical)**
+**安装 Proxmox VE（图形界面）**
 
-Starts the normal installation.
+开始正常安装。
 
 {% hint style="success" %}
-It’s possible to use the installation wizard with a keyboard only. Buttons can be clicked by pressing the `ALT` key combined with the underlined character from the respective button. For example, `ALT + N` to press a `Next` button.
+可以仅使用键盘操作安装向导。按住 `ALT` 键并同时按下相应按钮上带下划线的字符，即可点击按钮。例如，按 `ALT + N` 可点击 `Next` 按钮。
 {% endhint %}
 
-**Install Proxmox VE (Terminal UI)**
+**安装 Proxmox VE（终端 UI）**
 
-Starts the terminal-mode installation wizard. It provides the same overall installation experience as the graphical installer, but has generally better compatibility with very old and very new hardware.
+启动终端模式安装向导。它提供与图形安装程序相同的整体安装体验，但通常对非常陈旧和非常新的硬件具有更好的兼容性。
 
-**Install Proxmox VE (Terminal UI, Serial Console)**
+**安装 Proxmox VE（终端 UI，串行控制台）**
 
-Starts the terminal-mode installation wizard, additionally setting up the Linux kernel to use the (first) serial port of the machine for in- and output. This can be used if the machine is completely headless and only has a serial console available.
+启动终端模式安装向导，并额外配置 Linux 内核使用机器的（第一个）串行端口进行输入和输出。如果机器完全无头且只有串行控制台可用，则可以使用此选项。
 
 [![screenshot/pve-tui-installer.png](../../assets/screenshot-pve-tui-installer-png-b3905616fe63.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-tui-installer.png)
 
-Both modes use the same code base for the actual installation process to benefit from more than a decade of bug fixes and ensure feature parity.
+两种模式的实际安装过程使用相同的代码库，既得益于十多年来积累的错误修复，也确保了功能一致性。
 
 {% hint style="success" %}
-The *Terminal UI* option can be used in case the graphical installer does not work correctly, for example due to driver issues. See also [adding the `nomodeset` kernel parameter](#nomodeset_kernel_param).
+如果图形安装程序无法正常工作（例如由于驱动程序问题），可以使用 *终端 UI* 选项。另请参阅[添加 `nomodeset` 内核参数](#nomodeset_kernel_param)。
 {% endhint %}
 
-**Advanced Options: Install Proxmox VE (Graphical, Debug Mode)**
+**高级选项：安装 Proxmox VE（图形界面，调试模式）**
 
-Starts the installation in debug mode. A console will be opened at several installation steps. This helps to debug the situation if something goes wrong. To exit a debug console, press `CTRL-D`. This option can be used to boot a live system with all basic tools available. You can use it, for example, to [repair a degraded ZFS *rpool*](../03-system-administration/09-chapter-zfs.md#chapter_zfs) or fix the [bootloader](../03-system-administration/13-sysboot.md#sysboot) for an existing Proxmox VE setup.
+以调试模式启动安装。在几个安装步骤中会打开控制台。如果出现问题，这有助于调试。要退出调试控制台，请按 `CTRL-D`。此选项可用于启动一个提供所有基本工具的 Live 系统。例如，您可以用它来[修复降级的 ZFS *rpool*](../03-system-administration/09-chapter-zfs.md#chapter_zfs)，或修复现有 Proxmox VE 安装的[引导加载程序](../03-system-administration/13-sysboot.md#sysboot)。
 
-**Advanced Options: Install Proxmox VE (Terminal UI, Debug Mode)**
+**高级选项：安装 Proxmox VE（终端 UI，调试模式）**
 
-Same as the graphical debug mode, but preparing the system to run the terminal-based installer instead.
+与图形调试模式相同，但会将系统准备为运行基于终端的安装程序。
 
-**Advanced Options: Install Proxmox VE (Serial Console Debug Mode)**
+**高级选项：安装 Proxmox VE（串行控制台调试模式）**
 
-Same as the terminal-based debug mode, but additionally sets up the Linux kernel to use the (first) serial port of the machine for in- and output.
+与基于终端的调试模式相同，但还会额外配置 Linux 内核使用机器的（第一个）串行端口进行输入和输出。
 
-**Advanced Options: Install Proxmox VE (Automated)**
+**高级选项：安装 Proxmox VE（自动化）**
 
-Starts the installer in unattended mode, even if the ISO has not been appropriately prepared for an automated installation. This option can be used to gather hardware details or might be useful to debug an automated installation setup. See [Unattended Installation](04-installation-unattended.md#installation_unattended) for more information.
+以无人值守模式启动安装程序，即使 ISO 尚未针对自动化安装进行适当准备。此选项可用于收集硬件详细信息，也可能有助于调试自动化安装设置。更多信息请参阅[无人值守安装](04-installation-unattended.md#installation_unattended)。
 
-**Advanced Options: Rescue Boot**
+**高级选项：救援启动**
 
-With this option you can boot an existing installation. It searches all attached hard disks. If it finds an existing installation, it boots directly into that disk using the Linux kernel from the ISO. This can be useful if there are problems with the bootloader (GRUB/`systemd-boot`) or the BIOS/UEFI is unable to read the boot block from the disk.
+使用此选项可以启动现有安装。它会搜索所有已连接的硬盘。如果找到现有安装，它会使用 ISO 中的 Linux 内核直接从该磁盘启动。如果引导加载程序（GRUB/`systemd-boot`）出现问题，或者 BIOS/UEFI 无法从磁盘读取引导块，此选项会很有用。
 
-**Advanced Options: Test Memory (memtest86+)**
+**高级选项：测试内存（memtest86\+）**
 
-Runs `memtest86+`. This is useful to check if the memory is functional and free of errors. Secure Boot must be turned off in the UEFI firmware setup utility to run this option.
+运行 `memtest86+`。这可用于检查内存是否正常工作且无错误。要运行此选项，必须在 UEFI 固件设置实用程序中关闭安全启动。
 
 {% hint style="info" %}
-This entry is available on x86 installation media only, as `memtest86+` does not support arm64.
+此条目仅在 x86 安装介质上可用，因为 `memtest86+` 不支持 arm64。
 {% endhint %}
 
-You normally select **Install Proxmox VE (Graphical)** to start the installation.
+通常选择**安装 Proxmox VE（图形界面）**来开始安装。
 
 [![screenshot/pve-select-target-disk.png](../../assets/screenshot-pve-select-target-disk-png-dd544bdd8564.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-select-target-disk.png)
 
-The first step is to read the EULA (End User License Agreement). Following this, you can select the target hard disk(s) for the installation.
+第一步是阅读 EULA（最终用户许可协议）。然后，您可以选择安装的目标硬盘。
 
 {% hint style="danger" %}
-By default, the whole server is used and all existing data is removed. Make sure there is no important data on the server before proceeding with the installation.
+默认情况下，将使用整个服务器，并删除所有现有数据。在继续安装之前，请确保服务器上没有重要数据。
 {% endhint %}
 
-The `Options` button lets you select the target file system, which defaults to `ext4`. The installer uses LVM if you select `ext4` or `xfs` as a file system, and offers additional options to restrict LVM space (see [below](#advanced_lvm_options)).
+`Options` 按钮可用于选择目标文件系统，默认为 `ext4`。如果选择 `ext4` 或 `xfs` 作为文件系统，安装程序会使用 LVM，并提供用于限制 LVM 空间的额外选项（见[下文](#advanced_lvm_options)）。
 
-Proxmox VE can also be installed on ZFS. As ZFS offers several software RAID levels, this is an option for systems that don’t have a hardware RAID controller. The target disks must be selected in the `Options` dialog. More ZFS-specific settings can be changed under [`Advanced Options`](#advanced_zfs_options).
+Proxmox VE 也可以安装在 ZFS 上。由于 ZFS 提供多种软件 RAID 级别，因此这是没有硬件 RAID 控制器的系统的一种选择。必须在`Options`对话框中选择目标磁盘。可以在[`Advanced Options`](#advanced_zfs_options)下更改更多 ZFS 专用设置。
 
 {% hint style="warning" %}
-ZFS on top of any hardware RAID is not supported and can result in data loss.
+不支持在任何硬件 RAID 之上使用 ZFS，这可能会导致数据丢失。
 {% endhint %}
 
 [![screenshot/pve-select-location.png](../../assets/screenshot-pve-select-location-png-d1bd2e26bff2.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-select-location.png)
 
-The next page asks for basic configuration options like your location, time zone, and keyboard layout. The location is used to select a nearby download server, in order to increase the speed of updates. The installer is usually able to auto-detect these settings, so you only need to change them in rare situations when auto-detection fails, or when you want to use a keyboard layout not commonly used in your country.
+下一页要求提供基本配置选项，例如您所在的位置、时区和键盘布局。位置用于选择附近的下载服务器，以提高更新速度。安装程序通常能够自动检测这些设置，因此只有在自动检测失败的少数情况下，或者当您想使用在所在国家不常用的键盘布局时，才需要更改这些设置。
 
 [![screenshot/pve-set-password.png](../../assets/screenshot-pve-set-password-png-bc5b3f84937b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-set-password.png)
 
-You must also specify the password of the superuser (`root`) and an email address. The password must consist of at least 8 characters. It’s highly recommended to use a stronger password. Some guidelines are:
+您还必须指定超级用户（`root`）的密码和电子邮件地址。密码必须至少包含 8 个字符。强烈建议使用更强的密码。以下是一些准则：
 
-- Use a minimum password length of at least 12 characters.
-- Include lowercase and uppercase alphabetic characters, numbers, and symbols.
-- Avoid character repetition, keyboard patterns, common dictionary words, letter or number sequences, usernames, relative or pet names, romantic links (current or past), and biographical information (for example ID numbers, ancestors' names or dates).
+- 使用的密码长度至少为 12 个字符。
+- 包含小写和大写字母、数字及符号。
+- 避免字符重复、键盘模式、常见词典单词、字母或数字序列、用户名、亲属或宠物的名字、恋爱关系信息（当前或过去）以及个人生平信息（例如身份证号码、祖先姓名或日期）。
 
-The email address is used to send notifications to the system administrator. For example:
+该电子邮件地址用于向系统管理员发送通知。例如：
 
-- Information about available package updates.
-- Error messages from periodic *cron* jobs.
+- 有关可用软件包更新的信息。
+- 来自周期性 *cron* 作业的错误消息。
 
 [![screenshot/pve-setup-network.png](../../assets/screenshot-pve-setup-network-png-b8ac9f540804.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-setup-network.png)
 
-The system sends all notification emails to the specified address.
+系统会将所有通知电子邮件发送到指定地址。
 
-The last step is the network configuration. Network interfaces that are *UP* show a filled circle in front of their name in the drop-down menu. Please note that during installation you can either specify an IPv4 or IPv6 address, but not both. To configure a dual-stack node, add additional IP addresses after the installation.
+最后一步是网络配置。在下拉菜单中，状态为 *UP* 的网络接口名称前会显示一个实心圆。请注意，在安装过程中，您可以指定 IPv4 或 IPv6 地址，但不能同时指定两者。要配置双栈节点，请在安装后添加其他 IP 地址。
 
 [![screenshot/pve-install-summary.png](../../assets/screenshot-pve-install-summary-png-e1d15db0395a.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-install-summary.png)
 
-The next step shows a summary of the previously selected options. Please re-check every setting and use the `Previous` button if a setting needs to be changed.
+下一步显示先前所选选项的摘要。请重新检查每项设置，如果需要更改某项设置，请使用 `Previous` 按钮。
 
-After clicking `Install`, the installer begins to format the disks and copy packages to the target disk(s). Please wait until this step has finished; then remove the installation medium and restart your system.
+点击 `Install` 后，安装程序开始格式化磁盘并将软件包复制到目标磁盘。请等待此步骤完成；然后取出安装介质并重新启动系统。
 
 [![screenshot/pve-installation.png](../../assets/screenshot-pve-installation-png-e07b3e136345.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-installation.png)
 
-Copying the packages usually takes several minutes, mostly depending on the speed of the installation medium and the target disk performance.
+复制软件包通常需要几分钟，主要取决于安装介质的速度和目标磁盘的性能。
 
-When copying and setting up the packages has finished, you can reboot the server. This will be done automatically after a few seconds by default.
+软件包复制和设置完成后，即可重新启动服务器。默认情况下，系统会在几秒钟后自动重新启动。
 
-**Installation Failure**
+**安装失败**
 
-If the installation failed, check out specific errors on the second TTY (*CTRL + ALT + F2*) and ensure that the system meets the [minimum requirements](01-system-requirements.md#install_minimal_requirements).
+如果安装失败，请在第二个 TTY（*CTRL \+ ALT \+ F2*）上查看具体错误，并确保系统满足[最低要求](01-system-requirements.md#install_minimal_requirements)。
 
-If the installation is still not working, look at the [how to get help chapter](../01-introduction/10-getting-help.md#getting_help).
+如果安装仍无法正常工作，请参阅[如何获取帮助一章](../01-introduction/10-getting-help.md#getting_help)。
 
-## 2.3.1. Accessing the Management Interface Post-Installation <a href="#_accessing_the_management_interface_post_installation" id="_accessing_the_management_interface_post_installation"></a>
+## 2.3.1. 安装后访问管理界面 <a href="#_accessing_the_management_interface_post_installation" id="_accessing_the_management_interface_post_installation"></a>
 
 [![screenshot/gui-login-window.png](../../assets/screenshot-gui-login-window-png-9cd1c28376f9.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-login-window.png)
 
-After a successful installation and reboot of the system you can use the Proxmox VE web interface for further configuration.
+成功安装并重新启动系统后，您可以使用 Proxmox VE Web 界面进行进一步配置。
 
-1. Point your browser to the IP address given during the installation and port 8006, for example: [https://youripaddress:8006](https://youripaddress:8006)
-2. Log in using the `root` (realm *PAM*) username and the password chosen during installation.
-3. Upload your subscription key to gain access to the Enterprise repository. Otherwise, you will need to set up one of the public, less tested package repositories to get updates for security fixes, bug fixes, and new features.
-4. Check the IP configuration and hostname.
-5. Check the timezone.
-6. Check your [Firewall settings](../13-pve-firewall/README.md#chapter_pve_firewall).
+1. 将浏览器指向安装期间指定的 IP 地址和端口 8006，例如：[https://youripaddress:8006](https://youripaddress:8006)
+2. 使用 `root` 用户名（领域为 *PAM*）和安装期间设置的密码登录。
+3. 上传您的订阅密钥以访问企业版存储库。否则，您需要设置一个公开的、测试较少的软件包存储库，才能获取安全修复、错误修复和新功能的更新。
+4. 检查 IP 配置和主机名。
+5. 检查时区。
+6. 检查您的[防火墙设置](../13-pve-firewall/README.md#chapter_pve_firewall)。
 
-## 2.3.2. Advanced LVM Configuration Options <a href="#advanced_lvm_options" id="advanced_lvm_options"></a>
+## 2.3.2. 高级 LVM 配置选项 <a href="#advanced_lvm_options" id="advanced_lvm_options"></a>
 
-The installer creates a Volume Group (VG) called `pve`, and additional Logical Volumes (LVs) called `root`, `data`, and `swap`, if `ext4` or `xfs` is used. To control the size of these volumes use:
+安装程序会创建名为 `pve` 的卷组（VG），以及名为 `root`、`data` 和 `swap` 的其他逻辑卷（LV），前提是使用 `ext4` 或 `xfs`。要控制这些卷的大小，请使用：
 
 **`hdsize`**
 
-Defines the total hard disk size to be used. This way you can reserve free space on the hard disk for further partitioning (for example for an additional PV and VG on the same hard disk that can be used for LVM storage).
+定义要使用的硬盘总大小。这样可以在硬盘上保留可用空间，以便进一步分区（例如，在同一硬盘上创建可用于 LVM 存储的额外 PV 和 VG）。
 
 **`swapsize`**
 
-Defines the size of the `swap` volume. The default is the size of the installed memory, minimum 4 GB and maximum 8 GB. The resulting value cannot be greater than one eighth of the size of the hard drive (`hdsize / 8`).
+定义 `swap` 卷的大小。默认值为已安装内存的大小，最小 4 GB，最大 8 GB。结果值不能大于硬盘大小的八分之一（`hdsize / 8`）。
 
 {% hint style="info" %}
-If set to `0`, no `swap` volume will be created.
+如果设置为 `0`，则不会创建 `swap` 卷。
 {% endhint %}
 
 **`maxroot`**
 
-Defines the maximum size of the `root` volume, which stores the operating system. With more than 48 GiB storage available, the default is a quarter of the size of the hard drive (`hdsize / 4`) with a maximum of 96 GiB. With less than 48 GiB of storage available, the root volume size is at least half the size of the hard drive (`hdsize / 2`).
+定义存储操作系统的 `root` 卷的最大大小。当可用存储超过 48 GiB 时，默认值为硬盘大小的四分之一（`hdsize / 4`），最大为 96 GiB。当可用存储少于 48 GiB 时，root 卷大小至少为硬盘大小的一半（`hdsize / 2`）。
 
 **`maxvz`**
 
-Defines the maximum size of the `data` volume. The actual size of the `data` volume is:
+定义 `data` 卷的最大大小。`data` 卷的实际大小为：
 
 `datasize = hdsize - rootsize - swapsize - minfree`
 
-Where `datasize` cannot be bigger than `maxvz`.
+其中 `datasize` 不能大于 `maxvz`。
 
 {% hint style="info" %}
 In case of LVM thin, the `data` pool will only be created if `datasize` is bigger than 4GB.
 {% endhint %}
 
 {% hint style="info" %}
-If set to `0`, no `data` volume will be created and the storage configuration will be adapted accordingly.
+如果设置为 `0`，则不会创建 `data` 卷，并且存储配置会相应调整。
 {% endhint %}
 
 **`minfree`**
 
-Defines the amount of free space that should be left in the LVM volume group `pve`. With more than 128GB storage available, the default is 16GB, otherwise `hdsize/8` will be used.
+定义 LVM 卷组 `pve` 中应保留的可用空间量。当可用存储超过 128GB 时，默认值为 16GB，否则将使用 `hdsize/8`。
 
 {% hint style="info" %}
-LVM requires free space in the VG for snapshot creation (not required for lvmthin snapshots).
+LVM 要求 VG 中有可用空间才能创建快照（lvmthin 快照不需要）。
 {% endhint %}
 
-## 2.3.3. Advanced ZFS Configuration Options <a href="#advanced_zfs_options" id="advanced_zfs_options"></a>
+## 2.3.3. 高级 ZFS 配置选项 <a href="#advanced_zfs_options" id="advanced_zfs_options"></a>
 
-The installer creates the ZFS pool `rpool`, if ZFS is used. No swap space is created but you can reserve some unpartitioned space on the install disks for swap. You can also create a swap zvol after the installation, although this can lead to problems (see [ZFS swap notes](../03-system-administration/09-chapter-zfs.md#zfs_swap)).
+如果使用 ZFS，安装程序会创建 ZFS 池 `rpool`。不会创建交换空间，但您可以在安装磁盘上保留一些未分区空间用于交换。也可以在安装后创建交换 zvol，但这可能会导致问题（请参阅[ZFS 交换说明](../03-system-administration/09-chapter-zfs.md#zfs_swap)）。
 
 **`ashift`**
 
-Defines the `ashift` value for the created pool. The `ashift` needs to be set at least to the sector-size of the underlying disks (2 to the power of `ashift` is the sector-size), or any disk which might be put in the pool (for example the replacement of a defective disk).
+定义所创建池的 `ashift` 值。`ashift` 至少需要根据底层磁盘或任何可能加入池的磁盘（例如用于更换故障磁盘的磁盘）的扇区大小进行设置（2 的 `ashift` 次幂即为扇区大小）。
 
 **`compress`**
 
-Defines whether compression is enabled for `rpool`.
+定义是否为 `rpool` 启用压缩。
 
 **`checksum`**
 
-Defines which checksumming algorithm should be used for `rpool`.
+定义 `rpool` 应使用哪种校验和算法。
 
 **`copies`**
 
-Defines the `copies` parameter for `rpool`. Check the `zfs(8)` manpage for the semantics, and why this does not replace redundancy on disk-level.
+定义 `copies` 参数（用于 `rpool`）。请查阅 `zfs(8)` 手册页以了解其语义，以及为什么它不能替代磁盘级别的冗余。
 
 **`ARC max size`**
 
-Defines the maximum size the ARC can grow to and thus limits the amount of memory ZFS will use. See also the section on [how to limit ZFS memory usage](../03-system-administration/09-chapter-zfs.md#sysadmin_zfs_limit_memory_usage) for more details.
+定义 ARC 可增长到的最大大小，从而限制 ZFS 将使用的内存量。另请参阅关于[如何限制 ZFS 内存使用量](../03-system-administration/09-chapter-zfs.md#sysadmin_zfs_limit_memory_usage)一节，了解更多详情。
 
 **`hdsize`**
 
-Defines the total hard disk size to be used. This is useful to save free space on the hard disk(s) for further partitioning (for example to create a swap-partition). `hdsize` is only honored for bootable disks, that is only the first disk or mirror for RAID0, RAID1 or RAID10, and all disks in RAID-Z[123].
+定义要使用的硬盘总大小。这有助于在硬盘上保留可用空间，以便进一步分区（例如创建交换分区）。`hdsize` 仅对可引导磁盘生效，即对于 RAID0、RAID1 或 RAID10，仅第一块磁盘或镜像生效；对于 RAID-Z\[123\]，则对所有磁盘生效。
 
-## 2.3.4. Advanced BTRFS Configuration Options <a href="#advanced_btrfs_options" id="advanced_btrfs_options"></a>
+## 2.3.4. BTRFS 高级配置选项 <a href="#advanced_btrfs_options" id="advanced_btrfs_options"></a>
 
-No swap space is created when BTRFS is used but you can reserve some unpartitioned space on the install disks for swap. You can either create a separate partition, BTRFS subvolume or a swapfile using the `btrfs filesystem
-mkswapfile` command.
+使用 BTRFS 时不会创建交换空间，但您可以在安装磁盘上保留一些未分区空间用于交换。您可以创建独立分区、BTRFS 子卷，或使用 `btrfs filesystem
+mkswapfile` 命令创建交换文件。
 
 **`compress`**
 
-Defines whether compression is enabled for the BTRFS subvolume. Different compression algorithms are supported: *on* (equivalent to *zlib*), *zlib*, *lzo* and *zstd*. Defaults to *off*.
+定义是否为 BTRFS 子卷启用压缩。支持不同的压缩算法：*on*（等同于 *zlib*）、*zlib*、*lzo* 和 *zstd*。默认为 *off*。
 
 **`hdsize`**
 
-Defines the total hard disk size to be used. This is useful to save free space on the hard disk(s) for further partitioning (for example, to create a swap partition).
+定义要使用的硬盘总大小。这有助于在硬盘上保留可用空间，以便进一步分区（例如创建交换分区）。
 
-## 2.3.5. ZFS Performance Tips <a href="#_zfs_performance_tips" id="_zfs_performance_tips"></a>
+## 2.3.5. ZFS 性能提示 <a href="#_zfs_performance_tips" id="_zfs_performance_tips"></a>
 
-ZFS works best with a lot of memory. If you intend to use ZFS make sure to have enough RAM available for it. A good calculation is 4GB plus 1GB RAM for each TB RAW disk space.
+ZFS 在配备大量内存时性能最佳。如果打算使用 ZFS，请确保为其提供足够的 RAM。一个较好的计算方法是 4GB 加上每 TB 原始磁盘空间 1GB RAM。
 
-ZFS can use a dedicated drive as write cache, called the ZFS Intent Log (ZIL). Use a fast drive (SSD) for it. It can be added after installation with the following command:
+ZFS 可以使用专用驱动器作为写缓存，称为 ZFS 意图日志（ZIL）。请为其使用高速驱动器（SSD）。安装后可以使用以下命令添加：
 
 ```text
 # zpool add <pool-name> log </dev/path_to_fast_ssd>
 ```
 
-## 2.3.6. Adding the `nomodeset` Kernel Parameter <a href="#nomodeset_kernel_param" id="nomodeset_kernel_param"></a>
+## 2.3.6. 添加 `nomodeset` 内核参数 <a href="#nomodeset_kernel_param" id="nomodeset_kernel_param"></a>
 
-Problems may arise on very old or very new hardware due to graphics drivers. If the installation hangs during boot, you can try adding the `nomodeset` parameter. This prevents the Linux kernel from loading any graphics drivers and forces it to continue using the BIOS/UEFI-provided framebuffer.
+由于显卡驱动程序问题，非常旧或非常新的硬件可能会出现问题。如果安装在引导过程中挂起，可以尝试添加 `nomodeset` 参数。这会阻止 Linux 内核加载任何显卡驱动程序，并强制其继续使用 BIOS/UEFI 提供的帧缓冲区。
 
-On the Proxmox VE bootloader menu, navigate to *Install Proxmox VE (Terminal UI)* and press `e` to edit the entry. Using the arrow keys, navigate to the line starting with `linux`, move the cursor to the end of that line and add the parameter `nomodeset`, separated by a space from the pre-existing last parameter.
+在 Proxmox VE 引导加载程序菜单中，导航至 *Install Proxmox VE (Terminal UI)* 并按 `e` 编辑该条目。使用方向键导航到以 `linux` 开头的行，将光标移至该行末尾，并添加参数 `nomodeset`，与原有的最后一个参数之间用一个空格分隔。
 
-Then press `Ctrl-X` or `F10` to boot the configuration.
+然后按 `Ctrl-X` 或 `F10` 引导该配置。
 
 ---
 

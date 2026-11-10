@@ -8,6 +8,8 @@
 
 Delete sdn dns object configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@ Delete sdn dns object configuration.
 
 Read sdn dns configuration.
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -134,6 +138,8 @@ Read sdn dns configuration.
 ## PUT `/cluster/sdn/dns/{dns}`
 
 Update sdn dns object configuration.
+
+**方法标识：** `update`
 
 **权限**
 

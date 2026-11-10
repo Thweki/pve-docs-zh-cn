@@ -1,17 +1,17 @@
-# 2.5. Install Proxmox VE on Debian <a href="#_install_proxmox_ve_on_debian" id="_install_proxmox_ve_on_debian"></a>
+# 2.5. 在 Debian 上安装 Proxmox VE <a href="#_install_proxmox_ve_on_debian" id="_install_proxmox_ve_on_debian"></a>
 
-Proxmox VE ships as a set of Debian packages and can be installed on top of a standard Debian installation. [After configuring the repositories](../03-system-administration/01-sysadmin-package-repositories.md#sysadmin_package_repositories) you need to run the following commands:
+Proxmox VE 以一组 Debian 软件包的形式提供，可以安装在标准 Debian 安装之上。[配置软件仓库后](../03-system-administration/01-sysadmin-package-repositories.md#sysadmin_package_repositories)，您需要运行以下命令：
 
 ```text
 # apt-get update
 # apt-get install proxmox-ve
 ```
 
-Installing on top of an existing Debian installation looks easy, but it presumes that the base system has been installed correctly and that you know how you want to configure and use the local storage. You also need to configure the network manually.
+在现有 Debian 安装之上进行安装看起来很简单，但它假定基础系统已正确安装，并且您知道要如何配置和使用本地存储。您还需要手动配置网络。
 
-In general, this is not trivial, especially when LVM or ZFS is used.
+通常，这并不简单，尤其是在使用 LVM 或 ZFS 时。
 
-A detailed step-by-step how-to can be found on the [wiki](https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_13_Trixie).
+可以在 [wiki](https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_13_Trixie) 上找到详细的分步操作指南。
 
 ---
 

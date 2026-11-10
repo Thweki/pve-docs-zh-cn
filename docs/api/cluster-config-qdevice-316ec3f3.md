@@ -8,6 +8,8 @@
 
 Get QDevice status
 
+**方法标识：** `status`
+
 **权限**
 
 ```json

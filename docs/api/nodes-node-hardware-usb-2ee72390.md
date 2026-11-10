@@ -8,6 +8,8 @@
 
 List local USB devices.
 
+**方法标识：** `usbscan`
+
 **权限**
 
 ```json

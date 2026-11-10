@@ -8,6 +8,8 @@
 
 Remove smtp endpoint
 
+**方法标识：** `delete_smtp_endpoint`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove smtp endpoint
 ## GET `/cluster/notifications/endpoints/smtp/{name}`
 
 Return a specific smtp endpoint
+
+**方法标识：** `get_smtp_endpoint`
 
 **权限**
 
@@ -217,6 +221,8 @@ Return a specific smtp endpoint
 ## PUT `/cluster/notifications/endpoints/smtp/{name}`
 
 Update existing smtp endpoint
+
+**方法标识：** `update_smtp_endpoint`
 
 **权限**
 

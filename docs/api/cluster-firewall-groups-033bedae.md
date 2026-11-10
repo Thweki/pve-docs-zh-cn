@@ -8,6 +8,8 @@
 
 List security groups.
 
+**方法标识：** `list_security_groups`
+
 **权限**
 
 ```json
@@ -66,6 +68,8 @@ List security groups.
 ## POST `/cluster/firewall/groups`
 
 Create new security group.
+
+**方法标识：** `create_security_group`
 
 **权限**
 

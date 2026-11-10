@@ -8,6 +8,8 @@
 
 Bulk shutdown all guests on the cluster.
 
+**方法标识：** `shutdown`
+
 **权限**
 
 ```json

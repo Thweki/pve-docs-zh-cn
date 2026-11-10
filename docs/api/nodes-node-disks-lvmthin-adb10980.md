@@ -8,6 +8,8 @@
 
 List LVM thinpools
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -105,6 +107,8 @@ List LVM thinpools
 ## POST `/nodes/{node}/disks/lvmthin`
 
 Create an LVM thinpool
+
+**方法标识：** `create`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Get named known ACME directory endpoints.
 
+**方法标识：** `get_directories`
+
 **权限**
 
 ```json

@@ -196,7 +196,7 @@ For both methods you need to [update the `initramfs`](#qm_pci_passthrough_update
 
 Should this not work, you might need to set a soft dependency to load *vfio-pci* before loading the GPU modules. This can be done with the *softdep* flag, see also the manpages on *modprobe.d* for more information.
 
-For example, if you are using drivers named <some-module>:
+For example, if you are using drivers named \<some-module\>:
 
 ```text
 # echo "softdep <some-module> pre: vfio-pci" >> /etc/modprobe.d/<some-module>.conf
@@ -234,7 +234,7 @@ Furthermore, when using OVMF, VGA arbitration can potentially be disabled, which
  echo "options vfio-pci ids=<vendor-id>,<device-id> disable_vga=1" > /etc/modprobe.d/vfio.conf
 ```
 
-replacing the <vendor-id> and <device-id> with the ones obtained from:
+replacing the \<vendor-id\> and \<device-id\> with the ones obtained from:
 
 ```text
 # lspci -nn
@@ -252,14 +252,14 @@ or by adding a line to the VM configuration file:
  hostpci0: 00:02.0
 ```
 
-If your device has multiple functions (e.g., ‘`00:02.0`’ and ‘`00:02.1`’ ), you can pass them through all together with the shortened syntax ``00:02`*. This is equivalent to checking the ``All Functions`* checkbox in the web interface.
+If your device has multiple functions (e.g., ‘`00:02.0`’ and ‘`00:02.1`’ ), you can pass them through all together with the shortened syntax \`\`00:02\`*. This is equivalent to checking the \`\`All Functions\`* checkbox in the web interface.
 
 There are some options which may be necessary, depending on the device and guest OS:
 
-- **x-vga=on|off** marks the PCI(e) device as the primary GPU of the VM. With this enabled the **vga** configuration option will be ignored.
-- **pcie=on|off** tells Proxmox VE to use a PCIe or PCI port. Some guests/device combinations require PCIe rather than PCI. PCIe is only available for *q35* machine types.
-- **rombar=on|off** makes the firmware ROM visible for the guest. Default is on. Some PCI(e) devices need this disabled.
-- **romfile=<path>**, is an optional path to a ROM file for the device to use. This is a relative path under **/usr/share/kvm/**.
+- **x-vga\=on\|off** marks the PCI(e) device as the primary GPU of the VM. With this enabled the **vga** configuration option will be ignored.
+- **pcie\=on\|off** tells Proxmox VE to use a PCIe or PCI port. Some guests/device combinations require PCIe rather than PCI. PCIe is only available for *q35* machine types.
+- **rombar\=on\|off** makes the firmware ROM visible for the guest. Default is on. Some PCI(e) devices need this disabled.
+- **romfile\=\<path\>**, is an optional path to a ROM file for the device to use. This is a relative path under **/usr/share/kvm/**.
 
 **Example**
 
@@ -314,7 +314,7 @@ Generally, there are two methods for enabling virtual functions on a device.
   # echo 4 > /sys/bus/pci/devices/0000:01:00.0/sriov_numvfs
   ```
 
-  To make this change persistent, you can use the ‘sysfsutils` Debian package. After installation, configure it via **/etc/sysfs.conf** or a `FILE.conf’ in **/etc/sysfs.d/**.
+  To make this change persistent, you can use the ‘sysfsutils\` Debian package. After installation, configure it via **/etc/sysfs.conf** or a \`FILE.conf’ in **/etc/sysfs.d/**.
 
 ### VM Configuration <a href="#_vm_configuration" id="_vm_configuration"></a>
 
@@ -352,7 +352,7 @@ You can get the supported devices via the *sysfs*. For example, to list the supp
 
 Each entry is a directory which contains the following important files:
 
-- *available_instances* contains the amount of still available instances of this type; each *mdev* used in a VM reduces this.
+- *available\_instances* contains the amount of still available instances of this type; each *mdev* used in a VM reduces this.
 - *description* contains a short description about the capabilities of the type
 - *create* is the endpoint to create such a device — Proxmox VE does this automatically for you if a *hostpciX* option with `mdev` is configured.
 

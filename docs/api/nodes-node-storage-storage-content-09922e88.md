@@ -8,6 +8,8 @@
 
 List storage content.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -188,6 +190,8 @@ List storage content.
 ## POST `/nodes/{node}/storage/{storage}/content`
 
 Allocate disk images.
+
+**方法标识：** `create`
 
 **权限**
 

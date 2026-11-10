@@ -8,6 +8,8 @@
 
 List directory mapping
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -109,6 +111,8 @@ List directory mapping
 ## POST `/cluster/mapping/dir`
 
 Create a new directory mapping.
+
+**方法标识：** `create`
 
 **权限**
 

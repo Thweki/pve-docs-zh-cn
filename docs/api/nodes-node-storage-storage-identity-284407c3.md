@@ -8,6 +8,8 @@
 
 Return identity information for this storage instance.
 
+**方法标识：** `identity`
+
 **权限**
 
 ```json

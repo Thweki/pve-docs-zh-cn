@@ -1,4 +1,4 @@
-# 22.7. **pvenode** - Proxmox VE Node Management <a href="#_strong_pvenode_strong_proxmox_ve_node_management" id="_strong_pvenode_strong_proxmox_ve_node_management"></a>
+# 22.7. **pvenode** \- Proxmox VE Node Management <a href="#_strong_pvenode_strong_proxmox_ve_node_management" id="_strong_pvenode_strong_proxmox_ve_node_management"></a>
 
 <a id="cli_pvenode"></a>
 
@@ -14,7 +14,7 @@
 
 Deactivate existing ACME account at CA.
 
-**`<name>`: `<name>` (*default =* `default`)**
+**`<name>`: `<name>` (*default \=* `default`)**
 
 ACME account config file name.
 
@@ -26,7 +26,7 @@ ACME account config file name.
 
 Return existing ACME account information.
 
-**`<name>`: `<name>` (*default =* `default`)**
+**`<name>`: `<name>` (*default \=* `default`)**
 
 ACME account config file name.
 
@@ -46,7 +46,7 @@ ACMEAccount index.
 
 Register a new ACME account with a compatible CA.
 
-**`<name>`: `<name>` (*default =* `default`)**
+**`<name>`: `<name>` (*default \=* `default`)**
 
 ACME account config file name.
 
@@ -66,7 +66,7 @@ URL of ACME CA directory endpoint.
 
 Update existing ACME account information with CA. Note: not specifying any new account information triggers a refresh.
 
-**`<name>`: `<name>` (*default =* `default`)**
+**`<name>`: `<name>` (*default \=* `default`)**
 
 ACME account config file name.
 
@@ -82,7 +82,7 @@ Contact email addresses.
 
 Order a new certificate from ACME-compatible CA.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Overwrite existing custom certificate.
 
@@ -94,7 +94,7 @@ Overwrite existing custom certificate.
 
 Renew existing certificate from CA.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Force renewal even if expiry is more than 30 days away.
 
@@ -138,7 +138,7 @@ Flag to disable the config.
 
 List of cluster node names.
 
-**`--validation-delay` `<integer> (0 - 172800)` (*default =* `30`)**
+**`--validation-delay` `<integer> (0 - 172800)` (*default \=* `30`)**
 
 Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.
 
@@ -214,7 +214,7 @@ Flag to disable the config.
 
 List of cluster node names.
 
-**`--validation-delay` `<integer> (0 - 172800)` (*default =* `30`)**
+**`--validation-delay` `<integer> (0 - 172800)` (*default \=* `30`)**
 
 Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records.
 
@@ -226,7 +226,7 @@ Extra delay in seconds to wait before requesting validation. Allows to cope with
 
 DELETE custom certificate chain and key.
 
-**`<restart>`: `<boolean>` (*default =* `0`)**
+**`<restart>`: `<boolean>` (*default \=* `0`)**
 
 Restart pveproxy.
 
@@ -254,11 +254,11 @@ PEM encoded certificate (chain).
 
 PEM encoded private key.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Overwrite existing custom or ACME certificate files.
 
-**`--restart` `<boolean>` (*default =* `0`)**
+**`--restart` `<boolean>` (*default \=* `0`)**
 
 Restart pveproxy.
 
@@ -270,7 +270,7 @@ Restart pveproxy.
 
 Get node configuration options.
 
-**`--property` `<acme | acmedomain0 | acmedomain1 | acmedomain2 | acmedomain3 | acmedomain4 | acmedomain5 | ballooning-target | description | location | startall-onboot-delay | wakeonlan>` (*default =* `all`)**
+**`--property` `<acme | acmedomain0 | acmedomain1 | acmedomain2 | acmedomain3 | acmedomain4 | acmedomain5 | ballooning-target | description | location | startall-onboot-delay | wakeonlan>` (*default \=* `all`)**
 
 Return only a specific property from the node configuration.
 
@@ -290,7 +290,7 @@ Node specific ACME settings.
 
 ACME domain and validation plugin
 
-**`--ballooning-target` `<integer> (0 - 100)` (*default =* `80`)**
+**`--ballooning-target` `<integer> (0 - 100)` (*default \=* `80`)**
 
 RAM usage target for ballooning (in percent of total memory)
 
@@ -310,7 +310,7 @@ Description for the Node. Shown in the web-interface node notes panel. This is s
 
 The location of the node. Overrides the default from the datacenter config.
 
-**`--startall-onboot-delay` `<integer> (0 - 300)` (*default =* `0`)**
+**`--startall-onboot-delay` `<integer> (0 - 300)` (*default \=* `0`)**
 
 Initial delay in seconds, before starting all the Virtual Guests with on-boot enabled.
 
@@ -348,11 +348,11 @@ Migrate all VMs and Containers.
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Maximal number of parallel migration job. If not set, uses’max_workers' from datacenter.cfg. One of both must be set!
+Maximal number of parallel migration job. If not set, uses’max\_workers' from datacenter.cfg. One of both must be set!
 
 **`--maxworkers` `<integer> (1 - 64)`**
 
-Maximal number of parallel migration job. If not set, uses’max_workers' from datacenter.cfg. One of both must be set!Deprecated, use *max-workers* instead.
+Maximal number of parallel migration job. If not set, uses’max\_workers' from datacenter.cfg. One of both must be set!Deprecated, use *max-workers* instead.
 
 **`--vms` `<string>`**
 
@@ -368,15 +368,15 @@ Enable live storage migration for local disk
 
 **pvenode startall** `[OPTIONS]`
 
-Start all VMs and containers located on this node (by default only those with onboot=1).
+Start all VMs and containers located on this node (by default only those with onboot\=1).
 
-**`--force` `<boolean>` (*default =* `off`)**
+**`--force` `<boolean>` (*default \=* `off`)**
 
 Issue start command even if virtual guest have *onboot* not set or set to off.
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Defines the maximum number of tasks running concurrently. If not set, uses *max_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
+Defines the maximum number of tasks running concurrently. If not set, uses *max\_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
 
 **`--vms` `<string>`**
 
@@ -390,15 +390,15 @@ Only consider guests from this comma separated list of VMIDs.
 
 Stop all VMs and Containers.
 
-**`--force-stop` `<boolean>` (*default =* `1`)**
+**`--force-stop` `<boolean>` (*default \=* `1`)**
 
 Force a hard-stop after the timeout.
 
 **`--max-workers` `<integer> (1 - 64)`**
 
-Defines the maximum number of tasks running concurrently. If not set, uses *max_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
+Defines the maximum number of tasks running concurrently. If not set, uses *max\_workers* from datacenter.cfg, and if that’s not set, the available CPU threads, clamped to a maximum of 8, are used.
 
-**`--timeout` `<integer> (0 - 7200)` (*default =* `180`)**
+**`--timeout` `<integer> (0 - 7200)` (*default \=* `180`)**
 
 Timeout for each guest shutdown task. Depending on `force-stop`, the shutdown gets then simply aborted or a hard-stop is forced.
 
@@ -414,11 +414,11 @@ Only consider Guests with these IDs.
 
 Read task list for one node (finished tasks).
 
-**`--errors` `<boolean>` (*default =* `0`)**
+**`--errors` `<boolean>` (*default \=* `0`)**
 
 Only list tasks with a status of ERROR.
 
-**`--limit` `<integer> (0 - N)` (*default =* `50`)**
+**`--limit` `<integer> (0 - N)` (*default \=* `50`)**
 
 Only list this number of tasks.
 
@@ -426,11 +426,11 @@ Only list this number of tasks.
 
 Only list tasks since this UNIX epoch.
 
-**`--source` `<active | all | archive>` (*default =* `archive`)**
+**`--source` `<active | all | archive>` (*default \=* `archive`)**
 
 List archived, active or all tasks.
 
-**`--start` `<integer> (0 - N)` (*default =* `0`)**
+**`--start` `<integer> (0 - N)` (*default \=* `0`)**
 
 List tasks beginning from this offset.
 
@@ -470,7 +470,7 @@ The task’s unique ID.
 
 Whether the tasklog file should be downloaded. This parameter can’t be used in conjunction with other parameters
 
-**`--start` `<integer> (0 - N)` (*default =* `0`)**
+**`--start` `<integer> (0 - N)` (*default \=* `0`)**
 
 Start at this line when reading the tasklog
 

@@ -8,6 +8,8 @@
 
 Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a [global] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
 
+**方法标识：** `init`
+
 **权限**
 
 ```json

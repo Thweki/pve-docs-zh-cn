@@ -1,79 +1,79 @@
-# 2.2. Prepare Installation Media <a href="#installation_prepare_media" id="installation_prepare_media"></a>
+# 2.2. 准备安装介质 <a href="#installation_prepare_media" id="installation_prepare_media"></a>
 
-Download the installer ISO image from: [https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso)
+从以下地址下载安装程序 ISO 映像：[https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso)
 
-The Proxmox VE installation media is a hybrid ISO image. It works in two ways:
+Proxmox VE 安装介质是混合 ISO 映像。它有以下两种使用方式：
 
-- An ISO image file ready to burn to a CD or DVD.
-- A raw sector (IMG) image file ready to copy to a USB flash drive (USB stick).
+- 可刻录到 CD 或 DVD 的 ISO 映像文件。
+- 可复制到 USB 闪存驱动器（U 盘）的原始扇区（IMG）映像文件。
 
-Using a USB flash drive to install Proxmox VE is the recommended way because it is the faster option.
+建议使用 USB 闪存驱动器安装 Proxmox VE，因为这种方式速度更快。
 
-## 2.2.1. Prepare a USB Flash Drive as Installation Medium <a href="#_prepare_a_usb_flash_drive_as_installation_medium" id="_prepare_a_usb_flash_drive_as_installation_medium"></a>
+## 2.2.1. 准备 USB 闪存驱动器作为安装介质 <a href="#_prepare_a_usb_flash_drive_as_installation_medium" id="_prepare_a_usb_flash_drive_as_installation_medium"></a>
 
-The flash drive needs to be larger than the ISO image.
+闪存驱动器的容量必须大于 ISO 映像。
 
 {% hint style="info" %}
-Do not use UNetbootin. It does not work with the Proxmox VE installation image.
+请勿使用 UNetbootin。它无法与 Proxmox VE 安装映像配合使用。
 {% endhint %}
 
 {% hint style="warning" %}
-Make sure that the USB flash drive is not mounted and does not contain any important data.
+请确保 USB 闪存驱动器未挂载，且其中不包含任何重要数据。
 {% endhint %}
 
-## 2.2.2. Instructions for GNU/Linux <a href="#_instructions_for_gnu_linux" id="_instructions_for_gnu_linux"></a>
+## 2.2.2. GNU/Linux 操作说明 <a href="#_instructions_for_gnu_linux" id="_instructions_for_gnu_linux"></a>
 
-On Unix-like operating system use the `dd` command to copy the ISO image to the USB flash drive. First find the correct device name of the USB flash drive (see below). Then run the `dd` command.
+在类 Unix 操作系统上，使用 `dd` 命令将 ISO 映像复制到 USB 闪存驱动器。首先找到 USB 闪存驱动器的正确设备名称（见下文）。然后运行 `dd` 命令。
 
 ```text
 # dd bs=1M conv=fdatasync if=./proxmox-ve_*.iso of=/dev/XYZ
 ```
 
 {% hint style="info" %}
-Be sure to replace /dev/XYZ with the correct device name and adapt the input filename (*if*) path.
+请务必将 /dev/XYZ 替换为正确的设备名称，并调整输入文件名（*if*）的路径。
 {% endhint %}
 
 {% hint style="danger" %}
-Be very careful, and do not overwrite the wrong disk!
+请务必小心，不要覆盖错误的磁盘！
 {% endhint %}
 
-### Find the Correct USB Device Name <a href="#_find_the_correct_usb_device_name" id="_find_the_correct_usb_device_name"></a>
+### 查找正确的 USB 设备名称 <a href="#_find_the_correct_usb_device_name" id="_find_the_correct_usb_device_name"></a>
 
-There are two ways to find out the name of the USB flash drive. The first one is to compare the last lines of the `dmesg` command output before and after plugging in the flash drive. The second way is to compare the output of the `lsblk` command. Open a terminal and run:
-
-```text
-# lsblk
-```
-
-Then plug in your USB flash drive and run the command again:
+有两种方法可以确定 USB 闪存驱动器的名称。第一种方法是比较插入闪存驱动器前后 `dmesg` 命令输出的最后几行。第二种方法是比较 `lsblk` 命令的输出。打开终端并运行：
 
 ```text
 # lsblk
 ```
 
-A new device will appear. This is the one you want to use. To be on the extra safe side check if the reported size matches your USB flash drive.
+然后插入 USB 闪存驱动器，并再次运行该命令：
 
-## 2.2.3. Instructions for macOS <a href="#_instructions_for_macos" id="_instructions_for_macos"></a>
+```text
+# lsblk
+```
 
-Open the terminal (query Terminal in Spotlight).
+此时会出现一个新设备。这就是您要使用的设备。为更加稳妥，请检查报告的大小是否与您的 USB 闪存驱动器相符。
 
-Convert the `.iso` file to `.dmg` format using the convert option of `hdiutil`, for example:
+## 2.2.3. macOS 操作说明 <a href="#_instructions_for_macos" id="_instructions_for_macos"></a>
+
+打开终端（在 Spotlight 中搜索 Terminal）。
+
+将 `.iso` 文件转换为 `.dmg` 格式，可使用 `hdiutil` 的 convert 选项，例如：
 
 ```text
 # hdiutil convert proxmox-ve_*.iso -format UDRW -o proxmox-ve_*.dmg
 ```
 
 {% hint style="success" %}
-macOS tends to automatically add *.dmg* to the output file name.
+macOS 往往会自动将 *.dmg* 附加到输出文件名中。
 {% endhint %}
 
-To get the current list of devices run the command:
+要获取当前设备列表，请运行以下命令：
 
 ```text
 # diskutil list
 ```
 
-Now insert the USB flash drive and run this command again to determine which device node has been assigned to it. (e.g., /dev/diskX).
+现在插入 USB 闪存驱动器，然后再次运行此命令，以确定分配给它的设备节点（例如 /dev/diskX）。
 
 ```text
 # diskutil list
@@ -81,7 +81,7 @@ Now insert the USB flash drive and run this command again to determine which dev
 ```
 
 {% hint style="info" %}
-replace X with the disk number from the last command.
+将 X 替换为上一条命令中的磁盘编号。
 {% endhint %}
 
 ```text
@@ -89,21 +89,21 @@ replace X with the disk number from the last command.
 ```
 
 {% hint style="info" %}
-*rdiskX*, instead of *diskX*, in the last command is intended. It will increase the write speed.
+上一条命令中故意使用的是 *rdiskX*，而不是 *diskX*。这样可以提高写入速度。
 {% endhint %}
 
-## 2.2.4. Instructions for Windows <a href="#_instructions_for_windows" id="_instructions_for_windows"></a>
+## 2.2.4. Windows 使用说明 <a href="#_instructions_for_windows" id="_instructions_for_windows"></a>
 
-### Using Etcher <a href="#_using_etcher" id="_using_etcher"></a>
+### 使用 Etcher <a href="#_using_etcher" id="_using_etcher"></a>
 
-Etcher works out of the box. Download Etcher from [https://etcher.io](https://etcher.io). It will guide you through the process of selecting the ISO and your USB flash drive.
+Etcher 开箱即用。请从 [https://etcher.io](https://etcher.io) 下载 Etcher。它会引导您完成选择 ISO 和 USB 闪存盘的过程。
 
-### Using Rufus <a href="#_using_rufus" id="_using_rufus"></a>
+### 使用 Rufus <a href="#_using_rufus" id="_using_rufus"></a>
 
-Rufus is a more lightweight alternative, but you need to use the **DD mode** to make it work. Download Rufus from [https://rufus.ie/](https://rufus.ie/). Either install it or use the portable version. Select the destination drive and the Proxmox VE ISO file.
+Rufus 是一种更轻量级的替代方案，但您需要使用 **DD 模式** 才能正常工作。请从 [https://rufus.ie/](https://rufus.ie/) 下载 Rufus。您可以安装它，也可以使用便携版。选择目标驱动器和 Proxmox VE ISO 文件。
 
 {% hint style="warning" %}
-Once you *Start* you have to click *No* on the dialog asking to download a different version of GRUB. In the next dialog select the *DD* mode.
+点击 *开始* 后，在询问是否下载其他版本 GRUB 的对话框中，必须点击 *否*。在下一个对话框中选择 *DD* 模式。
 {% endhint %}
 
 ---

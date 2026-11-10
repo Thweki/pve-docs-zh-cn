@@ -8,6 +8,8 @@
 
 Get Ceph osd list/tree.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -92,6 +94,8 @@ Get Ceph osd list/tree.
 ## POST `/nodes/{node}/ceph/osd`
 
 Create OSD
+
+**方法标识：** `createosd`
 
 **允许 API 令牌**
 

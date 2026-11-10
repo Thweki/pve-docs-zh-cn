@@ -8,6 +8,8 @@
 
 Show the current pool status.
 
+**方法标识：** `getpool`
+
 **权限**
 
 ```json

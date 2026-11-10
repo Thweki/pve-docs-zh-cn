@@ -8,6 +8,8 @@
 
 Stop all VMs and Containers.
 
+**方法标识：** `stopall`
+
 **权限**
 
 ```json

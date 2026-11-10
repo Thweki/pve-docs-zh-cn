@@ -1,4 +1,4 @@
-# 23.6. **pmxcfs** - Proxmox Cluster File System <a href="#_strong_pmxcfs_strong_proxmox_cluster_file_system" id="_strong_pmxcfs_strong_proxmox_cluster_file_system"></a>
+# 23.6. **pmxcfs** \- Proxmox Cluster File System <a href="#_strong_pmxcfs_strong_proxmox_cluster_file_system" id="_strong_pmxcfs_strong_proxmox_cluster_file_system"></a>
 
 **pmxcfs** `[OPTIONS]`
 
@@ -12,17 +12,17 @@
 
 **`-d`, `--debug`**
 
-Turn on debug messages
+启用调试消息
 
 **`-f`, `--foreground`**
 
-Do not daemonize server
+不要将服务器守护进程化
 
 **`-l`, `--local`**
 
-Force local mode (ignore corosync.conf, force quorum)
+强制使用本地模式（忽略 corosync.conf，强制仲裁）
 
-This service is usually started and managed using systemd toolset. The service is called *pve-cluster*.
+通常使用 systemd 工具集启动和管理此服务。该服务称为 *pve-cluster*。
 
 ```text
 systemctl start pve-cluster

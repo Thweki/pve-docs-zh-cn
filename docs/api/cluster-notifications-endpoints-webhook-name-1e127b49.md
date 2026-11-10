@@ -8,6 +8,8 @@
 
 Remove webhook endpoint
 
+**方法标识：** `delete_webhook_endpoint`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove webhook endpoint
 ## GET `/cluster/notifications/endpoints/webhook/{name}`
 
 Return a specific webhook endpoint
+
+**方法标识：** `get_webhook_endpoint`
 
 **权限**
 
@@ -201,6 +205,8 @@ Return a specific webhook endpoint
 
 Update existing webhook endpoint
 
+**方法标识：** `update_webhook_endpoint`
+
 **权限**
 
 ```json
@@ -257,10 +263,10 @@ Update existing webhook endpoint
 | `delete` | array | 否 | — | A list of settings you want to delete. |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
 | `disable` | boolean | 否 | 0 | Disable this target |
-| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value> |
+| `header` | array | 否 | — | HTTP headers to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
 | `method` | string | 否 | — | HTTP method；可选值：`post`, `put`, `get` |
 | `name` | string | 是 | — | The name of the endpoint. |
-| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=<name>,value=<base64 of value> |
+| `secret` | array | 否 | — | Secrets to set. These have to be formatted as a property string in the format name=&lt;name&gt;,value=&lt;base64 of value&gt; |
 | `url` | string | 否 | — | Server URL |
 
 <details>

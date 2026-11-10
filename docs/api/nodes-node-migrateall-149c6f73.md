@@ -8,6 +8,8 @@
 
 Migrate all VMs and Containers.
 
+**方法标识：** `migrateall`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Delete rule.
 
+**方法标识：** `delete_rule`
+
 **权限**
 
 ```json
@@ -46,7 +48,7 @@ Delete rule.
 | --- | --- | --- | --- | --- |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
 | `node` | string | 是 | — | The cluster node name. |
-| `pos` | integer | 否 | — | Update rule at position <pos>. |
+| `pos` | integer | 否 | — | Update rule at position &lt;pos&gt;. |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -93,6 +95,8 @@ Delete rule.
 
 Get single rule data.
 
+**方法标识：** `get_rule`
+
 **权限**
 
 ```json
@@ -124,7 +128,7 @@ Get single rule data.
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
 | `node` | string | 是 | — | The cluster node name. |
-| `pos` | integer | 否 | — | Update rule at position <pos>. |
+| `pos` | integer | 否 | — | Update rule at position &lt;pos&gt;. |
 
 <details>
 <summary>完整请求参数结构</summary>
@@ -249,6 +253,8 @@ Get single rule data.
 
 Modify rule data.
 
+**方法标识：** `update_rule`
+
 **权限**
 
 ```json
@@ -296,9 +302,9 @@ Modify rule data.
 | `iface` | string | 否 | — | Network interface name. You have to use network configuration key names for VMs and containers ('net\d+'). Host related rules can use arbitrary strings. |
 | `log` | string | 否 | — | Log level for firewall rule.；可选值：`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` |
 | `macro` | string | 否 | — | Use predefined standard macro. |
-| `moveto` | integer | 否 | — | Move rule to new position <moveto>. Other arguments are ignored. |
+| `moveto` | integer | 否 | — | Move rule to new position &lt;moveto&gt;. Other arguments are ignored. |
 | `node` | string | 是 | — | The cluster node name. |
-| `pos` | integer | 否 | — | Update rule at position <pos>. |
+| `pos` | integer | 否 | — | Update rule at position &lt;pos&gt;. |
 | `proto` | string | 否 | — | IP protocol. You can use protocol names ('tcp'/'udp') or simple numbers, as defined in '/etc/protocols'. |
 | `source` | string | 否 | — | Restrict packet source address. This can refer to a single IP address, an IP set ('+ipsetname') or an IP alias definition. You can also specify an address range like '20.34.101.207-201.3.9.99', or a list of IP addresses and networks (entries are separated by comma). Please do not mix IPv4 and IPv6 addresses inside such lists. |
 | `sport` | string | 否 | — | Restrict TCP/UDP source port. You can use service names or simple numbers (0-65535), as defined in '/etc/services'. Port ranges can be specified with '\d+:\d+', for example '80:85', and you can use comma separated list to match several ports or ranges. |

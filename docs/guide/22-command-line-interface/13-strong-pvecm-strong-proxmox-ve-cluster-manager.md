@@ -1,4 +1,4 @@
-# 22.13. **pvecm** - Proxmox VE Cluster Manager <a href="#_strong_pvecm_strong_proxmox_ve_cluster_manager" id="_strong_pvecm_strong_proxmox_ve_cluster_manager"></a>
+# 22.13. **pvecm** \- Proxmox VE Cluster Manager <a href="#_strong_pvecm_strong_proxmox_ve_cluster_manager" id="_strong_pvecm_strong_proxmox_ve_cluster_manager"></a>
 
 <a id="cli_pvecm"></a>
 
@@ -56,7 +56,7 @@ Adds a node to the cluster configuration. This call is for internal use.
 
 **`--apiversion` `<integer>`**
 
-The JOIN_API_VERSION of the new node.
+The JOIN\_API\_VERSION of the new node.
 
 **`--force` `<boolean>`**
 
@@ -106,7 +106,7 @@ Address and priority information of a single corosync link. (up to 8 links suppo
 
 Node id for this node.
 
-**`--token-coefficient` `<integer> (0 - N)` (*default =* `125`)**
+**`--token-coefficient` `<integer> (0 - N)` (*default \=* `125`)**
 
 Coefficient used to determine Corosync’s token timeout. See the corosync.conf(5) manual for more details.
 
@@ -172,13 +172,13 @@ Output file name
 
 **pvecm mtunnel** `[<extra-args>]` `[OPTIONS]`
 
-Used by VM/CT migration - do not use manually.
+Used by VM/CT migration \- do not use manually.
 
 **`<extra-args>`: `<array>`**
 
 以数组形式提供的额外参数
 
-**`--get_migration_ip` `<boolean>` (*default =* `0`)**
+**`--get_migration_ip` `<boolean>` (*default \=* `0`)**
 
 return the migration IP, if configured
 
@@ -250,7 +250,7 @@ Force generation of new SSL certificate.
 
 Ignore errors (i.e. when cluster has no quorum).
 
-**`--unmerge-known-hosts` `<boolean>` (*default =* `0`)**
+**`--unmerge-known-hosts` `<boolean>` (*default \=* `0`)**
 
 Unmerge legacy SSH known hosts.
 

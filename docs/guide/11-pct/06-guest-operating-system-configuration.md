@@ -1,40 +1,40 @@
 # 11.6. Guest Operating System Configuration <a href="#_guest_operating_system_configuration" id="_guest_operating_system_configuration"></a>
 
-Proxmox VE tries to detect the Linux distribution in the container, and modifies some files. Here is a short list of things done at container startup:
+Proxmox VE 会尝试检测容器中的 Linux 发行版，并修改一些文件。以下是容器启动时所执行操作的简要列表：
 
-**set /etc/hostname**
+**设置 /etc/hostname**
 
-to set the container name
+以设置容器名称
 
-**modify /etc/hosts**
+**修改 /etc/hosts**
 
-to allow lookup of the local hostname
+以允许查询本地主机名
 
-**network setup**
+**网络配置**
 
-pass the complete network setup to the container
+将完整的网络配置传递给容器
 
-**configure DNS**
+**配置 DNS**
 
-pass information about DNS servers
+传递有关 DNS 服务器的信息
 
-**adapt the init system**
+**调整 init 系统**
 
-for example, fix the number of spawned getty processes
+例如，修正生成的 getty 进程数量
 
-**set the root password**
+**设置 root 密码**
 
-when creating a new container
+在创建新容器时
 
-**rewrite ssh_host_keys**
+**重写 ssh\_host\_keys**
 
-so that each container has unique keys
+使每个容器都有唯一的密钥
 
-**randomize crontab**
+**随机化 crontab**
 
-so that cron does not start at the same time on all containers
+使 cron 不会在所有容器中同时启动
 
-Changes made by Proxmox VE are enclosed by comment markers:
+Proxmox VE 所做的更改会用注释标记括起来：
 
 ```text
 # --- BEGIN PVE ---
@@ -42,50 +42,50 @@ Changes made by Proxmox VE are enclosed by comment markers:
 # --- END PVE ---
 ```
 
-Those markers will be inserted at a reasonable location in the file. If such a section already exists, it will be updated in place and will not be moved.
+这些标记会插入文件中的合理位置。如果这样的节已经存在，则会就地更新，不会移动。
 
-Modification of a file can be prevented by adding a `.pve-ignore.` file for it. For instance, if the file `/etc/.pve-ignore.hosts` exists then the `/etc/hosts` file will not be touched. This can be a simple empty file created via:
+可以通过为相应文件添加一个 `.pve-ignore.` 文件来阻止修改该文件。例如，如果存在 `/etc/.pve-ignore.hosts` 文件，则不会改动 `/etc/hosts` 文件。该文件可以是通过以下命令创建的简单空文件：
 
 ```text
 # touch /etc/.pve-ignore.hosts
 ```
 
-Most modifications are OS dependent, so they differ between different distributions and versions. You can completely disable modifications by manually setting the `ostype` to `unmanaged`.
+大多数修改取决于操作系统，因此会因发行版和版本而异。您可以通过手动将 `ostype` 设置为 `unmanaged` 来完全禁用这些修改。
 
-OS type detection is done by testing for certain files inside the container. Proxmox VE first checks the `/etc/os-release` file   
-[/etc/os-release replaces the multitude of per-distribution release files [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)]  
-. If that file is not present, or it does not contain a clearly recognizable distribution identifier the following distribution specific release files are checked.
+操作系统类型检测通过测试容器内的特定文件来完成。Proxmox VE 首先检查 `/etc/os-release` 文件  
+\[/etc/os-release 取代了众多的各发行版专用版本文件 [https://manpages.debian.org/stable/systemd/os-release.5.en.html](https://manpages.debian.org/stable/systemd/os-release.5.en.html)\]  
+。如果该文件不存在，或者其中不包含清晰可辨的发行版标识符，则会检查以下发行版专用的版本文件。
 
 **Ubuntu**
 
-inspect /etc/lsb-release (`DISTRIB_ID=Ubuntu`)
+检查 /etc/lsb-release（`DISTRIB_ID=Ubuntu`）
 
 **Debian**
 
-test /etc/debian_version
+检查 /etc/debian\_version
 
 **Fedora**
 
-test /etc/fedora-release
+检查 /etc/fedora-release
 
-**RedHat or CentOS**
+**RedHat 或 CentOS**
 
-test /etc/redhat-release
+检查 /etc/redhat-release
 
 **ArchLinux**
 
-test /etc/arch-release
+检查 /etc/arch-release
 
 **Alpine**
 
-test /etc/alpine-release
+检查 /etc/alpine-release
 
 **Gentoo**
 
-test /etc/gentoo-release
+检查 /etc/gentoo-release
 
 {% hint style="info" %}
-Container start fails if the configured `ostype` differs from the auto detected type.
+如果配置的 `ostype` 与自动检测到的类型不同，容器将无法启动。
 {% endhint %}
 
 ---

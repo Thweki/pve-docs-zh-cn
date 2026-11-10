@@ -1,4 +1,4 @@
-# 17. Notifications <a href="#chapter_notifications" id="chapter_notifications"></a>
+# 17\. Notifications <a href="#chapter_notifications" id="chapter_notifications"></a>
 
 ## 本章内容
 

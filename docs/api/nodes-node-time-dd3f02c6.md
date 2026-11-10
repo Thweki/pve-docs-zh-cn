@@ -8,6 +8,8 @@
 
 Read server time and time zone settings.
 
+**方法标识：** `time`
+
 **权限**
 
 ```json
@@ -89,6 +91,8 @@ Read server time and time zone settings.
 ## PUT `/nodes/{node}/time`
 
 Set time zone.
+
+**方法标识：** `set_timezone`
 
 **权限**
 

@@ -8,6 +8,8 @@
 
 Delete Prefix List
 
+**方法标识：** `delete_prefix_list`
+
 **权限**
 
 ```json
@@ -77,6 +79,8 @@ Delete Prefix List
 
 Get Prefix List
 
+**方法标识：** `get_prefix_list`
+
 **权限**
 
 ```json
@@ -132,6 +136,8 @@ Get Prefix List
 ## PUT `/cluster/sdn/prefix-lists/{id}`
 
 Update Prefix List
+
+**方法标识：** `update_prefix_list`
 
 **权限**
 

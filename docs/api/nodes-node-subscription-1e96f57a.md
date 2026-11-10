@@ -8,6 +8,8 @@
 
 Delete subscription key of this node.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -76,6 +78,8 @@ Delete subscription key of this node.
 ## GET `/nodes/{node}/subscription`
 
 Read subscription info.
+
+**方法标识：** `get`
 
 **权限**
 
@@ -204,6 +208,8 @@ Read subscription info.
 
 Update subscription info.
 
+**方法标识：** `update`
+
 **权限**
 
 ```json
@@ -280,6 +286,8 @@ Update subscription info.
 ## PUT `/nodes/{node}/subscription`
 
 Set subscription key.
+
+**方法标识：** `set`
 
 **权限**
 

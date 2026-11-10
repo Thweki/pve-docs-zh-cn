@@ -8,6 +8,8 @@
 
 Get APT repository information.
 
+**方法标识：** `repositories`
+
 **权限**
 
 ```json
@@ -253,6 +255,8 @@ Get APT repository information.
 
 Change the properties of a repository. Currently only allows enabling/disabling.
 
+**方法标识：** `change_repository`
+
 **权限**
 
 ```json
@@ -348,6 +352,8 @@ Change the properties of a repository. Currently only allows enabling/disabling.
 ## PUT `/nodes/{node}/apt/repositories`
 
 Add a standard repository to the configuration
+
+**方法标识：** `add_repository`
 
 **权限**
 

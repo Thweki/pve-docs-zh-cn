@@ -8,6 +8,8 @@
 
 Bulk start or resume all guests on the cluster.
 
+**方法标识：** `start`
+
 **权限**
 
 ```json

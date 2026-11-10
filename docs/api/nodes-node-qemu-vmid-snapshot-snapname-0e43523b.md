@@ -8,6 +8,8 @@
 
 Delete a VM snapshot.
 
+**方法标识：** `delsnapshot`
+
 **权限**
 
 ```json
@@ -101,6 +103,8 @@ Delete a VM snapshot.
 ## GET `/nodes/{node}/qemu/{vmid}/snapshot/{snapname}`
 
 
+
+**方法标识：** `snapshot_cmd_idx`
 
 **权限**
 

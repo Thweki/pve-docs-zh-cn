@@ -8,6 +8,8 @@
 
 Retrieve effective permissions of given user/token.
 
+**方法标识：** `permissions`
+
 **权限**
 
 ```json

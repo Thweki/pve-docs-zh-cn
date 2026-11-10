@@ -8,6 +8,8 @@
 
 Get host firewall options.
 
+**方法标识：** `get_options`
+
 **权限**
 
 ```json
@@ -240,6 +242,8 @@ Get host firewall options.
 ## PUT `/nodes/{node}/firewall/options`
 
 Set Firewall options.
+
+**方法标识：** `set_options`
 
 **权限**
 

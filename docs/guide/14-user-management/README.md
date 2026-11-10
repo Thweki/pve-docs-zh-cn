@@ -1,4 +1,4 @@
-# 14. User Management <a href="#chapter_user_management" id="chapter_user_management"></a>
+# 14\. User Management <a href="#chapter_user_management" id="chapter_user_management"></a>
 
 Proxmox VE supports multiple authentication sources, for example Linux PAM, an integrated Proxmox VE authentication server, LDAP, Microsoft Active Directory and OpenID Connect.
 

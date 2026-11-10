@@ -1,4 +1,4 @@
-# 22.9. **qm** - QEMU/KVM Virtual Machine Manager <a href="#_strong_qm_strong_qemu_kvm_virtual_machine_manager" id="_strong_qm_strong_qemu_kvm_virtual_machine_manager"></a>
+# 22.9. **qm** \- QEMU/KVM Virtual Machine Manager <a href="#_strong_qm_strong_qemu_kvm_virtual_machine_manager" id="_strong_qm_strong_qemu_kvm_virtual_machine_manager"></a>
 
 <a id="cli_qm"></a>
 
@@ -50,7 +50,7 @@ VM 的唯一 ID。
 
 克隆的 VMID。
 
-**`--bwlimit` `<integer> (0 - N)` (*default =* `clone limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `clone limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -138,7 +138,7 @@ Get the virtual machine configuration with pending configuration changes applied
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>`（*默认 =* `0`）**
+**`--current` `<boolean>`（*默认 \=* `0`）**
 
 获取当前值（而非待生效值）。
 
@@ -158,7 +158,7 @@ Create or restore a virtual machine.
 
 VM 的唯一 ID。
 
-**`--acpi` `<boolean>` (*default =* `1`)**
+**`--acpi` `<boolean>` (*default \=* `1`)**
 
 Enable/disable ACPI.
 
@@ -170,7 +170,7 @@ List of host cores used to execute guest processes, for example: 0,5,8-11
 
 Enable/disable communication with the QEMU Guest Agent and its properties.
 
-**`--allow-ksm` `<boolean>` (*default =* `1`)**
+**`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
 Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
 
@@ -184,7 +184,7 @@ Virtual processor architecture. Defaults to the host architecture.
 
 **`--archive` `<string>`**
 
-The backup archive. Either the file system path to a .tar or .vma file (use *-* to pipe data from stdin) or a proxmox storage backup volume identifier.
+The backup archive. Either the file system path to a .tar or .vma file (use *\-* to pipe data from stdin) or a proxmox storage backup volume identifier.
 
 **`--args` `<string>`**
 
@@ -194,7 +194,7 @@ Arbitrary arguments passed to kvm.
 
 Configure a audio device, useful in combination with QXL/Spice.
 
-**`--autostart` `<boolean>` (*default =* `0`)**
+**`--autostart` `<boolean>` (*default \=* `0`)**
 
 Automatic restart after crash (currently ignored).
 
@@ -202,19 +202,19 @@ Automatic restart after crash (currently ignored).
 
 Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
 
-**`--bios` `<ovmf | seabios>` (*default =* `seabios`)**
+**`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
 Select BIOS implementation.
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order=* sub-property as usage with no key or *legacy=* is deprecated.
+Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order=foo;bar* instead.
+Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
 
-**`--bwlimit` `<integer> (0 - N)` (*default =* `restore limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `restore limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -234,7 +234,7 @@ cloud-init: Password to assign the user. Using this is generally not recommended
 
 Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
 
-**`--ciupgrade` `<boolean>` (*default =* `1`)**
+**`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
 cloud-init: do an automatic package upgrade after the first boot.
 
@@ -242,7 +242,7 @@ cloud-init: do an automatic package upgrade after the first boot.
 
 cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
 
-**`--cores` `<integer> (1 - N)` (*default =* `1`)**
+**`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of cores per socket.
 
@@ -250,13 +250,13 @@ The number of cores per socket.
 
 Emulated CPU type.
 
-**`--cpulimit` `<number> (0 - 128)` (*default =* `0`)**
+**`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` (*default =* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (1 - 262144)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
-CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.
+CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--description` `<string>`**
 
@@ -264,7 +264,7 @@ Description for the VM. Shown in the web-interface VM’s summary. This is saved
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a disk for storing EFI vars. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--force` `<boolean>`**
 
@@ -278,7 +278,7 @@ Requires option(s): `archive`
 
 Freeze CPU at startup (use *c* monitor command to start execution).
 
-**`--ha-managed` `<boolean>`（*默认 =* `0`）**
+**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
 
 Add the VM as a HA resource after it was created.
 
@@ -290,9 +290,9 @@ Script that will be executed during various steps in the vms lifetime.
 
 Map host PCI devices into guest.
 
-**`--hotplug` `<string>` (*default =* `network,disk,usb`)**
+**`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7.
+Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
 
 **`--hugepages` `<1024 | 2 | any>`**
 
@@ -302,7 +302,7 @@ Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugep
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--import-working-storage` `<storage ID>`**
 
@@ -326,7 +326,7 @@ If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, i
 
 Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
 
-**`--keephugepages` `<boolean>` (*default =* `0`)**
+**`--keephugepages` `<boolean>` (*default \=* `0`)**
 
 Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.
 
@@ -334,7 +334,7 @@ Use together with hugepages. If enabled, hugepages will not not be deleted after
 
 Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.
 
-**`--kvm` `<boolean>` (*default =* `1`)**
+**`--kvm` `<boolean>` (*default \=* `1`)**
 
 Enable/disable KVM hardware virtualization.
 
@@ -358,11 +358,11 @@ Specify the QEMU machine.
 
 Memory properties.
 
-**`--migrate_downtime` `<number> (0 - N)` (*default =* `0.1`)**
+**`--migrate_downtime` `<number> (0 - N)` (*default \=* `0.1`)**
 
 Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU).
 
-**`--migrate_speed` `<integer> (0 - N)` (*default =* `0`)**
+**`--migrate_speed` `<integer> (0 - N)` (*default \=* `0`)**
 
 Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
 
@@ -378,7 +378,7 @@ cloud-init: Sets DNS server IP address for a container. Create will automaticall
 
 Specify network devices.
 
-**`--numa` `<boolean>` (*default =* `0`)**
+**`--numa` `<boolean>` (*default \=* `0`)**
 
 Enable/disable NUMA.
 
@@ -386,11 +386,11 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 =* `0`）**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default =* `other`)**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default \=* `other`)**
 
 Specify guest operating system.
 
@@ -402,11 +402,11 @@ Map host parallel devices (n is 0 to 2).
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>`（*默认 =* `0`）**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
-**`--reboot` `<boolean>` (*default =* `1`)**
+**`--reboot` `<boolean>` (*default \=* `1`)**
 
 Allow reboot. If set to *0* the VM exit on reboot.
 
@@ -416,13 +416,13 @@ Configure a VirtIO-based Random Number Generator.
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default =* `lsi`)**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default \=* `lsi`)**
 
 SCSI controller model
 
@@ -432,9 +432,9 @@ cloud-init: Sets DNS search domains for a container. Create will automatically u
 
 **`--serial[n]` `(/dev/[^,]+|socket)`**
 
-Create a serial device inside the VM (n is 0 to 3)
+Create a serial device inside the VM (n is 0 to 3\)
 
-**`--shares` `<integer> (0 - 50000)` (*default =* `1000`)**
+**`--shares` `<integer> (0 - 50000)` (*default \=* `1000`)**
 
 Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.
 
@@ -442,11 +442,11 @@ Amount of memory shares for auto-ballooning. The larger the number is, the more 
 
 Specify SMBIOS type 1 fields.
 
-**`--smp` `<integer> (1 - N)` (*default =* `1`)**
+**`--smp` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPUs. Please use option -sockets instead.
 
-**`--sockets` `<integer> (1 - N)` (*default =* `1`)**
+**`--sockets` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPU sockets.
 
@@ -458,15 +458,15 @@ Configure additional enhancements for SPICE.
 
 cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 
-**`--start` `<boolean>`（*默认 =* `0`）**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Start VM after it was created successfully.
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default =* `now`)**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default \=* `now`)**
 
 Set the initial date of the real time clock. Valid format for date are:'now' or *2006-06-17T16:01:21* or *2006-06-17*.
 
-**`--startup` `[[order=]\d+] [,up=\d+] [,down=\d+] `**
+**`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
@@ -474,7 +474,7 @@ Set the initial date of the real time clock. Valid format for date are:'now' or 
 
 Default storage.
 
-**`--tablet` `<boolean>` (*default =* `1`)**
+**`--tablet` `<boolean>` (*default \=* `1`)**
 
 Enable/disable the USB tablet device.
 
@@ -482,17 +482,17 @@ Enable/disable the USB tablet device.
 
 Tags of the VM. This is only meta information.
 
-**`--tdf` `<boolean>` (*default =* `0`)**
+**`--tdf` `<boolean>` (*default \=* `0`)**
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 =* `0`）**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and 4 MiB will be used instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--unique` `<boolean>`**
 
@@ -508,9 +508,9 @@ Requires option(s): `archive`
 
 **`--usb[n]` `[[host=]<HOSTUSBDEVICE|spice>] [,mapping=<mapping-id>] [,usb3=<1|0>]`**
 
-Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
+Configure an USB device (n is 0 to 4, for machine version \>\= 7.1 and ostype l26 or windows \> 7, n can be up to 14).
 
-**`--vcpus` `<integer> (1 - N)` (*default =* `0`)**
+**`--vcpus` `<integer> (1 - N)` (*default \=* `0`)**
 
 Number of hotplugged vcpus.
 
@@ -520,13 +520,13 @@ Configure the VGA hardware.
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 Configuration for sharing a directory between host and guest using Virtio-fs.
 
-**`--vmgenid` `<UUID>` (*default =* `1 (autogenerated)`)**
+**`--vmgenid` `<UUID>` (*default \=* `1 (autogenerated)`)**
 
 Set VM Generation ID. Use *1* to autogenerate on create or update, pass *0* to disable explicitly.
 
@@ -570,13 +570,13 @@ Destroy the VM and all used/owned volumes. Removes any VM specific permissions a
 
 VM 的唯一 ID。
 
-**`--destroy-unreferenced-disks` `<boolean>` (*default =* `0`)**
+**`--destroy-unreferenced-disks` `<boolean>` (*default \=* `0`)**
 
 If set, destroy additionally all disks not referenced in the config but with a matching VMID from all enabled storages.
 
 **`--purge` `<boolean>`**
 
-Remove VMID from configurations, like backup & replication jobs and HA.
+Remove VMID from configurations, like backup \& replication jobs and HA.
 
 **`--skiplock` `<boolean>`**
 
@@ -630,11 +630,11 @@ The disk you want to move.
 
 Target storage.
 
-**`--bwlimit` `<integer> (0 - N)` (*default =* `move limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*default \=* `move limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 =* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Delete the original disk after successful copy. By default the original disk is kept as unused disk.
 
@@ -666,7 +666,7 @@ VM 的唯一 ID。
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*默认 =* `0`)**
+**`--dryrun` `<boolean>` (*默认 \=* `0`)**
 
 Do not actually write changes out to VM config(s).
 
@@ -716,7 +716,7 @@ VM 的唯一 ID。
 
 **`--force` `<boolean>`**
 
-Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called *unused[n]*, which contains the volume ID. Unlink of unused[n] always cause physical removal.
+Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called *unused\[n\]*, which contains the volume ID. Unlink of unused\[n\] always cause physical removal.
 
 **`--idlist` `<string>`**
 
@@ -766,15 +766,15 @@ VM 的唯一 ID。
 
 以数组形式提供的额外参数
 
-**`--pass-stdin` `<boolean>` (*default =* `0`)**
+**`--pass-stdin` `<boolean>` (*default \=* `0`)**
 
 When set, read STDIN until EOF and forward to guest agent via *input-data* (usually treated as STDIN to process launched by guest agent). Allows maximal 1 MiB.
 
-**`--synchronous` `<boolean>` (*default =* `1`)**
+**`--synchronous` `<boolean>` (*default \=* `1`)**
 
 If set to off, returns the pid immediately instead of waiting for the command to finish or the timeout.
 
-**`--timeout` `<integer> (0 - N)` (*default =* `30`)**
+**`--timeout` `<integer> (0 - N)` (*default \=* `30`)**
 
 The maximum time to wait synchronously for the command to finish. If reached, the pid gets returned. Set to 0 to deactivate
 
@@ -810,7 +810,7 @@ VM 的唯一 ID。
 
 The user to set the password for.
 
-**`--crypted` `<boolean>` (*default =* `0`)**
+**`--crypted` `<boolean>` (*default \=* `0`)**
 
 set to 1 if the password has already been passed through crypt()
 
@@ -846,7 +846,7 @@ VM 的唯一 ID。
 
 The import source volume id.
 
-**`--acpi` `<boolean>` (*default =* `1`)**
+**`--acpi` `<boolean>` (*default \=* `1`)**
 
 Enable/disable ACPI.
 
@@ -858,7 +858,7 @@ List of host cores used to execute guest processes, for example: 0,5,8-11
 
 Enable/disable communication with the QEMU Guest Agent and its properties.
 
-**`--allow-ksm` `<boolean>` (*default =* `1`)**
+**`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
 Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
 
@@ -878,7 +878,7 @@ Arbitrary arguments passed to kvm.
 
 Configure a audio device, useful in combination with QXL/Spice.
 
-**`--autostart` `<boolean>` (*default =* `0`)**
+**`--autostart` `<boolean>` (*default \=* `0`)**
 
 Automatic restart after crash (currently ignored).
 
@@ -886,17 +886,17 @@ Automatic restart after crash (currently ignored).
 
 Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
 
-**`--bios` `<ovmf | seabios>` (*default =* `seabios`)**
+**`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
 Select BIOS implementation.
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order=* sub-property as usage with no key or *legacy=* is deprecated.
+Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order=foo;bar* instead.
+Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
 
 **`--cdrom` `<volume>`**
 
@@ -914,7 +914,7 @@ cloud-init: Password to assign the user. Using this is generally not recommended
 
 Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
 
-**`--ciupgrade` `<boolean>` (*default =* `1`)**
+**`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
 cloud-init: do an automatic package upgrade after the first boot.
 
@@ -922,7 +922,7 @@ cloud-init: do an automatic package upgrade after the first boot.
 
 cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
 
-**`--cores` `<integer> (1 - N)` (*default =* `1`)**
+**`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of cores per socket.
 
@@ -930,13 +930,13 @@ The number of cores per socket.
 
 Emulated CPU type.
 
-**`--cpulimit` `<number> (0 - 128)` (*default =* `0`)**
+**`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` (*default =* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (1 - 262144)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
-CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.
+CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--delete` `<string>`**
 
@@ -946,13 +946,13 @@ CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.
 
 Description for the VM. Shown in the web-interface VM’s summary. This is saved as comment inside the configuration file.
 
-**`--dryrun` `<boolean>` (*默认 =* `0`)**
+**`--dryrun` `<boolean>` (*默认 \=* `0`)**
 
 Show the create command and exit without doing anything.
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a disk for storing EFI vars. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--format` `<qcow2 | raw | vmdk>`**
 
@@ -970,9 +970,9 @@ Script that will be executed during various steps in the vms lifetime.
 
 Map host PCI devices into guest.
 
-**`--hotplug` `<string>` (*default =* `network,disk,usb`)**
+**`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7.
+Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
 
 **`--hugepages` `<1024 | 2 | any>`**
 
@@ -982,7 +982,7 @@ Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugep
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
@@ -1002,7 +1002,7 @@ If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, i
 
 Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
 
-**`--keephugepages` `<boolean>` (*default =* `0`)**
+**`--keephugepages` `<boolean>` (*default \=* `0`)**
 
 Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.
 
@@ -1010,11 +1010,11 @@ Use together with hugepages. If enabled, hugepages will not not be deleted after
 
 Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.
 
-**`--kvm` `<boolean>` (*default =* `1`)**
+**`--kvm` `<boolean>` (*default \=* `1`)**
 
 Enable/disable KVM hardware virtualization.
 
-**`--live-import` `<boolean>` (*default =* `0`)**
+**`--live-import` `<boolean>` (*default \=* `0`)**
 
 Immediately start the VM and copy the data in the background.
 
@@ -1034,11 +1034,11 @@ Specify the QEMU machine.
 
 Memory properties.
 
-**`--migrate_downtime` `<number> (0 - N)` (*default =* `0.1`)**
+**`--migrate_downtime` `<number> (0 - N)` (*default \=* `0.1`)**
 
 Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU).
 
-**`--migrate_speed` `<integer> (0 - N)` (*default =* `0`)**
+**`--migrate_speed` `<integer> (0 - N)` (*default \=* `0`)**
 
 Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
 
@@ -1054,7 +1054,7 @@ cloud-init: Sets DNS server IP address for a container. Create will automaticall
 
 Specify network devices.
 
-**`--numa` `<boolean>` (*default =* `0`)**
+**`--numa` `<boolean>` (*default \=* `0`)**
 
 Enable/disable NUMA.
 
@@ -1062,11 +1062,11 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 =* `0`）**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default =* `other`)**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default \=* `other`)**
 
 Specify guest operating system.
 
@@ -1074,11 +1074,11 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>`（*默认 =* `0`）**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
-**`--reboot` `<boolean>` (*default =* `1`)**
+**`--reboot` `<boolean>` (*default \=* `1`)**
 
 Allow reboot. If set to *0* the VM exit on reboot.
 
@@ -1088,13 +1088,13 @@ Configure a VirtIO-based Random Number Generator.
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default =* `lsi`)**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default \=* `lsi`)**
 
 SCSI controller model
 
@@ -1104,9 +1104,9 @@ cloud-init: Sets DNS search domains for a container. Create will automatically u
 
 **`--serial[n]` `(/dev/[^,]+|socket)`**
 
-Create a serial device inside the VM (n is 0 to 3)
+Create a serial device inside the VM (n is 0 to 3\)
 
-**`--shares` `<integer> (0 - 50000)` (*default =* `1000`)**
+**`--shares` `<integer> (0 - 50000)` (*default \=* `1000`)**
 
 Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.
 
@@ -1114,11 +1114,11 @@ Amount of memory shares for auto-ballooning. The larger the number is, the more 
 
 Specify SMBIOS type 1 fields.
 
-**`--smp` `<integer> (1 - N)` (*default =* `1`)**
+**`--smp` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPUs. Please use option -sockets instead.
 
-**`--sockets` `<integer> (1 - N)` (*default =* `1`)**
+**`--sockets` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPU sockets.
 
@@ -1130,11 +1130,11 @@ Configure additional enhancements for SPICE.
 
 cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default =* `now`)**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default \=* `now`)**
 
 Set the initial date of the real time clock. Valid format for date are:'now' or *2006-06-17T16:01:21* or *2006-06-17*.
 
-**`--startup` `[[order=]\d+] [,up=\d+] [,down=\d+] `**
+**`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
@@ -1142,7 +1142,7 @@ Set the initial date of the real time clock. Valid format for date are:'now' or 
 
 Default storage.
 
-**`--tablet` `<boolean>` (*default =* `1`)**
+**`--tablet` `<boolean>` (*default \=* `1`)**
 
 Enable/disable the USB tablet device.
 
@@ -1150,17 +1150,17 @@ Enable/disable the USB tablet device.
 
 Tags of the VM. This is only meta information.
 
-**`--tdf` `<boolean>` (*default =* `0`)**
+**`--tdf` `<boolean>` (*default \=* `0`)**
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 =* `0`）**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and 4 MiB will be used instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--unused[n]` `[file=]<volume>`**
 
@@ -1168,9 +1168,9 @@ Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the sp
 
 **`--usb[n]` `[[host=]<HOSTUSBDEVICE|spice>] [,mapping=<mapping-id>] [,usb3=<1|0>]`**
 
-Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
+Configure an USB device (n is 0 to 4, for machine version \>\= 7.1 and ostype l26 or windows \> 7, n can be up to 14).
 
-**`--vcpus` `<integer> (1 - N)` (*default =* `0`)**
+**`--vcpus` `<integer> (1 - N)` (*default \=* `0`)**
 
 Number of hotplugged vcpus.
 
@@ -1180,13 +1180,13 @@ Configure the VGA hardware.
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 Configuration for sharing a directory between host and guest using Virtio-fs.
 
-**`--vmgenid` `<UUID>` (*default =* `1 (autogenerated)`)**
+**`--vmgenid` `<UUID>` (*default \=* `1 (autogenerated)`)**
 
 Set VM Generation ID. Use *1* to autogenerate on create or update, pass *0* to disable explicitly.
 
@@ -1274,7 +1274,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 =* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -1298,7 +1298,7 @@ Use online/live migration if VM is running. Ignored if VM is stopped.
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--with-conntrack-state` `<boolean>` (*default =* `0`)**
+**`--with-conntrack-state` `<boolean>` (*default \=* `0`)**
 
 Whether to migrate conntrack entries for running VMs.
 
@@ -1330,7 +1330,7 @@ An alias for *qm disk move*.
 
 
 
-**qm move_disk**
+**qm move\_disk**
 
 An alias for *qm disk move*.
 
@@ -1340,7 +1340,7 @@ An alias for *qm disk move*.
 
 **qm mtunnel**
 
-Used by qmigrate - do not use manually.
+Used by qmigrate \- do not use manually.
 
 <a id="cli_qm_nbdstop"></a>
 
@@ -1402,11 +1402,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 =* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 =* `0`)**
+**`--delete` `<boolean>` (*默认 \=* `0`)**
 
 Delete the original VM and related data after successful migration. By default the original VM is kept on the source cluster in a stopped state.
 
@@ -1490,7 +1490,7 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>`（*默认 =* `0`）**
+**`--start` `<boolean>`（*默认 \=* `0`）**
 
 Whether the VM should get started after rolling back successfully. (Note: VMs will be automatically started if the snapshot includes RAM.)
 
@@ -1520,13 +1520,13 @@ The key (qemu monitor encoding).
 
 **qm set** `<vmid>` `[OPTIONS]`
 
-Set virtual machine options (synchronous API) - You should consider using the POST method instead for any actions involving hotplug or storage allocation.
+Set virtual machine options (synchronous API) \- You should consider using the POST method instead for any actions involving hotplug or storage allocation.
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
 VM 的唯一 ID。
 
-**`--acpi` `<boolean>` (*default =* `1`)**
+**`--acpi` `<boolean>` (*default \=* `1`)**
 
 Enable/disable ACPI.
 
@@ -1538,7 +1538,7 @@ List of host cores used to execute guest processes, for example: 0,5,8-11
 
 Enable/disable communication with the QEMU Guest Agent and its properties.
 
-**`--allow-ksm` `<boolean>` (*default =* `1`)**
+**`--allow-ksm` `<boolean>` (*default \=* `1`)**
 
 Allow memory pages of this guest to be merged via KSM (Kernel Samepage Merging).
 
@@ -1558,7 +1558,7 @@ Arbitrary arguments passed to kvm.
 
 Configure a audio device, useful in combination with QXL/Spice.
 
-**`--autostart` `<boolean>` (*default =* `0`)**
+**`--autostart` `<boolean>` (*default \=* `0`)**
 
 Automatic restart after crash (currently ignored).
 
@@ -1566,17 +1566,17 @@ Automatic restart after crash (currently ignored).
 
 Amount of target RAM for the VM in MiB. The balloon driver is enabled by default, unless it is explicitly disabled by setting the value to zero.
 
-**`--bios` `<ovmf | seabios>` (*default =* `seabios`)**
+**`--bios` `<ovmf | seabios>` (*default \=* `seabios`)**
 
 Select BIOS implementation.
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-Specify guest boot order. Use the *order=* sub-property as usage with no key or *legacy=* is deprecated.
+Specify guest boot order. Use the *order\=* sub-property as usage with no key or *legacy\=* is deprecated.
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-Enable booting from specified disk. Deprecated: Use *boot: order=foo;bar* instead.
+Enable booting from specified disk. Deprecated: Use *boot: order\=foo;bar* instead.
 
 **`--cdrom` `<volume>`**
 
@@ -1594,7 +1594,7 @@ cloud-init: Password to assign the user. Using this is generally not recommended
 
 Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
 
-**`--ciupgrade` `<boolean>` (*default =* `1`)**
+**`--ciupgrade` `<boolean>` (*default \=* `1`)**
 
 cloud-init: do an automatic package upgrade after the first boot.
 
@@ -1602,7 +1602,7 @@ cloud-init: do an automatic package upgrade after the first boot.
 
 cloud-init: User name to change ssh keys and password for instead of the image’s configured default user.
 
-**`--cores` `<integer> (1 - N)` (*default =* `1`)**
+**`--cores` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of cores per socket.
 
@@ -1610,13 +1610,13 @@ The number of cores per socket.
 
 Emulated CPU type.
 
-**`--cpulimit` `<number> (0 - 128)` (*default =* `0`)**
+**`--cpulimit` `<number> (0 - 128)` (*default \=* `0`)**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` (*default =* `cgroup v1: 1024, cgroup v2: 100`)**
+**`--cpuunits` `<integer> (1 - 262144)` (*default \=* `cgroup v1: 1024, cgroup v2: 100`)**
 
-CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.
+CPU weight for a VM, will be clamped to \[1, 10000\] in cgroup v2.
 
 **`--delete` `<string>`**
 
@@ -1632,11 +1632,11 @@ Description for the VM. Shown in the web-interface VM’s summary. This is saved
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a disk for storing EFI vars. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--force` `<boolean>`**
 
-Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called *unused[n]*, which contains the volume ID. Unlink of unused[n] always cause physical removal.
+Force physical removal. Without this, we simple remove the disk from the config file and create an additional configuration entry called *unused\[n\]*, which contains the volume ID. Unlink of unused\[n\] always cause physical removal.
 
 {% hint style="info" %}
 Requires option(s): `delete`
@@ -1654,9 +1654,9 @@ Script that will be executed during various steps in the vms lifetime.
 
 Map host PCI devices into guest.
 
-**`--hotplug` `<string>` (*default =* `network,disk,usb`)**
+**`--hotplug` `<string>` (*default \=* `network,disk,usb`)**
 
-Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7.
+Selectively enable hotplug features. This is a comma separated list of hotplug features: *network*, *disk*, *cpu*, *memory*, *usb* and *cloudinit*. Use *0* to disable hotplug completely. Using *1* as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version \>\= 7.1 and ostype l26 or windows \> 7\.
 
 **`--hugepages` `<1024 | 2 | any>`**
 
@@ -1666,7 +1666,7 @@ Sets the size of hugepages in MiB. If the value is set to *any* then 1 GiB hugep
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
@@ -1686,7 +1686,7 @@ If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, i
 
 Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
 
-**`--keephugepages` `<boolean>` (*default =* `0`)**
+**`--keephugepages` `<boolean>` (*default \=* `0`)**
 
 Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.
 
@@ -1694,7 +1694,7 @@ Use together with hugepages. If enabled, hugepages will not not be deleted after
 
 Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.
 
-**`--kvm` `<boolean>` (*default =* `1`)**
+**`--kvm` `<boolean>` (*default \=* `1`)**
 
 Enable/disable KVM hardware virtualization.
 
@@ -1714,11 +1714,11 @@ Specify the QEMU machine.
 
 Memory properties.
 
-**`--migrate_downtime` `<number> (0 - N)` (*default =* `0.1`)**
+**`--migrate_downtime` `<number> (0 - N)` (*default \=* `0.1`)**
 
 Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. Will be capped to 2000 seconds (maximum in QEMU).
 
-**`--migrate_speed` `<integer> (0 - N)` (*default =* `0`)**
+**`--migrate_speed` `<integer> (0 - N)` (*default \=* `0`)**
 
 Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
 
@@ -1734,7 +1734,7 @@ cloud-init: Sets DNS server IP address for a container. Create will automaticall
 
 Specify network devices.
 
-**`--numa` `<boolean>` (*default =* `0`)**
+**`--numa` `<boolean>` (*default \=* `0`)**
 
 Enable/disable NUMA.
 
@@ -1742,11 +1742,11 @@ Enable/disable NUMA.
 
 NUMA topology.
 
-**`--onboot` `<boolean>`（*默认 =* `0`）**
+**`--onboot` `<boolean>`（*默认 \=* `0`）**
 
 Specifies whether a VM will be started during system bootup.
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default =* `other`)**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` (*default \=* `other`)**
 
 Specify guest operating system.
 
@@ -1754,11 +1754,11 @@ Specify guest operating system.
 
 Map host parallel devices (n is 0 to 2).
 
-**`--protection` `<boolean>`（*默认 =* `0`）**
+**`--protection` `<boolean>`（*默认 \=* `0`）**
 
 Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
 
-**`--reboot` `<boolean>` (*default =* `1`)**
+**`--reboot` `<boolean>` (*default \=* `1`)**
 
 Allow reboot. If set to *0* the VM exit on reboot.
 
@@ -1772,13 +1772,13 @@ Configure a VirtIO-based Random Number Generator.
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default =* `lsi`)**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` (*default \=* `lsi`)**
 
 SCSI controller model
 
@@ -1788,9 +1788,9 @@ cloud-init: Sets DNS search domains for a container. Create will automatically u
 
 **`--serial[n]` `(/dev/[^,]+|socket)`**
 
-Create a serial device inside the VM (n is 0 to 3)
+Create a serial device inside the VM (n is 0 to 3\)
 
-**`--shares` `<integer> (0 - 50000)` (*default =* `1000`)**
+**`--shares` `<integer> (0 - 50000)` (*default \=* `1000`)**
 
 Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.
 
@@ -1802,11 +1802,11 @@ Amount of memory shares for auto-ballooning. The larger the number is, the more 
 
 Specify SMBIOS type 1 fields.
 
-**`--smp` `<integer> (1 - N)` (*default =* `1`)**
+**`--smp` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPUs. Please use option -sockets instead.
 
-**`--sockets` `<integer> (1 - N)` (*default =* `1`)**
+**`--sockets` `<integer> (1 - N)` (*default \=* `1`)**
 
 The number of CPU sockets.
 
@@ -1818,15 +1818,15 @@ Configure additional enhancements for SPICE.
 
 cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default =* `now`)**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` (*default \=* `now`)**
 
 Set the initial date of the real time clock. Valid format for date are:'now' or *2006-06-17T16:01:21* or *2006-06-17*.
 
-**`--startup` `[[order=]\d+] [,up=\d+] [,down=\d+] `**
+**`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
 启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--tablet` `<boolean>` (*default =* `1`)**
+**`--tablet` `<boolean>` (*default \=* `1`)**
 
 Enable/disable the USB tablet device.
 
@@ -1834,17 +1834,17 @@ Enable/disable the USB tablet device.
 
 Tags of the VM. This is only meta information.
 
-**`--tdf` `<boolean>` (*default =* `0`)**
+**`--tdf` `<boolean>` (*default \=* `0`)**
 
 Enable/disable time drift fix.
 
-**`--template` `<boolean>`（*默认 =* `0`）**
+**`--template` `<boolean>`（*默认 \=* `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Note that SIZE\_IN\_GiB is ignored here and 4 MiB will be used instead. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--unused[n]` `[file=]<volume>`**
 
@@ -1852,9 +1852,9 @@ Configure a Disk for storing TPM state. The format is fixed to *raw*. Use the sp
 
 **`--usb[n]` `[[host=]<HOSTUSBDEVICE|spice>] [,mapping=<mapping-id>] [,usb3=<1|0>]`**
 
-Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
+Configure an USB device (n is 0 to 4, for machine version \>\= 7.1 and ostype l26 or windows \> 7, n can be up to 14).
 
-**`--vcpus` `<integer> (1 - N)` (*default =* `0`)**
+**`--vcpus` `<integer> (1 - N)` (*default \=* `0`)**
 
 Number of hotplugged vcpus.
 
@@ -1864,13 +1864,13 @@ Configure the VGA hardware.
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the *import-from* parameter to import from an existing volume.
+Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE\_ID:SIZE\_IN\_GiB to allocate a new volume. Use STORAGE\_ID:0 and the *import-from* parameter to import from an existing volume.
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 Configuration for sharing a directory between host and guest using Virtio-fs.
 
-**`--vmgenid` `<UUID>` (*default =* `1 (autogenerated)`)**
+**`--vmgenid` `<UUID>` (*default \=* `1 (autogenerated)`)**
 
 Set VM Generation ID. Use *1* to autogenerate on create or update, pass *0* to disable explicitly.
 
@@ -1894,7 +1894,7 @@ Show command line which is used to start the VM (debug info).
 
 VM 的唯一 ID。
 
-**`--pretty` `<boolean>` (*default =* `0`)**
+**`--pretty` `<boolean>` (*default \=* `0`)**
 
 Puts each option on a new line to enhance human readability
 
@@ -1914,11 +1914,11 @@ Shutdown virtual machine. This is similar to pressing the power button on a phys
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*默认 =* `0`)**
+**`--forceStop` `<boolean>` (*默认 \=* `0`)**
 
 Make sure the VM stops.
 
-**`--keepActive` `<boolean>` (*default =* `0`)**
+**`--keepActive` `<boolean>` (*default \=* `0`)**
 
 Do not deactivate storage volumes.
 
@@ -1988,7 +1988,7 @@ CIDR of the (sub) network that is used for migration.
 
 **`--nets-host-mtu` `net\d+=\d+(,net\d+=\d+)*`**
 
-Used for migration compat. List of VirtIO network devices and their effective host_mtu setting according to the QEMU object model on the source side of the migration. A value of 0 means that the host_mtu parameter is to be avoided for the corresponding device.
+Used for migration compat. List of VirtIO network devices and their effective host\_mtu setting according to the QEMU object model on the source side of the migration. A value of 0 means that the host\_mtu parameter is to be avoided for the corresponding device.
 
 **`--skiplock` `<boolean>`**
 
@@ -2002,11 +2002,11 @@ Some command save/restore state from this location.
 
 从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer> (0 - N)` (*default =* `max(30, vm memory in GiB)`)**
+**`--timeout` `<integer> (0 - N)` (*default \=* `max(30, vm memory in GiB)`)**
 
 最多等待 timeout 秒。
 
-**`--with-conntrack-state` `<boolean>` (*default =* `0`)**
+**`--with-conntrack-state` `<boolean>` (*default \=* `0`)**
 
 Whether to migrate conntrack entries for running VMs.
 
@@ -2038,7 +2038,7 @@ Stop virtual machine. The qemu process will exit immediately. This is akin to pu
 
 VM 的唯一 ID。
 
-**`--keepActive` `<boolean>` (*default =* `0`)**
+**`--keepActive` `<boolean>` (*default \=* `0`)**
 
 Do not deactivate storage volumes.
 
@@ -2046,7 +2046,7 @@ Do not deactivate storage volumes.
 
 集群节点名称。
 
-**`--overrule-shutdown` `<boolean>`（*默认值 =* `0`）**
+**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
 
 Try to abort active *qmshutdown* tasks before stopping.
 
@@ -2082,7 +2082,7 @@ The storage for the VM state
 Requires option(s): `todisk`
 {% endhint %}
 
-**`--todisk` `<boolean>` (*default =* `0`)**
+**`--todisk` `<boolean>` (*default \=* `0`)**
 
 If set, suspends the VM to disk. Will be resumed on next VM start.
 
@@ -2114,7 +2114,7 @@ Open a terminal using a serial device (The VM need to have a serial device confi
 
 VM 的唯一 ID。
 
-**`--escape` `<string>` (*default =* `^O`)**
+**`--escape` `<string>` (*default \=* `^O`)**
 
 Escape character.
 

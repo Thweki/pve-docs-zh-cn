@@ -8,6 +8,8 @@
 
 List mediated device types for given PCI device.
 
+**方法标识：** `mdevscan`
+
 **权限**
 
 ```json

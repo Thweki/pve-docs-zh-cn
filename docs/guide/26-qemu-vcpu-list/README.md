@@ -1,4 +1,4 @@
-# 26. Appendix E: QEMU vCPU List <a href="#_qemu_vcpu_list" id="_qemu_vcpu_list"></a>
+# 26\. Appendix E: QEMU vCPU List <a href="#_qemu_vcpu_list" id="_qemu_vcpu_list"></a>
 
 ## 本章内容
 

@@ -8,6 +8,8 @@
 
 List aliases
 
+**方法标识：** `get_aliases`
+
 **权限**
 
 ```json
@@ -100,6 +102,8 @@ List aliases
 ## POST `/nodes/{node}/qemu/{vmid}/firewall/aliases`
 
 Create IP or Network Alias.
+
+**方法标识：** `create_alias`
 
 **权限**
 

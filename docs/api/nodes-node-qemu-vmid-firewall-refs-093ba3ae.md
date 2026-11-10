@@ -8,6 +8,8 @@
 
 Lists possible IPSet/Alias reference which are allowed in source/dest properties.
 
+**方法标识：** `refs`
+
 **权限**
 
 ```json

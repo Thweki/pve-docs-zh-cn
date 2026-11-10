@@ -8,6 +8,8 @@
 
 Move a rootfs-/mp-volume to a different storage or to a different container.
 
+**方法标识：** `move_volume`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Stop the container. This will abruptly stop all processes running in the container.
 
+**方法标识：** `vm_stop`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Returns a list of all entities that can be used as notification targets.
 
+**方法标识：** `get_all_targets`
+
 **权限**
 
 ```json

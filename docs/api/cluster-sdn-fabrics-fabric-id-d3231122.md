@@ -8,6 +8,8 @@
 
 Add a fabric
 
+**方法标识：** `delete_fabric`
+
 **权限**
 
 ```json
@@ -71,6 +73,8 @@ Add a fabric
 ## GET `/cluster/sdn/fabrics/fabric/{id}`
 
 Update a fabric
+
+**方法标识：** `get_fabric`
 
 **权限**
 
@@ -290,6 +294,8 @@ Update a fabric
 ## PUT `/cluster/sdn/fabrics/fabric/{id}`
 
 Update a fabric
+
+**方法标识：** `update_fabric`
 
 **权限**
 

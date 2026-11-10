@@ -8,6 +8,8 @@
 
 Extract a file or directory (as zip archive) from a PBS backup.
 
+**方法标识：** `download`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Read service properties
 
+**方法标识：** `service_state`
+
 **权限**
 
 ```json

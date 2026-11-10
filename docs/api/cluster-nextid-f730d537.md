@@ -8,6 +8,8 @@
 
 Get next free VMID. Pass a VMID to assert that its free (at time of check).
 
+**方法标识：** `nextid`
+
 **权限**
 
 ```json

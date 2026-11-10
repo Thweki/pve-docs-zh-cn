@@ -8,6 +8,8 @@
 
 List all pools and their settings (which are settable by the POST/PUT endpoints).
 
+**方法标识：** `lspools`
+
 **权限**
 
 ```json
@@ -191,6 +193,8 @@ List all pools and their settings (which are settable by the POST/PUT endpoints)
 ## POST `/nodes/{node}/ceph/pool`
 
 Create Ceph pool
+
+**方法标识：** `createpool`
 
 **权限**
 

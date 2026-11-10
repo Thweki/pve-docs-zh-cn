@@ -8,6 +8,8 @@
 
 List available macros
 
+**方法标识：** `get_macros`
+
 **权限**
 
 ```json

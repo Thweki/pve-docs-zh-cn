@@ -8,6 +8,8 @@
 
 Directory index for SDN fabric status.
 
+**方法标识：** `diridx`
+
 **权限**
 
 ```json

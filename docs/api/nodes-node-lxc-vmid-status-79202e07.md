@@ -8,6 +8,8 @@
 
 Directory index
 
+**方法标识：** `vmcmdidx`
+
 **权限**
 
 ```json

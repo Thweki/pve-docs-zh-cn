@@ -1,4 +1,4 @@
-# 22.4. **pvesubscription** - Proxmox VE Subscription Manager <a href="#_strong_pvesubscription_strong_proxmox_ve_subscription_manager" id="_strong_pvesubscription_strong_proxmox_ve_subscription_manager"></a>
+# 22.4. **pvesubscription** \- Proxmox VE Subscription Manager <a href="#_strong_pvesubscription_strong_proxmox_ve_subscription_manager" id="_strong_pvesubscription_strong_proxmox_ve_subscription_manager"></a>
 
 <a id="cli_pvesubscription"></a>
 
@@ -70,7 +70,7 @@ A signed subscription info blob
 
 Update subscription info.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Always connect to server, even if local cache is still valid.
 

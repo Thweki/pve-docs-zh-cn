@@ -1,4 +1,4 @@
-# 18.1. pvedaemon - Proxmox VE API Daemon <a href="#_pvedaemon_proxmox_ve_api_daemon" id="_pvedaemon_proxmox_ve_api_daemon"></a>
+# 18.1. pvedaemon \- Proxmox VE API Daemon <a href="#_pvedaemon_proxmox_ve_api_daemon" id="_pvedaemon_proxmox_ve_api_daemon"></a>
 
 This daemon exposes the whole Proxmox VE API on `127.0.0.1:85`. It runs as `root` and has permission to do all privileged operations.
 
@@ -14,7 +14,7 @@ The daemon listens to a local address only, so you cannot access it from outside
 MAX_WORKERS=5
 ```
 
-Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128.
+Note that a higher number of worker processes may result in higher CPU usage. The number of worker processes must be greater than 0 and smaller than 128\.
 
 The same setting exists for [pveproxy](02-pveproxy-proxmox-ve-api-proxy-daemon.md#pveproxy_max_workers).
 

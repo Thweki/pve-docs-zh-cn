@@ -8,6 +8,8 @@
 
 SDN ipams index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -80,6 +82,8 @@ SDN ipams index.
 ## POST `/cluster/sdn/ipams`
 
 Create a new sdn ipam object.
+
+**方法标识：** `create`
 
 **权限**
 

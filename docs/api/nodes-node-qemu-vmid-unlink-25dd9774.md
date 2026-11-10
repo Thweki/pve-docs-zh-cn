@@ -8,6 +8,8 @@
 
 Unlink/delete disk images.
 
+**方法标识：** `unlink`
+
 **权限**
 
 ```json

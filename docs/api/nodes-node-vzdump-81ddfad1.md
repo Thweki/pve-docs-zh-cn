@@ -8,6 +8,8 @@
 
 Create backup.
 
+**方法标识：** `vzdump`
+
 **权限**
 
 ```json
@@ -57,7 +59,7 @@ Create backup.
 | `notification-mode` | string | 否 | "auto" | Determine which notification system to use. If set to 'legacy-sendmail', vzdump will consider the mailto/mailnotification parameters and send emails to the specified address(es) via the 'sendmail' command. If set to 'notification-system', a notification will be sent via PVE's notification system, and the mailto and mailnotification will be ignored. If set to 'auto' (default setting), an email will be sent if mailto is set, and the notification system will be used if not.；可选值：`auto`, `legacy-sendmail`, `notification-system` |
 | `pbs-change-detection-mode` | string | 否 | — | PBS mode used to detect file changes and switch encoding format for container backups.；可选值：`legacy`, `data`, `metadata` |
 | `performance` | string | 否 | — | Other performance-related settings. |
-| `pigz` | integer | 否 | 0 | Use pigz instead of gzip when N>0. N=1 uses half of cores, N>1 uses N as thread count. |
+| `pigz` | integer | 否 | 0 | Use pigz instead of gzip when N&gt;0. N=1 uses half of cores, N&gt;1 uses N as thread count. |
 | `pool` | string | 否 | — | Backup all known guest systems included in the specified pool. |
 | `protected` | boolean | 否 | — | If true, mark backup(s) as protected. |
 | `prune-backups` | string | 否 | "keep-all=1" | Use these retention options instead of those from the storage configuration. |

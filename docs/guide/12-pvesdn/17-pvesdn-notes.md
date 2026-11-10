@@ -15,9 +15,9 @@ net.ipv4.conf.all.rp_filter=0
 
 To add IPSEC encryption on top of a VXLAN, this example shows how to use `strongswan`.
 
-You`ll need to reduce the *MTU* by additional 60 bytes for IPv4 or 80 bytes for IPv6 to handle encryption.
+You\`ll need to reduce the *MTU* by additional 60 bytes for IPv4 or 80 bytes for IPv6 to handle encryption.
 
-So with default real 1500 MTU, you need to use a MTU of 1370 (1370 + 80 (IPSEC) + 50 (VXLAN) == 1500).
+So with default real 1500 MTU, you need to use a MTU of 1370 (1370 \+ 80 (IPSEC) \+ 50 (VXLAN) \=\= 1500).
 
 Install strongswan on the host.
 

@@ -8,6 +8,8 @@
 
 Delete storage configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -72,6 +74,8 @@ Delete storage configuration.
 
 Read storage configuration.
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -129,6 +133,8 @@ Read storage configuration.
 ## PUT `/storage/{storage}`
 
 Update storage configuration.
+
+**方法标识：** `update`
 
 **权限**
 

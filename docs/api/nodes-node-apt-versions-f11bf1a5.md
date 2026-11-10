@@ -8,6 +8,8 @@
 
 Get package information for important Proxmox packages.
 
+**方法标识：** `versions`
+
 **权限**
 
 ```json

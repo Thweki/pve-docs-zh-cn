@@ -8,6 +8,8 @@
 
 删除资源配置。
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@
 ## GET `/cluster/ha/resources/{sid}`
 
 Read resource configuration.
+
+**方法标识：** `read`
 
 **权限**
 
@@ -196,6 +200,8 @@ Read resource configuration.
 ## PUT `/cluster/ha/resources/{sid}`
 
 更新资源配置。
+
+**方法标识：** `update`
 
 **权限**
 

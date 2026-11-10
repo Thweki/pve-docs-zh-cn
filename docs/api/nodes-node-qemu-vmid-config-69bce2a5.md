@@ -8,6 +8,8 @@
 
 Get the virtual machine configuration with pending configuration changes applied. Set the 'current' parameter to get the current configuration instead.
 
+**方法标识：** `vm_config`
+
 **权限**
 
 ```json
@@ -2479,6 +2481,8 @@ Get the virtual machine configuration with pending configuration changes applied
 
 Set virtual machine options (asynchronous API).
 
+**方法标识：** `update_vm_async`
+
 **权限**
 
 ```json
@@ -2556,7 +2560,7 @@ Set virtual machine options (asynchronous API).
 | `freeze` | boolean | 否 | — | Freeze CPU at startup (use 'c' monitor command to start execution). |
 | `hookscript` | string | 否 | — | Script that will be executed during various steps in the vms lifetime. |
 | `hostpci[n]` | string | 否 | — | Map host PCI devices into guest. |
-| `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7. |
+| `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version &gt;= 7.1 and ostype l26 or windows &gt; 7. |
 | `hugepages` | string | 否 | — | Enables hugepages memory. Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.；可选值：`any`, `2`, `1024` |
 | `ide[n]` | string | 否 | — | Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `import-working-storage` | string | 否 | — | A file-based storage with 'images' content-type enabled, which is used as an intermediary extraction storage during import. Defaults to the source storage. |
@@ -2605,7 +2609,7 @@ Set virtual machine options (asynchronous API).
 | `template` | boolean | 否 | 0 | Enable/disable Template. |
 | `tpmstate0` | string | 否 | — | Configure a Disk for storing TPM state. The format is fixed to 'raw'. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `unused[n]` | string | 否 | — | Reference to unused volumes. This is used internally, and should not be modified manually. |
-| `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14). |
+| `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version &gt;= 7.1 and ostype l26 or windows &gt; 7, n can be up to 14). |
 | `vcpus` | integer | 否 | 0 | Number of hotplugged vcpus. |
 | `vga` | string | 否 | — | Configure the VGA hardware. |
 | `virtio[n]` | string | 否 | — | Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
@@ -5094,6 +5098,8 @@ Set virtual machine options (asynchronous API).
 
 Set virtual machine options (synchronous API) - You should consider using the POST method instead for any actions involving hotplug or storage allocation.
 
+**方法标识：** `update_vm`
+
 **权限**
 
 ```json
@@ -5170,7 +5176,7 @@ Set virtual machine options (synchronous API) - You should consider using the PO
 | `freeze` | boolean | 否 | — | Freeze CPU at startup (use 'c' monitor command to start execution). |
 | `hookscript` | string | 否 | — | Script that will be executed during various steps in the vms lifetime. |
 | `hostpci[n]` | string | 否 | — | Map host PCI devices into guest. |
-| `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7. |
+| `hotplug` | string | 否 | "network,disk,usb" | Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version &gt;= 7.1 and ostype l26 or windows &gt; 7. |
 | `hugepages` | string | 否 | — | Enables hugepages memory. Sets the size of hugepages in MiB. If the value is set to 'any' then 1 GiB hugepages will be used if possible, otherwise the size will fall back to 2 MiB.；可选值：`any`, `2`, `1024` |
 | `ide[n]` | string | 否 | — | Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `intel-tdx` | string | 否 | — | Trusted Domain Extension (TDX) features by Intel CPUs |
@@ -5218,7 +5224,7 @@ Set virtual machine options (synchronous API) - You should consider using the PO
 | `template` | boolean | 否 | 0 | Enable/disable Template. |
 | `tpmstate0` | string | 否 | — | Configure a Disk for storing TPM state. The format is fixed to 'raw'. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |
 | `unused[n]` | string | 否 | — | Reference to unused volumes. This is used internally, and should not be modified manually. |
-| `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14). |
+| `usb[n]` | string | 否 | — | Configure an USB device (n is 0 to 4, for machine version &gt;= 7.1 and ostype l26 or windows &gt; 7, n can be up to 14). |
 | `vcpus` | integer | 否 | 0 | Number of hotplugged vcpus. |
 | `vga` | string | 否 | — | Configure the VGA hardware. |
 | `virtio[n]` | string | 否 | — | Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume. |

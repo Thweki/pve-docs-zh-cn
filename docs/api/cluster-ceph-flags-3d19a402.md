@@ -8,6 +8,8 @@
 
 get the status of all ceph flags
 
+**方法标识：** `get_all_flags`
+
 **权限**
 
 ```json
@@ -86,6 +88,8 @@ get the status of all ceph flags
 ## PUT `/cluster/ceph/flags`
 
 Set/Unset multiple Ceph flags at once. Each flag is a top-level optional boolean: passing true sets the flag, false unsets it, omitting it leaves the current state untouched. Runs as a worker task; returns a UPID to follow.
+
+**方法标识：** `set_flags`
 
 **权限**
 

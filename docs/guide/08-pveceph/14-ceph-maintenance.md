@@ -20,10 +20,10 @@ ceph crash archive-all
 
 It is good practice to run *fstrim* (discard) regularly on VMs and containers. This releases data blocks that the filesystem isn’t using anymore. It reduces data usage and resource load. Most modern operating systems issue such discard commands to their disks regularly. You only need to ensure that the Virtual Machines enable the [disk discard option](../10-virtual-machines/02-qm-virtual-machines-settings.md#qm_hard_disk_discard).
 
-## 8.14.3. Scrub & Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
+## 8.14.3. Scrub \& Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
 
 Ceph ensures data integrity by *scrubbing* placement groups. Ceph checks every object in a PG for its health. There are two forms of Scrubbing, daily cheap metadata checks and weekly deep data checks. The weekly deep scrub reads the objects and uses checksums to ensure data integrity. If a running scrub interferes with business (performance) needs, you can adjust the time when scrubs   
-[Ceph scrubbing [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)]  
+\[Ceph scrubbing [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)\]  
  are executed.
 
 ## 8.14.4. Mute a Health Check <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
@@ -51,10 +51,10 @@ This section explains how to migrate the cluster-owned keys and the keys of comp
 ### Why the Health Checks Appear <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
 
 Ceph Squid 19.2.6 and Ceph Tentacle 20.2.4 add health checks for keys and temporary access credentials that use the older `aes` encryption method. The checks can therefore appear directly after an upgrade even if the cluster worked without warnings before. The older method is affected by [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156). See the upstream release announcement for background   
-[Ceph: Squid v19.2.6 and Tentacle v20.2.4 released [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)]  
+\[Ceph: Squid v19.2.6 and Tentacle v20.2.4 released [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)\]  
 .
 
-Two checks set the cluster status to *HEALTH_ERR*. This does not mean that storage access or a Ceph service has failed. Follow the steps below to migrate to `aes256k` and, when all clients support it, disable the vulnerable method.
+Two checks set the cluster status to *HEALTH\_ERR*. This does not mean that storage access or a Ceph service has failed. Follow the steps below to migrate to `aes256k` and, when all clients support it, disable the vulnerable method.
 
 ### Migration Steps <a href="#pveceph_cephx_migration_helper" id="pveceph_cephx_migration_helper"></a>
 
@@ -70,7 +70,7 @@ Reruns do not rotate completed keys again. After each run, invoke the helper wit
 - Run the helper as `root` on one node only. Do not start another migration, a rolling restart, or change Ceph keys with other tools while it runs. The helper’s lock does not block direct Ceph authentication commands.
 - If Cephx is disabled on this cluster, follow [Clusters with Cephx Disabled](#pveceph_cephx_disabled) instead.
 
-#### 1. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
+#### 1\. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
 
 Review the cluster-owned migration in the default dry-run mode:
 
@@ -92,7 +92,7 @@ The helper rotates the manager, metadata server, OSD, monitor, bootstrap, crash,
 
 After Ceph updates its health status, the two error-severity checks clear. The warning about rotating service keys can remain for a few hours while old rotating keys expire. You do not need to wait for this warning to clear before continuing with the migration.
 
-#### 2. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
+#### 2\. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
 <a id="pveceph_cipher_support"></a>
 
@@ -163,7 +163,7 @@ While a key is staged, do not add or downgrade monitors or change that user’s 
 
 The helper reports sessions that may still hold an old key. Client hints are host-wide, not session attribution or a complete workload inventory. Sockets without an owning process are listed separately. Check disconnected clients and external key copies yourself.
 
-#### 3. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
+#### 3\. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
 
 Run a final dry run to check for remaining old-key sessions. It offers a confirmation command when its observed checks pass, but cannot verify disconnected clients or external key copies for you.
 
@@ -292,7 +292,7 @@ To return a staged user to its current key:
 #### Emergency Cipher Override <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
 
 Monitors normally use the `auth_allowed_ciphers` list stored in the MonMap to decide which key ciphers may authenticate. The local startup option `mon_auth_emergency_allowed_ciphers` replaces that list for a monitor. It can temporarily allow the cipher of an existing administrative key after an incorrect restriction locked administrators out   
-[Ceph: Emergency Allowed Ciphers [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)]  
+\[Ceph: Emergency Allowed Ciphers [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)\]  
 .
 
 Ceph raises `AUTH_EMERGENCY_CIPHERS_SET` while this override is configured. The helper refuses the final restriction because changing the MonMap would not take effect. Use the override only to recover access, then repair the normal configuration, remove it from `/etc/pve/ceph.conf`, and restart every monitor before the final dry run.
@@ -302,7 +302,7 @@ Ceph raises `AUTH_EMERGENCY_CIPHERS_SET` while this override is configured. The 
 After an interruption, run the helper without options once the affected nodes are reachable. Unfinished key updates can resume while their daemons are stopped. Keep the journal unchanged and follow the printed next steps rather than starting a manual rotation. Check the affected nodes and service logs rather than assuming a down daemon’s key needs repair.
 
 If the helper still cannot proceed, install the latest `pve-manager` and retry. Contact Proxmox support before editing the journal or keyrings, or before using the upstream Cephx key migration procedure   
-[Ceph documentation: [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)]  
+\[Ceph documentation: [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)\]  
 . That procedure changes the Ceph authentication database, but does not account for these Proxmox VE details:
 
 - Ensure every managed key copy below `/etc/pve/priv` and `/var/lib/ceph` contains the key that Ceph accepts. Merge changes into `/etc/pve/priv/ceph.mon.keyring`; never overwrite it.
@@ -312,9 +312,9 @@ If the helper still cannot proceed, install the latest `pve-manager` and retry. 
 
 Use manual key-rotation or cipher-restriction commands only with a complete, tested recovery plan that covers every item above.
 
-## 8.14.6. Shutdown Proxmox VE + Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
+## 8.14.6. Shutdown Proxmox VE \+ Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
 
-To shut down the whole Proxmox VE + Ceph cluster, first stop all Ceph clients. These will mainly be VMs and containers. If you have additional clients that might access a Ceph FS or an installed RADOS GW, stop these as well. Highly available guests will switch their state to *stopped* when powered down via the Proxmox VE tooling.
+To shut down the whole Proxmox VE \+ Ceph cluster, first stop all Ceph clients. These will mainly be VMs and containers. If you have additional clients that might access a Ceph FS or an installed RADOS GW, stop these as well. Highly available guests will switch their state to *stopped* when powered down via the Proxmox VE tooling.
 
 Once all clients, VMs and containers are off or not accessing the Ceph cluster anymore, verify that the Ceph cluster is in a healthy state. Either via the Web UI or the CLI:
 
@@ -400,12 +400,12 @@ Therefore, the procedure to change the Ceph Public network is a bit more involve
 
 1. Change `public_network` in the `/etc/pve/ceph.conf` file (do not change any other value)
 2. Restart non MON services: OSDs, MGRs and MDS on one host
-3. Wait until Ceph is back to *HEALTH_OK*
+3. Wait until Ceph is back to *HEALTH\_OK*
 4. Verify services are using the new network
 5. Continue restarting services on the next host
 6. Destroy one MON
 7. Recreate MON
-8. Wait until Ceph is back to *HEALTH_OK*
+8. Wait until Ceph is back to *HEALTH\_OK*
 9. Continue destroying and recreating MONs
 
 You first need to edit the `/etc/pve/ceph.conf` file. Change the `public_network` line to match the new subnet.
@@ -456,11 +456,11 @@ ss -tulpn | grep ceph
 Since OSDs will also listen on the Ceph Cluster network, expect to see that network too in the output of `ss -tulpn`.
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH_OK*), and the services are listening on the new network, continue to restart the services on the host.
+Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the services are listening on the new network, continue to restart the services on the host.
 
 The last services that need to be moved to the new network are the Ceph MONs themselves. The easiest way is to destroy and recreate each monitor one by one. This way, any mention of it in the `ceph.conf` and the monitor internal `monmap` is handled automatically.
 
-Destroy the first MON and create it again. Wait a few moments before you continue on to the next MON in the cluster, and make sure the cluster reports *HEALTH_OK* before proceeding.
+Destroy the first MON and create it again. Wait a few moments before you continue on to the next MON in the cluster, and make sure the cluster reports *HEALTH\_OK* before proceeding.
 
 Once all MONs are recreated, you can verify that any mention of MONs in the `ceph.conf` file references the new network. That means mainly the `mon_host` line and the `[mon.HOSTNAME]` sections.
 
@@ -474,7 +474,7 @@ The overall procedure is:
 
 1. Change `cluster_network` in the `/etc/pve/ceph.conf` file
 2. Restart OSDs on one host
-3. Wait until Ceph is back to *HEALTH_OK*
+3. Wait until Ceph is back to *HEALTH\_OK*
 4. Verify OSDs are using the new network
 5. Continue restarting OSDs on the next host
 
@@ -512,7 +512,7 @@ ss -tulpn | grep ceph-osd
 Since OSDs will also listen on the Ceph Public network, expect to see that network too in the output of `ss -tulpn`.
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH_OK*), and the OSDs are listening on the new network, continue to restart the OSDs on the next host.
+Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the OSDs are listening on the new network, continue to restart the OSDs on the next host.
 
 ---
 

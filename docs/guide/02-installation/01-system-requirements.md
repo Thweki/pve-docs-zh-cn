@@ -1,72 +1,72 @@
-# 2.1. System Requirements <a href="#_system_requirements" id="_system_requirements"></a>
+# 2.1. 系统要求 <a href="#_system_requirements" id="_system_requirements"></a>
 
-We recommend using high quality server hardware, when running Proxmox VE in production. To further decrease the impact of a failed host, you can run Proxmox VE in a cluster with highly available (HA) virtual machines and containers.
+在生产环境运行 Proxmox VE 时，我们建议使用高质量的服务器硬件。为了进一步降低宿主机故障造成的影响，您可以在集群中运行 Proxmox VE，并使用高可用性（HA）虚拟机和容器。
 
-Proxmox VE can use local storage (DAS), SAN, NAS, and distributed storage like Ceph RBD. For details see [chapter storage](../07-storage/README.md#chapter_storage).
+Proxmox VE 可以使用本地存储（DAS）、SAN、NAS 以及 Ceph RBD 等分布式存储。详情请参阅[存储章节](../07-storage/README.md#chapter_storage)。
 
-## 2.1.1. Minimum Requirements, for Evaluation <a href="#install_minimal_requirements" id="install_minimal_requirements"></a>
+## 2.1.1. 评估用途的最低要求 <a href="#install_minimal_requirements" id="install_minimal_requirements"></a>
 
-These minimum requirements are for evaluation purposes only and should not be used in production.
+这些最低要求仅用于评估目的，不应在生产环境中使用。
 
-- CPU: 64-bit x86 (Intel 64 or AMD64). Alternatively, 64-bit ARM (arm64, aarch64) with an ARMv8-A or newer CPU, see [64-bit ARM (arm64) Support](#install_arm64_support).
-- For x86 hosts, an Intel VT or AMD-V capable CPU and motherboard for KVM full virtualization support. On the supported arm64 platforms, KVM hardware-assisted virtualization needs no equivalent CPU flag.
-- RAM: 1 GB RAM, plus additional RAM needed for guests
-- Hard drive
-- One network card (NIC)
+- CPU：64 位 x86（Intel 64 或 AMD64）。或者，配备 ARMv8-A 或更新 CPU 的 64 位 ARM（arm64、aarch64），请参阅[64 位 ARM（arm64）支持](#install_arm64_support)。
+- 对于 x86 宿主机，需要支持 Intel VT 或 AMD-V 的 CPU 和主板，以支持 KVM 完全虚拟化。在受支持的 arm64 平台上，KVM 硬件辅助虚拟化不需要同等的 CPU 标志。
+- 内存：1 GB 内存，另加客户机所需的额外内存
+- 硬盘
+- 一块网卡（NIC）
 
-## 2.1.2. Recommended System Requirements <a href="#install_recommended_requirements" id="install_recommended_requirements"></a>
+## 2.1.2. 推荐的系统要求 <a href="#install_recommended_requirements" id="install_recommended_requirements"></a>
 
-- Intel 64 or AMD64 with an Intel VT or AMD-V CPU flag. Alternatively, a 64-bit ARM host with an ARMv9-A or newer CPU, see [64-bit ARM (arm64) Support](#install_arm64_support).
-- Memory: Minimum 2 GB for the OS and Proxmox VE services, plus designated memory for guests. For Ceph and ZFS, additional memory is required; approximately 1GB of memory for every TB of used storage.
-- Fast and redundant storage, best results are achieved with SSDs.
-- OS storage: Use a hardware RAID with battery protected write cache (“BBU”) or non-RAID with ZFS (optional SSD for ZIL).
-- VM storage:
+- Intel 64 或 AMD64，并带有 Intel VT 或 AMD-V CPU 标志。或者，配备 ARMv9-A 或更新 CPU 的 64 位 ARM 宿主机，请参阅[64 位 ARM（arm64）支持](#install_arm64_support)。
+- 内存：操作系统和 Proxmox VE 服务至少需要 2 GB，另加为客户机分配的内存。对于 Ceph 和 ZFS，还需要额外内存；每 TB 已用存储空间约需 1GB 内存。
+- 快速且冗余的存储，使用 SSD 可获得最佳效果。
+- 操作系统存储：使用带电池保护写缓存（“BBU”）的硬件 RAID，或使用非 RAID 配置搭配 ZFS（可选配用于 ZIL 的 SSD）。
+- 虚拟机存储：
 
-  - For local storage, use either a hardware RAID with battery backed write cache (BBU) or non-RAID for ZFS and Ceph. Neither ZFS nor Ceph are compatible with a hardware RAID controller.
-  - Shared and distributed storage is possible.
-  - SSDs with Power-Loss-Protection (PLP) are recommended for good performance. Using consumer SSDs is discouraged.
-- Redundant (Multi-)Gbit NICs, with additional NICs depending on the preferred storage technology and cluster setup.
-- For PCI(e) passthrough, the CPU and motherboard need to support an input/output memory management unit (IOMMU): Intel VT-d or AMD-Vi on x86, or a System Memory Management Unit (SMMU) on arm64.
+  - 对于本地存储，可使用带电池备份写缓存（BBU）的硬件 RAID，或为 ZFS 和 Ceph 使用非 RAID 配置。ZFS 和 Ceph 均不兼容硬件 RAID 控制器。
+  - 可以使用共享和分布式存储。
+  - 建议使用具有掉电保护（PLP）的 SSD 以获得良好性能。不建议使用消费级 SSD。
+- 冗余的（多）Gbit 网卡，并根据所选的存储技术和集群设置配备额外网卡。
+- 对于 PCI(e) 直通，CPU 和主板需要支持输入/输出内存管理单元（IOMMU）：x86 上的 Intel VT-d 或 AMD-Vi，或 arm64 上的系统内存管理单元（SMMU）。
 
 {% hint style="success" %}
-IOMMU usually also needs to be enabled in the BIOS/UEFI. See the [PCI(e) Passthrough](../10-virtual-machines/09-qm-pci-passthrough.md#qm_pci_passthrough) chapter for details.
+通常还需要在 BIOS/UEFI 中启用 IOMMU。详情请参阅[PCI(e) 直通](../10-virtual-machines/09-qm-pci-passthrough.md#qm_pci_passthrough)章节。
 {% endhint %}
 
-## 2.1.3. 64-bit ARM (arm64) Support <a href="#install_arm64_support" id="install_arm64_support"></a>
+## 2.1.3. 64 位 ARM（arm64）支持 <a href="#install_arm64_support" id="install_arm64_support"></a>
 
-Proxmox VE supports native 64-bit ARM (arm64, aarch64) on the NVIDIA Grace Hopper and NVIDIA Vera platforms. On other UEFI-based ARMv9-A or newer hardware, support is best-effort. Device-tree-only single-board computers, such as the Raspberry Pi, are not supported.
+Proxmox VE 在 NVIDIA Grace Hopper 和 NVIDIA Vera 平台上支持原生 64 位 ARM（arm64、aarch64）。对于其他基于 UEFI 的 ARMv9-A 或更新硬件，仅提供尽力而为的支持。不支持仅使用设备树的单板计算机，例如 Raspberry Pi。
 
-An arm64 host must boot through UEFI and describe its hardware through ACPI (Advanced Configuration and Power Interface). Proxmox VE does not support device-tree-only or legacy BIOS boot on arm64.
+arm64 宿主机必须通过 UEFI 启动，并通过 ACPI（高级配置和电源接口）描述其硬件。Proxmox VE 不支持 arm64 上仅使用设备树或传统 BIOS 启动。
 
-Several x86-specific features are not available on arm64:
+以下几项 x86 特有功能在 arm64 上不可用：
 
-- Virtual machines cannot use SeaBIOS. On arm64, guests always boot through UEFI, provided by the ARM build of OVMF, also known as AAVMF.
-- AMD SEV (Secure Encrypted Virtualization) memory encryption and Intel’s GVT-g mediated vGPUs are x86-only.
-- There is no operating-system-level CPU microcode package, unlike `intel-microcode` and `amd64-microcode` on x86.
+- 虚拟机无法使用 SeaBIOS。在 arm64 上，客户机始终通过 UEFI 启动，该 UEFI 由 OVMF 的 ARM 构建版本提供，也称为 AAVMF。
+- AMD SEV（安全加密虚拟化）内存加密和 Intel 的 GVT-g 中介型 vGPU 仅支持 x86。
+- 与 x86 上的 `intel-microcode` 和 `amd64-microcode` 不同，这里没有操作系统级的 CPU 微码软件包。
 
-A cluster can contain both x86 and arm64 nodes, but guests cannot move between nodes of different architectures while running:
+一个集群可以同时包含 x86 和 arm64 节点，但运行中的客户机不能在不同架构的节点之间移动：
 
-- Live migration is only possible between nodes of the same architecture, because a running guest’s CPU state cannot be transferred across architectures.
-- A guest, whether a virtual machine or a container, only runs on a node whose architecture matches the guest. Offline migration, backup and restore, or shared storage can move a guest’s data to a node of a different architecture, but the guest still needs to be reinstalled or reconfigured for that architecture before it starts.
+- 在线迁移只能在相同架构的节点之间进行，因为运行中客户机的 CPU 状态无法跨架构传输。
+- 无论是虚拟机还是容器，客户机都只能在与该客户机架构匹配的节点上运行。离线迁移、备份和恢复或共享存储可以将客户机的数据移动到不同架构的节点，但客户机仍需针对该架构重新安装或重新配置后才能启动。
 
-## 2.1.4. Simple Performance Overview <a href="#_simple_performance_overview" id="_simple_performance_overview"></a>
+## 2.1.4. 简单性能概览 <a href="#_simple_performance_overview" id="_simple_performance_overview"></a>
 
-To get an overview of the CPU and hard disk performance on an installed Proxmox VE system, run the included `pveperf` tool.
+要概览已安装 Proxmox VE 系统的 CPU 和硬盘性能，请运行随附的 `pveperf` 工具。
 
 {% hint style="info" %}
-This is just a very quick and general benchmark. More detailed tests are recommended, especially regarding the I/O performance of your system.
+这只是一个非常快速且笼统的基准测试。建议进行更详细的测试，尤其是针对系统 I/O 性能的测试。
 {% endhint %}
 
-## 2.1.5. Supported Web Browsers for Accessing the Web Interface <a href="#_supported_web_browsers_for_accessing_the_web_interface" id="_supported_web_browsers_for_accessing_the_web_interface"></a>
+## 2.1.5. 访问 Web 界面支持的浏览器 <a href="#_supported_web_browsers_for_accessing_the_web_interface" id="_supported_web_browsers_for_accessing_the_web_interface"></a>
 
-To access the web-based user interface, we recommend using one of the following browsers:
+要访问基于 Web 的用户界面，我们建议使用以下浏览器之一：
 
-- Firefox, a release from the current year, or the latest Extended Support Release
-- Chrome, a release from the current year
-- Microsoft’s currently supported version of Edge
-- Safari, a release from the current year
+- Firefox，当年发布的版本，或最新的延长支持版本
+- Chrome，当年发布的版本
+- Microsoft 当前支持的 Edge 版本
+- Safari，当年发布的版本
 
-When accessed from a mobile device, Proxmox VE will show a lightweight, touch-based interface.
+从移动设备访问时，Proxmox VE 会显示基于触摸操作的轻量级界面。
 
 ---
 

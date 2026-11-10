@@ -1,4 +1,4 @@
-# 23.5. **spiceproxy** - SPICE Proxy Service <a href="#_strong_spiceproxy_strong_spice_proxy_service" id="_strong_spiceproxy_strong_spice_proxy_service"></a>
+# 23.5. **spiceproxy** \- SPICE Proxy Service <a href="#_strong_spiceproxy_strong_spice_proxy_service" id="_strong_spiceproxy_strong_spice_proxy_service"></a>
 
 <a id="cli_spiceproxy"></a>
 
@@ -38,9 +38,9 @@ Restart the daemon (or start if not running).
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_spiceproxy_status"></a>
 

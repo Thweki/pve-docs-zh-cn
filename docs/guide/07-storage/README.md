@@ -1,4 +1,4 @@
-# 7. Proxmox VE Storage <a href="#chapter_storage" id="chapter_storage"></a>
+# 7\. Proxmox VE Storage <a href="#chapter_storage" id="chapter_storage"></a>
 
 The Proxmox VE storage model is very flexible. Virtual machine images can either be stored on one or several local storages, or on shared storage like NFS or iSCSI (NAS, SAN). There are no limits, and you may configure as many storage pools as you like. You can use all storage technologies available for Debian Linux.
 

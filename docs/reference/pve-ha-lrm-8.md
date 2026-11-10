@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pve-ha-lrm - PVE Local Resource Manager Daemon
+pve-ha-lrm \- PVE Local Resource Manager Daemon
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -36,9 +36,9 @@ pve-ha-lrm - PVE Local Resource Manager Daemon
 
 Start the daemon.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pve-ha-lrm_status"></a>
 

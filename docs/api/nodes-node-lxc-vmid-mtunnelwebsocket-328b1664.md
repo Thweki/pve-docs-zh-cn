@@ -8,6 +8,8 @@
 
 Migration tunnel endpoint for websocket upgrade - only for internal use by VM migration.
 
+**方法标识：** `mtunnelwebsocket`
+
 **权限**
 
 ```json

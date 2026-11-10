@@ -8,6 +8,8 @@
 
 Read node status
 
+**方法标识：** `status`
+
 **权限**
 
 ```json
@@ -193,6 +195,8 @@ Read node status
 ## POST `/nodes/{node}/status`
 
 Reboot or shutdown a node.
+
+**方法标识：** `node_cmd`
 
 **权限**
 

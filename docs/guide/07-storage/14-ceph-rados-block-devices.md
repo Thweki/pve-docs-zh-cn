@@ -62,7 +62,7 @@ If Ceph is installed locally on the Proxmox VE cluster, the following is done au
 {% endhint %}
 
 If you use `cephx` authentication, which is enabled by default, provide a keyring from the external Ceph cluster. Obtain or create a dedicated identity with only the capabilities required for this storage, as described in Ceph User Management.<a id="_footnote_cephusermgmt"></a>  
-[[Ceph User Management](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)]  
+\[[Ceph User Management](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)\]  
  The example below uses `client.pve-rbd`; do not copy `client.admin` to a storage client.
 
 Copy the keyring to one Proxmox VE node:
@@ -102,11 +102,11 @@ The ceph.conf needs to have the same name as the storage.
 ```
 
 See the RBD configuration reference   
-[RBD configuration reference [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)]  
+\[RBD configuration reference [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)\]  
  for possible settings.
 
 {% hint style="info" %}
-Do not change these settings lightly. Proxmox VE is merging the <STORAGE_ID>.conf with the storage configuration.
+Do not change these settings lightly. Proxmox VE is merging the \<STORAGE\_ID\>.conf with the storage configuration.
 {% endhint %}
 
 ## 7.14.4. Storage Features <a href="#_storage_features_10" id="_storage_features_10"></a>

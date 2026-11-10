@@ -8,6 +8,8 @@
 
 Suspend virtual machine.
 
+**方法标识：** `vm_suspend`
+
 **权限**
 
 ```json

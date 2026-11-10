@@ -8,6 +8,8 @@
 
 Scan remote NFS server.
 
+**方法标识：** `nfsscan`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Add a node
 
+**方法标识：** `delete_node`
+
 **权限**
 
 ```json
@@ -88,6 +90,8 @@ Add a node
 ## GET `/cluster/sdn/fabrics/node/{fabric_id}/{node_id}`
 
 Get a node
+
+**方法标识：** `get_node`
 
 **权限**
 
@@ -412,6 +416,8 @@ Get a node
 ## PUT `/cluster/sdn/fabrics/node/{fabric_id}/{node_id}`
 
 Update a node
+
+**方法标识：** `update_node`
 
 **权限**
 

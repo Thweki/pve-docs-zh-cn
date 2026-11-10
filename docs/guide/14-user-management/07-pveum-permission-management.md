@@ -153,7 +153,7 @@ Pools can be used to group a set of virtual machines and datastores. You can the
 
 ## 14.7.5. Which Permissions Do I Need? <a href="#_which_permissions_do_i_need" id="_which_permissions_do_i_need"></a>
 
-The required API permissions are documented for each individual method, and can be found at [https://pve.proxmox.com/pve-docs/api-viewer/](https://pve.proxmox.com/pve-docs/api-viewer/).
+The required API permissions are documented for each individual method, and can be found at [https://pve.proxmox.com/pve-docs/api-viewer/](../../api/README.md).
 
 The permissions are specified as a list, which can be interpreted as a tree of logic and access-check functions:
 
@@ -184,9 +184,9 @@ The user needs `Realm.AllocateUser` access to `/access/realm/<realm>`, with `<re
 
 The `path` is a templated parameter (see [Objects and Paths](#pveum_templated_paths)). The user needs either the `Permissions.Modify` privilege or, depending on the path, the following privileges as a possible substitute:
 
-- `/storage/...`: requires 'Datastore.Allocate`
-- `/vms/...`: requires 'VM.Allocate`
-- `/pool/...`: requires 'Pool.Allocate`
+- `/storage/...`: requires 'Datastore.Allocate\`
+- `/vms/...`: requires 'VM.Allocate\`
+- `/pool/...`: requires 'Pool.Allocate\`
 
   If the path is empty, `Permissions.Modify` on `/access` is required.
 

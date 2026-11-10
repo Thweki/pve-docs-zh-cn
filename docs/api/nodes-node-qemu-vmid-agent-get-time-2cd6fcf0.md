@@ -8,6 +8,8 @@
 
 Execute get-time.
 
+**方法标识：** `get-time`
+
 **权限**
 
 ```json

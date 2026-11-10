@@ -8,6 +8,8 @@
 
 Creates a TCP proxy connections.
 
+**方法标识：** `termproxy`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Heuristical check if it is safe to perform an action.
 
+**方法标识：** `cmd_safety`
+
 **权限**
 
 ```json

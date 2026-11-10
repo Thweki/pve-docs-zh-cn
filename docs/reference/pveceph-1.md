@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_pveceph" id="chapter_pveceph"></a>
 
-pveceph - Manage Ceph Services on Proxmox VE Nodes
+pveceph \- Manage Ceph Services on Proxmox VE Nodes
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -92,15 +92,15 @@ An alias for *pveceph pool destroy*.
 
 Create a Ceph filesystem
 
-**`--add-storage` `<boolean>` (*default =* `0`)**
+**`--add-storage` `<boolean>` (*default \=* `0`)**
 
 Configure the created CephFS as storage for this cluster.
 
-**`--name` `(?^:^[^:/\s]+$)` (*default =* `cephfs`)**
+**`--name` `(?^:^[^:/\s]+$)` (*default \=* `cephfs`)**
 
 The ceph filesystem name.
 
-**`--pg_num` `<integer> (8 - 32768)` (*default =* `128`)**
+**`--pg_num` `<integer> (8 - 32768)` (*default \=* `128`)**
 
 Number of placement groups for the backing data pool. The metadata pool will use a quarter of this.
 
@@ -116,11 +116,11 @@ Destroy a Ceph filesystem. Refuses if any PVE storage entry of type *cephfs* sti
 
 The Ceph filesystem name.
 
-**`--remove-pools` `<boolean>` (*default =* `0`)**
+**`--remove-pools` `<boolean>` (*default \=* `0`)**
 
 Remove the metadata and data pools used by this filesystem.
 
-**`--remove-storages` `<boolean>` (*default =* `0`)**
+**`--remove-storages` `<boolean>` (*default \=* `0`)**
 
 Remove pveceph-managed storages configured for this filesystem.
 
@@ -146,7 +146,7 @@ Remove pveceph-managed storages configured for this filesystem.
 
 **pveceph init** `[OPTIONS]`
 
-Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a [global] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
+Create the initial Ceph default configuration and set up symlinks. Idempotent on re-call: if a \[global\] section already exists in ceph.conf, the existing fsid / auth / pool defaults are preserved and most parameters are silently ignored.
 
 **`--cluster-network` `<string>`**
 
@@ -156,7 +156,7 @@ Declare a separate cluster network, OSDs will route heartbeat, object replicatio
 Requires option(s): `network`
 {% endhint %}
 
-**`--disable_cephx` `<boolean>` (*default =* `0`)**
+**`--disable_cephx` `<boolean>` (*default \=* `0`)**
 
 Disable cephx authentication.
 
@@ -164,7 +164,7 @@ Disable cephx authentication.
 cephx is a security feature protecting against man-in-the-middle attacks. Only consider disabling cephx if your network is private!
 {% endhint %}
 
-**`--min_size` `<integer> (1 - 7)` (*default =* `2`)**
+**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
 
 Minimum number of available replicas per object to allow I/O
 
@@ -172,13 +172,13 @@ Minimum number of available replicas per object to allow I/O
 
 Use specific network for all ceph related traffic
 
-**`--pg_bits` `<integer> (6 - 14)` (*default =* `6`)**
+**`--pg_bits` `<integer> (6 - 14)` (*default \=* `6`)**
 
 Placement group bits, used to specify the default number of placement groups.
 
 Depreacted. This setting was deprecated in recent Ceph versions.
 
-**`--size` `<integer> (1 - 7)` (*default =* `3`)**
+**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
 
 Targeted number of replicas per object
 
@@ -190,15 +190,15 @@ Targeted number of replicas per object
 
 Install ceph related packages.
 
-**`--allow-experimental` `<boolean>` (*default =* `0`)**
+**`--allow-experimental` `<boolean>` (*default \=* `0`)**
 
 Allow experimental versions. Use with care!
 
-**`--repository` `<enterprise | manual | no-subscription | test>` (*default =* `enterprise`)**
+**`--repository` `<enterprise | manual | no-subscription | test>` (*default \=* `enterprise`)**
 
 Ceph repository to use. The *manual* option will not configure any repositories. Use it if the host cannot access the public repositories, for example if Proxmox Offline Mirror is used. A repository that contains the Ceph packages for the version needs to be manually configured before starting the installation!
 
-**`--version` `<squid | tentacle>` (*default =* `tentacle`)**
+**`--version` `<squid | tentacle>` (*default \=* `tentacle`)**
 
 Ceph version to install.
 
@@ -218,11 +218,11 @@ An alias for *pveceph pool ls*.
 
 Create Ceph Metadata Server (MDS)
 
-**`--hotstandby` `<boolean>` (*default =* `0`)**
+**`--hotstandby` `<boolean>` (*default \=* `0`)**
 
 Determines whether a ceph-mds daemon should poll and replay the log of an active MDS. Faster switch on MDS failure, but needs more idle resources. Deprecated: the setting was removed in Ceph 14.1.1.
 
-**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--name` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the mds, when omitted the same as the nodename
 
@@ -246,7 +246,7 @@ The name (ID) of the mds
 
 Create Ceph Manager
 
-**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--id` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the manager, when omitted the same as the nodename.
 
@@ -274,7 +274,7 @@ Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
 
 Overwrites autodetected monitor IP address(es). Must be in the public network(s) of Ceph.
 
-**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default =* `nodename`)**
+**`--monid` `[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?` (*default \=* `nodename`)**
 
 The ID for the monitor, when omitted the same as the nodename.
 
@@ -318,13 +318,13 @@ Size in GiB for block.db.
 Requires option(s): `db_dev`
 {% endhint %}
 
-**`--encrypted` `<boolean>` (*default =* `0`)**
+**`--encrypted` `<boolean>` (*default \=* `0`)**
 
 Enables encryption of the OSD.
 
 **`--osds-per-device` `<integer> (1 - N)`**
 
-OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db_dev* and *wal_dev*.
+OSD services per physical device. Only useful for fast NVMe devices to utilize their performance better. Mutually exclusive with *db\_dev* and *wal\_dev*.
 
 **`--wal_dev` `<string>`**
 
@@ -350,7 +350,7 @@ Destroy OSD
 
 OSD ID
 
-**`--cleanup` `<boolean>` (*default =* `0`)**
+**`--cleanup` `<boolean>` (*default \=* `0`)**
 
 If set, also destroy the underlying logical volumes via *ceph-volume lvm zap --destroy*, remove the volume group’s physical volume with pvremove, and wipe any journal/block.db/block.wal partitions left over from filestore OSDs. Without this flag the LVs and partitions are left intact for inspection.
 
@@ -366,7 +366,7 @@ Get OSD details.
 
 ID of the OSD
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Print verbose information, same as json-pretty output format.
 
@@ -382,11 +382,11 @@ Create Ceph pool
 
 The name of the pool. It must be unique.
 
-**`--add_storages` `<boolean>` (*default =* `0`)**
+**`--add_storages` `<boolean>` (*default \=* `0`)**
 
 Configure VM and CT storage using the new pool. Defaults to false for replicated pools and to true for erasure-coded pools (since EC pools are typically only useful when wired up to storage).
 
-**`--application` `<cephfs | rbd | rgw>` (*default =* `rbd`)**
+**`--application` `<cephfs | rbd | rgw>` (*default \=* `rbd`)**
 
 The application of the pool.
 
@@ -396,17 +396,17 @@ The rule to use for mapping object placement in the cluster.
 
 **`--erasure-coding` `k=<integer> ,m=<integer> [,device-class=<class>] [,failure-domain=<domain>] [,profile=<profile>]`**
 
-Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min_size* and *crush_rule* parameters will be applied to the metadata pool.
+Create an erasure coded pool for RBD with an accompaning replicated pool for metadata storage. With EC, the common ceph options *size*, *min\_size* and *crush\_rule* parameters will be applied to the metadata pool.
 
-**`--min_size` `<integer> (1 - 7)` (*default =* `2`)**
+**`--min_size` `<integer> (1 - 7)` (*default \=* `2`)**
 
 Minimum number of replicas per object
 
-**`--pg_autoscale_mode` `<off | on | warn>` (*default =* `warn`)**
+**`--pg_autoscale_mode` `<off | on | warn>` (*default \=* `warn`)**
 
 The automatic PG scaling mode of the pool.
 
-**`--pg_num` `<integer> (1 - 32768)` (*default =* `128`)**
+**`--pg_num` `<integer> (1 - 32768)` (*default \=* `128`)**
 
 Number of placement groups.
 
@@ -414,7 +414,7 @@ Number of placement groups.
 
 Minimal number of placement groups.
 
-**`--size` `<integer> (1 - 7)` (*default =* `3`)**
+**`--size` `<integer> (1 - 7)` (*default \=* `3`)**
 
 Number of replicas per object
 
@@ -438,15 +438,15 @@ Destroy pool
 
 The name of the pool. It must be unique.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 If true, destroys pool even if in use
 
-**`--remove_ecprofile` `<boolean>` (*default =* `1`)**
+**`--remove_ecprofile` `<boolean>` (*default \=* `1`)**
 
 Remove the erasure code profile. Defaults to true, if applicable.
 
-**`--remove_storages` `<boolean>` (*default =* `0`)**
+**`--remove_storages` `<boolean>` (*default \=* `0`)**
 
 Remove all pveceph-managed storages configured for this pool
 
@@ -462,7 +462,7 @@ Show the current pool status.
 
 The name of the pool. It must be unique.
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 If enabled, will display additional data(eg. statistics).
 
@@ -546,7 +546,7 @@ Additionally purge Ceph logs, /var/log/ceph.
 
 Start ceph services.
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default =* `ceph.target`)**
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
 
 Ceph service name.
 
@@ -566,7 +566,7 @@ Get Ceph Status.
 
 Stop ceph services.
 
-**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default =* `ceph.target`)**
+**`--service` `(ceph|mon|mds|osd|mgr)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]*[a-zA-Z0-9])?)?` (*default \=* `ceph.target`)**
 
 Ceph service name.
 
@@ -583,7 +583,7 @@ Ceph is a distributed object store and file system designed to provide excellent
 - Easy setup and management via CLI and GUI
 - Thin provisioning
 - Snapshot support
-- Self healing
+- 自我修复
 - Scalable to the exabyte level
 - Provides block, file system, and object storage
 - Setup pools with different performance and redundancy characteristics
@@ -607,17 +607,17 @@ To simplify management, Proxmox VE provides you native integration to install an
 
 {% hint style="success" %}
 We highly recommend to get familiar with Ceph   
-[Ceph intro [https://docs.ceph.com/en/tentacle/start/](https://docs.ceph.com/en/tentacle/start/)]  
+\[Ceph intro [https://docs.ceph.com/en/tentacle/start/](https://docs.ceph.com/en/tentacle/start/)\]  
 , its architecture   
-[Ceph architecture [https://docs.ceph.com/en/tentacle/architecture/](https://docs.ceph.com/en/tentacle/architecture/)]  
+\[Ceph architecture [https://docs.ceph.com/en/tentacle/architecture/](https://docs.ceph.com/en/tentacle/architecture/)\]  
  and vocabulary   
-[Ceph glossary [https://docs.ceph.com/en/tentacle/glossary](https://docs.ceph.com/en/tentacle/glossary)]  
+\[Ceph glossary [https://docs.ceph.com/en/tentacle/glossary](https://docs.ceph.com/en/tentacle/glossary)\]  
 .
 {% endhint %}
 
 ## Recommendations for a Healthy Ceph Cluster <a href="#_recommendations_for_a_healthy_ceph_cluster" id="_recommendations_for_a_healthy_ceph_cluster"></a>
 
-To build a hyper-converged Proxmox + Ceph Cluster, you must use at least three (preferably) identical servers for the setup.
+To build a hyper-converged Proxmox \+ Ceph Cluster, you must use at least three (preferably) identical servers for the setup.
 
 Check also the recommendations from [Ceph’s website](https://docs.ceph.com/en/tentacle/start/hardware-recommendations/).
 
@@ -671,19 +671,19 @@ Total memory consumption is primarily determined by the number of OSD daemons. H
 **Network**
 
 We recommend a network bandwidth of at least 10 Gbps, or more, to be used exclusively for Ceph traffic. A meshed network setup   
-[Full Mesh Network for Ceph [https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)]  
- is also an option for three to five node clusters, if there are no 10+ Gbps switches available.
+\[Full Mesh Network for Ceph [https://pve.proxmox.com/wiki/Full\_Mesh\_Network\_for\_Ceph\_Server](https://pve.proxmox.com/wiki/Full_Mesh_Network_for_Ceph_Server)\]  
+ is also an option for three to five node clusters, if there are no 10\+ Gbps switches available.
 
 {% hint style="warning" %}
 The volume of traffic, especially during recovery, will interfere with other services on the same network, especially the latency sensitive Proxmox VE corosync cluster stack can be affected, resulting in possible loss of cluster quorum. Moving the Ceph traffic to dedicated and physical separated networks will avoid such interference, not only for corosync, but also for the networking services provided by any virtual guests.
 {% endhint %}
 
-For estimating your bandwidth needs, you need to take the performance of your disks into account.. While a single HDD might not saturate a 1 Gb link, multiple HDD OSDs per node can already saturate 10 Gbps too. If modern NVMe-attached SSDs are used, a single one can already saturate 10 Gbps of bandwidth, or more. For such high-performance setups we recommend at least a 25 Gpbs, while even 40 Gbps or 100+ Gbps might be required to utilize the full performance potential of the underlying disks.
+For estimating your bandwidth needs, you need to take the performance of your disks into account.. While a single HDD might not saturate a 1 Gb link, multiple HDD OSDs per node can already saturate 10 Gbps too. If modern NVMe-attached SSDs are used, a single one can already saturate 10 Gbps of bandwidth, or more. For such high-performance setups we recommend at least a 25 Gpbs, while even 40 Gbps or 100\+ Gbps might be required to utilize the full performance potential of the underlying disks.
 
 If unsure, we recommend using three (physical) separate networks for high-performance setups:
 
-- one very high bandwidth (25+ Gbps) network for Ceph (internal) cluster traffic.
-- one high bandwidth (10+ Gpbs) network for Ceph (public) traffic between the ceph server and ceph client storage traffic. Depending on your needs this can also be used to host the virtual guest traffic and the VM live-migration traffic.
+- one very high bandwidth (25\+ Gbps) network for Ceph (internal) cluster traffic.
+- one high bandwidth (10\+ Gpbs) network for Ceph (public) traffic between the ceph server and ceph client storage traffic. Depending on your needs this can also be used to host the virtual guest traffic and the VM live-migration traffic.
 - one medium bandwidth (1 Gbps) exclusive for the latency sensitive corosync cluster communication.
 
 If a firewall is enabled you will have to open the ports used by Ceph, the easiest way to do this is to use a firewall `macro`.
@@ -714,7 +714,7 @@ As Ceph handles data object redundancy and multiple parallel writes to disks (OS
 Avoid RAID controllers. Use host bus adapter (HBA) instead.
 {% endhint %}
 
-## Initial Ceph Installation & Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
+## Initial Ceph Installation \& Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
 
 ### Using the Web-based Wizard <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
 
@@ -786,7 +786,7 @@ This creates an initial configuration at `/etc/pve/ceph.conf` with a dedicated n
 [![screenshot/gui-ceph-monitor.png](../assets/screenshot-gui-ceph-monitor-png-5183f95d9815.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-monitor.png)
 
 The Ceph Monitor (MON)   
-[Ceph Monitor [https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/](https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/)]  
+\[Ceph Monitor [https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/](https://docs.ceph.com/en/tentacle/rados/configuration/mon-config-ref/)\]  
  maintains a master copy of the cluster map. For high availability, you need at least 3 monitors. One monitor will already be installed if you used the installation wizard. You won’t need more than 3 monitors, as long as your cluster is small to medium-sized. Only really large clusters will require more than this.
 
 ### Create Monitors <a href="#pveceph_create_mon" id="pveceph_create_mon"></a>
@@ -818,7 +818,7 @@ At least three Monitors are needed for quorum.
 ## Ceph Manager <a href="#pve_ceph_manager" id="pve_ceph_manager"></a>
 
 The Manager daemon runs alongside the monitors. It provides an interface to monitor the cluster. Since the release of Ceph luminous, at least one ceph-mgr   
-[Ceph Manager [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)]  
+\[Ceph Manager [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)\]  
  daemon is required.
 
 ### Create Manager <a href="#pveceph_create_mgr" id="pveceph_create_mgr"></a>
@@ -886,7 +886,7 @@ The above command will destroy all data on the disk!
 **Ceph Bluestore**
 
 Starting with the Ceph Kraken release, a new Ceph OSD storage type was introduced called Bluestore   
-[Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)]  
+\[Ceph Bluestore [https://ceph.com/community/new-luminous-bluestore/](https://ceph.com/community/new-luminous-bluestore/)\]  
 . This is the default when creating OSDs since Ceph Luminous.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
@@ -897,7 +897,7 @@ pveceph osd create /dev/sd[X]
 
 **Block.db and block.wal**
 
-If you want to use a separate DB/WAL device for your OSDs, you can specify it through the *-db_dev* and *-wal_dev* options. The WAL is placed with the DB, if not specified separately.
+If you want to use a separate DB/WAL device for your OSDs, you can specify it through the *-db\_dev* and *-wal\_dev* options. The WAL is placed with the DB, if not specified separately.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
@@ -905,9 +905,9 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 pveceph osd create /dev/sd[X] -db_dev /dev/sd[Y] -wal_dev /dev/sd[Z]
 ```
 
-You can directly choose the size of those with the *-db_size* and *-wal_size* parameters respectively. If they are not given, the following values (in order) will be used:
+You can directly choose the size of those with the *-db\_size* and *-wal\_size* parameters respectively. If they are not given, the following values (in order) will be used:
 
-- bluestore_block_{db,wal}_size from Ceph configuration…
+- bluestore\_block\_{db,wal}\_size from Ceph configuration…
 
   - … database, section *osd*
   - … database, section *global*
@@ -933,7 +933,7 @@ ceph-volume lvm create --filestore --data /dev/sd[X] --journal /dev/sd[Y]
 
 If you experience problems with an OSD or its disk, try to [troubleshoot](#pve_ceph_mon_and_ts) them first to decide if a [replacement](#pve_ceph_osd_replace) is needed.
 
-To destroy an OSD, navigate to the *<Node> → Ceph → OSD* panel or use the mentioned CLI commands on the node where the OSD is located.
+To destroy an OSD, navigate to the *\<Node\> → Ceph → OSD* panel or use the mentioned CLI commands on the node where the OSD is located.
 
 1. Make sure the cluster has enough space to handle the removal of the OSD. In the *Ceph → OSD* panel,if the to-be destroyed OSD is still `up` and `in` (non-zero value at `AVAIL`), make sure that all OSDs have their `Used (%)` value well below the `nearfull_ratio` of default `85%`.
 
@@ -981,11 +981,11 @@ To destroy an OSD, navigate to the *<Node> → Ceph → OSD* panel or use the me
 ## Ceph Configuration <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
 
 Ceph daemon and clients pull their configuration from one or more sources   
-[Ceph config sources [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources)]  
+\[Ceph config sources [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources)\]  
 . In Proxmox VE, a minimal ceph.conf file is used to hold bootstrap settings. Most of the configuration is held in the central configuration database maintained by the MON services.
 
 To persistently change configuration values use the following commands   
-[Ceph MON DB commands [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands)]  
+\[Ceph MON DB commands [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands)\]  
 :
 
 <table>
@@ -1011,7 +1011,7 @@ To persistently change configuration values use the following commands
 </tbody>
 </table>
 
-**Example for increasing the osd_memory_target for all OSD daemons**
+**Example for increasing the osd\_memory\_target for all OSD daemons**
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
@@ -1033,20 +1033,20 @@ A pool is a logical group for storing objects. It holds a collection of objects,
 
 You can create and edit pools from the command line or the web interface of any Proxmox VE host under **Ceph → Pools**.
 
-When no options are given, we set a default of **128 PGs**, a **size of 3 replicas** and a **min_size of 2 replicas**, to ensure no data loss occurs if any OSD fails.
+When no options are given, we set a default of **128 PGs**, a **size of 3 replicas** and a **min\_size of 2 replicas**, to ensure no data loss occurs if any OSD fails.
 
 {% hint style="warning" %}
-**Do not set a min_size of 1**. A replicated pool with min_size of 1 allows I/O on an object when it has only 1 replica, which could lead to data loss, incomplete PGs or unfound objects.
+**Do not set a min\_size of 1**. A replicated pool with min\_size of 1 allows I/O on an object when it has only 1 replica, which could lead to data loss, incomplete PGs or unfound objects.
 {% endhint %}
 
 It is advised that you either enable the PG-Autoscaler or calculate the PG number based on your setup. You can find the formula and the PG calculator   
-[PG calculator [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)]  
+\[PG calculator [https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/](https://web.archive.org/web/20210301111112/http://ceph.com/pgcalc/)\]  
  online. From Ceph Nautilus onward, you can change the number of PGs <a id="_footnote_placement_groups"></a>  
-[Placement Groups [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)]  
+\[Placement Groups [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/)\]  
  after the setup.
 
 The PG autoscaler <a id="_footnote_autoscaler"></a>  
-[Automated Scaling [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)]  
+\[Automated Scaling [https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling](https://docs.ceph.com/en/tentacle/rados/operations/placement-groups/#automated-scaling)\]  
  can automatically scale the PG count for a pool in the background. Setting the `Target Size` or `Target Ratio` advanced parameters helps the PG-Autoscaler to make better decisions.
 
 **Example for creating a pool over the CLI**
@@ -1058,7 +1058,7 @@ pveceph pool create <pool-name> --add_storages
 ```
 
 {% hint style="success" %}
-If you would also like to automatically define a storage for your pool, keep the ‘Add as Storage’ checkbox checked in the web interface, or use the command-line option *--add_storages* at pool creation.
+If you would also like to automatically define a storage for your pool, keep the ‘Add as Storage’ checkbox checked in the web interface, or use the command-line option *--add\_storages* at pool creation.
 {% endhint %}
 
 #### Pool Options <a href="#_pool_options" id="_pool_options"></a>
@@ -1078,7 +1078,7 @@ The number of replicas per object. Ceph always tries to have this many copies of
 **PG Autoscale Mode**
 
 The automatic PG scaling mode   
-[[autoscaler]](#_footnote_autoscaler)  
+[\[autoscaler\]](#_footnote_autoscaler)  
  of the pool. If set to `warn`, it produces a warning message when a pool has a non-optimal PG count. Default: `warn`.
 
 **Add as Storage**
@@ -1093,12 +1093,12 @@ The minimum number of replicas per object. Ceph will reject I/O on the pool if a
 
 **Crush Rule**
 
-The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH & device classes](#pve_ceph_device_classes) for information on device-based rules.
+The rule to use for mapping object placement in the cluster. These rules define how data is placed within the cluster. See [Ceph CRUSH \& device classes](#pve_ceph_device_classes) for information on device-based rules.
 
-**# of PGs**
+**\# of PGs**
 
 The number of placement groups   
-[[placement_groups]](#_footnote_placement_groups)  
+[\[placement\_groups\]](#_footnote_placement_groups)  
  that the pool should have at the beginning. Default: `128`.
 
 **Target Ratio**
@@ -1109,12 +1109,12 @@ The ratio of data that is expected in the pool. The PG autoscaler uses the ratio
 
 The estimated amount of data expected in the pool. The PG autoscaler uses this size to estimate the optimal PG count.
 
-**Min. # of PGs**
+**Min. \# of PGs**
 
 The minimum number of placement groups. This setting is used to fine-tune the lower bound of the PG count for that pool. The PG autoscaler will not merge PGs below this threshold.
 
 Further information on Ceph pool handling can be found in the Ceph pool operation   
-[Ceph pool operation [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)]  
+\[Ceph pool operation [https://docs.ceph.com/en/tentacle/rados/operations/pools/](https://docs.ceph.com/en/tentacle/rados/operations/pools/)\]  
  manual.
 
 ### Erasure Coded Pools <a href="#pve_ceph_ec_pools" id="pve_ceph_ec_pools"></a>
@@ -1130,7 +1130,7 @@ The number of coding chunks, `m`, defines how many OSDs can be lost without losi
 Erasure coded (EC) pools can be created with the `pveceph` CLI tooling. Planning an EC pool needs to account for the fact, that they work differently than replicated pools.
 
 The default `min_size` of an EC pool depends on the `m` parameter. If `m = 1`, the `min_size` of the EC pool will be `k`. The `min_size` will be `k + 1` if `m > 1`. The Ceph documentation recommends a conservative `min_size` of `k + 2`   
-[Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)]  
+\[Ceph Erasure Coded Pool Recovery [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-coded-pool-recovery)\]  
 .
 
 If there are less than `min_size` OSDs available, any IO to the pool will be blocked until there are enough OSDs available again.
@@ -1158,7 +1158,7 @@ The optional parameters `--size`, `--min_size` and `--crush_rule` will be used f
 {% endhint %}
 
 If there is a need to further customize the EC profile, you can do so by creating it with the Ceph tools directly   
-[Ceph Erasure Code Profile [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)]  
+\[Ceph Erasure Code Profile [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/#erasure-code-profiles)\]  
 , and specify the profile to use with the `profile` parameter.
 
 For example:
@@ -1172,7 +1172,7 @@ pveceph pool create <pool-name> --erasure-coding profile=<profile-name>
 #### FastEC (`allow_ec_optimizations`) <a href="#_fastec_span_class_monospaced_allow_ec_optimizations_span" id="_fastec_span_class_monospaced_allow_ec_optimizations_span"></a>
 
 Ceph Tentacle introduces a new erasure coding I/O path called FastEC, enabled per pool via the `allow_ec_optimizations` flag. FastEC adds partial reads and partial writes on EC pools, substantially improving small random I/O performance — the dominant access pattern of virtual machine disk I/O. Upstream recommends it for RBD and CephFS backed storage   
-[Ceph Erasure Code [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)]  
+\[Ceph Erasure Code [https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/](https://docs.ceph.com/en/tentacle/rados/operations/erasure-code/)\]  
 .
 
 FastEC has four requirements that the Ceph monitor enforces:
@@ -1303,7 +1303,7 @@ Do not forget to add the `keyring` and `monhost` option for any external Ceph cl
 
 To destroy a pool via the GUI, select a node in the tree view and go to the **Ceph → Pools** panel. Select the pool to destroy and click the **Destroy** button. To confirm the destruction of the pool, you need to enter the pool name.
 
-Run the following command to destroy a pool. Specify the *-remove_storages* to also remove the associated storage.
+Run the following command to destroy a pool. Specify the *-remove\_storages* to also remove the associated storage.
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 
@@ -1317,7 +1317,7 @@ Pool deletion runs in the background and can take some time. You will notice the
 
 ### PG Autoscaler <a href="#_pg_autoscaler" id="_pg_autoscaler"></a>
 
-The PG autoscaler allows the cluster to consider the amount of (expected) data stored in each pool and to choose the appropriate pg_num values automatically. It is available since Ceph Nautilus.
+The PG autoscaler allows the cluster to consider the amount of (expected) data stored in each pool and to choose the appropriate pg\_num values automatically. It is available since Ceph Nautilus.
 
 You may need to activate the PG autoscaler module before adjustments can take effect.
 
@@ -1353,24 +1353,24 @@ The autoscaler is configured on a per pool basis and has the following modes:
 The scaling factor can be adjusted to facilitate future data storage with the `target_size`, `target_size_ratio` and the `pg_num_min` options.
 
 {% hint style="warning" %}
-By default, the autoscaler considers tuning the PG count of a pool if it is off by a factor of 3. This will lead to a considerable shift in data placement and might introduce a high load on the cluster.
+By default, the autoscaler considers tuning the PG count of a pool if it is off by a factor of 3\. This will lead to a considerable shift in data placement and might introduce a high load on the cluster.
 {% endhint %}
 
-You can find a more in-depth introduction to the PG autoscaler on Ceph’s Blog - [New in Nautilus: PG merging and autotuning](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/).
+You can find a more in-depth introduction to the PG autoscaler on Ceph’s Blog \- [New in Nautilus: PG merging and autotuning](https://ceph.io/rados/new-in-nautilus-pg-merging-and-autotuning/).
 
-## Ceph CRUSH & Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
+## Ceph CRUSH \& Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
 
 [![screenshot/gui-ceph-config.png](../assets/screenshot-gui-ceph-config-png-b4544eca3b00.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-config.png)
 
 The   
-[[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)]  
+\[[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)\]  
  (**C**ontrolled **R**eplication **U**nder **S**calable **H**ashing) algorithm is at the foundation of Ceph.
 
 CRUSH calculates where to store and retrieve data from. This has the advantage that no central indexing service is needed. CRUSH works using a map of OSDs, buckets (device locations) and rulesets (data replication) for pools.
 
 {% hint style="info" %}
 Further information can be found in the Ceph documentation, under the section CRUSH map   
-[CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)]  
+\[CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)\]  
 .
 {% endhint %}
 
@@ -1458,7 +1458,7 @@ When using the PG autoscaler, all pools in the cluster are required to use CRUSH
 ## Cephx Authentication <a href="#pveceph_cephx_how_it_works" id="pveceph_cephx_how_it_works"></a>
 
 Cephx   
-[Cephx authorization and authentication protocol [https://docs.ceph.com/en/tentacle/dev/cephx_protocol/](https://docs.ceph.com/en/tentacle/dev/cephx_protocol/)]  
+\[Cephx authorization and authentication protocol [https://docs.ceph.com/en/tentacle/dev/cephx\_protocol/](https://docs.ceph.com/en/tentacle/dev/cephx_protocol/)\]  
  protects access to a Ceph cluster.
 
 Every Ceph service and client, including storage consumers and tools, authenticates to a monitor as a Ceph user, such as `client.admin` or `osd.3`, with that user’s long-term secret key. The monitor then issues temporary credentials called tickets:
@@ -1550,7 +1550,7 @@ This active polling will have an additional performance impact on your system an
 **Multiple Active MDS**
 
 Since Luminous (12.2.x) you can have multiple active metadata servers running at once, but this is normally only useful if you have a high amount of clients running in parallel. Otherwise the `MDS` is rarely the bottleneck in a system. If you want to set this up, please refer to the Ceph documentation.   
-[Configuring multiple active MDS daemons [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)]
+\[Configuring multiple active MDS daemons [https://docs.ceph.com/en/tentacle/cephfs/multimds/](https://docs.ceph.com/en/tentacle/cephfs/multimds/)\]
 
 ### Create CephFS <a href="#pveceph_fs_create" id="pveceph_fs_create"></a>
 
@@ -1558,7 +1558,7 @@ With Proxmox VE’s integration of CephFS, you can easily create a CephFS using 
 
 **Prerequisites for a successful CephFS setup:**
 
-- [Install Ceph packages](#pve_ceph_install) - if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
+- [Install Ceph packages](#pve_ceph_install) \- if this was already done some time ago, you may want to rerun it on an up-to-date system to ensure that all CephFS related packages get installed.
 - [Setup Monitors](#pve_ceph_monitors)
 - [Setup your OSDs](#pve_ceph_monitors)
 - [Setup at least one MDS](#pveceph_fs_mds)
@@ -1571,8 +1571,8 @@ Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it 
 pveceph fs create --pg_num 128 --add-storage
 ```
 
-This creates a CephFS named *cephfs*, using a pool for its data named *cephfs_data* with *128* placement groups and a pool for its metadata named *cephfs_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
-[[placement_groups]](#_footnote_placement_groups)  
+This creates a CephFS named *cephfs*, using a pool for its data named *cephfs\_data* with *128* placement groups and a pool for its metadata named *cephfs\_metadata* with one quarter of the data pool’s placement groups (`32`). Check the [Proxmox VE managed Ceph pool chapter](#pve_ceph_pools) or visit the Ceph documentation for more information regarding an appropriate placement group number (`pg_num`) for your setup   
+[\[placement\_groups\]](#_footnote_placement_groups)  
 . Additionally, the *--add-storage* parameter will add the CephFS to the Proxmox VE storage configuration after it has been created successfully.
 
 ### Destroy CephFS <a href="#_destroy_cephfs" id="_destroy_cephfs"></a>
@@ -1648,10 +1648,10 @@ ceph crash archive-all
 
 It is good practice to run *fstrim* (discard) regularly on VMs and containers. This releases data blocks that the filesystem isn’t using anymore. It reduces data usage and resource load. Most modern operating systems issue such discard commands to their disks regularly. You only need to ensure that the Virtual Machines enable the [disk discard option](qm-1.md#qm_hard_disk_discard).
 
-### Scrub & Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
+### Scrub \& Deep Scrub <a href="#pveceph_scrub" id="pveceph_scrub"></a>
 
 Ceph ensures data integrity by *scrubbing* placement groups. Ceph checks every object in a PG for its health. There are two forms of Scrubbing, daily cheap metadata checks and weekly deep data checks. The weekly deep scrub reads the objects and uses checksums to ensure data integrity. If a running scrub interferes with business (performance) needs, you can adjust the time when scrubs   
-[Ceph scrubbing [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)]  
+\[Ceph scrubbing [https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing](https://docs.ceph.com/en/tentacle/rados/configuration/osd-config-ref/#scrubbing)\]  
  are executed.
 
 ### Mute a Health Check <a href="#pveceph_mute_health_check" id="pveceph_mute_health_check"></a>
@@ -1679,10 +1679,10 @@ This section explains how to migrate the cluster-owned keys and the keys of comp
 #### Why the Health Checks Appear <a href="#_why_the_health_checks_appear" id="_why_the_health_checks_appear"></a>
 
 Ceph Squid 19.2.6 and Ceph Tentacle 20.2.4 add health checks for keys and temporary access credentials that use the older `aes` encryption method. The checks can therefore appear directly after an upgrade even if the cluster worked without warnings before. The older method is affected by [*CVE-2025-30156*](https://docs.ceph.com/en/latest/security/CVE-2025-30156). See the upstream release announcement for background   
-[Ceph: Squid v19.2.6 and Tentacle v20.2.4 released [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)]  
+\[Ceph: Squid v19.2.6 and Tentacle v20.2.4 released [https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/](https://ceph.io/en/news/blog/2026/v20-2-4-v19-2-6-combo-released/)\]  
 .
 
-Two checks set the cluster status to *HEALTH_ERR*. This does not mean that storage access or a Ceph service has failed. Follow the steps below to migrate to `aes256k` and, when all clients support it, disable the vulnerable method.
+Two checks set the cluster status to *HEALTH\_ERR*. This does not mean that storage access or a Ceph service has failed. Follow the steps below to migrate to `aes256k` and, when all clients support it, disable the vulnerable method.
 
 #### Migration Steps <a href="#pveceph_cephx_migration_helper" id="pveceph_cephx_migration_helper"></a>
 
@@ -1698,7 +1698,7 @@ Reruns do not rotate completed keys again. After each run, invoke the helper wit
 - Run the helper as `root` on one node only. Do not start another migration, a rolling restart, or change Ceph keys with other tools while it runs. The helper’s lock does not block direct Ceph authentication commands.
 - If Cephx is disabled on this cluster, follow [Clusters with Cephx Disabled](#pveceph_cephx_disabled) instead.
 
-##### 1. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
+##### 1\. Migrate the Cluster-Owned Keys <a href="#_1_migrate_the_cluster_owned_keys" id="_1_migrate_the_cluster_owned_keys"></a>
 
 Review the cluster-owned migration in the default dry-run mode:
 
@@ -1720,7 +1720,7 @@ The helper rotates the manager, metadata server, OSD, monitor, bootstrap, crash,
 
 After Ceph updates its health status, the two error-severity checks clear. The warning about rotating service keys can remain for a few hours while old rotating keys expire. You do not need to wait for this warning to clear before continuing with the migration.
 
-##### 2. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
+##### 2\. Migrate the Keys of Compatible Ceph Users <a href="#pveceph_cephx_migration_clients" id="pveceph_cephx_migration_clients"></a>
 
 <a id="pveceph_cipher_support"></a>
 
@@ -1791,7 +1791,7 @@ While a key is staged, do not add or downgrade monitors or change that user’s 
 
 The helper reports sessions that may still hold an old key. Client hints are host-wide, not session attribution or a complete workload inventory. Sockets without an owning process are listed separately. Check disconnected clients and external key copies yourself.
 
-##### 3. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
+##### 3\. Finish or Pause the Migration <a href="#pveceph_cephx_finish" id="pveceph_cephx_finish"></a>
 
 Run a final dry run to check for remaining old-key sessions. It offers a confirmation command when its observed checks pass, but cannot verify disconnected clients or external key copies for you.
 
@@ -1920,7 +1920,7 @@ To return a staged user to its current key:
 ##### Emergency Cipher Override <a href="#_emergency_cipher_override" id="_emergency_cipher_override"></a>
 
 Monitors normally use the `auth_allowed_ciphers` list stored in the MonMap to decide which key ciphers may authenticate. The local startup option `mon_auth_emergency_allowed_ciphers` replaces that list for a monitor. It can temporarily allow the cipher of an existing administrative key after an incorrect restriction locked administrators out   
-[Ceph: Emergency Allowed Ciphers [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)]  
+\[Ceph: Emergency Allowed Ciphers [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#emergency-allowed-ciphers)\]  
 .
 
 Ceph raises `AUTH_EMERGENCY_CIPHERS_SET` while this override is configured. The helper refuses the final restriction because changing the MonMap would not take effect. Use the override only to recover access, then repair the normal configuration, remove it from `/etc/pve/ceph.conf`, and restart every monitor before the final dry run.
@@ -1930,7 +1930,7 @@ Ceph raises `AUTH_EMERGENCY_CIPHERS_SET` while this override is configured. The 
 After an interruption, run the helper without options once the affected nodes are reachable. Unfinished key updates can resume while their daemons are stopped. Keep the journal unchanged and follow the printed next steps rather than starting a manual rotation. Check the affected nodes and service logs rather than assuming a down daemon’s key needs repair.
 
 If the helper still cannot proceed, install the latest `pve-manager` and retry. Contact Proxmox support before editing the journal or keyrings, or before using the upstream Cephx key migration procedure   
-[Ceph documentation: [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)]  
+\[Ceph documentation: [https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade](https://docs.ceph.com/en/tentacle/rados/configuration/auth-config-ref/#cephx-upgrade)\]  
 . That procedure changes the Ceph authentication database, but does not account for these Proxmox VE details:
 
 - Ensure every managed key copy below `/etc/pve/priv` and `/var/lib/ceph` contains the key that Ceph accepts. Merge changes into `/etc/pve/priv/ceph.mon.keyring`; never overwrite it.
@@ -1940,9 +1940,9 @@ If the helper still cannot proceed, install the latest `pve-manager` and retry. 
 
 Use manual key-rotation or cipher-restriction commands only with a complete, tested recovery plan that covers every item above.
 
-### Shutdown Proxmox VE + Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
+### Shutdown Proxmox VE \+ Ceph HCI Cluster <a href="#pveceph_shutdown" id="pveceph_shutdown"></a>
 
-To shut down the whole Proxmox VE + Ceph cluster, first stop all Ceph clients. These will mainly be VMs and containers. If you have additional clients that might access a Ceph FS or an installed RADOS GW, stop these as well. Highly available guests will switch their state to *stopped* when powered down via the Proxmox VE tooling.
+To shut down the whole Proxmox VE \+ Ceph cluster, first stop all Ceph clients. These will mainly be VMs and containers. If you have additional clients that might access a Ceph FS or an installed RADOS GW, stop these as well. Highly available guests will switch their state to *stopped* when powered down via the Proxmox VE tooling.
 
 Once all clients, VMs and containers are off or not accessing the Ceph cluster anymore, verify that the Ceph cluster is in a healthy state. Either via the Web UI or the CLI:
 
@@ -2028,12 +2028,12 @@ Therefore, the procedure to change the Ceph Public network is a bit more involve
 
 1. Change `public_network` in the `/etc/pve/ceph.conf` file (do not change any other value)
 2. Restart non MON services: OSDs, MGRs and MDS on one host
-3. Wait until Ceph is back to *HEALTH_OK*
+3. Wait until Ceph is back to *HEALTH\_OK*
 4. Verify services are using the new network
 5. Continue restarting services on the next host
 6. Destroy one MON
 7. Recreate MON
-8. Wait until Ceph is back to *HEALTH_OK*
+8. Wait until Ceph is back to *HEALTH\_OK*
 9. Continue destroying and recreating MONs
 
 You first need to edit the `/etc/pve/ceph.conf` file. Change the `public_network` line to match the new subnet.
@@ -2084,11 +2084,11 @@ ss -tulpn | grep ceph
 Since OSDs will also listen on the Ceph Cluster network, expect to see that network too in the output of `ss -tulpn`.
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH_OK*), and the services are listening on the new network, continue to restart the services on the host.
+Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the services are listening on the new network, continue to restart the services on the host.
 
 The last services that need to be moved to the new network are the Ceph MONs themselves. The easiest way is to destroy and recreate each monitor one by one. This way, any mention of it in the `ceph.conf` and the monitor internal `monmap` is handled automatically.
 
-Destroy the first MON and create it again. Wait a few moments before you continue on to the next MON in the cluster, and make sure the cluster reports *HEALTH_OK* before proceeding.
+Destroy the first MON and create it again. Wait a few moments before you continue on to the next MON in the cluster, and make sure the cluster reports *HEALTH\_OK* before proceeding.
 
 Once all MONs are recreated, you can verify that any mention of MONs in the `ceph.conf` file references the new network. That means mainly the `mon_host` line and the `[mon.HOSTNAME]` sections.
 
@@ -2102,7 +2102,7 @@ The overall procedure is:
 
 1. Change `cluster_network` in the `/etc/pve/ceph.conf` file
 2. Restart OSDs on one host
-3. Wait until Ceph is back to *HEALTH_OK*
+3. Wait until Ceph is back to *HEALTH\_OK*
 4. Verify OSDs are using the new network
 5. Continue restarting OSDs on the next host
 
@@ -2140,13 +2140,13 @@ ss -tulpn | grep ceph-osd
 Since OSDs will also listen on the Ceph Public network, expect to see that network too in the output of `ss -tulpn`.
 {% endhint %}
 
-Once the Ceph cluster is back in a fully healthy state (*HEALTH_OK*), and the OSDs are listening on the new network, continue to restart the OSDs on the next host.
+Once the Ceph cluster is back in a fully healthy state (*HEALTH\_OK*), and the OSDs are listening on the new network, continue to restart the OSDs on the next host.
 
 ## Ceph Monitoring and Troubleshooting <a href="#pve_ceph_mon_and_ts" id="pve_ceph_mon_and_ts"></a>
 
-It is important to continuously monitor the health of a Ceph deployment from the beginning, either by using the Ceph tools or by accessing the status through the Proxmox VE [API](https://pve.proxmox.com/pve-docs/api-viewer/index.html).
+It is important to continuously monitor the health of a Ceph deployment from the beginning, either by using the Ceph tools or by accessing the status through the Proxmox VE [API](../api/README.md).
 
-The following Ceph commands can be used to see if the cluster is healthy (*HEALTH_OK*), if there are warnings (*HEALTH_WARN*), or even errors (*HEALTH_ERR*). If the cluster is in an unhealthy state, the status commands below will also give you an overview of the current events and actions to take. To stop their execution, press CTRL-C.
+The following Ceph commands can be used to see if the cluster is healthy (*HEALTH\_OK*), if there are warnings (*HEALTH\_WARN*), or even errors (*HEALTH\_ERR*). If the cluster is in an unhealthy state, the status commands below will also give you an overview of the current events and actions to take. To stop their execution, press CTRL-C.
 
 Continuously watch the cluster status:
 
@@ -2167,7 +2167,7 @@ ceph --watch
 ### Troubleshooting <a href="#pve_ceph_ts" id="pve_ceph_ts"></a>
 
 This section includes frequently used troubleshooting information. More information can be found on the official Ceph website under Troubleshooting   
-[Ceph troubleshooting [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)]  
+\[Ceph troubleshooting [https://docs.ceph.com/en/tentacle/rados/troubleshooting/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/)\]  
 .
 
 <a id="pve_ceph_ts_logs"></a>
@@ -2204,7 +2204,7 @@ ceph crash archive-all
 ```
 
 To get a more detailed view, every Ceph service has a log file under `/var/log/ceph/`. If more detail is required, the log level can be adjusted   
-[Ceph log and debugging [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)]  
+\[Ceph log and debugging [https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/](https://docs.ceph.com/en/tentacle/rados/troubleshooting/log-and-debug/)\]  
 .
 
 <a id="pve_ceph_ts_causes"></a>

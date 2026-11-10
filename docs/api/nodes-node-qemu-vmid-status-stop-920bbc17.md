@@ -8,6 +8,8 @@
 
 Stop virtual machine. The qemu process will exit immediately. This is akin to pulling the power plug of a running computer and may damage the VM data.
 
+**方法标识：** `vm_stop`
+
 **权限**
 
 ```json

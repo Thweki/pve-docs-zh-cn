@@ -8,6 +8,8 @@
 
 Extract configuration from vzdump backup archive.
 
+**方法标识：** `extractconfig`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Retrieve ACME TermsOfService URL from CA. Deprecated, please use /cluster/acme/meta.
 
+**方法标识：** `get_tos`
+
 **权限**
 
 ```json

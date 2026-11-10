@@ -8,6 +8,8 @@
 
 Retrieve ACME Directory Meta Information
 
+**方法标识：** `get_meta`
+
 **权限**
 
 ```json

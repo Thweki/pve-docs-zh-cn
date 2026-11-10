@@ -8,6 +8,8 @@
 
 Create a copy of virtual machine/template.
 
+**方法标识：** `clone_vm`
+
 **权限**
 
 ```json

@@ -1,16 +1,16 @@
-# 8.10. Ceph CRUSH & Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
+# 8.10. Ceph CRUSH \& Device Classes <a href="#pve_ceph_device_classes" id="pve_ceph_device_classes"></a>
 
 [![screenshot/gui-ceph-config.png](../../assets/screenshot-gui-ceph-config-png-b4544eca3b00.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ceph-config.png)
 
 The   
-[[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)]  
+\[[https://ceph.com/assets/pdfs/weil-crush-sc06.pdf](https://ceph.com/assets/pdfs/weil-crush-sc06.pdf)\]  
  (**C**ontrolled **R**eplication **U**nder **S**calable **H**ashing) algorithm is at the foundation of Ceph.
 
 CRUSH calculates where to store and retrieve data from. This has the advantage that no central indexing service is needed. CRUSH works using a map of OSDs, buckets (device locations) and rulesets (data replication) for pools.
 
 {% hint style="info" %}
 Further information can be found in the Ceph documentation, under the section CRUSH map   
-[CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)]  
+\[CRUSH map [https://docs.ceph.com/en/tentacle/rados/operations/crush-map/](https://docs.ceph.com/en/tentacle/rados/operations/crush-map/)\]  
 .
 {% endhint %}
 

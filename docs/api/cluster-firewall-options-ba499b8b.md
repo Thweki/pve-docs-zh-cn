@@ -8,6 +8,8 @@
 
 Get Firewall options.
 
+**方法标识：** `get_options`
+
 **权限**
 
 ```json
@@ -115,6 +117,8 @@ Get Firewall options.
 ## PUT `/cluster/firewall/options`
 
 Set Firewall options.
+
+**方法标识：** `set_options`
 
 **权限**
 

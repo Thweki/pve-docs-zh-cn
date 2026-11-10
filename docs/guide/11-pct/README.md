@@ -1,4 +1,4 @@
-# 11. Proxmox Container Toolkit <a href="#chapter_pct" id="chapter_pct"></a>
+# 11\. Proxmox Container Toolkit <a href="#chapter_pct" id="chapter_pct"></a>
 
 容器是完全虚拟机（VM）的轻量级替代方案。它们使用所运行宿主机系统的内核，而不是模拟完整的操作系统（OS）。这意味着容器可以直接访问宿主机系统上的资源。
 

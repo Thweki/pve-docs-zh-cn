@@ -8,6 +8,8 @@
 
 Scan remote Proxmox Backup Server.
 
+**方法标识：** `pbsscan`
+
 **权限**
 
 ```json

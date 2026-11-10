@@ -1,4 +1,4 @@
-# 18.5. pvescheduler - Proxmox VE Scheduler Daemon <a href="#_pvescheduler_proxmox_ve_scheduler_daemon" id="_pvescheduler_proxmox_ve_scheduler_daemon"></a>
+# 18.5. pvescheduler \- Proxmox VE Scheduler Daemon <a href="#_pvescheduler_proxmox_ve_scheduler_daemon" id="_pvescheduler_proxmox_ve_scheduler_daemon"></a>
 
 This daemon is responsible for starting jobs according to the schedule, such as replication and vzdump jobs.
 

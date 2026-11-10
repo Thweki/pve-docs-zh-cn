@@ -1,6 +1,6 @@
 # 13.6. IP Sets <a href="#pve_firewall_ip_sets" id="pve_firewall_ip_sets"></a>
 
-IP sets can be used to define groups of networks and hosts. You can refer to them with ‘+name` in the firewall rules’ `source` and `dest` properties.
+IP sets can be used to define groups of networks and hosts. You can refer to them with ‘\+name\` in the firewall rules’ `source` and `dest` properties.
 
 The following example allows HTTP traffic from the `management` IP set.
 

@@ -8,6 +8,8 @@
 
 Delete realm-sync job definition.
 
+**方法标识：** `delete_job`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Delete realm-sync job definition.
 
 Read realm-sync job definition.
 
+**方法标识：** `read_job`
+
 **权限**
 
 ```json
@@ -125,6 +129,8 @@ Read realm-sync job definition.
 ## POST `/cluster/jobs/realm-sync/{id}`
 
 Create new realm-sync job.
+
+**方法标识：** `create_job`
 
 **权限**
 
@@ -262,6 +268,8 @@ Create new realm-sync job.
 ## PUT `/cluster/jobs/realm-sync/{id}`
 
 Update realm-sync job definition.
+
+**方法标识：** `update_job`
 
 **权限**
 

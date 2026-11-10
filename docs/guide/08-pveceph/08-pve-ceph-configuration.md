@@ -1,11 +1,11 @@
 # 8.8. Ceph Configuration <a href="#pve_ceph_configuration" id="pve_ceph_configuration"></a>
 
 Ceph daemon and clients pull their configuration from one or more sources   
-[Ceph config sources [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources)]  
+\[Ceph config sources [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#config-sources)\]  
 . In Proxmox VE, a minimal ceph.conf file is used to hold bootstrap settings. Most of the configuration is held in the central configuration database maintained by the MON services.
 
 To persistently change configuration values use the following commands   
-[Ceph MON DB commands [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands)]  
+\[Ceph MON DB commands [https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands](https://docs.ceph.com/en/latest/rados/configuration/ceph-conf/#commands)\]  
 :
 
 <table>
@@ -31,7 +31,7 @@ To persistently change configuration values use the following commands
 </tbody>
 </table>
 
-**Example for increasing the osd_memory_target for all OSD daemons**
+**Example for increasing the osd\_memory\_target for all OSD daemons**
 
 Generator: GNU source-highlight by Lorenzo Bettini http://www.lorenzobettini.it http://www.gnu.org/software/src-highlite
 

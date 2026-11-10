@@ -8,6 +8,8 @@
 
 Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does not destroy any Manager on the same node; use /nodes/{node}/ceph/mgr/{id} for that.
 
+**方法标识：** `destroymon`
+
 **权限**
 
 ```json
@@ -82,6 +84,8 @@ Destroy a Ceph Monitor. Refuses to remove the last monitor of the cluster. Does 
 ## POST `/nodes/{node}/ceph/mon/{monid}`
 
 Create a Ceph Monitor. Also auto-creates a Manager for the first monitor.
+
+**方法标识：** `createmon`
 
 **权限**
 

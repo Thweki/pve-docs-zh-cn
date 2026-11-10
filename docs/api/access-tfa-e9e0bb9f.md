@@ -8,6 +8,8 @@
 
 List TFA configurations of users.
 
+**方法标识：** `list_tfa`
+
 **权限**
 
 ```json

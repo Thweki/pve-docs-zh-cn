@@ -126,10 +126,10 @@ A few common options to set would be:
 
 - *username*: This sets the username of the administrator
 - *groups*: This allows one to add the user to the `Administrators` group
-- *inject_user_password*: Set this to `true` to allow setting the password in the VM config
-- *first_logon_behaviour*: Set this to `no` to not require a new password on login
-- *rename_admin_user*: Set this to `true` to allow renaming the default `Administrator` user to the username specified with `username`
-- *metadata_services*: Set this to `cloudbaseinit.metadata.services.configdrive.ConfigDriveService` for Cloudbase-Init to first check this service. Otherwise it may take a few minutes for Cloudbase-Init to configure the system after boot.
+- *inject\_user\_password*: Set this to `true` to allow setting the password in the VM config
+- *first\_logon\_behaviour*: Set this to `no` to not require a new password on login
+- *rename\_admin\_user*: Set this to `true` to allow renaming the default `Administrator` user to the username specified with `username`
+- *metadata\_services*: Set this to `cloudbaseinit.metadata.services.configdrive.ConfigDriveService` for Cloudbase-Init to first check this service. Otherwise it may take a few minutes for Cloudbase-Init to configure the system after boot.
 
 Some plugins, for example the SetHostnamePlugin, require reboots and will do so automatically. To disable automatic reboots by Cloudbase-Init, you can set `allow_reboot` to `false`.
 
@@ -213,19 +213,19 @@ After following the above steps the VM should be in shut down state due to the S
 
 Specify custom files to replace the automatically generated ones at start.
 
-**`meta`=`<volume>`**
+**`meta`\=`<volume>`**
 
 Specify a custom file containing all meta data passed to the VM via cloud-init. This is provider specific meaning configdrive2 and nocloud differ.
 
-**`network`=`<volume>`**
+**`network`\=`<volume>`**
 
 To pass a custom file containing all network data to the VM via cloud-init.
 
-**`user`=`<volume>`**
+**`user`\=`<volume>`**
 
 To pass a custom file containing all user data to the VM via cloud-init.
 
-**`vendor`=`<volume>`**
+**`vendor`\=`<volume>`**
 
 To pass a custom file containing all vendor data to the VM via cloud-init.
 
@@ -237,7 +237,7 @@ Password to assign the user. Using this is generally not recommended. Use ssh ke
 
 Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
 
-**`ciupgrade`: `<boolean>` (*default =* `1`)**
+**`ciupgrade`: `<boolean>` (*default \=* `1`)**
 
 do an automatic package upgrade after the first boot.
 
@@ -255,7 +255,7 @@ The special string *dhcp* can be used for IP addresses to use DHCP, in which cas
 
 If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4.
 
-**`gw`=`<GatewayIPv4>`**
+**`gw`\=`<GatewayIPv4>`**
 
 IPv4 流量的默认网关。
 
@@ -263,7 +263,7 @@ IPv4 流量的默认网关。
 Requires option(s): `ip`
 {% endhint %}
 
-**`gw6`=`<GatewayIPv6>`**
+**`gw6`\=`<GatewayIPv6>`**
 
 IPv6 流量的默认网关。
 
@@ -271,11 +271,11 @@ IPv6 流量的默认网关。
 Requires option(s): `ip6`
 {% endhint %}
 
-**`ip`=`<IPv4Format/CIDR>` (*default =* `dhcp`)**
+**`ip`\=`<IPv4Format/CIDR>` (*default \=* `dhcp`)**
 
 CIDR 格式的 IPv4 地址。
 
-**`ip6`=`<IPv6Format/CIDR>` (*default =* `dhcp`)**
+**`ip6`\=`<IPv6Format/CIDR>` (*default \=* `dhcp`)**
 
 CIDR 格式的 IPv6 地址。
 

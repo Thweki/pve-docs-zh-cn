@@ -58,17 +58,17 @@ The backup frequency and retention of old backups may depend on how often data c
 
 For this example, we assume that you are doing daily backups, have a retention period of 10 years, and the period between backups stored gradually grows.
 
-`keep-last=3` - even if only daily backups are taken, an admin may want to create an extra one just before or after a big upgrade. Setting keep-last ensures this.
+`keep-last=3` \- even if only daily backups are taken, an admin may want to create an extra one just before or after a big upgrade. Setting keep-last ensures this.
 
-`keep-hourly` is not set - for daily backups this is not relevant. You cover extra manual backups already, with keep-last.
+`keep-hourly` is not set \- for daily backups this is not relevant. You cover extra manual backups already, with keep-last.
 
-`keep-daily=13` - together with keep-last, which covers at least one day, this ensures that you have at least two weeks of backups.
+`keep-daily=13` \- together with keep-last, which covers at least one day, this ensures that you have at least two weeks of backups.
 
-`keep-weekly=8` - ensures that you have at least two full months of weekly backups.
+`keep-weekly=8` \- ensures that you have at least two full months of weekly backups.
 
-`keep-monthly=11` - together with the previous keep settings, this ensures that you have at least a year of monthly backups.
+`keep-monthly=11` \- together with the previous keep settings, this ensures that you have at least a year of monthly backups.
 
-`keep-yearly=9` - this is for the long term archive. As you covered the current year with the previous options, you would set this to nine for the remaining ones, giving you a total of at least 10 years of coverage.
+`keep-yearly=9` \- this is for the long term archive. As you covered the current year with the previous options, you would set this to nine for the remaining ones, giving you a total of at least 10 years of coverage.
 
 We recommend that you use a higher retention period than is minimally required by your environment; you can always reduce it if you find it is unnecessarily high, but you cannot recreate backups once they have been removed.
 

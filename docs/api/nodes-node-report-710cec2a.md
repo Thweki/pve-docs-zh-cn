@@ -8,6 +8,8 @@
 
 Gather various systems information about a node
 
+**方法标识：** `report`
+
 **权限**
 
 ```json

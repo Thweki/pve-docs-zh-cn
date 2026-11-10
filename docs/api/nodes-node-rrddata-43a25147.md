@@ -8,6 +8,8 @@
 
 Read node RRD statistics
 
+**方法标识：** `rrddata`
+
 **权限**
 
 ```json

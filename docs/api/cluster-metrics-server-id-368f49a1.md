@@ -8,6 +8,8 @@
 
 Remove Metric server.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -70,6 +72,8 @@ Remove Metric server.
 
 Read metric server configuration.
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -126,6 +130,8 @@ Read metric server configuration.
 
 Create a new external metric server config
 
+**方法标识：** `create`
+
 **权限**
 
 ```json
@@ -156,7 +162,7 @@ Create a new external metric server config
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '<host>:<port>/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
+| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '&lt;host&gt;:&lt;port&gt;/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
 | `bucket` | string | 否 | — | The InfluxDB bucket/db. Only necessary when using the http v2 api. |
 | `disable` | boolean | 否 | — | Flag to disable the plugin. |
 | `id` | string | 是 | — | The ID of the entry. |
@@ -389,6 +395,8 @@ Create a new external metric server config
 
 Update metric server configuration.
 
+**方法标识：** `update`
+
 **权限**
 
 ```json
@@ -419,7 +427,7 @@ Update metric server configuration.
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |
-| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '<host>:<port>/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
+| `api-path-prefix` | string | 否 | — | An API path prefix inserted between '&lt;host&gt;:&lt;port&gt;/' and '/api2/'. Can be useful if the InfluxDB service runs behind a reverse proxy. |
 | `bucket` | string | 否 | — | The InfluxDB bucket/db. Only necessary when using the http v2 api. |
 | `delete` | string | 否 | — | A list of settings you want to delete. |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |

@@ -1,7 +1,7 @@
 # 8.6. Ceph Manager <a href="#pve_ceph_manager" id="pve_ceph_manager"></a>
 
 The Manager daemon runs alongside the monitors. It provides an interface to monitor the cluster. Since the release of Ceph luminous, at least one ceph-mgr   
-[Ceph Manager [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)]  
+\[Ceph Manager [https://docs.ceph.com/en/tentacle/mgr/](https://docs.ceph.com/en/tentacle/mgr/)\]  
  daemon is required.
 
 ## 8.6.1. Create Manager <a href="#pveceph_create_mgr" id="pveceph_create_mgr"></a>

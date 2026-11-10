@@ -8,6 +8,8 @@
 
 Creates a VNC Shell proxy.
 
+**方法标识：** `termproxy`
+
 **权限**
 
 ```json

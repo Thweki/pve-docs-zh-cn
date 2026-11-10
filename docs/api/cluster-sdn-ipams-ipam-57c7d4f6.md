@@ -8,6 +8,8 @@
 
 Delete sdn ipam object configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -78,6 +80,8 @@ Delete sdn ipam object configuration.
 
 Read sdn ipam configuration.
 
+**方法标识：** `read`
+
 **权限**
 
 ```json
@@ -134,6 +138,8 @@ Read sdn ipam configuration.
 ## PUT `/cluster/sdn/ipams/{ipam}`
 
 Update sdn ipam object configuration.
+
+**方法标识：** `update`
 
 **权限**
 

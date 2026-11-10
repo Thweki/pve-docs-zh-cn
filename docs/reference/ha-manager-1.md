@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_ha_manager" id="chapter_ha_manager"></a>
 
-ha-manager - Proxmox VE HA 管理器
+ha-manager \- Proxmox VE HA 管理器
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -24,7 +24,7 @@ ha-manager - Proxmox VE HA 管理器
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*默认 =* `1`)**
+**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -32,7 +32,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 描述。
 
-**`--failback` `<boolean>` (*默认 =* `1`)**
+**`--failback` `<boolean>` (*默认 \=* `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -40,15 +40,15 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*默认 =* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*默认 =* `1`)**
+**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 =* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
 
 请求的资源状态。
 
@@ -180,11 +180,11 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*默认 =* `0`)**
+**`--nofailback` `<boolean>` (*默认 \=* `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*默认 =* `0`)**
+**`--restricted` `<boolean>` (*默认 \=* `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
@@ -240,11 +240,11 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*默认 =* `0`)**
+**`--nofailback` `<boolean>` (*默认 \=* `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*默认 =* `0`)**
+**`--restricted` `<boolean>` (*默认 \=* `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
@@ -292,7 +292,7 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--purge` `<boolean>` (*默认 =* `1`)**
+**`--purge` `<boolean>` (*默认 \=* `1`)**
 
 从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则
 
@@ -316,7 +316,7 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*默认 =* `positive`)**
+**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -336,7 +336,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*默认 =* `0`)**
+**`--strict` `<boolean>` (*默认 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -430,7 +430,7 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*默认 =* `positive`)**
+**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -450,7 +450,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*默认 =* `0`)**
+**`--strict` `<boolean>` (*默认 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -484,7 +484,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*默认 =* `1`)**
+**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -500,7 +500,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 如果当前配置文件的摘要不同，则阻止更改。这可用于防止并发修改。
 
-**`--failback` `<boolean>` (*默认 =* `1`)**
+**`--failback` `<boolean>` (*默认 \=* `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -508,15 +508,15 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*默认 =* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*默认 =* `1`)**
+**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 =* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
 
 请求的资源状态。
 
@@ -528,7 +528,7 @@ HA 组标识符。
 
 显示 HA 管理器状态。
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 详细输出。包含完整的 CRM 和 LRM 状态（JSON）。
 
@@ -751,7 +751,7 @@ service vm:501 (elsa, started)
 
 服务已停止（由 LRM 确认）。如果 LRM 检测到已停止的服务仍在运行，它会再次停止该服务。
 
-**request_stop**
+**request\_stop**
 
 服务应被停止。CRM 等待 LRM 的确认。
 
@@ -927,7 +927,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 它以资源类型开头，后跟资源特定名称，两者之间用冒号分隔。它们共同构成 HA 资源 ID，所有 `ha-manager` 命令都使用该 ID 唯一标识资源（例如：`vm:100` 或 `ct:101`）。接下来的行包含其他属性：
 
-**`auto-rebalance`：`<boolean>`（*默认值 =* `1`）**
+**`auto-rebalance`：`<boolean>`（*默认值 \=* `1`）**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -935,7 +935,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 描述。
 
-**`failback`：`<boolean>`（*默认值 =* `1`）**
+**`failback`：`<boolean>`（*默认值 \=* `1`）**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -943,15 +943,15 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 HA 组标识符。
 
-**`max_relocate`：`<integer> (0 - N)`（*默认值 =* `1`）**
+**`max_relocate`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`max_restart`：`<integer> (0 - N)`（*默认值 =* `1`）**
+**`max_restart`：`<integer> (0 - N)`（*默认值 \=* `1`）**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 =* `started`）**
+**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 \=* `started`）**
 
 请求的资源状态。CRM 读取此状态并采取相应操作。请注意，`enabled` 只是 `started` 的别名。
 
@@ -1018,11 +1018,11 @@ group: <group>
 
 集群节点成员列表，可以为每个节点指定优先级。资源将在具有最高优先级的可用节点上运行。如果最高优先级类别中有多个节点，资源将分布到这些节点上。优先级只有相对意义。数值越大，优先级越高。
 
-**`nofailback`：`<boolean>`（*默认值 =* `0`）**
+**`nofailback`：`<boolean>`（*默认值 \=* `0`）**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`restricted`：`<boolean>`（*默认值 =* `0`）**
+**`restricted`：`<boolean>`（*默认值 \=* `0`）**
 
 绑定到受限组的资源只能在组定义的节点上运行。如果没有组节点成员在线，资源将被置于停止状态。非受限组上的资源可以在所有组成员离线时运行于任何集群节点，但一旦组成员上线，它们就会迁移回去。使用只有一个成员的非受限组，可以实现*首选节点*行为。
 
@@ -1168,7 +1168,7 @@ node-affinity: priority-cascade
 
 ##### 节点亲和性规则属性 <a href="#_node_affinity_rule_properties" id="_node_affinity_rule_properties"></a>
 
-**`affinity`: `<negative | positive>` (*默认值 =* `positive`)**
+**`affinity`: `<negative | positive>` (*默认值 \=* `positive`)**
 
 描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
 
@@ -1180,7 +1180,7 @@ node-affinity: priority-cascade
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`strict`: `<boolean>` (*默认值 =* `0`)**
+**`strict`: `<boolean>` (*默认值 \=* `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -1351,13 +1351,13 @@ HA 堆栈已就绪，但没有 CRM 正在作为主节点主动运行，例如尚
 
 有两项服务启动恢复策略设置，可针对每个资源分别配置。
 
-**max_restart**
+**max\_restart**
 
 在当前节点上重启失败服务的最大尝试次数。默认为一次。
 
-**max_relocate**
+**max\_relocate**
 
-将服务重新定位到不同节点的最大尝试次数。只有在当前节点上超过 max_restart 值后，才会进行重新定位。默认为一次。
+将服务重新定位到不同节点的最大尝试次数。只有在当前节点上超过 max\_restart 值后，才会进行重新定位。默认为一次。
 
 {% hint style="info" %}
 重新定位计数状态只有在服务至少成功启动一次后才会重置为零。这意味着，如果未修复错误就重新启动服务，则只会重复执行重启策略。

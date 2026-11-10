@@ -8,6 +8,8 @@
 
 Destroy the VM and all used/owned volumes. Removes any VM specific permissions and firewall rules
 
+**方法标识：** `destroy_vm`
+
 **权限**
 
 ```json
@@ -46,7 +48,7 @@ Destroy the VM and all used/owned volumes. Removes any VM specific permissions a
 | --- | --- | --- | --- | --- |
 | `destroy-unreferenced-disks` | boolean | 否 | 0 | If set, destroy additionally all disks not referenced in the config but with a matching VMID from all enabled storages. |
 | `node` | string | 是 | — | The cluster node name. |
-| `purge` | boolean | 否 | — | Remove VMID from configurations, like backup & replication jobs and HA. |
+| `purge` | boolean | 否 | — | Remove VMID from configurations, like backup &amp; replication jobs and HA. |
 | `skiplock` | boolean | 否 | — | Ignore locks - only root is allowed to use this option. |
 | `vmid` | integer | 是 | — | The (unique) ID of the VM. |
 
@@ -107,6 +109,8 @@ Destroy the VM and all used/owned volumes. Removes any VM specific permissions a
 ## GET `/nodes/{node}/qemu/{vmid}`
 
 Directory index
+
+**方法标识：** `vmdiridx`
 
 **权限**
 

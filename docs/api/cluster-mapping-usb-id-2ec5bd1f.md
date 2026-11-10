@@ -8,6 +8,8 @@
 
 Remove Hardware Mapping.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove Hardware Mapping.
 ## GET `/cluster/mapping/usb/{id}`
 
 Get USB Mapping.
+
+**方法标识：** `get`
 
 **权限**
 
@@ -148,6 +152,8 @@ Get USB Mapping.
 ## PUT `/cluster/mapping/usb/{id}`
 
 Update a hardware mapping.
+
+**方法标识：** `update`
 
 **权限**
 

@@ -1,4 +1,4 @@
-# 12. Software-Defined Network <a href="#chapter_pvesdn" id="chapter_pvesdn"></a>
+# 12\. Software-Defined Network <a href="#chapter_pvesdn" id="chapter_pvesdn"></a>
 
 The **S**oftware-**D**efined **N**etwork (SDN) feature in Proxmox VE enables the creation of virtual zones and networks (VNets). This functionality simplifies advanced networking configurations and multitenancy setup.
 

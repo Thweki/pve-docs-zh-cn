@@ -1,6 +1,6 @@
 # 26.1. Introduction <a href="#chapter_qm_vcpu_list" id="chapter_qm_vcpu_list"></a>
 
-This is a list of AMD and Intel x86-64/amd64 CPU types as defined in QEMU, going back to 2007.
+This is a list of AMD and Intel x86-64/amd64 CPU types as defined in QEMU, going back to 2007\.
 
 ---
 

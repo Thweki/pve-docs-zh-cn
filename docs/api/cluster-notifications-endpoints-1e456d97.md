@@ -8,6 +8,8 @@
 
 Index for all available endpoint types.
 
+**方法标识：** `endpoints_index`
+
 **权限**
 
 ```json

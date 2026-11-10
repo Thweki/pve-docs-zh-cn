@@ -8,6 +8,8 @@
 
 Get information about node's certificates.
 
+**方法标识：** `info`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Returns a list of all smtp endpoints
 
+**方法标识：** `get_smtp_endpoints`
+
 **权限**
 
 ```json
@@ -147,6 +149,8 @@ Returns a list of all smtp endpoints
 ## POST `/cluster/notifications/endpoints/smtp`
 
 Create a new smtp endpoint
+
+**方法标识：** `create_smtp_endpoint`
 
 **权限**
 

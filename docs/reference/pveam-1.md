@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pveam - Proxmox VE Appliance Manager
+pveam \- Proxmox VE Appliance Manager
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 

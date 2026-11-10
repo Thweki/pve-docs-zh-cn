@@ -8,6 +8,8 @@
 
 Unmounts the storage and removes the mount unit.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 Read task log.
 
+**方法标识：** `read_task_log`
+
 **权限**
 
 ```json

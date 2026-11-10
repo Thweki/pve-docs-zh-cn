@@ -8,6 +8,8 @@
 
 Get ceph metadata.
 
+**方法标识：** `metadata`
+
 **权限**
 
 ```json

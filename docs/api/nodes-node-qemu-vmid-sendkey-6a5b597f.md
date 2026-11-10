@@ -8,6 +8,8 @@
 
 Send key event to virtual machine.
 
+**方法标识：** `vm_sendkey`
+
 **权限**
 
 ```json

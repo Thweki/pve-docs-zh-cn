@@ -8,6 +8,8 @@
 
 List ceph rules.
 
+**方法标识：** `rules`
+
 **权限**
 
 ```json

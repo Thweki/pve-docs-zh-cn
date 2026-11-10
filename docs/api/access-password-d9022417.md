@@ -8,6 +8,8 @@
 
 Change user password.
 
+**方法标识：** `change_password`
+
 **权限**
 
 ```json

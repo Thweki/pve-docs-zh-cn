@@ -1,8 +1,8 @@
-# 16. Backup and Restore <a href="#chapter_vzdump" id="chapter_vzdump"></a>
+# 16\. Backup and Restore <a href="#chapter_vzdump" id="chapter_vzdump"></a>
 
 Backups are a requirement for any sensible IT deployment, and Proxmox VE provides a fully integrated solution, using the capabilities of each storage and each guest system type. This allows the system administrator to fine tune via the `mode` option between consistency of the backups and downtime of the guest system.
 
-Proxmox VE backups are always full backups - containing the VM/CT configuration and all data. Backups can be started via the GUI or via the `vzdump` command-line tool.
+Proxmox VE backups are always full backups \- containing the VM/CT configuration and all data. Backups can be started via the GUI or via the `vzdump` command-line tool.
 
 **Backup Storage**
 

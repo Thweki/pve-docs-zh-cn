@@ -8,6 +8,8 @@
 
 Delete user.
 
+**方法标识：** `delete_user`
+
 **权限**
 
 ```json
@@ -77,6 +79,8 @@ Delete user.
 ## GET `/access/users/{userid}`
 
 Get user configuration.
+
+**方法标识：** `read_user`
 
 **权限**
 
@@ -211,6 +215,8 @@ Get user configuration.
 ## PUT `/access/users/{userid}`
 
 Update user configuration.
+
+**方法标识：** `update_user`
 
 **权限**
 

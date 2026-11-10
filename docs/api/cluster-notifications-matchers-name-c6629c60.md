@@ -8,6 +8,8 @@
 
 Remove matcher
 
+**方法标识：** `delete_matcher`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Remove matcher
 ## GET `/cluster/notifications/matchers/{name}`
 
 Return a specific matcher
+
+**方法标识：** `get_matcher`
 
 **权限**
 
@@ -214,6 +218,8 @@ Return a specific matcher
 
 Update existing matcher
 
+**方法标识：** `update_matcher`
+
 **权限**
 
 ```json
@@ -250,7 +256,7 @@ Update existing matcher
 | `disable` | boolean | 否 | 0 | Disable this matcher |
 | `invert-match` | boolean | 否 | — | Invert match of the whole matcher |
 | `match-calendar` | array | 否 | — | Match notification timestamp |
-| `match-field` | array | 否 | — | Metadata fields to match (regex or exact match). Must be in the form (regex\|exact):<field>=<value> |
+| `match-field` | array | 否 | — | Metadata fields to match (regex or exact match). Must be in the form (regex\|exact):&lt;field&gt;=&lt;value&gt; |
 | `match-severity` | array | 否 | — | Notification severities to match |
 | `mode` | string | 否 | "all" | Choose between 'all' and 'any' for when multiple properties are specified；可选值：`all`, `any` |
 | `name` | string | 是 | — | Name of the matcher. |

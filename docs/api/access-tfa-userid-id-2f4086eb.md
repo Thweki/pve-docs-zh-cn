@@ -8,6 +8,8 @@
 
 Delete a TFA entry by ID.
 
+**方法标识：** `delete_tfa`
+
 **权限**
 
 ```json
@@ -92,6 +94,8 @@ Delete a TFA entry by ID.
 ## GET `/access/tfa/{userid}/{id}`
 
 Fetch a requested TFA entry if present.
+
+**方法标识：** `get_tfa_entry`
 
 **权限**
 
@@ -201,6 +205,8 @@ Fetch a requested TFA entry if present.
 ## PUT `/access/tfa/{userid}/{id}`
 
 Add a TFA entry for a user.
+
+**方法标识：** `update_tfa_entry`
 
 **权限**
 

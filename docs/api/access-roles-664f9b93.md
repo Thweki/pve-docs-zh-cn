@@ -8,6 +8,8 @@
 
 Role index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -62,6 +64,8 @@ Role index.
 ## POST `/access/roles`
 
 Create new role.
+
+**方法标识：** `create_role`
 
 **权限**
 

@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#_name" id="_name"></a>
 
-pvesubscription - Proxmox VE Subscription Manager
+pvesubscription \- Proxmox VE Subscription Manager
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -76,7 +76,7 @@ A signed subscription info blob
 
 Update subscription info.
 
-**`--force` `<boolean>`（*默认 =* `0`）**
+**`--force` `<boolean>`（*默认 \=* `0`）**
 
 Always connect to server, even if local cache is still valid.
 

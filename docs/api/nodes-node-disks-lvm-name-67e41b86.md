@@ -8,6 +8,8 @@
 
 Remove an LVM Volume Group.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json

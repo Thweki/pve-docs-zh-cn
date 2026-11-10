@@ -2,7 +2,7 @@
 
 ## 名称 <a href="#chapter_storage" id="chapter_storage"></a>
 
-pvesm - Proxmox VE Storage Manager
+pvesm \- Proxmox VE Storage Manager
 
 ## 概要 <a href="#_synopsis" id="_synopsis"></a>
 
@@ -64,11 +64,11 @@ the value *rootdir* is used for Containers, and value *images* for VMs.
 
 Overrides for default content type directories.
 
-**`--create-base-path` `<boolean>` (*default =* `yes`)**
+**`--create-base-path` `<boolean>` (*default \=* `yes`)**
 
 Create the base directory if it doesn’t exist.
 
-**`--create-subdirs` `<boolean>` (*default =* `yes`)**
+**`--create-subdirs` `<boolean>` (*default \=* `yes`)**
 
 Populate the directory with the default structure.
 
@@ -112,7 +112,7 @@ The Ceph filesystem name.
 
 Mount CephFS through FUSE.
 
-**`--is_mountpoint` `<string>` (*default =* `no`)**
+**`--is_mountpoint` `<string>` (*default \=* `no`)**
 
 Assume the given path is an externally managed mountpoint and consider the storage offline if it is not mounted. Using a boolean (yes/no) value serves as a shortcut to using the target path in this field.
 
@@ -124,7 +124,7 @@ iscsi provider
 
 Client keyring contents (for external clusters).
 
-**`--krbd` `<boolean>` (*default =* `0`)**
+**`--krbd` `<boolean>` (*default \=* `0`)**
 
 Always access rbd through krbd kernel module.
 
@@ -136,11 +136,11 @@ target portal group for Linux LIO targets
 
 Base64-encoded, PEM-formatted public RSA key. Used to encrypt a copy of the encryption-key which will be added to each encrypted backup.
 
-**`--max-protected-backups` `<integer> (-1 - N)` (*default =* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`)**
+**`--max-protected-backups` `<integer> (-1 - N)` (*default \=* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`)**
 
 Maximal number of protected backups per guest. Use *-1* for unlimited.
 
-**`--mkdir` `<boolean>` (*default =* `yes`)**
+**`--mkdir` `<boolean>` (*default \=* `yes`)**
 
 Create the directory if it doesn’t exist and populate it with default sub-dirs. NOTE: Deprecated, use the *create-base-path* and *create-subdirs* options instead.
 
@@ -156,7 +156,7 @@ mount point
 
 Namespace.
 
-**`--nocow` `<boolean>` (*default =* `0`)**
+**`--nocow` `<boolean>` (*default \=* `0`)**
 
 Set the NOCOW flag on files. Disables data checksumming and causes data errors to be unrecoverable from while allowing direct I/O. Only use this if data does not need to be any more safe than on a single ext4 formatted disk with no underlying raid system.
 
@@ -192,9 +192,9 @@ Use this port to connect to the storage instead of the default one (for example,
 
 iSCSI portal (IP or DNS name with optional port).
 
-**`--preallocation` `<falloc | full | metadata | off>` (*default =* `metadata`)**
+**`--preallocation` `<falloc | full | metadata | off>` (*default \=* `metadata`)**
 
-Preallocation mode for raw and qcow2 images. Using *metadata* on raw images results in preallocation=off.
+Preallocation mode for raw and qcow2 images. Using *metadata* on raw images results in preallocation\=off.
 
 **`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`**
 
@@ -204,7 +204,7 @@ The retention options with shorter intervals are processed first with --keep-las
 
 Zero-out data when removing LVs.
 
-**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` (*default =* `32`)**
+**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` (*default \=* `32`)**
 
 Wipe step size in MiB. It will be capped to the maximum supported by the storage.
 
@@ -224,15 +224,15 @@ CIFS share.
 
 Indicate that this is a single storage with the same contents on all nodes (or all listed in the *nodes* option). It will not make the contents of a local storage automatically accessible to other nodes, it just marks an already shared storage as such!
 
-**`--skip-cert-verification` `<boolean>` (*default =* `false`)**
+**`--skip-cert-verification` `<boolean>` (*default \=* `false`)**
 
 Disable TLS certificate verification, only enable on fully trusted networks!
 
-**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` (*default =* `default`)**
+**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` (*default \=* `default`)**
 
-SMB protocol version. *default* if not set, negotiates the highest SMB2+ version supported by both the client and server.
+SMB protocol version. *default* if not set, negotiates the highest SMB2\+ version supported by both the client and server.
 
-**`--snapshot-as-volume-chain` `<boolean>` (*default =* `0`)**
+**`--snapshot-as-volume-chain` `<boolean>` (*default \=* `0`)**
 
 Enable support for creating storage-vendor agnostic snapshot through volume backing-chains.
 
@@ -348,7 +348,7 @@ Snapshot to export
 
 Ordered list of snapshots to transfer
 
-**`--with-snapshots` `<boolean>` (*default =* `0`)**
+**`--with-snapshots` `<boolean>` (*default \=* `0`)**
 
 Whether to include intermediate snapshots in the stream
 
@@ -418,9 +418,9 @@ Import stream format
 
 **`<filename>`: `<string>`**
 
-Source file name. For *-* stdin is used, the tcp://<IP-or-CIDR> format allows to use a TCP connection, the unix://PATH-TO-SOCKET format a UNIX socket as input.Else, the file is treated as common file.
+Source file name. For *\-* stdin is used, the tcp://\<IP-or-CIDR\> format allows to use a TCP connection, the unix://PATH-TO-SOCKET format a UNIX socket as input.Else, the file is treated as common file.
 
-**`--allow-rename` `<boolean>` (*default =* `0`)**
+**`--allow-rename` `<boolean>` (*default \=* `0`)**
 
 Choose a new volume ID if the requested volume ID already exists, instead of throwing an error.
 
@@ -436,7 +436,7 @@ A snapshot to delete on success
 
 The current-state snapshot if the stream contains snapshots
 
-**`--with-snapshots` `<boolean>` (*default =* `0`)**
+**`--with-snapshots` `<boolean>` (*default \=* `0`)**
 
 Whether the stream includes intermediate snapshots
 
@@ -526,27 +526,27 @@ Keep all backups. Conflicts with the other options when true.
 
 **`--keep-daily` `<N>`**
 
-Keep backups for the last <N> different days. If there is morethan one backup for a single day, only the latest one is kept.
+Keep backups for the last \<N\> different days. If there is morethan one backup for a single day, only the latest one is kept.
 
 **`--keep-hourly` `<N>`**
 
-Keep backups for the last <N> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
+Keep backups for the last \<N\> different hours. If there is morethan one backup for a single hour, only the latest one is kept.
 
 **`--keep-last` `<N>`**
 
-Keep the last <N> backups.
+Keep the last \<N\> backups.
 
 **`--keep-monthly` `<N>`**
 
-Keep backups for the last <N> different months. If there is morethan one backup for a single month, only the latest one is kept.
+Keep backups for the last \<N\> different months. If there is morethan one backup for a single month, only the latest one is kept.
 
 **`--keep-weekly` `<N>`**
 
-Keep backups for the last <N> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
+Keep backups for the last \<N\> different weeks. If there is morethan one backup for a single week, only the latest one is kept.
 
 **`--keep-yearly` `<N>`**
 
-Keep backups for the last <N> different years. If there is morethan one backup for a single year, only the latest one is kept.
+Keep backups for the last \<N\> different years. If there is morethan one backup for a single year, only the latest one is kept.
 
 **`--type` `<lxc | qemu>`**
 
@@ -660,7 +660,7 @@ Certificate SHA 256 fingerprint.
 
 User password or API token secret.
 
-**`--port` `<integer> (1 - 65535)` (*default =* `8007`)**
+**`--port` `<integer> (1 - 65535)` (*default \=* `8007`)**
 
 Optional port.
 
@@ -712,11 +712,11 @@ the value *rootdir* is used for Containers, and value *images* for VMs.
 
 Overrides for default content type directories.
 
-**`--create-base-path` `<boolean>` (*default =* `yes`)**
+**`--create-base-path` `<boolean>` (*default \=* `yes`)**
 
 Create the base directory if it doesn’t exist.
 
-**`--create-subdirs` `<boolean>` (*default =* `yes`)**
+**`--create-subdirs` `<boolean>` (*default \=* `yes`)**
 
 Populate the directory with the default structure.
 
@@ -760,7 +760,7 @@ The Ceph filesystem name.
 
 Mount CephFS through FUSE.
 
-**`--is_mountpoint` `<string>` (*default =* `no`)**
+**`--is_mountpoint` `<string>` (*default \=* `no`)**
 
 Assume the given path is an externally managed mountpoint and consider the storage offline if it is not mounted. Using a boolean (yes/no) value serves as a shortcut to using the target path in this field.
 
@@ -768,7 +768,7 @@ Assume the given path is an externally managed mountpoint and consider the stora
 
 Client keyring contents (for external clusters).
 
-**`--krbd` `<boolean>` (*default =* `0`)**
+**`--krbd` `<boolean>` (*default \=* `0`)**
 
 Always access rbd through krbd kernel module.
 
@@ -780,11 +780,11 @@ target portal group for Linux LIO targets
 
 Base64-encoded, PEM-formatted public RSA key. Used to encrypt a copy of the encryption-key which will be added to each encrypted backup.
 
-**`--max-protected-backups` `<integer> (-1 - N)` (*default =* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`)**
+**`--max-protected-backups` `<integer> (-1 - N)` (*default \=* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`)**
 
 Maximal number of protected backups per guest. Use *-1* for unlimited.
 
-**`--mkdir` `<boolean>` (*default =* `yes`)**
+**`--mkdir` `<boolean>` (*default \=* `yes`)**
 
 Create the directory if it doesn’t exist and populate it with default sub-dirs. NOTE: Deprecated, use the *create-base-path* and *create-subdirs* options instead.
 
@@ -800,7 +800,7 @@ mount point
 
 Namespace.
 
-**`--nocow` `<boolean>` (*default =* `0`)**
+**`--nocow` `<boolean>` (*default \=* `0`)**
 
 Set the NOCOW flag on files. Disables data checksumming and causes data errors to be unrecoverable from while allowing direct I/O. Only use this if data does not need to be any more safe than on a single ext4 formatted disk with no underlying raid system.
 
@@ -828,9 +828,9 @@ Pool.
 
 Use this port to connect to the storage instead of the default one (for example, with PBS or ESXi). For NFS and CIFS, use the *options* option to configure the port via the mount options.
 
-**`--preallocation` `<falloc | full | metadata | off>` (*default =* `metadata`)**
+**`--preallocation` `<falloc | full | metadata | off>` (*default \=* `metadata`)**
 
-Preallocation mode for raw and qcow2 images. Using *metadata* on raw images results in preallocation=off.
+Preallocation mode for raw and qcow2 images. Using *metadata* on raw images results in preallocation\=off.
 
 **`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`**
 
@@ -840,7 +840,7 @@ The retention options with shorter intervals are processed first with --keep-las
 
 Zero-out data when removing LVs.
 
-**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` (*default =* `32`)**
+**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` (*default \=* `32`)**
 
 Wipe step size in MiB. It will be capped to the maximum supported by the storage.
 
@@ -856,15 +856,15 @@ Server IP or DNS name.
 
 Indicate that this is a single storage with the same contents on all nodes (or all listed in the *nodes* option). It will not make the contents of a local storage automatically accessible to other nodes, it just marks an already shared storage as such!
 
-**`--skip-cert-verification` `<boolean>` (*default =* `false`)**
+**`--skip-cert-verification` `<boolean>` (*default \=* `false`)**
 
 Disable TLS certificate verification, only enable on fully trusted networks!
 
-**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` (*default =* `default`)**
+**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` (*default \=* `default`)**
 
-SMB protocol version. *default* if not set, negotiates the highest SMB2+ version supported by both the client and server.
+SMB protocol version. *default* if not set, negotiates the highest SMB2\+ version supported by both the client and server.
 
-**`--snapshot-as-volume-chain` `<boolean>` (*default =* `0`)**
+**`--snapshot-as-volume-chain` `<boolean>` (*default \=* `0`)**
 
 Enable support for creating storage-vendor agnostic snapshot through volume backing-chains.
 
@@ -900,11 +900,11 @@ Get status for all datastores.
 
 Only list stores which support this content type.
 
-**`--enabled` `<boolean>` (*default =* `0`)**
+**`--enabled` `<boolean>` (*default \=* `0`)**
 
 Only list stores which are enabled (not disabled in config).
 
-**`--format` `<boolean>` (*default =* `0`)**
+**`--format` `<boolean>` (*default \=* `0`)**
 
 Include information about formats
 
@@ -1240,7 +1240,7 @@ pvesm path <VOLUME_ID>
 
 ### Volume Ownership <a href="#_volume_ownership" id="_volume_ownership"></a>
 
-There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230. Most storage backends encodes this ownership information into the volume name.
+There exists an ownership relation for `image` type volumes. Each such volume is owned by a VM or Container. For example volume `local:230/example-image.raw` is owned by VM 230\. Most storage backends encodes this ownership information into the volume name.
 
 When you remove a VM or Container, the system also removes all associated volumes which are owned by that VM or Container.
 
@@ -1347,7 +1347,7 @@ Show file system path for a volume
 pvesm path <VOLUME_ID>
 ```
 
-Exporting the volume `local:103/vm-103-disk-0.qcow2` to the file `target`. This is mostly used internally with `pvesm import`. The stream format qcow2+size is different to the qcow2 format. Consequently, the exported file cannot simply be attached to a VM. This also holds for the other formats.
+Exporting the volume `local:103/vm-103-disk-0.qcow2` to the file `target`. This is mostly used internally with `pvesm import`. The stream format qcow2\+size is different to the qcow2 format. Consequently, the exported file cannot simply be attached to a VM. This also holds for the other formats.
 
 ```text
 pvesm export local:103/vm-103-disk-0.qcow2 qcow2+size target --with-snapshots 1
@@ -1536,7 +1536,7 @@ The backend supports all common storage properties, except the shared flag, whic
 
 **server**
 
-Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name - unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+Server IP or DNS name. To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
 
 **export**
 
@@ -1625,7 +1625,7 @@ The backend supports all common storage properties, except the shared flag, whic
 Server IP or DNS name. Required.
 
 {% hint style="success" %}
-To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name - unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
+To avoid DNS lookup delays, it is usually preferable to use an IP address instead of a DNS name \- unless you have a very reliable DNS server, or list the server in the local `/etc/hosts` file.
 {% endhint %}
 
 **share**
@@ -1646,7 +1646,7 @@ Sets the user domain (workgroup) for this storage. Optional.
 
 **smbversion**
 
-SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2+ version supported by both the client and server. SMB1 is not supported due to security issues.
+SMB protocol version. Optional, when set to `default` or when unset, negotiates the highest SMB2\+ version supported by both the client and server. SMB1 is not supported due to security issues.
 
 **path**
 
@@ -1944,9 +1944,9 @@ ZFS is probably the most advanced storage type regarding snapshot and cloning. T
 
 ### Encryption <a href="#_encryption" id="_encryption"></a>
 
-ZFS supports encryption of dataset hierarchies. Each encrypted dataset, is either an `encryption_root`, storing the properties for encryption itself or descendant of its `encryption_root` - see the `zfs-load-key(8)` manpage for details.
+ZFS supports encryption of dataset hierarchies. Each encrypted dataset, is either an `encryption_root`, storing the properties for encryption itself or descendant of its `encryption_root` \- see the `zfs-load-key(8)` manpage for details.
 
-Sending and receiving encrypted datasets is subject to constraints as some encryption parameters (initialization vectors for the symmetric ciphers) need to be either transferred with the data, breaking inheriting the encryption properties on the receiving side, or need to be recreated on target, requiring the data to be sent unencrypted - see the `zfs-recv(8)` manpage for details.
+Sending and receiving encrypted datasets is subject to constraints as some encryption parameters (initialization vectors for the symmetric ciphers) need to be either transferred with the data, breaking inheriting the encryption properties on the receiving side, or need to be recreated on target, requiring the data to be sent unencrypted \- see the `zfs-recv(8)` manpage for details.
 
 For migration and storage replication of encrypted datasets in Proxmox VE, the data is sent without the encryption properties, and the state of encryption is determined by the target.
 
@@ -2374,7 +2374,7 @@ If Ceph is installed locally on the Proxmox VE cluster, the following is done au
 {% endhint %}
 
 If you use `cephx` authentication, which is enabled by default, provide a keyring from the external Ceph cluster. Obtain or create a dedicated identity with only the capabilities required for this storage, as described in Ceph User Management.<a id="_footnote_cephusermgmt"></a>  
-[[Ceph User Management](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)]  
+\[[Ceph User Management](https://docs.ceph.com/en/tentacle/rados/operations/user-management/)\]  
  The example below uses `client.pve-rbd`; do not copy `client.admin` to a storage client.
 
 Copy the keyring to one Proxmox VE node:
@@ -2414,11 +2414,11 @@ The ceph.conf needs to have the same name as the storage.
 ```
 
 See the RBD configuration reference   
-[RBD configuration reference [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)]  
+\[RBD configuration reference [https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/](https://docs.ceph.com/en/tentacle/rbd/rbd-config-ref/)\]  
  for possible settings.
 
 {% hint style="info" %}
-Do not change these settings lightly. Proxmox VE is merging the <STORAGE_ID>.conf with the storage configuration.
+Do not change these settings lightly. Proxmox VE is merging the \<STORAGE\_ID\>.conf with the storage configuration.
 {% endhint %}
 
 ### Storage Features <a href="#_storage_features_10" id="_storage_features_10"></a>
@@ -2518,7 +2518,7 @@ If Ceph is installed locally on the Proxmox VE cluster, the following is done au
 {% endhint %}
 
 If you use `cephx` authentication, which is enabled by default, provide the secret of a dedicated identity with only the capabilities required for this storage. Obtain or create the identity as described in Ceph User Management.  
-[[cephusermgmt]](#_footnote_cephusermgmt)  
+[\[cephusermgmt\]](#_footnote_cephusermgmt)  
  The example below uses `client.pve-cephfs`; do not use `client.admin` for a storage client.
 
 Export the bare key through SSH to one Proxmox VE node:
@@ -2573,7 +2573,7 @@ The `cephfs` backend is a POSIX-compliant filesystem, on top of a Ceph cluster.
 </tbody>
 </table>
 
-[1] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
+\[1\] While no known bugs exist, snapshots are not yet guaranteed to be stable, as they lack sufficient testing.
 
 ## BTRFS Backend <a href="#storage_btrfs" id="storage_btrfs"></a>
 
@@ -2652,15 +2652,15 @@ iSCSI target.
 
 The iSCSI target implementation used on the remote machine
 
-**comstar_tg**
+**comstar\_tg**
 
 target group for comstar views.
 
-**comstar_hg**
+**comstar\_hg**
 
 host group for comstar views.
 
-**lio_tpg**
+**lio\_tpg**
 
 target portal group for Linux LIO targets
 

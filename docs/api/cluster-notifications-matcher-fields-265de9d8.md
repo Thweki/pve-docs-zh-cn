@@ -8,6 +8,8 @@
 
 Returns known notification metadata fields
 
+**方法标识：** `get_matcher_fields`
+
 **权限**
 
 ```json

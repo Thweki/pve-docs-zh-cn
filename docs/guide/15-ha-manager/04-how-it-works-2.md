@@ -36,7 +36,7 @@ service vm:501 (elsa, started)
 
 服务已停止（由 LRM 确认）。如果 LRM 检测到已停止的服务仍在运行，它会再次停止该服务。
 
-**request_stop**
+**request\_stop**
 
 服务应被停止。CRM 等待 LRM 的确认。
 

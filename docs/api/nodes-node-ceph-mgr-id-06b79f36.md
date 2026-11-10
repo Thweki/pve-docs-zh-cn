@@ -8,6 +8,8 @@
 
 Destroy Ceph Manager.
 
+**方法标识：** `destroymgr`
+
 **权限**
 
 ```json
@@ -82,6 +84,8 @@ Destroy Ceph Manager.
 ## POST `/nodes/{node}/ceph/mgr/{id}`
 
 Create Ceph Manager
+
+**方法标识：** `createmgr`
 
 **权限**
 

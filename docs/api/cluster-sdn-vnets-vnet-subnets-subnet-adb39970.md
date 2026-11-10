@@ -8,6 +8,8 @@
 
 Delete sdn subnet object configuration.
 
+**方法标识：** `delete`
+
 **权限**
 
 ```json
@@ -80,6 +82,8 @@ Delete sdn subnet object configuration.
 ## GET `/cluster/sdn/vnets/{vnet}/subnets/{subnet}`
 
 Read sdn subnet configuration.
+
+**方法标识：** `read`
 
 **权限**
 
@@ -155,6 +159,8 @@ Read sdn subnet configuration.
 
 Update sdn subnet object configuration.
 
+**方法标识：** `update`
+
 **权限**
 
 ```json
@@ -184,7 +190,7 @@ Update sdn subnet object configuration.
 | `dhcp-dns-server` | string | 否 | — | IP address for the DNS server |
 | `dhcp-range` | array | 否 | — | A list of DHCP ranges for this subnet |
 | `digest` | string | 否 | — | Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications. |
-| `dnszoneprefix` | string | 否 | — | dns domain zone prefix ex: 'adm' -> <hostname>.adm.mydomain.com |
+| `dnszoneprefix` | string | 否 | — | dns domain zone prefix ex: 'adm' -&gt; &lt;hostname&gt;.adm.mydomain.com |
 | `gateway` | string | 否 | — | Subnet Gateway: Will be assign on vnet for layer3 zones |
 | `lock-token` | string | 否 | — | the token for unlocking the global SDN configuration |
 | `snat` | boolean | 否 | — | enable masquerade for this subnet if pve-firewall |

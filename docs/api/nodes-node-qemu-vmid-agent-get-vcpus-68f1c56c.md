@@ -8,6 +8,8 @@
 
 Execute get-vcpus.
 
+**方法标识：** `get-vcpus`
+
 **权限**
 
 ```json

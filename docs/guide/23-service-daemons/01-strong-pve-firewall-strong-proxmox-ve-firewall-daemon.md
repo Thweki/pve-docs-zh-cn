@@ -1,4 +1,4 @@
-# 23.1. **pve-firewall** - Proxmox VE Firewall Daemon <a href="#_strong_pve_firewall_strong_proxmox_ve_firewall_daemon" id="_strong_pve_firewall_strong_proxmox_ve_firewall_daemon"></a>
+# 23.1. **pve-firewall** \- Proxmox VE Firewall Daemon <a href="#_strong_pve_firewall_strong_proxmox_ve_firewall_daemon" id="_strong_pve_firewall_strong_proxmox_ve_firewall_daemon"></a>
 
 <a id="cli_pve-firewall"></a>
 
@@ -62,11 +62,11 @@ Destination IP address.
 
 Destination port.
 
-**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default =* `outside`)**
+**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `outside`)**
 
 Source zone.
 
-**`--protocol` `(tcp|udp)` (*default =* `tcp`)**
+**`--protocol` `(tcp|udp)` (*default \=* `tcp`)**
 
 Protocol.
 
@@ -78,11 +78,11 @@ Source IP address.
 
 Source port.
 
-**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default =* `host`)**
+**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` (*default \=* `host`)**
 
 Destination zone.
 
-**`--verbose` `<boolean>`（*默认值 =* `0`）**
+**`--verbose` `<boolean>`（*默认值 \=* `0`）**
 
 Verbose output.
 
@@ -94,9 +94,9 @@ Verbose output.
 
 Start the Proxmox VE firewall service.
 
-**`--debug` `<boolean>`（*默认 =* `0`）**
+**`--debug` `<boolean>`（*默认 \=* `0`）**
 
-Debug mode - stay in foreground
+Debug mode \- stay in foreground
 
 <a id="cli_pve-firewall_status"></a>
 

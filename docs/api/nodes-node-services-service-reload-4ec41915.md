@@ -8,6 +8,8 @@
 
 Reload service. Falls back to restart if service cannot be reloaded.
 
+**方法标识：** `service_reload`
+
 **权限**
 
 ```json

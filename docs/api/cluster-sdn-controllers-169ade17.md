@@ -8,6 +8,8 @@
 
 SDN controllers index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -277,6 +279,8 @@ SDN controllers index.
 ## POST `/cluster/sdn/controllers`
 
 Create a new sdn controller object.
+
+**方法标识：** `create`
 
 **权限**
 

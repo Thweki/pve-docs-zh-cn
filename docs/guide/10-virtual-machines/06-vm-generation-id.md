@@ -1,13 +1,13 @@
 # 10.6. VM Generation ID <a href="#_vm_generation_id" id="_vm_generation_id"></a>
 
 Proxmox VE supports Virtual Machine Generation ID (*vmgenid*)   
-[Official *vmgenid* Specification [https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)]  
+\[Official *vmgenid* Specification [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)\]  
  for virtual machines. This can be used by the guest operating system to detect any event resulting in a time shift event, for example, restoring a backup or a snapshot rollback.
 
 When creating new VMs, a *vmgenid* will be automatically generated and saved in its configuration file.
 
 To create and add a *vmgenid* to an already existing VM one can pass the special value ‘1’ to let Proxmox VE autogenerate one or manually set the *UUID*   
-[Online GUID generator [http://guid.one/](http://guid.one/)]  
+\[Online GUID generator [http://guid.one/](http://guid.one/)\]  
  by using it as value, for example:
 
 ```text
@@ -26,7 +26,7 @@ In the rare case the *vmgenid* mechanism is not wanted one can pass ‘0’ for 
 ```
 
 The most prominent use case for *vmgenid* are newer Microsoft Windows operating systems, which use it to avoid problems in time sensitive or replicate services (such as databases or domain controller   
-[[https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture)]  
+\[[https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controller-architecture)\]  
 ) on snapshot rollback, backup restore or a whole VM clone operation.
 
 ---

@@ -1,4 +1,4 @@
-# 8.4. Initial Ceph Installation & Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
+# 8.4. Initial Ceph Installation \& Configuration <a href="#pve_ceph_install_wizard" id="pve_ceph_install_wizard"></a>
 
 ## 8.4.1. Using the Web-based Wizard <a href="#_using_the_web_based_wizard" id="_using_the_web_based_wizard"></a>
 

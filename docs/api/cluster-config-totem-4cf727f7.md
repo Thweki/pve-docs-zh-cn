@@ -8,6 +8,8 @@
 
 Get corosync totem protocol settings.
 
+**方法标识：** `totem`
+
 **权限**
 
 ```json

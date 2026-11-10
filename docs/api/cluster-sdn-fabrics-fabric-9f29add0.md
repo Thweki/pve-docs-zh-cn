@@ -8,6 +8,8 @@
 
 SDN Fabrics Index
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -232,6 +234,8 @@ SDN Fabrics Index
 ## POST `/cluster/sdn/fabrics/fabric`
 
 Add a fabric
+
+**方法标识：** `add_fabric`
 
 **权限**
 

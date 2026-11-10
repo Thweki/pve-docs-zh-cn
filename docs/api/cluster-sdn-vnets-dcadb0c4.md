@@ -8,6 +8,8 @@
 
 SDN vnets index.
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -170,6 +172,8 @@ SDN vnets index.
 ## POST `/cluster/sdn/vnets`
 
 Create a new sdn vnet object.
+
+**方法标识：** `create`
 
 **权限**
 

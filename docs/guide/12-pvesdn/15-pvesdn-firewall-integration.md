@@ -47,9 +47,9 @@ subnet: simple-2001:db8::-64
         gateway 2001:db8::1
 ```
 
-In this example we configured an IPv4 subnet in the VNet `vnet0`, with *192.0.2.0/24* as its IP Range, *192.0.2.1* as the gateway and the DHCP range is *192.0.2.100* - *192.0.2.199*.
+In this example we configured an IPv4 subnet in the VNet `vnet0`, with *192.0.2.0/24* as its IP Range, *192.0.2.1* as the gateway and the DHCP range is *192.0.2.100* \- *192.0.2.199*.
 
-Additionally we configured an IPv6 subnet with *2001:db8::/64* as the IP range, *2001:db8::1* as the gateway and a DHCP range of *2001:db8::1000* - *2001:db8::1999*.
+Additionally we configured an IPv6 subnet with *2001:db8::/64* as the IP range, *2001:db8::1* as the gateway and a DHCP range of *2001:db8::1000* \- *2001:db8::1999*.
 
 The respective auto-generated IPsets for vnet0 would then contain the following elements:
 
@@ -72,8 +72,8 @@ The respective auto-generated IPsets for vnet0 would then contain the following 
 
 **`vnet0-dhcp`**
 
-- *192.0.2.100 - 192.0.2.199*
-- *2001:db8::1000 - 2001:db8::1999*
+- *192.0.2.100 \- 192.0.2.199*
+- *2001:db8::1000 \- 2001:db8::1999*
 
 ## 12.15.2. IPAM <a href="#_ipam" id="_ipam"></a>
 

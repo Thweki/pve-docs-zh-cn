@@ -8,6 +8,8 @@
 
 Start all VMs and containers located on this node (by default only those with onboot=1).
 
+**方法标识：** `startall`
+
 **权限**
 
 ```json

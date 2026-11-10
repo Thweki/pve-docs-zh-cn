@@ -8,6 +8,8 @@
 
 Stop service.
 
+**方法标识：** `service_stop`
+
 **权限**
 
 ```json

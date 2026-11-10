@@ -8,6 +8,8 @@
 
 Creates a SPICE shell.
 
+**方法标识：** `spiceshell`
+
 **权限**
 
 ```json

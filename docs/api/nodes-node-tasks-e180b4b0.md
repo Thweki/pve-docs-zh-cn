@@ -8,6 +8,8 @@
 
 Read task list for one node (finished tasks).
 
+**方法标识：** `node_tasks`
+
 **权限**
 
 ```json

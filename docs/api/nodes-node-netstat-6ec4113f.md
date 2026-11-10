@@ -8,6 +8,8 @@
 
 Read tap/vm network device interface counters
 
+**方法标识：** `netstat`
+
 **权限**
 
 ```json

@@ -8,6 +8,8 @@
 
 List PCI Hardware Mapping
 
+**方法标识：** `index`
+
 **权限**
 
 ```json
@@ -109,6 +111,8 @@ List PCI Hardware Mapping
 ## POST `/cluster/mapping/pci`
 
 Create a new hardware mapping.
+
+**方法标识：** `create`
 
 **权限**
 

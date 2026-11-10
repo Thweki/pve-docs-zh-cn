@@ -8,6 +8,8 @@
 
 List local PCI devices.
 
+**方法标识：** `pci_scan`
+
 **权限**
 
 ```json

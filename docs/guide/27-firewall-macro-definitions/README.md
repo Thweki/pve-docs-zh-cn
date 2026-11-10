@@ -1,4 +1,4 @@
-# 27. Appendix F: Firewall Macro Definitions <a href="#_firewall_macro_definitions" id="_firewall_macro_definitions"></a>
+# 27\. Appendix F: Firewall Macro Definitions <a href="#_firewall_macro_definitions" id="_firewall_macro_definitions"></a>
 
 <table>
 <tr>

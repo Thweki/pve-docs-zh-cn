@@ -8,6 +8,8 @@
 
 Delete group.
 
+**方法标识：** `delete_group`
+
 **权限**
 
 ```json
@@ -69,6 +71,8 @@ Delete group.
 ## GET `/access/groups/{groupid}`
 
 Get group configuration.
+
+**方法标识：** `read_group`
 
 **权限**
 
@@ -144,6 +148,8 @@ Get group configuration.
 ## PUT `/access/groups/{groupid}`
 
 Update group data.
+
+**方法标识：** `update_group`
 
 **权限**
 
