@@ -14,7 +14,7 @@ API 版本详情，包括部分全局数据中心配置。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -22,7 +22,7 @@ API 版本详情，包括部分全局数据中心配置。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32,7 +32,7 @@ API 版本详情，包括部分全局数据中心配置。
 
 #### 返回值 <a href="#api-version-c77d9d7f-get-returns" id="api-version-c77d9d7f-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "console": {

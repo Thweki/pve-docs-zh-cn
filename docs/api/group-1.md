@@ -14,7 +14,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -22,7 +22,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32,7 +32,7 @@
 
 #### 返回值 <a href="#api-cluster-76d574b0-get-returns" id="api-cluster-76d574b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -62,7 +62,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "仅返回调用用户在 /vms/<vmid> 上拥有 VM.Audit 权限的复制任务。",
   "user": "all"
@@ -71,7 +71,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -81,7 +81,7 @@
 
 #### 返回值 <a href="#api-cluster-replication-92d583d9-get-returns" id="api-cluster-replication-92d583d9-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -173,7 +173,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
@@ -182,13 +182,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -209,7 +209,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -287,7 +287,7 @@
 
 #### 返回值 <a href="#api-cluster-replication-92d583d9-post-returns" id="api-cluster-replication-92d583d9-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -307,7 +307,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
@@ -316,13 +316,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -337,7 +337,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -369,7 +369,7 @@
 
 #### 返回值 <a href="#api-cluster-replication-id-46e95f47-delete-returns" id="api-cluster-replication-id-46e95f47-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -383,7 +383,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。",
   "user": "all"
@@ -392,7 +392,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -405,7 +405,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -423,7 +423,7 @@
 
 #### 返回值 <a href="#api-cluster-replication-id-46e95f47-get-returns" id="api-cluster-replication-id-46e95f47-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "comment": {
@@ -512,7 +512,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
@@ -521,13 +521,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -548,7 +548,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -627,7 +627,7 @@
 
 #### 返回值 <a href="#api-cluster-replication-id-46e95f47-put-returns" id="api-cluster-replication-id-46e95f47-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -647,7 +647,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -655,7 +655,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -665,7 +665,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-c2310197-get-returns" id="api-cluster-metrics-c2310197-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -695,7 +695,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -709,7 +709,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -719,7 +719,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-server-cdd8f7b0-get-returns" id="api-cluster-metrics-server-cdd8f7b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -770,7 +770,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -784,13 +784,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -803,7 +803,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -820,7 +820,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-server-id-368f49a1-delete-returns" id="api-cluster-metrics-server-id-368f49a1-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -834,7 +834,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -848,7 +848,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -861,7 +861,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -878,7 +878,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-server-id-368f49a1-get-returns" id="api-cluster-metrics-server-id-368f49a1-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -892,7 +892,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -906,13 +906,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -948,7 +948,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1143,7 +1143,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-server-id-368f49a1-post-returns" id="api-cluster-metrics-server-id-368f49a1-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1157,7 +1157,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1171,13 +1171,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1214,7 +1214,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1414,7 +1414,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-server-id-368f49a1-put-returns" id="api-cluster-metrics-server-id-368f49a1-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1434,7 +1434,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1448,7 +1448,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1464,7 +1464,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1503,7 +1503,7 @@
 
 #### 返回值 <a href="#api-cluster-metrics-export-8d34a581-get-returns" id="api-cluster-metrics-export-8d34a581-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1550,7 +1550,7 @@
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -1572,7 +1572,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -1580,7 +1580,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1590,7 +1590,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-4311ac17-get-returns" id="api-cluster-notifications-4311ac17-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -1620,7 +1620,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1644,13 +1644,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 0
 ```
 
@@ -1660,7 +1660,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matcher-fields-265de9d8-get-returns" id="api-cluster-notifications-matcher-fields-265de9d8-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1695,7 +1695,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1719,13 +1719,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1735,7 +1735,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matcher-field-values-62224854-get-returns" id="api-cluster-notifications-matcher-field-values-62224854-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1773,7 +1773,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -1781,7 +1781,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1791,7 +1791,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-1e456d97-get-returns" id="api-cluster-notifications-endpoints-1e456d97-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -1821,7 +1821,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1845,13 +1845,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1861,7 +1861,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-sendmail-bd1bbd85-get-returns" id="api-cluster-notifications-endpoints-sendmail-bd1bbd85-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1939,7 +1939,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -1974,13 +1974,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1999,7 +1999,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2062,7 +2062,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-sendmail-bd1bbd85-post-returns" id="api-cluster-notifications-endpoints-sendmail-bd1bbd85-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2082,7 +2082,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -2096,13 +2096,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2115,7 +2115,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2132,7 +2132,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-delete-returns" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2146,7 +2146,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -2170,13 +2170,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2189,7 +2189,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2206,7 +2206,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-get-returns" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "author": {
@@ -2272,7 +2272,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -2307,13 +2307,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2334,7 +2334,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2414,7 +2414,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-put-returns" id="api-cluster-notifications-endpoints-sendmail-name-8baf2dfe-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2434,7 +2434,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -2448,13 +2448,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2464,7 +2464,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-gotify-3afd73f8-get-returns" id="api-cluster-notifications-endpoints-gotify-3afd73f8-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -2518,7 +2518,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -2553,13 +2553,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2576,7 +2576,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2617,7 +2617,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-gotify-3afd73f8-post-returns" id="api-cluster-notifications-endpoints-gotify-3afd73f8-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2637,7 +2637,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -2651,13 +2651,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2670,7 +2670,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2687,7 +2687,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-delete-returns" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2701,7 +2701,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -2725,13 +2725,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2744,7 +2744,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2762,7 +2762,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-get-returns" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "comment": {
@@ -2804,7 +2804,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -2839,13 +2839,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2864,7 +2864,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2924,7 +2924,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-gotify-name-a017cfef-put-returns" id="api-cluster-notifications-endpoints-gotify-name-a017cfef-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2944,7 +2944,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -2968,13 +2968,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2984,7 +2984,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-smtp-69d956eb-get-returns" id="api-cluster-notifications-endpoints-smtp-69d956eb-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -3086,7 +3086,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -3121,13 +3121,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3151,7 +3151,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3247,7 +3247,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-smtp-69d956eb-post-returns" id="api-cluster-notifications-endpoints-smtp-69d956eb-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3267,7 +3267,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3281,13 +3281,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3300,7 +3300,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3317,7 +3317,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-delete-returns" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3331,7 +3331,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -3355,13 +3355,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3374,7 +3374,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3391,7 +3391,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-get-returns" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "author": {
@@ -3481,7 +3481,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -3516,13 +3516,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3548,7 +3548,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3663,7 +3663,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-smtp-name-da6bad92-put-returns" id="api-cluster-notifications-endpoints-smtp-name-da6bad92-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3683,7 +3683,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3697,13 +3697,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3713,7 +3713,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-webhook-4dcdce7f-get-returns" id="api-cluster-notifications-endpoints-webhook-4dcdce7f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -3797,7 +3797,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -3832,13 +3832,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3858,7 +3858,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3927,7 +3927,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-webhook-4dcdce7f-post-returns" id="api-cluster-notifications-endpoints-webhook-4dcdce7f-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3947,7 +3947,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3961,13 +3961,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3980,7 +3980,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3997,7 +3997,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-delete-returns" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4011,7 +4011,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4035,13 +4035,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4054,7 +4054,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4072,7 +4072,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-get-returns" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "body": {
@@ -4144,7 +4144,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -4179,13 +4179,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4207,7 +4207,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4295,7 +4295,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-endpoints-webhook-name-1e127b49-put-returns" id="api-cluster-notifications-endpoints-webhook-name-1e127b49-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4315,7 +4315,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4346,13 +4346,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4362,7 +4362,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-targets-44cf3da5-get-returns" id="api-cluster-notifications-targets-44cf3da5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -4428,7 +4428,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4459,13 +4459,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4478,7 +4478,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4496,7 +4496,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-targets-name-test-4406e6d7-post-returns" id="api-cluster-notifications-targets-name-test-4406e6d7-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4516,7 +4516,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4547,13 +4547,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4563,7 +4563,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matchers-d91fc9d7-get-returns" id="api-cluster-notifications-matchers-d91fc9d7-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -4661,7 +4661,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4675,13 +4675,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4702,7 +4702,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4786,7 +4786,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matchers-d91fc9d7-post-returns" id="api-cluster-notifications-matchers-d91fc9d7-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4806,7 +4806,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4820,13 +4820,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4839,7 +4839,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4856,7 +4856,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matchers-name-c6629c60-delete-returns" id="api-cluster-notifications-matchers-name-c6629c60-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4870,7 +4870,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4894,13 +4894,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4913,7 +4913,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4930,7 +4930,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matchers-name-c6629c60-get-returns" id="api-cluster-notifications-matchers-name-c6629c60-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "comment": {
@@ -5016,7 +5016,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5030,13 +5030,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5059,7 +5059,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5160,7 +5160,7 @@
 
 #### 返回值 <a href="#api-cluster-notifications-matchers-name-c6629c60-put-returns" id="api-cluster-notifications-matchers-name-c6629c60-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5180,7 +5180,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -5188,7 +5188,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -5198,7 +5198,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-6a09d254-get-returns" id="api-cluster-qemu-6a09d254-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -5228,7 +5228,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -5256,7 +5256,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -5270,7 +5270,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5301,7 +5301,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-cpu-flags-7542d748-get-returns" id="api-cluster-qemu-cpu-flags-7542d748-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -5345,7 +5345,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出用户在 '/mapping/cpu/<name>' 上拥有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
@@ -5354,7 +5354,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -5364,7 +5364,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-custom-cpu-models-9d4cf523-get-returns" id="api-cluster-qemu-custom-cpu-models-9d4cf523-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -5563,7 +5563,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5577,13 +5577,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5603,7 +5603,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5786,7 +5786,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-custom-cpu-models-9d4cf523-post-returns" id="api-cluster-qemu-custom-cpu-models-9d4cf523-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5806,7 +5806,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5820,13 +5820,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5839,7 +5839,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5856,7 +5856,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-delete-returns" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5870,7 +5870,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -5901,7 +5901,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -5914,7 +5914,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5931,7 +5931,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-get-returns" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "cputype": {
@@ -6121,7 +6121,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6135,13 +6135,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -6163,7 +6163,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6360,7 +6360,7 @@
 
 #### 返回值 <a href="#api-cluster-qemu-custom-cpu-models-cputype-892d833a-put-returns" id="api-cluster-qemu-custom-cpu-models-cputype-892d833a-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -6380,7 +6380,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6394,7 +6394,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -6404,7 +6404,7 @@
 
 #### 返回值 <a href="#api-cluster-config-0e41d22c-get-returns" id="api-cluster-config-0e41d22c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -6428,13 +6428,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -6451,7 +6451,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6515,7 +6515,7 @@
 
 #### 返回值 <a href="#api-cluster-config-0e41d22c-post-returns" id="api-cluster-config-0e41d22c-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -6535,7 +6535,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6549,7 +6549,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -6559,7 +6559,7 @@
 
 #### 返回值 <a href="#api-cluster-config-apiversion-11d00179-get-returns" id="api-cluster-config-apiversion-11d00179-get-returns"></a>
 
-```json
+```text
 {
   "description": "集群加入 API 版本，目前为 1",
   "minimum": 0,
@@ -6581,7 +6581,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6595,7 +6595,7 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -6605,7 +6605,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-nodes-20707639-get-returns" id="api-cluster-config-nodes-20707639-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -6639,13 +6639,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -6658,7 +6658,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6676,7 +6676,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-nodes-node-637ac634-delete-returns" id="api-cluster-config-nodes-node-637ac634-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -6690,13 +6690,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -6715,7 +6715,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6789,7 +6789,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-nodes-node-637ac634-post-returns" id="api-cluster-config-nodes-node-637ac634-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "corosync_authkey": {
@@ -6823,7 +6823,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6837,7 +6837,7 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -6850,7 +6850,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6870,7 +6870,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-join-75bce18b-get-returns" id="api-cluster-config-join-75bce18b-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6953,13 +6953,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -6978,7 +6978,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7049,7 +7049,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-join-75bce18b-post-returns" id="api-cluster-config-join-75bce18b-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -7069,7 +7069,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7083,7 +7083,7 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -7093,7 +7093,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-totem-4cf727f7-get-returns" id="api-cluster-config-totem-4cf727f7-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -7113,7 +7113,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7127,13 +7127,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -7143,7 +7143,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-config-qdevice-316ec3f3-get-returns" id="api-cluster-config-qdevice-316ec3f3-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -7163,7 +7163,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -7171,7 +7171,7 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -7181,7 +7181,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-firewall-f1f6b12c-get-returns" id="api-cluster-firewall-f1f6b12c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -7211,7 +7211,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -7219,7 +7219,7 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -7229,7 +7229,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-firewall-groups-033bedae-get-returns" id="api-cluster-firewall-groups-033bedae-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -7272,7 +7272,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7286,13 +7286,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -7308,7 +7308,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7348,7 +7348,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-firewall-groups-033bedae-post-returns" id="api-cluster-firewall-groups-033bedae-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -7368,7 +7368,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7382,13 +7382,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -7401,7 +7401,7 @@ Corosync 节点列表。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7420,7 +7420,7 @@ Corosync 节点列表。
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-b1883633-delete-returns" id="api-cluster-firewall-groups-group-b1883633-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -7434,7 +7434,7 @@ Corosync 节点列表。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7448,13 +7448,13 @@ Corosync 节点列表。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -7467,7 +7467,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7486,7 +7486,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-b1883633-get-returns" id="api-cluster-firewall-groups-group-b1883633-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -7594,7 +7594,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7608,19 +7608,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -7648,7 +7648,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7790,7 +7790,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-b1883633-post-returns" id="api-cluster-firewall-groups-group-b1883633-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -7810,7 +7810,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7824,19 +7824,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -7851,7 +7851,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7884,7 +7884,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-delete-returns" id="api-cluster-firewall-groups-group-pos-f899a8db-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -7898,7 +7898,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7912,13 +7912,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -7932,7 +7932,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7958,7 +7958,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-get-returns" id="api-cluster-firewall-groups-group-pos-f899a8db-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -8057,7 +8057,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8071,19 +8071,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8113,7 +8113,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8269,7 +8269,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-groups-group-pos-f899a8db-put-returns" id="api-cluster-firewall-groups-group-pos-f899a8db-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -8289,7 +8289,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8303,13 +8303,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8319,7 +8319,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-rules-959883a1-get-returns" id="api-cluster-firewall-rules-959883a1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -8427,7 +8427,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8441,19 +8441,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8480,7 +8480,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8615,7 +8615,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-rules-959883a1-post-returns" id="api-cluster-firewall-rules-959883a1-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -8635,7 +8635,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8649,19 +8649,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8675,7 +8675,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8701,7 +8701,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-rules-pos-c553646f-delete-returns" id="api-cluster-firewall-rules-pos-c553646f-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -8715,7 +8715,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8729,13 +8729,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8748,7 +8748,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8767,7 +8767,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-rules-pos-c553646f-get-returns" id="api-cluster-firewall-rules-pos-c553646f-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -8866,7 +8866,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8880,19 +8880,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -8921,7 +8921,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9070,7 +9070,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-rules-pos-c553646f-put-returns" id="api-cluster-firewall-rules-pos-c553646f-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9090,7 +9090,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9104,7 +9104,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -9114,7 +9114,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-e989b25a-get-returns" id="api-cluster-firewall-ipset-e989b25a-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -9156,7 +9156,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9170,13 +9170,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9192,7 +9192,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9232,7 +9232,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-e989b25a-post-returns" id="api-cluster-firewall-ipset-e989b25a-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9252,7 +9252,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9266,13 +9266,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9286,7 +9286,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9311,7 +9311,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-0423135e-delete-returns" id="api-cluster-firewall-ipset-name-0423135e-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9325,7 +9325,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9339,7 +9339,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -9352,7 +9352,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9371,7 +9371,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-0423135e-get-returns" id="api-cluster-firewall-ipset-name-0423135e-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -9413,7 +9413,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9427,13 +9427,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9449,7 +9449,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9485,7 +9485,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-0423135e-post-returns" id="api-cluster-firewall-ipset-name-0423135e-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9505,7 +9505,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9519,13 +9519,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9540,7 +9540,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9572,7 +9572,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-delete-returns" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9586,7 +9586,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9600,13 +9600,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9620,7 +9620,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9645,7 +9645,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-get-returns" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -9659,7 +9659,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9673,13 +9673,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9696,7 +9696,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9739,7 +9739,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-ipset-name-cidr-c8e4021b-put-returns" id="api-cluster-firewall-ipset-name-cidr-c8e4021b-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9759,7 +9759,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9773,7 +9773,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -9783,7 +9783,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-aliases-8ded026b-get-returns" id="api-cluster-firewall-aliases-8ded026b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -9824,7 +9824,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9838,13 +9838,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9859,7 +9859,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9890,7 +9890,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-aliases-8ded026b-post-returns" id="api-cluster-firewall-aliases-8ded026b-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9910,7 +9910,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9924,13 +9924,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -9944,7 +9944,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9970,7 +9970,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-aliases-name-bd4edefe-delete-returns" id="api-cluster-firewall-aliases-name-bd4edefe-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -9984,7 +9984,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -9998,7 +9998,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -10011,7 +10011,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -10030,7 +10030,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-aliases-name-bd4edefe-get-returns" id="api-cluster-firewall-aliases-name-bd4edefe-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -10044,7 +10044,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10058,13 +10058,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -10081,7 +10081,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -10127,7 +10127,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-aliases-name-bd4edefe-put-returns" id="api-cluster-firewall-aliases-name-bd4edefe-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -10147,7 +10147,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10161,7 +10161,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -10171,7 +10171,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-options-ba499b8b-get-returns" id="api-cluster-firewall-options-ba499b8b-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "ebtables": {
@@ -10257,7 +10257,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10271,13 +10271,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -10297,7 +10297,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -10396,7 +10396,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-options-ba499b8b-put-returns" id="api-cluster-firewall-options-ba499b8b-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -10416,7 +10416,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -10424,7 +10424,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -10434,7 +10434,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-macros-588dda87-get-returns" id="api-cluster-firewall-macros-588dda87-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -10467,7 +10467,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10481,7 +10481,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -10494,7 +10494,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -10515,7 +10515,7 @@ null
 
 #### 返回值 <a href="#api-cluster-firewall-refs-4c8d1da9-get-returns" id="api-cluster-firewall-refs-4c8d1da9-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -10565,7 +10565,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10579,7 +10579,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -10589,7 +10589,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-904ad991-get-returns" id="api-cluster-backup-904ad991-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -10945,7 +10945,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -10960,13 +10960,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -11016,7 +11016,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -11323,7 +11323,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-904ad991-post-returns" id="api-cluster-backup-904ad991-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -11343,7 +11343,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -11357,13 +11357,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -11376,7 +11376,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -11394,7 +11394,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-id-8eee5aec-delete-returns" id="api-cluster-backup-id-8eee5aec-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -11408,7 +11408,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -11422,7 +11422,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -11435,7 +11435,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -11453,7 +11453,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-id-8eee5aec-get-returns" id="api-cluster-backup-id-8eee5aec-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "all": {
@@ -11800,7 +11800,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -11815,13 +11815,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -11872,7 +11872,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12184,7 +12184,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-id-8eee5aec-put-returns" id="api-cluster-backup-id-8eee5aec-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -12204,7 +12204,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12218,13 +12218,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -12237,7 +12237,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12255,7 +12255,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-id-included-volumes-5a3fa353-get-returns" id="api-cluster-backup-id-included-volumes-5a3fa353-get-returns"></a>
 
-```json
+```text
 {
   "description": "树对象的根节点。子节点表示客户机，孙节点表示该客户机的卷。",
   "properties": {
@@ -12330,7 +12330,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -12340,7 +12340,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-info-1b57f5f1-get-returns" id="api-cluster-backup-info-1b57f5f1-get-returns"></a>
 
-```json
+```text
 {
   "description": "目录索引。",
   "items": {
@@ -12376,7 +12376,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12390,13 +12390,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -12406,7 +12406,7 @@ null
 
 #### 返回值 <a href="#api-cluster-backup-info-not-backed-up-24dcc746-get-returns" id="api-cluster-backup-info-not-backed-up-24dcc746-get-returns"></a>
 
-```json
+```text
 {
   "description": "包含客户机对象。",
   "items": {
@@ -12449,7 +12449,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12463,7 +12463,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -12473,7 +12473,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-5c97873a-get-returns" id="api-cluster-ha-5c97873a-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -12507,7 +12507,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12521,7 +12521,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -12534,7 +12534,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12555,7 +12555,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-88692530-get-returns" id="api-cluster-ha-resources-88692530-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -12583,7 +12583,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12597,13 +12597,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -12624,7 +12624,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12710,7 +12710,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-88692530-post-returns" id="api-cluster-ha-resources-88692530-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -12730,7 +12730,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12744,13 +12744,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -12764,7 +12764,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12789,7 +12789,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-sid-ae318576-delete-returns" id="api-cluster-ha-resources-sid-ae318576-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -12803,7 +12803,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12817,7 +12817,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -12830,7 +12830,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -12848,7 +12848,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-sid-ae318576-get-returns" id="api-cluster-ha-resources-sid-ae318576-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "auto-rebalance": {
@@ -12923,7 +12923,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -12937,13 +12937,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -12965,7 +12965,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13057,7 +13057,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-sid-ae318576-put-returns" id="api-cluster-ha-resources-sid-ae318576-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13077,7 +13077,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13091,13 +13091,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13111,7 +13111,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13135,7 +13135,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-sid-migrate-94224403-post-returns" id="api-cluster-ha-resources-sid-migrate-94224403-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "blocking-resources": {
@@ -13195,7 +13195,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13209,13 +13209,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13229,7 +13229,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13253,7 +13253,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-resources-sid-relocate-1125a342-post-returns" id="api-cluster-ha-resources-sid-relocate-1125a342-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "blocking-resources": {
@@ -13317,7 +13317,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13331,7 +13331,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -13341,7 +13341,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-groups-04915cfc-get-returns" id="api-cluster-ha-groups-04915cfc-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -13369,7 +13369,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13383,13 +13383,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13407,7 +13407,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13464,7 +13464,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-groups-04915cfc-post-returns" id="api-cluster-ha-groups-04915cfc-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13484,7 +13484,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13498,13 +13498,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13517,7 +13517,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13535,7 +13535,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-groups-group-8889ce37-delete-returns" id="api-cluster-ha-groups-group-8889ce37-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13549,7 +13549,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13563,7 +13563,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -13576,7 +13576,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13594,7 +13594,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-groups-group-8889ce37-get-returns" id="api-cluster-ha-groups-group-8889ce37-get-returns"></a>
 
-```json
+```text
 {}
 ```
 
@@ -13606,7 +13606,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13620,13 +13620,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13645,7 +13645,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13709,7 +13709,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-groups-group-8889ce37-put-returns" id="api-cluster-ha-groups-group-8889ce37-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13729,7 +13729,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13743,7 +13743,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -13757,7 +13757,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13784,7 +13784,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-rules-59e5af64-get-returns" id="api-cluster-ha-rules-59e5af64-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "links": [
@@ -13812,7 +13812,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13826,13 +13826,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13842,7 +13842,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-rules-59e5af64-post-returns" id="api-cluster-ha-rules-59e5af64-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13862,7 +13862,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13876,13 +13876,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -13895,7 +13895,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13913,7 +13913,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-rules-rule-cc218e5b-delete-returns" id="api-cluster-ha-rules-rule-cc218e5b-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -13927,7 +13927,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -13941,7 +13941,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -13954,7 +13954,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -13972,7 +13972,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-rules-rule-cc218e5b-get-returns" id="api-cluster-ha-rules-rule-cc218e5b-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "rule": {
@@ -14001,7 +14001,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14015,13 +14015,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -14031,7 +14031,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-rules-rule-cc218e5b-put-returns" id="api-cluster-ha-rules-rule-cc218e5b-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -14051,7 +14051,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -14059,7 +14059,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -14069,7 +14069,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-status-6803f961-get-returns" id="api-cluster-ha-status-6803f961-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -14099,7 +14099,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14113,7 +14113,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -14123,7 +14123,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-status-current-aa0de642-get-returns" id="api-cluster-ha-status-current-aa0de642-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -14242,7 +14242,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14256,7 +14256,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -14266,7 +14266,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-status-manager-status-2de56102-get-returns" id="api-cluster-ha-status-manager-status-2de56102-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -14286,7 +14286,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14300,13 +14300,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -14319,7 +14319,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -14339,7 +14339,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-status-disarm-ha-bafece41-post-returns" id="api-cluster-ha-status-disarm-ha-bafece41-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -14359,7 +14359,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14373,13 +14373,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -14389,7 +14389,7 @@ null
 
 #### 返回值 <a href="#api-cluster-ha-status-arm-ha-fd3fb558-post-returns" id="api-cluster-ha-status-arm-ha-fd3fb558-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -14409,7 +14409,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -14417,7 +14417,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -14427,7 +14427,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-7e2ce7e3-get-returns" id="api-cluster-acme-7e2ce7e3-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -14457,7 +14457,7 @@ ACME 插件索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14471,13 +14471,13 @@ ACME 插件索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -14490,7 +14490,7 @@ ACME 插件索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -14511,7 +14511,7 @@ ACME 插件索引。
 
 #### 返回值 <a href="#api-cluster-acme-plugins-aa24154c-get-returns" id="api-cluster-acme-plugins-aa24154c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -14746,7 +14746,7 @@ ACME 插件索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14760,13 +14760,13 @@ ACME 插件索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -14785,7 +14785,7 @@ ACME 插件索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15007,7 +15007,7 @@ ACME 插件索引。
 
 #### 返回值 <a href="#api-cluster-acme-plugins-aa24154c-post-returns" id="api-cluster-acme-plugins-aa24154c-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -15027,7 +15027,7 @@ ACME 插件索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -15041,13 +15041,13 @@ ACME 插件索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15060,7 +15060,7 @@ ACME 插件索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15078,7 +15078,7 @@ ACME 插件索引。
 
 #### 返回值 <a href="#api-cluster-acme-plugins-id-eb72844a-delete-returns" id="api-cluster-acme-plugins-id-eb72844a-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -15092,7 +15092,7 @@ ACME 插件索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -15106,13 +15106,13 @@ ACME 插件索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15125,7 +15125,7 @@ ACME 插件索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15143,7 +15143,7 @@ ACME 插件索引。
 
 #### 返回值 <a href="#api-cluster-acme-plugins-id-eb72844a-get-returns" id="api-cluster-acme-plugins-id-eb72844a-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "api": {
@@ -15369,7 +15369,7 @@ ACME 插件索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -15383,13 +15383,13 @@ ACME 插件索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15409,7 +15409,7 @@ ACME 插件索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15638,7 +15638,7 @@ ACME 插件索引。
 
 #### 返回值 <a href="#api-cluster-acme-plugins-id-eb72844a-put-returns" id="api-cluster-acme-plugins-id-eb72844a-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -15658,7 +15658,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -15666,13 +15666,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15682,7 +15682,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-account-cc4d64ad-get-returns" id="api-cluster-acme-account-cc4d64ad-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -15706,13 +15706,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15730,7 +15730,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15784,7 +15784,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-account-cc4d64ad-post-returns" id="api-cluster-acme-account-cc4d64ad-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -15804,13 +15804,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15823,7 +15823,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15844,7 +15844,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-account-name-9ef4bf1c-delete-returns" id="api-cluster-acme-account-name-9ef4bf1c-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -15858,13 +15858,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15877,7 +15877,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15898,7 +15898,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-account-name-9ef4bf1c-get-returns" id="api-cluster-acme-account-name-9ef4bf1c-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15934,13 +15934,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -15954,7 +15954,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -15982,7 +15982,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-account-name-9ef4bf1c-put-returns" id="api-cluster-acme-account-name-9ef4bf1c-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -16002,7 +16002,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -16010,7 +16010,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -16023,7 +16023,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16042,7 +16042,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-tos-55372fea-get-returns" id="api-cluster-acme-tos-55372fea-get-returns"></a>
 
-```json
+```text
 {
   "description": "ACME 服务条款 URL。",
   "optional": 1,
@@ -16064,7 +16064,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16078,7 +16078,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -16091,7 +16091,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16110,7 +16110,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-meta-2e3ea328-get-returns" id="api-cluster-acme-meta-2e3ea328-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "properties": {
@@ -16156,7 +16156,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -16164,7 +16164,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -16174,7 +16174,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-directories-97ae9688-get-returns" id="api-cluster-acme-directories-97ae9688-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 0,
@@ -16208,7 +16208,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -16216,7 +16216,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -16226,7 +16226,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-acme-challenge-schema-3a19ea02-get-returns" id="api-cluster-acme-challenge-schema-3a19ea02-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 0,
@@ -16265,7 +16265,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -16273,7 +16273,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -16283,7 +16283,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-64b903a5-get-returns" id="api-cluster-ceph-64b903a5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -16313,7 +16313,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16330,13 +16330,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -16349,7 +16349,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16371,7 +16371,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-metadata-87462e1f-get-returns" id="api-cluster-ceph-metadata-87462e1f-get-returns"></a>
 
-```json
+```text
 {
   "description": "每种服务类型的条目，包含各实例的对象。",
   "properties": {
@@ -16630,7 +16630,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16647,13 +16647,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -16663,7 +16663,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-status-a80fb0bc-get-returns" id="api-cluster-ceph-status-a80fb0bc-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -16683,7 +16683,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16697,13 +16697,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -16720,7 +16720,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16772,7 +16772,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-restart-bulk-c7351887-post-returns" id="api-cluster-ceph-restart-bulk-c7351887-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -16781,7 +16781,7 @@ ACMEAccount 索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -16803,7 +16803,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16817,13 +16817,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -16833,7 +16833,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-flags-3d19a402-get-returns" id="api-cluster-ceph-flags-3d19a402-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 1,
@@ -16884,7 +16884,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16898,13 +16898,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -16927,7 +16927,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17005,7 +17005,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-flags-3d19a402-put-returns" id="api-cluster-ceph-flags-3d19a402-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -17025,7 +17025,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17039,13 +17039,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17058,7 +17058,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17087,7 +17087,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-flags-flag-16233181-get-returns" id="api-cluster-ceph-flags-flag-16233181-get-returns"></a>
 
-```json
+```text
 {
   "type": "boolean"
 }
@@ -17101,7 +17101,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17115,13 +17115,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17135,7 +17135,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17169,7 +17169,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-flags-flag-16233181-put-returns" id="api-cluster-ceph-flags-flag-16233181-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17189,7 +17189,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17206,13 +17206,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17222,7 +17222,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-health-mute-285ae4b0-get-returns" id="api-cluster-ceph-health-mute-285ae4b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -17265,7 +17265,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17279,13 +17279,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17301,7 +17301,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17337,7 +17337,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-ceph-health-mute-code-6c051ab6-put-returns" id="api-cluster-ceph-health-mute-code-6c051ab6-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17357,7 +17357,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -17365,7 +17365,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -17375,7 +17375,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-7f6abac7-get-returns" id="api-cluster-jobs-7f6abac7-get-returns"></a>
 
-```json
+```text
 {
   "description": "目录索引。",
   "items": {
@@ -17411,7 +17411,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17425,7 +17425,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -17435,7 +17435,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-realm-sync-3a48aec7-get-returns" id="api-cluster-jobs-realm-sync-3a48aec7-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -17517,7 +17517,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17531,13 +17531,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17550,7 +17550,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17567,7 +17567,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-delete-returns" id="api-cluster-jobs-realm-sync-id-2c5d49d5-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17581,7 +17581,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17595,7 +17595,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -17608,7 +17608,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17625,7 +17625,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-get-returns" id="api-cluster-jobs-realm-sync-id-2c5d49d5-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -17639,7 +17639,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -17664,13 +17664,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17690,7 +17690,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17764,7 +17764,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-post-returns" id="api-cluster-jobs-realm-sync-id-2c5d49d5-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17778,7 +17778,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -17803,13 +17803,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17829,7 +17829,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17903,7 +17903,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-realm-sync-id-2c5d49d5-put-returns" id="api-cluster-jobs-realm-sync-id-2c5d49d5-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17923,7 +17923,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -17931,7 +17931,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -17946,7 +17946,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17980,7 +17980,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-jobs-schedule-analyze-1c086080-get-returns" id="api-cluster-jobs-schedule-analyze-1c086080-get-returns"></a>
 
-```json
+```text
 {
   "description": "自 <starttime> 起接下来 <iterations> 次事件的数组。",
   "items": {
@@ -18014,7 +18014,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -18022,7 +18022,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -18032,7 +18032,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-3795482f-get-returns" id="api-cluster-mapping-3795482f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "type": "object"
@@ -18061,7 +18061,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/mapping/dir/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
@@ -18070,7 +18070,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -18083,7 +18083,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18102,7 +18102,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-dir-be5cae7e-get-returns" id="api-cluster-mapping-dir-be5cae7e-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -18165,7 +18165,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18179,13 +18179,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18200,7 +18200,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18247,7 +18247,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-dir-be5cae7e-post-returns" id="api-cluster-mapping-dir-be5cae7e-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18267,7 +18267,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18281,13 +18281,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18300,7 +18300,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18317,7 +18317,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-dir-id-e3e8b099-delete-returns" id="api-cluster-mapping-dir-id-e3e8b099-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18331,7 +18331,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -18362,13 +18362,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18381,7 +18381,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18398,7 +18398,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-dir-id-e3e8b099-get-returns" id="api-cluster-mapping-dir-id-e3e8b099-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -18412,7 +18412,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18426,13 +18426,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18449,7 +18449,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18511,7 +18511,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-dir-id-e3e8b099-put-returns" id="api-cluster-mapping-dir-id-e3e8b099-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18531,7 +18531,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/mapping/pci/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
@@ -18540,7 +18540,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -18553,7 +18553,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18572,7 +18572,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-pci-a7aadf85-get-returns" id="api-cluster-mapping-pci-a7aadf85-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -18635,7 +18635,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18649,13 +18649,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18672,7 +18672,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18755,7 +18755,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-pci-a7aadf85-post-returns" id="api-cluster-mapping-pci-a7aadf85-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18775,7 +18775,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18789,13 +18789,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18808,7 +18808,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18825,7 +18825,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-pci-id-80b107bb-delete-returns" id="api-cluster-mapping-pci-id-80b107bb-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18839,7 +18839,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -18870,13 +18870,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18889,7 +18889,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18906,7 +18906,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-pci-id-80b107bb-get-returns" id="api-cluster-mapping-pci-id-80b107bb-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -18920,7 +18920,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18934,13 +18934,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -18959,7 +18959,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19057,7 +19057,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-pci-id-80b107bb-put-returns" id="api-cluster-mapping-pci-id-80b107bb-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -19077,7 +19077,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/mapping/usb/<id>' 具有 'Mapping.Modify'、'Mapping.Use' 或 'Mapping.Audit' 权限的条目。",
   "user": "all"
@@ -19086,7 +19086,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -19099,7 +19099,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19118,7 +19118,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-usb-677dac0a-get-returns" id="api-cluster-mapping-usb-677dac0a-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -19175,7 +19175,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -19189,13 +19189,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19210,7 +19210,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19268,7 +19268,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-usb-677dac0a-post-returns" id="api-cluster-mapping-usb-677dac0a-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -19288,7 +19288,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -19302,13 +19302,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19321,7 +19321,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19338,7 +19338,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-delete-returns" id="api-cluster-mapping-usb-id-2ec5bd1f-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -19352,7 +19352,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -19383,13 +19383,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19402,7 +19402,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19419,7 +19419,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-get-returns" id="api-cluster-mapping-usb-id-2ec5bd1f-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -19433,7 +19433,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -19447,13 +19447,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19470,7 +19470,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19543,7 +19543,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-mapping-usb-id-2ec5bd1f-put-returns" id="api-cluster-mapping-usb-id-2ec5bd1f-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -19563,7 +19563,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -19571,7 +19571,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -19581,7 +19581,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-9ecda72c-get-returns" id="api-cluster-bulk-action-9ecda72c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "type": "object"
@@ -19610,7 +19610,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -19618,7 +19618,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -19628,7 +19628,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-guest-4e0ad08a-get-returns" id="api-cluster-bulk-action-guest-4e0ad08a-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -19658,7 +19658,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
@@ -19667,13 +19667,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19689,7 +19689,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19738,7 +19738,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-guest-start-9c3d3d17-post-returns" id="api-cluster-bulk-action-guest-start-9c3d3d17-post-returns"></a>
 
-```json
+```text
 {
   "description": "工作任务的 UPID",
   "type": "string"
@@ -19748,7 +19748,7 @@ ACMEAccount 索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -19770,7 +19770,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
@@ -19779,13 +19779,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19802,7 +19802,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19859,7 +19859,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-guest-shutdown-2b6d3381-post-returns" id="api-cluster-bulk-action-guest-shutdown-2b6d3381-post-returns"></a>
 
-```json
+```text
 {
   "description": "工作任务的 UPID",
   "type": "string"
@@ -19869,7 +19869,7 @@ ACMEAccount 索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -19891,7 +19891,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。另外，还需要对 '/vms/{vmid}' 路径具有 'VM.Config.Disk' 权限，以及对已配置的状态存储具有 'Datastore.AllocateSpace' 权限",
   "user": "all"
@@ -19900,13 +19900,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -19923,7 +19923,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19982,7 +19982,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-guest-suspend-06b42be1-post-returns" id="api-cluster-bulk-action-guest-suspend-06b42be1-post-returns"></a>
 
-```json
+```text
 {
   "description": "工作任务的 UPID",
   "type": "string"
@@ -19992,7 +19992,7 @@ ACMEAccount 索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -20014,7 +20014,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。",
   "user": "all"
@@ -20023,13 +20023,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -20047,7 +20047,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20108,7 +20108,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-bulk-action-guest-migrate-62d741d7-post-returns" id="api-cluster-bulk-action-guest-migrate-62d741d7-post-returns"></a>
 
-```json
+```text
 {
   "description": "工作任务的 UPID",
   "type": "string"
@@ -20118,7 +20118,7 @@ ACMEAccount 索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "expose_credentials": 1
 }
@@ -20140,7 +20140,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20154,7 +20154,7 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -20164,7 +20164,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-a5d61349-get-returns" id="api-cluster-sdn-a5d61349-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -20192,7 +20192,7 @@ ACMEAccount 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20206,13 +20206,13 @@ ACMEAccount 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -20226,7 +20226,7 @@ ACMEAccount 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20251,7 +20251,7 @@ ACMEAccount 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-a5d61349-put-returns" id="api-cluster-sdn-a5d61349-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -20271,7 +20271,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -20280,7 +20280,7 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -20294,7 +20294,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20318,7 +20318,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-dcadb0c4-get-returns" id="api-cluster-sdn-vnets-dcadb0c4-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -20436,7 +20436,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20450,13 +20450,13 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -20476,7 +20476,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20543,7 +20543,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-dcadb0c4-post-returns" id="api-cluster-sdn-vnets-dcadb0c4-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -20563,7 +20563,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
@@ -20572,13 +20572,13 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -20592,7 +20592,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20617,7 +20617,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-delete-returns" id="api-cluster-sdn-vnets-vnet-afce4b42-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -20631,7 +20631,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限",
   "user": "all"
@@ -20640,7 +20640,7 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -20655,7 +20655,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20686,7 +20686,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-get-returns" id="api-cluster-sdn-vnets-vnet-afce4b42-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "alias": {
@@ -20794,7 +20794,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
@@ -20803,13 +20803,13 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -20830,7 +20830,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20904,7 +20904,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-afce4b42-put-returns" id="api-cluster-sdn-vnets-vnet-afce4b42-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -20924,7 +20924,7 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -20937,7 +20937,7 @@ SDN vnet 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20956,7 +20956,7 @@ SDN vnet 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-187c85cd-get-returns" id="api-cluster-sdn-vnets-vnet-firewall-187c85cd-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -20986,7 +20986,7 @@ SDN vnet 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限",
   "user": "all"
@@ -20995,13 +20995,13 @@ SDN vnet 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -21014,7 +21014,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21033,7 +21033,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-get-returns" id="api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -21141,7 +21141,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
@@ -21150,19 +21150,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -21190,7 +21190,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21332,7 +21332,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-post-returns" id="api-cluster-sdn-vnets-vnet-firewall-rules-2e07f079-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -21352,7 +21352,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
@@ -21361,19 +21361,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -21388,7 +21388,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21421,7 +21421,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-delete-returns" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -21435,7 +21435,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限",
   "user": "all"
@@ -21444,13 +21444,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -21464,7 +21464,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21490,7 +21490,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-get-returns" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -21589,7 +21589,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
@@ -21598,19 +21598,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -21640,7 +21640,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21796,7 +21796,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-put-returns" id="api-cluster-sdn-vnets-vnet-firewall-rules-pos-9e764b01-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -21816,7 +21816,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Audit 或 SDN.Allocate 权限",
   "user": "all"
@@ -21825,7 +21825,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -21838,7 +21838,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21857,7 +21857,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-get-returns" id="api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "enable": {
@@ -21904,7 +21904,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 SDN.Allocate 权限",
   "user": "all"
@@ -21913,13 +21913,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -21937,7 +21937,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22002,7 +22002,7 @@ null
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-put-returns" id="api-cluster-sdn-vnets-vnet-firewall-options-4d9e573e-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22022,7 +22022,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -22031,7 +22031,7 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -22046,7 +22046,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22077,7 +22077,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-get-returns" id="api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -22101,7 +22101,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
@@ -22110,13 +22110,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22137,7 +22137,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22211,7 +22211,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-post-returns" id="api-cluster-sdn-vnets-vnet-subnets-e9bf1e25-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22231,7 +22231,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
@@ -22240,13 +22240,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22261,7 +22261,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22292,7 +22292,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-delete-returns" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22306,7 +22306,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限",
   "user": "all"
@@ -22315,7 +22315,7 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -22331,7 +22331,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22368,7 +22368,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-get-returns" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -22382,7 +22382,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Allocate' 权限",
   "user": "all"
@@ -22391,13 +22391,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22419,7 +22419,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22502,7 +22502,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-put-returns" id="api-cluster-sdn-vnets-vnet-subnets-subnet-adb39970-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22522,7 +22522,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -22536,13 +22536,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22558,7 +22558,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22599,7 +22599,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-delete-returns" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22613,7 +22613,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -22627,13 +22627,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22649,7 +22649,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22690,7 +22690,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-post-returns" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22704,7 +22704,7 @@ SDN 子网索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -22718,13 +22718,13 @@ SDN 子网索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -22741,7 +22741,7 @@ SDN 子网索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22791,7 +22791,7 @@ SDN 子网索引。
 
 #### 返回值 <a href="#api-cluster-sdn-vnets-vnet-ips-4cd47c44-put-returns" id="api-cluster-sdn-vnets-vnet-ips-4cd47c44-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -22811,7 +22811,7 @@ SDN 区域索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/zones/<zone>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -22820,7 +22820,7 @@ SDN 区域索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -22835,7 +22835,7 @@ SDN 区域索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22872,7 +22872,7 @@ SDN 区域索引。
 
 #### 返回值 <a href="#api-cluster-sdn-zones-f334f5a6-get-returns" id="api-cluster-sdn-zones-f334f5a6-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -23215,7 +23215,7 @@ SDN 区域索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23229,13 +23229,13 @@ SDN 区域索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -23275,7 +23275,7 @@ SDN 区域索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -23491,7 +23491,7 @@ SDN 区域索引。
 
 #### 返回值 <a href="#api-cluster-sdn-zones-f334f5a6-post-returns" id="api-cluster-sdn-zones-f334f5a6-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -23511,7 +23511,7 @@ SDN 区域索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23525,13 +23525,13 @@ SDN 区域索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -23545,7 +23545,7 @@ SDN 区域索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -23570,7 +23570,7 @@ SDN 区域索引。
 
 #### 返回值 <a href="#api-cluster-sdn-zones-zone-972e538e-delete-returns" id="api-cluster-sdn-zones-zone-972e538e-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -23584,7 +23584,7 @@ SDN 区域索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23598,7 +23598,7 @@ SDN 区域索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -23613,7 +23613,7 @@ SDN 区域索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -23644,7 +23644,7 @@ SDN 区域索引。
 
 #### 返回值 <a href="#api-cluster-sdn-zones-zone-972e538e-get-returns" id="api-cluster-sdn-zones-zone-972e538e-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "advertise-subnets": {
@@ -23977,7 +23977,7 @@ SDN 区域索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23991,13 +23991,13 @@ SDN 区域索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -24038,7 +24038,7 @@ SDN 区域索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24256,7 +24256,7 @@ SDN 区域索引。
 
 #### 返回值 <a href="#api-cluster-sdn-zones-zone-972e538e-put-returns" id="api-cluster-sdn-zones-zone-972e538e-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -24276,7 +24276,7 @@ SDN 控制器索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/controllers/<controller>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -24285,7 +24285,7 @@ SDN 控制器索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -24300,7 +24300,7 @@ SDN 控制器索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24335,7 +24335,7 @@ SDN 控制器索引。
 
 #### 返回值 <a href="#api-cluster-sdn-controllers-169ade17-get-returns" id="api-cluster-sdn-controllers-169ade17-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -24548,7 +24548,7 @@ SDN 控制器索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24562,13 +24562,13 @@ SDN 控制器索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -24599,7 +24599,7 @@ SDN 控制器索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24751,7 +24751,7 @@ SDN 控制器索引。
 
 #### 返回值 <a href="#api-cluster-sdn-controllers-169ade17-post-returns" id="api-cluster-sdn-controllers-169ade17-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -24771,7 +24771,7 @@ SDN 控制器索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24785,13 +24785,13 @@ SDN 控制器索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -24805,7 +24805,7 @@ SDN 控制器索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24830,7 +24830,7 @@ SDN 控制器索引。
 
 #### 返回值 <a href="#api-cluster-sdn-controllers-controller-945537d7-delete-returns" id="api-cluster-sdn-controllers-controller-945537d7-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -24844,7 +24844,7 @@ SDN 控制器索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24858,7 +24858,7 @@ SDN 控制器索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -24873,7 +24873,7 @@ SDN 控制器索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24904,7 +24904,7 @@ SDN 控制器索引。
 
 #### 返回值 <a href="#api-cluster-sdn-controllers-controller-945537d7-get-returns" id="api-cluster-sdn-controllers-controller-945537d7-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "asn": {
@@ -25107,7 +25107,7 @@ SDN 控制器索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25121,13 +25121,13 @@ SDN 控制器索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25159,7 +25159,7 @@ SDN 控制器索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25315,7 +25315,7 @@ SDN 控制器索引。
 
 #### 返回值 <a href="#api-cluster-sdn-controllers-controller-945537d7-put-returns" id="api-cluster-sdn-controllers-controller-945537d7-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -25335,7 +25335,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/ipams/<ipam>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -25344,7 +25344,7 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -25357,7 +25357,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25379,7 +25379,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-8dacb8c6-get-returns" id="api-cluster-sdn-ipams-8dacb8c6-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -25410,7 +25410,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25424,13 +25424,13 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25449,7 +25449,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25505,7 +25505,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-8dacb8c6-post-returns" id="api-cluster-sdn-ipams-8dacb8c6-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -25525,7 +25525,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25539,13 +25539,13 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25559,7 +25559,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25583,7 +25583,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-delete-returns" id="api-cluster-sdn-ipams-ipam-57c7d4f6-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -25597,7 +25597,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25611,7 +25611,7 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -25624,7 +25624,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25642,7 +25642,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-get-returns" id="api-cluster-sdn-ipams-ipam-57c7d4f6-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -25656,7 +25656,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25670,13 +25670,13 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25696,7 +25696,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25757,7 +25757,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-ipam-57c7d4f6-put-returns" id="api-cluster-sdn-ipams-ipam-57c7d4f6-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -25777,7 +25777,7 @@ SDN ipam 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -25786,13 +25786,13 @@ SDN ipam 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25805,7 +25805,7 @@ SDN ipam 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25823,7 +25823,7 @@ SDN ipam 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-ipams-ipam-status-5f7a96e8-get-returns" id="api-cluster-sdn-ipams-ipam-status-5f7a96e8-get-returns"></a>
 
-```json
+```text
 {
   "type": "array"
 }
@@ -25843,7 +25843,7 @@ SDN DNS 索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/dns/<dns>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -25852,7 +25852,7 @@ SDN DNS 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -25865,7 +25865,7 @@ SDN DNS 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25885,7 +25885,7 @@ SDN DNS 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-dns-205d876c-get-returns" id="api-cluster-sdn-dns-205d876c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -25916,7 +25916,7 @@ SDN DNS 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25930,13 +25930,13 @@ SDN DNS 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -25957,7 +25957,7 @@ SDN DNS 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26021,7 +26021,7 @@ SDN DNS 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-dns-205d876c-post-returns" id="api-cluster-sdn-dns-205d876c-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26041,7 +26041,7 @@ SDN DNS 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26055,13 +26055,13 @@ SDN DNS 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -26075,7 +26075,7 @@ SDN DNS 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26099,7 +26099,7 @@ SDN DNS 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-dns-dns-4dd13de3-delete-returns" id="api-cluster-sdn-dns-dns-4dd13de3-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26113,7 +26113,7 @@ SDN DNS 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26127,7 +26127,7 @@ SDN DNS 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -26140,7 +26140,7 @@ SDN DNS 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26158,7 +26158,7 @@ SDN DNS 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-dns-dns-4dd13de3-get-returns" id="api-cluster-sdn-dns-dns-4dd13de3-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -26172,7 +26172,7 @@ SDN DNS 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26186,13 +26186,13 @@ SDN DNS 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -26213,7 +26213,7 @@ SDN DNS 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26279,7 +26279,7 @@ SDN DNS 索引。
 
 #### 返回值 <a href="#api-cluster-sdn-dns-dns-4dd13de3-put-returns" id="api-cluster-sdn-dns-dns-4dd13de3-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26299,7 +26299,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26313,7 +26313,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -26323,7 +26323,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-49112f80-get-returns" id="api-cluster-sdn-fabrics-49112f80-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -26357,7 +26357,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/sdn/fabrics/<fabric>' 具有 'SDN.Audit' 或 'SDN.Allocate' 权限的条目",
   "user": "all"
@@ -26366,7 +26366,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -26380,7 +26380,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -26403,7 +26403,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-fabric-9f29add0-get-returns" id="api-cluster-sdn-fabrics-fabric-9f29add0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -26584,7 +26584,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26598,13 +26598,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -26628,7 +26628,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "area": {
@@ -26805,7 +26805,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-fabric-9f29add0-post-returns" id="api-cluster-sdn-fabrics-fabric-9f29add0-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26825,7 +26825,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26839,13 +26839,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -26858,7 +26858,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -26877,7 +26877,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-delete-returns" id="api-cluster-sdn-fabrics-fabric-id-d3231122-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26891,7 +26891,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26908,7 +26908,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -26921,7 +26921,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -26940,7 +26940,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-get-returns" id="api-cluster-sdn-fabrics-fabric-id-d3231122-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "area": {
@@ -27112,7 +27112,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27126,13 +27126,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27157,7 +27157,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "area": {
@@ -27404,7 +27404,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-fabric-id-d3231122-put-returns" id="api-cluster-sdn-fabrics-fabric-id-d3231122-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27424,7 +27424,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您具有以下权限的节点：对\n'/sdn/fabrics/<fabric>' 的 'SDN.Audit' 或 'SDN.Allocate' 权限，以及对 /nodes/<node_id> 的 'Sys.Audit' 或 'Sys.Modify' 权限",
   "user": "all"
@@ -27433,7 +27433,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27447,7 +27447,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -27470,7 +27470,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-a9fc4070-get-returns" id="api-cluster-sdn-fabrics-node-a9fc4070-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -27743,7 +27743,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27758,7 +27758,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27773,7 +27773,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "fabric_id": {
@@ -27804,7 +27804,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-get-returns" id="api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -28071,7 +28071,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -28095,13 +28095,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28126,7 +28126,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "allowed_ips": {
@@ -28389,7 +28389,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-post-returns" id="api-cluster-sdn-fabrics-node-fabric-id-2a8cbbb0-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -28409,7 +28409,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -28433,13 +28433,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28453,7 +28453,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "fabric_id": {
@@ -28478,7 +28478,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-delete-returns" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -28492,7 +28492,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -28522,7 +28522,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -28536,7 +28536,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "fabric_id": {
@@ -28561,7 +28561,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-get-returns" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "allowed_ips": {
@@ -28818,7 +28818,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -28842,13 +28842,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28874,7 +28874,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "allowed_ips": {
@@ -29193,7 +29193,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-put-returns" id="api-cluster-sdn-fabrics-node-fabric-id-node-id-24a1ba5a-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -29213,7 +29213,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您具有以下权限的 fabric：对\n'/sdn/fabrics/<fabric>' 的 'SDN.Audit' 或 'SDN.Allocate' 权限；仅列出您对 /nodes/<node_id> 具有 'Sys.Audit' 或 'Sys.Modify' 权限的节点",
   "user": "all"
@@ -29222,7 +29222,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -29236,7 +29236,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -29259,7 +29259,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-fabrics-all-c756e6c1-get-returns" id="api-cluster-sdn-fabrics-all-c756e6c1-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "fabrics": {
@@ -29695,7 +29695,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的前缀列表条目。",
   "user": "all"
@@ -29704,7 +29704,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -29719,7 +29719,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -29748,7 +29748,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-13d00bf0-get-returns" id="api-cluster-sdn-prefix-lists-13d00bf0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -29772,7 +29772,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29786,13 +29786,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -29808,7 +29808,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "digest": {
@@ -29879,7 +29879,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-13d00bf0-post-returns" id="api-cluster-sdn-prefix-lists-13d00bf0-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -29899,7 +29899,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29913,13 +29913,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -29933,7 +29933,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -29956,7 +29956,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-delete-returns" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -29970,7 +29970,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29984,7 +29984,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -29997,7 +29997,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -30014,7 +30014,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-get-returns" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -30028,7 +30028,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30042,13 +30042,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -30065,7 +30065,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "delete": {
@@ -30147,7 +30147,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-b74f6ac8-put-returns" id="api-cluster-sdn-prefix-lists-id-b74f6ac8-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -30167,7 +30167,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30181,7 +30181,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -30194,7 +30194,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -30211,7 +30211,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-entries-91d4d496-get-returns" id="api-cluster-sdn-prefix-lists-id-entries-91d4d496-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -30235,7 +30235,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30249,13 +30249,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -30274,7 +30274,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -30332,7 +30332,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-entries-91d4d496-post-returns" id="api-cluster-sdn-prefix-lists-id-entries-91d4d496-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -30352,7 +30352,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30366,13 +30366,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -30386,7 +30386,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -30409,7 +30409,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-delete-returns" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -30423,7 +30423,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30437,7 +30437,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -30450,7 +30450,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -30467,7 +30467,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-get-returns" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -30481,7 +30481,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30495,13 +30495,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -30521,7 +30521,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -30593,7 +30593,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-put-returns" id="api-cluster-sdn-prefix-lists-id-entries-url-seq-601484c3-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -30613,7 +30613,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射。",
   "user": "all"
@@ -30622,7 +30622,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -30635,7 +30635,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "running": {
@@ -30652,7 +30652,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-97fc73e0-get-returns" id="api-cluster-sdn-route-maps-97fc73e0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -30688,7 +30688,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "仅返回您具有 'SDN.Audit' 或 'SDN.Allocate' 权限的路由映射条目。",
   "user": "all"
@@ -30697,7 +30697,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -30711,7 +30711,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -30734,7 +30734,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-f6225287-get-returns" id="api-cluster-sdn-route-maps-entries-f6225287-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -30875,7 +30875,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30889,13 +30889,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -30916,7 +30916,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -31056,7 +31056,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-f6225287-post-returns" id="api-cluster-sdn-route-maps-entries-f6225287-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -31076,7 +31076,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31093,7 +31093,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -31108,7 +31108,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "pending": {
@@ -31137,7 +31137,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-44340de7-get-returns" id="api-cluster-sdn-route-maps-entries-route-map-id-44340de7-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -31284,7 +31284,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31298,13 +31298,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -31319,7 +31319,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "lock-token": {
@@ -31349,7 +31349,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-delete-returns" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -31363,7 +31363,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31380,7 +31380,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -31394,7 +31394,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "order": {
@@ -31418,7 +31418,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-get-returns" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -31550,7 +31550,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31564,13 +31564,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -31592,7 +31592,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -31746,7 +31746,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-put-returns" id="api-cluster-sdn-route-maps-entries-route-map-id-entry-order-bda0b738-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -31766,7 +31766,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31780,13 +31780,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -31800,7 +31800,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -31825,7 +31825,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-lock-64a794f1-delete-returns" id="api-cluster-sdn-lock-64a794f1-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -31839,7 +31839,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31853,13 +31853,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -31872,7 +31872,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -31891,7 +31891,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-lock-64a794f1-post-returns" id="api-cluster-sdn-lock-64a794f1-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -31911,7 +31911,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31925,13 +31925,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -31945,7 +31945,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -31970,7 +31970,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-rollback-c78eeaa9-post-returns" id="api-cluster-sdn-rollback-c78eeaa9-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -31990,7 +31990,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32004,19 +32004,19 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32029,7 +32029,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32047,7 +32047,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-sdn-dry-run-4c0d2322-get-returns" id="api-cluster-sdn-dry-run-4c0d2322-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "frr-diff": {
@@ -32079,7 +32079,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "description": "用户需要对 '/' 具有 'Sys.Syslog' 权限，才能获取所有日志。",
   "user": "all"
@@ -32088,7 +32088,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32101,7 +32101,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32120,7 +32120,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-log-8cac6725-get-returns" id="api-cluster-log-8cac6725-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -32144,7 +32144,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -32152,7 +32152,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32165,7 +32165,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32188,7 +32188,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-resources-ec05b307-get-returns" id="api-cluster-resources-ec05b307-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -32430,7 +32430,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -32438,7 +32438,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32448,7 +32448,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-tasks-9bc8e199-get-returns" id="api-cluster-tasks-9bc8e199-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -32476,7 +32476,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32491,7 +32491,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32501,7 +32501,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-options-096be758-get-returns" id="api-cluster-options-096be758-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "allowed-tags": {
@@ -33043,7 +33043,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33057,13 +33057,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -33100,7 +33100,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33655,7 +33655,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-options-096be758-put-returns" id="api-cluster-options-096be758-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -33675,7 +33675,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33689,13 +33689,13 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -33705,7 +33705,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-status-46dab962-get-returns" id="api-cluster-status-46dab962-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -33784,7 +33784,7 @@ SDN Fabric 索引
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -33792,7 +33792,7 @@ SDN Fabric 索引
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -33805,7 +33805,7 @@ SDN Fabric 索引
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33826,7 +33826,7 @@ SDN Fabric 索引
 
 #### 返回值 <a href="#api-cluster-nextid-f730d537-get-returns" id="api-cluster-nextid-f730d537-get-returns"></a>
 
-```json
+```text
 {
   "description": "下一个空闲 VMID。",
   "type": "integer"

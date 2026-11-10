@@ -14,7 +14,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/storage/<storage>' 具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限的条目",
   "user": "all"
@@ -23,7 +23,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -36,7 +36,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -69,7 +69,7 @@
 
 #### 返回值 <a href="#api-storage-3718024f-get-returns" id="api-storage-3718024f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -97,7 +97,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -111,13 +111,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -190,7 +190,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -681,7 +681,7 @@
 
 #### 返回值 <a href="#api-storage-3718024f-post-returns" id="api-storage-3718024f-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "config": {
@@ -740,7 +740,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -754,13 +754,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -773,7 +773,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -792,7 +792,7 @@
 
 #### 返回值 <a href="#api-storage-storage-fcefaab1-delete-returns" id="api-storage-storage-fcefaab1-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -806,7 +806,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -820,7 +820,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -833,7 +833,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -852,7 +852,7 @@
 
 #### 返回值 <a href="#api-storage-storage-fcefaab1-get-returns" id="api-storage-storage-fcefaab1-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -866,7 +866,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -880,13 +880,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -949,7 +949,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1363,7 +1363,7 @@
 
 #### 返回值 <a href="#api-storage-storage-fcefaab1-put-returns" id="api-storage-storage-fcefaab1-put-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "config": {

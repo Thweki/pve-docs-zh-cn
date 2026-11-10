@@ -14,7 +14,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -22,7 +22,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32,7 +32,7 @@
 
 #### 返回值 <a href="#api-access-ef531503-get-returns" id="api-access-ef531503-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -66,7 +66,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "返回列表仅限于您对 '/access/groups' 或用户所属的组具有 'User.Modify' 或 'Sys.Audit' 权限的用户。但始终包含当前（已通过身份验证的）用户。",
   "user": "all"
@@ -75,13 +75,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -95,7 +95,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -120,7 +120,7 @@
 
 #### 返回值 <a href="#api-access-users-ff4a891d-get-returns" id="api-access-users-ff4a891d-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -242,7 +242,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -265,13 +265,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -293,7 +293,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -371,7 +371,7 @@
 
 #### 返回值 <a href="#api-access-users-ff4a891d-post-returns" id="api-access-users-ff4a891d-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -391,7 +391,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -411,13 +411,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -430,7 +430,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -449,7 +449,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-aad17cce-delete-returns" id="api-access-users-userid-aad17cce-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -463,7 +463,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "userid-group",
@@ -477,7 +477,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -490,7 +490,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -509,7 +509,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-aad17cce-get-returns" id="api-access-users-userid-aad17cce-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -599,7 +599,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "userid-group",
@@ -614,13 +614,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -642,7 +642,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -718,7 +718,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-aad17cce-put-returns" id="api-access-users-userid-aad17cce-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -738,7 +738,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -759,13 +759,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -779,7 +779,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -805,7 +805,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-tfa-9dcb2591-get-returns" id="api-access-users-userid-tfa-9dcb2591-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -862,7 +862,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "userid-group",
@@ -875,13 +875,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -894,7 +894,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -913,7 +913,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-unlock-tfa-1b330aed-put-returns" id="api-access-users-userid-unlock-tfa-1b330aed-put-returns"></a>
 
-```json
+```text
 {
   "type": "boolean"
 }
@@ -933,7 +933,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -953,7 +953,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -966,7 +966,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -985,7 +985,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-token-ad96dab5-get-returns" id="api-access-users-userid-token-ad96dab5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1038,7 +1038,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1058,13 +1058,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1078,7 +1078,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1102,7 +1102,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-token-tokenid-29a42318-delete-returns" id="api-access-users-userid-token-tokenid-29a42318-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1116,7 +1116,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1136,7 +1136,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1150,7 +1150,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1174,7 +1174,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-token-tokenid-29a42318-get-returns" id="api-access-users-userid-token-tokenid-29a42318-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "comment": {
@@ -1207,7 +1207,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1227,13 +1227,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1250,7 +1250,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1294,7 +1294,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-token-tokenid-29a42318-post-returns" id="api-access-users-userid-token-tokenid-29a42318-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1342,7 +1342,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -1362,13 +1362,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1387,7 +1387,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1445,7 +1445,7 @@
 
 #### 返回值 <a href="#api-access-users-userid-token-tokenid-29a42318-put-returns" id="api-access-users-userid-token-tokenid-29a42318-put-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "comment": {
@@ -1495,7 +1495,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "返回列表仅限于您具有 'User.Modify'、'Sys.Audit'  或 'Group.Allocate' 权限（作用于 /access/groups/<group>）的组。",
   "user": "all"
@@ -1504,7 +1504,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1514,7 +1514,7 @@
 
 #### 返回值 <a href="#api-access-groups-1301c828-get-returns" id="api-access-groups-1301c828-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1553,7 +1553,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1567,13 +1567,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1587,7 +1587,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1609,7 +1609,7 @@
 
 #### 返回值 <a href="#api-access-groups-1301c828-post-returns" id="api-access-groups-1301c828-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1629,7 +1629,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1643,13 +1643,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1662,7 +1662,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1679,7 +1679,7 @@
 
 #### 返回值 <a href="#api-access-groups-groupid-c31a6155-delete-returns" id="api-access-groups-groupid-c31a6155-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1693,7 +1693,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1710,7 +1710,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1723,7 +1723,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1740,7 +1740,7 @@
 
 #### 返回值 <a href="#api-access-groups-groupid-c31a6155-get-returns" id="api-access-groups-groupid-c31a6155-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1770,7 +1770,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1784,13 +1784,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1804,7 +1804,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1826,7 +1826,7 @@
 
 #### 返回值 <a href="#api-access-groups-groupid-c31a6155-put-returns" id="api-access-groups-groupid-c31a6155-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1846,7 +1846,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -1854,7 +1854,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -1864,7 +1864,7 @@
 
 #### 返回值 <a href="#api-access-roles-664f9b93-get-returns" id="api-access-roles-664f9b93-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -1903,7 +1903,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1917,13 +1917,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -1937,7 +1937,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -1960,7 +1960,7 @@
 
 #### 返回值 <a href="#api-access-roles-664f9b93-post-returns" id="api-access-roles-664f9b93-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -1980,7 +1980,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -1994,13 +1994,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2013,7 +2013,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2030,7 +2030,7 @@
 
 #### 返回值 <a href="#api-access-roles-roleid-d4beb42c-delete-returns" id="api-access-roles-roleid-d4beb42c-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2044,7 +2044,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -2052,7 +2052,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -2065,7 +2065,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2082,7 +2082,7 @@
 
 #### 返回值 <a href="#api-access-roles-roleid-d4beb42c-get-returns" id="api-access-roles-roleid-d4beb42c-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2287,7 +2287,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -2301,13 +2301,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2322,7 +2322,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2351,7 +2351,7 @@
 
 #### 返回值 <a href="#api-access-roles-roleid-d4beb42c-put-returns" id="api-access-roles-roleid-d4beb42c-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2371,7 +2371,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "返回列表仅限于您有权修改其权限的对象。",
   "user": "all"
@@ -2380,7 +2380,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -2390,7 +2390,7 @@
 
 #### 返回值 <a href="#api-access-acl-26eff873-get-returns" id="api-access-acl-26eff873-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 0,
@@ -2434,7 +2434,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm-modify",
@@ -2445,13 +2445,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2470,7 +2470,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -2527,7 +2527,7 @@
 
 #### 返回值 <a href="#api-access-acl-26eff873-put-returns" id="api-access-acl-26eff873-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -2547,7 +2547,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "任何人均可访问，因为登录框在用户通过身份验证之前就需要此列表。",
   "user": "world"
@@ -2556,7 +2556,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -2566,7 +2566,7 @@
 
 #### 返回值 <a href="#api-access-domains-bb4462c8-get-returns" id="api-access-domains-bb4462c8-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -2611,7 +2611,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -2625,13 +2625,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -2686,7 +2686,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3009,7 +3009,7 @@
 
 #### 返回值 <a href="#api-access-domains-bb4462c8-post-returns" id="api-access-domains-bb4462c8-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3029,7 +3029,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3043,13 +3043,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3062,7 +3062,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3081,7 +3081,7 @@
 
 #### 返回值 <a href="#api-access-domains-realm-0f82ea36-delete-returns" id="api-access-domains-realm-0f82ea36-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3095,7 +3095,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3112,7 +3112,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -3125,7 +3125,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3144,7 +3144,7 @@
 
 #### 返回值 <a href="#api-access-domains-realm-0f82ea36-get-returns" id="api-access-domains-realm-0f82ea36-get-returns"></a>
 
-```json
+```text
 {}
 ```
 
@@ -3156,7 +3156,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3170,13 +3170,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3231,7 +3231,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3552,7 +3552,7 @@
 
 #### 返回值 <a href="#api-access-domains-realm-0f82ea36-put-returns" id="api-access-domains-realm-0f82ea36-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3572,7 +3572,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -3597,13 +3597,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3622,7 +3622,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3685,7 +3685,7 @@
 
 #### 返回值 <a href="#api-access-domains-realm-sync-388cb8d1-post-returns" id="api-access-domains-realm-sync-388cb8d1-post-returns"></a>
 
-```json
+```text
 {
   "description": "工作任务 UPID",
   "type": "string"
@@ -3706,7 +3706,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -3714,7 +3714,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -3724,7 +3724,7 @@
 
 #### 返回值 <a href="#api-access-openid-12c1d0b0-get-returns" id="api-access-openid-12c1d0b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -3758,7 +3758,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "world"
 }
@@ -3766,13 +3766,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3786,7 +3786,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3811,7 +3811,7 @@
 
 #### 返回值 <a href="#api-access-openid-auth-url-ec28351f-post-returns" id="api-access-openid-auth-url-ec28351f-post-returns"></a>
 
-```json
+```text
 {
   "description": "重定向 URL。",
   "type": "string"
@@ -3832,7 +3832,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "world"
 }
@@ -3840,13 +3840,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3861,7 +3861,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3891,7 +3891,7 @@
 
 #### 返回值 <a href="#api-access-openid-login-b04e60dc-post-returns" id="api-access-openid-login-b04e60dc-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "CSRFPreventionToken": {
@@ -3928,7 +3928,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "根据权限返回所有用户或仅已登录用户。",
   "user": "all"
@@ -3937,13 +3937,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -3953,7 +3953,7 @@
 
 #### 返回值 <a href="#api-access-tfa-e9e0bb9f-get-returns" id="api-access-tfa-e9e0bb9f-get-returns"></a>
 
-```json
+```text
 {
   "description": "用户与 TFA 条目的元组列表。",
   "items": {
@@ -4037,7 +4037,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4058,13 +4058,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4077,7 +4077,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4096,7 +4096,7 @@
 
 #### 返回值 <a href="#api-access-tfa-userid-4f95baa5-get-returns" id="api-access-tfa-userid-4f95baa5-get-returns"></a>
 
-```json
+```text
 {
   "description": "用户的 TFA 条目列表。",
   "items": {
@@ -4152,7 +4152,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4172,13 +4172,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 0
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4197,7 +4197,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4260,7 +4260,7 @@
 
 #### 返回值 <a href="#api-access-tfa-userid-4f95baa5-post-returns" id="api-access-tfa-userid-4f95baa5-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "challenge": {
@@ -4300,7 +4300,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4320,13 +4320,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 0
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4341,7 +4341,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4373,7 +4373,7 @@
 
 #### 返回值 <a href="#api-access-tfa-userid-id-2f4086eb-delete-returns" id="api-access-tfa-userid-id-2f4086eb-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4387,7 +4387,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4408,13 +4408,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4428,7 +4428,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4452,7 +4452,7 @@
 
 #### 返回值 <a href="#api-access-tfa-userid-id-2f4086eb-get-returns" id="api-access-tfa-userid-id-2f4086eb-get-returns"></a>
 
-```json
+```text
 {
   "description": "TFA 条目。",
   "properties": {
@@ -4498,7 +4498,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4518,13 +4518,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 0
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4541,7 +4541,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4586,7 +4586,7 @@
 
 #### 返回值 <a href="#api-access-tfa-userid-id-2f4086eb-put-returns" id="api-access-tfa-userid-id-2f4086eb-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4606,7 +4606,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "world"
 }
@@ -4614,7 +4614,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -4624,7 +4624,7 @@
 
 #### 返回值 <a href="#api-access-ticket-bbd93e48-get-returns" id="api-access-ticket-bbd93e48-get-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4638,7 +4638,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要传入有效凭据。",
   "user": "world"
@@ -4647,13 +4647,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 0
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4673,7 +4673,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4740,7 +4740,7 @@
 
 #### 返回值 <a href="#api-access-ticket-bbd93e48-post-returns" id="api-access-ticket-bbd93e48-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "CSRFPreventionToken": {
@@ -4777,7 +4777,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要传入有效凭据。",
   "user": "world"
@@ -4786,13 +4786,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4809,7 +4809,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4851,7 +4851,7 @@
 
 #### 返回值 <a href="#api-access-vncticket-d992db8d-post-returns" id="api-access-vncticket-d992db8d-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4871,7 +4871,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -4899,13 +4899,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 0
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4920,7 +4920,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4954,7 +4954,7 @@
 
 #### 返回值 <a href="#api-access-password-d9022417-put-returns" id="api-access-password-d9022417-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4974,7 +4974,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "每个用户/令牌都可以导出自己的权限（或所拥有令牌的权限）。如果用户对 /access. 具有 'Sys.Audit' 权限，则可以导出其他用户或其令牌的权限",
   "user": "all"
@@ -4983,7 +4983,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -4997,7 +4997,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5021,7 +5021,7 @@
 
 #### 返回值 <a href="#api-access-permissions-f180524f-get-returns" id="api-access-permissions-f180524f-get-returns"></a>
 
-```json
+```text
 {
   "description": "\"path\" =>（\"privilege\" => \"propagate boolean\" 的映射）的映射。",
   "type": "object"

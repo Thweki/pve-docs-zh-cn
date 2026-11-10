@@ -14,7 +14,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -22,7 +22,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32,7 +32,7 @@
 
 #### 返回值 <a href="#api-nodes-44ba66f3-get-returns" id="api-nodes-44ba66f3-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -116,7 +116,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -124,7 +124,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -137,7 +137,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -155,7 +155,7 @@
 
 #### 返回值 <a href="#api-nodes-node-819d1a23-get-returns" id="api-nodes-node-819d1a23-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -185,7 +185,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 /vms/<vmid> 具有 VM.Audit 权限的虚拟机。",
   "user": "all"
@@ -194,19 +194,19 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -220,7 +220,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -244,7 +244,7 @@
 
 #### 返回值 <a href="#api-nodes-node-qemu-b1d304cd-get-returns" id="api-nodes-node-qemu-b1d304cd-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -424,7 +424,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 /vms/{vmid} 或虚拟机资源池 /pool/{pool}. 具有 'VM.Allocate' 权限。对于还原（'archive' 选项），如果虚拟机已经存在，则用户仅需具有 'VM.Backup' 权限。如果创建磁盘，需要对所有使用的存储具有 'Datastore.AllocateSpace' 权限。如果使用网桥/VLAN，需要对所有使用的网桥/VLAN 具有 'SDN.Use' 权限。",
   "user": "all"
@@ -433,19 +433,19 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -550,7 +550,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3037,7 +3037,7 @@
 
 #### 返回值 <a href="#api-nodes-node-qemu-b1d304cd-post-returns" id="api-nodes-node-qemu-b1d304cd-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -3057,7 +3057,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3071,19 +3071,19 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -3100,7 +3100,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3145,7 +3145,7 @@
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-e7da942c-delete-returns" id="api-nodes-node-qemu-vmid-e7da942c-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -3159,7 +3159,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -3167,13 +3167,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -3187,7 +3187,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3213,7 +3213,7 @@
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-e7da942c-get-returns" id="api-nodes-node-qemu-vmid-e7da942c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -3247,7 +3247,7 @@
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -3255,7 +3255,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -3269,7 +3269,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3295,7 +3295,7 @@
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-943dff87-get-returns" id="api-nodes-node-qemu-vmid-firewall-943dff87-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -3325,7 +3325,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3339,13 +3339,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -3359,7 +3359,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3385,7 +3385,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-get-returns" id="api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -3493,7 +3493,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3507,19 +3507,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -3548,7 +3548,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3697,7 +3697,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-post-returns" id="api-nodes-node-qemu-vmid-firewall-rules-9ec9cd25-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3717,7 +3717,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3731,19 +3731,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -3759,7 +3759,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3799,7 +3799,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-delete-returns" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -3813,7 +3813,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3827,13 +3827,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -3848,7 +3848,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -3881,7 +3881,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-get-returns" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -3980,7 +3980,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -3994,19 +3994,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -4037,7 +4037,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4200,7 +4200,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-put-returns" id="api-nodes-node-qemu-vmid-firewall-rules-pos-87ee05fe-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4220,7 +4220,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4234,7 +4234,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -4248,7 +4248,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4274,7 +4274,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-get-returns" id="api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -4315,7 +4315,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4329,13 +4329,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4352,7 +4352,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4397,7 +4397,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-post-returns" id="api-nodes-node-qemu-vmid-firewall-aliases-6ffb69af-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4417,7 +4417,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4431,13 +4431,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4453,7 +4453,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4493,7 +4493,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-delete-returns" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4507,7 +4507,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4521,7 +4521,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -4536,7 +4536,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4569,7 +4569,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-get-returns" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -4583,7 +4583,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4597,13 +4597,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4622,7 +4622,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4682,7 +4682,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-put-returns" id="api-nodes-node-qemu-vmid-firewall-aliases-name-83e927f0-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4702,7 +4702,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4716,7 +4716,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -4730,7 +4730,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4756,7 +4756,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-get-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -4798,7 +4798,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4812,13 +4812,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4836,7 +4836,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4890,7 +4890,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-post-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-e27145ed-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4910,7 +4910,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -4924,13 +4924,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -4946,7 +4946,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -4985,7 +4985,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-delete-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -4999,7 +4999,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5013,7 +5013,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -5028,7 +5028,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5061,7 +5061,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-get-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -5103,7 +5103,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5117,13 +5117,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5141,7 +5141,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5191,7 +5191,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-post-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-258270da-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5211,7 +5211,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5225,13 +5225,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5248,7 +5248,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5294,7 +5294,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-delete-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5308,7 +5308,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5322,13 +5322,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5344,7 +5344,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5383,7 +5383,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-get-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -5397,7 +5397,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5411,13 +5411,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -5436,7 +5436,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5493,7 +5493,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-put-returns" id="api-nodes-node-qemu-vmid-firewall-ipset-name-cidr-29a8bd0c-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5513,7 +5513,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5527,13 +5527,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -5547,7 +5547,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5573,7 +5573,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-options-132e577f-get-returns" id="api-nodes-node-qemu-vmid-firewall-options-132e577f-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "dhcp": {
@@ -5675,7 +5675,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5689,19 +5689,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -5727,7 +5727,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5859,7 +5859,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-options-132e577f-put-returns" id="api-nodes-node-qemu-vmid-firewall-options-132e577f-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -5879,7 +5879,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -5893,19 +5893,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -5923,7 +5923,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -5975,7 +5975,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-log-192953b1-get-returns" id="api-nodes-node-qemu-vmid-firewall-log-192953b1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -6008,7 +6008,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6022,7 +6022,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -6037,7 +6037,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6072,7 +6072,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-firewall-refs-093ba3ae-get-returns" id="api-nodes-node-qemu-vmid-firewall-refs-093ba3ae-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -6117,7 +6117,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -6125,13 +6125,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6145,7 +6145,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "properties": {
@@ -6171,7 +6171,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-f2a52e0e-get-returns" id="api-nodes-node-qemu-vmid-agent-f2a52e0e-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回 QEMU Guest Agent 命令列表",
   "items": {
@@ -6196,7 +6196,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6213,19 +6213,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6240,7 +6240,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6292,7 +6292,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-f2a52e0e-post-returns" id="api-nodes-node-qemu-vmid-agent-f2a52e0e-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6313,7 +6313,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6330,19 +6330,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6356,7 +6356,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6382,7 +6382,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-freeze-e1a83d9b-post-returns" id="api-nodes-node-qemu-vmid-agent-fsfreeze-freeze-e1a83d9b-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6403,7 +6403,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6421,19 +6421,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6447,7 +6447,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6473,7 +6473,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-status-f6bf9d39-post-returns" id="api-nodes-node-qemu-vmid-agent-fsfreeze-status-f6bf9d39-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6494,7 +6494,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6511,19 +6511,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6537,7 +6537,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6563,7 +6563,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-fsfreeze-thaw-988aecca-post-returns" id="api-nodes-node-qemu-vmid-agent-fsfreeze-thaw-988aecca-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6584,7 +6584,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6601,19 +6601,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6627,7 +6627,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6653,7 +6653,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-fstrim-d736e96e-post-returns" id="api-nodes-node-qemu-vmid-agent-fstrim-d736e96e-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6674,7 +6674,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6691,19 +6691,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6717,7 +6717,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6743,7 +6743,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-fsinfo-2b947553-get-returns" id="api-nodes-node-qemu-vmid-agent-get-fsinfo-2b947553-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6764,7 +6764,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6781,19 +6781,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6807,7 +6807,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6833,7 +6833,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-host-name-2961f26b-get-returns" id="api-nodes-node-qemu-vmid-agent-get-host-name-2961f26b-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6854,7 +6854,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6871,19 +6871,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6897,7 +6897,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -6923,7 +6923,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-memory-block-info-a79aa266-get-returns" id="api-nodes-node-qemu-vmid-agent-get-memory-block-info-a79aa266-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -6944,7 +6944,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -6961,19 +6961,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -6987,7 +6987,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7013,7 +7013,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-memory-blocks-203c67ee-get-returns" id="api-nodes-node-qemu-vmid-agent-get-memory-blocks-203c67ee-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7034,7 +7034,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7051,19 +7051,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7077,7 +7077,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7103,7 +7103,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-osinfo-33f5e516-get-returns" id="api-nodes-node-qemu-vmid-agent-get-osinfo-33f5e516-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7124,7 +7124,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7141,19 +7141,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7167,7 +7167,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7193,7 +7193,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-time-2cd6fcf0-get-returns" id="api-nodes-node-qemu-vmid-agent-get-time-2cd6fcf0-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7214,7 +7214,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7231,19 +7231,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7257,7 +7257,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7283,7 +7283,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-timezone-bd8fcacb-get-returns" id="api-nodes-node-qemu-vmid-agent-get-timezone-bd8fcacb-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7304,7 +7304,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7321,19 +7321,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7347,7 +7347,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7373,7 +7373,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-users-e9e24edd-get-returns" id="api-nodes-node-qemu-vmid-agent-get-users-e9e24edd-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7394,7 +7394,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7411,19 +7411,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7437,7 +7437,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7463,7 +7463,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-get-vcpus-68f1c56c-get-returns" id="api-nodes-node-qemu-vmid-agent-get-vcpus-68f1c56c-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7484,7 +7484,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7501,19 +7501,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7527,7 +7527,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7553,7 +7553,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-info-d9aa05da-get-returns" id="api-nodes-node-qemu-vmid-agent-info-d9aa05da-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7574,7 +7574,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7591,19 +7591,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7617,7 +7617,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7643,7 +7643,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-network-get-interfaces-05590478-get-returns" id="api-nodes-node-qemu-vmid-agent-network-get-interfaces-05590478-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7664,7 +7664,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7681,19 +7681,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7707,7 +7707,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7733,7 +7733,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-ping-246341c8-post-returns" id="api-nodes-node-qemu-vmid-agent-ping-246341c8-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7754,7 +7754,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7771,19 +7771,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7797,7 +7797,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7823,7 +7823,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-shutdown-62332199-post-returns" id="api-nodes-node-qemu-vmid-agent-shutdown-62332199-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7844,7 +7844,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7861,19 +7861,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7887,7 +7887,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -7913,7 +7913,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-suspend-disk-81ed256c-post-returns" id="api-nodes-node-qemu-vmid-agent-suspend-disk-81ed256c-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -7934,7 +7934,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -7951,19 +7951,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -7977,7 +7977,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8003,7 +8003,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-suspend-hybrid-0400f904-post-returns" id="api-nodes-node-qemu-vmid-agent-suspend-hybrid-0400f904-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -8024,7 +8024,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8041,19 +8041,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8067,7 +8067,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8093,7 +8093,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-suspend-ram-a79384f8-post-returns" id="api-nodes-node-qemu-vmid-agent-suspend-ram-a79384f8-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -8114,7 +8114,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8128,19 +8128,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8157,7 +8157,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8202,7 +8202,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-set-user-password-8b484ab0-post-returns" id="api-nodes-node-qemu-vmid-agent-set-user-password-8b484ab0-post-returns"></a>
 
-```json
+```text
 {
   "description": "返回仅含一个 `result` 属性的对象。",
   "type": "object"
@@ -8223,7 +8223,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8237,19 +8237,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8265,7 +8265,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8307,7 +8307,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-exec-1798a390-post-returns" id="api-nodes-node-qemu-vmid-agent-exec-1798a390-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "pid": {
@@ -8333,7 +8333,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8347,19 +8347,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8374,7 +8374,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8405,7 +8405,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-exec-status-f5e9c1c1-get-returns" id="api-nodes-node-qemu-vmid-agent-exec-status-f5e9c1c1-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "err-data": {
@@ -8461,7 +8461,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8478,19 +8478,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8508,7 +8508,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8563,7 +8563,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-file-read-91f96854-get-returns" id="api-nodes-node-qemu-vmid-agent-file-read-91f96854-get-returns"></a>
 
-```json
+```text
 {
   "description": "返回带有 `content` 属性的对象。",
   "properties": {
@@ -8595,7 +8595,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8612,19 +8612,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8641,7 +8641,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8685,7 +8685,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-agent-file-write-ac5505f6-post-returns" id="api-nodes-node-qemu-vmid-agent-file-write-ac5505f6-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -8705,7 +8705,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8719,13 +8719,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -8742,7 +8742,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8794,7 +8794,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-rrd-2b242500-get-returns" id="api-nodes-node-qemu-vmid-rrd-2b242500-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -8819,7 +8819,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8833,13 +8833,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -8855,7 +8855,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -8901,7 +8901,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-rrddata-3763a4bb-get-returns" id="api-nodes-node-qemu-vmid-rrddata-3763a4bb-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -8925,7 +8925,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -8939,13 +8939,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -8961,7 +8961,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -9002,7 +9002,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-get-returns" id="api-nodes-node-qemu-vmid-config-69bce2a5-get-returns"></a>
 
-```json
+```text
 {
   "description": "虚拟机配置。",
   "properties": {
@@ -11398,7 +11398,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -11421,19 +11421,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -11535,7 +11535,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -14000,7 +14000,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-post-returns" id="api-nodes-node-qemu-vmid-config-69bce2a5-post-returns"></a>
 
-```json
+```text
 {
   "optional": 1,
   "type": "string"
@@ -14015,7 +14015,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -14038,19 +14038,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -14150,7 +14150,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16599,7 +16599,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-config-69bce2a5-put-returns" id="api-nodes-node-qemu-vmid-config-69bce2a5-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -16619,7 +16619,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16633,13 +16633,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -16653,7 +16653,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16679,7 +16679,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-pending-bf07e315-get-returns" id="api-nodes-node-qemu-vmid-pending-bf07e315-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -16725,7 +16725,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16739,13 +16739,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -16759,7 +16759,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16785,7 +16785,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-cloudinit-89a87e25-get-returns" id="api-nodes-node-qemu-vmid-cloudinit-89a87e25-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -16825,7 +16825,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16839,19 +16839,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -16865,7 +16865,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16891,7 +16891,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-cloudinit-89a87e25-put-returns" id="api-nodes-node-qemu-vmid-cloudinit-89a87e25-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -16911,7 +16911,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -16925,13 +16925,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -16946,7 +16946,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -16981,7 +16981,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-cloudinit-dump-74d6ff98-get-returns" id="api-nodes-node-qemu-vmid-cloudinit-dump-74d6ff98-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -17001,7 +17001,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17015,19 +17015,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -17043,7 +17043,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17081,7 +17081,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-unlink-25dd9774-put-returns" id="api-nodes-node-qemu-vmid-unlink-25dd9774-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -17101,7 +17101,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17115,13 +17115,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17137,7 +17137,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17176,7 +17176,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-vncproxy-94a7f76d-post-returns" id="api-nodes-node-qemu-vmid-vncproxy-94a7f76d-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17218,7 +17218,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17232,13 +17232,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -17253,7 +17253,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17290,7 +17290,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-termproxy-40185689-post-returns" id="api-nodes-node-qemu-vmid-termproxy-40185689-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17324,7 +17324,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17339,7 +17339,7 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -17355,7 +17355,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17394,7 +17394,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-vncwebsocket-ab051aeb-get-returns" id="api-nodes-node-qemu-vmid-vncwebsocket-ab051aeb-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "port": {
@@ -17419,7 +17419,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17433,19 +17433,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -17460,7 +17460,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17493,7 +17493,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-spiceproxy-72d96e5f-post-returns" id="api-nodes-node-qemu-vmid-spiceproxy-72d96e5f-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "description": "返回值可直接传递给 'remote-viewer' 应用程序。",
@@ -17531,7 +17531,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -17539,13 +17539,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -17559,7 +17559,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17585,7 +17585,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-8a64188d-get-returns" id="api-nodes-node-qemu-vmid-status-8a64188d-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -17619,7 +17619,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17633,19 +17633,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -17659,7 +17659,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -17685,7 +17685,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-current-0a89a5d8-get-returns" id="api-nodes-node-qemu-vmid-status-current-0a89a5d8-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "agent": {
@@ -17884,7 +17884,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -17898,19 +17898,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -17935,7 +17935,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18075,7 +18075,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-start-4fff0f5e-post-returns" id="api-nodes-node-qemu-vmid-status-start-4fff0f5e-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18095,7 +18095,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18109,19 +18109,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18140,7 +18140,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18200,7 +18200,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-stop-920bbc17-post-returns" id="api-nodes-node-qemu-vmid-status-stop-920bbc17-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18220,7 +18220,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18234,19 +18234,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18261,7 +18261,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18293,7 +18293,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-reset-2ff5eb35-post-returns" id="api-nodes-node-qemu-vmid-status-reset-2ff5eb35-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18313,7 +18313,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18327,19 +18327,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18357,7 +18357,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18410,7 +18410,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-shutdown-f494aaf2-post-returns" id="api-nodes-node-qemu-vmid-status-shutdown-f494aaf2-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18430,7 +18430,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18444,19 +18444,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18471,7 +18471,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18504,7 +18504,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-reboot-f1464ddf-post-returns" id="api-nodes-node-qemu-vmid-status-reboot-f1464ddf-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18524,7 +18524,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18539,19 +18539,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18568,7 +18568,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18616,7 +18616,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-suspend-fa1cbf82-post-returns" id="api-nodes-node-qemu-vmid-status-suspend-fa1cbf82-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18636,7 +18636,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18650,19 +18650,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18678,7 +18678,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18716,7 +18716,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-status-resume-2a99b6b3-post-returns" id="api-nodes-node-qemu-vmid-status-resume-2a99b6b3-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -18736,7 +18736,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18750,19 +18750,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18778,7 +18778,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18815,7 +18815,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-sendkey-6a5b597f-put-returns" id="api-nodes-node-qemu-vmid-sendkey-6a5b597f-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -18835,7 +18835,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -18849,19 +18849,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -18877,7 +18877,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -18920,7 +18920,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-feature-7445274c-get-returns" id="api-nodes-node-qemu-vmid-feature-7445274c-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "hasFeature": {
@@ -18951,7 +18951,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -18988,19 +18988,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -19024,7 +19024,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19125,7 +19125,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-clone-66080389-post-returns" id="api-nodes-node-qemu-vmid-clone-66080389-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -19145,7 +19145,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -19160,19 +19160,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -19195,7 +19195,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -19920,7 +19920,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-move-disk-cabfdd7c-post-returns" id="api-nodes-node-qemu-vmid-move-disk-cabfdd7c-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -19941,7 +19941,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -19955,19 +19955,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -19982,7 +19982,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20015,7 +20015,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-migrate-e7f9d538-get-returns" id="api-nodes-node-qemu-vmid-migrate-e7f9d538-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "allowed_nodes": {
@@ -20141,7 +20141,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20155,19 +20155,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20190,7 +20190,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20278,7 +20278,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-migrate-e7f9d538-post-returns" id="api-nodes-node-qemu-vmid-migrate-e7f9d538-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -20299,7 +20299,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20313,19 +20313,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20346,7 +20346,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20421,7 +20421,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-remote-migrate-21853f6e-post-returns" id="api-nodes-node-qemu-vmid-remote-migrate-21853f6e-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -20442,7 +20442,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20460,19 +20460,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20487,7 +20487,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20518,7 +20518,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-monitor-dffdafc1-post-returns" id="api-nodes-node-qemu-vmid-monitor-dffdafc1-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -20538,7 +20538,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20552,19 +20552,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20582,7 +20582,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20691,7 +20691,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-resize-27ed6163-put-returns" id="api-nodes-node-qemu-vmid-resize-27ed6163-put-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -20712,7 +20712,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20726,19 +20726,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20752,7 +20752,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20778,7 +20778,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-a49a4536-get-returns" id="api-nodes-node-qemu-vmid-snapshot-a49a4536-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -20827,7 +20827,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20841,19 +20841,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20870,7 +20870,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -20915,7 +20915,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-a49a4536-post-returns" id="api-nodes-node-qemu-vmid-snapshot-a49a4536-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -20936,7 +20936,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -20950,19 +20950,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -20978,7 +20978,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21017,7 +21017,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-delete-returns" id="api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-delete-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -21032,7 +21032,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -21040,7 +21040,7 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -21055,7 +21055,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21088,7 +21088,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-get-returns" id="api-nodes-node-qemu-vmid-snapshot-snapname-0e43523b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -21118,7 +21118,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -21136,13 +21136,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21157,7 +21157,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21190,7 +21190,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-get-returns" id="api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -21204,7 +21204,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -21218,19 +21218,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21246,7 +21246,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21285,7 +21285,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-put-returns" id="api-nodes-node-qemu-vmid-snapshot-snapname-config-ec41e551-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -21305,7 +21305,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -21322,19 +21322,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21350,7 +21350,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21390,7 +21390,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-snapshot-snapname-rollback-ea6a2fae-post-returns" id="api-nodes-node-qemu-vmid-snapshot-snapname-rollback-ea6a2fae-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -21411,7 +21411,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -21426,19 +21426,19 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21453,7 +21453,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21545,7 +21545,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-template-e1fe1f74-post-returns" id="api-nodes-node-qemu-vmid-template-e1fe1f74-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -21566,7 +21566,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -21591,13 +21591,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -21613,7 +21613,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21653,7 +21653,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-mtunnel-699b1ed0-post-returns" id="api-nodes-node-qemu-vmid-mtunnel-699b1ed0-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21684,7 +21684,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要传入对所选套接字有效的票据。可通过 mtunnel API 调用创建票据，该调用会相应检查权限。",
   "user": "all"
@@ -21693,7 +21693,7 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -21709,7 +21709,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21745,7 +21745,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-mtunnelwebsocket-7dcf252d-get-returns" id="api-nodes-node-qemu-vmid-mtunnelwebsocket-7dcf252d-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "port": {
@@ -21775,7 +21775,7 @@ QEMU Guest Agent 命令索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -21789,13 +21789,13 @@ QEMU Guest Agent 命令索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21810,7 +21810,7 @@ QEMU Guest Agent 命令索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21845,7 +21845,7 @@ QEMU Guest Agent 命令索引。
 
 #### 返回值 <a href="#api-nodes-node-qemu-vmid-dbus-vmstate-592031a5-post-returns" id="api-nodes-node-qemu-vmid-dbus-vmstate-592031a5-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -21865,7 +21865,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 /vms/<vmid> 具有 VM.Audit 权限的容器。",
   "user": "all"
@@ -21874,19 +21874,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -21899,7 +21899,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -21917,7 +21917,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-84658ade-get-returns" id="api-nodes-node-lxc-84658ade-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -22074,7 +22074,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 /vms/{vmid} 或虚拟机资源池 /pool/{pool}. 具有 'VM.Allocate' 权限。对于还原，如果虚拟机已经存在，则用户仅需具有 'VM.Backup' 权限。还需要对存储具有 'Datastore.AllocateSpace' 权限。对于特权容器，需要对 '/' 具有 'Sys.Modify' 权限。",
   "user": "all"
@@ -22083,19 +22083,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -22153,7 +22153,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22844,7 +22844,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-84658ade-post-returns" id="api-nodes-node-lxc-84658ade-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -22864,7 +22864,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -22878,19 +22878,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -22907,7 +22907,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -22953,7 +22953,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-c754c372-delete-returns" id="api-nodes-node-lxc-vmid-c754c372-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -22967,7 +22967,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -22975,13 +22975,13 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -22995,7 +22995,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -23021,7 +23021,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-c754c372-get-returns" id="api-nodes-node-lxc-vmid-c754c372-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -23055,7 +23055,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23069,13 +23069,13 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -23091,7 +23091,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -23132,7 +23132,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-config-4d3fd75c-get-returns" id="api-nodes-node-lxc-vmid-config-4d3fd75c-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "arch": {
@@ -23721,7 +23721,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -23742,19 +23742,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -23803,7 +23803,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24433,7 +24433,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-config-4d3fd75c-put-returns" id="api-nodes-node-lxc-vmid-config-4d3fd75c-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -24453,7 +24453,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -24461,13 +24461,13 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -24481,7 +24481,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24507,7 +24507,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-79202e07-get-returns" id="api-nodes-node-lxc-vmid-status-79202e07-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -24541,7 +24541,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24555,19 +24555,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -24581,7 +24581,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24607,7 +24607,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-current-8518f8bd-get-returns" id="api-nodes-node-lxc-vmid-status-current-8518f8bd-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "cpu": {
@@ -24765,7 +24765,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24779,19 +24779,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -24807,7 +24807,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24846,7 +24846,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-start-371b47a4-post-returns" id="api-nodes-node-lxc-vmid-status-start-371b47a4-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -24866,7 +24866,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24880,19 +24880,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -24908,7 +24908,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -24947,7 +24947,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-stop-499f3609-post-returns" id="api-nodes-node-lxc-vmid-status-stop-499f3609-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -24967,7 +24967,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -24981,19 +24981,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25009,7 +25009,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25050,7 +25050,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-shutdown-60abada8-post-returns" id="api-nodes-node-lxc-vmid-status-shutdown-60abada8-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -25070,7 +25070,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25084,19 +25084,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25110,7 +25110,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25136,7 +25136,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-suspend-ac2bf135-post-returns" id="api-nodes-node-lxc-vmid-status-suspend-ac2bf135-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -25156,7 +25156,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25170,19 +25170,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25196,7 +25196,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25222,7 +25222,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-resume-89380b28-post-returns" id="api-nodes-node-lxc-vmid-status-resume-89380b28-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -25242,7 +25242,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25256,19 +25256,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25283,7 +25283,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25316,7 +25316,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-status-reboot-43e691b5-post-returns" id="api-nodes-node-lxc-vmid-status-reboot-43e691b5-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -25336,7 +25336,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25350,19 +25350,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25376,7 +25376,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25402,7 +25402,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-b830cdef-get-returns" id="api-nodes-node-lxc-vmid-snapshot-b830cdef-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -25446,7 +25446,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25460,19 +25460,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25488,7 +25488,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25527,7 +25527,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-b830cdef-post-returns" id="api-nodes-node-lxc-vmid-snapshot-b830cdef-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -25548,7 +25548,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25562,19 +25562,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25590,7 +25590,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25629,7 +25629,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-delete-returns" id="api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-delete-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -25644,7 +25644,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -25652,7 +25652,7 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -25667,7 +25667,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25700,7 +25700,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-get-returns" id="api-nodes-node-lxc-vmid-snapshot-snapname-ce50af35-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -25730,7 +25730,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25747,19 +25747,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25775,7 +25775,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25815,7 +25815,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-rollback-a80aae0b-post-returns" id="api-nodes-node-lxc-vmid-snapshot-snapname-rollback-a80aae0b-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -25836,7 +25836,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25854,13 +25854,13 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25875,7 +25875,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -25908,7 +25908,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-get-returns" id="api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -25922,7 +25922,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -25936,19 +25936,19 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -25964,7 +25964,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26003,7 +26003,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-put-returns" id="api-nodes-node-lxc-vmid-snapshot-snapname-config-4ed61c9e-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26023,7 +26023,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -26031,7 +26031,7 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -26045,7 +26045,7 @@ LXC 容器索引（按节点）。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26071,7 +26071,7 @@ LXC 容器索引（按节点）。
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-8e38cb47-get-returns" id="api-nodes-node-lxc-vmid-firewall-8e38cb47-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -26101,7 +26101,7 @@ LXC 容器索引（按节点）。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26115,13 +26115,13 @@ LXC 容器索引（按节点）。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -26135,7 +26135,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26161,7 +26161,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-rules-62340537-get-returns" id="api-nodes-node-lxc-vmid-firewall-rules-62340537-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -26269,7 +26269,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26283,19 +26283,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -26324,7 +26324,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26473,7 +26473,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-rules-62340537-post-returns" id="api-nodes-node-lxc-vmid-firewall-rules-62340537-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26493,7 +26493,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26507,19 +26507,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -26535,7 +26535,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26575,7 +26575,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-delete-returns" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26589,7 +26589,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26603,13 +26603,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -26624,7 +26624,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26657,7 +26657,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-get-returns" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -26756,7 +26756,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -26770,19 +26770,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 null
 ```
 
@@ -26813,7 +26813,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -26976,7 +26976,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-put-returns" id="api-nodes-node-lxc-vmid-firewall-rules-pos-4caf25e5-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -26996,7 +26996,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27010,7 +27010,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27024,7 +27024,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27050,7 +27050,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-get-returns" id="api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -27091,7 +27091,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27105,13 +27105,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27128,7 +27128,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27173,7 +27173,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-post-returns" id="api-nodes-node-lxc-vmid-firewall-aliases-fc8417ce-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27193,7 +27193,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27207,13 +27207,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27229,7 +27229,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27269,7 +27269,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-delete-returns" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27283,7 +27283,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27297,7 +27297,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27312,7 +27312,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27345,7 +27345,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-get-returns" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -27359,7 +27359,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27373,13 +27373,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27398,7 +27398,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27458,7 +27458,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-put-returns" id="api-nodes-node-lxc-vmid-firewall-aliases-name-a283c3a8-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27478,7 +27478,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27492,7 +27492,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27506,7 +27506,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27532,7 +27532,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-get-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -27574,7 +27574,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27588,13 +27588,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27612,7 +27612,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27666,7 +27666,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-post-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-37b05a95-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27686,7 +27686,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27700,13 +27700,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27722,7 +27722,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27761,7 +27761,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-delete-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27775,7 +27775,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27789,7 +27789,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -27804,7 +27804,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27837,7 +27837,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-get-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -27879,7 +27879,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -27893,13 +27893,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -27917,7 +27917,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -27967,7 +27967,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-post-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-c6477c82-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -27987,7 +27987,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28001,13 +28001,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28024,7 +28024,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28070,7 +28070,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-delete-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -28084,7 +28084,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28098,13 +28098,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28120,7 +28120,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28159,7 +28159,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-get-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -28173,7 +28173,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28187,13 +28187,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28212,7 +28212,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28269,7 +28269,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-put-returns" id="api-nodes-node-lxc-vmid-firewall-ipset-name-cidr-36e4cba5-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -28289,7 +28289,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28303,13 +28303,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -28323,7 +28323,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28349,7 +28349,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-get-returns" id="api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "dhcp": {
@@ -28451,7 +28451,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28465,19 +28465,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -28503,7 +28503,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28635,7 +28635,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-put-returns" id="api-nodes-node-lxc-vmid-firewall-options-48ed6ee1-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -28655,7 +28655,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28669,19 +28669,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -28699,7 +28699,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28751,7 +28751,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-log-91c9938b-get-returns" id="api-nodes-node-lxc-vmid-firewall-log-91c9938b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -28784,7 +28784,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28798,7 +28798,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -28813,7 +28813,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28848,7 +28848,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-firewall-refs-e099a4ab-get-returns" id="api-nodes-node-lxc-vmid-firewall-refs-e099a4ab-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -28893,7 +28893,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -28907,13 +28907,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -28930,7 +28930,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -28982,7 +28982,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-rrd-30f0caee-get-returns" id="api-nodes-node-lxc-vmid-rrd-30f0caee-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -29007,7 +29007,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29021,13 +29021,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -29043,7 +29043,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29089,7 +29089,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-rrddata-34b9b1a4-get-returns" id="api-nodes-node-lxc-vmid-rrddata-34b9b1a4-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -29113,7 +29113,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29127,13 +29127,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -29150,7 +29150,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29198,7 +29198,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-vncproxy-bcb09d73-post-returns" id="api-nodes-node-lxc-vmid-vncproxy-bcb09d73-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29240,7 +29240,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29254,13 +29254,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -29274,7 +29274,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29300,7 +29300,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-termproxy-bb452949-post-returns" id="api-nodes-node-lxc-vmid-termproxy-bb452949-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29334,7 +29334,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29349,7 +29349,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -29365,7 +29365,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29404,7 +29404,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-vncwebsocket-8fcf1db4-get-returns" id="api-nodes-node-lxc-vmid-vncwebsocket-8fcf1db4-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "port": {
@@ -29429,7 +29429,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29443,19 +29443,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -29470,7 +29470,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29503,7 +29503,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-spiceproxy-45ceb235-post-returns" id="api-nodes-node-lxc-vmid-spiceproxy-45ceb235-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "description": "返回值可直接传递给 'remote-viewer' 应用程序。",
@@ -29541,7 +29541,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29555,19 +29555,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -29590,7 +29590,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29678,7 +29678,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-remote-migrate-5f40b688-post-returns" id="api-nodes-node-lxc-vmid-remote-migrate-5f40b688-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -29699,7 +29699,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29713,19 +29713,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -29740,7 +29740,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29773,7 +29773,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-migrate-a1062fde-get-returns" id="api-nodes-node-lxc-vmid-migrate-a1062fde-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "allowed-nodes": {
@@ -29841,7 +29841,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29855,19 +29855,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -29887,7 +29887,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -29953,7 +29953,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-migrate-a1062fde-post-returns" id="api-nodes-node-lxc-vmid-migrate-a1062fde-post-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -29974,7 +29974,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29988,19 +29988,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -30016,7 +30016,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -30059,7 +30059,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-feature-fa8be513-get-returns" id="api-nodes-node-lxc-vmid-feature-fa8be513-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "hasFeature": {
@@ -30084,7 +30084,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30099,19 +30099,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -30125,7 +30125,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -30151,7 +30151,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-template-3c89ee20-post-returns" id="api-nodes-node-lxc-vmid-template-3c89ee20-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -30171,7 +30171,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -30208,19 +30208,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -30243,7 +30243,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -30334,7 +30334,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-clone-c6355ef1-post-returns" id="api-nodes-node-lxc-vmid-clone-c6355ef1-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -30354,7 +30354,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30370,19 +30370,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -30399,7 +30399,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -30700,7 +30700,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-resize-eabbfad8-put-returns" id="api-nodes-node-lxc-vmid-resize-eabbfad8-put-returns"></a>
 
-```json
+```text
 {
   "description": "任务 ID。",
   "type": "string"
@@ -30721,7 +30721,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -30736,19 +30736,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -30770,7 +30770,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -31881,7 +31881,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-move-volume-0982dfe9-post-returns" id="api-nodes-node-lxc-vmid-move-volume-0982dfe9-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -31901,7 +31901,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -31915,13 +31915,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -31935,7 +31935,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -31961,7 +31961,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-pending-8aafe4d1-get-returns" id="api-nodes-node-lxc-vmid-pending-8aafe4d1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -32007,7 +32007,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32021,19 +32021,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32047,7 +32047,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32073,7 +32073,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-interfaces-329fdb50-get-returns" id="api-nodes-node-lxc-vmid-interfaces-329fdb50-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -32148,7 +32148,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -32173,13 +32173,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -32195,7 +32195,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32235,7 +32235,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-mtunnel-48c19595-post-returns" id="api-nodes-node-lxc-vmid-mtunnel-48c19595-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32266,7 +32266,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "description": "需要传入对所选套接字有效的票据。可通过 mtunnel API 调用创建票据，该调用会相应检查权限。",
   "user": "all"
@@ -32275,7 +32275,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32291,7 +32291,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32327,7 +32327,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-lxc-vmid-mtunnelwebsocket-328b1664-get-returns" id="api-nodes-node-lxc-vmid-mtunnelwebsocket-328b1664-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "port": {
@@ -32357,7 +32357,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32374,7 +32374,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32387,7 +32387,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32405,7 +32405,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-1cc84764-get-returns" id="api-nodes-node-ceph-1cc84764-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -32435,7 +32435,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -32443,7 +32443,7 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -32456,7 +32456,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32474,7 +32474,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-cfg-16ded747-get-returns" id="api-nodes-node-ceph-cfg-16ded747-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -32504,7 +32504,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32521,13 +32521,13 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32540,7 +32540,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32558,7 +32558,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-cfg-raw-0e0c9446-get-returns" id="api-nodes-node-ceph-cfg-raw-0e0c9446-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -32578,7 +32578,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32595,19 +32595,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32620,7 +32620,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32638,7 +32638,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-cfg-db-f3baea30-get-returns" id="api-nodes-node-ceph-cfg-db-f3baea30-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 1,
@@ -32693,7 +32693,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32707,19 +32707,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32733,7 +32733,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32758,7 +32758,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-cfg-value-a08bf211-get-returns" id="api-nodes-node-ceph-cfg-value-a08bf211-get-returns"></a>
 
-```json
+```text
 {
   "description": "{section} -> {key} -> value 的两级映射。配置节和键名中的下划线统一转换为连字符。",
   "type": "object"
@@ -32779,7 +32779,7 @@ null
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -32796,19 +32796,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32821,7 +32821,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32839,7 +32839,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-9a2ad79f-get-returns" id="api-nodes-node-ceph-osd-9a2ad79f-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "properties": {
@@ -32866,19 +32866,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -32899,7 +32899,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -32972,7 +32972,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-9a2ad79f-post-returns" id="api-nodes-node-ceph-osd-9a2ad79f-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -32992,19 +32992,19 @@ null
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33019,7 +33019,7 @@ null
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33049,7 +33049,7 @@ null
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-658df167-delete-returns" id="api-nodes-node-ceph-osd-osdid-658df167-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -33063,7 +33063,7 @@ OSD 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -33071,7 +33071,7 @@ OSD 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -33085,7 +33085,7 @@ OSD 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33108,7 +33108,7 @@ OSD 索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-658df167-get-returns" id="api-nodes-node-ceph-osd-osdid-658df167-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -33138,7 +33138,7 @@ OSD 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33154,19 +33154,19 @@ OSD 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33180,7 +33180,7 @@ OSD 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33203,7 +33203,7 @@ OSD 索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-metadata-35427019-get-returns" id="api-nodes-node-ceph-osd-osdid-metadata-35427019-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "devices": {
@@ -33318,7 +33318,7 @@ OSD 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33334,19 +33334,19 @@ OSD 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33361,7 +33361,7 @@ OSD 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33395,7 +33395,7 @@ OSD 索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-lv-info-1bb72299-get-returns" id="api-nodes-node-ceph-osd-osdid-lv-info-1bb72299-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "creation_time": {
@@ -33441,7 +33441,7 @@ ceph osd in
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33455,19 +33455,19 @@ ceph osd in
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33481,7 +33481,7 @@ ceph osd in
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33504,7 +33504,7 @@ ceph osd in
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-in-ee6f277c-post-returns" id="api-nodes-node-ceph-osd-osdid-in-ee6f277c-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -33524,7 +33524,7 @@ ceph osd out
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33538,19 +33538,19 @@ ceph osd out
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33564,7 +33564,7 @@ ceph osd out
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33587,7 +33587,7 @@ ceph osd out
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-out-1ac6d595-post-returns" id="api-nodes-node-ceph-osd-osdid-out-1ac6d595-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -33607,7 +33607,7 @@ ceph osd out
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33621,19 +33621,19 @@ ceph osd out
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33648,7 +33648,7 @@ ceph osd out
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33678,7 +33678,7 @@ ceph osd out
 
 #### 返回值 <a href="#api-nodes-node-ceph-osd-osdid-scrub-279b1cd8-post-returns" id="api-nodes-node-ceph-osd-osdid-scrub-279b1cd8-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -33698,7 +33698,7 @@ MDS 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33715,19 +33715,19 @@ MDS 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33740,7 +33740,7 @@ MDS 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33758,7 +33758,7 @@ MDS 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mds-037e9900-get-returns" id="api-nodes-node-ceph-mds-037e9900-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -33842,7 +33842,7 @@ MDS 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33856,19 +33856,19 @@ MDS 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33882,7 +33882,7 @@ MDS 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33905,7 +33905,7 @@ MDS 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mds-name-c30f2776-delete-returns" id="api-nodes-node-ceph-mds-name-c30f2776-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -33919,7 +33919,7 @@ MDS 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -33933,19 +33933,19 @@ MDS 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -33960,7 +33960,7 @@ MDS 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -33993,7 +33993,7 @@ MDS 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mds-name-c30f2776-post-returns" id="api-nodes-node-ceph-mds-name-c30f2776-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34013,7 +34013,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34030,19 +34030,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34055,7 +34055,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34073,7 +34073,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mgr-e49aaf56-get-returns" id="api-nodes-node-ceph-mgr-e49aaf56-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -34142,7 +34142,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34156,19 +34156,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34182,7 +34182,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34205,7 +34205,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mgr-id-06b79f36-delete-returns" id="api-nodes-node-ceph-mgr-id-06b79f36-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34219,7 +34219,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34233,19 +34233,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34259,7 +34259,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34285,7 +34285,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mgr-id-06b79f36-post-returns" id="api-nodes-node-ceph-mgr-id-06b79f36-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34305,7 +34305,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34322,19 +34322,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34347,7 +34347,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34365,7 +34365,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mon-c1367920-get-returns" id="api-nodes-node-ceph-mon-c1367920-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -34445,7 +34445,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34459,19 +34459,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34485,7 +34485,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34508,7 +34508,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mon-monid-a72b81a5-delete-returns" id="api-nodes-node-ceph-mon-monid-a72b81a5-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34522,7 +34522,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34536,19 +34536,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34563,7 +34563,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34596,7 +34596,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-mon-monid-a72b81a5-post-returns" id="api-nodes-node-ceph-mon-monid-a72b81a5-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34616,7 +34616,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34633,19 +34633,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34658,7 +34658,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34676,7 +34676,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-fs-61e7e99c-get-returns" id="api-nodes-node-ceph-fs-61e7e99c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 1,
@@ -34743,7 +34743,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34757,19 +34757,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34785,7 +34785,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34822,7 +34822,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-fs-name-618f4540-delete-returns" id="api-nodes-node-ceph-fs-name-618f4540-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34836,7 +34836,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34850,19 +34850,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34878,7 +34878,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34919,7 +34919,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-fs-name-618f4540-post-returns" id="api-nodes-node-ceph-fs-name-618f4540-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -34939,7 +34939,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -34956,19 +34956,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -34981,7 +34981,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -34999,7 +34999,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-3986facc-get-returns" id="api-nodes-node-ceph-pool-3986facc-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -35125,7 +35125,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35139,19 +35139,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -35176,7 +35176,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -35327,7 +35327,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-3986facc-post-returns" id="api-nodes-node-ceph-pool-3986facc-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -35347,7 +35347,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35361,19 +35361,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -35390,7 +35390,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -35434,7 +35434,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-delete-returns" id="api-nodes-node-ceph-pool-name-6b4d9bfd-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -35448,7 +35448,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35465,7 +35465,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -35479,7 +35479,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -35502,7 +35502,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-get-returns" id="api-nodes-node-ceph-pool-name-6b4d9bfd-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -35526,7 +35526,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35540,19 +35540,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -35575,7 +35575,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -35677,7 +35677,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-name-6b4d9bfd-put-returns" id="api-nodes-node-ceph-pool-name-6b4d9bfd-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -35697,7 +35697,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35714,19 +35714,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -35741,7 +35741,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -35771,7 +35771,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-pool-name-status-f3f1b84c-get-returns" id="api-nodes-node-ceph-pool-name-status-f3f1b84c-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "application": {
@@ -35953,7 +35953,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -35970,13 +35970,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -35989,7 +35989,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36007,7 +36007,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-releases-fb926f34-get-returns" id="api-nodes-node-ceph-releases-fb926f34-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -36052,7 +36052,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36066,19 +36066,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36097,7 +36097,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36166,7 +36166,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-init-cad4cde4-post-returns" id="api-nodes-node-ceph-init-cad4cde4-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -36186,7 +36186,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36200,19 +36200,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36226,7 +36226,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36251,7 +36251,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-stop-0e8e8d15-post-returns" id="api-nodes-node-ceph-stop-0e8e8d15-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -36271,7 +36271,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36285,19 +36285,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36311,7 +36311,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36336,7 +36336,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-start-798848c7-post-returns" id="api-nodes-node-ceph-start-798848c7-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -36356,7 +36356,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36370,19 +36370,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36396,7 +36396,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36421,7 +36421,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-restart-70fa970a-post-returns" id="api-nodes-node-ceph-restart-70fa970a-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -36441,7 +36441,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36455,19 +36455,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36487,7 +36487,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36556,7 +36556,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-restart-bulk-223a3362-post-returns" id="api-nodes-node-ceph-restart-bulk-223a3362-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -36576,7 +36576,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36593,19 +36593,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36618,7 +36618,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36636,7 +36636,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-status-e63faf2d-get-returns" id="api-nodes-node-ceph-status-e63faf2d-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -36656,7 +36656,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36673,19 +36673,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36698,7 +36698,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36716,7 +36716,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-crush-c88f9291-get-returns" id="api-nodes-node-ceph-crush-c88f9291-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -36736,7 +36736,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36750,19 +36750,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36777,7 +36777,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36809,7 +36809,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-log-0c630570-get-returns" id="api-nodes-node-ceph-log-0c630570-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -36842,7 +36842,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36859,19 +36859,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36884,7 +36884,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -36902,7 +36902,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-rules-01a2d5ea-get-returns" id="api-nodes-node-ceph-rules-01a2d5ea-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -36937,7 +36937,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -36951,19 +36951,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -36979,7 +36979,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37019,7 +37019,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-ceph-cmd-safety-0496bca8-get-returns" id="api-nodes-node-ceph-cmd-safety-0496bca8-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37051,7 +37051,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "用户需要对任何虚拟机具有 'VM.Backup' 权限，以及对备份存储（使用 fleecing 时也包括 fleecing 存储）具有 'Datastore.AllocateSpace' 权限。'tmpdir'、'dumpdir'、'script' 和 'job-id' 参数仅限 'root@pam' 用户使用。'prune-backups' 设置需要对备份存储具有 'Datastore.Allocate' 权限。'bwlimit'、'performance' 和 'ionice' 参数需要对 '/' 具有 'Sys.Modify' 权限。'stop' 参数需要对 '/nodes/{node}' 具有 'Sys.Modify' 权限",
   "user": "all"
@@ -37060,19 +37060,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -37117,7 +37117,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37385,7 +37385,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-vzdump-81ddfad1-post-returns" id="api-nodes-node-vzdump-81ddfad1-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -37405,7 +37405,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "用户需要对指定存储（未指定时为默认存储）具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限。仅当用户具有此节点的 'Sys.Audit' 权限时，才会返回某些属性。",
   "user": "all"
@@ -37414,13 +37414,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -37434,7 +37434,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37460,7 +37460,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-vzdump-defaults-edb1213e-get-returns" id="api-nodes-node-vzdump-defaults-edb1213e-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37700,7 +37700,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "用户需要对所备份的客户机 ID 具有 'VM.Backup' 权限，以及对备份存储具有 'Datastore.AllocateSpace' 权限。",
   "user": "all"
@@ -37709,19 +37709,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -37735,7 +37735,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37758,7 +37758,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-vzdump-extractconfig-c7f17d12-get-returns" id="api-nodes-node-vzdump-extractconfig-c7f17d12-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -37778,7 +37778,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -37792,19 +37792,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -37817,7 +37817,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -37835,7 +37835,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-4ccf308b-get-returns" id="api-nodes-node-services-4ccf308b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -37947,7 +37947,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -37961,7 +37961,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -37975,7 +37975,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38022,7 +38022,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-db1b7a0b-get-returns" id="api-nodes-node-services-service-db1b7a0b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -38056,7 +38056,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38070,19 +38070,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38096,7 +38096,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38143,7 +38143,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-state-b3093d6d-get-returns" id="api-nodes-node-services-service-state-b3093d6d-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "active-state": {
@@ -38246,7 +38246,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38260,19 +38260,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38286,7 +38286,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38333,7 +38333,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-start-c27d4c8e-post-returns" id="api-nodes-node-services-service-start-c27d4c8e-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -38353,7 +38353,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38367,19 +38367,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38393,7 +38393,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38440,7 +38440,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-stop-15008e03-post-returns" id="api-nodes-node-services-service-stop-15008e03-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -38460,7 +38460,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38474,19 +38474,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38500,7 +38500,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38547,7 +38547,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-restart-fa165fd0-post-returns" id="api-nodes-node-services-service-restart-fa165fd0-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -38567,7 +38567,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38581,19 +38581,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38607,7 +38607,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38654,7 +38654,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-services-service-reload-4ec41915-post-returns" id="api-nodes-node-services-service-reload-4ec41915-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -38674,7 +38674,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38688,19 +38688,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38713,7 +38713,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38731,7 +38731,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-subscription-1e96f57a-delete-returns" id="api-nodes-node-subscription-1e96f57a-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -38745,7 +38745,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -38753,13 +38753,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38772,7 +38772,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38790,7 +38790,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-subscription-1e96f57a-get-returns" id="api-nodes-node-subscription-1e96f57a-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38874,7 +38874,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38888,19 +38888,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38914,7 +38914,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -38939,7 +38939,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-subscription-1e96f57a-post-returns" id="api-nodes-node-subscription-1e96f57a-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -38953,7 +38953,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -38967,19 +38967,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -38993,7 +38993,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -39017,7 +39017,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-subscription-1e96f57a-put-returns" id="api-nodes-node-subscription-1e96f57a-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -39037,7 +39037,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -39051,19 +39051,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -39076,7 +39076,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -39094,7 +39094,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-09b544b1-delete-returns" id="api-nodes-node-network-09b544b1-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -39108,7 +39108,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -39116,13 +39116,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -39136,7 +39136,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -39175,7 +39175,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-09b544b1-get-returns" id="api-nodes-node-network-09b544b1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -39534,7 +39534,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -39548,19 +39548,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -39601,7 +39601,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -39844,7 +39844,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-09b544b1-post-returns" id="api-nodes-node-network-09b544b1-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -39858,7 +39858,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -39872,19 +39872,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -39898,7 +39898,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -39923,7 +39923,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-09b544b1-put-returns" id="api-nodes-node-network-09b544b1-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -39943,7 +39943,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -39957,19 +39957,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -39983,7 +39983,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40009,7 +40009,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-iface-9692d22a-delete-returns" id="api-nodes-node-network-iface-9692d22a-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -40023,7 +40023,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -40037,13 +40037,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40057,7 +40057,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40083,7 +40083,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-iface-9692d22a-get-returns" id="api-nodes-node-network-iface-9692d22a-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "method": {
@@ -40105,7 +40105,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -40119,19 +40119,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40173,7 +40173,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40423,7 +40423,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-network-iface-9692d22a-put-returns" id="api-nodes-node-network-iface-9692d22a-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -40443,7 +40443,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "列出与当前用户关联的任务，或用户对 /nodes/<node>（任务运行所在的 <node>）具有 'Sys.Audit' 权限的所有任务。",
   "user": "all"
@@ -40452,13 +40452,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40481,7 +40481,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40573,7 +40573,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-tasks-e180b4b0-get-returns" id="api-nodes-node-tasks-e180b4b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -40647,7 +40647,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Modify' 权限。",
   "user": "all"
@@ -40656,19 +40656,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40682,7 +40682,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40704,7 +40704,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-tasks-upid-ab1e476b-delete-returns" id="api-nodes-node-tasks-upid-ab1e476b-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -40718,7 +40718,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -40726,7 +40726,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -40740,7 +40740,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40762,7 +40762,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-tasks-upid-ab1e476b-get-returns" id="api-nodes-node-tasks-upid-ab1e476b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -40792,7 +40792,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。",
   "user": "all"
@@ -40801,19 +40801,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40830,7 +40830,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40875,7 +40875,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-tasks-upid-log-1971fd45-get-returns" id="api-nodes-node-tasks-upid-log-1971fd45-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -40897,7 +40897,7 @@ MGR 目录索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "download_allowed": 1
 }
@@ -40919,7 +40919,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "如果用户不是任务所有者，则需要对 '/nodes/<node>' 具有 'Sys.Audit' 权限。",
   "user": "all"
@@ -40928,19 +40928,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -40954,7 +40954,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -40977,7 +40977,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-tasks-upid-status-7d793759-get-returns" id="api-nodes-node-tasks-upid-status-7d793759-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "exitstatus": {
@@ -41034,7 +41034,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -41042,7 +41042,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -41055,7 +41055,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41073,7 +41073,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-030e9433-get-returns" id="api-nodes-node-scan-030e9433-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41107,7 +41107,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41121,19 +41121,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41147,7 +41147,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41171,7 +41171,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-nfs-475447a2-get-returns" id="api-nodes-node-scan-nfs-475447a2-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41204,7 +41204,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41218,19 +41218,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41247,7 +41247,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41289,7 +41289,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-cifs-02bcf20e-get-returns" id="api-nodes-node-scan-cifs-02bcf20e-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41322,7 +41322,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41336,19 +41336,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41366,7 +41366,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41415,7 +41415,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-pbs-50e243a8-get-returns" id="api-nodes-node-scan-pbs-50e243a8-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41449,7 +41449,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41463,19 +41463,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41489,7 +41489,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41513,7 +41513,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-iscsi-64358b17-get-returns" id="api-nodes-node-scan-iscsi-64358b17-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41546,7 +41546,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41560,19 +41560,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41585,7 +41585,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41603,7 +41603,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-lvm-43f11c98-get-returns" id="api-nodes-node-scan-lvm-43f11c98-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41632,7 +41632,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41646,19 +41646,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41672,7 +41672,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41695,7 +41695,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-lvmthin-65365b18-get-returns" id="api-nodes-node-scan-lvmthin-65365b18-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41724,7 +41724,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41738,19 +41738,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41763,7 +41763,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41781,7 +41781,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-scan-zfs-04d93f02-get-returns" id="api-nodes-node-scan-zfs-04d93f02-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41810,7 +41810,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -41818,7 +41818,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -41831,7 +41831,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41849,7 +41849,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-hardware-a755e283-get-returns" id="api-nodes-node-hardware-a755e283-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -41883,7 +41883,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -41900,19 +41900,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -41927,7 +41927,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -41960,7 +41960,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-hardware-pci-f3d25e65-get-returns" id="api-nodes-node-hardware-pci-f3d25e65-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42042,7 +42042,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -42050,7 +42050,7 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -42064,7 +42064,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42086,7 +42086,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-hardware-pci-pci-id-or-mapping-01e6e4af-get-returns" id="api-nodes-node-hardware-pci-pci-id-or-mapping-01e6e4af-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42120,7 +42120,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -42137,19 +42137,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42163,7 +42163,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42186,7 +42186,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-hardware-pci-pci-id-or-mapping-mdev-dfa9e29a-get-returns" id="api-nodes-node-hardware-pci-pci-id-or-mapping-mdev-dfa9e29a-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42228,7 +42228,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -42242,19 +42242,19 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42267,7 +42267,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42285,7 +42285,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-hardware-usb-2ee72390-get-returns" id="api-nodes-node-hardware-usb-2ee72390-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42350,7 +42350,7 @@ MGR 目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -42358,13 +42358,13 @@ MGR 目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42377,7 +42377,7 @@ MGR 目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42395,7 +42395,7 @@ MGR 目录索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-a3f3cbe2-get-returns" id="api-nodes-node-capabilities-a3f3cbe2-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -42425,7 +42425,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -42433,13 +42433,13 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42452,7 +42452,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42470,7 +42470,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-qemu-0ed6895d-get-returns" id="api-nodes-node-capabilities-qemu-0ed6895d-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -42500,7 +42500,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "自定义型号会筛选为当前用户对 /mapping/cpu/<name> 具有 Mapping.{Audit,Use,Modify} 中任意权限的型号；为向后兼容，对 /nodes 的 Sys.Audit 权限仍允许查看所有自定义型号。",
   "user": "all"
@@ -42509,7 +42509,7 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -42523,7 +42523,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42550,7 +42550,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-qemu-cpu-3a9cecad-get-returns" id="api-nodes-node-capabilities-qemu-cpu-3a9cecad-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42598,7 +42598,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -42606,7 +42606,7 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -42621,7 +42621,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42658,7 +42658,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-qemu-cpu-flags-d6e48149-get-returns" id="api-nodes-node-capabilities-qemu-cpu-flags-d6e48149-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -42702,7 +42702,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -42710,13 +42710,13 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42730,7 +42730,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42757,7 +42757,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-qemu-machines-0639cbbf-get-returns" id="api-nodes-node-capabilities-qemu-machines-0639cbbf-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "additionalProperties": 1,
@@ -42804,7 +42804,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -42818,13 +42818,13 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42837,7 +42837,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42855,7 +42855,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-capabilities-qemu-migration-1e238848-get-returns" id="api-nodes-node-capabilities-qemu-migration-1e238848-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42882,7 +42882,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您对 '/storage/<storage>' 具有 'Datastore.Audit' 或 'Datastore.AllocateSpace' 权限的条目",
   "user": "all"
@@ -42891,19 +42891,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -42921,7 +42921,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -42975,7 +42975,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-c95c7241-get-returns" id="api-nodes-node-storage-c95c7241-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -43095,7 +43095,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -43112,7 +43112,7 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -43126,7 +43126,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43151,7 +43151,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-15e1d0da-get-returns" id="api-nodes-node-storage-storage-15e1d0da-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -43185,7 +43185,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对存储具有 'Datastore.Allocate' 权限（若指定了虚拟机 ID，则需 'Datastore.AllocateSpace' 权限以及该虚拟机的 'VM.Backup' 权限）。",
   "user": "all"
@@ -43194,19 +43194,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43223,7 +43223,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43273,7 +43273,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-prunebackups-b95263fa-delete-returns" id="api-nodes-node-storage-storage-prunebackups-b95263fa-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -43287,7 +43287,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -43304,19 +43304,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43333,7 +43333,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43383,7 +43383,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-prunebackups-b95263fa-get-returns" id="api-nodes-node-storage-storage-prunebackups-b95263fa-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -43435,7 +43435,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -43452,19 +43452,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43480,7 +43480,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43521,7 +43521,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-09922e88-get-returns" id="api-nodes-node-storage-storage-content-09922e88-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -43618,7 +43618,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -43632,19 +43632,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43662,7 +43662,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43717,7 +43717,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-09922e88-post-returns" id="api-nodes-node-storage-storage-content-09922e88-post-returns"></a>
 
-```json
+```text
 {
   "description": "卷标识符",
   "type": "string"
@@ -43738,7 +43738,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对存储具有 'Datastore.Allocate' 权限（如果对虚拟机具有 VM.Backup 权限，则对备份卷具有 'Datastore.AllocateSpace' 即可）。",
   "user": "all"
@@ -43747,19 +43747,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43775,7 +43775,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43814,7 +43814,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-delete-returns" id="api-nodes-node-storage-storage-content-volume-722e1106-delete-returns"></a>
 
-```json
+```text
 {
   "optional": 1,
   "type": "string"
@@ -43829,7 +43829,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要具有卷的读取访问权限。",
   "user": "all"
@@ -43838,19 +43838,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43865,7 +43865,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -43896,7 +43896,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-get-returns" id="api-nodes-node-storage-storage-content-volume-722e1106-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "format": {
@@ -43940,19 +43940,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -43969,7 +43969,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44012,7 +44012,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-post-returns" id="api-nodes-node-storage-storage-content-volume-722e1106-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -44026,7 +44026,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要具有卷的读取访问权限。",
   "user": "all"
@@ -44035,19 +44035,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44064,7 +44064,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44107,7 +44107,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-content-volume-722e1106-put-returns" id="api-nodes-node-storage-storage-content-volume-722e1106-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -44127,7 +44127,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要具有卷的读取访问权限。",
   "user": "all"
@@ -44136,19 +44136,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44164,7 +44164,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44199,7 +44199,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-file-restore-list-f0b421f6-get-returns" id="api-nodes-node-storage-storage-file-restore-list-f0b421f6-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -44250,7 +44250,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要具有卷的读取访问权限。",
   "user": "all"
@@ -44259,19 +44259,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44288,7 +44288,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44330,7 +44330,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-file-restore-download-d9158035-get-returns" id="api-nodes-node-storage-storage-file-restore-download-d9158035-get-returns"></a>
 
-```json
+```text
 {
   "type": "any"
 }
@@ -44339,7 +44339,7 @@ QEMU 能力索引。
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "download_allowed": 1
 }
@@ -44361,7 +44361,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -44378,19 +44378,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44404,7 +44404,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44429,7 +44429,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-status-a527dfdc-get-returns" id="api-nodes-node-storage-storage-status-a527dfdc-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "active": {
@@ -44493,7 +44493,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -44510,19 +44510,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44539,7 +44539,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44590,7 +44590,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-rrd-48a58707-get-returns" id="api-nodes-node-storage-storage-rrd-48a58707-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -44615,7 +44615,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -44632,19 +44632,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44660,7 +44660,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44705,7 +44705,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-rrddata-99070a7b-get-returns" id="api-nodes-node-storage-storage-rrddata-99070a7b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -44729,7 +44729,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -44743,13 +44743,13 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -44768,7 +44768,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -44836,7 +44836,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-upload-535e4f55-post-returns" id="api-nodes-node-storage-storage-upload-535e4f55-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -44856,7 +44856,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -44892,19 +44892,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -44925,7 +44925,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45006,7 +45006,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-download-url-fb450738-post-returns" id="api-nodes-node-storage-storage-download-url-fb450738-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -45026,7 +45026,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "and",
@@ -45050,19 +45050,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45078,7 +45078,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45116,7 +45116,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-oci-registry-pull-3302e1c4-post-returns" id="api-nodes-node-storage-storage-oci-registry-pull-3302e1c4-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -45136,7 +45136,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要具有卷的读取访问权限。",
   "user": "all"
@@ -45145,19 +45145,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45172,7 +45172,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45202,7 +45202,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-import-metadata-b9d89575-get-returns" id="api-nodes-node-storage-storage-import-metadata-b9d89575-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "description": "有关如何导入客户机的信息。",
@@ -45291,7 +45291,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45308,19 +45308,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45334,7 +45334,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45359,7 +45359,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-storage-storage-identity-284407c3-get-returns" id="api-nodes-node-storage-storage-identity-284407c3-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "id": {
@@ -45405,7 +45405,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -45413,13 +45413,13 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45432,7 +45432,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45450,7 +45450,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-2325b373-get-returns" id="api-nodes-node-disks-2325b373-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -45480,7 +45480,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45494,19 +45494,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45519,7 +45519,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45537,7 +45537,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvm-2c5fff28-get-returns" id="api-nodes-node-disks-lvm-2c5fff28-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "children": {
@@ -45604,7 +45604,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45619,19 +45619,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45647,7 +45647,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45684,7 +45684,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvm-2c5fff28-post-returns" id="api-nodes-node-disks-lvm-2c5fff28-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -45704,7 +45704,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45719,19 +45719,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45747,7 +45747,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45786,7 +45786,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvm-name-67e41b86-delete-returns" id="api-nodes-node-disks-lvm-name-67e41b86-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -45806,7 +45806,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45820,19 +45820,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45845,7 +45845,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45863,7 +45863,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvmthin-adb10980-get-returns" id="api-nodes-node-disks-lvmthin-adb10980-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -45906,7 +45906,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -45921,19 +45921,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -45949,7 +45949,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -45986,7 +45986,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvmthin-adb10980-post-returns" id="api-nodes-node-disks-lvmthin-adb10980-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46006,7 +46006,7 @@ QEMU 能力索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46021,19 +46021,19 @@ QEMU 能力索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46050,7 +46050,7 @@ QEMU 能力索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46096,7 +46096,7 @@ QEMU 能力索引。
 
 #### 返回值 <a href="#api-nodes-node-disks-lvmthin-name-35a5d325-delete-returns" id="api-nodes-node-disks-lvmthin-name-35a5d325-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46116,7 +46116,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46130,19 +46130,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46155,7 +46155,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46173,7 +46173,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-directory-b701379c-get-returns" id="api-nodes-node-disks-directory-b701379c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -46212,7 +46212,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46227,19 +46227,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46256,7 +46256,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46303,7 +46303,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-directory-b701379c-post-returns" id="api-nodes-node-disks-directory-b701379c-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46323,7 +46323,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46338,19 +46338,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46366,7 +46366,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46405,7 +46405,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-directory-name-b40f6bc9-delete-returns" id="api-nodes-node-disks-directory-name-b40f6bc9-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46425,7 +46425,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46439,19 +46439,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46464,7 +46464,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46482,7 +46482,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-zfs-c109c61c-get-returns" id="api-nodes-node-disks-zfs-c109c61c-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -46535,7 +46535,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46550,19 +46550,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46582,7 +46582,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46676,7 +46676,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-zfs-c109c61c-post-returns" id="api-nodes-node-disks-zfs-c109c61c-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46696,7 +46696,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46711,19 +46711,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46739,7 +46739,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46778,7 +46778,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-zfs-name-51463f9e-delete-returns" id="api-nodes-node-disks-zfs-name-51463f9e-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -46792,7 +46792,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -46806,19 +46806,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46832,7 +46832,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -46857,7 +46857,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-zfs-name-51463f9e-get-returns" id="api-nodes-node-disks-zfs-name-51463f9e-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -46940,7 +46940,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -46964,19 +46964,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -46992,7 +46992,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47033,7 +47033,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-list-cd86e696-get-returns" id="api-nodes-node-disks-list-cd86e696-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -47109,7 +47109,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47123,19 +47123,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47150,7 +47150,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47179,7 +47179,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-smart-7cda3089-get-returns" id="api-nodes-node-disks-smart-7cda3089-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "attributes": {
@@ -47216,7 +47216,7 @@ PVE 管理的目录存储。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47230,19 +47230,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47257,7 +47257,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47287,7 +47287,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-initgpt-5c24ea68-post-returns" id="api-nodes-node-disks-initgpt-5c24ea68-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -47307,19 +47307,19 @@ PVE 管理的目录存储。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47333,7 +47333,7 @@ PVE 管理的目录存储。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47356,7 +47356,7 @@ PVE 管理的目录存储。
 
 #### 返回值 <a href="#api-nodes-node-disks-wipedisk-ae5e91b0-put-returns" id="api-nodes-node-disks-wipedisk-ae5e91b0-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -47376,7 +47376,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -47384,7 +47384,7 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -47397,7 +47397,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47415,7 +47415,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-9cfeeb1d-get-returns" id="api-nodes-node-apt-9cfeeb1d-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -47449,7 +47449,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47463,19 +47463,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47488,7 +47488,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47506,7 +47506,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-update-555c9d2d-get-returns" id="api-nodes-node-apt-update-555c9d2d-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -47576,7 +47576,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47590,19 +47590,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47617,7 +47617,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47649,7 +47649,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-update-555c9d2d-post-returns" id="api-nodes-node-apt-update-555c9d2d-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -47669,7 +47669,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47683,13 +47683,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47704,7 +47704,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47733,7 +47733,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-changelog-53b13010-get-returns" id="api-nodes-node-apt-changelog-53b13010-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -47753,7 +47753,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -47767,13 +47767,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -47786,7 +47786,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -47804,7 +47804,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-repositories-2ddb8531-get-returns" id="api-nodes-node-apt-repositories-2ddb8531-get-returns"></a>
 
-```json
+```text
 {
   "description": "解析 /etc/apt/. 中 APT 仓库文件的结果",
   "properties": {
@@ -48000,7 +48000,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48014,19 +48014,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48043,7 +48043,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48084,7 +48084,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-repositories-2ddb8531-post-returns" id="api-nodes-node-apt-repositories-2ddb8531-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -48098,7 +48098,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48112,19 +48112,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48139,7 +48139,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48169,7 +48169,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-repositories-2ddb8531-put-returns" id="api-nodes-node-apt-repositories-2ddb8531-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -48189,7 +48189,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48203,13 +48203,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48222,7 +48222,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48240,7 +48240,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-apt-versions-f11bf1a5-get-returns" id="api-nodes-node-apt-versions-f11bf1a5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -48338,7 +48338,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -48346,7 +48346,7 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -48359,7 +48359,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48377,7 +48377,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-9019f1f1-get-returns" id="api-nodes-node-firewall-9019f1f1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -48407,7 +48407,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48421,13 +48421,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48440,7 +48440,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48458,7 +48458,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-rules-cb56872b-get-returns" id="api-nodes-node-firewall-rules-cb56872b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -48566,7 +48566,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48580,19 +48580,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48620,7 +48620,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48761,7 +48761,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-rules-cb56872b-post-returns" id="api-nodes-node-firewall-rules-cb56872b-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -48781,7 +48781,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48795,19 +48795,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48822,7 +48822,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48854,7 +48854,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-delete-returns" id="api-nodes-node-firewall-rules-pos-297a4a77-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -48868,7 +48868,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -48882,13 +48882,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -48902,7 +48902,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -48927,7 +48927,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-get-returns" id="api-nodes-node-firewall-rules-pos-297a4a77-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "action": {
@@ -49026,7 +49026,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -49040,19 +49040,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -49082,7 +49082,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -49237,7 +49237,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-rules-pos-297a4a77-put-returns" id="api-nodes-node-firewall-rules-pos-297a4a77-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -49257,7 +49257,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -49271,13 +49271,13 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -49290,7 +49290,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -49308,7 +49308,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-options-2e196e08-get-returns" id="api-nodes-node-firewall-options-2e196e08-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "enable": {
@@ -49492,7 +49492,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -49506,19 +49506,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -49552,7 +49552,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -49766,7 +49766,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-options-2e196e08-put-returns" id="api-nodes-node-firewall-options-2e196e08-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -49786,7 +49786,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -49800,19 +49800,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -49829,7 +49829,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -49873,7 +49873,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-firewall-log-f54d4ca1-get-returns" id="api-nodes-node-firewall-log-f54d4ca1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -49906,7 +49906,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。",
   "user": "all"
@@ -49915,19 +49915,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -49941,7 +49941,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -49968,7 +49968,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-replication-a0e57fd8-get-returns" id="api-nodes-node-replication-a0e57fd8-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -50002,7 +50002,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -50010,7 +50010,7 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -50024,7 +50024,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50048,7 +50048,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-replication-id-1c9d32c5-get-returns" id="api-nodes-node-replication-id-1c9d32c5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -50078,7 +50078,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Audit 权限。",
   "user": "all"
@@ -50087,19 +50087,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50113,7 +50113,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50137,7 +50137,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-replication-id-status-3a1bb288-get-returns" id="api-nodes-node-replication-id-status-3a1bb288-get-returns"></a>
 
-```json
+```text
 {
   "type": "object"
 }
@@ -50157,7 +50157,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 /vms/<vmid> 具有 VM.Audit 权限，或对 '/nodes/<node>' 具有 'Sys.Audit' 权限",
   "user": "all"
@@ -50166,19 +50166,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50194,7 +50194,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50230,7 +50230,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-replication-id-log-e0cf7067-get-returns" id="api-nodes-node-replication-id-log-e0cf7067-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -50263,7 +50263,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要在 /vms/<vmid> 上拥有 VM.Replicate 权限。",
   "user": "all"
@@ -50272,19 +50272,19 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50298,7 +50298,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50322,7 +50322,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-replication-id-schedule-now-ad2bf972-post-returns" id="api-nodes-node-replication-id-schedule-now-ad2bf972-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -50342,7 +50342,7 @@ APT（高级软件包工具）的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -50350,7 +50350,7 @@ APT（高级软件包工具）的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -50363,7 +50363,7 @@ APT（高级软件包工具）的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50381,7 +50381,7 @@ APT（高级软件包工具）的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-322ab2f5-get-returns" id="api-nodes-node-certificates-322ab2f5-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -50411,7 +50411,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -50419,7 +50419,7 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -50432,7 +50432,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50450,7 +50450,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-acme-ef4fc921-get-returns" id="api-nodes-node-certificates-acme-ef4fc921-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -50480,7 +50480,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -50494,19 +50494,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50519,7 +50519,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50537,7 +50537,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-delete-returns" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-delete-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -50551,7 +50551,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -50565,19 +50565,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50591,7 +50591,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50616,7 +50616,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-post-returns" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -50630,7 +50630,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -50644,19 +50644,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50670,7 +50670,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50695,7 +50695,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-acme-certificate-5c8ab6d8-put-returns" id="api-nodes-node-certificates-acme-certificate-5c8ab6d8-put-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -50715,7 +50715,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -50723,13 +50723,13 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50742,7 +50742,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50760,7 +50760,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-info-0a704380-get-returns" id="api-nodes-node-certificates-info-0a704380-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -50842,7 +50842,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -50856,19 +50856,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50882,7 +50882,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -50907,7 +50907,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-custom-734af0d5-delete-returns" id="api-nodes-node-certificates-custom-734af0d5-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -50921,7 +50921,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -50935,19 +50935,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -50964,7 +50964,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51009,7 +51009,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-certificates-custom-734af0d5-post-returns" id="api-nodes-node-certificates-custom-734af0d5-post-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -51088,7 +51088,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51102,13 +51102,13 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51122,7 +51122,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51160,7 +51160,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-config-82004e58-get-returns" id="api-nodes-node-config-82004e58-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "acme": {
@@ -51291,7 +51291,7 @@ ACME 索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51305,19 +51305,19 @@ ACME 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51339,7 +51339,7 @@ ACME 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51487,7 +51487,7 @@ ACME 索引。
 
 #### 返回值 <a href="#api-nodes-node-config-82004e58-put-returns" id="api-nodes-node-config-82004e58-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -51507,7 +51507,7 @@ SDN 索引。
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -51515,13 +51515,13 @@ SDN 索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51534,7 +51534,7 @@ SDN 索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51552,7 +51552,7 @@ SDN 索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-d90c97b0-get-returns" id="api-nodes-node-sdn-d90c97b0-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -51582,7 +51582,7 @@ SDN fabric 状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51596,7 +51596,7 @@ SDN fabric 状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -51610,7 +51610,7 @@ SDN fabric 状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51636,7 +51636,7 @@ SDN fabric 状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-fabrics-fabric-159342c2-get-returns" id="api-nodes-node-sdn-fabrics-fabric-159342c2-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -51670,7 +51670,7 @@ SDN fabric 状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51684,19 +51684,19 @@ SDN fabric 状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51710,7 +51710,7 @@ SDN fabric 状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51736,7 +51736,7 @@ SDN fabric 状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-fabrics-fabric-routes-ddecafee-get-returns" id="api-nodes-node-sdn-fabrics-fabric-routes-ddecafee-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -51773,7 +51773,7 @@ SDN fabric 状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51787,19 +51787,19 @@ SDN fabric 状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51813,7 +51813,7 @@ SDN fabric 状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51839,7 +51839,7 @@ SDN fabric 状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-fabrics-fabric-neighbors-5852cb90-get-returns" id="api-nodes-node-sdn-fabrics-fabric-neighbors-5852cb90-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -51876,7 +51876,7 @@ SDN fabric 状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -51890,19 +51890,19 @@ SDN fabric 状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -51916,7 +51916,7 @@ SDN fabric 状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -51942,7 +51942,7 @@ SDN fabric 状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-fabrics-fabric-interfaces-3624f43f-get-returns" id="api-nodes-node-sdn-fabrics-fabric-interfaces-3624f43f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -51979,7 +51979,7 @@ SDN fabric 状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "仅列出您具有 'SDN.Audit' 权限的条目",
   "user": "all"
@@ -51988,19 +51988,19 @@ SDN fabric 状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52013,7 +52013,7 @@ SDN fabric 状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52031,7 +52031,7 @@ SDN fabric 状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-zones-c9bc90b4-get-returns" id="api-nodes-node-sdn-zones-c9bc90b4-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -52078,7 +52078,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52092,7 +52092,7 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -52106,7 +52106,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52131,7 +52131,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-zones-zone-2d692bca-get-returns" id="api-nodes-node-sdn-zones-zone-2d692bca-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -52165,7 +52165,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52179,19 +52179,19 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52205,7 +52205,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52230,7 +52230,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-zones-zone-content-2cc6aa3f-get-returns" id="api-nodes-node-sdn-zones-zone-content-2cc6aa3f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -52275,7 +52275,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52289,19 +52289,19 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52315,7 +52315,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52338,7 +52338,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-zones-zone-bridges-96476f62-get-returns" id="api-nodes-node-sdn-zones-zone-bridges-96476f62-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "description": "SDN 区域中包含的网桥列表。",
@@ -52410,7 +52410,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52424,19 +52424,19 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52450,7 +52450,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52473,7 +52473,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-zones-zone-ip-vrf-29682b34-get-returns" id="api-nodes-node-sdn-zones-zone-ip-vrf-29682b34-get-returns"></a>
 
-```json
+```text
 {
   "description": "节点上区域 {zone} 的 VRF 表中的所有条目。不包括此宿主机上客户机的 /32 路由，因为这些路由通过相应的 vnet 网桥直接处理。",
   "items": {
@@ -52520,7 +52520,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 权限",
   "user": "all"
@@ -52529,7 +52529,7 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -52543,7 +52543,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52568,7 +52568,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-vnets-vnet-31145ca1-get-returns" id="api-nodes-node-sdn-vnets-vnet-31145ca1-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -52602,7 +52602,7 @@ SDN 区域状态的目录索引。
 
 **权限**
 
-```json
+```text
 {
   "description": "需要对 '/sdn/zones/<zone>/<vnet>' 具有 'SDN.Audit' 权限",
   "user": "all"
@@ -52611,19 +52611,19 @@ SDN 区域状态的目录索引。
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52637,7 +52637,7 @@ SDN 区域状态的目录索引。
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52662,7 +52662,7 @@ SDN 区域状态的目录索引。
 
 #### 返回值 <a href="#api-nodes-node-sdn-vnets-vnet-mac-vrf-38e8fec9-get-returns" id="api-nodes-node-sdn-vnets-vnet-mac-vrf-38e8fec9-get-returns"></a>
 
-```json
+```text
 {
   "description": "此节点自行发起或通过 BGP 学习到的 MAC VRF 中的所有路由。",
   "items": {
@@ -52703,7 +52703,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -52711,13 +52711,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52730,7 +52730,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52748,7 +52748,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-version-022e3acb-get-returns" id="api-nodes-node-version-022e3acb-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "release": {
@@ -52782,7 +52782,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52796,13 +52796,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -52815,7 +52815,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -52833,7 +52833,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-status-e94e98b1-get-returns" id="api-nodes-node-status-e94e98b1-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "properties": {
@@ -52970,7 +52970,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -52984,19 +52984,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -53010,7 +53010,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53036,7 +53036,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-status-e94e98b1-post-returns" id="api-nodes-node-status-e94e98b1-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -53056,7 +53056,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53070,13 +53070,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -53089,7 +53089,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53107,7 +53107,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-netstat-6ec4113f-get-returns" id="api-nodes-node-netstat-6ec4113f-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -53131,19 +53131,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -53157,7 +53157,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53182,7 +53182,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-execute-9b8240ca-post-returns" id="api-nodes-node-execute-9b8240ca-post-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -53206,7 +53206,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53220,13 +53220,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -53239,7 +53239,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53257,7 +53257,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-wakeonlan-e5c81160-post-returns" id="api-nodes-node-wakeonlan-e5c81160-post-returns"></a>
 
-```json
+```text
 {
   "description": "用于构造 WoL 魔术包的 MAC 地址。",
   "format": "mac-addr",
@@ -53279,7 +53279,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53293,13 +53293,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -53315,7 +53315,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53360,7 +53360,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-rrd-3780813c-get-returns" id="api-nodes-node-rrd-3780813c-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -53385,7 +53385,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53399,13 +53399,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -53420,7 +53420,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53459,7 +53459,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-rrddata-43a25147-get-returns" id="api-nodes-node-rrddata-43a25147-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -53483,7 +53483,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53497,19 +53497,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -53527,7 +53527,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53576,7 +53576,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-syslog-32dfc57b-get-returns" id="api-nodes-node-syslog-32dfc57b-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -53609,7 +53609,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53623,19 +53623,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -53660,7 +53660,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53759,7 +53759,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-journal-7d3d3bb2-get-returns" id="api-nodes-node-journal-7d3d3bb2-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "type": "string"
@@ -53771,7 +53771,7 @@ API 版本详情
 <details>
 <summary>其他接口元数据</summary>
 
-```json
+```text
 {
   "download_allowed": 1
 }
@@ -53793,7 +53793,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53807,13 +53807,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -53831,7 +53831,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53890,7 +53890,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-vncshell-42537f59-post-returns" id="api-nodes-node-vncshell-42537f59-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -53932,7 +53932,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -53946,13 +53946,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -53967,7 +53967,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54004,7 +54004,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-termproxy-ffd16fe6-post-returns" id="api-nodes-node-termproxy-ffd16fe6-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54042,7 +54042,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54057,7 +54057,7 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -54072,7 +54072,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54103,7 +54103,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-vncwebsocket-c264b329-get-returns" id="api-nodes-node-vncwebsocket-c264b329-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "port": {
@@ -54128,7 +54128,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54142,19 +54142,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54170,7 +54170,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54214,7 +54214,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-spiceshell-fee34732-post-returns" id="api-nodes-node-spiceshell-fee34732-post-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 1,
   "description": "返回值可直接传递给 'remote-viewer' 应用程序。",
@@ -54252,7 +54252,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54266,13 +54266,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54285,7 +54285,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54303,7 +54303,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-dns-f6f932ee-get-returns" id="api-nodes-node-dns-f6f932ee-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54340,7 +54340,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54354,19 +54354,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54383,7 +54383,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54427,7 +54427,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-dns-f6f932ee-put-returns" id="api-nodes-node-dns-f6f932ee-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -54447,7 +54447,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54461,13 +54461,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54480,7 +54480,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54498,7 +54498,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-time-dd3f02c6-get-returns" id="api-nodes-node-time-dd3f02c6-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54531,7 +54531,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54545,19 +54545,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54571,7 +54571,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54594,7 +54594,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-time-dd3f02c6-put-returns" id="api-nodes-node-time-dd3f02c6-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -54614,7 +54614,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "user": "all"
 }
@@ -54622,13 +54622,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54641,7 +54641,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54659,7 +54659,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-aplinfo-121beed6-get-returns" id="api-nodes-node-aplinfo-121beed6-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {},
@@ -54677,7 +54677,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54691,19 +54691,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54718,7 +54718,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54749,7 +54749,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-aplinfo-121beed6-post-returns" id="api-nodes-node-aplinfo-121beed6-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -54769,7 +54769,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54783,13 +54783,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54803,7 +54803,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54826,7 +54826,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-query-oci-repo-tags-e97442c2-get-returns" id="api-nodes-node-query-oci-repo-tags-e97442c2-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "type": "string"
@@ -54849,7 +54849,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "or",
@@ -54874,13 +54874,13 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54895,7 +54895,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -54925,7 +54925,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-query-url-metadata-e8816b06-get-returns" id="api-nodes-node-query-url-metadata-e8816b06-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "filename": {
@@ -54960,7 +54960,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -54974,19 +54974,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -54999,7 +54999,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55017,7 +55017,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-report-710cec2a-get-returns" id="api-nodes-node-report-710cec2a-get-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -55037,7 +55037,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
@@ -55046,19 +55046,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55074,7 +55074,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55114,7 +55114,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-startall-976bb62c-post-returns" id="api-nodes-node-startall-976bb62c-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -55134,7 +55134,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。",
   "user": "all"
@@ -55143,19 +55143,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55172,7 +55172,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55221,7 +55221,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-stopall-b5950ba1-post-returns" id="api-nodes-node-stopall-b5950ba1-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -55241,7 +55241,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.PowerMgmt' 权限。另外，还需要对 '/vms/{vmid}' 路径具有 'VM.Config.Disk' 权限，以及对已配置的状态存储具有 'Datastore.AllocateSpace' 权限",
   "user": "all"
@@ -55250,19 +55250,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55277,7 +55277,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55310,7 +55310,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-suspendall-e28b8f4f-post-returns" id="api-nodes-node-suspendall-e28b8f4f-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -55330,7 +55330,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "description": "对于通过 'vms' 参数传入的每个 ID，需要对 '/' 或 '/vms/<ID>' 具有 'VM.Migrate' 权限。",
   "user": "all"
@@ -55339,19 +55339,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55369,7 +55369,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55422,7 +55422,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-migrateall-149c6f73-post-returns" id="api-nodes-node-migrateall-149c6f73-post-returns"></a>
 
-```json
+```text
 {
   "type": "string"
 }
@@ -55442,7 +55442,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -55456,19 +55456,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55481,7 +55481,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55499,7 +55499,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-hosts-4129b399-get-returns" id="api-nodes-node-hosts-4129b399-get-returns"></a>
 
-```json
+```text
 {
   "properties": {
     "data": {
@@ -55525,7 +55525,7 @@ API 版本详情
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -55539,19 +55539,19 @@ API 版本详情
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
 **代理目标**
 
-```json
+```text
 "node"
 ```
 
@@ -55566,7 +55566,7 @@ API 版本详情
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -55596,7 +55596,7 @@ API 版本详情
 
 #### 返回值 <a href="#api-nodes-node-hosts-4129b399-post-returns" id="api-nodes-node-hosts-4129b399-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }

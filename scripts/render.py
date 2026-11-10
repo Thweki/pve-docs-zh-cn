@@ -249,6 +249,7 @@ def cell(value):
     return html.escape(str(value),quote=False).replace('|',r'\|').replace('\r','').replace('\n','<br>')
 
 def api_pages():
+    # Plain code blocks keep full JSON readable without expensive token highlighting in GitBook.
     schema=json.loads((ROOT/'source/api/schema.json').read_text());groups=[];operations=0
     def walk(nodes,parent=''):
         nonlocal operations
@@ -267,7 +268,7 @@ def api_pages():
                     if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
-                            body += [f'**{label}**\n', '```json\n'+json.dumps(info[field],ensure_ascii=False,indent=2)+'\n```\n']
+                            body += [f'**{label}**\n', '```text\n'+json.dumps(info[field],ensure_ascii=False,indent=2)+'\n```\n']
                     params=info.get('parameters',{});props=params.get('properties',{})
                     body.append(f'#### 请求参数 <a href="#{method_anchor}-parameters" id="{method_anchor}-parameters"></a>\n')
                     if props:
@@ -278,11 +279,11 @@ def api_pages():
                             desc=v.get('verbose_description') or v.get('description','')
                             if v.get('enum') is not None:desc+='；可选值：'+', '.join('`'+str(z)+'`' for z in v['enum'])
                             body.append('| '+' | '.join([f'`{key}`',cell(typ),'是' if required else '否',cell(json.dumps(v['default'],ensure_ascii=False)) if 'default' in v else '—',cell(desc)])+' |')
-                        body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```json\n'+json.dumps(params,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
+                        body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```text\n'+json.dumps(params,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
                     else:body+=['此操作没有请求参数。\n']
-                    body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```json\n'+json.dumps(info.get('returns',{}),ensure_ascii=False,indent=2)+'\n```\n']
+                    body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```text\n'+json.dumps(info.get('returns',{}),ensure_ascii=False,indent=2)+'\n```\n']
                     extras={k:v for k,v in info.items() if k not in {'method','name','description','parameters','returns','permissions','allowtoken','protected','proxyto'}}
-                    if extras:body+=['<details>\n<summary>其他接口元数据</summary>\n','```json\n'+json.dumps(extras,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
+                    if extras:body+=['<details>\n<summary>其他接口元数据</summary>\n','```text\n'+json.dumps(extras,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
                 body.append(f'来源：[官方 API 浏览器]({BASE}api-viewer/index.html#{path})。')
                 groups[-1]['body'].append('\n'.join(body));groups[-1]['pages'].append((path,target,anchor))
             walk(n.get('children',[]),path)

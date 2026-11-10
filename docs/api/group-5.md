@@ -14,7 +14,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -29,13 +29,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -48,7 +48,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -65,7 +65,7 @@
 
 #### 返回值 <a href="#api-pools-4eb15ae6-delete-returns" id="api-pools-4eb15ae6-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -79,7 +79,7 @@
 
 **权限**
 
-```json
+```text
 {
   "description": "列出您对 /pool/<pool> 具有 Pool.Audit 权限的所有资源池，或使用 {poolid} 指定的资源池",
   "user": "all"
@@ -88,7 +88,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -102,7 +102,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -130,7 +130,7 @@
 
 #### 返回值 <a href="#api-pools-4eb15ae6-get-returns" id="api-pools-4eb15ae6-get-returns"></a>
 
-```json
+```text
 {
   "items": {
     "properties": {
@@ -195,7 +195,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -209,13 +209,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -229,7 +229,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -251,7 +251,7 @@
 
 #### 返回值 <a href="#api-pools-4eb15ae6-post-returns" id="api-pools-4eb15ae6-post-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -265,7 +265,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -280,13 +280,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -304,7 +304,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -354,7 +354,7 @@
 
 #### 返回值 <a href="#api-pools-4eb15ae6-put-returns" id="api-pools-4eb15ae6-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -374,7 +374,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -389,13 +389,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -408,7 +408,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -425,7 +425,7 @@
 
 #### 返回值 <a href="#api-pools-poolid-654b0ce2-delete-returns" id="api-pools-poolid-654b0ce2-delete-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
@@ -439,7 +439,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -453,7 +453,7 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
@@ -467,7 +467,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -493,7 +493,7 @@
 
 #### 返回值 <a href="#api-pools-poolid-654b0ce2-get-returns" id="api-pools-poolid-654b0ce2-get-returns"></a>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -546,7 +546,7 @@
 
 **权限**
 
-```json
+```text
 {
   "check": [
     "perm",
@@ -561,13 +561,13 @@
 
 **允许 API 令牌**
 
-```json
+```text
 1
 ```
 
 **受保护接口**
 
-```json
+```text
 1
 ```
 
@@ -585,7 +585,7 @@
 <details>
 <summary>完整请求参数结构</summary>
 
-```json
+```text
 {
   "additionalProperties": 0,
   "properties": {
@@ -635,7 +635,7 @@
 
 #### 返回值 <a href="#api-pools-poolid-654b0ce2-put-returns" id="api-pools-poolid-654b0ce2-put-returns"></a>
 
-```json
+```text
 {
   "type": "null"
 }
