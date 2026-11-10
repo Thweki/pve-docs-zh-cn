@@ -6,17 +6,17 @@ pvesubscription \- Proxmox VE 订阅管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvesubscription** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesubscription" id="cli_pvesubscription"></a>
+### <strong>pvesubscription</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesubscription" id="cli_pvesubscription"></a>
 
-### **pvesubscription delete** <a href="#cli_pvesubscription_delete" id="cli_pvesubscription_delete"></a>
+### <strong>pvesubscription delete</strong> <a href="#cli_pvesubscription_delete" id="cli_pvesubscription_delete"></a>
 
 删除此节点的订阅密钥。
 
-### **pvesubscription get** <a href="#cli_pvesubscription_get" id="cli_pvesubscription_get"></a>
+### <strong>pvesubscription get</strong> <a href="#cli_pvesubscription_get" id="cli_pvesubscription_get"></a>
 
 读取订阅信息。
 
-### **pvesubscription help** `[OPTIONS]` <a href="#cli_pvesubscription_help" id="cli_pvesubscription_help"></a>
+### <strong>pvesubscription help</strong> `[OPTIONS]` <a href="#cli_pvesubscription_help" id="cli_pvesubscription_help"></a>
 
 获取指定命令的帮助。
 
@@ -28,7 +28,7 @@ pvesubscription \- Proxmox VE 订阅管理器
 
 详细输出格式。
 
-### **pvesubscription set** `<key>` <a href="#cli_pvesubscription_set" id="cli_pvesubscription_set"></a>
+### <strong>pvesubscription set</strong> `<key>` <a href="#cli_pvesubscription_set" id="cli_pvesubscription_set"></a>
 
 设置订阅密钥。
 
@@ -36,7 +36,7 @@ pvesubscription \- Proxmox VE 订阅管理器
 
 Proxmox VE 订阅密钥
 
-### **pvesubscription set-offline-key** `<data>` <a href="#cli_pvesubscription_set-offline-key" id="cli_pvesubscription_set-offline-key"></a>
+### <strong>pvesubscription set-offline-key</strong> `<data>` <a href="#cli_pvesubscription_set-offline-key" id="cli_pvesubscription_set-offline-key"></a>
 
 仅供内部使用！要设置离线密钥，请改用 proxmox-offline-mirror-helper 软件包。
 
@@ -44,11 +44,11 @@ Proxmox VE 订阅密钥
 
 已签名的订阅信息数据块
 
-### **pvesubscription update** `[OPTIONS]` <a href="#cli_pvesubscription_update" id="cli_pvesubscription_update"></a>
+### <strong>pvesubscription update</strong> `[OPTIONS]` <a href="#cli_pvesubscription_update" id="cli_pvesubscription_update"></a>
 
 更新订阅信息。
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>`（<em>默认 \=</em> `0`）**
 
 始终连接服务器，即使本地缓存仍有效。
 

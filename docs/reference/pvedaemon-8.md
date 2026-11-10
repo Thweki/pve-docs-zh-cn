@@ -6,9 +6,9 @@ pvedaemon \- PVE API 守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvedaemon** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvedaemon" id="cli_pvedaemon"></a>
+### <strong>pvedaemon</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvedaemon" id="cli_pvedaemon"></a>
 
-### **pvedaemon help** `[OPTIONS]` <a href="#cli_pvedaemon_help" id="cli_pvedaemon_help"></a>
+### <strong>pvedaemon help</strong> `[OPTIONS]` <a href="#cli_pvedaemon_help" id="cli_pvedaemon_help"></a>
 
 获取指定命令的帮助。
 
@@ -20,23 +20,23 @@ pvedaemon \- PVE API 守护进程
 
 详细输出格式。
 
-### **pvedaemon restart** <a href="#cli_pvedaemon_restart" id="cli_pvedaemon_restart"></a>
+### <strong>pvedaemon restart</strong> <a href="#cli_pvedaemon_restart" id="cli_pvedaemon_restart"></a>
 
 重启守护进程（如果未运行则启动）。
 
-### **pvedaemon start** `[OPTIONS]` <a href="#cli_pvedaemon_start" id="cli_pvedaemon_start"></a>
+### <strong>pvedaemon start</strong> `[OPTIONS]` <a href="#cli_pvedaemon_start" id="cli_pvedaemon_start"></a>
 
 启动守护进程。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pvedaemon status** <a href="#cli_pvedaemon_status" id="cli_pvedaemon_status"></a>
+### <strong>pvedaemon status</strong> <a href="#cli_pvedaemon_status" id="cli_pvedaemon_status"></a>
 
 获取守护进程状态。
 
-### **pvedaemon stop** <a href="#cli_pvedaemon_stop" id="cli_pvedaemon_stop"></a>
+### <strong>pvedaemon stop</strong> <a href="#cli_pvedaemon_stop" id="cli_pvedaemon_stop"></a>
 
 停止守护进程。
 

@@ -6,9 +6,9 @@ vzdump \- 虚拟机和容器备份工具
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **vzdump** `help` <a href="#cli_vzdump_help" id="cli_vzdump_help"></a>
+### <strong>vzdump</strong> `help` <a href="#cli_vzdump_help" id="cli_vzdump_help"></a>
 
-### **vzdump** `{<vmid>}` `[OPTIONS]` <a href="#cli_vzdump" id="cli_vzdump"></a>
+### <strong>vzdump</strong> `{<vmid>}` `[OPTIONS]` <a href="#cli_vzdump" id="cli_vzdump"></a>
 
 创建备份。
 
@@ -16,15 +16,15 @@ vzdump \- 虚拟机和容器备份工具
 
 要备份的客户机系统 ID。
 
-**`--all` `<boolean>` （*默认值 \=* `0`）**
+**`--all` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 备份此宿主机上所有已知的客户机系统。
 
-**`--bwlimit` `<integer> (0 - N)` （*默认值 \=* `0`）**
+**`--bwlimit` `<integer> (0 - N)` （<em>默认值 \=</em> `0`）**
 
 限制 I/O 带宽（KiB/s）。
 
-**`--compress` `<0 | 1 | gzip | lzo | zstd>` （*默认值 \=* `0`）**
+**`--compress` `<0 | 1 | gzip | lzo | zstd>` （<em>默认值 \=</em> `0`）**
 
 压缩转储文件。
 
@@ -38,25 +38,25 @@ vzdump \- 虚拟机和容器备份工具
 
 **`--exclude-path` `<array>`**
 
-排除某些文件/目录（shell 通配模式）。以 */* 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
+排除某些文件/目录（shell 通配模式）。以 <em>/</em> 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
 
 **`--fleecing` `[[enabled=]<1|0>] [,storage=<storage ID>]`**
 
 备份 fleecing 的选项（仅限虚拟机）。
 
-**`--ionice` `<integer> (0 - 8)` （*默认值 \=* `7`）**
+**`--ionice` `<integer> (0 - 8)` （<em>默认值 \=</em> `7`）**
 
 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，这仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用尽力而为优先级及指定值。
 
 **`--job-id` `\S+`**
 
-备份任务的 ID。如果设置，备份通知的 *backup-job* 元数据字段将设置为此值。只有 [root@pam](mailto:root@pam) 可以设置此参数。
+备份任务的 ID。如果设置，备份通知的 <em>backup-job</em> 元数据字段将设置为此值。只有 [root@pam](mailto:root@pam) 可以设置此参数。
 
-**`--lockwait` `<integer> (0 - N)` （*默认值 \=* `180`）**
+**`--lockwait` `<integer> (0 - N)` （<em>默认值 \=</em> `180`）**
 
 等待全局锁的最长时间（分钟）。
 
-**`--mailnotification` `<always | failure>` （*默认值 \=* `always`）**
+**`--mailnotification` `<always | failure>` （<em>默认值 \=</em> `always`）**
 
 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件
 
@@ -64,7 +64,7 @@ vzdump \- 虚拟机和容器备份工具
 
 已弃用：请改用通知目标/匹配器。应接收电子邮件通知的电子邮件地址或用户的逗号分隔列表。
 
-**`--mode` `<snapshot | stop | suspend>` （*默认值 \=* `snapshot`）**
+**`--mode` `<snapshot | stop | suspend>` （<em>默认值 \=</em> `snapshot`）**
 
 备份模式。
 
@@ -74,15 +74,15 @@ vzdump \- 虚拟机和容器备份工具
 
 **`--notes-template` `<string>`**
 
-用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 *\\n* 和 *\\\\*。
+用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 <em>\\n</em> 和 <em>\\\\</em>。
 
 {% hint style="info" %}
 需要选项：`storage`
 {% endhint %}
 
-**`--notification-mode` `<auto | legacy-sendmail | notification-system>` （*默认值 \=* `auto`）**
+**`--notification-mode` `<auto | legacy-sendmail | notification-system>` （<em>默认值 \=</em> `auto`）**
 
-确定要使用的通知系统。如果设为 *legacy-sendmail*，vzdump 会考虑 mailto/mailnotification 参数，并通过 *sendmail* 命令向指定地址发送电子邮件。如果设为 *notification-system*，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 *auto*（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
+确定要使用的通知系统。如果设为 <em>legacy-sendmail</em>，vzdump 会考虑 mailto/mailnotification 参数，并通过 <em>sendmail</em> 命令向指定地址发送电子邮件。如果设为 <em>notification-system</em>，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 <em>auto</em>（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
 
 **`--pbs-change-detection-mode` `<data | legacy | metadata>`**
 
@@ -92,7 +92,7 @@ vzdump \- 虚拟机和容器备份工具
 
 其他性能相关设置。
 
-**`--pigz` `<integer>` （*默认值 \=* `0`）**
+**`--pigz` `<integer>` （<em>默认值 \=</em> `0`）**
 
 N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为线程数。
 
@@ -108,23 +108,23 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 需要选项：`storage`
 {% endhint %}
 
-**`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` （*默认值 \=* `keep-all=1`）**
+**`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]` （<em>默认值 \=</em> `keep-all=1`）**
 
 使用这些保留选项，替代存储配置中的保留选项。
 
-**`--quiet` `<boolean>` （*默认值 \=* `0`）**
+**`--quiet` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 静默运行。
 
-**`--remove` `<boolean>` （*默认值 \=* `1`）**
+**`--remove` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-根据 *prune-backups* 清理较旧的备份。
+根据 <em>prune-backups</em> 清理较旧的备份。
 
 **`--script` `<string>`**
 
 使用指定的钩子脚本。
 
-**`--stdexcludes` `<boolean>` （*默认值 \=* `1`）**
+**`--stdexcludes` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 排除临时文件和日志。
 
@@ -132,11 +132,11 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 
 将 tar 写入 stdout，而不是文件。
 
-**`--stop` `<boolean>` （*默认值 \=* `0`）**
+**`--stop` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 停止此宿主机上正在运行的备份任务。
 
-**`--stopwait` `<integer> (0 - N)` （*默认值 \=* `10`）**
+**`--stopwait` `<integer> (0 - N)` （<em>默认值 \=</em> `10`）**
 
 等待客户机系统停止的最长时间（分钟）。
 
@@ -148,7 +148,7 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 
 将临时文件保存到指定目录。
 
-**`--zstd` `<integer>` （*默认值 \=* `1`）**
+**`--zstd` `<integer>` （<em>默认值 \=</em> `1`）**
 
 Zstd 线程数。N\=0 使用可用核心的一半；如果 N 设置为大于 0 的值，则使用 N 作为线程数。
 
@@ -215,7 +215,7 @@ Proxmox VE 在线备份在任意存储类型上提供类似快照的语义，不
 {% endhint %}
 
 {% hint style="info" %}
-默认情况下，除根磁盘挂载点外，其他挂载点不包含在备份中。对于卷挂载点，可以设置 **备份** 选项，将挂载点包含在备份中。设备挂载和绑定挂载从不备份，因为其内容由 Proxmox VE 存储库之外管理。
+默认情况下，除根磁盘挂载点外，其他挂载点不包含在备份中。对于卷挂载点，可以设置 <strong>备份</strong> 选项，将挂载点包含在备份中。设备挂载和绑定挂载从不备份，因为其内容由 Proxmox VE 存储库之外管理。
 {% endhint %}
 
 ### 虚拟机备份 Fleecing <a href="#vm_backup_fleecing" id="vm_backup_fleecing"></a>
@@ -230,7 +230,7 @@ Proxmox VE 在线备份在任意存储类型上提供类似快照的语义，不
 vzdump 123 --fleecing enabled=1,storage=local-lvm
 ```
 
-与往常一样，可以为特定备份任务设置此选项，也可以通过[配置选项](#vzdump_configuration)将其设为节点范围的回退值。在界面中，编辑备份任务时可在*高级*选项卡配置 fleecing。
+与往常一样，可以为特定备份任务设置此选项，也可以通过[配置选项](#vzdump_configuration)将其设为节点范围的回退值。在界面中，编辑备份任务时可在<em>高级</em>选项卡配置 fleecing。
 
 fleecing 存储应是快速本地存储，支持精简置备和 discard。例如 LVM-thin、RBD、在存储配置中设置了 `sparse 1` 的 ZFS，以及许多基于文件的存储。理想情况下，fleecing 存储应为专用存储，这样即使空间耗尽，也不会影响其他客户机，只会使备份失败。fleecing 镜像中已完成备份的部分会被丢弃，以尽量保持较低的空间用量。
 
@@ -244,7 +244,7 @@ fleecing 存储应是快速本地存储，支持精简置备和 discard。例如
 
 设置变更检测模式会定义 pxar 归档的编码格式，以及以 Proxmox Backup Server 为目标备份容器时，如何处理已更改和未更改的文件。
 
-编辑任务时，可以在*高级*选项卡中为单个备份任务配置更改检测模式选项。此外，还可以通过[配置选项](#vzdump_configuration)将此选项设为节点范围的回退值。
+编辑任务时，可以在<em>高级</em>选项卡中为单个备份任务配置更改检测模式选项。此外，还可以通过[配置选项](#vzdump_configuration)将此选项设为节点范围的回退值。
 
 有 3 种可用的变更检测模式：
 
@@ -332,19 +332,19 @@ vzdump-lxc-105-2009_10_09-11_04_43.tar
 
 [![screenshot/gui-cluster-backup-overview.png](../assets/screenshot-gui-cluster-backup-overview-png-18af9966fffc.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-overview.png)
 
-除手动触发备份外，还可以设置定期作业，将全部或选定的虚拟客户机备份到存储。可以在 UI 的 *数据中心* → *备份* 下管理作业，或通过 `/cluster/backup` API 端点管理。两者都会在 `/etc/pve/jobs.cfg` 中生成作业条目，由 `pvescheduler` 守护进程解析并执行。
+除手动触发备份外，还可以设置定期作业，将全部或选定的虚拟客户机备份到存储。可以在 UI 的 <em>数据中心</em> → <em>备份</em> 下管理作业，或通过 `/cluster/backup` API 端点管理。两者都会在 `/etc/pve/jobs.cfg` 中生成作业条目，由 `pvescheduler` 守护进程解析并执行。
 
 [![screenshot/gui-cluster-backup-edit-01-general.png](../assets/screenshot-gui-cluster-backup-edit-01-general-png-fa4abeeaaef7.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-01-general.png)
 
-任务可以配置为针对所有集群节点或某个特定节点，并按给定计划执行。计划格式与 `systemd` 日历事件非常相似，详情请参阅日历事件章节。界面中的*计划*字段可以自由编辑，其下拉列表包含多个可作为起点的示例。
+任务可以配置为针对所有集群节点或某个特定节点，并按给定计划执行。计划格式与 `systemd` 日历事件非常相似，详情请参阅日历事件章节。界面中的<em>计划</em>字段可以自由编辑，其下拉列表包含多个可作为起点的示例。
 
 可以配置任务特定的[保留选项](#vzdump_retention)，覆盖存储或节点配置中的选项；也可以配置[备注模板](#vzdump_notes)，将额外信息随备份一起保存。
 
-当宿主机在计划时间离线或 pvescheduler 被禁用时，计划备份会错过执行，因此可以配置补执行行为。启用 `Repeat missed` 选项（位于 UI 的 *高级* 选项卡，配置中为 `repeat-missed`），即可告知调度器应尽快运行错过的作业。
+当宿主机在计划时间离线或 pvescheduler 被禁用时，计划备份会错过执行，因此可以配置补执行行为。启用 `Repeat missed` 选项（位于 UI 的 <em>高级</em> 选项卡，配置中为 `repeat-missed`），即可告知调度器应尽快运行错过的作业。
 
 [![screenshot/gui-cluster-backup-edit-04-advanced.png](../assets/screenshot-gui-cluster-backup-edit-04-advanced-png-d0a22edf1c07.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-04-advanced.png)
 
-有一些设置可以调优备份性能（其中部分位于界面的*高级*选项卡中）。最值得注意的是用于限制 I/O 带宽的 `bwlimit`。压缩器使用的线程数可以分别通过 `pigz`（替代 `gzip`）和 `zstd` 设置控制。此外，还有 `ionice`（使用 BFQ 调度器时），以及作为 `performance` 设置一部分的 `max-workers`（仅影响虚拟机备份）和 `pbs-entries-max`（仅影响容器备份）。详情请参阅[配置选项](#vzdump_configuration)。
+有一些设置可以调优备份性能（其中部分位于界面的<em>高级</em>选项卡中）。最值得注意的是用于限制 I/O 带宽的 `bwlimit`。压缩器使用的线程数可以分别通过 `pigz`（替代 `gzip`）和 `zstd` 设置控制。此外，还有 `ionice`（使用 BFQ 调度器时），以及作为 `performance` 设置一部分的 `max-workers`（仅影响虚拟机备份）和 `pbs-entries-max`（仅影响容器备份）。详情请参阅[配置选项](#vzdump_configuration)。
 
 ## 备份保留 <a href="#vzdump_retention" id="vzdump_retention"></a>
 
@@ -434,7 +434,7 @@ vzdump-lxc-105-2009_10_09-11_04_43.tar
 
 ## 备份备注 <a href="#vzdump_notes" id="vzdump_notes"></a>
 
-可以使用 UI 中的 *编辑备注* 按钮，或通过存储内容 API 为备份添加备注。
+可以使用 UI 中的 <em>编辑备注</em> 按钮，或通过存储内容 API 为备份添加备注。
 
 [![screenshot/gui-cluster-backup-edit-03-template.png](../assets/screenshot-gui-cluster-backup-edit-03-template-png-bf2a2cf7a400.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-cluster-backup-edit-03-template.png)
 
@@ -495,17 +495,17 @@ vzdump-lxc-105-2009_10_09-11_04_43.tar
 请注意，这有两点需要留意：
 
 - 在线恢复期间，虚拟机的磁盘读取速度会受限，因为必须从备份服务器加载数据（不过一旦加载，数据就会立即在目标存储上可用，因此访问同一数据两次时，只有第一次会产生额外开销）。写入速度基本不受影响。
-- 如果在线恢复因任何原因失败，虚拟机将处于未定义状态，也就是说，可能并非所有数据都已从备份复制，而且 *很可能* 无法保留失败的恢复操作期间写入的任何数据。
+- 如果在线恢复因任何原因失败，虚拟机将处于未定义状态，也就是说，可能并非所有数据都已从备份复制，而且 <em>很可能</em> 无法保留失败的恢复操作期间写入的任何数据。
 
 这种运行模式特别适合大型虚拟机，其初始运行只需要少量数据，例如 Web 服务器：操作系统和必要服务启动后，虚拟机即可运行，而后台任务继续复制很少使用的数据。
 
 ### 单文件恢复 <a href="#single_file_restore" id="single_file_restore"></a>
 
-*文件恢复* 按钮位于存储 GUI 的 *备份* 选项卡中，可用于直接针对备份中包含的数据打开文件浏览器。此功能仅适用于 Proxmox Backup Server 上的备份。
+<em>文件恢复</em> 按钮位于存储 GUI 的 <em>备份</em> 选项卡中，可用于直接针对备份中包含的数据打开文件浏览器。此功能仅适用于 Proxmox Backup Server 上的备份。
 
-对于容器，文件树的第一层显示所有包含的 *pxar* 归档，可自由打开和浏览。对于虚拟机，第一层显示包含的驱动器镜像，打开后会显示驱动器上发现的受支持存储技术列表。在最基本的情况下，会有一个名为 *part* 的条目，表示分区表，其中包含驱动器上发现的每个分区的条目。请注意，对于虚拟机，可能并非所有数据都可访问（不支持的客户机文件系统、存储技术等）。
+对于容器，文件树的第一层显示所有包含的 <em>pxar</em> 归档，可自由打开和浏览。对于虚拟机，第一层显示包含的驱动器镜像，打开后会显示驱动器上发现的受支持存储技术列表。在最基本的情况下，会有一个名为 <em>part</em> 的条目，表示分区表，其中包含驱动器上发现的每个分区的条目。请注意，对于虚拟机，可能并非所有数据都可访问（不支持的客户机文件系统、存储技术等）。
 
-可以使用 *下载* 按钮下载文件和目录，目录会即时压缩为 zip 归档。
+可以使用 <em>下载</em> 按钮下载文件和目录，目录会即时压缩为 zip 归档。
 
 为安全访问可能包含不受信任数据的虚拟机镜像，会启动一台临时虚拟机（不会显示为客户机）。这并不意味着从此类归档下载的数据本身是安全的，但可避免虚拟化管理程序系统面临危险。该虚拟机会在超时后自行停止。从用户角度看，整个过程是透明的。
 
@@ -525,11 +525,11 @@ OPTION: value
 
 目前支持以下选项：
 
-**`bwlimit`：`<integer> (0 - N)`（*默认值 \=* `0`）**
+**`bwlimit`：`<integer> (0 - N)`（<em>默认值 \=</em> `0`）**
 
 限制 I/O 带宽（KiB/s）。
 
-**`compress`：`<0 | 1 | gzip | lzo | zstd>`（*默认值 \=* `0`）**
+**`compress`：`<0 | 1 | gzip | lzo | zstd>`（<em>默认值 \=</em> `0`）**
 
 压缩转储文件。
 
@@ -539,13 +539,13 @@ OPTION: value
 
 **`exclude-path`: `<array>`**
 
-排除某些文件/目录（shell 通配模式）。以 */* 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
+排除某些文件/目录（shell 通配模式）。以 <em>/</em> 开头的路径以容器根目录为锚点，其他路径相对于每个子目录匹配。
 
 **`fleecing`: `[[enabled=]<1|0>] [,storage=<storage ID>]`**
 
 备份 fleecing 的选项（仅限虚拟机）。
 
-**`enabled`\=`<boolean>`（*默认值 \=* `0`）**
+**`enabled`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用备份 fleecing。当客户机发生新的块写入时，将这些块的备份数据缓存在指定存储上，而非直接复制到备份目标。这有助于提高客户机 IO 性能，甚至避免挂起，代价是需要更多存储空间。
 
@@ -553,15 +553,15 @@ OPTION: value
 
 使用此存储保存 fleecing 镜像。为高效利用空间，最好使用支持 discard 且支持精简置备或稀疏文件的本地存储。
 
-**`ionice`：`<integer> (0 - 8)`（*默认值 \=* `7`）**
+**`ionice`：`<integer> (0 - 8)`（<em>默认值 \=</em> `7`）**
 
 使用 BFQ 调度器时设置 IO 优先级。对于虚拟机的 snapshot 和 suspend 模式备份，这仅影响压缩程序。值为 8 表示使用空闲优先级，否则使用尽力而为优先级及指定值。
 
-**`lockwait`：`<integer> (0 - N)`（*默认值 \=* `180`）**
+**`lockwait`：`<integer> (0 - N)`（<em>默认值 \=</em> `180`）**
 
 等待全局锁的最长时间（分钟）。
 
-**`mailnotification`：`<always | failure>`（*默认值 \=* `always`）**
+**`mailnotification`：`<always | failure>`（<em>默认值 \=</em> `always`）**
 
 已弃用：请改用通知目标/匹配器。指定何时发送通知邮件
 
@@ -569,21 +569,21 @@ OPTION: value
 
 已弃用：请改用通知目标/匹配器。应接收电子邮件通知的电子邮件地址或用户的逗号分隔列表。
 
-**`mode`：`<snapshot | stop | suspend>`（*默认值 \=* `snapshot`）**
+**`mode`：`<snapshot | stop | suspend>`（<em>默认值 \=</em> `snapshot`）**
 
 备份模式。
 
 **`notes-template`: `<string>`**
 
-用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 *\\n* 和 *\\\\*。
+用于生成备份备注的模板字符串。可包含变量，这些变量会被替换为其值。目前支持 {\\{\\cluster}}、{\\{\\guestname}}、{\\{\\node}} 和 {\\{\\vmid}}，未来可能添加更多。必须为单行，换行和反斜杠分别需要转义为 <em>\\n</em> 和 <em>\\\\</em>。
 
 {% hint style="info" %}
 需要选项：`storage`
 {% endhint %}
 
-**`notification-mode`：`<auto | legacy-sendmail | notification-system>`（*默认值 \=* `auto`）**
+**`notification-mode`：`<auto | legacy-sendmail | notification-system>`（<em>默认值 \=</em> `auto`）**
 
-确定要使用的通知系统。如果设为 *legacy-sendmail*，vzdump 会考虑 mailto/mailnotification 参数，并通过 *sendmail* 命令向指定地址发送电子邮件。如果设为 *notification-system*，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 *auto*（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
+确定要使用的通知系统。如果设为 <em>legacy-sendmail</em>，vzdump 会考虑 mailto/mailnotification 参数，并通过 <em>sendmail</em> 命令向指定地址发送电子邮件。如果设为 <em>notification-system</em>，则通过 PVE 通知系统发送通知，并忽略 mailto 和 mailnotification。如果设为 <em>auto</em>（默认设置），在设置了 mailto 时会发送电子邮件，否则使用通知系统。
 
 **`pbs-change-detection-mode`: `<data | legacy | metadata>`**
 
@@ -593,15 +593,15 @@ OPTION: value
 
 其他性能相关设置。
 
-**`max-workers`\=`<integer> (1 - 256)`（*默认值 \=* `16`）**
+**`max-workers`\=`<integer> (1 - 256)`（<em>默认值 \=</em> `16`）**
 
 适用于虚拟机。允许同时最多运行此数量的 IO 工作线程。
 
-**`pbs-entries-max`\=`<integer> (1 - N)`（*默认值 \=* `1048576`）**
+**`pbs-entries-max`\=`<integer> (1 - N)`（<em>默认值 \=</em> `1048576`）**
 
 适用于发送到 PBS 的容器备份。限制任一时刻内存中允许的条目数量，以避免意外的 OOM 情况。增大此值可备份包含大量文件的容器。
 
-**`pigz`：`<integer>`（*默认值 \=* `0`）**
+**`pigz`：`<integer>`（<em>默认值 \=</em> `0`）**
 
 N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为线程数。
 
@@ -617,7 +617,7 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 需要选项：`storage`
 {% endhint %}
 
-**`prune-backups`：`[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`（*默认值 \=* `keep-all=1`）**
+**`prune-backups`：`[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`（<em>默认值 \=</em> `keep-all=1`）**
 
 使用这些保留选项，替代存储配置中的保留选项。
 
@@ -649,19 +649,19 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 
 保留最近 \<N\> 个不同年份的备份。如果同一年有多个备份，则只保留最新的备份。
 
-**`remove`：`<boolean>`（*默认值 \=* `1`）**
+**`remove`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
-根据 *prune-backups* 清理较旧的备份。
+根据 <em>prune-backups</em> 清理较旧的备份。
 
 **`script`: `<string>`**
 
 使用指定的钩子脚本。
 
-**`stdexcludes`：`<boolean>`（*默认值 \=* `1`）**
+**`stdexcludes`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 排除临时文件和日志。
 
-**`stopwait`：`<integer> (0 - N)`（*默认值 \=* `10`）**
+**`stopwait`：`<integer> (0 - N)`（<em>默认值 \=</em> `10`）**
 
 等待客户机系统停止的最长时间（分钟）。
 
@@ -673,7 +673,7 @@ N\>0 时使用 pigz 代替 gzip。N\=1 使用一半核心，N\>1 使用 N 作为
 
 将临时文件保存到指定目录。
 
-**`zstd`：`<integer>`（*默认值 \=* `1`）**
+**`zstd`：`<integer>`（<em>默认值 \=</em> `1`）**
 
 Zstd 线程数。N\=0 使用可用核心的一半；如果 N 设置为大于 0 的值，则使用 N 作为线程数。
 

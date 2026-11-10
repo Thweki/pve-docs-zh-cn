@@ -6,9 +6,9 @@ pvesh \- Proxmox VE API 的 Shell 接口
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvesh** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesh" id="cli_pvesh"></a>
+### <strong>pvesh</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesh" id="cli_pvesh"></a>
 
-### **pvesh create** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_create" id="cli_pvesh_create"></a>
+### <strong>pvesh create</strong> `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_create" id="cli_pvesh_create"></a>
 
 对 \<api\_path\> 调用 API POST。
 
@@ -20,7 +20,7 @@ API 路径。
 
 禁用自动代理。
 
-### **pvesh delete** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_delete" id="cli_pvesh_delete"></a>
+### <strong>pvesh delete</strong> `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_delete" id="cli_pvesh_delete"></a>
 
 对 \<api\_path\> 调用 API DELETE。
 
@@ -32,7 +32,7 @@ API 路径。
 
 禁用自动代理。
 
-### **pvesh get** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_get" id="cli_pvesh_get"></a>
+### <strong>pvesh get</strong> `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_get" id="cli_pvesh_get"></a>
 
 对 \<api\_path\> 调用 API GET。
 
@@ -44,7 +44,7 @@ API 路径。
 
 禁用自动代理。
 
-### **pvesh help** `[OPTIONS]` <a href="#cli_pvesh_help" id="cli_pvesh_help"></a>
+### <strong>pvesh help</strong> `[OPTIONS]` <a href="#cli_pvesh_help" id="cli_pvesh_help"></a>
 
 获取指定命令的帮助。
 
@@ -56,7 +56,7 @@ API 路径。
 
 详细输出格式。
 
-### **pvesh ls** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_ls" id="cli_pvesh_ls"></a>
+### <strong>pvesh ls</strong> `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_ls" id="cli_pvesh_ls"></a>
 
 列出 \<api\_path\> 下的子对象。
 
@@ -68,7 +68,7 @@ API 路径。
 
 禁用自动代理。
 
-### **pvesh set** `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_set" id="cli_pvesh_set"></a>
+### <strong>pvesh set</strong> `<api_path>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesh_set" id="cli_pvesh_set"></a>
 
 对 \<api\_path\> 调用 API PUT。
 
@@ -80,7 +80,7 @@ API 路径。
 
 禁用自动代理。
 
-### **pvesh usage** `<api_path>` `[OPTIONS]` <a href="#cli_pvesh_usage" id="cli_pvesh_usage"></a>
+### <strong>pvesh usage</strong> `<api_path>` `[OPTIONS]` <a href="#cli_pvesh_usage" id="cli_pvesh_usage"></a>
 
 打印 \<api\_path\> 的 API 使用信息。
 
@@ -105,12 +105,12 @@ API 命令。
 Proxmox VE 管理工具（`pvesh`）允许直接调用 API 函数，无需使用 REST/HTTPS 服务器。
 
 {% hint style="info" %}
-只有 *root* 可以这样做。
+只有 <em>root</em> 可以这样做。
 {% endhint %}
 
 ## FORMAT\_OPTIONS <a href="#format_options" id="format_options"></a>
 
-可以使用 `--output-format` 参数指定输出格式。默认格式 *text* 使用 ASCII 字符画为表格绘制美观的边框。此外，还会将某些值转换为易于阅读的文本，例如：
+可以使用 `--output-format` 参数指定输出格式。默认格式 <em>text</em> 使用 ASCII 字符画为表格绘制美观的边框。此外，还会将某些值转换为易于阅读的文本，例如：
 
 - Unix 纪元时间显示为 ISO 8601 日期字符串。
 - 时长显示为周/天/小时/分钟/秒的数量，即 `1d 5h`。
@@ -119,19 +119,19 @@ Proxmox VE 管理工具（`pvesh`）允许直接调用 API 函数，无需使用
 
 还可以使用选项 `--quiet` 完全禁止输出。
 
-**`--human-readable` `<boolean>`（*默认值 \=* `1`）**
+**`--human-readable` `<boolean>`（<em>默认值 \=</em> `1`）**
 
 调用输出渲染函数，生成易于阅读的文本。
 
-**`--noborder` `<boolean>`（*默认值 \=* `0`）**
+**`--noborder` `<boolean>`（<em>默认值 \=</em> `0`）**
 
-不绘制边框（适用于 *text* 格式）。
+不绘制边框（适用于 <em>text</em> 格式）。
 
-**`--noheader` `<boolean>`（*默认值 \=* `0`）**
+**`--noheader` `<boolean>`（<em>默认值 \=</em> `0`）**
 
-不显示列标题（适用于 *text* 格式）。
+不显示列标题（适用于 <em>text</em> 格式）。
 
-**`--output-format` `<json | json-pretty | text | yaml>`（*默认值 \=* `text`）**
+**`--output-format` `<json | json-pretty | text | yaml>`（<em>默认值 \=</em> `text`）**
 
 输出格式。
 

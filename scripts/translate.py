@@ -90,8 +90,11 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--workers',type=int,default=3)
     p.add_argument('--words',type=int,default=1800);p.add_argument('--limit',type=int)
     args=p.parse_args()
-    units=json.loads((ROOT/'work/units.json').read_text())
-    cache=ROOT/'work/translations.jsonl';translated={}
+    units=json.loads((ROOT/('work/units.json' if (ROOT/'work/units.json').exists() else 'translations/units.json')).read_text())
+    cache=ROOT/'work/translations.jsonl'
+    cache.parent.mkdir(parents=True,exist_ok=True)
+    translated=json.loads((ROOT/'translations/zh-CN.json').read_text()) if (ROOT/'translations/zh-CN.json').exists() else {}
+    translated={k:v for k,v in translated.items() if k in units and not validate(units[k]['text'],v)}
     if cache.exists():
         for l in cache.read_text().splitlines():
             if not l.strip():continue

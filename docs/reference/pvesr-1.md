@@ -6,15 +6,15 @@ pvesr \- Proxmox VE 存储复制
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvesr** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesr" id="cli_pvesr"></a>
+### <strong>pvesr</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesr" id="cli_pvesr"></a>
 
-### **pvesr create-local-job** `<id> <target>` `[OPTIONS]` <a href="#cli_pvesr_create-local-job" id="cli_pvesr_create-local-job"></a>
+### <strong>pvesr create-local-job</strong> `<id> <target>` `[OPTIONS]` <a href="#cli_pvesr_create-local-job" id="cli_pvesr_create-local-job"></a>
 
 创建新的复制任务
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
 **`<target>`: `<string>`**
 
@@ -34,9 +34,9 @@ pvesr \- Proxmox VE 存储复制
 
 **`--remove_job` `<full | local>`**
 
-将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 *full*，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
+将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 <em>full</em>，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
 
-**`--schedule` `<string>` （*默认值 \=* `*/15`）**
+**`--schedule` `<string>` （<em>默认值 \=</em> `*/15`）**
 
 存储复制计划。其格式是 `systemd` 日历事件的一个子集。
 
@@ -44,45 +44,45 @@ pvesr \- Proxmox VE 存储复制
 
 供内部使用，用于检测客户机是否被接管。
 
-### **pvesr delete** `<id>` `[OPTIONS]` <a href="#cli_pvesr_delete" id="cli_pvesr_delete"></a>
+### <strong>pvesr delete</strong> `<id>` `[OPTIONS]` <a href="#cli_pvesr_delete" id="cli_pvesr_delete"></a>
 
 将复制任务标记为待移除。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>`（<em>默认 \=</em> `0`）**
 
 将移除 jobconfig 条目，但不执行清理。
 
-**`--keep` `<boolean>` （*默认值 \=* `0`）**
+**`--keep` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 保留目标上的复制数据（不移除）。
 
-### **pvesr disable** `<id>` <a href="#cli_pvesr_disable" id="cli_pvesr_disable"></a>
+### <strong>pvesr disable</strong> `<id>` <a href="#cli_pvesr_disable" id="cli_pvesr_disable"></a>
 
 禁用复制任务。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-### **pvesr enable** `<id>` <a href="#cli_pvesr_enable" id="cli_pvesr_enable"></a>
+### <strong>pvesr enable</strong> `<id>` <a href="#cli_pvesr_enable" id="cli_pvesr_enable"></a>
 
 启用复制任务。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-### **pvesr finalize-local-job** `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_finalize-local-job" id="cli_pvesr_finalize-local-job"></a>
+### <strong>pvesr finalize-local-job</strong> `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_finalize-local-job" id="cli_pvesr_finalize-local-job"></a>
 
 完成复制任务的收尾工作。这会移除时间戳与 \<last\_sync\> 不同的所有复制快照。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
 **`<extra-args>`: `<array>`**
 
@@ -92,7 +92,7 @@ pvesr \- Proxmox VE 存储复制
 
 上次成功同步的时间（UNIX 纪元时间）。如果未指定，则移除所有复制快照。
 
-### **pvesr help** `[OPTIONS]` <a href="#cli_pvesr_help" id="cli_pvesr_help"></a>
+### <strong>pvesr help</strong> `[OPTIONS]` <a href="#cli_pvesr_help" id="cli_pvesr_help"></a>
 
 获取指定命令的帮助。
 
@@ -104,23 +104,23 @@ pvesr \- Proxmox VE 存储复制
 
 详细输出格式。
 
-### **pvesr list** <a href="#cli_pvesr_list" id="cli_pvesr_list"></a>
+### <strong>pvesr list</strong> <a href="#cli_pvesr_list" id="cli_pvesr_list"></a>
 
 列出复制任务。
 
-### **pvesr prepare-local-job** `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_prepare-local-job" id="cli_pvesr_prepare-local-job"></a>
+### <strong>pvesr prepare-local-job</strong> `<id> [<extra-args>]` `[OPTIONS]` <a href="#cli_pvesr_prepare-local-job" id="cli_pvesr_prepare-local-job"></a>
 
 准备启动复制任务。在复制开始之前，在目标节点上调用。此调用供内部使用，并在 stdout 上返回 JSON 对象。此方法首先检查虚拟机 \<vmid\> 是否位于本地节点上。如果是，则立即停止。随后此方法扫描所有卷 ID，查找快照，并移除时间戳与 \<last\_sync\> 不同的所有复制快照。它也会移除任何未使用的卷。返回一个哈希，对所有存在复制快照的卷提供布尔标记。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
 **`<extra-args>`: `<array>`**
 
 要考虑的卷 ID 列表。
 
-**`--force` `<boolean>`（*默认 \=* `0`）**
+**`--force` `<boolean>`（<em>默认 \=</em> `0`）**
 
 允许移除所有现有卷（卷列表为空）。
 
@@ -136,39 +136,39 @@ pvesr \- Proxmox VE 存储复制
 
 要扫描陈旧卷的存储 ID 列表。
 
-### **pvesr read** `<id>` <a href="#cli_pvesr_read" id="cli_pvesr_read"></a>
+### <strong>pvesr read</strong> `<id>` <a href="#cli_pvesr_read" id="cli_pvesr_read"></a>
 
 读取复制任务配置。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-### **pvesr run** `[OPTIONS]` <a href="#cli_pvesr_run" id="cli_pvesr_run"></a>
+### <strong>pvesr run</strong> `[OPTIONS]` <a href="#cli_pvesr_run" id="cli_pvesr_run"></a>
 
 此方法由 systemd-timer 调用，并执行所有同步任务或指定同步任务。
 
 **`--id` `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-**`--mail` `<boolean>` （*默认值 \=* `0`）**
+**`--mail` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 发生故障时发送电子邮件通知。
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 向 stdout 打印更详细的日志。
 
-### **pvesr schedule-now** `<id>` <a href="#cli_pvesr_schedule-now" id="cli_pvesr_schedule-now"></a>
+### <strong>pvesr schedule-now</strong> `<id>` <a href="#cli_pvesr_schedule-now" id="cli_pvesr_schedule-now"></a>
 
 安排复制任务尽快启动。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
-### **pvesr set-state** `<vmid> <state>` <a href="#cli_pvesr_set-state" id="cli_pvesr_set-state"></a>
+### <strong>pvesr set-state</strong> `<vmid> <state>` <a href="#cli_pvesr_set-state" id="cli_pvesr_set-state"></a>
 
 在迁移时设置任务复制状态。此调用供内部使用。它接受 JSON 对象形式的任务状态。
 
@@ -180,7 +180,7 @@ VM 的唯一 ID。
 
 作为 JSON 解码后字符串的任务状态。
 
-### **pvesr status** `[OPTIONS]` <a href="#cli_pvesr_status" id="cli_pvesr_status"></a>
+### <strong>pvesr status</strong> `[OPTIONS]` <a href="#cli_pvesr_status" id="cli_pvesr_status"></a>
 
 列出此节点上所有复制任务的状态。
 
@@ -188,13 +188,13 @@ VM 的唯一 ID。
 
 仅列出此客户机的复制任务。
 
-### **pvesr update** `<id>` `[OPTIONS]` <a href="#cli_pvesr_update" id="cli_pvesr_update"></a>
+### <strong>pvesr update</strong> `<id>` `[OPTIONS]` <a href="#cli_pvesr_update" id="cli_pvesr_update"></a>
 
 更新复制任务配置。
 
 **`<id>`: `[1-9][0-9]{2,8}-\d{1,9}`**
 
-复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 *\<GUEST\>-\<JOBNUM\>*。
+复制任务 ID。此 ID 由客户机 ID 和任务编号组成，以连字符分隔，即 <em>\<GUEST\>-\<JOBNUM\></em>。
 
 **`--comment` `<string>`**
 
@@ -218,9 +218,9 @@ VM 的唯一 ID。
 
 **`--remove_job` `<full | local>`**
 
-将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 *full*，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
+将复制任务标记为待移除。此任务将移除所有本地复制快照。如果设置为 <em>full</em>，还会尝试移除目标上的复制卷。然后此任务将从配置文件中移除自身。
 
-**`--schedule` `<string>` （*默认值 \=* `*/15`）**
+**`--schedule` `<string>` （<em>默认值 \=</em> `*/15`）**
 
 存储复制计划。其格式是 `systemd` 日历事件的一个子集。
 

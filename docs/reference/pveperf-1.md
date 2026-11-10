@@ -6,7 +6,7 @@ pveperf \- Proxmox 基准测试
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-**pveperf** `[PATH]`
+<strong>pveperf</strong> `[PATH]`
 
 ## 描述 <a href="#description" id="description"></a>
 

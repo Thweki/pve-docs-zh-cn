@@ -6,9 +6,9 @@ pvescheduler \- PVE 调度守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvescheduler** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvescheduler" id="cli_pvescheduler"></a>
+### <strong>pvescheduler</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvescheduler" id="cli_pvescheduler"></a>
 
-### **pvescheduler help** `[OPTIONS]` <a href="#cli_pvescheduler_help" id="cli_pvescheduler_help"></a>
+### <strong>pvescheduler help</strong> `[OPTIONS]` <a href="#cli_pvescheduler_help" id="cli_pvescheduler_help"></a>
 
 获取指定命令的帮助。
 
@@ -20,23 +20,23 @@ pvescheduler \- PVE 调度守护进程
 
 详细输出格式。
 
-### **pvescheduler restart** <a href="#cli_pvescheduler_restart" id="cli_pvescheduler_restart"></a>
+### <strong>pvescheduler restart</strong> <a href="#cli_pvescheduler_restart" id="cli_pvescheduler_restart"></a>
 
 重启守护进程（如果未运行则启动）。
 
-### **pvescheduler start** `[OPTIONS]` <a href="#cli_pvescheduler_start" id="cli_pvescheduler_start"></a>
+### <strong>pvescheduler start</strong> `[OPTIONS]` <a href="#cli_pvescheduler_start" id="cli_pvescheduler_start"></a>
 
 启动守护进程。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pvescheduler status** <a href="#cli_pvescheduler_status" id="cli_pvescheduler_status"></a>
+### <strong>pvescheduler status</strong> <a href="#cli_pvescheduler_status" id="cli_pvescheduler_status"></a>
 
 获取守护进程状态。
 
-### **pvescheduler stop** <a href="#cli_pvescheduler_stop" id="cli_pvescheduler_stop"></a>
+### <strong>pvescheduler stop</strong> <a href="#cli_pvescheduler_stop" id="cli_pvescheduler_stop"></a>
 
 停止守护进程。
 

@@ -10,8 +10,8 @@ from translate import validate
 ROOT=Path(__file__).resolve().parents[1]
 DOCS=ROOT/'docs'
 BASE='https://pve.proxmox.com/pve-docs/'
-UNITS=json.loads((ROOT/'work/units.json').read_text())
-TRANSLATIONS={}
+UNITS=json.loads((ROOT/('work/units.json' if (ROOT/'work/units.json').exists() else 'translations/units.json')).read_text())
+TRANSLATIONS=json.loads((ROOT/'translations/zh-CN.json').read_text()) if (ROOT/'translations/zh-CN.json').exists() else {}
 if (ROOT/'work/translations.jsonl').exists():
     for line in (ROOT/'work/translations.jsonl').read_text().splitlines():
         if line.strip():TRANSLATIONS.update(json.loads(line))
@@ -115,7 +115,9 @@ def link(href,current,source):
     target=target.removeprefix('./')
     if target in {'api-viewer/','api-viewer/index.html'}:
         if not fragment:return relpath(Path('api/README.md'),current)
-        if fragment in API_LINKS:return relpath(API_LINKS[fragment],current)
+        if fragment in API_LINKS:
+            page,anchor=API_LINKS[fragment]
+            return relpath(page,current)+'#'+anchor
         return urljoin(BASE,href)
     if fragment:
         match=ANCHORS.get((target,fragment))
@@ -137,6 +139,13 @@ class GitBookMarkdown(MarkdownConverter):
     def __init__(self,page):
         self.page=page
         super().__init__(heading_style='ATX',bullets='-',escape_misc=True,escape_underscores=True,escape_asterisks=True,autolinks=False,table_infer_header=True)
+    def convert_strong(self,el,text,parent_tags):
+        # CJK punctuation can prevent CommonMark ** delimiters from closing.
+        return '<strong>'+text+'</strong>' if text else ''
+    convert_b=convert_strong
+    def convert_em(self,el,text,parent_tags):
+        return '<em>'+text+'</em>' if text else ''
+    convert_i=convert_em
     def convert_hN(self,n,el,text,parent_tags):
         n=max(1,min(6,n+self.page['shift']))
         title=re.sub(r'\s+',' ',text.strip())
@@ -197,14 +206,8 @@ def guide_pages():
         heading=section.find(re.compile('^h[1-6]$'),recursive=False)
         anchor=heading.get('id',f'chapter-{i}')
         folder=Path(f'guide/{i:02d}-{anchor.strip("_").replace("chapter_","").replace("_","-")}')
-        children=[]
-        for j,child in enumerate(section.select(':scope > .sectionbody > .sect2'),1):
-            h=child.find('h3',recursive=False)
-            slug=(h.get('id') if h else f'section-{j}').strip('_').replace('_','-')
-            path=folder/f'{j:02d}-{slug[:90]}.md'
-            child.extract();children.append(add_page(path,child,'pve-admin-guide.html',shift=-2))
         page=add_page(folder/'README.md',section,'pve-admin-guide.html',shift=-1)
-        page['children']=children;chapters.append(page)
+        page['children']=[];chapters.append(page)
     FILE_DEFAULTS['pve-admin-guide.html']=chapters[0]['path']
     names=['pve-intro','pve-installation','sysadmin','pve-gui','pvecm','pmxcfs','pvesm','pveceph','pvesr','qm','pct','pvesdn','pve-firewall','pveum','ha-manager','vzdump','notifications']
     for name,page in zip(names,chapters):CHAPTER_DEFAULTS[f'chapter-{name}.html']=page['path']
@@ -253,18 +256,20 @@ def api_pages():
             path=n.get('path') or (parent+'/'+n.get('text',''))
             if n.get('info'):
                 methods=n['info'];slug=re.sub('[^a-zA-Z0-9-]+','-',path).strip('-').lower() or 'root'
-                target=Path('api')/f'{slug}-{hashlib.sha256(path.encode()).hexdigest()[:8]}.md'
-                API_LINKS[path]=target
-                body=[f'# `{path}`\n',f'原始接口路径：`{path}`。\n','方法、参数名、类型、默认值和枚举值与官方规范一致。\n']
+                target=groups[-1]['path']
+                anchor='api-'+slug+'-'+hashlib.sha256(path.encode()).hexdigest()[:8]
+                API_LINKS[path]=(target,anchor)
+                body=[f'## `{path}` <a href="#{anchor}" id="{anchor}"></a>\n',f'原始接口路径：`{path}`。\n']
                 for method,original in methods.items():
                     operations+=1;info=schema_translated(original)
-                    body += [f'## {method} `{path}`\n',html.escape(info.get('verbose_description') or info.get('description',''),quote=False)+'\n']
+                    method_anchor=anchor+'-'+method.lower()
+                    body += [f'### {method} `{path}` <a href="#{method_anchor}" id="{method_anchor}"></a>\n',html.escape(info.get('verbose_description') or info.get('description',''),quote=False)+'\n']
                     if info.get('name'):body.append('**方法标识：** `'+info['name']+'`\n')
                     for field,label in [('permissions','权限'),('allowtoken','允许 API 令牌'),('protected','受保护接口'),('proxyto','代理目标')]:
                         if field in info:
                             body += [f'**{label}**\n', '```json\n'+json.dumps(info[field],ensure_ascii=False,indent=2)+'\n```\n']
                     params=info.get('parameters',{});props=params.get('properties',{})
-                    body.append('### 请求参数\n')
+                    body.append(f'#### 请求参数 <a href="#{method_anchor}-parameters" id="{method_anchor}-parameters"></a>\n')
                     if props:
                         body+=['| 参数 | 类型 | 必填 | 默认值 | 说明 |','| --- | --- | --- | --- | --- |']
                         for key,v in props.items():
@@ -275,19 +280,22 @@ def api_pages():
                             body.append('| '+' | '.join([f'`{key}`',cell(typ),'是' if required else '否',cell(json.dumps(v['default'],ensure_ascii=False)) if 'default' in v else '—',cell(desc)])+' |')
                         body += ['\n<details>\n<summary>完整请求参数结构</summary>\n','```json\n'+json.dumps(params,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
                     else:body+=['此操作没有请求参数。\n']
-                    body += ['### 返回值\n','```json\n'+json.dumps(info.get('returns',{}),ensure_ascii=False,indent=2)+'\n```\n']
+                    body += [f'#### 返回值 <a href="#{method_anchor}-returns" id="{method_anchor}-returns"></a>\n','```json\n'+json.dumps(info.get('returns',{}),ensure_ascii=False,indent=2)+'\n```\n']
                     extras={k:v for k,v in info.items() if k not in {'method','name','description','parameters','returns','permissions','allowtoken','protected','proxyto'}}
                     if extras:body+=['<details>\n<summary>其他接口元数据</summary>\n','```json\n'+json.dumps(extras,ensure_ascii=False,indent=2)+'\n```\n','</details>\n']
                 body.append(f'来源：[官方 API 浏览器]({BASE}api-viewer/index.html#{path})。')
-                write(target,'\n'.join(body));groups[-1]['pages'].append((path,target))
+                groups[-1]['body'].append('\n'.join(body));groups[-1]['pages'].append((path,target,anchor))
             walk(n.get('children',[]),path)
-    for n in schema:
-        groups.append({'name':n.get('text') or n.get('path','API'),'pages':[]});walk([n])
+    for i,n in enumerate(schema,1):
+        groups.append({'name':n.get('text') or n.get('path','API'),'pages':[],'body':[],'path':Path('api')/f'group-{i}.md'});walk([n])
     text='# API 参考\n\n本节根据官方 API 浏览器的同一快照生成，包含 **'+str(operations)+' 个接口操作**。描述翻译为中文，接口路径、方法、参数、类型、约束和默认值保持原值。\n\n'
     for group in groups:
         text+='## '+group['name']+'\n\n'
-        for name,path in group['pages']:text+=f'- [`{name}`]({relpath(path,Path("api/README.md"))})\n'
+        for name,path,anchor in group['pages']:text+=f'- [`{name}`]({relpath(path,Path("api/README.md"))}#{anchor})\n'
         text+='\n'
+        content='# '+group['name']+' API\n\n本章包含此资源组的全部接口，按路径和 HTTP 方法在同一页展开。接口路径、方法、参数、类型、约束和默认值保持原值。\n\n'
+        content+='\n\n'.join(group['body'])
+        write(group['path'],content)
     write(Path('api/README.md'),text)
     return groups,operations
 
@@ -295,6 +303,10 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--allow-partial',action='store_true');args=p.parse_args()
     missing=set(UNITS)-set(TRANSLATIONS)
     if missing and not args.allow_partial:raise SystemExit(f'{len(missing)} untranslated units; refusing release render')
+    # All these files were generated by the previous split-page renderer.
+    for stale in (DOCS/'guide').glob('*/*.md'):
+        if stale.name!='README.md':stale.unlink()
+    for stale in (DOCS/'api').glob('*.md'):stale.unlink()
     chapters=guide_pages();manuals=manual_pages()
     groups,operations=api_pages()
     for page in PAGES:
@@ -320,9 +332,14 @@ def main():
 - [版权、翻译说明与许可证](copyright.md)
 - [GNU 自由文档许可证英文原文](license-original.md)
 
+## 开源与离线阅读
+
+- [完整源码、译文映射与构建脚本](https://github.com/Thweki/pve-docs-zh-cn)
+- [EPUB、PDF、离线 HTML 与源码版本下载](https://github.com/Thweki/pve-docs-zh-cn-releases/releases)
+
 ## 版本与来源
 
-文档正文、章节层级、表格、代码示例、提示框和图片均取自上述官方快照。为了在 GitBook 中阅读，将长章节拆分为子页面，并将原站交叉引用改写为本书内部链接。标题和书签按 GitBook 规则转换为可跳转的章节锚点，脚注整理为各页末尾的注释。
+文档正文、章节层级、表格、代码示例、提示框和图片均取自上述官方快照。管理手册按原始章节组织，每章及其全部子节在同一页显示；命令参考每篇一页，API 按资源组整组同页。原站交叉引用改写为本书内部链接。标题和书签按 GitBook 规则转换为可跳转的章节锚点，脚注整理为各章末尾的注释。
 
 本书不代表 Proxmox Server Solutions GmbH 对译文的认可。中文译文与英文原文有歧义时，请对照每页底部的官方来源。
 '''
@@ -337,11 +354,8 @@ def main():
     summary+=['- [命令与配置参考](reference/README.md)']+[f'  - [{m["title"]}]({m["path"]})' for m in manuals]
     summary+=['- [API 参考](api/README.md)']
     # Resource groups keep a large API reference navigable in GitBook.
-    for i,g in enumerate(groups):
-        groupfile=Path('api')/f'group-{i+1}.md'
-        write(groupfile,'# '+g['name']+'\n\n'+'\n'.join(f'- [`{name}`]({relpath(path,groupfile)})' for name,path in g['pages']))
-        summary.append(f'  - [{g["name"]}]({groupfile})')
-        summary += [f'    - [{name}]({path})' for name,path in g['pages']]
+    for g in groups:
+        summary.append(f'  - [{g["name"]} API]({g["path"]})')
     summary+=['- [术语表](glossary.md)','- [版权与翻译说明](copyright.md)','- [GNU 自由文档许可证英文原文](license-original.md)']
     write(Path('SUMMARY.md'),'\n'.join(summary))
     report={'translation_units':len(UNITS),'translated_units':len(TRANSLATIONS),'missing_units':len(missing),'guide_pages':len([p for p in PAGES if p['source']=='pve-admin-guide.html']),'manuals':len(manuals),'api_operations':operations,'pages':len(list(DOCS.rglob('*.md')))}

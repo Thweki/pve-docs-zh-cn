@@ -6,9 +6,9 @@ ha-manager \- Proxmox VE HA 管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **ha-manager** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_ha-manager" id="cli_ha-manager"></a>
+### <strong>ha-manager</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_ha-manager" id="cli_ha-manager"></a>
 
-### **ha-manager add** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_add" id="cli_ha-manager_add"></a>
+### <strong>ha-manager add</strong> `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_add" id="cli_ha-manager_add"></a>
 
 创建新的 HA 资源。
 
@@ -16,7 +16,7 @@ ha-manager \- Proxmox VE HA 管理器
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
+**`--auto-rebalance` `<boolean>` (<em>默认 \=</em> `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -24,7 +24,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 描述。
 
-**`--failback` `<boolean>` (*默认 \=* `1`)**
+**`--failback` `<boolean>` (<em>默认 \=</em> `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -32,15 +32,15 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (<em>默认 \=</em> `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
+**`--max_restart` `<integer> (0 - N)` (<em>默认 \=</em> `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (<em>默认 \=</em> `started`)**
 
 请求的资源状态。
 
@@ -48,7 +48,7 @@ HA 组标识符。
 
 资源类型。
 
-### **ha-manager config** `[OPTIONS]` <a href="#cli_ha-manager_config" id="cli_ha-manager_config"></a>
+### <strong>ha-manager config</strong> `[OPTIONS]` <a href="#cli_ha-manager_config" id="cli_ha-manager_config"></a>
 
 列出 HA 资源。
 
@@ -56,19 +56,19 @@ HA 组标识符。
 
 仅列出特定类型的资源
 
-### **ha-manager crm-command arm-ha** <a href="#cli_ha-manager_crm-command_arm-ha" id="cli_ha-manager_crm-command_arm-ha"></a>
+### <strong>ha-manager crm-command arm-ha</strong> <a href="#cli_ha-manager_crm-command_arm-ha" id="cli_ha-manager_crm-command_arm-ha"></a>
 
 请求在 HA 堆栈解除布防后重新布防。
 
-### **ha-manager crm-command disarm-ha** `<resource-mode>` <a href="#cli_ha-manager_crm-command_disarm-ha" id="cli_ha-manager_crm-command_disarm-ha"></a>
+### <strong>ha-manager crm-command disarm-ha</strong> `<resource-mode>` <a href="#cli_ha-manager_crm-command_disarm-ha" id="cli_ha-manager_crm-command_disarm-ha"></a>
 
 请求解除 HA 堆栈的布防，并释放整个集群范围内的所有看门狗。
 
 **`<resource-mode>`: `<freeze | ignore>`**
 
-控制解除布防期间如何处理 HA 管理的资源。资源的当前状态不受影响。*freeze*：不应用新命令和状态更改。*ignore*：从 HA 跟踪中移除资源，并可将其当作非 HA 管理的资源进行管理。
+控制解除布防期间如何处理 HA 管理的资源。资源的当前状态不受影响。<em>freeze</em>：不应用新命令和状态更改。<em>ignore</em>：从 HA 跟踪中移除资源，并可将其当作非 HA 管理的资源进行管理。
 
-### **ha-manager crm-command migrate** `<sid> <node>` <a href="#cli_ha-manager_crm-command_migrate" id="cli_ha-manager_crm-command_migrate"></a>
+### <strong>ha-manager crm-command migrate</strong> `<sid> <node>` <a href="#cli_ha-manager_crm-command_migrate" id="cli_ha-manager_crm-command_migrate"></a>
 
 请求将资源在线迁移到另一个节点。
 
@@ -80,7 +80,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 目标节点。
 
-### **ha-manager crm-command node-maintenance disable** `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_disable" id="cli_ha-manager_crm-command_node-maintenance_disable"></a>
+### <strong>ha-manager crm-command node-maintenance disable</strong> `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_disable" id="cli_ha-manager_crm-command_node-maintenance_disable"></a>
 
 更改 node-maintenance 请求状态。
 
@@ -88,7 +88,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 集群节点名称。
 
-### **ha-manager crm-command node-maintenance enable** `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_enable" id="cli_ha-manager_crm-command_node-maintenance_enable"></a>
+### <strong>ha-manager crm-command node-maintenance enable</strong> `<node>` <a href="#cli_ha-manager_crm-command_node-maintenance_enable" id="cli_ha-manager_crm-command_node-maintenance_enable"></a>
 
 更改 node-maintenance 请求状态。
 
@@ -96,7 +96,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 集群节点名称。
 
-### **ha-manager crm-command relocate** `<sid> <node>` <a href="#cli_ha-manager_crm-command_relocate" id="cli_ha-manager_crm-command_relocate"></a>
+### <strong>ha-manager crm-command relocate</strong> `<sid> <node>` <a href="#cli_ha-manager_crm-command_relocate" id="cli_ha-manager_crm-command_relocate"></a>
 
 请求将资源重定位到另一个节点。这会停止旧节点上的服务，并在目标节点上重新启动该服务。
 
@@ -108,7 +108,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 目标节点。
 
-### **ha-manager crm-command stop** `<sid> <timeout>` <a href="#cli_ha-manager_crm-command_stop" id="cli_ha-manager_crm-command_stop"></a>
+### <strong>ha-manager crm-command stop</strong> `<sid> <timeout>` <a href="#cli_ha-manager_crm-command_stop" id="cli_ha-manager_crm-command_stop"></a>
 
 请求停止服务。
 
@@ -120,7 +120,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 超时时间（秒）。如果设置为 0，将执行强制停止。
 
-### **ha-manager groupadd** `<group> --nodes <string>` `[OPTIONS]` <a href="#cli_ha-manager_groupadd" id="cli_ha-manager_groupadd"></a>
+### <strong>ha-manager groupadd</strong> `<group> --nodes <string>` `[OPTIONS]` <a href="#cli_ha-manager_groupadd" id="cli_ha-manager_groupadd"></a>
 
 创建新的 HA 组。（已弃用，建议使用 HA 规则）
 
@@ -136,11 +136,11 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*默认 \=* `0`)**
+**`--nofailback` `<boolean>` (<em>默认 \=</em> `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*默认 \=* `0`)**
+**`--restricted` `<boolean>` (<em>默认 \=</em> `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
@@ -148,11 +148,11 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 组类型。
 
-### **ha-manager groupconfig** <a href="#cli_ha-manager_groupconfig" id="cli_ha-manager_groupconfig"></a>
+### <strong>ha-manager groupconfig</strong> <a href="#cli_ha-manager_groupconfig" id="cli_ha-manager_groupconfig"></a>
 
 获取 HA 组。（已弃用，建议使用 HA 规则）
 
-### **ha-manager groupremove** `<group>` <a href="#cli_ha-manager_groupremove" id="cli_ha-manager_groupremove"></a>
+### <strong>ha-manager groupremove</strong> `<group>` <a href="#cli_ha-manager_groupremove" id="cli_ha-manager_groupremove"></a>
 
 删除 HA 组配置。（已弃用，建议使用 HA 规则）
 
@@ -160,7 +160,7 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 HA 组标识符。
 
-### **ha-manager groupset** `<group>` `[OPTIONS]` <a href="#cli_ha-manager_groupset" id="cli_ha-manager_groupset"></a>
+### <strong>ha-manager groupset</strong> `<group>` `[OPTIONS]` <a href="#cli_ha-manager_groupset" id="cli_ha-manager_groupset"></a>
 
 更新 HA 组配置。（已弃用，建议使用 HA 规则）
 
@@ -184,15 +184,15 @@ HA 组标识符。
 
 带有可选优先级的集群节点名称列表。
 
-**`--nofailback` `<boolean>` (*默认 \=* `0`)**
+**`--nofailback` `<boolean>` (<em>默认 \=</em> `0`)**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`--restricted` `<boolean>` (*默认 \=* `0`)**
+**`--restricted` `<boolean>` (<em>默认 \=</em> `0`)**
 
 绑定到受限组的资源只能在该组定义的节点上运行。
 
-### **ha-manager help** `[OPTIONS]` <a href="#cli_ha-manager_help" id="cli_ha-manager_help"></a>
+### <strong>ha-manager help</strong> `[OPTIONS]` <a href="#cli_ha-manager_help" id="cli_ha-manager_help"></a>
 
 获取指定命令的帮助。
 
@@ -204,15 +204,15 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 详细输出格式。
 
-### **ha-manager migrate** <a href="#cli_ha-manager_migrate" id="cli_ha-manager_migrate"></a>
+### <strong>ha-manager migrate</strong> <a href="#cli_ha-manager_migrate" id="cli_ha-manager_migrate"></a>
 
-*ha-manager crm-command migrate* 的别名。
+<em>ha-manager crm-command migrate</em> 的别名。
 
-### **ha-manager relocate** <a href="#cli_ha-manager_relocate" id="cli_ha-manager_relocate"></a>
+### <strong>ha-manager relocate</strong> <a href="#cli_ha-manager_relocate" id="cli_ha-manager_relocate"></a>
 
-*ha-manager crm-command relocate* 的别名。
+<em>ha-manager crm-command relocate</em> 的别名。
 
-### **ha-manager remove** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_remove" id="cli_ha-manager_remove"></a>
+### <strong>ha-manager remove</strong> `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_remove" id="cli_ha-manager_remove"></a>
 
 删除资源配置。
 
@@ -220,11 +220,11 @@ CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高�
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--purge` `<boolean>` (*默认 \=* `1`)**
+**`--purge` `<boolean>` (<em>默认 \=</em> `1`)**
 
 从引用此资源的规则中移除此资源；如果此资源是规则中的唯一资源，则删除该规则
 
-### **ha-manager rules add** `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_add" id="cli_ha-manager_rules_add"></a>
+### <strong>ha-manager rules add</strong> `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_add" id="cli_ha-manager_rules_add"></a>
 
 创建 HA 规则。
 
@@ -240,9 +240,9 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
+**`--affinity` `<negative | positive>` (<em>默认 \=</em> `positive`)**
 
-描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
+描述 HA 资源应放置在指定节点上（<em>positive</em>），还是应放置在指定节点以外的任何节点上（<em>negative</em>）。
 
 **`--comment` `<string>`**
 
@@ -260,7 +260,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*默认 \=* `0`)**
+**`--strict` `<boolean>` (<em>默认 \=</em> `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -268,7 +268,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 **`--affinity` `<negative | positive>`**
 
-描述 HA 资源是否应保留在同一节点上（*positive*），还是应保留在不同节点上（*negative*）。
+描述 HA 资源是否应保留在同一节点上（<em>positive</em>），还是应保留在不同节点上（<em>negative</em>）。
 
 **`--comment` `<string>`**
 
@@ -282,7 +282,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-### **ha-manager rules config** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_config" id="cli_ha-manager_rules_config"></a>
+### <strong>ha-manager rules config</strong> `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_config" id="cli_ha-manager_rules_config"></a>
 
 获取 HA 规则。
 
@@ -294,7 +294,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 将返回的列表限制为指定的规则类型。
 
-### **ha-manager rules list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_list" id="cli_ha-manager_rules_list"></a>
+### <strong>ha-manager rules list</strong> `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_ha-manager_rules_list" id="cli_ha-manager_rules_list"></a>
 
 获取 HA 规则。
 
@@ -306,7 +306,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 将返回的列表限制为指定的规则类型。
 
-### **ha-manager rules remove** `<rule>` <a href="#cli_ha-manager_rules_remove" id="cli_ha-manager_rules_remove"></a>
+### <strong>ha-manager rules remove</strong> `<rule>` <a href="#cli_ha-manager_rules_remove" id="cli_ha-manager_rules_remove"></a>
 
 删除 HA 规则。
 
@@ -314,7 +314,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 HA 规则标识符。
 
-### **ha-manager rules set** `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_set" id="cli_ha-manager_rules_set"></a>
+### <strong>ha-manager rules set</strong> `<type> <rule>` `[OPTIONS]` <a href="#cli_ha-manager_rules_set" id="cli_ha-manager_rules_set"></a>
 
 更新 HA 规则。
 
@@ -338,9 +338,9 @@ HA 规则标识符。
 
 **`[type=node-affinity]`**
 
-**`--affinity` `<negative | positive>` (*默认 \=* `positive`)**
+**`--affinity` `<negative | positive>` (<em>默认 \=</em> `positive`)**
 
-描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
+描述 HA 资源应放置在指定节点上（<em>positive</em>），还是应放置在指定节点以外的任何节点上（<em>negative</em>）。
 
 **`--comment` `<string>`**
 
@@ -358,7 +358,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`--strict` `<boolean>` (*默认 \=* `0`)**
+**`--strict` `<boolean>` (<em>默认 \=</em> `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -366,7 +366,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 **`--affinity` `<negative | positive>`**
 
-描述 HA 资源是否应保留在同一节点上（*positive*），还是应保留在不同节点上（*negative*）。
+描述 HA 资源是否应保留在同一节点上（<em>positive</em>），还是应保留在不同节点上（<em>negative</em>）。
 
 **`--comment` `<string>`**
 
@@ -380,7 +380,7 @@ HA 规则是否已禁用。
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-### **ha-manager set** `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_set" id="cli_ha-manager_set"></a>
+### <strong>ha-manager set</strong> `<sid>` `[OPTIONS]` <a href="#cli_ha-manager_set" id="cli_ha-manager_set"></a>
 
 更新资源配置。
 
@@ -388,7 +388,7 @@ HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名
 
 HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒号分隔（示例：vm:100 / ct:100）。对于虚拟机和容器，可以直接使用 VM 或 CT ID 作为简写（示例：100）。
 
-**`--auto-rebalance` `<boolean>` (*默认 \=* `1`)**
+**`--auto-rebalance` `<boolean>` (<em>默认 \=</em> `1`)**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -404,7 +404,7 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 如果当前配置文件的摘要不同，则阻止更改。这可用于防止并发修改。
 
-**`--failback` `<boolean>` (*默认 \=* `1`)**
+**`--failback` `<boolean>` (<em>默认 \=</em> `1`)**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -412,23 +412,23 @@ HA 资源 ID。由资源类型和特定于资源的名称组成，二者以冒�
 
 HA 组标识符。
 
-**`--max_relocate` `<integer> (0 - N)` (*默认 \=* `1`)**
+**`--max_relocate` `<integer> (0 - N)` (<em>默认 \=</em> `1`)**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`--max_restart` `<integer> (0 - N)` (*默认 \=* `1`)**
+**`--max_restart` `<integer> (0 - N)` (<em>默认 \=</em> `1`)**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`--state` `<disabled | enabled | ignored | started | stopped>` (*默认 \=* `started`)**
+**`--state` `<disabled | enabled | ignored | started | stopped>` (<em>默认 \=</em> `started`)**
 
 请求的资源状态。
 
-### **ha-manager status** `[OPTIONS]` <a href="#cli_ha-manager_status" id="cli_ha-manager_status"></a>
+### <strong>ha-manager status</strong> `[OPTIONS]` <a href="#cli_ha-manager_status" id="cli_ha-manager_status"></a>
 
 显示 HA 管理器状态。
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 详细输出。包含完整的 CRM 和 LRM 状态（JSON）。
 
@@ -605,7 +605,7 @@ service vm:100 (node1, started)
 # ha-manager remove vm:100
 ```
 
-默认情况下，这还会从引用该资源的任何规则中移除该资源，并删除仅引用此资源的规则。您可以使用*--purge 0*覆盖此行为。
+默认情况下，这还会从引用该资源的任何规则中移除该资源，并删除仅引用此资源的规则。您可以使用<em>--purge 0</em>覆盖此行为。
 
 {% hint style="info" %}
 这不会启动或停止资源。
@@ -727,7 +727,7 @@ LRM 进入活动状态后，会读取 `/etc/pve/ha/manager_status` 中的管理�
 
 CRM 请求的每个命令都可以通过 UID 唯一标识。工作进程完成后，其结果会被处理并写入 LRM 状态文件 `/etc/pve/nodes/<nodename>/lrm_status`。CRM 可以在该文件中收集结果，并根据命令输出让其状态机执行相应操作。
 
-CRM 和 LRM 之间针对每个服务的操作通常始终保持同步。这意味着 CRM 请求一个由 UID 唯一标记的状态，然后 LRM 执行此操作**一次**并写回结果，该结果同样可以通过相同的 UID 标识。这样做是为了确保 LRM 不会执行过时的命令。此行为的唯一例外是 `stop` 和 `error` 命令；这两个命令不依赖于生成的结果，在停止状态下总是执行，在错误状态下执行一次。
+CRM 和 LRM 之间针对每个服务的操作通常始终保持同步。这意味着 CRM 请求一个由 UID 唯一标记的状态，然后 LRM 执行此操作<strong>一次</strong>并写回结果，该结果同样可以通过相同的 UID 标识。这样做是为了确保 LRM 不会执行过时的命令。此行为的唯一例外是 `stop` 和 `error` 命令；这两个命令不依赖于生成的结果，在停止状态下总是执行，在错误状态下执行一次。
 
 {% hint style="info" %}
 **阅读日志**
@@ -753,9 +753,9 @@ CRM 持有其排他锁，并且已配置服务
 
 CRM 丢失了锁，这意味着发生了故障并且失去了仲裁。
 
-它的主要任务是管理配置为高可用性的服务，并始终尝试强制执行请求的状态。例如，如果请求状态为 *started* 的服务尚未运行，则会启动该服务。如果它崩溃，会自动再次启动。因此，CRM 决定 LRM 需要执行的操作。
+它的主要任务是管理配置为高可用性的服务，并始终尝试强制执行请求的状态。例如，如果请求状态为 <em>started</em> 的服务尚未运行，则会启动该服务。如果它崩溃，会自动再次启动。因此，CRM 决定 LRM 需要执行的操作。
 
-当节点离开集群仲裁时，其状态变为 unknown。如果当前 CRM 随后能够获取故障节点的锁，服务将被*接管*并在另一个节点上重启。
+当节点离开集群仲裁时，其状态变为 unknown。如果当前 CRM 随后能够获取故障节点的锁，服务将被<em>接管</em>并在另一个节点上重启。
 
 当集群成员确定自己已不再处于集群仲裁中时，LRM 会等待新的仲裁形成。在形成集群仲裁之前，该节点无法重置看门狗。如果节点上有活动服务，或者 LRM 或 CRM 进程未被调度或被终止，这将在看门狗超时后触发重启（这发生在 60 秒后）。
 
@@ -799,7 +799,7 @@ ssh root@<IPofPVE> -Y
 mkdir working
 ```
 
-然后，只需将创建的目录作为参数传递给 *pve-ha-simulator*：
+然后，只需将创建的目录作为参数传递给 <em>pve-ha-simulator</em>：
 
 ```text
 pve-ha-simulator working/
@@ -827,7 +827,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 它以资源类型开头，后跟资源特定名称，两者之间用冒号分隔。它们共同构成 HA 资源 ID，所有 `ha-manager` 命令都使用该 ID 唯一标识资源（例如：`vm:100` 或 `ct:101`）。接下来的行包含其他属性：
 
-**`auto-rebalance`：`<boolean>`（*默认值 \=* `1`）**
+**`auto-rebalance`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 自动重新平衡期间可以迁移 HA 资源
 
@@ -835,7 +835,7 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 描述。
 
-**`failback`：`<boolean>`（*默认值 \=* `1`）**
+**`failback`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 如果优先级高于当前节点的节点上线，则根据其节点亲和性规则，自动将 HA 资源迁移到优先级最高的节点。
 
@@ -843,15 +843,15 @@ HA 栈已很好地集成到 Proxmox VE API 中。因此，例如，可以通过 
 
 HA 组标识符。
 
-**`max_relocate`：`<integer> (0 - N)`（*默认值 \=* `1`）**
+**`max_relocate`：`<integer> (0 - N)`（<em>默认值 \=</em> `1`）**
 
 资源启动失败时，尝试重定位资源的最大次数。
 
-**`max_restart`：`<integer> (0 - N)`（*默认值 \=* `1`）**
+**`max_restart`：`<integer> (0 - N)`（<em>默认值 \=</em> `1`）**
 
 资源启动失败后，在节点上重启该资源的最大尝试次数。达到该次数后，HA 管理器将尝试把资源重定位到符合条件的节点。
 
-**`state`：`<disabled | enabled | ignored | started | stopped>`（*默认值 \=* `started`）**
+**`state`：`<disabled | enabled | ignored | started | stopped>`（<em>默认值 \=</em> `started`）**
 
 请求的资源状态。CRM 读取此状态并采取相应操作。请注意，`enabled` 只是 `started` 的别名。
 
@@ -918,13 +918,13 @@ group: <group>
 
 集群节点成员列表，可以为每个节点指定优先级。资源将在具有最高优先级的可用节点上运行。如果最高优先级类别中有多个节点，资源将分布到这些节点上。优先级只有相对意义。数值越大，优先级越高。
 
-**`nofailback`：`<boolean>`（*默认值 \=* `0`）**
+**`nofailback`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 CRM 会尝试在优先级最高的节点上运行服务。如果优先级更高的节点上线，CRM 会将服务迁移到该节点。启用 nofailback 可阻止此行为。
 
-**`restricted`：`<boolean>`（*默认值 \=* `0`）**
+**`restricted`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
-绑定到受限组的资源只能在组定义的节点上运行。如果没有组节点成员在线，资源将被置于停止状态。非受限组上的资源可以在所有组成员离线时运行于任何集群节点，但一旦组成员上线，它们就会迁移回去。使用只有一个成员的非受限组，可以实现*首选节点*行为。
+绑定到受限组的资源只能在组定义的节点上运行。如果没有组节点成员在线，资源将被置于停止状态。非受限组上的资源可以在所有组成员离线时运行于任何集群节点，但一旦组成员上线，它们就会迁移回去。使用只有一个成员的非受限组，可以实现<em>首选节点</em>行为。
 
 [![screenshot/gui-ha-manager-add-group.png](../assets/screenshot-gui-ha-manager-add-group-png-4ee8eb028494.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-ha-manager-add-group.png)
 
@@ -1068,9 +1068,9 @@ node-affinity: priority-cascade
 
 ##### 节点亲和性规则属性 <a href="#node_affinity_rule_properties" id="node_affinity_rule_properties"></a>
 
-**`affinity`: `<negative | positive>` (*默认值 \=* `positive`)**
+**`affinity`: `<negative | positive>` (<em>默认值 \=</em> `positive`)**
 
-描述 HA 资源应放置在指定节点上（*positive*），还是应放置在指定节点以外的任何节点上（*negative*）。
+描述 HA 资源应放置在指定节点上（<em>positive</em>），还是应放置在指定节点以外的任何节点上（<em>negative</em>）。
 
 **`nodes`: `<node>[:<pri>]{,<node>[:<pri>]}*`**
 
@@ -1080,7 +1080,7 @@ node-affinity: priority-cascade
 
 HA 资源 ID 列表。每个 ID 由资源类型和后随的特定于资源的名称组成，二者以冒号分隔（示例：vm:100,ct:101）。
 
-**`strict`: `<boolean>` (*默认值 \=* `0`)**
+**`strict`: `<boolean>` (<em>默认值 \=</em> `0`)**
 
 描述节点亲和性规则是严格的还是非严格的。
 
@@ -1150,7 +1150,7 @@ resource-affinity: keep-separate
 
 **`affinity`: `<negative | positive>`**
 
-描述 HA 资源是否应保留在同一节点上（*positive*），还是应保留在不同节点上（*negative*）。
+描述 HA 资源是否应保留在同一节点上（<em>positive</em>），还是应保留在不同节点上（<em>negative</em>）。
 
 **`resources`: `<type>:<name>{,<type>:<name>}*`**
 
@@ -1196,18 +1196,18 @@ HA 规则可以对 HA 资源施加相当复杂的约束。为确保新建或修�
 
 在正常运行期间，`ha-manager` 会定期重置看门狗定时器，以防止其超时。如果计算机因硬件故障或程序错误而未能重置看门狗，定时器将超时并触发整台服务器重置（重新启动）。
 
-近期的服务器主板通常包含此类硬件看门狗，但需要对其进行配置。如果没有可用或已配置的看门狗，我们会回退到 Linux 内核的 *softdog*。虽然它仍然可靠，但它并不独立于服务器硬件，因此可靠性低于硬件看门狗。
+近期的服务器主板通常包含此类硬件看门狗，但需要对其进行配置。如果没有可用或已配置的看门狗，我们会回退到 Linux 内核的 <em>softdog</em>。虽然它仍然可靠，但它并不独立于服务器硬件，因此可靠性低于硬件看门狗。
 
 ### 配置硬件看门狗 <a href="#configure_hardware_watchdog" id="configure_hardware_watchdog"></a>
 
-默认情况下，出于安全原因，所有硬件看门狗模块均被阻止。如果未正确初始化，它们就像一把上了膛的枪。要启用硬件看门狗，需要在 */etc/default/pve-ha-manager* 中指定要加载的模块，例如：
+默认情况下，出于安全原因，所有硬件看门狗模块均被阻止。如果未正确初始化，它们就像一把上了膛的枪。要启用硬件看门狗，需要在 <em>/etc/default/pve-ha-manager</em> 中指定要加载的模块，例如：
 
 ```text
 # select watchdog module (default is softdog)
 WATCHDOG_MODULE=iTCO_wdt
 ```
 
-此配置由 *watchdog-mux* 服务读取，该服务会在启动时加载指定的模块。
+此配置由 <em>watchdog-mux</em> 服务读取，该服务会在启动时加载指定的模块。
 
 ### 恢复已隔离的服务 <a href="#recover_fenced_services" id="recover_fenced_services"></a>
 
@@ -1278,7 +1278,7 @@ HA 堆栈已就绪，但没有 CRM 正在作为主节点主动运行，例如尚
 - 使资源恢复到安全且一致的状态（例如：如果无法停止服务，则终止其进程）
 - 禁用资源以清除错误标志
 - 修复导致这些故障的错误
-- **在**修复所有错误后，可以请求重新启动该服务
+- <strong>在</strong>修复所有错误后，可以请求重新启动该服务
 
 ## 软件包更新 <a href="#ha_manager_package_updates" id="ha_manager_package_updates"></a>
 
@@ -1331,7 +1331,7 @@ HA 堆栈主要可在以下两类维护中为你提供支持：
 
 ### 关机策略 <a href="#ha_manager_shutdown_policy" id="ha_manager_shutdown_policy"></a>
 
-下面介绍节点关机的不同 HA 策略。目前，由于向后兼容性，*Conditional* 是默认策略。一些用户可能会发现 *Migrate* 的行为更符合预期。
+下面介绍节点关机的不同 HA 策略。目前，由于向后兼容性，<em>Conditional</em> 是默认策略。一些用户可能会发现 <em>Migrate</em> 的行为更符合预期。
 
 可以在 Web UI（`Datacenter` → `Options` → `HA Settings`）中配置关机策略，也可以直接在 `datacenter.cfg` 中配置：
 
@@ -1341,7 +1341,7 @@ ha: shutdown_policy=<value>
 
 #### Migrate <a href="#migrate" id="migrate"></a>
 
-当本地资源管理器（LRM）收到关机请求且启用此策略后，它会将自身标记为对当前 HA 管理器不可用。这会触发当前位于此节点上的所有 HA 服务迁移。LRM 会尝试延迟关机过程，直到所有正在运行的服务都迁走。但这要求正在运行的服务**能够**迁移到另一个节点。换言之，服务不得绑定到本地，例如使用硬件直通。再比如，严格的节点亲和性规则会告知 HA 管理器，该服务不能在选定节点集之外运行。如果所有这些节点都不可用，关机将一直挂起，直到手动干预。当已关机的节点重新上线后，先前迁走的服务将移回，除非在此期间已手动迁移。
+当本地资源管理器（LRM）收到关机请求且启用此策略后，它会将自身标记为对当前 HA 管理器不可用。这会触发当前位于此节点上的所有 HA 服务迁移。LRM 会尝试延迟关机过程，直到所有正在运行的服务都迁走。但这要求正在运行的服务<strong>能够</strong>迁移到另一个节点。换言之，服务不得绑定到本地，例如使用硬件直通。再比如，严格的节点亲和性规则会告知 HA 管理器，该服务不能在选定节点集之外运行。如果所有这些节点都不可用，关机将一直挂起，直到手动干预。当已关机的节点重新上线后，先前迁走的服务将移回，除非在此期间已手动迁移。
 
 {% hint style="info" %}
 关机迁移过程中，看门狗仍处于活动状态。如果节点失去仲裁，它将被隔离，服务将得到恢复。
@@ -1359,11 +1359,11 @@ ha: shutdown_policy=<value>
 
 #### Conditional <a href="#conditional" id="conditional"></a>
 
-*Conditional* 关机策略会自动检测请求的是关机还是重启，并相应地更改行为。
+<em>Conditional</em> 关机策略会自动检测请求的是关机还是重启，并相应地更改行为。
 
 **关机**
 
-通常，如果计划让节点停机一段时间，就会执行关机（*poweroff*）。在这种情况下，LRM 会停止所有受管理的服务。这意味着其他节点随后将接管这些服务。
+通常，如果计划让节点停机一段时间，就会执行关机（<em>poweroff</em>）。在这种情况下，LRM 会停止所有受管理的服务。这意味着其他节点随后将接管这些服务。
 
 {% hint style="info" %}
 近年的硬件配备大量内存（RAM）。因此，我们会先停止所有资源，再重新启动它们，以避免在线迁移所有这些 RAM。如果要使用在线迁移，需要在关闭节点之前手动调用在线迁移。
@@ -1371,7 +1371,7 @@ ha: shutdown_policy=<value>
 
 **重启**
 
-节点的重启通过 *reboot* 命令发起。通常在安装新内核后执行此操作。请注意，这与“关机”不同，因为节点会立即重新启动。
+节点的重启通过 <em>reboot</em> 命令发起。通常在安装新内核后执行此操作。请注意，这与“关机”不同，因为节点会立即重新启动。
 
 LRM 告知 CRM 它希望重启，并等待 CRM 将所有资源置于 `freeze` 状态（[Package Updates](#ha_manager_package_updates) 也使用相同的机制）。这可防止这些资源被移动到其他节点。相反，CRM 会在重启后在同一节点上启动这些资源。
 
@@ -1380,7 +1380,7 @@ LRM 告知 CRM 它希望重启，并等待 CRM 将所有资源置于 `freeze` �
 最后同样重要的是，您还可以在关闭或重启节点之前，手动将资源移动到其他节点。其优势在于您拥有完全的控制权，并且可以决定是否使用在线迁移。
 
 {% hint style="info" %}
-请不要 *kill* `pve-ha-crm`、`pve-ha-lrm` 或 `watchdog-mux` 等服务。它们管理并使用看门狗，因此这样做可能导致节点立即重启，甚至复位。
+请不要 <em>kill</em> `pve-ha-crm`、`pve-ha-lrm` 或 `watchdog-mux` 等服务。它们管理并使用看门狗，因此这样做可能导致节点立即重启，甚至复位。
 {% endhint %}
 
 ## 为集群维护解除 HA 防护 <a href="#ha_manager_disarm" id="ha_manager_disarm"></a>
@@ -1447,7 +1447,7 @@ LRM 告知 CRM 它希望重启，并等待 CRM 将所有资源置于 `freeze` �
 
 **解除防护期间节点离线**
 
-如果在解除 HA 防护时某个节点处于离线状态，其 LRM 将无法处理解除防护请求。一旦所有**在线** LRM 完成各自的操作，CRM 就会进入已解除防护状态。离线节点不会阻止此过程。
+如果在解除 HA 防护时某个节点处于离线状态，其 LRM 将无法处理解除防护请求。一旦所有<strong>在线</strong> LRM 完成各自的操作，CRM 就会进入已解除防护状态。离线节点不会阻止此过程。
 
 当离线节点在 HA 仍处于解除防护状态时重新上线，其 LRM 会获取解除防护状态并释放看门狗，而不会尝试任何服务恢复。
 
@@ -1531,9 +1531,9 @@ HA Manager 的自动负载均衡器可以通过自动发起重新均衡迁移来
 
 可以在 Web 界面的`Datacenter` → `Options` → `Cluster Resource Scheduling`下启用并配置自动负载均衡系统。这样可以针对不同的集群设置和要求，按照下一段所述对各种参数进行微调。负载均衡器要求使用[静态负载](#ha_manager_crs_static_scheduler)或[动态负载](#ha_manager_crs_dynamic_scheduler)调度器模式。
 
-在每一轮 HA Manager 中（每轮持续约 10 秒），自动负载均衡器都会检查集群不均衡程度是否超过*不均衡阈值*。如果集群不均衡程度连续高于阈值的 HA Manager 轮数至少达到*保持时长*所指定的轮数，负载均衡器将为一项 HA 资源选择能够最大程度降低集群整体不均衡程度的重新均衡迁移。可以使用*重新均衡方法*选项设置选择最佳重新均衡迁移的方法。最后，如果所选迁移能够使当前集群不均衡程度至少降低*不均衡改善幅度*选项所指定的百分比，负载均衡器就会发起所选迁移。
+在每一轮 HA Manager 中（每轮持续约 10 秒），自动负载均衡器都会检查集群不均衡程度是否超过<em>不均衡阈值</em>。如果集群不均衡程度连续高于阈值的 HA Manager 轮数至少达到<em>保持时长</em>所指定的轮数，负载均衡器将为一项 HA 资源选择能够最大程度降低集群整体不均衡程度的重新均衡迁移。可以使用<em>重新均衡方法</em>选项设置选择最佳重新均衡迁移的方法。最后，如果所选迁移能够使当前集群不均衡程度至少降低<em>不均衡改善幅度</em>选项所指定的百分比，负载均衡器就会发起所选迁移。
 
-集群不平衡度由各个节点负载的标准差和均值计算得出，并归一化到 0-100% 范围。*不平衡阈值*和*不平衡改善度*均以百分比配置。*不平衡阈值*默认为 30%，用于控制负载均衡器的灵敏度；值为 `0` 时，每当超过*保持时长*，它都会尝试选择一次再平衡迁移。*不平衡改善度*默认为 10%，用于筛选可接受的再平衡迁移；值为 `0` 时，即使预期不平衡度完全没有变化，它也总是会执行迁移。该值永远不能为负数，因此均衡器绝不会执行预期不平衡度比当前情况更糟的迁移。
+集群不平衡度由各个节点负载的标准差和均值计算得出，并归一化到 0-100% 范围。<em>不平衡阈值</em>和<em>不平衡改善度</em>均以百分比配置。<em>不平衡阈值</em>默认为 30%，用于控制负载均衡器的灵敏度；值为 `0` 时，每当超过<em>保持时长</em>，它都会尝试选择一次再平衡迁移。<em>不平衡改善度</em>默认为 10%，用于筛选可接受的再平衡迁移；值为 `0` 时，即使预期不平衡度完全没有变化，它也总是会执行迁移。该值永远不能为负数，因此均衡器绝不会执行预期不平衡度比当前情况更糟的迁移。
 
 {% hint style="info" %}
 未来计划将非 HA 资源也纳入负载均衡。

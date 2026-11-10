@@ -1,44 +1,59 @@
 # Proxmox VE 中文文档
 
-基于 <https://pve.proxmox.com/pve-docs/> 的非官方简体中文译本，目标版本为 **9.2.13**。GitBook 内容位于 `docs/`，保留原始图片、代码、表格、提示框和章节引用关系。
+Proxmox VE **9.2.13** 官方文档的非官方简体中文译本。原文日期为 2026 年 9 月 24 日，源快照获取于 2026 年 11 月 10 日。
 
-## 内容范围
+- **管理手册 29 章**：每章与全部子节同页，章内跳转。
+- **命令、服务与配置参考 29 篇**：每篇完整同页。
+- **680 个 API 操作**：按 6 个资源组整组同页，保留参数、约束、权限和返回结构。
+- 原始图片、代码、表格、提示框、注释与引用关系均有完整性校验。
 
-- 完整管理手册及附录。
-- 官方入口列出的 29 份命令、服务和配置参考手册。
-- API 浏览器中的 680 个接口操作及参数、返回结构和权限信息。
-- 术语、来源、版本快照、资源校验记录与原始许可证。
+[公开版本下载](https://github.com/Thweki/pve-docs-zh-cn-releases/releases)提供 EPUB、完整 PDF、单页离线 HTML 与可重建源码。HTML、EPUB 中每章的子节也连续显示。译文由 AI 辅助完成，未经 Proxmox 官方审核；截图及命令示例保持原值。
 
-翻译由 AI 辅助完成，未经 Proxmox 官方审核。截图保持原图，图中英文界面文字不重绘。GitBook 使用其原生页面样式。
+## 从公开源码离线重建
 
-## 构建与更新
+需要 Python 3.12 或更新版本。原始输入、固定译文映射、开放字体和构建脚本均随源码提供。
 
 ```sh
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-# 初次使用，保存官方索引、完整管理手册和 API JS 到 source/ 对应目录。
-mkdir -p source/html source/api source/prepared source/raw-assets work docs/assets reports
-curl -fsSL https://pve.proxmox.com/pve-docs/ -o source/html/index.html
-curl -fsSL https://pve.proxmox.com/pve-docs/pve-admin-guide.html -o source/html/pve-admin-guide.html
-curl -fsSL https://pve.proxmox.com/pve-docs/api-viewer/apidoc.js -o source/api/apidoc.js
-.venv/bin/python scripts/prepare.py
-.venv/bin/python scripts/translate.py --workers 3
+mkdir -p work
+.venv/bin/python scripts/package_source.py --restore-snapshot
 .venv/bin/python scripts/render.py
 .venv/bin/python scripts/verify.py
 ```
 
-翻译步骤调用本机已登录的 Kimi Code CLI，不读取、保存或输出登录凭据。每个有效译文单元会立即缓存于忽略跟踪的 `work/translations.jsonl`。恢复时只处理缺失或校验失败的单元。
+`translations/units.json` 保存原文和受保护标记，`translations/zh-CN.json` 保存 11,508 条有效译文。构建直接使用这些映射。`source/upstream-snapshot.tar.gz` 保存原始 HTML/API 与可重新生成的定位缓存，附逐文件校验清单。已验证断网、无工作缓存条件下可逐字节重建 `docs/`。
 
-本次译本在 Kimi 达到窗口用量上限后，经发布者授权由 Codex 子代理接力完成。辅助翻译批次可通过 `scripts/merge_agent_outputs.py` 合并；只有通过相同完整性校验的译文才会进入缓存。
+## 导出 EPUB、PDF 和 HTML
 
-`render.py` 默认拒绝生成含有未译内容的发布版本。`--allow-partial` 仅用于排版预览。发布前应检查 `reports/` 的完整性报告与 GitBook 的实际渲染。
+macOS 系统依赖：
 
-## GitBook
+```sh
+brew install pandoc pango poppler
+.venv/bin/pip install -r requirements-export.txt
+touch work/CHAPTER_LAYOUT_READY
+.venv/bin/python scripts/export_web_epub.py
+.venv/bin/python scripts/export_pdf.py --qa
+.venv/bin/python scripts/package_source.py
+```
 
-`.gitbook.yaml` 指向 `docs/`，`gitbook-docs.yaml` 定义站点、中文空间与稳定空间键。`docs/SUMMARY.md` 是唯一导航来源。首次同步方向应选择 **GitHub → GitBook**。
+其他系统安装相应的 Pandoc、Pango、Poppler，参见 [Pandoc](https://pandoc.org/installing.html) 和 [WeasyPrint](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html) 官方安装说明。
 
-原始页面与翻译工作缓存不提交到代码仓库；`source/manifest.json`、`source/assets-manifest.json` 和 `reports/` 保留内容来源与校验记录。
+- `builds/html/index.html`：带目录、搜索和代码复制的单页离线全书，资源全部本地化。
+- `builds/Proxmox-VE-9.2.13-zh-CN.epub`：EPUB 3，每章内子节保持在同一文档项。
+- `output/pdf/Proxmox-VE-9.2.13-zh-CN.pdf`：完整 PDF，含书签、目录与页码。
+- `builds/Proxmox-VE-9.2.13-zh-CN-source.zip`：含原始快照与译文映射的源码归档。
 
-## 许可证
+`reports/` 与导出报告记录文字、代码、图片、字体、链接、分页及复建检查。PDF 的超高表格采用保留完整字段内容的可分页排版。
 
-原始文档 Copyright (C) 2015 - 2026 Proxmox Server Solutions GmbH，依据 GNU Free Documentation License 1.3 或更新版本分发，无不变章节、封面文字或封底文字。中文翻译按同一文档许可证分发。完整英文条款见 `LICENSE` 与书内许可证页面。
+## GitBook 与翻译更新
+
+`.gitbook.yaml` 指向 `docs/`；`gitbook-docs.yaml` 定义站点与稳定空间键；`docs/SUMMARY.md` 是导航来源。首次 Git Sync 方向选择 **GitHub → GitBook**。
+
+日常勘误可修改公开译文映射并重建。更新上游快照时，可重新运行 `scripts/prepare.py` 提取变化单元，再运行 `scripts/translate.py` 使用已登录的 Kimi Code 辅助翻译，或由贡献者直接补齐映射。发布构建默认拒绝缺失或不符合校验要求的译文。
+
+## 许可证与贡献
+
+文档及译文采用 **GFDL-1.3-no-invariants-or-later**；本项目构建脚本/CSS/JavaScript 采用 **AGPL-3.0-or-later**；开放字体采用 **SIL OFL 1.1**。上游其他程序保留原有许可，完整来源和条款见 [NOTICE.md](NOTICE.md)、`LICENSE` 与 `LICENSES/`。
+
+欢迎通过 Issue 或 Pull Request 提交勘误、术语改进和构建修复。

@@ -6,13 +6,13 @@ qm \- QEMU/KVM 虚拟机管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **qm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_qm" id="cli_qm"></a>
+### <strong>qm</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_qm" id="cli_qm"></a>
 
-### **qm agent** <a href="#cli_qm_agent" id="cli_qm_agent"></a>
+### <strong>qm agent</strong> <a href="#cli_qm_agent" id="cli_qm_agent"></a>
 
-*qm guest cmd* 的别名。
+<em>qm guest cmd</em> 的别名。
 
-### **qm cleanup** `<vmid> <clean-shutdown> <guest-requested>` <a href="#cli_qm_cleanup" id="cli_qm_cleanup"></a>
+### <strong>qm cleanup</strong> `<vmid> <clean-shutdown> <guest-requested>` <a href="#cli_qm_cleanup" id="cli_qm_cleanup"></a>
 
 清理 tap 设备、vgpu 等资源。在虚拟机关机、崩溃等情况后调用。
 
@@ -28,7 +28,7 @@ VM 的唯一 ID。
 
 表示关机是由客户机请求，还是通过 qmp 请求。
 
-### **qm clone** `<vmid> <newid>` `[OPTIONS]` <a href="#cli_qm_clone" id="cli_qm_clone"></a>
+### <strong>qm clone</strong> `<vmid> <newid>` `[OPTIONS]` <a href="#cli_qm_clone" id="cli_qm_clone"></a>
 
 创建虚拟机/模板的副本。
 
@@ -40,7 +40,7 @@ VM 的唯一 ID。
 
 克隆的 VMID。
 
-**`--bwlimit` `<integer> (0 - N)` （*默认值 \=* `clone limit from datacenter or storage config`）**
+**`--bwlimit` `<integer> (0 - N)` （<em>默认值 \=</em> `clone limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -76,7 +76,7 @@ VM 的唯一 ID。
 
 目标节点。仅当原始 VM 位于共享存储上时才允许。
 
-### **qm cloudinit dump** `<vmid> <type>` <a href="#cli_qm_cloudinit_dump" id="cli_qm_cloudinit_dump"></a>
+### <strong>qm cloudinit dump</strong> `<vmid> <type>` <a href="#cli_qm_cloudinit_dump" id="cli_qm_cloudinit_dump"></a>
 
 获取自动生成的 cloudinit 配置。
 
@@ -88,7 +88,7 @@ VM 的唯一 ID。
 
 配置类型。
 
-### **qm cloudinit pending** `<vmid>` <a href="#cli_qm_cloudinit_pending" id="cli_qm_cloudinit_pending"></a>
+### <strong>qm cloudinit pending</strong> `<vmid>` <a href="#cli_qm_cloudinit_pending" id="cli_qm_cloudinit_pending"></a>
 
 获取同时包含当前值和待应用值的 cloudinit 配置。
 
@@ -96,7 +96,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm cloudinit update** `<vmid>` <a href="#cli_qm_cloudinit_update" id="cli_qm_cloudinit_update"></a>
+### <strong>qm cloudinit update</strong> `<vmid>` <a href="#cli_qm_cloudinit_update" id="cli_qm_cloudinit_update"></a>
 
 重新生成并更改 cloudinit 配置驱动器。
 
@@ -104,15 +104,15 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm config** `<vmid>` `[OPTIONS]` <a href="#cli_qm_config" id="cli_qm_config"></a>
+### <strong>qm config</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_config" id="cli_qm_config"></a>
 
-获取应用待定配置更改后的虚拟机配置。设置 *current* 参数可改为获取当前配置。
+获取应用待定配置更改后的虚拟机配置。设置 <em>current</em> 参数可改为获取当前配置。
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
 VM 的唯一 ID。
 
-**`--current` `<boolean>`（*默认 \=* `0`）**
+**`--current` `<boolean>`（<em>默认 \=</em> `0`）**
 
 获取当前值（而非待生效值）。
 
@@ -120,7 +120,7 @@ VM 的唯一 ID。
 
 从指定快照获取配置值。
 
-### **qm create** `<vmid>` `[OPTIONS]` <a href="#cli_qm_create" id="cli_qm_create"></a>
+### <strong>qm create</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_create" id="cli_qm_create"></a>
 
 创建或恢复虚拟机。
 
@@ -128,7 +128,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--acpi` `<boolean>` （*默认值 \=* `1`）**
+**`--acpi` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 ACPI。
 
@@ -140,7 +140,7 @@ VM 的唯一 ID。
 
 启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
-**`--allow-ksm` `<boolean>` （*默认值 \=* `1`）**
+**`--allow-ksm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
@@ -154,7 +154,7 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 **`--archive` `<string>`**
 
-备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 *\-* 从 stdin 通过管道传入数据），也可以是 proxmox 存储备份卷标识符。
+备份归档。可以是 .tar 或 .vma 文件的文件系统路径（使用 <em>\-</em> 从 stdin 通过管道传入数据），也可以是 proxmox 存储备份卷标识符。
 
 **`--args` `<string>`**
 
@@ -164,7 +164,7 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 配置音频设备，与 QXL/Spice 结合使用时很有用。
 
-**`--autostart` `<boolean>` （*默认值 \=* `0`）**
+**`--autostart` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 崩溃后自动重启（目前被忽略）。
 
@@ -172,19 +172,19 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
-**`--bios` `<ovmf | seabios>` （*默认值 \=* `seabios`）**
+**`--bios` `<ovmf | seabios>` （<em>默认值 \=</em> `seabios`）**
 
 选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
+指定客户机启动顺序。请使用 <em>order\=</em> 子属性，因为不带键的用法或 <em>legacy\=</em> 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
+启用从指定磁盘启动。已弃用：请改用 <em>boot: order\=foo;bar</em>。
 
-**`--bwlimit` `<integer> (0 - N)` （*默认值 \=* `restore limit from datacenter or storage config`）**
+**`--bwlimit` `<integer> (0 - N)` （<em>默认值 \=</em> `restore limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -204,7 +204,7 @@ cloud-init：分配给用户的密码。通常不建议使用此选项，请改�
 
 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`--ciupgrade` `<boolean>` （*默认值 \=* `1`）**
+**`--ciupgrade` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 cloud-init：首次启动后自动执行软件包升级。
 
@@ -212,7 +212,7 @@ cloud-init：首次启动后自动执行软件包升级。
 
 cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
-**`--cores` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--cores` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 每个 CPU 插槽的核心数。
 
@@ -220,11 +220,11 @@ cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像�
 
 模拟的 CPU 类型。
 
-**`--cpulimit` `<number> (0 - 128)` （*默认值 \=* `0`）**
+**`--cpulimit` `<number> (0 - 128)` （<em>默认值 \=</em> `0`）**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` （*默认值 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (1 - 262144)` （<em>默认值 \=</em> `cgroup v1: 1024, cgroup v2: 100`）**
 
 虚拟机的 CPU 权重，在 cgroup v2 中限制为 \[1, 10000\]。
 
@@ -234,7 +234,7 @@ CPU 使用限制。
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--force` `<boolean>`**
 
@@ -246,9 +246,9 @@ CPU 使用限制。
 
 **`--freeze` `<boolean>`**
 
-启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
+启动时冻结 CPU（使用 <em>c</em> 监视器命令开始执行）。
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>`（<em>默认 \=</em> `0`）**
 
 创建虚拟机后，将其添加为 HA 资源。
 
@@ -260,23 +260,23 @@ CPU 使用限制。
 
 将宿主机 PCI 设备映射到客户机中。
 
-**`--hotplug` `<string>` （*默认值 \=* `network,disk,usb`）**
+**`--hotplug` `<string>` （<em>默认值 \=</em> `network,disk,usb`）**
 
-选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：<em>network</em>、<em>disk</em>、<em>cpu</em>、<em>memory</em>、<em>usb</em> 和 <em>cloudinit</em>。使用 <em>0</em> 完全禁用热插拔。将 <em>1</em> 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
 启用大页内存。
 
-设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
+设置大页的大小，单位为 MiB。如果值设置为 <em>any</em>，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--import-working-storage` `<storage ID>`**
 
-已启用 *images* 内容类型的文件存储，导入期间用作中间解压存储。默认为源存储。
+已启用 <em>images</em> 内容类型的文件存储，导入期间用作中间解压存储。默认为源存储。
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
@@ -288,7 +288,7 @@ cloud-init：为相应接口指定 IP 地址和网关。
 
 IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
+IP 地址可以使用特殊字符串 <em>dhcp</em> 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 <em>auto</em> 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
 如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
@@ -296,7 +296,7 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
-**`--keephugepages` `<boolean>` （*默认值 \=* `0`）**
+**`--keephugepages` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 与大页配合使用。如果启用，虚拟机关机后不会删除大页，可供后续启动使用。
 
@@ -304,7 +304,7 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系统内部处理通常更合适。
 
-**`--kvm` `<boolean>` （*默认值 \=* `1`）**
+**`--kvm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 KVM 硬件虚拟化。
 
@@ -328,11 +328,11 @@ VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系�
 
 内存属性。
 
-**`--migrate_downtime` `<number> (0 - N)` （*默认值 \=* `0.1`）**
+**`--migrate_downtime` `<number> (0 - N)` （<em>默认值 \=</em> `0.1`）**
 
 设置迁移可容忍的最长停机时间（秒）。如果迁移在最后阶段因需要传输过多新写脏的 RAM 而无法收敛，将自动逐步增加此限制，直至迁移能够收敛。上限为 2000 秒（QEMU 中的最大值）。
 
-**`--migrate_speed` `<integer> (0 - N)` （*默认值 \=* `0`）**
+**`--migrate_speed` `<integer> (0 - N)` （<em>默认值 \=</em> `0`）**
 
 设置迁移的最大速度（MB/s）。值为 0 表示不限制。
 
@@ -348,7 +348,7 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 指定网络设备。
 
-**`--numa` `<boolean>` （*默认值 \=* `0`）**
+**`--numa` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用 NUMA。
 
@@ -356,11 +356,11 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 NUMA 拓扑。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>`（<em>默认 \=</em> `0`）**
 
 指定是否在系统启动时启动虚拟机。
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （*默认值 \=* `other`）**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （<em>默认值 \=</em> `other`）**
 
 指定客户机操作系统。
 
@@ -372,13 +372,13 @@ NUMA 拓扑。
 
 将 VM 添加到指定池。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>`（<em>默认 \=</em> `0`）**
 
 设置虚拟机的保护标志。这将禁用删除虚拟机和删除磁盘操作。
 
-**`--reboot` `<boolean>` （*默认值 \=* `1`）**
+**`--reboot` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-允许重启。如果设为 *0*，虚拟机将在重启时退出。
+允许重启。如果设为 <em>0</em>，虚拟机将在重启时退出。
 
 **`--rng0` `[source=]</dev/urandom|/dev/random|/dev/hwrng> [,max_bytes=<integer>] [,period=<integer>]`**
 
@@ -386,13 +386,13 @@ NUMA 拓扑。
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （*默认值 \=* `lsi`）**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （<em>默认值 \=</em> `lsi`）**
 
 SCSI 控制器型号
 
@@ -404,7 +404,7 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 在虚拟机内创建串口设备（n 为 0 到 3）
 
-**`--shares` `<integer> (0 - 50000)` （*默认值 \=* `1000`）**
+**`--shares` `<integer> (0 - 50000)` （<em>默认值 \=</em> `1000`）**
 
 自动气球调整的内存份额。数值越大，该虚拟机获得的内存越多。该数值相对于所有其他运行中虚拟机的权重。使用零可禁用自动气球调整。自动气球调整由 pvestatd 完成。
 
@@ -412,11 +412,11 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 指定 SMBIOS 类型 1 的字段。
 
-**`--smp` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--smp` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 数量。请改用 -sockets 选项。
 
-**`--sockets` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--sockets` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 插槽数量。
 
@@ -428,23 +428,23 @@ CPU 插槽数量。
 
 cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>`（<em>默认 \=</em> `0`）**
 
 成功创建后启动虚拟机。
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （*默认值 \=* `now`）**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （<em>默认值 \=</em> `now`）**
 
-设置实时时钟的初始日期。有效的日期格式为：'now'、*2006-06-17T16:01:21* 或 *2006-06-17*。
+设置实时时钟的初始日期。有效的日期格式为：'now'、<em>2006-06-17T16:01:21</em> 或 <em>2006-06-17</em>。
 
 **`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
-启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
+启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 <em>up</em> 或 <em>down</em> 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
 **`--storage` `<storage ID>`**
 
 默认存储。
 
-**`--tablet` `<boolean>` （*默认值 \=* `1`）**
+**`--tablet` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 USB 数位板设备。
 
@@ -452,17 +452,17 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 虚拟机的标签。这只是元信息。
 
-**`--tdf` `<boolean>` （*默认值 \=* `0`）**
+**`--tdf` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用时间漂移修正。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>`（<em>默认 \=</em> `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-配置用于存储 TPM 状态的磁盘。格式固定为 *raw*。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 TPM 状态的磁盘。格式固定为 <em>raw</em>。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--unique` `<boolean>`**
 
@@ -480,7 +480,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 配置 USB 设备（n 为 0 到 4；对于机型版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的情况，n 最大可为 14）。
 
-**`--vcpus` `<integer> (1 - N)` （*默认值 \=* `0`）**
+**`--vcpus` `<integer> (1 - N)` （<em>默认值 \=</em> `0`）**
 
 热插拔的 vcpu 数量。
 
@@ -490,15 +490,15 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。
 
-**`--vmgenid` `<UUID>` （*默认值 \=* `1 (autogenerated)`）**
+**`--vmgenid` `<UUID>` （<em>默认值 \=</em> `1 (autogenerated)`）**
 
-设置虚拟机世代 ID。使用 *1* 在创建或更新时自动生成，传入 *0* 可明确禁用。
+设置虚拟机世代 ID。使用 <em>1</em> 在创建或更新时自动生成，传入 <em>0</em> 可明确禁用。
 
 **`--vmstatestorage` `<storage ID>`**
 
@@ -508,7 +508,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 创建虚拟硬件看门狗设备。
 
-### **qm delsnapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_delsnapshot" id="cli_qm_delsnapshot"></a>
+### <strong>qm delsnapshot</strong> `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_delsnapshot" id="cli_qm_delsnapshot"></a>
 
 删除虚拟机快照。
 
@@ -524,7 +524,7 @@ VM 的唯一 ID。
 
 即使删除磁盘快照失败，也从配置文件中移除。
 
-### **qm destroy** `<vmid>` `[OPTIONS]` <a href="#cli_qm_destroy" id="cli_qm_destroy"></a>
+### <strong>qm destroy</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_destroy" id="cli_qm_destroy"></a>
 
 销毁虚拟机以及所有使用的/所属的卷。移除所有虚拟机特定权限和防火墙规则
 
@@ -532,7 +532,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--destroy-unreferenced-disks` `<boolean>` （*默认值 \=* `0`）**
+**`--destroy-unreferenced-disks` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果设置，还会从所有已启用的存储中销毁配置中未引用但 VMID 匹配的所有磁盘。
 
@@ -544,7 +544,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-### **qm disk import** `<vmid> <source> <storage>` `[OPTIONS]` <a href="#cli_qm_disk_import" id="cli_qm_disk_import"></a>
+### <strong>qm disk import</strong> `<vmid> <source> <storage>` `[OPTIONS]` <a href="#cli_qm_disk_import" id="cli_qm_disk_import"></a>
 
 将外部磁盘镜像作为虚拟机中的未使用磁盘导入。镜像格式必须受 qemu-img(1) 支持。
 
@@ -568,7 +568,7 @@ VM 的唯一 ID。
 
 卷将导入到的磁盘名称（例如 scsi1）。
 
-### **qm disk move** `<vmid> <disk> [<storage>]` `[OPTIONS]` <a href="#cli_qm_disk_move" id="cli_qm_disk_move"></a>
+### <strong>qm disk move</strong> `<vmid> <disk> [<storage>]` `[OPTIONS]` <a href="#cli_qm_disk_move" id="cli_qm_disk_move"></a>
 
 将卷移动到其他存储或其他虚拟机。
 
@@ -584,11 +584,11 @@ VM 的唯一 ID。
 
 目标存储。
 
-**`--bwlimit` `<integer> (0 - N)` （*默认值 \=* `move limit from datacenter or storage config`）**
+**`--bwlimit` `<integer> (0 - N)` （<em>默认值 \=</em> `move limit from datacenter or storage config`）**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (<em>默认 \=</em> `0`)**
 
 成功复制后删除原始磁盘。默认保留原始磁盘作为未使用磁盘。
 
@@ -612,11 +612,11 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm disk rescan** `[OPTIONS]` <a href="#cli_qm_disk_rescan" id="cli_qm_disk_rescan"></a>
+### <strong>qm disk rescan</strong> `[OPTIONS]` <a href="#cli_qm_disk_rescan" id="cli_qm_disk_rescan"></a>
 
 重新扫描所有存储，并更新磁盘大小和未使用的磁盘映像。
 
-**`--dryrun` `<boolean>` (*默认 \=* `0`)**
+**`--dryrun` `<boolean>` (<em>默认 \=</em> `0`)**
 
 不将更改实际写入虚拟机配置。
 
@@ -624,7 +624,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm disk resize** `<vmid> <disk> <size>` `[OPTIONS]` <a href="#cli_qm_disk_resize" id="cli_qm_disk_resize"></a>
+### <strong>qm disk resize</strong> `<vmid> <disk> <size>` `[OPTIONS]` <a href="#cli_qm_disk_resize" id="cli_qm_disk_resize"></a>
 
 扩展卷大小。
 
@@ -648,7 +648,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-### **qm disk unlink** `<vmid> --idlist <string>` `[OPTIONS]` <a href="#cli_qm_disk_unlink" id="cli_qm_disk_unlink"></a>
+### <strong>qm disk unlink</strong> `<vmid> --idlist <string>` `[OPTIONS]` <a href="#cli_qm_disk_unlink" id="cli_qm_disk_unlink"></a>
 
 解除链接/删除磁盘镜像。
 
@@ -658,13 +658,13 @@ VM 的唯一 ID。
 
 **`--force` `<boolean>`**
 
-强制物理删除。如果不设置此项，则只从配置文件中移除磁盘，并创建一个名为 *unused\[n\]* 的额外配置条目，其中包含卷 ID。解除 unused\[n\] 的链接始终会导致物理删除。
+强制物理删除。如果不设置此项，则只从配置文件中移除磁盘，并创建一个名为 <em>unused\[n\]</em> 的额外配置条目，其中包含卷 ID。解除 unused\[n\] 的链接始终会导致物理删除。
 
 **`--idlist` `<string>`**
 
 要删除的磁盘 ID 列表。
 
-### **qm enroll-efi-keys** `<vmid>` <a href="#cli_qm_enroll-efi-keys" id="cli_qm_enroll-efi-keys"></a>
+### <strong>qm enroll-efi-keys</strong> `<vmid>` <a href="#cli_qm_enroll-efi-keys" id="cli_qm_enroll-efi-keys"></a>
 
 向具有 pre-enrolled-keys 的 EFI 磁盘注册重要的更新证书。目前这些证书为 Microsoft 的 UEFI 2023 证书。必须在虚拟机关机时调用。
 
@@ -672,7 +672,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm guest cmd** `<vmid> <command>` <a href="#cli_qm_guest_cmd" id="cli_qm_guest_cmd"></a>
+### <strong>qm guest cmd</strong> `<vmid> <command>` <a href="#cli_qm_guest_cmd" id="cli_qm_guest_cmd"></a>
 
 执行 QEMU 客户机代理命令。
 
@@ -684,7 +684,7 @@ VM 的唯一 ID。
 
 QGA 命令。
 
-### **qm guest exec** `<vmid> [<extra-args>]` `[OPTIONS]` <a href="#cli_qm_guest_exec" id="cli_qm_guest_exec"></a>
+### <strong>qm guest exec</strong> `<vmid> [<extra-args>]` `[OPTIONS]` <a href="#cli_qm_guest_exec" id="cli_qm_guest_exec"></a>
 
 通过客户机代理执行给定命令
 
@@ -696,19 +696,19 @@ VM 的唯一 ID。
 
 以数组形式提供的额外参数
 
-**`--pass-stdin` `<boolean>` （*默认值 \=* `0`）**
+**`--pass-stdin` `<boolean>` （<em>默认值 \=</em> `0`）**
 
-设置后，读取 STDIN 直到 EOF，并通过 *input-data* 转发到客户机代理（通常被视为客户机代理启动进程的 STDIN）。最大允许 1 MiB。
+设置后，读取 STDIN 直到 EOF，并通过 <em>input-data</em> 转发到客户机代理（通常被视为客户机代理启动进程的 STDIN）。最大允许 1 MiB。
 
-**`--synchronous` `<boolean>` （*默认值 \=* `1`）**
+**`--synchronous` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 如果设置为 off，则立即返回 pid，而不等待命令完成或超时。
 
-**`--timeout` `<integer> (0 - N)` （*默认值 \=* `30`）**
+**`--timeout` `<integer> (0 - N)` （<em>默认值 \=</em> `30`）**
 
 同步等待命令完成的最长时间。如果达到该时间，则返回 pid。设置为 0 可禁用
 
-### **qm guest exec-status** `<vmid> <pid>` <a href="#cli_qm_guest_exec-status" id="cli_qm_guest_exec-status"></a>
+### <strong>qm guest exec-status</strong> `<vmid> <pid>` <a href="#cli_qm_guest_exec-status" id="cli_qm_guest_exec-status"></a>
 
 获取客户机代理启动的给定 pid 的状态
 
@@ -720,7 +720,7 @@ VM 的唯一 ID。
 
 要查询的 PID
 
-### **qm guest passwd** `<vmid> <username>` `[OPTIONS]` <a href="#cli_qm_guest_passwd" id="cli_qm_guest_passwd"></a>
+### <strong>qm guest passwd</strong> `<vmid> <username>` `[OPTIONS]` <a href="#cli_qm_guest_passwd" id="cli_qm_guest_passwd"></a>
 
 将给定用户的密码设置为给定密码
 
@@ -732,11 +732,11 @@ VM 的唯一 ID。
 
 要设置密码的用户。
 
-**`--crypted` `<boolean>` （*默认值 \=* `0`）**
+**`--crypted` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果密码已通过 crypt() 处理，则设置为 1
 
-### **qm help** `[OPTIONS]` <a href="#cli_qm_help" id="cli_qm_help"></a>
+### <strong>qm help</strong> `[OPTIONS]` <a href="#cli_qm_help" id="cli_qm_help"></a>
 
 获取指定命令的帮助。
 
@@ -748,7 +748,7 @@ VM 的唯一 ID。
 
 详细输出格式。
 
-### **qm import** `<vmid> <source> --storage <string>` `[OPTIONS]` <a href="#cli_qm_import" id="cli_qm_import"></a>
+### <strong>qm import</strong> `<vmid> <source> --storage <string>` `[OPTIONS]` <a href="#cli_qm_import" id="cli_qm_import"></a>
 
 从支持的导入源（例如 ESXi 存储）导入外部虚拟客户机。
 
@@ -760,7 +760,7 @@ VM 的唯一 ID。
 
 导入源的卷 ID。
 
-**`--acpi` `<boolean>` （*默认值 \=* `1`）**
+**`--acpi` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 ACPI。
 
@@ -772,7 +772,7 @@ VM 的唯一 ID。
 
 启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
-**`--allow-ksm` `<boolean>` （*默认值 \=* `1`）**
+**`--allow-ksm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
@@ -792,7 +792,7 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 配置音频设备，与 QXL/Spice 结合使用时很有用。
 
-**`--autostart` `<boolean>` （*默认值 \=* `0`）**
+**`--autostart` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 崩溃后自动重启（目前被忽略）。
 
@@ -800,17 +800,17 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
-**`--bios` `<ovmf | seabios>` （*默认值 \=* `seabios`）**
+**`--bios` `<ovmf | seabios>` （<em>默认值 \=</em> `seabios`）**
 
 选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
+指定客户机启动顺序。请使用 <em>order\=</em> 子属性，因为不带键的用法或 <em>legacy\=</em> 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
+启用从指定磁盘启动。已弃用：请改用 <em>boot: order\=foo;bar</em>。
 
 **`--cdrom` `<volume>`**
 
@@ -828,7 +828,7 @@ cloud-init：分配给用户的密码。通常不建议使用此选项，请改�
 
 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`--ciupgrade` `<boolean>` （*默认值 \=* `1`）**
+**`--ciupgrade` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 cloud-init：首次启动后自动执行软件包升级。
 
@@ -836,7 +836,7 @@ cloud-init：首次启动后自动执行软件包升级。
 
 cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
-**`--cores` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--cores` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 每个 CPU 插槽的核心数。
 
@@ -844,11 +844,11 @@ cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像�
 
 模拟的 CPU 类型。
 
-**`--cpulimit` `<number> (0 - 128)` （*默认值 \=* `0`）**
+**`--cpulimit` `<number> (0 - 128)` （<em>默认值 \=</em> `0`）**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` （*默认值 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (1 - 262144)` （<em>默认值 \=</em> `cgroup v1: 1024, cgroup v2: 100`）**
 
 虚拟机的 CPU 权重，在 cgroup v2 中限制为 \[1, 10000\]。
 
@@ -860,13 +860,13 @@ CPU 使用限制。
 
 虚拟机的描述。显示在 Web 界面的虚拟机摘要中。此描述会作为注释保存在配置文件内。
 
-**`--dryrun` `<boolean>` (*默认 \=* `0`)**
+**`--dryrun` `<boolean>` (<em>默认 \=</em> `0`)**
 
 显示创建命令后退出，不执行任何操作。
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--format` `<qcow2 | raw | vmdk>`**
 
@@ -874,7 +874,7 @@ CPU 使用限制。
 
 **`--freeze` `<boolean>`**
 
-启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
+启动时冻结 CPU（使用 <em>c</em> 监视器命令开始执行）。
 
 **`--hookscript` `<string>`**
 
@@ -884,19 +884,19 @@ CPU 使用限制。
 
 将宿主机 PCI 设备映射到客户机中。
 
-**`--hotplug` `<string>` （*默认值 \=* `network,disk,usb`）**
+**`--hotplug` `<string>` （<em>默认值 \=</em> `network,disk,usb`）**
 
-选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：<em>network</em>、<em>disk</em>、<em>cpu</em>、<em>memory</em>、<em>usb</em> 和 <em>cloudinit</em>。使用 <em>0</em> 完全禁用热插拔。将 <em>1</em> 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
 启用大页内存。
 
-设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
+设置大页的大小，单位为 MiB。如果值设置为 <em>any</em>，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
@@ -908,7 +908,7 @@ cloud-init：为相应接口指定 IP 地址和网关。
 
 IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
+IP 地址可以使用特殊字符串 <em>dhcp</em> 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 <em>auto</em> 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
 如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
@@ -916,7 +916,7 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
-**`--keephugepages` `<boolean>` （*默认值 \=* `0`）**
+**`--keephugepages` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 与大页配合使用。如果启用，虚拟机关机后不会删除大页，可供后续启动使用。
 
@@ -924,11 +924,11 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系统内部处理通常更合适。
 
-**`--kvm` `<boolean>` （*默认值 \=* `1`）**
+**`--kvm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 KVM 硬件虚拟化。
 
-**`--live-import` `<boolean>` （*默认值 \=* `0`）**
+**`--live-import` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 立即启动虚拟机，并在后台复制数据。
 
@@ -948,11 +948,11 @@ VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系�
 
 内存属性。
 
-**`--migrate_downtime` `<number> (0 - N)` （*默认值 \=* `0.1`）**
+**`--migrate_downtime` `<number> (0 - N)` （<em>默认值 \=</em> `0.1`）**
 
 设置迁移可容忍的最长停机时间（秒）。如果迁移在最后阶段因需要传输过多新写脏的 RAM 而无法收敛，将自动逐步增加此限制，直至迁移能够收敛。上限为 2000 秒（QEMU 中的最大值）。
 
-**`--migrate_speed` `<integer> (0 - N)` （*默认值 \=* `0`）**
+**`--migrate_speed` `<integer> (0 - N)` （<em>默认值 \=</em> `0`）**
 
 设置迁移的最大速度（MB/s）。值为 0 表示不限制。
 
@@ -968,7 +968,7 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 指定网络设备。
 
-**`--numa` `<boolean>` （*默认值 \=* `0`）**
+**`--numa` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用 NUMA。
 
@@ -976,11 +976,11 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 NUMA 拓扑。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>`（<em>默认 \=</em> `0`）**
 
 指定是否在系统启动时启动虚拟机。
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （*默认值 \=* `other`）**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （<em>默认值 \=</em> `other`）**
 
 指定客户机操作系统。
 
@@ -988,13 +988,13 @@ NUMA 拓扑。
 
 映射宿主机并口设备（n 为 0 到 2）。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>`（<em>默认 \=</em> `0`）**
 
 设置虚拟机的保护标志。这将禁用删除虚拟机和删除磁盘操作。
 
-**`--reboot` `<boolean>` （*默认值 \=* `1`）**
+**`--reboot` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-允许重启。如果设为 *0*，虚拟机将在重启时退出。
+允许重启。如果设为 <em>0</em>，虚拟机将在重启时退出。
 
 **`--rng0` `[source=]</dev/urandom|/dev/random|/dev/hwrng> [,max_bytes=<integer>] [,period=<integer>]`**
 
@@ -1002,13 +1002,13 @@ NUMA 拓扑。
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （*默认值 \=* `lsi`）**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （<em>默认值 \=</em> `lsi`）**
 
 SCSI 控制器型号
 
@@ -1020,7 +1020,7 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 在虚拟机内创建串口设备（n 为 0 到 3）
 
-**`--shares` `<integer> (0 - 50000)` （*默认值 \=* `1000`）**
+**`--shares` `<integer> (0 - 50000)` （<em>默认值 \=</em> `1000`）**
 
 自动气球调整的内存份额。数值越大，该虚拟机获得的内存越多。该数值相对于所有其他运行中虚拟机的权重。使用零可禁用自动气球调整。自动气球调整由 pvestatd 完成。
 
@@ -1028,11 +1028,11 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 指定 SMBIOS 类型 1 的字段。
 
-**`--smp` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--smp` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 数量。请改用 -sockets 选项。
 
-**`--sockets` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--sockets` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 插槽数量。
 
@@ -1044,19 +1044,19 @@ CPU 插槽数量。
 
 cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （*默认值 \=* `now`）**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （<em>默认值 \=</em> `now`）**
 
-设置实时时钟的初始日期。有效的日期格式为：'now'、*2006-06-17T16:01:21* 或 *2006-06-17*。
+设置实时时钟的初始日期。有效的日期格式为：'now'、<em>2006-06-17T16:01:21</em> 或 <em>2006-06-17</em>。
 
 **`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
-启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
+启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 <em>up</em> 或 <em>down</em> 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
 **`--storage` `<storage ID>`**
 
 默认存储。
 
-**`--tablet` `<boolean>` （*默认值 \=* `1`）**
+**`--tablet` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 USB 数位板设备。
 
@@ -1064,17 +1064,17 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 虚拟机的标签。这只是元信息。
 
-**`--tdf` `<boolean>` （*默认值 \=* `0`）**
+**`--tdf` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用时间漂移修正。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>`（<em>默认 \=</em> `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-配置用于存储 TPM 状态的磁盘。格式固定为 *raw*。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 TPM 状态的磁盘。格式固定为 <em>raw</em>。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--unused[n]` `[file=]<volume>`**
 
@@ -1084,7 +1084,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 配置 USB 设备（n 为 0 到 4；对于机型版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的情况，n 最大可为 14）。
 
-**`--vcpus` `<integer> (1 - N)` （*默认值 \=* `0`）**
+**`--vcpus` `<integer> (1 - N)` （<em>默认值 \=</em> `0`）**
 
 热插拔的 vcpu 数量。
 
@@ -1094,15 +1094,15 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。
 
-**`--vmgenid` `<UUID>` （*默认值 \=* `1 (autogenerated)`）**
+**`--vmgenid` `<UUID>` （<em>默认值 \=</em> `1 (autogenerated)`）**
 
-设置虚拟机世代 ID。使用 *1* 在创建或更新时自动生成，传入 *0* 可明确禁用。
+设置虚拟机世代 ID。使用 <em>1</em> 在创建或更新时自动生成，传入 <em>0</em> 可明确禁用。
 
 **`--vmstatestorage` `<storage ID>`**
 
@@ -1112,11 +1112,11 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 创建虚拟硬件看门狗设备。
 
-### **qm importdisk** <a href="#cli_qm_importdisk" id="cli_qm_importdisk"></a>
+### <strong>qm importdisk</strong> <a href="#cli_qm_importdisk" id="cli_qm_importdisk"></a>
 
-*qm disk import* 的别名。
+<em>qm disk import</em> 的别名。
 
-### **qm importovf** `<vmid> <manifest> <storage>` `[OPTIONS]` <a href="#cli_qm_importovf" id="cli_qm_importovf"></a>
+### <strong>qm importovf</strong> `<vmid> <manifest> <storage>` `[OPTIONS]` <a href="#cli_qm_importovf" id="cli_qm_importovf"></a>
 
 使用从 OVF 清单读取的参数创建新虚拟机
 
@@ -1140,7 +1140,7 @@ ovf 文件的路径
 
 目标格式
 
-### **qm list** `[OPTIONS]` <a href="#cli_qm_list" id="cli_qm_list"></a>
+### <strong>qm list</strong> `[OPTIONS]` <a href="#cli_qm_list" id="cli_qm_list"></a>
 
 虚拟机索引（每个节点）。
 
@@ -1148,7 +1148,7 @@ ovf 文件的路径
 
 确定活动虚拟机的完整状态。
 
-### **qm listsnapshot** `<vmid>` <a href="#cli_qm_listsnapshot" id="cli_qm_listsnapshot"></a>
+### <strong>qm listsnapshot</strong> `<vmid>` <a href="#cli_qm_listsnapshot" id="cli_qm_listsnapshot"></a>
 
 列出所有快照。
 
@@ -1156,7 +1156,7 @@ ovf 文件的路径
 
 VM 的唯一 ID。
 
-### **qm migrate** `<vmid> <target>` `[OPTIONS]` <a href="#cli_qm_migrate" id="cli_qm_migrate"></a>
+### <strong>qm migrate</strong> `<vmid> <target>` `[OPTIONS]` <a href="#cli_qm_migrate" id="cli_qm_migrate"></a>
 
 迁移虚拟机。创建新的迁移任务。
 
@@ -1168,7 +1168,7 @@ VM 的唯一 ID。
 
 目标节点。
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (<em>默认 \=</em> `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
@@ -1190,9 +1190,9 @@ VM 的唯一 ID。
 
 **`--targetstorage` `<string>`**
 
-从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
+从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 <em>1</em> 会将每个源存储映射到其自身。
 
-**`--with-conntrack-state` `<boolean>` （*默认值 \=* `0`）**
+**`--with-conntrack-state` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 是否迁移运行中虚拟机的 conntrack 条目。
 
@@ -1200,7 +1200,7 @@ VM 的唯一 ID。
 
 对本地磁盘启用在线存储迁移
 
-### **qm monitor** `<vmid>` <a href="#cli_qm_monitor" id="cli_qm_monitor"></a>
+### <strong>qm monitor</strong> `<vmid>` <a href="#cli_qm_monitor" id="cli_qm_monitor"></a>
 
 进入 QEMU 监视器界面。
 
@@ -1208,19 +1208,19 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm move-disk** <a href="#cli_qm_move-disk" id="cli_qm_move-disk"></a>
+### <strong>qm move-disk</strong> <a href="#cli_qm_move-disk" id="cli_qm_move-disk"></a>
 
-*qm disk move* 的别名。
+<em>qm disk move</em> 的别名。
 
-### **qm move\_disk** <a href="#cli_qm_move_disk" id="cli_qm_move_disk"></a>
+### <strong>qm move\_disk</strong> <a href="#cli_qm_move_disk" id="cli_qm_move_disk"></a>
 
-*qm disk move* 的别名。
+<em>qm disk move</em> 的别名。
 
-### **qm mtunnel** <a href="#cli_qm_mtunnel" id="cli_qm_mtunnel"></a>
+### <strong>qm mtunnel</strong> <a href="#cli_qm_mtunnel" id="cli_qm_mtunnel"></a>
 
 由 qmigrate 使用，请勿手动使用。
 
-### **qm nbdstop** `<vmid>` <a href="#cli_qm_nbdstop" id="cli_qm_nbdstop"></a>
+### <strong>qm nbdstop</strong> `<vmid>` <a href="#cli_qm_nbdstop" id="cli_qm_nbdstop"></a>
 
 停止内嵌 nbd 服务器。
 
@@ -1228,7 +1228,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm pending** `<vmid>` <a href="#cli_qm_pending" id="cli_qm_pending"></a>
+### <strong>qm pending</strong> `<vmid>` <a href="#cli_qm_pending" id="cli_qm_pending"></a>
 
 获取同时包含当前值和待应用值的虚拟机配置。
 
@@ -1236,7 +1236,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm reboot** `<vmid>` `[OPTIONS]` <a href="#cli_qm_reboot" id="cli_qm_reboot"></a>
+### <strong>qm reboot</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_reboot" id="cli_qm_reboot"></a>
 
 通过关闭虚拟机后重新启动来重启虚拟机。应用待定更改。
 
@@ -1248,7 +1248,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒以完成关机。
 
-### **qm remote-migrate** `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]` <a href="#cli_qm_remote-migrate" id="cli_qm_remote-migrate"></a>
+### <strong>qm remote-migrate</strong> `<vmid> [<target-vmid>] <target-endpoint> --target-bridge <string> --target-storage <string>` `[OPTIONS]` <a href="#cli_qm_remote-migrate" id="cli_qm_remote-migrate"></a>
 
 将虚拟机迁移到远程集群。创建新的迁移任务。实验性功能！
 
@@ -1264,11 +1264,11 @@ VM 的唯一 ID。
 
 远程目标端点
 
-**`--bwlimit` `<integer> (0 - N)` (*默认 \=* `migrate limit from datacenter or storage config`)**
+**`--bwlimit` `<integer> (0 - N)` (<em>默认 \=</em> `migrate limit from datacenter or storage config`)**
 
 覆盖 I/O 带宽限制（单位为 KiB/s）。
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (<em>默认 \=</em> `0`)**
 
 成功迁移后删除原始虚拟机及相关数据。默认情况下，原始虚拟机保留在源集群中，处于停止状态。
 
@@ -1278,17 +1278,17 @@ VM 的唯一 ID。
 
 **`--target-bridge` `<string>`**
 
-从源网桥到目标网桥的映射。仅提供一个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 *1* 会将每个源网桥映射到其自身。
+从源网桥到目标网桥的映射。仅提供一个网桥 ID 会将所有源网桥映射到该网桥。提供特殊值 <em>1</em> 会将每个源网桥映射到其自身。
 
 **`--target-storage` `<string>`**
 
-从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
+从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 <em>1</em> 会将每个源存储映射到其自身。
 
-### **qm rescan** <a href="#cli_qm_rescan" id="cli_qm_rescan"></a>
+### <strong>qm rescan</strong> <a href="#cli_qm_rescan" id="cli_qm_rescan"></a>
 
-*qm disk rescan* 的别名。
+<em>qm disk rescan</em> 的别名。
 
-### **qm reset** `<vmid>` `[OPTIONS]` <a href="#cli_qm_reset" id="cli_qm_reset"></a>
+### <strong>qm reset</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_reset" id="cli_qm_reset"></a>
 
 重置虚拟机。
 
@@ -1300,11 +1300,11 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-### **qm resize** <a href="#cli_qm_resize" id="cli_qm_resize"></a>
+### <strong>qm resize</strong> <a href="#cli_qm_resize" id="cli_qm_resize"></a>
 
-*qm disk resize* 的别名。
+<em>qm disk resize</em> 的别名。
 
-### **qm resume** `<vmid>` `[OPTIONS]` <a href="#cli_qm_resume" id="cli_qm_resume"></a>
+### <strong>qm resume</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_resume" id="cli_qm_resume"></a>
 
 恢复虚拟机运行。
 
@@ -1320,7 +1320,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-### **qm rollback** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_rollback" id="cli_qm_rollback"></a>
+### <strong>qm rollback</strong> `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_rollback" id="cli_qm_rollback"></a>
 
 将虚拟机状态回滚到指定快照。
 
@@ -1332,11 +1332,11 @@ VM 的唯一 ID。
 
 快照的名称。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>`（<em>默认 \=</em> `0`）**
 
 成功回滚后是否启动虚拟机。（注意：如果快照包含 RAM，虚拟机将自动启动。）
 
-### **qm sendkey** `<vmid> <key>` `[OPTIONS]` <a href="#cli_qm_sendkey" id="cli_qm_sendkey"></a>
+### <strong>qm sendkey</strong> `<vmid> <key>` `[OPTIONS]` <a href="#cli_qm_sendkey" id="cli_qm_sendkey"></a>
 
 向虚拟机发送按键事件。
 
@@ -1352,7 +1352,7 @@ VM 的唯一 ID。
 
 忽略锁——仅允许 root 使用此选项。
 
-### **qm set** `<vmid>` `[OPTIONS]` <a href="#cli_qm_set" id="cli_qm_set"></a>
+### <strong>qm set</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_set" id="cli_qm_set"></a>
 
 设置虚拟机选项（同步 API）。对于任何涉及热插拔或存储分配的操作，应考虑改用 POST 方法。
 
@@ -1360,7 +1360,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--acpi` `<boolean>` （*默认值 \=* `1`）**
+**`--acpi` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 ACPI。
 
@@ -1372,7 +1372,7 @@ VM 的唯一 ID。
 
 启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
-**`--allow-ksm` `<boolean>` （*默认值 \=* `1`）**
+**`--allow-ksm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
@@ -1392,7 +1392,7 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 配置音频设备，与 QXL/Spice 结合使用时很有用。
 
-**`--autostart` `<boolean>` （*默认值 \=* `0`）**
+**`--autostart` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 崩溃后自动重启（目前被忽略）。
 
@@ -1400,17 +1400,17 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
-**`--bios` `<ovmf | seabios>` （*默认值 \=* `seabios`）**
+**`--bios` `<ovmf | seabios>` （<em>默认值 \=</em> `seabios`）**
 
 选择 BIOS 实现。
 
 **`--boot` `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
+指定客户机启动顺序。请使用 <em>order\=</em> 子属性，因为不带键的用法或 <em>legacy\=</em> 已弃用。
 
 **`--bootdisk` `(ide|sata|scsi|virtio)\d+`**
 
-启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
+启用从指定磁盘启动。已弃用：请改用 <em>boot: order\=foo;bar</em>。
 
 **`--cdrom` `<volume>`**
 
@@ -1428,7 +1428,7 @@ cloud-init：分配给用户的密码。通常不建议使用此选项，请改�
 
 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`--ciupgrade` `<boolean>` （*默认值 \=* `1`）**
+**`--ciupgrade` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 cloud-init：首次启动后自动执行软件包升级。
 
@@ -1436,7 +1436,7 @@ cloud-init：首次启动后自动执行软件包升级。
 
 cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
-**`--cores` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--cores` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 每个 CPU 插槽的核心数。
 
@@ -1444,11 +1444,11 @@ cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像�
 
 模拟的 CPU 类型。
 
-**`--cpulimit` `<number> (0 - 128)` （*默认值 \=* `0`）**
+**`--cpulimit` `<number> (0 - 128)` （<em>默认值 \=</em> `0`）**
 
 CPU 使用限制。
 
-**`--cpuunits` `<integer> (1 - 262144)` （*默认值 \=* `cgroup v1: 1024, cgroup v2: 100`）**
+**`--cpuunits` `<integer> (1 - 262144)` （<em>默认值 \=</em> `cgroup v1: 1024, cgroup v2: 100`）**
 
 虚拟机的 CPU 权重，在 cgroup v2 中限制为 \[1, 10000\]。
 
@@ -1466,11 +1466,11 @@ CPU 使用限制。
 
 **`--efidisk0` `[file=]<volume> [,efitype=<2m|4m>] [,format=<enum>] [,import-from=<source volume>] [,ms-cert=<enum>] [,pre-enrolled-keys=<1|0>] [,size=<DiskSize>]`**
 
-配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 EFI 变量的磁盘。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是将默认 EFI 变量复制到该卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--force` `<boolean>`**
 
-强制物理删除。如果不设置此项，则只从配置文件中移除磁盘，并创建一个名为 *unused\[n\]* 的额外配置条目，其中包含卷 ID。解除 unused\[n\] 的链接始终会导致物理删除。
+强制物理删除。如果不设置此项，则只从配置文件中移除磁盘，并创建一个名为 <em>unused\[n\]</em> 的额外配置条目，其中包含卷 ID。解除 unused\[n\] 的链接始终会导致物理删除。
 
 {% hint style="info" %}
 需要选项：`delete`
@@ -1478,7 +1478,7 @@ CPU 使用限制。
 
 **`--freeze` `<boolean>`**
 
-启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
+启动时冻结 CPU（使用 <em>c</em> 监视器命令开始执行）。
 
 **`--hookscript` `<string>`**
 
@@ -1488,19 +1488,19 @@ CPU 使用限制。
 
 将宿主机 PCI 设备映射到客户机中。
 
-**`--hotplug` `<string>` （*默认值 \=* `network,disk,usb`）**
+**`--hotplug` `<string>` （<em>默认值 \=</em> `network,disk,usb`）**
 
-选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：<em>network</em>、<em>disk</em>、<em>cpu</em>、<em>memory</em>、<em>usb</em> 和 <em>cloudinit</em>。使用 <em>0</em> 完全禁用热插拔。将 <em>1</em> 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`--hugepages` `<1024 | 2 | any>`**
 
 启用大页内存。
 
-设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
+设置大页的大小，单位为 MiB。如果值设置为 <em>any</em>，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`--ide[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 IDE 硬盘或 CD-ROM（n 为 0 到 3）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--intel-tdx` `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
@@ -1512,7 +1512,7 @@ cloud-init：为相应接口指定 IP 地址和网关。
 
 IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
+IP 地址可以使用特殊字符串 <em>dhcp</em> 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 <em>auto</em> 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
 如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
@@ -1520,7 +1520,7 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 虚拟机间共享内存。适用于虚拟机之间的直接通信，或与宿主机的直接通信。
 
-**`--keephugepages` `<boolean>` （*默认值 \=* `0`）**
+**`--keephugepages` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 与大页配合使用。如果启用，虚拟机关机后不会删除大页，可供后续启动使用。
 
@@ -1528,7 +1528,7 @@ IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情�
 
 VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系统内部处理通常更合适。
 
-**`--kvm` `<boolean>` （*默认值 \=* `1`）**
+**`--kvm` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 KVM 硬件虚拟化。
 
@@ -1548,11 +1548,11 @@ VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系�
 
 内存属性。
 
-**`--migrate_downtime` `<number> (0 - N)` （*默认值 \=* `0.1`）**
+**`--migrate_downtime` `<number> (0 - N)` （<em>默认值 \=</em> `0.1`）**
 
 设置迁移可容忍的最长停机时间（秒）。如果迁移在最后阶段因需要传输过多新写脏的 RAM 而无法收敛，将自动逐步增加此限制，直至迁移能够收敛。上限为 2000 秒（QEMU 中的最大值）。
 
-**`--migrate_speed` `<integer> (0 - N)` （*默认值 \=* `0`）**
+**`--migrate_speed` `<integer> (0 - N)` （<em>默认值 \=</em> `0`）**
 
 设置迁移的最大速度（MB/s）。值为 0 表示不限制。
 
@@ -1568,7 +1568,7 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 指定网络设备。
 
-**`--numa` `<boolean>` （*默认值 \=* `0`）**
+**`--numa` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用 NUMA。
 
@@ -1576,11 +1576,11 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 NUMA 拓扑。
 
-**`--onboot` `<boolean>`（*默认 \=* `0`）**
+**`--onboot` `<boolean>`（<em>默认 \=</em> `0`）**
 
 指定是否在系统启动时启动虚拟机。
 
-**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （*默认值 \=* `other`）**
+**`--ostype` `<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>` （<em>默认值 \=</em> `other`）**
 
 指定客户机操作系统。
 
@@ -1588,13 +1588,13 @@ NUMA 拓扑。
 
 映射宿主机并口设备（n 为 0 到 2）。
 
-**`--protection` `<boolean>`（*默认 \=* `0`）**
+**`--protection` `<boolean>`（<em>默认 \=</em> `0`）**
 
 设置虚拟机的保护标志。这将禁用删除虚拟机和删除磁盘操作。
 
-**`--reboot` `<boolean>` （*默认值 \=* `1`）**
+**`--reboot` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-允许重启。如果设为 *0*，虚拟机将在重启时退出。
+允许重启。如果设为 <em>0</em>，虚拟机将在重启时退出。
 
 **`--revert` `<string>`**
 
@@ -1606,13 +1606,13 @@ NUMA 拓扑。
 
 **`--sata[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SATA 硬盘或 CD-ROM（n 为 0 到 5）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--scsi[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
-将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 SCSI 硬盘或 CD-ROM（n 为 0 到 30）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
-**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （*默认值 \=* `lsi`）**
+**`--scsihw` `<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>` （<em>默认值 \=</em> `lsi`）**
 
 SCSI 控制器型号
 
@@ -1624,7 +1624,7 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 在虚拟机内创建串口设备（n 为 0 到 3）
 
-**`--shares` `<integer> (0 - 50000)` （*默认值 \=* `1000`）**
+**`--shares` `<integer> (0 - 50000)` （<em>默认值 \=</em> `1000`）**
 
 自动气球调整的内存份额。数值越大，该虚拟机获得的内存越多。该数值相对于所有其他运行中虚拟机的权重。使用零可禁用自动气球调整。自动气球调整由 pvestatd 完成。
 
@@ -1636,11 +1636,11 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 指定 SMBIOS 类型 1 的字段。
 
-**`--smp` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--smp` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 数量。请改用 -sockets 选项。
 
-**`--sockets` `<integer> (1 - N)` （*默认值 \=* `1`）**
+**`--sockets` `<integer> (1 - N)` （<em>默认值 \=</em> `1`）**
 
 CPU 插槽数量。
 
@@ -1652,15 +1652,15 @@ CPU 插槽数量。
 
 cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （*默认值 \=* `now`）**
+**`--startdate` `(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)` （<em>默认值 \=</em> `now`）**
 
-设置实时时钟的初始日期。有效的日期格式为：'now'、*2006-06-17T16:01:21* 或 *2006-06-17*。
+设置实时时钟的初始日期。有效的日期格式为：'now'、<em>2006-06-17T16:01:21</em> 或 <em>2006-06-17</em>。
 
 **`--startup` \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
-启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
+启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 <em>up</em> 或 <em>down</em> 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`--tablet` `<boolean>` （*默认值 \=* `1`）**
+**`--tablet` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用/禁用 USB 数位板设备。
 
@@ -1668,17 +1668,17 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 虚拟机的标签。这只是元信息。
 
-**`--tdf` `<boolean>` （*默认值 \=* `0`）**
+**`--tdf` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用/禁用时间漂移修正。
 
-**`--template` `<boolean>`（*默认 \=* `0`）**
+**`--template` `<boolean>`（<em>默认 \=</em> `0`）**
 
 启用/禁用模板。
 
 **`--tpmstate0` `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,import-from=<source volume>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-配置用于存储 TPM 状态的磁盘。格式固定为 *raw*。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+配置用于存储 TPM 状态的磁盘。格式固定为 <em>raw</em>。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。请注意，此处会忽略 SIZE\_IN\_GiB，而是使用 4 MiB。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--unused[n]` `[file=]<volume>`**
 
@@ -1688,7 +1688,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 配置 USB 设备（n 为 0 到 4；对于机型版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的情况，n 最大可为 14）。
 
-**`--vcpus` `<integer> (1 - N)` （*默认值 \=* `0`）**
+**`--vcpus` `<integer> (1 - N)` （<em>默认值 \=</em> `0`）**
 
 热插拔的 vcpu 数量。
 
@@ -1698,15 +1698,15 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 **`--virtio[n]` `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,import-from=<source volume>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
-将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 *import-from* 参数从现有卷导入。
+将卷用作 VIRTIO 硬盘（n 为 0 到 15）。使用特殊语法 STORAGE\_ID:SIZE\_IN\_GiB 分配新卷。使用 STORAGE\_ID:0 和 <em>import-from</em> 参数从现有卷导入。
 
 **`--virtiofs[n]` `[dirid=]<mapping-id> [,cache=<enum>] [,direct-io=<1|0>] [,expose-acl=<1|0>] [,expose-xattr=<1|0>]`**
 
 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。
 
-**`--vmgenid` `<UUID>` （*默认值 \=* `1 (autogenerated)`）**
+**`--vmgenid` `<UUID>` （<em>默认值 \=</em> `1 (autogenerated)`）**
 
-设置虚拟机世代 ID。使用 *1* 在创建或更新时自动生成，传入 *0* 可明确禁用。
+设置虚拟机世代 ID。使用 <em>1</em> 在创建或更新时自动生成，传入 <em>0</em> 可明确禁用。
 
 **`--vmstatestorage` `<storage ID>`**
 
@@ -1716,7 +1716,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 创建虚拟硬件看门狗设备。
 
-### **qm showcmd** `<vmid>` `[OPTIONS]` <a href="#cli_qm_showcmd" id="cli_qm_showcmd"></a>
+### <strong>qm showcmd</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_showcmd" id="cli_qm_showcmd"></a>
 
 显示用于启动虚拟机的命令行（调试信息）。
 
@@ -1724,7 +1724,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 VM 的唯一 ID。
 
-**`--pretty` `<boolean>` （*默认值 \=* `0`）**
+**`--pretty` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 将每个选项放在单独一行，以提高可读性
 
@@ -1732,7 +1732,7 @@ VM 的唯一 ID。
 
 从指定快照获取配置值。
 
-### **qm shutdown** `<vmid>` `[OPTIONS]` <a href="#cli_qm_shutdown" id="cli_qm_shutdown"></a>
+### <strong>qm shutdown</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_shutdown" id="cli_qm_shutdown"></a>
 
 关闭虚拟机。这类似于按下物理机器的电源按钮。此操作会向客户机操作系统发送 ACPI 事件，随后客户机应执行正常关机。
 
@@ -1740,11 +1740,11 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--forceStop` `<boolean>` (*默认 \=* `0`)**
+**`--forceStop` `<boolean>` (<em>默认 \=</em> `0`)**
 
 确保虚拟机停止。
 
-**`--keepActive` `<boolean>` （*默认值 \=* `0`）**
+**`--keepActive` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 不停用存储卷。
 
@@ -1756,7 +1756,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒。
 
-### **qm snapshot** `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_snapshot" id="cli_qm_snapshot"></a>
+### <strong>qm snapshot</strong> `<vmid> <snapname>` `[OPTIONS]` <a href="#cli_qm_snapshot" id="cli_qm_snapshot"></a>
 
 为虚拟机创建快照。
 
@@ -1776,7 +1776,7 @@ VM 的唯一 ID。
 
 保存 vmstate
 
-### **qm start** `<vmid>` `[OPTIONS]` <a href="#cli_qm_start" id="cli_qm_start"></a>
+### <strong>qm start</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_start" id="cli_qm_start"></a>
 
 启动虚拟机。
 
@@ -1818,17 +1818,17 @@ VM 的唯一 ID。
 
 **`--targetstorage` `<string>`**
 
-从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 *1* 会将每个源存储映射到其自身。
+从源存储到目标存储的映射。仅提供一个存储 ID 会将所有源存储映射到该存储。提供特殊值 <em>1</em> 会将每个源存储映射到其自身。
 
-**`--timeout` `<integer> (0 - N)` （*默认值 \=* `max(30, vm memory in GiB)`）**
+**`--timeout` `<integer> (0 - N)` （<em>默认值 \=</em> `max(30, vm memory in GiB)`）**
 
 最多等待 timeout 秒。
 
-**`--with-conntrack-state` `<boolean>` （*默认值 \=* `0`）**
+**`--with-conntrack-state` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 是否迁移运行中虚拟机的 conntrack 条目。
 
-### **qm status** `<vmid>` `[OPTIONS]` <a href="#cli_qm_status" id="cli_qm_status"></a>
+### <strong>qm status</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_status" id="cli_qm_status"></a>
 
 显示虚拟机状态。
 
@@ -1840,7 +1840,7 @@ VM 的唯一 ID。
 
 详细输出格式
 
-### **qm stop** `<vmid>` `[OPTIONS]` <a href="#cli_qm_stop" id="cli_qm_stop"></a>
+### <strong>qm stop</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_stop" id="cli_qm_stop"></a>
 
 停止虚拟机。qemu 进程将立即退出。这相当于拔掉正在运行的计算机的电源插头，可能损坏虚拟机数据。
 
@@ -1848,7 +1848,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-**`--keepActive` `<boolean>` （*默认值 \=* `0`）**
+**`--keepActive` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 不停用存储卷。
 
@@ -1856,9 +1856,9 @@ VM 的唯一 ID。
 
 集群节点名称。
 
-**`--overrule-shutdown` `<boolean>`（*默认值 \=* `0`）**
+**`--overrule-shutdown` `<boolean>`（<em>默认值 \=</em> `0`）**
 
-停止前尝试中止活动的 *qmshutdown* 任务。
+停止前尝试中止活动的 <em>qmshutdown</em> 任务。
 
 **`--skiplock` `<boolean>`**
 
@@ -1868,7 +1868,7 @@ VM 的唯一 ID。
 
 最多等待 timeout 秒。
 
-### **qm suspend** `<vmid>` `[OPTIONS]` <a href="#cli_qm_suspend" id="cli_qm_suspend"></a>
+### <strong>qm suspend</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_suspend" id="cli_qm_suspend"></a>
 
 挂起虚拟机。
 
@@ -1888,11 +1888,11 @@ VM 的唯一 ID。
 需要选项：`todisk`
 {% endhint %}
 
-**`--todisk` `<boolean>` （*默认值 \=* `0`）**
+**`--todisk` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果设置，则将虚拟机挂起到磁盘。下次启动虚拟机时将恢复运行。
 
-### **qm template** `<vmid>` `[OPTIONS]` <a href="#cli_qm_template" id="cli_qm_template"></a>
+### <strong>qm template</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_template" id="cli_qm_template"></a>
 
 创建模板。
 
@@ -1904,15 +1904,15 @@ VM 的唯一 ID。
 
 如果只想将 1 个磁盘转换为基础镜像。
 
-### **qm terminal** `<vmid>` `[OPTIONS]` <a href="#cli_qm_terminal" id="cli_qm_terminal"></a>
+### <strong>qm terminal</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_terminal" id="cli_qm_terminal"></a>
 
-使用串口设备打开终端（虚拟机需要配置串口设备，例如 *serial0: socket*）
+使用串口设备打开终端（虚拟机需要配置串口设备，例如 <em>serial0: socket</em>）
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
 VM 的唯一 ID。
 
-**`--escape` `<string>` （*默认值 \=* `^O`）**
+**`--escape` `<string>` （<em>默认值 \=</em> `^O`）**
 
 转义字符。
 
@@ -1920,11 +1920,11 @@ VM 的唯一 ID。
 
 选择串口设备。默认使用首个合适的设备。
 
-### **qm unlink** <a href="#cli_qm_unlink" id="cli_qm_unlink"></a>
+### <strong>qm unlink</strong> <a href="#cli_qm_unlink" id="cli_qm_unlink"></a>
 
-*qm disk unlink* 的别名。
+<em>qm disk unlink</em> 的别名。
 
-### **qm unlock** `<vmid>` <a href="#cli_qm_unlock" id="cli_qm_unlock"></a>
+### <strong>qm unlock</strong> `<vmid>` <a href="#cli_qm_unlock" id="cli_qm_unlock"></a>
 
 解锁 VM。
 
@@ -1932,7 +1932,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm vncproxy** `<vmid>` <a href="#cli_qm_vncproxy" id="cli_qm_vncproxy"></a>
+### <strong>qm vncproxy</strong> `<vmid>` <a href="#cli_qm_vncproxy" id="cli_qm_vncproxy"></a>
 
 将虚拟机 VNC 流量代理到 stdin/stdout
 
@@ -1940,7 +1940,7 @@ VM 的唯一 ID。
 
 VM 的唯一 ID。
 
-### **qm wait** `<vmid>` `[OPTIONS]` <a href="#cli_qm_wait" id="cli_qm_wait"></a>
+### <strong>qm wait</strong> `<vmid>` `[OPTIONS]` <a href="#cli_qm_wait" id="cli_qm_wait"></a>
 
 等待虚拟机停止。
 
@@ -1961,21 +1961,21 @@ QEMU（Quick Emulator 的缩写）是一种开源虚拟机监控程序，用于�
 QEMU 可以模拟从 ARM 到 Sparc 的多种硬件。在 x86 宿主机上，Proxmox VE 关注 32 位和 64 位 PC 兼容机模拟，因为它们代表了绝大多数服务器硬件。在 arm64 宿主机上，Proxmox VE 则模拟 64 位 ARM（aarch64）机器。模拟与宿主机相同的架构也是最快的选项之一，因为当模拟架构与宿主机架构匹配时，可用的处理器扩展可以大幅加速 QEMU。
 
 {% hint style="info" %}
-有时您会遇到术语 *KVM*（Kernel-based Virtual Machine，基于内核的虚拟机）。它表示 QEMU 通过 Linux KVM 模块，在处理器虚拟化扩展的支持下运行。在 Proxmox VE 的语境中，*QEMU* 和 *KVM* 可以互换使用，因为 Proxmox VE 中的 QEMU 始终会尝试加载 KVM 模块。
+有时您会遇到术语 <em>KVM</em>（Kernel-based Virtual Machine，基于内核的虚拟机）。它表示 QEMU 通过 Linux KVM 模块，在处理器虚拟化扩展的支持下运行。在 Proxmox VE 的语境中，<em>QEMU</em> 和 <em>KVM</em> 可以互换使用，因为 Proxmox VE 中的 QEMU 始终会尝试加载 KVM 模块。
 {% endhint %}
 
 Proxmox VE 内部的 QEMU 以 root 进程运行，因为访问块设备和 PCI 设备需要这样做。
 
 ## 模拟设备和半虚拟化设备 <a href="#emulated_devices_and_paravirtualized_devices" id="emulated_devices_and_paravirtualized_devices"></a>
 
-QEMU 模拟的 PC 硬件包括主板、网络控制器、SCSI、IDE 和 SATA 控制器、串口（完整列表见 `kvm(1)` 手册页），所有这些都由软件模拟。所有这些设备都是现有硬件设备的精确软件等效物，如果客户机中运行的操作系统具有适当的驱动程序，就会像在真实硬件上运行一样使用这些设备。这使 QEMU 能够运行*未经修改的*操作系统。
+QEMU 模拟的 PC 硬件包括主板、网络控制器、SCSI、IDE 和 SATA 控制器、串口（完整列表见 `kvm(1)` 手册页），所有这些都由软件模拟。所有这些设备都是现有硬件设备的精确软件等效物，如果客户机中运行的操作系统具有适当的驱动程序，就会像在真实硬件上运行一样使用这些设备。这使 QEMU 能够运行<em>未经修改的</em>操作系统。
 
-然而，这会带来性能开销，因为让原本应由硬件执行的功能通过软件运行，会给宿主机 CPU 带来大量额外工作。为缓解这一问题，QEMU 可以向客户机操作系统提供*半虚拟化设备*，此时客户机操作系统会识别出自己正在 QEMU 内运行，并与虚拟机监控程序协作。
+然而，这会带来性能开销，因为让原本应由硬件执行的功能通过软件运行，会给宿主机 CPU 带来大量额外工作。为缓解这一问题，QEMU 可以向客户机操作系统提供<em>半虚拟化设备</em>，此时客户机操作系统会识别出自己正在 QEMU 内运行，并与虚拟机监控程序协作。
 
 QEMU 依赖 virtio 虚拟化标准，因此能够提供半虚拟化 virtio 设备，包括半虚拟化通用磁盘控制器、半虚拟化网卡、半虚拟化串口、半虚拟化 SCSI 控制器等……
 
 {% hint style="success" %}
-**强烈建议**尽可能使用 virtio 设备，因为它们可以显著提升性能，而且通常维护得更好。根据 `bonnie++(8)` 的测量结果，与模拟 IDE 控制器相比，使用 virtio 通用磁盘控制器可使顺序写入吞吐量翻倍。根据 `iperf(1)` 的测量结果，使用 virtio 网络接口可提供最高达模拟 Intel E1000 网卡三倍的吞吐量。[\[1\]](#note-0cdd31f9-1)
+<strong>强烈建议</strong>尽可能使用 virtio 设备，因为它们可以显著提升性能，而且通常维护得更好。根据 `bonnie++(8)` 的测量结果，与模拟 IDE 控制器相比，使用 virtio 通用磁盘控制器可使顺序写入吞吐量翻倍。根据 `iperf(1)` 的测量结果，使用 virtio 网络接口可提供最高达模拟 Intel E1000 网卡三倍的吞吐量。[\[1\]](#note-0cdd31f9-1)
 {% endhint %}
 
 ## 虚拟机设置 <a href="#qm_virtual_machines_settings" id="qm_virtual_machines_settings"></a>
@@ -1988,10 +1988,10 @@ QEMU 依赖 virtio 虚拟化标准，因此能够提供半虚拟化 virtio 设�
 
 虚拟机的常规设置包括
 
-- **节点**：虚拟机将运行的物理服务器
-- **VM ID**：此 Proxmox VE 安装中用于标识虚拟机的唯一编号
-- **名称**：可用于描述虚拟机的自由格式文本字符串
-- **资源池**：虚拟机的逻辑分组
+- <strong>节点</strong>：虚拟机将运行的物理服务器
+- <strong>VM ID</strong>：此 Proxmox VE 安装中用于标识虚拟机的唯一编号
+- <strong>名称</strong>：可用于描述虚拟机的自由格式文本字符串
+- <strong>资源池</strong>：虚拟机的逻辑分组
 
 ### 操作系统设置 <a href="#qm_os_settings" id="qm_os_settings"></a>
 
@@ -2005,13 +2005,13 @@ QEMU 依赖 virtio 虚拟化标准，因此能够提供半虚拟化 virtio 设�
 
 [![screenshot/gui-create-vm-system.png](../assets/screenshot-gui-create-vm-system-png-511b121389af.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-vm-system.png)
 
-此外，还可以更改 [SCSI 控制器](#qm_hard_disk)。如果计划安装 QEMU 客户机代理，或选定的 ISO 镜像已附带并自动安装该代理，可以选中 *QEMU 代理*复选框，使 Proxmox VE 知道可以使用其功能来显示更多信息，并更智能地完成某些操作（例如关机或快照）。
+此外，还可以更改 [SCSI 控制器](#qm_hard_disk)。如果计划安装 QEMU 客户机代理，或选定的 ISO 镜像已附带并自动安装该代理，可以选中 <em>QEMU 代理</em>复选框，使 Proxmox VE 知道可以使用其功能来显示更多信息，并更智能地完成某些操作（例如关机或快照）。
 
 Proxmox VE 允许使用不同的固件和机器类型启动虚拟机，即 [SeaBIOS 和 OVMF](#qm_bios_and_uefi)。大多数情况下，只有在计划使用 [PCIe 直通](#qm_pci_passthrough)时，才需要从默认的 SeaBIOS 切换到 OVMF。在 arm64 宿主机上，OVMF 是默认且唯一的选项，因为 SeaBIOS 仅适用于 x86。
 
 #### 机器类型 <a href="#qm_machine_type" id="qm_machine_type"></a>
 
-虚拟机的*机器类型*定义其虚拟主板的硬件布局。可以选择默认的 [Intel 440FX](https://en.wikipedia.org/wiki/Intel_440FX) 或 [Q35](https://ark.intel.com/content/www/us/en/ark/products/31918/intel-82q35-graphics-and-memory-controller.html) 芯片组，后者还提供虚拟 PCIe 总线，因此如果希望直通 PCIe 硬件，可能更适合选择它。此外，还可以选择 [vIOMMU](#qm_pci_viommu) 实现。
+虚拟机的<em>机器类型</em>定义其虚拟主板的硬件布局。可以选择默认的 [Intel 440FX](https://en.wikipedia.org/wiki/Intel_440FX) 或 [Q35](https://ark.intel.com/content/www/us/en/ark/products/31918/intel-82q35-graphics-and-memory-controller.html) 芯片组，后者还提供虚拟 PCIe 总线，因此如果希望直通 PCIe 硬件，可能更适合选择它。此外，还可以选择 [vIOMMU](#qm_pci_viommu) 实现。
 
 {% hint style="info" %}
 Intel 440FX 和 Q35 芯片组专用于 x86 客户机。在 arm64 宿主机上，虚拟机使用`virt`机器类型，该类型模拟一种通用的、基于 UEFI 的 ARM 机器。
@@ -2021,7 +2021,7 @@ Intel 440FX 和 Q35 芯片组专用于 x86 客户机。在 arm64 宿主机上，
 
 每种机器类型在 QEMU 中都有版本，并且给定的 QEMU 二进制文件支持多种机器版本。新版本可能带来对新功能的支持、修复或一般性改进。但是，它们也会更改虚拟硬件的属性。为避免从客户机角度来看发生突然变化，并确保虚拟机状态、在线迁移和包含 RAM 的快照的兼容性，新的 QEMU 实例将继续使用相同的机器版本。
 
-对于 Windows 客户机，机器版本会在创建时固定，因为 Windows 对虚拟硬件的更改很敏感，即使是在冷启动之间也是如此。例如，不同的机器版本可能会导致网络设备的枚举不同。Linux 等其他操作系统通常可以很好地应对此类更改。对于这些操作系统，默认使用*最新*机器版本。这意味着在全新启动后，将使用 QEMU 二进制文件支持的最新机器版本（例如，QEMU 8.1 支持的每种机器类型的最新机器版本均为 8.1 版）。
+对于 Windows 客户机，机器版本会在创建时固定，因为 Windows 对虚拟硬件的更改很敏感，即使是在冷启动之间也是如此。例如，不同的机器版本可能会导致网络设备的枚举不同。Linux 等其他操作系统通常可以很好地应对此类更改。对于这些操作系统，默认使用<em>最新</em>机器版本。这意味着在全新启动后，将使用 QEMU 二进制文件支持的最新机器版本（例如，QEMU 8.1 支持的每种机器类型的最新机器版本均为 8.1 版）。
 
 在实现会更改硬件布局的新功能或修复时，机器版本还用作确保向后兼容的保障措施。对于正在运行的虚拟机上的操作（例如在线迁移），会保存正在运行的机器版本，以确保虚拟机能够完全按原样恢复，这不仅涉及 QEMU 虚拟化层面，还涉及 Proxmox VE 创建 QEMU 虚拟机实例的方式。
 
@@ -2050,101 +2050,101 @@ Intel 440FX 和 Q35 芯片组专用于 x86 客户机。在 arm64 宿主机上，
 QEMU 可以模拟多种存储控制器：
 
 {% hint style="success" %}
-出于性能考虑，并且由于它们得到了更好的维护，强烈建议使用 **VirtIO SCSI** 或 **VirtIO Block** 控制器。
+出于性能考虑，并且由于它们得到了更好的维护，强烈建议使用 <strong>VirtIO SCSI</strong> 或 <strong>VirtIO Block</strong> 控制器。
 {% endhint %}
 
-- **IDE** 控制器的设计可追溯至 1984 年的 PC/AT 磁盘控制器。尽管这种控制器已被较新的设计所取代，但您能想到的每一种操作系统都支持它，因此，如果要运行 2003 年之前发布的操作系统，它是一个很好的选择。此控制器最多可连接 4 个设备。
-- **SATA**（Serial ATA）控制器诞生于 2003 年，采用更现代的设计，可实现更高的吞吐量并连接更多设备。此控制器最多可连接 6 个设备。
-- **SCSI** 控制器设计于 1985 年，常见于服务器级硬件，最多可连接 14 个存储设备。Proxmox VE 默认模拟 LSI 53C895A 控制器。
+- <strong>IDE</strong> 控制器的设计可追溯至 1984 年的 PC/AT 磁盘控制器。尽管这种控制器已被较新的设计所取代，但您能想到的每一种操作系统都支持它，因此，如果要运行 2003 年之前发布的操作系统，它是一个很好的选择。此控制器最多可连接 4 个设备。
+- <strong>SATA</strong>（Serial ATA）控制器诞生于 2003 年，采用更现代的设计，可实现更高的吞吐量并连接更多设备。此控制器最多可连接 6 个设备。
+- <strong>SCSI</strong> 控制器设计于 1985 年，常见于服务器级硬件，最多可连接 14 个存储设备。Proxmox VE 默认模拟 LSI 53C895A 控制器。
 
-  如果追求性能，建议使用类型为 *VirtIO SCSI single* 的 SCSI 控制器，并为连接的磁盘启用 [IO Thread](#qm_hard_disk_iothread) 设置。从 Proxmox VE 7.3 开始，这是新建 Linux 虚拟机的默认设置。每个磁盘都有自己的 *VirtIO SCSI* 控制器，QEMU 将在专用线程中处理磁盘 I/O。Linux 发行版自 2012 年起支持此控制器，FreeBSD 自 2014 年起支持。对于 Windows 操作系统，需要在安装期间提供一个包含驱动程序的额外 ISO。
-- **VirtIO Block** 控制器通常简称为 VirtIO 或 virtio-blk，是一种较旧的半虚拟化控制器。在功能方面，它已被 VirtIO SCSI 控制器取代。
+  如果追求性能，建议使用类型为 <em>VirtIO SCSI single</em> 的 SCSI 控制器，并为连接的磁盘启用 [IO Thread](#qm_hard_disk_iothread) 设置。从 Proxmox VE 7.3 开始，这是新建 Linux 虚拟机的默认设置。每个磁盘都有自己的 <em>VirtIO SCSI</em> 控制器，QEMU 将在专用线程中处理磁盘 I/O。Linux 发行版自 2012 年起支持此控制器，FreeBSD 自 2014 年起支持。对于 Windows 操作系统，需要在安装期间提供一个包含驱动程序的额外 ISO。
+- <strong>VirtIO Block</strong> 控制器通常简称为 VirtIO 或 virtio-blk，是一种较旧的半虚拟化控制器。在功能方面，它已被 VirtIO SCSI 控制器取代。
 
 #### 镜像格式 <a href="#qm_hard_disk_formats" id="qm_hard_disk_formats"></a>
 
-每个控制器上都连接有若干模拟硬盘，这些硬盘由所配置存储中的文件或块设备提供后端支持。存储类型的选择将决定硬盘镜像的格式。提供块设备的存储（LVM、ZFS、Ceph）需要使用 **raw disk image format**，而基于文件的存储（如 Ext4、XFS、NFS 或 CIFS）则允许选择 **raw disk image format** 或 **QEMU image format**。
+每个控制器上都连接有若干模拟硬盘，这些硬盘由所配置存储中的文件或块设备提供后端支持。存储类型的选择将决定硬盘镜像的格式。提供块设备的存储（LVM、ZFS、Ceph）需要使用 <strong>raw disk image format</strong>，而基于文件的存储（如 Ext4、XFS、NFS 或 CIFS）则允许选择 <strong>raw disk image format</strong> 或 <strong>QEMU image format</strong>。
 
-- **QEMU image format** 是一种写时复制格式，支持快照和磁盘镜像的精简置备。
-- **raw disk image** 是硬盘的逐位镜像，类似于在 Linux 中对块设备执行 `dd` 命令所得到的结果。此格式本身不支持精简置备或快照，这些功能需要存储层配合实现。不过，它的速度可能比 **QEMU image format** 快最多 10%。[\[2\]](#note-0cdd31f9-2)
-- 只有打算将磁盘镜像导入或导出到其他虚拟机管理程序时，**VMware image format** 才有意义。
+- <strong>QEMU image format</strong> 是一种写时复制格式，支持快照和磁盘镜像的精简置备。
+- <strong>raw disk image</strong> 是硬盘的逐位镜像，类似于在 Linux 中对块设备执行 `dd` 命令所得到的结果。此格式本身不支持精简置备或快照，这些功能需要存储层配合实现。不过，它的速度可能比 <strong>QEMU image format</strong> 快最多 10%。[\[2\]](#note-0cdd31f9-2)
+- 只有打算将磁盘镜像导入或导出到其他虚拟机管理程序时，<strong>VMware image format</strong> 才有意义。
 
 #### 缓存模式 <a href="#qm_hard_disk_cache" id="qm_hard_disk_cache"></a>
 
-设置硬盘的 **Cache** 模式会影响宿主机系统如何向客户机系统通知块写入完成。默认的 **No cache** 表示当每个块到达物理存储写入队列时，客户机系统就会收到写入完成通知，并忽略宿主机页缓存。这在安全性和速度之间提供了良好的平衡。
+设置硬盘的 <strong>Cache</strong> 模式会影响宿主机系统如何向客户机系统通知块写入完成。默认的 <strong>No cache</strong> 表示当每个块到达物理存储写入队列时，客户机系统就会收到写入完成通知，并忽略宿主机页缓存。这在安全性和速度之间提供了良好的平衡。
 
-如果希望 Proxmox VE 备份管理器在备份 VM 时跳过某个磁盘，可以在该磁盘上设置 **No backup** 选项。
+如果希望 Proxmox VE 备份管理器在备份 VM 时跳过某个磁盘，可以在该磁盘上设置 <strong>No backup</strong> 选项。
 
-如果希望 Proxmox VE 存储复制机制在启动复制任务时跳过某个磁盘，可以在该磁盘上设置 **Skip replication** 选项。自 Proxmox VE 5.0 起，复制要求磁盘镜像位于类型为 `zfspool` 的存储上，因此，当 VM 配置了复制时，如果将磁盘镜像添加到其他存储，则必须跳过此磁盘镜像的复制。
+如果希望 Proxmox VE 存储复制机制在启动复制任务时跳过某个磁盘，可以在该磁盘上设置 <strong>Skip replication</strong> 选项。自 Proxmox VE 5.0 起，复制要求磁盘镜像位于类型为 `zfspool` 的存储上，因此，当 VM 配置了复制时，如果将磁盘镜像添加到其他存储，则必须跳过此磁盘镜像的复制。
 
 #### Trim/Discard <a href="#qm_hard_disk_discard" id="qm_hard_disk_discard"></a>
 
-如果存储支持 *精简置备*（参见 Proxmox VE 指南的存储章节），可以在驱动器上启用 **Discard** 选项。设置 **Discard** 并使用支持 *TRIM* 的客户机操作系统 [\[3\]](#note-0cdd31f9-3) 后，当虚拟机文件系统在删除文件后将块标记为未使用时，控制器会将此信息转发给存储，存储随后相应缩小磁盘镜像。要让客户机能够发出 *TRIM* 命令，必须在驱动器上启用 **Discard** 选项。某些客户机操作系统可能还需要设置 **SSD 模拟** 标志。请注意，**Discard** 在 **VirtIO Block** 驱动器上仅支持使用 Linux 内核 5.0 或更高版本的客户机。
+如果存储支持 <em>精简置备</em>（参见 Proxmox VE 指南的存储章节），可以在驱动器上启用 <strong>Discard</strong> 选项。设置 <strong>Discard</strong> 并使用支持 <em>TRIM</em> 的客户机操作系统 [\[3\]](#note-0cdd31f9-3) 后，当虚拟机文件系统在删除文件后将块标记为未使用时，控制器会将此信息转发给存储，存储随后相应缩小磁盘镜像。要让客户机能够发出 <em>TRIM</em> 命令，必须在驱动器上启用 <strong>Discard</strong> 选项。某些客户机操作系统可能还需要设置 <strong>SSD 模拟</strong> 标志。请注意，<strong>Discard</strong> 在 <strong>VirtIO Block</strong> 驱动器上仅支持使用 Linux 内核 5.0 或更高版本的客户机。
 
-如果希望向客户机呈现的驱动器是固态硬盘而非旋转硬盘，可以在该驱动器上设置 **SSD 模拟** 选项。并不要求底层存储实际由 SSD 支撑；此功能可用于任意类型的物理介质。请注意，**SSD 模拟** 不受 **VirtIO Block** 驱动器支持。
+如果希望向客户机呈现的驱动器是固态硬盘而非旋转硬盘，可以在该驱动器上设置 <strong>SSD 模拟</strong> 选项。并不要求底层存储实际由 SSD 支撑；此功能可用于任意类型的物理介质。请注意，<strong>SSD 模拟</strong> 不受 <strong>VirtIO Block</strong> 驱动器支持。
 
 #### IO Thread <a href="#qm_hard_disk_iothread" id="qm_hard_disk_iothread"></a>
 
-**IO thread** 选项只能用于采用以下总线/设备控制器之一的磁盘：
+<strong>IO thread</strong> 选项只能用于采用以下总线/设备控制器之一的磁盘：
 
-- **SCSI**，前提是模拟的 SCSI 控制器类型为 **VirtIO SCSI single**；或
-- **VirtIO Block**
+- <strong>SCSI</strong>，前提是模拟的 SCSI 控制器类型为 <strong>VirtIO SCSI single</strong>；或
+- <strong>VirtIO Block</strong>
 
-启用 **IO thread** 后，QEMU 会为每个存储控制器创建一个 I/O 线程，而不是在主事件循环或 vCPU 线程中处理所有 I/O。其好处之一是能够更好地分配工作并利用底层存储。另一个好处是，当宿主机工作负载的 I/O 非常密集时，可降低客户机中的延迟（卡顿），因为主线程和 vCPU 线程都不会被磁盘 I/O 阻塞。
+启用 <strong>IO thread</strong> 后，QEMU 会为每个存储控制器创建一个 I/O 线程，而不是在主事件循环或 vCPU 线程中处理所有 I/O。其好处之一是能够更好地分配工作并利用底层存储。另一个好处是，当宿主机工作负载的 I/O 非常密集时，可降低客户机中的延迟（卡顿），因为主线程和 vCPU 线程都不会被磁盘 I/O 阻塞。
 
 ### CPU <a href="#qm_cpu" id="qm_cpu"></a>
 
 [![screenshot/gui-create-vm-cpu.png](../assets/screenshot-gui-create-vm-cpu-png-cf8772d20d7e.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-vm-cpu.png)
 
-**CPU socket** 是 PC 主板上用于插入 CPU 的物理插槽。该 CPU 可以包含一个或多个 **cores**，它们是独立的处理单元。从性能角度看，使用一个 4 核 CPU 插槽还是两个双核 CPU 插槽基本没有区别。但是，某些软件许可证取决于机器拥有的插槽数量，在这种情况下，将插槽数量设置为许可证允许的数量是合理的。
+<strong>CPU socket</strong> 是 PC 主板上用于插入 CPU 的物理插槽。该 CPU 可以包含一个或多个 <strong>cores</strong>，它们是独立的处理单元。从性能角度看，使用一个 4 核 CPU 插槽还是两个双核 CPU 插槽基本没有区别。但是，某些软件许可证取决于机器拥有的插槽数量，在这种情况下，将插槽数量设置为许可证允许的数量是合理的。
 
-增加虚拟 CPU（核心和插槽）的数量通常会提升性能，但这在很大程度上取决于 VM 的用途。多线程应用程序当然会从大量虚拟 CPU 中受益，因为每添加一个虚拟 CPU，QEMU 都会在宿主机系统上创建一个新的执行线程。如果不确定 VM 的工作负载，将 **Total cores** 的数量设置为 2 通常比较稳妥。
+增加虚拟 CPU（核心和插槽）的数量通常会提升性能，但这在很大程度上取决于 VM 的用途。多线程应用程序当然会从大量虚拟 CPU 中受益，因为每添加一个虚拟 CPU，QEMU 都会在宿主机系统上创建一个新的执行线程。如果不确定 VM 的工作负载，将 <strong>Total cores</strong> 的数量设置为 2 通常比较稳妥。
 
 {% hint style="info" %}
-所有 VM 的核心*总数*大于服务器上的核心数量是完全安全的（例如，在只有 8 个核心的机器上运行 4 个各有 4 个核心的 VM，总计 16 个核心）。在这种情况下，宿主机系统会在服务器核心之间平衡 QEMU 执行线程，就像运行标准的多线程应用程序一样。但是，Proxmox VE 会阻止您启动虚拟 CPU 核心数超过物理可用核心数的 VM，因为这只会因上下文切换的开销而降低性能。
+所有 VM 的核心<em>总数</em>大于服务器上的核心数量是完全安全的（例如，在只有 8 个核心的机器上运行 4 个各有 4 个核心的 VM，总计 16 个核心）。在这种情况下，宿主机系统会在服务器核心之间平衡 QEMU 执行线程，就像运行标准的多线程应用程序一样。但是，Proxmox VE 会阻止您启动虚拟 CPU 核心数超过物理可用核心数的 VM，因为这只会因上下文切换的开销而降低性能。
 {% endhint %}
 
 #### 资源限制 <a href="#qm_cpu_resource_limits" id="qm_cpu_resource_limits"></a>
 
-**cpulimit**
+<strong>cpulimit</strong>
 
-除了虚拟核心数量外，还可以使用 **cpulimit** 选项设置 VM 可用的“宿主机 CPU 时间”总量。它是一个浮点值，以百分比表示 CPU 时间，因此 `1.0` 等于 `100%`，`2.5` 等于 `250%`，依此类推。如果单个进程完全占用一个核心，其 CPU 时间使用率将为 `100%`。如果一个四核 VM 完全利用其所有核心，理论上将使用 `400%`。实际使用率可能还会稍高一些，因为除了 vCPU 核心线程之外，QEMU 还可以为 VM 外围设备运行额外的线程。
+除了虚拟核心数量外，还可以使用 <strong>cpulimit</strong> 选项设置 VM 可用的“宿主机 CPU 时间”总量。它是一个浮点值，以百分比表示 CPU 时间，因此 `1.0` 等于 `100%`，`2.5` 等于 `250%`，依此类推。如果单个进程完全占用一个核心，其 CPU 时间使用率将为 `100%`。如果一个四核 VM 完全利用其所有核心，理论上将使用 `400%`。实际使用率可能还会稍高一些，因为除了 vCPU 核心线程之外，QEMU 还可以为 VM 外围设备运行额外的线程。
 
 当 VM 因并行运行某些进程而需要多个 vCPU，但又不希望整个 VM 能够同时以 100% 的利用率运行所有 vCPU 时，此设置会很有用。
 
-例如，假设有一台虚拟机可从 8 个虚拟 CPU 中受益，但您不希望该 VM 能够让所有 8 个核心都满载运行，因为这会使服务器过载，导致其他虚拟机和容器获得的 CPU 时间过少。要解决此问题，可以将 **cpulimit** 设置为 `4.0`（\=400%）。这意味着，如果 VM 通过同时运行 8 个进程来充分利用所有 8 个虚拟 CPU，则每个 vCPU 最多能从物理核心获得 50% 的 CPU 时间。但是，如果 VM 工作负载仅充分利用 4 个虚拟 CPU，则每个虚拟 CPU 仍可从物理核心获得最多 100% 的 CPU 时间，总计为 400%。
+例如，假设有一台虚拟机可从 8 个虚拟 CPU 中受益，但您不希望该 VM 能够让所有 8 个核心都满载运行，因为这会使服务器过载，导致其他虚拟机和容器获得的 CPU 时间过少。要解决此问题，可以将 <strong>cpulimit</strong> 设置为 `4.0`（\=400%）。这意味着，如果 VM 通过同时运行 8 个进程来充分利用所有 8 个虚拟 CPU，则每个 vCPU 最多能从物理核心获得 50% 的 CPU 时间。但是，如果 VM 工作负载仅充分利用 4 个虚拟 CPU，则每个虚拟 CPU 仍可从物理核心获得最多 100% 的 CPU 时间，总计为 400%。
 
 {% hint style="info" %}
-根据配置，VM 可以使用额外的线程，例如用于网络或 I/O 操作的线程，以及用于在线迁移的线程。因此，VM 显示的 CPU 时间用量可能超过其虚拟 CPU 本身所能使用的量。要确保 VM 使用的 CPU 时间永远不会超过所分配的 vCPU 可使用的量，请将 **cpulimit** 设置为与核心总数相同的值。
+根据配置，VM 可以使用额外的线程，例如用于网络或 I/O 操作的线程，以及用于在线迁移的线程。因此，VM 显示的 CPU 时间用量可能超过其虚拟 CPU 本身所能使用的量。要确保 VM 使用的 CPU 时间永远不会超过所分配的 vCPU 可使用的量，请将 <strong>cpulimit</strong> 设置为与核心总数相同的值。
 {% endhint %}
 
-**cpuunits**
+<strong>cpuunits</strong>
 
-通过 **cpuunits** 选项（如今通常称为 CPU 份额或 CPU 权重），可以控制 VM 与其他正在运行的 VM 相比能获得多少 CPU 时间。它是一个相对权重，默认值为 `100`（如果宿主机使用旧版 cgroup v1，则为 `1024`）。如果提高某个 VM 的此值，与权重较低的其他 VM 相比，调度器会优先调度该 VM。
+通过 <strong>cpuunits</strong> 选项（如今通常称为 CPU 份额或 CPU 权重），可以控制 VM 与其他正在运行的 VM 相比能获得多少 CPU 时间。它是一个相对权重，默认值为 `100`（如果宿主机使用旧版 cgroup v1，则为 `1024`）。如果提高某个 VM 的此值，与权重较低的其他 VM 相比，调度器会优先调度该 VM。
 
 例如，如果 VM 100 使用默认值 `100`，而 VM 200 被更改为 `200`，则后一个 VM 200 获得的 CPU 带宽将是前一个 VM 100 的两倍。
 
 有关更多信息，请参阅 `man systemd.resource-control`，其中 `CPUQuota` 对应于 `cpulimit`，`CPUWeight` 对应于我们的 `cpuunits` 设置。请访问其 Notes 部分，查看参考资料和实现细节。
 
-**affinity**
+<strong>affinity</strong>
 
-通过 **affinity** 选项，可以指定用于运行 VM vCPU 的物理 CPU 核心。I/O 等外围 VM 进程不受此设置影响。请注意，**CPU 亲和性不是一项安全功能**。
+通过 <strong>affinity</strong> 选项，可以指定用于运行 VM vCPU 的物理 CPU 核心。I/O 等外围 VM 进程不受此设置影响。请注意，<strong>CPU 亲和性不是一项安全功能</strong>。
 
-强制设置 CPU **affinity** 在某些情况下可能很有意义，但也会增加复杂性和维护工作量。例如，以后需要添加更多 VM，或将 VM 迁移到 CPU 核心数较少的节点时。如果某些 CPU 已得到充分利用，而其他 CPU 几乎处于空闲状态，还很容易造成 CPU 使用不均衡，进而导致系统性能受限。
+强制设置 CPU <strong>affinity</strong> 在某些情况下可能很有意义，但也会增加复杂性和维护工作量。例如，以后需要添加更多 VM，或将 VM 迁移到 CPU 核心数较少的节点时。如果某些 CPU 已得到充分利用，而其他 CPU 几乎处于空闲状态，还很容易造成 CPU 使用不均衡，进而导致系统性能受限。
 
-**affinity** 通过 `taskset` CLI 工具设置。它接受宿主机 CPU 编号（参见 `lscpu`），采用 `List Format`，该格式见 `man cpuset`。这个 ASCII 十进制列表既可以包含数字，也可以包含数字范围。例如，**affinity** `0-1,8-11`（展开后为 `0, 1, 8, 9, 10, 11`）将允许 VM 仅在这六个特定的宿主机核心上运行。
+<strong>affinity</strong> 通过 `taskset` CLI 工具设置。它接受宿主机 CPU 编号（参见 `lscpu`），采用 `List Format`，该格式见 `man cpuset`。这个 ASCII 十进制列表既可以包含数字，也可以包含数字范围。例如，<strong>affinity</strong> `0-1,8-11`（展开后为 `0, 1, 8, 9, 10, 11`）将允许 VM 仅在这六个特定的宿主机核心上运行。
 
 #### CPU 类型 <a href="#cpu_type" id="cpu_type"></a>
 
-QEMU 可以模拟从 486 到最新 Xeon 处理器等多种不同的 **CPU 类型**。每一代新处理器都会添加新功能，例如硬件辅助 3d 渲染、随机数生成、内存保护等。此外，当前代处理器可以通过微码更新升级，获得错误修复或安全修复。
+QEMU 可以模拟从 486 到最新 Xeon 处理器等多种不同的 <strong>CPU 类型</strong>。每一代新处理器都会添加新功能，例如硬件辅助 3d 渲染、随机数生成、内存保护等。此外，当前代处理器可以通过微码更新升级，获得错误修复或安全修复。
 
-通常，应为 VM 选择与宿主机系统 CPU 尽量接近的处理器类型，这样宿主机 CPU 功能（也称为 *CPU 标志*）将在 VM 中可用。如果需要完全匹配，可以将 CPU 类型设置为 **host**，此时 VM 将具有与宿主机系统完全相同的 CPU 标志。
+通常，应为 VM 选择与宿主机系统 CPU 尽量接近的处理器类型，这样宿主机 CPU 功能（也称为 <em>CPU 标志</em>）将在 VM 中可用。如果需要完全匹配，可以将 CPU 类型设置为 <strong>host</strong>，此时 VM 将具有与宿主机系统完全相同的 CPU 标志。
 
 不过，这有一个缺点。如果要在不同宿主机之间在线迁移 VM，VM 最终可能会运行在一个 CPU 类型或微代码版本不同的新系统上。如果传递给客户机的 CPU 标志缺失，QEMU 进程将停止。为解决这一问题，QEMU 还提供了自己的虚拟 CPU 类型，Proxmox VE 默认使用这些类型。
 
-后端默认值为 *kvm64*，它基本上适用于所有 x86\_64 宿主机 CPU；而在 UI 中创建新 VM 时，默认值为 *x86-64-v2-AES*，后者要求 Intel 宿主机 CPU 至少为 Westmere，AMD 宿主机 CPU 至少为第四代 Opteron。
+后端默认值为 <em>kvm64</em>，它基本上适用于所有 x86\_64 宿主机 CPU；而在 UI 中创建新 VM 时，默认值为 <em>x86-64-v2-AES</em>，后者要求 Intel 宿主机 CPU 至少为 Westmere，AMD 宿主机 CPU 至少为第四代 Opteron。
 
 {% hint style="info" %}
-这里介绍的 *kvm64* 和 *x86-64-v\** CPU 模型仅适用于 x86。在 arm64 宿主机上，客户机使用 ARM CPU 模型：*host* 用于暴露物理 CPU（在受支持的硬件上建议使用），或使用 *max* 等通用模型，并搭配 `virt` 机器类型。
+这里介绍的 <em>kvm64</em> 和 <em>x86-64-v\*</em> CPU 模型仅适用于 x86。在 arm64 宿主机上，客户机使用 ARM CPU 模型：<em>host</em> 用于暴露物理 CPU（在受支持的硬件上建议使用），或使用 <em>max</em> 等通用模型，并搭配 `virt` 机器类型。
 {% endhint %}
 
 简而言之：
@@ -2169,19 +2169,19 @@ QEMU 还提供与 Intel 和 AMD 宿主机 CPU 均兼容的虚拟 CPU 类型。
 要缓解虚拟 CPU 类型的 Spectre 漏洞，需要添加相关 CPU 标志，参见 [Meltdown / Spectre 相关 CPU 标志](#qm_meltdown_spectre)。
 {% endhint %}
 
-历史上，Proxmox VE 使用 *kvm64* CPU 模型，其启用的 CPU 标志处于 Pentium 4 水平，因此对于某些工作负载，性能并不理想。
+历史上，Proxmox VE 使用 <em>kvm64</em> CPU 模型，其启用的 CPU 标志处于 Pentium 4 水平，因此对于某些工作负载，性能并不理想。
 
 2020 年夏，AMD、Intel、Red Hat 和 SUSE 合作在 x86-64 基线之上定义了三个 x86-64 微架构级别，并启用了现代标志。详情请参阅 [x86-64-ABI 规范](https://gitlab.com/x86-psABIs/x86-64-ABI)。
 
 {% hint style="info" %}
-一些较新的发行版（如 CentOS 9）现在构建时将 *x86-64-v2* 标志作为最低要求。
+一些较新的发行版（如 CentOS 9）现在构建时将 <em>x86-64-v2</em> 标志作为最低要求。
 {% endhint %}
 
-- *kvm64 (x86-64-v1)*：兼容 Intel CPU \>\= Pentium 4、AMD CPU \>\= Phenom。
-- *x86-64-v2*：兼容 Intel CPU \>\= Nehalem、AMD CPU \>\= Opteron\_G3。与 *x86-64-v1* 相比，新增的 CPU 标志：*\+cx16*、*\+lahf-lm*、*\+popcnt*、*\+pni*、*\+sse4.1*、*\+sse4.2*、*\+ssse3*。
-- *x86-64-v2-AES*：兼容 Intel CPU \>\= Westmere、AMD CPU \>\= Opteron\_G4。与 *x86-64-v2* 相比，新增的 CPU 标志：*\+aes*。
-- *x86-64-v3*：兼容 Intel CPU \>\= Haswell、AMD CPU \>\= EPYC。与 *x86-64-v2-AES* 相比，新增的 CPU 标志：*\+avx*、*\+avx2*、*\+bmi1*、*\+bmi2*、*\+f16c*、*\+fma*、*\+movbe*、*\+xsave*。
-- *x86-64-v4*：兼容 Intel CPU \>\= Skylake、AMD CPU \>\= EPYC v4 Genoa。与 *x86-64-v3* 相比，新增的 CPU 标志：*\+avx512f*、*\+avx512bw*、*\+avx512cd*、*\+avx512dq*、*\+avx512vl*。
+- <em>kvm64 (x86-64-v1)</em>：兼容 Intel CPU \>\= Pentium 4、AMD CPU \>\= Phenom。
+- <em>x86-64-v2</em>：兼容 Intel CPU \>\= Nehalem、AMD CPU \>\= Opteron\_G3。与 <em>x86-64-v1</em> 相比，新增的 CPU 标志：<em>\+cx16</em>、<em>\+lahf-lm</em>、<em>\+popcnt</em>、<em>\+pni</em>、<em>\+sse4.1</em>、<em>\+sse4.2</em>、<em>\+ssse3</em>。
+- <em>x86-64-v2-AES</em>：兼容 Intel CPU \>\= Westmere、AMD CPU \>\= Opteron\_G4。与 <em>x86-64-v2</em> 相比，新增的 CPU 标志：<em>\+aes</em>。
+- <em>x86-64-v3</em>：兼容 Intel CPU \>\= Haswell、AMD CPU \>\= EPYC。与 <em>x86-64-v2-AES</em> 相比，新增的 CPU 标志：<em>\+avx</em>、<em>\+avx2</em>、<em>\+bmi1</em>、<em>\+bmi2</em>、<em>\+f16c</em>、<em>\+fma</em>、<em>\+movbe</em>、<em>\+xsave</em>。
+- <em>x86-64-v4</em>：兼容 Intel CPU \>\= Skylake、AMD CPU \>\= EPYC v4 Genoa。与 <em>x86-64-v3</em> 相比，新增的 CPU 标志：<em>\+avx512f</em>、<em>\+avx512bw</em>、<em>\+avx512cd</em>、<em>\+avx512dq</em>、<em>\+avx512vl</em>。
 
 #### 自定义 CPU 类型 <a href="#custom_cpu_types" id="custom_cpu_types"></a>
 
@@ -2202,7 +2202,7 @@ QEMU 还提供与 Intel 和 AMD 宿主机 CPU 均兼容的虚拟 CPU 类型。
 - 宿主机 CPU 必须支持该功能，并将其传递给客户机的虚拟 CPU
 - 客户机操作系统必须更新到能够缓解这些攻击并能够利用该 CPU 功能的版本
 
-否则，需要设置虚拟 CPU 所需的 CPU 标志，即设置 *flags* 属性（VM 配置文件中 *cpu* 选项的属性），或者在 Web UI 中编辑 CPU 选项。
+否则，需要设置虚拟 CPU 所需的 CPU 标志，即设置 <em>flags</em> 属性（VM 配置文件中 <em>cpu</em> 选项的属性），或者在 Web UI 中编辑 CPU 选项。
 
 对于 Spectre v1,v2,v4 修复，CPU 或系统厂商还需要为 CPU 提供所谓的“微码更新”，参见固件更新章节。请注意，并非所有受影响的 CPU 都可以更新以支持 spec-ctrl。
 
@@ -2216,9 +2216,9 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 
 #### Intel 处理器 <a href="#intel_processors" id="intel_processors"></a>
 
-- *pcid*
+- <em>pcid</em>
 
-  这可降低称为 *内核页表隔离（KPTI）* 的 Meltdown（CVE-2017-5754）缓解措施对性能的影响；KPTI 可有效地向用户空间隐藏内核内存。如果没有 PCID，KPTI 是一种开销相当大的机制 [\[6\]](#note-0cdd31f9-6)。
+  这可降低称为 <em>内核页表隔离（KPTI）</em> 的 Meltdown（CVE-2017-5754）缓解措施对性能的影响；KPTI 可有效地向用户空间隐藏内核内存。如果没有 PCID，KPTI 是一种开销相当大的机制 [\[6\]](#note-0cdd31f9-6)。
 
   要检查 Proxmox VE 宿主机是否支持 PCID，请以 root 身份执行以下命令：
 
@@ -2226,26 +2226,26 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
   # grep ' pcid ' /proc/cpuinfo
   ```
 
-  如果返回结果不为空，则表示宿主机的 CPU 支持 *pcid*。
-- *spec-ctrl*
+  如果返回结果不为空，则表示宿主机的 CPU 支持 <em>pcid</em>。
+- <em>spec-ctrl</em>
 
   在 retpoline 不足以解决问题的情况下，需要此标志来启用 Spectre v1（CVE-2017-5753）和 Spectre v2（CVE-2017-5715）修复。默认包含在带有 -IBRS 后缀的 Intel CPU 模型中。对于不带 -IBRS 后缀的 Intel CPU 模型，必须显式启用。需要更新宿主机 CPU 微代码（intel-microcode \>\= 20180425）。
-- *ssbd*
+- <em>ssbd</em>
 
   需要此标志来启用 Spectre V4（CVE-2018-3639）修复。默认不包含在任何 Intel CPU 模型中。对于所有 Intel CPU 模型，都必须显式启用。需要更新宿主机 CPU 微代码（intel-microcode \>\= 20180703）。
 
 #### AMD 处理器 <a href="#amd_processors" id="amd_processors"></a>
 
-- *ibpb*
+- <em>ibpb</em>
 
   在 retpoline 不足以解决问题的情况下，需要此标志来启用 Spectre v1（CVE-2017-5753）和 Spectre v2（CVE-2017-5715）修复。默认包含在带有 -IBPB 后缀的 AMD CPU 模型中。对于不带 -IBPB 后缀的 AMD CPU 模型，必须显式启用。宿主机 CPU 微代码必须先支持此功能，才能将其用于客户机 CPU。
-- *virt-ssbd*
+- <em>virt-ssbd</em>
 
   需要此标志来启用 Spectre v4（CVE-2018-3639）修复。默认不包含在任何 AMD CPU 模型中。对于所有 AMD CPU 模型，都必须显式启用。即使也提供了 amd-ssbd，也应向客户机提供此标志，以最大限度地提高客户机兼容性。请注意，使用 "host" CPU 模型时必须显式启用此标志，因为这是一项物理 CPU 中不存在的虚拟功能。
-- *amd-ssbd*
+- <em>amd-ssbd</em>
 
   需要此标志来启用 Spectre v4（CVE-2018-3639）修复。默认不包含在任何 AMD CPU 模型中。对于所有 AMD CPU 模型，都必须显式启用。此标志提供比 virt-ssbd 更高的性能，因此，如果可能，支持此功能的宿主机应始终将其暴露给客户机。尽管如此，仍应同时暴露 virt-ssbd，以最大限度地提高客户机兼容性，因为某些内核只识别 virt-ssbd。
-- *amd-no-ssb*
+- <em>amd-no-ssb</em>
 
   建议用于指示宿主机不受 Spectre V4（CVE-2018-3639）影响。默认不包含在任何 AMD CPU 模型中。未来的 CPU 硬件代次将不受 CVE-2018-3639 影响，因此应通过暴露 amd-no-ssb 告知客户机不要启用其缓解措施。此标志与 virt-ssbd 和 amd-ssbd 互斥。
 
@@ -2258,7 +2258,7 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 
 #### NUMA <a href="#numa" id="numa"></a>
 
-您还可以选择在虚拟机中模拟 **NUMA** [\[7\]](#note-0cdd31f9-7) 架构。NUMA 架构的基本原理是，内存不再是可供所有核心使用的全局内存池，而是分布在靠近各个插槽的本地内存组中。这可以带来速度提升，因为内存总线不再是瓶颈。如果您的系统采用 NUMA 架构 [\[8\]](#note-0cdd31f9-8)，我们建议启用此选项，因为这将允许在宿主机系统上合理分配虚拟机资源。在虚拟机中热插拔核心或 RAM 也需要此选项。
+您还可以选择在虚拟机中模拟 <strong>NUMA</strong> [\[7\]](#note-0cdd31f9-7) 架构。NUMA 架构的基本原理是，内存不再是可供所有核心使用的全局内存池，而是分布在靠近各个插槽的本地内存组中。这可以带来速度提升，因为内存总线不再是瓶颈。如果您的系统采用 NUMA 架构 [\[8\]](#note-0cdd31f9-8)，我们建议启用此选项，因为这将允许在宿主机系统上合理分配虚拟机资源。在虚拟机中热插拔核心或 RAM 也需要此选项。
 
 如果使用 NUMA 选项，建议将插槽数设置为宿主机系统的节点数。
 
@@ -2266,7 +2266,7 @@ for f in /sys/devices/system/cpu/vulnerabilities/*; do echo "${f##*/} -" $(cat "
 
 现代操作系统引入了在运行中的系统上热添加 CPU，以及在一定程度上热移除 CPU 的能力。虚拟化使我们能够避免真实硬件在此类场景下可能引发的许多物理问题。不过，这仍是一项较新且复杂的功能，因此应仅在绝对必要时使用。大多数功能可以通过其他经过充分测试且不那么复杂的功能实现，参见[资源限制](#qm_cpu_resource_limits)。
 
-在 Proxmox VE 中，可插入的 CPU 最大数量始终为 `cores * sockets`。若要在启动虚拟机时使用少于该总核心数的 CPU，可以使用 **vcpus** 设置，它表示虚拟机启动时应插入多少个 vCPU。
+在 Proxmox VE 中，可插入的 CPU 最大数量始终为 `cores * sockets`。若要在启动虚拟机时使用少于该总核心数的 CPU，可以使用 <strong>vcpus</strong> 设置，它表示虚拟机启动时应插入多少个 vCPU。
 
 目前，此功能仅在 Linux 上受支持，需要高于 3.10 版本的内核，建议使用高于 4.7 版本的内核。
 
@@ -2290,7 +2290,7 @@ SUBSYSTEM=="cpu", ACTION=="add", TEST=="online", ATTR{online}=="0", ATTR{online}
 
 当将内存和最小内存设置为相同数值时，Proxmox VE 将直接按照您指定的数量为虚拟机分配内存。
 
-即使使用固定内存大小，仍会为虚拟机添加气球设备，因为它能提供有用信息，例如客户机实际使用了多少内存。通常，您应保持启用 **ballooning**，但如果您想禁用它（例如出于调试目的），只需取消选中 **气球设备** 或进行如下设置
+即使使用固定内存大小，仍会为虚拟机添加气球设备，因为它能提供有用信息，例如客户机实际使用了多少内存。通常，您应保持启用 <strong>ballooning</strong>，但如果您想禁用它（例如出于调试目的），只需取消选中 <strong>气球设备</strong> 或进行如下设置
 
 ```text
 balloon: 0
@@ -2304,7 +2304,7 @@ balloon: 0
 
 当宿主机 RAM 不足时，虚拟机随后会将部分内存释放回宿主机，必要时换出正在运行的进程，并在万不得已时启动 oom killer。宿主机和客户机之间的内存传递通过运行在客户机内部的特殊 `balloon` 内核驱动程序完成，该驱动程序会从宿主机获取或向宿主机释放内存页。[\[9\]](#note-0cdd31f9-9)
 
-当多台虚拟机使用自动分配功能时，可以设置 **Shares** 系数，该系数表示每台虚拟机应占用的宿主机空闲内存相对比例。例如，假设您有四台虚拟机，其中三台运行 HTTP 服务器，最后一台是数据库服务器。宿主机配置的目标 RAM 使用率为 80%。为了在数据库服务器的 RAM 中缓存更多数据库块，您希望在有闲置 RAM 时优先考虑数据库虚拟机。为此，将数据库虚拟机的 Shares 属性设置为 3000，其他虚拟机则保留 Shares 的默认设置 1000。该宿主机具有 32GB RAM，当前已使用 16GB，因此在虚拟机各自配置的最小内存量之外，还有 32 \* 80/100 \- 16 \= 9GB RAM 可分配给虚拟机。数据库虚拟机将额外获得 9 \* 3000 / (3000 \+ 1000 \+ 1000 \+ 1000\) \= 4.5 GB RAM，每台 HTTP 服务器虚拟机则可额外获得 1.5 GB。
+当多台虚拟机使用自动分配功能时，可以设置 <strong>Shares</strong> 系数，该系数表示每台虚拟机应占用的宿主机空闲内存相对比例。例如，假设您有四台虚拟机，其中三台运行 HTTP 服务器，最后一台是数据库服务器。宿主机配置的目标 RAM 使用率为 80%。为了在数据库服务器的 RAM 中缓存更多数据库块，您希望在有闲置 RAM 时优先考虑数据库虚拟机。为此，将数据库虚拟机的 Shares 属性设置为 3000，其他虚拟机则保留 Shares 的默认设置 1000。该宿主机具有 32GB RAM，当前已使用 16GB，因此在虚拟机各自配置的最小内存量之外，还有 32 \* 80/100 \- 16 \= 9GB RAM 可分配给虚拟机。数据库虚拟机将额外获得 9 \* 3000 / (3000 \+ 1000 \+ 1000 \+ 1000\) \= 4.5 GB RAM，每台 HTTP 服务器虚拟机则可额外获得 1.5 GB。
 
 2010 年之后发布的所有 Linux 发行版都包含气球内核驱动程序。对于 Windows 操作系统，需要手动添加气球驱动程序，这可能会导致客户机速度变慢，因此我们不建议在关键系统上使用它。
 
@@ -2320,7 +2320,7 @@ SEV-ES（安全加密虚拟化 \- 加密状态）还会加密所有 CPU 寄存�
 
 SEV-SNP（安全加密虚拟化 \- 安全嵌套分页）还试图防止基于软件的完整性攻击。有关更多信息，请参阅 [AMD SEV SNP 白皮书](https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/white-papers/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf)。
 
-**宿主机要求：**
+<strong>宿主机要求：</strong>
 
 - AMD EPYC CPU
 - SEV-ES 仅在 AMD EPYC 7002 系列及更新的 EPYC CPU 上受支持
@@ -2343,13 +2343,13 @@ SEV-SNP（安全加密虚拟化 \- 安全嵌套分页）还试图防止基于软
 Y
 ```
 
-**客户机要求：**
+<strong>客户机要求：</strong>
 
 - edk2-OVMF
 - 建议使用 Q35
 - 客户机操作系统必须支持 SEV。
 
-**限制：**
+<strong>限制：</strong>
 
 - 由于内存已加密，宿主机上显示的内存使用情况始终不准确。
 - 涉及保存或恢复内存的操作（如快照和在线迁移）尚无法正常工作，或者[容易受到攻击](https://github.com/PSPReverse/amd-sev-migration-attack)。
@@ -2358,19 +2358,19 @@ Y
 - SEV-SNP 不支持 EFI 磁盘。
 - 使用 SEV-SNP 时，虚拟机内的 `reboot` 命令只会让虚拟机关机。
 
-**配置示例（SEV）：**
+<strong>配置示例（SEV）：</strong>
 
 ```text
 # qm set <vmid> -amd-sev type=std,no-debug=1,no-key-sharing=1,kernel-hashes=1
 ```
 
-**type** 定义加密技术（不需要 "type\="）。可用选项为 std、es 和 snp。
+<strong>type</strong> 定义加密技术（不需要 "type\="）。可用选项为 std、es 和 snp。
 
-QEMU 的 **policy** 参数根据 **no-debug** 和 **no-key-sharing** 参数计算得出。这些参数分别对应 policy-bit 0 和 1。如果 **type** 为 **es**，则将 policy-bit 2 设置为 1，以启用 SEV-ES。policy-bit 3（nosend）始终设置为 1，以防止迁移攻击。有关如何计算 policy 的更多信息，请参阅：[AMD SEV API 规范第 3 章](https://www.amd.com/system/files/TechDocs/55766_SEV-KM_API_Specification.pdf)
+QEMU 的 <strong>policy</strong> 参数根据 <strong>no-debug</strong> 和 <strong>no-key-sharing</strong> 参数计算得出。这些参数分别对应 policy-bit 0 和 1。如果 <strong>type</strong> 为 <strong>es</strong>，则将 policy-bit 2 设置为 1，以启用 SEV-ES。policy-bit 3（nosend）始终设置为 1，以防止迁移攻击。有关如何计算 policy 的更多信息，请参阅：[AMD SEV API 规范第 3 章](https://www.amd.com/system/files/TechDocs/55766_SEV-KM_API_Specification.pdf)
 
-为了向后兼容较旧的 OVMF 镜像以及不度量 kernel/initrd 的客户机，**kernel-hashes** 选项默认关闭。请参阅 [https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg02598.html](https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg02598.html)
+为了向后兼容较旧的 OVMF 镜像以及不度量 kernel/initrd 的客户机，<strong>kernel-hashes</strong> 选项默认关闭。请参阅 [https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg02598.html](https://lists.gnu.org/archive/html/qemu-devel/2021-11/msg02598.html)
 
-**检查 SEV 是否在虚拟机中正常工作**
+<strong>检查 SEV 是否在虚拟机中正常工作</strong>
 
 方法 1 \- dmesg：
 
@@ -2392,7 +2392,7 @@ AMD Memory Encryption Features active: SEV
 1
 ```
 
-**配置示例（SEV-SNP）：**
+<strong>配置示例（SEV-SNP）：</strong>
 
 ```text
 # qm set <vmid> -amd-sev type=snp,allow-smt=1,no-debug=1,kernel-hashes=1
@@ -2400,7 +2400,7 @@ AMD Memory Encryption Features active: SEV
 
 默认会设置 `allow-smt` policy-bit。如果通过将 `allow-smt` 设置为 `0` 来禁用它，则必须在宿主机上禁用 SMT，虚拟机才能运行。
 
-**检查 SEV-SNP 是否在虚拟机中正常工作**
+<strong>检查 SEV-SNP 是否在虚拟机中正常工作</strong>
 
 ```text
 # dmesg | grep -i snp
@@ -2422,29 +2422,29 @@ SEV: SNP guest platform device initialized.
 
 [![screenshot/gui-create-vm-network.png](../assets/screenshot-gui-create-vm-network-png-52dc7176c8f4.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-create-vm-network.png)
 
-每台虚拟机都可以有多个 *网络接口控制器*（NIC），分为四种不同类型：
+每台虚拟机都可以有多个 <em>网络接口控制器</em>（NIC），分为四种不同类型：
 
-- **Intel E1000** 是默认类型，模拟 Intel 千兆网卡。
-- 如果追求最高性能，应使用 **VirtIO** 半虚拟化 NIC。与所有 VirtIO 设备一样，客户机操作系统应安装适当的驱动程序。
-- **Realtek 8139** 模拟较旧的 100 MB/s 网卡，只应在模拟较旧的操作系统（2002 年之前发布）时使用
-- **vmxnet3** 是另一种半虚拟化设备，只应在从其他虚拟机监视器导入虚拟机时使用。
+- <strong>Intel E1000</strong> 是默认类型，模拟 Intel 千兆网卡。
+- 如果追求最高性能，应使用 <strong>VirtIO</strong> 半虚拟化 NIC。与所有 VirtIO 设备一样，客户机操作系统应安装适当的驱动程序。
+- <strong>Realtek 8139</strong> 模拟较旧的 100 MB/s 网卡，只应在模拟较旧的操作系统（2002 年之前发布）时使用
+- <strong>vmxnet3</strong> 是另一种半虚拟化设备，只应在从其他虚拟机监视器导入虚拟机时使用。
 
-Proxmox VE 会为每个 NIC 生成一个随机 **MAC 地址**，从而使虚拟机能够在以太网网络中被寻址。
+Proxmox VE 会为每个 NIC 生成一个随机 <strong>MAC 地址</strong>，从而使虚拟机能够在以太网网络中被寻址。
 
 您添加到虚拟机的 NIC 可以采用以下两种不同模式之一：
 
-- 在默认的 **桥接模式**下，每个虚拟 NIC 在宿主机上都有一个 *tap 设备* 作为后端（一种模拟以太网 NIC 的软件环回设备）。此 tap 设备会添加到一个网桥，在 Proxmox VE 中默认为 vmbr0。在此模式下，虚拟机可以直接访问宿主机所在的以太网 LAN。
-- 在备选的 **NAT 模式**下，每个虚拟 NIC 只与 QEMU 用户网络协议栈通信，其中内置的路由器和 DHCP 服务器可以提供网络访问。此内置 DHCP 将在私有 10.0.2.0/24 范围内提供地址。NAT 模式比桥接模式慢得多，只应用于测试。此模式只能通过 CLI 或 API 使用，不能通过 Web UI 使用。
+- 在默认的 <strong>桥接模式</strong>下，每个虚拟 NIC 在宿主机上都有一个 <em>tap 设备</em> 作为后端（一种模拟以太网 NIC 的软件环回设备）。此 tap 设备会添加到一个网桥，在 Proxmox VE 中默认为 vmbr0。在此模式下，虚拟机可以直接访问宿主机所在的以太网 LAN。
+- 在备选的 <strong>NAT 模式</strong>下，每个虚拟 NIC 只与 QEMU 用户网络协议栈通信，其中内置的路由器和 DHCP 服务器可以提供网络访问。此内置 DHCP 将在私有 10.0.2.0/24 范围内提供地址。NAT 模式比桥接模式慢得多，只应用于测试。此模式只能通过 CLI 或 API 使用，不能通过 Web UI 使用。
 
-您还可以在创建虚拟机时选择 **无网络设备**，以跳过添加网络设备。
+您还可以在创建虚拟机时选择 <strong>无网络设备</strong>，以跳过添加网络设备。
 
-您可以手动覆盖每个虚拟机网络设备的 **MTU** 设置。将该字段留空或设置为 `mtu=1` 将从底层网桥继承 MTU。此选项仅适用于 **VirtIO** 网络设备。
+您可以手动覆盖每个虚拟机网络设备的 <strong>MTU</strong> 设置。将该字段留空或设置为 `mtu=1` 将从底层网桥继承 MTU。此选项仅适用于 <strong>VirtIO</strong> 网络设备。
 
 **多队列**
 
-如果您使用 VirtIO 驱动程序，可以选择启用 **Multiqueue** 选项。此选项允许客户机操作系统使用多个虚拟 CPU 处理网络数据包，从而提高传输的数据包总数。
+如果您使用 VirtIO 驱动程序，可以选择启用 <strong>Multiqueue</strong> 选项。此选项允许客户机操作系统使用多个虚拟 CPU 处理网络数据包，从而提高传输的数据包总数。
 
-在 Proxmox VE 中使用 VirtIO 驱动程序时，每个 NIC 网络队列都会传递给宿主机内核，队列将在该内核中由 vhost 驱动程序创建的内核线程处理。启用此选项后，可以为每个 NIC 将*多个*网络队列传递给宿主机内核。
+在 Proxmox VE 中使用 VirtIO 驱动程序时，每个 NIC 网络队列都会传递给宿主机内核，队列将在该内核中由 vhost 驱动程序创建的内核线程处理。启用此选项后，可以为每个 NIC 将<em>多个</em>网络队列传递给宿主机内核。
 
 使用 Multiqueue 时，建议将其设置为等于客户机 vCPU 数量的值。请记住，vCPU 数量是为虚拟机配置的插槽数乘以核心数。您还需要使用以下 ethtool 命令，设置虚拟机中每个 VirtIO NIC 的多用途通道数量：
 
@@ -2460,24 +2460,24 @@ Proxmox VE 会为每个 NIC 生成一个随机 **MAC 地址**，从而使虚拟�
 
 QEMU 可以虚拟化几种类型的 VGA 硬件。例如：
 
-- **std**，默认值，模拟带有 Bochs VBE 扩展的显卡。
-- **cirrus**，它曾经是默认值，模拟一种非常老旧的硬件模块，并保留了其所有问题。只有在确实必要时才应使用这种显示类型[\[10\]](#note-0cdd31f9-10)，例如在使用 Windows XP 或更早版本时。
-- **vmware**，是一种兼容 VMWare SVGA-II 的适配器。
-- **qxl**，是 QXL 半虚拟化显卡。选择此项还会为 VM 启用 [SPICE](https://www.spice-space.org/)（一种远程查看器协议）。
-- **virtio-gl**，通常称为 VirGL，是一种供 VM 内部使用的虚拟 3D GPU，可以将工作负载卸载到宿主机 GPU，而无需专用（昂贵的）型号和驱动程序，也不需要完全独占宿主机 GPU，从而允许多个客户机和/或宿主机重复使用该 GPU。
+- <strong>std</strong>，默认值，模拟带有 Bochs VBE 扩展的显卡。
+- <strong>cirrus</strong>，它曾经是默认值，模拟一种非常老旧的硬件模块，并保留了其所有问题。只有在确实必要时才应使用这种显示类型[\[10\]](#note-0cdd31f9-10)，例如在使用 Windows XP 或更早版本时。
+- <strong>vmware</strong>，是一种兼容 VMWare SVGA-II 的适配器。
+- <strong>qxl</strong>，是 QXL 半虚拟化显卡。选择此项还会为 VM 启用 [SPICE](https://www.spice-space.org/)（一种远程查看器协议）。
+- <strong>virtio-gl</strong>，通常称为 VirGL，是一种供 VM 内部使用的虚拟 3D GPU，可以将工作负载卸载到宿主机 GPU，而无需专用（昂贵的）型号和驱动程序，也不需要完全独占宿主机 GPU，从而允许多个客户机和/或宿主机重复使用该 GPU。
 
   {% hint style="info" %}
   VirGL 支持需要一些额外的库，这些库由于体积相对较大，而且并非适用于所有 GPU 型号/供应商的开源版本，因此默认不会安装。对于大多数设置，您只需执行：`apt install libgl1 libegl1`
   {% endhint %}
 
-您可以通过设置 *memory* 选项来编辑分配给虚拟 GPU 的内存量。这可以在 VM 内启用更高的分辨率，尤其是在使用 SPICE/QXL 时。
+您可以通过设置 <em>memory</em> 选项来编辑分配给虚拟 GPU 的内存量。这可以在 VM 内启用更高的分辨率，尤其是在使用 SPICE/QXL 时。
 
 由于内存由显示设备保留，为 SPICE 选择多显示器模式（例如 `qxl2` 表示双显示器）会产生一些影响：
 
-- Windows 需要每台显示器对应一个设备，因此，如果您的 *ostype* 是某个 Windows 版本，Proxmox VE 会为 VM 的每台显示器额外提供一个设备。每个设备都会获得指定数量的内存。
+- Windows 需要每台显示器对应一个设备，因此，如果您的 <em>ostype</em> 是某个 Windows 版本，Proxmox VE 会为 VM 的每台显示器额外提供一个设备。每个设备都会获得指定数量的内存。
 - Linux VM 始终可以启用更多虚拟显示器，但选择多显示器模式会将分配给设备的内存乘以显示器数量。
 
-选择 `serialX` 作为显示 *type* 会禁用 VGA 输出，并将 Web 控制台重定向到所选的串行端口。在这种情况下，配置的显示 *memory* 设置将被忽略。
+选择 `serialX` 作为显示 <em>type</em> 会禁用 VGA 输出，并将 Web 控制台重定向到所选的串行端口。在这种情况下，配置的显示 <em>memory</em> 设置将被忽略。
 
 **VNC 剪贴板**
 
@@ -2489,7 +2489,7 @@ QEMU 可以虚拟化几种类型的 VGA 硬件。例如：
 
 要使用剪贴板功能，必须先安装 SPICE 客户机工具。在基于 Debian 的发行版上，可以通过安装 `spice-vdagent` 来实现。对于其他操作系统，请在官方软件仓库中搜索，或参阅：[https://www.spice-space.org/download.html](https://www.spice-space.org/download.html)
 
-安装 spice 客户机工具后，即可使用 VNC 剪贴板功能（例如在 noVNC 控制台面板中）。不过，如果使用 SPICE、virtio 或 virgl，需要选择使用哪种剪贴板。这是因为默认的 **SPICE** 剪贴板将被 **VNC** 剪贴板替换，条件是 `clipboard` 设为 `vnc`。
+安装 spice 客户机工具后，即可使用 VNC 剪贴板功能（例如在 noVNC 控制台面板中）。不过，如果使用 SPICE、virtio 或 virgl，需要选择使用哪种剪贴板。这是因为默认的 <strong>SPICE</strong> 剪贴板将被 <strong>VNC</strong> 剪贴板替换，条件是 `clipboard` 设为 `vnc`。
 
 {% hint style="info" %}
 为了启用 VNC 剪贴板，QEMU 会被配置为使用 qemu-vdagent 设备。QEMU 10.1 版本增加了对该设备在线迁移的支持。运行在低于 10.1 的 QEMU 或机器版本上且已启用 VNC 剪贴板的 VM 无法在线迁移。
@@ -2504,9 +2504,9 @@ USB 直通设备有两种不同的类型：
 
 宿主机 USB 直通通过将宿主机的一个 USB 设备提供给 VM 来工作。这可以通过供应商 ID 和产品 ID 完成，也可以通过宿主机总线和端口完成。
 
-供应商/产品 ID 的格式如下：**0123:abcd**，其中 **0123** 是供应商 ID，**abcd** 是产品 ID，这意味着同一型号 USB 设备的两个实例具有相同的 ID。
+供应商/产品 ID 的格式如下：<strong>0123:abcd</strong>，其中 <strong>0123</strong> 是供应商 ID，<strong>abcd</strong> 是产品 ID，这意味着同一型号 USB 设备的两个实例具有相同的 ID。
 
-总线/端口的格式如下：**1-2.3.4**，其中 **1** 是总线，**2.3.4** 是端口路径。这表示宿主机的物理端口（取决于 USB 控制器的内部顺序）。
+总线/端口的格式如下：<strong>1-2.3.4</strong>，其中 <strong>1</strong> 是总线，<strong>2.3.4</strong> 是端口路径。这表示宿主机的物理端口（取决于 USB 控制器的内部顺序）。
 
 如果 VM 启动时其配置中存在某个设备，但该设备并不存在于宿主机上，VM 仍可正常启动。一旦该设备/端口在宿主机上可用，就会被直通给 VM。
 
@@ -2520,19 +2520,19 @@ USB 直通设备有两种不同的类型：
 
 ### BIOS 和 UEFI <a href="#qm_bios_and_uefi" id="qm_bios_and_uefi"></a>
 
-为了正确模拟计算机，QEMU 需要使用固件。在普通 PC 上通常称为 BIOS 或 (U)EFI 的固件，是 VM 启动时最早执行的步骤之一。它负责执行基本硬件初始化，并为操作系统提供固件和硬件接口。默认情况下，QEMU 使用 **SeaBIOS**，这是一种开源的 x86 BIOS 实现。对于大多数标准设置，SeaBIOS 是一个不错的选择。
+为了正确模拟计算机，QEMU 需要使用固件。在普通 PC 上通常称为 BIOS 或 (U)EFI 的固件，是 VM 启动时最早执行的步骤之一。它负责执行基本硬件初始化，并为操作系统提供固件和硬件接口。默认情况下，QEMU 使用 <strong>SeaBIOS</strong>，这是一种开源的 x86 BIOS 实现。对于大多数标准设置，SeaBIOS 是一个不错的选择。
 
 {% hint style="info" %}
 SeaBIOS 以及 `bios=seabios` 仅适用于 x86 客户机。在 arm64 宿主机上，虚拟机始终通过 UEFI 启动，使用 OVMF 的 ARM 构建版本（AAVMF），因此 `bios=ovmf` 是那里唯一受支持的设置。
 {% endhint %}
 
-某些操作系统（例如 Windows 11）可能要求使用兼容 UEFI 的实现。在这种情况下，必须改用 **OVMF**，它是一种开源的 UEFI 实现。[\[11\]](#note-0cdd31f9-11)
+某些操作系统（例如 Windows 11）可能要求使用兼容 UEFI 的实现。在这种情况下，必须改用 <strong>OVMF</strong>，它是一种开源的 UEFI 实现。[\[11\]](#note-0cdd31f9-11)
 
 在其他一些场景中，SeaBIOS 可能不是理想的启动固件，例如当您想要进行 VGA 直通时。[\[12\]](#note-0cdd31f9-12)
 
 如果您想使用 OVMF，需要考虑以下几点：
 
-为了保存**启动顺序**之类的设置，需要有一个 EFI 磁盘。该磁盘将包含在备份和快照中，并且只能有一个。
+为了保存<strong>启动顺序</strong>之类的设置，需要有一个 EFI 磁盘。该磁盘将包含在备份和快照中，并且只能有一个。
 
 您可以使用以下命令创建这样的磁盘：
 
@@ -2540,14 +2540,14 @@ SeaBIOS 以及 `bios=seabios` 仅适用于 x86 客户机。在 arm64 宿主机�
 # qm set <vmid> -efidisk0 <storage>:1,format=<format>,efitype=4m,pre-enrolled-keys=1
 ```
 
-其中 **\<storage\>** 是您希望存放该磁盘的存储，**\<format\>** 是该存储支持的格式。或者，您也可以通过 Web 界面，在 VM 的硬件部分使用 *Add* → *EFI Disk* 创建这样的磁盘。
+其中 <strong>\<storage\></strong> 是您希望存放该磁盘的存储，<strong>\<format\></strong> 是该存储支持的格式。或者，您也可以通过 Web 界面，在 VM 的硬件部分使用 <em>Add</em> → <em>EFI Disk</em> 创建这样的磁盘。
 
-**efitype** 选项指定应使用哪个版本的 OVMF 固件。对于新 VM，应始终使用 *4m*，因为它支持安全启动，并分配了更多空间以支持未来的开发（这是 GUI 中的默认值）。
+<strong>efitype</strong> 选项指定应使用哪个版本的 OVMF 固件。对于新 VM，应始终使用 <em>4m</em>，因为它支持安全启动，并分配了更多空间以支持未来的开发（这是 GUI 中的默认值）。
 
-**pre-enroll-keys** 指定 efidisk 是否应预加载发行版特定的密钥和 Microsoft 标准安全启动密钥。它还会默认启用安全启动（但仍可以在虚拟机内的 OVMF 菜单中禁用）。另请参阅[安全启动证书到期](#qm_secure_boot_ca_expiration)。
+<strong>pre-enroll-keys</strong> 指定 efidisk 是否应预加载发行版特定的密钥和 Microsoft 标准安全启动密钥。它还会默认启用安全启动（但仍可以在虚拟机内的 OVMF 菜单中禁用）。另请参阅[安全启动证书到期](#qm_secure_boot_ca_expiration)。
 
 {% hint style="info" %}
-如果您想在现有 VM（仍使用 *2m* efidisk）中开始使用安全启动，则需要重新创建 efidisk。为此，请删除旧磁盘（`qm set <vmid> -delete efidisk0`），然后按上述说明添加新磁盘。这将重置您在 OVMF 菜单中所做的任何自定义配置！
+如果您想在现有 VM（仍使用 <em>2m</em> efidisk）中开始使用安全启动，则需要重新创建 efidisk。为此，请删除旧磁盘（`qm set <vmid> -delete efidisk0`），然后按上述说明添加新磁盘。这将重置您在 OVMF 菜单中所做的任何自定义配置！
 {% endhint %}
 
 将 OVMF 与虚拟显示器一起使用时（不进行 VGA 直通），您需要在 OVMF 菜单中设置客户端分辨率（启动期间按 ESC 键即可进入该菜单），或者必须选择 SPICE 作为显示类型。
@@ -2570,7 +2570,7 @@ manage-bde -protectors -disable <drive>
 
 例如，`<drive>` 可以是 `C:`。在继续操作之前，每个使用 BitLocker 的驱动器都必须执行此操作。否则，下次启动时系统将提示您输入 BitLocker 恢复密钥！
 
-在 UI 的 *Hardware* 视图中选择 EFI 磁盘，然后使用 *Disk Action \> Enroll Updated Certificates*。或者，通过 `/nodes/{node}/qemu/{vmid}/config` API 端点注册证书。注册将在 VM 下次启动时生效。该
+在 UI 的 <em>Hardware</em> 视图中选择 EFI 磁盘，然后使用 <em>Disk Action \> Enroll Updated Certificates</em>。或者，通过 `/nodes/{node}/qemu/{vmid}/config` API 端点注册证书。注册将在 VM 下次启动时生效。该
 
 ```text
 qm enroll-efi-keys <vmid>
@@ -2586,22 +2586,22 @@ CLI 命令可以实现相同的效果，但要求 VM 处于关机状态。
 
 ### 可信平台模块（TPM） <a href="#qm_tpm" id="qm_tpm"></a>
 
-**可信平台模块**是一种安全存储机密数据（例如加密密钥）的设备，并提供用于验证系统启动的防篡改功能。
+<strong>可信平台模块</strong>是一种安全存储机密数据（例如加密密钥）的设备，并提供用于验证系统启动的防篡改功能。
 
 某些操作系统（例如 Windows 11）要求将此类设备连接到机器（无论是物理机还是虚拟机）。
 
-通过指定 **tpmstate** 卷来添加 TPM。其工作方式与 efidisk 类似，即创建后无法更改（只能删除）。您可以通过以下命令添加一个：
+通过指定 <strong>tpmstate</strong> 卷来添加 TPM。其工作方式与 efidisk 类似，即创建后无法更改（只能删除）。您可以通过以下命令添加一个：
 
 ```text
 # qm set <vmid> -tpmstate0 <storage>:1,version=<version>
 ```
 
-其中 **\<storage\>** 是您希望存放状态的存储，**\<version\>** 可以是 *v1.2* 或 *v2.0*。您也可以通过 Web 界面，在 VM 的硬件部分选择 *Add* → *TPM State* 来添加一个。
+其中 <strong>\<storage\></strong> 是您希望存放状态的存储，<strong>\<version\></strong> 可以是 <em>v1.2</em> 或 <em>v2.0</em>。您也可以通过 Web 界面，在 VM 的硬件部分选择 <em>Add</em> → <em>TPM State</em> 来添加一个。
 
-*v2.0* TPM 规范较新且支持更好，因此除非您的特定实现需要 *v1.2* TPM，否则应优先使用它。
+<em>v2.0</em> TPM 规范较新且支持更好，因此除非您的特定实现需要 <em>v1.2</em> TPM，否则应优先使用它。
 
 {% hint style="info" %}
-与物理 TPM 相比，模拟 TPM **并不**能提供任何真正的安全优势。TPM 的意义在于，除非通过 TPM 规范中规定的命令，否则其中的数据无法被轻易修改。由于模拟设备的数据存储在常规卷上，因此任何有权访问该卷的人都有可能编辑这些数据。
+与物理 TPM 相比，模拟 TPM <strong>并不</strong>能提供任何真正的安全优势。TPM 的意义在于，除非通过 TPM 规范中规定的命令，否则其中的数据无法被轻易修改。由于模拟设备的数据存储在常规卷上，因此任何有权访问该卷的人都有可能编辑这些数据。
 {% endhint %}
 
 ### 虚拟机之间的共享内存 <a href="#qm_ivshmem" id="qm_ivshmem"></a>
@@ -2638,14 +2638,14 @@ qm set <vmid> -audio0 device=<device>
 
 有两种可用的后端：
 
-- *spice*
-- *none*
+- <em>spice</em>
+- <em>none</em>
 
-*spice* 后端可以与 [SPICE](#qm_display) 配合使用；如果某些软件需要虚拟机中存在音频设备才能工作，则 *none* 后端可能很有用。要使用宿主机的物理音频设备，请使用设备直通（参见 [PCI 直通](#qm_pci_passthrough)和 [USB 直通](#qm_usb_passthrough)）。Microsoft RDP 等远程协议提供播放声音的选项。
+<em>spice</em> 后端可以与 [SPICE](#qm_display) 配合使用；如果某些软件需要虚拟机中存在音频设备才能工作，则 <em>none</em> 后端可能很有用。要使用宿主机的物理音频设备，请使用设备直通（参见 [PCI 直通](#qm_pci_passthrough)和 [USB 直通](#qm_usb_passthrough)）。Microsoft RDP 等远程协议提供播放声音的选项。
 
 ### VirtIO RNG <a href="#qm_virtio_rng" id="qm_virtio_rng"></a>
 
-RNG（随机数生成器）是一种为系统提供熵（*随机性*）的设备。虚拟硬件 RNG 可用于将宿主机系统的这种熵提供给客户机 VM。这有助于避免客户机出现熵不足问题（即没有足够可用的熵，系统可能变慢或出现问题的情况），尤其是在客户机启动过程中。
+RNG（随机数生成器）是一种为系统提供熵（<em>随机性</em>）的设备。虚拟硬件 RNG 可用于将宿主机系统的这种熵提供给客户机 VM。这有助于避免客户机出现熵不足问题（即没有足够可用的熵，系统可能变慢或出现问题的情况），尤其是在客户机启动过程中。
 
 要添加基于 VirtIO 的模拟 RNG，请运行以下命令：
 
@@ -2661,7 +2661,7 @@ qm set <vmid> -rng0 source=<source>[,max_bytes=X,period=Y]
 
 可以通过 `max_bytes` 和 `period` 参数指定限制，其含义为 `max_bytes` / `period` 毫秒。不过，这并非线性关系：1024B/1000ms 表示在 1 秒定时器触发时最多有 1 KiB 数据可用，而非在一秒内持续向客户机传输 1 KiB。因此可以减小 `period`，以更高速率向客户机注入熵。
 
-默认情况下，限制设置为每 1000 ms 1024 字节（1 KiB/s）。建议始终使用限制器，以避免客户机占用过多宿主机资源。如果需要，可将 *0* 用作 `max_bytes` 的值，以禁用所有限制。
+默认情况下，限制设置为每 1000 ms 1024 字节（1 KiB/s）。建议始终使用限制器，以避免客户机占用过多宿主机资源。如果需要，可将 <em>0</em> 用作 `max_bytes` 的值，以禁用所有限制。
 
 ### Virtiofs <a href="#qm_virtiofs" id="qm_virtiofs"></a>
 
@@ -2744,14 +2744,14 @@ boot: order=scsi0;net0;hostpci0
 在 GUI 中，您可以使用拖放编辑器指定启动顺序，并通过复选框启用或禁用某些设备的启动。
 
 {% hint style="info" %}
-如果您的客户机使用多个磁盘来启动操作系统或加载引导加载程序，则必须将所有这些磁盘标记为*可启动*（即必须启用相应复选框，或使其出现在配置中的列表里），客户机才能启动。这是因为较新的 SeaBIOS 和 OVMF 版本只会初始化标记为*可启动*的磁盘。
+如果您的客户机使用多个磁盘来启动操作系统或加载引导加载程序，则必须将所有这些磁盘标记为<em>可启动</em>（即必须启用相应复选框，或使其出现在配置中的列表里），客户机才能启动。这是因为较新的 SeaBIOS 和 OVMF 版本只会初始化标记为<em>可启动</em>的磁盘。
 {% endhint %}
 
-无论如何，即使设备未出现在列表中或未选中其复选框，一旦客户机的操作系统启动并初始化这些设备，它们仍可供客户机使用。*可启动*标志仅影响客户机 BIOS 和引导加载程序。
+无论如何，即使设备未出现在列表中或未选中其复选框，一旦客户机的操作系统启动并初始化这些设备，它们仍可供客户机使用。<em>可启动</em>标志仅影响客户机 BIOS 和引导加载程序。
 
 ### 虚拟机的自动启动和关闭 <a href="#qm_startup_and_shutdown" id="qm_startup_and_shutdown"></a>
 
-创建 VM 后，您可能希望它们在宿主机系统启动时自动启动。为此，您需要在 Web 界面中选择 VM 的*开机启动*选项，该选项位于*选项*选项卡中，或者使用以下命令进行设置：
+创建 VM 后，您可能希望它们在宿主机系统启动时自动启动。为此，您需要在 Web 界面中选择 VM 的<em>开机启动</em>选项，该选项位于<em>选项</em>选项卡中，或者使用以下命令进行设置：
 
 ```text
 # qm set <vmid> -onboot 1
@@ -2763,12 +2763,12 @@ boot: order=scsi0;net0;hostpci0
 
 在某些情况下，您可能希望能够微调 VM 的启动顺序，例如，当您的某个 VM 为其他客户机系统提供防火墙或 DHCP 服务时。为此，可以使用以下参数：
 
-- **启动/关闭顺序**：定义启动顺序优先级。例如，如果希望 VM 第一个启动，请将其设置为 1。（关闭时采用相反的启动顺序，因此启动顺序为 1 的机器将最后关闭）。如果宿主机上的多个 VM 定义了相同顺序，则还会按 *VMID* 升序排列。
-- **启动延迟**：定义此 VM 启动与后续 VM 启动之间的时间间隔。例如，如果希望在启动其他 VM 之前等待 240 秒，请将其设置为 240。
-- **关闭超时**：定义 Proxmox VE 在发出关闭命令后等待 VM 离线的时长（秒）。默认情况下，此值设置为 180，这意味着 Proxmox VE 会发出关闭请求，并等待 180 秒让机器离线。如果超时后机器仍在线，将被强制停止。
+- <strong>启动/关闭顺序</strong>：定义启动顺序优先级。例如，如果希望 VM 第一个启动，请将其设置为 1。（关闭时采用相反的启动顺序，因此启动顺序为 1 的机器将最后关闭）。如果宿主机上的多个 VM 定义了相同顺序，则还会按 <em>VMID</em> 升序排列。
+- <strong>启动延迟</strong>：定义此 VM 启动与后续 VM 启动之间的时间间隔。例如，如果希望在启动其他 VM 之前等待 240 秒，请将其设置为 240。
+- <strong>关闭超时</strong>：定义 Proxmox VE 在发出关闭命令后等待 VM 离线的时长（秒）。默认情况下，此值设置为 180，这意味着 Proxmox VE 会发出关闭请求，并等待 180 秒让机器离线。如果超时后机器仍在线，将被强制停止。
 
 {% hint style="info" %}
-目前，由 HA 堆栈管理的 VM 不遵循*开机启动*和*启动顺序*选项。这些 VM 将被启动和关闭算法跳过，因为 HA 管理器本身会确保 VM 得到启动和停止。
+目前，由 HA 堆栈管理的 VM 不遵循<em>开机启动</em>和<em>启动顺序</em>选项。这些 VM 将被启动和关闭算法跳过，因为 HA 管理器本身会确保 VM 得到启动和停止。
 {% endhint %}
 
 请注意，未设置启动/关闭顺序参数的机器始终会在设置了该参数的机器之后启动。此外，该参数只能在同一宿主机上运行的虚拟机之间强制执行，无法在整个集群范围内生效。
@@ -2796,11 +2796,11 @@ QEMU Guest Agent 是一项在 VM 内运行的服务，它在宿主机与客户�
 
 #### 启用客户机代理通信 <a href="#qm_qga_enable" id="qm_qga_enable"></a>
 
-可以在 VM 的**选项**面板中启用 Proxmox VE 与客户机代理之间的通信。需要重新启动 VM 才能使更改生效。
+可以在 VM 的<strong>选项</strong>面板中启用 Proxmox VE 与客户机代理之间的通信。需要重新启动 VM 才能使更改生效。
 
 #### 使用 QGA 自动执行 TRIM <a href="#qm_qga_auto_trim" id="qm_qga_auto_trim"></a>
 
-可以启用*运行 guest-trim*选项。启用后，Proxmox VE 会在以下可能将零写入存储的操作完成后，向客户机发出 trim 命令：
+可以启用<em>运行 guest-trim</em>选项。启用后，Proxmox VE 会在以下可能将零写入存储的操作完成后，向客户机发出 trim 命令：
 
 - 将磁盘移动到另一个存储
 - 将使用本地存储的 VM 在线迁移到另一个节点
@@ -2830,7 +2830,7 @@ Linux 上的 ext4 有一个注意事项，因为它使用内存中的优化来�
 处理这种情况有两种方法。
 
 1. 将 QEMU Guest Agent 配置为使用不会干扰其他 VSS 用户的不同 VSS 变体。[Proxmox VE wiki](https://pve.proxmox.com/wiki/VM_Backup_Consistency) 中有更多详细信息。
-2. 或者，您可以通过禁用 `freeze-fs` 客户机代理选项，将 Proxmox VE 配置为不发出冻结和解冻周期。这也可以在 GUI 中完成：打开虚拟机的 *选项* 面板，然后打开 *QEMU Guest Agent* 对话框，并禁用 *在某些操作期间冻结/解冻客户机文件系统以保持一致性* 选项。
+2. 或者，您可以通过禁用 `freeze-fs` 客户机代理选项，将 Proxmox VE 配置为不发出冻结和解冻周期。这也可以在 GUI 中完成：打开虚拟机的 <em>选项</em> 面板，然后打开 <em>QEMU Guest Agent</em> 对话框，并禁用 <em>在某些操作期间冻结/解冻客户机文件系统以保持一致性</em> 选项。
 
    {% hint style="warning" %}
    禁用此选项可能会导致备份中的文件系统不一致。因此，首选方法是调整客户机中的 QEMU Guest Agent 配置。
@@ -2842,31 +2842,31 @@ Linux 上的 ext4 有一个注意事项，因为它使用内存中的优化来�
 
 确保已安装并正在运行客户机代理。
 
-启用客户机代理后，Proxmox VE 将通过客户机代理发送 *shutdown* 等电源命令。如果客户机代理未运行，命令将无法正确执行，关机命令将因超时而失败。
+启用客户机代理后，Proxmox VE 将通过客户机代理发送 <em>shutdown</em> 等电源命令。如果客户机代理未运行，命令将无法正确执行，关机命令将因超时而失败。
 
 ### SPICE 增强功能 <a href="#qm_spice_enhancements" id="qm_spice_enhancements"></a>
 
 SPICE 增强功能是可选功能，可改善远程查看器的使用体验。
 
-要通过 GUI 启用这些功能，请转到虚拟机的 **选项** 面板。运行以下命令以通过 CLI 启用它们：
+要通过 GUI 启用这些功能，请转到虚拟机的 <strong>选项</strong> 面板。运行以下命令以通过 CLI 启用它们：
 
 ```text
 qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 ```
 
 {% hint style="info" %}
-要使用这些功能，虚拟机的[**显示**](#qm_display)必须设置为 SPICE（qxl）。
+要使用这些功能，虚拟机的[<strong>显示</strong>](#qm_display)必须设置为 SPICE（qxl）。
 {% endhint %}
 
 #### 文件夹共享 <a href="#folder_sharing" id="folder_sharing"></a>
 
 与客户机共享本地文件夹。需要在客户机中安装 `spice-webdavd` 守护进程。它通过位于 [http://localhost:9843](http://localhost:9843) 的本地 WebDAV 服务器提供共享文件夹。
 
-对于 Windows 客户机，*Spice WebDAV 守护进程* 的安装程序可从 [SPICE 官方网站](https://www.spice-space.org/download.html#windows-binaries) 下载。
+对于 Windows 客户机，<em>Spice WebDAV 守护进程</em> 的安装程序可从 [SPICE 官方网站](https://www.spice-space.org/download.html#windows-binaries) 下载。
 
 大多数 Linux 发行版都有一个名为 `spice-webdavd` 的可安装软件包。
 
-要在 Virt-Viewer (Remote Viewer) 中共享文件夹，请转到 *文件 → 首选项*。选择要共享的文件夹，然后勾选该复选框。
+要在 Virt-Viewer (Remote Viewer) 中共享文件夹，请转到 <em>文件 → 首选项</em>。选择要共享的文件夹，然后勾选该复选框。
 
 {% hint style="info" %}
 文件夹共享目前仅适用于 Linux 版本的 Virt-Viewer。
@@ -2880,8 +2880,8 @@ qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 
 快速刷新的区域会被编码为视频流。有两个选项：
 
-- **all**：任何快速刷新的区域都会被编码为视频流。
-- **filter**：使用附加过滤器来决定是否应使用视频流（目前仅跳过小窗口区域）。
+- <strong>all</strong>：任何快速刷新的区域都会被编码为视频流。
+- <strong>filter</strong>：使用附加过滤器来决定是否应使用视频流（目前仅跳过小窗口区域）。
 
 无法就是否应启用视频流以及应选择哪个选项给出一般性建议。实际效果可能因具体情况而异。
 
@@ -2889,7 +2889,7 @@ qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 
 **共享文件夹未显示**
 
-确保 WebDAV 服务已在客户机中启用并正在运行。在 Windows 上，它称为 *Spice webdav proxy*。在 Linux 中，名称为 *spice-webdavd*，但可能因发行版而异。
+确保 WebDAV 服务已在客户机中启用并正在运行。在 Windows 上，它称为 <em>Spice webdav proxy</em>。在 Linux 中，名称为 <em>spice-webdavd</em>，但可能因发行版而异。
 
 如果服务正在运行，请在客户机内的浏览器中打开 [http://localhost:9843](http://localhost:9843) 来检查 WebDAV 服务器。
 
@@ -2920,7 +2920,7 @@ qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 
 #### 工作原理 <a href="#how_it_works" id="how_it_works"></a>
 
-在线迁移首先会在目标宿主机上启动一个带有 *incoming* 标志的新 QEMU 进程，该进程仅执行基本初始化，客户机 vCPU 仍处于暂停状态，然后等待源虚拟机的客户机内存和设备状态数据流。所有其他资源（如磁盘）要么是共享的，要么已在 VM 运行时状态迁移开始前发送完毕；因此，只剩下内存内容和设备状态需要传输。
+在线迁移首先会在目标宿主机上启动一个带有 <em>incoming</em> 标志的新 QEMU 进程，该进程仅执行基本初始化，客户机 vCPU 仍处于暂停状态，然后等待源虚拟机的客户机内存和设备状态数据流。所有其他资源（如磁盘）要么是共享的，要么已在 VM 运行时状态迁移开始前发送完毕；因此，只剩下内存内容和设备状态需要传输。
 
 建立此连接后，源端开始异步向目标端发送内存内容。如果源端上的客户机内存发生变化，这些部分会被标记为脏数据，并再次执行一轮客户机内存数据发送。此循环不断重复，直到正在运行的源 VM 与正在接收的目标 VM 之间的数据差异足够小，可以在几毫秒内发送完毕；因为此时可以完全暂停源 VM，而用户或程序不会察觉到暂停，从而将剩余数据发送到目标端，然后恢复目标 VM 的 CPU 运行，使其在远不到一秒的时间内成为新的运行中 VM。
 
@@ -2932,15 +2932,15 @@ qm set <vmid> -spice_enhancements foldersharing=1,videostreaming=all
 - 这些宿主机位于同一个 Proxmox VE 集群中。
 - 这些宿主机之间具有正常（且可靠）的网络连接。
 - 目标宿主机必须安装相同或更高版本的 Proxmox VE 软件包。虽然有时反过来也能正常工作，但无法保证。
-- 这些宿主机的 CPU 来自同一厂商，并具有相似的功能。不同厂商的 CPU **可能**可行，具体取决于实际型号和配置的 VM CPU 类型，但无法保证——因此在生产环境部署此类配置之前，请先进行测试。
+- 这些宿主机的 CPU 来自同一厂商，并具有相似的功能。不同厂商的 CPU <strong>可能</strong>可行，具体取决于实际型号和配置的 VM CPU 类型，但无法保证——因此在生产环境部署此类配置之前，请先进行测试。
 
 #### Conntrack 状态迁移 <a href="#conntrack_state_migration" id="conntrack_state_migration"></a>
 
 {% hint style="info" %}
-Conntrack 状态迁移仅尽力提供，且可能无法工作，因为它高度依赖网络配置。例如，在宿主机上使用源地址伪装（SNAT）的配置很可能**无法**工作。
+Conntrack 状态迁移仅尽力提供，且可能无法工作，因为它高度依赖网络配置。例如，在宿主机上使用源地址伪装（SNAT）的配置很可能<strong>无法</strong>工作。
 {% endhint %}
 
-Conntrack 是 Linux 内核的一种机制，通过跟踪各个连接来启用有状态防火墙。在线迁移正在运行的 VM 时，一旦 VM 开始在目标宿主机上运行，活动的入站和/或出站连接**可能**会中断，因为新的宿主机节点没有相同的 conntrack 条目，防火墙可能会因此丢弃数据包。
+Conntrack 是 Linux 内核的一种机制，通过跟踪各个连接来启用有状态防火墙。在线迁移正在运行的 VM 时，一旦 VM 开始在目标宿主机上运行，活动的入站和/或出站连接<strong>可能</strong>会中断，因为新的宿主机节点没有相同的 conntrack 条目，防火墙可能会因此丢弃数据包。
 
 Conntrack 状态迁移会将宿主机上属于被在线迁移 VM 的所有 conntrack 条目复制到目标节点，随后从源节点的 conntrack 表中清除已迁移的条目。
 
@@ -2954,25 +2954,25 @@ Conntrack 状态迁移会将宿主机上属于被在线迁移 VM 的所有 connt
 
 VM 安装通常使用操作系统供应商提供的安装介质 (CD-ROM) 完成。根据操作系统的不同，这可能是一项耗时的工作，人们可能希望避免。
 
-部署许多同类型 VM 的一种简便方法是复制现有 VM。我们将此类副本称为 *克隆*，并区分 *链接* 克隆和 *完整* 克隆。
+部署许多同类型 VM 的一种简便方法是复制现有 VM。我们将此类副本称为 <em>克隆</em>，并区分 <em>链接</em> 克隆和 <em>完整</em> 克隆。
 
 **完整克隆**
 
 这种复制的结果是一个独立的 VM。新 VM 不与原始 VM 共享任何存储资源。
 
-可以选择 **目标存储**，因此可以利用此功能将 VM 迁移到完全不同的存储。如果存储驱动程序支持多种格式，还可以更改磁盘映像的 **格式**。
+可以选择 <strong>目标存储</strong>，因此可以利用此功能将 VM 迁移到完全不同的存储。如果存储驱动程序支持多种格式，还可以更改磁盘映像的 <strong>格式</strong>。
 
 {% hint style="info" %}
 完整克隆需要读取并复制所有 VM 映像数据。这通常比创建链接克隆慢得多。
 {% endhint %}
 
-某些存储类型允许复制特定的 **快照**，默认复制 *当前* VM 数据。这也意味着最终副本绝不会包含原始 VM 的任何其他快照。
+某些存储类型允许复制特定的 <strong>快照</strong>，默认复制 <em>当前</em> VM 数据。这也意味着最终副本绝不会包含原始 VM 的任何其他快照。
 
 **链接克隆**
 
 现代存储驱动程序支持一种快速生成链接克隆的方法。此类克隆是可写副本，其初始内容与原始数据相同。创建链接克隆几乎是即时的，并且最初不会占用额外空间。
 
-它们之所以称为 *链接*，是因为新映像仍引用原始映像。未修改的数据块从原始映像读取，而修改会写入新位置（之后也从新位置读取）。这种技术称为 *写时复制*。
+它们之所以称为 <em>链接</em>，是因为新映像仍引用原始映像。未修改的数据块从原始映像读取，而修改会写入新位置（之后也从新位置读取）。这种技术称为 <em>写时复制</em>。
 
 这要求原始卷为只读。使用 Proxmox VE，可以将任何虚拟机转换为只读[模板](#qm_templates)）。随后可使用此类模板高效创建链接克隆。
 
@@ -2980,11 +2980,11 @@ VM 安装通常使用操作系统供应商提供的安装介质 (CD-ROM) 完成�
 存在链接克隆时，无法删除原始模板。
 {% endhint %}
 
-无法更改链接克隆的 **目标存储**，因为这是存储内部的功能。
+无法更改链接克隆的 <strong>目标存储</strong>，因为这是存储内部的功能。
 
-**目标节点** 选项允许您在不同的节点上创建新 VM。唯一的限制是 VM 必须位于共享存储上，并且该存储在目标节点上也必须可用。
+<strong>目标节点</strong> 选项允许您在不同的节点上创建新 VM。唯一的限制是 VM 必须位于共享存储上，并且该存储在目标节点上也必须可用。
 
-为避免资源冲突，所有网络接口的 MAC 地址都会被随机化，并且我们会为 VM BIOS (smbios1) 设置生成新的 *UUID*。
+为避免资源冲突，所有网络接口的 MAC 地址都会被随机化，并且我们会为 VM BIOS (smbios1) 设置生成新的 <em>UUID</em>。
 
 ## 虚拟机模板 <a href="#qm_templates" id="qm_templates"></a>
 
@@ -2996,11 +2996,11 @@ VM 安装通常使用操作系统供应商提供的安装介质 (CD-ROM) 完成�
 
 ## 虚拟机世代 ID <a href="#vm_generation_id" id="vm_generation_id"></a>
 
-Proxmox VE 支持虚拟机的虚拟机生成 ID (*vmgenid*) [\[15\]](#note-0cdd31f9-15)。客户机操作系统可用它来检测任何导致时间偏移的事件，例如恢复备份或回滚快照。
+Proxmox VE 支持虚拟机的虚拟机生成 ID (<em>vmgenid</em>) [\[15\]](#note-0cdd31f9-15)。客户机操作系统可用它来检测任何导致时间偏移的事件，例如恢复备份或回滚快照。
 
-创建新 VM 时，会自动生成 *vmgenid* 并将其保存在该 VM 的配置文件中。
+创建新 VM 时，会自动生成 <em>vmgenid</em> 并将其保存在该 VM 的配置文件中。
 
-要为现有的 VM 创建并添加 *vmgenid*，可以传入特殊值“1”，让 Proxmox VE 自动生成一个；也可以将 *UUID* [\[16\]](#note-0cdd31f9-16) 用作值，手动进行设置，例如：
+要为现有的 VM 创建并添加 <em>vmgenid</em>，可以传入特殊值“1”，让 Proxmox VE 自动生成一个；也可以将 <em>UUID</em> [\[16\]](#note-0cdd31f9-16) 用作值，手动进行设置，例如：
 
 ```text
 # qm set VMID -vmgenid 1
@@ -3008,22 +3008,22 @@ Proxmox VE 支持虚拟机的虚拟机生成 ID (*vmgenid*) [\[15\]](#note-0cdd3
 ```
 
 {% hint style="info" %}
-首次向现有 VM 添加 *vmgenid* 设备，可能会产生与快照回滚、备份恢复等操作中的变更相同的影响，因为 VM 可能会将其解释为代际变更。
+首次向现有 VM 添加 <em>vmgenid</em> 设备，可能会产生与快照回滚、备份恢复等操作中的变更相同的影响，因为 VM 可能会将其解释为代际变更。
 {% endhint %}
 
-在极少数不需要 *vmgenid* 机制的情况下，可以在创建 VM 时将其值设为“0”，或者使用以下命令在配置中事后删除该属性：
+在极少数不需要 <em>vmgenid</em> 机制的情况下，可以在创建 VM 时将其值设为“0”，或者使用以下命令在配置中事后删除该属性：
 
 ```text
 # qm set VMID -delete vmgenid
 ```
 
-*vmgenid* 最主要的用例是较新的 Microsoft Windows 操作系统，它们利用该机制避免在快照回滚、备份恢复或完整 VM 克隆操作时，时间敏感型服务或复制服务（例如数据库或域控制器 [\[17\]](#note-0cdd31f9-17)）出现问题。
+<em>vmgenid</em> 最主要的用例是较新的 Microsoft Windows 操作系统，它们利用该机制避免在快照回滚、备份恢复或完整 VM 克隆操作时，时间敏感型服务或复制服务（例如数据库或域控制器 [\[17\]](#note-0cdd31f9-17)）出现问题。
 
 ## 导入虚拟机 <a href="#qm_import_virtual_machines" id="qm_import_virtual_machines"></a>
 
 可以通过多种方法从其他虚拟机监控程序或其他 Proxmox VE 集群导入现有虚拟机，最常见的方法有：
 
-- 使用原生导入向导，该向导利用 *import* 内容类型，例如 ESXi 特殊存储所提供的内容类型。
+- 使用原生导入向导，该向导利用 <em>import</em> 内容类型，例如 ESXi 特殊存储所提供的内容类型。
 - 在源端执行备份，然后在目标端恢复。从另一个 Proxmox VE 实例迁移时，这种方法效果最好。
 - 使用 `qm` 命令行工具的 OVF 专用导入命令。
 
@@ -3039,13 +3039,13 @@ Proxmox VE 提供了一个集成的 VM 导入器，它使用存储插件系统�
 导入向导是在 Proxmox VE 8.2 开发周期中添加的，目前处于技术预览状态。虽然它已颇具潜力并且运行稳定，但仍在积极开发中。
 {% endhint %}
 
-要使用导入向导，必须先在 Web 界面的 *数据中心 → 存储 → 添加* 下，为导入源设置一个新存储。
+要使用导入向导，必须先在 Web 界面的 <em>数据中心 → 存储 → 添加</em> 下，为导入源设置一个新存储。
 
-然后，可以在资源树中选择新存储，并使用 *虚拟客户机* 内容选项卡，查看所有可导入的客户机。
+然后，可以在资源树中选择新存储，并使用 <em>虚拟客户机</em> 内容选项卡，查看所有可导入的客户机。
 
 [![screenshot/gui-import-wizard-advanced.png](../assets/screenshot-gui-import-wizard-advanced-png-6fe679ff204b.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-import-wizard-advanced.png)
 
-选择一个客户机，然后使用 *导入* 按钮（或双击）打开导入向导。你可以在此处修改部分可用选项，然后开始导入。请注意，导入完成后还可以进行更高级的修改。
+选择一个客户机，然后使用 <em>导入</em> 按钮（或双击）打开导入向导。你可以在此处修改部分可用选项，然后开始导入。请注意，导入完成后还可以进行更高级的修改。
 
 {% hint style="success" %}
 ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用 vSAN 存储的客户机无法直接导入；必须首先将其磁盘移动到另一个存储。虽然可以使用 vCenter 作为导入源，但性能会显著下降（慢 5 到 10 倍）。
@@ -3055,12 +3055,12 @@ ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用
 
 #### OVA/OVF 导入 <a href="#ova_ovf_import" id="ova_ovf_import"></a>
 
-要导入 OVA/OVF 文件，首先需要一个启用了 *import* 内容类型的基于文件的存储。该存储上会有一个 *import* 文件夹，你可以将 OVA 文件，或 OVF 文件及其对应镜像以扁平目录结构放入其中。或者，也可以使用 Web UI 直接上传或下载 OVA 文件。然后，可以在 Web UI 中选择这些文件，并使用导入向导导入客户机。
+要导入 OVA/OVF 文件，首先需要一个启用了 <em>import</em> 内容类型的基于文件的存储。该存储上会有一个 <em>import</em> 文件夹，你可以将 OVA 文件，或 OVF 文件及其对应镜像以扁平目录结构放入其中。或者，也可以使用 Web UI 直接上传或下载 OVA 文件。然后，可以在 Web UI 中选择这些文件，并使用导入向导导入客户机。
 
-对于 OVA 文件，还需要额外的空间来临时解压镜像。这需要一个配置了 *images* 内容类型的基于文件的存储。默认情况下会选择源存储用于此目的，但你可以指定一个 *导入工作存储*，在导入到实际目标存储之前，镜像会先解压到该存储中。
+对于 OVA 文件，还需要额外的空间来临时解压镜像。这需要一个配置了 <em>images</em> 内容类型的基于文件的存储。默认情况下会选择源存储用于此目的，但你可以指定一个 <em>导入工作存储</em>，在导入到实际目标存储之前，镜像会先解压到该存储中。
 
 {% hint style="info" %}
-由于 OVA/OVF 文件的结构和内容并不总是得到良好维护或明确定义，因此可能需要手动调整某些客户机设置。例如，OVA/OVF 文件中几乎从不定义 SCSI 控制器类型，但使用 OVMF（UEFI）时默认配置无法启动，因此在遇到这些情况时，应选择 *Virtio SCSI* 或 *VMware PVSCSI*。
+由于 OVA/OVF 文件的结构和内容并不总是得到良好维护或明确定义，因此可能需要手动调整某些客户机设置。例如，OVA/OVF 文件中几乎从不定义 SCSI 控制器类型，但使用 OVMF（UEFI）时默认配置无法启动，因此在遇到这些情况时，应选择 <em>Virtio SCSI</em> 或 <em>VMware PVSCSI</em>。
 {% endhint %}
 
 ### 通过 CLI 导入 OVF/OVA <a href="#import_ovf_ova_through_cli" id="import_ovf_ova_through_cli"></a>
@@ -3068,7 +3068,7 @@ ESXi 导入向导已经过 ESXi 6.5 至 8.0 版本的测试。请注意，使用
 从其他虚拟机监控程序导出的 VM 通常采用一个或多个磁盘镜像的形式，并带有一个描述 VM 设置（RAM、核心数量）的配置文件。  
  如果磁盘来自 VMware 或 VirtualBox，磁盘镜像可以采用 vmdk 格式；如果磁盘来自 KVM 虚拟机监控程序，则可以采用 qcow2 格式。VM 导出最常用的配置格式是 OVF 标准，但在实践中，由于许多设置并未在该标准本身中实现，而且虚拟机监控程序会通过非标准扩展导出补充信息，因此互操作性受到限制。
 
-除了格式问题外，如果不同虚拟机监控程序之间模拟的硬件差异过大，从其他虚拟机监控程序导入磁盘镜像也可能失败。Windows VM 尤其容易受此影响，因为该操作系统对任何硬件更改都非常敏感。要解决此问题，可以在导出前安装可从互联网获取的 MergeIDE.zip 实用程序，并在启动导入的 Windows VM 之前，将硬盘类型选择为 **IDE**。
+除了格式问题外，如果不同虚拟机监控程序之间模拟的硬件差异过大，从其他虚拟机监控程序导入磁盘镜像也可能失败。Windows VM 尤其容易受此影响，因为该操作系统对任何硬件更改都非常敏感。要解决此问题，可以在导出前安装可从互联网获取的 MergeIDE.zip 实用程序，并在启动导入的 Windows VM 之前，将硬盘类型选择为 <strong>IDE</strong>。
 
 最后还有半虚拟化驱动程序的问题，这类驱动程序可提高模拟系统的速度，并且因虚拟机监控程序而异。GNU/Linux 和其他自由 Unix 操作系统默认已安装所有必要的驱动程序，你可以在导入 VM 后立即切换到半虚拟化驱动程序。对于 Windows VM，则需要自行安装 Windows 半虚拟化驱动程序。
 
@@ -3080,7 +3080,7 @@ Microsoft 提供 [虚拟机下载](https://developer.microsoft.com/en-us/windows
 
 ##### 下载虚拟机 zip 文件 <a href="#download_the_virtual_machine_zip" id="download_the_virtual_machine_zip"></a>
 
-了解用户协议后，选择适用于 VMware 平台的 *Windows 10 Enterprise (Evaluation \- Build)*，并下载 zip 文件。
+了解用户协议后，选择适用于 VMware 平台的 <em>Windows 10 Enterprise (Evaluation \- Build)</em>，并下载 zip 文件。
 
 ##### 从 zip 文件中解压磁盘镜像 <a href="#extract_the_disk_image_from_the_zip" id="extract_the_disk_image_from_the_zip"></a>
 
@@ -3100,7 +3100,7 @@ Microsoft 提供 [虚拟机下载](https://developer.microsoft.com/en-us/windows
 
 你还可以向 VM 添加现有磁盘镜像，无论它来自其他虚拟机监控程序，还是由你自己创建。
 
-假设你使用 *vmdebootstrap* 工具创建了 Debian/Ubuntu 磁盘镜像：
+假设你使用 <em>vmdebootstrap</em> 工具创建了 Debian/Ubuntu 磁盘镜像：
 
 ```text
 vmdebootstrap --verbose \
@@ -3128,7 +3128,7 @@ vmdebootstrap --verbose \
 
 [Cloud-Init](https://cloudinit.readthedocs.io) 是处理虚拟机实例早期初始化的事实标准多发行版软件包。使用 Cloud-Init，可以在虚拟机监控程序端配置网络设备和 ssh 密钥。VM 首次启动时，VM 内部的 Cloud-Init 软件将应用这些设置。
 
-许多 Linux 发行版提供开箱即用的 Cloud-Init 镜像，这些镜像主要为 *OpenStack* 设计。它们也适用于 Proxmox VE。虽然获取此类现成镜像看似方便，但我们通常建议自行准备镜像。这样做的好处是，你可以确切知道自己安装了什么，并且以后可以根据需要轻松自定义镜像。
+许多 Linux 发行版提供开箱即用的 Cloud-Init 镜像，这些镜像主要为 <em>OpenStack</em> 设计。它们也适用于 Proxmox VE。虽然获取此类现成镜像看似方便，但我们通常建议自行准备镜像。这样做的好处是，你可以确切知道自己安装了什么，并且以后可以根据需要轻松自定义镜像。
 
 创建此类 Cloud-Init 镜像后，我们建议将其转换为 VM 模板。利用 VM 模板可以快速创建链接克隆，因此这是一种快速部署新 VM 实例的方法。你只需在启动新 VM 之前配置网络（可能还要配置 ssh 密钥）。
 
@@ -3138,14 +3138,14 @@ Proxmox VE 会生成一个 ISO 镜像，用于将 Cloud-Init 数据传递给 VM�
 
 ### 准备 Cloud-Init 模板 <a href="#preparing_cloud_init_templates" id="preparing_cloud_init_templates"></a>
 
-第一步是准备你的 VM。基本上，你可以使用任何 VM。只需 **在要准备的 VM 内部** 安装 Cloud-Init 软件包。在基于 Debian/Ubuntu 的系统上，操作非常简单：
+第一步是准备你的 VM。基本上，你可以使用任何 VM。只需 <strong>在要准备的 VM 内部</strong> 安装 Cloud-Init 软件包。在基于 Debian/Ubuntu 的系统上，操作非常简单：
 
 ```text
 apt-get install cloud-init
 ```
 
 {% hint style="warning" %}
-此命令**不**应在 Proxmox VE 宿主机上执行，而只应在 VM 内部执行。
+此命令<strong>不</strong>应在 Proxmox VE 宿主机上执行，而只应在 VM 内部执行。
 {% endhint %}
 
 许多发行版已经提供开箱即用的 Cloud-Init 镜像（以 `.qcow2` 文件的形式提供），因此你也可以直接下载并导入此类镜像。在下面的示例中，我们将使用 Ubuntu 在 [https://cloud-images.ubuntu.com](https://cloud-images.ubuntu.com) 提供的云镜像。
@@ -3250,12 +3250,12 @@ Cloudbase-Init 要求将 `ostype` 设置为任意 Windows 版本，并将 `cityp
 
 一些常见的设置选项如下：
 
-- *username*：设置管理员的用户名
-- *groups*：允许将用户添加到 `Administrators` 组
-- *inject\_user\_password*：将其设置为 `true`，以允许在虚拟机配置中设置密码
-- *first\_logon\_behaviour*：将其设置为 `no`，以在登录时无需设置新密码
-- *rename\_admin\_user*：将其设置为 `true`，以允许将默认的 `Administrator` 用户重命名为通过 `username` 指定的用户名
-- *metadata\_services*：将其设置为 `cloudbaseinit.metadata.services.configdrive.ConfigDriveService`，使 Cloudbase-Init 首先检查此服务。否则，Cloudbase-Init 可能需要几分钟才能在启动后完成系统配置。
+- <em>username</em>：设置管理员的用户名
+- <em>groups</em>：允许将用户添加到 `Administrators` 组
+- <em>inject\_user\_password</em>：将其设置为 `true`，以允许在虚拟机配置中设置密码
+- <em>first\_logon\_behaviour</em>：将其设置为 `no`，以在登录时无需设置新密码
+- <em>rename\_admin\_user</em>：将其设置为 `true`，以允许将默认的 `Administrator` 用户重命名为通过 `username` 指定的用户名
+- <em>metadata\_services</em>：将其设置为 `cloudbaseinit.metadata.services.configdrive.ConfigDriveService`，使 Cloudbase-Init 首先检查此服务。否则，Cloudbase-Init 可能需要几分钟才能在启动后完成系统配置。
 
 某些插件（例如 SetHostnamePlugin）需要重启，并会自动执行重启。要禁用 Cloudbase-Init 的自动重启，可以将 `allow_reboot` 设置为 `false`。
 
@@ -3363,7 +3363,7 @@ Cloudbase-Init 分 2 个步骤运行：首先使用 `-unattend.conf` 执行 Sysp
 
 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`ciupgrade`：`<boolean>`（*默认值 \=* `1`）**
+**`ciupgrade`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 首次启动后自动升级软件包。
 
@@ -3377,7 +3377,7 @@ Cloudbase-Init 分 2 个步骤运行：首先使用 `-unattend.conf` 执行 Sysp
 
 IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
+IP 地址可以使用特殊字符串 <em>dhcp</em> 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 <em>auto</em> 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
 如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
@@ -3397,11 +3397,11 @@ IPv6 流量的默认网关。
 需要选项：`ip6`
 {% endhint %}
 
-**`ip`\=`<IPv4Format/CIDR>`（*默认值 \=* `dhcp`）**
+**`ip`\=`<IPv4Format/CIDR>`（<em>默认值 \=</em> `dhcp`）**
 
 CIDR 格式的 IPv4 地址。
 
-**`ip6`\=`<IPv6Format/CIDR>`（*默认值 \=* `dhcp`）**
+**`ip6`\=`<IPv6Format/CIDR>`（<em>默认值 \=</em> `dhcp`）**
 
 CIDR 格式的 IPv6 地址。
 
@@ -3431,7 +3431,7 @@ PCI(e) 直通是一种让虚拟机控制宿主机 PCI 设备的机制。与使�
 
 #### 硬件 <a href="#hardware" id="hardware"></a>
 
-您的硬件需要支持 `IOMMU`（**I**/**O** **M**emory **M**anagement **U**nit）中断重映射，其中包括 CPU 和主板。
+您的硬件需要支持 `IOMMU`（<strong>I</strong>/<strong>O</strong> <strong>M</strong>emory <strong>M</strong>anagement <strong>U</strong>nit）中断重映射，其中包括 CPU 和主板。
 
 通常，支持 VT-d 的 Intel 系统和支持 AMD-Vi 的 AMD 系统都支持此功能。在 arm64 上，等效功能是由受支持平台提供的系统内存管理单元（SMMU）。由于硬件实现不佳以及驱动程序缺失或质量不高，无法保证一切都能开箱即用。
 
@@ -3523,7 +3523,7 @@ AMD CPU 默认启用 IOMMU。对于较新的内核（6.8 或更高版本），In
 
 有关如何排除故障或验证 IOMMU 是否按预期工作的说明，请参阅我们 Wiki 中的 [验证 IOMMU 参数](https://pve.proxmox.com/wiki/PCI_Passthrough#Verifying_IOMMU_parameters) 部分。
 
-同样重要的是，您要直通的设备必须位于 **独立的** `IOMMU` 组中。可以通过调用 Proxmox VE API 来检查这一点：
+同样重要的是，您要直通的设备必须位于 <strong>独立的</strong> `IOMMU` 组中。可以通过调用 Proxmox VE API 来检查这一点：
 
 ```text
 # pvesh get /nodes/{nodename}/hardware/pci --pci-class-blacklist ""
@@ -3540,7 +3540,7 @@ AMD CPU 默认启用 IOMMU。对于较新的内核（6.8 或更高版本），In
 {% hint style="info" %}
 **不安全的中断**
 
-对于某些平台，可能需要允许不安全中断。为此，在以 `.conf` 结尾的文件中添加以下行，文件位于 **/etc/modprobe.d/** 下：
+对于某些平台，可能需要允许不安全中断。为此，在以 `.conf` 结尾的文件中添加以下行，文件位于 <strong>/etc/modprobe.d/</strong> 下：
 
 ```text
  options vfio_iommu_type1 allow_unsafe_interrupts=1
@@ -3565,13 +3565,13 @@ PCI(e) 直通最常用的方式是直通整张 PCI(e) 卡，例如 GPU 或网卡
 
 Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如果此方法无效，可以采取以下两种措施：
 
-- 通过添加以下内容，将设备 ID 传递给 *vfio-pci* 模块的选项：
+- 通过添加以下内容，将设备 ID 传递给 <em>vfio-pci</em> 模块的选项：
 
   ```text
    options vfio-pci ids=1234:5678,4321:8765
   ```
 
-  添加到一个 `.conf` 文件中，该文件位于 **/etc/modprobe.d/**，其中 `1234:5678` 和 `4321:8765` 是通过以下命令获取的供应商 ID 和设备 ID：
+  添加到一个 `.conf` 文件中，该文件位于 <strong>/etc/modprobe.d/</strong>，其中 `1234:5678` 和 `4321:8765` 是通过以下命令获取的供应商 ID 和设备 ID：
 
   ```text
   # lspci -nn
@@ -3582,7 +3582,7 @@ Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如�
    blacklist DRIVERNAME
   ```
 
-  添加到一个 `.conf` 文件中，该文件位于 **/etc/modprobe.d/**。
+  添加到一个 `.conf` 文件中，该文件位于 <strong>/etc/modprobe.d/</strong>。
 
   要查找驱动程序名称，请执行
 
@@ -3613,7 +3613,7 @@ Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如�
 
 两种方法都需要[更新 `initramfs`](#configuration)，然后重启。
 
-如果这样仍然无效，可能需要设置软依赖，以便在加载 GPU 模块之前加载 *vfio-pci*。可以使用 *softdep* 标志来实现，更多信息另请参阅 *modprobe.d* 的手册页。
+如果这样仍然无效，可能需要设置软依赖，以便在加载 GPU 模块之前加载 <em>vfio-pci</em>。可以使用 <em>softdep</em> 标志来实现，更多信息另请参阅 <em>modprobe.d</em> 的手册页。
 
 例如，如果使用的驱动程序名为 \<some-module\>：
 
@@ -3635,17 +3635,17 @@ Proxmox VE 会尝试自动使 PCI(e) 设备对宿主机不可用。但是，如�
 Kernel driver in use: vfio-pci
 ```
 
-或者完全没有 *in use* 行，则该设备已可用于直通。
+或者完全没有 <em>in use</em> 行，则该设备已可用于直通。
 
 {% hint style="info" %}
 **中介设备**
 
-对于中介设备，此行会有所不同，因为设备将直接由宿主机驱动程序控制，而不是由 *vfio-pci* 控制。
+对于中介设备，此行会有所不同，因为设备将直接由宿主机驱动程序控制，而不是由 <em>vfio-pci</em> 控制。
 {% endhint %}
 
 #### 虚拟机配置 <a href="#qm_pci_passthrough_vm_config" id="qm_pci_passthrough_vm_config"></a>
 
-直通 GPU 时，使用 *q35* 作为机器类型、使用 *OVMF*（虚拟机的 *UEFI*）代替 SeaBIOS，并使用 PCIe 代替 PCI，可获得最佳兼容性。请注意，如果要使用 *OVMF* 进行 GPU 直通，GPU 必须具有支持 UEFI 的 ROM，否则请改用 SeaBIOS。要检查 ROM 是否支持 UEFI，请参阅 [PCI 直通示例](https://pve.proxmox.com/wiki/PCI_Passthrough#How_to_know_if_a_graphics_card_is_UEFI_.28OVMF.29_compatible) Wiki。
+直通 GPU 时，使用 <em>q35</em> 作为机器类型、使用 <em>OVMF</em>（虚拟机的 <em>UEFI</em>）代替 SeaBIOS，并使用 PCIe 代替 PCI，可获得最佳兼容性。请注意，如果要使用 <em>OVMF</em> 进行 GPU 直通，GPU 必须具有支持 UEFI 的 ROM，否则请改用 SeaBIOS。要检查 ROM 是否支持 UEFI，请参阅 [PCI 直通示例](https://pve.proxmox.com/wiki/PCI_Passthrough#How_to_know_if_a_graphics_card_is_UEFI_.28OVMF.29_compatible) Wiki。
 
 此外，使用 OVMF 时，有可能禁用 VGA 仲裁，从而减少启动时需要运行的旧式代码。要禁用 VGA 仲裁：
 
@@ -3659,7 +3659,7 @@ Kernel driver in use: vfio-pci
 # lspci -nn
 ```
 
-可以在 Web 界面的虚拟机硬件部分添加 PCI 设备。也可以使用命令行；在虚拟机配置中设置 **hostpciX** 选项，例如执行：
+可以在 Web 界面的虚拟机硬件部分添加 PCI 设备。也可以使用命令行；在虚拟机配置中设置 <strong>hostpciX</strong> 选项，例如执行：
 
 ```text
 # qm set VMID -hostpci0 00:02.0
@@ -3671,14 +3671,14 @@ Kernel driver in use: vfio-pci
  hostpci0: 00:02.0
 ```
 
-如果设备具有多个功能（例如“`00:02.0`”和“`00:02.1`”），可以使用简写语法 \`\`00:02\` *将它们全部一起直通。这相当于在 Web 界面中选中 \`\`All Functions\`* 复选框。
+如果设备具有多个功能（例如“`00:02.0`”和“`00:02.1`”），可以使用简写语法 \`\`00:02\`<em> 将它们全部一起直通。这相当于在 Web 界面中选中 \`\`All Functions\`</em> 复选框。
 
 根据设备和客户机操作系统的不同，可能需要以下一些选项：
 
-- **x-vga\=on\|off** 将 PCI(e) 设备标记为虚拟机的主 GPU。启用此选项后，**vga** 配置选项将被忽略。
-- **pcie\=on\|off** 指示 Proxmox VE 使用 PCIe 或 PCI 端口。某些客户机与设备的组合需要 PCIe 而不是 PCI。PCIe 仅适用于 *q35* 机器类型。
-- **rombar\=on\|off** 使固件 ROM 对客户机可见。默认为 on。某些 PCI(e) 设备需要禁用此选项。
-- **romfile\=\<path\>** 是供设备使用的 ROM 文件的可选路径。这是 **/usr/share/kvm/** 下的相对路径。
+- <strong>x-vga\=on\|off</strong> 将 PCI(e) 设备标记为虚拟机的主 GPU。启用此选项后，<strong>vga</strong> 配置选项将被忽略。
+- <strong>pcie\=on\|off</strong> 指示 Proxmox VE 使用 PCIe 或 PCI 端口。某些客户机与设备的组合需要 PCIe 而不是 PCI。PCIe 仅适用于 <em>q35</em> 机器类型。
+- <strong>rombar\=on\|off</strong> 使固件 ROM 对客户机可见。默认为 on。某些 PCI(e) 设备需要禁用此选项。
+- <strong>romfile\=\<path\></strong> 是供设备使用的 ROM 文件的可选路径。这是 <strong>/usr/share/kvm/</strong> 下的相对路径。
 
 **示例**
 
@@ -3710,9 +3710,9 @@ Kernel driver in use: vfio-pci
 要使用 SR-IOV，平台支持尤为重要。可能需要先在 BIOS/UEFI 中启用此功能，或者需要使用特定的 PCI(e) 端口才能正常工作。如有疑问，请查阅平台手册或联系其供应商。
 {% endhint %}
 
-*SR-IOV*（**S**ingle-**R**oot **I**nput/**O**utput **V**irtualization）使单个设备能够向系统提供多个 *VFs*（**V**irtual **F**unctions）。这些 *VFs* 均可用于不同的虚拟机，具有完整的硬件功能，并且与软件虚拟化设备相比，性能更好、延迟更低。
+<em>SR-IOV</em>（<strong>S</strong>ingle-<strong>R</strong>oot <strong>I</strong>nput/<strong>O</strong>utput <strong>V</strong>irtualization）使单个设备能够向系统提供多个 <em>VFs</em>（<strong>V</strong>irtual <strong>F</strong>unctions）。这些 <em>VFs</em> 均可用于不同的虚拟机，具有完整的硬件功能，并且与软件虚拟化设备相比，性能更好、延迟更低。
 
-目前，最常见的用例是支持 SR-IOV 的 NIC（**N**etwork **I**nterface **C**ard），每个物理端口可以提供多个 VF。这使虚拟机内部能够使用校验和卸载等功能，从而减少（宿主机）CPU 开销。
+目前，最常见的用例是支持 SR-IOV 的 NIC（<strong>N</strong>etwork <strong>I</strong>nterface <strong>C</strong>ard），每个物理端口可以提供多个 VF。这使虚拟机内部能够使用校验和卸载等功能，从而减少（宿主机）CPU 开销。
 
 #### 宿主机配置 <a href="#host_configuration_2" id="host_configuration_2"></a>
 
@@ -3724,7 +3724,7 @@ Kernel driver in use: vfio-pci
    max_vfs=4
   ```
 
-  可以将其放在一个以 *.conf* 结尾的文件中，该文件位于 **/etc/modprobe.d/**。（之后不要忘记更新 initramfs）
+  可以将其放在一个以 <em>.conf</em> 结尾的文件中，该文件位于 <strong>/etc/modprobe.d/</strong>。（之后不要忘记更新 initramfs）
 
   有关准确的参数和选项，请参阅驱动程序模块文档。
 - 第二种更通用的方法是使用 `sysfs`。如果设备和驱动程序支持此方法，可以动态更改 VF 数量。例如，要在设备 0000:01:00.0 上设置 4 个 VF，请执行：
@@ -3733,7 +3733,7 @@ Kernel driver in use: vfio-pci
   # echo 4 > /sys/bus/pci/devices/0000:01:00.0/sriov_numvfs
   ```
 
-  要使此更改持久化，可以使用 ‘sysfsutils\` Debian 软件包。安装后，可以通过 **/etc/sysfs.conf** 或 \`FILE.conf’ 对其进行配置，后者位于 **/etc/sysfs.d/**。
+  要使此更改持久化，可以使用 ‘sysfsutils\` Debian 软件包。安装后，可以通过 <strong>/etc/sysfs.conf</strong> 或 \`FILE.conf’ 对其进行配置，后者位于 <strong>/etc/sysfs.d/</strong>。
 
 #### 虚拟机配置 <a href="#vm_configuration" id="vm_configuration"></a>
 
@@ -3751,7 +3751,7 @@ Kernel driver in use: vfio-pci
 
 Intel 的 GVT-g 驱动程序已集成到内核中，应可与第 5、第 6 和第 7 代 Intel Core 处理器以及 E3 v4、E3 v5 和 E3 v6 Xeon 处理器配合使用。
 
-要为 Intel 显卡启用它，必须确保加载模块 *kvmgt*（例如通过 `/etc/modules-load.d/`），并在内核命令行中启用，同时添加以下参数：
+要为 Intel 显卡启用它，必须确保加载模块 <em>kvmgt</em>（例如通过 `/etc/modules-load.d/`），并在内核命令行中启用，同时添加以下参数：
 
 ```text
  i915.enable_gvt=1
@@ -3763,7 +3763,7 @@ Intel 的 GVT-g 驱动程序已集成到内核中，应可与第 5、第 6 和�
 
 要使用中介设备，只需指定 `mdev` 属性，该属性位于 `hostpciX` 虚拟机配置选项中。
 
-可以通过 *sysfs* 获取支持的设备。例如，要列出设备 *0000:00:02.0* 支持的类型，只需执行：
+可以通过 <em>sysfs</em> 获取支持的设备。例如，要列出设备 <em>0000:00:02.0</em> 支持的类型，只需执行：
 
 ```text
 # ls /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types
@@ -3771,9 +3771,9 @@ Intel 的 GVT-g 驱动程序已集成到内核中，应可与第 5、第 6 和�
 
 每个条目都是一个目录，其中包含以下重要文件：
 
-- *available\_instances* 包含此类型仍可用的实例数量；虚拟机中每使用一个 *mdev*，该数量就会减少。
-- *description* 包含有关该类型功能的简短描述
-- *create* 是创建此类设备的端点——如果配置了 *hostpciX* 选项且其中带有 `mdev`，Proxmox VE 会自动为你完成此操作。
+- <em>available\_instances</em> 包含此类型仍可用的实例数量；虚拟机中每使用一个 <em>mdev</em>，该数量就会减少。
+- <em>description</em> 包含有关该类型功能的简短描述
+- <em>create</em> 是创建此类设备的端点——如果配置了 <em>hostpciX</em> 选项且其中带有 `mdev`，Proxmox VE 会自动为你完成此操作。
 
 使用 `Intel GVT-g vGPU`（`Intel Skylake 6700k`）的示例配置：
 
@@ -3798,7 +3798,7 @@ vIOMMU 是在虚拟机内模拟硬件 IOMMU，为虚拟化 I/O 设备提供更�
 Intel vIOMMU 对虚拟机的特定要求：
 
 - 无论宿主机使用 Intel 还是 AMD CPU，都必须在虚拟机的内核参数中设置 `intel_iommu=on`。
-- 要使用 Intel vIOMMU，需要将 **q35** 设置为机器类型。
+- 要使用 Intel vIOMMU，需要将 <strong>q35</strong> 设置为机器类型。
 
 如果满足所有要求，可以在需要直通 PCI 设备的虚拟机配置中，将 `viommu=intel` 添加到 machine 参数。
 
@@ -3812,7 +3812,7 @@ Intel vIOMMU 对虚拟机的特定要求：
 
 这种 vIOMMU 实现较新，限制不如 Intel vIOMMU 多，但目前在生产环境中使用较少，文档也较少。
 
-使用 VirtIO vIOMMU 时，**无需**设置任何内核参数。也**不必**使用 q35 作为机器类型，但如果要使用 PCIe，建议这样做。
+使用 VirtIO vIOMMU 时，<strong>无需</strong>设置任何内核参数。也<strong>不必</strong>使用 q35 作为机器类型，但如果要使用 PCIe，建议这样做。
 
 ```text
 # qm set VMID -machine q35,viommu=virtio
@@ -3923,7 +3923,7 @@ qm 是 Proxmox VE 上用于管理 QEMU/KVM 虚拟机的工具。您可以创建�
 
 ### CLI 使用示例 <a href="#cli_usage_examples" id="cli_usage_examples"></a>
 
-使用上传到 *local* 存储的 iso 文件，在 *local-lvm* 存储上创建一个带有 4 GB IDE 磁盘的 VM
+使用上传到 <em>local</em> 存储的 iso 文件，在 <em>local-lvm</em> 存储上创建一个带有 4 GB IDE 磁盘的 VM
 
 ```text
 # qm create 300 -ide0 local-lvm:4 -net0 e1000 -cdrom local:iso/proxmox-mailgateway_2.1.iso
@@ -3953,7 +3953,7 @@ qm 是 Proxmox VE 上用于管理 QEMU/KVM 虚拟机的工具。您可以创建�
 # qm stop 300 -overrule-shutdown 1
 ```
 
-销毁 VM 始终会将其从访问控制列表中移除，并始终会移除该 VM 的防火墙配置。如果还希望将 VM 从复制作业、备份作业和 HA 资源配置中移除，则必须激活 *--purge*。
+销毁 VM 始终会将其从访问控制列表中移除，并始终会移除该 VM 的防火墙配置。如果还希望将 VM 从复制作业、备份作业和 HA 资源配置中移除，则必须激活 <em>--purge</em>。
 
 {% hint style="info" %}
 启用 purge 还会从所有引用该 HA 资源的亲和性规则中移除该资源，并移除仅剩这一个资源的规则。
@@ -4036,7 +4036,7 @@ snaptime: 1457170803
 
 ### 选项 <a href="#qm_options" id="qm_options"></a>
 
-**`acpi`：`<boolean>`（*默认值 \=* `1`）**
+**`acpi`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用/禁用 ACPI。
 
@@ -4048,25 +4048,25 @@ snaptime: 1457170803
 
 启用/禁用与 QEMU Guest Agent 的通信及其属性。
 
-**`enabled`\=`<boolean>`（*默认值 \=* `0`）**
+**`enabled`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用/禁用与 VM 中运行的 QEMU Guest Agent（QGA）的通信。
 
-**`freeze-fs`\=`<boolean>`（*默认值 \=* `1`）**
+**`freeze-fs`\=`<boolean>`（<em>默认值 \=</em> `1`）**
 
 是否发出 guest-fsfreeze-freeze 和 guest-fsfreeze-thaw QEMU 客户机代理命令。当客户机配置中启用了 QEMU Guest Agent 选项且代理正在客户机内运行时，快照模式备份、克隆、不含 RAM 的快照、从正在运行的客户机导入磁盘以及复制，通常会发出 guest-fsfreeze-freeze 和相应的 thaw 命令。
 
-已弃用的 *freeze-fs-on-backup* 设置被视为此设置的别名。
+已弃用的 <em>freeze-fs-on-backup</em> 设置被视为此设置的别名。
 
-**`fstrim_cloned_disks`\=`<boolean>`（*默认值 \=* `0`）**
+**`fstrim_cloned_disks`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 移动磁盘或迁移 VM 后运行 fstrim。
 
-**`type`\=`<isa | virtio>`（*默认值 \=* `virtio`）**
+**`type`\=`<isa | virtio>`（<em>默认值 \=</em> `virtio`）**
 
 选择代理类型
 
-**`allow-ksm`：`<boolean>`（*默认值 \=* `1`）**
+**`allow-ksm`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 允许通过 KSM（内核同页合并）合并此客户机的内存页。
 
@@ -4074,25 +4074,25 @@ snaptime: 1457170803
 
 AMD CPU 的安全加密虚拟化（SEV）功能
 
-**`allow-smt`\=`<boolean>`（*默认值 \=* `1`）**
+**`allow-smt`\=`<boolean>`（<em>默认值 \=</em> `1`）**
 
 设置策略位以允许同时多线程（SMT）（除非针对 SEV-SNP，否则会被忽略）
 
-**`kernel-hashes`\=`<boolean>`（*默认值 \=* `0`）**
+**`kernel-hashes`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 将内核哈希添加到客户机固件，以实现可度量的 Linux 内核启动
 
-**`no-debug`\=`<boolean>`（*默认值 \=* `0`）**
+**`no-debug`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 设置策略位以禁止调试客户机
 
-**`no-key-sharing`\=`<boolean>`（*默认值 \=* `0`）**
+**`no-key-sharing`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 设置策略位以禁止与其他客户机共享密钥（对于 SEV-SNP 会被忽略）
 
 **`type`\=`<sev-type>`**
 
-使用 type\=*std* 启用标准 SEV，或使用 *es* 选项启用实验性 SEV-ES，或使用 *snp* 选项启用实验性 SEV-SNP。
+使用 type\=<em>std</em> 启用标准 SEV，或使用 <em>es</em> 选项启用实验性 SEV-ES，或使用 <em>snp</em> 选项启用实验性 SEV-SNP。
 
 **`arch`: `<aarch64 | x86_64>`**
 
@@ -4102,7 +4102,7 @@ AMD CPU 的安全加密虚拟化（SEV）功能
 
 传递给 kvm 的任意参数，例如：
 
-args: -no-reboot -smbios *type\=0,vendor\=FOO*
+args: -no-reboot -smbios <em>type\=0,vendor\=FOO</em>
 
 {% hint style="info" %}
 此选项仅供专家使用。
@@ -4116,11 +4116,11 @@ args: -no-reboot -smbios *type\=0,vendor\=FOO*
 
 配置音频设备。
 
-**`driver`\=`<none | spice>`（*默认值 \=* `spice`）**
+**`driver`\=`<none | spice>`（<em>默认值 \=</em> `spice`）**
 
 音频设备的驱动程序后端。
 
-**`autostart`：`<boolean>`（*默认值 \=* `0`）**
+**`autostart`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 崩溃后自动重启（目前被忽略）。
 
@@ -4128,17 +4128,17 @@ args: -no-reboot -smbios *type\=0,vendor\=FOO*
 
 VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，除非通过将值设置为零明确禁用它。
 
-**`bios`：`<ovmf | seabios>`（*默认值 \=* `seabios`）**
+**`bios`：`<ovmf | seabios>`（<em>默认值 \=</em> `seabios`）**
 
 选择 BIOS 实现。
 
 **`boot`: `[[legacy=]<[acdn]{1,4}>] [,order=<device[;device...]>]`**
 
-指定客户机启动顺序。请使用 *order\=* 子属性，因为不带键的用法或 *legacy\=* 已弃用。
+指定客户机启动顺序。请使用 <em>order\=</em> 子属性，因为不带键的用法或 <em>legacy\=</em> 已弃用。
 
-**`legacy`\=`<[acdn]{1,4}>`（*默认值 \=* `cdn`）**
+**`legacy`\=`<[acdn]{1,4}>`（<em>默认值 \=</em> `cdn`）**
 
-从软盘（a）、硬盘（c）、CD-ROM（d）或网络（n）启动。已弃用，请改用 *order\=*。
+从软盘（a）、硬盘（c）、CD-ROM（d）或网络（n）启动。已弃用，请改用 <em>order\=</em>。
 
 **`order`\=`<device[;device...]>`**
 
@@ -4148,11 +4148,11 @@ VM 的目标 RAM 大小，单位为 MiB。默认启用 balloon 驱动程序，�
 
 请注意，只有此列表中的设备才会被标记为可启动，并因此由客户机固件（BIOS/UEFI）加载。如果需要使用多个磁盘启动（例如软件 RAID），则需要在此处指定所有这些磁盘。
 
-如果指定了此选项，将覆盖已弃用的 *legacy\=\[acdn\]\** 值。
+如果指定了此选项，将覆盖已弃用的 <em>legacy\=\[acdn\]\*</em> 值。
 
 **`bootdisk`: `(ide|sata|scsi|virtio)\d+`**
 
-启用从指定磁盘启动。已弃用：请改用 *boot: order\=foo;bar*。
+启用从指定磁盘启动。已弃用：请改用 <em>boot: order\=foo;bar</em>。
 
 **`cdrom`: `<volume>`**
 
@@ -4186,7 +4186,7 @@ cloud-init：分配给用户的密码。通常不建议使用此选项，请改�
 
 指定 cloud-init 配置格式。默认值取决于配置的操作系统类型（`ostype`。Linux 使用 `nocloud` 格式，Windows 使用 `configdrive2`。
 
-**`ciupgrade`：`<boolean>`（*默认值 \=* `1`）**
+**`ciupgrade`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 cloud-init：首次启动后自动执行软件包升级。
 
@@ -4194,7 +4194,7 @@ cloud-init：首次启动后自动执行软件包升级。
 
 cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像中配置的默认用户。
 
-**`cores`: `<integer> (1 - N)` (*默认值 \=* `1`)**
+**`cores`: `<integer> (1 - N)` (<em>默认值 \=</em> `1`)**
 
 每个 CPU 插槽的核心数。
 
@@ -4202,19 +4202,19 @@ cloud-init：指定要更改 ssh 密钥和密码的用户名，以代替映像�
 
 模拟的 CPU 类型。
 
-**`cputype`\=`<string>` (*默认值 \=* `kvm64`)**
+**`cputype`\=`<string>` (<em>默认值 \=</em> `kvm64`)**
 
-模拟的 CPU 类型。可以是默认类型或自定义名称（自定义型号名称必须以 *custom-* 为前缀）。
+模拟的 CPU 类型。可以是默认类型或自定义名称（自定义型号名称必须以 <em>custom-</em> 为前缀）。
 
 **`flags`\=`<+FLAG[;-FLAG...]>`**
 
-以 *;* 分隔的附加 CPU 标志列表。使用 *\+FLAG* 启用标志，使用 *-FLAG* 禁用标志。有一个特殊的 *nested-virt* 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 使用 *svm*，Intel 使用 *vmx*）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，VM 特定标志必须来自以下集合：aes、amd-no-ssb、amd-ssbd、hv-evmcs、hv-tlbflush、ibpb、md-clear、nested-virt、pcid、pdpe1gb、spec-ctrl、ssbd、virt-ssbd
+以 <em>;</em> 分隔的附加 CPU 标志列表。使用 <em>\+FLAG</em> 启用标志，使用 <em>-FLAG</em> 禁用标志。有一个特殊的 <em>nested-virt</em> 简写，用于控制当前 CPU 的嵌套虚拟化（AMD 使用 <em>svm</em>，Intel 使用 <em>vmx</em>）。自定义 CPU 模型可以指定 QEMU/KVM 支持的任何标志；出于安全原因，VM 特定标志必须来自以下集合：aes、amd-no-ssb、amd-ssbd、hv-evmcs、hv-tlbflush、ibpb、md-clear、nested-virt、pcid、pdpe1gb、spec-ctrl、ssbd、virt-ssbd
 
 **`guest-phys-bits`\=`<integer> (32 - 64)`**
 
 客户机可用的物理地址位数。
 
-**`hidden`\=`<boolean>` (*默认值 \=* `0`)**
+**`hidden`\=`<boolean>` (<em>默认值 \=</em> `0`)**
 
 不要标识为 KVM 虚拟机。仅影响 x86-64 架构的 vCPU。
 
@@ -4224,25 +4224,25 @@ Hyper-V 供应商 ID。Windows 客户机中的某些驱动程序或程序需要�
 
 **`level`\=`<integer> (0 - 4294967295)`**
 
-客户机可查询的基本 CPUID 叶的最大输入值——即供应商（叶 0）、系列/型号/步进及功能位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶将被隐藏。将此项设置为 *30*，是解决在较新的 Intel 宿主机上运行的 Windows 客户机出现 Hyper-V 启动故障的常用变通方法。仅当 vCPU 架构为 x86\_64 时适用。
+客户机可查询的基本 CPUID 叶的最大输入值——即供应商（叶 0）、系列/型号/步进及功能位（叶 1）、缓存和拓扑信息（叶 4 和 B）等。编号更高的叶将被隐藏。将此项设置为 <em>30</em>，是解决在较新的 Intel 宿主机上运行的 Windows 客户机出现 Hyper-V 启动故障的常用变通方法。仅当 vCPU 架构为 x86\_64 时适用。
 
 **`phys-bits`\=`<8-64|host>`**
 
-报告给客户机操作系统的物理内存地址位数。应小于或等于宿主机的位数。设置为 *host* 可使用宿主机 CPU 的值，但请注意，这样会导致无法在线迁移到该值不同的 CPU。
+报告给客户机操作系统的物理内存地址位数。应小于或等于宿主机的位数。设置为 <em>host</em> 可使用宿主机 CPU 的值，但请注意，这样会导致无法在线迁移到该值不同的 CPU。
 
-**`reported-model`\=`<486 | Broadwell | Broadwell-IBRS | Broadwell-noTSX | Broadwell-noTSX-IBRS | Cascadelake-Server | Cascadelake-Server-noTSX | Cascadelake-Server-v2 | Cascadelake-Server-v4 | Cascadelake-Server-v5 | ClearwaterForest | ClearwaterForest-v2 | ClearwaterForest-v3 | Conroe | Cooperlake | Cooperlake-v2 | DiamondRapids | EPYC | EPYC-Genoa | EPYC-Genoa-v2 | EPYC-IBPB | EPYC-Milan | EPYC-Milan-v2 | EPYC-Milan-v3 | EPYC-Rome | EPYC-Rome-v2 | EPYC-Rome-v3 | EPYC-Rome-v4 | EPYC-Rome-v5 | EPYC-Turin | EPYC-v3 | EPYC-v4 | EPYC-v5 | GraniteRapids | GraniteRapids-v2 | GraniteRapids-v3 | GraniteRapids-v4 | GraniteRapids-v5 | Haswell | Haswell-IBRS | Haswell-noTSX | Haswell-noTSX-IBRS | Icelake-Client | Icelake-Client-noTSX | Icelake-Server | Icelake-Server-noTSX | Icelake-Server-v3 | Icelake-Server-v4 | Icelake-Server-v5 | Icelake-Server-v6 | Icelake-Server-v7 | IvyBridge | IvyBridge-IBRS | KnightsMill | Nehalem | Nehalem-IBRS | Opteron_G1 | Opteron_G2 | Opteron_G3 | Opteron_G4 | Opteron_G5 | Penryn | SandyBridge | SandyBridge-IBRS | SapphireRapids | SapphireRapids-v2 | SapphireRapids-v3 | SapphireRapids-v4 | SapphireRapids-v5 | SapphireRapids-v6 | SierraForest | SierraForest-v2 | SierraForest-v3 | SierraForest-v4 | SierraForest-v5 | Skylake-Client | Skylake-Client-IBRS | Skylake-Client-noTSX-IBRS | Skylake-Client-v4 | Skylake-Server | Skylake-Server-IBRS | Skylake-Server-noTSX-IBRS | Skylake-Server-v4 | Skylake-Server-v5 | Westmere | Westmere-IBRS | a64fx | athlon | core2duo | coreduo | cortex-a35 | cortex-a53 | cortex-a55 | cortex-a57 | cortex-a710 | cortex-a72 | cortex-a76 | cortex-a78ae | host | kvm32 | kvm64 | max | neoverse-n1 | neoverse-n2 | neoverse-v1 | pentium | pentium2 | pentium3 | phenom | qemu32 | qemu64>` (*默认值 \=* `kvm64`)**
+**`reported-model`\=`<486 | Broadwell | Broadwell-IBRS | Broadwell-noTSX | Broadwell-noTSX-IBRS | Cascadelake-Server | Cascadelake-Server-noTSX | Cascadelake-Server-v2 | Cascadelake-Server-v4 | Cascadelake-Server-v5 | ClearwaterForest | ClearwaterForest-v2 | ClearwaterForest-v3 | Conroe | Cooperlake | Cooperlake-v2 | DiamondRapids | EPYC | EPYC-Genoa | EPYC-Genoa-v2 | EPYC-IBPB | EPYC-Milan | EPYC-Milan-v2 | EPYC-Milan-v3 | EPYC-Rome | EPYC-Rome-v2 | EPYC-Rome-v3 | EPYC-Rome-v4 | EPYC-Rome-v5 | EPYC-Turin | EPYC-v3 | EPYC-v4 | EPYC-v5 | GraniteRapids | GraniteRapids-v2 | GraniteRapids-v3 | GraniteRapids-v4 | GraniteRapids-v5 | Haswell | Haswell-IBRS | Haswell-noTSX | Haswell-noTSX-IBRS | Icelake-Client | Icelake-Client-noTSX | Icelake-Server | Icelake-Server-noTSX | Icelake-Server-v3 | Icelake-Server-v4 | Icelake-Server-v5 | Icelake-Server-v6 | Icelake-Server-v7 | IvyBridge | IvyBridge-IBRS | KnightsMill | Nehalem | Nehalem-IBRS | Opteron_G1 | Opteron_G2 | Opteron_G3 | Opteron_G4 | Opteron_G5 | Penryn | SandyBridge | SandyBridge-IBRS | SapphireRapids | SapphireRapids-v2 | SapphireRapids-v3 | SapphireRapids-v4 | SapphireRapids-v5 | SapphireRapids-v6 | SierraForest | SierraForest-v2 | SierraForest-v3 | SierraForest-v4 | SierraForest-v5 | Skylake-Client | Skylake-Client-IBRS | Skylake-Client-noTSX-IBRS | Skylake-Client-v4 | Skylake-Server | Skylake-Server-IBRS | Skylake-Server-noTSX-IBRS | Skylake-Server-v4 | Skylake-Server-v5 | Westmere | Westmere-IBRS | a64fx | athlon | core2duo | coreduo | cortex-a35 | cortex-a53 | cortex-a55 | cortex-a57 | cortex-a710 | cortex-a72 | cortex-a76 | cortex-a78ae | host | kvm32 | kvm64 | max | neoverse-n1 | neoverse-n2 | neoverse-v1 | pentium | pentium2 | pentium3 | phenom | qemu32 | qemu64>` (<em>默认值 \=</em> `kvm64`)**
 
 报告给客户机的 CPU 模型和供应商。必须是 QEMU/KVM 支持的模型。仅对自定义 CPU 模型定义有效；默认模型始终会向客户机操作系统报告其自身。
 
-**`cpulimit`: `<number> (0 - 128)` (*默认值 \=* `0`)**
+**`cpulimit`: `<number> (0 - 128)` (<em>默认值 \=</em> `0`)**
 
 CPU 使用限制。
 
 {% hint style="info" %}
-如果计算机有 2 个 CPU，则 CPU 时间总计为 *2*。值 *0* 表示不限制 CPU。
+如果计算机有 2 个 CPU，则 CPU 时间总计为 <em>2</em>。值 <em>0</em> 表示不限制 CPU。
 {% endhint %}
 
-**`cpuunits`: `<integer> (1 - 262144)` (*默认值 \=* `cgroup v1: 1024, cgroup v2: 100`)**
+**`cpuunits`: `<integer> (1 - 262144)` (<em>默认值 \=</em> `cgroup v1: 1024, cgroup v2: 100`)**
 
 虚拟机的 CPU 权重。该参数用于内核公平调度器。数值越大，此虚拟机获得的 CPU 时间就越多。该数值是相对于所有其他正在运行的虚拟机的权重而言的。
 
@@ -4254,9 +4254,9 @@ CPU 使用限制。
 
 配置用于存储 EFI 变量的磁盘。
 
-**`efitype`\=`<2m | 4m>` (*默认值 \=* `2m`)**
+**`efitype`\=`<2m | 4m>` (<em>默认值 \=</em> `2m`)**
 
-OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全启动所必需的。为保持向后兼容，如果未另行指定，则使用 *2m*。对于 arch\=aarch64 (ARM) 的虚拟机，此设置会被忽略。
+OVMF EFI 变量的大小和类型。<em>4m</em> 较新且推荐使用，并且是安全启动所必需的。为保持向后兼容，如果未另行指定，则使用 <em>2m</em>。对于 arch\=aarch64 (ARM) 的虚拟机，此设置会被忽略。
 
 **`file`\=`<volume>`**
 
@@ -4266,13 +4266,13 @@ OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全
 
 驱动器后端文件的数据格式。
 
-**`ms-cert`\=`<2011 | 2023 | 2023k | 2023w>` (*默认值 \=* `2011`)**
+**`ms-cert`\=`<2011 | 2023 | 2023k | 2023w>` (<em>默认值 \=</em> `2011`)**
 
-信息性标记，指示 Proxmox VE 已注册的最新 Microsoft UEFI 证书的版本。值 *2023k* 表示包含 *Microsoft UEFI CA 2023*、*Windows UEFI CA 2023* 和 *Microsoft Corporation KEK 2K CA 2023* 证书。值 *2023* 和 *2023w* 已弃用，仅为兼容性保留。
+信息性标记，指示 Proxmox VE 已注册的最新 Microsoft UEFI 证书的版本。值 <em>2023k</em> 表示包含 <em>Microsoft UEFI CA 2023</em>、<em>Windows UEFI CA 2023</em> 和 <em>Microsoft Corporation KEK 2K CA 2023</em> 证书。值 <em>2023</em> 和 <em>2023w</em> 已弃用，仅为兼容性保留。
 
-**`pre-enrolled-keys`\=`<boolean>` (*默认值 \=* `0`)**
+**`pre-enrolled-keys`\=`<boolean>` (<em>默认值 \=</em> `0`)**
 
-与 *efitype\=4m* 一起使用时，使用已注册特定发行版密钥和 Microsoft 标准密钥的 EFI 变量模板。请注意，这将默认启用安全启动，但仍可在虚拟机内将其关闭。
+与 <em>efitype\=4m</em> 一起使用时，使用已注册特定发行版密钥和 Microsoft 标准密钥的 EFI 变量模板。请注意，这将默认启用安全启动，但仍可在虚拟机内将其关闭。
 
 **`size`\=`<DiskSize>`**
 
@@ -4280,7 +4280,7 @@ OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全
 
 **`freeze`: `<boolean>`**
 
-启动时冻结 CPU（使用 *c* 监视器命令开始执行）。
+启动时冻结 CPU（使用 <em>c</em> 监视器命令开始执行）。
 
 **`hookscript`: `<string>`**
 
@@ -4302,37 +4302,37 @@ OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全
 
 覆盖对客户机可见的 PCI 设备 ID
 
-**`driver`\=`<keep | vfio>` (*默认值 \=* `vfio`)**
+**`driver`\=`<keep | vfio>` (<em>默认值 \=</em> `vfio`)**
 
-如果设置为 *keep*，设备既不会重置，也不会绑定到 *vfio-pci* 驱动程序。适用于已加载正确驱动程序的设备。
+如果设置为 <em>keep</em>，设备既不会重置，也不会绑定到 <em>vfio-pci</em> 驱动程序。适用于已加载正确驱动程序的设备。
 
 **`host`\=`<HOSTPCIID[;HOSTPCIID2...]>`**
 
 宿主机 PCI 设备直通。宿主机 PCI 设备的 PCI ID，或宿主机的 PCI 虚拟功能列表。HOSTPCIID 语法为：
 
-*bus:dev.func*（十六进制数字）
+<em>bus:dev.func</em>（十六进制数字）
 
-可以使用 *lspci* 命令列出现有 PCI 设备。
+可以使用 <em>lspci</em> 命令列出现有 PCI 设备。
 
-必须设置此项或 *mapping* 键。
+必须设置此项或 <em>mapping</em> 键。
 
-**`legacy-igd`\=`<boolean>` (*默认值 \=* `0`)**
+**`legacy-igd`\=`<boolean>` (<em>默认值 \=</em> `0`)**
 
-以传统 IGD 模式直通此设备，使其成为虚拟机中的主显卡和唯一显卡。需要 *pc-i440fx* 机器类型，并将 VGA 设置为 *none*。
+以传统 IGD 模式直通此设备，使其成为虚拟机中的主显卡和唯一显卡。需要 <em>pc-i440fx</em> 机器类型，并将 VGA 设置为 <em>none</em>。
 
 **`mapping`\=`<mapping-id>`**
 
-集群范围映射的 ID。必须设置此项或默认键 *host*。
+集群范围映射的 ID。必须设置此项或默认键 <em>host</em>。
 
 **`mdev`\=`<string>`**
 
 要使用的中介设备类型。虚拟机启动时将创建此类型的一个实例，并在虚拟机停止时清理该实例。
 
-**`pcie`\=`<boolean>` (*默认值 \=* `0`)**
+**`pcie`\=`<boolean>` (<em>默认值 \=</em> `0`)**
 
-选择 PCI-express 总线（需要 *q35* 机器型号）。
+选择 PCI-express 总线（需要 <em>q35</em> 机器型号）。
 
-**`rombar`\=`<boolean>` (*默认值 \=* `1`)**
+**`rombar`\=`<boolean>` (<em>默认值 \=</em> `1`)**
 
 指定设备的 ROM 是否在客户机的内存映射中可见。
 
@@ -4352,19 +4352,19 @@ OVMF EFI 变量的大小和类型。*4m* 较新且推荐使用，并且是安全
 
 覆盖对客户机可见的 PCI 供应商 ID
 
-**`x-vga`\=`<boolean>` (*默认值 \=* `0`)**
+**`x-vga`\=`<boolean>` (<em>默认值 \=</em> `0`)**
 
 启用 vfio-vga 设备支持。
 
-**`hotplug`: `<string>` (*默认值 \=* `network,disk,usb`)**
+**`hotplug`: `<string>` (<em>默认值 \=</em> `network,disk,usb`)**
 
-选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：*network*、*disk*、*cpu*、*memory*、*usb* 和 *cloudinit*。使用 *0* 完全禁用热插拔。将 *1* 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
+选择性启用热插拔功能。这是以逗号分隔的热插拔功能列表：<em>network</em>、<em>disk</em>、<em>cpu</em>、<em>memory</em>、<em>usb</em> 和 <em>cloudinit</em>。使用 <em>0</em> 完全禁用热插拔。将 <em>1</em> 用作值是默认值 `network,disk,usb` 的别名。机器版本 \>\= 7.1 且 ostype 为 l26 或 windows \> 7 的客户机支持 USB 热插拔。
 
 **`hugepages`: `<1024 | 2 | any>`**
 
 启用大页内存。
 
-设置大页的大小，单位为 MiB。如果值设置为 *any*，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
+设置大页的大小，单位为 MiB。如果值设置为 <em>any</em>，则尽可能使用 1 GiB 大页，否则大小将回退到 2 MiB。
 
 **`ide[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,model=<model>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -4482,7 +4482,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
+**`media`\=`<cdrom | disk>` (<em>默认值 \=</em> `disk`)**
 
 驱动器的介质类型。
 
@@ -4490,7 +4490,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器报告的型号名称，采用 URL 编码，最长 40 字节。
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>`（<em>默认 \=</em> `1`）**
 
 是否应将驱动器纳入复制作业。
 
@@ -4502,7 +4502,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>`（<em>默认 \=</em> `0`）**
 
 将此本地管理的卷标记为在所有节点上可用。
 
@@ -4528,13 +4528,13 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`wwn`\=`<wwn>`**
 
-驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 <em>0x</em> 为前缀。
 
 **`intel-tdx`: `[type=]<tdx-type> ,attestation=<1|0> [,vsock-cid=<integer>] [,vsock-port=<integer>]`**
 
 Intel CPU 的信任域扩展（TDX）功能
 
-**`attestation`\=`<boolean>` (*默认值 \=* `1`)**
+**`attestation`\=`<boolean>` (<em>默认值 \=</em> `1`)**
 
 通过包含 quote-generation-socket 启用 TDX 证明
 
@@ -4542,11 +4542,11 @@ Intel CPU 的信任域扩展（TDX）功能
 
 启用 TDX
 
-**`vsock-cid`\=`<integer> (2 - N)` (*默认值 \=* `2`)**
+**`vsock-cid`\=`<integer> (2 - N)` (<em>默认值 \=</em> `2`)**
 
 Quote Generation Service 的 vsock CID
 
-**`vsock-port`\=`<integer> (0 - N)` (*默认值 \=* `4050`)**
+**`vsock-port`\=`<integer> (0 - N)` (<em>默认值 \=</em> `4050`)**
 
 Quote Generation Service 的 vsock 端口
 
@@ -4556,7 +4556,7 @@ cloud-init：为相应接口指定 IP 地址和网关。
 
 IP 地址使用 CIDR 表示法，网关是可选的，但需要指定相同类型的 IP 地址。
 
-IP 地址可以使用特殊字符串 *dhcp* 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 *auto* 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
+IP 地址可以使用特殊字符串 <em>dhcp</em> 来表示使用 DHCP，在这种情况下不应提供显式网关。对于 IPv6，可以使用特殊字符串 <em>auto</em> 来表示使用无状态自动配置。这需要 cloud-init 19.4 或更高版本。
 
 如果启用了 cloud-init，且既未指定 IPv4 地址也未指定 IPv6 地址，则默认在 IPv4 上使用 dhcp。
 
@@ -4576,11 +4576,11 @@ IPv6 流量的默认网关。
 需要选项：`ip6`
 {% endhint %}
 
-**`ip`\=`<IPv4Format/CIDR>`（*默认值 \=* `dhcp`）**
+**`ip`\=`<IPv4Format/CIDR>`（<em>默认值 \=</em> `dhcp`）**
 
 CIDR 格式的 IPv4 地址。
 
-**`ip6`\=`<IPv6Format/CIDR>`（*默认值 \=* `dhcp`）**
+**`ip6`\=`<IPv6Format/CIDR>`（<em>默认值 \=</em> `dhcp`）**
 
 CIDR 格式的 IPv6 地址。
 
@@ -4590,13 +4590,13 @@ CIDR 格式的 IPv6 地址。
 
 **`name`\=`<string>`**
 
-文件名。将以 *pve-shm-* 为前缀。默认为 VMID。该文件将在虚拟机停止时删除。
+文件名。将以 <em>pve-shm-</em> 为前缀。默认为 VMID。该文件将在虚拟机停止时删除。
 
 **`size`\=`<integer> (1 - N)`**
 
 文件大小，单位为 MB。
 
-**`keephugepages`：`<boolean>`（*默认值 \=* `0`）**
+**`keephugepages`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 与大页配合使用。如果启用，虚拟机关机后不会删除大页，可供后续启动使用。
 
@@ -4604,7 +4604,7 @@ CIDR 格式的 IPv6 地址。
 
 VNC 服务器的键盘布局。通常不需要此选项，在客户机操作系统内部处理通常更合适。
 
-**`kvm`：`<boolean>`（*默认值 \=* `1`）**
+**`kvm`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用/禁用 KVM 硬件虚拟化。
 
@@ -4646,15 +4646,15 @@ Intel vIOMMU 支持 39 或 48 位的位宽，VirtIO vIOMMU 支持 32 至 64 位�
 
 内存属性。
 
-**`current`\=`<integer> (16 - N)`（*默认值 \=* `512`）**
+**`current`\=`<integer> (16 - N)`（<em>默认值 \=</em> `512`）**
 
 虚拟机当前在线 RAM 容量，单位为 MiB。使用气球设备时，这是最大可用内存。
 
-**`migrate_downtime`：`<number> (0 - N)`（*默认值 \=* `0.1`）**
+**`migrate_downtime`：`<number> (0 - N)`（<em>默认值 \=</em> `0.1`）**
 
 设置迁移可容忍的最长停机时间（秒）。如果迁移在最后阶段因需要传输过多新写脏的 RAM 而无法收敛，将自动逐步增加此限制，直至迁移能够收敛。上限为 2000 秒（QEMU 中的最大值）。
 
-**`migrate_speed`：`<integer> (0 - N)`（*默认值 \=* `0`）**
+**`migrate_speed`：`<integer> (0 - N)`（<em>默认值 \=</em> `0`）**
 
 设置迁移的最大速度（MB/s）。值为 0 表示不限制。
 
@@ -4672,7 +4672,7 @@ cloud-init：设置容器的 DNS 服务器 IP 地址。如果 searchdomain 和 n
 
 **`bridge`\=`<bridge>`**
 
-网络设备要连接的网桥。Proxmox VE 的标准网桥名为 *vmbr0*。
+网络设备要连接的网桥。Proxmox VE 的标准网桥名为 <em>vmbr0</em>。
 
 如果未指定网桥，将创建提供 DHCP 和 DNS 服务的 kvm 用户网络设备（使用 NAT）。使用以下地址：
 
@@ -4702,11 +4702,11 @@ I/G（Individual/Group，个体/组）位未设置的常见 MAC 地址。
 
 **`model`\=`<e1000 | e1000-82540em | e1000-82544gc | e1000-82545em | e1000e | i82551 | i82557b | i82559er | ne2k_isa | ne2k_pci | pcnet | rtl8139 | virtio | vmxnet3>`**
 
-网卡型号。*virtio* 型号以极低的 CPU 开销提供最佳性能。如果客户机不支持此驱动，通常最好使用 *e1000*。
+网卡型号。<em>virtio</em> 型号以极低的 CPU 开销提供最佳性能。如果客户机不支持此驱动，通常最好使用 <em>e1000</em>。
 
 **`mtu`\=`<integer> (1 - 65520)`**
 
-强制设置网络设备的 MTU（仅限 VirtIO）。设为 *1* 或留空将使用网桥的 MTU
+强制设置网络设备的 MTU（仅限 VirtIO）。设为 <em>1</em> 或留空将使用网桥的 MTU
 
 **`queues`\=`<integer> (0 - 64)`**
 
@@ -4724,7 +4724,7 @@ I/G（Individual/Group，个体/组）位未设置的常见 MAC 地址。
 
 允许通过此接口的 VLAN 中继。
 
-**`numa`：`<boolean>`（*默认值 \=* `0`）**
+**`numa`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用/禁用 NUMA。
 
@@ -4748,11 +4748,11 @@ NUMA 拓扑。
 
 NUMA 分配策略。
 
-**`onboot`: `<boolean>` (*默认 \=* `0`)**
+**`onboot`: `<boolean>` (<em>默认 \=</em> `0`)**
 
 指定是否在系统启动时启动虚拟机。
 
-**`ostype`：`<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>`（*默认值 \=* `other`）**
+**`ostype`：`<l24 | l26 | other | solaris | w2k | w2k3 | w2k8 | win10 | win11 | win7 | win8 | wvista | wxp>`（<em>默认值 \=</em> `other`）**
 
 指定客户机操作系统。用于为特定操作系统启用特殊优化/功能：
 
@@ -4864,29 +4864,29 @@ l26
 实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
-**`protection`: `<boolean>` (*默认 \=* `0`)**
+**`protection`: `<boolean>` (<em>默认 \=</em> `0`)**
 
 设置虚拟机的保护标志。这将禁用删除虚拟机和删除磁盘操作。
 
-**`reboot`：`<boolean>`（*默认值 \=* `1`）**
+**`reboot`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
-允许重启。如果设为 *0*，虚拟机将在重启时退出。
+允许重启。如果设为 <em>0</em>，虚拟机将在重启时退出。
 
 **`rng0`: `[source=]</dev/urandom|/dev/random|/dev/hwrng> [,max_bytes=<integer>] [,period=<integer>]`**
 
 配置基于 VirtIO 的随机数生成器。
 
-**`max_bytes`\=`<integer>`（*默认值 \=* `1024`）**
+**`max_bytes`\=`<integer>`（<em>默认值 \=</em> `1024`）**
 
-每 *period* 毫秒允许注入客户机的最大熵字节数。使用 `0` 禁用限制（可能存在危险！）。
+每 <em>period</em> 毫秒允许注入客户机的最大熵字节数。使用 `0` 禁用限制（可能存在危险！）。
 
-**`period`\=`<integer>`（*默认值 \=* `1000`）**
+**`period`\=`<integer>`（<em>默认值 \=</em> `1000`）**
 
-每隔 *period* 毫秒重置熵注入配额，允许客户机再获取 *max\_bytes* 的熵。
+每隔 <em>period</em> 毫秒重置熵注入配额，允许客户机再获取 <em>max\_bytes</em> 的熵。
 
 **`source`\=`</dev/hwrng | /dev/random | /dev/urandom>`**
 
-宿主机上用于收集熵的文件。使用 urandom **不会** 对安全性造成实质性降低，因为它仍以真实熵作为种子，并且所提供的字节很可能也会在客户机上与真实熵混合。*/dev/hwrng* 可用于直通宿主机上的硬件 RNG。
+宿主机上用于收集熵的文件。使用 urandom <strong>不会</strong> 对安全性造成实质性降低，因为它仍以真实熵作为种子，并且所提供的字节很可能也会在客户机上与真实熵混合。<em>/dev/hwrng</em> 可用于直通宿主机上的硬件 RNG。
 
 **`sata[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -5004,11 +5004,11 @@ I/O 突发的最大持续时间，单位为秒。
 
 最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
+**`media`\=`<cdrom | disk>` (<em>默认值 \=</em> `disk`)**
 
 驱动器的介质类型。
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>`（<em>默认 \=</em> `1`）**
 
 是否应将驱动器纳入复制作业。
 
@@ -5020,7 +5020,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>`（<em>默认 \=</em> `0`）**
 
 将此本地管理的卷标记为在所有节点上可用。
 
@@ -5046,7 +5046,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`wwn`\=`<wwn>`**
 
-驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 <em>0x</em> 为前缀。
 
 **`scsi[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,product=<product>] [,queues=<integer>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,scsiblock=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,ssd=<1|0>] [,vendor=<vendor>] [,werror=<enum>] [,wwn=<wwn>]`**
 
@@ -5168,7 +5168,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
+**`media`\=`<cdrom | disk>` (<em>默认值 \=</em> `disk`)**
 
 驱动器的介质类型。
 
@@ -5180,7 +5180,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 队列数量。
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>`（<em>默认 \=</em> `1`）**
 
 是否应将驱动器纳入复制作业。
 
@@ -5192,7 +5192,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器是否为只读。
 
-**`scsiblock`\=`<boolean>`（*默认值 \=* `0`）**
+**`scsiblock`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 是否使用 scsi-block 完整直通宿主机块设备
 
@@ -5204,7 +5204,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>`（<em>默认 \=</em> `0`）**
 
 将此本地管理的卷标记为在所有节点上可用。
 
@@ -5234,9 +5234,9 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`wwn`\=`<wwn>`**
 
-驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 *0x* 为前缀。
+驱动器的全球唯一名称，编码为 16 字节十六进制字符串，以 <em>0x</em> 为前缀。
 
-**`scsihw`：`<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>`（*默认值 \=* `lsi`）**
+**`scsihw`：`<lsi | lsi53c810 | megasas | pvscsi | virtio-scsi-pci | virtio-scsi-single>`（<em>默认值 \=</em> `lsi`）**
 
 SCSI 控制器型号
 
@@ -5246,7 +5246,7 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 **`serial[n]`: `(/dev/[^,]+|socket)`**
 
-在虚拟机内部创建串口设备（n 为 0 到 3），并直通宿主机串口设备（即 /dev/ttyS0），或在宿主机端创建 unix 套接字（使用 *qm terminal* 打开终端连接）。
+在虚拟机内部创建串口设备（n 为 0 到 3），并直通宿主机串口设备（即 /dev/ttyS0），或在宿主机端创建 unix 套接字（使用 <em>qm terminal</em> 打开终端连接）。
 
 {% hint style="info" %}
 如果直通宿主机串口设备，此类虚拟机将无法迁移，请格外谨慎使用。
@@ -5256,7 +5256,7 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 实验性功能！有用户报告此选项存在问题。
 {% endhint %}
 
-**`shares`：`<integer> (0 - 50000)`（*默认值 \=* `1000`）**
+**`shares`：`<integer> (0 - 50000)`（<em>默认值 \=</em> `1000`）**
 
 自动气球调整的内存份额。数值越大，该虚拟机获得的内存越多。该数值相对于所有其他运行中虚拟机的权重。使用零可禁用自动气球调整。自动气球调整由 pvestatd 完成。
 
@@ -5296,11 +5296,11 @@ cloud-init：设置容器的 DNS 搜索域。如果 searchdomain 和 nameserver 
 
 设置 SMBIOS1 版本。
 
-**`smp`：`<integer> (1 - N)`（*默认值 \=* `1`）**
+**`smp`：`<integer> (1 - N)`（<em>默认值 \=</em> `1`）**
 
 CPU 数量。请改用 -sockets 选项。
 
-**`sockets`：`<integer> (1 - N)`（*默认值 \=* `1`）**
+**`sockets`：`<integer> (1 - N)`（<em>默认值 \=</em> `1`）**
 
 CPU 插槽数量。
 
@@ -5308,11 +5308,11 @@ CPU 插槽数量。
 
 配置 SPICE 的额外增强功能。
 
-**`foldersharing`\=`<boolean>`（*默认值 \=* `0`）**
+**`foldersharing`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 通过 SPICE 启用文件夹共享。需要在虚拟机中安装 Spice-WebDAV 守护进程。
 
-**`videostreaming`\=`<all | filter | off>`（*默认值 \=* `off`）**
+**`videostreaming`\=`<all | filter | off>`（<em>默认值 \=</em> `off`）**
 
 启用视频流传输。对检测到的视频流使用压缩。
 
@@ -5320,15 +5320,15 @@ CPU 插槽数量。
 
 cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
-**`startdate`：`(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)`（*默认值 \=* `now`）**
+**`startdate`：`(now | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS)`（<em>默认值 \=</em> `now`）**
 
-设置实时时钟的初始日期。有效的日期格式为：'now'、*2006-06-17T16:01:21* 或 *2006-06-17*。
+设置实时时钟的初始日期。有效的日期格式为：'now'、<em>2006-06-17T16:01:21</em> 或 <em>2006-06-17</em>。
 
 **`startup`: \`\[\[order\=\]\\d\+\] \[,up\=\\d\+\] \[,down\=\\d\+\] \`**
 
-启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 *up* 或 *down* 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
+启动和关闭行为。Order 是一个非负数，用于定义总体启动顺序。关闭时按相反顺序执行。此外，还可以设置以秒为单位的 <em>up</em> 或 <em>down</em> 延迟，指定在启动或停止下一个 VM 之前等待的延迟时间。
 
-**`tablet`：`<boolean>`（*默认值 \=* `1`）**
+**`tablet`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用/禁用 USB 平板设备。通常需要此设备来实现 VNC 的绝对鼠标定位，否则鼠标会与普通 VNC 客户端失去同步。如果在一台宿主机上运行许多仅使用控制台的客户机，可以考虑禁用此选项，以减少一些上下文切换。如果使用 spice（`qm set <vmid> --vga qxl`），默认关闭此选项。
 
@@ -5336,17 +5336,17 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 虚拟机的标签。这只是元信息。
 
-**`tdf`：`<boolean>`（*默认值 \=* `0`）**
+**`tdf`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用/禁用时间漂移修正。
 
-**`template`: `<boolean>` (*默认 \=* `0`)**
+**`template`: `<boolean>` (<em>默认 \=</em> `0`)**
 
 启用/禁用模板。
 
 **`tpmstate0`: `[file=]<volume> [,format=<raw|qcow2|vmdk>] [,size=<DiskSize>] [,version=<v1.2|v2.0>]`**
 
-配置用于存储 TPM 状态的磁盘。格式固定为 *raw*。
+配置用于存储 TPM 状态的磁盘。格式固定为 <em>raw</em>。
 
 **`file`\=`<volume>`**
 
@@ -5360,7 +5360,7 @@ cloud-init：设置 SSH 公钥（每行一个密钥，OpenSSH 格式）。
 
 磁盘大小。这仅供参考，不会产生任何影响。
 
-**`version`\=`<v1.2 | v2.0>`（*默认值 \=* `v1.2`）**
+**`version`\=`<v1.2 | v2.0>`（<em>默认值 \=</em> `v1.2`）**
 
 TPM 接口版本。v2.0 较新，应优先使用。请注意，此值之后无法更改。
 
@@ -5378,7 +5378,7 @@ TPM 接口版本。v2.0 较新，应优先使用。请注意，此值之后无�
 
 **`host`\=`<HOSTUSBDEVICE|spice>`**
 
-宿主机 USB 设备、端口或值 *spice*。HOSTUSBDEVICE 语法为：
+宿主机 USB 设备、端口或值 <em>spice</em>。HOSTUSBDEVICE 语法为：
 
 ```text
 'bus-port(.port)*' (decimal numbers) or
@@ -5386,31 +5386,31 @@ TPM 接口版本。v2.0 较新，应优先使用。请注意，此值之后无�
 'spice'
 ```
 
-可以使用 *lsusb -t* 命令列出现有 USB 设备。
+可以使用 <em>lsusb -t</em> 命令列出现有 USB 设备。
 
 {% hint style="info" %}
 此选项允许直接访问宿主机硬件。因此此类虚拟机将无法迁移，请格外谨慎使用。
 {% endhint %}
 
-值 *spice* 可用于为 spice 添加 USB 重定向设备。
+值 <em>spice</em> 可用于为 spice 添加 USB 重定向设备。
 
-必须设置此项或 *mapping* 键。
+必须设置此项或 <em>mapping</em> 键。
 
 **`mapping`\=`<mapping-id>`**
 
-集群范围映射的 ID。必须设置此项或默认键 *host*。
+集群范围映射的 ID。必须设置此项或默认键 <em>host</em>。
 
-**`usb3`\=`<boolean>`（*默认值 \=* `0`）**
+**`usb3`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 指定所给 host 选项是否为 USB3 设备或端口。对于较新的客户机（机型版本 \>\= 7.1 且 ostype 为 l26 和 windows \> 7），此标志无关紧要（所有设备均连接到 xhci 控制器）。
 
-**`vcpus`：`<integer> (1 - N)`（*默认值 \=* `0`）**
+**`vcpus`：`<integer> (1 - N)`（<em>默认值 \=</em> `0`）**
 
 热插拔的 vcpu 数量。
 
 **`vga`: `[[type=]<enum>] [,clipboard=<vnc>] [,memory=<integer>]`**
 
-配置 VGA 硬件。如果要使用高分辨率模式（\>\= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 开始，默认 VGA 显示类型为 *std*，适用于除某些 Windows 版本（XP 及更早版本）外的所有操作系统类型，这些 Windows 版本使用 *cirrus*。*qxl* 选项启用 SPICE 显示服务器。对于 win\* 操作系统，可以选择所需的独立显示器数量；Linux 客户机可以自行添加显示器。也可以不使用任何显卡，而使用串口设备作为终端运行。
+配置 VGA 硬件。如果要使用高分辨率模式（\>\= 1280x1024x16），可能需要增大 vga 内存选项。从 QEMU 2.9 开始，默认 VGA 显示类型为 <em>std</em>，适用于除某些 Windows 版本（XP 及更早版本）外的所有操作系统类型，这些 Windows 版本使用 <em>cirrus</em>。<em>qxl</em> 选项启用 SPICE 显示服务器。对于 win\* 操作系统，可以选择所需的独立显示器数量；Linux 客户机可以自行添加显示器。也可以不使用任何显卡，而使用串口设备作为终端运行。
 
 **`clipboard`\=`<vnc>`**
 
@@ -5420,9 +5420,9 @@ TPM 接口版本。v2.0 较新，应优先使用。请注意，此值之后无�
 
 设置 VGA 内存（MiB）。对串口显示无效。
 
-**`type`\=`<cirrus | none | qxl | qxl2 | qxl3 | qxl4 | serial0 | serial1 | serial2 | serial3 | std | virtio | virtio-gl | vmware>`（*默认值 \=* `std`）**
+**`type`\=`<cirrus | none | qxl | qxl2 | qxl3 | qxl4 | serial0 | serial1 | serial2 | serial3 | std | virtio | virtio-gl | vmware>`（<em>默认值 \=</em> `std`）**
 
-选择 VGA 类型。不建议使用 *cirrus* 类型。
+选择 VGA 类型。不建议使用 <em>cirrus</em> 类型。
 
 **`virtio[n]`: `[file=]<volume> [,aio=<native|threads|io_uring>] [,backup=<1|0>] [,bps=<bps>] [,bps_max_length=<seconds>] [,bps_rd=<bps>] [,bps_rd_max_length=<seconds>] [,bps_wr=<bps>] [,bps_wr_max_length=<seconds>] [,cache=<enum>] [,detect_zeroes=<1|0>] [,discard=<ignore|on>] [,format=<enum>] [,iops=<iops>] [,iops_max=<iops>] [,iops_max_length=<seconds>] [,iops_rd=<iops>] [,iops_rd_max=<iops>] [,iops_rd_max_length=<seconds>] [,iops_wr=<iops>] [,iops_wr_max=<iops>] [,iops_wr_max_length=<seconds>] [,iothread=<1|0>] [,mbps=<mbps>] [,mbps_max=<mbps>] [,mbps_rd=<mbps>] [,mbps_rd_max=<mbps>] [,mbps_wr=<mbps>] [,mbps_wr_max=<mbps>] [,media=<cdrom|disk>] [,replicate=<1|0>] [,rerror=<ignore|report|stop>] [,ro=<1|0>] [,serial=<serial>] [,shared=<1|0>] [,size=<DiskSize>] [,snapshot=<1|0>] [,werror=<enum>]`**
 
@@ -5544,11 +5544,11 @@ I/O 突发的最大持续时间，单位为秒。
 
 最大未限速写入池，单位为 MB/秒。
 
-**`media`\=`<cdrom | disk>` (*默认值 \=* `disk`)**
+**`media`\=`<cdrom | disk>` (<em>默认值 \=</em> `disk`)**
 
 驱动器的介质类型。
 
-**`replicate`\=`<boolean>`（*默认 \=* `1`）**
+**`replicate`\=`<boolean>`（<em>默认 \=</em> `1`）**
 
 是否应将驱动器纳入复制作业。
 
@@ -5564,7 +5564,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 驱动器报告的序列号，采用 URL 编码，最长 20 字节。
 
-**`shared`\=`<boolean>`（*默认 \=* `0`）**
+**`shared`\=`<boolean>`（<em>默认 \=</em> `0`）**
 
 将此本地管理的卷标记为在所有节点上可用。
 
@@ -5588,11 +5588,11 @@ I/O 突发的最大持续时间，单位为秒。
 
 使用 Virtio-fs 在宿主机与客户机之间共享目录的配置。
 
-**`cache`\=`<always | auto | metadata | never>`（*默认值 \=* `auto`）**
+**`cache`\=`<always | auto | metadata | never>`（<em>默认值 \=</em> `auto`）**
 
 文件系统应使用的缓存策略（auto、always、metadata、never）。
 
-**`direct-io`\=`<boolean>`（*默认值 \=* `0`）**
+**`direct-io`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 遵循客户机应用程序传递的 O\_DIRECT 标志。
 
@@ -5600,15 +5600,15 @@ I/O 突发的最大持续时间，单位为秒。
 
 要与客户机共享的目录映射的映射标识符。也用作虚拟机内部的挂载标签。
 
-**`expose-acl`\=`<boolean>`（*默认值 \=* `0`）**
+**`expose-acl`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 为此挂载启用 POSIX ACL 支持（启用 ACL 会隐含启用 xattr）。
 
-**`expose-xattr`\=`<boolean>`（*默认值 \=* `0`）**
+**`expose-xattr`\=`<boolean>`（<em>默认值 \=</em> `0`）**
 
 为此挂载启用扩展属性支持。
 
-**`vmgenid`：`<UUID>`（*默认值 \=* `1 (autogenerated)`）**
+**`vmgenid`：`<UUID>`（<em>默认值 \=</em> `1 (autogenerated)`）**
 
 虚拟机代次 ID（vmgenid）设备向客户机操作系统提供一个 128 位整数值标识符。当虚拟机以不同配置执行时（例如执行快照或从模板创建），可借此通知客户机操作系统。客户机操作系统会注意到更改，随后可作出适当反应，例如将其分布式数据库副本标记为脏、重新初始化随机数生成器等。请注意，自动创建仅在通过 API/CLI 创建或更新方法执行时有效，手动编辑配置文件时无效。
 
@@ -5624,7 +5624,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 激活后，如果客户机未能及时轮询看门狗，要执行的操作。
 
-**`model`\=`<i6300esb | ib700>`（*默认值 \=* `i6300esb`）**
+**`model`\=`<i6300esb | ib700>`（<em>默认值 \=</em> `i6300esb`）**
 
 要模拟的看门狗类型。
 
@@ -5644,7 +5644,7 @@ I/O 突发的最大持续时间，单位为秒。
 
 **`/etc/pve/qemu-server/<VMID>.conf`**
 
-虚拟机 *\<VMID\>* 的配置文件。
+虚拟机 <em>\<VMID\></em> 的配置文件。
 
 ## 版权与免责声明 <a href="#copyright_and_disclaimer" id="copyright_and_disclaimer"></a>
 
@@ -5722,7 +5722,7 @@ Looking Glass: [https://looking-glass.io/](https://looking-glass.io/)
 
 ### 注释 15 <a href="#note-0cdd31f9-15" id="note-0cdd31f9-15"></a>
 
-官方 *vmgenid* 规范 [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)
+官方 <em>vmgenid</em> 规范 [https://docs.microsoft.com/en-us/windows/desktop/hyperv\_v2/virtual-machine-generation-identifier](https://docs.microsoft.com/en-us/windows/desktop/hyperv_v2/virtual-machine-generation-identifier)
 
 ### 注释 16 <a href="#note-0cdd31f9-16" id="note-0cdd31f9-16"></a>
 

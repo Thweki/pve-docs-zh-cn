@@ -6,9 +6,9 @@ pveam \- Proxmox VE 设备模板管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pveam** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveam" id="cli_pveam"></a>
+### <strong>pveam</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveam" id="cli_pveam"></a>
 
-### **pveam available** `[OPTIONS]` <a href="#cli_pveam_available" id="cli_pveam_available"></a>
+### <strong>pveam available</strong> `[OPTIONS]` <a href="#cli_pveam_available" id="cli_pveam_available"></a>
 
 列出可用模板。
 
@@ -16,7 +16,7 @@ pveam \- Proxmox VE 设备模板管理器
 
 将列表限制为指定部分。
 
-### **pveam download** `<storage> <template>` <a href="#cli_pveam_download" id="cli_pveam_download"></a>
+### <strong>pveam download</strong> `<storage> <template>` <a href="#cli_pveam_download" id="cli_pveam_download"></a>
 
 下载设备模板。
 
@@ -28,7 +28,7 @@ pveam \- Proxmox VE 设备模板管理器
 
 要下载的模板
 
-### **pveam help** `[OPTIONS]` <a href="#cli_pveam_help" id="cli_pveam_help"></a>
+### <strong>pveam help</strong> `[OPTIONS]` <a href="#cli_pveam_help" id="cli_pveam_help"></a>
 
 获取指定命令的帮助。
 
@@ -40,7 +40,7 @@ pveam \- Proxmox VE 设备模板管理器
 
 详细输出格式。
 
-### **pveam list** `<storage>` <a href="#cli_pveam_list" id="cli_pveam_list"></a>
+### <strong>pveam list</strong> `<storage>` <a href="#cli_pveam_list" id="cli_pveam_list"></a>
 
 获取存储上的所有模板列表
 
@@ -48,7 +48,7 @@ pveam \- Proxmox VE 设备模板管理器
 
 仅列出指定存储上的模板
 
-### **pveam remove** `<template_path>` <a href="#cli_pveam_remove" id="cli_pveam_remove"></a>
+### <strong>pveam remove</strong> `<template_path>` <a href="#cli_pveam_remove" id="cli_pveam_remove"></a>
 
 移除模板。
 
@@ -56,7 +56,7 @@ pveam \- Proxmox VE 设备模板管理器
 
 要移除的模板。
 
-### **pveam update** <a href="#cli_pveam_update" id="cli_pveam_update"></a>
+### <strong>pveam update</strong> <a href="#cli_pveam_update" id="cli_pveam_update"></a>
 
 更新容器模板数据库。
 

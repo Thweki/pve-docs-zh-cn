@@ -1,0 +1,5 @@
+weasyprint==70.0
+lxml==6.1.1
+pypdf==6.10.0
+Pillow==13.0.0
+fonttools==4.68.0

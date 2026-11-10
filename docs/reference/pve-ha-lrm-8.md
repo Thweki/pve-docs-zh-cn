@@ -6,9 +6,9 @@ pve-ha-lrm \- PVE 本地资源管理器守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pve-ha-lrm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-ha-lrm" id="cli_pve-ha-lrm"></a>
+### <strong>pve-ha-lrm</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-ha-lrm" id="cli_pve-ha-lrm"></a>
 
-### **pve-ha-lrm help** `[OPTIONS]` <a href="#cli_pve-ha-lrm_help" id="cli_pve-ha-lrm_help"></a>
+### <strong>pve-ha-lrm help</strong> `[OPTIONS]` <a href="#cli_pve-ha-lrm_help" id="cli_pve-ha-lrm_help"></a>
 
 获取指定命令的帮助。
 
@@ -20,19 +20,19 @@ pve-ha-lrm \- PVE 本地资源管理器守护进程
 
 详细输出格式。
 
-### **pve-ha-lrm start** `[OPTIONS]` <a href="#cli_pve-ha-lrm_start" id="cli_pve-ha-lrm_start"></a>
+### <strong>pve-ha-lrm start</strong> `[OPTIONS]` <a href="#cli_pve-ha-lrm_start" id="cli_pve-ha-lrm_start"></a>
 
 启动守护进程。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pve-ha-lrm status** <a href="#cli_pve-ha-lrm_status" id="cli_pve-ha-lrm_status"></a>
+### <strong>pve-ha-lrm status</strong> <a href="#cli_pve-ha-lrm_status" id="cli_pve-ha-lrm_status"></a>
 
 获取守护进程状态。
 
-### **pve-ha-lrm stop** <a href="#cli_pve-ha-lrm_stop" id="cli_pve-ha-lrm_stop"></a>
+### <strong>pve-ha-lrm stop</strong> <a href="#cli_pve-ha-lrm_stop" id="cli_pve-ha-lrm_stop"></a>
 
 停止守护进程。
 

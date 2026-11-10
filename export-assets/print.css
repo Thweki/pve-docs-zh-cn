@@ -1,0 +1,154 @@
+/* PDF only. Fonts are distributed under SIL OFL 1.1; see fonts/OFL.txt. */
+@font-face {
+  font-family: "Noto Sans CJK SC";
+  src: url("fonts/NotoSansCJKsc-Regular.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Noto Sans CJK SC";
+  src: url("fonts/NotoSansCJKsc-Bold.otf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Noto Sans Mono CJK SC";
+  src: url("fonts/NotoSansMonoCJKsc-Regular.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Noto Emoji";
+  src: url("fonts/NotoEmoji-wght.ttf");
+  font-weight: 400;
+}
+.pdf-emoji { font-family: "Noto Emoji", "Noto Sans CJK SC"; font-weight: 400; }
+@page {
+  size: A4;
+  margin: 18mm 17mm 18mm;
+  @top-left {
+    content: "Proxmox VE 9.2.13 | 简体中文文档";
+    color: #64748b;
+    font: 7pt "Noto Sans CJK SC";
+    vertical-align: bottom;
+    padding-bottom: 3mm;
+    border-bottom: .25pt solid #dbe2ea;
+  }
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    color: #64748b;
+    font: 7.5pt "Noto Sans CJK SC";
+    padding-top: 2mm;
+  }
+}
+@page cover {
+  @top-left { content: none; border: none; }
+  @bottom-center { content: none; }
+}
+* { box-sizing: border-box; }
+html { font-family: "Noto Sans CJK SC", "Noto Emoji"; font-size: 9pt; }
+body { margin: 0; color: #172334; line-height: 1.65; }
+main, section, article, div { max-width: 100%; }
+.pdf-cover {
+  page: cover;
+  break-after: page;
+  padding-top: 44mm;
+}
+.pdf-cover .pdf-eyebrow { color: #d56316; font-size: 10pt; letter-spacing: .12em; }
+.pdf-cover h1 { margin: 9mm 0; font-size: 29pt; line-height: 1.4; color: #172334; }
+.pdf-cover .pdf-subtitle { font-size: 13pt; color: #475569; }
+.pdf-cover .pdf-edition { margin-top: 36mm; font-size: 10pt; color: #64748b; }
+.pdf-cover .pdf-note { margin-top: 7mm; font-size: 8.5pt; color: #64748b; }
+.pdf-toc { break-after: page; }
+.pdf-toc h1 { margin-top: 0; }
+.pdf-toc ol { padding-left: 0; list-style: none; }
+.pdf-toc li { margin: 0 0 2mm; break-inside: avoid; }
+.pdf-toc a { color: #172334; text-decoration: none; }
+.pdf-toc a::after { content: leader(".") target-counter(attr(href), page); }
+section.book-chapter { break-before: page; }
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4;
+  color: #172334;
+  break-after: avoid;
+  break-inside: avoid;
+  font-weight: 700;
+}
+h1 { font-size: 20pt; margin: 0 0 7mm; padding-bottom: 3mm; border-bottom: 1.4pt solid #d56316; bookmark-level: 1; }
+h2 { font-size: 14pt; margin: 8mm 0 3.2mm; bookmark-level: 2; }
+h3 { font-size: 11.5pt; margin: 6mm 0 2.4mm; bookmark-level: 3; }
+h4 { font-size: 10pt; margin: 5mm 0 2mm; bookmark-level: 4; }
+h5, h6 { font-size: 9pt; margin: 4mm 0 1.8mm; bookmark-level: none; }
+.pdf-cover h1, .pdf-toc h1 { bookmark-level: none; border-bottom: none; }
+p { margin: 0 0 2.7mm; orphans: 3; widows: 3; overflow-wrap: anywhere; }
+ul, ol { padding-left: 5.5mm; margin: 2mm 0 3mm; }
+li { margin-bottom: 1mm; }
+li > p { margin-bottom: 1.5mm; }
+a { color: #245682; text-decoration: none; overflow-wrap: anywhere; }
+strong, b { font-weight: 700; }
+em, i { font-style: normal; }
+code, kbd, samp, pre {
+  font-family: "Noto Sans Mono CJK SC", "Noto Emoji";
+  font-weight: 400;
+  font-size: .86em;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+:not(pre) > code { color: #8a3a10; }
+pre {
+  margin: 2.5mm 0 4mm;
+  padding: 3mm;
+  white-space: pre-wrap;
+  tab-size: 4;
+  line-height: 1.55;
+  font-size: 7.4pt;
+  background: #f1f5f9;
+  border: .4pt solid #dbe2ea;
+  border-left: 2pt solid #8295a9;
+  border-radius: 1mm;
+  break-inside: auto;
+  box-decoration-break: clone;
+}
+pre code { font-size: 1em; white-space: inherit; }
+blockquote, .admonitionblock, .hint, .warning, .note, .tip, .important, .caution {
+  margin: 3mm 0;
+  padding: 3mm 4mm;
+  border-left: 2pt solid #d56316;
+  background: #fff8ef;
+  break-inside: auto;
+  box-decoration-break: clone;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: 0; border-top: .4pt solid #cbd5e1; margin: 4mm 0; }
+img, svg { max-width: 100%; max-height: 228mm; height: auto; object-fit: contain; }
+figure, .imageblock { margin: 4mm 0; break-inside: avoid; text-align: center; }
+figcaption, .imageblock .title { font-size: 8pt; color: #64748b; margin-top: 1.5mm; }
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm;
+  font-size: 7.7pt;
+  line-height: 1.6;
+  break-inside: auto;
+}
+thead { display: table-header-group; }
+tfoot { display: table-footer-group; }
+tr { break-inside: auto; }
+th, td {
+  border: .4pt solid #cbd5e1;
+  padding: 2mm;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  white-space: normal;
+}
+th { background: #e9eff5; font-weight: 700; }
+td pre { border: 0; padding: 1mm; font-size: 6.8pt; }
+td > :last-child, th > :last-child { margin-bottom: 0; }
+.pdf-record-table { margin: 3mm 0 5mm; }
+.pdf-record { margin: 0 0 3mm; border-top: .6pt solid #9eafc1; padding-top: 2mm; }
+.pdf-record-field { margin-bottom: 2mm; break-inside: auto; }
+.pdf-record-label { color: #475569; font-size: 7.5pt; font-weight: 700; margin-bottom: .8mm; }
+.pdf-record-value { padding-left: 2mm; overflow-wrap: anywhere; }
+.pdf-record-value > :last-child { margin-bottom: 0; }
+.pdf-details-title { font-weight: 700; break-after: avoid; }
+.footnotes { border-top: .4pt solid #cbd5e1; margin-top: 5mm; font-size: 8pt; }
+.no-print, nav, script { display: none; }

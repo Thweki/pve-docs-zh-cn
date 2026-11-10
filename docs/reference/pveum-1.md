@@ -6,9 +6,9 @@ pveum \- Proxmox VE 用户管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pveum** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveum" id="cli_pveum"></a>
+### <strong>pveum</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveum" id="cli_pveum"></a>
 
-### **pveum acl delete** `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_delete" id="cli_pveum_acl_delete"></a>
+### <strong>pveum acl delete</strong> `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_delete" id="cli_pveum_acl_delete"></a>
 
 更新访问控制列表（添加或移除权限）。
 
@@ -20,7 +20,7 @@ pveum \- Proxmox VE 用户管理器
 
 组列表。
 
-**`--propagate` `<boolean>` （*默认值 \=* `1`）**
+**`--propagate` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 允许传播（继承）权限。
 
@@ -36,11 +36,11 @@ API 令牌列表。
 
 用户列表。
 
-### **pveum acl list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_acl_list" id="cli_pveum_acl_list"></a>
+### <strong>pveum acl list</strong> `[FORMAT_OPTIONS]` <a href="#cli_pveum_acl_list" id="cli_pveum_acl_list"></a>
 
 获取访问控制列表（ACL）。
 
-### **pveum acl modify** `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_modify" id="cli_pveum_acl_modify"></a>
+### <strong>pveum acl modify</strong> `<path> --roles <string>` `[OPTIONS]` <a href="#cli_pveum_acl_modify" id="cli_pveum_acl_modify"></a>
 
 更新访问控制列表（添加或移除权限）。
 
@@ -52,7 +52,7 @@ API 令牌列表。
 
 组列表。
 
-**`--propagate` `<boolean>` （*默认值 \=* `1`）**
+**`--propagate` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 允许传播（继承）权限。
 
@@ -68,15 +68,15 @@ API 令牌列表。
 
 用户列表。
 
-### **pveum acldel** <a href="#cli_pveum_acldel" id="cli_pveum_acldel"></a>
+### <strong>pveum acldel</strong> <a href="#cli_pveum_acldel" id="cli_pveum_acldel"></a>
 
-*pveum acl delete* 的别名。
+<em>pveum acl delete</em> 的别名。
 
-### **pveum aclmod** <a href="#cli_pveum_aclmod" id="cli_pveum_aclmod"></a>
+### <strong>pveum aclmod</strong> <a href="#cli_pveum_aclmod" id="cli_pveum_aclmod"></a>
 
-*pveum acl modify* 的别名。
+<em>pveum acl modify</em> 的别名。
 
-### **pveum group add** `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_add" id="cli_pveum_group_add"></a>
+### <strong>pveum group add</strong> `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_add" id="cli_pveum_group_add"></a>
 
 创建新组。
 
@@ -88,7 +88,7 @@ API 令牌列表。
 
 没有可用的说明
 
-### **pveum group delete** `<groupid>` <a href="#cli_pveum_group_delete" id="cli_pveum_group_delete"></a>
+### <strong>pveum group delete</strong> `<groupid>` <a href="#cli_pveum_group_delete" id="cli_pveum_group_delete"></a>
 
 删除组。
 
@@ -96,11 +96,11 @@ API 令牌列表。
 
 没有可用的说明
 
-### **pveum group list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_group_list" id="cli_pveum_group_list"></a>
+### <strong>pveum group list</strong> `[FORMAT_OPTIONS]` <a href="#cli_pveum_group_list" id="cli_pveum_group_list"></a>
 
 组索引。
 
-### **pveum group modify** `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_modify" id="cli_pveum_group_modify"></a>
+### <strong>pveum group modify</strong> `<groupid>` `[OPTIONS]` <a href="#cli_pveum_group_modify" id="cli_pveum_group_modify"></a>
 
 更新组数据。
 
@@ -112,19 +112,19 @@ API 令牌列表。
 
 没有可用的说明
 
-### **pveum groupadd** <a href="#cli_pveum_groupadd" id="cli_pveum_groupadd"></a>
+### <strong>pveum groupadd</strong> <a href="#cli_pveum_groupadd" id="cli_pveum_groupadd"></a>
 
-*pveum group add* 的别名。
+<em>pveum group add</em> 的别名。
 
-### **pveum groupdel** <a href="#cli_pveum_groupdel" id="cli_pveum_groupdel"></a>
+### <strong>pveum groupdel</strong> <a href="#cli_pveum_groupdel" id="cli_pveum_groupdel"></a>
 
-*pveum group delete* 的别名。
+<em>pveum group delete</em> 的别名。
 
-### **pveum groupmod** <a href="#cli_pveum_groupmod" id="cli_pveum_groupmod"></a>
+### <strong>pveum groupmod</strong> <a href="#cli_pveum_groupmod" id="cli_pveum_groupmod"></a>
 
-*pveum group modify* 的别名。
+<em>pveum group modify</em> 的别名。
 
-### **pveum help** `[OPTIONS]` <a href="#cli_pveum_help" id="cli_pveum_help"></a>
+### <strong>pveum help</strong> `[OPTIONS]` <a href="#cli_pveum_help" id="cli_pveum_help"></a>
 
 获取指定命令的帮助。
 
@@ -136,7 +136,7 @@ API 令牌列表。
 
 详细输出格式。
 
-### **pveum passwd** `<userid>` `[OPTIONS]` <a href="#cli_pveum_passwd" id="cli_pveum_passwd"></a>
+### <strong>pveum passwd</strong> `<userid>` `[OPTIONS]` <a href="#cli_pveum_passwd" id="cli_pveum_passwd"></a>
 
 更改用户密码。
 
@@ -148,7 +148,7 @@ API 令牌列表。
 
 执行更改的用户的当前密码。
 
-### **pveum pool add** `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_add" id="cli_pveum_pool_add"></a>
+### <strong>pveum pool add</strong> `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_add" id="cli_pveum_pool_add"></a>
 
 创建新资源池。
 
@@ -160,7 +160,7 @@ API 令牌列表。
 
 没有可用的说明
 
-### **pveum pool delete** `<poolid>` <a href="#cli_pveum_pool_delete" id="cli_pveum_pool_delete"></a>
+### <strong>pveum pool delete</strong> `<poolid>` <a href="#cli_pveum_pool_delete" id="cli_pveum_pool_delete"></a>
 
 删除资源池。
 
@@ -168,7 +168,7 @@ API 令牌列表。
 
 没有可用的说明
 
-### **pveum pool list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_pool_list" id="cli_pveum_pool_list"></a>
+### <strong>pveum pool list</strong> `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_pool_list" id="cli_pveum_pool_list"></a>
 
 列出资源池或获取资源池配置。
 
@@ -184,7 +184,7 @@ API 令牌列表。
 需要选项：`poolid`
 {% endhint %}
 
-### **pveum pool modify** `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_modify" id="cli_pveum_pool_modify"></a>
+### <strong>pveum pool modify</strong> `<poolid>` `[OPTIONS]` <a href="#cli_pveum_pool_modify" id="cli_pveum_pool_modify"></a>
 
 更新资源池。
 
@@ -192,7 +192,7 @@ API 令牌列表。
 
 没有可用的说明
 
-**`--allow-move` `<boolean>` （*默认值 \=* `0`）**
+**`--allow-move` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 即使客户机已在其他资源池中，也允许添加。客户机将从当前资源池移除，并添加到此资源池。
 
@@ -200,7 +200,7 @@ API 令牌列表。
 
 没有可用的说明
 
-**`--delete` `<boolean>` (*默认 \=* `0`)**
+**`--delete` `<boolean>` (<em>默认 \=</em> `0`)**
 
 移除传入的 VMID 和/或存储 ID，而非添加。
 
@@ -212,7 +212,7 @@ API 令牌列表。
 
 要添加到此资源池或从中移除的客户机 VMID 列表。
 
-### **pveum realm add** `<realm> --type <string>` `[OPTIONS]` <a href="#cli_pveum_realm_add" id="cli_pveum_realm_add"></a>
+### <strong>pveum realm add</strong> `<realm> --type <string>` `[OPTIONS]` <a href="#cli_pveum_realm_add" id="cli_pveum_realm_add"></a>
 
 添加认证服务器。
 
@@ -226,9 +226,9 @@ API 令牌列表。
 
 **`--audiences` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-除了 *client-id* 之外，还接受 OpenID 签发者可能包含的受众列表。
+除了 <em>client-id</em> 之外，还接受 OpenID 签发者可能包含的受众列表。
 
-**`--autocreate` `<boolean>` （*默认值 \=* `0`）**
+**`--autocreate` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果用户不存在，则自动创建。
 
@@ -240,11 +240,11 @@ LDAP 基础域名
 
 LDAP 绑定域名
 
-**`--capath` `<string>` （*默认值 \=* `/etc/ssl/certs`）**
+**`--capath` `<string>` （<em>默认值 \=</em> `/etc/ssl/certs`）**
 
 CA 证书存储路径
 
-**`--case-sensitive` `<boolean>` （*默认值 \=* `1`）**
+**`--case-sensitive` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 用户名区分大小写
 
@@ -256,7 +256,7 @@ CA 证书存储路径
 
 客户端证书密钥路径
 
-**`--check-connection` `<boolean>` （*默认值 \=* `0`）**
+**`--check-connection` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 检查与服务器的绑定连接。
 
@@ -284,7 +284,7 @@ AD 域名
 
 用户同步的 LDAP 过滤器。
 
-**`--group_classes` `<string>` （*默认值 \=* `groupOfNames, group, univentionGroup, ipausergroup`）**
+**`--group_classes` `<string>` （<em>默认值 \=</em> `groupOfNames, group, univentionGroup, ipausergroup`）**
 
 组的对象类。
 
@@ -300,7 +300,7 @@ AD 域名
 
 表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。
 
-**`--groups-autocreate` `<boolean>` （*默认值 \=* `0`）**
+**`--groups-autocreate` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果组不存在，则自动创建。
 
@@ -308,7 +308,7 @@ AD 域名
 
 用于获取组的 OpenID 声明。
 
-**`--groups-overwrite` `<boolean>` （*默认值 \=* `0`）**
+**`--groups-overwrite` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 登录时覆盖该用户的所有组。
 
@@ -316,13 +316,13 @@ AD 域名
 
 OpenID 签发者 URL
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` （*默认值 \=* `ldap`）**
+**`--mode` `<ldap | ldap+starttls | ldaps>` （<em>默认值 \=</em> `ldap`）**
 
 LDAP 协议模式。
 
 **`--password` `<string>`**
 
-LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
+LDAP 绑定密码。将保存在 <em>/etc/pve/priv/realm/\<REALM\>.pw</em> 中。
 
 **`--port` `<integer> (1 - 65535)`**
 
@@ -332,17 +332,17 @@ LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
 
 指定授权服务器是否提示最终用户重新认证并同意。
 
-**`--query-userinfo` `<boolean>` （*默认值 \=* `1`）**
+**`--query-userinfo` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用对 userinfo 端点的查询，以获取声明值。
 
-**`--scopes` `<string>` （*默认值 \=* `email profile`）**
+**`--scopes` `<string>` （<em>默认值 \=</em> `email profile`）**
 
-指定应授权并返回的作用域（用户详细信息），例如 *email* 或 *profile*。
+指定应授权并返回的作用域（用户详细信息），例如 <em>email</em> 或 <em>profile</em>。
 
 **`--secure` `<boolean>`**
 
-使用安全的 LDAPS 协议。已弃用：请改用 *mode*。
+使用安全的 LDAPS 协议。已弃用：请改用 <em>mode</em>。
 
 **`--server1` `<string>`**
 
@@ -362,7 +362,7 @@ LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 *mail* 映射到 PVE 的 *email*，请写入 *email\=mail*。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
+以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 <em>mail</em> 映射到 PVE 的 <em>email</em>，请写入 <em>email\=mail</em>。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
@@ -376,7 +376,7 @@ LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 LDAP 用户属性名称
 
-**`--user_classes` `<string>` （*默认值 \=* `inetorgperson, posixaccount, person, user`）**
+**`--user_classes` `<string>` （<em>默认值 \=</em> `inetorgperson, posixaccount, person, user`）**
 
 用户的对象类。
 
@@ -384,11 +384,11 @@ LDAP 用户属性名称
 
 用于生成唯一用户名的 OpenID 声明。
 
-**`--verify` `<boolean>` （*默认值 \=* `0`）**
+**`--verify` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 验证服务器的 SSL 证书
 
-### **pveum realm delete** `<realm>` <a href="#cli_pveum_realm_delete" id="cli_pveum_realm_delete"></a>
+### <strong>pveum realm delete</strong> `<realm>` <a href="#cli_pveum_realm_delete" id="cli_pveum_realm_delete"></a>
 
 删除认证服务器。
 
@@ -396,11 +396,11 @@ LDAP 用户属性名称
 
 认证域 ID
 
-### **pveum realm list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_realm_list" id="cli_pveum_realm_list"></a>
+### <strong>pveum realm list</strong> `[FORMAT_OPTIONS]` <a href="#cli_pveum_realm_list" id="cli_pveum_realm_list"></a>
 
 认证域索引。
 
-### **pveum realm modify** `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_modify" id="cli_pveum_realm_modify"></a>
+### <strong>pveum realm modify</strong> `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_modify" id="cli_pveum_realm_modify"></a>
 
 更新认证服务器设置。
 
@@ -414,9 +414,9 @@ LDAP 用户属性名称
 
 **`--audiences` `^[^\x00-\x1F\x7F <>#"]*$`**
 
-除了 *client-id* 之外，还接受 OpenID 签发者可能包含的受众列表。
+除了 <em>client-id</em> 之外，还接受 OpenID 签发者可能包含的受众列表。
 
-**`--autocreate` `<boolean>` （*默认值 \=* `0`）**
+**`--autocreate` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果用户不存在，则自动创建。
 
@@ -428,11 +428,11 @@ LDAP 基础域名
 
 LDAP 绑定域名
 
-**`--capath` `<string>` （*默认值 \=* `/etc/ssl/certs`）**
+**`--capath` `<string>` （<em>默认值 \=</em> `/etc/ssl/certs`）**
 
 CA 证书存储路径
 
-**`--case-sensitive` `<boolean>` （*默认值 \=* `1`）**
+**`--case-sensitive` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 用户名区分大小写
 
@@ -444,7 +444,7 @@ CA 证书存储路径
 
 客户端证书密钥路径
 
-**`--check-connection` `<boolean>` （*默认值 \=* `0`）**
+**`--check-connection` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 检查与服务器的绑定连接。
 
@@ -480,7 +480,7 @@ AD 域名
 
 用户同步的 LDAP 过滤器。
 
-**`--group_classes` `<string>` （*默认值 \=* `groupOfNames, group, univentionGroup, ipausergroup`）**
+**`--group_classes` `<string>` （<em>默认值 \=</em> `groupOfNames, group, univentionGroup, ipausergroup`）**
 
 组的对象类。
 
@@ -496,7 +496,7 @@ AD 域名
 
 表示组名称的 LDAP 属性。如果未设置或未找到，则使用 DN 的第一个值作为名称。
 
-**`--groups-autocreate` `<boolean>` （*默认值 \=* `0`）**
+**`--groups-autocreate` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果组不存在，则自动创建。
 
@@ -504,7 +504,7 @@ AD 域名
 
 用于获取组的 OpenID 声明。
 
-**`--groups-overwrite` `<boolean>` （*默认值 \=* `0`）**
+**`--groups-overwrite` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 登录时覆盖该用户的所有组。
 
@@ -512,13 +512,13 @@ AD 域名
 
 OpenID 签发者 URL
 
-**`--mode` `<ldap | ldap+starttls | ldaps>` （*默认值 \=* `ldap`）**
+**`--mode` `<ldap | ldap+starttls | ldaps>` （<em>默认值 \=</em> `ldap`）**
 
 LDAP 协议模式。
 
 **`--password` `<string>`**
 
-LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
+LDAP 绑定密码。将保存在 <em>/etc/pve/priv/realm/\<REALM\>.pw</em> 中。
 
 **`--port` `<integer> (1 - 65535)`**
 
@@ -528,17 +528,17 @@ LDAP 绑定密码。将保存在 */etc/pve/priv/realm/\<REALM\>.pw* 中。
 
 指定授权服务器是否提示最终用户重新认证并同意。
 
-**`--query-userinfo` `<boolean>` （*默认值 \=* `1`）**
+**`--query-userinfo` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 启用对 userinfo 端点的查询，以获取声明值。
 
-**`--scopes` `<string>` （*默认值 \=* `email profile`）**
+**`--scopes` `<string>` （<em>默认值 \=</em> `email profile`）**
 
-指定应授权并返回的作用域（用户详细信息），例如 *email* 或 *profile*。
+指定应授权并返回的作用域（用户详细信息），例如 <em>email</em> 或 <em>profile</em>。
 
 **`--secure` `<boolean>`**
 
-使用安全的 LDAPS 协议。已弃用：请改用 *mode*。
+使用安全的 LDAPS 协议。已弃用：请改用 <em>mode</em>。
 
 **`--server1` `<string>`**
 
@@ -558,7 +558,7 @@ LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 **`--sync_attributes` `\w+=[^,]+(,\s*\w+=[^,]+)*`**
 
-以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 *mail* 映射到 PVE 的 *email*，请写入 *email\=mail*。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
+以逗号分隔的 key\=value 对列表，用于指定哪些 LDAP 属性映射到哪些 PVE 用户字段。例如，要将 LDAP 属性 <em>mail</em> 映射到 PVE 的 <em>email</em>，请写入 <em>email\=mail</em>。默认情况下，每个 PVE 用户字段都由同名 LDAP 属性表示。
 
 **`--tfa` `type=<TFATYPE> [,digits=<COUNT>] [,id=<ID>] [,key=<KEY>] [,step=<SECONDS>] [,url=<URL>]`**
 
@@ -568,47 +568,47 @@ LDAPS TLS/SSL 版本。不建议使用低于 1.2 的版本！
 
 LDAP 用户属性名称
 
-**`--user_classes` `<string>` （*默认值 \=* `inetorgperson, posixaccount, person, user`）**
+**`--user_classes` `<string>` （<em>默认值 \=</em> `inetorgperson, posixaccount, person, user`）**
 
 用户的对象类。
 
-**`--verify` `<boolean>` （*默认值 \=* `0`）**
+**`--verify` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 验证服务器的 SSL 证书
 
-### **pveum realm sync** `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_sync" id="cli_pveum_realm_sync"></a>
+### <strong>pveum realm sync</strong> `<realm>` `[OPTIONS]` <a href="#cli_pveum_realm_sync" id="cli_pveum_realm_sync"></a>
 
-将用户和/或组从配置的 LDAP 同步到 user.cfg。注意：同步后的组将命名为 *name-$realm*，因此请确保这些组不存在，以免覆盖。
+将用户和/或组从配置的 LDAP 同步到 user.cfg。注意：同步后的组将命名为 <em>name-$realm</em>，因此请确保这些组不存在，以免覆盖。
 
 **`<realm>`: `<string>`**
 
 认证域 ID
 
-**`--dry-run` `<boolean>` （*默认值 \=* `0`）**
+**`--dry-run` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果设置，则不写入任何内容。
 
-**`--enable-new` `<boolean>` （*默认值 \=* `1`）**
+**`--enable-new` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 立即启用新同步的用户。
 
 **`--full` `<boolean>`**
 
-已弃用：请改用 *remove-vanished*。如果设置，则以 LDAP 目录为准，删除同步未返回的用户或组，并移除同步用户所有在本地修改的属性。如果未设置，则仅同步已同步数据中存在的信息，不删除或修改其他任何内容。
+已弃用：请改用 <em>remove-vanished</em>。如果设置，则以 LDAP 目录为准，删除同步未返回的用户或组，并移除同步用户所有在本地修改的属性。如果未设置，则仅同步已同步数据中存在的信息，不删除或修改其他任何内容。
 
 **`--purge` `<boolean>`**
 
-已弃用：请改用 *remove-vanished*。移除在同步期间从配置中移除的用户或组的 ACL。
+已弃用：请改用 <em>remove-vanished</em>。移除在同步期间从配置中移除的用户或组的 ACL。
 
-**`--remove-vanished` `([acl];[properties];[entry])|none` （*默认值 \=* `none`）**
+**`--remove-vanished` `([acl];[properties];[entry])|none` （<em>默认值 \=</em> `none`）**
 
-以分号分隔的列表，指定当相应项目或用户在同步中消失时要移除的内容。可用值如下：*entry* 在同步未返回用户/组时将其移除。*properties* 移除现有用户/组上已设置但源中不存在的属性（包括自定义属性）。*acl* 在同步未返回用户/组时移除 ACL。也可以不使用列表，而使用 *none*（默认值）。
+以分号分隔的列表，指定当相应项目或用户在同步中消失时要移除的内容。可用值如下：<em>entry</em> 在同步未返回用户/组时将其移除。<em>properties</em> 移除现有用户/组上已设置但源中不存在的属性（包括自定义属性）。<em>acl</em> 在同步未返回用户/组时移除 ACL。也可以不使用列表，而使用 <em>none</em>（默认值）。
 
 **`--scope` `<both | groups | users>`**
 
 选择要同步的内容。
 
-### **pveum role add** `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_add" id="cli_pveum_role_add"></a>
+### <strong>pveum role add</strong> `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_add" id="cli_pveum_role_add"></a>
 
 创建新角色。
 
@@ -620,7 +620,7 @@ LDAP 用户属性名称
 
 没有可用的说明
 
-### **pveum role delete** `<roleid>` <a href="#cli_pveum_role_delete" id="cli_pveum_role_delete"></a>
+### <strong>pveum role delete</strong> `<roleid>` <a href="#cli_pveum_role_delete" id="cli_pveum_role_delete"></a>
 
 删除角色。
 
@@ -628,11 +628,11 @@ LDAP 用户属性名称
 
 没有可用的说明
 
-### **pveum role list** `[FORMAT_OPTIONS]` <a href="#cli_pveum_role_list" id="cli_pveum_role_list"></a>
+### <strong>pveum role list</strong> `[FORMAT_OPTIONS]` <a href="#cli_pveum_role_list" id="cli_pveum_role_list"></a>
 
 角色索引。
 
-### **pveum role modify** `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_modify" id="cli_pveum_role_modify"></a>
+### <strong>pveum role modify</strong> `<roleid>` `[OPTIONS]` <a href="#cli_pveum_role_modify" id="cli_pveum_role_modify"></a>
 
 更新现有角色。
 
@@ -652,19 +652,19 @@ LDAP 用户属性名称
 
 没有可用的说明
 
-### **pveum roleadd** <a href="#cli_pveum_roleadd" id="cli_pveum_roleadd"></a>
+### <strong>pveum roleadd</strong> <a href="#cli_pveum_roleadd" id="cli_pveum_roleadd"></a>
 
-*pveum role add* 的别名。
+<em>pveum role add</em> 的别名。
 
-### **pveum roledel** <a href="#cli_pveum_roledel" id="cli_pveum_roledel"></a>
+### <strong>pveum roledel</strong> <a href="#cli_pveum_roledel" id="cli_pveum_roledel"></a>
 
-*pveum role delete* 的别名。
+<em>pveum role delete</em> 的别名。
 
-### **pveum rolemod** <a href="#cli_pveum_rolemod" id="cli_pveum_rolemod"></a>
+### <strong>pveum rolemod</strong> <a href="#cli_pveum_rolemod" id="cli_pveum_rolemod"></a>
 
-*pveum role modify* 的别名。
+<em>pveum role modify</em> 的别名。
 
-### **pveum ticket** `<username>` `[OPTIONS]` <a href="#cli_pveum_ticket" id="cli_pveum_ticket"></a>
+### <strong>pveum ticket</strong> `<username>` `[OPTIONS]` <a href="#cli_pveum_ticket" id="cli_pveum_ticket"></a>
 
 创建或验证认证票据。
 
@@ -672,7 +672,7 @@ LDAP 用户属性名称
 
 用户名
 
-**`--new-format` `<boolean>` （*默认值 \=* `1`）**
+**`--new-format` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 此参数现在会被忽略，并视为 1。
 
@@ -682,7 +682,7 @@ LDAP 用户属性名称
 
 **`--path` `<string>`**
 
-验证票据，并检查用户是否具有 *privs* 访问权限，路径为 *path*
+验证票据，并检查用户是否具有 <em>privs</em> 访问权限，路径为 <em>path</em>
 
 {% hint style="info" %}
 需要选项：`privs`
@@ -690,7 +690,7 @@ LDAP 用户属性名称
 
 **`--privs` `<string>`**
 
-验证票据，并检查用户是否具有 *privs* 访问权限，路径为 *path*
+验证票据，并检查用户是否具有 <em>privs</em> 访问权限，路径为 <em>path</em>
 
 {% hint style="info" %}
 需要选项：`path`
@@ -704,7 +704,7 @@ LDAP 用户属性名称
 
 用户要响应的已签名 TFA 质询字符串。
 
-### **pveum user add** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_add" id="cli_pveum_user_add"></a>
+### <strong>pveum user add</strong> `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_add" id="cli_pveum_user_add"></a>
 
 创建新用户。
 
@@ -720,13 +720,13 @@ LDAP 用户属性名称
 
 没有可用的说明
 
-**`--enable` `<boolean>` （*默认值 \=* `1`）**
+**`--enable` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-启用账户（默认）。可以将其设置为 *0* 以禁用账户
+启用账户（默认）。可以将其设置为 <em>0</em> 以禁用账户
 
 **`--expire` `<integer> (0 - N)`**
 
-账户到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
+账户到期日期（自纪元以来的秒数）。<em>0</em> 表示没有到期日期。
 
 **`--firstname` `<string>`**
 
@@ -748,7 +748,7 @@ LDAP 用户属性名称
 
 初始密码。
 
-### **pveum user delete** `<userid>` <a href="#cli_pveum_user_delete" id="cli_pveum_user_delete"></a>
+### <strong>pveum user delete</strong> `<userid>` <a href="#cli_pveum_user_delete" id="cli_pveum_user_delete"></a>
 
 删除用户。
 
@@ -756,7 +756,7 @@ LDAP 用户属性名称
 
 完整的用户 ID，格式为 `name@realm`。
 
-### **pveum user list** `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_list" id="cli_pveum_user_list"></a>
+### <strong>pveum user list</strong> `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_list" id="cli_pveum_user_list"></a>
 
 用户索引。
 
@@ -764,11 +764,11 @@ LDAP 用户属性名称
 
 enable 属性的可选过滤器。
 
-**`--full` `<boolean>` （*默认值 \=* `0`）**
+**`--full` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 包含组和令牌信息。
 
-### **pveum user modify** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_modify" id="cli_pveum_user_modify"></a>
+### <strong>pveum user modify</strong> `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_modify" id="cli_pveum_user_modify"></a>
 
 更新用户配置。
 
@@ -792,13 +792,13 @@ enable 属性的可选过滤器。
 
 没有可用的说明
 
-**`--enable` `<boolean>` （*默认值 \=* `1`）**
+**`--enable` `<boolean>` （<em>默认值 \=</em> `1`）**
 
-启用账户（默认）。可以将其设置为 *0* 以禁用账户
+启用账户（默认）。可以将其设置为 <em>0</em> 以禁用账户
 
 **`--expire` `<integer> (0 - N)`**
 
-账户到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
+账户到期日期（自纪元以来的秒数）。<em>0</em> 表示没有到期日期。
 
 **`--firstname` `<string>`**
 
@@ -816,7 +816,7 @@ enable 属性的可选过滤器。
 
 没有可用的说明
 
-### **pveum user permissions** `[<userid>]` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_permissions" id="cli_pveum_user_permissions"></a>
+### <strong>pveum user permissions</strong> `[<userid>]` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_permissions" id="cli_pveum_user_permissions"></a>
 
 获取给定用户/令牌的有效权限。
 
@@ -828,7 +828,7 @@ enable 属性的可选过滤器。
 
 仅转储此特定路径，而不是整棵树。
 
-### **pveum user tfa delete** `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_tfa_delete" id="cli_pveum_user_tfa_delete"></a>
+### <strong>pveum user tfa delete</strong> `<userid>` `[OPTIONS]` <a href="#cli_pveum_user_tfa_delete" id="cli_pveum_user_tfa_delete"></a>
 
 删除用户的 TFA 条目。
 
@@ -840,7 +840,7 @@ enable 属性的可选过滤器。
 
 TFA ID，如果未提供，则删除所有 TFA 条目。
 
-### **pveum user tfa list** `[<userid>]` <a href="#cli_pveum_user_tfa_list" id="cli_pveum_user_tfa_list"></a>
+### <strong>pveum user tfa list</strong> `[<userid>]` <a href="#cli_pveum_user_tfa_list" id="cli_pveum_user_tfa_list"></a>
 
 列出 TFA 条目。
 
@@ -848,7 +848,7 @@ TFA ID，如果未提供，则删除所有 TFA 条目。
 
 完整的用户 ID，格式为 `name@realm`。
 
-### **pveum user tfa unlock** `<userid>` <a href="#cli_pveum_user_tfa_unlock" id="cli_pveum_user_tfa_unlock"></a>
+### <strong>pveum user tfa unlock</strong> `<userid>` <a href="#cli_pveum_user_tfa_unlock" id="cli_pveum_user_tfa_unlock"></a>
 
 解锁用户的 TFA 认证。
 
@@ -856,7 +856,7 @@ TFA ID，如果未提供，则删除所有 TFA 条目。
 
 完整的用户 ID，格式为 `name@realm`。
 
-### **pveum user token add** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_add" id="cli_pveum_user_token_add"></a>
+### <strong>pveum user token add</strong> `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_add" id="cli_pveum_user_token_add"></a>
 
 为特定用户生成新的 API 令牌。注意：返回的 API 令牌值需要保存，因为之后无法再次获取！
 
@@ -872,15 +872,15 @@ TFA ID，如果未提供，则删除所有 TFA 条目。
 
 没有可用的说明
 
-**`--expire` `<integer> (0 - N)` （*默认值 \=* `same as user`）**
+**`--expire` `<integer> (0 - N)` （<em>默认值 \=</em> `same as user`）**
 
-API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
+API 令牌到期日期（自纪元以来的秒数）。<em>0</em> 表示没有到期日期。
 
-**`--privsep` `<boolean>` （*默认值 \=* `1`）**
+**`--privsep` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 使用单独的 ACL 限制 API 令牌权限（默认），或赋予对应用户的全部权限。
 
-### **pveum user token delete** `<userid> <tokenid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_delete" id="cli_pveum_user_token_delete"></a>
+### <strong>pveum user token delete</strong> `<userid> <tokenid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_delete" id="cli_pveum_user_token_delete"></a>
 
 移除特定用户的 API 令牌。
 
@@ -892,7 +892,7 @@ API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日
 
 用户特定的令牌标识符。
 
-### **pveum user token list** `<userid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_list" id="cli_pveum_user_token_list"></a>
+### <strong>pveum user token list</strong> `<userid>` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_list" id="cli_pveum_user_token_list"></a>
 
 获取用户 API 令牌。
 
@@ -900,9 +900,9 @@ API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日
 
 完整的用户 ID，格式为 `name@realm`。
 
-### **pveum user token modify** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_modify" id="cli_pveum_user_token_modify"></a>
+### <strong>pveum user token modify</strong> `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_modify" id="cli_pveum_user_token_modify"></a>
 
-更新特定用户的 API 令牌。注意：设置 *regenerate* 后，返回的令牌值需要保存，因为之后无法再次获取！
+更新特定用户的 API 令牌。注意：设置 <em>regenerate</em> 后，返回的令牌值需要保存，因为之后无法再次获取！
 
 **`<userid>`: `<string>`**
 
@@ -920,19 +920,19 @@ API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日
 
 要删除的设置列表。
 
-**`--expire` `<integer> (0 - N)` （*默认值 \=* `same as user`）**
+**`--expire` `<integer> (0 - N)` （<em>默认值 \=</em> `same as user`）**
 
-API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日期。
+API 令牌到期日期（自纪元以来的秒数）。<em>0</em> 表示没有到期日期。
 
-**`--privsep` `<boolean>` （*默认值 \=* `1`）**
+**`--privsep` `<boolean>` （<em>默认值 \=</em> `1`）**
 
 使用单独的 ACL 限制 API 令牌权限（默认），或赋予对应用户的全部权限。
 
-**`--regenerate` `<boolean>` （*默认值 \=* `0`）**
+**`--regenerate` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 重新生成令牌的秘密值。此操作之后，所有使用旧秘密值的用户都将失去访问权限。
 
-### **pveum user token permissions** `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_permissions" id="cli_pveum_user_token_permissions"></a>
+### <strong>pveum user token permissions</strong> `<userid> <tokenid>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pveum_user_token_permissions" id="cli_pveum_user_token_permissions"></a>
 
 获取给定令牌的有效权限。
 
@@ -948,21 +948,21 @@ API 令牌到期日期（自纪元以来的秒数）。*0* 表示没有到期日
 
 仅转储此特定路径，而不是整棵树。
 
-### **pveum user token remove** <a href="#cli_pveum_user_token_remove" id="cli_pveum_user_token_remove"></a>
+### <strong>pveum user token remove</strong> <a href="#cli_pveum_user_token_remove" id="cli_pveum_user_token_remove"></a>
 
-*pveum user token delete* 的别名。
+<em>pveum user token delete</em> 的别名。
 
-### **pveum useradd** <a href="#cli_pveum_useradd" id="cli_pveum_useradd"></a>
+### <strong>pveum useradd</strong> <a href="#cli_pveum_useradd" id="cli_pveum_useradd"></a>
 
-*pveum user add* 的别名。
+<em>pveum user add</em> 的别名。
 
-### **pveum userdel** <a href="#cli_pveum_userdel" id="cli_pveum_userdel"></a>
+### <strong>pveum userdel</strong> <a href="#cli_pveum_userdel" id="cli_pveum_userdel"></a>
 
-*pveum user delete* 的别名。
+<em>pveum user delete</em> 的别名。
 
-### **pveum usermod** <a href="#cli_pveum_usermod" id="cli_pveum_usermod"></a>
+### <strong>pveum usermod</strong> <a href="#cli_pveum_usermod" id="cli_pveum_usermod"></a>
 
-*pveum user modify* 的别名。
+<em>pveum user modify</em> 的别名。
 
 ## 描述 <a href="#description" id="description"></a>
 
@@ -986,7 +986,7 @@ Proxmox VE 将用户属性保存在 `/etc/pve/user.cfg` 中。密码不保存在
 - 可选的双因素身份验证密钥
 
 {% hint style="danger" %}
-禁用或删除用户，或设置的到期日期已过时，此用户将无法登录新会话或启动新任务。此用户已启动的所有任务（例如终端会话）都 **不会** 因任何此类事件而自动终止。
+禁用或删除用户，或设置的到期日期已过时，此用户将无法登录新会话或启动新任务。此用户已启动的所有任务（例如终端会话）都 <strong>不会</strong> 因任何此类事件而自动终止。
 {% endhint %}
 
 ### 系统管理员 <a href="#system_administrator" id="system_administrator"></a>
@@ -1005,7 +1005,7 @@ API 令牌允许其他系统、软件或 API 客户端以无状态方式访问 R
 
 API 令牌有两种基本类型：
 
-- 分离权限：需要通过 ACL 向令牌显式授予访问权限。其有效权限通过用户权限与令牌权限取交集计算。**这是默认设置**，适用于新创建的令牌。
+- 分离权限：需要通过 ACL 向令牌显式授予访问权限。其有效权限通过用户权限与令牌权限取交集计算。<strong>这是默认设置</strong>，适用于新创建的令牌。
 - 完整权限：令牌权限与关联用户的权限完全相同。只有集成确实需要用户的完整权限时，才禁用权限分离。
 
 创建令牌时设置 `expire` 时间戳（Unix 纪元秒数），以免废弃的自动化任务悄无声息地继续运行。一旦超过期限，身份验证代码就会拒绝请求。
@@ -1014,7 +1014,7 @@ API 令牌有两种基本类型：
 令牌值仅在生成令牌时显示/返回一次。之后无法再次通过 API 获取！
 {% endhint %}
 
-要使用 API 令牌，请在发出 API 请求时将 HTTP 标头 *Authorization* 设为显示的值，形式为 `PVEAPIToken=USER@REALM!TOKENID=UUID`，或参阅 API 客户端文档。
+要使用 API 令牌，请在发出 API 请求时将 HTTP 标头 <em>Authorization</em> 设为显示的值，形式为 `PVEAPIToken=USER@REALM!TOKENID=UUID`，或参阅 API 客户端文档。
 
 ## 资源池 <a href="#pveum_resource_pools" id="pveum_resource_pools"></a>
 
@@ -1062,7 +1062,7 @@ Proxmox VE 身份验证服务器认证域是简单的类 Unix 密码存储。该
 
 ### LDAP <a href="#user-realms-ldap" id="user-realms-ldap"></a>
 
-也可以使用外部 LDAP 服务器进行用户身份验证（例如 OpenLDAP）。在此认证域类型中，会在 *基本域名*（`base_dn`）下搜索用户，使用 *用户属性名称*（`user_attr`）字段指定的用户名属性。
+也可以使用外部 LDAP 服务器进行用户身份验证（例如 OpenLDAP）。在此认证域类型中，会在 <em>基本域名</em>（`base_dn`）下搜索用户，使用 <em>用户属性名称</em>（`user_attr`）字段指定的用户名属性。
 
 可以配置一台服务器和可选的备用服务器，连接可通过 SSL 加密。此外，可以为目录和组配置过滤器。过滤器允许进一步限制认证域的范围。
 
@@ -1081,7 +1081,7 @@ sn: Testers
 description: This is the first test user.
 ```
 
-*基本域名* 将为 `ou=People,dc=ldap-test,dc=com`，用户属性将为 `uid`。
+<em>基本域名</em> 将为 `ou=People,dc=ldap-test,dc=com`，用户属性将为 `uid`。
 
 如果 Proxmox VE 需要先向 LDAP 服务器进行身份验证（绑定）才能查询和验证用户，可以通过 `bind_dn` 属性（位于 `/etc/pve/domains.cfg` 中）配置绑定域名。其密码随后必须存储在 `/etc/pve/priv/realm/<realmname>.pw` 中（例如 `/etc/pve/priv/realm/my-ldap.pw`）。此文件应包含单行明文密码。
 
@@ -1104,7 +1104,7 @@ LDAP 服务器认证域的主要配置选项如下：
 
 要将 Microsoft AD 设置为认证域，需要指定服务器地址和认证域。Active Directory 支持 LDAP 的大多数相同属性，例如可选的备用服务器、端口和 SSL 加密。此外，配置后可以通过[同步](#pveum_ldap_sync)操作自动将用户添加到 Proxmox VE。
 
-与 LDAP 一样，如果 Proxmox VE 在绑定到 AD 服务器之前需要进行身份验证，必须配置 *绑定用户*（`bind_dn`）属性。Microsoft AD 默认通常需要此属性。
+与 LDAP 一样，如果 Proxmox VE 在绑定到 AD 服务器之前需要进行身份验证，必须配置 <em>绑定用户</em>（`bind_dn`）属性。Microsoft AD 默认通常需要此属性。
 
 Microsoft Active Directory 的主要配置设置为：
 
@@ -1217,7 +1217,7 @@ OpenID Connect 的主要配置选项为：
 
 #### 用户名映射 <a href="#username_mapping" id="username_mapping"></a>
 
-OpenID Connect 规范定义了一个唯一属性（OpenID 术语中称为 *声明*），名为 `subject`。默认使用此属性的值生成 Proxmox VE 用户名，只需添加 `@` 和认证域名称：`${subject}@${realm}`。
+OpenID Connect 规范定义了一个唯一属性（OpenID 术语中称为 <em>声明</em>），名为 `subject`。默认使用此属性的值生成 Proxmox VE 用户名，只需添加 `@` 和认证域名称：`${subject}@${realm}`。
 
 遗憾的是，大多数 OpenID 服务器对 `subject` 使用随机字符串，例如 `DGH76OKH34BNG3245SB`，因此典型用户名类似 `DGH76OKH34BNG3245SB@yourrealm`。虽然唯一，但这种随机字符串很难记忆，几乎无法将其与真实用户关联。
 
@@ -1265,7 +1265,7 @@ pveum realm add myrealm2 --type openid --issuer-url  https://your.server:8080/re
 
 有两种方式使用双因素身份验证：
 
-认证域可以要求使用 *TOTP*（基于时间的一次性密码）或 *YubiKey OTP*。此时，新创建的用户需要立即添加密钥，因为没有第二因素就无法登录。对于 *TOTP*，用户还可以稍后更改 *TOTP*，前提是他们能够先登录。
+认证域可以要求使用 <em>TOTP</em>（基于时间的一次性密码）或 <em>YubiKey OTP</em>。此时，新创建的用户需要立即添加密钥，因为没有第二因素就无法登录。对于 <em>TOTP</em>，用户还可以稍后更改 <em>TOTP</em>，前提是他们能够先登录。
 
 或者，即使认证域不强制要求，用户也可以在之后选择启用双因素身份验证。
 
@@ -1283,7 +1283,7 @@ pveum realm add myrealm2 --type openid --issuer-url  https://your.server:8080/re
 
 ### 认证域强制的双因素认证 <a href="#realm_enforced_two_factor_authentication" id="realm_enforced_two_factor_authentication"></a>
 
-添加或编辑认证域时，可通过 *TFA* 下拉框选择一种可用方法。认证域启用 TFA 后，TFA 将成为强制要求，只有配置了 TFA 的用户才能登录。
+添加或编辑认证域时，可通过 <em>TFA</em> 下拉框选择一种可用方法。认证域启用 TFA 后，TFA 将成为强制要求，只有配置了 TFA 的用户才能登录。
 
 目前有两种可用方法：
 
@@ -1297,7 +1297,7 @@ Proxmox VE 提供密钥生成工具（`oathkeygen`），可输出 Base32 表示�
 
 **YubiKey OTP**
 
-通过 YubiKey 进行身份验证时，必须配置 Yubico API ID、API KEY 和验证服务器 URL，并且用户必须拥有可用的 YubiKey。要从 YubiKey 获取密钥 ID，可以通过 USB 连接后触发 YubiKey 一次，并将输入密码的前 12 个字符复制到用户的 *密钥 ID* 字段。
+通过 YubiKey 进行身份验证时，必须配置 Yubico API ID、API KEY 和验证服务器 URL，并且用户必须拥有可用的 YubiKey。要从 YubiKey 获取密钥 ID，可以通过 USB 连接后触发 YubiKey 一次，并将输入密码的前 12 个字符复制到用户的 <em>密钥 ID</em> 字段。
 
 请参阅 [YubiKey OTP](https://developers.yubico.com/OTP/) 文档，了解如何使用 [YubiCloud](https://www.yubico.com/products/services-software/yubicloud/) 或 [托管自己的验证服务器](https://developers.yubico.com/Software_Projects/Yubico_OTP/YubiCloud_Validation_Servers/)。
 
@@ -1317,15 +1317,15 @@ Proxmox VE 提供密钥生成工具（`oathkeygen`），可输出 Base32 表示�
 
 ### 用户配置的 TOTP 认证 <a href="#pveum_user_configured_totp" id="pveum_user_configured_totp"></a>
 
-用户可以选择启用 *TOTP* 或 *WebAuthn* 作为登录时的第二因素，通过用户列表中的 *TFA* 按钮进行设置（除非认证域强制使用 *YubiKey OTP*）。
+用户可以选择启用 <em>TOTP</em> 或 <em>WebAuthn</em> 作为登录时的第二因素，通过用户列表中的 <em>TFA</em> 按钮进行设置（除非认证域强制使用 <em>YubiKey OTP</em>）。
 
-用户始终可以添加和使用一次性 *恢复密钥*。
+用户始终可以添加和使用一次性 <em>恢复密钥</em>。
 
 [![screenshot/gui-datacenter-two-factor.png](../assets/screenshot-gui-datacenter-two-factor-png-00fd252ee4e8.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-two-factor.png)
 
-打开 *TFA* 窗口后，用户会看到用于设置 *TOTP* 身份验证的对话框。*密钥* 字段包含密钥，可通过 *随机生成* 按钮随机生成。可以添加可选的 *签发者名称*，向 *TOTP* 应用提供此密钥用途的信息。大多数 *TOTP* 应用会将签发者名称与对应的 *OTP* 值一起显示。用户名也包含在供 *TOTP* 应用使用的二维码中。
+打开 <em>TFA</em> 窗口后，用户会看到用于设置 <em>TOTP</em> 身份验证的对话框。<em>密钥</em> 字段包含密钥，可通过 <em>随机生成</em> 按钮随机生成。可以添加可选的 <em>签发者名称</em>，向 <em>TOTP</em> 应用提供此密钥用途的信息。大多数 <em>TOTP</em> 应用会将签发者名称与对应的 <em>OTP</em> 值一起显示。用户名也包含在供 <em>TOTP</em> 应用使用的二维码中。
 
-生成密钥后，会显示二维码，可用于 FreeOTP 等大多数 OTP 应用。随后用户需要验证当前用户密码（除非以 *root* 登录），并验证能够正确使用 *TOTP* 密钥：将当前 *OTP* 值输入 *验证码* 字段，然后按 *应用* 按钮。
+生成密钥后，会显示二维码，可用于 FreeOTP 等大多数 OTP 应用。随后用户需要验证当前用户密码（除非以 <em>root</em> 登录），并验证能够正确使用 <em>TOTP</em> 密钥：将当前 <em>OTP</em> 值输入 <em>验证码</em> 字段，然后按 <em>应用</em> 按钮。
 
 ### TOTP <a href="#user_tfa_setup_totp" id="user_tfa_setup_totp"></a>
 
@@ -1338,15 +1338,15 @@ Proxmox VE 提供密钥生成工具（`oathkeygen`），可输出 Base32 表示�
 要使 WebAuthn 正常工作，需要具备两项条件：
 
 - 受信任的 HTTPS 证书（例如使用 [Let’s Encrypt](https://pve.proxmox.com/wiki/Certificate_Management)）。虽然它可能可以使用不受信任的证书工作，但如果证书不受信任，某些浏览器可能发出警告或拒绝 WebAuthn 操作。
-- 设置 WebAuthn 配置（参见 Proxmox VE Web 界面的 **数据中心 → 选项 → WebAuthn 设置**）。大多数设置中可以自动填充。
+- 设置 WebAuthn 配置（参见 Proxmox VE Web 界面的 <strong>数据中心 → 选项 → WebAuthn 设置</strong>）。大多数设置中可以自动填充。
 
-满足这两项要求后，即可在 **双因素** 面板（位于 **数据中心 → 权限 → 双因素** 下）添加 WebAuthn 配置。
+满足这两项要求后，即可在 <strong>双因素</strong> 面板（位于 <strong>数据中心 → 权限 → 双因素</strong> 下）添加 WebAuthn 配置。
 
 ### 恢复密钥 <a href="#user_tfa_setup_recovery_keys" id="user_tfa_setup_recovery_keys"></a>
 
 [![screenshot/pve-gui-tfa-add-recovery-keys.png](../assets/screenshot-pve-gui-tfa-add-recovery-keys-png-fe14f3271438.png)](https://pve.proxmox.com/pve-docs/images/screenshot/pve-gui-tfa-add-recovery-keys.png)
 
-恢复密钥代码无需任何准备；只需在 **双因素** 面板（位于 **数据中心 → 权限 → 双因素** 下）创建一组恢复密钥。
+恢复密钥代码无需任何准备；只需在 <strong>双因素</strong> 面板（位于 <strong>数据中心 → 权限 → 双因素</strong> 下）创建一组恢复密钥。
 
 {% hint style="info" %}
 任何时候，每个用户只能有一组一次性恢复密钥。
@@ -1356,10 +1356,10 @@ Proxmox VE 提供密钥生成工具（`oathkeygen`），可输出 Base32 表示�
 
 [![screenshot/gui-datacenter-webauthn-edit.png](../assets/screenshot-gui-datacenter-webauthn-edit-png-6abfdb023d63.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-webauthn-edit.png)
 
-要允许用户使用 *WebAuthn* 身份验证，必须使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝身份验证。
+要允许用户使用 <em>WebAuthn</em> 身份验证，必须使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝身份验证。
 
 {% hint style="info" %}
-更改 *WebAuthn* 配置可能使所有现有的 *WebAuthn* 注册失效！
+更改 <em>WebAuthn</em> 配置可能使所有现有的 <em>WebAuthn</em> 注册失效！
 {% endhint %}
 
 这通过 `/etc/pve/datacenter.cfg` 完成。例如：
@@ -1374,10 +1374,10 @@ webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.ex
 建议改用 WebAuthn。
 {% endhint %}
 
-要允许用户使用 *U2F* 身份验证，可能需要使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝使用 U2F。最初需要配置 *AppId* [\[1\]](#note-f5682feb-1)。
+要允许用户使用 <em>U2F</em> 身份验证，可能需要使用具有有效 SSL 证书的有效域名，否则某些浏览器可能发出警告或完全拒绝使用 U2F。最初需要配置 <em>AppId</em> [\[1\]](#note-f5682feb-1)。
 
 {% hint style="info" %}
-更改 *AppId* 会使所有现有的 *U2F* 注册失效！
+更改 <em>AppId</em> 会使所有现有的 <em>U2F</em> 注册失效！
 {% endhint %}
 
 这通过 `/etc/pve/datacenter.cfg` 完成。例如：
@@ -1386,25 +1386,25 @@ webauthn: rp=mypve.example.com,origin=https://mypve.example.com:8006,id=mypve.ex
 u2f: appid=https://mypve.example.com:8006
 ```
 
-对于单个节点，*AppId* 可以直接设为 Web 界面的地址，与浏览器中使用的完全相同，包括 *https://* 和端口，如上所示。请注意，某些浏览器在匹配 *AppId* 时可能比其他浏览器更严格。
+对于单个节点，<em>AppId</em> 可以直接设为 Web 界面的地址，与浏览器中使用的完全相同，包括 <em>https://</em> 和端口，如上所示。请注意，某些浏览器在匹配 <em>AppId</em> 时可能比其他浏览器更严格。
 
-使用多个节点时，最好使用单独的 `https` 服务器提供 `appid.json` [\[2\]](#note-f5682feb-2) 文件，因为这似乎与大多数浏览器兼容。如果所有节点使用同一顶级域名的子域名，使用该顶级域名作为 *AppId* 可能就足够了。不过应注意，某些浏览器可能不接受这种方式。
+使用多个节点时，最好使用单独的 `https` 服务器提供 `appid.json` [\[2\]](#note-f5682feb-2) 文件，因为这似乎与大多数浏览器兼容。如果所有节点使用同一顶级域名的子域名，使用该顶级域名作为 <em>AppId</em> 可能就足够了。不过应注意，某些浏览器可能不接受这种方式。
 
 {% hint style="info" %}
-错误的 *AppId* 通常会产生错误，但我们遇到过不产生错误的情况，特别是在 Chromium 中，通过子域名访问节点，却使用顶级域名的 *AppId* 时。因此，建议使用多个浏览器测试配置，因为之后更改 *AppId* 会使现有的 *U2F* 注册失效。
+错误的 <em>AppId</em> 通常会产生错误，但我们遇到过不产生错误的情况，特别是在 Chromium 中，通过子域名访问节点，却使用顶级域名的 <em>AppId</em> 时。因此，建议使用多个浏览器测试配置，因为之后更改 <em>AppId</em> 会使现有的 <em>U2F</em> 注册失效。
 {% endhint %}
 
 ### 用户激活 U2F <a href="#pveum_user_configured_u2f" id="pveum_user_configured_u2f"></a>
 
-要启用 *U2F* 身份验证，打开 *TFA* 窗口的 *U2F* 选项卡，输入当前密码（除非以 root 登录），然后按 *注册* 按钮。如果服务器设置正确，且浏览器接受服务器提供的 *AppId*，将出现消息，提示用户按下 *U2F* 设备上的按钮（如果是 *YubiKey*，按钮指示灯应稳定闪烁，约每秒两次）。
+要启用 <em>U2F</em> 身份验证，打开 <em>TFA</em> 窗口的 <em>U2F</em> 选项卡，输入当前密码（除非以 root 登录），然后按 <em>注册</em> 按钮。如果服务器设置正确，且浏览器接受服务器提供的 <em>AppId</em>，将出现消息，提示用户按下 <em>U2F</em> 设备上的按钮（如果是 <em>YubiKey</em>，按钮指示灯应稳定闪烁，约每秒两次）。
 
-Firefox 用户可能需要启用 *security.webauth.u2f*（通过 *about:config*），才能使用 *U2F* 令牌。
+Firefox 用户可能需要启用 <em>security.webauth.u2f</em>（通过 <em>about:config</em>），才能使用 <em>U2F</em> 令牌。
 
 ## 权限管理 <a href="#pveum_permission_management" id="pveum_permission_management"></a>
 
 用户要执行某项操作（例如列出、修改或删除虚拟机配置的部分内容），需要具备适当的权限。
 
-Proxmox VE 使用基于角色和路径的权限管理系统。权限表中的条目允许用户、组或令牌在访问 *对象* 或 *路径* 时承担特定角色。这意味着此类访问规则可以表示为三元组 *(path, user, role)*、*(path, group, role)* 或 *(path, token, role)*，其中角色包含一组允许的操作，路径表示这些操作的目标。
+Proxmox VE 使用基于角色和路径的权限管理系统。权限表中的条目允许用户、组或令牌在访问 <em>对象</em> 或 <em>路径</em> 时承担特定角色。这意味着此类访问规则可以表示为三元组 <em>(path, user, role)</em>、<em>(path, group, role)</em> 或 <em>(path, token, role)</em>，其中角色包含一组允许的操作，路径表示这些操作的目标。
 
 ### 角色 <a href="#pveum_roles" id="pveum_roles"></a>
 
@@ -1434,9 +1434,9 @@ Proxmox VE 使用基于角色和路径的权限管理系统。权限表中的条
 
 [![screenshot/gui-datacenter-role-add.png](../assets/screenshot-gui-datacenter-role-add-png-c06dd534e81c.png)](https://pve.proxmox.com/pve-docs/images/screenshot/gui-datacenter-role-add.png)
 
-在 GUI 中，导航到 *权限 → 角色* 选项卡（位于 *数据中心*），然后点击 *创建* 按钮。在此可设置角色名称，并从 *权限* 下拉菜单中选择任何所需权限。
+在 GUI 中，导航到 <em>权限 → 角色</em> 选项卡（位于 <em>数据中心</em>），然后点击 <em>创建</em> 按钮。在此可设置角色名称，并从 <em>权限</em> 下拉菜单中选择任何所需权限。
 
-要通过命令行添加角色，可以使用 *pveum* CLI 工具，例如：
+要通过命令行添加角色，可以使用 <em>pveum</em> CLI 工具，例如：
 
 ```text
 pveum role add VM_Power-only --privs "VM.PowerMgmt VM.Console"
@@ -1524,7 +1524,7 @@ pveum role add Sys_Power-only --privs "Sys.PowerMgmt Sys.Console"
 
 
 
-路径可以使用模板。当 API 调用需要模板化路径上的权限时，路径可能包含对 API 调用参数的引用。这些引用使用花括号指定。某些参数隐式取自 API 调用的 URI。例如，权限路径 `/nodes/{node}` 在调用 */nodes/mynode/status* 时要求具有 `/nodes/mynode` 上的权限，而路径 `{path}` 在发往 `/access/acl` 的 PUT 请求中引用该方法的 `path` 参数。
+路径可以使用模板。当 API 调用需要模板化路径上的权限时，路径可能包含对 API 调用参数的引用。这些引用使用花括号指定。某些参数隐式取自 API 调用的 URI。例如，权限路径 `/nodes/{node}` 在调用 <em>/nodes/mynode/status</em> 时要求具有 `/nodes/mynode` 上的权限，而路径 `{path}` 在发往 `/access/acl` 的 PUT 请求中引用该方法的 `path` 参数。
 
 以下是一些示例：
 
@@ -1594,7 +1594,7 @@ pveum role add Sys_Power-only --privs "Sys.PowerMgmt Sys.Console"
 
 ## 命令行工具 <a href="#command_line_tool" id="command_line_tool"></a>
 
-大多数用户只需使用 GUI 管理用户。不过也有一个功能完整的命令行工具，名为 `pveum`（“**P**roxmox **VE** **U**ser **M**anager”的缩写，即 Proxmox VE 用户管理器）。请注意，所有 Proxmox VE 命令行工具都是 API 的封装，因此也可以通过 REST API 访问这些功能。
+大多数用户只需使用 GUI 管理用户。不过也有一个功能完整的命令行工具，名为 `pveum`（“<strong>P</strong>roxmox <strong>VE</strong> <strong>U</strong>ser <strong>M</strong>anager”的缩写，即 Proxmox VE 用户管理器）。请注意，所有 Proxmox VE 命令行工具都是 API 的封装，因此也可以通过 REST API 访问这些功能。
 
 以下是一些简单用法示例。要显示帮助，输入：
 
@@ -1656,7 +1656,7 @@ pveum role add Sys_Power-only --privs "Sys.PowerMgmt Sys.Console"
  pveum acl modify / -group admin -role Administrator
 ```
 
-最后，可以将用户添加到新的 *admin* 组：
+最后，可以将用户添加到新的 <em>admin</em> 组：
 
 ```text
  pveum user modify testuser@pve -group admin

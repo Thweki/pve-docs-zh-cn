@@ -1,7 +1,7 @@
 {
   "passed": true,
   "mode": "release",
-  "pages": 759,
+  "pages": 72,
   "translation_units": 11508,
   "valid_translations": 11508,
   "missing_translations": 0,
@@ -11,7 +11,7 @@
   "hints": 751,
   "image_occurrences": 164,
   "unique_original_assets": 108,
-  "local_links_checked": 5203,
+  "local_links_checked": 6318,
   "errors": [],
   "warnings": [],
   "english_prose_for_review": []

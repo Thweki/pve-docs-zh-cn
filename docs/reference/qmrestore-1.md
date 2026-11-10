@@ -6,15 +6,15 @@ qmrestore \- 恢复 QemuServer `vzdump` 备份
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **qmrestore** `help` <a href="#cli_qmrestore_help" id="cli_qmrestore_help"></a>
+### <strong>qmrestore</strong> `help` <a href="#cli_qmrestore_help" id="cli_qmrestore_help"></a>
 
-### **qmrestore** `<archive> <vmid>` `[OPTIONS]` <a href="#cli_qmrestore" id="cli_qmrestore"></a>
+### <strong>qmrestore</strong> `<archive> <vmid>` `[OPTIONS]` <a href="#cli_qmrestore" id="cli_qmrestore"></a>
 
 恢复 QemuServer vzdump 备份。
 
 **`<archive>`: `<string>`**
 
-备份文件。可以传入 *\-* 以从标准输入读取。
+备份文件。可以传入 <em>\-</em> 以从标准输入读取。
 
 **`<vmid>`: `<integer> (100 - 999999999)`**
 
@@ -28,7 +28,7 @@ VM 的唯一 ID。
 
 允许覆盖现有虚拟机。
 
-**`--ha-managed` `<boolean>`（*默认 \=* `0`）**
+**`--ha-managed` `<boolean>`（<em>默认 \=</em> `0`）**
 
 恢复虚拟机后，将其添加为 HA 资源。
 
@@ -40,7 +40,7 @@ VM 的唯一 ID。
 
 将 VM 添加到指定池。
 
-**`--start` `<boolean>`（*默认 \=* `0`）**
+**`--start` `<boolean>`（<em>默认 \=</em> `0`）**
 
 成功恢复后启动虚拟机。
 

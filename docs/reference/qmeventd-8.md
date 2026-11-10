@@ -6,7 +6,7 @@ qmeventd \- PVE QEMU Eventd 守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-**qmeventd** `[-f]` `[-v]` `PATH`
+<strong>qmeventd</strong> `[-f]` `[-v]` `PATH`
 
 **`-v`**
 
@@ -20,7 +20,7 @@ qmeventd \- PVE QEMU Eventd 守护进程
 
 监听的路径
 
-此服务通常使用 systemd 工具集启动和管理。服务名为 *qmeventd*。
+此服务通常使用 systemd 工具集启动和管理。服务名为 <em>qmeventd</em>。
 
 ```text
 systemctl start qmeventd

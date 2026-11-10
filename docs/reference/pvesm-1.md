@@ -6,9 +6,9 @@ pvesm \- Proxmox VE 存储管理器
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvesm** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesm" id="cli_pvesm"></a>
+### <strong>pvesm</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvesm" id="cli_pvesm"></a>
 
-### **pvesm add** `<type> <storage>` `[OPTIONS]` <a href="#cli_pvesm_add" id="cli_pvesm_add"></a>
+### <strong>pvesm add</strong> `<type> <storage>` `[OPTIONS]` <a href="#cli_pvesm_add" id="cli_pvesm_add"></a>
 
 创建新存储。
 
@@ -49,18 +49,18 @@ comstar 视图的目标组
 允许的内容类型。
 
 {% hint style="info" %}
-值 *rootdir* 用于容器，值 *images* 用于虚拟机。
+值 <em>rootdir</em> 用于容器，值 <em>images</em> 用于虚拟机。
 {% endhint %}
 
 **`--content-dirs` `<string>`**
 
 覆盖默认内容类型目录的设置。
 
-**`--create-base-path` `<boolean>`（*默认值 \=* `yes`）**
+**`--create-base-path` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
 如果基础目录不存在，则创建它。
 
-**`--create-subdirs` `<boolean>`（*默认值 \=* `yes`）**
+**`--create-subdirs` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
 使用默认结构填充目录。
 
@@ -82,7 +82,7 @@ CIFS 域。
 
 **`--encryption-key` `a file containing an encryption key, or the special value "autogen"`**
 
-加密密钥。使用 *autogen* 自动生成一个不带口令的密钥。
+加密密钥。使用 <em>autogen</em> 自动生成一个不带口令的密钥。
 
 **`--export` `<string>`**
 
@@ -104,7 +104,7 @@ Ceph 文件系统名称。
 
 通过 FUSE 挂载 CephFS。
 
-**`--is_mountpoint` `<string>`（*默认值 \=* `no`）**
+**`--is_mountpoint` `<string>`（<em>默认值 \=</em> `no`）**
 
 将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是在此字段中使用目标路径的简写方式。
 
@@ -116,7 +116,7 @@ iscsi 提供程序
 
 客户端密钥环内容（用于外部集群）。
 
-**`--krbd` `<boolean>`（*默认值 \=* `0`）**
+**`--krbd` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 始终通过 krbd 内核模块访问 rbd。
 
@@ -128,13 +128,13 @@ Linux LIO 目标的目标门户组
 
 经过 Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。
 
-**`--max-protected-backups` `<integer> (-1 - N)`（*默认值 \=* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`）**
+**`--max-protected-backups` `<integer> (-1 - N)`（<em>默认值 \=</em> `Unlimited for users with Datastore.Allocate privilege, 5 for other users`）**
 
-每个客户机受保护备份的最大数量。使用 *-1* 表示不限制。
+每个客户机受保护备份的最大数量。使用 <em>-1</em> 表示不限制。
 
-**`--mkdir` `<boolean>`（*默认值 \=* `yes`）**
+**`--mkdir` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
-如果目录不存在，则创建它并填充默认子目录。注意：已弃用，请改用 *create-base-path* 和 *create-subdirs* 选项。
+如果目录不存在，则创建它并填充默认子目录。注意：已弃用，请改用 <em>create-base-path</em> 和 <em>create-subdirs</em> 选项。
 
 **`--monhost` `<string>`**
 
@@ -148,7 +148,7 @@ Linux LIO 目标的目标门户组
 
 命名空间。
 
-**`--nocow` `<boolean>`（*默认值 \=* `0`）**
+**`--nocow` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 在文件上设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。只有当数据安全性要求不高于单个采用 ext4 格式、底层没有 raid 系统的磁盘时，才应使用此选项。
 
@@ -162,7 +162,7 @@ Linux LIO 目标的目标门户组
 
 **`--options` `<string>`**
 
-NFS/CIFS 挂载选项（参见 *man nfs* 或 *man mount.cifs*）
+NFS/CIFS 挂载选项（参见 <em>man nfs</em> 或 <em>man mount.cifs</em>）
 
 **`--password` `<password>`**
 
@@ -178,15 +178,15 @@ NFS/CIFS 挂载选项（参见 *man nfs* 或 *man mount.cifs*）
 
 **`--port` `<integer> (1 - 65535)`**
 
-使用此端口连接存储，代替默认端口（例如用于 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 *options* 选项，通过挂载选项配置端口。
+使用此端口连接存储，代替默认端口（例如用于 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 <em>options</em> 选项，通过挂载选项配置端口。
 
 **`--portal` `<string>`**
 
 iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-**`--preallocation` `<falloc | full | metadata | off>` （*默认值 \=* `metadata`）**
+**`--preallocation` `<falloc | full | metadata | off>` （<em>默认值 \=</em> `metadata`）**
 
-raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 *metadata* 会导致 preallocation\=off。
+raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 <em>metadata</em> 会导致 preallocation\=off。
 
 **`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`**
 
@@ -196,7 +196,7 @@ raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 *metadata* 会导�
 
 移除 LV 时将数据清零。
 
-**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` （*默认值 \=* `32`）**
+**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` （<em>默认值 \=</em> `32`）**
 
 擦除步长，单位为 MiB。将限制为存储支持的最大值。
 
@@ -214,17 +214,17 @@ CIFS 共享。
 
 **`--shared` `<boolean>`**
 
-表示这是一个在所有节点（或 *nodes* 选项列出的所有节点）上具有相同内容的单一存储。它不会让本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享！
+表示这是一个在所有节点（或 <em>nodes</em> 选项列出的所有节点）上具有相同内容的单一存储。它不会让本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享！
 
-**`--skip-cert-verification` `<boolean>` （*默认值 \=* `false`）**
+**`--skip-cert-verification` `<boolean>` （<em>默认值 \=</em> `false`）**
 
 禁用 TLS 证书验证，仅应在完全可信的网络上启用！
 
-**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` （*默认值 \=* `default`）**
+**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` （<em>默认值 \=</em> `default`）**
 
-SMB 协议版本。如果未设置，则为 *default*，协商使用客户端和服务器均支持的最高 SMB2\+ 版本。
+SMB 协议版本。如果未设置，则为 <em>default</em>，协商使用客户端和服务器均支持的最高 SMB2\+ 版本。
 
-**`--snapshot-as-volume-chain` `<boolean>` （*默认值 \=* `0`）**
+**`--snapshot-as-volume-chain` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用通过卷后备链创建与存储厂商无关的快照的支持。
 
@@ -238,7 +238,7 @@ SMB 协议版本。如果未设置，则为 *default*，协商使用客户端和
 
 **`--tagged_only` `<boolean>`**
 
-仅列出带有 *pve-vm-ID* 标签的逻辑卷。
+仅列出带有 <em>pve-vm-ID</em> 标签的逻辑卷。
 
 **`--target` `<string>`**
 
@@ -258,9 +258,9 @@ RBD ID。
 
 **`--zfs-base-path` `<string>`**
 
-用于查找所创建 ZFS 块设备的基础路径。如果未指定，将在创建期间自动设置。通常为 */dev/zvol*。
+用于查找所创建 ZFS 块设备的基础路径。如果未指定，将在创建期间自动设置。通常为 <em>/dev/zvol</em>。
 
-### **pvesm alloc** `<storage> <vmid> <filename> <size>` `[OPTIONS]` <a href="#cli_pvesm_alloc" id="cli_pvesm_alloc"></a>
+### <strong>pvesm alloc</strong> `<storage> <vmid> <filename> <size>` `[OPTIONS]` <a href="#cli_pvesm_alloc" id="cli_pvesm_alloc"></a>
 
 分配磁盘镜像。
 
@@ -278,7 +278,7 @@ RBD ID。
 
 **`<size>`: `\d+[MG]?`**
 
-大小，单位为千字节（1024 字节）。可选后缀 *M*（兆字节，1024K）和 *G*（吉字节，1024M）
+大小，单位为千字节（1024 字节）。可选后缀 <em>M</em>（兆字节，1024K）和 <em>G</em>（吉字节，1024M）
 
 **`--format` `<qcow2 | raw | subvol | vmdk>`**
 
@@ -288,15 +288,15 @@ RBD ID。
 需要选项：`size`
 {% endhint %}
 
-### **pvesm apiinfo** <a href="#cli_pvesm_apiinfo" id="cli_pvesm_apiinfo"></a>
+### <strong>pvesm apiinfo</strong> <a href="#cli_pvesm_apiinfo" id="cli_pvesm_apiinfo"></a>
 
 返回 APIVER 和 APIAGE。
 
-### **pvesm cifsscan** <a href="#cli_pvesm_cifsscan" id="cli_pvesm_cifsscan"></a>
+### <strong>pvesm cifsscan</strong> <a href="#cli_pvesm_cifsscan" id="cli_pvesm_cifsscan"></a>
 
-*pvesm scan cifs* 的别名。
+<em>pvesm scan cifs</em> 的别名。
 
-### **pvesm export** `<volume> <format> <filename>` `[OPTIONS]` <a href="#cli_pvesm_export" id="cli_pvesm_export"></a>
+### <strong>pvesm export</strong> `<volume> <format> <filename>` `[OPTIONS]` <a href="#cli_pvesm_export" id="cli_pvesm_export"></a>
 
 内部用于导出卷。
 
@@ -324,11 +324,11 @@ RBD ID。
 
 要传输的快照有序列表
 
-**`--with-snapshots` `<boolean>` （*默认值 \=* `0`）**
+**`--with-snapshots` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 是否在流中包含中间快照
 
-### **pvesm extractconfig** `<volume>` <a href="#cli_pvesm_extractconfig" id="cli_pvesm_extractconfig"></a>
+### <strong>pvesm extractconfig</strong> `<volume>` <a href="#cli_pvesm_extractconfig" id="cli_pvesm_extractconfig"></a>
 
 从 vzdump 备份归档中提取配置。
 
@@ -336,7 +336,7 @@ RBD ID。
 
 卷标识符
 
-### **pvesm free** `<volume>` `[OPTIONS]` <a href="#cli_pvesm_free" id="cli_pvesm_free"></a>
+### <strong>pvesm free</strong> `<volume>` `[OPTIONS]` <a href="#cli_pvesm_free" id="cli_pvesm_free"></a>
 
 删除卷
 
@@ -346,13 +346,13 @@ RBD ID。
 
 **`--delay` `<integer> (1 - 30)`**
 
-等待任务完成的时间。如果任务在该时间内完成，则返回 *null*。
+等待任务完成的时间。如果任务在该时间内完成，则返回 <em>null</em>。
 
 **`--storage` `<storage ID>`**
 
 存储标识符。
 
-### **pvesm help** `[OPTIONS]` <a href="#cli_pvesm_help" id="cli_pvesm_help"></a>
+### <strong>pvesm help</strong> `[OPTIONS]` <a href="#cli_pvesm_help" id="cli_pvesm_help"></a>
 
 获取指定命令的帮助。
 
@@ -364,7 +364,7 @@ RBD ID。
 
 详细输出格式。
 
-### **pvesm import** `<volume> <format> <filename>` `[OPTIONS]` <a href="#cli_pvesm_import" id="cli_pvesm_import"></a>
+### <strong>pvesm import</strong> `<volume> <format> <filename>` `[OPTIONS]` <a href="#cli_pvesm_import" id="cli_pvesm_import"></a>
 
 内部用于导入卷。
 
@@ -378,9 +378,9 @@ RBD ID。
 
 **`<filename>`: `<string>`**
 
-源文件名。对于 *\-*，使用 stdin；tcp://\<IP-or-CIDR\> 格式允许使用 TCP 连接，unix://PATH-TO-SOCKET 格式允许使用 UNIX 套接字作为输入。其他情况下，将该文件视为普通文件。
+源文件名。对于 <em>\-</em>，使用 stdin；tcp://\<IP-or-CIDR\> 格式允许使用 TCP 连接，unix://PATH-TO-SOCKET 格式允许使用 UNIX 套接字作为输入。其他情况下，将该文件视为普通文件。
 
-**`--allow-rename` `<boolean>` （*默认值 \=* `0`）**
+**`--allow-rename` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 如果请求的卷 ID 已存在，则选择新的卷 ID，而不是抛出错误。
 
@@ -396,15 +396,15 @@ RBD ID。
 
 如果流包含快照，则为当前状态快照
 
-**`--with-snapshots` `<boolean>` （*默认值 \=* `0`）**
+**`--with-snapshots` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 流是否包含中间快照
 
-### **pvesm iscsiscan** <a href="#cli_pvesm_iscsiscan" id="cli_pvesm_iscsiscan"></a>
+### <strong>pvesm iscsiscan</strong> <a href="#cli_pvesm_iscsiscan" id="cli_pvesm_iscsiscan"></a>
 
-*pvesm scan iscsi* 的别名。
+<em>pvesm scan iscsi</em> 的别名。
 
-### **pvesm list** `<storage>` `[OPTIONS]` <a href="#cli_pvesm_list" id="cli_pvesm_list"></a>
+### <strong>pvesm list</strong> `<storage>` `[OPTIONS]` <a href="#cli_pvesm_list" id="cli_pvesm_list"></a>
 
 列出存储内容。
 
@@ -420,19 +420,19 @@ RBD ID。
 
 仅列出此虚拟机的镜像
 
-### **pvesm lvmscan** <a href="#cli_pvesm_lvmscan" id="cli_pvesm_lvmscan"></a>
+### <strong>pvesm lvmscan</strong> <a href="#cli_pvesm_lvmscan" id="cli_pvesm_lvmscan"></a>
 
-*pvesm scan lvm* 的别名。
+<em>pvesm scan lvm</em> 的别名。
 
-### **pvesm lvmthinscan** <a href="#cli_pvesm_lvmthinscan" id="cli_pvesm_lvmthinscan"></a>
+### <strong>pvesm lvmthinscan</strong> <a href="#cli_pvesm_lvmthinscan" id="cli_pvesm_lvmthinscan"></a>
 
-*pvesm scan lvmthin* 的别名。
+<em>pvesm scan lvmthin</em> 的别名。
 
-### **pvesm nfsscan** <a href="#cli_pvesm_nfsscan" id="cli_pvesm_nfsscan"></a>
+### <strong>pvesm nfsscan</strong> <a href="#cli_pvesm_nfsscan" id="cli_pvesm_nfsscan"></a>
 
-*pvesm scan nfs* 的别名。
+<em>pvesm scan nfs</em> 的别名。
 
-### **pvesm path** `<volume>` <a href="#cli_pvesm_path" id="cli_pvesm_path"></a>
+### <strong>pvesm path</strong> `<volume>` <a href="#cli_pvesm_path" id="cli_pvesm_path"></a>
 
 获取指定卷的文件系统路径
 
@@ -440,7 +440,7 @@ RBD ID。
 
 卷标识符
 
-### **pvesm prune-backups** `<storage>` `[OPTIONS]` <a href="#cli_pvesm_prune-backups" id="cli_pvesm_prune-backups"></a>
+### <strong>pvesm prune-backups</strong> `<storage>` `[OPTIONS]` <a href="#cli_pvesm_prune-backups" id="cli_pvesm_prune-backups"></a>
 
 清理备份。只考虑使用标准命名规则的备份。如果未指定任何保留选项，则使用存储配置中的保留选项。
 
@@ -482,13 +482,13 @@ RBD ID。
 
 **`--type` `<lxc | qemu>`**
 
-为 *qemu* 或 *lxc*。仅考虑此类型客户机的备份。
+为 <em>qemu</em> 或 <em>lxc</em>。仅考虑此类型客户机的备份。
 
 **`--vmid` `<integer> (100 - 999999999)`**
 
 仅考虑此客户机的备份。
 
-### **pvesm remove** `<storage>` <a href="#cli_pvesm_remove" id="cli_pvesm_remove"></a>
+### <strong>pvesm remove</strong> `<storage>` <a href="#cli_pvesm_remove" id="cli_pvesm_remove"></a>
 
 删除存储配置。
 
@@ -496,7 +496,7 @@ RBD ID。
 
 存储标识符。
 
-### **pvesm scan cifs** `<server>` `[OPTIONS]` <a href="#cli_pvesm_scan_cifs" id="cli_pvesm_scan_cifs"></a>
+### <strong>pvesm scan cifs</strong> `<server>` `[OPTIONS]` <a href="#cli_pvesm_scan_cifs" id="cli_pvesm_scan_cifs"></a>
 
 扫描远程 CIFS 服务器。
 
@@ -516,7 +516,7 @@ SMB 域（工作组）。
 
 用户名。
 
-### **pvesm scan iscsi** `<portal>` <a href="#cli_pvesm_scan_iscsi" id="cli_pvesm_scan_iscsi"></a>
+### <strong>pvesm scan iscsi</strong> `<portal>` <a href="#cli_pvesm_scan_iscsi" id="cli_pvesm_scan_iscsi"></a>
 
 扫描远程 iSCSI 服务器。
 
@@ -524,11 +524,11 @@ SMB 域（工作组）。
 
 iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
-### **pvesm scan lvm** <a href="#cli_pvesm_scan_lvm" id="cli_pvesm_scan_lvm"></a>
+### <strong>pvesm scan lvm</strong> <a href="#cli_pvesm_scan_lvm" id="cli_pvesm_scan_lvm"></a>
 
 列出本地 LVM 卷组。
 
-### **pvesm scan lvmthin** `<vg>` <a href="#cli_pvesm_scan_lvmthin" id="cli_pvesm_scan_lvmthin"></a>
+### <strong>pvesm scan lvmthin</strong> `<vg>` <a href="#cli_pvesm_scan_lvmthin" id="cli_pvesm_scan_lvmthin"></a>
 
 列出本地 LVM 精简池。
 
@@ -536,7 +536,7 @@ iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
 没有可用的说明
 
-### **pvesm scan nfs** `<server>` <a href="#cli_pvesm_scan_nfs" id="cli_pvesm_scan_nfs"></a>
+### <strong>pvesm scan nfs</strong> `<server>` <a href="#cli_pvesm_scan_nfs" id="cli_pvesm_scan_nfs"></a>
 
 扫描远程 NFS 服务器。
 
@@ -544,7 +544,7 @@ iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
 服务器地址（名称或 IP）。
 
-### **pvesm scan pbs** `<server> <username> --password <string>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesm_scan_pbs" id="cli_pvesm_scan_pbs"></a>
+### <strong>pvesm scan pbs</strong> `<server> <username> --password <string>` `[OPTIONS]` `[FORMAT_OPTIONS]` <a href="#cli_pvesm_scan_pbs" id="cli_pvesm_scan_pbs"></a>
 
 扫描远程 Proxmox Backup Server。
 
@@ -564,15 +564,15 @@ iSCSI 门户（IP 或 DNS 名称，可选端口）。
 
 用户密码或 API 令牌密钥。
 
-**`--port` `<integer> (1 - 65535)` （*默认值 \=* `8007`）**
+**`--port` `<integer> (1 - 65535)` （<em>默认值 \=</em> `8007`）**
 
 可选端口。
 
-### **pvesm scan zfs** <a href="#cli_pvesm_scan_zfs" id="cli_pvesm_scan_zfs"></a>
+### <strong>pvesm scan zfs</strong> <a href="#cli_pvesm_scan_zfs" id="cli_pvesm_scan_zfs"></a>
 
 扫描本地节点的 zfs 池列表。
 
-### **pvesm set** `<storage>` `[OPTIONS]` <a href="#cli_pvesm_set" id="cli_pvesm_set"></a>
+### <strong>pvesm set</strong> `<storage>` `[OPTIONS]` <a href="#cli_pvesm_set" id="cli_pvesm_set"></a>
 
 更新存储配置。
 
@@ -601,18 +601,18 @@ comstar 视图的目标组
 允许的内容类型。
 
 {% hint style="info" %}
-值 *rootdir* 用于容器，值 *images* 用于虚拟机。
+值 <em>rootdir</em> 用于容器，值 <em>images</em> 用于虚拟机。
 {% endhint %}
 
 **`--content-dirs` `<string>`**
 
 覆盖默认内容类型目录的设置。
 
-**`--create-base-path` `<boolean>`（*默认值 \=* `yes`）**
+**`--create-base-path` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
 如果基础目录不存在，则创建它。
 
-**`--create-subdirs` `<boolean>`（*默认值 \=* `yes`）**
+**`--create-subdirs` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
 使用默认结构填充目录。
 
@@ -638,7 +638,7 @@ CIFS 域。
 
 **`--encryption-key` `a file containing an encryption key, or the special value "autogen"`**
 
-加密密钥。使用 *autogen* 自动生成一个不带口令的密钥。
+加密密钥。使用 <em>autogen</em> 自动生成一个不带口令的密钥。
 
 **`--fingerprint` `([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}`**
 
@@ -656,7 +656,7 @@ Ceph 文件系统名称。
 
 通过 FUSE 挂载 CephFS。
 
-**`--is_mountpoint` `<string>`（*默认值 \=* `no`）**
+**`--is_mountpoint` `<string>`（<em>默认值 \=</em> `no`）**
 
 将给定路径视为外部管理的挂载点，如果未挂载，则认为存储离线。使用布尔值（yes/no）是在此字段中使用目标路径的简写方式。
 
@@ -664,7 +664,7 @@ Ceph 文件系统名称。
 
 客户端密钥环内容（用于外部集群）。
 
-**`--krbd` `<boolean>`（*默认值 \=* `0`）**
+**`--krbd` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 始终通过 krbd 内核模块访问 rbd。
 
@@ -676,13 +676,13 @@ Linux LIO 目标的目标门户组
 
 经过 Base64 编码、PEM 格式的 RSA 公钥。用于加密 encryption-key 的副本，该副本将添加到每个加密备份中。
 
-**`--max-protected-backups` `<integer> (-1 - N)`（*默认值 \=* `Unlimited for users with Datastore.Allocate privilege, 5 for other users`）**
+**`--max-protected-backups` `<integer> (-1 - N)`（<em>默认值 \=</em> `Unlimited for users with Datastore.Allocate privilege, 5 for other users`）**
 
-每个客户机受保护备份的最大数量。使用 *-1* 表示不限制。
+每个客户机受保护备份的最大数量。使用 <em>-1</em> 表示不限制。
 
-**`--mkdir` `<boolean>`（*默认值 \=* `yes`）**
+**`--mkdir` `<boolean>`（<em>默认值 \=</em> `yes`）**
 
-如果目录不存在，则创建它并填充默认子目录。注意：已弃用，请改用 *create-base-path* 和 *create-subdirs* 选项。
+如果目录不存在，则创建它并填充默认子目录。注意：已弃用，请改用 <em>create-base-path</em> 和 <em>create-subdirs</em> 选项。
 
 **`--monhost` `<string>`**
 
@@ -696,7 +696,7 @@ Linux LIO 目标的目标门户组
 
 命名空间。
 
-**`--nocow` `<boolean>`（*默认值 \=* `0`）**
+**`--nocow` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 在文件上设置 NOCOW 标志。禁用数据校验和，使数据错误无法恢复，同时允许直接 I/O。只有当数据安全性要求不高于单个采用 ext4 格式、底层没有 raid 系统的磁盘时，才应使用此选项。
 
@@ -710,7 +710,7 @@ Linux LIO 目标的目标门户组
 
 **`--options` `<string>`**
 
-NFS/CIFS 挂载选项（参见 *man nfs* 或 *man mount.cifs*）
+NFS/CIFS 挂载选项（参见 <em>man nfs</em> 或 <em>man mount.cifs</em>）
 
 **`--password` `<password>`**
 
@@ -722,11 +722,11 @@ NFS/CIFS 挂载选项（参见 *man nfs* 或 *man mount.cifs*）
 
 **`--port` `<integer> (1 - 65535)`**
 
-使用此端口连接存储，代替默认端口（例如用于 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 *options* 选项，通过挂载选项配置端口。
+使用此端口连接存储，代替默认端口（例如用于 PBS 或 ESXi）。对于 NFS 和 CIFS，请使用 <em>options</em> 选项，通过挂载选项配置端口。
 
-**`--preallocation` `<falloc | full | metadata | off>` （*默认值 \=* `metadata`）**
+**`--preallocation` `<falloc | full | metadata | off>` （<em>默认值 \=</em> `metadata`）**
 
-raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 *metadata* 会导致 preallocation\=off。
+raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 <em>metadata</em> 会导致 preallocation\=off。
 
 **`--prune-backups` `[keep-all=<1|0>] [,keep-daily=<N>] [,keep-hourly=<N>] [,keep-last=<N>] [,keep-monthly=<N>] [,keep-weekly=<N>] [,keep-yearly=<N>]`**
 
@@ -736,7 +736,7 @@ raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 *metadata* 会导�
 
 移除 LV 时将数据清零。
 
-**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` （*默认值 \=* `32`）**
+**`--saferemove-stepsize` `<1 | 16 | 2 | 32 | 4 | 8>` （<em>默认值 \=</em> `32`）**
 
 擦除步长，单位为 MiB。将限制为存储支持的最大值。
 
@@ -750,17 +750,17 @@ raw 和 qcow2 镜像的预分配模式。对 raw 镜像使用 *metadata* 会导�
 
 **`--shared` `<boolean>`**
 
-表示这是一个在所有节点（或 *nodes* 选项列出的所有节点）上具有相同内容的单一存储。它不会让本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享！
+表示这是一个在所有节点（或 <em>nodes</em> 选项列出的所有节点）上具有相同内容的单一存储。它不会让本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享！
 
-**`--skip-cert-verification` `<boolean>` （*默认值 \=* `false`）**
+**`--skip-cert-verification` `<boolean>` （<em>默认值 \=</em> `false`）**
 
 禁用 TLS 证书验证，仅应在完全可信的网络上启用！
 
-**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` （*默认值 \=* `default`）**
+**`--smbversion` `<2.0 | 2.1 | 3 | 3.0 | 3.11 | default>` （<em>默认值 \=</em> `default`）**
 
-SMB 协议版本。如果未设置，则为 *default*，协商使用客户端和服务器均支持的最高 SMB2\+ 版本。
+SMB 协议版本。如果未设置，则为 <em>default</em>，协商使用客户端和服务器均支持的最高 SMB2\+ 版本。
 
-**`--snapshot-as-volume-chain` `<boolean>` （*默认值 \=* `0`）**
+**`--snapshot-as-volume-chain` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 启用通过卷后备链创建与存储厂商无关的快照的支持。
 
@@ -774,7 +774,7 @@ SMB 协议版本。如果未设置，则为 *default*，协商使用客户端和
 
 **`--tagged_only` `<boolean>`**
 
-仅列出带有 *pve-vm-ID* 标签的逻辑卷。
+仅列出带有 <em>pve-vm-ID</em> 标签的逻辑卷。
 
 **`--username` `<string>`**
 
@@ -782,9 +782,9 @@ RBD ID。
 
 **`--zfs-base-path` `<string>`**
 
-用于查找所创建 ZFS 块设备的基础路径。如果未指定，将在创建期间自动设置。通常为 */dev/zvol*。
+用于查找所创建 ZFS 块设备的基础路径。如果未指定，将在创建期间自动设置。通常为 <em>/dev/zvol</em>。
 
-### **pvesm status** `[OPTIONS]` <a href="#cli_pvesm_status" id="cli_pvesm_status"></a>
+### <strong>pvesm status</strong> `[OPTIONS]` <a href="#cli_pvesm_status" id="cli_pvesm_status"></a>
 
 获取所有数据存储的状态。
 
@@ -792,11 +792,11 @@ RBD ID。
 
 仅列出支持此内容类型的存储。
 
-**`--enabled` `<boolean>` （*默认值 \=* `0`）**
+**`--enabled` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 仅列出已启用的存储（配置中未禁用）。
 
-**`--format` `<boolean>` （*默认值 \=* `0`）**
+**`--format` `<boolean>` （<em>默认值 \=</em> `0`）**
 
 包含格式信息
 
@@ -806,11 +806,11 @@ RBD ID。
 
 **`--target` `<string>`**
 
-如果 target 与 *node* 不同，则只列出其内容可由此 *node* 和指定的 *target* 节点访问的共享存储。
+如果 target 与 <em>node</em> 不同，则只列出其内容可由此 <em>node</em> 和指定的 <em>target</em> 节点访问的共享存储。
 
-### **pvesm zfsscan** <a href="#cli_pvesm_zfsscan" id="cli_pvesm_zfsscan"></a>
+### <strong>pvesm zfsscan</strong> <a href="#cli_pvesm_zfsscan" id="cli_pvesm_zfsscan"></a>
 
-*pvesm scan zfs* 的别名。
+<em>pvesm scan zfs</em> 的别名。
 
 ## 描述 <a href="#description" id="description"></a>
 
@@ -830,7 +830,7 @@ Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多
 
 **块级存储**
 
-允许存储大型 *raw* 镜像。通常无法在这类存储类型上存储其他文件（ISO、备份等）。大多数现代块级存储实现都支持快照和克隆。Ceph RADOS 是一个分布式系统，可将存储数据复制到不同的节点，并可作为 RBD（RADOS 块设备）进行访问。
+允许存储大型 <em>raw</em> 镜像。通常无法在这类存储类型上存储其他文件（ISO、备份等）。大多数现代块级存储实现都支持快照和克隆。Ceph RADOS 是一个分布式系统，可将存储数据复制到不同的节点，并可作为 RBD（RADOS 块设备）进行访问。
 
 <table>
 <caption>表 1. 可用的存储类型</caption>
@@ -968,7 +968,7 @@ Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多
 
 1：VM 的磁盘镜像存储在 ZFS 卷（zvol）数据集中，这些数据集提供块设备功能。
 
-2：在基于文件的存储上，可以使用 *qcow2* 格式创建快照，既可以使用内部快照功能，也可以使用卷链快照4。创建和删除内部 *qcow2* 快照会阻塞正在运行的 VM，而且效率不高。在 NFS 等网络存储上，性能尤其差。在某些配置中，对于大型磁盘（大小为数百 GiB 或 TiB 级），这些操作可能需要几分钟，在极端情况下甚至需要数小时。如果您的配置受到影响，请在 VM 关机时创建和删除快照，并做好任务耗时较长的准备。
+2：在基于文件的存储上，可以使用 <em>qcow2</em> 格式创建快照，既可以使用内部快照功能，也可以使用卷链快照4。创建和删除内部 <em>qcow2</em> 快照会阻塞正在运行的 VM，而且效率不高。在 NFS 等网络存储上，性能尤其差。在某些配置中，对于大型磁盘（大小为数百 GiB 或 TiB 级），这些操作可能需要几分钟，在极端情况下甚至需要数小时。如果您的配置受到影响，请在 VM 关机时创建和删除快照，并做好任务耗时较长的准备。
 
 3：在集群中使用 iSCSI、FibreChannel（FC）或 SAS 块存储作为共享存储时，LVM 用于将 LUN 划分为虚拟磁盘。[多路径指南](https://pve.proxmox.com/wiki/Multipath)介绍了如何在集群中进行配置，包括多路径配置，在这些场景中通常需要多路径。
 
@@ -980,7 +980,7 @@ Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多
 
 ### 精简置备 <a href="#thin_provisioning" id="thin_provisioning"></a>
 
-许多存储以及 QEMU 镜像格式 `qcow2` 都支持 *精简置备*。启用精简置备后，只有客户机系统实际使用的块才会写入存储。
+许多存储以及 QEMU 镜像格式 `qcow2` 都支持 <em>精简置备</em>。启用精简置备后，只有客户机系统实际使用的块才会写入存储。
 
 例如，假设您创建了一台配备 32GB 硬盘的 VM，安装客户机操作系统后，该 VM 的根文件系统中包含 3 GB 数据。在这种情况下，即使客户机 VM 看到的是 32GB 硬盘，也只有 3GB 会写入存储。通过这种方式，精简置备允许您创建大于当前可用存储块的磁盘镜像。您可以为 VM 创建大型磁盘镜像，并在需要时向存储添加更多磁盘，而无需调整 VM 文件系统的大小。
 
@@ -1033,7 +1033,7 @@ zfspool: local-zfs
 ```
 
 {% hint style="danger" %}
-让多个存储配置指向完全相同的底层存储会产生问题。此类*别名*存储配置可能导致两个不同的卷 ID（*volid*）指向完全相同的磁盘镜像。Proxmox VE 要求镜像的卷 ID 所指向的位置是唯一的。为*别名*存储配置选择不同的内容类型或许可行，但不建议这样做。
+让多个存储配置指向完全相同的底层存储会产生问题。此类<em>别名</em>存储配置可能导致两个不同的卷 ID（<em>volid</em>）指向完全相同的磁盘镜像。Proxmox VE 要求镜像的卷 ID 所指向的位置是唯一的。为<em>别名</em>存储配置选择不同的内容类型或许可行，但不建议这样做。
 {% endhint %}
 
 ### 通用存储属性 <a href="#common_storage_properties" id="common_storage_properties"></a>
@@ -1078,7 +1078,7 @@ ISO 镜像
 
 **shared**
 
-表明这是一个在所有节点（或 *nodes* 选项中列出的所有节点）上具有相同内容的单一存储。它不会使本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享存储！
+表明这是一个在所有节点（或 <em>nodes</em> 选项中列出的所有节点）上具有相同内容的单一存储。它不会使本地存储的内容自动可供其他节点访问，只是将已共享的存储标记为共享存储！
 
 **disable**
 
@@ -1911,7 +1911,7 @@ LVM 卷组名称。必须指向一个现有的卷组。
 为了高效支持 `snapshot-as-volume-chain`，后备存储必须支持精简置备和 discard。在 PVE 端，每个快照都会显示为占用完整的卷大小，但如果满足这些要求，其在底层存储上的实际空间占用会更小。
 
 {% hint style="warning" %}
-卷链快照目前在 Proxmox VE 中属于**技术预览**。
+卷链快照目前在 Proxmox VE 中属于<strong>技术预览</strong>。
 {% endhint %}
 
 **配置示例（`/etc/pve/storage.cfg`）**

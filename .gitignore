@@ -9,3 +9,7 @@ preview/
 __pycache__/
 .DS_Store
 *.zip
+/builds/
+/output/
+/outputs/
+/tmp/

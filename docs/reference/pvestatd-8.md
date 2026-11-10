@@ -6,9 +6,9 @@ pvestatd \- PVE 状态守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pvestatd** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvestatd" id="cli_pvestatd"></a>
+### <strong>pvestatd</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pvestatd" id="cli_pvestatd"></a>
 
-### **pvestatd help** `[OPTIONS]` <a href="#cli_pvestatd_help" id="cli_pvestatd_help"></a>
+### <strong>pvestatd help</strong> `[OPTIONS]` <a href="#cli_pvestatd_help" id="cli_pvestatd_help"></a>
 
 获取指定命令的帮助。
 
@@ -20,23 +20,23 @@ pvestatd \- PVE 状态守护进程
 
 详细输出格式。
 
-### **pvestatd restart** <a href="#cli_pvestatd_restart" id="cli_pvestatd_restart"></a>
+### <strong>pvestatd restart</strong> <a href="#cli_pvestatd_restart" id="cli_pvestatd_restart"></a>
 
 重启守护进程（如果未运行则启动）。
 
-### **pvestatd start** `[OPTIONS]` <a href="#cli_pvestatd_start" id="cli_pvestatd_start"></a>
+### <strong>pvestatd start</strong> `[OPTIONS]` <a href="#cli_pvestatd_start" id="cli_pvestatd_start"></a>
 
 启动守护进程。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pvestatd status** <a href="#cli_pvestatd_status" id="cli_pvestatd_status"></a>
+### <strong>pvestatd status</strong> <a href="#cli_pvestatd_status" id="cli_pvestatd_status"></a>
 
 获取守护进程状态。
 
-### **pvestatd stop** <a href="#cli_pvestatd_stop" id="cli_pvestatd_stop"></a>
+### <strong>pvestatd stop</strong> <a href="#cli_pvestatd_stop" id="cli_pvestatd_stop"></a>
 
 停止守护进程。
 

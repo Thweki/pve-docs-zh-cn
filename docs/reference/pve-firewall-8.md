@@ -6,13 +6,13 @@ pve-firewall \- PVE 防火墙守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pve-firewall** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-firewall" id="cli_pve-firewall"></a>
+### <strong>pve-firewall</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pve-firewall" id="cli_pve-firewall"></a>
 
-### **pve-firewall compile** <a href="#cli_pve-firewall_compile" id="cli_pve-firewall_compile"></a>
+### <strong>pve-firewall compile</strong> <a href="#cli_pve-firewall_compile" id="cli_pve-firewall_compile"></a>
 
 编译并打印防火墙规则。这对测试很有用。
 
-### **pve-firewall help** `[OPTIONS]` <a href="#cli_pve-firewall_help" id="cli_pve-firewall_help"></a>
+### <strong>pve-firewall help</strong> `[OPTIONS]` <a href="#cli_pve-firewall_help" id="cli_pve-firewall_help"></a>
 
 获取指定命令的帮助。
 
@@ -24,17 +24,17 @@ pve-firewall \- PVE 防火墙守护进程
 
 详细输出格式。
 
-### **pve-firewall localnet** <a href="#cli_pve-firewall_localnet" id="cli_pve-firewall_localnet"></a>
+### <strong>pve-firewall localnet</strong> <a href="#cli_pve-firewall_localnet" id="cli_pve-firewall_localnet"></a>
 
 打印本地网络信息。
 
-### **pve-firewall restart** <a href="#cli_pve-firewall_restart" id="cli_pve-firewall_restart"></a>
+### <strong>pve-firewall restart</strong> <a href="#cli_pve-firewall_restart" id="cli_pve-firewall_restart"></a>
 
 重启 Proxmox VE 防火墙服务。
 
-### **pve-firewall simulate** `[OPTIONS]` <a href="#cli_pve-firewall_simulate" id="cli_pve-firewall_simulate"></a>
+### <strong>pve-firewall simulate</strong> `[OPTIONS]` <a href="#cli_pve-firewall_simulate" id="cli_pve-firewall_simulate"></a>
 
-模拟防火墙规则。此操作不模拟内核*路由*表，而是简单假定可以从源区域路由到目标区域。
+模拟防火墙规则。此操作不模拟内核<em>路由</em>表，而是简单假定可以从源区域路由到目标区域。
 
 **`--dest` `<string>`**
 
@@ -44,11 +44,11 @@ pve-firewall \- PVE 防火墙守护进程
 
 目标端口。
 
-**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （*默认值 \=* `outside`）**
+**`--from` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （<em>默认值 \=</em> `outside`）**
 
 源区域。
 
-**`--protocol` `(tcp|udp)` （*默认值 \=* `tcp`）**
+**`--protocol` `(tcp|udp)` （<em>默认值 \=</em> `tcp`）**
 
 协议。
 
@@ -60,27 +60,27 @@ pve-firewall \- PVE 防火墙守护进程
 
 源端口。
 
-**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （*默认值 \=* `host`）**
+**`--to` `(host|outside|vm\d+|ct\d+|([a-zA-Z][a-zA-Z0-9]{0,9})/(\S+))` （<em>默认值 \=</em> `host`）**
 
 目标区域。
 
-**`--verbose` `<boolean>`（*默认值 \=* `0`）**
+**`--verbose` `<boolean>`（<em>默认值 \=</em> `0`）**
 
 详细输出。
 
-### **pve-firewall start** `[OPTIONS]` <a href="#cli_pve-firewall_start" id="cli_pve-firewall_start"></a>
+### <strong>pve-firewall start</strong> `[OPTIONS]` <a href="#cli_pve-firewall_start" id="cli_pve-firewall_start"></a>
 
 启动 Proxmox VE 防火墙服务。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pve-firewall status** <a href="#cli_pve-firewall_status" id="cli_pve-firewall_status"></a>
+### <strong>pve-firewall status</strong> <a href="#cli_pve-firewall_status" id="cli_pve-firewall_status"></a>
 
 获取防火墙状态。
 
-### **pve-firewall stop** <a href="#cli_pve-firewall_stop" id="cli_pve-firewall_stop"></a>
+### <strong>pve-firewall stop</strong> <a href="#cli_pve-firewall_stop" id="cli_pve-firewall_stop"></a>
 
 停止 Proxmox VE 防火墙服务。注意，停止操作会主动移除所有与 Proxmox VE 相关的 iptable 规则，可能使宿主机失去保护。
 
@@ -140,7 +140,7 @@ Proxmox VE 防火墙将网络分成多个逻辑区域。可以独立为每个区
 
 所有与防火墙相关的配置都存储在 proxmox 集群文件系统中。因此这些文件会自动分发到所有集群节点，更改时 `pve-firewall` 服务会自动更新底层 `iptables` 规则。
 
-可以使用 GUI 配置所有内容（例如 **数据中心** → **防火墙**，或 **节点** → **防火墙**），也可以使用惯用编辑器直接编辑配置文件。
+可以使用 GUI 配置所有内容（例如 <strong>数据中心</strong> → <strong>防火墙</strong>，或 <strong>节点</strong> → <strong>防火墙</strong>），也可以使用惯用编辑器直接编辑配置文件。
 
 防火墙配置文件包含由键值对组成的节。以 `#` 开头的行和空行被视为注释。节以标题行开始，其中节名称用 `[` 和 `]` 括起。
 
@@ -158,11 +158,11 @@ Proxmox VE 防火墙将网络分成多个逻辑区域。可以独立为每个区
 
 用于设置集群范围的防火墙选项。
 
-**`ebtables`：`<boolean>`（*默认值 \=* `1`）**
+**`ebtables`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 在整个集群中启用 ebtables 规则。
 
-**`enable`：`<integer> (0 - N)`（*默认值 \=* `0`）**
+**`enable`：`<integer> (0 - N)`（<em>默认值 \=</em> `0`）**
 
 在整个集群中启用或禁用防火墙。
 
@@ -170,15 +170,15 @@ Proxmox VE 防火墙将网络分成多个逻辑区域。可以独立为每个区
 
 日志速率限制设置
 
-**`burst`\=`<integer> (0 - N)`（*默认值 \=* `5`）**
+**`burst`\=`<integer> (0 - N)`（<em>默认值 \=</em> `5`）**
 
 应用速率限制之前始终记录的初始突发数据包数量
 
-**`enable`\=`<boolean>`（*默认值 \=* `1`）**
+**`enable`\=`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用或禁用日志速率限制
 
-**`rate`\=`<rate>`（*默认值 \=* `1/second`）**
+**`rate`\=`<rate>`（<em>默认值 \=</em> `1/second`）**
 
 突发令牌桶的补充频率
 
@@ -248,7 +248,7 @@ enable: 1
 
 用于设置宿主机相关的防火墙选项。
 
-**`enable`：`<boolean>`（*默认值 \=* `1`）**
+**`enable`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用宿主机防火墙规则。
 
@@ -264,35 +264,35 @@ enable: 1
 
 传出流量的日志级别。
 
-**`log_nf_conntrack`：`<boolean>`（*默认值 \=* `0`）**
+**`log_nf_conntrack`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用 conntrack 信息日志记录。
 
-**`ndp`：`<boolean>`（*默认值 \=* `1`）**
+**`ndp`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用 NDP（邻居发现协议）。
 
-**`nf_conntrack_allow_invalid`：`<boolean>`（*默认值 \=* `0`）**
+**`nf_conntrack_allow_invalid`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 在连接跟踪中允许无效数据包。
 
-**`nf_conntrack_helpers`：`<string>`（*默认值 \=* \`\`）**
+**`nf_conntrack_helpers`：`<string>`（<em>默认值 \=</em> \`\`）**
 
 为特定协议启用 conntrack 辅助模块。支持的协议：amanda、ftp、irc、netbios-ns、pptp、sane、sip、snmp、tftp
 
-**`nf_conntrack_max`：`<integer> (32768 - N)`（*默认值 \=* `262144`）**
+**`nf_conntrack_max`：`<integer> (32768 - N)`（<em>默认值 \=</em> `262144`）**
 
 跟踪连接的最大数量。
 
-**`nf_conntrack_tcp_timeout_established`：`<integer> (7875 - N)`（*默认值 \=* `432000`）**
+**`nf_conntrack_tcp_timeout_established`：`<integer> (7875 - N)`（<em>默认值 \=</em> `432000`）**
 
 Conntrack 已建立连接的超时。
 
-**`nf_conntrack_tcp_timeout_syn_recv`：`<integer> (30 - 60)`（*默认值 \=* `60`）**
+**`nf_conntrack_tcp_timeout_syn_recv`：`<integer> (30 - 60)`（<em>默认值 \=</em> `60`）**
 
 Conntrack syn recv 超时。
 
-**`nftables`：`<boolean>`（*默认值 \=* `0`）**
+**`nftables`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用基于 nftables 的防火墙（技术预览）
 
@@ -300,15 +300,15 @@ Conntrack syn recv 超时。
 
 启用 SMURFS 过滤器。
 
-**`protection_synflood`：`<boolean>`（*默认值 \=* `0`）**
+**`protection_synflood`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用 SYN 洪泛防护
 
-**`protection_synflood_burst`：`<integer>`（*默认值 \=* `1000`）**
+**`protection_synflood_burst`：`<integer>`（<em>默认值 \=</em> `1000`）**
 
 按源 IP 设置 SYN 洪泛防护的突发速率。
 
-**`protection_synflood_rate`：`<integer>`（*默认值 \=* `200`）**
+**`protection_synflood_rate`：`<integer>`（<em>默认值 \=</em> `200`）**
 
 按源 IP 设置 SYN 洪泛防护速率，单位为 syn/sec。
 
@@ -320,7 +320,7 @@ SMURFS 过滤器的日志级别。
 
 非法 TCP 标志过滤器的日志级别。
 
-**`tcpflags`：`<boolean>`（*默认值 \=* `0`）**
+**`tcpflags`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 过滤非法的 TCP 标志组合。
 
@@ -342,11 +342,11 @@ SMURFS 过滤器的日志级别。
 
 用于设置虚拟机/容器相关的防火墙选项。
 
-**`dhcp`：`<boolean>`（*默认值 \=* `0`）**
+**`dhcp`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用 DHCP。
 
-**`enable`：`<boolean>`（*默认值 \=* `0`）**
+**`enable`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用/禁用防火墙规则。
 
@@ -362,11 +362,11 @@ SMURFS 过滤器的日志级别。
 
 传出流量的日志级别。
 
-**`macfilter`：`<boolean>`（*默认值 \=* `1`）**
+**`macfilter`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用/禁用 MAC 地址过滤器。
 
-**`ndp`：`<boolean>`（*默认值 \=* `1`）**
+**`ndp`：`<boolean>`（<em>默认值 \=</em> `1`）**
 
 启用 NDP（邻居发现协议）。
 
@@ -423,7 +423,7 @@ FORWARD ACCEPT -source 10.0.0.1 -sport 80
 
 用于设置 VNet 相关的防火墙选项。
 
-**`enable`：`<boolean>`（*默认值 \=* `0`）**
+**`enable`：`<boolean>`（<em>默认值 \=</em> `0`）**
 
 启用/禁用防火墙规则。
 
@@ -458,19 +458,19 @@ DIRECTION MACRO(ACTION) [OPTIONS] # use predefined macro
 
 **`--dest` `<string>`**
 
-限制数据包目标地址。可以引用单个 IP 地址、IP 集合（*\+ipsetname*）或 IP 别名定义。也可以指定地址范围，例如 *20.34.101.207-201.3.9.99*，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
+限制数据包目标地址。可以引用单个 IP 地址、IP 集合（<em>\+ipsetname</em>）或 IP 别名定义。也可以指定地址范围，例如 <em>20.34.101.207-201.3.9.99</em>，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
 
 **`--dport` `<string>`**
 
-限制 TCP/UDP 目标端口。可以使用服务名称或普通数字（0-65535），如 */etc/services* 中所定义。端口范围可以使用 *\\d\+:\\d\+* 指定，例如 *80:85*，也可以使用逗号分隔的列表匹配多个端口或范围。
+限制 TCP/UDP 目标端口。可以使用服务名称或普通数字（0-65535），如 <em>/etc/services</em> 中所定义。端口范围可以使用 <em>\\d\+:\\d\+</em> 指定，例如 <em>80:85</em>，也可以使用逗号分隔的列表匹配多个端口或范围。
 
 **`--icmp-type` `<string>`**
 
-指定 icmp-type。仅当 proto 等于 *icmp* 或 *icmpv6*/*ipv6-icmp* 时有效。
+指定 icmp-type。仅当 proto 等于 <em>icmp</em> 或 <em>icmpv6</em>/<em>ipv6-icmp</em> 时有效。
 
 **`--iface` `<string>`**
 
-网络接口名称。对于虚拟机和容器，必须使用网络配置键名称（*net\\d\+*）。宿主机相关规则可以使用任意字符串。
+网络接口名称。对于虚拟机和容器，必须使用网络配置键名称（<em>net\\d\+</em>）。宿主机相关规则可以使用任意字符串。
 
 **`--log` `<alert | crit | debug | emerg | err | info | nolog | notice | warning>`**
 
@@ -478,15 +478,15 @@ DIRECTION MACRO(ACTION) [OPTIONS] # use predefined macro
 
 **`--proto` `<string>`**
 
-IP 协议。可以使用协议名称（*tcp*/*udp*）或普通数字，如 */etc/protocols* 中所定义。
+IP 协议。可以使用协议名称（<em>tcp</em>/<em>udp</em>）或普通数字，如 <em>/etc/protocols</em> 中所定义。
 
 **`--source` `<string>`**
 
-限制数据包源地址。可以引用单个 IP 地址、IP 集合（*\+ipsetname*）或 IP 别名定义。也可以指定地址范围，例如 *20.34.101.207-201.3.9.99*，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
+限制数据包源地址。可以引用单个 IP 地址、IP 集合（<em>\+ipsetname</em>）或 IP 别名定义。也可以指定地址范围，例如 <em>20.34.101.207-201.3.9.99</em>，或 IP 地址和网络列表（条目以逗号分隔）。请勿在此类列表中混合 IPv4 和 IPv6 地址。
 
 **`--sport` `<string>`**
 
-限制 TCP/UDP 源端口。可以使用服务名称或普通数字（0-65535），如 */etc/services* 中所定义。端口范围可以使用 *\\d\+:\\d\+* 指定，例如 *80:85*，也可以使用逗号分隔的列表匹配多个端口或范围。
+限制 TCP/UDP 源端口。可以使用服务名称或普通数字（0-65535），如 <em>/etc/services</em> 中所定义。端口范围可以使用 <em>\\d\+:\\d\+</em> 指定，例如 <em>80:85</em>，也可以使用逗号分隔的列表匹配多个端口或范围。
 
 以下是一些示例：
 
@@ -508,7 +508,7 @@ OUT ACCEPT # accept all outgoing packages
 
 ## 安全组 <a href="#pve_firewall_security_groups" id="pve_firewall_security_groups"></a>
 
-安全组是在集群级别定义的规则集合，可用于所有虚拟机的规则中。例如，可以定义名为“webserver”的组，包含开放 *http* 和 *https* 端口的规则。
+安全组是在集群级别定义的规则集合，可用于所有虚拟机的规则中。例如，可以定义名为“webserver”的组，包含开放 <em>http</em> 和 <em>https</em> 端口的规则。
 
 ```text
 # /etc/pve/firewall/cluster.fw
@@ -596,7 +596,7 @@ IN HTTP(ACCEPT) -source +management
 
 这些过滤器属于虚拟机的网络接口，主要用于防止 IP 欺骗。如果某接口存在此类集合，则任何源 IP 不匹配其接口对应 ipfilter 集合的传出流量都会被丢弃。
 
-对于已配置 IP 地址的容器，如果这些集合存在（或通过全局 `IP Filter` 选项，在虚拟机防火墙的 **选项** 选项卡中激活），则会隐式包含关联的 IP 地址。
+对于已配置 IP 地址的容器，如果这些集合存在（或通过全局 `IP Filter` 选项，在虚拟机防火墙的 <strong>选项</strong> 选项卡中激活），则会隐式包含关联的 IP 地址。
 
 对于虚拟机和容器，它们还会隐式包含由 MAC 推导的标准 IPv6 链路本地地址，以便邻居发现协议能够工作。
 
@@ -667,7 +667,7 @@ IN HTTP(ACCEPT) -source +management
 - 到端口 135、139 和 445 的 TCP 流量
 - 源自源端口 53 的 UDP 流量
 
-其余流量分别被丢弃或拒绝，并记录日志。具体行为可能因 **防火墙** → **选项** 中启用的附加选项而异，例如 NDP、SMURFS 和 TCP 标志过滤。
+其余流量分别被丢弃或拒绝，并记录日志。具体行为可能因 <strong>防火墙</strong> → <strong>选项</strong> 中启用的附加选项而异，例如 NDP、SMURFS 和 TCP 标志过滤。
 
 <a id="pve_firewall_iptables_inspect"></a>
 
@@ -689,7 +689,7 @@ IN HTTP(ACCEPT) -source +management
 
 ## 防火墙规则日志记录 <a href="#logging_of_firewall_rules" id="logging_of_firewall_rules"></a>
 
-默认情况下，防火墙规则过滤流量的所有日志记录均已禁用。要启用日志记录，必须设置入站和/或出站流量的 `loglevel`，其位置为**防火墙** → **选项**。可以分别为宿主机以及虚拟机/容器防火墙设置。这样会启用 Proxmox VE 标准防火墙规则的日志记录，并可在**防火墙** → **日志**中查看输出。此外，标准规则只会记录部分被丢弃或拒绝的数据包（参见[默认防火墙规则](#pve_firewall_default_rules)）。
+默认情况下，防火墙规则过滤流量的所有日志记录均已禁用。要启用日志记录，必须设置入站和/或出站流量的 `loglevel`，其位置为<strong>防火墙</strong> → <strong>选项</strong>。可以分别为宿主机以及虚拟机/容器防火墙设置。这样会启用 Proxmox VE 标准防火墙规则的日志记录，并可在<strong>防火墙</strong> → <strong>日志</strong>中查看输出。此外，标准规则只会记录部分被丢弃或拒绝的数据包（参见[默认防火墙规则](#pve_firewall_default_rules)）。
 
 `loglevel` 不影响记录多少被过滤的流量。它会更改作为前缀附加到日志输出的 `LOGID`，以便过滤和后续处理。
 
@@ -754,7 +754,7 @@ VMID LOGID CHAIN TIMESTAMP POLICY: PACKET_DETAILS
 
 ### 用户定义防火墙规则的日志记录 <a href="#logging_of_user_defined_firewall_rules" id="logging_of_user_defined_firewall_rules"></a>
 
-要记录被用户定义防火墙规则过滤的数据包，可以为每条规则单独设置 log-level 参数。这支持精细的日志记录，并且独立于在 **防火墙** → **选项** 中为标准规则定义的日志级别。
+要记录被用户定义防火墙规则过滤的数据包，可以为每条规则单独设置 log-level 参数。这支持精细的日志记录，并且独立于在 <strong>防火墙</strong> → <strong>选项</strong> 中为标准规则定义的日志级别。
 
 每条规则的 `loglevel` 可以在创建或修改规则时通过 Web UI 轻松定义或更改，也可以通过相应的 `pvesh` API 调用设置。
 
@@ -856,7 +856,7 @@ NFQUEUE=0
 
 - 使用 Linux 网桥时，不会创建额外的防火墙网桥（fwbrX）。使用 OVS 网桥的客户机接口仍会有防火墙网桥。
 - 目前无法对客户机流量使用 REJECT（流量将被丢弃）。
-- 使用 `NDP`、`Router Advertisement` 或 `DHCP` 选项将 **始终** 创建防火墙规则，无论默认策略如何。
+- 使用 `NDP`、`Router Advertisement` 或 `DHCP` 选项将 <strong>始终</strong> 创建防火墙规则，无论默认策略如何。
 - 即使连接存在 conntrack 表条目，也会评估客户机防火墙规则。
 
 ### 安装与使用 <a href="#installation_and_usage" id="installation_and_usage"></a>
@@ -950,7 +950,7 @@ Environment="PVE_LOG=trace"
 
 这会在很短时间内生成大量日志，因此仅用于调试目的。其他详细程度较低的日志级别为 `info` 和 `debug`。
 
-为调试防火墙规则，跟踪数据包经过不同链的流程可能很有帮助。为要跟踪的数据包将 `nftrace` 设为 1 即可实现。建议不要为 **所有** 数据包设置此标志，以下示例仅检查 ICMP 数据包。
+为调试防火墙规则，跟踪数据包经过不同链的流程可能很有帮助。为要跟踪的数据包将 `nftrace` 设为 1 即可实现。建议不要为 <strong>所有</strong> 数据包设置此标志，以下示例仅检查 ICMP 数据包。
 
 ```text
 #!/usr/sbin/nft -f
@@ -979,7 +979,7 @@ table bridge tracebridge {
 上述示例跟踪所有网桥上的流量，客户机流量通常从这里经过。如果要检查宿主机流量，请在 `inet` 表中创建这些链，而不是 `bridge` 表。
 
 {% hint style="info" %}
-请注意，这可能生成 **大量** 无用日志，并显著降低网络协议栈的性能。
+请注意，这可能生成 <strong>大量</strong> 无用日志，并显著降低网络协议栈的性能。
 {% endhint %}
 
 可以运行以下命令移除跟踪规则：

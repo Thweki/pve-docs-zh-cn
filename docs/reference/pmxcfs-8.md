@@ -6,7 +6,7 @@ pmxcfs \- Proxmox 集群文件系统
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-**pmxcfs** `[OPTIONS]`
+<strong>pmxcfs</strong> `[OPTIONS]`
 
 帮助选项：
 
@@ -28,7 +28,7 @@ pmxcfs \- Proxmox 集群文件系统
 
 强制使用本地模式（忽略 corosync.conf，强制仲裁）
 
-通常使用 systemd 工具集启动和管理此服务。该服务称为 *pve-cluster*。
+通常使用 systemd 工具集启动和管理此服务。该服务称为 <em>pve-cluster</em>。
 
 ```text
 systemctl start pve-cluster

@@ -6,9 +6,9 @@ pveproxy \- PVE API 代理守护进程
 
 ## 概要 <a href="#synopsis" id="synopsis"></a>
 
-### **pveproxy** `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveproxy" id="cli_pveproxy"></a>
+### <strong>pveproxy</strong> `<COMMAND> [ARGS] [OPTIONS]` <a href="#cli_pveproxy" id="cli_pveproxy"></a>
 
-### **pveproxy help** `[OPTIONS]` <a href="#cli_pveproxy_help" id="cli_pveproxy_help"></a>
+### <strong>pveproxy help</strong> `[OPTIONS]` <a href="#cli_pveproxy_help" id="cli_pveproxy_help"></a>
 
 获取指定命令的帮助。
 
@@ -20,23 +20,23 @@ pveproxy \- PVE API 代理守护进程
 
 详细输出格式。
 
-### **pveproxy restart** <a href="#cli_pveproxy_restart" id="cli_pveproxy_restart"></a>
+### <strong>pveproxy restart</strong> <a href="#cli_pveproxy_restart" id="cli_pveproxy_restart"></a>
 
 重启守护进程（如果未运行则启动）。
 
-### **pveproxy start** `[OPTIONS]` <a href="#cli_pveproxy_start" id="cli_pveproxy_start"></a>
+### <strong>pveproxy start</strong> `[OPTIONS]` <a href="#cli_pveproxy_start" id="cli_pveproxy_start"></a>
 
 启动守护进程。
 
-**`--debug` `<boolean>`（*默认 \=* `0`）**
+**`--debug` `<boolean>`（<em>默认 \=</em> `0`）**
 
 调试模式，保持在前台运行
 
-### **pveproxy status** <a href="#cli_pveproxy_status" id="cli_pveproxy_status"></a>
+### <strong>pveproxy status</strong> <a href="#cli_pveproxy_status" id="cli_pveproxy_status"></a>
 
 获取守护进程状态。
 
-### **pveproxy stop** <a href="#cli_pveproxy_stop" id="cli_pveproxy_stop"></a>
+### <strong>pveproxy stop</strong> <a href="#cli_pveproxy_stop" id="cli_pveproxy_stop"></a>
 
 停止守护进程。
 
@@ -122,7 +122,7 @@ LISTEN_IP="fe80::c463:8cff:feb9:6a4e%vmbr0"
 ```
 
 {% hint style="warning" %}
-集群中的节点需要访问 `pveproxy` 进行通信，可能跨越不同子网。**不建议**在集群系统上设置 `LISTEN_IP`。
+集群中的节点需要访问 `pveproxy` 进行通信，可能跨越不同子网。<strong>不建议</strong>在集群系统上设置 `LISTEN_IP`。
 {% endhint %}
 
 要应用更改，需要重启节点，或完全重启 `pveproxy` 和 `spiceproxy` 服务：
