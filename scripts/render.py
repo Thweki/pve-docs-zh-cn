@@ -248,7 +248,7 @@ def write(path,text):
 def cell(value):
     return html.escape(str(value),quote=False).replace('|',r'\|').replace('\r','').replace('\n','<br>')
 
-def api_json(value,max_width=160):
+def api_json(value,max_width=320):
     """Format generated API JSON compactly without changing any JSON token.
 
     Keep larger containers indented, but fit small containers and adjacent simple

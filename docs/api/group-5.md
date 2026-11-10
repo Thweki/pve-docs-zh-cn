@@ -68,13 +68,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "poolid": {"format": "pve-poolid", "optional": 1, "type": "string", "typetext": "<string>"},
-    "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "requires": "poolid", "type": "string"}
-  }
-}
+{"additionalProperties": 0, "properties": {"poolid": {"format": "pve-poolid", "optional": 1, "type": "string", "typetext": "<string>"}, "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "requires": "poolid", "type": "string"}}}
 ```
 
 </details>
@@ -87,15 +81,8 @@
     "properties": {
       "comment": {"optional": 1, "type": "string"},
       "members": {
-        "items": {
-          "additionalProperties": 1,
-          "properties": {
-            "id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"},
-            "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}
-          },
-          "type": "object"
-        },
-        "optional": 1, "type": "array"
+        "items": {"additionalProperties": 1, "properties": {"id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"}, "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}}, "type": "object"}, "optional": 1,
+        "type": "array"
       },
       "poolid": {"type": "string"}
     },
@@ -132,12 +119,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "comment": {"optional": 1, "type": "string", "typetext": "<string>"}, "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}
-  }
-}
+{"additionalProperties": 0, "properties": {"comment": {"optional": 1, "type": "string", "typetext": "<string>"}, "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}}}
 ```
 
 </details>
@@ -182,16 +164,9 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "allow-move": {
-      "default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
-    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
-    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
-    "storage": {
-      "description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"
-    },
+    "allow-move": {"default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean", "typetext": "<boolean>"}, "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
+    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"}, "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
+    "storage": {"description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"},
     "vms": {"description": "要添加到此资源池或从中移除的客户机 VMID 列表。", "format": "pve-vmid-list", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }
@@ -273,12 +248,7 @@
 <summary>完整请求参数结构</summary>
 
 ```text
-{
-  "additionalProperties": 0,
-  "properties": {
-    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}, "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "type": "string"}
-  }
-}
+{"additionalProperties": 0, "properties": {"poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"}, "type": {"enum": ["qemu", "lxc", "storage"], "optional": 1, "type": "string"}}}
 ```
 
 </details>
@@ -291,15 +261,7 @@
   "properties": {
     "comment": {"optional": 1, "type": "string"},
     "members": {
-      "items": {
-        "additionalProperties": 1,
-        "properties": {
-          "id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"},
-          "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}
-        },
-        "type": "object"
-      },
-      "type": "array"
+      "items": {"additionalProperties": 1, "properties": {"id": {"type": "string"}, "node": {"type": "string"}, "storage": {"optional": 1, "type": "string"}, "type": {"enum": ["qemu", "lxc", "openvz", "storage"], "type": "string"}, "vmid": {"optional": 1, "type": "integer"}}, "type": "object"}, "type": "array"
     }
   },
   "type": "object"
@@ -340,16 +302,9 @@
 {
   "additionalProperties": 0,
   "properties": {
-    "allow-move": {
-      "default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean",
-      "typetext": "<boolean>"
-    },
-    "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
-    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"},
-    "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
-    "storage": {
-      "description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"
-    },
+    "allow-move": {"default": 0, "description": "即使客户机已位于其他资源池，也允许添加。客户机将从当前资源池移除并加入此资源池。", "optional": 1, "type": "boolean", "typetext": "<boolean>"}, "comment": {"optional": 1, "type": "string", "typetext": "<string>"},
+    "delete": {"default": 0, "description": "移除传入的 VMID 和/或存储 ID，而非添加。", "optional": 1, "type": "boolean", "typetext": "<boolean>"}, "poolid": {"format": "pve-poolid", "type": "string", "typetext": "<string>"},
+    "storage": {"description": "要添加到此资源池或从中移除的存储 ID 列表。", "format": "pve-storage-id-list", "optional": 1, "type": "string", "typetext": "<string>"},
     "vms": {"description": "要添加到此资源池或从中移除的客户机 VMID 列表。", "format": "pve-vmid-list", "optional": 1, "type": "string", "typetext": "<string>"}
   }
 }

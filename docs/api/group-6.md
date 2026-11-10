@@ -29,10 +29,8 @@ API 版本详情，包括部分全局数据中心配置。
 ```text
 {
   "properties": {
-    "console": {"description": "默认使用的控制台查看器。", "enum": ["applet", "vv", "html5", "xtermjs"], "optional": 1, "type": "string"},
-    "release": {"description": "当前 Proxmox VE 小版本，采用 `x.y` 格式。", "type": "string"},
-    "repoid": {"description": "构建此版本所用的简短 git 修订号。", "pattern": "[0-9a-fA-F]{8,64}", "type": "string"},
-    "version": {"description": "此节点的完整 pve-manager 软件包版本。", "type": "string"}
+    "console": {"description": "默认使用的控制台查看器。", "enum": ["applet", "vv", "html5", "xtermjs"], "optional": 1, "type": "string"}, "release": {"description": "当前 Proxmox VE 小版本，采用 `x.y` 格式。", "type": "string"},
+    "repoid": {"description": "构建此版本所用的简短 git 修订号。", "pattern": "[0-9a-fA-F]{8,64}", "type": "string"}, "version": {"description": "此节点的完整 pve-manager 软件包版本。", "type": "string"}
   },
   "type": "object"
 }
