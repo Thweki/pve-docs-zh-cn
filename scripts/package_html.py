@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import stat
+import tempfile
 import zipfile
 from pathlib import Path, PurePosixPath
 
@@ -48,9 +49,13 @@ def package_html(source: Path, output: Path, expected_index: str | None = None) 
         raise ValueError("Output ZIP must be outside the HTML resource directory")
     source_hashes = {path.relative_to(source).as_posix(): sha256(path) for path in files}
     output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(".tmp.zip")
+    # Create exclusively beside the destination: never truncate a predictable
+    # sibling (or follow its symlink), and keep replacement on one filesystem.
+    staging = tempfile.NamedTemporaryFile(dir=output.parent, prefix=f".{output.name}.",
+                                          suffix=".tmp", delete=False)
+    temporary = Path(staging.name)
     try:
-        with zipfile.ZipFile(temporary, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        with staging, zipfile.ZipFile(staging, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
             # Fixed timestamps and permissions make identical exports reproducible.
             top = zipfile.ZipInfo(PACKAGE + "/", date_time=(2026, 1, 1, 0, 0, 0))
             top.create_system = 3
