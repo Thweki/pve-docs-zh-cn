@@ -33,7 +33,7 @@ SNAPSHOT = 'source/upstream-snapshot.tar.gz'
 AUDIT = 'reports/source-package-audit.json'
 SNAPSHOT_MANIFEST = 'SOURCE-SNAPSHOT-MANIFEST.json'
 INPUT_DIRS = ('source/html', 'source/api', 'source/prepared', 'source/raw-assets')
-SOURCE_DIRS = ('docs', 'scripts', 'export-assets', 'fonts', 'LICENSES', '.github')
+SOURCE_DIRS = ('docs', 'scripts', 'tests', 'export-assets', 'fonts', 'LICENSES', '.github')
 REPORTS = ('images.json', 'verification.json', 'render.json',
            'translation-progress.json', 'independent-review.json',
            'export-verification.json')
