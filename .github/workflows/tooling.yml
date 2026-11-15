@@ -1,0 +1,37 @@
+name: Docs tooling
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  fast-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install tooling dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile Python without executing scripts
+        run: python -m compileall -q scripts tests
+      - name: Run unit tests and offline snapshot audit
+        run: python -m unittest discover -s tests -v
+      - name: Check offline JavaScript syntax
+        run: |
+          if [ -f export-assets/offline.js ]; then
+            node --check export-assets/offline.js
+          fi
