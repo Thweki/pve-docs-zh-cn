@@ -1,6 +1,7 @@
 """Render translated, structurally preserved HTML into GitBook-native Markdown."""
 from __future__ import annotations
 import argparse, collections, copy, hashlib, html, json, os, re, unicodedata
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
 from bs4 import BeautifulSoup, NavigableString
@@ -233,13 +234,19 @@ def manual_pages():
         FILE_DEFAULTS[path.name]=target;pages.append(page)
     return pages
 
+@lru_cache(maxsize=1024)
+def _fragment_text(text):
+    # Cache immutable text, keyed by restored HTML so edits cannot reuse stale
+    # results. API schemas repeat descriptions across many operations.
+    return BeautifulSoup(text,'html.parser').get_text()
+
 def schema_translated(x):
     if isinstance(x,list):return [schema_translated(v) for v in x]
     if not isinstance(x,dict):return x
     out={k:schema_translated(v) for k,v in x.items() if not (k.startswith('_') and k.endswith('_i18n'))}
     for field in ('description','verbose_description','title'):
         if x.get('_'+field+'_i18n'):
-            out[field]=BeautifulSoup(restore(x['_'+field+'_i18n']),'html.parser').get_text()
+            out[field]=_fragment_text(restore(x['_'+field+'_i18n']))
     return out
 
 def write(path,text):

@@ -49,3 +49,20 @@ check was separately verified to fail on the missing renderer. CI installs the
 repository's pinned export requirements, including pypdf 6.10.0.
 Automated workflow YAML parsing could not run locally because neither PyYAML nor
 the Node `yaml` package is installed; the workflow was inspected manually.
+
+## API fragment parse cache
+
+`python3 -m unittest discover -s tests -p test_render_parse_cache.py -v`
+requires BeautifulSoup and markdownify from `requirements.txt`. The four tests
+cover reuse across schema fields/calls, unchanged nested data, translation and
+fragment edits, and eviction at the 1,024-entry limit. The parse-count test fails
+against the original implementation (four parses instead of one).
+
+On the frozen API schema, a cold cache reduced HTML parses from 7,308 to 2,784
+(4,524 hits), with identical complete schema output. An isolated full render
+also matched all 72 Markdown files, the render report, and the anchor map byte
+for byte against the original implementation. No release files were rewritten.
+Local unittest discovery reported 21 tests OK and two PDF class skips because
+pypdf is unavailable; WeasyPrint is also absent. Full verification and HTML/EPUB
+export were not run because markdown-it-py, PyYAML and Pandoc are unavailable.
+Python compilation, offline JavaScript syntax and `git diff --check` passed.
