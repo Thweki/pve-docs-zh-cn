@@ -47,6 +47,20 @@ touch work/CHAPTER_LAYOUT_READY
 
 `reports/` 与导出报告记录文字、代码、图片、字体、链接、分页及复建检查。PDF 的超高表格采用保留完整字段内容的可分页排版。
 
+## 离线标题索引
+
+无需重建全书，即可按 `docs/SUMMARY.md` 的顺序列出各页和章节标题，或查询 API、命令及中文章节标题：
+
+```sh
+.venv/bin/python scripts/report_doc_index.py > /tmp/pve-doc-index.json
+.venv/bin/python scripts/report_doc_index.py --query 'GET /nodes'
+.venv/bin/python scripts/report_doc_index.py --docs docs --query '备份'
+```
+
+命令只读取文档，将 JSON 输出到标准输出；仅需 `requirements.txt`，不需要 Pandoc、PDF 工具或原始快照。索引包含导航标题、相对文档路径、目录深度（顶层为 0）、标题级别及离线 HTML 链接。`href` 相对于导出的 `builds/html/` 目录，使用与导出器一致的锚点；对应 HTML 必须由同一份文档构建。输出不含时间戳或绝对路径，便于保存和比较。
+
+`--query` 按标题文字进行不区分大小写的子串匹配，不搜索正文；页数和标题数仅统计匹配结果。无匹配时输出空索引并正常退出。索引仅覆盖导航中列出的页面，重复页面只收录一次；它不是完整性校验工具。导航文件缺失、页面不存在或路径越界时，命令报错并以非零状态退出，不输出部分 JSON。
+
 ## GitBook 与翻译更新
 
 `.gitbook.yaml` 指向 `docs/`；`gitbook-docs.yaml` 定义站点与稳定空间键；`docs/SUMMARY.md` 是导航来源。首次 Git Sync 方向选择 **GitHub → GitBook**。

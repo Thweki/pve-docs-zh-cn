@@ -10,12 +10,16 @@ The fixtures are synthetic; they do not require rebuilding the book or editing
 translation sources. All test inputs, styles and fonts are local. Tests use
 temporary directories and do not modify the fixtures or release reports.
 
-`test_doc_orphans.py` needs `requirements.txt`. It covers SUMMARY-rooted page
-reachability, shortest routes and incoming references, isolated cycles, actual
-Markdown/HTML links versus examples and metadata, encoded relative paths,
-symlink rejection, deterministic read-only JSON, and CLI exit statuses. Run it
-alone with `python3 -m unittest discover -s tests -p 'test_doc_orphans.py' -v`.
-
+- `test_doc_index.py` needs the Markdown tooling in `requirements.txt`. It
+  covers SUMMARY order/depth, Chinese and formatted titles, synthetic H1s,
+  duplicate headings, encoded links matching exported chapter IDs, title
+  filtering, deterministic read-only CLI output, and invalid/missing navigation.
+  It needs neither Pandoc nor a built book.
+- `test_doc_orphans.py` needs `requirements.txt`. It covers SUMMARY-rooted page
+  reachability, shortest routes and incoming references, isolated cycles, actual
+  Markdown/HTML links versus examples and metadata, encoded relative paths,
+  symlink rejection, deterministic read-only JSON, and CLI exit statuses. Run it
+  alone with `python3 -m unittest discover -s tests -p 'test_doc_orphans.py' -v`.
 - Preprocessing and section-text tests need `lxml`. They cover normal API tables,
   the 900/901-character and 14/15-line conversion boundaries, nested tables,
   captions, mixed header/data cells, footer rows, text after tables, details and
