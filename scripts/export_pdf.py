@@ -147,6 +147,7 @@ def prepare_html(source: Path, title: str, work: Path) -> tuple[str, dict]:
         header_rows = [r for r in rows if r.xpath('./th') and not r.xpath('./td')]
         headers = header_rows[-1].xpath('./th') if header_rows else []
         wrapper = html.Element('div', {'class': 'pdf-record-table'})
+        wrapper.tail = table.tail
         if table.get('id'):
             wrapper.set('id', table.get('id'))
         for caption in table.xpath('./caption'):
@@ -250,6 +251,42 @@ def sample_pages(reader, report: dict) -> dict[str, int]:
     return chosen
 
 
+def check_section_text(prepared: Path, page_texts: list[str], report: dict) -> None:
+    """Require each chapter's complete text, in order, on its own PDF pages.
+
+    Whitespace may change and page furniture/repeated table headers may be
+    inserted. A large neighbouring chapter or the TOC must not mask lost text.
+    The prepared HTML has already passed the source-text preservation check.
+    """
+    from lxml import html
+
+    tree = html.document_fromstring(prepared.read_text(encoding='utf-8'))
+    chapters = tree.xpath('//main[contains(concat(" ",normalize-space(@class)," ")," book-content ")]'
+                          '/section[contains(concat(" ",normalize-space(@class)," ")," book-chapter ")]')
+    targets = report['chapter_targets']
+    if not chapters or len(chapters) != len(targets):
+        raise AssertionError('Prepared chapters do not match PDF chapter targets')
+    starts = [report['chapter_pages'].get(target['id']) for target in targets]
+    if (any(not isinstance(page, int) or not 1 <= page <= len(page_texts) for page in starts)
+            or any(left >= right for left, right in zip(starts, starts[1:]))):
+        raise AssertionError('Missing or out-of-order PDF chapter pages')
+    checks = []
+    for chapter, target, start, end in zip(chapters, targets, starts, starts[1:] + [len(page_texts) + 1]):
+        expected = re.sub(r'\s+', '', text_content(chapter))
+        actual = re.sub(r'\s+', '', ''.join(page_texts[start - 1:end - 1]))
+        cursor = 0
+        for offset, character in enumerate(expected):
+            found = actual.find(character, cursor)
+            if found < 0:
+                raise AssertionError(
+                    f'PDF section {target["id"]!r} ({target["source"]}) lost or reordered text '
+                    f'on pages {start}-{end - 1}, near {expected[max(0, offset - 24):offset + 24]!r}')
+            cursor = found + 1
+        checks.append({'id': target['id'], 'first_page': start, 'last_page': end - 1,
+                       'characters_without_whitespace': len(expected), 'text_preserved_in_order': True})
+    report['section_text_checks'] = checks
+
+
 def qa_pdf(pdf: Path, work: Path, report: dict) -> None:
     from pypdf import PdfReader
 
@@ -293,6 +330,8 @@ def qa_pdf(pdf: Path, work: Path, report: dict) -> None:
     })
     if missing_fonts:
         raise AssertionError(f'PDF contains unembedded fonts: {missing_fonts}')
+    if not embedded_fonts:
+        raise AssertionError('PDF contains no embedded fonts')
     if any('Noto' not in name for name in embedded_fonts):
         raise AssertionError(f'PDF contains a non-approved fallback font: {embedded_fonts}')
     if '\ufffd' in combined:
@@ -301,6 +340,7 @@ def qa_pdf(pdf: Path, work: Path, report: dict) -> None:
         raise AssertionError('No Chinese text could be extracted from PDF')
     if report['extracted_characters_without_whitespace'] < report['source_characters_without_whitespace'] * .95:
         raise AssertionError('Extracted PDF text is substantially shorter than the complete source')
+    check_section_text(work / 'prepared.html', all_text, report)
     samples = sample_pages(reader, report)
     report['representative_pages'] = samples
     for label, page in samples.items():
