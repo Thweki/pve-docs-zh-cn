@@ -429,6 +429,29 @@ def attach_epub_licenses(path: Path, fonts: Path) -> None:
 
 
 def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool = True) -> dict:
+    """Validate a fresh export before replacing the managed HTML resource tree."""
+    output = output.resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".web-epub-", dir=output) as temporary:
+        staging = Path(temporary) / "export"
+        report = _build(docs, staging, with_epub, require_fonts)
+        web = output / "html"
+        previous = Path(temporary) / "previous-html"
+        if web.exists() or web.is_symlink():
+            web.replace(previous)
+        try:
+            (staging / "html").replace(web)
+        except BaseException:
+            if previous.exists() or previous.is_symlink():
+                previous.replace(web)
+            raise
+        for path in staging.iterdir():
+            if path.is_file():
+                path.replace(output / path.name)
+    return report
+
+
+def _build(docs: Path, output: Path, with_epub: bool, require_fonts: bool) -> dict:
     docs = docs.resolve()
     output.mkdir(parents=True, exist_ok=True)
     web = output / "html"
@@ -443,9 +466,8 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     assets = ROOT / "export-assets"
     for item in ("screen.css", "offline.js"):
         shutil.copy2(assets / item, web / item)
-    (web / "epub.css").unlink(missing_ok=True)
     if (docs / "assets").is_dir():
-        shutil.copytree(docs / "assets", web / "assets", dirs_exist_ok=True)
+        shutil.copytree(docs / "assets", web / "assets")
         source_assets = [path for path in (docs / "assets").rglob("*") if path.is_file()]
         for path in source_assets:
             target = web / path.relative_to(docs)
@@ -468,13 +490,13 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     if require_fonts and (not font_files or not (fonts / "OFL.txt").is_file()):
         raise ValueError("CJK fonts and export-assets/fonts/OFL.txt must be ready before export")
     if fonts.is_dir():
-        shutil.copytree(fonts, web / "fonts", dirs_exist_ok=True)
+        shutil.copytree(fonts, web / "fonts")
     if (ROOT / "LICENSE").is_file():
         shutil.copy2(ROOT / "LICENSE", web / "LICENSE.txt")
     if (ROOT / "NOTICE.md").is_file():
         shutil.copy2(ROOT / "NOTICE.md", web / "NOTICE.md")
     if (ROOT / "LICENSES").is_dir():
-        shutil.copytree(ROOT / "LICENSES", web / "LICENSES", dirs_exist_ok=True)
+        shutil.copytree(ROOT / "LICENSES", web / "LICENSES")
     content = "\n".join(chapter_html(page) for page in pages)
     toc = '<aside class="book-sidebar"><a class="book-brand" href="#' + pages[0].key + '">Proxmox VE <span>9.2.13 · 简体中文</span></a><label class="toc-search">筛选目录<input id="toc-filter" type="search" placeholder="章节名称" autocomplete="off"></label><nav aria-label="全书目录"><ol>'
     for page in pages:
