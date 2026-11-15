@@ -119,10 +119,15 @@ def main():
     if technical_schema(api_schema)!=technical_schema(schema_translated(api_schema)):
         errors.append('API technical schema changed during translation')
     # Every book page must be reachable through the canonical GitBook summary.
-    summary=(DOCS/'SUMMARY.md').read_text()
+    summary=BeautifulSoup(md.render((DOCS/'SUMMARY.md').read_text()),'html.parser')
+    summary_targets=set()
+    for link in summary.select('a[href]'):
+        parsed=urlsplit(link['href'])
+        if parsed.scheme or parsed.netloc or not parsed.path:continue
+        summary_targets.add((DOCS/unquote(parsed.path)).resolve())
     for file in files:
         if file.name=='SUMMARY.md':continue
-        if file.relative_to(DOCS).as_posix() not in summary:errors.append('not in SUMMARY: '+file.relative_to(DOCS).as_posix())
+        if file.resolve() not in summary_targets:errors.append('not in SUMMARY: '+file.relative_to(DOCS).as_posix())
     review=[]
     for key,value in TRANSLATIONS.items():
         plain=re.sub(r'⟦\d+⟧','',value)
