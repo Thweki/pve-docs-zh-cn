@@ -33,7 +33,7 @@ SNAPSHOT = 'source/upstream-snapshot.tar.gz'
 AUDIT = 'reports/source-package-audit.json'
 SNAPSHOT_MANIFEST = 'SOURCE-SNAPSHOT-MANIFEST.json'
 INPUT_DIRS = ('source/html', 'source/api', 'source/prepared', 'source/raw-assets')
-SOURCE_DIRS = ('docs', 'scripts', 'export-assets', 'fonts', 'LICENSES', '.github')
+SOURCE_DIRS = ('docs', 'scripts', 'tests', 'export-assets', 'fonts', 'LICENSES', '.github')
 REPORTS = ('images.json', 'verification.json', 'render.json',
            'translation-progress.json', 'independent-review.json',
            'export-verification.json')
@@ -260,6 +260,24 @@ def select_sources(root: Path) -> list[Path]:
     return result
 
 
+def validate_fonts(root: Path) -> dict:
+    """Verify the shared export font/license inventory against its manifest."""
+    fonts = root / 'export-assets/fonts'
+    font_manifest = json.loads((fonts / 'FONT-SOURCES.json').read_text())
+    for name, record in font_manifest['files'].items():
+        safe_name(name)
+        path = (fonts / name).resolve()
+        if not path.is_relative_to(fonts.resolve()):
+            raise ValueError('Bundled font/license outside font directory: ' + name)
+        data = path.read_bytes()
+        if sha256(data) != record['sha256'] or len(data) != record['bytes']:
+            raise ValueError('Bundled font/license hash mismatch: ' + name)
+    return {'files_verified': len(font_manifest['files']),
+            'manifest': 'export-assets/fonts/FONT-SOURCES.json',
+            'license': font_manifest['license'],
+            'verified_entries': sorted(font_manifest['files'])}
+
+
 def validate_licenses_and_fonts(root: Path) -> dict:
     license_path = root / 'LICENSES/AGPL-3.0.txt'
     license_data = license_path.read_bytes()
@@ -276,22 +294,12 @@ def validate_licenses_and_fonts(root: Path) -> dict:
         if len(data) < minimum or b'GNU GENERAL PUBLIC LICENSE' not in data or b'END OF TERMS AND CONDITIONS' not in data:
             raise ValueError('The complete official GPL text is required: ' + name)
         gpl.append({'path': name, 'source_url': url, 'bytes': len(data), 'sha256': sha256(data)})
-    fonts = root / 'export-assets/fonts'
-    font_manifest = json.loads((fonts / 'FONT-SOURCES.json').read_text())
-    for name, record in font_manifest['files'].items():
-        safe_name(name)
-        data = (fonts / name).read_bytes()
-        if sha256(data) != record['sha256'] or len(data) != record['bytes']:
-            raise ValueError('Bundled font/license hash mismatch: ' + name)
     return {
         'agpl': {'path': 'LICENSES/AGPL-3.0.txt',
                  'source_url': 'https://www.gnu.org/licenses/agpl-3.0.txt',
                  'bytes': len(license_data), 'sha256': sha256(license_data)},
         'gpl': gpl,
-        'fonts': {'files_verified': len(font_manifest['files']),
-                  'manifest': 'export-assets/fonts/FONT-SOURCES.json',
-                  'license': font_manifest['license'],
-                  'verified_entries': sorted(font_manifest['files'])},
+        'fonts': validate_fonts(root),
     }
 
 

@@ -22,7 +22,6 @@ import shutil
 import subprocess
 import tempfile
 import zipfile
-from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
@@ -31,6 +30,9 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from markdown_it import MarkdownIt
 import yaml
+
+from offline_resources import audit_html
+from package_source import validate_fonts
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "9.2.13"
@@ -272,33 +274,6 @@ def document(content: str, css: str, extra: str = "", scripts: bool = False) -> 
             + ('<script src="offline.js" defer></script>' if scripts else '') + '</body></html>\n')
 
 
-def audit_html(text: str, base: Path) -> dict:
-    soup = BeautifulSoup(text, "html.parser")
-    ids = Counter(tag["id"] for tag in soup.select("[id]"))
-    errors = [f"Duplicate ID {key}" for key, count in ids.items() if count != 1]
-    links = 0
-    for link in soup.select("a[href]"):
-        href = link["href"]
-        if href.startswith("#"):
-            links += 1
-            if unquote(href[1:]) not in ids:
-                errors.append(f"Broken single-page anchor {href}")
-        elif urlsplit(href).path.endswith(".md"):
-            errors.append(f"Unrewritten Markdown link {href}")
-    for tag in soup.select("img[src], link[href], script[src]"):
-        raw = tag.get("src") or tag.get("href")
-        if urlsplit(raw).scheme or raw.startswith("//"):
-            if not raw.startswith("data:"):
-                errors.append(f"Remote dependency {raw}")
-        elif not (base / unquote(urlsplit(raw).path)).is_file():
-            errors.append(f"Missing packaged dependency {raw}")
-    if errors:
-        raise ValueError("\n".join(errors[:40]))
-    return {"chapters": len(soup.select("section.book-chapter")), "headings": len(soup.select("h1,h2,h3,h4,h5,h6")),
-            "ids": len(ids), "internal_links": links, "images": len(soup.select("img")),
-            "tables": len(soup.select("table")), "code_blocks": len(soup.select("pre")), "hints": len(soup.select(".hint"))}
-
-
 def audit_source_content(pages: list[Page], docs: Path) -> dict:
     """Independent plain CommonMark baseline catches parser-context regressions."""
     baseline_md = MarkdownIt("commonmark", {"html": True}).enable(["table", "strikethrough"])
@@ -429,6 +404,8 @@ def attach_epub_licenses(path: Path, fonts: Path) -> None:
 
 
 def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool = True) -> dict:
+    if require_fonts:
+        validate_fonts(ROOT)
     docs = docs.resolve()
     output.mkdir(parents=True, exist_ok=True)
     web = output / "html"
@@ -457,7 +434,7 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
         for tag in page.soup.select("[href], [src]"):
             raw = tag.get("src") or tag.get("href") or ""
             parsed = urlsplit(raw)
-            if not parsed.scheme and parsed.path and not raw.startswith("#"):
+            if not parsed.scheme and not parsed.netloc and parsed.path and not raw.startswith("#"):
                 source = docs / unquote(parsed.path)
                 if source.is_file() and not source.is_relative_to(docs / "assets"):
                     destination = web / source.relative_to(docs)
@@ -498,7 +475,7 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     for tag in export_soup.select("[href], [src], [poster]"):
         for attr in ("href", "src", "poster"):
             raw = tag.get(attr)
-            if raw and not raw.startswith("#") and not urlsplit(raw).scheme and not raw.startswith("html/"):
+            if raw and not raw.startswith("#") and not urlsplit(raw).scheme and not urlsplit(raw).netloc and not raw.startswith("html/"):
                 tag[attr] = "html/" + raw
     exported = str(export_soup)
     (output / "book-export.html").write_text(exported, encoding="utf-8")
