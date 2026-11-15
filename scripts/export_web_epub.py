@@ -133,6 +133,7 @@ class Page:
     soup: BeautifulSoup
     aliases: dict[str, str] = field(default_factory=dict)
     headings: list[dict] = field(default_factory=list)
+    alias_targets: dict[str, list[str]] = field(default_factory=dict)
 
 
 def summary_pages(docs: Path) -> list[Page]:
@@ -169,6 +170,15 @@ def namespace(page: Page) -> None:
         headings.insert(0, heading)
     used: set[str] = set()
 
+    def alias(original: str, target: str) -> None:
+        # Preserve first-match export behavior, but retain competing targets
+        # for the read-only cross-reference report. Repeated aliases on the
+        # same heading (e.g. explicit ID == title slug) are not ambiguous.
+        page.aliases.setdefault(original, target)
+        targets = page.alias_targets.setdefault(original, [])
+        if target not in targets:
+            targets.append(target)
+
     def unique(original: str) -> str:
         base = page.key + "--" + original
         target = base
@@ -194,7 +204,7 @@ def namespace(page: Page) -> None:
         used.add(target)
         heading["id"] = target
         for old in originals + [slug(title)]:
-            page.aliases.setdefault(old, target)
+            alias(old, target)
         for anchor in anchors:
             anchor.attrs.pop("id", None)
             anchor.attrs.pop("name", None)
@@ -206,11 +216,12 @@ def namespace(page: Page) -> None:
             continue
         old = element.get("id") or element.get("name")
         target = unique(old)
-        page.aliases.setdefault(old, target)
+        alias(old, target)
         element["id"] = target
         element.attrs.pop("name", None)
     # A page top alias is useful for README links and links to the original H1.
     page.aliases[""] = page.key
+    page.alias_targets[""] = [page.key]
 
 
 def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
