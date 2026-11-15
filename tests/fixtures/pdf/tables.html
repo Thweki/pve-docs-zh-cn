@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><title>预处理测试</title><style>body { display: none }</style></head>
+<body>
+<main class="book-content">
+<section class="book-chapter" data-source="fixture/tables">
+<h1 id="fixture-tables">表格预处理</h1>
+<table id="parameters">
+<thead><tr><th>参数</th><th>定义与说明</th></tr></thead>
+<tbody><tr><td><code>node</code></td><td>节点名称</td></tr></tbody>
+</table>
+<table id="long-code">
+<caption>多行代码表</caption>
+<thead><tr><th colspan="2">完整字段</th></tr><tr><th>名称</th><th>内容</th></tr></thead>
+<tbody><tr><th>配置</th><td><pre><code>line01
+line02
+line03
+line04
+line05
+line06
+line07
+line08
+line09
+line10
+line11
+line12
+line13
+line14
+line15</code></pre></td></tr></tbody>
+<tfoot><tr><td>末行</td><td>页脚字段必须保留</td></tr></tfoot>
+</table>表格后的直接文本不能丢失。
+<table id="nested">
+<thead><tr><th>外层标题</th></tr></thead>
+<tbody><tr><td>嵌套前<table id="inner"><tr><td>内部单元格</td></tr></table>嵌套后</td></tr></tbody>
+</table>
+<details><summary>展开说明</summary><p>折叠内容必须保留 <strong>强调</strong>。</p></details>
+</section>
+<section class="book-chapter" data-source="fixture/ending">
+<h1>最后一节</h1><p>独立章节结尾标记 ZEBRA-END。</p>
+</section>
+</main>
+<script>throw new Error('must not run')</script>
+</body>
+</html>
