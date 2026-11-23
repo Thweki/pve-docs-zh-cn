@@ -1,6 +1,6 @@
-# Proxmox VE 中文文档
+# Proxmox VE（PVE）简体中文文档
 
-Proxmox VE **9.2.13** 官方文档的非官方简体中文译本。原文日期为 2026 年 9 月 24 日，源快照获取于 2026 年 11 月 10 日。
+Proxmox VE（PVE）**9.2.13** 官方文档的非官方简体中文译本。原文日期为 2026 年 9 月 24 日，源快照获取于 2026 年 11 月 10 日。
 
 - **管理手册 29 章**：每章与全部子节同页，章内跳转。
 - **命令、服务与配置参考 29 篇**：每篇完整同页。
@@ -8,6 +8,14 @@ Proxmox VE **9.2.13** 官方文档的非官方简体中文译本。原文日期�
 - 原始图片、代码、表格、提示框、注释与引用关系均有完整性校验。
 
 [GitBook 在线阅读](https://thweki.gitbook.io/pve-docs-zh-cn/) · [离线下载（v9.2.13-zh.3）](https://github.com/Thweki/pve-docs-zh-cn/releases/tag/v9.2.13-zh.3)提供 EPUB、完整 PDF、单页离线 HTML 与可重建源码。HTML、EPUB 中每章的子节也连续显示。译文由 AI 辅助完成，未经 Proxmox 官方审核；截图及命令示例保持原值。
+
+## 常用章节
+
+- [PVE 安装与升级](https://thweki.gitbook.io/pve-docs-zh-cn/guide/02-installation)
+- [PVE 集群管理（pvecm、Corosync 与仲裁）](https://thweki.gitbook.io/pve-docs-zh-cn/guide/05-pvecm)
+- [PVE 存储（ZFS、LVM、Ceph 与 NFS）](https://thweki.gitbook.io/pve-docs-zh-cn/guide/07-storage)
+- [PVE 防火墙与 IPSet](https://thweki.gitbook.io/pve-docs-zh-cn/guide/13-pve-firewall)
+- [PVE 备份与恢复（vzdump）](https://thweki.gitbook.io/pve-docs-zh-cn/guide/16-vzdump)
 
 [发布维护工具与原下载仓库的 Git 历史](archive/releases/README.md)。
 

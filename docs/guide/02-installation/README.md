@@ -1,3 +1,7 @@
+---
+description: "查阅 PVE 安装要求，了解如何使用 Proxmox VE ISO 安装系统，以及在 Debian 上安装和升级时的注意事项。"
+---
+
 # 2\. 安装 Proxmox VE <a href="#chapter_installation" id="chapter_installation"></a>
 
 Proxmox VE 基于 Debian GNU/Linux。Proxmox 提供的安装磁盘映像（ISO 文件）包含完整的 Debian 系统以及所有必要的 Proxmox VE 软件包。

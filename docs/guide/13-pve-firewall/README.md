@@ -1,3 +1,7 @@
+---
+description: "查阅 PVE 防火墙配置，了解数据中心、节点和虚拟机规则，以及安全组、别名和 IPSet 的用法。"
+---
+
 # 13\. Proxmox VE 防火墙 <a href="#chapter_pve_firewall" id="chapter_pve_firewall"></a>
 
 Proxmox VE 防火墙提供了一种简单的方法来保护您的 IT 基础设施。可以为集群内的所有宿主机设置防火墙规则，或为虚拟机和容器定义规则。防火墙宏、安全组、IP 集合和别名等功能有助于简化此任务。
