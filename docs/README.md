@@ -16,7 +16,7 @@
 ## 开源与离线阅读
 
 - [完整源码、译文映射与构建脚本](https://github.com/Thweki/pve-docs-zh-cn)
-- [EPUB、PDF、离线 HTML 与源码版本下载](https://github.com/Thweki/pve-docs-zh-cn-releases/releases)
+- [EPUB、PDF、离线 HTML 与源码版本下载](https://github.com/Thweki/pve-docs-zh-cn/releases)
 
 ## 版本与来源
 

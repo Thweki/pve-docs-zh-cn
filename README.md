@@ -7,7 +7,9 @@ Proxmox VE **9.2.13** 官方文档的非官方简体中文译本。原文日期�
 - **680 个 API 操作**：按 6 个资源组整组同页，保留参数、约束、权限和返回结构。
 - 原始图片、代码、表格、提示框、注释与引用关系均有完整性校验。
 
-[GitBook 在线阅读](https://thweki.gitbook.io/pve-docs-zh-cn/) · [公开版本下载](https://github.com/Thweki/pve-docs-zh-cn-releases/releases)提供 EPUB、完整 PDF、单页离线 HTML 与可重建源码。HTML、EPUB 中每章的子节也连续显示。译文由 AI 辅助完成，未经 Proxmox 官方审核；截图及命令示例保持原值。
+[GitBook 在线阅读](https://thweki.gitbook.io/pve-docs-zh-cn/) · [公开版本下载](https://github.com/Thweki/pve-docs-zh-cn/releases)提供 EPUB、完整 PDF、单页离线 HTML 与可重建源码。HTML、EPUB 中每章的子节也连续显示。译文由 AI 辅助完成，未经 Proxmox 官方审核；截图及命令示例保持原值。
+
+[发布维护工具与原下载仓库的 Git 历史](archive/releases/README.md)。
 
 ## 从公开源码离线重建
 

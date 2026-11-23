@@ -1,0 +1,19 @@
+name: Validate metadata
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate metadata and run tests (offline)
+        run: |
+          python3 scripts/validate_metadata.py
+          python3 -m unittest discover -s tests -v

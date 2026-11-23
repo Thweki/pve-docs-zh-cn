@@ -1,9 +1,8 @@
 # Release attachment checks in the source repository
 
-This is the first, additive consolidation step. It makes the existing offline
-attachment checks available from `Thweki/pve-docs-zh-cn`; it does not publish a
-release, move assets or tags, archive the old repository, redirect download
-links, or change GitBook configuration.
+The source repository publishes the [downloadable editions](https://github.com/Thweki/pve-docs-zh-cn/releases).
+The [archived release tools](../archive/releases/README.md) include release
+notes, metadata, manifests, and directory listings.
 
 ## Check attachment metadata
 
@@ -51,7 +50,7 @@ release checks. These helpers do not replace those checks.
 ## Origin and unchanged notices
 
 The following files are copied byte-for-byte from
-[`Thweki/pve-docs-zh-cn-releases` at `d780a83912763ea0807fb667a1b72939cd44d03b`](https://github.com/Thweki/pve-docs-zh-cn-releases/tree/d780a83912763ea0807fb667a1b72939cd44d03b):
+the old release repository at `d780a83912763ea0807fb667a1b72939cd44d03b`, available in the [Git bundle](../archive/releases/pve-docs-zh-cn-releases.bundle):
 
 - `scripts/check_release_assets.py` (Git blob `c554d01d96add9524e64043b29f324dde482c5bf`)
 - `scripts/verify_checksums.py` (Git blob `6cd63cab5995a3c81c1be0be780bcb896a689a85`)
@@ -65,14 +64,3 @@ AGPL-3.0-or-later. See [the unchanged notice](../NOTICE.md) and
 [the existing AGPL text](../LICENSES/AGPL-3.0.txt). This migration does not
 substitute licenses or change upstream/document/font notices.
 
-## Deferred publication gates
-
-- Preserve all existing releases, assets, old download links and historic tags.
-- Do not rewrite the historic `v9.2.13-zh.2` tag.
-- Resolve the known incomplete/malformed root GFDL text through a separate,
-  reviewed correction. This helper migration does not repair or alter `LICENSE`.
-- Build and verify the first release in the source repository, including actual
-  attachment contents and license/package checks, before switching download
-  documentation or GitBook references.
-- Archive the old release repository only after the verified replacement and
-  preservation checks. No archival or automatic publishing is implemented here.
