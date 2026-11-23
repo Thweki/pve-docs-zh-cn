@@ -1,6 +1,6 @@
 # 目录
 
-- [Proxmox VE 中文文档](README.md "首页")
+- [Proxmox VE（PVE）简体中文文档](README.md "首页")
 - [管理手册](guide/README.md)
   - [1. 简介](guide/01-introduction/README.md)
   - [2. 安装 Proxmox VE](guide/02-installation/README.md)

@@ -1,3 +1,7 @@
+---
+description: "了解如何用 pvecm 创建和管理 PVE 集群，配置 Corosync 网络，以及检查集群状态和仲裁票数。"
+---
+
 # 5\. 集群管理器 <a href="#chapter_pvecm" id="chapter_pvecm"></a>
 
 Proxmox VE 集群管理器 `pvecm` 是一个用于创建物理服务器组的工具。这样的组称为<strong>集群</strong>。我们使用 [Corosync Cluster Engine](http://www.corosync.org) 实现可靠的组通信。集群中的节点数量没有明确限制。在实践中，实际可支持的节点数量可能受宿主机和网络性能限制。目前（2021 年），已有报告称，使用高端企业级硬件的集群在生产环境中运行了超过 50 个节点。

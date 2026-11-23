@@ -1,3 +1,7 @@
+---
+description: "了解 PVE 的存储配置与后端选择，包括目录、LVM、ZFS、NFS、Ceph RBD 和 CephFS。"
+---
+
 # 7\. Proxmox VE 存储 <a href="#chapter_storage" id="chapter_storage"></a>
 
 Proxmox VE 存储模型非常灵活。虚拟机镜像可以存储在一个或多个本地存储上，也可以存储在 NFS 或 iSCSI（NAS、SAN）等共享存储上。没有任何限制，您可以根据需要配置任意数量的存储池。您可以使用 Debian Linux 可用的所有存储技术。

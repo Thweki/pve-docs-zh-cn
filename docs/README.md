@@ -1,6 +1,10 @@
-# Proxmox VE 中文文档
+---
+description: "查阅 Proxmox VE（PVE）9.2.13 非官方简体中文文档，包含安装、集群、存储、备份和 API 参考，提供 PDF、EPUB 与离线 HTML 下载。"
+---
 
-本书是 [Proxmox VE 官方文档](https://pve.proxmox.com/pve-docs/)的非官方简体中文译本，基于 **9.2.13** 版本，原文日期 **2026 年 9 月 24 日**，获取日期 **2026 年 11 月 10 日**。
+# Proxmox VE（PVE）简体中文文档
+
+本书是 [Proxmox VE（PVE）官方文档](https://pve.proxmox.com/pve-docs/)的非官方简体中文译本，基于 **9.2.13** 版本。提供 PDF、EPUB 和离线 HTML 下载。原文日期为 **2026 年 9 月 24 日**，获取日期为 **2026 年 11 月 10 日**。
 
 中文译文已完成自动完整性与格式校验。译文由 AI 辅助生成；尚未经 Proxmox 官方审核。原始命令、配置、参数、链接及截图保持原值。截图中的英文界面文字按原图保留。
 

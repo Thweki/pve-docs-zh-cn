@@ -11,6 +11,15 @@ from translate import validate
 ROOT=Path(__file__).resolve().parents[1]
 DOCS=ROOT/'docs'
 BASE='https://pve.proxmox.com/pve-docs/'
+HOME_TITLE = 'Proxmox VE（PVE）简体中文文档'
+PAGE_DESCRIPTIONS = {
+    'README.md': '查阅 Proxmox VE（PVE）9.2.13 非官方简体中文文档，包含安装、集群、存储、备份和 API 参考，提供 PDF、EPUB 与离线 HTML 下载。',
+    'guide/02-installation/README.md': '查阅 PVE 安装要求，了解如何使用 Proxmox VE ISO 安装系统，以及在 Debian 上安装和升级时的注意事项。',
+    'guide/05-pvecm/README.md': '了解如何用 pvecm 创建和管理 PVE 集群，配置 Corosync 网络，以及检查集群状态和仲裁票数。',
+    'guide/07-storage/README.md': '了解 PVE 的存储配置与后端选择，包括目录、LVM、ZFS、NFS、Ceph RBD 和 CephFS。',
+    'guide/13-pve-firewall/README.md': '查阅 PVE 防火墙配置，了解数据中心、节点和虚拟机规则，以及安全组、别名和 IPSet 的用法。',
+    'guide/16-vzdump/README.md': '了解如何使用 vzdump 备份和恢复 PVE 虚拟机与容器，配置定时备份、备份模式和保留策略。',
+}
 UNITS=json.loads((ROOT/('work/units.json' if (ROOT/'work/units.json').exists() else 'translations/units.json')).read_text())
 TRANSLATIONS=json.loads((ROOT/'translations/zh-CN.json').read_text()) if (ROOT/'translations/zh-CN.json').exists() else {}
 if (ROOT/'work/translations.jsonl').exists():
@@ -249,8 +258,14 @@ def schema_translated(x):
             out[field]=_fragment_text(restore(x['_'+field+'_i18n']))
     return out
 
-def write(path,text):
-    full=DOCS/path;full.parent.mkdir(parents=True,exist_ok=True);full.write_text(text.rstrip()+'\n')
+def write(path, text):
+    description = PAGE_DESCRIPTIONS.get(Path(path).as_posix())
+    if description:
+        value = json.dumps(description, ensure_ascii=False)
+        text = f'---\ndescription: {value}\n---\n\n{text}'
+    full = DOCS / path
+    full.parent.mkdir(parents=True, exist_ok=True)
+    full.write_text(text.rstrip() + '\n', encoding='utf-8')
 
 def cell(value):
     return html.escape(str(value),quote=False).replace('|',r'\|').replace('\r','').replace('\n','<br>')
@@ -379,9 +394,9 @@ def main():
         text+='\n\n---\n\n来源：[Proxmox VE 官方文档]('+BASE+page['source']+') · 版本 9.2.13 · 非官方中文翻译。'
         write(page['path'],text)
     state='翻译校验预览：仍含未完成翻译的原文。' if missing else '中文译文已完成自动完整性与格式校验。'
-    intro=f'''# Proxmox VE 中文文档
+    intro=f'''# {HOME_TITLE}
 
-本书是 [Proxmox VE 官方文档]({BASE})的非官方简体中文译本，基于 **9.2.13** 版本，原文日期 **2026 年 9 月 24 日**，获取日期 **2026 年 11 月 10 日**。
+本书是 [Proxmox VE（PVE）官方文档]({BASE})的非官方简体中文译本，基于 **9.2.13** 版本。提供 PDF、EPUB 和离线 HTML 下载。原文日期为 **2026 年 9 月 24 日**，获取日期为 **2026 年 11 月 10 日**。
 
 {state}译文由 AI 辅助生成；尚未经 Proxmox 官方审核。原始命令、配置、参数、链接及截图保持原值。截图中的英文界面文字按原图保留。
 
@@ -408,7 +423,7 @@ def main():
     write(Path('README.md'),intro)
     write(Path('guide/README.md'),'# 管理手册\n\n'+'\n'.join(f'- [{c["title"]}]({relpath(c["path"],Path("guide/README.md"))})' for c in chapters))
     write(Path('reference/README.md'),'# 命令与配置参考\n\n'+'\n'.join(f'- [{c["title"]}]({relpath(c["path"],Path("reference/README.md"))})' for c in manuals))
-    summary=['# 目录\n','- [Proxmox VE 中文文档](README.md "首页")','- [管理手册](guide/README.md)']
+    summary=['# 目录\n',f'- [{HOME_TITLE}](README.md "首页")','- [管理手册](guide/README.md)']
     for c in chapters:
         summary.append(f'  - [{c["title"]}]({c["path"]})')
         for child in c.get('children',[]):summary.append(f'    - [{child["title"]}]({child["path"]})')
