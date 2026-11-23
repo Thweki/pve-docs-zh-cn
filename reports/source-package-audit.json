@@ -1397,86 +1397,16 @@
   },
   "package": {
     "path": "builds/Proxmox-VE-9.2.13-zh-CN-source.zip",
-    "bytes": 58759775,
-    "sha256": "4880ad46ee1969d8a9102fd265e3d7043ef78aed4bca1772eeb3732f3177b94b",
-    "file_count": 224,
+    "bytes": 58861422,
+    "sha256": "f521bca5908875ae1c0a3453e468c52ea3e5cc382bc0749ab1e1747467438ca6",
+    "file_count": 263,
     "crc_verified": true,
     "manifest_path": "Proxmox-VE-9.2.13-zh-CN-source/SOURCE-PACKAGE-MANIFEST.json"
   },
   "package_findings": [],
-  "cold_rebuild": {
+  "offline_rebuild": {
     "status": "passed",
-    "root": "tmp/source-rebuild",
-    "input_translation_units": 11508,
-    "copied_work_cache_files": 0,
-    "initial_work_directory_empty": true,
-    "network_and_subprocess_guard": true,
-    "steps": [
-      {
-        "script": "render.py",
-        "returncode": 0,
-        "seconds": 4.26,
-        "stdout": "{\"translation_units\": 11508, \"translated_units\": 11508, \"missing_units\": 0, \"guide_pages\": 29, \"manuals\": 29, \"api_operations\": 680, \"pages\": 72}",
-        "stderr": ""
-      },
-      {
-        "script": "verify.py",
-        "returncode": 0,
-        "seconds": 4.1,
-        "stdout": "{\"passed\": true, \"mode\": \"release\", \"pages\": 72, \"translation_units\": 11508, \"valid_translations\": 11508, \"missing_translations\": 0, \"original_code_blocks\": 1249, \"rendered_original_code_blocks\": 1249, \"tables\": 429, \"hints\": 751, \"image_occurrences\": 164, \"unique_original_assets\": 108, \"local_links_checked\": 6318}",
-        "stderr": ""
-      }
-    ],
-    "seconds": 8.38,
-    "renderer_sha256": "6d6205dde4803e16b791bff8ce192c3e60d90981c60127e7c85e1d65994ad523",
-    "verifier_sha256": "2042fcfc3a83e015fcc074d8e5fa6ea154ec2b1f1ff0893a35bd95f459e60903",
-    "inputs_sha256": {
-      "scripts/render.py": "6d6205dde4803e16b791bff8ce192c3e60d90981c60127e7c85e1d65994ad523",
-      "scripts/verify.py": "2042fcfc3a83e015fcc074d8e5fa6ea154ec2b1f1ff0893a35bd95f459e60903",
-      "scripts/translate.py": "cd0b9616330bd521f7f63aad3c65809bee9846918922adaa276e2b6b7cfab18c",
-      "translations/units.json": "0cddaf73734b646b1773e1649b1486be5a52d2ee83d8936f65fa66d7da75d820",
-      "translations/zh-CN.json": "3d2694ac74a9c231dff6d3ddcae2680c808331d1a6cc12b2b83a992bc8c239ca",
-      "source/upstream-snapshot.tar.gz": "c27c547fc508f7768d48af7df5bf323e105d7bdbd74d67da8d9c4c8271cc7e7b",
-      "source/manifest.json": "65c684bf04f1b619a71d81b5d494108f8182af9233e00a9f9332609027fc2316",
-      "source/assets-manifest.json": "4c3a737d06d4b5e99b0df69e0b037aa94d48c3808e18f841e1eca206e59b9b17",
-      "docs/glossary.md": "5cda0eb6c6a9965aa102ddc6d037502b61875952de1f95454a9089773722d6d5",
-      "docs/copyright.md": "4a8c6695414877b952ff5c4e9c35697b22eb3650ff328a69c9353d43d06e8543",
-      "docs/license-original.md": "051d822c236181f3f4ec11d2af0b264ac3ea473731ff24692e9d692c5a2435e5"
-    },
-    "verification": {
-      "passed": true,
-      "mode": "release",
-      "pages": 72,
-      "translation_units": 11508,
-      "valid_translations": 11508,
-      "missing_translations": 0,
-      "original_code_blocks": 1249,
-      "rendered_original_code_blocks": 1249,
-      "tables": 429,
-      "hints": 751,
-      "image_occurrences": 164,
-      "unique_original_assets": 108,
-      "local_links_checked": 6318,
-      "errors": [],
-      "warnings": [],
-      "english_prose_for_review": []
-    },
-    "markdown_files_compared": 72,
-    "main_docs_byte_identical": true,
-    "markdown_differences": []
-  },
-  "archive_verification": {
-    "release": "9.2.13-zh.2",
-    "zip_entries": 224,
-    "outer_file_hashes_verified": 223,
-    "nested_source_hashes_verified": 267,
-    "crc_verified": true,
-    "unsafe_or_excluded_entries": 0,
-    "source_publication_excluded": true,
-    "public_gitbook_url_in_readme": true,
-    "final_v2_export_verification_included": true,
-    "width320_cold_evidence_inputs_verified_against_archive": true,
-    "runtime_source_files_unchanged_after_packaging": true,
-    "sha256": "4880ad46ee1969d8a9102fd265e3d7043ef78aed4bca1772eeb3732f3177b94b"
+    "evidence_path": "reports/source-rebuild-evidence.json",
+    "evidence_sha256": "9db83d33b30f13d4675ed85a0970fae7523f6a239d35ca4bc483d4fd1c7fb59b"
   }
 }

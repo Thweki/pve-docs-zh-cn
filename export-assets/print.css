@@ -131,7 +131,8 @@ table {
 }
 thead { display: table-header-group; }
 tfoot { display: table-footer-group; }
-tr { break-inside: auto; }
+/* Keep a parameter name with its definition across page boundaries. */
+tr { break-inside: avoid; }
 th, td {
   border: .4pt solid #cbd5e1;
   padding: 2mm;

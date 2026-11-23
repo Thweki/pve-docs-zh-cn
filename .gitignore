@@ -13,3 +13,6 @@ __pycache__/
 /output/
 /outputs/
 /tmp/
+
+# Generated translation merge progress.
+/reports/agent-progress.json

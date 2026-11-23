@@ -270,10 +270,12 @@ def check_section_text(prepared: Path, page_texts: list[str], report: dict) -> N
     if (any(not isinstance(page, int) or not 1 <= page <= len(page_texts) for page in starts)
             or any(left >= right for left, right in zip(starts, starts[1:]))):
         raise AssertionError('Missing or out-of-order PDF chapter pages')
+    # PDF extractors may drop text/emoji presentation selectors while keeping the glyph.
+    ignored = re.compile(r'[\s\uFE0E\uFE0F]+')
     checks = []
     for chapter, target, start, end in zip(chapters, targets, starts, starts[1:] + [len(page_texts) + 1]):
-        expected = re.sub(r'\s+', '', text_content(chapter))
-        actual = re.sub(r'\s+', '', ''.join(page_texts[start - 1:end - 1]))
+        expected = ignored.sub('', text_content(chapter))
+        actual = ignored.sub('', ''.join(page_texts[start - 1:end - 1]))
         cursor = 0
         for offset, character in enumerate(expected):
             found = actual.find(character, cursor)
