@@ -1,0 +1,31 @@
+name: 译文勘误
+description: 报告翻译错误、术语不一致或与英文原文不符的内容
+title: "[勘误] "
+body:
+  - type: input
+    id: location
+    attributes:
+      label: 文档位置
+      description: 填写 GitBook 章节链接，或离线版本号、章节和页码。
+      placeholder: 例如 GitBook 链接或 v9.2.13-zh.3 第 7 章第 2 节
+    validations:
+      required: true
+  - type: textarea
+    id: current-translation
+    attributes:
+      label: 现有译文
+      description: 粘贴需要勘误的句子或段落。
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-translation
+    attributes:
+      label: 建议改法
+      description: 提供建议译文，或说明当前译文哪里有问题。
+    validations:
+      required: true
+  - type: textarea
+    id: original
+    attributes:
+      label: 英文原文或参考资料
+      description: 可附上游文档链接、原句或术语出处。
