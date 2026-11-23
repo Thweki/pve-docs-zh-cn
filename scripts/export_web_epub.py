@@ -215,8 +215,12 @@ def namespace(page: Page) -> None:
 
 def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
     by_path = {page.path.resolve(): page for page in pages}
+    docs_root = docs.resolve()
     errors: list[str] = []
     for page in pages:
+        # Fragments share a file target. Resolve it once per source page,
+        # keeping relative paths scoped to that page and caches to this call.
+        targets: dict[str, Path] = {}
         for element in page.soup.select("[href], [src], [poster]"):
             for attribute in ("href", "src", "poster"):
                 if attribute not in element.attrs:
@@ -227,7 +231,10 @@ def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
                     if attribute in {"src", "poster"} and not raw.startswith("data:"):
                         errors.append(f"Remote embedded asset in {page.path.name}: {raw}")
                     continue
-                target = (page.path.parent / unquote(parsed.path)).resolve() if parsed.path else page.path.resolve()
+                path = unquote(parsed.path)
+                if path not in targets:
+                    targets[path] = (page.path.parent / path).resolve() if path else page.path.resolve()
+                target = targets[path]
                 fragment = unquote(parsed.fragment)
                 if attribute == "href" and (target in by_path or target.suffix == ".md"):
                     other = by_path.get(target)
@@ -240,10 +247,10 @@ def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
                         else:
                             element[attribute] = "#" + anchor
                 elif parsed.path:
-                    if not target.is_relative_to(docs.resolve()) or not target.is_file():
+                    if not target.is_relative_to(docs_root) or not target.is_file():
                         errors.append(f"Missing local asset: {raw} in {page.path.name}")
                     else:
-                        relative = target.relative_to(docs.resolve()).as_posix()
+                        relative = target.relative_to(docs_root).as_posix()
                         element[attribute] = quote(relative, safe="/._-") + (("#" + parsed.fragment) if parsed.fragment else "")
         for image in page.soup.find_all("img"):
             image["loading"] = "lazy"
