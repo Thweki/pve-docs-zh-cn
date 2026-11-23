@@ -1,6 +1,6 @@
 {
   "version": "9.2.13",
-  "release": "v9.2.13-zh.2",
+  "release": "v9.2.13-zh.3",
   "layout": "Each handbook chapter, reference manual and API resource group includes all subsections on the same page.",
   "translation": {
     "passed": true,
@@ -26,19 +26,19 @@
       "full_text_matches_markdown": true,
       "code_blocks_exact": true,
       "pages": 71,
-      "code_blocks": 3216,
+      "code_blocks": 3218,
       "images": 164,
       "tables": 1043,
       "asset_files_copied_byte_for_byte": 108
     },
     "html": {
       "chapters": 71,
-      "headings": 5048,
-      "ids": 5092,
-      "internal_links": 6168,
+      "headings": 5049,
+      "ids": 5093,
+      "internal_links": 6169,
       "images": 164,
       "tables": 1043,
-      "code_blocks": 3216,
+      "code_blocks": 3218,
       "hints": 751
     },
     "epub": {
@@ -48,7 +48,7 @@
       "fonts": 4,
       "internal_links_valid": true,
       "full_text_matches_html": true,
-      "text_characters_without_whitespace": 2191748
+      "text_characters_without_whitespace": 2192807
     }
   },
   "api_layout": {
@@ -59,32 +59,17 @@
     "parameter_rows_with_defaults": 513,
     "parameter_rows_with_enums": 256,
     "parameter_table_columns": 2,
-    "headings_anchors_and_details_preserved": true
-  },
-  "public_access": {
-    "authentication_used": false,
-    "gitbook_url": "https://thweki.gitbook.io/pve-docs-zh-cn/",
-    "largest_nodes_page": {
-      "url": "https://thweki.gitbook.io/pve-docs-zh-cn/api/group-2",
-      "status": 200,
-      "bytes": 25037423,
-      "seconds": 38.4,
-      "headings": 1356,
-      "last_operation_present": true,
-      "two_column_parameters": true
-    },
-    "browser_nodes_headings": 1356,
-    "browser_nodes_parameter_tables": 359,
-    "browser_last_nodes_operation_present": true
+    "headings_anchors_and_details_preserved": true,
+    "reference_tag": "v9.2.13-zh.2"
   },
   "pdf": {
-    "source_sha256": "032ac2efa4d5a774172bb8b6214c6d5b43d281f7282480ab92abc8f0e0edf2c2",
-    "source_characters_without_whitespace": 2191748,
+    "source_sha256": "9eff1a8f5945d381935e34069bc3f2f168e303b217a48174b4da7f30dc904ef5",
+    "source_characters_without_whitespace": 2192807,
     "source_text_preserved_in_order": true,
     "chapters": 71,
     "images": 164,
     "tables_as_paginated_records": 7,
-    "rendered_pages": 1921,
+    "rendered_pages": 1922,
     "printable_area_text_overflow_count": 0,
     "embedded_fonts": [
       "/GFVMWW+Noto-Sans-CJK-SC-Bold",
@@ -92,30 +77,48 @@
       "/OYUPRD+Noto-Sans-Mono-CJK-SC"
     ],
     "unembedded_fonts": [],
-    "pdf_bytes": 17215219
+    "pdf_bytes": 17199754,
+    "sections_verified": 71
   },
   "assets": [
     {
       "name": "Proxmox-VE-9.2.13-zh-CN.epub",
-      "bytes": 49093023,
-      "sha256": "529ec9a194599be4590c13a80028b822db935a9fcc80096e2b2805e9514afe21"
+      "bytes": 49094007,
+      "sha256": "1bccc8dae101a74239f82fcb86ee4e587ea57ac6149bafd842ed1146b4b8badc"
     },
     {
       "name": "Proxmox-VE-9.2.13-zh-CN.pdf",
-      "bytes": 17215219,
-      "sha256": "638f8cf5fab710e513284e1c90a324432612b9181684ffef6fb52e57510fe5f0"
+      "bytes": 17199754,
+      "sha256": "1d3b5f3592ef95da4d233ca7dfbbbbb50e9a5f295321ace5bdafce04ddc357e8"
     },
     {
       "name": "Proxmox-VE-9.2.13-zh-CN-html.zip",
-      "bytes": 48900768,
-      "sha256": "703df87539014f1b59f0464c1eeea0e55b212c4c2f85f6094cabbc2dc420489f"
+      "bytes": 48901547,
+      "sha256": "e23f55a0cc32de9677cb763b8eb3abdf61ff2e7d4a90956db8854f6b2989a077"
     }
   ],
   "html_archive": {
+    "top_level_directory": "Proxmox-VE-9.2.13-zh-CN-html",
     "files": 123,
+    "bytes": 48901547,
+    "sha256": "e23f55a0cc32de9677cb763b8eb3abdf61ff2e7d4a90956db8854f6b2989a077",
+    "index_sha256": "0f34cab0671b6a4e49103a4a3f3868a2ff11e753fbb7643f238c86f664cdf8b1",
     "safe_relative_paths": true,
-    "symlinks": 0,
+    "no_symlinks": true,
     "crc_valid": true,
-    "files_byte_identical_to_build": true
+    "all_files_match_source_bytes": true,
+    "fixed_zip_timestamps": true
+  },
+  "gfdl_1_3": {
+    "original_text_sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4",
+    "appendix_checked_in": [
+      "PDF extracted text",
+      "EPUB chapter",
+      "HTML chapter"
+    ],
+    "original_bytes_checked_in": [
+      "EPUB",
+      "HTML ZIP"
+    ]
   }
 }

@@ -18,18 +18,7 @@
 
 ### 发行附件预检（维护者）
 
-上传完成后，可将 GitHub Releases API 返回的单个发行对象保存为 JSON，再离线检查目标标签及五份必需附件。公开发行的示例：
-
-```sh
-curl --fail --silent --show-error \
-  https://api.github.com/repos/Thweki/pve-docs-zh-cn-releases/releases/tags/v9.2.13-zh.2 \
-  -o /tmp/pve-release.json
-python3 scripts/check_release_assets.py /tmp/pve-release.json --tag v9.2.13-zh.2
-```
-
-检查器仅需 Python 3 标准库，也接受通过已有授权方式取得的草稿发行 JSON。它要求对应版本的 EPUB、PDF、HTML ZIP、Source ZIP 和 `SHA256SUMS` 均已上传且大小大于零；缺失、同名重复、标签不符或上传未完成时返回非零状态。允许额外附件（如签名）。更新版本时请同步更换 URL 和 `--tag`。
-
-此命令只检查保存时的附件元数据，不下载附件、不发布发行，也不验证文件内容或 SHA256；仍需使用下载的 `SHA256SUMS` 校验实际文件。运行离线测试：`python3 -B -m unittest discover -s tests -p 'test_check_release_assets.py' -v`。
+附件预检和 SHA-256 校验统一使用 [主仓库发布校验工具](https://github.com/Thweki/pve-docs-zh-cn/blob/main/scripts/README.release-tools.md)。
 
 ### 本地发行归档清单
 
@@ -73,25 +62,9 @@ python3 scripts/validate_metadata.py
 python3 -m unittest discover -s tests -v
 ```
 
-校验字体来源清单的字段、固定提交与 SHA256 格式，两份本地 OFL 文件的字节数和哈希，README/NOTICE 的发行及上游版本，以及两份文档中行内 Markdown 链接的本地文件或目录目标（不检查锚点）。GitHub Actions 在检出后离线运行相同命令，不下载字体或安装依赖。
+校验字体来源清单的字段、固定提交与 SHA256 格式，两份本地 OFL 文件的字节数和哈希，README/NOTICE 的发行及上游版本，以及两份文档中行内 Markdown 链接的本地文件或目录目标（不检查锚点）。在归档目录运行这些离线检查即可，无需下载字体或安装依赖。
 
 四份字体二进制文件仅随发行归档提供，本校验不要求它们存在，也不核对其实际哈希。不检查远程链接、发行资产、源码归档内容或译文数量。根目录 GFDL 文本的完整性校验留待独立许可证修复后添加；本校验不修改或固定该文本。
-
-## 下载文件离线校验
-
-下载同一发行的 `SHA256SUMS` 和其中列出的附件后，使用 Python 3.9 或更新版本逐一校验实际文件内容，无需安装依赖、联网或上传文件：
-
-```sh
-python3 scripts/verify_checksums.py /path/to/downloads/SHA256SUMS
-# 校验文件和附件不在同一目录时：
-python3 scripts/verify_checksums.py /path/to/SHA256SUMS --directory /path/to/downloads
-```
-
-默认从 `SHA256SUMS` 所在目录读取附件，与当前工作目录无关。工具按块计算 SHA256，逐项输出 `OK`、`FAILED`（含预期及实际摘要）、`MISSING` 或 `ERROR`，遇到单个文件失败仍继续检查其余文件。全部匹配时退出码为 0；校验失败或清单无效时为 1；命令行参数错误时为 2。
-
-清单须为 UTF-8，支持 `sha256sum` 的“64 位十六进制摘要 + 两个空格 + 文件名”及“摘要 + 空格 + 星号 + 文件名”格式，允许空行、CRLF 换行和含空格的文件名。空清单、重复文件名及格式错误会在读取附件前被拒绝；仅支持同一目录中的普通附件文件，不接受路径、符号链接或需要反斜杠转义的文件名。
-
-仅检查清单列出的文件，忽略目录内额外文件；不检查发行附件是否齐全，也不验证来源真实性。请从可信来源取得对应发行的 `SHA256SUMS`。离线测试包含在上述 `unittest discover` 命令中。
 
 ## 本地发行目录树
 

@@ -117,6 +117,17 @@ class SectionTextTests(unittest.TestCase):
         self.assertEqual(len(self.report['section_text_checks']), 2)
         self.assertTrue(all(item['text_preserved_in_order'] for item in self.report['section_text_checks']))
 
+    def test_presentation_selectors_may_be_omitted_but_symbols_are_required(self):
+        prepared = self.work / 'prepared.html'
+        prepared.write_text(prepared.read_text(encoding='utf-8').replace(
+            'CODE-END', 'CODE-END☁\uFE0F☀\uFE0E'), encoding='utf-8')
+        pages = self.pages.copy()
+        pages[2] = pages[2].replace('CODE-END', 'CODE-END☁☀')
+        self.check(pages)
+        pages[2] = pages[2].replace('☁', '')
+        with self.assertRaisesRegex(AssertionError, 'render-tables.*lost or reordered text'):
+            self.check(pages)
+
     def test_chapter_spanning_pages_is_checked_in_full(self):
         split = self.pages[2].index('row30')
         pages = [*self.pages[:2], self.pages[2][:split] + '\nPage footer',

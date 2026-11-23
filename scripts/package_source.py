@@ -32,7 +32,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = '9.2.13'
-RELEASE = VERSION + '-zh.2'
+RELEASE = VERSION + '-zh.3'
 EPOCH = 1794268800  # 2026-11-10 00:00:00 UTC; reproducible archive metadata.
 SNAPSHOT = 'source/upstream-snapshot.tar.gz'
 AUDIT = 'reports/source-package-audit.json'
