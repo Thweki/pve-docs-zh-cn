@@ -59,6 +59,15 @@ temporary directories and do not modify the fixtures or release reports.
   Markdown/HTML links versus examples and metadata, encoded relative paths,
   symlink rejection, deterministic read-only JSON, and CLI exit statuses. Run it
   alone with `python3 -m unittest discover -s tests -p 'test_doc_orphans.py' -v`.
+- `test_doc_crossrefs.py` uses the same Markdown dependencies. Its 12 tests
+  cover broken and ambiguous targets, distinct export candidate IDs, repeated
+  aliases on one heading, explicit IDs and title collisions, named bookmarks,
+  encoded Chinese paths/fragments, synthetic headings, reference/HTML/table/hint
+  links, ignored code/assets/external links, escaping symlinks, deterministic
+  read-only JSON, and CLI exit codes. Run it alone with
+  `python3 -m unittest discover -s tests -p test_doc_crossrefs.py -v`.
+  The report uses the exporter's first-match aliases without changing exported
+  links; ambiguity is additional diagnostic information, not a new build gate.
 - Preprocessing and section-text tests need `lxml`. They cover normal API tables,
   the 900/901-character and 14/15-line conversion boundaries, nested tables,
   captions, mixed header/data cells, footer rows, text after tables, details and
@@ -127,3 +136,22 @@ The parser/EPUB self-test and full exports were not run because these Python
 dependencies and Pandoc are unavailable. Poppler is installed.
 Python syntax checks passed for all 13 files in `scripts/` and `tests/`;
 `node --check export-assets/offline.js` and `git diff --check` also passed.
+
+## Cross-reference report validation
+
+The cross-reference worktree passed all 60 runnable tests, including 12 new
+cross-reference tests. PDF font and rendering test classes were skipped because
+`pypdf` is unavailable; WeasyPrint and Pandoc are also absent, so full PDF/EPUB
+exports were not run. The system Python lacks Markdown dependencies and a pip
+install attempt failed due to unavailable network/DNS. Tests instead used
+existing local packages without changing repository requirements:
+
+```sh
+PYTHONPATH=/tmp/pve-docs-venv/lib/python3.13/site-packages \
+  /tmp/pve-crossrefs-venv/bin/python -B -m unittest discover -s tests -v
+```
+
+The report checked 1,118 links across all 71 current book pages with zero issues.
+An in-memory comparison against the parent revision confirmed identical heading
+IDs, alias selections, rewritten links and chapter HTML for all 71 pages.
+Python syntax, offline JavaScript syntax and `git diff --check` also passed.

@@ -61,6 +61,21 @@ touch work/CHAPTER_LAYOUT_READY
 
 `--query` 按标题文字进行不区分大小写的子串匹配，不搜索正文；页数和标题数仅统计匹配结果。无匹配时输出空索引并正常退出。索引仅覆盖导航中列出的页面，重复页面只收录一次；它不是完整性校验工具。导航文件缺失、页面不存在或路径越界时，命令报错并以非零状态退出，不输出部分 JSON。
 
+## 离线交叉引用诊断
+
+检查书内链接是否指向缺失页面、未收录页面、越界路径、不存在的锚点或多个同名目标，无需原始快照或重建全书：
+
+```sh
+.venv/bin/python scripts/report_doc_crossrefs.py > /tmp/pve-crossrefs.json
+.venv/bin/python scripts/report_doc_crossrefs.py --docs docs --check
+```
+
+这是常规功能，无需实验开关；仅需 `requirements.txt`。命令只读取 `docs/SUMMARY.md` 收录的页面，按目录和页面内链接顺序向标准输出写入 JSON，不修改文档或现有报告。默认即使发现问题也退出 0；`--check` 在有问题时退出 1，仍输出完整 JSON。导航无效、文件不可读或解析失败时退出 2，不输出部分报告。
+
+诊断使用离线 HTML/EPUB 导出器的锚点规则，支持自动标题别名、显式 ID、命名书签、中文及 URL 编码。多个目标共用一个别名时报告 `ambiguous_fragment`，即使导出器会选择第一个目标；同一标题重复声明同一个别名不算歧义。每条问题包含源页面、原始链接、链接文字、目标路径、片段和原因；`link_index` 为移除空标题书签后页面内所有 `a[href]` 的序号（从 1 开始，非源码行号）。歧义候选提供标题（非标题书签为 `null`）及相对于 `builds/html/` 的链接，便于定位同一份文档导出的具体目标。
+
+报告含页数、检查链接数、无歧义解析数和按原因分类的问题数，不含运行时间或绝对解析路径；越界目标的 `target` 为 `null`。它只检查页面正文中的本地 Markdown 页面链接和页内跳转，不检查外部网址、资源、代码示例、导航条目中的片段或未收录页面的正文；空标题书签自链接随导出器移除。它不枚举孤立页面、不修改链接，也不替代 GitBook 或完整发布校验。
+
 ## GitBook 与翻译更新
 
 `.gitbook.yaml` 指向 `docs/`；`gitbook-docs.yaml` 定义站点与稳定空间键；`docs/SUMMARY.md` 是导航来源。首次 Git Sync 方向选择 **GitHub → GitBook**。
