@@ -7,8 +7,10 @@ translations/units.json and translations/zh-CN.json maps. It never includes Git
 history, local translation-service state, work/, builds/, or QA images.
 
 After unpacking the source ZIP, --restore-snapshot restores the public upstream
-inputs needed by scripts/render.py. Only Python's standard library is required
-for snapshot creation, restoration, validation, and ZIP packaging.
+inputs needed by scripts/render.py. Snapshot operations require only Python's
+standard library. Packaging also needs requirements.txt: every package is checked
+against an offline render and verification in a temporary tree with no work cache.
+Rebuild evidence is saved separately from transient snapshot/package status.
 """
 from __future__ import annotations
 
@@ -22,7 +24,10 @@ import os
 from pathlib import Path, PurePosixPath
 import re
 import stat
+import subprocess
+import sys
 import tarfile
+import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +36,8 @@ RELEASE = VERSION + '-zh.2'
 EPOCH = 1794268800  # 2026-11-10 00:00:00 UTC; reproducible archive metadata.
 SNAPSHOT = 'source/upstream-snapshot.tar.gz'
 AUDIT = 'reports/source-package-audit.json'
+REBUILD_EVIDENCE = 'reports/source-rebuild-evidence.json'
+MANUAL_PAGES = {'docs/glossary.md', 'docs/copyright.md', 'docs/license-original.md'}
 SNAPSHOT_MANIFEST = 'SOURCE-SNAPSHOT-MANIFEST.json'
 INPUT_DIRS = ('source/html', 'source/api', 'source/prepared', 'source/raw-assets')
 SOURCE_DIRS = ('docs', 'scripts', 'tests', 'export-assets', 'fonts', 'LICENSES', '.github')
@@ -107,6 +114,17 @@ def scan(data: bytes, path: str) -> list[dict]:
 def write_report(root: Path, report: dict) -> None:
     path = root / AUDIT
     path.parent.mkdir(parents=True, exist_ok=True)
+    # Preserve historical evidence from releases that embedded it in this report.
+    # It is never reused as proof for a new package; packaging always rebuilds.
+    evidence = root / REBUILD_EVIDENCE
+    if path.exists() and not evidence.exists():
+        previous = json.loads(path.read_text())
+        if 'cold_rebuild' in previous:
+            evidence.write_bytes(json_bytes(previous['cold_rebuild']))
+    report.setdefault('offline_rebuild', {
+        'status': 'not-verified',
+        'reason': 'This operation has not established package reproducibility.',
+    })
     path.write_bytes(json_bytes(report))
 
 
@@ -303,17 +321,79 @@ def validate_licenses_and_fonts(root: Path) -> dict:
     }
 
 
+# Run the build scripts in separate interpreters, blocking accidental network or
+# process launches (including translation services). This is an offline-build
+# guard, not a sandbox for untrusted Python code. Do not publish captured logs.
+OFFLINE_RUNNER = '''
+import runpy, sys
+from pathlib import Path
+script = Path(sys.argv[1]).resolve()
+sys.path.insert(0, str(script.parent))
+sys.argv = [str(script)]
+def offline(event, args):
+    if event.startswith(('socket.', 'subprocess.')) or event in {
+        'os.system', 'os.posix_spawn', 'os.spawn', 'os.exec', 'os.fork', 'os.forkpty'
+    }:
+        raise RuntimeError('Network and child processes are disabled during cold rebuild')
+sys.addaudithook(offline)
+runpy.run_path(str(script), run_name='__main__')
+'''
+
+
+def cold_rebuild(contents: list[tuple[str, bytes]]) -> dict:
+    """Verify the exact captured package bytes, without inheriting local caches."""
+    with tempfile.TemporaryDirectory(prefix='pve-source-rebuild-') as temporary:
+        isolated = Path(temporary)
+        for name, data in contents:
+            # Verification must produce its own reports, never read old success.
+            if name.startswith('reports/'):
+                continue
+            # Generated Markdown must come only from the isolated renderer.
+            if name.startswith('docs/') and name.endswith('.md') and name not in MANUAL_PAGES:
+                continue
+            target = isolated / safe_name(name)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+        for directory in ('work', 'reports', 'docs'):
+            (isolated / directory).mkdir(exist_ok=True)
+        _, entries = audit_snapshot(isolated)
+        restore_snapshot(isolated, entries)
+        for script in ('render.py', 'verify.py'):
+            result = subprocess.run(
+                [sys.executable, '-I', '-c', OFFLINE_RUNNER, str(isolated / 'scripts' / script)],
+                cwd=isolated, capture_output=True, timeout=300,
+            )
+            if result.returncode:
+                raise ValueError('Offline cold rebuild failed in ' + script +
+                                 '; no reproducibility claim or source ZIP was produced')
+        verification = json.loads((isolated / 'reports/verification.json').read_text())
+        if verification.get('passed') is not True or verification.get('mode') != 'release':
+            raise ValueError('Offline cold rebuild did not pass release verification')
+        expected = {name: sha256(data) for name, data in contents
+                    if name.startswith('docs/') and name.endswith('.md')}
+        rebuilt = {path.relative_to(isolated).as_posix(): sha256(path.read_bytes())
+                   for path in files_in(isolated, 'docs') if path.suffix == '.md'}
+        differences = sorted(name for name in expected.keys() | rebuilt.keys()
+                             if expected.get(name) != rebuilt.get(name))
+        if differences:
+            raise ValueError('Offline cold rebuild Markdown mismatch: ' + ', '.join(differences))
+    return {
+        'format': 1, 'status': 'passed',
+        'initial_work_directory_empty': True, 'copied_work_cache_files': 0,
+        'network_and_subprocess_guard': True,
+        'markdown_files_compared': len(expected), 'markdown_differences': [],
+        'verification': verification,
+        'inputs_sha256': {name: sha256(data) for name, data in contents
+                          if not name.startswith(('docs/', 'reports/')) or name in MANUAL_PAGES},
+        'outputs_sha256': {name: sha256(data) for name, data in contents if name.startswith('docs/')},
+        'package_files_sha256': {name: sha256(data) for name, data in contents},
+    }
+
+
 def package(root: Path, output: str | None, snapshot: dict) -> dict:
     translations = validate_translations(root)
     files = select_sources(root)
     licenses = validate_licenses_and_fonts(root)
-    previous = json.loads((root / AUDIT).read_text()) if (root / AUDIT).exists() else {}
-    cold_rebuild = previous.get('cold_rebuild')
-    if cold_rebuild:
-        changed = [name for name, digest in cold_rebuild.get('inputs_sha256', {}).items()
-                   if not (root / name).is_file() or sha256((root / name).read_bytes()) != digest]
-        if cold_rebuild.get('status') != 'passed' or changed:
-            raise ValueError('Refresh the offline cold rebuild audit before packaging; changed inputs: ' + ', '.join(changed))
     contents = []
     findings = []
     for path in files:
@@ -326,12 +406,21 @@ def package(root: Path, output: str | None, snapshot: dict) -> dict:
     if findings:
         write_report(root, {'status': 'rejected', 'snapshot': snapshot, 'package_findings': findings})
         raise ValueError('Public source audit rejected input; see ' + AUDIT)
+    try:
+        rebuild = cold_rebuild(contents)
+    except (OSError, ValueError, subprocess.SubprocessError) as error:
+        write_report(root, {'status': 'rejected', 'snapshot': snapshot,
+                            'offline_rebuild': {'status': 'failed', 'reason': str(error)}})
+        raise
+    # Evidence and manifest are derived from the same bytes written to the ZIP.
+    # Neither is part of its own inventory, avoiding circular hashes.
+    contents.append((REBUILD_EVIDENCE, json_bytes(rebuild)))
     manifest = {
         'format': 1, 'upstream_version': VERSION, 'release': RELEASE,
         'translations': translations,
         'licenses': licenses,
-        'offline_rebuild': ({k: v for k, v in cold_rebuild.items()
-                             if k not in ('steps', 'verification')} if cold_rebuild else None),
+        'offline_rebuild': {'status': 'passed', 'evidence_path': REBUILD_EVIDENCE,
+                            'evidence_sha256': sha256(json_bytes(rebuild))},
         'snapshot': {k: v for k, v in snapshot.items() if k != 'files'},
         'excluded': ['.git/', '.venv/', 'work/', 'builds/', 'tmp/', 'preview/',
                      'source/publication.json', 'OAuth/usage/session logs', 'QA PDF/PNG files'],
@@ -365,9 +454,10 @@ def package(root: Path, output: str | None, snapshot: dict) -> dict:
                     'sha256': sha256(target.read_bytes()), 'file_count': len(contents) + 1,
                     'crc_verified': True, 'manifest_path': prefix + 'SOURCE-PACKAGE-MANIFEST.json'},
         'package_findings': findings,
+        'offline_rebuild': manifest['offline_rebuild'],
     }
-    if cold_rebuild:
-        result['cold_rebuild'] = cold_rebuild
+    (root / REBUILD_EVIDENCE).parent.mkdir(parents=True, exist_ok=True)
+    (root / REBUILD_EVIDENCE).write_bytes(json_bytes(rebuild))
     return result
 
 

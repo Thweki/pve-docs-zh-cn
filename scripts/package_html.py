@@ -13,20 +13,28 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 import stat
+import tempfile
 import zipfile
 from pathlib import Path, PurePosixPath
+from typing import BinaryIO
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = "Proxmox-VE-9.2.13-zh-CN-html"
+CHUNK_SIZE = 1024 * 1024
+
+
+def stream_sha256(stream: BinaryIO) -> str:
+    digest = hashlib.sha256()
+    for chunk in iter(lambda: stream.read(CHUNK_SIZE), b""):
+        digest.update(chunk)
+    return digest.hexdigest()
 
 
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
     with path.open("rb") as stream:
-        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+        return stream_sha256(stream)
 
 
 def package_html(source: Path, output: Path, expected_index: str | None = None) -> dict:
@@ -48,9 +56,13 @@ def package_html(source: Path, output: Path, expected_index: str | None = None) 
         raise ValueError("Output ZIP must be outside the HTML resource directory")
     source_hashes = {path.relative_to(source).as_posix(): sha256(path) for path in files}
     output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(".tmp.zip")
+    # Create exclusively beside the destination: never truncate a predictable
+    # sibling (or follow its symlink), and keep replacement on one filesystem.
+    staging = tempfile.NamedTemporaryFile(dir=output.parent, prefix=f".{output.name}.",
+                                          suffix=".tmp", delete=False)
+    temporary = Path(staging.name)
     try:
-        with zipfile.ZipFile(temporary, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        with staging, zipfile.ZipFile(staging, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
             # Fixed timestamps and permissions make identical exports reproducible.
             top = zipfile.ZipInfo(PACKAGE + "/", date_time=(2026, 1, 1, 0, 0, 0))
             top.create_system = 3
@@ -65,7 +77,12 @@ def package_html(source: Path, output: Path, expected_index: str | None = None) 
                 info.create_system = 3
                 info.external_attr = (stat.S_IFREG | 0o644) << 16
                 info.compress_type = zipfile.ZIP_DEFLATED
-                archive.writestr(info, path.read_bytes(), compresslevel=9)
+                # ZipInfo does not inherit the archive's compression level.
+                # Use the spelling supported by Python 3.12 as well as newer versions.
+                info._compresslevel = 9
+                info.file_size = path.stat().st_size  # Select ZIP64 before streaming large files.
+                with path.open("rb") as source_stream, archive.open(info, "w") as member:
+                    shutil.copyfileobj(source_stream, member, length=CHUNK_SIZE)
         with zipfile.ZipFile(temporary) as archive:
             if archive.testzip() is not None:
                 raise ValueError("ZIP CRC validation failed")
@@ -80,7 +97,8 @@ def package_html(source: Path, output: Path, expected_index: str | None = None) 
                     relative = path.relative_to(PACKAGE).as_posix()
                     if relative in archived:
                         raise ValueError(f"Duplicate ZIP member: {info.filename}")
-                    archived[relative] = hashlib.sha256(archive.read(info)).hexdigest()
+                    with archive.open(info) as member:
+                        archived[relative] = stream_sha256(member)
             if archived != source_hashes:
                 raise ValueError("Archived file inventory or bytes differ from HTML export")
         # Catch source changes made concurrently while the ZIP was being written.

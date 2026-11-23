@@ -47,11 +47,41 @@ touch work/CHAPTER_LAYOUT_READY
 
 `reports/` 与导出报告记录文字、代码、图片、字体、链接、分页及复建检查。PDF 的超高表格采用保留完整字段内容的可分页排版。
 
+## 离线标题索引
+
+无需重建全书，即可按 `docs/SUMMARY.md` 的顺序列出各页和章节标题，或查询 API、命令及中文章节标题：
+
+```sh
+.venv/bin/python scripts/report_doc_index.py > /tmp/pve-doc-index.json
+.venv/bin/python scripts/report_doc_index.py --query 'GET /nodes'
+.venv/bin/python scripts/report_doc_index.py --docs docs --query '备份'
+```
+
+命令只读取文档，将 JSON 输出到标准输出；仅需 `requirements.txt`，不需要 Pandoc、PDF 工具或原始快照。索引包含导航标题、相对文档路径、目录深度（顶层为 0）、标题级别及离线 HTML 链接。`href` 相对于导出的 `builds/html/` 目录，使用与导出器一致的锚点；对应 HTML 必须由同一份文档构建。输出不含时间戳或绝对路径，便于保存和比较。
+
+`--query` 按标题文字进行不区分大小写的子串匹配，不搜索正文；页数和标题数仅统计匹配结果。无匹配时输出空索引并正常退出。索引仅覆盖导航中列出的页面，重复页面只收录一次；它不是完整性校验工具。导航文件缺失、页面不存在或路径越界时，命令报错并以非零状态退出，不输出部分 JSON。
+
 ## GitBook 与翻译更新
 
 `.gitbook.yaml` 指向 `docs/`；`gitbook-docs.yaml` 定义站点与稳定空间键；`docs/SUMMARY.md` 是导航来源。首次 Git Sync 方向选择 **GitHub → GitBook**。
 
 日常勘误可修改公开译文映射并重建。更新上游快照时，可重新运行 `scripts/prepare.py` 提取变化单元，再运行 `scripts/translate.py` 使用已登录的 Kimi Code 辅助翻译，或由贡献者直接补齐映射。发布构建默认拒绝缺失或不符合校验要求的译文。
+
+### 导航孤立页面报告
+
+维护目录时，可离线检查哪些 Markdown 页面未列入 `SUMMARY.md`，并追踪它们能否通过正文链接到达：
+
+```sh
+.venv/bin/python scripts/report_doc_orphans.py
+.venv/bin/python scripts/report_doc_orphans.py --docs docs > /tmp/pve-doc-orphans.json
+.venv/bin/python scripts/report_doc_orphans.py --check
+```
+
+命令仅需 `requirements.txt`，只读取文档、向标准输出打印 JSON，无需原始快照、重建或导出工具。`counts` 区分直接列入目录（`listed`）、仅经正文链接可达（`indirect`）和完全不可达（`unreachable`）的页面；后两类分别列在 `indirect_pages`、`unreachable_pages` 中，包含相对路径、首个 H1 标题（无 H1 时使用路径）和去重后的入链页面 `referenced_by`。间接可达页面还提供从 `SUMMARY.md` 开始的最短路径 `via`；孤立页面之间的循环引用不会被误认为可达。入链仅说明引用关系，不代表来源页面可达。
+
+默认报告不因发现遗漏而失败。加上 `--check` 后，只要任一页面未直接列入目录就退出 1，仍输出完整报告：正文可达页面也可能被按 SUMMARY 选页的导出流程遗漏。全部收录时退出 0；缺少根目录的 `SUMMARY.md`、读取或解析失败、文档目录含符号链接目录或 Markdown 符号链接时退出 2，不输出部分 JSON。不自动修复目录，也不更改发布校验。
+
+报告以根目录 `SUMMARY.md` 中的真实链接为起点，扫描目录内全部 `.md` 页面，支持 Markdown 引用式链接、HTML 链接及 URL 编码的相对路径。注释、代码示例、图片、有效 YAML 前置元数据中的链接不计入导航；外部链接、绝对路径、目录简写、缺失目标和目录外目标不构成边。查询参数和锚点不影响页面可达性；本报告不校验锚点或推断 GitBook 自动生成的章节导航。输出按相对路径排序、无时间戳或绝对路径，可直接保存比较。
 
 ## 许可证与贡献
 
