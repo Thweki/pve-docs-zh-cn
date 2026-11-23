@@ -22,7 +22,6 @@ import shutil
 import subprocess
 import tempfile
 import zipfile
-from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
@@ -31,6 +30,9 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from markdown_it import MarkdownIt
 import yaml
+
+from offline_resources import audit_html
+from package_source import validate_fonts
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "9.2.13"
@@ -226,8 +228,12 @@ def namespace(page: Page) -> None:
 
 def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
     by_path = {page.path.resolve(): page for page in pages}
+    docs_root = docs.resolve()
     errors: list[str] = []
     for page in pages:
+        # Fragments share a file target. Resolve it once per source page,
+        # keeping relative paths scoped to that page and caches to this call.
+        targets: dict[str, Path] = {}
         for element in page.soup.select("[href], [src], [poster]"):
             for attribute in ("href", "src", "poster"):
                 if attribute not in element.attrs:
@@ -238,7 +244,10 @@ def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
                     if attribute in {"src", "poster"} and not raw.startswith("data:"):
                         errors.append(f"Remote embedded asset in {page.path.name}: {raw}")
                     continue
-                target = (page.path.parent / unquote(parsed.path)).resolve() if parsed.path else page.path.resolve()
+                path = unquote(parsed.path)
+                if path not in targets:
+                    targets[path] = (page.path.parent / path).resolve() if path else page.path.resolve()
+                target = targets[path]
                 fragment = unquote(parsed.fragment)
                 if attribute == "href" and (target in by_path or target.suffix == ".md"):
                     other = by_path.get(target)
@@ -251,10 +260,10 @@ def rewrite_links(pages: list[Page], docs: Path) -> list[str]:
                         else:
                             element[attribute] = "#" + anchor
                 elif parsed.path:
-                    if not target.is_relative_to(docs.resolve()) or not target.is_file():
+                    if not target.is_relative_to(docs_root) or not target.is_file():
                         errors.append(f"Missing local asset: {raw} in {page.path.name}")
                     else:
-                        relative = target.relative_to(docs.resolve()).as_posix()
+                        relative = target.relative_to(docs_root).as_posix()
                         element[attribute] = quote(relative, safe="/._-") + (("#" + parsed.fragment) if parsed.fragment else "")
         for image in page.soup.find_all("img"):
             image["loading"] = "lazy"
@@ -281,33 +290,6 @@ def document(content: str, css: str, extra: str = "", scripts: bool = False) -> 
             f'<title>{TITLE}</title><link rel="stylesheet" href="{css}"></head><body>'
             + extra + f'<main class="book-content" id="book-content">{content}</main>'
             + ('<script src="offline.js" defer></script>' if scripts else '') + '</body></html>\n')
-
-
-def audit_html(text: str, base: Path) -> dict:
-    soup = BeautifulSoup(text, "html.parser")
-    ids = Counter(tag["id"] for tag in soup.select("[id]"))
-    errors = [f"Duplicate ID {key}" for key, count in ids.items() if count != 1]
-    links = 0
-    for link in soup.select("a[href]"):
-        href = link["href"]
-        if href.startswith("#"):
-            links += 1
-            if unquote(href[1:]) not in ids:
-                errors.append(f"Broken single-page anchor {href}")
-        elif urlsplit(href).path.endswith(".md"):
-            errors.append(f"Unrewritten Markdown link {href}")
-    for tag in soup.select("img[src], link[href], script[src]"):
-        raw = tag.get("src") or tag.get("href")
-        if urlsplit(raw).scheme or raw.startswith("//"):
-            if not raw.startswith("data:"):
-                errors.append(f"Remote dependency {raw}")
-        elif not (base / unquote(urlsplit(raw).path)).is_file():
-            errors.append(f"Missing packaged dependency {raw}")
-    if errors:
-        raise ValueError("\n".join(errors[:40]))
-    return {"chapters": len(soup.select("section.book-chapter")), "headings": len(soup.select("h1,h2,h3,h4,h5,h6")),
-            "ids": len(ids), "internal_links": links, "images": len(soup.select("img")),
-            "tables": len(soup.select("table")), "code_blocks": len(soup.select("pre")), "hints": len(soup.select(".hint"))}
 
 
 def audit_source_content(pages: list[Page], docs: Path) -> dict:
@@ -440,6 +422,31 @@ def attach_epub_licenses(path: Path, fonts: Path) -> None:
 
 
 def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool = True) -> dict:
+    """Validate a fresh export before replacing the managed HTML resource tree."""
+    if require_fonts:
+        validate_fonts(ROOT)
+    output = output.resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".web-epub-", dir=output) as temporary:
+        staging = Path(temporary) / "export"
+        report = _build(docs, staging, with_epub, require_fonts)
+        web = output / "html"
+        previous = Path(temporary) / "previous-html"
+        if web.exists() or web.is_symlink():
+            web.replace(previous)
+        try:
+            (staging / "html").replace(web)
+        except BaseException:
+            if previous.exists() or previous.is_symlink():
+                previous.replace(web)
+            raise
+        for path in staging.iterdir():
+            if path.is_file():
+                path.replace(output / path.name)
+    return report
+
+
+def _build(docs: Path, output: Path, with_epub: bool, require_fonts: bool) -> dict:
     docs = docs.resolve()
     output.mkdir(parents=True, exist_ok=True)
     web = output / "html"
@@ -454,9 +461,8 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     assets = ROOT / "export-assets"
     for item in ("screen.css", "offline.js"):
         shutil.copy2(assets / item, web / item)
-    (web / "epub.css").unlink(missing_ok=True)
     if (docs / "assets").is_dir():
-        shutil.copytree(docs / "assets", web / "assets", dirs_exist_ok=True)
+        shutil.copytree(docs / "assets", web / "assets")
         source_assets = [path for path in (docs / "assets").rglob("*") if path.is_file()]
         for path in source_assets:
             target = web / path.relative_to(docs)
@@ -468,7 +474,7 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
         for tag in page.soup.select("[href], [src]"):
             raw = tag.get("src") or tag.get("href") or ""
             parsed = urlsplit(raw)
-            if not parsed.scheme and parsed.path and not raw.startswith("#"):
+            if not parsed.scheme and not parsed.netloc and parsed.path and not raw.startswith("#"):
                 source = docs / unquote(parsed.path)
                 if source.is_file() and not source.is_relative_to(docs / "assets"):
                     destination = web / source.relative_to(docs)
@@ -479,13 +485,13 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     if require_fonts and (not font_files or not (fonts / "OFL.txt").is_file()):
         raise ValueError("CJK fonts and export-assets/fonts/OFL.txt must be ready before export")
     if fonts.is_dir():
-        shutil.copytree(fonts, web / "fonts", dirs_exist_ok=True)
+        shutil.copytree(fonts, web / "fonts")
     if (ROOT / "LICENSE").is_file():
         shutil.copy2(ROOT / "LICENSE", web / "LICENSE.txt")
     if (ROOT / "NOTICE.md").is_file():
         shutil.copy2(ROOT / "NOTICE.md", web / "NOTICE.md")
     if (ROOT / "LICENSES").is_dir():
-        shutil.copytree(ROOT / "LICENSES", web / "LICENSES", dirs_exist_ok=True)
+        shutil.copytree(ROOT / "LICENSES", web / "LICENSES")
     content = "\n".join(chapter_html(page) for page in pages)
     toc = '<aside class="book-sidebar"><a class="book-brand" href="#' + pages[0].key + '">Proxmox VE <span>9.2.13 · 简体中文</span></a><label class="toc-search">筛选目录<input id="toc-filter" type="search" placeholder="章节名称" autocomplete="off"></label><nav aria-label="全书目录"><ol>'
     for page in pages:
@@ -509,7 +515,7 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
     for tag in export_soup.select("[href], [src], [poster]"):
         for attr in ("href", "src", "poster"):
             raw = tag.get(attr)
-            if raw and not raw.startswith("#") and not urlsplit(raw).scheme and not raw.startswith("html/"):
+            if raw and not raw.startswith("#") and not urlsplit(raw).scheme and not urlsplit(raw).netloc and not raw.startswith("html/"):
                 tag[attr] = "html/" + raw
     exported = str(export_soup)
     (output / "book-export.html").write_text(exported, encoding="utf-8")

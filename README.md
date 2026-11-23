@@ -82,6 +82,22 @@ touch work/CHAPTER_LAYOUT_READY
 
 日常勘误可修改公开译文映射并重建。更新上游快照时，可重新运行 `scripts/prepare.py` 提取变化单元，再运行 `scripts/translate.py` 使用已登录的 Kimi Code 辅助翻译，或由贡献者直接补齐映射。发布构建默认拒绝缺失或不符合校验要求的译文。
 
+### 导航孤立页面报告
+
+维护目录时，可离线检查哪些 Markdown 页面未列入 `SUMMARY.md`，并追踪它们能否通过正文链接到达：
+
+```sh
+.venv/bin/python scripts/report_doc_orphans.py
+.venv/bin/python scripts/report_doc_orphans.py --docs docs > /tmp/pve-doc-orphans.json
+.venv/bin/python scripts/report_doc_orphans.py --check
+```
+
+命令仅需 `requirements.txt`，只读取文档、向标准输出打印 JSON，无需原始快照、重建或导出工具。`counts` 区分直接列入目录（`listed`）、仅经正文链接可达（`indirect`）和完全不可达（`unreachable`）的页面；后两类分别列在 `indirect_pages`、`unreachable_pages` 中，包含相对路径、首个 H1 标题（无 H1 时使用路径）和去重后的入链页面 `referenced_by`。间接可达页面还提供从 `SUMMARY.md` 开始的最短路径 `via`；孤立页面之间的循环引用不会被误认为可达。入链仅说明引用关系，不代表来源页面可达。
+
+默认报告不因发现遗漏而失败。加上 `--check` 后，只要任一页面未直接列入目录就退出 1，仍输出完整报告：正文可达页面也可能被按 SUMMARY 选页的导出流程遗漏。全部收录时退出 0；缺少根目录的 `SUMMARY.md`、读取或解析失败、文档目录含符号链接目录或 Markdown 符号链接时退出 2，不输出部分 JSON。不自动修复目录，也不更改发布校验。
+
+报告以根目录 `SUMMARY.md` 中的真实链接为起点，扫描目录内全部 `.md` 页面，支持 Markdown 引用式链接、HTML 链接及 URL 编码的相对路径。注释、代码示例、图片、有效 YAML 前置元数据中的链接不计入导航；外部链接、绝对路径、目录简写、缺失目标和目录外目标不构成边。查询参数和锚点不影响页面可达性；本报告不校验锚点或推断 GitBook 自动生成的章节导航。输出按相对路径排序、无时间戳或绝对路径，可直接保存比较。
+
 ## 许可证与贡献
 
 文档及译文采用 **GFDL-1.3-no-invariants-or-later**；本项目构建脚本/CSS/JavaScript 采用 **AGPL-3.0-or-later**；开放字体采用 **SIL OFL 1.1**。上游其他程序保留原有许可，完整来源和条款见 [NOTICE.md](NOTICE.md)、`LICENSE` 与 `LICENSES/`。
