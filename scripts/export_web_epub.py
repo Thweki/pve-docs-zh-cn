@@ -412,6 +412,8 @@ def attach_epub_licenses(path: Path, fonts: Path) -> None:
 
 def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool = True) -> dict:
     """Validate a fresh export before replacing the managed HTML resource tree."""
+    if require_fonts:
+        validate_fonts(ROOT)
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".web-epub-", dir=output) as temporary:
@@ -434,8 +436,6 @@ def build(docs: Path, output: Path, with_epub: bool = True, require_fonts: bool 
 
 
 def _build(docs: Path, output: Path, with_epub: bool, require_fonts: bool) -> dict:
-    if require_fonts:
-        validate_fonts(ROOT)
     docs = docs.resolve()
     output.mkdir(parents=True, exist_ok=True)
     web = output / "html"
